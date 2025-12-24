@@ -4,6 +4,7 @@ import { NavigateNext as NavigateNextIcon } from '@mui/icons-material';
 
 interface PageContainerProps {
     title?: string;
+    description?: string;
     breadcrumbs?: Array<{ label: string; href?: string }>;
     children: React.ReactNode;
     fullHeight?: boolean;
@@ -11,6 +12,7 @@ interface PageContainerProps {
 
 export default function PageContainer({
     title,
+    description,
     breadcrumbs,
     children,
     fullHeight = true
@@ -27,7 +29,7 @@ export default function PageContainer({
                 gap: 1
             }}
         >
-            {(title || breadcrumbs) && (
+            {(title || breadcrumbs || description) && (
                 <Box sx={{ mb: 1, flexShrink: 0 }}>
                     {breadcrumbs && (
                         <Breadcrumbs
@@ -51,6 +53,11 @@ export default function PageContainer({
                     {title && (
                         <Typography variant="h5" component="h1" fontWeight="bold" color="primary">
                             {title}
+                        </Typography>
+                    )}
+                    {description && (
+                        <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+                            {description}
                         </Typography>
                     )}
                 </Box>

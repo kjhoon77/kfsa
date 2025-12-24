@@ -1,72 +1,25 @@
 import React, { useState } from 'react';
 import {
-    Box, CssBaseline, AppBar, Toolbar, Typography, Drawer, List, ListItem,
-    ListItemButton, ListItemIcon, ListItemText, Collapse, IconButton, Avatar,
-    Menu, MenuItem
+    Box, CssBaseline, AppBar, Toolbar, Typography, IconButton, Avatar,
+    Menu, MenuItem, Drawer, ListItemIcon
 } from '@mui/material';
 import {
-    Dashboard as DashboardIcon,
     Business as BusinessIcon,
-    ExpandLess,
-    ExpandMore,
     Menu as MenuIcon,
     Person as PersonIcon,
-    Settings as SettingsIcon,
     Logout as LogoutIcon,
-    People as PeopleIcon,
     PhoneInTalk as PhoneInTalkIcon
 } from '@mui/icons-material';
-import { useNavigate, useLocation } from 'react-router-dom';
 import Softphone from '../modules/cti/components/Softphone';
-
-const drawerWidth = 260;
-
-interface MenuItemData {
-    id: string;
-    title: string;
-    icon?: React.ReactNode;
-    path?: string;
-    children?: MenuItemData[];
-}
-
-const menuItems: MenuItemData[] = [
-    { id: 'dashboard', title: 'Dashboard', icon: <DashboardIcon />, path: '/' },
-    {
-        id: 'cust',
-        title: '고객관리',
-        icon: <PeopleIcon />,
-        children: [
-            { id: 'agent-search', title: '업무대행업체 검색 (Pilot)', path: '/cust/agent-info-list' },
-            { id: 'cust-mgmt', title: '고객정보 관리', path: '/cust/customer-management' }, // New Core Feature
-        ]
-    },
-    {
-        id: 'sys',
-        title: '시스템관리',
-        icon: <SettingsIcon />,
-        children: [
-            { id: 'sys-code', title: '공통코드 관리', path: '/sys/code' }
-        ]
-    }
-];
+import Sidebar from '../components/Sidebar';
 
 interface Props {
     children: React.ReactNode;
 }
 
 export default function MainLayout({ children }: Props) {
-    const navigate = useNavigate();
-    const location = useLocation();
-    const [openSubMenus, setOpenSubMenus] = useState<Record<string, boolean>>({ 'cust': true, 'ctiDrawer': false }); // Default closed
+    const [openSubMenus, setOpenSubMenus] = useState<Record<string, boolean>>({ 'ctiDrawer': false }); // Default closed
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-
-    const handleSubMenuClick = (id: string) => {
-        setOpenSubMenus((prev) => ({ ...prev, [id]: !prev[id] }));
-    };
-
-    const handleNavigate = (path?: string) => {
-        if (path) navigate(path);
-    };
 
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElUser(event.currentTarget);
@@ -74,44 +27,6 @@ export default function MainLayout({ children }: Props) {
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
-    };
-
-    const renderMenu = (items: MenuItemData[], depth = 0) => {
-        return items.map((item) => (
-            <React.Fragment key={item.id}>
-                <ListItem disablePadding sx={{ display: 'block' }}>
-                    <ListItemButton
-                        sx={{
-                            minHeight: 48,
-                            justifyContent: 'initial',
-                            px: 2.5,
-                            pl: 2.5 + depth * 2,
-                            backgroundColor: item.path === location.pathname ? 'rgba(0, 0, 0, 0.08)' : 'transparent'
-                        }}
-                        onClick={() => item.children ? handleSubMenuClick(item.id) : handleNavigate(item.path)}
-                    >
-                        <ListItemIcon
-                            sx={{
-                                minWidth: 0,
-                                mr: 3,
-                                justifyContent: 'center',
-                            }}
-                        >
-                            {item.icon || <Box sx={{ width: 24 }} />}
-                        </ListItemIcon>
-                        <ListItemText primary={item.title} />
-                        {item.children && (openSubMenus[item.id] ? <ExpandLess /> : <ExpandMore />)}
-                    </ListItemButton>
-                </ListItem>
-                {item.children && (
-                    <Collapse in={openSubMenus[item.id]} timeout="auto" unmountOnExit>
-                        <List component="div" disablePadding>
-                            {renderMenu(item.children, depth + 1)}
-                        </List>
-                    </Collapse>
-                )}
-            </React.Fragment>
-        ));
     };
 
     return (
@@ -170,26 +85,8 @@ export default function MainLayout({ children }: Props) {
                 </Toolbar>
             </AppBar>
 
-            {/* Left Drawer */}
-            <Drawer
-                variant="permanent"
-                sx={{
-                    width: drawerWidth,
-                    flexShrink: 0,
-                    [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
-                }}
-            >
-                <Toolbar /> {/* Spacer for AppBar */}
-                <Box sx={{ overflow: 'auto' }}>
-                    <Box sx={{ p: 2, textAlign: 'center', borderBottom: 1, borderColor: 'divider' }}>
-                        <Typography variant="subtitle1" fontWeight="bold">관리자 님</Typography>
-                        <Typography variant="caption" color="textSecondary">마지막 접속: 2024-12-24</Typography>
-                    </Box>
-                    <List>
-                        {renderMenu(menuItems)}
-                    </List>
-                </Box>
-            </Drawer>
+            {/* Left Sidebar */}
+            <Sidebar />
 
             {/* Main Content */}
             <Box
@@ -215,11 +112,9 @@ export default function MainLayout({ children }: Props) {
                 anchor="right"
                 open={openSubMenus['ctiDrawer']}
                 onClose={() => setOpenSubMenus(prev => ({ ...prev, 'ctiDrawer': false }))}
-                variant="persistent"
+                variant="temporary"
                 sx={{
-                    width: 340,
-                    flexShrink: 0,
-                    [`& .MuiDrawer-paper`]: { width: 340, boxSizing: 'border-box', mt: 8, height: 'calc(100% - 64px)' },
+                    '& .MuiDrawer-paper': { width: 340, boxSizing: 'border-box', mt: 8, height: 'calc(100% - 64px)' },
                 }}
             >
                 <Box sx={{ p: 2 }}>

@@ -4,6 +4,19 @@ import theme from './theme';
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import AgentInfoList from './modules/cust/AgentInfoList';
 import CustomerManagement from './modules/cust/CustomerManagement';
+import EnvManagement from './modules/env/EnvManagement';
+import ItemManagement from './modules/item/ItemManagement';
+import MemberManagement from './modules/mem/MemberManagement';
+import ProfessorManagement from './modules/profes/ProfessorManagement';
+import ReportManagement from './modules/report/ReportManagement';
+import AppointManagement from './modules/appoint/AppointManagement';
+import PosEtcManagement from './modules/posetc/PosEtcManagement';
+import OtherIncomeManagement from './modules/otherincome/OtherIncomeManagement';
+import LocalSvcManagement from './modules/localsvc/LocalSvcManagement';
+import TrainingManagement from './modules/training/TrainingManagement';
+import SysManagement from './modules/sys/SysManagement';
+import SpclEduManagement from './modules/spcledu/SpclEduManagement';
+import Report30Management from './modules/report30/Report30Management';
 import MainLayout from './layouts/MainLayout';
 import { Typography } from '@mui/material';
 
@@ -19,14 +32,10 @@ const AppLayout = () => {
 function HomeContent() {
   return (
     <>
-      <Typography variant="h4">MiPlatform to React Migration Demo</Typography>
-      <Typography variant="body1" sx={{ mt: 2 }}>
-        좌측 데모 목록:
+      <Typography variant="h4" gutterBottom>환영합니다.</Typography>
+      <Typography variant="body1">
+        좌측 메뉴에서 원하는 기능을 선택해주세요.
       </Typography>
-      <ul>
-        <li><b>Agent Search (Pilot)</b>: 기존 파일럿 화면</li>
-        <li><b>고객정보 관리</b>: [Phase 5] 신규 개발 화면 (Core Feature)</li>
-      </ul>
     </>
   );
 }
@@ -41,6 +50,19 @@ function App() {
             <Route path="/" element={<HomeContent />} />
             <Route path="/cust/agent-info-list" element={<AgentInfoList />} />
             <Route path="/cust/customer-management" element={<CustomerManagement />} />
+            <Route path="/mem/management" element={<MemberManagement />} />
+            <Route path="/profes/management" element={<ProfessorManagement />} />
+            <Route path="/item/management" element={<ItemManagement />} />
+            <Route path="/env/management" element={<EnvManagement />} />
+            <Route path="/report/management" element={<ReportManagement />} />
+            <Route path="/appoint/management" element={<AppointManagement />} />
+            <Route path="/posetc/management" element={<PosEtcManagement />} />
+            <Route path="/otherincome/management" element={<OtherIncomeManagement />} />
+            <Route path="/localsvc/management" element={<LocalSvcManagement />} />
+            <Route path="/training/management" element={<TrainingManagement />} />
+            <Route path="/sys/management" element={<SysManagement />} />
+            <Route path="/spcledu/management" element={<SpclEduManagement />} />
+            <Route path="/report30/management" element={<Report30Management />} />
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

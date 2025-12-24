@@ -2,57 +2,81 @@ import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
     typography: {
-        // 12pt is approximately 16px (1pt = 1.333px). 
-        // Default MUI fontSize is 14px. We bump it to 16px to match 12pt.
-        fontSize: 16,
+        fontSize: 12,
         fontFamily: '"Pretendard", "Malgun Gothic", "Roboto", "Helvetica", "Arial", sans-serif',
         allVariants: {
-            fontSize: '1rem', // 16px
+            fontSize: '12px',
         },
-        body1: {
-            fontSize: '1rem', // 16px
-        },
-        body2: {
-            fontSize: '0.875rem', // 14px (slightly smaller for secondary text if needed, or keep 16px)
-        },
-        button: {
-            textTransform: 'none',
-        },
+        h1: { fontSize: '14px', fontWeight: 'bold' },
+        h2: { fontSize: '14px', fontWeight: 'bold' },
+        h3: { fontSize: '14px', fontWeight: 'bold' },
+        h4: { fontSize: '14px', fontWeight: 'bold' },
+        h5: { fontSize: '14px', fontWeight: 'bold' },
+        h6: { fontSize: '14px', fontWeight: 'bold' },
+        subtitle1: { fontSize: '14px', fontWeight: 'bold' },
+        subtitle2: { fontSize: '12px', fontWeight: 'bold' },
+        body1: { fontSize: '12px' },
+        body2: { fontSize: '12px' },
+        button: { textTransform: 'none', fontSize: '12px' },
     },
     components: {
         MuiCssBaseline: {
             styleOverrides: {
                 body: {
-                    fontSize: '1rem',
+                    fontSize: '12px',
                 },
             },
         },
-        MuiTextField: {
-            defaultProps: {
-                size: 'small',
-                variant: 'outlined',
-            },
+        MuiButton: {
             styleOverrides: {
                 root: {
-                    '& .MuiInputBase-input': {
-                        fontSize: '1rem', // Ensure inputs are also 16px
-                    }
+                    fontSize: '12px',
+                }
+            }
+        },
+        MuiInputBase: {
+            styleOverrides: {
+                root: {
+                    fontSize: '12px',
+                },
+                input: {
+                    fontSize: '12px',
+                }
+            }
+        },
+        MuiInputLabel: {
+            styleOverrides: {
+                root: {
+                    fontSize: '12px',
                 }
             }
         },
         MuiSelect: {
             styleOverrides: {
                 root: {
-                    fontSize: '1rem',
+                    fontSize: '12px',
                 }
             }
         },
         MuiMenuItem: {
             styleOverrides: {
                 root: {
-                    fontSize: '1rem',
+                    fontSize: '12px',
                 }
             }
+        },
+        MuiTab: {
+            styleOverrides: {
+                root: {
+                    fontSize: '12px',
+                }
+            }
+        },
+        MuiTextField: {
+            defaultProps: {
+                size: 'small',
+                variant: 'outlined',
+            },
         },
     },
 });
