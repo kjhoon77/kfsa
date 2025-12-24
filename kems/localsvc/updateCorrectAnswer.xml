@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="input" io="INPUT" reserved="NO"></dataset>
+	<dataset id="in_Excel" io="INPUT" reserved="NO"></dataset>
+	<member_var>
+		<var id="EPCOURSECD" reserved="NO" type="CHAR"><![CDATA[]]></var>
+		<var id="EPNUMTYPE" reserved="NO" type="CHAR"><![CDATA[]]></var>
+		<var id="EPALPHATYPE" reserved="NO" type="CHAR"><![CDATA[]]></var>
+	</member_var>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_IMP_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[
+function Run()
+{
+	// TODO: Add your source code here	
+	for(var i=0; i < in_Excel.getRowCount() ; i++)
+  {
+		var insertQuery = "UPDATE CORRECTANSWER  SET "
+										+ "	CACORRECTCNT = '" + dsGetColumn(in_Excel,i,"CACORRECTCNT") + "'"
+										+ "	, CAITEMSCORE = '" + dsGetColumn(in_Excel,i,"CAITEMSCORE") + "'"
+										+ "	, CACORRECTANSWER = '" + dsGetColumn(in_Excel,i,"CACORRECTANSWER") + "'"
+										+ "WHERE CATCCOURSECD = '" + EPCOURSECD + "'"
+										+ "	AND CAEPNUMTYPE = '" + EPNUMTYPE + "'"
+										+ "	AND CAEPALPHATYPE = '" + EPALPHATYPE + "'"
+										+ "	AND CAITEMNO = " + dsGetColumn(in_Excel,i,"CAITEMNO") + ";";
+		var error = ExecuteSql(insertQuery);  
+	}
+	//trace(insertQuery);
+		
+}
+
+function dsGetColumn(ds,row,colid)
+{
+
+    return ds.getcolumn(row,colid);
+
+}]]></source>
+</class2>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="100" Id="frmcust0010PEduIssuePrintMessage" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="확인메세지팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="500" WorkArea="true">
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnOK" ImageID="BTN_TEXT_08" Left="45" OnClick="btnOK_OnClick" Style="sty_Button" TabOrder="1" Text="미리보기" Top="72" Transparent="TRUE" Width="119"></Button>
+		<Image Height="32" Id="imgInfo" ImageID="IMG_INFO" Left="8" Style="sty_Image" TabOrder="4" Top="16" Transparent="TRUE" Width="32"></Image>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnNO" ImageID="BTN_TEXT_08" Left="189" OnClick="btnNO_OnClick" Style="sty_Button" TabOrder="2" Text="출&#32;력(고객요청시)" Top="72" Transparent="TRUE" Width="119"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_TEXT_08" Left="334" OnClick="btnCancel_OnClick" Style="sty_Button" TabOrder="3" Text="닫&#32;&#32;기" Top="72" Transparent="TRUE" Width="119"></Button>
+		<TextArea BKColor="user0" Border="Flat" BorderColor="user0" Cursor="ARROW" DisableBKColor="user0" Font="굴림,10,Bold" Height="28" Id="taInfo" ImeMode="none" Left="48" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" TabOrder="5" Top="20" Width="440"></TextArea>
+		<TextArea BKColor="user0" Border="Flat" BorderColor="user0" Color="user6" Cursor="ARROW" DisableBKColor="user0" Font="굴림,9,Bold" Height="20" Id="TextArea0" ImeMode="none" Left="40" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" TabOrder="6" Top="48" Width="448"></TextArea>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM0010PInfoMessage.xml
+ * 설명 : 정보메세지팝업
+ * 작성일 : 2009.06.23
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+var sGubun = "";
+var Course = "";
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj);
+
+    if (IsExistVar("sMsg")) {
+        taInfo.Text = sMsg;
+    }
+	
+	if(Course == "50" and sGubun == 20)
+	{
+		TextArea0.Text = "  ※ 해당 건은 교육과정이 양성과정입니다. 이수증을 출력할 수 없습니다";
+		btnOK.Enable = false;
+		btnNO.Enable = false;
+	}
+}
+
+function Form_OnUnloadCompleted(obj) {
+    // to do
+
+    gfn_Form_OnUnloadCompleted(obj);
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam);
+}
+/* 공통 필수 종료 */
+
+function btnOK_OnClick(obj) {
+    Close(0);
+}
+
+function btnNO_OnClick(obj)
+{
+	Close(1);
+}
+
+function btnCancel_OnClick(obj)
+{
+	Close(2);
+}
+]]></Script>
+</Window>

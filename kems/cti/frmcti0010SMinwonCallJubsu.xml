@@ -1,0 +1,1918 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="780" Id="frmcti0010SMinwonCallJubsu" Left="8" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="민원상담접수" Top="8" Ver="1.0" Width="1584" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioGubun1">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>완료</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>호전환</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>콜백요청</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>지부이관</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioGubun2">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>2</CD>
+						<DATA>외부수신</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>내부발송</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>외부발신</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioGubun3">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>일반</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>주의</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oHMinwonCallList" OnLoadCompleted="ds_oHMinwonCallList_OnLoadCompleted" OnRowPosChanged="ds_oHMinwonCallList_OnRowPosChanged"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioMinwonCall">
+				<Contents>
+					<colinfo id="MWMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MWRECVTEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="MWNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MWHP" size="256" summ="default" type="STRING"/>
+					<colinfo id="MWTEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="MWMAIL" size="256" summ="default" type="STRING"/>
+					<colinfo id="MWFAX" size="256" summ="default" type="STRING"/>
+					<colinfo id="MWPERSONKEY" size="256" summ="default" type="STRING"/>
+					<colinfo id="MWGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MWREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="IPSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CIMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CIMWMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CIDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CIKEMS" size="256" summ="default" type="STRING"/>
+					<colinfo id="CIPROCGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CICALLBACKTEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="CISTATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="CIGRCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CICD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CICONENTS" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHG_MWMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CICALLGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CICALLDN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CIREMOTEGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CIREMOTESABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CIREMOTESTATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="CIREMOTEGUBUNYN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMinwonCallList" OnLoadCompleted="ds_oMinwonCallList_OnLoadCompleted" OnRowPosChanged="ds_oMinwonCallList_OnRowPosChanged">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCallCode"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCallCode1Cha">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCallCode2Cha"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oResult">
+				<Contents>
+					<colinfo id="O_MWMGNO_SEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="O_CIMGNO_SEQ" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iSearhGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>선택</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>휴대폰</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>전화번호</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>성명</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>상담내용</DATA>
+					</record>
+					<record>
+						<CD>5</CD>
+						<DATA>콜백번호</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oHMinwonCallRow"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioUserList">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioDeptList">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCallCode1ChaH1">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCallCode2ChaH1"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCallCode1ChaH2">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCallCode2ChaH2"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMinwonTemp"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioGubun4">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>I</CD>
+						<DATA>인바운드</DATA>
+					</record>
+					<record>
+						<CD>O</CD>
+						<DATA>아웃바운드</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioGubun1S">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>완료</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>호전환</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>콜백요청</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>지부이관</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioGubun2S">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>외부수신</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>내부발송</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>외부발신</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioGubun5">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>요청</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>호전환</DATA>
+					</record>
+					<record>
+						<CD></CD>
+						<DATA>해당없음</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioGubun6">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>완료</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>미완료</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oRemoteUser"></Dataset>
+		</Datasets>
+		<Tab BKSelColor="user36" Border="Flat" BorderColor="user15" Font="굴림,10" Height="748" Id="tab" Left="2" OnChanged="tab_OnChanged" SelColor="white" TabIndex="1" TabOrder="2" Width="1206">
+			<Contents>
+				<TabPage BorderColor="black" Height="724" Id="tabJubsu" Left="2" TabOrder="39" Text="민원상담접수" Top="22" Width="1202">
+					<Shape Bottom="289" Height="263" Id="Shape2" Left="8" LineColor="user1" Right="1188" TabOrder="53" Top="26" Type="Rectangle" Width="1180"></Shape>
+					<Shape Bottom="713" Height="399" Id="Shape1" Left="8" LineColor="user1" Right="1189" TabOrder="1" Top="314" Type="Rectangle" Width="1181"></Shape>
+					<Shape Bottom="63" Height="28" Id="Shape7" Left="732" LineColor="user14" Right="977" TabOrder="25" Top="35" Type="Rectangle" Width="245"></Shape>
+					<Static Align="Center" Height="28" Id="Static16" Left="12" Style="sty_LabelGruopBox" TabOrder="3" Text="민원&#32;상담접수" Top="14" VAlign="Middle" Width="125"></Static>
+					<Static Align="Center" Height="28" Id="Static0" Left="12" Style="sty_LabelGruopBox" TabOrder="4" Text="민원인&#32;상담이력" Top="299" VAlign="Middle" Width="125"></Static>
+					<Static Align="Center" Height="20" Id="Static1" Left="17" Style="sty_Label" TabOrder="5" Text="핸드폰" Top="94" VAlign="Middle" Width="96"></Static>
+					<Static Align="Center" Height="20" Id="Static2" Left="17" Style="sty_Label" TabOrder="6" Text="팩스번호" Top="121" VAlign="Middle" Width="96"></Static>
+					<Static Align="Center" Height="20" Id="Static3" Left="17" Style="sty_Label" TabOrder="7" Text="상담일시" Top="68" VAlign="Middle" Width="96"></Static>
+					<Static Align="Center" Height="20" Id="Static4" Left="17" Style="sty_Label" TabOrder="8" Text="KEMS정보&#32;&#32;&#32;&#32;" Top="174" VAlign="Middle" Width="96"></Static>
+					<Static Align="Center" Height="20" Id="Static5" Left="17" Style="sty_Label" TabOrder="9" Text="처리상태" Top="202" VAlign="Middle" Width="96"></Static>
+					<Static Align="Center" Height="20" Id="Static6" Left="17" Style="sty_Label" TabOrder="10" Text="상담분야" Top="254" VAlign="Middle" Width="96"></Static>
+					<Static Align="Center" Height="20" Id="Static7" Left="732" Style="sty_Label" TabOrder="11" Text="상담내용" Top="68" VAlign="Middle" Width="448"></Static>
+					<Static Align="Center" Height="20" Id="Static8" Left="233" Style="sty_Label" TabOrder="12" Text="성명" Top="68" VAlign="Middle" Width="80"></Static>
+					<Static Align="Center" Height="20" Id="Static9" Left="233" Style="sty_Label" TabOrder="13" Text="전화번호" Top="94" VAlign="Middle" Width="80"></Static>
+					<Static Align="Center" Height="20" Id="Static10" Left="17" Style="sty_Label" TabOrder="14" Text="개인식별NO" Top="148" VAlign="Middle" Width="96"></Static>
+					<Static Align="Center" Height="20" Id="Static11" Left="428" Style="sty_Label" TabOrder="14" Text="통화구분" Top="174" VAlign="Middle" Width="72"></Static>
+					<Static Align="Center" Height="20" Id="Static12" Left="428" Style="sty_Label" TabOrder="15" Text="민원인성향" Top="68" VAlign="Middle" Width="96"></Static>
+					<Static Align="Center" Height="20" Id="Static13" Left="428" Style="sty_Label" TabOrder="16" Text="부가정보" Top="93" VAlign="Middle" Width="300"></Static>
+					<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="edMWHP" ImeMode="native" Left="114" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="2" Top="94" Width="117"></Edit>
+					<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="edMWFAX" ImeMode="native" Left="114" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="4" Top="121" Width="117"></Edit>
+					<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="edCIKEMS" ImeMode="native" Left="114" LeftMargin="2" MaxLength="40" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="8" Top="174" Width="310"></Edit>
+					<Radio CodeColumn="CD" ColumnCount="5" DataColumn="DATA" Height="20" Id="radCIPROCGUBUN" INDEX="0" InnerDataset="ds_ioGubun1" Left="114" OnChanged="tab_tabJubsu_radCIPROCGUBUN_OnChanged" TabOrder="9" Top="202" Width="310"></Radio>
+					<Combo Border="Flat" CodeColumn="CCDETAILCD" DataColumn="CCNM" Height="20" Id="cbxCIGRCD" ImeMode="none" INDEX="0" InnerDataset="ds_oCallCode1Cha" Left="114" OnChanged="tab_tabJubsu_cbxCIGRCD_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="15" Top="254" Width="218"></Combo>
+					<Combo Border="Flat" CodeColumn="CCDETAILCD" DataColumn="CCNM" Height="20" Id="cbxCICD" ImeMode="none" INDEX="0" InnerDataset="ds_oCallCode2Cha" Left="332" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="16" Top="254" Width="398"></Combo>
+					<Edit AutoSelect="TRUE" Border="Flat" DisableBKColor="user0" Height="20" Id="edCICALLBACKTEL" ImeMode="native" Left="525" LeftMargin="2" MaxLength="20" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="10" Top="202" Width="204"></Edit>
+					<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="edMWNM" ImeMode="native" Left="315" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="1" Top="68" Width="109"></Edit>
+					<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="edMWTEL" ImeMode="native" Left="315" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="3" Top="94" Width="109"></Edit>
+					<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="edMWPERSONKEY" ImeMode="native" Left="114" LeftMargin="2" MaxLength="10" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="6" Top="148" Width="117"></Edit>
+					<Radio CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radMWGUBUN" INDEX="0" InnerDataset="ds_ioGubun3" Left="525" TabOrder="12" Top="68" Width="204"></Radio>
+					<TextArea Border="SunkenEdge" Font="굴림,10" Height="54" Id="taMWREMARK" ImeMode="native" Left="428" MaxLength="2000" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" TabOrder="13" Top="114" UserData="S:" VScroll="TRUE" Width="300"></TextArea>
+					<Grid AutoEnter="TRUE" BindDataset="ds_oMinwonCallList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="706" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="283" Id="gdCallList" InputPanel="FALSE" Left="15" LineColor="default" Right="1183" RowHeight="20" Style="sty_Grid" TabOrder="18" TabStop="true" Top="423" UseDBuff="true" UsePopupMenu="true" UserData="민원인상담이력" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1168">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="35"/>
+									<col width="124"/>
+									<col width="62"/>
+									<col width="97"/>
+									<col width="97"/>
+									<col width="97"/>
+									<col width="97"/>
+									<col width="97"/>
+									<col width="78"/>
+									<col width="59"/>
+									<col width="68"/>
+									<col width="86"/>
+									<col width="175"/>
+								</columns>
+								<head>
+									<cell col="0" display="text" text="순번"/>
+									<cell bkcolor="user7" col="1" display="text" text="상담일시"/>
+									<cell bkcolor="user7" col="2" display="text" text="상담사"/>
+									<cell col="3" display="text" text="성명"/>
+									<cell col="4" display="text" text="핸드폰"/>
+									<cell col="5" display="text" text="전화번호"/>
+									<cell bkcolor="user7" col="6" display="text" text="상담분야1"/>
+									<cell bkcolor="user7" col="7" display="text" text="상담분야2"/>
+									<cell bkcolor="user7" col="8" display="text" text="KEMS정보"/>
+									<cell bkcolor="user7" col="9" display="text" text="처리상태"/>
+									<cell col="10" display="text" text="통화구분"/>
+									<cell bkcolor="user7" col="11" display="text" text="콜백번호"/>
+									<cell align="center" bkcolor="user7" col="12" display="text" text="상담내용"/>
+								</head>
+								<body>
+									<cell align="center" col="0" display="text" expr="rowcount&#32;-&#32;currow"/>
+									<cell align="center" col="1" colid="CIDATE" display="text" Mask="####-##-##&#32;##:##"/>
+									<cell align="center" col="2" colid="PROCSABUN" display="text"/>
+									<cell col="3" colid="MWNM" display="text"/>
+									<cell col="4" colid="MWHP" display="text"/>
+									<cell col="5" colid="MWTEL" display="text"/>
+									<cell align="left" col="6" colid="CIGRCDNM" display="text"/>
+									<cell align="left" col="7" colid="CICDNM" display="text"/>
+									<cell align="left" col="8" colid="CIKEMS" display="text"/>
+									<cell align="center" col="9" colid="CIPROCGUBUN" combocol="CD" combodataset="ds_ioGubun1" combotext="DATA" display="combo"/>
+									<cell align="center" col="10" colid="CISTATUS" combocol="CD" combodataset="ds_ioGubun2" combotext="DATA" display="combo"/>
+									<cell align="left" col="11" colid="CICALLBACKTEL" display="text"/>
+									<cell align="left" col="12" colid="CICONENTS" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSave" ImageID="BTN_TEXT_05" Left="895" OnClick="btnSave_OnClick" Style="sty_Button" TabOrder="21" Text="저장" Top="38" Transparent="TRUE" Width="79"></Button>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCustomer" ImageID="BTN_TEXT_05" Left="815" OnClick="btnMinwon_OnClick" Style="sty_Button" TabOrder="20" Text="민원인검색" Top="38" Transparent="TRUE" Width="79"></Button>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnInit" ImageID="BTN_TEXT_05" Left="735" OnClick="fn_init" Style="sty_Button" TabOrder="19" Text="초기화" Top="38" Transparent="TRUE" Width="79"></Button>
+					<Shape Bottom="420" Height="28" Id="Shape0" Left="1096" LineColor="user14" Right="1183" TabOrder="26" Top="392" Type="Rectangle" Width="87"></Shape>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnExcel" ImageID="BTN_TEXT_05" Left="1100" OnClick="btnExcel_OnClick" Style="sty_Button" TabOrder="22" Text="엑셀" Top="395" Transparent="TRUE" Width="79"></Button>
+					<Static Align="Center" Height="20" Id="Static14" Left="233" Style="sty_Label" TabOrder="27" Text="이메일" Top="121" VAlign="Middle" Width="80"></Static>
+					<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="edMWMAIL" ImeMode="native" Left="315" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="5" Top="121" Width="109"></Edit>
+					<Radio CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Font="굴림,10" Height="20" Id="radCISTATUS" INDEX="0" InnerDataset="ds_ioGubun2" Left="501" TabOrder="14" Top="174" Width="228"></Radio>
+					<Static Align="Center" BKColor="user36" BorderColor="user0" Height="20" Id="lbMWMGNO" Left="17" Style="sty_Label" TabOrder="28" Text="MWMGNO" Top="279" VAlign="Middle" Visible="FALSE" Width="80"></Static>
+					<Edit Border="Flat" BorderColor="user8" Enable="FALSE" Height="20" Id="edMWMGNO" Left="100" Readonly="TRUE" TabOrder="23" TabStop="FALSE" Top="279" Visible="FALSE" Width="80"></Edit>
+					<Static Align="Center" BKColor="user36" BorderColor="user0" Height="20" Id="lbCIMGNO" Left="183" Style="sty_Label" TabOrder="29" Text="CIMGNO" Top="279" VAlign="Middle" Visible="FALSE" Width="80"></Static>
+					<Edit Border="Flat" BorderColor="user8" Enable="FALSE" Height="20" Id="edCIMGNO" Left="268" Readonly="TRUE" TabOrder="24" TabStop="FALSE" Top="279" Visible="FALSE" Width="80"></Edit>
+					<MaskEdit Border="Flat" BorderColor="user4" DisableBKColor="user8" Enable="FALSE" Height="21" Id="medCIDATE" Left="115" Mask="@@@@-@@-@@&#32;@@:@@" TabOrder="25" TabStop="FALSE" Top="68" Type="STRING" Width="117"></MaskEdit>
+					<Static Color="user10" Font="굴림,9" Height="24" Id="lbInfomsg" Left="24" Style="sty_TextBlue" TabOrder="30" Text="※" Top="43" VAlign="Middle" Width="420"></Static>
+					<Static Align="Center" Height="20" Id="Static18" Left="428" Style="sty_Label" TabOrder="31" Text="콜백전화번호" Top="202" VAlign="Middle" Width="96"></Static>
+					<TextArea Border="SunkenEdge" Font="굴림,10" Height="86" Id="taCICONENTS1" ImeMode="native" Left="15" MaxLength="2000" Readonly="TRUE" TabOrder="26" TabStop="FALSE" Top="335" UserData="S:" VScroll="TRUE" Width="1077"></TextArea>
+					<Static Align="Center" BKColor="user35" Height="20" Id="Static19" Left="233" Style="sty_Label" TabOrder="32" Text="수신번호" Top="148" VAlign="Middle" Width="80"></Static>
+					<Edit AutoSelect="TRUE" BKColor="user7" Border="Flat" DisableBKColor="user7" Height="20" Id="edMWRECVTEL" ImeMode="native" Left="315" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="7" TabStop="FALSE" Top="148" Width="109"></Edit>
+					<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="edSearchMinwon" ImeMode="native" Left="403" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="27" TabStop="FALSE" Top="68" Visible="FALSE" Width="21"></Edit>
+					<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="edCICALLGUBUN" ImeMode="native" Left="439" LeftMargin="2" Style="sty_Edit" TabOrder="28" Top="279" Visible="FALSE" Width="29"></Edit>
+					<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="edCICALLDN" ImeMode="native" Left="556" LeftMargin="2" Style="sty_Edit" TabOrder="29" Top="279" Visible="FALSE" Width="69"></Edit>
+					<TextArea Border="SunkenEdge" Font="굴림,10" Height="184" Id="taCICONENTS" ImeMode="native" Left="732" MaxLength="2000" TabOrder="17" Top="90" UserData="S" VScroll="TRUE" Width="448"></TextArea>
+					<Static Align="Center" BKColor="user36" BorderColor="user0" Height="20" Id="lbCICALLGUBUN" Left="356" Style="sty_Label" TabOrder="54" Text="호전환구분" Top="279" VAlign="Middle" Visible="FALSE" Width="80"></Static>
+					<Static Align="Center" BKColor="user36" BorderColor="user0" Height="20" Id="lbCICALLDN" Left="472" Style="sty_Label" TabOrder="55" Text="호전환번호" Top="279" VAlign="Middle" Visible="FALSE" Width="80"></Static>
+					<Button Appearance="FLAT" BKColor="user30" BorderColor="user30" Color="user0" Height="21" Id="btnEnableCIKEMS" Left="93" OnClick="tab_tabJubsu_btnEnableCIKEMS_OnClick" TabOrder="30" Text="..." Top="173" Width="20"></Button>
+					<Button Appearance="FLAT" BKColor="user30" BorderColor="user30" Color="user0" Height="21" Id="btnEnableMWNM" Left="293" OnClick="tab_tabJubsu_btnEnableMWNM_OnClick" TabOrder="31" Text="..." Top="67" Width="20"></Button>
+					<Static Align="Center" Height="20" Id="Static15" Left="17" Style="sty_Label" TabOrder="58" Text="PC원격" Top="228" VAlign="Middle" Width="96"></Static>
+					<Radio CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="radCIREMOTEGUBUN" INDEX="0" InnerDataset="ds_ioGubun5" Left="113" OnChanged="tab_tabJubsu_radCIPROCGUBUN_OnChanged" TabOrder="11" Top="228" Width="222"></Radio>
+				</TabPage>
+				<TabPage BorderColor="black" Font="굴림,12" Height="724" Id="minwonH" Left="2" TabOrder="44" Text="&#32;&#32;&#32;상담이력&#32;&#32;&#32;" Top="22" Width="1202">
+					<Shape Bottom="66" Height="52" Id="Shape5" Left="1104" LineColor="user14" Right="1189" TabOrder="31" Top="14" Type="Rectangle" Width="85"></Shape>
+					<Shape Bottom="693" Height="191" Id="Shape2" Left="6" LineColor="user1" Right="1188" TabOrder="30" Top="502" Type="Rectangle" Width="1182"></Shape>
+					<Static Align="Center" Height="20" Id="Static14" Left="6" Style="sty_Label" TabOrder="1" Text="부서" Top="18" VAlign="Middle" Width="80"></Static>
+					<Static Align="Center" Height="20" Id="Static18" Left="206" Style="sty_Label" TabOrder="3" Text="상담원" Top="18" VAlign="Middle" Width="72"></Static>
+					<Static Align="Center" Height="20" Id="Static19" Left="400" Style="sty_Label" TabOrder="4" Text="상담기간" Top="18" VAlign="Middle" Width="64"></Static>
+					<Static Align="Center" Height="20" Id="Static20" Left="684" Style="sty_Label" TabOrder="5" Text="검색구분" Top="42" VAlign="Middle" Width="72"></Static>
+					<Static Align="Center" Height="20" Id="Static17" Left="684" Style="sty_Label" TabOrder="2" Text="처리유형" Top="18" VAlign="Middle" Width="72"></Static>
+					<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="edCIDATEFrom" Left="465" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="3" Top="18" WeeksFont="돋음,9" Width="96"></Calendar>
+					<Static Align="Center" Height="20" Id="Static12" Left="563" Style="sty_Text" TabOrder="6" Text="~" Top="19" VAlign="Middle" Width="20"></Static>
+					<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="edCIDATETo" Left="583" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="4" Top="18" WeeksFont="돋음,9" Width="96"></Calendar>
+					<Combo Border="Flat" CodeColumn="CCDETAILCD" DataColumn="CCNM" Height="20" Id="cbxCIGRCDS" ImeMode="none" INDEX="0" InnerDataset="ds_oCallCode1ChaH1" Left="758" OnChanged="tab_minwonH_cbxCIGRCDS_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="5" Top="17" UserData="I:관서" Width="134"></Combo>
+					<Combo Border="Flat" CodeColumn="CCDETAILCD" DataColumn="CCNM" Height="20" Id="cbxCICDS" ImeMode="none" INDEX="0" InnerDataset="ds_oCallCode2ChaH1" Left="893" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="6" Top="17" UserData="I:관서" Width="202"></Combo>
+					<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxSearch" INDEX="0" InnerDataset="ds_iSearhGubun" Left="758" OnChanged="tab_minwonH_cbxSearch_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="9" Top="42" Width="134"></Combo>
+					<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="edSearch" ImeMode="native" Left="893" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="tab_minwonH_edSearch_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="10" Top="42" Width="202"></Edit>
+					<Static Align="Center" Height="20" Id="Static1" Left="297" Style="sty_Label" TabOrder="13" Text="상담사" Top="509" VAlign="Middle" Width="80"></Static>
+					<Static Align="Center" Height="20" Id="Static8" Left="517" Style="sty_Label" TabOrder="14" Text="상담일시" Top="509" VAlign="Middle" Width="80"></Static>
+					<Static Align="Center" Height="20" Id="stMWNM" Left="13" Style="sty_Label" TabOrder="15" Text="민원명" Top="509" VAlign="Middle" Width="80"></Static>
+					<Static Align="Center" Height="20" Id="Static4" Left="13" Style="sty_Label" TabOrder="16" Text="KEMS정보" Top="587" VAlign="Middle" Width="80"></Static>
+					<Static Align="Center" Height="20" Id="Static5" Left="13" Style="sty_Label" TabOrder="17" Text="처리상태" Top="613" VAlign="Middle" Width="80"></Static>
+					<Static Align="Center" Height="20" Id="Static6" Left="13" Style="sty_Label" TabOrder="18" Text="상담분야" Top="639" VAlign="Middle" Width="80"></Static>
+					<Static Align="Center" Height="20" Id="Static7" Left="758" Style="sty_Label" TabOrder="19" Text="상담내용" Top="509" VAlign="Middle" Width="424"></Static>
+					<Static Align="Center" Height="20" Id="Static10" Left="297" Style="sty_Label" TabOrder="20" Text="핸드폰" Top="535" VAlign="Middle" Width="80"></Static>
+					<Static Align="Center" Height="20" Id="Static11" Left="297" Style="sty_Label" TabOrder="21" Text="콜백번호" Top="587" VAlign="Middle" Width="80"></Static>
+					<Static Align="Center" Height="20" Id="Static13" Left="517" Style="sty_Label" TabOrder="22" Text="민원인성향" Top="613" VAlign="Middle" Width="80"></Static>
+					<Static Align="Center" Height="20" Id="Static15" Left="517" Style="sty_Label" TabOrder="23" Text="전화번호" Top="535" VAlign="Middle" Width="80"></Static>
+					<Static Align="Center" Height="20" Id="Static16" Left="13" Style="sty_Label" TabOrder="24" Text="개인식별NO" Top="561" VAlign="Middle" Width="80"></Static>
+					<Static Align="Center" Height="20" Id="Static21" Left="297" Style="sty_Label" TabOrder="25" Text="통화구분" Top="613" VAlign="Middle" Width="80"></Static>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_TEXT_05" Left="1107" OnClick="tab_minwonH_btnSearch_OnClick" Style="sty_Button" TabOrder="11" Text="조회" Top="41" Transparent="TRUE" Width="79"></Button>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnExcel" ImageID="BTN_TEXT_05" Left="1107" OnClick="tab_minwonH_btnExcel_OnClick" Style="sty_Button" TabOrder="12" Text="엑셀" Top="17" Transparent="TRUE" Width="79"></Button>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnChgMinwon" ImageID="BTN_TEXT_05" Left="213" OnClick="tab_minwonH_btnChgMinwon_OnClick" Style="sty_Button" TabOrder="15" TabStop="FALSE" Text="민원인변경" Top="509" Transparent="TRUE" Visible="FALSE" Width="79"></Button>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCall" ImageID="BTN_TEXT_05" Left="516" OnClick="tab_minwonH_btnCall_OnClick" Style="sty_Button" TabOrder="16" TabStop="FALSE" Text="콜백전화" Top="586" Transparent="TRUE" Width="79"></Button>
+					<Static Align="Center" Height="20" Id="lbTotalCnt" Left="3" Style="sty_LabelStat" TabOrder="33" Text="총건수" Top="57" VAlign="Middle" Width="80"></Static>
+					<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medTotalCnt" Left="84" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="13" TabStop="FALSE" Top="57" UserData="S" Width="52"></MaskEdit>
+					<Grid AutoEnter="TRUE" BindDataset="ds_oHMinwonCallList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="470" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="388" Id="gdHCallList" InputPanel="FALSE" Left="4" LineColor="default" Right="1193" RowHeight="20" Style="sty_Grid" TabOrder="14" TabStop="true" Top="82" UseDBuff="true" UsePopupMenu="true" UserData="민원상담이력" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1189">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="30"/>
+									<col width="124"/>
+									<col width="55"/>
+									<col width="92"/>
+									<col width="97"/>
+									<col width="97"/>
+									<col width="80"/>
+									<col width="78"/>
+									<col width="84"/>
+									<col width="86"/>
+									<col width="60"/>
+									<col width="67"/>
+									<col width="157"/>
+									<col width="86"/>
+									<col width="60"/>
+									<col width="109"/>
+									<col width="94"/>
+								</columns>
+								<head>
+									<cell bkcolor="user7" col="0" display="text" text="순번"/>
+									<cell bkcolor="user7" col="1" display="text" text="상담일시"/>
+									<cell bkcolor="user7" col="2" display="text" text="상담사"/>
+									<cell col="3" display="text" text="성명"/>
+									<cell col="4" display="text" text="수신번호"/>
+									<cell col="5" display="text" text="핸드폰"/>
+									<cell col="6" display="text" text="전화번호"/>
+									<cell bkcolor="user7" col="7" display="text" text="KEMS정보"/>
+									<cell bkcolor="user7" col="8" display="text" text="상담분야1"/>
+									<cell bkcolor="user7" col="9" display="text" text="상담분야2"/>
+									<cell bkcolor="user7" col="10" display="text" text="처리상태"/>
+									<cell col="11" display="text" text="통화구분"/>
+									<cell align="center" bkcolor="user7" col="12" display="text" text="상담내용"/>
+									<cell bkcolor="user7" col="13" display="text" text="콜백번호"/>
+									<cell col="14" display="text" text="원격요청"/>
+									<cell col="15" display="text" text="처리여부(원격)"/>
+									<cell col="16" display="text" text="처리자(원격)"/>
+								</head>
+								<body>
+									<cell align="center" col="0" display="text" expr="currow&#32;+&#32;1" text="0"/>
+									<cell align="center" col="1" colid="CIDATE" display="text" Mask="####-##-##&#32;##:##"/>
+									<cell align="center" col="2" colid="PROCSABUN" display="text"/>
+									<cell col="3" colid="MWNM" display="text"/>
+									<cell col="4" colid="MWRECVTEL" display="text"/>
+									<cell col="5" colid="MWHP" display="text"/>
+									<cell col="6" colid="MWTEL" display="text"/>
+									<cell align="left" col="7" colid="CIKEMS" display="text"/>
+									<cell align="left" col="8" colid="CIGRCDNM" display="text"/>
+									<cell align="left" col="9" colid="CICDNM" display="text"/>
+									<cell align="center" col="10" colid="CIPROCGUBUN" combocol="CD" combodataset="ds_ioGubun1" combotext="DATA" display="combo"/>
+									<cell align="center" col="11" colid="CISTATUS" combocol="CD" combodataset="ds_ioGubun2" combotext="DATA" display="combo"/>
+									<cell align="left" col="12" colid="CICONENTS" display="text"/>
+									<cell align="left" col="13" colid="CICALLBACKTEL" combocol="CD" combotext="DATA" display="normal"/>
+									<cell align="center" col="14" colid="CIREMOTEGUBUN" combocol="CD" combodataset="ds_ioGubun5" combotext="DATA" display="combo"/>
+									<cell align="center" col="15" colid="CIREMOTESTATUS" combocol="CD" combodataset="ds_ioGubun6" combotext="DATA" display="combo"/>
+									<cell col="16" colid="CIREMOTESABUNNM" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oHMinwonCallRow" BKColor="white" Border="Flat" Column="MWNM" DisableBKColor="user0" Height="20" Id="edMWNM" ImeMode="native" Left="95" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="17" Text="홍길동" Top="509" Width="117"></Edit>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oHMinwonCallRow" BKColor="white" Border="Flat" Column="MWHP" DisableBKColor="user0" Height="20" Id="edMWHP" ImeMode="native" Left="379" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="18" Text="010-1111-3333" Top="535" Width="117"></Edit>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oHMinwonCallRow" BKColor="white" Border="Flat" Column="MWTEL" DisableBKColor="user0" Height="20" Id="edMWTEL" ImeMode="native" Left="599" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="19" Text="010-111-2222" Top="535" Width="149"></Edit>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oHMinwonCallRow" BKColor="white" Border="Flat" Column="CIKEMS" DisableBKColor="user0" Height="20" Id="edCIKEMS" ImeMode="native" Left="95" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="23" Text="서울-999999" Top="587" Width="190"></Edit>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oHMinwonCallRow" BKColor="white" Border="Flat" Column="MWPERSONKEY" DisableBKColor="user0" Height="20" Id="edMWPERSONKEY" ImeMode="native" Left="95" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="20" Text="P9999999999" Top="561" Width="117"></Edit>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oHMinwonCallRow" Border="Flat" Column="CICALLBACKTEL" DisableBKColor="user0" Height="20" Id="edCICALLBACKTEL" ImeMode="native" Left="379" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="24" Top="587" Width="117"></Edit>
+					<Combo BindDataset="ds_oHMinwonCallRow" Border="Flat" CodeColumn="CCDETAILCD" Column="CIGRCD" DataColumn="CCNM" Height="20" Id="cbxCIGRCD" ImeMode="none" INDEX="0" InnerDataset="ds_oCallCode1ChaH2" Left="94" OnChanged="tab_minwonH_cbxCIGRCD_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="28" Top="639" Width="190"></Combo>
+					<Combo BindDataset="ds_oHMinwonCallRow" Border="Flat" CodeColumn="CCDETAILCD" Column="CICD" DataColumn="CCNM" Height="20" Id="cbxCICD" ImeMode="none" INDEX="0" InnerDataset="ds_oCallCode2ChaH2" Left="297" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="29" Top="639" Width="202"></Combo>
+					<Combo BindDataset="ds_oHMinwonCallRow" Border="Flat" CodeColumn="CD" Column="CIPROCGUBUN" DataColumn="DATA" Height="20" Id="cbxCIPROCGUBUN" ImeMode="none" INDEX="0" InnerDataset="ds_ioGubun1" Left="94" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="25" Top="613" Width="190"></Combo>
+					<Combo BindDataset="ds_oHMinwonCallRow" Border="Flat" CodeColumn="CD" Column="CISTATUS" DataColumn="DATA" Height="20" Id="cbxCISTATUS" ImeMode="none" INDEX="0" InnerDataset="ds_ioGubun2" Left="378" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="26" Top="612" Width="122"></Combo>
+					<Combo BindDataset="ds_oHMinwonCallRow" Border="Flat" CodeColumn="CD" Column="MWGUBUN" DataColumn="DATA" Height="20" Id="cbxMWGUBUN" ImeMode="none" INDEX="0" InnerDataset="ds_ioGubun3" Left="598" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="27" Top="613" Width="154"></Combo>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSaveH" ImageID="BTN_TEXT_05" Left="1107" OnClick="tab_minwonH_btnSaveH_OnClick" Style="sty_Button" TabOrder="31" Text="저장" Top="475" Transparent="TRUE" Width="81"></Button>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oHMinwonCallRow" BKColor="white" Border="Flat" Column="PROCSABUN" DisableBKColor="user4" Enable="FALSE" Height="20" Id="Edit0" ImeMode="native" Left="379" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="31" TabStop="FALSE" Text="상담사" Top="509" Width="117"></Edit>
+					<Static Align="Center" Height="20" Id="Static0" Left="297" Style="sty_Label" TabOrder="48" Text="팩스번호" Top="561" VAlign="Middle" Width="80"></Static>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oHMinwonCallRow" BKColor="white" Border="Flat" Column="MWFAX" DisableBKColor="user0" Height="20" Id="Edit1" ImeMode="native" Left="379" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="21" Text="010-1111-3333" Top="561" Width="117"></Edit>
+					<Static Align="Center" Height="20" Id="Static9" Left="517" Style="sty_Label" TabOrder="50" Text="이메일" Top="561" VAlign="Middle" Width="80"></Static>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oHMinwonCallRow" BKColor="white" Border="Flat" Column="MWMAIL" DisableBKColor="user0" Height="20" Id="Edit2" ImeMode="native" Left="599" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="22" Text="010-1111-3333" Top="562" Width="149"></Edit>
+					<Combo Border="Flat" CodeColumn="DEPTCD" DataColumn="DEPTNM" Editable="TRUE" Height="20" Id="cbxDeptList" INDEX="0" InnerDataset="ds_ioDeptList" Left="88" OnChanged="tab_minwonH_cbxDeptList_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="1" Top="17" UserData="S" Width="117"></Combo>
+					<Combo Border="Flat" CodeColumn="PSABUN" DataColumn="NMPOSITION" Editable="TRUE" Height="20" Id="cbxUserList" ImeMode="none" INDEX="0" InnerDataset="ds_ioUserList" Left="279" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="2" Top="17" UserData="S" Width="120"></Combo>
+					<Static Align="Center" BKColor="user36" BorderColor="user0" Height="20" Id="lbCIMGNO" Left="9" Style="sty_Label" TabOrder="55" Text="CIMGNO" Top="471" VAlign="Middle" Visible="FALSE" Width="80"></Static>
+					<Edit BindDataset="ds_oHMinwonCallRow" Border="Flat" BorderColor="user8" Column="CIMGNO" Font="굴림,10" Height="20" Id="edCIMGNO" Left="91" Readonly="TRUE" TabOrder="32" TabStop="FALSE" Top="471" Visible="FALSE" Width="72"></Edit>
+					<Static Align="Center" BKColor="user36" BorderColor="user0" Height="20" Id="lbCIMWMGNO" Left="165" Style="sty_Label" TabOrder="56" Text="CIMWMGNO" Top="471" VAlign="Middle" Visible="FALSE" Width="80"></Static>
+					<Edit BindDataset="ds_oHMinwonCallRow" Border="Flat" BorderColor="user8" Column="CIMWMGNO" Font="굴림,10" Height="20" Id="edCIMWMGNO" Left="247" Readonly="TRUE" TabOrder="33" TabStop="FALSE" Top="471" Visible="FALSE" Width="80"></Edit>
+					<Static Align="Center" Height="20" Id="Static3" Left="13" Style="sty_Label" TabOrder="58" Text="수신전화" Top="535" VAlign="Middle" Width="80"></Static>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oHMinwonCallRow" BKColor="user4" Border="Flat" Column="MWRECVTEL" DisableBKColor="user0" Height="20" Id="Edit3" ImeMode="native" Left="95" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="34" TabStop="FALSE" Text="P9999999999" Top="535" Width="117"></Edit>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oHMinwonCallRow" BKColor="white" Border="Flat" Column="CICALLDN" DisableBKColor="user4" Enable="FALSE" Height="20" Id="Edit5" ImeMode="native" Left="705" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="35" TabStop="FALSE" Text="010-1111-3333" Top="639" Width="45"></Edit>
+					<Static Align="Center" Height="20" Id="Static22" Left="517" Style="sty_Label" TabOrder="61" Text="호전환" Top="639" VAlign="Middle" Width="80"></Static>
+					<Combo BindDataset="ds_oHMinwonCallRow" Border="Flat" CodeColumn="CD" Column="CICALLGUBUN" DataColumn="DATA" DisableBKColor="user4" Enable="FALSE" Height="20" Id="Combo0" ImeMode="none" INDEX="0" InnerDataset="ds_ioGubun4" Left="598" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="36" TabStop="FALSE" Top="638" Width="106"></Combo>
+					<TextArea BindDataset="ds_oHMinwonCallRow" Border="SunkenEdge" Column="CICONENTS" Font="굴림,10" Height="130" Id="taCICONENTS" ImeMode="native" Left="758" MaxLength="2000" TabOrder="30" Top="530" UserData="S" VScroll="TRUE" Width="424"></TextArea>
+					<Calendar BindDataset="ds_oHMinwonCallRow" Border="Flat" Column="CIDATE" Dateformat="yyyy-MM-dd&#32;HH:mm:ss" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="medCIDATE2" Left="599" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="37" TabStop="FALSE" Top="509" WeeksFont="돋음,9" Width="149"></Calendar>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSaveEnable" ImageID="BTN_TEXT_07" Left="892" OnClick="tab_minwonH_btnSaveEnable_OnClick" Style="sty_Button" TabOrder="38" TabStop="FALSE" Text="저장삭제활성" Top="475" Transparent="TRUE" Visible="FALSE" Width="105"></Button>
+					<Static Align="Center" BKColor="user36" BorderColor="user0" Height="20" Id="lbCIMWSEQ" Left="329" Style="sty_Label" TabOrder="66" Text="CIMWSEQ" Top="471" VAlign="Middle" Visible="FALSE" Width="80"></Static>
+					<Edit BindDataset="ds_oHMinwonCallRow" Border="Flat" BorderColor="user8" Column="CIMWSEQ" Font="굴림,10" Height="20" Id="edCIMWSEQ" Left="410" Readonly="TRUE" TabOrder="39" TabStop="FALSE" Top="471" Visible="FALSE" Width="40"></Edit>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oHMinwonCallRow" BKColor="white" Border="Flat" Column="CICALLDNUSER" DisableBKColor="user4" Enable="FALSE" Height="20" Id="Edit4" ImeMode="native" Left="599" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="40" TabStop="FALSE" Top="661" Width="150"></Edit>
+					<MaskEdit BindDataset="ds_oHMinwonCallRow" Border="Flat" Column="CIREGDATE" Enable="FALSE" Height="21" Id="medCIREGDATE" Left="95" Mask="@@@@-@@-@@&#32;@@:@@" Style="sty_Edit" TabOrder="41" TabStop="FALSE" Top="697" Type="STRING" Visible="FALSE" Width="117"></MaskEdit>
+					<Static Align="Center" BKColor="user36" Height="20" Id="stCIREGDATE" Left="13" Style="sty_Label" TabOrder="70" Text="등록/수정" Top="697" VAlign="Middle" Visible="FALSE" Width="80"></Static>
+					<MaskEdit BindDataset="ds_oHMinwonCallRow" Border="Flat" Column="CIUPDATE" DisableBKColor="user4" Enable="FALSE" Height="21" Id="medCIUPDATE" Left="214" Mask="@@@@-@@-@@&#32;@@:@@" Style="sty_Edit" TabOrder="42" TabStop="FALSE" Top="697" Type="STRING" Visible="FALSE" Width="117"></MaskEdit>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oHMinwonCallRow" BKColor="white" Border="Flat" Column="CIUPSABUNNM" DisableBKColor="user4" Enable="FALSE" Height="21" Id="edCIUPSABUNNM" ImeMode="native" Left="334" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="43" TabStop="FALSE" Top="697" Visible="FALSE" Width="60"></Edit>
+					<Static Align="Center" Height="20" Id="Static23" Left="206" Style="sty_Label" TabOrder="73" Text="처리상태" Top="42" VAlign="Middle" Width="72"></Static>
+					<Static Align="Center" Height="20" Id="Static24" Left="400" Style="sty_Label" TabOrder="74" Text="통화구분" Top="42" VAlign="Middle" Width="64"></Static>
+					<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxCIPROCGUBUNS" ImeMode="none" INDEX="0" InnerDataset="ds_ioGubun1S" Left="279" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="7" Top="42" Width="120"></Combo>
+					<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxCISTATUSS" ImeMode="none" INDEX="0" InnerDataset="ds_ioGubun2S" Left="465" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="8" Top="42" Width="96"></Combo>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oHMinwonCallRow" BKColor="white" Border="Flat" Column="MWRECVTELUSER" DisableBKColor="user4" Enable="FALSE" Height="20" Id="edMWRECVTELUSER" ImeMode="native" Left="135" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="77" TabStop="FALSE" Top="535" Visible="FALSE" Width="150"></Edit>
+					<Image Cursor="HAND" Font="굴림,9" Height="20" Id="imgLogSend" ImageID="IMG_FAVORITE2" Left="1107" OnClick="tab_minwonH_imgLogSend_OnClick" Static="FALSE" Style="sty_Image" TabOrder="78" Text="로그전송" Top="700" Width="88"></Image>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnDeleteH" ImageID="BTN_TEXT_05" Left="1027" OnClick="tab_minwonH_btnDeleteH_OnClick" Style="sty_Button" TabOrder="79" Text="삭제" Top="475" Transparent="TRUE" Visible="FALSE" Width="81"></Button>
+					<Static Align="Center" Height="20" Id="stCIREMOTEGUBUN" Left="13" Style="sty_Label" TabOrder="80" Text="PC원격" Top="665" VAlign="Middle" Width="80"></Static>
+					<Combo BindDataset="ds_oHMinwonCallRow" Border="Flat" CodeColumn="CD" Column="CIREMOTEGUBUN" DataColumn="DATA" Height="20" Id="cbxCIREMOTEGUBUN" ImeMode="none" INDEX="0" InnerDataset="ds_ioGubun5" Left="94" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="81" Top="664" Width="106"></Combo>
+					<Combo BindDataset="ds_oHMinwonCallRow" Border="Flat" CodeColumn="CD" Column="CIREMOTESTATUS" DataColumn="DATA" Enable="FALSE" Height="20" Id="cbxCIREMOTESTATUS" ImeMode="none" INDEX="0" InnerDataset="ds_ioGubun6" Left="298" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="82" Top="664" Width="98"></Combo>
+					<Checkbox Appearance="FLAT" BKColor="user34" Color="user0" FalseValue="N" Font="굴림,10" Height="21" Id="cbRemoteChk" Left="585" Style="sty_Checkbox" TabOrder="83" Text="PC원격" TextAlign="CENTER" TextMargin="0" Top="42" TrueValue="Y" Value="FALSE" Width="89"></Checkbox>
+					<Static Align="Center" Height="20" Id="stCIREMOTESTATUS" Left="200" Style="sty_Label" TabOrder="84" Text="원격처리여부" Top="665" VAlign="Middle" Width="96"></Static>
+					<Combo BindDataset="ds_oHMinwonCallRow" Border="Flat" CodeColumn="IPSABUN" Column="CIREMOTESABUN" DataColumn="IPNM" Enable="FALSE" Height="20" Id="cbxCIREMOTESABUN" ImeMode="none" INDEX="0" InnerDataset="ds_oRemoteUser" Left="397" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="85" Top="664" Width="100"></Combo>
+				</TabPage>
+				<TabPage BorderColor="black" Height="724" Id="monitList" Left="2" TabOrder="1" Text="민원상담전광판안내" Top="22" Width="1202">
+					<Div Height="697" Id="Div0" Left="3" TabOrder="1" Text="Div0" Top="13" Width="1192">
+						<Contents></Contents>
+					</Div>
+				</TabPage>
+				<TabPage BorderColor="black" Height="724" Id="boardList" Left="2" TabOrder="44" Text="&#32;&#32;&#32;매뉴얼&#32;&#32;&#32;" Top="22" Width="1202">
+					<Div Height="705" Id="Div0" Left="3" TabOrder="1" Text="Div0" Top="13" Width="1193">
+						<Contents></Contents>
+					</Div>
+				</TabPage>
+				<TabPage BorderColor="black" Height="724" Id="boardSave" Left="2" TabOrder="39" Text="&#32;&#32;&#32;매뉴얼등록&#32;" Top="22" Width="1202">
+					<Div Height="697" Id="Div0" Left="3" TabOrder="1" Text="Div0" Top="13" Width="1192">
+						<Contents></Contents>
+					</Div>
+				</TabPage>
+				<TabPage BorderColor="black" Height="724" Id="callStat" Left="2" TabOrder="1" Text="자리비움상태조회" Top="22" Width="1202">
+					<Div Height="697" Id="Div0" Left="3" TabOrder="1" Text="Div0" Top="13" Width="1192">
+						<Contents></Contents>
+					</Div>
+				</TabPage>
+			</Contents>
+		</Tab>
+		<Static Align="Center" Height="28" Id="Static17" Left="1554" Style="sty_LabelGruopBox" TabOrder="1" Text="INFO" Top="-80" VAlign="Middle" Width="125"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcti0010SMinwonJubsu.xml
+ * 설명 : 민원상담접수
+ * 작성일 : 2023.04
+ * 작성자 :  
+ */
+
+#include "LIB::cti.js"; // 공통업무 관련
+
+var vSaveCIMGNO = ""; // 저장 후 해당 focus 위치용도 
+var vSrc = 0;; //  저장 후 해당 focus 위치용도 
+
+function Form_OnLoadCompleted(obj)
+{	
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+    
+    fn_SearchCommonCode();  // 공통 코드 조회
+    fn_SearchCallCode(); //상담분야 코드 조회 	
+    fn_SearchRemoteUser(); // 원격상담자 조회 
+    fn_init();
+    fn_tabMinwonHInit();
+}
+
+
+function fn_SearchCommonCode() {	
+    		
+    // tab_minwonH - 부서정보 조회 
+    lfn_DeptSearch();    
+    tab.minwonH.cbxDeptList.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");    
+    // tab_minwonH -  사용자정보 조회 
+    lfn_UserSearch(gds_oUserInfo.GetColumn(0, "PDEPTCD"));
+    tab.minwonH.cbxUserList.Value = gds_oUserInfo.GetColumn(0, "PSABUN");   
+    //tab.minwonH.cbxUserList.Index = 0;
+}  
+
+/*
+* 민원상담이력 초기화 
+*/
+
+function fn_tabMinwonHInit(obj)
+{	
+    tab.minwonH.edCIDATEFrom.Text = left(GetDate(), 8);
+    tab.minwonH.edCIDATETo.Text = left(GetDate(), 8);
+}
+  
+/*
+* 상담분야 코드 조회 - 로딩 후 
+*/
+function fn_SearchCallCode()
+{	
+    ds_oCallCode.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cti:searchCallCode", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oCallCode=ds_oCallCode"	// outDs
+		,""	// args 
+		,""
+		,false		
+		,false
+		,true
+	);
+	
+	if(ds_oCallCode.rowcount > 0 ){		
+		// 민원접수 에서 사용 
+		ds_oCallCode1Cha.Clear();
+		ds_oCallCode1Cha.copy(ds_oCallCode); 
+		ds_oCallCode1Cha.Filter("CCGRPCD == '00'");	    
+		ds_oCallCode1Cha.InsertRow(0);
+		ds_oCallCode1Cha.SetColumn(0,"CCDETAILCD","");
+		ds_oCallCode1Cha.SetColumn(0,"CCNM","선택");
+		tab.tabJubsu.cbxCIGRCD.Index = 0;
+		
+		ds_oCallCode2Cha.Clear();
+		ds_oCallCode2Cha.copy(ds_oCallCode); 
+		
+		tab_tabJubsu_cbxCIGRCD_OnChanged(tab.tabJubsu.cbxCIGRCD,tab.tabJubsu.cbxCIGRCD.Value);
+		
+		// 민원상담이력 에서 사용 
+		ds_oCallCode1ChaH1.Clear();
+		ds_oCallCode1ChaH1.copy(ds_oCallCode); 		
+		ds_oCallCode2ChaH1.Clear();
+		ds_oCallCode2ChaH1.copy(ds_oCallCode);  
+		
+		ds_oCallCode1ChaH2.Clear();
+		ds_oCallCode1ChaH2.copy(ds_oCallCode); 
+		ds_oCallCode1ChaH2.Filter("CCGRPCD == '00'");	 		
+		ds_oCallCode2ChaH2.Clear();
+		ds_oCallCode2ChaH2.copy(ds_oCallCode);  
+		
+		
+		ds_oCallCode1ChaH1.Filter("CCGRPCD == '00'");	   
+		ds_oCallCode1ChaH1.InsertRow(0);
+		ds_oCallCode1ChaH1.SetColumn(0,"CCDETAILCD","");
+		ds_oCallCode1ChaH1.SetColumn(0,"CCNM","전체");
+		//미지정 확인용도 
+		ds_oCallCode1ChaH1.InsertRow(1);
+		ds_oCallCode1ChaH1.SetColumn(1,"CCDETAILCD","X");
+		ds_oCallCode1ChaH1.SetColumn(1,"CCNM","미지정");
+		
+		tab.minwonH.cbxCIGRCDS.Index = 0;  
+		
+		ds_oCallCode2ChaH1.InsertRow(0);
+		ds_oCallCode2ChaH1.SetColumn(0,"CCDETAILCD","");
+		ds_oCallCode2ChaH1.SetColumn(0,"CCNM","전체");
+		tab.minwonH.cbxCICDS.Index = 0;
+		
+		//tab_minwonH_cbxCIGRCDS_OnChanged(tab.minwonH.cbxCIGRCDS,tab.minwonH.cbxCIGRCDS.Value);
+	}
+}
+
+/*
+* 원격상담자 조회 - 로딩 후 
+*/
+function fn_SearchRemoteUser()
+{	
+    ds_oRemoteUser.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cti:searchRemoteUser", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oRemoteUser=ds_oRemoteUser"	// outDs
+		,""	// args 
+		,""
+		,false		
+		,false
+		,true
+	);
+}
+/*
+* 민원상담접수 입력란 초기화 
+*/
+
+function fn_init(obj)
+{	
+	//tab
+	tab.TabIndex = 0;
+	
+	//자리비움 상태조회는 콜센타만 보이게 	    
+	if(gs_IsCallCenter == "Y" || gs_IsLocal =="Y" || gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "SM"){
+	}else{
+		//자리비움 상태조회는 콜센타만 보이게 
+		tab.DeleteTab(5);
+	}
+	
+	// PC원격 기능은 원격권한 대상자만  
+	if(gds_CtiInfo.GetColumn(0, "IPUSERGUBUN") == "R" || gds_CtiInfo.GetColumn(0, "IPSAVEYN") == "Y" || 
+	   gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "SM" || gds_oUserInfo.GetColumn(0, "PDEPTCD") == "0272"){
+		tab.minwonH.cbRemoteChk.Visible = true;
+	}else{
+		tab.minwonH.cbRemoteChk.Visible = false;
+	}
+	
+	//
+	tab.tabJubsu.lbInfomsg.Text = "";
+	fnBkColor("init");
+	// 입력항목 초기화 
+	tab.tabJubsu.edMWMGNO.Text = "";
+	tab.tabJubsu.edMWRECVTEL.Text = "";
+	tab.tabJubsu.edMWNM.Text = "";
+	tab.tabJubsu.edMWHP.Text = "";
+	tab.tabJubsu.edMWTEL.Text = "";
+	tab.tabJubsu.edMWMAIL.Text = "";
+	tab.tabJubsu.edMWFAX.Text = "";
+	tab.tabJubsu.edMWPERSONKEY.Text = "";
+	tab.tabJubsu.radMWGUBUN.Value = "1"; // 일반 
+	tab.tabJubsu.taMWREMARK.Text = "";
+	tab.tabJubsu.edSearchMinwon.Text = "";
+	
+	tab.tabJubsu.edCIMGNO.Text = "";
+	tab.tabJubsu.medCIDATE.Value = "";
+	tab.tabJubsu.edCIKEMS.Text = "";
+	tab.tabJubsu.radCIPROCGUBUN.Value = "1"; // 완료
+	tab.tabJubsu.edCICALLBACKTEL.Text = "";
+	tab.tabJubsu.radCISTATUS.Value = ""; 
+	tab.tabJubsu.cbxCIGRCD.Value = "";
+	tab.tabJubsu.cbxCICD.Value = "";
+	tab.tabJubsu.taCICONENTS.Text = "";
+	tab.tabJubsu.edCICALLGUBUN.Text = "";
+	tab.tabJubsu.edCICALLDN.Text = "";
+	tab.tabJubsu.radCIREMOTEGUBUN.Value = ""; 
+	// 초기 셋팅
+	tab.tabJubsu.medCIDATE.Value = lfn_ctiSysDate(); // 서버 시간 가져오기  // toString(getdate() ); // 현재 시간 Display //  "@@@@-@@-@@ @@:@@:@@"  
+	tab.tabJubsu.cbxCIGRCD.Index = 0;
+	tab_tabJubsu_cbxCIGRCD_OnChanged(tab.tabJubsu.cbxCIGRCD,tab.tabJubsu.cbxCIGRCD.Value);	
+	// 민원상담이력 초기화 
+	ds_oMinwonCallList.ClearData();
+	
+	
+    if(gs_IsLocal =="Y"){
+		tab.tabJubsu.lbMWMGNO.Visible = true;
+		tab.tabJubsu.edMWMGNO.Visible = true;
+		tab.tabJubsu.lbCIMGNO.Visible = true;
+		tab.tabJubsu.edCIMGNO.Visible = true;		
+		tab.tabJubsu.edSearchMinwon.Visible = true;	 	
+			
+		tab.tabJubsu.edCICALLGUBUN.Visible = true;	 
+		tab.tabJubsu.lbCICALLGUBUN.Visible = true;	 
+		tab.tabJubsu.edCICALLDN.Visible = true;	 
+		tab.tabJubsu.lbCICALLDN.Visible = true;	 
+
+		tab.minwonH.lbCIMGNO.Visible = true;
+		tab.minwonH.edCIMGNO.Visible = true;
+		tab.minwonH.lbCIMWMGNO.Visible = true;
+		tab.minwonH.edCIMWMGNO.Visible = true; 
+		tab.minwonH.lbCIMWSEQ.Visible = true;
+		tab.minwonH.edCIMWSEQ.Visible = true; 
+		 
+		tab.minwonH.stCIREGDATE.Visible = true; 
+		tab.minwonH.medCIREGDATE.Visible = true; 
+		tab.minwonH.medCIUPDATE.Visible = true; 
+		tab.minwonH.edCIUPSABUNNM.Visible = true; 
+		
+		tab.minwonH.btnSaveEnable.Visible = true;
+
+    }
+	
+}
+
+
+/*
+* call 연결 후 초기화 
+*/
+function fnInitCall(obj){
+	// 전화번호 셋팅 후 초기화, 저장 준비 
+	fn_init();
+	
+	parent.AddResult("[F]fnInitCall - edMWRECVTEL : " + parent.txtCallDn.Text );
+		
+	tab.tabJubsu.edMWRECVTEL.Text = parent.txtCallDn.Text ; // 수신전화란에 수신된 전화번호 set 
+	fnTelnoChk(tab.tabJubsu.edMWRECVTEL.Text); // 수신번호로 다른 번호 set 	
+	// obj : call_type 
+    /* call_type
+    (0) Known    : 호전환으로 넘어온 (PartyChanged )
+    (1) Internal : 내선으로 온 번호를 걸때 , 내선으로 온 번호를 받을때 
+    (2) Inbound  : 외부에서 올때 (호전환 포함) 
+    (3) Outbound : 외부로 걸때 
+    */
+	tab.tabJubsu.radCISTATUS.Value = parent.txtCallType.Text ; 
+	if(obj == "0" || obj == "2" ){
+		tab.tabJubsu.radCISTATUS.Value = "2" ; // 2: 외부수신 
+	}
+	if(obj == "3" ){
+		tab.tabJubsu.radCISTATUS.Value = "3" ; // 3: 외부발신
+	}
+		
+	// 민원인정보 key로 조회 	
+	if (parent.ds_oMinwonList.rowcount > 0) {
+		
+		// (2) 선택한 민원인 정보 set 
+		tab.tabJubsu.edMWMGNO.Text = parent.ds_oMinwonList.GetColumn(0, "MWMGNO"); 
+		tab.tabJubsu.edMWRECVTEL.Text = parent.ds_oMinwonList.GetColumn(0, "MWRECVTEL"); 
+		tab.tabJubsu.edMWNM.Text = parent.ds_oMinwonList.GetColumn(0, "MWNM"); 
+		tab.tabJubsu.edMWHP.Text = parent.ds_oMinwonList.GetColumn(0, "MWHP"); 
+		tab.tabJubsu.edMWTEL.Text = parent.ds_oMinwonList.GetColumn(0, "MWTEL"); 
+		tab.tabJubsu.edMWMAIL.Text = parent.ds_oMinwonList.GetColumn(0, "MWMAIL"); 
+		tab.tabJubsu.edMWFAX.Text = parent.ds_oMinwonList.GetColumn(0, "MWFAX"); 
+		tab.tabJubsu.edMWPERSONKEY.Text = parent.ds_oMinwonList.GetColumn(0, "MWPERSONKEY"); 
+		tab.tabJubsu.radMWGUBUN.Value = parent.ds_oMinwonList.GetColumn(0, "MWGUBUN"); 
+		tab.tabJubsu.taMWREMARK.Text = parent.ds_oMinwonList.GetColumn(0, "MWREMARK"); 
+		fnBkColor("minwon");
+		parent.ds_oMinwonList.ClearData();
+		tab.tabJubsu.lbInfomsg.Text = "민원인 검색 되었습니다.";
+		tab.tabJubsu.edSearchMinwon.Text = "Y";
+		
+		// (3) 민원인 접수 정보 조회 
+		lfn_searhchMinwonCallList();	
+	}else{
+		// 민원인 정보 없으면 검색팝업 호출  
+	}
+	
+	// 호전환 call 이면 호전환 내용 set
+	if(parent.txtLastDn.Text <> ""){
+		tab.tabJubsu.edCICALLGUBUN.Text = "I" ;
+		tab.tabJubsu.edCICALLDN.Text = parent.txtLastDn.Text ;
+	}
+	
+	//23.07 콜센타의 경우 전화인입시 자동저장 	
+	if(gs_IsCallCenter == "Y"){
+		lfn_Save();
+	}
+	
+	
+	
+}
+
+
+function fnBkColor(obj){
+
+	var vColor = "" ;
+	
+
+	switch (obj) {
+		case "init":
+			vColor = "default" ;
+			//tab.tabJubsu.edMWRECVTEL.BkColor=vColor;
+			tab.tabJubsu.edMWNM.BkColor=vColor;
+			tab.tabJubsu.edMWHP.BkColor=vColor;
+			tab.tabJubsu.edMWTEL.BkColor=vColor;
+			tab.tabJubsu.edMWMAIL.BkColor=vColor;
+			tab.tabJubsu.edMWFAX.BkColor=vColor;
+			tab.tabJubsu.edMWPERSONKEY.BkColor=vColor;
+			//tab.tabJubsu.radMWGUBUN.BkColor=vColor;
+			tab.tabJubsu.taMWREMARK.BkColor=vColor;
+			
+			tab.tabJubsu.medCIDATE.BkColor=vColor;
+			tab.tabJubsu.edCIKEMS.BkColor=vColor;
+			//tab.tabJubsu.radCIPROCGUBUN.BkColor=vColor;
+			tab.tabJubsu.edCICALLBACKTEL.BkColor=vColor;
+			//tab.tabJubsu.radCISTATUS.BkColor=vColor;
+			tab.tabJubsu.cbxCIGRCD.BkColor=vColor;
+			tab.tabJubsu.cbxCICD.BkColor=vColor;
+			tab.tabJubsu.taCICONENTS.BkColor=vColor;
+	 
+			break;  
+			
+		case "minwon":  
+			vColor = "user40"; // "user2" ;	 
+			//tab.tabJubsu.edMWRECVTEL.BkColor=vColor;
+			tab.tabJubsu.edMWNM.BkColor=vColor;
+			tab.tabJubsu.edMWHP.BkColor=vColor;
+			tab.tabJubsu.edMWTEL.BkColor=vColor;
+			tab.tabJubsu.edMWMAIL.BkColor=vColor;
+			tab.tabJubsu.edMWFAX.BkColor=vColor;
+			tab.tabJubsu.edMWPERSONKEY.BkColor=vColor;
+			//tab.tabJubsu.radMWGUBUN.BkColor=vColor;
+			tab.tabJubsu.taMWREMARK.BkColor=vColor;
+			break;  
+			
+		case "minwoncall":  
+			vColor = "user40"; // "user2" ;	 
+			tab.tabJubsu.medCIDATE.BkColor=vColor;
+			tab.tabJubsu.edCIKEMS.BkColor=vColor;
+			//tab.tabJubsu.radCIPROCGUBUN.BkColor=vColor;
+			tab.tabJubsu.edCICALLBACKTEL.BkColor=vColor;
+			//tab.tabJubsu.radCISTATUS.BkColor=vColor;
+			tab.tabJubsu.cbxCIGRCD.BkColor=vColor;
+			tab.tabJubsu.cbxCICD.BkColor=vColor;
+			tab.tabJubsu.taCICONENTS.BkColor=vColor;
+			break;  
+			
+		default :	 
+			break;
+	}
+
+}
+
+/*
+* 조회 : 민원인 상담접수 기내역 조회  
+*/
+
+function lfn_searhchMinwonCall(obj){
+
+	if(tab.tabJubsu.edCIMGNO.Text == "") {
+		return ;
+	}
+	
+	ds_ioMinwonCall.ClearData(); // 데이타셋 초기화
+	
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("cti:searchMinwonCall", false);
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+		,"ds_ioMinwonCall=ds_ioMinwonCall"	// outDs
+		,"CIMGNO=" + quote(tab.tabJubsu.edCIMGNO.Text)
+            + " CIMWMGNO=" + quote(tab.tabJubsu.edMWMGNO.Text)   
+        ,"lfn_AfterSearch"
+        ,false
+        ,false
+        ,true
+    );
+}
+
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    // 민원인 정보 있으면 상담점수 화면에 set
+    if (ds_ioMinwonCall.GetRowCount() > 0) {	
+		
+		// 민원인정보 
+		tab.tabJubsu.edMWMGNO.Text = ds_ioMinwonCall.GetColumn(0,"MWMGNO");
+		tab.tabJubsu.edMWNM.Text = ds_ioMinwonCall.GetColumn(0,"MWNM"); 
+		tab.tabJubsu.edMWHP.Text = ds_ioMinwonCall.GetColumn(0,"MWHP"); 
+		tab.tabJubsu.edMWTEL.Text = ds_ioMinwonCall.GetColumn(0,"MWTEL"); 
+		tab.tabJubsu.edMWMAIL.Text = ds_ioMinwonCall.GetColumn(0,"MWMAIL"); 
+		tab.tabJubsu.edMWFAX.Text = ds_ioMinwonCall.GetColumn(0,"MWFAX"); 
+		tab.tabJubsu.edMWPERSONKEY.Text = ds_ioMinwonCall.GetColumn(0,"MWPERSONKEY"); 
+		tab.tabJubsu.radMWGUBUN.Value = ds_ioMinwonCall.GetColumn(0,"MWGUBUN"); 
+		tab.tabJubsu.taMWREMARK.Text = ds_ioMinwonCall.GetColumn(0,"MWREMARK"); 
+			
+		//상담정보 
+		tab.tabJubsu.edCIMGNO.Text = ds_ioMinwonCall.GetColumn(0,"CIMGNO"); 
+		tab.tabJubsu.edMWMGNO.Text = ds_ioMinwonCall.GetColumn(0,"CIMWMGNO"); 
+		tab.tabJubsu.medCIDATE.Value = ds_ioMinwonCall.GetColumn(0,"CIDATE"); 
+		tab.tabJubsu.edCIKEMS.Text = ds_ioMinwonCall.GetColumn(0,"CIKEMS"); 
+		tab.tabJubsu.radCIPROCGUBUN.Value = ds_ioMinwonCall.GetColumn(0,"CIPROCGUBUN"); 
+		tab.tabJubsu.edCICALLBACKTEL.Text = ds_ioMinwonCall.GetColumn(0,"CICALLBACKTEL"); 
+		tab.tabJubsu.radCISTATUS.Value = ds_ioMinwonCall.GetColumn(0,"CISTATUS"); 
+		tab.tabJubsu.cbxCIGRCD.Value = ds_ioMinwonCall.GetColumn(0,"CIGRCD"); 
+		tab.tabJubsu.cbxCICD.Value = ds_ioMinwonCall.GetColumn(0,"CICD"); 
+		tab.tabJubsu.taCICONENTS.Text = ds_ioMinwonCall.GetColumn(0,"CICONENTS"); 		
+		tab.tabJubsu.edCICALLGUBUN.Text = ds_ioMinwonCall.GetColumn(0,"CICALLGUBUN"); 
+		tab.tabJubsu.edCICALLDN.Text = ds_ioMinwonCall.GetColumn(0,"CICALLDN");  
+	
+		tab.tabJubsu.lbInfomsg.Text = "민원 상담접수 내역이 조회되었습니다.";
+		fnBkColor("minwoncall");
+		
+    }
+    
+}
+
+
+/*
+* 조회 : 민원인 상담 이력 
+*/
+
+function lfn_searhchMinwonCallList(obj){
+
+	ds_oMinwonCallList.ClearData(); // 데이타셋 초기화
+	
+	// 입력한 성명, 핸드폰, 전화번호,... 로 조회  
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("cti:searchMinwonCallList", false);
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+		,"ds_oMinwonCallList=ds_oMinwonCallList"	// outDs
+		,"MWMGNO=" + quote(tab.tabJubsu.edMWMGNO.Text)
+        ,"lfn_AfterSearchMinwonCallList"
+        ,false
+        ,false
+        ,true
+    );
+}
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchMinwonCallList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SearchMessage(tab.tabJubsu.gdCallList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+
+
+/*
+* 민원상담접수 저장  
+*/
+
+function lfn_Save(obj)
+{	
+	// 수신번호 없으면 pass
+	if(gfn_IsNull(tab.tabJubsu.edMWRECVTEL.Text)){
+		parent.AddResult("[F]lfn_Save - 저장 호출 - 수신번호 없으면 pass");
+		return false;
+	}	
+		
+	// 민원인 key 가 null 이면 db에서 다시 체크 ( 동시 저장 가능) 	
+    if (gfn_IsNull(tab.tabJubsu.edMWMGNO.Text)) { 
+		ds_oMinwonTemp.ClearData(); // 데이타셋 초기화	
+		tit_clearActionInfo();
+		tit_addCsvSearchActionInfo("cti:searchMinwonMWRECVTEL", false);
+		// 서버 호출 
+		
+		tit_callService(
+			""
+			,""
+			,""	// inDs
+			,"ds_oMinwonTemp=ds_oMinwonList"	// outDs
+			,"MWRECVTEL=" + quote(tab.tabJubsu.edMWRECVTEL.Text)
+			,""
+			,false
+			,""
+			,true
+		);			
+		    
+		if (ds_oMinwonTemp.GetCount() >=0) {			tab.tabJubsu.edMWMGNO.Text = ds_oMinwonTemp.GetColumn(0,"MWMGNO");
+		}
+	}
+	
+	// 초기화 
+	ds_ioMinwonCall.ClearData();
+	ds_ioMinwonCall.InsertRow(0);
+			
+	// 민원인정보 
+	ds_ioMinwonCall.SetColumn(0,"MWMGNO",tab.tabJubsu.edMWMGNO.Text); 
+	ds_ioMinwonCall.SetColumn(0,"MWRECVTEL",tab.tabJubsu.edMWRECVTEL.Text); 
+	ds_ioMinwonCall.SetColumn(0,"MWNM",tab.tabJubsu.edMWNM.Text); 
+	ds_ioMinwonCall.SetColumn(0,"MWHP",tab.tabJubsu.edMWHP.Text); 
+	ds_ioMinwonCall.SetColumn(0,"MWTEL",tab.tabJubsu.edMWTEL.Text); 
+	ds_ioMinwonCall.SetColumn(0,"MWMAIL",tab.tabJubsu.edMWMAIL.Text); 
+	ds_ioMinwonCall.SetColumn(0,"MWFAX",tab.tabJubsu.edMWFAX.Text); 
+	ds_ioMinwonCall.SetColumn(0,"MWPERSONKEY",tab.tabJubsu.edMWPERSONKEY.Text); 
+	ds_ioMinwonCall.SetColumn(0,"MWGUBUN",tab.tabJubsu.radMWGUBUN.Value); 
+	ds_ioMinwonCall.SetColumn(0,"MWREMARK",tab.tabJubsu.taMWREMARK.Text);
+	
+    if (!gfn_IsNull(tab.tabJubsu.edCIMGNO.Text)) { 	
+		// 상담정보가 기존에 있으면서 저장이면 계속수정상태이므로 민원 히스토리 발생 안하고 업데이트만 
+		
+		
+		if(tab.tabJubsu.edSearchMinwon.Text <> "Y") { // 검색을 하지 않은 민원인 저장시에는 히스토리 만들지 않음 		
+			// 상담정보가 기존에 있으면서 저장이면 계속
+			ds_ioMinwonCall.SetColumn(0,"CHG_MWMGNO","U"); 
+			//alert("CHG_MWMGNO = U ");
+		}
+	}
+	
+	//상담정보 
+	ds_ioMinwonCall.SetColumn(0,"CIMGNO",tab.tabJubsu.edCIMGNO.Text); 
+	ds_ioMinwonCall.SetColumn(0,"CIMWMGNO",tab.tabJubsu.edMWMGNO.Text); 
+	ds_ioMinwonCall.SetColumn(0,"CIDATE",tab.tabJubsu.medCIDATE.Value); 
+	ds_ioMinwonCall.SetColumn(0,"CIKEMS",tab.tabJubsu.edCIKEMS.Text); 
+	ds_ioMinwonCall.SetColumn(0,"CIPROCGUBUN",tab.tabJubsu.radCIPROCGUBUN.Value); 
+	ds_ioMinwonCall.SetColumn(0,"CICALLBACKTEL",tab.tabJubsu.edCICALLBACKTEL.Text); 
+	ds_ioMinwonCall.SetColumn(0,"CISTATUS",tab.tabJubsu.radCISTATUS.Value); 
+	ds_ioMinwonCall.SetColumn(0,"CIGRCD",tab.tabJubsu.cbxCIGRCD.Value); 
+	ds_ioMinwonCall.SetColumn(0,"CICD",tab.tabJubsu.cbxCICD.Value); 
+	ds_ioMinwonCall.SetColumn(0,"CICONENTS",tab.tabJubsu.taCICONENTS.Text); 
+	ds_ioMinwonCall.SetColumn(0,"CICALLGUBUN",tab.tabJubsu.edCICALLGUBUN.Text);  //호전환구분(I:inbound, O:outbound
+	ds_ioMinwonCall.SetColumn(0,"CICALLDN",tab.tabJubsu.edCICALLDN.Text);   // 호전환DN 
+	ds_ioMinwonCall.SetColumn(0,"CIREMOTEGUBUN",tab.tabJubsu.radCIREMOTEGUBUN.Value); //24.02 원격구분 항목추가 
+		      
+	parent.AddResult("[F]lfn_Save - 저장 호출");
+			
+    tit_clearActionInfo();
+	tit_addSingleActionInfo("cti:insertMinwonCallInfo", "", 0, "");
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,"ds_ioMinwonCall=ds_ioMinwonCall"/// inDs
+        ,"ds_oResult=ds_oResult"	// outDs
+        , ""
+        ,"lfn_AfterSave"
+        ,false
+        ,false
+        ,true
+    );
+    
+	
+    	
+}
+
+/*
+ */
+function lfn_AfterSave(nErrorCode, strErrorMsg) {
+    
+	
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+		parent.AddResult("[F]lfn_AfterSave - 저장Callback - nErrorCode : " + nErrorCode + ", strErrorMsg : " + strErrorMsg );
+		parent.AddResult("[F]lfn_AfterSave - 저장Callback - ds_ioMinwonCall : " + ds_ioMinwonCall.SaveXML() );
+        return;
+    } 
+	parent.AddResult("[F]lfn_AfterSave - 저장Callback - succ ");   
+	
+    //gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    tab.tabJubsu.edMWMGNO.Text = ds_oResult.GetColumn(0, "O_MWMGNO_SEQ");
+    tab.tabJubsu.edCIMGNO.Text = ds_oResult.GetColumn(0, "O_CIMGNO_SEQ");
+    
+    // 민원상담 저장 건 재 조회 
+    lfn_searhchMinwonCall(); 
+    
+	// 민원인 접수 정보 조회 
+	lfn_searhchMinwonCallList();	
+		
+    tab.tabJubsu.lbInfomsg.Text = "민원 상담접수내역이 저장되었습니다.";
+}
+
+/* 상담분야 1차 변경 시 */
+
+function tab_tabJubsu_cbxCIGRCD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	ds_oCallCode2Cha.UnFilter();
+	ds_oCallCode2Cha.Filter("CCGRPCD == '" + strCode + "'");	
+}
+
+/***** 버튼 *********************************************************/
+
+
+/*
+* 민원인 검색 버튼 
+*/
+function btnMinwon_OnClick(obj)
+{	 
+	var parValue = "";	
+
+	parValue += " sParam0="+ "J";
+	
+	if(tab.tabJubsu.edMWNM.Text <> ""){
+		parValue += " sParam1="+ quote(tab.tabJubsu.edMWNM.Text);
+	}
+	if(tab.tabJubsu.edMWHP.Text <> ""){
+		parValue += " sParam2="+ quote(tab.tabJubsu.edMWHP.Text);
+	}
+	if(tab.tabJubsu.edMWTEL.Text <> ""){
+		parValue += " sParam3="+ quote(tab.tabJubsu.edMWTEL.Text);
+	}
+	if(tab.tabJubsu.edMWPERSONKEY.Text <> ""){
+		parValue += " sParam4="+ quote(tab.tabJubsu.edMWPERSONKEY.Text);
+	}
+	if(parent.txtCallDn.Text <> ""){
+		parValue += " sParam5="+ quote(parent.txtCallDn.Text);
+	}
+	if(tab.tabJubsu.edMWRECVTEL.Text <> ""){
+		parValue += " sParam6="+ quote(tab.tabJubsu.edMWRECVTEL.Text);
+	}
+	
+	var arrRtn = Dialog("cti::frmcti0010PMinwonList.xml", parValue,0, 0, "", -1, -1);
+	
+	if (length(arrRtn) > 0) {
+		// (1) 입력항목 초기화
+		fn_init();
+			
+		if(arrRtn[0] == "INS"){
+			tab.tabJubsu.edMWRECVTEL.Text = parent.txtCallDn.Text ;
+			fnTelnoChk(tab.tabJubsu.edMWRECVTEL.Text); // 수신번호로 다른 번호 set 	
+			tab.tabJubsu.radCISTATUS.Value = parent.txtCallType.Text ;	
+		} else if (arrRtn[0] == "MANUALINS") {	
+			tab.tabJubsu.edMWRECVTEL.Text = arrRtn[1];
+			fnTelnoChk(tab.tabJubsu.edMWRECVTEL.Text); // 수신번호로 다른 번호 set 	
+			tab.tabJubsu.radCISTATUS.Value = 2; // 외부수신 
+			
+		} else {
+			// (2) 선택한 민원인 정보 set 
+			tab.tabJubsu.edMWMGNO.Text = arrRtn[8];
+			tab.tabJubsu.edMWRECVTEL.Text = arrRtn[9];
+			//tab.tabJubsu.edMWRECVTEL.Text = parent.txtCallDn.Text ; // 민원인 검색 후 본 화면에 조회 시 항상 수신된 전화번호 셋팅 해주도록 
+			tab.tabJubsu.edMWNM.Text = arrRtn[1];
+			tab.tabJubsu.edMWHP.Text = arrRtn[2];
+			tab.tabJubsu.edMWTEL.Text = arrRtn[3];
+			tab.tabJubsu.edMWMAIL.Text = arrRtn[4];
+			tab.tabJubsu.edMWFAX.Text = arrRtn[5];
+			tab.tabJubsu.edMWPERSONKEY.Text = arrRtn[6];
+			tab.tabJubsu.radMWGUBUN.Value = arrRtn[7];
+			tab.tabJubsu.taMWREMARK.Text = arrRtn[11];
+			tab.tabJubsu.edSearchMinwon.Text = "Y";
+			fnBkColor("minwon");
+			
+			tab.tabJubsu.lbInfomsg.Text = "민원인 검색 되었습니다.";
+		
+			// (3) 민원인 접수 정보 조회 
+			lfn_searhchMinwonCallList();	
+		}
+			
+		
+	}
+}
+
+
+
+/*
+* 민원접수 저장 버튼 
+*/
+function btnSave_OnClick(obj)
+{
+	// 수신번호 없으면 pass
+	if(gfn_IsNull(tab.tabJubsu.edMWRECVTEL.Text)){			
+		gfn_Alert("수신번호가 없습니다. \r\n정상으로 인입된 전화가 있는 경우 화면캡쳐 후 정보지원과로 문의하시기 바랍니다.");
+		return false;
+	}
+	
+	// 콜센타 이면 
+	if(gs_IsCallCenter == "Y"){	
+		if(gfn_IsNull(tab.tabJubsu.cbxCIGRCD.Value) || gfn_IsNull(tab.tabJubsu.cbxCICD.Value)){					
+			gfn_Alert("상담분야를 선택 후 저장하세요");
+			return ;			
+		}		
+	}
+	
+	// 수신번호가 있는데 통화구분이 없으면 
+    if (!gfn_IsNull(tab.tabJubsu.edMWRECVTEL.Text) && gfn_IsNull(tab.tabJubsu.radCISTATUS.Value)) { 			
+		gfn_Alert("통화구분을 선택 후 저장하세요");
+		//ds_ioMinwonCall.SetColumn(0,"CISTATUS","2"); // 2:외부수신 
+		return ;			
+    }
+    
+	
+	lfn_Save();
+}
+
+
+ 
+/*
+* 상담이력 선택 시 상세 내용 조회 
+*/
+
+function ds_oMinwonCallList_OnLoadCompleted(obj,nErrorCode,strErrorMsg,nReason)
+{
+	tab.tabJubsu.taCICONENTS1.Text = "";	
+	ds_oMinwonCallList_OnRowPosChanged();
+}
+
+
+function ds_oMinwonCallList_OnRowPosChanged(obj,nOldRow,nRow)
+{
+	
+    vSaveCIMGNO = ""; // 초기화 
+	if(gfn_IsNull(ds_oMinwonCallList.GetColumn(nRow,"CIDATE"))){
+		tab.tabJubsu.taCICONENTS1.Text = "";		
+		return ;
+	}
+	
+	
+	var vMsg = "";
+	vMsg += " [ 상담일시 : " + toString(ds_oMinwonCallList.GetColumn(nRow,"CIDATE"),"@@@@-@@-@@ @@:@@") + " ]";
+	vMsg += "\r\n";
+	vMsg += "* 상담분야 : " + ds_oMinwonCallList.GetColumn(nRow,"CIGRCDNM") + " -  " + ds_oMinwonCallList.GetColumn(nRow,"CICDNM") ;
+	vMsg += "\r\n";
+	vMsg += "* 상담내용 : " + ds_oMinwonCallList.GetColumn(nRow,"CICONENTS");
+	tab.tabJubsu.taCICONENTS1.Text = vMsg ;
+}
+
+/*
+* 민원인 상담이력 엑셀 버튼 
+*/
+function btnExcel_OnClick(obj)
+{
+	 if (ds_oMinwonCallList.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return false;
+    }
+    
+	// 개인정보 다운로드 사유 등록
+	var parValue = "sCode=1465";	// COMMON.PERSONALDOWNLOADH
+		parValue += " sRowCnt=" + ds_oMinwonCallList.GetRowCount();
+		parValue += " sTitle=" + quote(tab.tabJubsu.gdCallList.UserData);
+	var ls_IsRemark = Dialog("COM::frmCOM2100PDownloadRemark.xml", parValue, "", "", "", -1, -1);	
+
+	if (ls_IsRemark == "" || ls_IsRemark == null || ls_IsRemark == "FAIL") {
+		return false;
+	}
+	
+	lfn_GridToExcel(tab.tabJubsu.gdCallList);
+	
+}
+
+
+/*
+콜백 선택시 수신번호 set 
+*/
+function tab_tabJubsu_radCIPROCGUBUN_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(strCode == "3"){
+		tab.tabJubsu.edCICALLBACKTEL.Text = tab.tabJubsu.edMWRECVTEL.Text;
+	}
+	
+}
+/*
+수신번호 체크 해서 
+*/
+
+function fnTelnoChk(strValue){
+	var vChk = "";
+		
+	vChk = left(strValue,3);
+	
+	if(gfn_IsNull(tab.tabJubsu.edMWRECVTEL.Text)){
+		return ;
+	}
+	
+	if(vChk == "010" || vchk == "011" ){
+		tab.tabJubsu.edMWHP.Text = strValue;
+	}else{
+		tab.tabJubsu.edMWTEL.Text = strValue;
+	}	
+	
+}
+
+
+
+
+
+/***** 탭1 *********************************************************/ 
+
+
+function tab_OnChanged(obj,nOldIndex,nNewindex)
+{	 
+	if(nNewindex == 2){
+		tab.monitList.Div0.Url = "cti::frmcti0010MAgentMonitList.xml";
+	}
+	if(nNewindex == 3){
+		tab.boardList.Div0.Url = "cti::frmcti0040MManualList.xml";
+	}
+	if(nNewindex == 4){
+		tab.boardSave.Div0.Url = "cti::frmcti0080MManualManagement.xml";
+	}
+	if(nNewindex == 5){
+		tab.callStat.Div0.Url = "cti::frmcti0010MAgentStat.xml";
+	}
+}
+ 
+/*
+* 탭1 : 민원인 상담이력 엑셀 버튼 
+*/
+function tab_minwonH_btnExcel_OnClick(obj)
+{
+	if (ds_oHMinwonCallList.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return false;
+    }
+        
+	// 개인정보 다운로드 사유 등록
+	var parValue = "sCode=1465";	// COMMON.PERSONALDOWNLOADH
+		parValue += " sRowCnt=" + ds_oHMinwonCallList.GetRowCount();
+		parValue += " sTitle=" + quote(tab.minwonH.gdHCallList.UserData);
+	var ls_IsRemark = Dialog("COM::frmCOM2100PDownloadRemark.xml", parValue, "", "", "", -1, -1);	
+
+	if (ls_IsRemark == "" || ls_IsRemark == null || ls_IsRemark == "FAIL") {
+		return false;
+	}
+	
+	lfn_GridToExcel(tab.minwonH.gdHCallList);
+	
+} 
+
+
+function lfn_GridToExcel(objGrid) {
+	ext_OleServerBusyTimeOut(true,5000,false,false);	// 엑셀 변환 시 오류 발생하여 추가(2019.02.01)
+    var mobj_Component = null;
+    var marr_Grid = Array();
+
+    var mobj_Export;
+    mobj_Export = CreateExportObject();
+    mobj_Export.ExportType = "Excel";
+    mobj_Export.ExportFileName = "민원상담_"+substr(getDate(),0,8)+".xls";
+    mobj_Export.ActiveSheetName = objGrid.UserData;
+    mobj_Export.MakeEmptyFileWhenNotExist = false;
+
+    mobj_Export.AddExportGrid(objGrid.UserData + "!" + "A1", objGrid, true, false);
+
+
+    mobj_Export.Export();
+    mobj_Export.Close();
+    mobj_Export = null;
+    //ext_OleServerBusyTimeOut(false);	// 엑셀 변환 시 오류 발생하여 추가(2019.02.01) // 실행시 마이플랫폼 종료 되서 주석처리함(2019.02.01) 
+}
+
+/*
+* 탭1 : 검색 
+*/
+function tab_minwonH_btnSearch_OnClick(obj)
+{
+	//23.08 조회이력 생성
+	
+    var ls_HistoryArg = "지부=" + tab.minwonH.cbxDeptList.Text
+                + ",상담원=" + tab.minwonH.cbxUserList.Text 
+                + ",상담기간=" + tab.minwonH.edCIDATEFrom.Text +" ~ " + tab.minwonH.edCIDATETo.Text; 
+                
+    if(gs_IsLocal <> "Y"){
+		gfn_InsertSearchPrintHistory(
+			"S"
+			, 'frmcti0010MBoardMain'
+			, '민원상담접수이력'
+			, ls_HistoryArg
+		);    
+    }
+    
+    tab.minwonH.medTotalCnt.Value = "";
+    ds_oHMinwonCallList.ClearData(); // 데이타셋 초기화
+	// 입력한 성명, 핸드폰, 전화번호,... 로 조회  
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("cti:searchHMinwonCallList", false);
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+		,"ds_oHMinwonCallList=ds_oHMinwonCallList"	// outDs
+		,"GTMGNO=" + quote(tab.minwonH.cbxDeptList.Value)  
+            + " PSABUN=" + quote(tab.minwonH.cbxUserList.Value)     
+            + " CIDATEFROM=" + quote(tab.minwonH.edCIDATEFrom.Value)
+            + " CIDATETO=" + quote(tab.minwonH.edCIDATETo.Value)
+            + " CIGRCD=" + quote(tab.minwonH.cbxCIGRCDS.Value) 
+            + " CICD=" + quote(tab.minwonH.cbxCICDS.Value)
+            + " CIPROCGUBUN=" + quote(tab.minwonH.cbxCIPROCGUBUNS.Value)
+            + " CISTATUS=" + quote(tab.minwonH.cbxCISTATUSS.Value)
+            + " SEARCHFG=" + quote(tab.minwonH.cbxSearch.Value)
+            + " SEARCHTEXT=" + quote(tab.minwonH.edSearch.Text)
+            + " CIREMOTEGUBUNYN=" + quote(tab.minwonH.cbRemoteChk.Value)
+        ,"lfn_AfterSearchHMinwonCallList"
+        ,false
+        ,false
+        ,true
+    );
+} 
+
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchHMinwonCallList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    tab.minwonH.medTotalCnt.Value = ds_oHMinwonCallList.GetCount(); 
+    
+    // 저장 후 원래 row 찾기 
+	if(!gfn_IsNull(vSaveCIMGNO)){
+		var vRow = ds_oHMinwonCallList.FindRow("CIMGNO", vSaveCIMGNO);
+		if( vRow >=0 ){
+			ds_oHMinwonCallList.rowposition = vRow ;
+			tab.minwonH.gdHCallList.VScrollPos = vSrc; // scroll위치 
+		}
+	}
+	
+	// 원격 체크 시 
+	if(tab.minwonH.cbRemoteChk.Value == "Y"){
+		tab.minwonH.stCIREMOTEGUBUN.BkColor = "user34";
+		//tab.minwonH.stCIREMOTESTATUS.BkColor = "user34";
+	}else{
+		tab.minwonH.stCIREMOTEGUBUN.BkColor = tab.minwonH.stMWNM.BkColor;
+		//tab.minwonH.stCIREMOTESTATUS.BkColor = tab.minwonH.stMWNM.BkColor;
+	}
+	
+	
+}
+
+
+function ds_oHMinwonCallList_OnLoadCompleted(obj,nErrorCode,strErrorMsg,nReason)
+{
+	ds_oHMinwonCallRow.ClearData();
+	//tab.minwonH.edCIUPSABUNNM.Visible = false;
+	ds_oHMinwonCallList_OnRowPosChanged();
+}
+
+function ds_oHMinwonCallList_OnRowPosChanged(obj,nOldRow,nRow)
+{	
+	ds_oHMinwonCallRow.Clear();   
+	ds_oHMinwonCallRow.copy(ds_oHMinwonCallList);    
+	ds_oHMinwonCallRow.ClearData();    
+	var rIdx = ds_oHMinwonCallRow.InsertRow(0);
+	ds_oHMinwonCallRow.copyrow(rIdx,ds_oHMinwonCallList,ds_oHMinwonCallList.currow);
+	
+	tab_minwonH_cbxCIGRCD_OnChanged(tab.minwonH.cbxCIGRCD,tab.minwonH.cbxCIGRCD.Value);
+	
+	// 내선일 경우 성명 보여주기 
+	if (gfn_IsNull(ds_oHMinwonCallRow.GetColumn(0,"MWRECVTELUSER"))) { 
+		tab.minwonH.edMWRECVTELUSER.Visible = false;
+	}else{
+		tab.minwonH.edMWRECVTELUSER.Visible = true;
+	}
+		
+	// 상담 사번과 동일시에만 저장가능
+	tab.minwonH.btnSaveH.Enable = false;
+	tab.minwonH.btnDeleteH.Visible = false;
+	tab.minwonH.btnChgMinwon.Enable = false;
+	
+	var vSabun = ds_oHMinwonCallRow.GetColumn(0,"IPSABUN");
+	var vJibu = ds_oHMinwonCallRow.GetColumn(0,"JIBUCD");
+	
+	//trace("vSabun : " + vSabun );
+	//trace("gds_PSABUN : " + gds_oUserInfo.GetColumn(0, "PSABUN") );
+	//trace("gds_IPSAVEYN : " + gds_CtiInfo.GetColumn(0, "IPSAVEYN") );
+	//trace("vJibu : " + vJibu );
+	//trace("gds_GTMGNO : " + gds_CtiInfo.GetColumn(0, "GTMGNO") );
+	
+	// 본인 상담건 수정 가능 
+	if(gds_oUserInfo.GetColumn(0, "PSABUN") == vSabun){
+		tab.minwonH.btnSaveH.Enable = true;
+		tab.minwonH.btnChgMinwon.Enable = true;
+	}
+	
+	// 본인소속부서일때 
+	if(vJibu == gds_CtiInfo.GetColumn(0, "GTMGNO")){
+	
+		// 저장 권한 - 콜센타 매니저 
+		if(gds_CtiInfo.GetColumn(0, "IPSAVEYN") == "Y"){
+			tab.minwonH.btnSaveH.Enable = true;
+			tab.minwonH.btnDeleteH.Visible = true;
+			tab.minwonH.btnChgMinwon.Enable = true; 
+			// PC원격 
+			tab.minwonH.cbxCIREMOTESTATUS.Enable = true ;
+			tab.minwonH.cbxCIREMOTESABUN.Enable = true ;
+		} 
+		/* 24.02 원격처리 가능 상담사의 저장 기능은 필요없음 (조회만 가능)	
+		// PC원격 체크 후 조회했을때 
+		if (ds_oHMinwonCallRow.GetColumn(0,"CIREMOTEGUBUNYN") == "Y") {
+			tab.minwonH.cbxCIREMOTESTATUS.Enable = true ;
+				
+			// 권한(PC원격=R) 있고, 자기소속부서일때 수정권한 
+			if(gds_CtiInfo.GetColumn(0, "IPUSERGUBUN") == "R" ){
+				tab.minwonH.btnSaveH.Enable = true;
+			}
+		
+		}else{
+			tab.minwonH.cbxCIREMOTESTATUS.Enable = false ;
+		}
+		*/
+		
+	
+	}
+		
+	
+	
+}
+
+function tab_minwonH_cbxDeptList_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{	
+	lfn_UserSearch(strCode);
+	tab.minwonH.cbxUserList.Index = 0;
+}
+ 
+/*
+ * 기능 : 부서정보 조회
+ */
+function lfn_DeptSearch(obj) {
+
+    ds_ioDeptList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cti:search0093DeptList", false);
+	
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioDeptList=ds_ioDeptList"	// outDs
+		,""
+		,"lfn_AfterDeptSearch"
+		,false
+	);
+}
+
+/*
+ * 기능 : 부서정보 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterDeptSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+	// 부서정보 '전체'
+	ds_ioDeptList.InsertRow(0);
+	ds_ioDeptList.SetColumn(0,"DEPTNM","전체");
+}
+
+
+/*
+ * 기능 : 사용자정보 조회
+ */
+function lfn_UserSearch(DEPT) {
+
+    ds_ioUserList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cti:search0093UserList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioUserList=ds_ioUserList"	// outDs
+		,"DEPT=" + DEPT
+		,"lfn_AfterUserSearch"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 사용자정보 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterUserSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }  
+	// 사용자정보 '전체'
+	ds_ioUserList.InsertRow(0);
+	ds_ioUserList.SetColumn(0,"NMPOSITION","전체");
+}
+
+
+/* 검색 - 상담분야 1차 변경 시 */
+function tab_minwonH_cbxCIGRCDS_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	ds_oCallCode2ChaH1.UnFilter();
+	ds_oCallCode2ChaH1.Filter("CCGRPCD == '" + strCode + "'");	
+	
+	ds_oCallCode2ChaH1.InsertRow(0);
+	ds_oCallCode2ChaH1.SetColumn(0,"CCDETAILCD","");
+	ds_oCallCode2ChaH1.SetColumn(0,"CCNM","전체");
+	tab.minwonH.cbxCICDS.Index = 0;
+		
+}
+
+/* 폼 - 상담분야 1차 변경 시 */
+function tab_minwonH_cbxCIGRCD_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	ds_oCallCode2ChaH2.UnFilter();
+	ds_oCallCode2ChaH2.Filter("CCGRPCD == '" + strCode + "'");
+}
+
+/* 민원인 변경 버튼 클릭 시 */
+function tab_minwonH_btnChgMinwon_OnClick(obj)
+{	
+	var parValue = "";	
+
+	parValue += " sParam0="+ "C";
+	
+	if(tab.minwonH.edMWNM.Text <> ""){
+		parValue += " sParam1="+ quote(tab.minwonH.edMWNM.Text);
+	}
+	if(tab.minwonH.edMWHP.Text <> ""){
+		parValue += " sParam2="+ quote(tab.minwonH.edMWHP.Text);
+	}
+	if(tab.minwonH.edMWTEL.Text <> ""){
+		parValue += " sParam3="+ quote(tab.minwonH.edMWTEL.Text);
+	}
+	if(tab.minwonH.edMWPERSONKEY.Text <> ""){
+		parValue += " sParam4="+ quote(tab.minwonH.edMWPERSONKEY.Text);
+	}	
+
+	var arrRtn = Dialog("cti::frmcti0010PMinwonList.xml", parValue,0, 0, "", -1, -1);
+	
+	if (length(arrRtn) > 0) {		
+		
+		if(arrRtn[0] == "INS"){ 
+			
+		}else{
+			ds_oHMinwonCallRow.SetColumn(0,"MWMGNO", arrRtn[8] ); //  변경하고자 하는 민원인 번호로 SET 
+			ds_oHMinwonCallRow.SetColumn(0,"MWRECVTEL", arrRtn[9] );
+			ds_oHMinwonCallRow.SetColumn(0,"MWNM", arrRtn[1] );
+			ds_oHMinwonCallRow.SetColumn(0,"MWHP", arrRtn[2] );
+			ds_oHMinwonCallRow.SetColumn(0,"MWTEL", arrRtn[3] );
+			ds_oHMinwonCallRow.SetColumn(0,"MWMAIL", arrRtn[4] );
+			ds_oHMinwonCallRow.SetColumn(0,"MWFAX", arrRtn[5] );
+			ds_oHMinwonCallRow.SetColumn(0,"MWPERSONKEY", arrRtn[6] );
+			ds_oHMinwonCallRow.SetColumn(0,"MWGUBUN", arrRtn[7] );
+			ds_oHMinwonCallRow.SetColumn(0,"MWREMARK", arrRtn[11] );
+		}
+		
+		
+	}
+}
+
+/*
+* tab_minwonH  저장 
+*/
+function tab_minwonH_btnSaveH_OnClick(obj)
+{	
+	
+	// 콜센타 이면 
+	if(gs_IsCallCenter == "Y"){	
+		if(gfn_IsNull(ds_oHMinwonCallRow.GetColumn(0,"CIGRCD")) || gfn_IsNull(ds_oHMinwonCallRow.GetColumn(0,"CICD"))){					
+			gfn_Alert("상담분야를 선택 후 저장하세요");
+			return ;			
+		}		
+	}
+	
+	// 확인
+	//- 계속 저장 상태인지, 신규 저장인지 확인 
+	 
+	// 체크항목 
+	// 초기화 
+	ds_ioMinwonCall.ClearData();
+	ds_ioMinwonCall.InsertRow(0);
+			
+	// 민원인정보 
+	ds_ioMinwonCall.SetColumn(0,"MWMGNO",ds_oHMinwonCallRow.GetColumn(0,"MWMGNO")); 
+	ds_ioMinwonCall.SetColumn(0,"MWRECVTEL",ds_oHMinwonCallRow.GetColumn(0,"MWRECVTEL")); 
+	ds_ioMinwonCall.SetColumn(0,"MWNM",ds_oHMinwonCallRow.GetColumn(0,"MWNM")); 
+	ds_ioMinwonCall.SetColumn(0,"MWHP",ds_oHMinwonCallRow.GetColumn(0,"MWHP")); 
+	ds_ioMinwonCall.SetColumn(0,"MWTEL",ds_oHMinwonCallRow.GetColumn(0,"MWTEL")); 
+	ds_ioMinwonCall.SetColumn(0,"MWMAIL",ds_oHMinwonCallRow.GetColumn(0,"MWMAIL")); 
+	ds_ioMinwonCall.SetColumn(0,"MWFAX",ds_oHMinwonCallRow.GetColumn(0,"MWFAX")); 
+	ds_ioMinwonCall.SetColumn(0,"MWPERSONKEY",ds_oHMinwonCallRow.GetColumn(0,"MWPERSONKEY")); 
+	ds_ioMinwonCall.SetColumn(0,"MWGUBUN",ds_oHMinwonCallRow.GetColumn(0,"MWGUBUN")); 
+	ds_ioMinwonCall.SetColumn(0,"MWREMARK",ds_oHMinwonCallRow.GetColumn(0,"MWREMARK")); 
+	// 민원인정보 조회 후 변경사항이 있으면 = 'Y'
+	//ds_ioMinwonCall.SetColumn(0,"CHG_MWMGNO","Y"); 
+	
+	//상담정보 
+	//trace(ds_oHMinwonCallRow.SaveXML());
+	
+	ds_ioMinwonCall.SetColumn(0,"IPSABUN",ds_oHMinwonCallRow.GetColumn(0,"IPSABUN")); 
+	ds_ioMinwonCall.SetColumn(0,"CIMGNO",ds_oHMinwonCallRow.GetColumn(0,"CIMGNO")); 
+	ds_ioMinwonCall.SetColumn(0,"CIMWMGNO",ds_oHMinwonCallRow.GetColumn(0,"CIMWMGNO")); 
+	ds_ioMinwonCall.SetColumn(0,"CIDATE",ds_oHMinwonCallRow.GetColumn(0,"CIDATE")); 
+	ds_ioMinwonCall.SetColumn(0,"CIKEMS",ds_oHMinwonCallRow.GetColumn(0,"CIKEMS")); 
+	ds_ioMinwonCall.SetColumn(0,"CIPROCGUBUN",ds_oHMinwonCallRow.GetColumn(0,"CIPROCGUBUN")); 
+	ds_ioMinwonCall.SetColumn(0,"CICALLBACKTEL",ds_oHMinwonCallRow.GetColumn(0,"CICALLBACKTEL")); 
+	ds_ioMinwonCall.SetColumn(0,"CISTATUS",ds_oHMinwonCallRow.GetColumn(0,"CISTATUS")); 
+	ds_ioMinwonCall.SetColumn(0,"CIGRCD",ds_oHMinwonCallRow.GetColumn(0,"CIGRCD")); 
+	ds_ioMinwonCall.SetColumn(0,"CICD",ds_oHMinwonCallRow.GetColumn(0,"CICD")); 
+	ds_ioMinwonCall.SetColumn(0,"CICONENTS",ds_oHMinwonCallRow.GetColumn(0,"CICONENTS"));  
+	ds_ioMinwonCall.SetColumn(0,"CICALLGUBUN",ds_oHMinwonCallRow.GetColumn(0,"CICALLGUBUN"));  
+	ds_ioMinwonCall.SetColumn(0,"CICALLDN",ds_oHMinwonCallRow.GetColumn(0,"CICALLDN"));  
+	ds_ioMinwonCall.SetColumn(0,"CIREMOTEGUBUN",ds_oHMinwonCallRow.GetColumn(0,"CIREMOTEGUBUN"));  	
+	ds_ioMinwonCall.SetColumn(0,"CIREMOTESABUN",ds_oHMinwonCallRow.GetColumn(0,"CIREMOTESABUN"));  	
+	ds_ioMinwonCall.SetColumn(0,"CIREMOTESTATUS",ds_oHMinwonCallRow.GetColumn(0,"CIREMOTESTATUS"));  		
+	      
+	//trace(ds_ioMinwonCall.SaveXML());
+	
+	vSaveCIMGNO = ds_oHMinwonCallRow.GetColumn(0,"CIMGNO"); // 저장 후 focus 이동 용도 
+	vSrc = tab.minwonH.gdHCallList.VScrollPos ; // 저장 후 focus 이동 용도 
+	
+    tit_clearActionInfo();
+	tit_addSingleActionInfo("cti:insertMinwonCallInfo", "", 0, "");
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,"ds_ioMinwonCall=ds_ioMinwonCall"/// inDs
+        ,"ds_oResult=ds_oResult"	// outDs
+        , ""
+        ,"lfn_AfterSaveH"
+        ,false
+        ,false
+        ,true
+    );
+    
+}
+
+
+
+/*
+ */
+function lfn_AfterSaveH(nErrorCode, strErrorMsg) {
+    
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }    
+    
+    // 상담이력 재조회 
+    tab_minwonH_btnSearch_OnClick();
+}
+
+/*
+삭제 - 민원상담삭제는 하지 않고 사번만 업데이트 처리 
+*/
+function tab_minwonH_btnDeleteH_OnClick(obj)
+{
+	if (!gfn_Confirm("삭제 하시겠습니까?")) {	
+		return false;		
+	}
+	
+	var vCIMGNO = tab.minwonH.edCIMGNO.Text ;
+	
+	if (gfn_isNull(vCIMGNO)) {
+		gfn_Alert("삭제할 상담내용을 선택해주세요.");	
+		return false;		
+	}
+	
+	//trace(vCIMGNO); 
+	
+    tit_clearActionInfo();
+	tit_addSingleActionInfo("cti:updateMinwonCallInfo", "", 0, "");
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,""/// inDs
+        ,""	// outDs
+        ,"CIMGNO=" + quote(vCIMGNO) // args
+        ,"lfn_AfterDeleteH"
+        ,false
+        ,false
+        ,true
+    );
+	
+}
+
+/*
+ */
+function lfn_AfterDeleteH(nErrorCode, strErrorMsg) {
+    
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }    
+    
+    // 상담이력 재조회 
+    tab_minwonH_btnSearch_OnClick();
+}
+
+/*
+* 콜백 전화 
+*/
+function tab_minwonH_btnCall_OnClick(obj)
+{
+	var vCallDn = ds_oHMinwonCallRow.GetColumn(0,"CICALLBACKTEL");
+	if(vCallDn == "" || vCallDn == null){
+	   
+		gfn_Alert("콜백 전화번호를 입력해주세요");
+		tab.minwonH.edCICALLBACKTEL.SetFocus();
+		return false;
+	}
+		
+	parent.txtDestDN.Text = vCallDn;
+	parent.txtDestDNPre.Text = "9"; // 외부 발신시 앞자리 
+	parent.fnApiMakeCall();
+
+}
+
+function tab_minwonH_cbxSearch_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	
+	if(gfn_IsNull(strCode)){
+		tab.minwonH.edSearch.Text = "";
+	}
+	tab.minwonH.edSearch.SetFocus();
+}
+
+function tab_minwonH_edSearch_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	
+	if(nChar == 13) {	// Enter key
+		tab_minwonH_btnSearch_OnClick();
+	}
+}
+
+ 
+function tab_minwonH_btnSaveEnable_OnClick(obj)
+{
+	tab.minwonH.btnSaveH.Enable = true;
+	tab.minwonH.btnDeleteH.Visible = true;
+}
+
+// 로그전송 
+
+function tab_minwonH_imgLogSend_OnClick(obj,nX,nY)
+{		
+	var parValue = "";	
+	var ls_IsRemark = Dialog("cti::frmcti0010PLogPerson.xml", parValue, "", "", "", -1, -1);		
+}
+
+// 특정 상황에 비활성화된다고 하여 강제 활성화 처리 
+function tab_tabJubsu_btnEnableCIKEMS_OnClick(obj)
+{
+	tab.tabJubsu.edCIKEMS.Enable = true;
+	tab.tabJubsu.edCIKEMS.SetFocus();
+}
+
+function tab_tabJubsu_btnEnableMWNM_OnClick(obj)
+{
+	tab.tabJubsu.edMWNM.Enable = true;
+	tab.tabJubsu.edMWNM.SetFocus();
+}
+
+function tab_minwonH_Button0_OnClick(obj)
+{
+	trace(gds_oUserInfo.SaveXML());
+	trace(gds_CtiInfo.SaveXML());
+	
+}
+]]></Script>
+</Window>

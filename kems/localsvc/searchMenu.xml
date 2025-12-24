@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="output" io="OUTPUT" reserved="NO"></dataset>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_IMP_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[
+function Run()
+{
+	var querySQL;
+  var errSql;
+  
+  querySQL  = "  SELECT                                  ";
+	querySQL += "         MMENUID AS MMENUID               ";
+	querySQL += "       , MMENUNM AS MMENUNM               ";
+	querySQL += "       , '2' AS MENULEVEL                 ";
+	querySQL += "       , M.MREMARK AS MREMARK             ";
+	querySQL += "       , M.MURL AS MURL                   ";
+	querySQL += "       , M.MURLTYPE AS MURLTYPE           ";
+	querySQL += "       , M.MUSEYN AS USE_YN               ";
+	querySQL += "       , M.MPARENTMENUID AS MPARENTMENUID "; 
+	querySQL += "       , M.MORDERSEQ AS MORDERSEQ         ";
+	querySQL += "       , M.MSYSGUBUN AS MSYSGUBUN         ";
+	querySQL += "    FROM MENU M                           ";
+	querySQL += "   WHERE M.MPARENTMENUID = '0000000001'   ";
+	querySQL += "   ORDER BY M.MORDERSEQ                   ";
+  
+  errSql = ExecuteQuery(querySQL, "output");
+    
+}
+]]></source>
+</class2>

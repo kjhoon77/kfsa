@@ -1,0 +1,2782 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmcust1090MEduManagement" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="실무교육정보관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioEduPass" OnRowPosChanged="ds_ioEduPass_OnRowPosChanged">
+				<Contents>
+					<colinfo id="SEL" size="1" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="CAGGUBUN" size="3" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="COVERCMGNO" size="3" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="3" summ="default" type="STRING"/>
+					<colinfo id="EPPASSDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="FMEMAIL" size="81" summ="default" type="STRING"/>
+					<colinfo id="FMHHPTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="FMHSTARTDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="FMBIRTHDAY" size="7" summ="default" type="STRING"/>
+					<colinfo id="FMPERSONKEY" size="10" summ="default" type="STRING"/>
+					<colinfo id="NOPAYFEE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EPMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EPPERSONNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="EPBIRTHDAY" size="7" summ="default" type="STRING"/>
+					<colinfo id="EPPERSONKEY" size="10" summ="default" type="STRING"/>
+					<colinfo id="CEDUEXPIREDATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEduGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>평일&#32;주간</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>평일&#32;야간</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>휴일&#32;주간</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>휴일&#32;야간</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEduStudent">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>실무교육</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>제연설비교육</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEduSubject">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>정규교육</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>미필자교육</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEmailDomain">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCustomerInfo">
+				<Contents>
+					<colinfo id="CFEEYYMM" size="6" summ="default" type="STRING"/>
+					<colinfo id="COVERCMGNO" size="3" summ="default" type="STRING"/>
+					<colinfo id="ESDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EPPASSDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="NOPAYFEE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CRECEIVEEXCEPTGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CEDUEXPIREDATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oFireManagerInfo">
+				<Contents>
+					<colinfo id="FMAUTHGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="FMCMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="FMHEMAILID" size="81" summ="default" type="STRING"/>
+					<colinfo id="FMHEMAILDOMAIN" size="81" summ="default" type="STRING"/>
+					<colinfo id="FMHHPTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="FMHSTARTDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="FMLASTFMHSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="FMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="FMRESIDENTERR" size="2" summ="default" type="STRING"/>
+					<colinfo id="FMBIRTHDAY" size="13" summ="default" type="STRING"/>
+					<colinfo id="FSSTATUS" size="14" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CGATEWAYCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFMHSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDUCNT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="FMPERSONKEY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oBuildingInfo">
+				<Contents>
+					<colinfo id="AGNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="BADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="BADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="BADDRGUBUN" size="3" summ="default" type="STRING"/>
+					<colinfo id="BMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="BTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="BZIPCD" size="6" summ="default" type="STRING"/>
+					<colinfo id="CAGGUBUN" size="3" summ="default" type="STRING"/>
+					<colinfo id="CBMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="AGMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CRECEIVEEXCEPTGUBUN" size="256" summ="default" type="STRING"/>
+					<record>
+						<AGMGNO/>
+						<AGNM></AGNM>
+						<BADDR1></BADDR1>
+						<BADDR2></BADDR2>
+						<BADDRGUBUN></BADDRGUBUN>
+						<BMGNO/>
+						<BNM></BNM>
+						<BTEL></BTEL>
+						<BZIPCD></BZIPCD>
+						<CAGGUBUN></CAGGUBUN>
+						<CBMGNO/>
+						<CMGNO/>
+						<CRECEIVEEXCEPTGUBUN></CRECEIVEEXCEPTGUBUN>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEduPassSingle">
+				<Contents>
+					<colinfo id="EPCGATEWAYCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="EPCMGNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="EPCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="EPESMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EPMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EPPASSDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EPPERSONNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="EPPROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EPBIRTHDAY" size="7" summ="default" type="STRING"/>
+					<colinfo id="EPPERSONKEY" size="10" summ="default" type="STRING"/>
+					<colinfo id="EPSUCCESSIONGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EPYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="FMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EPPASSREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="CYBERISUGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDUEXPIREDATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oDetailCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="PCD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEduPassModify">
+				<Contents>
+					<colinfo id="SEL" size="1" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="CAGGUBUN" size="3" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="COVERCMGNO" size="3" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="3" summ="default" type="STRING"/>
+					<colinfo id="EPPASSDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="FMEMAIL" size="81" summ="default" type="STRING"/>
+					<colinfo id="FMHHPTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="FMHSTARTDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="FMBIRTHDAY" size="13" summ="default" type="STRING"/>
+					<colinfo id="NOPAYFEE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EPMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="FMPERSONKEY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEduPassCheck">
+				<Contents>
+					<colinfo id="CNT" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oAgGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>대행</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>미대행</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iOnlyKey">
+				<Contents>
+					<colinfo id="ONLYKEY" size="13" summ="default" type="STRING"/>
+					<colinfo id="ACTION" size="1" summ="default" type="STRING"/>
+					<record>
+						<ACTION>X</ACTION>
+						<ONLYKEY>0000000000000</ONLYKEY>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCBarCodeInfo">
+				<Contents>
+					<colinfo id="CGTMGNO" size="4" type="STRING"/>
+					<colinfo id="CNO" size="6" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oLBarCodeInfo">
+				<Contents>
+					<colinfo id="LPERSONNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="LBIRTHDAY" size="7" summ="default" type="STRING"/>
+					<colinfo id="LPERSONKEY" size="10" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEduPassMulti">
+				<Contents>
+					<colinfo id="EPCGATEWAYCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="EPCMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EPCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="EPESMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EPMGNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="EPPASSDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EPPERSONNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="EPPROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EPBIRTHDAY" size="7" summ="default" type="STRING"/>
+					<colinfo id="EPPERSONKEY" size="10" summ="default" type="STRING"/>
+					<colinfo id="EPSUCCESSIONGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EPYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="FMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EPPASSREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDUEXPIREDATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEduPassMultiCheck">
+				<Contents>
+					<colinfo id="CNT" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEduPassMultiSingle">
+				<Contents>
+					<colinfo id="EPCGATEWAYCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="EPCMGNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="EPCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="EPESMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EPMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EPPASSDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EPPERSONNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="EPPROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EPBIRTHDAY" size="7" summ="default" type="STRING"/>
+					<colinfo id="EPPERSONKEY" size="10" summ="default" type="STRING"/>
+					<colinfo id="EPSUCCESSIONGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EPYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="FMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EPPASSREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDUEXPIREDATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oBasicInfo">
+				<Contents>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibuGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>S</CD>
+						<DATA>소속지부</DATA>
+					</record>
+					<record>
+						<CD>T</CD>
+						<DATA>타지부</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioLBarCodeInfoCust"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>수령</DATA>
+					</record>
+					<record>
+						<CD>0</CD>
+						<DATA>미수령</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oBnmCode"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEduJubsuInfo">
+				<Contents>
+					<colinfo id="EJMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="320" Height="26" Id="Shape6" Left="391" LineColor="user15" Right="795" TabOrder="106" Top="294" Type="Rectangle" Width="404"></Shape>
+		<Shape Bottom="53" Height="52" Id="shpBtnBox" Left="444" LineColor="user14" Right="796" TabOrder="33" Top="1" Type="Rectangle" Width="352"></Shape>
+		<Shape Bottom="108" Height="52" Id="Shape5" Left="391" LineColor="user15" Right="796" TabOrder="64" Top="56" Type="Rectangle" Width="405"></Shape>
+		<Shape Bottom="583" Height="259" Id="Shape4" Left="4" LineColor="user15" Right="796" TabOrder="31" Top="324" Type="Rectangle" Width="792"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="30" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="268">
+			<Contents></Contents>
+		</Div>
+		<Grid AutoEnter="TRUE" BindDataset="ds_ioEduPass" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="577" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" Format="Training" HeadBorder="Flat" HeadHeight="20" Height="225" Id="gdEduPass" InputPanel="FALSE" Left="8" LineColor="default" OnHeadClick="gdEduPass_OnHeadClick" Right="792" RowHeight="20" Style="sty_Grid" TabOrder="28" TabStop="true" Top="352" UseDBuff="true" UsePopupMenu="true" UserData="실무교육이수자목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="784">
+			<contents>
+				<format id="Training">
+					<columns>
+						<col width="20"/>
+						<col width="35"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="110"/>
+						<col width="59"/>
+						<col width="120"/>
+						<col width="64"/>
+						<col width="94"/>
+						<col width="91"/>
+						<col width="50"/>
+						<col width="70"/>
+						<col width="80"/>
+						<col width="100"/>
+						<col width="160"/>
+						<col width="80"/>
+						<col width="70"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell col="0" display="checkbox"/>
+						<cell col="1" display="text" text="순번"/>
+						<cell align="center" col="2" display="text" text="지부"/>
+						<cell align="center" col="3" display="text" text="관리번호"/>
+						<cell col="4" display="text" text="세부직능"/>
+						<cell col="5" display="text" text="회원구분"/>
+						<cell align="center" col="6" display="text" text="대상물명"/>
+						<cell align="center" col="7" display="text" text="선임자명"/>
+						<cell align="center" col="8" display="text" text="생년월일"/>
+						<cell align="center" col="9" display="text" text="개인식별번호"/>
+						<cell align="center" col="10" display="text" text="사이버"/>
+						<cell align="center" col="11" display="text" text="업무대행"/>
+						<cell col="12" display="text" text="선임일자"/>
+						<cell col="13" display="text" text="휴대폰"/>
+						<cell align="center" col="14" display="text" text="이메일"/>
+						<cell align="center" col="15" display="text" text="교육일자"/>
+						<cell align="center" col="16" display="text" text="미납금액"/>
+						<cell align="center" col="17" display="text" text="겸직구분"/>
+					</head>
+					<body>
+						<cell col="0" colid="SEL" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" display="text" expr="currow+1"/>
+						<cell align="center" col="2" colid="CGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="3" colid="CNO" display="text"/>
+						<cell align="left" col="4" colid="CCOURSECD" combocol="CD" combodataset="ds_oDetailCourse" combotext="DATA" display="combo"/>
+						<cell align="center" col="5" colid="CSTATUSGUBUN" display="text"/>
+						<cell align="left" col="6" colid="BNM" display="text"/>
+						<cell align="center" col="7" colid="EPPERSONNM" display="text"/>
+						<cell align="center" col="8" colid="BIRTHDAY" display="text"/>
+						<cell align="center" col="9" colid="EPPERSONKEY" display="text" Mask="A####-#####"/>
+						<cell align="center" col="10" colid="CYBERISUGUBUN" display="text"/>
+						<cell align="center" col="11" colid="CAGGUBUN" display="text"/>
+						<cell col="12" colid="FMHSTARTDATE" display="date"/>
+						<cell align="left" col="13" colid="FMHHPTEL" display="text"/>
+						<cell align="left" col="14" colid="FMEMAIL" display="text"/>
+						<cell align="center" col="15" colid="EPPASSDATE" display="date"/>
+						<cell align="right" col="16" colid="NOPAYFEE" display="number"/>
+						<cell align="center" col="17" colid="COVERCMGNO" display="text"/>
+					</body>
+				</format>
+				<format id="Exam">
+					<columns>
+						<col width="29"/>
+						<col width="40"/>
+						<col width="40"/>
+						<col width="100"/>
+						<col width="40"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="150"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="85"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" display="text" text="지부"/>
+						<cell align="center" col="2" display="text" text="년도"/>
+						<cell align="center" col="3" display="text" text="직능"/>
+						<cell align="center" col="4" display="text" text="회차"/>
+						<cell align="center" col="5" display="text" text="접수번호"/>
+						<cell align="center" col="6" display="text" text="접수자명"/>
+						<cell align="center" col="7" display="text" text="이메일"/>
+						<cell align="center" col="8" display="text" text="접수일자"/>
+						<cell align="center" col="9" display="text" text="시험일자"/>
+						<cell align="center" col="10" display="text" text="접수상태"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SEL" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" colid="GTDEPTNM" display="text"/>
+						<cell align="center" col="2" colid="EOYEAR" display="text"/>
+						<cell align="center" col="3" colid="TCCOURSENM" display="text"/>
+						<cell align="left" col="4" colid="EOEXAMORDER" display="text"/>
+						<cell align="center" col="5" colid="TPMGNO" display="text"/>
+						<cell align="left" col="6" colid="TPNM" display="text"/>
+						<cell align="left" col="7" colid="TPEMAIL" display="text"/>
+						<cell align="left" col="8" colid="EJHPROCDATE" display="text" Mask="@@@@-@@-@@"/>
+						<cell align="left" col="9" colid="EOEXAMDATE" display="text" Mask="@@@@-@@-@@"/>
+						<cell align="left" col="10" colid="TJHSTATUSCD" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="718" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="29" Top="332" Transparent="TRUE" Width="74"></Button>
+		<Static Align="Center" Height="20" Id="Static7" Left="10" Style="sty_LabelGruopBox" TabOrder="32" Text="교육참석자&#32;리스트" Top="328" VAlign="Middle" Width="124"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="448" OnClick="lfn_Search" Style="sty_Button" TabOrder="5" ToolTipText="조회" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnInput" ImageID="BTN_COM_ADD" Left="534" OnClick="lfn_Input" Style="sty_Button" TabOrder="6" ToolTipText="추가&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDelete" ImageID="BTN_COM_DEL" Left="708" OnClick="lfn_Delete" Style="sty_Button" TabOrder="8" ToolTipText="삭제&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSave" ImageID="BTN_COM_SAVE" Left="621" OnClick="lfn_Save" Style="sty_Button" TabOrder="7" ToolTipText="수정&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="447" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="1" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="btnToExcel_OnClick" Style="sty_Button" TabOrder="2" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="3" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="4" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Shape Bottom="236" Height="124" Id="Shape2" Left="391" LineColor="user15" Right="796" TabOrder="55" Top="112" Type="Rectangle" Width="405"></Shape>
+		<Shape Bottom="192" Height="80" Id="Shape1" Left="4" LineColor="user15" Right="388" TabOrder="57" Top="112" Type="Rectangle" Width="384"></Shape>
+		<Shape Bottom="292" Height="52" Id="Shape0" Left="392" LineColor="user15" Right="796" TabOrder="56" Top="240" Type="Rectangle" Width="404"></Shape>
+		<Shape Bottom="319" Height="123" Id="Shape3" Left="4" LineColor="user15" Right="388" TabOrder="58" Top="196" Type="Rectangle" Width="384"></Shape>
+		<Shape Bottom="108" Height="52" Id="shpGubunBox" Left="4" LineColor="user15" Right="388" TabOrder="34" Top="56" Type="Rectangle" Width="384"></Shape>
+		<Static Align="Center" Height="20" Id="lbJubsuDate" Left="43" Style="sty_Label" TabOrder="34" Text="교육일자" Top="60" UserData="S" VAlign="Middle" Width="76"></Static>
+		<Static Align="Center" Height="20" Id="Static21" Left="212" Style="sty_Label" TabOrder="35" Text="관리번호" Top="164" VAlign="Middle" Width="73"></Static>
+		<Static Align="Center" Height="20" Id="Static20" Left="42" Style="sty_Label" TabOrder="36" Text="관리바코드" Top="117" VAlign="Middle" Width="73"></Static>
+		<Static Align="Center" Height="20" Id="Static26" Left="42" Style="sty_Label" TabOrder="37" Text="지부" Top="164" VAlign="Middle" Width="76"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="121" OnChanged="cbxJibu_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="11" Top="163" UserData="I" Value="B" Width="89"></Combo>
+		<Static Align="Center" Height="20" Id="Static16" Left="42" Style="sty_Label" TabOrder="38" Text="생년월일" Top="248" VAlign="Middle" Width="56"></Static>
+		<MaskEdit AutoSelect="TRUE" BindDataset="ds_oFireManagerInfo" Border="Flat" Column="FMBIRTHDAY" Enable="FALSE" Height="20" Id="medBirthday" Left="102" LeftMargin="2" Mask="######-#" OnChanged="medResidentNo_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medResidentNo_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Maskedit" TabOrder="16" Top="248" Type="STRING" UserData="I" Width="65"></MaskEdit>
+		<Static Align="Center" Height="20" Id="Static0" Left="42" Style="sty_Label" TabOrder="39" Text="수첩바코드" Top="200" VAlign="Middle" Width="76"></Static>
+		<Static Align="Center" Height="20" Id="Static15" Left="42" Style="sty_Label" TabOrder="40" Text="성명" Top="224" VAlign="Middle" Width="56"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oFireManagerInfo" Border="Flat" Column="FMNM" Enable="FALSE" Height="20" Id="edCustNm" ImeMode="native" Left="102" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="15" Top="224" UserData="I" Width="108"></Edit>
+		<Static Align="Center" Height="20" Id="Static8" Left="42" Style="sty_Label" TabOrder="41" Text="휴대폰" Top="271" VAlign="Middle" Width="56"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oFireManagerInfo" Border="Flat" Column="FMHHPTEL" Height="20" Id="edHpTel" ImeMode="native" Left="102" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="18" Top="271" UserData="I" Width="108"></Edit>
+		<Static Align="Center" Height="20" Id="Static13" Left="42" Style="sty_Label" TabOrder="42" Text="이메일" Top="295" VAlign="Middle" Width="56"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oFireManagerInfo" Border="Flat" Column="FMHEMAILID" Height="20" Id="edEmail" ImeMode="native" Left="102" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="19" Top="295" UserData="I" Width="56"></Edit>
+		<Static Align="Center" Height="20" Id="Static1" Left="429" Style="sty_Label" TabOrder="43" Text="대상물명" Top="116" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oBuildingInfo" Border="Flat" Column="BNM" Height="20" Id="edBuildingNm" ImeMode="native" Left="492" LeftMargin="2" OnChanged="Edit0_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="22" Top="116" UserData="I" Width="300"></Edit>
+		<Static Align="Center" Height="20" Id="Static4" Left="429" Style="sty_Label" TabOrder="44" Text="전화번호" Top="164" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oBuildingInfo" Border="Flat" Column="BTEL" Height="20" Id="edTelNo" ImeMode="native" Left="492" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="24" Top="164" UserData="I" Width="116"></Edit>
+		<Static Align="Center" Height="20" Id="Static2" Left="429" Style="sty_Label" TabOrder="45" Text="주소" Top="188" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oBuildingInfo" Border="Flat" Column="BADDR1" Enable="FALSE" Height="20" Id="edNewAddr1" ImeMode="native" Left="492" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="25" Top="188" UserData="I" Width="300"></Edit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_oBuildingInfo" Border="Flat" Column="BZIPCD" Enable="FALSE" Height="20" Id="medNewZipCode" Left="492" LeftMargin="2" Mask="###-###" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_ZipCodeReadOnly" TabOrder="26" Top="212" Type="STRING" UserData="I" Width="56"></MaskEdit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oBuildingInfo" Border="Flat" Column="BADDR2" Enable="FALSE" Height="20" Id="edNewAddr2" ImeMode="native" Left="552" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="27" Top="212" UserData="I" Width="240"></Edit>
+		<Edit Align="CENTER" AutoSelect="TRUE" BindDataset="ds_oBuildingInfo" BKColor="user4" Border="Flat" Column="BADDRGUBUN" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="lbNewAddr" ImeMode="native" Left="429" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="46" Text="신주소" Top="212" UserData="I" Width="60"></Edit>
+		<Static Align="Center" Height="20" Id="Static3" Left="396" Style="sty_Label" TabOrder="47" Text="미납금액" Top="244" VAlign="Middle" Width="60"></Static>
+		<Static Align="Center" Height="20" Id="Static5" Left="396" Style="sty_Label" TabOrder="48" Text="겸직구분" Top="268" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oCustomerInfo" BKColor="user4" Border="Flat" Column="COVERCMGNO" Enable="FALSE" Height="20" Id="edCustGugun" ImeMode="native" Left="460" LeftMargin="2" LowerOnly="TRUE" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="49" Top="268" UserData="I" Width="124"></Edit>
+		<Static Align="Center" BKColor="user30" Height="20" Id="Static6" Left="588" Style="sty_LabelGruopBox" TabOrder="50" Text="최종교육일자" Top="268" VAlign="Middle" Width="84"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BKColor="user4" Border="Flat" Enable="FALSE" Height="20" Id="tmEduStartTime" Left="123" LeftMargin="2" Mask="##:##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Time" TabOrder="51" Top="84" Type="STRING" UserData="S:교육시작시간" Width="40"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbTimeWave" Left="167" Style="sty_Text" TabOrder="53" Text="~" Top="84" VAlign="Middle" Width="10"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BKColor="user4" Border="Flat" Enable="FALSE" Height="20" Id="tmEduEndTime" Left="180" LeftMargin="2" Mask="##:##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Time" TabOrder="52" Top="84" Type="STRING" UserData="S:교육종료시간" Width="40"></MaskEdit>
+		<Static Align="Center" Height="20" Id="Static24" Left="429" Style="sty_Label" TabOrder="54" Text="업무대행" Top="140" VAlign="Middle" Width="60"></Static>
+		<Static Align="Center" Height="44" Id="Static9" Left="8" Style="sty_LabelGruopBox" TabOrder="60" Text="교육&#13;&#10;선택" Top="60" VAlign="Middle" Width="32"></Static>
+		<Static Align="Center" Height="20" Id="lbStdYear" Left="429" Style="sty_Label" TabOrder="63" Text="교육년도" Top="60" UserData="S" VAlign="Middle" Width="60"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" BKColor="user4" Border="Flat" Enable="FALSE" Height="20" Id="edEduYear" ImeMode="native" Left="492" LeftMargin="2" MaxLength="4" Number="TRUE" OnChanged="lfn_Search" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="61" Top="60" UserData="S:교육년도" Width="40"></Edit>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="429" Style="sty_Label" TabOrder="62" Text="대표직능" Top="84" UserData="S" VAlign="Middle" Width="60"></Static>
+		<Static Align="Center" Height="44" Id="Static12" Left="394" Style="sty_LabelGruopBox" TabOrder="65" Text="교육&#13;&#10;정보" Top="60" VAlign="Middle" Width="32"></Static>
+		<Edit AutoSelect="TRUE" BKColor="user4" Border="Flat" Enable="FALSE" Height="20" Id="edCourseNm" ImeMode="native" Left="492" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="66" Top="84" UserData="S:직능" Width="112"></Edit>
+		<Static Align="Center" Height="20" Id="Static14" Left="608" Style="sty_Label" TabOrder="68" Text="교육대상" Top="60" UserData="S" VAlign="Middle" Width="60"></Static>
+		<Static Align="Center" Height="20" Id="Static17" Left="608" Style="sty_Label" TabOrder="67" Text="교육과정" Top="84" UserData="S" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" BKColor="user4" Border="Flat" Enable="FALSE" Height="20" Id="edEduSubjectNm" ImeMode="native" Left="672" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="69" Top="84" UserData="S:교육과정" Width="91"></Edit>
+		<Static Align="Center" Height="116" Id="Static10" Left="394" Style="sty_LabelGruopBox" TabOrder="70" Text="대&#13;&#10;상&#13;&#10;물&#13;&#10;정&#13;&#10;보" Top="116" VAlign="Middle" Width="32"></Static>
+		<Static Align="Center" Height="116" Id="Static11" Left="8" Style="sty_LabelGruopBox" TabOrder="71" Text="선&#13;&#10;임&#13;&#10;자&#13;&#10;정&#13;&#10;보" Top="200" VAlign="Middle" Width="32"></Static>
+		<Static Align="Center" Height="69" Id="Static18" Left="8" Style="sty_LabelGruopBox" TabOrder="72" Text="고&#10;객&#10;조&#10;회" Top="115" VAlign="Middle" Width="32"></Static>
+		<Edit AutoSelect="TRUE" BKColor="user4" Border="Flat" Enable="FALSE" Height="20" Id="edEduStudentNm" ImeMode="native" Left="672" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="73" Top="60" UserData="S:교육대상" Width="91"></Edit>
+		<Static Align="Center" Height="20" Id="Static19" Left="43" Style="sty_Label" TabOrder="74" Text="교육시간" Top="84" UserData="S" VAlign="Middle" Width="76"></Static>
+		<Edit AutoSelect="TRUE" BKColor="user4" Border="Flat" Enable="FALSE" Height="20" Id="edEduGubunNm" ImeMode="native" Left="224" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="75" Top="84" UserData="S:교육구분" Width="72"></Edit>
+		<Static Align="Center" Height="20" Id="lbSmsCnt" Left="143" Style="sty_LabelStat" TabOrder="77" Text="총건수" Top="328" VAlign="Middle" Width="56"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medTotalCnt" Left="203" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="76" Top="328" Width="56"></MaskEdit>
+		<Static Align="Center" Color="brown" Height="20" Id="lbResidentNoError" Left="209" Style="sty_TextRed" TabOrder="78" Top="249" VAlign="Middle" Width="36"></Static>
+		<Static Align="Center" Height="20" Id="lbAppointDate" Left="223" Style="sty_Label" TabOrder="79" Text="선임일" Top="273" VAlign="Middle" Width="60"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_oCustomerInfo" BKColor="user4" Border="Flat" Column="EPPASSDATE" Enable="FALSE" Height="20" Id="medLastDate" Left="675" LeftMargin="2" Mask="####-##-##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Time" TabOrder="80" Top="268" Type="STRING" UserData="I" Width="80"></MaskEdit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_oCustomerInfo" BKColor="user4" Border="Flat" Column="CFEEYYMM" Enable="FALSE" Height="20" Id="medFeeYear" Left="675" LeftMargin="2" Mask="####-##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Time" TabOrder="82" Top="244" Type="STRING" UserData="S" Width="60"></MaskEdit>
+		<Static Align="Center" BKColor="user30" Height="20" Id="Static22" Left="588" Style="sty_LabelGruopBox" TabOrder="81" Text="회비부과년월" Top="244" VAlign="Middle" Width="84"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" BindDataset="ds_oFireManagerInfo" BKColor="user4" Border="Flat" Column="FSSTATUS" Enable="FALSE" Height="20" Id="edStatus" ImeMode="native" Left="344" LeftMargin="2" OnClick="btnUpdateManagerInfo_OnClick" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="17" TabStop="FALSE" Top="249" UserData="I" Width="40"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearchCustMgno" ImageID="BTN_SEARCH" Left="345" OnClick="btnSearchCustMgno_OnClick" Style="sty_Button" TabOrder="13" Top="164" Transparent="TRUE" Width="22"></Button>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Height="20" Id="medBarCode" Left="117" LeftMargin="2" Mask="#############" MaxLength="13" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medBarCode_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="10" Top="117" Type="STRING" UserData="I" Width="98"></MaskEdit>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Height="20" Id="medCustNo" Left="287" LeftMargin="2" Mask="######" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medCustNo_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="12" Top="164" Type="STRING" UserData="I" Width="52"></MaskEdit>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medLBarCode" Left="121" LeftMargin="2" Mask="###########" MaxLength="13" OnChanged="medLBarCode_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medLBarCode_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="14" Top="200" Type="STRING" UserData="I" Width="89"></MaskEdit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_oCustomerInfo" Border="Flat" Column="NOPAYFEE" DisableColor="user6" Enable="FALSE" Height="20" Id="medNoPayFee" Left="460" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Maskedit" TabOrder="83" Top="244" UserData="I" Width="124"></MaskEdit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medEduDate" Left="123" LeftMargin="2" Mask="####-##-##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Maskedit" TabOrder="84" Top="60" Type="STRING" UserData="S:교육일자" Width="80"></MaskEdit>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edEsmgno" ImeMode="native" Left="207" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="85" Top="60" UserData="S" Visible="FALSE" Width="8"></Edit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oFireManagerInfo" Border="Flat" Column="FMMGNO" Height="20" Id="edFmmgno" ImeMode="native" Left="226" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="86" Top="200" UserData="I" Visible="FALSE" Width="6"></Edit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oFireManagerInfo" Border="Flat" Column="FMLASTFMHSEQ" Height="20" Id="edFmlastFmhseq" ImeMode="native" Left="236" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="87" Top="200" UserData="I" Visible="FALSE" Width="8"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnUpdateManagerInfo" ImageID="BTN_TEXT_10" Left="240" OnClick="btnUpdateManagerInfo_OnClick" Style="sty_Button" TabOrder="88" Text="선임자&#32;정보변경" Top="224" Transparent="TRUE" Width="144"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearchEduSchedule" ImageID="BTN_TEXT_10" Left="240" OnClick="btnSearchEduSchedule_OnClick" Style="sty_Button" TabOrder="9" Text="실무교육일정&#32;선택" Top="60" Transparent="TRUE" Width="144"></Button>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oFireManagerInfo" Border="Flat" Column="CMGNO" Height="20" Id="edCmgno" ImeMode="native" Left="246" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="89" Top="200" UserData="I" Visible="FALSE" Width="8"></Edit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oFireManagerInfo" Border="Flat" Column="CCOURSECD" Height="20" Id="edCourseCd" ImeMode="native" Left="258" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="90" Top="200" UserData="S" Visible="FALSE" Width="8"></Edit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oFireManagerInfo" Border="Flat" Column="CGATEWAYCD" Height="20" Id="edGateWayCd" ImeMode="native" Left="268" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="91" Top="200" UserData="S" Visible="FALSE" Width="8"></Edit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oCustomerInfo" Border="Flat" Column="ESDATE" Height="20" Id="edEsdate" ImeMode="native" Left="759" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="92" Top="268" UserData="S" Visible="FALSE" Width="8"></Edit>
+		<Static Height="20" Id="lbText" Left="8" Style="sty_Text" TabOrder="93" Text="※&#32;실무교육일정&#32;정보&#32;선택&#32;후&#32;작업하세요." Top="37" VAlign="Middle" Width="264"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxEmailDomain" INDEX="0" InnerDataset="ds_oEmailDomain" Left="269" OnChanged="cbxEmailDomain_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="21" Top="294" Width="116"></Combo>
+		<Static Align="Center" Height="20" Id="lbAt" Left="157" Style="sty_Text" TabOrder="94" Text="@" Top="296" VAlign="Middle" Width="16"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oFireManagerInfo" Border="Flat" Column="FMHEMAILDOMAIN" Height="20" Id="edEmailDomain" ImeMode="native" Left="171" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="20" Top="295" UserData="S" Width="96"></Edit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oFireManagerInfo" Border="Flat" Column="FMRESIDENTERR" Height="20" Id="edResidentNoError" ImeMode="native" Left="280" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="95" Top="200" UserData="S" Visible="FALSE" Width="8"></Edit>
+		<Calendar BindDataset="ds_oFireManagerInfo" Border="Flat" Column="FMHSTARTDATE" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calStartTime" Left="286" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="96" Top="272" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Radio BindDataset="ds_oBuildingInfo" Border="Flat" CodeColumn="CD" Column="CAGGUBUN" ColumnCount="2" DataColumn="DATA" Height="20" Id="radAgGubun" INDEX="0" InnerDataset="ds_oAgGubun" Left="492" OnChanged="radAgGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="97" Top="140" UserData="S" Value="0" Width="116"></Radio>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oBuildingInfo" Border="Flat" Column="AGNM" Height="20" Id="edAgNm" ImeMode="native" Left="611" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="23" Top="140" UserData="I" Width="157"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edCourse" ImeMode="native" Left="766" LeftMargin="2" OnChanged="edCourse_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="98" Top="84" UserData="S" Visible="FALSE" Width="8"></Edit>
+		<Static Align="Center" Height="20" Id="lbStatus" Left="900" Style="sty_LabelStat" TabOrder="99" Text="초기모드" Top="176" VAlign="Middle" Visible="FALSE" Width="76"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearchAgency" ImageID="BTN_SEARCH" Left="770" OnClick="btnSearchAgency_OnClick" Style="sty_Button" TabOrder="100" Top="140" Transparent="TRUE" Width="22"></Button>
+		<Static Align="Center" Height="20" Id="Static23" Left="219" Style="sty_Label" TabOrder="102" Text="수첩바코드" Top="117" VAlign="Middle" Width="76"></Static>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Height="20" Id="medLBarCodeCust" Left="298" LeftMargin="2" Mask="###########" MaxLength="13" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medLBarCodeCust_OnKeyDown" OnKillFocus="lfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="101" Top="117" Type="STRING" UserData="I" Width="87"></MaskEdit>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radJibuGubun" INDEX="0" InnerDataset="ds_oJibuGubun" Left="43" LeftMargin="2" OnChanged="radJibuGubun_OnChanged" RightMargin="2" Style="sty_Radio" TabOrder="103" Top="140" Value="S" Width="167"></Radio>
+		<Static Align="Center" Height="20" Id="lbReceiveExcept" Left="395" Style="sty_Label" TabOrder="104" Text="소방안전지&#32;수령&#32;여부" Top="297" VAlign="Middle" Width="130"></Static>
+		<Radio BindDataset="ds_oBuildingInfo" Border="Flat" CodeColumn="CD" Column="CRECEIVEEXCEPTGUBUN" ColumnCount="2" DataColumn="DATA" Height="20" Id="medResidentNo1" INDEX="0" InnerDataset="ds_ioYn" Left="528" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="105" Top="296" UserData="S" Value="0" Width="116"></Radio>
+		<Static Align="Center" Height="20" Id="Static25" Left="172" Style="sty_Label" TabOrder="108" Text="개인식별번호" Top="248" VAlign="Middle" Width="80"></Static>
+		<MaskEdit AutoSelect="TRUE" BindDataset="ds_oFireManagerInfo" Border="Flat" Column="FMPERSONKEY" Enable="FALSE" Height="20" Id="medPersonkey" Left="256" LeftMargin="2" Mask="A####-#####" OnChanged="medResidentNo_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medResidentNo_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Maskedit" TabOrder="107" Top="248" Type="STRING" UserData="I" Width="85"></MaskEdit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oCustomerInfo" Border="Flat" Column="CEDUEXPIREDATE" Height="20" Id="edEduExpireDate" ImeMode="native" Left="320" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="109" Top="200" UserData="S" Visible="FALSE" Width="8"></Edit>
+		<Static Color="user6" Font="굴림,10,Bold" Height="22" Id="lbDanger" Left="272" TabOrder="110" Text="※&#32;위험물안전관리자&#32;업무대행자는&#32;타대상도&#32;교육승계로&#32;처리됩니다." Top="328" VAlign="Middle" Visible="FALSE" Width="440"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust1090EduManagement.xml
+ * 설명 : 고객 교육정보관리
+ * 작성일 : 2009.12.05
+ * 작성자 : 김종복
+ */
+ 
+#include "LIB::cust.js"; // 공통업무 관련
+var ls_SearchJibuCd = "";
+var ls_IsRemark = "";
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    
+    gfn_Form_OnLoadCompletedCheck(obj); //공통 폼 로딩 이벤트 처리(공통코드 조회되었는지 확인)    
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    // 공통 코드 조회
+    gfn_SearchAllJibu(cbxJibu, "Y"); // 지부 코드 조회
+    gfn_SearchCustomerEduCourseFullName(ds_oCourse, "0", ""); // 대표직능코드 조회
+    // gfn_SearchCustomerDetailCourseFullName("", ds_oDetailCourse, "0", ""); // 세부직능코드 조회
+    gfn_SearchCustomerDetailCourseNickFullName("", ds_oDetailCourse, "0", ""); // 세부직능코드 조회
+    gfn_SearchCommonCode(ds_oEmailDomain, "EMAILDOMAIN", "Y", "직접입력"); // 이메일도메인 조회
+    cbxEmailDomain.Value = "";
+}
+ 
+/*
+ * 기능 :폼사이즈 조정
+ */
+function Form_OnSize(obj,nCx,nCy,nState) {
+    if (gs_IsResizingForm == "Y") {
+		// gdEduPass.Height = nCy - gdEduPass.Top - 4;
+		// gdEduPass.Width = nCx - gdEduPass.Left - 4;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+	gdEduPass.NoDataText = ""; // Grid에 표시할 Data가 없을 경우
+	
+	if (gfn_IsNull(edEsmgno.Text)) {
+		gfn_Alert("실무교육일정 선택 후 작업하세요."); // 실무교육일정 선택 후 작업하세요.
+		return false;
+	}
+	
+	lfn_SearchEduPassList(); // 고객교육정보목록 조회
+	
+	if (ds_iOnlyKey.GetColumn(0, "ACTION") == "S") {
+		ds_ioEduPass.row = ds_ioEduPass.FindRow("CMGNO", ds_iOnlyKey.GetColumn(0, "ONLYKEY"));
+		ds_iOnlyKey.SetColumn(0, "ACTION", "X"); // 디폴트
+	}
+	
+}
+
+/*
+ * 기능 : 데이터 초기화
+ */
+function lfn_ClearData() {
+	ds_oFireManagerInfo.ClearData();
+	lbResidentNoError.Text = ""; // 주민등록번호 오류여부
+	edEmailDomain.Enable = true;
+	cbxEmailDomain.Index = 0;
+    ds_oBuildingInfo.ClearData();
+    ds_oCustomerInfo.ClearData(); 
+}
+
+/*
+ * 기능 : 상태 설정 후 데이터 초기화
+ */
+function lfn_InitValue() {
+	medBarCode.Value = ""; // 고객바코드
+	cbxJibu.Value = gds_oUserInfo.GetColumn(0,"PDEPTCD");
+    medCustNo.Value = ""; // 고객번호
+    medLBarCode.Value = ""; // 수첩바코드
+}
+
+/*
+ * 기능 : 고객교육정보목록 조회
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchEduPassList() {
+	ds_ioEduPass.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	
+	tit_addCsvSearchActionInfo("cust:searchCust1090EduPassList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioEduPass=ds_oCustData" // outDs
+		,"ESMGNO=" + quote(edEsmgno.Text) //-- 실무교육과정일정관리번호 // args 
+		,"lfn_AfterSearchEduPassList"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 고객교육정보목록 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchEduPassList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    medTotalCnt.Value = ds_ioEduPass.GetRowCount();
+    gfn_SearchMessage(gdEduPass); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+    gdEduPass.SetCellProp("head", 0, "text", 0); // 체크박스 초기화
+   // for (var i=0; i<10; i++) idle(); // 화면 로딩을 위한 delay용
+}
+
+/*
+ * 기능 : 그리드 멀티정렬
+ */
+function btnMutilSort_OnClick(obj) {
+	gfn_GridMultiSort(gdEduPass, 2); // 멀티 정렬을 실행한다.
+}
+
+/*
+ * 기능 : 그리드 정렬 및 체크박스 전체선택
+ */
+function gdEduPass_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+	var lobj_Dataset = object(obj.BindDataset);
+	if (nCell == 0) { // 선택
+        if (obj.GetCellProp("head", nCell, "text") == 1) { // 전체가 이미 선택된 경우
+            obj.SetCellProp("head", nCell, "text", 0);
+            for (i = 0; i < lobj_Dataset.RowCount(); i++) {
+                lobj_Dataset.SetColumn(i, "SEL", "0");
+            }
+        } else { // 전체가 이미 선택되지 않은 경우
+            obj.SetCellProp("head", nCell, "text", 1);
+            for (i = 0; i < lobj_Dataset.RowCount(); i++) {
+                lobj_Dataset.SetColumn(i, "SEL", "1");
+            }
+        }
+	} else { // 헤드 정렬
+        if (nCell > 1) {
+			lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex);
+		}
+	}
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    btnInput.Enable = bStatus; // 추가 버튼
+    btnSave.Enable = bStatus; // 저장 버튼
+    btnDelete.Enable = bStatus; // 삭제 버튼
+    gdEduPass.Editable = bStatus;
+}
+
+/*
+ * 기능 : 추가
+ */
+function lfn_Input(obj) {
+	if (gfn_IsNull(edEsmgno.Text)) {
+		gfn_Alert("실무교육일정 선택 후 작업하세요."); // 실무교육일정 선택 후 작업하세요.
+		return false;
+	}
+	
+	// if (!gfn_Confirm("신규 고객교육정보를 등록 하시겠습니까?\n입력완료 후 저장 버튼을 누르세요.")) {
+        // return false;
+	// }
+	
+	lfn_ClearData(); // 데이터 초기화
+    lfn_InitValue(); // 상태 설정 후 데이터 초기화
+    
+    if (!gfn_IsNull(ls_SearchJibuCd)) { // 조회한 지부코드가 있을때
+		cbxJibu.Value = ls_SearchJibuCd;
+	} else { // 조회한 지부코드가 없을때
+		cbxJibu.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD"); // 소속지부
+	}
+    
+    medCustNo.SetFocus();
+}
+
+/*
+ * 기능 : 저장
+ */
+function lfn_Save(obj) {    
+	if (gfn_IsNull(edEsmgno.Text)) {
+		gfn_Alert("실무교육일정 선택 후 작업하세요."); // 실무교육일정 선택 후 작업하세요.
+		return false;
+	}
+	
+	if (gfn_IsNull(edCmgno.Text) || gfn_IsNull(edEsmgno.Text)) {
+		gfn_Alert("신규 고객정보 조회 후 저장 버튼을 누르세요."); 
+		medCustNo.SetFocus();
+        return false;
+	}
+
+	if (left(edCourseCd.Text, 1) < "9") {
+		if (left(edCourseCd.Text, 1) <> left(edCourse.Text, 1)) {
+			gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+			lfn_ClearData(); // 데이터 초기화
+			lfn_InitValue(); // 상태 설정 후 데이터 초기화
+			return false;
+		}
+
+	} else { // 교육희망자 이면
+		if (edCourseCd.Text = "91") {	// 방화관리자 교육희망자이면
+			if (left(edCourse.Text, 1) <> "1") {
+				gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+				lfn_ClearData(); // 데이터 초기화
+				lfn_InitValue(); // 상태 설정 후 데이터 초기화
+				return false;				
+			}
+		} else if (edCourseCd.Text = "92") {
+			if (left(edCourse.Text, 1) <> "3") {
+				gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+				lfn_ClearData(); // 데이터 초기화
+				lfn_InitValue(); // 상태 설정 후 데이터 초기화
+				return false;				
+			}
+		} else if (edCourseCd.Text = "93") {
+			if (left(edCourse.Text, 1) <> "5") {
+				gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+				lfn_ClearData(); // 데이터 초기화
+				lfn_InitValue(); // 상태 설정 후 데이터 초기화
+				return false;				
+			}
+		}
+	}
+	
+	// 개인식별번호가 없으면 이수처리 안함
+	if (gfn_isNull(medPersonkey.Value) || medPersonkey.Value == "NON-MATCH") {
+		gfn_Alert("개인식별번호가 없는 자료는 이수처리 할 수 없습니다.\n\n" +
+		          " ※ 개인식별번호 생성기준 : 성명+주민번호 or 성명+생년월일+휴대폰"); // 메시지 확인필요
+		return false;
+	}
+	
+/*	
+	if (ds_oFireManagerInfo.GetColumn(0,"EDUCNT") > 0) {
+		if (!gfn_Confirm("이미 "+edEduYear.Text + "년도 교육이수 내역이 있습니다. 계속 입력하시겠습니까?")){
+			lfn_ClearData(); // 데이터 초기화
+			lfn_InitValue(); // 상태 설정 후 데이터 초기화
+			return false;
+		}
+	}
+*/	
+	ls_IsRemark = "";
+	if (ds_oFireManagerInfo.GetColumn(0,"EDUPERSONCNT") > 0) {
+		if (!gfn_Confirm("타대상물에 "+edCustNm.Text+ "님의 "+edEduYear.Text + "년도 교육이수 내역이 있습니다. 계속 입력하시겠습니까?")){
+			lfn_ClearData(); // 데이터 초기화
+			lfn_InitValue(); // 상태 설정 후 데이터 초기화
+			return false;
+		} else {
+		
+			// 실무교육 중복 이수처리 사유 입력
+			var parValue = " sMeg="+quote(edCustNm.Text + "님의 교육이수 처리를 하시겠습니까?");
+			ls_IsRemark = Dialog("cust::frmcust1093PEduIssueRemark.xml", parValue, "", "", "", -1, -1);				
+			if (ls_IsRemark == "" || ls_IsRemark = null) {
+				return;
+			}
+		
+		
+		}
+	}
+
+// 저장시 메시지박스 없앰(2010.04.05)		/*
+	if (!gfn_Confirm(MSGW00020)) { // 추가 저장 하시겠습니까?
+		return false;
+	}*/
+	
+	ds_iOnlyKey.SetColumn(0, "ONLYKEY", edCmgno.Text);
+	ds_iOnlyKey.SetColumn(0, "ACTION", "S");
+	
+	if (mb_IsNewData) { // 신규 저장
+		ds_ioEduPassSingle.ClearData(); // 데이타셋 초기화
+		
+		// 입력된 값을 데이타셋으로 복사한다.
+		ds_ioEduPassSingle.InsertRow(0);
+		ds_ioEduPassSingle.SetColumn(0, "EPCMGNO", edCmgno.Text); // 고객정보관리번호
+		ds_ioEduPassSingle.SetColumn(0, "EPESMGNO", edEsmgno.Text); // 실무교육일정관리번호
+		ds_ioEduPassSingle.SetColumn(0, "EPYEAR", edEduYear.Text); // 교육대상년도
+		ds_ioEduPassSingle.SetColumn(0, "EPCOURSECD", edCourseCd.Text); // 세부직능
+		ds_ioEduPassSingle.SetColumn(0, "EPSUCCESSIONGUBUN", "0"); // 승계구분[0:선임자교육 1:교육승계]
+		ds_ioEduPassSingle.SetColumn(0, "EPPASSDATE", medEduDate.Value); // 교육일
+		ds_ioEduPassSingle.SetColumn(0, "EPPERSONNM", edCustNm.Text); // 이수자성명
+		ds_ioEduPassSingle.SetColumn(0, "EPBIRTHDAY", trim(medBirthday.Value)); // 이수자생년월일
+		ds_ioEduPassSingle.SetColumn(0, "EPPERSONKEY", medPersonkey.Value,7); // 이수자 개인식별번호
+		ds_ioEduPassSingle.SetColumn(0, "EPPROCGTMGNO", gds_oUserInfo.GetColumn(0, "PDEPTCD")); // 처리지부
+		ds_ioEduPassSingle.SetColumn(0, "EPCGATEWAYCD", edGateWayCd.Text); // 데이터연계직능
+		ds_ioEduPassSingle.SetColumn(0, "FMMGNO", edFmmgno.Text); // 선임자관리번호
+		ds_ioEduPassSingle.SetColumn(0, "EPPASSREMARK", ls_IsRemark); // 교육 중복이수 사유
+		ds_ioEduPassSingle.SetColumn(0, "CYBERISUGUBUN", ds_oEduJubsuInfo.GetColumn(0, "CYBERISUGUBUN")); // 사이버교육이수여부
+		ds_ioEduPassSingle.SetColumn(0, "EDUEXPIREDATE", edEduExpireDate.Text); // 교육유효기간
+		//ds_ioEduPassSingle.SetColumn(0, "FMMGNO", edFmmgno.Text); // 선임자관리번호
+			
+		lfn_SearchEduPassCheck(); // 중복여부 체크
+	
+		if (ds_ioEduPassCheck.GetColumn(0, "CNT") > 0) {
+			gfn_Alert("이미 교육참석자 리스트에 추가되어 있습니다.");
+		} else {
+			if (gfn_IsNull(ds_ioEduPassSingle.GetColumn(0, "EPPERSONKEY"))) {
+				gfn_alert("주민등록번호(생년월일)는 필수사항입니다.\n필수사항 입력완료 후 저장 버튼을 누르세요.");
+				medBirthday.SetFocus();
+			} else {
+				lfn_UpdFireManagerInfo(); // 선임자 정보 수정
+				lfn_UpdBuildingInfo(); // 대상물 정보 수정
+				lfn_SaveEduPassInfo(); // 실무교육이수정보 저장
+			}
+		}
+	} else { // 수정 저장
+		if (gfn_IsNull(medBirthday.Value)) {
+			gfn_alert("주민등록번호(생년월일)는 필수사항입니다.\n필수사항 입력완료 후 저장 버튼을 누르세요.");
+			medBirthday.SetFocus();
+		} else {
+			lfn_UpdFireManagerInfo(); // 선임자 정보 수정
+			lfn_UpdBuildingInfo(); // 대상물 정보 수정
+			gfn_SaveMessage(); // 저장 메세지를 처리한다.
+			lfn_Search(); // 조회
+		}
+	}
+}
+
+/*
+ * 기능 : 선임자 정보 수정
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_UpdFireManagerInfo() {
+	tit_clearActionInfo();
+    tit_addMultiActionInfo("cust:updateCust1090FireManagerInfo", "", 0, "", "N");
+    if (!mb_IsNewData) {	// 신규 이수처리가 아니면 유효기간 업데이트 -- 신규는 실무교육이수정보 저장시 유효기간 업데이트
+		// 소방안전관리자 or 소방안전관리보조자 유효기간 업데이트 2014.12.19	// 위험물안전관리자, 운송자 추가 2021.01.23
+		if ((left(edCourse.Text, 1) == "1") || (left(edCourse.Text, 1) == "2") || (left(edCourse.Text, 1) == "3") || (left(edCourse.Text, 1) == "8")) {
+			tit_addSingleActionInfo("cust:executeCust0010EduExpireDateUpdate", "", 0, "");	
+		}
+    }
+
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iCustData=ds_oFireManagerInfo:A" // inDs		
+        ,""	// outDs
+        ,"PSABUN=" + gds_oUserInfo.GetColumn(0, "PSABUN") //-- 작성자사번 // args 
+         + " SCMGNO=" + replace(ltrim(replace(ds_oCustomerInfo.GetColumn(0, "CMGNO") ,"0"," "))," ","0")
+         + " FSTARTDATE=" + quote(left(calStartTime.Value, 8))	// 선임일자
+         + " FNM=" + quote(edCustNm.Text)	// 선임자명
+         + " FPERSONKEY=" + quote(medPersonkey.Value)	// 개인식별번호
+        ,"lfn_AfterUpdFireManagerInfo"
+        ,false
+        ,false
+		,true
+    );
+}
+
+/*
+ * 기능 :  선임자 정보 수정 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterUpdFireManagerInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/*
+ * 기능 : 대상물 정보 수정
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_UpdBuildingInfo() {
+
+	var BSEARCHNM = lfn_ReplaceBnm(edBuildingNm.Text);	// 조회용 업체명
+
+	tit_clearActionInfo();
+    tit_addMultiActionInfo("cust:updateCust1090BuildingInfo", "", 0, "", "N");
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iCustData=ds_oBuildingInfo:A" // inDs		
+        ,""	// outDs
+        ,"PSABUN=" + gds_oUserInfo.GetColumn(0, "PSABUN") //-- 작성자사번 // args 
+         + " BSEARCHNM=" + quote(BSEARCHNM)			// 검색대상물명
+        ,"lfn_AfterUpdBuildingInfo"
+        ,false
+        ,false
+		,true
+    );
+}
+
+/*
+ * 기능 :  대상물 정보 수정 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterUpdBuildingInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/*
+ * 기능 : 중복여부 체크
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchEduPassCheck() {
+	ds_ioEduPassCheck.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("cust:searchCust1090EduPassCheck", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,"ds_iCustData=ds_ioEduPassSingle:A"	// inDs
+		,"ds_ioEduPassCheck=ds_oCustData" // outDs
+		,"" // args 
+		,"lfn_AfterSearchEduPassCheck"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 중복여부 체크 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchEduPassCheck(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/*
+ * 기능 : 실무교육이수정보 저장
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SaveEduPassInfo() {
+	// if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        // return false;
+    // }
+	
+var iDsList = "";	//input Dataset List
+
+	// 실무교육 이수처리 & 행정처분자 처분종료일자 입력 처리 & 실무교육접수에 이수여부 Y
+	tit_clearActionInfo();
+    tit_AddSingleActionInfo("cust:insertCust1090EduPassInfo", "", 0, "", "N");
+    inDsList = "ds_iCustData=ds_ioEduPassSingle:A";
+    
+	// 소방안전관리자 or 소방안전관리보조자 유효기간 업데이트 2014.12.19 // 위험물안전관리자, 운송자 추가 2021.01.23
+	if ((left(edCourse.Text, 1) == "1") || (left(edCourse.Text, 1) == "2") || (left(edCourse.Text, 1) == "3") || (left(edCourse.Text, 1) == "8")) {
+		tit_addSingleActionInfo("cust:executeCust0010EduExpireDateUpdate", "", 0, "");	
+	}
+	
+	if (edCourse.Value == "30") { // 위험물안전관리자일 경우 업무대행이면 교육승계 멀티처리
+   		tit_AddSingleActionInfo("cust:executeCust1095EduPassDanger", "", 0, "", "N");
+		inDsList += " ds_iEduPass=ds_ioEduPassSingle"; 
+	}
+    
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,inDsList // inDs		
+        ,""	// outDs
+        ,"PSABUN=" + gds_oUserInfo.GetColumn(0, "PSABUN") //-- 작성자사번 // args 
+         + " SCMGNO=" + replace(ltrim(replace(ds_oCustomerInfo.GetColumn(0, "CMGNO"),"0"," "))," ","0")
+         + " FSTARTDATE=" + quote(left(calStartTime.Value, 8))	// 선임일자
+         + " FNM=" + quote(edCustNm.Text)	// 선임자명
+         + " FPERSONKEY=" + quote(medPersonkey.Value)	// 개인식별번호
+        ,"lfn_AfterSaveEduPassInfo"
+        ,false
+        ,false
+		,true
+    );
+}
+
+/*
+ * 기능 :  실무교육이수정보 저장 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveEduPassInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    if (edCourse.Text == "50") { // 대표직능이 소방기술자일 경우 멀티처리
+		
+		
+		if (substr(medBirthday.Value,0,6) != "000000") {
+		
+			lfn_SearchEduPassMultiList(ds_ioEduPassSingle.GetColumn(0, "EPPERSONNM"), ds_ioEduPassSingle.GetColumn(0, "EPPERSONKEY"), ds_ioEduPassSingle.GetColumn(0, "EPCMGNO"));
+			
+			if (ds_ioEduPassMulti.GetRowCount() > 0) {
+				for (var i=0; i<ds_ioEduPassMulti.GetRowCount(); i++) {
+					ds_ioEduPassMulti.SetColumn(i, "EPESMGNO", ds_ioEduPassSingle.GetColumn(0, "EPESMGNO"));
+					ds_ioEduPassMulti.SetColumn(i, "EPYEAR", ds_ioEduPassSingle.GetColumn(0, "EPYEAR"));
+					ds_ioEduPassMulti.SetColumn(i, "EPPASSDATE", ds_ioEduPassSingle.GetColumn(0, "EPPASSDATE"));
+					ds_ioEduPassMulti.SetColumn(i, "EPPROCGTMGNO", ds_ioEduPassSingle.GetColumn(0, "EPPROCGTMGNO"));
+					ds_ioEduPassMulti.SetColumn(i, "EPCGATEWAYCD", ds_ioEduPassSingle.GetColumn(0, "EPCGATEWAYCD"));
+					ds_ioEduPassMulti.SetColumn(i, "EPBIRTHDAY", ds_ioEduPassSingle.GetColumn(0, "EPBIRTHDAY"));
+					ds_ioEduPassMulti.SetColumn(i, "EPPERSONKEY", ds_ioEduPassSingle.GetColumn(0, "EPPERSONKEY"));
+					ds_ioEduPassMulti.SetColumn(i, "EDUEXPIREDATE", ds_ioEduPassSingle.GetColumn(0, "EDUEXPIREDATE"));
+					
+				}
+
+				for (var j=0; j<ds_ioEduPassMulti.GetRowCount(); j++) {
+					ds_ioEduPassMultiSingle.AddRow();
+					ds_ioEduPassMultiSingle.CopyRow(ds_ioEduPassMultiSingle.row, ds_ioEduPassMulti, j);
+					lfn_SearchEduPassMultiCheck(); // 멀티처리 중복체크
+					
+					if (ds_ioEduPassMultiCheck.GetColumn(0, "CNT") == 0) {
+						lfn_SaveEduPassMultiInfo(); // 실무교육이수정보 멀티처리 저장
+					}
+					
+					ds_ioEduPassMultiSingle.ClearData();	
+				}
+			}
+		} 
+    }
+    
+
+    
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+	lfn_Search(); // 조회
+}
+
+/*
+ * 기능 : 실무교육이수정보 멀티처리 저장
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SaveEduPassMultiInfo() {
+	// if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        // return false;
+    // }
+	
+	tit_clearActionInfo();
+    tit_AddSingleActionInfo("cust:insertCust1090EduPassMultiInfo", "", 0, "", "N");
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iCustData=ds_ioEduPassMultiSingle:A" // inDs		
+        ,""	// outDs
+        ,"PSABUN=" + gds_oUserInfo.GetColumn(0, "PSABUN") //-- 작성자사번 // args 
+        ,"lfn_AfterSaveEduPassMultiInfo"
+        ,false
+        ,false
+		,true
+    );
+}
+
+/*
+ * 기능 :  실무교육이수정보 멀티처리 저장 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveEduPassMultiInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/*
+ * 기능 : 멀티처리 중복체크
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchEduPassMultiCheck() {
+	ds_ioEduPassMultiCheck.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("cust:searchCust1090EduPassMultiCheck", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,"ds_iCustData=ds_ioEduPassMultiSingle:A"	// inDs
+		,"ds_ioEduPassMultiCheck=ds_oCustData" // outDs
+		,"" // args 
+		,"lfn_AfterSearchEduPassMultiCheck"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 멀티처리 중복체크 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchEduPassMultiCheck(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/*
+ * 기능 : 멀티처리 조회
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchEduPassMultiList(sNM, sPERSONKEY, sCmgno) {
+	ds_ioEduPassMulti.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	
+	tit_addCsvSearchActionInfo("cust:searchCust1090EduPassMultiList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioEduPassMulti=ds_oCustData" // outDs
+		,"FMNM=" + quote(sNM) //-- 선임자성명
+		  + " FMPERSONKEY=" + quote(sPERSONKEY) //-- 선임자개인식별번호
+		  + " CMGNO=" + quote(sCmgno) //-- 고객정보관리번호 // args 		
+		,"lfn_AfterSearchEduPassMultiList"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 멀티처리 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchEduPassMultiList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/*
+ * 기능 : 초기화
+ */
+function lfn_Cancel(obj) {
+	lfn_ClearData(); // 데이터 초기화
+	lfn_InitValue(); // 상태 설정 후 데이터 초기화
+}
+
+/*
+ * 기능 : 삭제
+ */
+function lfn_Delete(obj) {
+	if (ds_ioEduPass.FindRow("SEL", "1") < 0) {
+		gfn_alert("삭제 선택한 교육참석자 정보가 없습니다.");
+		return false;
+    }
+    
+    if (!gfn_Confirm(MSGW00030)) { // 정말로 삭제 하시겠습니까?
+        return false;
+	}
+	
+	ds_ioEduPassModify.ClearData();
+	
+	for (var i=0; i<ds_ioEduPass.GetRowCount(); i++) {
+		if (ds_ioEduPass.GetColumn(i, "SEL") == "1") { // 선택
+			ds_ioEduPassModify.AddRow();
+			ds_ioEduPassModify.CopyRow(ds_ioEduPassModify.row, ds_ioEduPass, i);
+		}
+    }
+
+	lfn_DelEduPassInfo(); // 교육참석자정보 삭제
+}
+
+
+/*
+ * 기능 : 교육참석자정보 삭제
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_DelEduPassInfo() {
+	tit_clearActionInfo();
+	
+	if (ds_ioEduPassModify.GetCount() > 1) {
+		tit_AddMultiActionInfo("cust:deleteCust1090EduPassInfo", "", 0, "", "N");
+	} else {
+		tit_addSingleActionInfo("cust:deleteCust1090EduPassInfo", "", 0, "", "N");
+	}
+	// 소방안전관리자 or 소방안전관리보조자 유효기간 업데이트 2014.12.19 // 위험물안전관리자, 운송자 추가 2021.01.23
+	if ((left(edCourse.Text, 1) == "1") || (left(edCourse.Text, 1) == "2") || (left(edCourse.Text, 1) == "3") || (left(edCourse.Text, 1) == "8")) {
+		tit_addSingleActionInfo("cust:executeCust0010EduExpireDateUpdate", "", 0, "");	
+	}
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iCustData=ds_ioEduPassModify:A" // inDs		
+        ,""	// outDs
+        ,"PSABUN=" + gds_oUserInfo.GetColumn(0, "PSABUN") //-- 작성자사번 // args 
+         + " SCMGNO=" + replace(ltrim(replace(ds_oCustomerInfo.GetColumn(0, "CMGNO"),"0"," "))," ","0")
+         + " FSTARTDATE=" + quote(left(calStartTime.Value, 8))	// 선임일자
+         + " FNM=" + quote(edCustNm.Text)	// 선임자명
+         + " FPERSONKEY=" + quote(medPersonkey.Value)	// 개인식별번호
+        ,"lfn_AfterDelEduPassInfo"
+        ,false
+        ,false
+		,true
+    );
+}
+
+/*
+ * 기능 : 교육참석자정보 삭제 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterDelEduPassInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+	lfn_Search(); // 조회
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+	Close();
+}
+
+/*
+ * 기능 : 실무교육일정검색 팝업을 호출한다.
+ */
+function btnSearchEduSchedule_OnClick(obj) {
+	var arrEduSchedule = lfn_EduScheduleListPopup(gds_oUserInfo.GetColumn(0, "PDEPTCD"), "", "");
+    if (length(arrEduSchedule) > 0) {
+        medEduDate.Value = arrEduSchedule[0]; // 교육일자
+        tmEduStartTime.Value = arrEduSchedule[1]; // 교육시작시간
+        tmEduEndTime.Value = arrEduSchedule[2]; // 교육종료시간
+        edEduGubunNm.Text = ds_oEduGubun.GetColumn(ds_oEduGubun.FindRow("CD", arrEduSchedule[3]), "DATA"); // 교육구분
+        edEduYear.Text = arrEduSchedule[4]; // 교육년도
+        edEduStudentNm.Text = ds_oEduStudent.GetColumn(ds_oEduStudent.FindRow("CD", arrEduSchedule[5]), "DATA"); // 교육대상
+        edCourseNm.Text = arrEduSchedule[6]; // 대표직능
+        edEduSubjectNm.Text = ds_oEduSubject.GetColumn(ds_oEduSubject.FindRow("CD", arrEduSchedule[7]), "DATA"); // 교육과정
+        edEsmgno.Text = arrEduSchedule[8]; // 실무교육과정일정관리번호
+        edCourse.Text = arrEduSchedule[9]; // 대표직능코드
+        edCourse_OnChanged(obj,edCourse.Text);
+        
+        lfn_ClearData(); // 데이터 초기화
+		lfn_InitValue(); // 상태 설정 후 데이터 초기화
+        for (var i=0; i<10; i++) 
+        idle(); // 화면 로딩을 위한 delay용
+        lfn_Search(); // 조회
+    }
+}
+
+/*
+ * 기능 : 선임자 정보변경
+ */
+function btnUpdateManagerInfo_OnClick(obj) {
+	if (gfn_IsNull(edEsmgno.Text)) {
+		gfn_Alert("실무교육일정 선택 후 작업하세요."); // 실무교육일정 선택 후 작업하세요.
+		return false;
+	}
+	
+	if (gfn_IsNull(edFmmgno.Text)) {
+		gfn_Alert("선임자정보 조회 후 작업하세요."); // 선임자정보 조회 후 작업하세요.
+		return false;
+	}
+	
+	ls_SearchJibuCd = cbxJibu.Value;
+	var arrFireManager = lfn_FireManagerPopup(edFmmgno.Text, edCmgno.Text, edCourseCd.Text);
+	// 테스트용으로 하드코딩 (방화관리자)
+	// var arrFireManager = Array();
+	// arrFireManager[0] = "182366"; // 선임자관리번호
+	// arrFireManager[1] = "1"; // 선임자이력순번
+	
+	if (length(arrFireManager) > 0) {
+		ds_oBasicInfo.ClearData(); // 데이타셋 초기화
+		lfn_SearchBasicInfo(arrFireManager[0], arrFireManager[1]); // 고객기본정보 조회
+		// 지부/고객번호 가져와서 선임자, 대상물 정보 검색
+		if (ds_oBasicInfo.GetRowCount() > 0) {
+			cbxJibu.Value = ds_oBasicInfo.GetColumn(0, "CGTMGNO");
+			medCustNo.Value = ds_oBasicInfo.GetColumn(0, "CNO");					
+			//lfn_SearchFireManagerInfo(); // 선임자정보 조회
+			//lfn_SearchBuildingInfo(); // 대상물정보 조회
+			//lfn_SearchCustomerInfo(); // 고객정보 조회  !!!!!!!!!!!!!!!!!!!!!!			
+			lfn_SearchFireManager_Building_Customer_Info();	// 선임자정보 조회, 대상물정보 조회, 고객정보 조회			
+			
+			if (ds_oFireManagerInfo.GetRowCount() > 0) {
+				if (left(edCourseCd.Text, 1) < "9") {
+					if (left(edCourseCd.Text, 1) <> left(edCourse.Text, 1)) {
+						gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+						lfn_ClearData(); // 데이터 초기화
+						lfn_InitValue(); // 상태 설정 후 데이터 초기화
+						
+						if (!gfn_IsNull(ls_SearchJibuCd)) {
+							cbxJibu.Value = ls_SearchJibuCd;
+						}
+					} else {
+						lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+						if ((edEduYear.Text < left(getDate(),4)) ||
+						    (edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+							mb_IsNewData = true; // 저장버튼이 클릭 설정
+							lbStatus.Text = "입력모드";
+							btnUpdateManagerInfo.Enable = true;
+							medLBarCode.Enable = true;
+							// 저장시 메시지박스 없앰(2010.04.05)				
+							if (!gfn_Confirm(MSGW00020)) { // 추가 저장 하시겠습니까?
+								return false;
+							}							lfn_Save();		// 2010.08.25 추가 선임자정보변경 후 바로 저장할 수 있도록					
+						} else {
+							gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+									 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+							lfn_ClearData(); // 데이터 초기화
+							lfn_InitValue(); // 상태 설정 후 데이터 초기화
+							
+							if (!gfn_IsNull(ls_SearchJibuCd)) {
+								cbxJibu.Value = ls_SearchJibuCd;
+							}
+						}
+					}
+				} else { // 교육희망자 이면
+					if (edCourseCd.Text = "91") {	// 방화관리자 교육희망자이면
+						if (left(edCourse.Text, 1) <> "1") {
+							gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+							lfn_ClearData(); // 데이터 초기화
+							lfn_InitValue(); // 상태 설정 후 데이터 초기화
+							
+							if (!gfn_IsNull(ls_SearchJibuCd)) {
+								cbxJibu.Value = ls_SearchJibuCd;
+							}					
+						} else {
+							lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+							if ((edEduYear.Text < left(getDate(),4)) ||
+								(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+								mb_IsNewData = true; // 저장버튼이 클릭 설정
+								lbStatus.Text = "입력모드";
+								btnUpdateManagerInfo.Enable = true;
+								medLBarCode.Enable = true;
+								
+								if (!gfn_Confirm(MSGW00020)) { // 추가 저장 하시겠습니까?
+									return false;
+								}								lfn_Save();		// 2010.08.25 추가 선임자정보변경 후 바로 저장할 수 있도록	
+							} else {
+								gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+										 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+								lfn_ClearData(); // 데이터 초기화
+								lfn_InitValue(); // 상태 설정 후 데이터 초기화
+								
+								if (!gfn_IsNull(ls_SearchJibuCd)) {
+									cbxJibu.Value = ls_SearchJibuCd;
+								}
+							}
+						}
+					} else if (edCourseCd.Text = "92") {
+						if (left(edCourse.Text, 1) <> "3") {
+							gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+							lfn_ClearData(); // 데이터 초기화
+							lfn_InitValue(); // 상태 설정 후 데이터 초기화
+							
+							if (!gfn_IsNull(ls_SearchJibuCd)) {
+								cbxJibu.Value = ls_SearchJibuCd;
+							}					
+						} else {
+							lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+							if ((edEduYear.Text < left(getDate(),4)) ||
+								(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+								mb_IsNewData = true; // 저장버튼이 클릭 설정
+								lbStatus.Text = "입력모드";
+								btnUpdateManagerInfo.Enable = true;
+								medLBarCode.Enable = true;
+								
+								if (!gfn_Confirm(MSGW00020)) { // 추가 저장 하시겠습니까?
+										return false;
+								}								lfn_Save();		// 2010.08.25 추가 선임자정보변경 후 바로 저장할 수 있도록	
+							} else {
+								gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+										 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+								lfn_ClearData(); // 데이터 초기화
+								lfn_InitValue(); // 상태 설정 후 데이터 초기화
+								
+								if (!gfn_IsNull(ls_SearchJibuCd)) {
+									cbxJibu.Value = ls_SearchJibuCd;
+								}
+							}
+						}
+					} else if (edCourseCd.Text = "93") {
+						if (left(edCourse.Text, 1) <> "5") {
+							gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+							lfn_ClearData(); // 데이터 초기화
+							lfn_InitValue(); // 상태 설정 후 데이터 초기화
+							
+							if (!gfn_IsNull(ls_SearchJibuCd)) {
+								cbxJibu.Value = ls_SearchJibuCd;
+							}					
+						} else {
+							lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+							if ((edEduYear.Text < left(getDate(),4)) ||
+								(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+								mb_IsNewData = true; // 저장버튼이 클릭 설정
+								lbStatus.Text = "입력모드";
+								btnUpdateManagerInfo.Enable = true;
+								medLBarCode.Enable = true;
+								
+								if (!gfn_Confirm(MSGW00020)) { // 추가 저장 하시겠습니까?
+										return false;
+								}								lfn_Save();		// 2010.08.25 추가 선임자정보변경 후 바로 저장할 수 있도록	
+							} else {
+								gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+										 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+								lfn_ClearData(); // 데이터 초기화
+								lfn_InitValue(); // 상태 설정 후 데이터 초기화
+								
+								if (!gfn_IsNull(ls_SearchJibuCd)) {
+									cbxJibu.Value = ls_SearchJibuCd;
+								}
+							}
+						}
+					}
+				}
+				
+			} else {
+				gfn_Alert("해당 선임자 정보가 존재하지 않습니다."); // 메시지 확인필요
+				lfn_ClearData(); // 데이터 초기화
+				lfn_InitValue(); // 상태 설정 후 데이터 초기화
+				
+				if (!gfn_IsNull(ls_SearchJibuCd)) {
+					cbxJibu.Value = ls_SearchJibuCd;
+				}
+			}
+		} else {
+			gfn_Alert("해당 고객정보가 존재하지 않습니다.");
+			lfn_ClearData(); // 데이터 초기화
+			lfn_InitValue(); // 상태 설정 후 데이터 초기화
+			
+			if (!gfn_IsNull(ls_SearchJibuCd)) {
+				cbxJibu.Value = ls_SearchJibuCd;
+			}
+		}
+	}
+}
+
+/*
+ * 기능 : Edit에 Focus가 있는 상태에서 키보드의 Key가 눌러졌을 때
+ */
+function medCustNo_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam) {
+	if (nChar == 13) {
+		if (gfn_IsNull(edEsmgno.Text)) {
+			gfn_Alert("실무교육일정 선택 후 작업하세요."); // 실무교육일정 선택 후 작업하세요.
+			return false;
+		}
+		
+		// if (!gfn_Confirm("신규 고객교육정보를 등록 하시겠습니까?\n입력완료 후 저장 버튼을 누르세요.")) {
+			// return false;
+		// }
+	    
+	    if (length(medCustNo.Value) < 6) {
+            medCustNo.Value = LPad(medCustNo.Value, "0", 6);
+        }        
+        
+        ls_SearchJibuCd = cbxJibu.Value;        
+        // lfn_SearchFireManagerInfo(); // 선임자정보 조회
+		//lfn_SearchBuildingInfo(); // 대상물정보 조회
+		//lfn_SearchCustomerInfo(); // 고객정보 조회     !!!!!!!!!!!!!!!!!!!!!!!!			
+		lfn_SearchFireManager_Building_Customer_Info();	// 선임자정보 조회, 대상물정보 조회, 고객정보 조회
+		
+		if (ds_oFireManagerInfo.GetRowCount() > 0) {
+			if (left(edCourseCd.Text, 1) < '9') { // 교육희망자가 아니면
+				if (left(edCourseCd.Text, 1) <> left(edCourse.Text, 1)) {
+					gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+					lfn_ClearData(); // 데이터 초기화
+					lfn_InitValue(); // 상태 설정 후 데이터 초기화
+					
+					if (!gfn_IsNull(ls_SearchJibuCd)) {
+						cbxJibu.Value = ls_SearchJibuCd;
+					}
+				} else {
+					lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+					if ((edEduYear.Text < left(getDate(),4)) ||
+						(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+						mb_IsNewData = true; // 저장버튼이 클릭 설정
+						lbStatus.Text = "입력모드";
+						btnUpdateManagerInfo.Enable = true;
+						medLBarCode.Enable = true;
+					} else {
+						gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+								 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+						lfn_ClearData(); // 데이터 초기화
+						lfn_InitValue(); // 상태 설정 후 데이터 초기화
+						
+						if (!gfn_IsNull(ls_SearchJibuCd)) {
+							cbxJibu.Value = ls_SearchJibuCd;
+						}
+					}
+				}
+			} else { // 교육희망자 이면
+				if (edCourseCd.Text = "91") {	// 방화관리자 교육희망자이면
+					if (left(edCourse.Text, 1) <> "1") {
+						gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+						lfn_ClearData(); // 데이터 초기화
+						lfn_InitValue(); // 상태 설정 후 데이터 초기화
+						
+						if (!gfn_IsNull(ls_SearchJibuCd)) {
+							cbxJibu.Value = ls_SearchJibuCd;
+						}					
+					} else {
+						lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+						if ((edEduYear.Text < left(getDate(),4)) ||
+							(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+							mb_IsNewData = true; // 저장버튼이 클릭 설정
+							lbStatus.Text = "입력모드";
+							btnUpdateManagerInfo.Enable = true;
+							medLBarCode.Enable = true;
+						} else {
+							gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+									 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+							lfn_ClearData(); // 데이터 초기화
+							lfn_InitValue(); // 상태 설정 후 데이터 초기화
+							
+							if (!gfn_IsNull(ls_SearchJibuCd)) {
+								cbxJibu.Value = ls_SearchJibuCd;
+							}
+						}
+					}
+				} else if (edCourseCd.Text = "92") {
+					if (left(edCourse.Text, 1) <> "3") {
+						gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+						lfn_ClearData(); // 데이터 초기화
+						lfn_InitValue(); // 상태 설정 후 데이터 초기화
+						
+						if (!gfn_IsNull(ls_SearchJibuCd)) {
+							cbxJibu.Value = ls_SearchJibuCd;
+						}					
+					} else {
+						lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+						if ((edEduYear.Text < left(getDate(),4)) ||
+							(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+							mb_IsNewData = true; // 저장버튼이 클릭 설정
+							lbStatus.Text = "입력모드";
+							btnUpdateManagerInfo.Enable = true;
+							medLBarCode.Enable = true;
+						} else {
+							gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+									 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+							lfn_ClearData(); // 데이터 초기화
+							lfn_InitValue(); // 상태 설정 후 데이터 초기화
+							
+							if (!gfn_IsNull(ls_SearchJibuCd)) {
+								cbxJibu.Value = ls_SearchJibuCd;
+							}
+						}
+					}
+				} else if (edCourseCd.Text = "93") {
+					if (left(edCourse.Text, 1) <> "5") {
+						gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+						lfn_ClearData(); // 데이터 초기화
+						lfn_InitValue(); // 상태 설정 후 데이터 초기화
+						
+						if (!gfn_IsNull(ls_SearchJibuCd)) {
+							cbxJibu.Value = ls_SearchJibuCd;
+						}					
+					} else {
+						lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+						if ((edEduYear.Text < left(getDate(),4)) ||
+							(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+							mb_IsNewData = true; // 저장버튼이 클릭 설정
+							lbStatus.Text = "입력모드";
+							btnUpdateManagerInfo.Enable = true;
+							medLBarCode.Enable = true;
+						} else {
+							gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+									 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+							lfn_ClearData(); // 데이터 초기화
+							lfn_InitValue(); // 상태 설정 후 데이터 초기화
+							
+							if (!gfn_IsNull(ls_SearchJibuCd)) {
+								cbxJibu.Value = ls_SearchJibuCd;
+							}
+						}
+					}
+				}
+				
+			}
+		} else {
+			gfn_Alert("해당 선임자 정보가 존재하지 않습니다."); // 메시지 확인필요
+			lfn_ClearData(); // 데이터 초기화
+			lfn_InitValue(); // 상태 설정 후 데이터 초기화
+			
+			if (!gfn_IsNull(ls_SearchJibuCd)) {
+				cbxJibu.Value = ls_SearchJibuCd;
+			}
+		}		
+    }
+}
+
+/////////////////////////////////
+
+/*
+ * 기능 : 선임자정보 조회!!!!!!!!!!!!!!!!!!!!!!!
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchFireManager_Building_Customer_Info() {
+	ds_oFireManagerInfo.ClearData(); // 데이타셋 초기화
+	ds_oBuildingInfo.ClearData(); // 데이타셋 초기화
+	ds_oCustomerInfo.ClearData(); // 데이타셋 초기화
+			
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("cust:searchCust1090FireManagerInfo_Onetouch", false);	//  기능 : 선임자정보 조회
+	tit_addSearchActionInfo("cust:searchCust1090BuildingInfo_Onetouch", false);	    // 기능 : 대상물정보정보 조회
+	tit_addSearchActionInfo("cust:searchCust1090CustomerInfo_Onetouch", false);	    // 기능 : 고객정보 조회
+	
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oFireManagerInfo=ds_oFireManagerInfo_Onetouch ds_oBuildingInfo=ds_oBuildingInfo_Onetouch ds_oCustomerInfo=ds_oCustomerInfo_Onetouch" // outDs
+		,"GTMGNO=" + quote(cbxJibu.Value) //-- 지부
+			+" CUSTNO=" + quote(medCustNo.Value) //-- 고객번호
+			+" EDUYEAR=" + quote(edEduYear.Text) //-- 교육년도 // args 		 
+			+" EDCOURSE=" + quote(left(edCourse.Text, 1)) //-- 직능 	 
+		,"lfn_AfterSearchFireManager_Building_Customer_Info"
+		,false
+		,""
+		,true
+	);
+
+}
+
+/*
+ * 기능 : 선임자정보 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchFireManager_Building_Customer_Info(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    if (ds_oFireManagerInfo.GetRowCount() > 0) {   // 선임자 조회
+		if (edResidentNoError.Text == "0") {
+			lbResidentNoError.Text = "정상";
+		} else {
+			lbResidentNoError.Text = "오류";
+		}
+    }
+    
+    if (ds_oBuildingInfo.GetRowCount() > 0) {      // 대상물정보 조회
+		if (radAgGubun.Value = "0") {
+			edAgNm.Enable = true;
+			btnSearchAgency.Enable = true;
+		} else {
+			edAgNm.Enable = false;
+			edAgNm.Text = "";
+			btnSearchAgency.Enable = false;
+		}
+	}
+	    
+	    
+}
+
+/////////////////////////////////
+
+/*
+ * 기능 : 선임자정보 조회
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchFireManagerInfo() {
+	ds_oFireManagerInfo.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("cust:searchCust1090FireManagerInfo", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oFireManagerInfo=ds_oCustData" // outDs
+		,"GTMGNO=" + quote(cbxJibu.Value) //-- 지부
+			+" CUSTNO=" + quote(medCustNo.Value) //-- 고객번호 // args 		 
+		,"lfn_AfterSearchFireManagerInfo"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 선임자정보 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchFireManagerInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    if (ds_oFireManagerInfo.GetRowCount() > 0) {
+		if (edResidentNoError.Text == "0") {
+			lbResidentNoError.Text = "정상";
+		} else {
+			lbResidentNoError.Text = "오류";
+		}
+    }
+}
+
+/*
+ * 기능 : 대상물정보정보 조회
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchBuildingInfo() {
+	ds_oBuildingInfo.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("cust:searchCust1090BuildingInfo", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oBuildingInfo=ds_oCustData" // outDs
+		,"GTMGNO=" + quote(cbxJibu.Value) //-- 지부
+			+" CUSTNO=" + quote(medCustNo.Value) //-- 고객번호 // args 		 
+		,"lfn_AfterSearchBuildingInfo"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 대상물정보정보 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchBuildingInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    if (ds_oBuildingInfo.GetRowCount() > 0) {
+		if (radAgGubun.Value = "0") {
+			edAgNm.Enable = true;
+			btnSearchAgency.Enable = true;
+		} else {
+			edAgNm.Enable = false;
+			edAgNm.Text = "";
+			btnSearchAgency.Enable = false;
+		}
+	}
+}
+
+/*
+ * 기능 : 고객정보 조회
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchCustomerInfo() {
+	ds_oCustomerInfo.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("cust:searchCust1090CustomerInfo", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oCustomerInfo=ds_oCustData" // outDs
+		,"GTMGNO=" + quote(cbxJibu.Value) //-- 지부
+			+" CUSTNO=" + quote(medCustNo.Value) //-- 고객번호
+			+" EDUYEAR=" + quote(edEduYear.Text) //-- 고육년도 // args 		 
+		,"lfn_AfterSearchCustomerInfo"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 고객정보 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchCustomerInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/*
+ * 기능 : 데이타셋 Position이 변경된 후
+ */
+function ds_ioEduPass_OnRowPosChanged(obj,nOldRow,nRow) {
+	lfn_ClearData(); // 데이터 초기화
+	lfn_InitValue(); // 상태 설정 후 데이터 초기화
+	
+	mb_IsNewData = false; // 저장버튼이 클릭 초기화	
+	lbStatus.Text = "수정모드";
+	btnUpdateManagerInfo.Enable = false;
+	medLBarCode.Enable = false;
+	
+	medBarCode.Value = ds_ioEduPass.GetColumn(ds_ioEduPass.row, "CMGNO");
+	cbxJibu.Value = ds_ioEduPass.GetColumn(ds_ioEduPass.row, "CGTMGNO");
+	medCustNo.Value = ds_ioEduPass.GetColumn(ds_ioEduPass.row, "CNO");	
+	//lfn_SearchFireManagerInfo(); // 선임자정보 조회
+	//lfn_SearchBuildingInfo(); // 대상물정보 조회	
+	//lfn_SearchCustomerInfo(); // 고객정보 조회	
+	lfn_SearchFireManager_Building_Customer_Info();	// 선임자정보 조회, 대상물정보 조회, 고객정보 조회
+	
+	medLBarCodeCust.Value = "";      // 고객조회 수첩바코드 값 null
+	//medLBarCodeCust.Enable = false;  // 고객조회 수첩바코드 비활성화
+		
+	if (ds_ioEduPass.row == -1) cbxJibu.Index = 0; // 검색결과 없을때
+	
+}
+
+/*
+ * 기능 : 주민등록번호 오류
+ */
+function medResidentNo_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam) {
+	if (nChar == 13) {
+        //lfn_CheckRegiNo(medResidentNo.Value); // 주민등록번호 오류체크 
+	}
+}
+
+/*
+ * 기능 : 주민등록번호 오류
+ */
+function medResidentNo_OnChanged(obj,strText) {
+	//lfn_CheckRegiNo(medResidentNo.Value); // 주민등록번호 오류체크 
+}
+
+function lfn_CheckRegiNo(sRegiNo) {
+	var lb_ValidRedidentNoYn = gfn_CheckResidentNo(sRegiNo); // 주민번호체계 검사
+	if (lb_ValidRedidentNoYn) {
+		edResidentNoError.Text = "0";
+	} else {
+		edResidentNoError.Text = "1";
+	}
+	
+	if (edResidentNoError.Text == "0") {
+		lbResidentNoError.Text = "정상";
+	} else {
+		lbResidentNoError.Text = "오류";
+	}
+}
+
+/*
+ * 기능 : 이메일 선택 (직접입력)
+ */
+function cbxEmailDomain_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+	if (strText == "직접입력") {
+        edEmailDomain.Enable = true;
+        edEmailDomain.Value = "";
+        edEmailDomain.SetFocus();
+    } else {
+		edEmailDomain.Enable = false;
+        edEmailDomain.Value = cbxEmailDomain.Value;
+    }
+}
+
+/*
+ * 기능 : 업무대행구분 선택
+ */
+function radAgGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+	if (strCode = "0") {
+		edAgNm.Enable = true;
+		btnSearchAgency.Enable = true;
+		ds_oBuildingInfo.SetColumn(0, "AGMGNO", ds_oBuildingInfo.GetOrgColumn(0, "AGMGNO")); // 업무대행업체관리번호
+		ds_oBuildingInfo.SetColumn(0, "AGNM", ds_oBuildingInfo.GetOrgColumn(0, "AGNM")); // 업무대행업체명
+	} else {
+		edAgNm.Enable = false;
+		edAgNm.Text = "";
+		btnSearchAgency.Enable = false;
+		ds_oBuildingInfo.SetColumn(0, "AGMGNO", ""); // 업무대행업체관리번호
+	}
+}
+
+/*
+ * 기능 : 지부 선택
+ */
+function cbxJibu_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+	lfn_ClearData(); // 데이터 초기화
+	medBarCode.Value = "";
+	medCustNo.Value = "";
+	medCustNo.SetFocus();
+}
+
+/*
+ * 기능 : 고객바코드
+ */
+function medBarCode_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam) {
+	if (nChar == 13) {
+		if (gfn_IsNull(edEsmgno.Text)) {
+			gfn_Alert("실무교육일정 선택 후 작업하세요."); // 실무교육일정 선택 후 작업하세요.
+			return false;
+		}
+	
+		if (length(medBarCode.Value) < 13) {
+            medBarCode.Value = LPad(medBarCode.Value, "0", 13);
+        }
+		
+		ls_SearchJibuCd = cbxJibu.Value;
+		lfn_SearchCBarCodeInfo(); // 고객바코드 조회
+	}
+}
+
+/*
+ * 기능 : 고객바코드 조회
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchCBarCodeInfo() {
+	ds_oCBarCodeInfo.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("cust:searchCust1090CBarCodeInfo", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oCBarCodeInfo=ds_oCustData" // outDs
+		,"CMGNO=" + quote(medBarCode.Value) //-- 고객바코드 // args 		 
+		,"lfn_AfterSearchCBarCodeInfo"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 고객바코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchCBarCodeInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+ 
+    if (ds_oCBarCodeInfo.GetRowCount() > 0) {
+		cbxJibu.Value = ds_oCBarCodeInfo.GetColumn(0, "CGTMGNO");
+		medCustNo.Value = ds_oCBarCodeInfo.GetColumn(0, "CNO");		
+		//lfn_SearchFireManagerInfo(); // 선임자정보 조회
+		//lfn_SearchBuildingInfo(); // 대상물정보 조회
+		//lfn_SearchCustomerInfo(); // 고객정보 조회  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!			
+		lfn_SearchFireManager_Building_Customer_Info();	// 선임자정보 조회, 대상물정보 조회, 고객정보 조회
+		
+		if (ds_oFireManagerInfo.GetRowCount() > 0) {
+			if (left(edCourseCd.Text, 1) < "9") {		
+				if (left(edCourseCd.Text, 1) <> left(edCourse.Text, 1)) {
+					gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+					lfn_ClearData(); // 데이터 초기화
+					lfn_InitValue(); // 상태 설정 후 데이터 초기화
+				} else {
+					lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+					if ((edEduYear.Text < left(getDate(),4)) ||
+						(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+						mb_IsNewData = true; // 저장버튼이 클릭 설정
+						lbStatus.Text = "입력모드";
+						medLBarCode.Enable = true;
+						btnUpdateManagerInfo.Enable = true;
+					} else {
+						gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+								 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+						lfn_ClearData(); // 데이터 초기화
+						lfn_InitValue(); // 상태 설정 후 데이터 초기화
+					}
+				}
+			} else { // 교육희망자 이면
+				if (edCourseCd.Text = "91") {	// 방화관리자 교육희망자이면
+					if (left(edCourse.Text, 1) <> "1") {
+						gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+						lfn_ClearData(); // 데이터 초기화
+						lfn_InitValue(); // 상태 설정 후 데이터 초기화
+					} else {
+						lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+						if ((edEduYear.Text < left(getDate(),4)) ||
+							(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+							mb_IsNewData = true; // 저장버튼이 클릭 설정
+							lbStatus.Text = "입력모드";
+							btnUpdateManagerInfo.Enable = true;
+							medLBarCode.Enable = true;
+						} else {
+							gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+									 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+							lfn_ClearData(); // 데이터 초기화
+							lfn_InitValue(); // 상태 설정 후 데이터 초기화
+						}
+					}
+				} else if (edCourseCd.Text = "92") {
+					if (left(edCourse.Text, 1) <> "3") {
+						gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+						lfn_ClearData(); // 데이터 초기화
+						lfn_InitValue(); // 상태 설정 후 데이터 초기화
+					} else {
+						lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+						if ((edEduYear.Text < left(getDate(),4)) ||
+							(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+							mb_IsNewData = true; // 저장버튼이 클릭 설정
+							lbStatus.Text = "입력모드";
+							btnUpdateManagerInfo.Enable = true;
+							medLBarCode.Enable = true;
+						} else {
+							gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+									 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+							lfn_ClearData(); // 데이터 초기화
+							lfn_InitValue(); // 상태 설정 후 데이터 초기화
+						}
+					}
+				} else if (edCourseCd.Text = "93") {
+					if (left(edCourse.Text, 1) <> "5") {
+						gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+						lfn_ClearData(); // 데이터 초기화
+						lfn_InitValue(); // 상태 설정 후 데이터 초기화
+					} else {
+						lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+						if ((edEduYear.Text < left(getDate(),4)) ||
+							(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+							mb_IsNewData = true; // 저장버튼이 클릭 설정
+							lbStatus.Text = "입력모드";
+							btnUpdateManagerInfo.Enable = true;
+							medLBarCode.Enable = true;
+						} else {
+							gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+									 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+							lfn_ClearData(); // 데이터 초기화
+							lfn_InitValue(); // 상태 설정 후 데이터 초기화
+						}
+					}
+				}
+			}
+		} else {
+			gfn_Alert("해당 선임자 정보가 존재하지 않습니다."); // 메시지 확인필요
+			lfn_ClearData(); // 데이터 초기화
+			lfn_InitValue(); // 상태 설정 후 데이터 초기화
+			
+			if (!gfn_IsNull(ls_SearchJibuCd)) {
+				cbxJibu.Value = ls_SearchJibuCd; 
+			}
+		}
+	} else {
+		gfn_Alert("해당 고객 정보가 존재하지 않습니다.");
+		lfn_ClearData(); // 데이터 초기화
+		lfn_InitValue(); // 상태 설정 후 데이터 초기화
+		
+		if (!gfn_IsNull(ls_SearchJibuCd)) {
+			cbxJibu.Value = ls_SearchJibuCd;
+		}
+	}
+}
+
+/*
+ * 기능 : 수첩바코드
+ */
+function medLBarCode_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam) {
+	if (nChar == 13) {
+		if (gfn_IsNull(edEsmgno.Text)) {
+			gfn_Alert("실무교육일정 선택 후 작업하세요."); // 실무교육일정 선택 후 작업하세요.
+			return false;
+		}
+		
+		if (gfn_IsNull(edFmmgno.Text) && gfn_IsNull(edCmgno.Text)) {
+			gfn_Alert("참석자 정보 조회 후 작업하세요."); // 참석자 정보 조회 후 작업하세요.
+			return false;
+		}
+		
+		ls_SearchJibuCd = cbxJibu.Value;
+		lfn_SearchLBarCodeInfo(); // 수첩바코드 조회
+	}
+}
+
+/*
+ * 기능 : 수첩바코드 조회
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchLBarCodeInfo() {
+	ds_oLBarCodeInfo.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("cust:searchCust1090LBarCodeInfo", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oLBarCodeInfo=ds_oCustData" // outDs
+		,"LBARCODE=" + quote(medLBarCode.Value) //-- 수첩바코드 // args 		 
+		,"lfn_AfterSearchLBarCodeInfo"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 수첩바코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchLBarCodeInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    if (ds_oLBarCodeInfo.GetRowCount() > 0) {
+		var ls_fmnm = ds_oFireManagerInfo.GetColumn(0, "FMNM"); // 선임자 이름
+		var ls_fmpersonkey = ds_oFireManagerInfo.GetColumn(0, "FMPERSONKEY"); // 선임자 개인식별번호
+		var ls_lpersonnm = ds_oLBarCodeInfo.GetColumn(0, "LPERSONNM"); // 수첩 이름
+		var ls_lpersonkey = ds_oLBarCodeInfo.GetColumn(0, "LPERSONKEY"); // 수첩 개인식별번호
+		
+		if (ls_fmnm <> ls_lpersonnm || ls_fmpersonkey <> ls_lpersonkey) {
+			var arrFireManager = lfn_FireManagerPopup(edFmmgno.Text, edCmgno.Text, edCourseCd.Text); // 실무교육과정일정관리번호, 선임자관리번호
+			// 테스트용으로 하드코딩 (방화관리자)
+			// var arrFireManager = Array();
+			// arrFireManager[0] = "182366"; // 선임자관리번호
+			// arrFireManager[1] = "1"; // 선임자이력순번
+			
+			if (length(arrFireManager) > 0) {
+				ds_oBasicInfo.ClearData(); // 데이타셋 초기화
+				lfn_SearchBasicInfo(arrFireManager[0], arrFireManager[1]); // 고객기본정보 조회
+				// 지부/고객번호 가져와서 선임자, 대상물 정보 검색
+				if (ds_oBasicInfo.GetRowCount() > 0) {
+					cbxJibu.Value = ds_oBasicInfo.GetColumn(0, "CGTMGNO");
+					medCustNo.Value = ds_oBasicInfo.GetColumn(0, "CNO");					
+					//lfn_SearchFireManagerInfo(); // 선임자정보 조회
+					//lfn_SearchBuildingInfo(); // 대상물정보 조회
+					//lfn_SearchCustomerInfo(); // 고객정보 조회									
+					lfn_SearchFireManager_Building_Customer_Info();	// 선임자정보 조회, 대상물정보 조회, 고객정보 조회
+					
+					if (ds_oFireManagerInfo.GetRowCount() > 0) {
+						if (left(edCourse.Text, 1) < "9") {
+							if (left(edCourseCd.Text, 1) <> left(edCourse.Text, 1)) {
+								gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+								lfn_ClearData(); // 데이터 초기화
+								lfn_InitValue(); // 상태 설정 후 데이터 초기화
+							} else {
+								lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+								if ((edEduYear.Text < left(getDate(),4)) ||
+									(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+									mb_IsNewData = true; // 저장버튼이 클릭 설정
+									lbStatus.Text = "입력모드";
+									medLBarCode.Enable = true;
+									btnUpdateManagerInfo.Enable = true;
+								} else {
+									gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+											 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+									lfn_ClearData(); // 데이터 초기화
+									lfn_InitValue(); // 상태 설정 후 데이터 초기화
+								}	
+							}
+						} else { // 교육희망자 이면
+							if (edCourseCd.Text = "91") {	// 방화관리자 교육희망자이면
+								if (left(edCourse.Text, 1) <> "1") {
+									gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+									lfn_ClearData(); // 데이터 초기화
+									lfn_InitValue(); // 상태 설정 후 데이터 초기화
+								} else {
+									lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+									if ((edEduYear.Text < left(getDate(),4)) ||
+										(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+										mb_IsNewData = true; // 저장버튼이 클릭 설정
+										lbStatus.Text = "입력모드";
+										btnUpdateManagerInfo.Enable = true;
+										medLBarCode.Enable = true;
+									} else {
+										gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+												 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+										lfn_ClearData(); // 데이터 초기화
+										lfn_InitValue(); // 상태 설정 후 데이터 초기화
+									}	
+								}
+							} else if (edCourseCd.Text = "92") {
+								if (left(edCourse.Text, 1) <> "3") {
+									gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+									lfn_ClearData(); // 데이터 초기화
+									lfn_InitValue(); // 상태 설정 후 데이터 초기화
+								} else {
+									lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+									if ((edEduYear.Text < left(getDate(),4)) ||
+										(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+										mb_IsNewData = true; // 저장버튼이 클릭 설정
+										lbStatus.Text = "입력모드";
+										btnUpdateManagerInfo.Enable = true;
+										medLBarCode.Enable = true;
+									} else {
+										gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+												 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+										lfn_ClearData(); // 데이터 초기화
+										lfn_InitValue(); // 상태 설정 후 데이터 초기화
+									}	
+								}
+							} else if (edCourseCd.Text = "93") {
+								if (left(edCourse.Text, 1) <> "5") {
+									gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+									lfn_ClearData(); // 데이터 초기화
+									lfn_InitValue(); // 상태 설정 후 데이터 초기화
+								} else {
+									lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+									if ((edEduYear.Text < left(getDate(),4)) ||
+										(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+										mb_IsNewData = true; // 저장버튼이 클릭 설정
+										lbStatus.Text = "입력모드";
+										btnUpdateManagerInfo.Enable = true;
+										medLBarCode.Enable = true;
+									} else {
+										gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+												 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+										lfn_ClearData(); // 데이터 초기화
+										lfn_InitValue(); // 상태 설정 후 데이터 초기화
+									}	
+								}
+							}
+						}
+						
+					} else {
+						gfn_Alert("해당 선임자 정보가 존재하지 않습니다."); // 메시지 확인필요
+						lfn_ClearData(); // 데이터 초기화
+						lfn_InitValue(); // 상태 설정 후 데이터 초기화
+						
+						if (!gfn_IsNull(ls_SearchJibuCd)) {
+							cbxJibu.Value = ls_SearchJibuCd;
+						}
+					}
+				} else {
+					gfn_Alert("해당 고객정보가 존재하지 않습니다.");
+					lfn_ClearData(); // 데이터 초기화
+					lfn_InitValue(); // 상태 설정 후 데이터 초기화
+					
+					if (!gfn_IsNull(ls_SearchJibuCd)) {
+						cbxJibu.Value = ls_SearchJibuCd;
+					}
+				}
+			} else {
+				gfn_Alert("해당 선임자 정보가 존재하지 않습니다."); // 메시지 확인필요
+				lfn_ClearData(); // 데이터 초기화
+				lfn_InitValue(); // 상태 설정 후 데이터 초기화
+				
+				if (!gfn_IsNull(ls_SearchJibuCd)) {
+					cbxJibu.Value = ls_SearchJibuCd;
+				}
+			}
+		}
+    } else {
+		gfn_Alert("수첩바코드 정보가 존재하지 않습니다."); // 메시지 확인필요
+		lfn_ClearData(); // 데이터 초기화
+		lfn_InitValue(); // 상태 설정 후 데이터 초기화
+		
+		if (!gfn_IsNull(ls_SearchJibuCd)) {
+			cbxJibu.Value = ls_SearchJibuCd;
+		}
+    }
+}
+
+/*
+ * 기능 : 고객기본정보 조회
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchBasicInfo(sFmhmgno, sFmhseq) {
+	ds_oBasicInfo.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("cust:searchCust1090BasicInfo", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oBasicInfo=ds_oCustData" // outDs
+		,"CFMHMGNO=" + quote(sFmhmgno) //-- 선임자관리번호
+			+" CFMHSEQ=" + quote(sFmhseq) //-- 선임자이력순번 // args 		 
+		,"lfn_AfterSearchBasicInfo"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 고객기본정보 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchBasicInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/*
+ * 기능 : 고객정보검색 팝업을 호출
+ */
+function btnSearchCustMgno_OnClick(obj) {
+	if (gfn_IsNull(edEsmgno.Text)) {
+		gfn_Alert("실무교육일정 선택 후 작업하세요."); // 실무교육일정 선택 후 작업하세요.
+		return false;
+	}
+	
+	var arrCustUser = lfn_CustUserListPopup(cbxJibu.Value, medCustNo.Value, "", edCourse.Text);
+    if (length(arrCustUser) > 0) {
+        medBarCode.Value = arrCustUser[0]; // 고객바코드
+        cbxJibu.Value = arrCustUser[1]; // 지부
+        medCustNo.Text = arrCustUser[2]; // 고객번호        
+        
+        //lfn_SearchFireManagerInfo(); // 선임자정보 조회
+		//lfn_SearchBuildingInfo(); // 대상물정보 조회
+		//lfn_SearchCustomerInfo(); // 고객정보 조회         !!!!!!!!!!!!!!!!!!!!!		
+		lfn_SearchFireManager_Building_Customer_Info();	// 선임자정보 조회, 대상물정보 조회, 고객정보 조회	
+
+		if (ds_oFireManagerInfo.GetRowCount() > 0) {
+			if (left(edCourseCd.Text, 1) < "9") {  // 교육희망자가 아니면
+				if (left(edCourseCd.Text, 1) <> left(edCourse.Text, 1)) {
+					gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+					lfn_ClearData(); // 데이터 초기화
+					lfn_InitValue(); // 상태 설정 후 데이터 초기화
+				} else {
+					lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+					if ((edEduYear.Text < left(getDate(),4)) ||
+						(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+						mb_IsNewData = true; // 저장버튼이 클릭 설정
+						lbStatus.Text = "입력모드";
+						medLBarCode.Enable = true;
+						btnUpdateManagerInfo.Enable = true;
+					} else {
+						gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+								 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+						lfn_ClearData(); // 데이터 초기화
+						lfn_InitValue(); // 상태 설정 후 데이터 초기화
+					}
+				}
+			
+			} else { // 교육희망자 이면
+				if (edCourseCd.Text = "91") {	// 방화관리자 교육희망자이면
+					if (left(edCourse.Text, 1) <> "1") {
+						gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+						lfn_ClearData(); // 데이터 초기화
+						lfn_InitValue(); // 상태 설정 후 데이터 초기화
+					} else {
+						lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+						if ((edEduYear.Text < left(getDate(),4)) ||
+							(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+							mb_IsNewData = true; // 저장버튼이 클릭 설정
+							lbStatus.Text = "입력모드";
+							btnUpdateManagerInfo.Enable = true;
+							medLBarCode.Enable = true;
+						} else {
+							gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+									 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+							lfn_ClearData(); // 데이터 초기화
+							lfn_InitValue(); // 상태 설정 후 데이터 초기화
+						}
+					}
+				} else if (edCourseCd.Text = "92") {
+					if (left(edCourse.Text, 1) <> "3") {
+						gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+						lfn_ClearData(); // 데이터 초기화
+						lfn_InitValue(); // 상태 설정 후 데이터 초기화
+					} else {
+						lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+						if ((edEduYear.Text < left(getDate(),4)) ||
+							(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+							mb_IsNewData = true; // 저장버튼이 클릭 설정
+							lbStatus.Text = "입력모드";
+							btnUpdateManagerInfo.Enable = true;
+							medLBarCode.Enable = true;
+						} else {
+							gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+									 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+							lfn_ClearData(); // 데이터 초기화
+							lfn_InitValue(); // 상태 설정 후 데이터 초기화
+						}
+					}
+				} else if (edCourseCd.Text = "93") {
+					if (left(edCourse.Text, 1) <> "5") {
+						gfn_Alert("해당 대표직능 교육에만 참석할 수 있습니다."); // 메시지 확인필요
+						lfn_ClearData(); // 데이터 초기화
+						lfn_InitValue(); // 상태 설정 후 데이터 초기화
+					} else {
+						lfn_SearchEduJubsuInfo();	// 실무교육접수정보 있는지 체크
+						if ((edEduYear.Text < left(getDate(),4)) ||
+							(edEduYear.Text == left(getDate(),4) && ds_oEduJubsuInfo.GetRowCount() > 0)) {
+							mb_IsNewData = true; // 저장버튼이 클릭 설정
+							lbStatus.Text = "입력모드";
+							btnUpdateManagerInfo.Enable = true;
+							medLBarCode.Enable = true;
+						} else {
+							gfn_Alert("당해년도 실무교육 접수정보가 없습니다.\n\n"
+									 +"접수정보가 없으면 이수처리하실 수 없습니다."); 
+							lfn_ClearData(); // 데이터 초기화
+							lfn_InitValue(); // 상태 설정 후 데이터 초기화
+						}
+					}
+				}
+			}
+			
+		} else {
+			gfn_Alert("해당 선임자 정보가 존재하지 않습니다."); // 메시지 확인필요
+			lfn_ClearData(); // 데이터 초기화
+			lfn_InitValue(); // 상태 설정 후 데이터 초기화
+		}
+    }
+}
+
+/*
+ * 기능 : 고객정보검색 팝업을 호출
+ */
+function btnSearchAgency_OnClick(obj) {
+	if (gfn_IsNull(edEsmgno.Text)) {
+		gfn_Alert("실무교육일정 선택 후 작업하세요."); // 실무교육일정 선택 후 작업하세요.
+		return false;
+	}
+	
+	var arrAgency = lfn_AgencyPopup(edAgNm.Text);
+	// 테스트용으로 하드코딩
+	// var arrAgency = Array();
+	// arrAgency[0] = "42"; // 업무대행업체관리번호
+	// arrAgency[1] = "업체명2"; // 업무대행업체명
+    
+    if (length(arrAgency) > 0) {
+        ds_oBuildingInfo.SetColumn(0, "AGMGNO", arrAgency[0]); // 업무대행업체관리번호
+        edAgNm.Text = arrAgency[1]; // 업무대행업체명
+    }
+}
+
+/*
+*  소속지부, 타지부 관련 선택변경 
+*/
+function radJibuGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+    if (strCode == "S") { // 소속지부
+        cbxJibu.Enable = false;
+        radJibuGubun.BkColor = "";
+        if (ds_oJibu.FindRow("CD", gds_oUserInfo.GetColumn(0, "PDEPTCD")) <> -1) {
+            cbxJibu.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+        }
+        //lfn_SearchTrainingLatestOrder();
+	} else { // 타지부
+        cbxJibu.Enable = true;
+        radJibuGubun.BkColor = "red";
+	}
+}
+
+/*
+*  수첩바코드 조회 (고객)
+*/
+function medLBarCodeCust_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == 13) {
+        if (gfn_IsNull(edEsmgno.Text)) {
+			gfn_Alert("실무교육일정을 선택하십시오."); // 실무교육일정을 선택하십시오.
+			return false;
+		}
+		
+		if (gfn_IsNull(medLBarCodeCust.Value)) {
+			gfn_Alert("수첩바코드를 입력하십시오."); // 수첩바코드를 입력하십시오.
+			return false;
+		}
+	
+		if (length(medLBarCodeCust.Value) < 11) {
+            medLBarCodeCust.Value = LPad(medLBarCodeCust.Value, "0", 11);
+        }
+		
+        lfn_SearchLBarCodeInfoCust();
+	}
+}
+
+/*
+ * 기능 : 수첩바코드 조회 cust
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchLBarCodeInfoCust() {
+	ds_oLBarCodeInfo.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("cust:searchCust1090LBarCodeInfoCust", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioLBarCodeInfoCust=ds_oLBarCodeInfoCust" // outDs
+		,"LBARCODE=" + quote(medLBarCodeCust.Value) //-- 수첩바코드 
+	   + " CBXJUBU=" + quote(cbxJibu.Value) //-- 지부 
+	   + " EDCOURSE=" + quote(left(edCourse.Text, 1)) //-- 직능 
+		 // args 		 
+		,"lfn_AfterSearchLBarCodeInfoCust"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 수첩바코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchLBarCodeInfoCust(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    medBarCode.Text = ds_ioLBarCodeInfoCust.GetColumn(0, "CMGNO");  // 관리바코드 
+    medCustNo.Text = ds_ioLBarCodeInfoCust.GetColumn(0, "CNO");      // 고객번호
+
+    if (!gfn_isNull(medCustNo.Text)) {
+        lfn_SearchFireManager_Building_Customer_Info();	// 선임자정보 조회, 대상물정보 조회, 고객정보 조회        
+        
+    }
+
+}
+
+/*
+* 수첩바코드 포커스 잃었을 경우 
+*/
+function lfn_ComponentOnKillFocus(obj)
+{
+    if (!gfn_IsNull(medLBarCodeCust.Value)) {
+        if (gfn_IsNull(edEsmgno.Text)) {
+			gfn_Alert("실무교육일정을 선택하십시오."); // 실무교육일정을 선택하십시오.
+			medLBarCodeCust.Value = "";
+			return false;
+		}
+        
+        if (length(medLBarCodeCust.Value) < 11) {
+            medLBarCodeCust.Value = LPad(medLBarCodeCust.Value, "0", 11);
+        }
+        
+         lfn_SearchLBarCodeInfoCust();
+    }
+   
+}
+
+
+/*
+ * 기능 : 검색을 위한 대상물명 변환
+ * parameter : 대상물명
+ * return : 대상물명(BSEARCHNM)
+ */
+function lfn_ReplaceBnm(sBnm) {
+    var sBSEARCHNM = sBnm;
+    ds_oBnmCode.ClearData();
+    
+    tit_clearActionInfo();
+    tit_addCsvSearchActionInfo("cust:searchCust0010BnmReplaceCode", false);
+    // 서버 호출
+    tit_callService(
+        ""
+        , ""
+        , "" // inDs
+        , "ds_oBnmCode=ds_oBnmCode" // outDs
+        , ""
+        , ""
+        ,false
+        ,false
+        ,true
+    );
+    
+    for (i=0;i<ds_oBnmCode.GetCount();i++) {
+        sBSEARCHNM = Replace(sBSEARCHNM, ds_oBnmCode.GetColumn(i, "CCCDNM"), "");
+    }
+    
+    return sBSEARCHNM;
+}
+
+
+/*
+ * 기능 : 실무교육 접수내역이 있는지 조회
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchEduJubsuInfo() {
+
+	ds_oEduJubsuInfo.ClearData(); // 데이타셋 초기화
+			
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("cust:searchCust1090EduJubsuInfo_Onetouch", false);	    // 기능 : 실무교육접수 조회
+	
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oEduJubsuInfo=ds_oEduJubsuInfo" // outDs
+		,"CMGNO=" + quote(ds_oCustomerInfo.GetColumn(0, "CMGNO")) //-- 관리바코드
+			+" FMNM=" + quote(ds_oFireManagerInfo.GetColumn(0, "FMNM")) //-- 성명
+			+" ESYEAR=" + quote(edEduYear.Text) //-- 교육년도
+			+" ESMGNO=" + quote(edEsmgno.Text) //-- 교육일정관리번호
+		,"lfn_AfterSearchEduJubsuInfo"
+		,false
+		,false
+		,true
+	);
+}
+
+function lfn_AfterSearchEduJubsuInfo(nErrorCode, strErrorMsg) {
+    
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+	// 관리자와 교육운영과이면 실무교육접수여부와 상관없이 입력가능하도록 데이터셋 초기화
+//	if (gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "SM" || 
+//	    gds_oUserInfo.GetColumn(0, "PDEPTCD") == "0251") {
+	
+//	ds_oEduJubsuInfo.AddRow();
+//	ds_oEduJubsuInfo.SetColumn(0,"EJMGNO","1");
+//	}
+	
+}
+
+function btnToExcel_OnClick(obj)
+{
+	
+    if (ds_ioEduPass.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return false;
+    }
+    
+	// 개인정보 다운로드 사유 등록
+	var parValue = "sCode=1414";	// COMMON.PERSONALDOWNLOADH
+		parValue += " sRowCnt=" + ds_ioEduPass.GetRowCount();
+		parValue += " sTitle=" + quote(gdEduPass.UserData);
+	var ls_IsRemark = Dialog("COM::frmCOM2100PDownloadRemark.xml", parValue, "", "", "", -1, -1);	
+
+	if (ls_IsRemark == "" || ls_IsRemark == null || ls_IsRemark == "FAIL") {
+		return false;
+	}
+	lfn_Excel(obj);
+}
+
+function edCourse_OnChanged(obj,strText)
+{
+trace(strText);
+
+	if (strText == "30") {
+	
+		lbDanger.Visible = true;	// ※ 위험물안전관리자 업무대행자는 타대상도 교육승계로 처리됩니다.
+		
+	} else {
+	
+		lbDanger.Visible = false;
+	
+	}
+}
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_2000,dsc_0006]";	// 개인정보접속기록 시스템ID 
+}
+
+
+]]></Script>
+</Window>

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmsys0030MCommonCodeManagement" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="공통코드관리" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioCommonCode" OnRowPosChanged="ds_ioCommonCode_OnRowPosChanged">
+				<Contents>
+					<colinfo id="CCCD" size="30" summ="default" type="STRING"/>
+					<colinfo id="CCCDNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="CCGROUPCD" size="30" summ="default" type="STRING"/>
+					<colinfo id="CCORDERSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CCREMARK" size="1000" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="1" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="180" Height="124" Id="shpGubunBox" Left="4" LineColor="user15" Right="796" TabOrder="25" Top="56" Type="Rectangle" Width="792"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="17" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="300">
+			<Contents></Contents>
+		</Div>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_ioCommonCode" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="584" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="376" Id="gdCommonCode" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnCellClick="gdCommonCode_OnCellClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="796" RowHeight="20" Style="sty_Grid" TabOrder="16" TabStop="true" Top="208" UseDBuff="true" UsePopupMenu="true" UserData="공통코드목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="70"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="224"/>
+						<col width="86"/>
+						<col width="150"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="사용유무"/>
+						<cell align="center" col="1" display="text" text="그룹코드"/>
+						<cell align="center" col="2" display="text" text="공통코드"/>
+						<cell align="center" col="3" display="text" text="공통코드명"/>
+						<cell align="center" col="4" display="text" text="정렬순서"/>
+						<cell align="center" col="5" display="text" text="비고"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="USE_YN" display="checkbox" expr="iif(USE_YN&#32;=&#32;&apos;Y&apos;,&#32;&apos;1&apos;,&#32;&apos;0&apos;)"/>
+						<cell align="center" col="1" colid="CCGROUPCD" display="text"/>
+						<cell align="center" col="2" colid="CCCD" display="text"/>
+						<cell align="left" col="3" colid="CCCDNM" display="text"/>
+						<cell align="center" col="4" colid="CCORDERSEQ" display="number"/>
+						<cell align="left" col="5" colid="CCREMARK" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Checkbox FalseValue="N" Height="20" Id="chkUseYn" Left="100" OnKeyDown="gfn_EnterNextFocus" Style="sty_Checkbox" TabOrder="9" Text="사용유무" Top="60" TrueValue="Y" Width="88"></Checkbox>
+		<Static Align="Center" Height="20" Id="lbUseYn" Left="8" Style="sty_Label" TabOrder="18" Text="사용유무" Top="60" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edCommonCodeName" ImeMode="native" Left="500" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="12" Top="108" UserData="S:공통코드명" Width="292"></Edit>
+		<Static Align="Center" Height="20" Id="lbRemark" Left="8" Style="sty_Label" TabOrder="19" Text="비고" Top="156" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbCommonCodeName" Left="408" Style="sty_Label" TabOrder="20" Text="공통코드명" Top="108" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="722" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="15" Top="184" Transparent="TRUE" Width="74"></Button>
+		<Static Align="Center" Height="20" Id="lbGroupCode" Left="8" Style="sty_Label" TabOrder="21" Text="그룹코드" Top="84" UserData="SK" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edGroupCode" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="10" Top="84" UserData="S:그룹코드:K" Width="300"></Edit>
+		<Static Align="Center" Height="20" Id="lbCommonCode" Left="8" Style="sty_Label" TabOrder="22" Text="공통코드" Top="108" UserData="SK" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edCommonCode" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="11" Top="108" UserData="S:공통코드:K" Width="300"></Edit>
+		<Static Align="Center" Height="20" Id="lbOrderSeq" Left="8" Style="sty_Label" TabOrder="23" Text="정렬순서" Top="132" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="medOrderSeq" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="13" Top="132" UserData="S:정렬순서" Width="88"></MaskEdit>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edRemark" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="14" Top="156" UserData="S" Width="692"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="447" OnClick="lfn_Search" Style="sty_Button" TabOrder="5" ToolTipText="조회" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnInput" ImageID="BTN_COM_ADD" Left="534" OnClick="lfn_Input" Style="sty_Button" TabOrder="6" ToolTipText="추가&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDelete" ImageID="BTN_COM_DEL" Left="708" OnClick="lfn_Delete" Style="sty_Button" TabOrder="8" ToolTipText="삭제&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSave" ImageID="BTN_COM_SAVE" Left="621" OnClick="lfn_Save" Style="sty_Button" TabOrder="7" ToolTipText="수정&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="447" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="1" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="lfn_Excel" Style="sty_Button" TabOrder="2" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="3" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="4" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Shape Bottom="53" Height="52" Id="shpBtnBox" Left="444" LineColor="user14" Right="796" TabOrder="61" Top="1" Type="Rectangle" Width="352"></Shape>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmsys0030MCommonCodeManagement.xml
+ * 설명 : 공통코드관리
+ * 작성일 : 2009.07.06
+ * 작성자 : 장성호
+ */
+
+#include "LIB::sys.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdCommonCode.Height = nCy - gdCommonCode.Top - 4;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_ioCommonCode.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("sys:searchCommonCode", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioCommonCode=ds_oCommonCode"	// outDs
+		,"CCGROUPCD=" + quote(edGroupCode.Text)
+            + " CCCD=" + quote(edCommonCode.Text)
+            + " CCCDNM=" + quote(edCommonCodeName.Text)	// args 
+		,"lfn_AfterSearchCommonCode"
+		,false
+	);
+}
+
+/*
+ * 기능 : 추가
+ */
+function lfn_Input(obj) {
+	if (!gfn_Confirm(MSGI00070)) { // 신규 추가 하시겠습니까?\n입력완료 후 저장 버튼을 누르세요.
+        return false;
+	}
+
+	mb_IsNewData = true; // 저장버튼이 클릭 설정
+    lfn_Cancel(); // 값 초기화
+
+    // 기본값 설정
+    chkUseYn.Value = "Y";
+}
+
+/*
+ * 기능 : 삭제
+ */
+function lfn_Delete(obj) {
+    if (ds_ioCommonCode.currow < 0) {
+        gfn_Alert(MSGI00030); // 삭제할 레코드가 없습니다.
+        return false;
+    }
+
+	if (!gfn_Confirm(MSGW00030)) { // 정말로 삭제 하시겠습니까?
+        return false;
+	}
+
+    ds_ioCommonCode.DeleteRow(ds_ioCommonCode.currow); // 선택된 ROW를 삭제한다.
+
+    gfn_FormInit(this); // 입력란 초기화
+
+	tit_clearActionInfo();
+	tit_addSaveActionInfo(
+		""	// insert
+		, ""	// update
+		, "sys:deleteCommonCode"	// delete
+		, ""	// flag column 명
+		, ""	// key sql id
+		, 0	// key 증가 값
+		, "" 
+		, 0 
+		, "N"	// 실행타입
+	);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,"ds_iCommonCode=ds_ioCommonCode:U"	// inDs
+		,""	// outDs
+		,""	// args 
+		,"lfn_AfterSaveCommonCode"
+		,false
+	);
+}
+
+/*
+ * 기능 : 저장
+ */
+function lfn_Save(obj) {
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+
+    if (mb_IsNewData || ds_ioCommonCode.GetCount() == 0) { // 신규 저장
+        // 키 중복 체크
+    
+        if (!gfn_Confirm(MSGW00020)) { // 정말로 추가 저장 하시겠습니까?
+            return false;
+        }
+
+        // 입력된 값을 그리드로 복사한다.
+        ds_ioCommonCode.InsertRow(0);
+        ds_ioCommonCode.SetColumn(0, "USE_YN", chkUseYn.Value);
+        ds_ioCommonCode.SetColumn(0, "CCGROUPCD", edGroupCode.Text);
+        ds_ioCommonCode.SetColumn(0, "CCCD", edCommonCode.Text);
+        ds_ioCommonCode.SetColumn(0, "CCCDNM", edCommonCodeName.Text);
+        ds_ioCommonCode.SetColumn(0, "CCORDERSEQ", medOrderSeq.Value);
+        ds_ioCommonCode.SetColumn(0, "CCREMARK", edRemark.Text);
+    } else { // 수정 저장
+        if (!gfn_Confirm(MSGW00040)) { // 정말로 수정 저장 하시겠습니까?
+            return false;
+        }
+
+        // 입력된 값을 그리드로 복사한다.
+        ds_ioCommonCode.SetColumn(ds_ioCommonCode.currow, "USE_YN", chkUseYn.Value);
+        ds_ioCommonCode.SetColumn(ds_ioCommonCode.currow, "CCCDNM", edCommonCodeName.Text);
+        ds_ioCommonCode.SetColumn(ds_ioCommonCode.currow, "CCORDERSEQ", medOrderSeq.Value);
+        ds_ioCommonCode.SetColumn(ds_ioCommonCode.currow, "CCREMARK", edRemark.Text);
+    }
+
+    gfn_FormInit(this); // 입력란 초기화
+
+    tit_clearActionInfo();
+    tit_addSaveActionInfo(
+        "sys:insertCommonCode"	// insert
+        , "sys:updateCommonCode"	// update
+        , ""	// delete
+        , ""	// flag column 명
+        , ""	// key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N"	// 실행타입
+    );
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iCommonCode=ds_ioCommonCode:U"	// inDs
+        ,""	// outDs
+        ,""	// args 
+        ,"lfn_AfterSaveCommonCode"
+        ,false
+    );
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchCommonCode(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SearchMessage(gdCommonCode); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveCommonCode(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    lfn_Search(); // 공통코드 조회
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    btnInput.Enable = bStatus; // 추가 버튼
+    btnDelete.Enable = bStatus; // 삭제 버튼
+    btnSave.Enable = bStatus; // 수정&저장 버튼
+}
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdCommonCode, 0); // 멀티 정렬을 실행한다.
+}
+
+function ds_ioCommonCode_OnRowPosChanged(obj,nOldRow,nRow)
+{
+    // 그리드의 값을 입력란에 복사한다. 추가상태인 경우 복사 후 저장을 하기 위해 제외한다.
+    if (obj.GetRowType(nRow) <> "insert" && nRow <> -1) {
+        chkUseYn.Value = obj.GetColumn(nRow, "USE_YN");
+        edGroupCode.Text = obj.GetColumn(nRow, "CCGROUPCD");
+        edCommonCode.Text = obj.GetColumn(nRow, "CCCD");
+        edCommonCodeName.Text = obj.GetColumn(nRow, "CCCDNM");
+        medOrderSeq.Value = obj.GetColumn(nRow, "CCORDERSEQ");
+        edRemark.Text = obj.GetColumn(nRow, "CCREMARK");
+        
+        gfn_MakeKeyMark(this); // 키값 수정 금지 설정
+	}
+	mb_IsNewData = false; // 저장버튼이 클릭 초기화
+}
+
+function gdCommonCode_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+    var lobj_Dataset = object(obj.BindDataset);
+	ds_ioCommonCode_OnRowPosChanged(lobj_Dataset,nRow,nRow);
+}
+]]></Script>
+</Window>

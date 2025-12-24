@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="300" Id="frmCOM6000PNiceCheck" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="실명인증팝업" Top="8" Ver="1.0" Width="480" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oTrainingPerson">
+				<Contents>
+					<colinfo id="IIDIRPATH" size="256" type="STRING"/>
+					<colinfo id="IIREALNM" size="256" type="STRING"/>
+					<colinfo id="TPAUTHYN" size="1" type="STRING"/>
+					<colinfo id="TPCUSTGUBUN" size="2" type="STRING"/>
+					<colinfo id="TPEMAILDOMAIN" size="40" type="STRING"/>
+					<colinfo id="TPEMAILID" size="40" type="STRING"/>
+					<colinfo id="TPHPTEL" size="16" type="STRING"/>
+					<colinfo id="TPLASTIMGSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="TPMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="TPNM" size="20" type="STRING"/>
+					<colinfo id="TPRESIDENTNO" size="13" type="STRING"/>
+					<colinfo id="TPTEL" size="16" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iTrainingPerson">
+				<Contents>
+					<colinfo id="IIDIRPATH" size="256" summ="default" type="STRING"/>
+					<colinfo id="IIREALNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPAUTHYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="TPCUSTGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="TPEMAILDOMAIN" size="40" summ="default" type="STRING"/>
+					<colinfo id="TPEMAILID" size="40" summ="default" type="STRING"/>
+					<colinfo id="TPHPTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="TPLASTIMGSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TPMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TPNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="TPRESIDENTNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="TPTEL" size="16" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="296" Height="264" Id="shpGubunBox" Left="4" LineColor="user15" Right="476" TabOrder="5" Top="32" Type="Rectangle" Width="472"></Shape>
+		<MSIE Bottom="292" Height="244" Id="webNiceCheck" Left="8" Right="472" Silent="true" StatusBar="false" TitleChange="webNiceCheck_TitleChange" Top="48" Width="464"></MSIE>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="385" LineColor="user14" Right="476" TabOrder="2" Top="1" Type="Rectangle" Width="91"></Shape>
+		<Static Align="Center" Height="20" Id="lbNiceCheck" Left="24" Style="sty_LabelGruopBox" TabOrder="3" Text="실명인증" Top="24" VAlign="Middle" Width="88"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="388" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Image Border="Flat" BorderColor="#c6dae7" Color="#c6dae7" DisableBKColor="#c6dae7" DkshadowColor="#c6dae7" Face3dColor="#c6dae7" FillType="STRETCH" Height="1" Id="imgBoxBottum" Left="7" Static="FALSE" TabOrder="6" Top="290" Width="464"></Image>
+		<Image BorderColor="#c6dae7" Color="#c6dae7" DisableBKColor="#c6dae7" DkshadowColor="#c6dae7" Face3dColor="#c6dae7" FillType="STRETCH" Height="4" Id="imgBoxTop1" Left="8" Static="FALSE" TabOrder="7" Top="46" Width="464"></Image>
+		<Image Border="Flat" BorderColor="#c6dae7" Color="#c6dae7" DisableBKColor="#c6dae7" DkshadowColor="#c6dae7" Face3dColor="#c6dae7" FillType="STRETCH" Height="1" Id="imgBoxTop2" Left="9" Static="FALSE" TabOrder="8" Top="49" Width="461"></Image>
+		<Image BorderColor="#c6dae7" Color="#c6dae7" DisableBKColor="#c6dae7" DkshadowColor="#c6dae7" Face3dColor="#c6dae7" FillType="STRETCH" Height="242" Id="imgBoxLeft1" Left="6" Static="FALSE" TabOrder="9" Top="50" Width="4"></Image>
+		<Image Border="Flat" BorderColor="#c6dae7" Color="#c6dae7" DisableBKColor="#c6dae7" DkshadowColor="#c6dae7" Face3dColor="#c6dae7" FillType="STRETCH" Height="242" Id="imgBoxLeft2" Left="9" Static="FALSE" TabOrder="10" Top="49" Width="1"></Image>
+		<Image Border="Flat" BorderColor="#c6dae7" Color="#c6dae7" DisableBKColor="#c6dae7" DkshadowColor="#c6dae7" Face3dColor="#c6dae7" FillType="STRETCH" Height="241" Id="Image0" Left="470" Static="FALSE" TabOrder="11" Top="49" Width="1"></Image>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM6000PNiceCheck.xml
+ * 설명 : 실명인증팝업
+ * 작성일 : 2009.10.16
+ * 작성자 : 김동현
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (gfn_IsNull(sPersonNm) || gfn_IsNull(sResidentNo)) {
+        close(false);
+    } else {
+        var PostData = "nm=" + sPersonNm; // 성명
+        PostData += "&no1=" + left(sResidentNo, 6); // 주민번호 앞6자리
+        PostData += "&no2=" + right(sResidentNo, 7); // 주민번호 뒤7자리
+        var PageUrl = gs_ApacheServer + "NiceCheck.jsp";
+        if (gs_IsLocal == "Y") {
+            PageUrl = "https://intrawork.kfsi.or.kr/kems/check/NiceCheck.jsp";
+        }
+        webNiceCheck.Navigate(PageUrl + "?" + PostData);
+    }
+}
+
+function Form_OnUnloadCompleted(obj) {
+    if (ls_retValue == "1") {
+        lfn_CheckOk();
+        Close(true);
+    }
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+    }
+}
+
+function lfn_End(obj) {
+    if (ls_retValue == "1") {
+        Close(true);
+    } else {
+        Close(false);
+    }
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+
+/* 사용자 이벤트 함수 */
+var ls_retValue = "";
+function webNiceCheck_TitleChange(obj,Text)
+{
+	// 1 : 실명확인 성공
+	// 2 : 실명확인 실패
+	// 3 : 실명확인 불가
+	ls_retValue = Text; // 인증 결과값 : 1, 2, 3
+}
+
+function lfn_CheckOk() {
+
+    tit_clearActionInfo(); //사람이 이미 있는지 검색한다.
+    tit_addSearchActionInfo("com:searchTrainingPerson", false);
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_oTrainingPerson=ds_oTrainingPerson"	// outDs
+        ,"TPNM=" + quote(sPersonNm)
+            + " TPRESIDENTNO=" + quote(sResidentNo)// args
+        ,""
+        ,false
+        ,""
+        ,true
+    );
+
+    if (ds_oTrainingPerson.GetRowCount() == 1) {
+        ls_TrainingPersonMgno = ds_oTrainingPerson.GetColumn(0, "TPMGNO");
+
+        ds_iTrainingPerson.InsertRow(0);
+        ds_iTrainingPerson.SetColumn(0, "TPMGNO",ls_TrainingPersonMgno);
+        ds_iTrainingPerson.SetColumn(0, "TPAUTHYN", "Y");
+
+        tit_clearActionInfo();
+        tit_addSaveActionInfo(
+            "training:updateTrainingPerson" // insert
+            , ""	// update
+            , ""	// delete
+            , ""	// flag column 명
+            , ""	// key sql id
+            , 0	// key 증가 값
+            , "" 
+            , 0 
+            , "N"	// 실행타입
+        );
+
+        tit_callService(
+            ""
+            ,""
+            ,"ds_iTrainingPerson=ds_iTrainingPerson:U"	// inDs
+            ,""	// outDs
+            ,""	// args
+            ,""
+            ,false
+            ,""
+            ,true
+        );
+
+    }
+    
+}
+]]></Script>
+</Window>

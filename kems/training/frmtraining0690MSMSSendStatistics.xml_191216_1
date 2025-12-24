@@ -1,0 +1,1371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmtraining0690MSMSSendStatistics" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="문자메시지발송현황" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsStat">
+				<Contents>
+					<colinfo id="EPMGJIBUCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="PSABUN" size="20" summ="default" type="STRING"/>
+					<colinfo id="SHRCVRNAME" size="100" summ="default" type="STRING"/>
+					<colinfo id="SHSENDDATE_B" size="8" summ="default" type="STRING"/>
+					<colinfo id="SHSENDDATE_C" size="8" summ="default" type="STRING"/>
+					<colinfo id="SHSENDSTATE" size="2" summ="default" type="STRING"/>
+					<colinfo id="SHSENDTIME" size="6" summ="default" type="STRING"/>
+					<colinfo id="SHSYSGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="SHTEL" size="20" summ="default" type="STRING"/>
+					<colinfo id="SMMSG" size="1000" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="TJMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TOHJUBSUNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="TOMGNO" size="30" summ="default" type="STRING"/>
+					<colinfo id="TOTRAININGORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="TOTRAININGORDER2" size="3" summ="default" type="STRING"/>
+					<colinfo id="TOYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="TPMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="SENDGUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsStatExam">
+				<Contents>
+					<colinfo id="EPMGJIBUCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="PSABUN" size="20" summ="default" type="STRING"/>
+					<colinfo id="SHRCVRNAME" size="100" summ="default" type="STRING"/>
+					<colinfo id="SHSENDDATE_B" size="8" summ="default" type="STRING"/>
+					<colinfo id="SHSENDDATE_C" size="8" summ="default" type="STRING"/>
+					<colinfo id="SHSENDSTATE" size="2" summ="default" type="STRING"/>
+					<colinfo id="SHSENDTIME" size="6" summ="default" type="STRING"/>
+					<colinfo id="SHSYSGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="SHTEL" size="20" summ="default" type="STRING"/>
+					<colinfo id="SMMSG" size="1000" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="TJMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TOHJUBSUNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="TOMGNO" size="30" summ="default" type="STRING"/>
+					<colinfo id="TOTRAININGORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="TOTRAININGORDER2" size="3" summ="default" type="STRING"/>
+					<colinfo id="TOYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="TPMGNO" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsStatReport"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsStatExamReport"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsStat_order">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsStatExam_order">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsStatExam_date">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsStat_date">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsStat_jibu">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsStatExam_jibu">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSendGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>단문(SMS)</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>장문(MMS)</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SendYN">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>위촉</DATA>
+					</record>
+					<record>
+						<CD>Y</CD>
+						<DATA>해촉</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oWorkGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>T</CD>
+						<DATA>강습접수</DATA>
+					</record>
+					<record>
+						<CD>E</CD>
+						<DATA>시험접수</DATA>
+					</record>
+					<record>
+						<CD>P</CD>
+						<DATA>초빙강사</DATA>
+					</record>
+					<record>
+						<CD>S</CD>
+						<DATA>시험감독관</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsStatSpeaker"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsStatSupervisor"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsStatSpeakerReport"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsStatSupervisorReport"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsStatSpeaker_date"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsStatSupervisor_date"></Dataset>
+		</Datasets>
+		<Div Border="Flat" Height="80" Id="divWork3" Left="4" TabOrder="24" Text="Div0" Top="89" Width="792">
+			<Contents>
+				<Static Align="Center" Height="20" Id="lbJibu3" Left="3" Style="sty_Label" TabOrder="3" Text="지부" Top="5" UserData="S" VAlign="Middle" Width="88"></Static>
+				<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu3" ImeMode="none" INDEX="0" InnerDataset="ds_oJibu" Left="94" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="4" Top="4" UserData="I:지부" Width="88"></Combo>
+				<Static Align="Center" Height="20" Id="lbTrainingPassYn" Left="187" Style="sty_Label" TabOrder="1" Text="위촉여부" Top="5" UserData="S" VAlign="Middle" Width="88"></Static>
+				<Radio Border="Flat" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radSendYN" INDEX="0" InnerDataset="ds_SendYN" Left="279" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="2" Top="5" Width="300"></Radio>
+				<Static Align="Center" Height="20" Id="lbSendDate" Left="3" Style="sty_Label" TabOrder="7" Text="발송일자" Top="29" UserData="S" VAlign="Middle" Width="88"></Static>
+				<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calSendDateStart3" Left="95" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="5" Top="29" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+				<Static Align="Center" Height="20" Id="lbDateWave" Left="201" Style="sty_Text" TabOrder="8" Text="~" Top="29" VAlign="Middle" Width="10"></Static>
+				<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calSendDateEnd3" Left="219" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="6" Top="29" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+				<Static Align="Center" Height="20" Id="Static0" Left="3" Style="sty_Label" TabOrder="9" Text="발송구분" Top="53" VAlign="Middle" Width="88"></Static>
+				<Radio Border="Flat" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radSendGubun3" INDEX="0" InnerDataset="ds_oSendGubun" Left="95" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="10" Top="53" Width="348"></Radio>
+			</Contents>
+		</Div>
+		<Div Border="Flat" Height="80" Id="divWork4" Left="4" TabOrder="25" Text="Div0" Top="89" Width="792">
+			<Contents>
+				<Static Align="Center" Height="20" Id="lbJibu4" Left="3" Style="sty_Label" TabOrder="1" Text="지부" Top="4" UserData="S" VAlign="Middle" Width="88"></Static>
+				<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu4" ImeMode="none" INDEX="0" InnerDataset="ds_oJibu" Left="94" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="2" Top="3" UserData="I:지부" Width="88"></Combo>
+				<Static Align="Center" Height="20" Id="lbSendDate" Left="3" Style="sty_Label" TabOrder="5" Text="발송일자" Top="28" UserData="S" VAlign="Middle" Width="88"></Static>
+				<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calSendDateStart4" Left="95" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="3" Top="28" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+				<Static Align="Center" Height="20" Id="lbDateWave" Left="201" Style="sty_Text" TabOrder="6" Text="~" Top="28" VAlign="Middle" Width="10"></Static>
+				<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calSendDateEnd4" Left="219" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="4" Top="28" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+				<Static Align="Center" Height="20" Id="Static0" Left="3" Style="sty_Label" TabOrder="7" Text="발송구분" Top="53" VAlign="Middle" Width="88"></Static>
+				<Radio Border="Flat" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radSendGubun4" INDEX="0" InnerDataset="ds_oSendGubun" Left="95" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="8" Top="53" Width="348"></Radio>
+			</Contents>
+		</Div>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="356" LineColor="user14" Right="796" TabOrder="14" Top="1" Type="Rectangle" Width="440"></Shape>
+		<Shape Bottom="85" Height="27" Id="shpGubunBox" Left="4" LineColor="user15" Right="796" TabOrder="18" Top="58" Type="Rectangle" Width="792"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="15" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="300">
+			<Contents></Contents>
+		</Div>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_ioSmsStat" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="584" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" Format="workgubun1" HeadBorder="Flat" HeadHeight="20" Height="386" Id="gdSmsStat" InputPanel="FALSE" Left="3" LineColor="default" OnCellDBLClick="gdSmsStat_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="795" RowHeight="20" Style="sty_Grid" TabOrder="13" TabStop="true" Top="198" UseDBuff="true" UsePopupMenu="true" UserData="문자메시지발송현황" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="workgubun1">
+					<columns>
+						<col width="40"/>
+						<col width="40"/>
+						<col width="113"/>
+						<col width="46"/>
+						<col width="63"/>
+						<col width="54"/>
+						<col width="95"/>
+						<col width="79"/>
+						<col width="67"/>
+						<col width="138"/>
+						<col width="59"/>
+						<col width="658"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="년도"/>
+						<cell align="center" col="2" display="text" text="직능"/>
+						<cell align="center" col="3" display="text" text="회차"/>
+						<cell align="center" col="4" display="text" text="번호"/>
+						<cell align="center" col="5" display="text" text="수신자"/>
+						<cell align="center" col="6" display="text" text="휴대폰번호"/>
+						<cell align="center" col="7" display="text" text="전송상태"/>
+						<cell col="8" display="text" text="발송구분"/>
+						<cell align="center" col="9" display="text" text="발송시간"/>
+						<cell align="center" col="10" display="text" text="발송자"/>
+						<cell align="center" col="11" display="text" text="전문내용"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="TOMGGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="1" colid="TOYEAR" display="combo"/>
+						<cell align="center" col="2" colid="TOTCCOURSECD" combocol="CD" combodataset="ds_oCourse" combotext="DATA" display="combo"/>
+						<cell align="center" col="3" colid="TOTRAININGORDER" display="combo"/>
+						<cell align="center" col="4" colid="TOHJUBSUNO" display="text"/>
+						<cell align="center" col="5" colid="MRECVNM" display="text"/>
+						<cell align="center" col="6" colid="MRECVTEL" display="text"/>
+						<cell align="center" col="7" colid="MRECVRESULT" display="text"/>
+						<cell align="left" col="8" colid="SENDGUBUN" display="text"/>
+						<cell align="center" col="9" colid="MSENDDATE_A" display="text"/>
+						<cell align="center" col="10" colid="PNM" display="text"/>
+						<cell align="left" col="11" colid="MMSG" display="text"/>
+					</body>
+				</format>
+				<format id="workgubun3">
+					<columns>
+						<col width="40"/>
+						<col width="54"/>
+						<col width="95"/>
+						<col width="79"/>
+						<col width="67"/>
+						<col width="138"/>
+						<col width="59"/>
+						<col width="658"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="수신자"/>
+						<cell align="center" col="2" display="text" text="휴대폰번호"/>
+						<cell align="center" col="3" display="text" text="전송상태"/>
+						<cell col="4" display="text" text="발송구분"/>
+						<cell align="center" col="5" display="text" text="발송시간"/>
+						<cell align="center" col="6" display="text" text="발송자"/>
+						<cell align="center" col="7" display="text" text="전문내용"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="GTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="1" colid="MRECVNM" display="text"/>
+						<cell align="center" col="2" colid="MRECVTEL" display="text"/>
+						<cell align="center" col="3" colid="MRECVRESULT" display="text"/>
+						<cell align="left" col="4" colid="SENDGUBUN" display="text"/>
+						<cell align="center" col="5" colid="MSENDDATE_A" display="text"/>
+						<cell align="center" col="6" colid="PNM" display="text"/>
+						<cell align="left" col="7" colid="MMSG" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="722" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="12" Top="176" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="360" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintList" ImageID="BTN_TEXT_12" Left="109" OnClick="btnPrintList_OnClick" Style="sty_Button" TabOrder="7" Text="발송&#32;리스트&#32;출력" Top="32" Width="170"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="447" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="2" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="lfn_localExcel" Style="sty_Button" TabOrder="3" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="4" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="5" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbSmsCnt" Left="4" Style="sty_LabelStat" TabOrder="16" Text="총&#32;건수" Top="174" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medTotalCnt" Left="96" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="11" Top="174" Width="60"></MaskEdit>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="5" DataColumn="DATA" Height="20" Id="radWorkGubun" INDEX="0" InnerDataset="ds_oWorkGubun" Left="100" OnChanged="radWorkGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="6" Top="62" Width="452"></Radio>
+		<Static Align="Center" Height="20" Id="lbWorkGubun" Left="8" Style="sty_Label" TabOrder="17" Text="업무구분" Top="62" VAlign="Middle" Width="88"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintOrder" ImageID="BTN_TEXT_12" Left="281" OnClick="btnPrintOrder_OnClick" Style="sty_Button" TabOrder="8" Text="회차별&#32;발송현황&#32;출력" Top="32" Width="170"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintDate" ImageID="BTN_TEXT_12" Left="453" OnClick="btnPrintDate_OnClick" Style="sty_Button" TabOrder="9" Text="발송일자별&#32;발송현황&#32;출력" Top="32" Width="170"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintJibu" ImageID="BTN_TEXT_12" Left="625" OnClick="btnPrintJibu_OnClick" Style="sty_Button" TabOrder="10" Text="지부별&#32;발송현황&#32;출력" Top="32" Width="170"></Button>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medSmsCnt" Left="253" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="19" Top="173" Width="60"></MaskEdit>
+		<Static Align="Center" Height="20" Id="Static1" Left="161" Style="sty_LabelStat" TabOrder="20" Text="단문&#32;건수" Top="173" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static2" Left="318" Style="sty_LabelStat" TabOrder="22" Text="장문&#32;건수" Top="173" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medMmsCnt" Left="410" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="21" Top="173" Width="60"></MaskEdit>
+		<Div Border="Flat" Height="80" Id="divWork1" Left="4" TabOrder="23" Text="Div0" Top="89" Width="792">
+			<Contents>
+				<Static Align="Center" Height="20" Id="lbTrainingOrder" Left="3" Style="sty_Label" TabOrder="9" Text="회차" Top="29" UserData="S" VAlign="Middle" Width="88"></Static>
+				<Static Align="Center" Height="20" Id="lbCourse" Left="323" Style="sty_Label" TabOrder="8" Text="직능" Top="5" UserData="S" VAlign="Middle" Width="88"></Static>
+				<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_oCourse" Left="414" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="3" Top="4" UserData="S:" Width="182"></Combo>
+				<Static Align="Center" Height="20" Id="lbSendDate" Left="187" Style="sty_Label" TabOrder="10" Text="발송일자" Top="29" UserData="S" VAlign="Middle" Width="88"></Static>
+				<Static Align="Center" Height="20" Id="lbYear" Left="187" Style="sty_Label" TabOrder="11" Text="년도" Top="5" UserData="S" VAlign="Middle" Width="88"></Static>
+				<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edYear" ImeMode="native" Left="279" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="2" Top="5" UserData="I:년도" Width="36"></Edit>
+				<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calSendDateEnd" Left="403" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="7" Top="29" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+				<Static Align="Center" Height="20" Id="lbDateWave" Left="385" Style="sty_Text" TabOrder="12" Text="~" Top="29" VAlign="Middle" Width="10"></Static>
+				<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calSendDateStart" Left="279" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="6" Top="29" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+				<Static Align="Center" Height="20" Id="lbJibu" Left="3" Style="sty_Label" TabOrder="13" Text="지부" Top="5" UserData="S" VAlign="Middle" Width="88"></Static>
+				<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="94" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="1" Top="4" UserData="I:" Width="88"></Combo>
+				<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edTrainingOrderStart" ImeMode="native" Left="95" LeftMargin="2" MaxLength="3" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="lfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="4" Top="29" UserData="S:회차" Width="28"></Edit>
+				<Static Align="Center" Height="20" Id="lbNumberWave" Left="127" Style="sty_Text" TabOrder="14" Text="~" Top="29" VAlign="Middle" Width="10"></Static>
+				<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edTrainingOrderEnd" ImeMode="native" Left="143" LeftMargin="2" MaxLength="3" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="lfn_ComponentOnKillFocus2" Style="sty_Edit" TabOrder="5" Top="29" UserData="S:회차" Width="28"></Edit>
+				<Static Align="Center" Height="20" Id="Static0" Left="3" Style="sty_Label" TabOrder="15" Text="발송구분" Top="53" VAlign="Middle" Width="88"></Static>
+				<Radio Border="Flat" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radSendGubun" INDEX="0" InnerDataset="ds_oSendGubun" Left="95" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="16" Top="53" Width="348"></Radio>
+			</Contents>
+		</Div>
+		<Static Height="32" Id="Static0" Left="524" TabOrder="26" Text="※&#32;더블클릭시&#32;전체&#32;문자내용을&#32;&#10;&#32;&#32;&#32;&#32;볼&#32;수&#32;있습니다." Top="171" Width="200"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0690MSMSSendStatistics.xml
+ * 설명 : 문자메시지발송현황
+ * 작성일 : 2009.07.28
+ * 작성자 : 이규희
+ */
+
+#include "LIB::training.js"; // 공통업무 관련
+
+    var GubunCode = "";     // 업무구분(강습접수, 시험접수, 초빙강사, 시험감독관)
+    var ReportGubun = 0;   // 레포트 구분 값
+    
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+    GubunCode = "T";  // 기본적으로 강습접수로 설정
+    
+    // 공통 코드 조회
+    gfn_SearchTrainingCourse("T", ds_oCourse, "Y", "전체"); // 직능 코드 조회
+    divWork1.cbxCourse.Value = "22";
+    gfn_SearchJibu(divWork1.cbxJibu, "Y", "전체"); // 지부 코드 조회
+	divWork1.edTrainingOrderStart.Value = "001";
+	divWork1.edTrainingOrderEnd.Value = "999";
+	divWork1.Visible = true;	// 강습시험 조회조건
+	divWork3.Visible = false;	// 초빙강사 조회조건
+	divWork4.Visible = false;	// 시험감독관 조회조건
+	
+    divWork1.edYear.Text = left(GetDate(), 4);
+    gdSmsStat.Format = "workgubun1";
+    
+    gdSmsStat.BindDataset = "ds_ioSmsStat";
+    	// 강습, 시험
+    divWork1.calSendDateStart.Value = GetDate();
+    divWork1.calSendDateEnd.Value = GetDate();
+    
+    // 초빙강사
+    divWork3.calSendDateStart3.Value = GetDate();
+    divWork3.calSendDateEnd3.Value = GetDate();
+    
+    // 시험감독관
+    divWork4.calSendDateStart4.Value = GetDate();
+    divWork4.calSendDateEnd4.Value = GetDate();
+    
+   // calSendDateStart.Value = GetDate();현재 실행시 컴터의 날짜를 시간까지 보여줌 해당 자리수를 지정하면됨
+   // calSendDateEnd.Value = GetDate();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdSmsStat.Height = nCy - gdSmsStat.Top - 4;
+        gdSmsStat.Width = nCx - gdSmsStat.Left - 4;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+var ls_HistoryArg = "";
+
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+
+    ds_ioSmsStat.ClearData(); // 데이타셋 초기화
+    ds_ioSmsStatExam.ClearData(); // 데이타셋 초기화
+    
+    ds_ioSmsStatSpeaker.ClearData(); // 데이타셋 초기화
+    
+    ds_ioSmsStatSupervisor.ClearData(); // 데이타셋 초기화
+
+///////////////////// 조회이력 남기기
+    if (radWorkGubun.value == "T" || radWorkGubun.value == "E") {	// 강습 or 시험
+    
+		ls_HistoryArg = "지부=" + quote(divWork1.cbxJibu.Text)	
+				+ ",직능=" + quote(divWork1.cbxCourse.Text)	
+				+ ",년도=" + quote(divWork1.edYear.Text)	
+				+ ",업무구분=" + quote(radWorkGubun.text)            	
+				+" 회차1=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차1    	
+				+" 회차2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차2               	
+				+" 발송일자1=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자1		
+				+" 발송일자2=" + quote(divWork1.calSendDateEnd.value);//  -- 발송일자2  
+
+				
+	} else if (radWorkGubun.value == "P") {	// 초빙강사 
+		ls_HistoryArg = "지부=" + quote(divWork3.cbxJibu3.Text)	
+				+ ",업무구분=" + quote(radWorkGubun.text)
+				
+				+ ",위촉여부=" + quote(divWork3.radSendYN.text)					
+				+" 발송일자1=" + quote(divWork3.calSendDateStart3.value)//  -- 발송일자1		
+				+" 발송일자2=" + quote(divWork3.calSendDateEnd3.value);//  -- 발송일자2  
+	} else if (radWorkGubun.value == "S") {	// 시험감독관 
+	
+		ls_HistoryArg = "지부=" + quote(divWork4.cbxJibu4.Text)	
+				+ ",업무구분=" + quote(radWorkGubun.text)            	
+				+" 발송일자1=" + quote(divWork4.calSendDateStart4.value)//  -- 발송일자1		
+				+" 발송일자2=" + quote(divWork4.calSendDateEnd4.value);//  -- 발송일자2  	
+	
+	}
+ 
+    gfn_InsertSearchPrintHistory(
+        "S"
+        , this.ID
+        , global.mnuLeft.cbxOpenForm.Text
+        , ls_HistoryArg
+    ); 
+/////////////////////   
+
+    if (radWorkGubun.value == "T" ) {	// 강습
+
+        tit_clearActionInfo();
+        tit_addCsvSearchActionInfo("training:searchSmsStat", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_ioSmsStat=ds_oSmsStat"	// outDs
+            ,"SHSYSGUBUN=" + quote(radWorkGubun.value)   //-- 업무구분 강습, 시험 여부
+                +" TOMGGTMGNO=" + quote(divWork1.cbxJibu.value)   //-- 지부
+                +" TOYEAR=" + quote(divWork1.edYear.text)  //-- 년도
+                +" TOTCCOURSECD=" + quote(divWork1.cbxCourse.value) // -- 직능            
+                +" TOTRAININGORDER=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차    
+                +" TOTRAININGORDER2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차                 
+                +" SHSENDDATE_B=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자	
+                +" SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.value)//  -- 발송일자	
+                				+" SENDGUBUN=" + quote(divWork1.radSendGubun.value)//  -- 발송구분
+				
+                // args 
+            ,"lfn_AfterSearchSmsStat"
+            ,false
+        );
+
+	} else if (radWorkGubun.value == "E" ) {	// 시험
+	    tit_clearActionInfo();
+        tit_addCsvSearchActionInfo("training:searchSmsStatExam", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_ioSmsStatExam=ds_oSmsStatExam"	// outDs
+            ,"SHSYSGUBUN=" + quote(radWorkGubun.value)   //-- 업무구분 강습, 시험 여부
+                +" TOMGGTMGNO=" + quote(divWork1.cbxJibu.value)   //-- 지부
+                +" TOYEAR=" + quote(divWork1.edYear.text)  //-- 년도
+                +" TOTCCOURSECD=" + quote(divWork1.cbxCourse.value) // -- 직능            
+                +" TOTRAININGORDER=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차    
+                +" TOTRAININGORDER2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차                 
+                +" SHSENDDATE_B=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자	
+                +" SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.value)//  -- 발송일자	
+                
+                +" SENDGUBUN=" + quote(divWork1.radSendGubun.value)//  -- 발송구분
+                // args 
+            ,"lfn_AfterSearchSmsStat"
+            ,false
+        );
+	} else if (radWorkGubun.value == "P" ) {	// 초빙강사
+	
+        tit_clearActionInfo();
+        tit_addCsvSearchActionInfo("training:searchSmsStatSpeaker", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_ioSmsStatSpeaker=ds_oSmsStatSpeaker"	// outDs
+            ,"SHSYSGUBUN=" + quote(radWorkGubun.value)   //-- 업무구분
+                +" GTMGNO=" + quote(divWork3.cbxJibu3.value)   //-- 지부
+                +" SENDYN=" + quote(divWork3.radSendYN.value) // -- 위촉여부                 
+                +" SHSENDDATE_B=" + quote(divWork3.calSendDateStart3.value)//  -- 발송일자	
+                +" SHSENDDATE_C=" + quote(divWork3.calSendDateEnd3.value)//  -- 발송일자	
+                				+" SENDGUBUN=" + quote(divWork3.radSendGubun3.value)//  -- 발송구분
+				
+                // args 
+            ,"lfn_AfterSearchSmsStat"
+            ,false
+        );	
+	
+	} else if (radWorkGubun.value == "S" ) {	// 시험감독관
+
+        tit_clearActionInfo();
+        tit_addCsvSearchActionInfo("training:searchSmsStatSupervisor", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_ioSmsStatSupervisor=ds_oSmsStatSupervisor"	// outDs
+            ,"SHSYSGUBUN=" + quote(radWorkGubun.value)   //-- 업무구분
+                +" GTMGNO=" + quote(divWork4.cbxJibu4.value)   //-- 지부
+                +" SHSENDDATE_B=" + quote(divWork4.calSendDateStart4.value)//  -- 발송일자	
+                +" SHSENDDATE_C=" + quote(divWork4.calSendDateEnd4.value)//  -- 발송일자	
+                				+" SENDGUBUN=" + quote(divWork4.radSendGubun4.value)//  -- 발송구분
+				
+                // args 
+            ,"lfn_AfterSearchSmsStat"
+            ,false
+        );
+        
+	}
+}
+/*
+ * 레포트 출력을 위한 자료 조회 함수
+ */
+function lfn_Search_Print(obj) {
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+
+    ds_ioSmsStat.ClearData(); // 데이타셋 초기화
+    ds_ioSmsStatExam.Clear(); // 데이타셋 초기화
+
+    if (radWorkGubun.value == "T" ) {	// 강습
+        tit_clearActionInfo();
+        tit_addSearchActionInfo("training:searchSmsStatReport", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_ioSmsStatReport=ds_oSmsStatReport"	// outDs
+            ,"SHSYSGUBUN=" + quote(radWorkGubun.value)   //-- 업무구분
+                +" TOMGGTMGNO=" + quote(divWork1.cbxJibu.value)   //-- 지부
+                +" TOYEAR=" + quote(divWork1.edYear.text)  //-- 년도
+                +" TOTCCOURSECD=" + quote(divWork1.cbxCourse.value) // -- 직능            
+                +" TOTRAININGORDER=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차    
+                +" TOTRAININGORDER2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차                 
+                +" SHSENDDATE_B=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자	
+                +" SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.value)//  -- 발송일자	
+                
+                +" SENDGUBUN=" + quote(divWork1.radSendGubun.value)//  -- 발송구분
+                // args 
+            ,"lfn_AfterSearchSmsStat"
+            ,false
+        );
+
+	} else if (radWorkGubun.value == "E" ) {	// 시험 
+	       tit_clearActionInfo();
+        tit_addSearchActionInfo("training:searchSmsStatExamReport", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_ioSmsStatExamReport=ds_oSmsStatExamReport"	// outDs
+            ,"SHSYSGUBUN=" + quote(radWorkGubun.value)   //-- 업무구분
+                +" TOMGGTMGNO=" + quote(divWork1.cbxJibu.value)   //-- 지부
+                +" TOYEAR=" + quote(divWork1.edYear.text)  //-- 년도
+                +" TOTCCOURSECD=" + quote(divWork1.cbxCourse.value) // -- 직능            
+                +" TOTRAININGORDER=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차    
+                +" TOTRAININGORDER2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차                 
+                +" SHSENDDATE_B=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자	
+                +" SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.value)//  -- 발송일자	
+                
+                +" SENDGUBUN=" + quote(radSendGubun.value)//  -- 발송구분
+                // args 
+            ,"lfn_AfterSearchSmsStat"
+            ,false
+        );
+	} else if (radWorkGubun.value == "P" ) {	// 초빙강사
+
+        tit_clearActionInfo();
+        tit_addSearchActionInfo("training:searchSmsStatSpeakerReport", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_ioSmsStatSpeakerReport=ds_oSmsStatSpeakerReport"	// outDs
+            ,"SHSYSGUBUN=" + quote(radWorkGubun.value)   //-- 업무구분
+                +" GTMGNO=" + quote(divWork3.cbxJibu.value)   //-- 지부
+                +" SENDYN=" + quote(divWork3.radSendYN.text) // -- 위촉여부                
+                +" SHSENDDATE_B=" + quote(divWork3.calSendDateStart3.value)//  -- 발송일자	
+                +" SHSENDDATE_C=" + quote(divWork3.calSendDateEnd3.value)//  -- 발송일자	
+                
+                +" SENDGUBUN=" + quote(divWork3.radSendGubun3.value)//  -- 발송구분
+                // args 
+            ,"lfn_AfterSearchSmsStat"
+            ,false
+        );
+			} else if (radWorkGubun.value == "S" ) {	// 시험감독관
+
+	        tit_clearActionInfo();
+        tit_addSearchActionInfo("training:searchSmsStatSupervisorReport", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_ioSmsStatSupervisorReport=ds_oSmsStatSupervisorReport"	// outDs
+            ,"SHSYSGUBUN=" + quote(radWorkGubun.value)   //-- 업무구분
+                +" GTMGNO=" + quote(divWork4.cbxJibu4.value)   //-- 지부
+                +" SHSENDDATE_B=" + quote(divWork4.calSendDateStart4.value)//  -- 발송일자	
+                +" SHSENDDATE_C=" + quote(divWork4.calSendDateEnd4.value)//  -- 발송일자	
+                
+                +" SENDGUBUN=" + quote(divWork4.radSendGubun4.value)//  -- 발송구분
+                // args 
+            ,"lfn_AfterSearchSmsStat"
+            ,false
+        );
+	}
+} 
+ 
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 결강자 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchSmsStat(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SearchMessage(gdSmsStat); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+    var smscount = 0;
+    var mmscount = 0;
+    if (GubunCode == "T") {	// 강습
+        medTotalCnt.text = ds_ioSmsStat.count;
+        
+        for (var i = 1; i <= ds_ioSmsStat.count; i++) {
+            if (ds_ioSmsStat.GetColumn(i - 1, "SENDGUBUN") == "단문(SMS)") {
+                smscount = smscount + 1;
+			} else {
+			
+				mmscount = mmscount + 1;
+			}
+		}
+
+    } else if (radWorkGubun.value == "E" ) {	// 시험
+        medTotalCnt.text = ds_ioSmsStatExam.count;
+        
+        for (var i = 1; i <= ds_ioSmsStatExam.count; i++) {
+            if (ds_ioSmsStatExam.GetColumn(i - 1, "SENDGUBUN") == "단문(SMS)") {
+                smscount = smscount + 1;
+			} else {
+			
+				mmscount = mmscount + 1;
+			}
+		}
+		
+    } else if (radWorkGubun.value == "P" ) {	// 초빙강사
+
+        medTotalCnt.text = ds_ioSmsStatSpeaker.count;
+        
+        for (var i = 1; i <= ds_ioSmsStatSpeaker.count; i++) {
+            if (ds_ioSmsStatSpeaker.GetColumn(i - 1, "SENDGUBUN") == "단문(SMS)") {
+                smscount = smscount + 1;
+			} else {
+			
+				mmscount = mmscount + 1;
+			}
+		}
+		    } else if (radWorkGubun.value == "S" ) {	// 시험감독관
+
+        medTotalCnt.text = ds_ioSmsStatSupervisor.count;
+        
+        for (var i = 1; i <= ds_ioSmsStatSupervisor.count; i++) {
+            if (ds_ioSmsStatSupervisor.GetColumn(i - 1, "SENDGUBUN") == "단문(SMS)") {
+                smscount = smscount + 1;
+			} else {
+			
+				mmscount = mmscount + 1;
+			}
+		}
+		
+    }
+
+		medSmsCnt.text = smscount;	// sms 건수
+		
+		medMmsCnt.text = mmscount;	// mms 건수
+		
+}
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveSmsStat(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    
+    lfn_Search(); // 결강자 조회
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+
+}
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdSmsStat, 0); // 멀티 정렬을 실행한다.
+}
+
+function lfn_ComponentOnKillFocus(obj)
+{
+	gfn_ComponentOnKillFocus(obj);
+	obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3)); 
+}
+
+function lfn_ComponentOnKillFocus2(obj)
+{
+	gfn_ComponentOnKillFocus(obj);
+	obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3)); 
+}
+
+function radWorkGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	ds_ioSmsStat.ClearData();
+	ds_ioSmsStatExam.ClearData();
+	ds_ioSmsStatSpeaker.ClearData();
+	ds_ioSmsStatSupervisor.ClearData();
+
+	if (strCode == "T") { // 교육접수
+		divWork1.Visible = true;	// 강습시험 조회조건
+		divWork3.Visible = false;	// 초빙강사 조회조건
+		divWork4.Visible = false;	// 시험감독관 조회조건
+
+		gdSmsStat.Format = "workgubun1";
+        gdSmsStat.BindDataset = "ds_ioSmsStat";
+		btnPrintOrder.Enable = true;
+		btnPrintDate.Enable = true;
+		btnPrintJibu.Enable = true;
+
+        GubunCode = "T";
+	} else if (strCode == "E") { // 시험접수
+
+		divWork1.Visible = true;	// 강습시험 조회조건
+		divWork3.Visible = false;	// 초빙강사 조회조건
+		divWork4.Visible = false;	// 시험감독관 조회조건
+
+		gdSmsStat.Format = "workgubun1";
+        gdSmsStat.BindDataset = "ds_ioSmsStatExam";
+		btnPrintOrder.Enable = true;
+		btnPrintDate.Enable = true;
+		btnPrintJibu.Enable = true;
+		
+        GubunCode = "E";
+        
+	} else if (strCode == "P") { // 초빙강사
+	
+		divWork1.Visible = false;	// 강습시험 조회조건
+		divWork3.Visible = true;	// 초빙강사 조회조건
+		divWork4.Visible = false;	// 시험감독관 조회조건
+	
+		gdSmsStat.Format = "workgubun3";
+        gdSmsStat.BindDataset = "ds_ioSmsStatSpeaker";
+		btnPrintOrder.Enable = false;
+		btnPrintDate.Enable = false;
+		btnPrintJibu.Enable = false;
+		
+        GubunCode = "P";
+        
+	} else if (strCode == "S") { // 시험감독관
+		divWork1.Visible = false;	// 강습시험 조회조건
+		divWork3.Visible = false;	// 초빙강사 조회조건
+		divWork4.Visible = true;	// 시험감독관 조회조건
+		
+		gdSmsStat.Format = "workgubun3";
+
+        gdSmsStat.BindDataset = "ds_ioSmsStatSupervisor";
+		btnPrintOrder.Enable = false;
+		btnPrintDate.Enable = false;
+		btnPrintJibu.Enable = false;
+		
+        GubunCode = "S";
+	}
+	
+	medTotalCnt.Text = "0";
+	medSmsCnt.Text = "0";
+	medMmsCnt.Text = "0";
+}
+/*
+ *  발송 리스트 출력 
+ */
+function btnPrintList_OnClick(obj)
+{
+	if (GubunCode = "T") {	// 강습
+	  if (ds_ioSmsStat.count == "0") {
+	    alert("출력할 자료가 없습니다..");
+        return false;
+	  }
+///////////////////// 출력이력 남기기
+        ls_HistoryArg = "지부=" + quote(divWork1.cbxJibu.Text)
+                + ",직능=" + quote(divWork1.cbxCourse.Text)
+                + ",년도=" + quote(divWork1.edYear.Text)
+                + ",업무구분=" + quote(radWorkGubun.text)            
+                +" 강습회차1=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차1    
+                +" 강습회차2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차2  
+                +" 출력문서=" + quote("발송리스트") // -- 발송리스트    
+                +" 발송일자1=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자1	
+                +" 발송일자2=" + quote(divWork1.calSendDateEnd.value);//  -- 발송일자2  
+    
+      
+        gfn_InsertSearchPrintHistory(
+            "P"
+            , this.ID
+            , global.mnuLeft.cbxOpenForm.Text
+            , ls_HistoryArg
+        ); 
+/////////////////////  	
+	  	  
+	  gfn_CallReportPopup("frmtraining0690R01SendList.rex", "ds_ioSmsStat"
+	                       , "SHSENDDATE_B=" + quote(divWork1.calSendDateStart.text)//  -- 발송일자	
+	                       + "^sParam_Title=" + quote("_발송리스트출력")
+                           + "^SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.text));//  -- 발송일자	") ;
+            
+    } else if (GubunCode = "E") {	// 시험
+      if (ds_ioSmsStatExam.count == "0") {
+        alert("출력할 자료가 없습니다.");
+        return false;
+      }
+///////////////////// 출력이력 남기기
+        ls_HistoryArg = "지부=" + quote(divWork1.cbxJibu.Text)
+                + ",직능=" + quote(divWork1.cbxCourse.Text)
+                + ",년도=" + quote(divWork1.edYear.Text)
+                + ",업무구분=" + quote(radWorkGubun.text)            
+                +" 시험회차1=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차1    
+                +" 시험회차2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차2  
+                +" 출력문서=" + quote("발송리스트") // -- 발송리스트                
+                +" 발송일자1=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자1	
+                +" 발송일자2=" + quote(divWork1.calSendDateEnd.value);//  -- 발송일자2  
+    
+      
+        gfn_InsertSearchPrintHistory(
+            "P"
+            , this.ID
+            , global.mnuLeft.cbxOpenForm.Text
+            , ls_HistoryArg
+        ); 
+/////////////////////  	      
+      gfn_CallReportPopup("frmtraining0690R01SendList.rex", "ds_ioSmsStatExam"
+	                       , "SHSENDDATE_B=" + quote(divWork1.calSendDateStart.text)//  -- 발송일자	
+	                       + "^sParam_Title=" + quote("_발송리스트출력")
+                           +"^SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.text));//  -- 발송일자	") ;
+
+    } else if (GubunCode = "P") {	// 초빙강사
+
+		if (ds_ioSmsStatSpeaker.count == "0") {	
+			alert("출력할 자료가 없습니다..");	
+			return false;
+		}
+///////////////////// 출력이력 남기기
+        ls_HistoryArg = "지부=" + quote(divWork3.cbxJibu3.Text)
+                + ",업무구분=" + quote(radWorkGubun.text)      
+                      
+                +" 위촉여부=" + quote(divWork3.radSendYN.text) // --  위촉여부
+                +" 출력문서=" + quote("발송리스트") // -- 발송리스트    
+                +" 발송일자1=" + quote(divWork3.calSendDateStart3.value)//  -- 발송일자1	
+                +" 발송일자2=" + quote(divWork3.calSendDateEnd3.value);//  -- 발송일자2  
+      
+        gfn_InsertSearchPrintHistory(
+            "P"
+            , this.ID
+            , global.mnuLeft.cbxOpenForm.Text
+            , ls_HistoryArg
+        ); 
+/////////////////////  	
+	  	  
+	  gfn_CallReportPopup("frmtraining0690R01SendList2.rex", "ds_ioSmsStatSpeaker"
+	                       , "SHSENDDATE_B=" + quote(divWork3.calSendDateStart3.text)//  -- 발송일자	
+	                       + "^sParam_Title=" + quote("_발송리스트출력")
+                           + "^SHSENDDATE_C=" + quote(divWork3.calSendDateEnd3.text));//  -- 발송일자	") ;
+ 
+       
+    } else if (GubunCode = "S") {	// 시험감독관
+		if (ds_ioSmsStatSupervisor.count == "0") {		
+			alert("출력할 자료가 없습니다..");			
+			return false;		
+		}
+///////////////////// 출력이력 남기기
+        ls_HistoryArg = "지부=" + quote(divWork4.cbxJibu4.Text)
+                + ",업무구분=" + quote(radWorkGubun.text)      
+                      
+                +" 출력문서=" + quote("발송리스트") // -- 발송리스트    
+                +" 발송일자1=" + quote(divWork4.calSendDateStart4.value)//  -- 발송일자1	
+                +" 발송일자2=" + quote(divWork4.calSendDateEnd4.value);//  -- 발송일자2  
+      
+        gfn_InsertSearchPrintHistory(
+            "P"
+            , this.ID
+            , global.mnuLeft.cbxOpenForm.Text
+            , ls_HistoryArg
+        ); 
+/////////////////////  	
+	  	  
+	  gfn_CallReportPopup("frmtraining0690R01SendList2.rex", "ds_ioSmsStatSupervisor"
+	                       , "SHSENDDATE_B=" + quote(divWork4.calSendDateStart4.text)//  -- 발송일자	
+	                       + "^sParam_Title=" + quote("_발송리스트출력")
+                           + "^SHSENDDATE_C=" + quote(divWork4.calSendDateEnd4.text));//  -- 발송일자	") ;
+    }
+}
+
+function btnPrintOrder_OnClick(obj)
+{
+	if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+    
+    if(!Confirm("회차 및 발송 일자의 범위가 크면 검색시간이 많이 걸립니다. 검색하시겠습니까?")){  //
+        return false;
+    }
+
+	if (GubunCode = "T") {   // 강습일 경우
+    
+        ds_ioSmsStat_order.ClearData(); // 데이타셋 초기화
+   
+    
+            tit_clearActionInfo();
+            tit_addCsvSearchActionInfo("training:searchSmsStat_order", false);
+            // 서버 호출 
+            tit_callService(
+                ""
+                ,""
+                ,""	// inDs
+                ,"ds_ioSmsStat_order=ds_oSmsStat_order"	// outDs
+                ,"SHSYSGUBUN=" + quote(radWorkGubun.value)   //-- 강습, 시험 여부
+                    +" TOMGGTMGNO=" + quote(divWork1.cbxJibu.value)   //-- 지부
+                    +" TOYEAR=" + quote(divWork1.edYear.text)  //-- 년도
+                    +" TOTCCOURSECD=" + quote(divWork1.cbxCourse.value) // -- 직능            
+                    +" TOTRAININGORDER=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차    
+                    +" TOTRAININGORDER2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차                 
+                    +" SHSENDDATE_B=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자	
+                    +" SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.value)//  -- 발송일자	
+                    
+                    +" SENDGUBUN=" + quote(divWork1.radSendGubun.value)//  -- 발송구분
+                    // args 
+                ,"lfn_AfterSearchSmsStat"
+                ,false
+                ,""
+                ,true
+            );	
+	
+		
+	  if (ds_ioSmsStat_order.count == "0") {
+	    alert("출력할 자료가 없습니다.");
+        return false;
+	  }
+///////////////////// 출력이력 남기기
+        ls_HistoryArg = "지부=" + quote(divWork1.cbxJibu.Text)
+                + ",직능=" + quote(divWork1.cbxCourse.Text)
+                + ",년도=" + quote(divWork1.edYear.Text)
+                + ",강습시험여부=" + quote(radWorkGubun.text)            
+                +" 강습회차1=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차1    
+                +" 강습회차2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차2  
+                +" 출력문서=" + quote("회차별발송현황") // -- 발송리스트                
+                +" 발송일자1=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자1	
+                +" 발송일자2=" + quote(divWork1.calSendDateEnd.value);//  -- 발송일자2  
+    
+      
+        gfn_InsertSearchPrintHistory(
+            "P"
+            , this.ID
+            , global.mnuLeft.cbxOpenForm.Text
+            , ls_HistoryArg
+        ); 
+/////////////////////  	  
+	  gfn_CallReportPopup("frmtraining0690R02OrderSendStatistics.rex", "ds_ioSmsStat_order"
+                           , "SHSENDDATE_B=" + quote(divWork1.calSendDateStart.text)//  -- 발송일자	
+                           + "^sParam_Title=" + quote("_회차별 발송현황출력")
+                           +"^SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.text));//  -- 발송일자	
+
+
+    } else if (GubunCode = "E") {   // 시험
+        ds_ioSmsStatExam_order.Clear(); // 데이타셋 초기화
+    
+            tit_clearActionInfo();
+            tit_addCsvSearchActionInfo("training:searchSmsStatExam_order", false);
+            // 서버 호출 
+            tit_callService(
+                ""
+                ,""
+                ,""	// inDs
+                ,"ds_ioSmsStatExam_order=ds_oSmsStatExam_order"	// outDs
+                ,"SHSYSGUBUN=" + quote(radWorkGubun.value)   //-- 강습, 시험 여부
+                    +" TOMGGTMGNO=" + quote(divWork1.cbxJibu.value)   //-- 지부
+                    +" TOYEAR=" + quote(divWork1.edYear.text)  //-- 년도
+                    +" TOTCCOURSECD=" + quote(divWork1.cbxCourse.value) // -- 직능            
+                    +" TOTRAININGORDER=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차    
+                    +" TOTRAININGORDER2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차                 
+                    +" SHSENDDATE_B=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자	
+                    +" SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.value)//  -- 발송일자	
+                    
+                    +" SENDGUBUN=" + quote(divWork1.radSendGubun.value)//  -- 발송구분
+                    // args 
+                ,"lfn_AfterSearchSmsStat"
+                ,false
+                ,""
+                ,true
+            );	
+	   
+      if (ds_ioSmsStatExam_order.count == "0") {
+        alert("출력할 자료가 없습니다.");
+        return false;
+      }
+///////////////////// 출력이력 남기기
+        ls_HistoryArg = "지부=" + quote(divWork1.cbxJibu.Text)
+                + ",직능=" + quote(divWork1.cbxCourse.Text)
+                + ",년도=" + quote(divWork1.edYear.Text)
+                + ",업무구분=" + quote(radWorkGubun.text)            
+                +" 강습회차1=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차1    
+                +" 강습회차2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차2  
+                +" 출력문서=" + quote("회차별발송현황") // -- 발송리스트                
+                +" 발송일자1=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자1	
+                +" 발송일자2=" + quote(divWork1.calSendDateEnd.value);//  -- 발송일자2  
+    
+      
+        gfn_InsertSearchPrintHistory(
+            "P"
+            , this.ID
+            , global.mnuLeft.cbxOpenForm.Text
+            , ls_HistoryArg
+        ); 
+/////////////////////        
+      gfn_CallReportPopup("frmtraining0690R02OrderSendStatistics.rex", "ds_ioSmsStatExam_order"
+                           , "SHSENDDATE_B=" + quote(divWork1.calSendDateStart.text)//  -- 발송일자	
+                           + "^sParam_Title=" + quote("_회차별 발송현황출력")
+                           +"^SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.text));//  -- 발송일자	
+
+
+    }
+}
+
+function btnPrintDate_OnClick(obj)
+{
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    } 
+    
+    if(!Confirm("회차 및 발송 일자의 범위가 크면 검색시간이 많이 걸립니다. 검색하시겠습니까?")){  //
+        return false;
+    }
+
+	if (GubunCode = "T") {   // 강습일 경우
+        ds_ioSmsStat_date.ClearData(); // 데이타셋 초기화
+            tit_clearActionInfo();
+            tit_addCsvSearchActionInfo("training:searchSmsStat_date", false);
+            // 서버 호출 
+            tit_callService(
+                ""
+                ,""
+                ,""	// inDs
+                ,"ds_ioSmsStat_date=ds_oSmsStat_date"	// outDs
+                ,"SHSYSGUBUN=" + quote(radWorkGubun.value)   //-- 강습, 시험 여부
+                    +" TOMGGTMGNO=" + quote(divWork1.cbxJibu.value)   //-- 지부
+                    +" TOYEAR=" + quote(divWork1.edYear.text)  //-- 년도
+                    +" TOTCCOURSECD=" + quote(divWork1.cbxCourse.value) // -- 직능            
+                    +" TOTRAININGORDER=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차    
+                    +" TOTRAININGORDER2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차                 
+                    +" SHSENDDATE_B=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자	
+                    +" SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.value)//  -- 발송일자	
+                    
+                    +" SENDGUBUN=" + quote(divWork1.radSendGubun.value)//  -- 발송구분
+                    // args 
+                ,"lfn_AfterSearchSmsStat"
+                ,false
+                ,""
+                ,true
+            );	
+	
+		
+	  if (ds_ioSmsStat_date.count == "0") {
+	    alert("출력할 자료가 없습니다.");
+        return false;
+	  }
+///////////////////// 출력이력 남기기
+        ls_HistoryArg = "지부=" + quote(divWork1.cbxJibu.Text)
+                + ",직능=" + quote(divWork1.cbxCourse.Text)
+                + ",년도=" + quote(divWork1.edYear.Text)
+                + ",업무구분=" + quote(radWorkGubun.text)            
+                +" 강습회차1=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차1    
+                +" 강습회차2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차2  
+                +" 출력문서=" + quote("발송일자별발송현황") // -- 발송리스트                
+                +" 발송일자1=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자1	
+                +" 발송일자2=" + quote(divWork1.calSendDateEnd.value);//  -- 발송일자2  
+    
+      
+        gfn_InsertSearchPrintHistory(
+            "P"
+            , this.ID
+            , global.mnuLeft.cbxOpenForm.Text
+            , ls_HistoryArg
+        ); 
+/////////////////////  	 	  
+	  gfn_CallReportPopup("frmtraining0690R03SendDateSendStatistics.rex", "ds_ioSmsStat_date"
+                          , "SHSENDDATE_B=" + quote(divWork1.calSendDateStart.text)//  -- 발송일자	
+                          + "^sParam_Title=" + quote("_발송일자별 발송현황출력")
+                          +"^SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.text));//  -- 발송일자	
+
+
+    } else if (GubunCode = "E") {   // 시험일 경우  
+        ds_ioSmsStatExam_date.Clear(); // 데이타셋 초기화  
+            tit_clearActionInfo();
+            tit_addCsvSearchActionInfo("training:searchSmsStatExam_date", false);
+            // 서버 호출 
+            tit_callService(
+                ""
+                ,""
+                ,""	// inDs
+                ,"ds_ioSmsStatExam_date=ds_oSmsStatExam_date"	// outDs
+                ,"SHSYSGUBUN=" + quote(radWorkGubun.value)   //-- 강습, 시험 여부
+                    +" TOMGGTMGNO=" + quote(divWork1.cbxJibu.value)   //-- 지부
+                    +" TOYEAR=" + quote(divWork1.edYear.text)  //-- 년도
+                    +" TOTCCOURSECD=" + quote(divWork1.cbxCourse.value) // -- 직능            
+                    +" TOTRAININGORDER=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차    
+                    +" TOTRAININGORDER2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차                 
+                    +" SHSENDDATE_B=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자	
+                    +" SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.value)//  -- 발송일자	
+                    
+                    +" SENDGUBUN=" + quote(divWork1.radSendGubun.value)//  -- 발송구분
+                    // args 
+                ,"lfn_AfterSearchSmsStat"
+                ,false
+                ,""
+                ,true
+            );	
+	   
+      if (ds_ioSmsStatExam_date.count == "0") {
+        alert("출력할 자료가 없습니다.");
+        return false;
+      }
+///////////////////// 출력이력 남기기
+        ls_HistoryArg = "지부=" + quote(divWork1.cbxJibu.Text)
+                + ",직능=" + quote(divWork1.cbxCourse.Text)
+                + ",년도=" + quote(divWork1.edYear.Text)
+                + ",업무구분=" + quote(radWorkGubun.text)            
+                +" 시험회차1=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차1    
+                +" 시험회차2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차2  
+                +" 출력문서=" + quote("발송일자별발송현황") // -- 발송리스트                
+                +" 발송일자1=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자1	
+                +" 발송일자2=" + quote(divWork1.calSendDateEnd.value);//  -- 발송일자2  
+    
+      
+        gfn_InsertSearchPrintHistory(
+            "P"
+            , this.ID
+            , global.mnuLeft.cbxOpenForm.Text
+            , ls_HistoryArg
+        ); 
+/////////////////////  	       
+      gfn_CallReportPopup("frmtraining0690R03SendDateSendStatistics.rex", "ds_ioSmsStatExam_date"
+                          , "SHSENDDATE_B=" + quote(divWork1.calSendDateStart.text)//  -- 발송일자	
+                          + "^sParam_Title=" + quote("_발송일자별 발송현황출력")
+                          +"^SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.text));//  -- 발송일자	
+
+
+    }
+}
+
+function btnPrintJibu_OnClick(obj)
+{
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+    
+    if(!Confirm("회차 및 발송 일자의 범위가 크면 검색시간이 많이 걸립니다. 검색하시겠습니까?")){  //
+        return false;
+    }
+       
+    if (GubunCode = "T") {   // 강습일 경우
+            ds_ioSmsStat_jibu.ClearData(); // 데이타셋 초기화   
+            tit_clearActionInfo();
+            tit_addCsvSearchActionInfo("training:searchSmsStat_jibu", false);
+            // 서버 호출 
+            tit_callService(
+                ""
+                ,""
+                ,""	// inDs
+                ,"ds_ioSmsStat_jibu=ds_oSmsStat_jibu"	// outDs
+                ,"SHSYSGUBUN=" + quote(radWorkGubun.value)   //-- 강습, 시험 여부
+                    +" TOMGGTMGNO=" + quote(divWork1.cbxJibu.value)   //-- 지부
+                    +" TOYEAR=" + quote(divWork1.edYear.text)  //-- 년도
+                    +" TOTCCOURSECD=" + quote(divWork1.cbxCourse.value) // -- 직능            
+                    +" TOTRAININGORDER=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차    
+                    +" TOTRAININGORDER2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차                 
+                    +" SHSENDDATE_B=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자	
+                    +" SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.value)//  -- 발송일자	
+                    
+                    +" SENDGUBUN=" + quote(divWork1.radSendGubun.value)//  -- 발송구분
+                    // args 
+                ,"lfn_AfterSearchSmsStat"
+                ,false
+                ,""
+                ,true
+            );	
+	
+		
+	  if (ds_ioSmsStat_jibu.count == "0") {
+	    alert("출력할 자료가 없습니다.");
+        return false;
+	  }
+///////////////////// 출력이력 남기기
+        ls_HistoryArg = "지부=" + quote(divWork1.cbxJibu.Text)
+                + ",직능=" + quote(divWork1.cbxCourse.Text)
+                + ",년도=" + quote(divWork1.edYear.Text)
+                + ",업무구분=" + quote(radWorkGubun.text)            
+                +" 강습회차1=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차1    
+                +" 강습회차2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차2  
+                +" 출력문서=" + quote("지부별발송현황") // -- 발송리스트                
+                +" 발송일자1=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자1	
+                +" 발송일자2=" + quote(divWork1.calSendDateEnd.value);//  -- 발송일자2  
+    
+      
+        gfn_InsertSearchPrintHistory(
+            "P"
+            , this.ID
+            , global.mnuLeft.cbxOpenForm.Text
+            , ls_HistoryArg
+        ); 
+/////////////////////  	 	  
+	  gfn_CallReportPopup("frmtraining0690R04JibuSendStatistics.rex", "ds_ioSmsStat_jibu"
+                          , "SHSENDDATE_B=" + quote(divWork1.calSendDateStart.text)//  -- 발송일자
+                          + "^JIBU_A=" + quote(divWork1.cbxJibu.text)	
+                          + "^sParam_Title=" + quote("_지부별 발송현황출력")
+                          + "^SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.text));//  -- 발송일자	
+
+
+
+    } else if (GubunCode = "E") {   // 시험일 경우
+        ds_ioSmsStatExam_jibu.Clear(); // 데이타셋 초기화
+            tit_clearActionInfo();
+            tit_addCsvSearchActionInfo("training:searchSmsStatExam_jibu", false);
+            // 서버 호출 
+            tit_callService(
+                ""
+                ,""
+                ,""	// inDs
+                ,"ds_ioSmsStatExam_jibu=ds_oSmsStatExam_jibu"	// outDs
+                ,"SHSYSGUBUN=" + quote(radWorkGubun.value)   //-- 강습, 시험 여부
+                    +" TOMGGTMGNO=" + quote(divWork1.cbxJibu.value)   //-- 지부
+                    +" TOYEAR=" + quote(divWork1.edYear.text)  //-- 년도
+                    +" TOTCCOURSECD=" + quote(divWork1.cbxCourse.value) // -- 직능            
+                    +" TOTRAININGORDER=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차    
+                    +" TOTRAININGORDER2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차                 
+                    +" SHSENDDATE_B=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자	
+                    +" SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.value)//  -- 발송일자	
+                    
+                    +" SENDGUBUN=" + quote(divWork1.radSendGubun.value)//  -- 발송구분
+                    // args 
+                ,"lfn_AfterSearchSmsStat"
+                ,false
+                ,""
+                ,true
+            );	
+	   
+      if (ds_ioSmsStatExam_jibu.count == "0") {
+        alert("출력할 자료가 없습니다.");
+        return false;
+      }
+///////////////////// 출력이력 남기기
+        ls_HistoryArg = "지부=" + quote(divWork1.cbxJibu.Text)
+                + ",직능=" + quote(divWork1.cbxCourse.Text)
+                + ",년도=" + quote(divWork1.edYear.Text)
+                + ",업무구분=" + quote(radWorkGubun.text)            
+                +" 강습회차1=" + quote(divWork1.edTrainingOrderStart.text) // -- 강습회차1    
+                +" 강습회차2=" + quote(divWork1.edTrainingOrderEnd.text) // -- 강습회차2  
+                +" 출력문서=" + quote("지부별발송현황") // -- 발송리스트                
+                +" 발송일자1=" + quote(divWork1.calSendDateStart.value)//  -- 발송일자1	
+                +" 발송일자2=" + quote(divWork1.calSendDateEnd.value);//  -- 발송일자2  
+    
+      
+        gfn_InsertSearchPrintHistory(
+            "P"
+            , this.ID
+            , global.mnuLeft.cbxOpenForm.Text
+            , ls_HistoryArg
+        ); 
+/////////////////////  	       
+      gfn_CallReportPopup("frmtraining0690R04JibuSendStatistics.rex", "ds_ioSmsStatExam_jibu"
+                          , "SHSENDDATE_B=" + quote(divWork1.calSendDateStart.text)//  -- 발송일자
+                          + "^JIBU_A=" + quote(divWork1.cbxJibu.text)	
+                          + "^sParam_Title=" + quote("_지부별 발송현황출력")
+                          + "^SHSENDDATE_C=" + quote(divWork1.calSendDateEnd.text));//  -- 발송일자	
+
+    }
+}
+
+function lfn_localExcel(obj)
+{
+    
+    if (radWorkGubun.Value == "T") { // 교육접수
+        if (ds_ioSmsStat.GetRowCount() < 1) {
+            gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+            return false;
+        }
+    } else if (radWorkGubun.Value == "E") { // 시험접수
+        	 if (ds_ioSmsStatExam.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return false;
+        }
+    } else if (radWorkGubun.Value == "S") { // 초빙강사
+    
+        if (ds_ioSmsStatSpeaker.GetRowCount() < 1) {
+            gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+            return false;
+        }    
+    } else if (radWorkGubun.Value == "P") { // 시험감독관
+
+        if (ds_ioSmsStatSupervisor.GetRowCount() < 1) {
+            gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+            return false;
+        }        
+    }
+    lfn_Excel(obj);  
+}
+
+// 문자내용 보기
+function gdSmsStat_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var sArg = "";
+	
+	if (radWorkGubun.Value == "T") {
+		sArg = "sMMSG=" + quote(ds_ioSmsStat.GetColumn(nRow, "MMSG"));
+	} else if (radWorkGubun.Value == "E") {
+		sArg = "sMMSG=" + quote(ds_ioSmsStatExam.GetColumn(nRow, "MMSG"));
+	} else if (radWorkGubun.Value == "P") {
+		sArg = "sMMSG=" + quote(ds_ioSmsStatSpeaker.GetColumn(nRow, "MMSG"));
+	} else if (radWorkGubun.Value == "S") {
+		sArg = "sMMSG=" + quote(ds_ioSmsStatSupervisor.GetColumn(nRow, "MMSG"));
+	}
+	Dialog("COM::frmCOM1130PSmsContentsView.xml", sArg, -1, -1, "", -1, -1);
+}
+
+
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_3002,dsc_0002]";	// 개인정보접속기록 시스템ID 
+}
+]]></Script>
+</Window>

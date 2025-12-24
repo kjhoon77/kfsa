@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="792" Id="frmcust2190MinapList" Left="8" OnDeactivate="Form_OnDeactivate" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Title="교육비&#32;미환불자&#32;현황" Top="8" Ver="1.0" Width="1320" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_Gubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>집계</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>리스트</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioList"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioList2"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oList"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJubsuYN">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>미접수</DATA>
+					</record>
+					<record>
+						<CD>Y</CD>
+						<DATA>접수</DATA>
+					</record>
+					<record>
+						<CD>Z</CD>
+						<DATA>타인접수</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="784" Height="664" Id="Shape0" Left="4" LineColor="user15" Right="1312" TabOrder="1" Top="120" Type="Rectangle" Width="1308"></Shape>
+		<Shape Bottom="104" Height="64" Id="Shape3" Left="4" LineColor="user15" Right="1312" TabOrder="10" Top="40" Type="Rectangle" Width="1308"></Shape>
+		<Shape Bottom="37" Height="28" Id="frmcust0012BuildingHistory" Left="873" LineColor="user14" Right="1312" TabOrder="9" Top="9" Type="Rectangle" Width="439"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="8" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="352">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="1137" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="4" ToolTipText="화면&#32;출력" Top="12" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="1224" OnClick="lfn_End" Style="sty_Button" TabOrder="5" ToolTipText="닫기" Top="12" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="1050" OnClick="btnToExcel_OnClick" Style="sty_Button" TabOrder="3" ToolTipText="엑셀로&#32;저장" Top="12" Width="85"></Button>
+		<Static Align="Center" BKColor="user15" Height="20" Id="Static12" Left="20" Style="sty_Label" TabOrder="10" Text="조회&#32;정보" Top="32" VAlign="Middle" Width="124" WordWrap="TRUE"></Static>
+		<Static Align="Center" Height="20" Id="lbProcCnt" Left="8" Style="sty_Label" TabOrder="12" Text="건수" Top="137" VAlign="Middle" Width="96"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medCnt" Left="108" Style="sty_Maskedit" TabOrder="11" Top="137" Value="0" Width="108"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="963" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="2" ToolTipText="입력&#32;초기화" Top="12" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbProcAmount" Left="220" Style="sty_Label" TabOrder="13" Text="총&#32;수납금액" Top="137" VAlign="Middle" Width="96"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medAmount" Left="320" Readonly="TRUE" Style="sty_Edit" TabOrder="14" Top="137" Value="0" Width="108"></MaskEdit>
+		<Static Align="Center" BKColor="user15" Height="20" Id="Static0" Left="20" Style="sty_Label" TabOrder="15" Text="조회건수" Top="108" VAlign="Middle" Width="124" WordWrap="TRUE"></Static>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="776" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="615" Id="gdProc" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" Right="1304" RowHeight="20" Style="sty_Grid" TabOrder="7" TabStop="true" Top="161" UseDBuff="true" UsePopupMenu="true" UserData="가상계좌&#32;수납처리완료목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1296">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="60"/>
+						<col width="68"/>
+						<col width="150"/>
+						<col width="166"/>
+						<col width="81"/>
+						<col width="82"/>
+						<col width="100"/>
+						<col width="140"/>
+						<col width="140"/>
+						<col width="100"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="100"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" rowspan="2" text="순번"/>
+						<cell col="1" display="text" rowspan="2" text="지부"/>
+						<cell col="2" display="text" rowspan="2" text="관리번호"/>
+						<cell col="3" display="text" rowspan="2" text="직능"/>
+						<cell col="4" display="text" rowspan="2" text="대상물(업체)명"/>
+						<cell col="5" display="text" rowspan="2" text="선임자"/>
+						<cell col="6" display="text" rowspan="2" text="수납금액"/>
+						<cell col="7" display="text" rowspan="2" text="수납일자"/>
+						<cell col="8" display="text" rowspan="2" text="연락처"/>
+						<cell col="9" display="text" rowspan="2" text="휴대폰"/>
+						<cell col="10" display="text" rowspan="2" text="교육지부"/>
+						<cell col="11" colspan="2" display="text" text="접수"/>
+						<cell col="13" display="text" rowspan="2" text="교육일자"/>
+						<cell col="14" display="text" rowspan="2" text="접수여부"/>
+						<cell col="11" display="text" row="1" text="접수번호"/>
+						<cell col="12" display="text" row="1" text="접수번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="number" expr="currow+1"/>
+						<cell align="center" col="1" colid="ERSGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="2" colid="ERSCNO" display="text"/>
+						<cell align="center" col="3" colid="CNM" display="text"/>
+						<cell align="left" col="4" colid="ERSBNM" display="text"/>
+						<cell align="center" col="5" colid="ERSFMNM" display="normal"/>
+						<cell align="right" col="6" colid="ERSSUNAPAMT" display="number"/>
+						<cell align="center" col="7" colid="ERSSUNAPDATE" display="date"/>
+						<cell align="center" col="8" colid="ERSBTEL" display="normal"/>
+						<cell align="center" col="9" colid="ERSHPTEL" display="normal"/>
+						<cell align="center" col="10" colid="GTDEPTNM2" display="normal"/>
+						<cell align="center" col="11" colid="JUBSU_NO" display="normal"/>
+						<cell align="center" col="12" colid="JUBSUNO" display="normal"/>
+						<cell align="center" col="13" colid="ESDATE" display="date"/>
+						<cell align="center" col="14" colid="JUBSUCNT" display="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="16" Text="지부" Top="80" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="97" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="6" Top="79" Width="100"></Combo>
+		<Static Align="Center" Height="19" Id="lbJifoDate" Left="8" Style="sty_Label" TabOrder="17" Text="년도" Top="57" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="876" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="12" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button0" ImageID="BTN_TEXT_07" Left="1199" OnClick="lfn_EduCustSMSSend" Style="sty_Button" TabOrder="20" Text="문자메시지발송" ToolTipText="엑셀로&#32;저장" Top="136" Width="105"></Button>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="carDate" Left="98" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="21" Top="57" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Static Align="Center" Height="20" Id="Static1" Left="200" Style="sty_Label" TabOrder="23" Text="접수여부" Top="57" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJubsuYN" INDEX="0" InnerDataset="ds_oJubsuYN" Left="289" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="22" Top="56" Width="101"></Combo>
+	</Form>
+	<Script><![CDATA[
+/*
+ * 프로그램명 : frmcust2190MinapList.xml
+ * 설명 : 교육비 미환불자 현황
+ * 작성일 : 2023.12.11
+ * 작성자 : 김동한 
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+var cnt = 0; // 건수 구하기 위한 변수값
+
+function Form_OnLoadCompleted(obj)
+{
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+	
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+		ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";	
+    
+    carDate.Value = today();
+    
+    gfn_SearchJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회
+    
+}
+
+function lfn_Search(obj)
+{
+    ds_oList.ClearData(); // 데이타셋 초기화
+    
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cust:searchCust2190MinapList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oList=ds_oList"	// outDs
+		,"ERSDATE=" + quote(carDate.Value) // args
+        + " JIBU=" + quote(cbxJibu.Value)
+        
+        + " JUBSUYN=" + quote(cbxJubsuYN.Value)
+		,"lfn_AftersearchCust2190MinapList"
+		,false
+	);	
+}
+
+function lfn_AftersearchCust2190MinapList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    medCnt.Value = ds_oList.GetRowCount();
+    medAmount.Value = ds_oList.Sum("ERSSUNAPAMT");
+    
+}
+
+function lfn_EduCustSMSSend(obj)
+{
+	/*
+    if(gfn_isNull(medCnt.text) )  //선택한것이 있는지 체크 메세지 보임
+    { alert("문자메시지 발송 대상자를 선택해 주십시오.");      
+        return false;
+    }
+    
+	ds_ioList2.Clear();
+	ds_ioList2.copy(ds_oList);	// 문자발송용 데이터셋으로 복사    
+	
+    lfn_RemoveNoHandPhone(); // 문자메시지 핸드폰 삭제 하기
+    
+    if (!gfn_Confirm("핸드폰 번호가 없는 인원은 메시지 발송이 되지 않습니다. 진행하시겠습니까? ")) { // 
+        return false;
+    }
+	ds_ioList2.Filter("SELA='1'");
+	var sSMSCNT = ds_ioList2.count; 
+
+	//23.08 알림톡 개선  
+	if (gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "SM" || gds_oUserInfo.GetColumn(0, "PSABUN") == "20220952" ) {
+		var sArg = "sMBCCD=" + quote("400"); 
+		sArg += " sCourseCode=" + quote(sCourseCode); // 직능코드 
+		sArg += " sEduPerson=" + quote(sEduPerson);
+		sArg += " sBSCNT=" + quote(sSMSCNT);       //수신자 (전송인원수)
+		sArg += " sRow='0'";         //선택 nRow
+		
+		return Dialog("cust::frmcust1107MCustSMSSend.xml", sArg, 368, 396, "", -1, -1);
+	}else{
+		var sArg = "sMBCCD=" + quote("400");   
+		sArg += " sBSCNT=" + quote(sSMSCNT);       //수신자 (전송인원수)
+		sArg += " sRow='0'";         //선택 nRow
+		
+		return Dialog("cust::frmcust1101MCustSMSSend.xml", sArg, 368, 396, "", -1, -1);
+	}	*/
+}
+]]></Script>
+</Window>

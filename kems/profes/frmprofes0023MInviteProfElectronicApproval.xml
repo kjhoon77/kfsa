@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="600" Id="frmprofes0023MInviteProfElectronicApproval" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="초빙강사&#32;승인관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_Professor">
+				<Contents>
+					<colinfo id="ATM_SMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SMJIBUNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATDYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATDSDNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATM_RE_ALI_DOC_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATM_RE_APPROVER_STATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="AVM_SMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="AVM_RE_ALI_DOC_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="AVM_RE_APPROVER_STATUS" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Jibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Approval">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>미결재</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>결재중</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>결재완료</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="86" Height="52" Id="shpGubunBox1" Left="3" LineColor="user15" Right="795" TabOrder="0" Top="34" Type="Rectangle" Width="792"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="0" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="284">
+			<Contents></Contents>
+		</Div>
+		<Shape Bottom="29" Height="28" Id="Shape0" Left="352" LineColor="user14" Right="796" TabOrder="13" Top="1" Type="Rectangle" Width="444"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="360" OnClick="lfn_Search" Style="sty_Button" TabOrder="9" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="534" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="5" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="lfn_Excel" Style="sty_Button" TabOrder="6" ToolTipText="엑셀로&#32;저장" Top="36" Visible="FALSE" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="7" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="8" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="Static8" Left="-144" Style="sty_LabelGruopBox" TabOrder="13" Text="안전원&#32;교수&#32;관리" Top="63" VAlign="Middle" Width="120"></Static>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="67" Style="sty_Label" TabOrder="14" Text="지부" Top="38" VAlign="Middle" Width="88"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="720" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="3" Top="90" Transparent="TRUE" Width="74"></Button>
+		<Static Align="Center" Height="20" Id="lbYear" Left="255" Style="sty_Label" TabOrder="15" Text="년도" Top="38" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edYear" ImeMode="native" Left="347" LeftMargin="2" Style="sty_Edit" TabOrder="2" Top="38" UserData="S" Width="77"></Edit>
+		<Static Align="Center" Height="20" Id="lbTotalCnt" Left="4" Style="sty_LabelStat" TabOrder="16" Text="총건수" Top="90" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medTotalCnt" Left="96" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="16" Top="90" UserData="S" Width="52"></MaskEdit>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_Jibu" Left="157" OnChanged="lfn_Search" ResetIndex="FIRST" Style="sty_Combo" TabOrder="1" Top="37" Width="90"></Combo>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_Professor" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="592" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="478" Id="gdProfessor" InputPanel="FALSE" Left="3" LineColor="default" OnCellClick="gdProfessor_OnCellClick" Right="794" RowHeight="22" Style="sty_Grid" TabOrder="4" TabStop="true" Top="114" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="791">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="34"/>
+						<col width="74"/>
+						<col width="47"/>
+						<col width="266"/>
+						<col width="150"/>
+						<col width="23"/>
+						<col width="150"/>
+						<col width="23"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" rowspan="2" text="순번"/>
+						<cell col="1" display="text" rowspan="2" text="지부"/>
+						<cell col="2" display="text" rowspan="2" text="년도"/>
+						<cell col="3" display="text" rowspan="2" text="위촉자&#32;성명"/>
+						<cell col="4" colspan="4" display="text" text="결재"/>
+						<cell col="4" colspan="2" display="text" row="1" text="위촉"/>
+						<cell col="6" colspan="2" display="text" row="1" text="승인"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow+1"/>
+						<cell align="center" col="1" colid="SMJIBUNM" display="text"/>
+						<cell align="center" col="2" colid="ATDYEAR" display="text"/>
+						<cell col="3" colid="ATDSDNAME" display="text"/>
+						<cell align="center" col="4" colid="ATM_RE_APPROVER_STATUS" display="text" text="결재완료"/>
+						<cell align="center" bkimageid="expr:iif(T_RE_APPROVER_STATUS==null,&#32;&apos;&apos;,&#32;&apos;BTN_SEARCH&apos;)" col="5" cursor="expr:iif(T_RE_APPROVER_STATUS==null,&#32;&apos;arrow&apos;,&#32;&apos;hand&apos;)" display="text"/>
+						<cell align="center" col="6" colid="AVM_RE_APPROVER_STATUS" cursor="expr:iif(T_RE_APPROVER_STATUS==&apos;결재완료&apos;,&#32;iif(V_RE_APPROVER_STATUS==null,&#32;&apos;hand&apos;,&#32;iif(V_RE_APPROVER_STATUS==&apos;반송&apos;,&apos;hand&apos;,&#32;&apos;arrow&apos;)),&#32;&apos;arrow&apos;)" display="expr:iif(T_RE_APPROVER_STATUS==&apos;결재완료&apos;,&#32;iif(V_RE_APPROVER_STATUS==null,&#32;&apos;button&apos;,&#32;iif(V_RE_APPROVER_STATUS==&apos;반송&apos;,&#32;&apos;button&apos;,&#32;&apos;text&apos;)),&#32;&#32;&apos;text&apos;)" expr="iif(T_RE_APPROVER_STATUS==&apos;결재완료&apos;,&#32;iif(V_RE_APPROVER_STATUS==null,&#32;&apos;결재상신&apos;,&#32;iif(V_RE_APPROVER_STATUS==&apos;반송&apos;,&#32;&apos;결재상신&apos;,&#32;AVM_RE_APPROVER_STATUS)),&#32;null)"/>
+						<cell align="center" bkimageid="expr:iif(V_RE_APPROVER_STATUS==null,&#32;&apos;&apos;,&#32;iif(V_RE_APPROVER_STATUS==&apos;반송&apos;,&#32;&apos;&apos;,&#32;&apos;BTN_SEARCH&apos;),&#32;&apos;BTN_SEARCH&apos;)" col="7" cursor="expr:iif(V_RE_APPROVER_STATUS==null,&#32;&apos;arrow&apos;,&#32;iif(V_RE_APPROVER_STATUS==&apos;반송&apos;,&#32;&apos;arrow&apos;,&#32;&apos;hand&apos;),&#32;&apos;hand&apos;)" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape BKColor="user15" Bottom="86" Height="52" Id="Shape3" Left="3" LineColor="user15" Right="63" TabOrder="18" Top="34" Type="Rectangle" Width="60"></Shape>
+		<Static Color="user0" Height="13" Id="Static15" Left="7" TabOrder="19" Text="조회조건" Top="53" Width="50"></Static>
+		<Static Align="Center" Height="20" Id="Static0" Left="67" Style="sty_Label" TabOrder="21" Text="승인결재상태" Top="62" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Radio Border="Flat" CodeColumn="CD" Column="SGUBUN_CODE" ColumnCount="5" DataColumn="DATA" Height="20" Id="radApproval" INDEX="0" InnerDataset="ds_Approval" Left="159" Style="sty_Radio" TabOrder="20" Top="62" Width="369"></Radio>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDelete" ImageID="BTN_COM_DEL" Left="447" OnClick="lfn_Delete" Style="sty_Button" TabOrder="22" ToolTipText="삭제&#32;저장" Top="4" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmprofes0023MInviteProfElectronicApproval.xml
+ * 설명 : 초빙강사 승인 전자결재 연동
+ * 작성일 : 2013.10.30 
+ * 작성자 : 정현호
+ */
+ 
+ 
+ //#include "LIB::COM.js";  // 공통업무 관련
+ #include "LIB::profes.js"; // 공통업무 관련
+ 
+ var G_AUTH;
+ 
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj)
+{
+     gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    // 공통 코드 조회
+    //gfn_SearchAllJibu(cbxJibu, "Y"); // 지부 코드 조회 
+    //cbxJibu.SetFocus();
+    //PM -> 교수관리
+    //SM -> 시스템관리자
+    
+    G_AUTH = gds_oUserInfo.GetColumn(0, "ADMINGUBUN");
+
+    gfn_SearchJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회
+    
+    cbxJibu.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+    
+    edYear.Text = left(GetDate(), 4);
+   
+    if (G_AUTH == "SM" || G_AUTH == "PM" ) {
+    
+        cbxJibu.Index = 0;
+/*         
+        gdProfessor.Enable = true;
+    } else {
+        gdProfessor.Enable = false;
+*/         
+    }
+   
+}
+
+function lfn_SetFormAuth(bStatus) {
+    btnDelete.Enable = bStatus; // 삭제 버튼
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdProfessor.Width = nCx - gdProfessor.Left - 4;
+    }
+}
+
+
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj) {
+	gfn_GridMultiSort(gdProfessor, 1); // 멀티 정렬을 실행한다.
+}
+
+
+/*----------------------------------------------------------*
+ * 기능 : 조회                                              *
+ *----------------------------------------------------------*/
+function lfn_Search(obj) {
+	lfn_SearchSpeakerApproval();  
+}
+
+
+
+/*--------------------------------------------------------
+ * 기능 : 조회
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ *--------------------------------------------------------*/
+function lfn_SearchSpeakerApproval() {
+
+	ds_Professor.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+
+	tit_addCSVSearchActionInfo("profes:searchProfes0023SpeakerApproval", false);  
+	
+	// 서버 호출
+ 	var sParm = "";
+	sParm  = "JIBU=" + quote(cbxJibu.Value);   
+	sParm += " YEAR=" + quote(edYear.Text);
+	sParm += " STATUS=" + quote(radApproval.Value);
+
+	tit_callService( ""
+		            ,""
+		            ,""	// inDs
+		            ,"ds_Professor=ds_oProfessor" // outDs
+		            ,sParm
+			        ,"lfn_AfterSearchSpeakerApproval"
+		            ,false
+		            ,false
+		            ,true
+	               );
+
+}
+
+
+function lfn_AfterSearchSpeakerApproval(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    medTotalCnt.Text = ds_Professor.rowcount;
+/*
+	if (ds_Professor.GetColumn()
+	gdProfessor.SetCellProp("body", 6, "Display", "normal");  
+    gdProfessor.SetCellProp("body", 6, "text", "결재중");  
+    
+*/    
+}
+
+
+function lfn_AfterSearchProfCount(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+function frmPFM0002MInviteProfMgnt_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam)
+{
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+
+	if (ds_Professor.GetUpdate()) {
+		if (!gfn_Confirm("변경된 내용이 있습니다. 그래도 [" + title + "] 창을 닫으시겠습니까?")) {
+			return false;
+		} else {
+			Close();
+		}
+	} else {
+	    Close();
+	}	    
+}
+/*
+ * 기능 : 초기화
+ */
+function lfn_Cancel(obj)
+{
+   ds_Professor.ClearData();
+   gfn_FormInit(this);
+   edYear.Text = left(GetDate(), 4);
+}
+
+
+//======================================================================================================
+/*--------------------------------------------------------*
+ *  엑셀  버튼 선택 시                                    *
+ *--------------------------------------------------------*/
+function lfn_Excel(obj)
+{
+    gdProfessor.ExportExcel("초빙강사관리");
+    
+   
+}
+/*--------------------------------------------------------*
+ *  화면인쇄 버튼 선택 시                                 *
+ *--------------------------------------------------------*/
+function lfn_PrintScreen(obj)
+{
+	printscreen();
+}
+
+
+//////////////////////////////////////////////////////////
+/* 사용자 함수 */
+/////////////////////////////////////////////////////////
+
+/**
+ * 그리드 클릭시
+ */
+function gdProfessor_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+    var lobj_Dataset = object(obj.BindDataset);
+ 
+	// 위촉보고 문서 보기
+	if(nCell == 5) {
+		if (!gfn_isNull(ds_Professor.GetColumn(nRow, "T_RE_APPROVER_STATUS"))) {
+			// 위촉결재문서 보기
+			ExecBrowser("http://172.19.1.1/ekp/mis_index.jsp?uid=" + gds_oUserInfo.GetColumn(0, "PPERSONNM") + 
+	
+											   "&employeeNumber=" + gds_oUserInfo.GetColumn(0, "PSABUN") +
+	
+											   "&GYMGNO=" + ds_Professor.GetColumn(nRow, "ATM_RE_ALI_DOC_ID") + "&MTSTYPE=10");
+											   
+		}
+	
+	// 승인보고서 상신
+	} else if(nCell == 6) {
+
+		if (ds_Professor.GetColumn(nRow, "T_RE_APPROVER_STATUS") == "결재완료" && 
+		    gfn_isNull(ds_Professor.GetColumn(nRow, "AVM_RE_ALI_DOC_ID")) || 
+		    ds_Professor.GetColumn(nRow, "V_RE_APPROVER_STATUS") == "반송") {	//  결재 KID가 없거나 반송이면
+	
+			// 연동 시스템에 위촉승인 자료 넣기
+			lfn_InsertSpeakerApproval(ds_Professor.GetColumn(nRow, "ATM_SMMGNO"),
+									  ds_Professor.GetColumn(nRow, "SMJIBUNM"));
+		
+			ExecBrowser("http://172.19.1.1/ekp/mis_index.jsp?uid=" + gds_oUserInfo.GetColumn(0, "PPERSONNM") + 
+	
+											   "&employeeNumber=" + gds_oUserInfo.GetColumn(0, "PSABUN") +
+	
+											   "&GYMGNO=" + ds_Professor.GetColumn(nRow, "ATM_SMMGNO") + "&MTSTYPE=31");
+		}
+                                           
+	// 승인결재문서 보기
+	} else if(nCell == 7) {
+	
+		//if (!gfn_isNull(ds_Professor.GetColumn(nRow, "AVM_RE_ALI_DOC_ID"))) {	//  결재 KID가 있으면
+		if (!gfn_isNull(ds_Professor.GetColumn(nRow, "V_RE_APPROVER_STATUS")) &&
+		    ds_Professor.GetColumn(nRow, "V_RE_APPROVER_STATUS") != "반송") {
+
+			ExecBrowser("http://172.19.1.1/ekp/mis_index.jsp?uid=" + gds_oUserInfo.GetColumn(0, "PPERSONNM") + 
+		
+												   "&employeeNumber=" + gds_oUserInfo.GetColumn(0, "PSABUN") +
+		
+												   "&GYMGNO=" + ds_Professor.GetColumn(nRow, "AVM_RE_ALI_DOC_ID") + "&MTSTYPE=10");
+		}
+
+	}
+
+}
+
+
+// 연동 시스템에 위촉승인 자료 넣기
+function lfn_InsertSpeakerApproval(vSMMGNO, vJIBUNM) {
+
+	// insert into MISSPEAKERAPPROVEM
+
+	tit_clearActionInfo();
+
+    tit_AddSingleActionInfo(	
+        "profes:insertProfes0023MisSpeakerApproveM"	// insert  		
+        , ""	// update  
+        , ""	// delete
+        , ""	// flag column 명
+        , ""	// key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N"	// 실행타입
+
+    );
+
+    // 서버 호출 
+
+    tit_callService(
+        ""
+        ,""
+        ,""/// inDs		
+        ,""	// outDs
+        , "SMMGNO=" + quote(vSMMGNO)	// 관리번호
+            + " PSABUN=" + quote(gds_oUserInfo.GetColumn(0, "PSABUN")) // -- 사번  
+            + " JIBUNM=" + quote(vJIBUNM)  // 지부  // args 
+        ,"lfn_AfterInsertMisSpeakerApprove"
+        ,true
+        ,false
+        ,true
+
+    ); 
+ 
+    
+	// insert into MISSPEAKERAPPROVED   
+    
+	tit_clearActionInfo();
+
+	tit_AddSingleActionInfo(	
+		"profes:insertProfes0023MisSpeakerApproveD"	// insert  		
+		, ""	// update  
+		, ""	// delete
+		, ""	// flag column 명
+		, ""	// key sql id
+		, 0	// key 증가 값
+		, "" 
+		, 0 
+		, "N"	// 실행타입
+	);
+
+	// 서버 호출 
+
+	tit_callService(
+		""
+		,""
+		,""/// inDs		
+		,""	 // outDs
+		, "SMMGNO=" + quote(vSMMGNO)	// 결재 관리번호 	 // args 
+		,"lfn_AfterInsertMisSpeakerApprove"
+		,true
+		,false
+		,true
+
+	); 
+
+}
+
+/*
+
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+
+ * parameter : strSvcID - 서비스ID
+
+ *             nErrorCode - 에러코드
+
+ *             strErrorMsg - 에러메시지
+
+ * Return : 없음
+
+ */
+
+function lfn_AfterInsertMisSpeakerApprove(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+
+        return;
+
+    }
+
+}
+
+// 삭제
+function lfn_Delete(obj)
+{
+    if (ds_Professor.currow < 0) {
+    
+        gfn_Alert(MSGI00030); // 삭제할 레코드가 없습니다.
+        
+        return false;
+    }
+
+
+	if (ds_Professor.GetColumn(ds_Professor.currow, "T_RE_APPROVER_STATUS") == "결재완료") {
+	
+		gfn_Alert("결재완료된 자료는 삭제할 수 없습니다.");
+    
+        return false; 
+        
+    }
+    
+    
+ 	if (!gfn_Confirm(MSGW00030)) { // 정말로 삭제 하시겠습니까?
+ 	
+        return false;
+        
+	}
+    
+	//초빙강사삭제(update)
+    tit_AddSingleActionInfo("profes:delete0023SpeakerApproval", "", 0, "", "N");
+	// 서버 호출 
+	tit_callService(
+	
+		 ""
+		 
+		,""
+		
+		,""	// inDs 
+		
+		,""	// outDs
+		
+		,"SMMGNO=" + quote(ds_Professor.GetColumn(ds_Professor.currow, "ATM_SMMGNO")) // args
+		
+		,"lfn_AfterDeleteApproval"
+		
+		,false
+		
+     );
+
+    
+}
+
+function lfn_AfterDeleteApproval(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    lfn_Search(); 
+}
+]]></Script>
+</Window>

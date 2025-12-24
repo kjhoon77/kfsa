@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="344" Id="frmcust0090MReturnPostReport" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="반송우편리스트&#32;출력" Top="8" Ver="1.0" Width="456" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oReport">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>현황출력</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>집계출력</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oChoiceYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>Y</CD>
+						<DATA>선택</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>회비고지서</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>교육통지서</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>기타</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oBusinessType">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourseYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>0</CD>
+						<DATA>선택&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>다중선택</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oRegion">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTCD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCheckList">
+				<Contents>
+					<colinfo id="ADDRESS" size="201" type="STRING"/>
+					<colinfo id="BNM" size="40" type="STRING"/>
+					<colinfo id="BTEL" size="16" type="STRING"/>
+					<colinfo id="CNO" size="6" type="STRING"/>
+					<colinfo id="COVER1COUNT" size="22" type="DECIMAL"/>
+					<colinfo id="DELCOUNT" size="22" type="DECIMAL"/>
+					<colinfo id="FMNM" size="20" type="STRING"/>
+					<colinfo id="NOCOVERCOUNT" size="22" type="DECIMAL"/>
+					<colinfo id="PMGNO" size="8" type="STRING"/>
+					<colinfo id="PRBIZGUBUN" size="1" type="STRING"/>
+					<colinfo id="PRBIZGUBUNNM" size="4" type="STRING"/>
+					<colinfo id="PRPDREASON" size="1" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oListSum">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSumList">
+				<Contents>
+					<colinfo id="CGTMGNO" size="4" type="STRING"/>
+					<colinfo id="CNT" size="22" type="DECIMAL"/>
+					<colinfo id="CREGCD" size="2" type="STRING"/>
+					<colinfo id="GTTEAMNM" size="70" type="STRING"/>
+					<colinfo id="RCNM" size="50" type="STRING"/>
+					<colinfo id="RCORDERNO" size="22" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oRegionForm">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="340" Height="232" Id="Shape0" Left="4" LineColor="user15" Right="452" TabOrder="32" Top="108" Type="Rectangle" Width="448"></Shape>
+		<Shape Bottom="96" Height="40" Id="Shape2" Left="4" LineColor="user15" Right="452" TabOrder="30" Top="56" Type="Rectangle" Width="448"></Shape>
+		<Shape Bottom="53" Height="52" Id="shpBtnBox" Left="274" LineColor="user14" Right="452" TabOrder="29" Top="1" Type="Rectangle" Width="178"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="28" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="272">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="364" OnClick="lfn_End" Style="sty_Button" TabOrder="4" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="Static0" Left="20" Style="sty_LabelGruopBox" TabOrder="31" Text="출력물" Top="48" VAlign="Middle" Width="112"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radReport" INDEX="0" InnerDataset="ds_oReport" Left="8" LeftMargin="16" OnKeyDown="gfn_EnterNextFocus" RightMargin="16" Style="sty_Radio" TabOrder="5" Top="72" UserData="S" Value="0" Width="244"></Radio>
+		<Static Align="Center" Height="20" Id="Static1" Left="20" Style="sty_LabelGruopBox" TabOrder="33" Text="조회&#32;조건" Top="100" VAlign="Middle" Width="112"></Static>
+		<Static Align="Center" Height="20" Id="lbRegion" Left="8" Style="sty_Label" TabOrder="34" Text="지역" Top="148" VAlign="Middle" Width="60"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxRegion1" INDEX="0" InnerDataset="ds_oRegion" Left="179" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="8" Top="147" UserData="S" Width="125"></Combo>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radRegion" INDEX="0" InnerDataset="ds_oChoiceYn" Left="72" LeftMargin="4" OnChanged="radRegion_OnChanged" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" RightMargin="4" Style="sty_Radio" TabOrder="7" Top="148" UserData="S" Width="104"></Radio>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxRegion2" INDEX="0" InnerDataset="ds_oRegion" Left="323" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="9" Top="147" UserData="S" Width="125"></Combo>
+		<Static Align="Center" Height="20" Id="lbText" Left="304" Style="sty_Text" TabOrder="35" Text="~" Top="148" VAlign="Middle" Width="20"></Static>
+		<Static Align="Center" Height="20" Id="lbBusinessType" Left="8" Style="sty_Label" TabOrder="36" Text="업종" Top="244" VAlign="Middle" Width="60"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxBusinessType1" INDEX="0" InnerDataset="ds_oBusinessType" Left="179" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="19" Top="243" UserData="S" Width="125"></Combo>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radBusinessType" INDEX="0" InnerDataset="ds_oChoiceYn" Left="72" LeftMargin="4" OnChanged="radBusinessType_OnChanged" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" RightMargin="4" Style="sty_Radio" TabOrder="18" Top="244" UserData="S" Width="104"></Radio>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxBusinessType2" INDEX="0" InnerDataset="ds_oBusinessType" Left="323" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="20" Top="243" UserData="S" Width="125"></Combo>
+		<Static Align="Center" Height="20" Id="Static8" Left="304" Style="sty_Text" TabOrder="37" Text="~" Top="244" VAlign="Middle" Width="20"></Static>
+		<Static Align="Center" Height="20" Id="lbMgno" Left="8" Style="sty_Label" TabOrder="38" Text="고객번호" Top="268" VAlign="Middle" Width="60"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radMgno" INDEX="0" InnerDataset="ds_oChoiceYn" Left="72" LeftMargin="4" OnChanged="radMgno_OnChanged" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" RightMargin="4" Style="sty_Radio" TabOrder="21" Top="268" UserData="S" Width="104"></Radio>
+		<Static Align="Center" Height="20" Id="lbDate" Left="8" Style="sty_Label" TabOrder="39" Text="반송일자" Top="292" VAlign="Middle" Width="60"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radDate" INDEX="0" InnerDataset="ds_oChoiceYn" Left="72" LeftMargin="4" OnChanged="radDate_OnChanged" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" RightMargin="4" Style="sty_Radio" TabOrder="24" Top="292" UserData="S" Width="104"></Radio>
+		<Static Align="Center" Height="20" Id="Static12" Left="280" Style="sty_Text" TabOrder="40" Text="~" Top="292" VAlign="Middle" Width="20"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" Enable="FALSE" HeaderFont="돋음,10,Bold" Height="20" Id="calStartDate" Left="180" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="25" Top="292" UserData="S" WeeksFont="돋음,9" Width="100"></Calendar>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" Enable="FALSE" HeaderFont="돋음,10,Bold" Height="20" Id="calEndDate" Left="300" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="26" Top="292" UserData="S" WeeksFont="돋음,9" Width="100"></Calendar>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="277" OnClick="lfn_Print" Style="sty_Button" TabOrder="1" ToolTipText="출력" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="364" OnClick="lfn_ExcelL" Style="sty_Button" TabOrder="3" ToolTipText="엑셀로&#32;저장" Top="28" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="Static4" Left="8" Style="sty_Label" TabOrder="41" Text="반송구분" Top="316" VAlign="Middle" Width="60"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="radReturnGubun" INDEX="0" InnerDataset="ds_oGubun" Left="72" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" RightMargin="4" Style="sty_Radio" TabOrder="27" Top="316" UserData="S" Value="0" Width="327"></Radio>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="277" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="2" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="Static5" Left="8" Style="sty_Label" TabOrder="43" Text="직능" Top="172" VAlign="Middle" Width="60"></Static>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="42" Text="지부" Top="124" VAlign="Middle" Width="60"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="72" OnChanged="cbxJibu_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="6" Top="124" UserData="S" Width="102"></Combo>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="meCustNo1" Left="180" LeftMargin="2" Mask="######" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="22" Top="268" Type="STRING" UserData="S" Width="52"></MaskEdit>
+		<Static Align="Center" Height="20" Id="Static15" Left="232" Style="sty_Text" TabOrder="44" Text="~" Top="268" VAlign="Middle" Width="20"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="meCustNo2" Left="252" LeftMargin="2" Mask="######" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="23" Top="268" Type="STRING" UserData="S" Width="52"></MaskEdit>
+		<Grid BindDataset="ds_oCheckList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Bottom="485" Editable="TRUE" Enable="true" EndLineColor="default" Height="133" Id="gdCheckList" InputPanel="FALSE" LineColor="default" Right="864" Style="sty_Grid" TabOrder="29" TabStop="FALSE" Top="352" UseDBuff="true" UsePopupMenu="true" UserData="반송우편리스트" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="864">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="46"/>
+						<col width="202"/>
+						<col width="200"/>
+						<col width="70"/>
+						<col width="120"/>
+						<col width="270"/>
+						<col width="70"/>
+						<col width="94"/>
+						<col width="39"/>
+						<col width="39"/>
+						<col width="62"/>
+						<col width="39"/>
+						<col width="107"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" rowspan="2" text="순번"/>
+						<cell col="1" display="text" rowspan="2" text="회원번호"/>
+						<cell col="2" display="text" rowspan="2" text="업체명"/>
+						<cell col="3" display="text" rowspan="2" text="성명"/>
+						<cell col="4" display="text" rowspan="2" text="전화번호"/>
+						<cell col="5" display="text" rowspan="2" text="주소"/>
+						<cell col="6" display="text" rowspan="2" text="반송구분"/>
+						<cell col="7" display="text" rowspan="2" text="반송사유"/>
+						<cell col="8" colspan="4" display="text" text="확인결과"/>
+						<cell col="12" display="text" rowspan="2" text="확인내용"/>
+						<cell col="8" display="text" row="1" text="삭제"/>
+						<cell col="9" display="text" row="1" text="변경"/>
+						<cell col="10" display="text" row="1" text="통화불가"/>
+						<cell col="11" display="text" row="1" text="기타"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="row+1"/>
+						<cell align="left" col="1" colid="PMGNO" display="text"/>
+						<cell align="left" col="2" colid="BNM" display="text"/>
+						<cell align="center" col="3" colid="FMNM" display="text"/>
+						<cell align="left" col="4" colid="BTEL" display="text"/>
+						<cell align="left" col="5" colid="ADDRESS" display="text"/>
+						<cell align="center" col="6" colid="PRBIZGUBUNNM" display="text"/>
+						<cell align="left" col="7" colid="PRPDREASON" display="text"/>
+						<cell align="left" col="8" display="text"/>
+						<cell align="left" col="9" display="text"/>
+						<cell align="left" col="10" display="text"/>
+						<cell align="left" col="11" display="text"/>
+						<cell align="left" col="12" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="radCourse" INDEX="0" InnerDataset="ds_oCourseYn" Left="72" LeftMargin="4" OnChanged="radCourse_OnChanged" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" RightMargin="4" Style="sty_Radio" TabOrder="10" Top="172" UserData="S" Width="348"></Radio>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse" ImeMode="none" INDEX="0" InnerDataset="ds_oCourse" Left="195" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="11" Top="171" UserData="S" Width="122"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse1" INDEX="0" InnerDataset="ds_oCourse" Left="71" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="12" Top="195" UserData="S" Width="122"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse2" INDEX="0" InnerDataset="ds_oCourse" Left="195" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="13" Top="195" UserData="S" Width="122"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse3" INDEX="0" InnerDataset="ds_oCourse" Left="319" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="14" Top="195" UserData="S" Width="122"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse6" INDEX="0" InnerDataset="ds_oCourse" Left="319" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="17" Top="219" UserData="S" Width="122"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse5" INDEX="0" InnerDataset="ds_oCourse" Left="195" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="16" Top="219" UserData="S" Width="122"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse4" INDEX="0" InnerDataset="ds_oCourse" Left="71" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="15" Top="219" UserData="S" Width="122"></Combo>
+		<Grid AutoFit="TRUE" BindDataset="ds_oListSum" BkColor2="user2" BkSelColor="user3" BoldHead="true" Bottom="548" Editable="TRUE" Enable="true" EndLineColor="default" Height="60" Id="gdListSum" InputPanel="FALSE" LineColor="default" MinWidth="100" Right="1216" Style="sty_Grid" TabOrder="30" TabStop="FALSE" Top="488" UseDBuff="true" UsePopupMenu="true" UserData="우편반송현황집계" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="1216">
+			<contents>
+				<format id="Default"></format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust0090MReturnPostReport.xml
+ * 설명 : 반송우편리스트 출력
+ * 작성일 : 2009.12.26
+ * 작성자 : 김은규
+ */
+ 
+#include "LIB::cust.js"; // 공통업무 관련
+
+var workFlag = -1;		//작업구분 (0:출력, 1:엑셀)
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj)
+{
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    lfn_Init(obj);
+}
+
+/* 공통 필수 시작 */
+function Form_OnActivate(obj) {
+	gs_SysID = "[stm_01,bsn_1000,dsc_0011]";	// 개인정보접속기록 시스템ID 
+    gfn_Form_OnActivate(obj);
+    
+    // to do
+}
+
+function Form_OnDeactivate(obj) {
+    // to do
+
+    gfn_Form_OnDeactivate(obj);
+}
+
+function Form_OnUnloadCompleted(obj) {
+    // to do
+
+    gfn_Form_OnUnloadCompleted(obj);
+}
+
+function Form_OnFocus(obj) {
+    gfn_Form_OnFocus(obj);
+
+    // to do
+}
+
+function Form_OnKillFocus(obj) {
+    // to do
+
+    gfn_Form_OnKillFocus(obj);
+}
+
+/* 공통 필수 종료 */
+
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	gfn_Grid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex); // 0번째 셀이면 멀티정렬을, 그 외 셀은 셀정렬을 실행한다.
+	
+	// to do
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    
+}
+
+/*
+ * 기능 : 초기화
+ */
+function lfn_Cancel(obj)
+{
+	gfn_FormInit(obj);
+	radRegion_OnChanged(Object("radRegion"), radRegion.Value);					// 지역-전체
+}
+
+/*
+ * 기능 : 출력
+ */
+function lfn_Print(obj)
+{
+	workFlag = 0;
+	if(radReport.Value == 0) {	//현황출력
+		lfn_Search1();
+	} else {	//집계출력
+		lfn_Search2();
+	}
+}
+
+/*
+ * 기능 : 엑셀
+ */
+function lfn_ExcelL(obj)
+{
+	workFlag = 1;
+	if(radReport.Value == 0) {	//현황출력
+		lfn_Search1();
+	} else {	//집계출력
+		lfn_Search2();
+	}
+}
+
+/*
+ * 기능 : 데이터 초기화
+ */
+function lfn_Init(obj)
+{
+	gfn_FormInit(obj);
+	radReport.Index = 0;														// 출력물
+	radReturnGubun.Index = 0;													// 반송구분
+	gfn_SearchCustomerCourseFullName(ds_oCourse, "0", "선택");					// 대표고객직능 조회
+    gfn_SearchAllJibu(cbxJibu, "Y"); 											// 지부 코드 조회
+    gfn_SearchCommonCode(ds_oBusinessType, "BIZCD", "Y", "선택"); 				// 방관-용도코드
+	cbxJibu_OnChanged(Object("cbxJibu"),cbxJibu.Value);							// 지부-소속지부
+	radRegion_OnChanged(Object("radRegion"),radRegion.Value);					// 지역-전체
+	radCourse_OnChanged(Object("radCourse"),radCourse.Value);					// 직능-전체
+	radBusinessType_OnChanged(Object("radCourse"),radBusinessType.Value);		// 업종-전체
+}
+
+// 직능 선택
+function radCourse_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	lfn_SelectCourse(strCode);
+}
+
+// 직능 선택
+function lfn_SelectCourse(strCode) {
+	if(gfn_IsNull(strCode)) {	//전체
+		cbxCourse.Index = 0;
+		cbxCourse1.Index = 0;
+		cbxCourse2.Index = 0;
+		cbxCourse3.Index = 0;
+		cbxCourse4.Index = 0;
+		cbxCourse5.Index = 0;
+		cbxCourse6.Index = 0;
+		cbxCourse.Enable = false;
+		cbxCourse1.Enable = false;
+		cbxCourse2.Enable = false;
+		cbxCourse3.Enable = false;
+		cbxCourse4.Enable = false;
+		cbxCourse5.Enable = false;
+		cbxCourse6.Enable = false;
+	} else if(strCode == 0) {	//선택
+		cbxCourse.Index = 0;
+		cbxCourse1.Index = 0;
+		cbxCourse2.Index = 0;
+		cbxCourse3.Index = 0;
+		cbxCourse4.Index = 0;
+		cbxCourse5.Index = 0;
+		cbxCourse6.Index = 0;
+		cbxCourse.Enable = true;
+		cbxCourse1.Enable = false;
+		cbxCourse2.Enable = false;
+		cbxCourse3.Enable = false;
+		cbxCourse4.Enable = false;
+		cbxCourse5.Enable = false;
+		cbxCourse6.Enable = false;
+	} else if(strCode == 1) {	//다중선택
+		cbxCourse.Index = 0;
+		cbxCourse1.Index = 0;
+		cbxCourse2.Index = 0;
+		cbxCourse3.Index = 0;
+		cbxCourse4.Index = 0;
+		cbxCourse5.Index = 0;
+		cbxCourse6.Index = 0;
+		cbxCourse.Enable = false;
+		cbxCourse1.Enable = true;
+		cbxCourse2.Enable = true;
+		cbxCourse3.Enable = true;
+		cbxCourse4.Enable = true;
+		cbxCourse5.Enable = true;
+		cbxCourse6.Enable = true;
+	}
+}
+
+function meCustNo1_OnKillFocus(obj)
+{
+	obj.Value = iif(gfn_IsNull(obj.Value), "", lpad(obj.Value, "0", 6));
+}
+
+function meCustNo2_OnKillFocus(obj)
+{
+	obj.Value = iif(gfn_IsNull(obj.Value), "", lpad(obj.Value, "0", 6));
+}
+
+// 지부변경
+function cbxJibu_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	lfn_JibuChanged(strCode);
+}
+
+// 지부변경
+function lfn_JibuChanged(strCode) {
+	gfn_SearchCodeRegion(strCode, ds_oRegion, "0");	//지역 코드 조회
+	
+	if(radRegion.Value == "Y") {
+		cbxRegion1.Index = 0;
+		cbxRegion2.Index = ds_oRegion.rowcount - 1;
+	}
+}
+
+// 지역변경
+function radRegion_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(gfn_IsNull(strCode)) {
+		lfn_RegionChanged(false);
+	} else {
+		lfn_RegionChanged(true);
+	}
+}
+
+// 지역변경
+function lfn_RegionChanged(bStatus) {
+	cbxRegion1.Enable = bStatus;
+	cbxRegion2.Enable = bStatus;
+	
+	if(bStatus == false) {
+		cbxRegion1.Value = "";
+		cbxRegion2.Value = "";
+	} else {
+		cbxRegion1.Index = 0;
+		cbxRegion2.Index = ds_oRegion.rowcount - 1;
+	}
+}
+
+// 업종변경
+function radBusinessType_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(gfn_IsNull(strCode)) {
+		lfn_BusinessTypeChanged(false);
+	} else {
+		lfn_BusinessTypeChanged(true);
+	}
+}
+
+// 업종변경
+function lfn_BusinessTypeChanged(bStatus) {
+	cbxBusinessType1.Enable = bStatus;
+	cbxBusinessType2.Enable = bStatus;
+	
+	if(bStatus == false) {
+		cbxBusinessType1.Value = "";
+		cbxBusinessType2.Value = "";
+	} else {
+		cbxBusinessType1.Index = 1;
+		cbxBusinessType2.Index = ds_oBusinessType.rowcount - 1;
+	}
+}
+
+// 고객변경
+function radMgno_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(gfn_IsNull(strCode)) {
+		lfn_MgnoChanged(false);
+	} else {
+		lfn_MgnoChanged(true);
+	}
+}
+
+// 고객변경
+function lfn_MgnoChanged(bStatus) {
+	meCustNo1.Enable = bStatus;
+	meCustNo2.Enable = bStatus;
+	
+	if(bStatus == false) {
+		meCustNo1.Value = "";
+		meCustNo2.Value = "";
+	}
+}
+
+// 일자변경
+function radDate_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(gfn_IsNull(strCode)) {
+		lfn_DateChanged(false);
+	} else {
+		lfn_DateChanged(true);
+	}
+}
+
+// 일자변경
+function lfn_DateChanged(bStatus) {
+	calStartDate.Enable = bStatus;
+	calEndDate.Enable = bStatus;
+	
+	if(bStatus == false) {
+		calStartDate.Value = "";
+		calEndDate.Value = "";
+	} else {
+		calStartDate.Value = left(GetDate(),4) + "0101";
+		calEndDate.Value = left(GetDate(),4) + "1231";
+	}
+}
+
+
+/*
+ * 기능 : 조회 (현황출력)
+ */
+function lfn_Search1(obj)
+{
+	var lsCourseList = ""; //직능리스트
+	
+	if(radCourse.Value == 0) {	//선택
+		if(!gfn_IsNull(cbxCourse.Value)) {
+			lsCourseList += toString(trim(left(cbxCourse.Value,1)));
+		}
+	} else if(radCourse.Value == 1) {	//다중선택
+        for ( var i=1; i < 7; i++ ) {
+            if (!gfn_IsNull(object("cbxCourse" + toString(i)).Value)) {
+                lsCourseList += left(object("cbxCourse" + toString(i)).Value, 1) + ",";
+            }
+        }        
+		lsCourseList = left(lsCourseList, length(lsCourseList)-1);
+	}
+	ds_oCheckList.ClearData();
+	ds_oListSum.ClearData();
+	
+	tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cust:searchCust0090ReturnPostReport1", false);
+
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oCheckList=ds_oCheckList"	// outDs
+		,"SJIBU=" + quote(cbxJibu.Value)
+		+ " CREGCD1=" + quote(cbxRegion1.Value)
+		+ " CREGCD2=" + quote(cbxRegion2.Value)
+		+ " SCOURSE=" + quote(lsCourseList)
+		+ " SCNO1=" + quote(meCustNo1.Value)
+		+ " SCNO2=" + quote(meCustNo2.Value)
+		+ " SBBIZCD1=" + quote(cbxBusinessType1.Value)
+		+ " SBBIZCD2=" + quote(cbxBusinessType2.Value)
+		+ " SPDDATE1=" + quote(calStartDate.Value)
+		+ " SPDDATE2=" + quote(calEndDate.Value)
+		+ " SBIZGUBUN=" + quote(radReturnGubun.Value)
+		,"lfn_AfterSearch"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : ErrorCode - 에러코드
+ *             ErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    gdListSum.UserData = "";
+    gdCheckList.UserData = "반송우편리스트";
+    lfn_PrintMode();	//출력모드
+}
+
+/*
+ * 출력모드(workFlag 0:출력, 1:엑셀)
+ */
+function lfn_PrintMode() {
+
+	if(ds_oCheckList.GetRowCount() > 0 || ds_oListSum.GetRowCount() > 0) {
+		switch(workFlag)
+		{
+			case 0 :	//출력
+				if(radReport.Value = 0) {	//현황
+					gfn_CallReportPopup("frmCust0090R01ReturnPostReport.rex"
+								  , "ds_oCheckList"
+								  , "JIBU=" + cbxJibu.Text
+								  , true);
+				} else {	//집계
+					gfn_CallReportPopup("frmCust0090R02ReturnPostReport.rex"
+								  , "ds_oSumList"
+								  , "JIBU=" + cbxJibu.Text
+								  , true);
+				}
+				
+			break;
+			case 1 :	//엑셀
+				if(radReport.Value = 0) {	//현황
+					// 개인정보 다운로드 사유 등록
+					var parValue = "sCode=1409";	// COMMON.PERSONALDOWNLOADH
+						parValue += " sRowCnt=" + ds_oCheckList.GetRowCount();
+						parValue += " sTitle=" + quote(gdCheckList.UserData);
+					var ls_IsRemark = Dialog("COM::frmCOM2100PDownloadRemark.xml", parValue, "", "", "", -1, -1);	
+				
+					if (ls_IsRemark == "" || ls_IsRemark == null || ls_IsRemark == "FAIL") {
+						return false;
+					}
+					lfn_Excel();
+				} else {	//집계
+					lfn_Excel();
+				}
+			break;
+		}
+    } else {
+		gfn_Alert("출력할 데이터가 없습니다.");
+    }
+}
+
+/*
+ * 집계출력
+ */
+function lfn_Search2(obj)
+{
+	var lsCourseList = ""; //직능리스트
+	
+	if(radCourse.Value == 0) {	//선택
+		if(!gfn_IsNull(cbxCourse.Value)) {
+			lsCourseList += toString(trim(left(cbxCourse.Value,1)));
+		}
+	} else if(radCourse.Value == 1) {	//다중선택
+        for ( var i=1; i < 7; i++ ) {
+            if (!gfn_IsNull(object("cbxCourse" + toString(i)).Value)) {
+                lsCourseList += left(object("cbxCourse" + toString(i)).Value, 1) + ",";
+            }
+        }        
+		lsCourseList = left(lsCourseList, length(lsCourseList)-1);
+	}
+	ds_oSumList.ClearData();
+	
+	tit_clearActionInfo();
+	tit_addSearchActionInfo("cust:searchCust0090GetRegionForm", false);
+	tit_addSearchActionInfo("cust:searchCust0090ReturnPostReport2", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oRegionForm=ds_oRegionForm ds_oSumList=ds_oSumList"	// outDs
+		,"SJIBU=" + quote(cbxJibu.Value)
+		+ " CREGCD1=" + quote(cbxRegion1.Value)
+		+ " CREGCD2=" + quote(cbxRegion2.Value)
+		+ " SCOURSE=" + quote(lsCourseList)
+		+ " SCNO1=" + quote(meCustNo1.Value)
+		+ " SCNO2=" + quote(meCustNo2.Value)
+		+ " SBBIZCD1=" + quote(cbxBusinessType1.Value)
+		+ " SBBIZCD2=" + quote(cbxBusinessType2.Value)
+		+ " SPDDATE1=" + quote(calStartDate.Value)
+		+ " SPDDATE2=" + quote(calEndDate.Value)
+		+ " SBIZGUBUN=" + quote(radReturnGubun.Value)
+		,"lfn_AfterDataConversion"
+		,false
+		,false
+		,true
+	);
+}
+
+
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : ErrorCode - 에러코드
+ *             ErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterDataConversion(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+	gdListSum.UserData = "우편반송현황집계";
+    gdCheckList.UserData = "";
+    lfn_DataConversion();	//통계데이터 변환
+}
+
+// 통계데이터 변환
+function lfn_DataConversion() {
+	//ds_oListSum -> strDataset	(타겟)
+	//ds_oSumList -> objDataset (소스)
+	
+	ds_oListSum.Clear();
+	
+	ds_oListSum.InsertRow(0);
+	ds_oListSum.AddColumn("JIBU");	//지부 컬럼
+	
+	for(var i=0; i<ds_oRegionForm.rowcount; i++) {
+		ds_oListSum.AddColumn(ds_oRegionForm.GetColumn(i, "CD"));	//각지역 컬럼
+	}
+	ds_oListSum.AddColumn("TOTAL");	//전체 합계 컬럼
+	
+	var nRow = ds_oListSum.AddRow();
+	var sTotal = 0;	//전체 합계
+	
+	for(var i=0; i<ds_oListSum.colcount; i++) {	//0으로 초기화
+		ds_oListSum.SetColumn(nRow, i, 0);
+	}
+	
+	ds_oListSum.SetColumn(nRow, "JIBU", ds_oSumList.GetColumn(0, "GTTEAMNM"));	//지부 셋팅
+	
+	for(var i=0; i<ds_oListSum.colcount; i++) {
+		for(var j=0; j<ds_oSumList.rowcount; j++) {
+			if(ds_oListSum.GetColID(i) == ds_oSumList.GetColumn(j, "CREGCD")) {
+				ds_oListSum.SetColumn(0, ds_oListSum.GetColID(i), ds_oSumList.GetColumn(j, "CNT"));
+				sTotal += toNumber(ds_oSumList.GetColumn(j, "CNT"));
+			}
+		}
+	}
+	
+	ds_oListSum.SetColumn(nRow, "TOTAL", sTotal);
+	
+	//그리드 셋팅
+	gdListSum.BindDataset = "ds_oListSum";
+	gdListSum.CreateFormat();
+	var pos_no = pos(gdListSum.Contents, '</body>') + 7;
+	var str_contents = left(gdListSum.Contents, pos_no);
+		str_contents += '<summary>';
+	for(var i=0; i<ds_oListSum.GetColCount(); i++)
+	{
+		str_contents += '<cell col=' + i + ' display="text"/>';
+	}
+	gdListSum.contents = str_contents +'</summary></contents>';
+	
+	// 그리드 Summary 편집
+	gdListSum.SetCellProp("summary", 0, "text", "총계");
+	for(var i=0; i<gdListSum.GetColCount(); i++) {
+		//expr="sum(&apos;01&apos;)"
+		for(var j=0; j<ds_oRegionForm.rowcount; j++) {
+			if(gdListSum.GetCellProp("head", i, "text") == ds_oRegionForm.GetColumn(j, "CD")) {
+				gdListSum.SetCellProp("summary", i, "expr", "sum('"+ds_oRegionForm.GetColumn(j, 'CD')+"')");
+			}
+		}
+	}
+	gdListSum.SetCellProp("summary", gdListSum.GetColCount()-1, "expr", "sum('TOTAL')");
+	
+	// 그리드 Head 편집
+	gdListSum.SetCellProp("head", 0, "text", "지역");
+	for(var i=0; i<gdListSum.GetColCount(); i++) {
+		
+		for(var j=0; j<ds_oRegionForm.rowcount; j++) {
+			if(gdListSum.GetCellProp("head", i, "text") == ds_oRegionForm.GetColumn(j, "CD")) {
+				gdListSum.SetCellProp("head", i, "text", ds_oRegionForm.GetColumn(j, "DATA"));
+			}
+		}
+	}
+	gdListSum.SetCellProp("head", gdListSum.GetColCount()-1, "text", "소계");
+	
+	lfn_PrintMode();
+}]]></Script>
+</Window>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmenv0010MLatestManualManual" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="UPDATE&amp;MANUAL" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oUpdate">
+				<Contents>
+					<colinfo id="AFDIRPATH" size="256" type="STRING"/>
+					<colinfo id="AFFILESIZE" size="22" type="DECIMAL"/>
+					<colinfo id="AFREALNM" size="256" type="STRING"/>
+					<colinfo id="AFSAVENM" size="256" type="STRING"/>
+					<colinfo id="AFSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="BBOARDGUBUN" size="2" type="STRING"/>
+					<colinfo id="BCONTENTS" size="4000" type="STRING"/>
+					<colinfo id="BHIT" size="22" type="DECIMAL"/>
+					<colinfo id="BMODDATE" size="10" type="STRING"/>
+					<colinfo id="BMODSABUN" size="8" type="STRING"/>
+					<colinfo id="BREGDATE" size="10" type="STRING"/>
+					<colinfo id="BREGSABUN" size="20" type="STRING"/>
+					<colinfo id="BSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="BTITLE" size="200" type="STRING"/>
+					<colinfo id="NEW_YN" size="10" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oManual">
+				<Contents>
+					<colinfo id="AFDIRPATH" size="256" type="STRING"/>
+					<colinfo id="AFFILESIZE" size="22" type="DECIMAL"/>
+					<colinfo id="AFREALNM" size="256" type="STRING"/>
+					<colinfo id="AFSAVENM" size="256" type="STRING"/>
+					<colinfo id="AFSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="BBOARDGUBUN" size="2" type="STRING"/>
+					<colinfo id="BCONTENTS" size="4000" type="STRING"/>
+					<colinfo id="BHIT" size="22" type="DECIMAL"/>
+					<colinfo id="BMODDATE" size="10" type="STRING"/>
+					<colinfo id="BMODSABUN" size="8" type="STRING"/>
+					<colinfo id="BREGDATE" size="10" type="STRING"/>
+					<colinfo id="BREGSABUN" size="20" type="STRING"/>
+					<colinfo id="BSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="BTITLE" size="200" type="STRING"/>
+					<colinfo id="NEW_YN" size="10" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="590" Id="imgMenuSearch" ImageID="IMG_UPDATE_BK2" Style="sty_Image" TabOrder="7" Transparent="TRUE" Width="800"></Image>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="6" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Visible="FALSE" Width="300">
+			<Contents></Contents>
+		</Div>
+		<Grid AutoScrollBar="None" BindDataset="ds_oUpdate" BkColor2="white" BkSelColor="white" BoldHead="FALSE" Border="Flat" BorderColor="white" Bottom="476" ButtonColor="white" DisableBKColor="white" DisableColor="white" Enable="true" EndLineColor="white" Face3dColor="white" FillAreaType="All" Font="굴림,10" HeadBorder="None" HeadHeight="20" Height="160" Hilight3dColor="white" Id="gdUpdate" InputPanel="FALSE" Left="66" LineColor="white" OnCellClick="gdUpdate_OnCellClick" Right="376" RowHeight="20" SelColor="white" ShadowColor="white" TabOrder="4" TabStop="FALSE" Top="316" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="true" VLineColor="white" WheelScrollRow="1" Width="310">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="85"/>
+						<col width="182"/>
+						<col width="40"/>
+					</columns>
+					<body>
+						<cell align="center" col="0" colid="BREGDATE" display="text" Mask="####-##-##"/>
+						<cell align="left" col="1" colid="BTITLE" display="text"/>
+						<cell align="center" bkimageid="expr:iif(NEW_YN==&apos;Y&apos;,&#32;&apos;IMG_NEW&apos;,&#32;&apos;&apos;)" col="2" display="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AutoScrollBar="None" BindDataset="ds_oManual" BkColor2="white" BkSelColor="white" BoldHead="FALSE" Border="Flat" BorderColor="white" Bottom="480" ButtonColor="white" DisableBKColor="white" DisableColor="white" Enable="true" EndLineColor="white" Face3dColor="white" FillAreaType="All" Font="굴림,10" HeadBorder="None" HeadHeight="20" Height="160" Hilight3dColor="white" Id="gdManual" InputPanel="FALSE" Left="440" LineColor="white" OnCellClick="gdManual_OnCellClick" Right="750" RowHeight="20" SelColor="white" ShadowColor="white" TabOrder="5" TabStop="FALSE" Top="320" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="true" VLineColor="white" WheelScrollRow="1" Width="310">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="85"/>
+						<col width="181"/>
+						<col width="40"/>
+					</columns>
+					<body>
+						<cell align="center" col="0" colid="BREGDATE" display="text" text="####-##-##"/>
+						<cell align="left" col="1" colid="BTITLE" display="text"/>
+						<cell align="center" bkimageid="expr:iif(NEW_YN==&apos;Y&apos;,&#32;&apos;IMG_NEW&apos;,&#32;&apos;&apos;)" col="2" display="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Image Cursor="HAND" Height="7" Id="imgUpdateMore" ImageID="IMG_MORE" Left="336" LeftMargin="0" OnClick="imgUpdateMore_OnClick" Static="FALSE" Style="sty_Image" TabOrder="8" ToolTipText="열려진&#32;모든&#32;화면&#32;닫기" Top="288" Width="31"></Image>
+		<Image Cursor="HAND" Height="7" Id="imgManualMore" ImageID="IMG_MORE" Left="710" LeftMargin="0" OnClick="imgManualMore_OnClick" Static="FALSE" Style="sty_Image" TabOrder="9" ToolTipText="열려진&#32;모든&#32;화면&#32;닫기" Top="288" Width="31"></Image>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="536" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Visible="FALSE" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="623" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="2" ToolTipText="화면&#32;출력" Top="4" Visible="FALSE" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="710" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="4" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmenv0010MLatestManualManual.xml
+ * 설명 : UPDATE&MANUAL
+ * 작성일 : 2009.07.16
+ * 작성자 : 김동현
+ */
+
+#include "LIB::env.js"; // 공통업무 관련
+
+var ls_BoardUpdate = "U";
+var ls_BoardManual = "M";
+var ls_BoardRownum = "8";
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    lfn_Search();
+
+    Dialog("env::frmenv0022PLatestBoard.xml", "", 600, 400, "", -1, -1);
+
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState) {
+    if (gs_IsResizingForm == "Y") {
+        // to do
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_oUpdate.ClearData(); // 데이타셋 초기화
+    ds_oManual.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("env:searchUpdate", false);
+	tit_addSearchActionInfo("env:searchManual", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oUpdate=ds_oUpdate ds_oManual=ds_oManual"	// outDs
+		,"BBOARDGUBUN1=" + quote(ls_BoardUpdate)
+            + " BBOARDGUBUN2=" + quote(ls_BoardManual)
+            + " ROWNUM=" + ls_BoardRownum // args 
+		,""
+		,false
+	);
+	
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 최근 UPDATE 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchLatestUpdateManualList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SearchMessage(); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 사용자 이벤트 함수 */
+function gdUpdate_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+    var sArg = "sBoardSeq=" + quote(ds_oUpdate.GetColumn(nRow, "BSEQ"));
+    return Dialog("env::frmenv0024PBoardContents.xml", sArg, 600, 400, "", -1, -1);
+}
+
+function gdManual_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+    var sArg = "sBoardSeq=" + quote(ds_oManual.GetColumn(nRow, "BSEQ"));
+    return Dialog("env::frmenv0024PBoardContents.xml", sArg, 600, 400, "", -1, -1);
+}
+
+function imgUpdateMore_OnClick(obj,nX,nY) {
+    gs_SystemGubun = "env";
+    gs_SystemMenuId = "0000000007";
+    global.mnuLeft.tabMenu.tabpgMenu.Text = "환경설정";
+    var ls_MenuId = "0000000015";
+    var ls_MenuTitle = "UPDATE";
+    var ls_MenuUrl = "env::frmenv0030MUpdateList.xml";
+    var ls_args = "";
+
+    global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+	gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId, ls_args);
+}
+
+function imgManualMore_OnClick(obj,nX,nY) {
+    gs_SystemGubun = "env";
+    gs_SystemMenuId = "0000000007";
+    global.mnuLeft.tabMenu.tabpgMenu.Text = "환경설정";
+    var ls_MenuId = "0000000026";
+    var ls_MenuTitle = "MANUAL";
+    var ls_MenuUrl = "env::frmenv0040MManualList.xml";
+    var ls_args = "";
+    
+    global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+	gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId, ls_args);
+}
+
+]]></Script>
+</Window>

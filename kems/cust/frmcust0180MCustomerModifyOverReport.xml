@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="200" Id="frmcust0180MCustomerModifyOverReport" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="고객변동&#32;및&#32;겸직현황" Top="8" Ver="1.0" Width="456" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SearchJogeon">
+				<Contents>
+					<colinfo id="JIBU" size="256" summ="default" type="STRING"/>
+					<colinfo id="YEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BFYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="MONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATE_FR" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATE_TO" size="256" summ="default" type="STRING"/>
+					<colinfo id="BFMONTH" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_CustomerList">
+				<Contents>
+					<colinfo id="ADD_COVER_CNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="ADD_MEMBER_CNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="BF_COVER_CNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="BF_MEMBER_CNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CGROUPCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLAS" size="2" summ="default" type="STRING"/>
+					<colinfo id="CLAS_NM" size="50" summ="default" type="STRING"/>
+					<colinfo id="DEL_CNT0" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="DEL_CNT1" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="DEL_CNT2" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="DEL_CNT3" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="DEL_CNT4" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="DEL_CNT5" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="DEL_TOT_CNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="GTPRTSEQ" size="2" summ="default" type="STRING"/>
+					<colinfo id="GTTEAMNM" size="70" summ="default" type="STRING"/>
+					<colinfo id="MEMBER_GUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="MEMBER_GUBUN_NM" size="3" summ="default" type="STRING"/>
+					<colinfo id="NEW_MEMBER_CNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TO_COVER_CNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TO_MEMBER_CNT" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iCustomerInsert">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Customer">
+				<Contents></Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="196" Height="108" Id="Shape1" Left="4" LineColor="user15" Right="452" TabOrder="11" Top="88" Type="Rectangle" Width="448"></Shape>
+		<Shape Bottom="84" Height="28" Id="Shape0" Left="4" LineColor="user15" Right="452" TabOrder="10" Top="56" Type="Rectangle" Width="448"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="7" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="272">
+			<Contents></Contents>
+		</Div>
+		<Shape Bottom="53" Height="52" Id="shpBtnBox" Left="274" LineColor="user14" Right="452" TabOrder="8" Top="1" Type="Rectangle" Width="178"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="364" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="277" OnClick="lfn_Print" Style="sty_Button" TabOrder="3" ToolTipText="출력" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="364" OnClick="btnExcell_OnClick" Style="sty_Button" TabOrder="4" ToolTipText="엑셀로&#32;저장" Top="28" Width="85"></Button>
+		<Static Height="92" Id="lbTextBlue" Left="8" Style="sty_TextBlue" TabOrder="9" Text="&#32;해당&#32;월의&#32;자료는&#32;한번만&#32;생성&#32;가능하오니&#32;반드시&#32;월말에&#32;한번&#32;자료&#32;생성을&#13;&#10;&#13;&#10;&#32;해주시기&#32;바랍니다.&#13;&#10;&#13;&#10;&#32;해당월의&#32;자료가&#32;이미&#32;생성되어&#32;있을&#32;경우,&#32;출력&#32;버튼만&#32;누르면&#32;출력이&#32;가능&#13;&#10;&#13;&#10;&#32;합니다." Top="96" VAlign="Middle" Width="436"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="medYearMonth" Left="240" LeftMargin="2" Mask="####년##월" Style="sty_Maskedit" TabOrder="6" Top="60" Type="STRING" UserData="S" Width="76"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSave" ImageID="BTN_TEXT_COM" Left="277" OnClick="lfn_Save" Style="sty_Button" TabOrder="1" Text="생성(F2)" ToolTipText="합격처리저장" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="12" Text="지부" Top="60" VAlign="Middle" Width="60"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_ioJibu" Left="71" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="5" Top="59" UserData="S" Value="B" Width="102"></Combo>
+		<Static Align="Center" Height="20" Id="Static0" Left="176" Style="sty_Label" TabOrder="13" Text="작성년월" Top="60" VAlign="Middle" Width="60"></Static>
+		<Grid AutoEnter="TRUE" BindDataset="ds_CustomerList" BkColor2="default" BoldHead="true" Bottom="272" Editable="TRUE" Enable="true" EndLineColor="default" Height="68" Id="gdList" InputPanel="FALSE" Left="4" LineColor="default" Right="452" TabOrder="14" TabStop="true" Top="204" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="448">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="59"/>
+						<col width="165"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+					</columns>
+					<head>
+						<cell col="0" colspan="2" display="text" rowspan="2" text="구분"/>
+						<cell col="2" display="text" rowspan="2" text="전월"/>
+						<cell col="3" display="text" rowspan="2" text="당월"/>
+						<cell col="4" display="text" rowspan="2" text="증감"/>
+						<cell col="5" display="text" rowspan="2" text="신규"/>
+						<cell col="6" colspan="7" display="text" text="대&#32;상&#32;제&#32;외"/>
+						<cell col="13" colspan="3" display="text" text="겸&#32;직&#32;현&#32;황"/>
+						<cell col="6" display="text" row="1" text="소계"/>
+						<cell col="7" display="text" row="1" text="소멸"/>
+						<cell col="8" display="text" row="1" text="용폐"/>
+						<cell col="9" display="text" row="1" text="중복"/>
+						<cell col="10" display="text" row="1" text="기타"/>
+						<cell col="11" display="text" row="1" text="탈퇴"/>
+						<cell col="12" display="text" row="1" text="변경"/>
+						<cell col="13" display="text" row="1" text="전월"/>
+						<cell col="14" display="text" row="1" text="당월"/>
+						<cell col="15" display="text" row="1" text="증감"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="MEMBER_GUBUN_NM" display="text" SuppressAlign="Last"/>
+						<cell align="center" col="1" colid="CLAS_NM" display="text" edit="normal"/>
+						<cell align="right" col="2" colid="BF_MEMBER_CNT" display="number" edit="normal"/>
+						<cell align="right" col="3" colid="TO_MEMBER_CNT" display="number" edit="normal"/>
+						<cell align="right" col="4" colid="ADD_MEMBER_CNT" display="number" edit="normal"/>
+						<cell align="right" col="5" colid="NEW_MEMBER_CNT" display="number"/>
+						<cell align="right" col="6" colid="DEL_TOT_CNT" display="number"/>
+						<cell align="right" col="7" colid="DEL_CNT0" display="number"/>
+						<cell align="right" col="8" colid="DEL_CNT1" display="number"/>
+						<cell align="right" col="9" colid="DEL_CNT2" display="number"/>
+						<cell align="right" col="10" colid="DEL_CNT3" display="number"/>
+						<cell align="right" col="11" colid="DEL_CNT4" display="number"/>
+						<cell align="right" col="12" colid="DEL_CNT5" display="number"/>
+						<cell align="right" col="13" colid="BF_COVER_CNT" display="number"/>
+						<cell align="right" col="14" colid="TO_COVER_CNT" display="number"/>
+						<cell align="right" col="15" colid="ADD_COVER_CNT" display="number"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "LIB::cust.js"; // 공통업무 관련
+
+function Form_OnLoadCompleted(obj)
+{
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+	
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+	gfn_SearchAllJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회
+	
+	medYearMonth.Value = substr(getdate(),0,6);
+	
+	
+}
+
+function lfn_SetFormAuth(bStatus) {
+
+}
+
+function fn_Search(){
+	tit_clearActionInfo(this);
+	
+	//TAB_Training.TabIndex = 1; //조회버튼 선택시  나오게 한다.
+		tit_addSearchActionInfo("cust:searchCust0180CustomerModifyOverReport", false);
+	
+	ds_SearchJogeon.DeleteAll();		ds_SearchJogeon.AddRow();
+	ds_CustomerList.Clear();
+	ds_SearchJogeon.setColumn(0, "JIBU", cbxJibu.Value);	
+	ds_SearchJogeon.setColumn(0, "YEAR", substr(medYearMonth.Value,0,4));	
+	if (length(substr(medYearMonth.Value,4,2)) == "1")
+		ds_SearchJogeon.setColumn(0, "MONTH", "0"+ substr(medYearMonth.Value,4,2));	
+	else 
+		ds_SearchJogeon.setColumn(0, "MONTH", substr(medYearMonth.Value,4,2));	
+	
+	tit_callService(  
+	                 ""
+	               , ""  
+	               , "ds_iCustomerList=ds_SearchJogeon"//inDs 
+	               , "ds_CustomerList=ds_oCustomerList" //outDs
+	               , ""
+	               , "afterSearch"  //callBack
+	               , false
+	               ,false
+				   ,true
+	               ); 
+}
+
+// 조회 후 callbackfunction afterSearch(errCode, errMsg){
+	//trace(ds_CustomerList.SaveXML());
+	if(errCode != 0 ){
+		alert("오류가 발생했습니다.");
+		return;
+	}
+	else{
+		if(ds_CustomerList.rowcount > 0){
+				
+		}
+		else{
+			
+		}
+	}}
+
+//======================================================================================================
+//엑샐인쇄 시작----------------------------------------------------------------------------------------
+function btnExcell_OnClick(obj)
+{	
+	fn_Search();
+	
+	if(ds_CustomerList.rowcount == 0){
+		alert("데이터가 없습니다.");
+		return;
+	}
+	var strText = "고객변동 및 겸직 현황";
+	setExcelGridHeader(gdList,strText);		
+}
+//엑셀 함수 입니다. (위에 제목을 넣기 위함)
+function setExcelGridHeader(grdObj,strText){
+	create("grid","grdExcel",'BindDataSet="' + grdObj.BindDataset +'"');
+	grdExcel.contents = grdObj.Contents;	
+	var headCnt = getHeadCount(grdExcel);
+	var totCol  = grdExcel.GetColCount();
+	var irow;
+	for(var i = 0 ; i < headCnt ; i++ )	{
+		irow = toInteger(grdExcel.GetCellProp("head",i,"row"));
+		grdExcel.SetCellProp("head",i,"row",irow+1);
+	}
+	var str_temp = grdExcel.GetCurContents();
+	var str_Head = '<cell align="left" col="0" colspan="' + totCol + '" display="text" text="' + strText + '"/>';	
+	str_temp = replace(str_temp, '</head>',str_Head +'</head>');
+	grdExcel.contents = str_temp;
+	grdExcel.ExportExcelEx("sheet1","A1",false,true,true);
+	Destroy(grdExcel);
+}
+//엑셀 함수 입니다. (위에 제목을 넣기 위함)
+function getHeadCount(grdObj){
+	var strConts = grdObj.Contents;	
+	var iPos = pos(strConts,"<head>");
+	var strHead = Mid(strConts,iPos);
+	iPos = pos(strHead,"</head>");
+	strHead = Mid(strHead,0,iPos+7);
+	var spObj = split(strHead,chr(10),"webstyle");
+	return spObj.length()-2;
+}
+//엑셀인쇄 끝-----------------------------------------------------------------------------------
+//======================================================================================================
+
+
+function lfn_Print(obj)
+{
+	fn_Search();
+	
+	if(ds_CustomerList.rowcount == 0){
+			alert("데이터가 없습니다. \n자료를 생성하고 출력하세요.");
+			return;
+	}
+
+	var MONTH = "";
+	
+	if (length(substr(medYearMonth.Value,4,2)) == "1")
+		MONTH = "0"+ substr(medYearMonth.Value,4,2);
+	else 
+		MONTH = substr(medYearMonth.Value,4,2);	
+		
+	var DATE_FR = substr(medYearMonth.Value,0,4) + "." + MONTH + ".01";
+	var DATE_TO = substr(adddate(addmonth(substr(medYearMonth.Value,0,4) + MONTH + "01"),-1),0,4) + "."
+				 +substr(adddate(addmonth(substr(medYearMonth.Value,0,4) + MONTH + "01"),-1),4,2) + "."
+			     +substr(adddate(addmonth(substr(medYearMonth.Value,0,4) + MONTH + "01"),-1),6,2);
+	gfn_CallReportPopup("frmCust0180R01CustomerModifyOverReport.rex"
+				  , "ds_CustomerList"
+				  , "JIBU=" + cbxJibu.Value + "^YEAR=" + substr(medYearMonth.Value,0,4) + "^MONTH=" +MONTH + "^DATE_FR=" + DATE_FR + "^DATE_TO=" + DATE_TO
+				  , true);
+	
+}
+
+
+function lfn_Save(obj)
+{
+	if(cbxJibu.Value == ""){
+		alert("지부를 선택하여 주십시오.");
+		return;
+	}
+	
+	fn_Search();
+	
+	if(ds_CustomerList.rowcount > 0){
+			alert("해당월은 자료가 있습니다. 바로 출력하시면 됩니다.");
+			return;
+	}
+	
+	tit_clearActionInfo(this);
+	
+	//TAB_Training.TabIndex = 1; //조회버튼 선택시  나오게 한다.
+		tit_addSearchActionInfo("cust:searchCust0180InsertList", false);
+	
+	ds_SearchJogeon.DeleteAll();		ds_SearchJogeon.AddRow();
+	ds_CustomerList.Clear();
+	ds_SearchJogeon.setColumn(0, "JIBU", cbxJibu.Value);	 
+	
+	ds_SearchJogeon.setColumn(0, "YEAR", substr(medYearMonth.Value,0,4));	
+	var BfYear = "";
+	if(substr(medYearMonth.Value,4,2) == "1" || substr(medYearMonth.Value,4,2) == "01")
+		BfYear = toNumber(substr(medYearMonth.Value,0,4))-1;
+	else
+		BfYear = substr(medYearMonth.Value,0,4);
+	
+	ds_SearchJogeon.setColumn(0, "BFYEAR", BfYear);	
+	
+	if (length(substr(medYearMonth.Value,4,2)) == "1")
+		ds_SearchJogeon.setColumn(0, "MONTH", "0"+ substr(medYearMonth.Value,4,2));	
+	else 
+		ds_SearchJogeon.setColumn(0, "MONTH", substr(medYearMonth.Value,4,2));	
+	
+	var BfMonth = "";//
+	BfMonth = toNumber(substr(medYearMonth.Value,4,2)) - 1;	BfMonth = lpad((toNumber(substr(medYearMonth.Value,4,2)) - 1) , "0", 2);
+	
+	if(substr(medYearMonth.Value,4,2) == "1" || substr(medYearMonth.Value,4,2) == "01"){
+		ds_SearchJogeon.setColumn(0, "BFMONTH", "12");	
+		
+	}	
+	else{
+		if (length(BfMonth) == "1")
+			ds_SearchJogeon.setColumn(0, "BFMONTH", BfMonth);	
+		else 
+			ds_SearchJogeon.setColumn(0, "BFMONTH", BfMonth);	
+	}
+	
+	tit_callService(  
+	                 ""
+	               , ""  
+	               , "ds_iCustomer=ds_SearchJogeon"//inDs 
+	               , "ds_Customer=ds_oCustomer" //outDs
+	               , ""
+	               , "afterSearch_SearchInsert"  //callBack
+	               , false
+	               ,false
+				   ,true
+	               ); 
+	               
+	if(ds_Customer.rowcount == 0){
+		alert("생성할데이터가 없습니다.");
+		return;
+	}
+	
+	var Month = "";
+	if (length(substr(medYearMonth.Value,4,2)) == "1")
+		Month = "0"+ substr(medYearMonth.Value,4,2);	
+	else
+		Month = substr(medYearMonth.Value,4,2);	
+	
+	tit_clearActionInfo();
+    tit_AddMultiActionInfo(
+    
+        "cust:insertCust0180CustomerModifyOverReport"	// insert  		
+        , ""	// update  
+        , ""	// delete
+        , ""	// flag column 명
+        , ""	// key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N"	// 실행타입
+    );
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iCustomerInsert=ds_Customer:I"/// inDs
+        //,"ds_iSmsTraining=ds_ioSmsTraining:U"// inDs
+        //변수의 값은 ds_iSmsTraining=ds_ioSmsTraining:U"  이거나 "ds_iSmsExam=ds_ioSmsExam:U";
+        
+        ,""	// outDs
+        ,"JIBU=" + quote(cbxJibu.Value) 
+                   +" YEAR=" + quote(substr(medYearMonth.Value,0,4))	
+                   +" MONTH=" + quote(Month)	
+        // args 
+        ,"lfn_AfterSaveCustomer"
+        ,false
+    );	
+	
+}
+
+// 조회 후 callback_ INSERT할 데이터 조회function afterSearch_SearchInsert(errCode, errMsg){ 
+	if(errCode != 0 ){
+		alert("오류가 발생했습니다.");
+		return;
+	}}
+
+// INSERT후 callback function lfn_AfterSaveCustomer(errCode, errMsg){
+	//trace(ds_CustomerList.SaveXML());
+	if(errCode != 0 ){
+		alert("오류가 발생했습니다.");
+		return;
+	}
+	alert("생성되었습니다.");}
+]]></Script>
+</Window>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="712" Id="frmprofes0001MProfMgmtList2" Left="8" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Title="교수요원&#32;등급&#32;분류&#32;현황" Top="8" Ver="1.0" Width="1000" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioList"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oList"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Check">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>현행</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>누적</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" Left="4" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="1" TabStop="FALSE" Text="Div0" Top="4" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="284">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="641" OnClick="lfn_Search" Style="sty_Button" TabOrder="4" ToolTipText="조회" Top="16" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="813" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="2" ToolTipText="화면&#32;출력" Top="16" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="899" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="16" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_ioList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="690" ColSelect="TRUE" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="617" Id="gdList" InputPanel="FALSE" Left="9" LineColor="default" MinWidth="100" OnHeadClick="gdProfUser_OnHeadClick" Right="985" RowHeight="20" Style="sty_Grid" TabOrder="5" TabStop="true" Top="73" UseDBuff="true" UsePopupMenu="true" UserData="교수요원&#32;등급&#32;분류&#32;현황" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="976">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="50"/>
+						<col width="80"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" rowspan="3" text="순번"/>
+						<cell align="center" col="1" colspan="2" display="text" rowspan="3" text="구분"/>
+						<cell col="3" colspan="4" display="text" text="명단"/>
+						<cell col="3" colspan="3" display="text" row="1" text="전임교수"/>
+						<cell col="6" display="text" row="1" rowspan="2" text="겸임교수"/>
+						<cell col="3" display="text" row="2" text="교수"/>
+						<cell col="4" display="text" row="2" text="부교수"/>
+						<cell col="5" display="text" row="2" text="조교수"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow+1"/>
+						<cell align="center" bkcolor="expr:iif(SORT=&apos;3&apos;,&apos;lightcyan&apos;,iif(SORT=&apos;2&apos;,&apos;lightblue&apos;,&apos;white&apos;))" col="1" colid="JIBUNM" display="text" suppress="1" SuppressAlign="Middle"/>
+						<cell align="center" bkcolor="expr:iif(SORT=&apos;3&apos;,&apos;lightcyan&apos;,iif(SORT=&apos;2&apos;,&apos;lightblue&apos;,&apos;white&apos;))" col="2" colid="GTDEPTNM" display="text" suppress="2" SuppressAlign="Middle"/>
+						<cell align="center" bkcolor="expr:iif(SORT=&apos;3&apos;,&apos;lightcyan&apos;,iif(SORT=&apos;2&apos;,&apos;lightblue&apos;,&apos;white&apos;))" col="3" colid="APFGUBUNNM" display="text"/>
+						<cell align="center" bkcolor="expr:iif(SORT=&apos;3&apos;,&apos;lightcyan&apos;,iif(SORT=&apos;2&apos;,&apos;lightblue&apos;,&apos;white&apos;))" col="4" colid="BPFGUBUNNM" display="text"/>
+						<cell align="center" bkcolor="expr:iif(SORT=&apos;3&apos;,&apos;lightcyan&apos;,iif(SORT=&apos;2&apos;,&apos;lightblue&apos;,&apos;white&apos;))" col="5" colid="CPFGUBUNNM" display="text"/>
+						<cell align="center" bkcolor="expr:iif(SORT=&apos;3&apos;,&apos;lightcyan&apos;,iif(SORT=&apos;2&apos;,&apos;lightblue&apos;,&apos;white&apos;))" col="6" colid="DPFGUBUNNM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="727" OnClick="btnToExcel_OnClick" Style="sty_Button" TabOrder="6" ToolTipText="엑셀로&#32;저장" Top="16" Width="85"></Button>
+		<Shape Bottom="70" Height="29" Id="Shape3" Left="10" LineColor="user15" Right="984" TabOrder="7" Top="41" Type="Rectangle" Width="974"></Shape>
+		<Calendar Border="Flat" Dateformat="yyyy-MM" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calDate" Left="102" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="9" Top="45" WeeksFont="돋음,9" Width="100"></Calendar>
+		<Static Align="Center" Height="20" Id="Static4" Left="13" Style="sty_Label" TabOrder="8" Text="조회일자" Top="45" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static1" LayoutRtl="True" Left="674" Style="sty_Label" TabOrder="11" Text="선택" Top="45" VAlign="Middle" Width="88"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="radCheck" INDEX="0" InnerDataset="ds_Check" Left="766" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="10" Top="45" UserData="S" Width="214"></Radio>
+	</Form>
+	<Script><![CDATA[/*
+
+ * 프로그램명 : frmprofes0001MProfMgmtList.xml
+
+ * 설명 : 강의전담 본부 교수요원 현황
+
+ * 작성일 : 2023.08.29
+
+ * 작성자 : 김동한
+
+ */
+ 
+ #include "LIB::profes.js"; // 공통업무 관련
+ 
+ function Form_OnLoadCompleted(obj) 
+ {
+     gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+    calDate.Value = today();
+    lfn_Search();
+ }
+ 
+ function Form_OnSize(obj,nCx,nCy,nState) 
+ {
+    if (gs_IsResizingForm == "Y") {
+		// gdProfUser.Height = nCy - gdProfUser.Top - 4;
+		gdProfUser.Width = nCx - gdProfUser.Left - 4;
+    }
+}
+
+function lfn_Search(obj) {	               
+	               
+    ds_ioList.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("profes:searchProfes0001proMgmtList2", false);	
+	// 서버 호출 
+	tit_callService(
+		 ""
+		,""
+		,""	// inDs
+		,"ds_ioList=ds_ioList"	// outDs
+		,"PFDATE=" + quote(calDate.Value)
+		+" PFCHECK=" + quote(radCheck.Value)
+		,"afterSearch"
+		,false
+	);	               
+}
+
+// 조회 후 callbackfunction afterSearch(nErrorCode, strErrorMsg)
+{
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+		gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+
+function btnToExcel_OnClick(obj)
+{
+    if (ds_ioList.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return false;
+    }
+	lfn_Excel(obj);	
+}]]></Script>
+</Window>

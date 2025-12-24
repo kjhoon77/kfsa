@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="SimpleSelect" template="SimpleSelect" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="input" io="INPUT" reserved="YES"></dataset>
+	<dataset id="output" io="OUTPUT" reserved="YES"></dataset>
+	<member_var>
+		<var id="Select_Sql" reserved="YES" type="Sql"><![CDATA[SELECT 
+	EREJMGNO
+	, IIF(IsNull(APREPEATNO), 1, APREPEATNO) AS ERREPEATNO
+	, ERAPLEXAMNO
+	, IIF(IsNull(APSEQ), 'X', IIF(APITEMSCORE < 60, 'N', 'Y')) AS ERPASSYN
+	, APREGDATE AS ERPASSDATE
+	, 0.1 AS ERSCORE
+	, IIF(IsNull(APSEQ), 999, 1) AS ERRANK
+	, 0 AS ERCORRECTCNT
+	, 0.1 AS ERSCORE2
+	, 0.1 AS ERSORTSCORE
+FROM (
+	SELECT
+		EJMGNO AS EREJMGNO
+		, EOEXAMORDER + RIGHT(EOHJUBSUNO, 3) AS ERAPLEXAMNO
+	FROM EXAMJUBSU EJ
+			, EXAMORDERH EOH
+			, EXAMORDER
+	WHERE 
+		EOHEOMGNO = EOMGNO
+		AND EOHSEQ = EJLASTEOHSEQ
+		AND EOHEJMGNO = EJMGNO
+	) EO
+	LEFT JOIN
+		ANSWERPAPER AP
+	ON
+		EO.ERAPLEXAMNO = AP.APAPLEXAMNO
+ORDER BY ERAPLEXAMNO]]></var>
+	</member_var>
+	<member_func>
+		<function id="OnBegin()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnExecuteQueryError()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnFetchRow()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnFetchEnd()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnFetchError()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnNoDataFound()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnEnd()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[]]></source>
+</class2>

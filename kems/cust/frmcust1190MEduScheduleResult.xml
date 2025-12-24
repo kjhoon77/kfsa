@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="160" Id="frmcust2130MSunapDelReport" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="실무교육결과보고" Top="8" Ver="1.0" Width="544" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ResultList1">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SearchJogeon">
+				<Contents>
+					<colinfo id="JIBU" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDU_YEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="COURSE" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDU_YMD_FR" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDU_YMD_TO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUBJECT_GUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ResultList2">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ResultList3">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ResultList4">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ResultList5">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSubjectGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>정규</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>미필자</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="156" Height="116" Id="Shape0" Left="0" LineColor="user15" Right="536" TabOrder="2" Top="40" Type="Rectangle" Width="536"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="1" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="272">
+			<Contents></Contents>
+		</Div>
+		<Static Align="Center" Height="20" Id="Static1" Left="20" Style="sty_LabelGruopBox" TabOrder="3" Text="조회&#32;조건" Top="36" VAlign="Middle" Width="112"></Static>
+		<Shape Bottom="28" Height="27" Id="shpBtnBox" Left="274" LineColor="user14" Right="540" TabOrder="5" Top="1" Type="Rectangle" Width="266"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="451" OnClick="lfn_End" Style="sty_Button" TabOrder="4" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="364" OnClick="lfn_Print" Style="sty_Button" TabOrder="6" ToolTipText="출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="277" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="7" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbDate" Left="8" Style="sty_Label" TabOrder="8" Text="교육일자" Top="108" VAlign="Middle" Width="76"></Static>
+		<Static Align="Center" Height="20" Id="Static12" Left="188" Style="sty_Text" TabOrder="9" Text="~" Top="108" VAlign="Middle" Width="20"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calStartDate" Left="88" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="10" Top="108" WeeksFont="돋음,9" Width="100"></Calendar>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calEndDate" Left="208" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="11" Top="108" WeeksFont="돋음,9" Width="100"></Calendar>
+		<Static Align="Center" Height="20" Id="lbCancelDate" Left="8" Style="sty_Label" TabOrder="12" Text="교육과정" Top="132" VAlign="Middle" Width="76"></Static>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="14" Text="지부" Top="60" VAlign="Middle" Width="76"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="87" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="13" Top="59" UserData="I" Width="102"></Combo>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="8" Style="sty_Label" TabOrder="16" Text="직능" Top="84" UserData="S" VAlign="Middle" Width="76"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_oCourse" Left="87" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="15" Top="83" UserData="S" Width="182"></Combo>
+		<Static Align="Center" Height="20" Id="lbTrainingYear" Left="196" Style="sty_Label" TabOrder="18" Text="교육년도" Top="60" UserData="S" VAlign="Middle" Width="76"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edEduYear" ImeMode="native" Left="276" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="17" Top="60" UserData="I:년도" Width="36"></Edit>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radSubjectGubun" INDEX="0" InnerDataset="ds_ioSubjectGubun" Left="88" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="19" Top="132" Width="128"></Radio>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : 실무교육실시결과보고
+ * 설명 : 
+ * 작성일 : 2010.01.26
+ * 작성자 :  최규원
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    // 공통 코드 조회
+    gfn_SearchAllJibu(cbxJibu, "Y","전체");                         // 지부 코드 조회    
+    gfn_SearchCustomerEduCourseFullName(ds_oCourse, "0", "");	// 대표고객직능 조회
+	//cbxCourse.Value = "";
+
+	edEduYear.Text = left(GetDate(), 4);
+    calStartDate.Value = left(GetDate(), 4)+"0101";
+    calEndDate.Value = left(GetDate(), 8);        
+
+}
+
+/* 사용자 함수 */
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+
+}
+
+function Form_OnSize(obj,nCx,nCy,nState) {
+
+    if (gs_IsResizingForm == "Y") {
+
+    }
+}
+
+/* 조회 */
+function fn_Search(){
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("cust:searchCust1190EduScheduleResult1", false);
+	tit_addSearchActionInfo("cust:searchCust1190EduScheduleResult2", false);
+	tit_addSearchActionInfo("cust:searchCust1190EduScheduleResult3", false);
+	tit_addSearchActionInfo("cust:searchCust1190EduScheduleResult4", false);
+	tit_addSearchActionInfo("cust:searchCust1190EduScheduleResult5", false);
+		
+	ds_SearchJogeon.DeleteAll();		ds_SearchJogeon.AddRow();
+	ds_ResultList1.ClearData();
+	ds_ResultList2.ClearData();
+	ds_ResultList3.ClearData();
+	ds_ResultList4.ClearData();
+	ds_ResultList5.ClearData();
+	
+	ds_SearchJogeon.setColumn(0, "JIBU", cbxJibu.Value);	
+	ds_SearchJogeon.setColumn(0, "EDU_YEAR", edEduYear.Value);	
+	ds_SearchJogeon.setColumn(0, "COURSE", cbxCourse.Value);	
+	ds_SearchJogeon.setColumn(0, "EDU_YMD_FR", calStartDate.Value);	
+	ds_SearchJogeon.setColumn(0, "EDU_YMD_TO", calEndDate.Value);	
+	ds_SearchJogeon.setColumn(0, "SUBJECT_GUBUN", radSubjectGubun.Value);	
+	
+	
+	tit_callService(
+		""
+		,""
+		,"ds_iResultList=ds_SearchJogeon"//inDs 
+		,"ds_ResultList1=ds_oResultList1 ds_ResultList2=ds_oResultList2 ds_ResultList3=ds_oResultList3 ds_ResultList4=ds_oResultList4 ds_ResultList5=ds_oResultList5"// outDs
+		,"" // param
+		,"afterSearch"
+		,false
+		,""
+		,true
+	);
+}
+
+// 조회 후 callbackfunction afterSearch(errCode, errMsg){
+	if(errCode != 0 ){
+		alert("오류가 발생했습니다.");
+		return;
+	}
+	else{
+		if(ds_ResultList1.rowcount > 0){		
+		}
+		else{	
+		}
+	}
+}
+
+
+//초기화
+function lfn_Cancel(obj)
+{
+    lfn_CancelL(obj);
+}
+
+function lfn_CancelL(obj)
+{
+	edEduYear.Text = left(GetDate(), 4);
+    calStartDate.Value = left(GetDate(), 4)+"0101";
+    calEndDate.Value = left(GetDate(), 8);        
+    radSubjectGubun.Value = "0";
+    cbxJibu.SetFocus();
+    
+}
+
+/*
+     if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+    
+    if (calStartDate.Value > calEndDate.Value) {
+        gfn_Alert("시작일자가 종료일자보다 늦습니다.");
+        calStartDate.Value = left(GetDate(), 8);   //calDateStart.Value = left(GetDate(),4)+"0101"
+        return false;
+    }
+
+*/    
+
+function lfn_Print(obj)
+{	
+	if(ParseDateTime(calEndDate.Value) - ParseDateTime(calStartDate.Value)+1 > 7){
+		alert("교육일을 7일 이내로 입력하세요");
+		return; 
+	}
+	if(edEduYear.Text == ""){  
+		alert("교육년도를 입력하세요");
+		return; 
+	}
+    fn_Search();
+    
+    if (ds_ResultList1.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 없습니다.");
+        return false;
+    }
+	
+    gfn_CallReportPopup("frmCust1190R01EduScheduleResult.rex"
+					   , "ds_ResultList1||ds_ResultList2||ds_ResultList3||ds_ResultList4||ds_ResultList5"
+					   , ""
+						);
+
+}
+
+]]></Script>
+</Window>

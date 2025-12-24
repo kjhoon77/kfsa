@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<svcdesc><![CDATA[시험결과조회]]></svcdesc>
+	<header><![CDATA[]]></header>
+	<member_var>
+		<var id="EOEXAMORDER" reserved="NO" type="String"><![CDATA[]]></var>
+		<var id="ARYREPEATNO" reserved="NO" type="String"><![CDATA[]]></var>
+	</member_var>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_IMP_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[
+function Run()
+{
+	// TODO: Add your source code here
+	var selectQuery = " SELECT                                     " 
+									+ " 	  AA.EREJMGNO                            " 
+									+ " 	, AA.ERSEQ                               " 
+									+ " 	, AA.ERREPEATNO                          " 
+									+ " 	, AA.ERAPLEXAMNO                         " 
+									+ " 	, AA.ERPASSYN                            " 
+									+ " 	, AA.ERPASSDATE                          " 
+									+ " 	, AA.ERSCORE                             " 
+									+ " 	, AA.ERRANK                              " 
+									+ " 	, AA.ERCORRECTCNT                        " 
+									+ " 	, AA.ERREGDATE                           " 
+									+ " 	, AA.ERREGSABUN                          " 
+									+ " 	, AA.ERMODDATE                           " 
+									+ " 	, AA.ERMODSABUN                          " 
+									+ "	FROM (SELECT A.*                           " 
+									+ "				 FROM EXAMRESULT A                   " 
+									+ "				 , (SELECT EREJMGNO                  " 
+									+ "				 				,CINT(MAX(ERSEQ)) AS ERSEQ   " 
+									+ "				 				,ERREPEATNO                  " 
+									+ "				 	FROM EXAMRESULT                    " 
+									+ "				 	GROUP BY EREJMGNO, ERREPEATNO) B   " 
+									+ "				 WHERE A.EREJMGNO = B.EREJMGNO       "
+									+ "				 AND CINT(A.ERSEQ) = B.ERSEQ         "
+									+ "				 AND A.ERREPEATNO = B.ERREPEATNO) AA " 
+									+ " WHERE                                      " 
+									+ "			LEFT(AA.ERAPLEXAMNO, 3) = :EOEXAMORDER " 
+									+ "	AND	AA.ERREPEATNO IN ("+ARYREPEATNO+")     ";
+
+	ExecuteQuery(selectQuery, "output");
+}
+]]></source>
+</class2>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="22" Id="frmtraining0280S02PassDiplomaPrint" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="수료현황(수료증및참가증출력)" Top="8" Ver="1.0" Width="336" WorkArea="true">
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edPassSeqStart" ImeMode="native" LeftMargin="2" MaxLength="6" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="lfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="1" UserData="S:수료연번" Width="56"></Edit>
+		<Static Align="Center" Height="20" Id="lbDateWave2" Left="60" Style="sty_Text" TabOrder="3" Text="~" VAlign="Middle" Width="10"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edPassSeqEnd" ImeMode="native" Left="76" LeftMargin="2" MaxLength="6" Number="TRUE" OnChanged="lfn_SearchTrainingAbsent2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edPassSeqEnd_OnKeyDown" OnKillFocus="lfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="2" UserData="S:수료연번" Width="56"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0280S02PassDiplomaPrint.xml
+ * 설명 : 수료현황(수료증및참가증출력)
+ * 작성일 : 2009.08.24
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+function Form_OnLoadCompleted(obj) {
+    edPassSeqStart.SetFocus();
+}
+
+function edPassSeqEnd_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) {  // 엔터시1 다음 컨트롤로 변경
+	   edPassSeqStart.SetFocus();
+	}
+}
+
+function lfn_ComponentOnKillFocus(obj)
+{
+	gfn_ComponentOnKillFocus(obj);
+	obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 6));  
+	
+	if(edPassSeqEnd.text =="") {
+        
+    } else 
+    {
+      if(edPassSeqStart.text > edPassSeqEnd.text) {
+        alert("접수번호가 앞의 수보다 작습니다.");
+        edPassSeqEnd.text = "";
+      }
+    }
+}
+function lfn_SearchTrainingAbsent2(obj) {    
+   /* if (gfn_IsNull(cbxJibu.Value)
+            || gfn_IsNull(cbxCourse.Value)
+            || gfn_IsNull(edTrainingYear.Text)
+            || gfn_IsNull(edTrainingOrder.Text)) {
+        return false;
+    }
+    edTrainingOrder.Text = iif(gfn_IsNull(edTrainingOrder.Text), "", lpad(edTrainingOrder.Text, "0", 3));    
+   
+    gfn_ComponentOnKillFocus(this);
+	obj.Text = iif(gfn_IsNull(this.Text), "", lpad(obj.Text, "0", 6));  
+     
+    
+    lfn_Search();
+    */
+}]]></Script>
+</Window>

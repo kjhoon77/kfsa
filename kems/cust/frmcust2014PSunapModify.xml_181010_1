@@ -1,0 +1,819 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="400" Id="frmcust2014PSunapModify" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="수납정보&#32;변경" TooltipFont=",0" Top="8" Ver="1.0" Width="560" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioSunapGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>방문(직납)</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>방문(은납)</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>지로</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCustomerFee" OnColumnChanged="ds_oCustomerFee_OnColumnChanged">
+				<Contents>
+					<colinfo id="CFCMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="CFGUBUNCD" size="2" type="STRING"/>
+					<colinfo id="CFPMMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="CFPMYEAR" size="4" type="STRING"/>
+					<colinfo id="CFPONYDATE" size="8" type="STRING"/>
+					<colinfo id="CFPONYGUBUN" size="1" type="STRING"/>
+					<colinfo id="CFPROCAMOUNT" size="22" type="DECIMAL"/>
+					<colinfo id="CFPROCDATE" size="8" type="STRING"/>
+					<colinfo id="CFREMARK" size="100" type="STRING"/>
+					<colinfo id="CFSUNAPHALF" size="1" type="STRING"/>
+					<colinfo id="CFSUNAPYEAR" size="4" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" type="STRING"/>
+					<colinfo id="CNO" size="6" type="STRING"/>
+					<colinfo id="COMBOCHECK" size="1" type="STRING"/>
+					<colinfo id="MAXMONTH" size="2" type="STRING"/>
+					<colinfo id="MINMONTH" size="2" type="STRING"/>
+					<colinfo id="SEL" size="1" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMonthGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>YEAR</CD>
+						<DATA>년도</DATA>
+					</record>
+					<record>
+						<CD>HALF</CD>
+						<DATA>반기</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMonth">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iCustomerFee">
+				<Contents>
+					<colinfo id="CFCMGNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPMMGNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPMONTH" size="2" summ="default" type="STRING"/>
+					<colinfo id="SCNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="SCFSUNAPYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="SCFSUNAPMONTH" size="2" summ="default" type="STRING"/>
+					<colinfo id="SCFSUNAPHALF" size="1" summ="default" type="STRING"/>
+					<colinfo id="SCFREMARK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iProcDate">
+				<Contents>
+					<colinfo id="CFPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPMMGNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="CFPROCDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFPONYGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFPONYDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUNCD" size="2" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCustomerFeeCheck">
+				<Contents>
+					<colinfo id="BNM" size="40" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" type="STRING"/>
+					<colinfo id="CFPROCAMOUNT" size="22" type="DECIMAL"/>
+					<colinfo id="CFSUNAPMONTH" size="2" type="STRING"/>
+					<colinfo id="CFSUNAPYEAR" size="4" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" type="STRING"/>
+					<colinfo id="CNO" size="6" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="1" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCustomerFeeBackup" OnColumnChanged="ds_oCustomerFee_OnColumnChanged">
+				<Contents>
+					<colinfo id="CFCMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="CFGUBUNCD" size="2" type="STRING"/>
+					<colinfo id="CFPMMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="CFPMYEAR" size="4" type="STRING"/>
+					<colinfo id="CFPONYDATE" size="8" type="STRING"/>
+					<colinfo id="CFPONYGUBUN" size="1" type="STRING"/>
+					<colinfo id="CFPROCAMOUNT" size="22" type="DECIMAL"/>
+					<colinfo id="CFPROCDATE" size="8" type="STRING"/>
+					<colinfo id="CFREMARK" size="100" type="STRING"/>
+					<colinfo id="CFSUNAPHALF" size="1" type="STRING"/>
+					<colinfo id="CFSUNAPYEAR" size="4" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" type="STRING"/>
+					<colinfo id="CNO" size="6" type="STRING"/>
+					<colinfo id="COMBOCHECK" size="1" type="STRING"/>
+					<colinfo id="MAXMONTH" size="2" type="STRING"/>
+					<colinfo id="MINMONTH" size="2" type="STRING"/>
+					<colinfo id="SEL" size="1" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iPosPayment">
+				<Contents>
+					<colinfo id="PPPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="PPPMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPNM" size="30" summ="default" type="STRING"/>
+					<colinfo id="PPUNITAMT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPQTY" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPTOTAMT" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="204" Height="64" Id="Shape2" Left="4" LineColor="user15" Right="556" TabOrder="29" Top="140" Type="Rectangle" Width="552"></Shape>
+		<Shape Bottom="396" Height="180" Id="Shape1" Left="4" LineColor="user15" Right="556" TabOrder="19" Top="216" Type="Rectangle" Width="552"></Shape>
+		<Shape Bottom="128" Height="88" Id="Shape0" Left="4" LineColor="user15" Right="556" TabOrder="17" Top="40" Type="Rectangle" Width="552"></Shape>
+		<Static Align="Center" Height="20" Id="Static26" Left="20" Style="sty_LabelGruopBox" TabOrder="18" Text="기본&#32;정보" Top="32" VAlign="Middle" Width="108"></Static>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="204" LineColor="user14" Right="556" TabOrder="61" Top="1" Type="Rectangle" Width="352"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="468" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbProcDate" Left="8" Style="sty_Label" TabOrder="11" Text="처리일자" Top="156" VAlign="Middle" Width="72"></Static>
+		<Static Align="Center" Height="20" Id="lbPonyDate" Left="188" Style="sty_Label" TabOrder="12" Text="정산일자" Top="156" VAlign="Middle" Width="72"></Static>
+		<Static Align="Center" Height="20" Id="lbSunapGubun" Left="8" Style="sty_Label" TabOrder="13" Text="수납방법" Top="180" VAlign="Middle" Width="72"></Static>
+		<Checkbox FalseValue="0" Height="20" Id="chkPonyDate" Left="264" OnClick="chkPonyDate_OnClick" OnKeyDown="gfn_EnterNextFocus" Style="sty_Checkbox" TabOrder="5" Top="156" TrueValue="1" UserData="S" Value="FALSE" Width="13"></Checkbox>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="radSunapGubun" INDEX="0" InnerDataset="ds_ioSunapGubun" Left="84" LeftMargin="4" OnChanged="calProcDate_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="7" Top="180" UserData="S" Width="292"></Radio>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calProcDate" Left="84" OnChanged="calProcDate_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="4" Top="156" UserData="S" WeeksFont="돋음,9" Width="100"></Calendar>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" Enable="FALSE" HeaderFont="돋음,10,Bold" Height="20" Id="calPonyDate" Left="280" OnChanged="calProcDate_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="6" Top="156" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSave" ImageID="BTN_COM_SAVE" Left="207" OnClick="lfn_Save" Style="sty_Button" TabOrder="1" ToolTipText="수정&#32;저장" Top="4" Width="85"></Button>
+		<Static Font="굴림,12,Bold" Height="20" Id="lbWorkFormTitle" Left="28" TabOrder="15" Text="수납정보&#32;변경" Top="4" VAlign="Middle" Width="124"></Static>
+		<Image Height="10" Id="imgImage" ImageID="IMG_BULLET" Left="8" Style="sty_Image" TabOrder="16" Top="9" Transparent="TRUE" Width="12"></Image>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oCustomerFee" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="392" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="136" Id="gdSunap" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" Right="552" RowHeight="20" Style="sty_Grid" TabOrder="10" TabStop="true" Top="256" UseDBuff="true" UsePopupMenu="true" UserData="결제목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="544">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="37"/>
+						<col width="58"/>
+						<col width="58"/>
+						<col width="108"/>
+						<col width="95"/>
+						<col width="185"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="변경"/>
+						<cell col="1" display="text" text="관리번호"/>
+						<cell col="2" display="text" text="년도"/>
+						<cell col="3" display="text" text="월"/>
+						<cell col="4" display="text" text="금액"/>
+						<cell col="5" display="text" text="비고"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SEL" display="checkbox" font="굴림,10,Bold"/>
+						<cell align="center" col="1" colid="CNO" display="text" font="굴림,10,Bold" Mask="######"/>
+						<cell align="center" col="2" colid="CFSUNAPYEAR" display="text" edit="mask" Mask="####"/>
+						<cell align="center" col="3" colid="COMBOCHECK" combocol="CD" combodataset="ds_oMonth" combotext="DATA" display="combo" edit="combo"/>
+						<cell align="right" col="4" colid="CFPROCAMOUNT" display="number" font="굴림,10,Bold"/>
+						<cell align="left" col="5" colid="CFREMARK" display="text" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="Static0" Left="20" Style="sty_LabelGruopBox" TabOrder="20" Text="수납정보&#32;변경" Top="208" VAlign="Middle" Width="108"></Static>
+		<Static Align="Center" Height="20" Id="lbCustNo" Left="152" Style="sty_Label" TabOrder="21" Text="관리번호" Top="56" VAlign="Middle" Width="60"></Static>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medCustNo" Left="216" LeftMargin="2" Mask="######" Style="sty_Maskedit" TabOrder="22" Top="56" Type="STRING" Width="52"></MaskEdit>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edBuildingNm" ImeMode="native" Left="252" LeftMargin="2" MaxLength="30" Style="sty_Edit" TabOrder="23" Top="104" Width="300"></Edit>
+		<Static Align="Center" Height="20" Id="lbManagerNm" Left="8" Style="sty_Label" TabOrder="24" Text="성명" Top="104" UserData="S" VAlign="Middle" Width="60"></Static>
+		<Static Align="Center" Height="20" Id="lbBuildingNm" Left="152" Style="sty_Label" TabOrder="25" Text="대상물(업체)명" Top="104" UserData="S" VAlign="Middle" Width="96"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edManagerNm" ImeMode="native" Left="72" LeftMargin="2" MaxLength="10" Style="sty_Edit" TabOrder="26" Top="104" Width="76"></Edit>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="27" Text="지부" Top="56" UserData="S" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edJibu" ImeMode="native" Left="72" LeftMargin="2" MaxLength="30" Style="sty_Edit" TabOrder="28" Top="56" Width="76"></Edit>
+		<Static Align="Center" Height="20" Id="Static2" Left="20" Style="sty_LabelGruopBox" TabOrder="30" Text="처리일자&#32;변경" Top="132" VAlign="Middle" Width="108"></Static>
+		<Combo Border="Flat" BorderColor="user6" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxMonthGubun" INDEX="1" InnerDataset="ds_oMonthGubun" Left="475" OnChanged="cbxMonthGubun_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="9" Top="231" Value="HALF" Width="78"></Combo>
+		<Static Align="Center" Height="20" Id="lbRegion" Left="272" Style="sty_Label" TabOrder="31" Text="지역" Top="56" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edRegion" ImeMode="native" Left="336" LeftMargin="2" Style="sty_Edit" TabOrder="32" Top="56" Width="112"></Edit>
+		<Static Align="Center" Height="20" Id="lbCourseGroup" Left="8" Style="sty_Label" TabOrder="37" Text="대표직능" Top="80" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edCourseGroup" ImeMode="native" Left="72" LeftMargin="2" Style="sty_Edit" TabOrder="38" Top="80" Width="112"></Edit>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="188" Style="sty_Label" TabOrder="34" Text="세부직능" Top="80" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edCourse" ImeMode="native" Left="252" LeftMargin="2" Style="sty_Edit" TabOrder="35" Top="80" Width="132"></Edit>
+		<Static Align="Center" Height="20" Id="lbMember" Left="388" Style="sty_Label" TabOrder="33" Text="고객구분" Top="80" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edMember" ImeMode="native" Left="452" LeftMargin="2" Style="sty_Edit" TabOrder="36" Top="80" Width="44"></Edit>
+		<Static Height="20" Id="lbTextBlue" Left="312" Style="sty_TextBlue" TabOrder="39" Text="※&#32;정보를&#32;변경시&#32;자동&#32;체크" Top="232" VAlign="Middle" Width="160"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="381" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="2" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbCustNoBefore" Left="8" Style="sty_Label" TabOrder="40" Text="기존&#32;관리번호" Top="232" VAlign="Middle" Width="92"></Static>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medCustNoBefore" Left="104" LeftMargin="2" Mask="######" Style="sty_Maskedit" TabOrder="41" Top="232" Type="STRING" Width="52"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbCustNoAfter" Left="160" Style="sty_Label" TabOrder="42" Text="변경&#32;관리번호" Top="232" VAlign="Middle" Width="92"></Static>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Height="20" Id="medCustNoAfter" Left="256" LeftMargin="2" Mask="######" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="medCustNoAfter_OnKillFocus" Style="sty_Maskedit" TabOrder="8" Top="232" Type="STRING" Width="52"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDelete" ImageID="BTN_COM_DEL" Left="294" OnClick="lfn_Delete" Style="sty_Button" TabOrder="43" ToolTipText="삭제&#32;저장" Top="4" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust2014PSunapModify.xml
+ * 설명 : 수납정보 변경
+ * 작성일 : 2010.01.07
+ * 작성자 : 김동현
+ */
+
+#include "LIB::cust.js"; // 공통 관련
+
+var ls_Gubun = "";
+var lb_ModCheck = false; //처리일자 및 정산일자 변경시 true
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (!IsExistVar("sPmYear") || !IsExistVar("sPmMgno") || !IsExistVar("sSetlmGubun")) {
+        gfn_Alert("결제 정보가 없습니다.");
+        Close(false);
+    }
+
+    edJibu.Text = lfn_GetJibu(sJibu);
+    medCustNo.Value = sCno;
+    edRegion.Text = sRegion;
+    edCourseGroup.Text = lfn_GetCourseGroup(sCourse);
+    edCourse.Text = lfn_GetCourse(sCourse);
+    edMember.Text = iif(sMember == "0", "회원", "비회원");
+    edManagerNm.Text = sName;
+    edBuildingNm.Text = sBuilding;
+
+    medCustNoBefore.Value = sCno;
+    medCustNoAfter.Value = sCno;
+    
+    if (sMember == "1") { //비회원일경우
+        cbxMonthGubun.Value = "YEAR";
+        cbxMonthGubun.Enable = false;
+    }
+
+    if (!(sSunapGubun == "수납" || sSunapGubun == "회계수납")) { //수납이 아닌 경우 처리일자만 변경 가능
+        lfn_NooModify();
+    } else { //수납인 경우
+    
+        cbxMonthGubun_OnChanged();
+        
+        if (replace(sProcDate, "-", "") == left(getDate(), 8)) { //당일 수납이면 활성화
+            switch (sSetlmGubun) {
+                case "10": // 방문현금[직납]
+                case "14": // 방문무통장[은납]
+                case "17": // 지로현금[지로납]
+                    btnDelete.Enable = true;
+                    break;
+            }
+        }
+        
+    }
+    
+    switch (sSetlmGubun) {
+    
+        case "12": // 방문현금(영)[직납]
+//            lfn_NooModify();			모든 수납구분이 변경가능하도록 2012.05.03
+        case "10": // 방문현금[직납]
+            radSunapGubun.Value = "0";
+            ls_Gubun = "0";
+            break;
+            
+        case "16": // 방문무통장현금(영)[은납]
+//            lfn_NooModify();			모든 수납구분이 변경가능하도록 2012.05.03
+        case "14": // 방문무통장[은납]
+            radSunapGubun.Value = "1";
+            ls_Gubun = "1";
+            break;
+            
+        case "18": // 지로현금(영)[지로납]
+//            lfn_NooModify();			모든 수납구분이 변경가능하도록 2012.05.03
+        case "17": // 지로현금[지로납]
+            radSunapGubun.Value = "2";
+            ls_Gubun = "2";
+            break;
+            
+        default: //기타 수납
+//            lfn_NooModify();			모든 수납구분이 변경가능하도록 2012.05.03
+            radSunapGubun.Enable = false;
+            radSunapGubun.Value = "";
+            ls_Gubun = "";
+            break;
+    }
+    
+    calProcDate.Value = replace(sProcDate,"-","");
+    if (length(sPonyDate) > 1) {
+        calPonyDate.Value = replace(sPonyDate,"-","");
+    }
+    
+    calProcDate.SetFocus();
+	lb_ModCheck = false;
+	
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close(false);
+}
+
+function lfn_NooModify() {
+    window.Height = 240;
+    medCustNoAfter.Enable = false;
+    cbxMonthGubun.Enable = false;
+    gdSunap.Enable = false;
+    gdSunap.Editable = false;
+
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+// 기본 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close(false);
+}
+
+/**
+ * 조회
+ */
+function lfn_Search(obj) {
+
+    ds_oMonth.ClearData();
+    ds_oCustomerFee.ClearData();
+    ds_oCustomerFeeBackup.ClearData();
+
+    tit_clearActionInfo();
+    tit_addCsvSearchActionInfo("cust:searchCust2014CustomerFee", false);
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_oCustomerFee=ds_oCustomerFee"	// outDs
+        ,"SCMGNO=" + quote(sCMgno)
+            + " SPMYEAR=" + quote(sPmYear)
+            + " SPMMGNO=" + quote(sPmMgno)
+            + " SGUBUN=" + quote(cbxMonthGubun.Value)
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+
+    for (var i=0; i<ds_oCustomerFee.GetRowCount(); i++) {
+        if (medCustNoBefore.Value <> ds_oCustomerFee.GetColumn(i, "CNO")) {
+            lfn_NooModify();
+            return;
+        }
+    }
+    
+    ds_oCustomerFeeBackup.Copy(ds_oCustomerFee);
+    
+    if (cbxMonthGubun.Value == "YEAR") {
+        gdSunap.SetCellProp("body", 3, "display", "text");
+        gdSunap.SetCellProp("body", 3, "edit", "none");
+        gdSunap.SetCellProp("body", 3, "expr", "MINMONTH + '월~' + MAXMONTH + '월'");
+    } else {
+        gdSunap.SetCellProp("body", 3, "display", "combo");
+        gdSunap.SetCellProp("body", 3, "edit", "combo");
+        gdSunap.SetCellProp("body", 3, "expr", "");
+
+        if (cbxMonthGubun.Value == "HALF") {
+            ds_oMonth.InsertRow(0);
+            ds_oMonth.SetColumn(0, "CD", "2");
+            ds_oMonth.SetColumn(0, "DATA", "07월~12월");
+            ds_oMonth.InsertRow(0);
+            ds_oMonth.SetColumn(0, "CD", "1");
+            ds_oMonth.SetColumn(0, "DATA", "01월~06월");
+        } else {
+            for (var i=12; i>=1; i--) {
+                ds_oMonth.InsertRow(0);
+                ds_oMonth.SetColumn(0, "CD", lpad(i, "0", 2));
+                ds_oMonth.SetColumn(0, "DATA", lpad(i, "0", 2) + "월");
+            }
+        }
+    }
+    
+    ds_oCustomerFee.ApplyChange();
+
+}
+
+/*
+ * 기능 : 저장
+ */
+function lfn_Save(obj) {
+
+    var vArgs = "";
+    tit_clearActionInfo();
+
+/* 수납방법 변경 */
+    if (radSunapGubun.Value == "0") { // 직납으로 변경한 경우
+    
+        switch(sSetlmGubun) {
+            case "14": //방문무통장[은납]
+            case "17": //지로
+                sSetlmGubun = "10"; //방문현금[직납]
+                break;
+            case "16": //방문무통장현금(영)[은납]
+            case "18": //지료현금(영)
+                sSetlmGubun = "12"; //방문현금(영)[직납]
+                break;
+        }
+
+    } else if (radSunapGubun.Value == "1"){ // 은납으로 변경한 경우
+
+        switch(sSetlmGubun) {
+            case "10": //방문현금[직납]
+            case "17": //지로
+                sSetlmGubun = "14"; //방문무통장[은납]
+                break;
+            case "12": //방문현금(영)[직납]
+            case "18": //지료현금(영)
+                sSetlmGubun = "16"; //방문무통장현금(영)[은납]
+                break;
+        }
+
+    } else { //지로로 변경한 경우
+    
+        switch(sSetlmGubun) {
+            case "10": //방문현금[직납]
+            case "14": //방문무통장[은납]
+                sSetlmGubun = "17"; //지로
+                break;
+            case "12": //방문현금(영)[직납]
+            case "16": //방문무통장현금(영)[은납]
+                sSetlmGubun = "18"; //지료현금(영)
+                break;
+        }
+
+    }
+
+/* 수납정보 변경 */
+    ds_oCustomerFee.Filter("SEL='1'");
+
+    if (ds_oCustomerFee.GetRowCount() > 0) {
+        if (!lfn_SunapCheck()) { // 변경된 수납이 중복이거나 잘못된 경우
+            ds_oCustomerFee.UnFilter();
+            return;
+        }
+
+        //직능이 같은지 체크
+        if (ds_oCustomerFeeCheck.GetColumn(0, "CCOURSECD") <> sCourse) {
+            var vMsg = "직능이 다릅니다. 그래도 변경 하시겠습니까?\n\n";
+            vMsg += "대표직능 : " + edCourseGroup.Text + " => " + lfn_GetCourseGroup(ds_oCustomerFeeCheck.GetColumn(0, "CCOURSECD"));
+            vMsg += "세부직능 : " + edCourse.Text + " => " + lfn_GetCourse(ds_oCustomerFeeCheck.GetColumn(0, "CCOURSECD"));
+            if(!gfn_Confirm(vMsg)) {
+                return;
+            }
+        }
+
+        tit_addMultiActionInfo("cust:updateCust2014CustomerFee", "", 0, "", "N");
+        tit_addSearchActionInfo("cust:updateCust2014PosPrintM", false);
+        tit_addMultiActionInfo("cust:insertCust2020PosPayment", "", 0, "", "N");
+        
+        vArgs += " ds_iCustomerFee=ds_iCustomerFee";
+        vArgs += " ds_iPosPrintM=ds_oCustomerFee";
+        vArgs += " ds_iPosPayment=ds_iPosPayment";
+        
+    } else if (!lb_ModCheck) { // 아무런 변경이 없을 경우
+        ds_oCustomerFee.UnFilter();
+        gfn_Alert("변경될 정보가 없습니다.");
+        return;
+    }
+    
+    ds_oCustomerFee.UnFilter();
+
+/* 처리일자 변경 */
+    if(lb_ModCheck) { //처리일자 변경시
+    
+        if (left(calPonyDate.Value, 8) >= left(calProcDate.Value, 8)) {
+            gfn_Alert("정산일자가 잘못되었습니다. 처리일자 이전이어야 합니다.");
+            return;
+        }
+        
+        ds_iProcDate.ClearData();
+        ds_iProcDate.InsertRow(0);
+        ds_iProcDate.SetColumn(0, "CFPMYEAR", sPmYear);
+        ds_iProcDate.SetColumn(0, "CFPMMGNO", sPmMgno);
+        ds_iProcDate.SetColumn(0, "CFPROCDATE", calProcDate.Value);
+        if (chkPonyDate.Value == "1") {
+            ds_iProcDate.SetColumn(0, "CFPONYGUBUN", chkPonyDate.Value);
+            ds_iProcDate.SetColumn(0, "CFPONYDATE", calPonyDate.Value);
+        }
+        ds_iProcDate.SetColumn(0, "CFGUBUNCD", sSetlmGubun);
+        
+        tit_addSingleActionInfo("cust:updateCust2014ProcDate", "", 0, "");
+        vArgs += " ds_iProcDate=ds_iProcDate";
+        
+    }
+
+/* 데이터 적용 */
+    if (!gfn_Confirm("수납정보를 변경 하시겠습니까?")) {
+        return;
+    }
+
+    tit_callService(
+        ""
+        ,""
+        ,vArgs	// inDs
+        ,""	// outDs
+        ,"PMBUYER=" + quote(ds_oCustomerFeeCheck.GetColumn(0, "BNM"))
+            + " PMITEM1=" + quote("구    분 : " + lfn_GetCourse(ds_oCustomerFeeCheck.GetColumn(0, "CCOURSECD")))
+            + " PMITEM2=" + quote("업    체 : " + ds_oCustomerFeeCheck.GetColumn(0, "BNM"))
+            + " PMITEM3=" + quote("관리번호 : " + edJibu.Text + "-" + medCustNoAfter.Value)
+        ,"lfn_AfterSave"
+        ,false
+        ,false
+        ,true
+    );
+
+}
+
+/**
+ * 저장 후 처리
+ */
+function lfn_AfterSave(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    lfn_ModifyHistory();
+    Close(true);
+}
+
+
+/**
+ * 삭제
+ */
+function lfn_Delete(obj) {
+
+    
+
+    if (!gfn_confirm("결제를 삭제 하시겠습니까?")) {
+        return;
+    }
+
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("cust:deleteCust2010CustomerFee", "", 0, "");
+    tit_callService(
+        ""
+        ,""
+        ,"" // inDs
+        ,""	// outDs
+        ,"SPMYEAR=" + quote(sPmYear)
+            + " SPMMGNO=" + quote(sPmMgno)
+        ,"lfn_AfterDelete"
+        ,false
+    );
+    
+}
+
+/**
+ * 삭제 TRANSACTION 처리 후
+ */
+function lfn_AfterDelete(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return "Transaction Error!";
+    }
+    
+    gfn_Alert("삭제가 완료 되었습니다.");
+    Close(true);
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 이벤트
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 년도, 반기, 월 변경
+ */
+function cbxMonthGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+    gdSunap.Redraw = false;
+    lfn_Search();
+    gdSunap.Redraw = true;
+}
+
+/**
+ * 처리일자, 정산일자, 수납정보 변경 시
+ */
+function calProcDate_OnChanged(obj,strOldText,strNewText) {
+
+	lb_ModCheck = true;
+}
+
+/**
+ * 정산일자 체크
+ */
+function chkPonyDate_OnClick(obj,strValue) {
+
+	if (chkPonyDate.Value == "1") {
+        calPonyDate.Enable = true;
+        calPonyDate.Value = left(addDate(left(calProcDate.Value, 8), -1), 8);
+	} else {
+        calPonyDate.Enable = false;
+        calPonyDate.Value = replace(sPonyDate,"-","");
+	}
+	
+	lb_ModCheck = true;
+	
+}
+
+/**
+ * 관리번호 변경
+ */
+function medCustNoAfter_OnKillFocus(obj) {
+
+    medCustNoAfter.Value = lpad(medCustNoAfter.Value, "0", 6);
+
+	if (medCustNoBefore.Value <> medCustNoAfter.Value) {
+        for (var i=0; i<ds_oCustomerFee.GetRowCount(); i++) {
+            ds_oCustomerFee.SetColumn(i, "CNO", medCustNoAfter.Value);
+            ds_oCustomerFee.SetColumn(i, "SEL", "1");
+        }
+	}
+}
+
+/**
+ * 그리드 변경
+ */
+function ds_oCustomerFee_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex) {
+    ds_oCustomerFee.SetColumn(ds_oCustomerFee.currow, "SEL", "1");
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+// 데이터 체크
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 수납 데이터 생성 및 수납 중복 체크
+ * Return : true - 수납가능
+ *          false - 수납불가
+ */
+function lfn_SunapCheck() {
+
+/* 데이터 생성 */
+    var vRow = 0;
+    var vRowCheck = 0; // 수납체크 row
+    var vRowCnt = 0; // min부터 개월 수
+    var vMin = 0;
+    var vMax = 0;
+    
+    ds_iCustomerFee.ClearData();
+    ds_iPosPayment.ClearData();
+
+//이미 수납있는지 체크 및 업체명 가져오기 쿼리
+    tit_clearActionInfo();
+    tit_addCsvSearchActionInfo("cust:searchCust2014CustomerFeeCheck", false);
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_oCustomerFeeCheck=ds_oCustomerFeeCheck"	// outDs
+        ,"CGTMGNO=" + quote(sJibu)
+            + " CNO=" + quote(medCustNoAfter.Value)
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+
+    //회원구분이 같은지 체크
+    if (sMember <> ds_oCustomerFeeCheck.GetColumn(0, "CSTATUSGUBUN")) {
+        gfn_Alert("회원 구분이 다릅니다.");
+        return false;
+    }
+
+/* 데이터 생성 및 체크 */
+    for (var i=0; i<ds_oCustomerFee.GetRowCount(); i++) {
+
+        vMin = toNumber(ds_oCustomerFee.GetColumn(i, "MINMONTH"));
+        vMax = toNumber(ds_oCustomerFee.GetColumn(i, "MAXMONTH"));
+        
+        if (cbxMonthGubun == "HALF") { // 선택이 반기일 경우
+            if (ds_oCustomerFee.GetColumn(i, "COMBOCHECK") == "1") { //상반기로 변경일 경우
+                if (vMin > 6) {
+                    vMin -= 6;
+                    vMax -= 6;
+                }
+            } else { //하반기로 변경일 경우
+                if (vMin < 7) {
+                    vMin += 6;
+                    vMax += 6;
+                }
+            }
+        }
+    
+        vRowCnt = 0;
+        for (var j=vMin; j<=vMax; j++) {
+            vRow = ds_iCustomerFee.AddRow();
+            
+            //조건 데이터
+            ds_iCustomerFee.SetColumn(vRow, "CFCMGNO", ds_oCustomerFeeBackup.GetColumn(i, "CFCMGNO"));
+            ds_iCustomerFee.SetColumn(vRow, "CGTMGNO", ds_oCustomerFeeBackup.GetColumn(i, "CGTMGNO"));
+            ds_iCustomerFee.SetColumn(vRow, "CFPMYEAR", ds_oCustomerFeeBackup.GetColumn(i, "CFPMYEAR"));
+            ds_iCustomerFee.SetColumn(vRow, "CFPMMGNO", ds_oCustomerFeeBackup.GetColumn(i, "CFPMMGNO"));
+            ds_iCustomerFee.SetColumn(vRow, "CFSUNAPYEAR", ds_oCustomerFeeBackup.GetColumn(i, "CFSUNAPYEAR"));
+            ds_iCustomerFee.SetColumn(vRow, "CFSUNAPMONTH", lpad(toNumber(ds_oCustomerFeeBackup.GetColumn(i, "MINMONTH")) + vRowCnt, "0", 2));
+            vRowCnt++;
+
+            //변경 데이터
+            ds_iCustomerFee.SetColumn(vRow, "SCNO", ds_oCustomerFee.GetColumn(i, "CNO"));
+            ds_iCustomerFee.SetColumn(vRow, "SCFSUNAPYEAR", ds_oCustomerFee.GetColumn(i, "CFSUNAPYEAR"));
+            ds_iCustomerFee.SetColumn(vRow, "SCFSUNAPMONTH", lpad(j, "0", 2));
+            ds_iCustomerFee.SetColumn(vRow, "SCFSUNAPHALF", iif(j<=6, iif(j==0, "0", "1"), "2"));
+            ds_iCustomerFee.SetColumn(vRow, "SCFREMARK", ds_oCustomerFee.GetColumn(i, "CFREMARK"));
+
+        //이미 수납되어있는지 체크
+            vRowCheck = ds_oCustomerFeeCheck.SearchRow("CGTMGNO='" + ds_iCustomerFee.GetColumn(vRow, "CGTMGNO")
+                                        + "' && CNO='" + ds_iCustomerFee.GetColumn(vRow, "SCNO")
+                                        + "' && CFSUNAPYEAR='" + ds_iCustomerFee.GetColumn(vRow, "SCFSUNAPYEAR")
+                                        + "' && CFSUNAPMONTH='" + ds_iCustomerFee.GetColumn(vRow, "SCFSUNAPMONTH") + "'");
+            if (vRowCheck > -1 && ds_oCustomerFeeCheck.GetColumn(vRowCheck, "CFPROCAMOUNT") > 0) {
+                gfn_Alert("관리번호 [" + ds_iCustomerFee.GetColumn(vRow, "SCNO")
+                        + "]의 " + ds_iCustomerFee.GetColumn(vRow, "SCFSUNAPYEAR")
+                        + "년 " + ds_iCustomerFee.GetColumn(vRow, "SCFSUNAPMONTH")
+                        + "월은 이미 수납되어 있습니다.");
+                return false;
+            }
+            
+        //중복 수납기간 체크
+            ds_iCustomerFee.Filter("SCNO='" + ds_iCustomerFee.GetColumn(i, "SCNO")
+                                        + "' && SCFSUNAPYEAR='" + ds_iCustomerFee.GetColumn(i, "SCFSUNAPYEAR")
+                                        + "' && SCFSUNAPMONTH='" + ds_iCustomerFee.GetColumn(i, "SCFSUNAPMONTH") + "'");
+            if (ds_iCustomerFee.GetRowCount() > 1) {
+                gfn_Alert("중복되는 기간이 있습니다.");
+                return false;
+            }
+            ds_iCustomerFee.UnFilter();
+        
+        }
+
+
+    }
+
+    var sYear = ""; // POSPAYMENT 년도
+
+    //POSPAYMENT 데이터
+    for (var i=0; i<ds_oCustomerFee.GetRowCountNF(); i++) {
+        if (sYear <> ds_oCustomerFee.GetColumnNF(i, "CFSUNAPYEAR")) {
+            sYear = ds_oCustomerFee.GetColumnNF(i, "CFSUNAPYEAR");
+
+            ds_iPosPayment.InsertRow(0);
+            ds_iPosPayment.SetColumn(0, "PPPMYEAR", ds_oCustomerFeeBackup.GetColumn(i, "CFPMYEAR"));
+            ds_iPosPayment.SetColumn(0, "PPPMMGNO", ds_oCustomerFeeBackup.GetColumn(i, "CFPMMGNO"));
+            ds_iPosPayment.SetColumn(0, "PPNM", ds_oCustomerFeeCheck.GetColumn(0, "BNM") + "(" + lfn_GetCoursePrint(sCourse) + ")");
+            ds_iPosPayment.SetColumn(0, "PPUNITAMT", sYear);
+            ds_iPosPayment.SetColumn(0, "PPQTY", "");
+            ds_iPosPayment.SetColumn(0, "PPTOTAMT", ds_oCustomerFee.SumNF("iif(CFSUNAPYEAR == '"+sYear+"', CFPROCAMOUNT, 0)"));
+        }
+    }
+
+    ds_iPosPayment.Sort("PPUNITAMT");
+
+    return true;
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 이력
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 변경이력
+ */
+function lfn_ModifyHistory(){
+    gds_iModifyHistory.ClearData();
+    gds_iModifyHistory.InsertRow(0);
+    gds_iModifyHistory.SetColumn(0, "MHWORKGUBUN", "회비/교육비 수납정보 변경"); // 업무구분
+    gds_iModifyHistory.SetColumn(0, "MHGUBUN", "U"); // 변경구분
+    gds_iModifyHistory.SetColumn(0, "MHKEY", sPmYear + "_" + sPmMgno); // KEY값
+    gds_iModifyHistory.SetColumn(0, "MHCOLUMN", "CFPROCDATE"); // 변경 컬럼명
+    gds_iModifyHistory.SetColumn(0, "MHBEFOREDATA", sProcDate); // 변경 전 값
+    gds_iModifyHistory.SetColumn(0, "MHAFTERDATA", calProcDate.Value); // 변경 후 값
+    
+    if (chkPonyDate.Value == "1") {
+        gds_iModifyHistory.InsertRow(0);
+        gds_iModifyHistory.SetColumn(0, "MHWORKGUBUN", "회비/교육비 수납정보 변경"); // 업무구분
+        gds_iModifyHistory.SetColumn(0, "MHGUBUN", "U"); // 변경구분
+        gds_iModifyHistory.SetColumn(0, "MHKEY", sPmYear + "_" + sPmMgno); // KEY값
+        gds_iModifyHistory.SetColumn(0, "MHCOLUMN", "CFPONYGUBUN"); // 변경 컬럼명
+        gds_iModifyHistory.SetColumn(0, "MHBEFOREDATA", "0"); // 변경 전 값
+        gds_iModifyHistory.SetColumn(0, "MHAFTERDATA", "1"); // 변경 후 값
+        gds_iModifyHistory.InsertRow(0);
+        gds_iModifyHistory.SetColumn(0, "MHWORKGUBUN", "회비/교육비 수납정보 변경"); // 업무구분
+        gds_iModifyHistory.SetColumn(0, "MHGUBUN", "U"); // 변경구분
+        gds_iModifyHistory.SetColumn(0, "MHKEY", sPmYear + "_" + sPmMgno); // KEY값
+        gds_iModifyHistory.SetColumn(0, "MHCOLUMN", "CFPONYDATE"); // 변경 컬럼명
+        gds_iModifyHistory.SetColumn(0, "MHBEFOREDATA", sPonyDate); // 변경 전 값
+        gds_iModifyHistory.SetColumn(0, "MHAFTERDATA", calPonyDate.Value); // 변경 후 값
+    }
+    
+    if (ls_Gubun <> radSunapGubun.Value) {
+        gds_iModifyHistory.InsertRow(0);
+        gds_iModifyHistory.SetColumn(0, "MHWORKGUBUN", "회비/교육비 수납정보 변경"); // 업무구분
+        gds_iModifyHistory.SetColumn(0, "MHGUBUN", "U"); // 변경구분
+        gds_iModifyHistory.SetColumn(0, "MHKEY", sPmYear + "_" + sPmMgno); // KEY값
+        gds_iModifyHistory.SetColumn(0, "MHCOLUMN", "CFGUBUNCD"); // 변경 컬럼명
+        gds_iModifyHistory.SetColumn(0, "MHBEFOREDATA", ls_Gubun); // 변경 전 값
+        gds_iModifyHistory.SetColumn(0, "MHAFTERDATA", radSunapGubun.Value); // 변경 후 값
+    }
+    
+    gfn_InsertModifyHistory();
+}
+]]></Script>
+</Window>

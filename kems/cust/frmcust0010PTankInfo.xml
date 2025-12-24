@@ -1,0 +1,1456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="360" Id="frmcust0010PTankInfo" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="이동탱크정보" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="528" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_iLicense">
+				<Contents>
+					<colinfo id="LLCSNO" size="19" summ="default" type="STRING"/>
+					<colinfo id="LCANCELREASON" size="100" summ="default" type="STRING"/>
+					<colinfo id="LHSEQ" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>상치주소</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>설치자주소</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oAddr">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>지번주소</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>도로명주소</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioTankInfo">
+				<Contents>
+					<colinfo id="TBMGNO" size="22" summ="default" type="STRING"/>
+					<colinfo id="TCARNO" size="20" summ="default" type="STRING"/>
+					<colinfo id="TCARYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="TGATEWAYTANK1" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TGATEWAYTANK2" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TINSTLRADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="TINSTLRADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="TINSTLRZIPCD" size="6" summ="default" type="STRING"/>
+					<colinfo id="TPARKPLACEADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="TPARKPLACEADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="TPARKPLACEZIPCD" size="6" summ="default" type="STRING"/>
+					<colinfo id="TPERMISSIONNO" size="20" summ="default" type="STRING"/>
+					<colinfo id="TPOSTREQGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="TREMARK" size="200" summ="default" type="STRING"/>
+					<colinfo id="TSEQ" size="22" summ="default" type="STRING"/>
+					<colinfo id="POSTPLACE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPARKPLACEADDRGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPARKPLACEROADZIPCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPARKPLACEROADADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPARKPLACEROADADDR2" size="256" summ="default" type="STRING"/>
+					<colinfo id="TINSTLRADDRGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TINSTLRROADZIPCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="TINSTLRROADADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="TINSTLRROADADDR2" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRPARKPNUCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRPARKROADBUILDMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRPARKROADDETAIL" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRPARKROADREMAIN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRPARKSANGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRPARKMAINBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRPARKSUBBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRPARKBUILDNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRPARKADDRETC" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRINSTLRPNUCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRINSTLRROADBUILDMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRINSTLRROADDETAIL" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRINSTLRROADREMAIN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRINSTLRSANGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRINSTLRMAINBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRINSTLRSUBBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRINSTLRBUILDNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRINSTLRADDRETC" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRCONVPGM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRCONVPARKSTATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRCONVINSTLRSTATUS" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="352" Height="320" Id="shpGubunBox" Left="4" LineColor="user15" Right="520" TabOrder="21" Top="32" Type="Rectangle" Width="516"></Shape>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="342" LineColor="user14" Right="520" TabOrder="20" Top="1" Type="Rectangle" Width="178"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="432" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSave" ImageID="BTN_TEXT_COM" Left="345" OnClick="lfn_Save" Style="sty_Button" TabOrder="1" Text="확인(F4)" ToolTipText="확인" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbPostGubun" Left="8" Style="sty_Label" TabOrder="22" Text="우편청구구분" Top="152" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbPerMissionNo" Left="8" Style="sty_Label" TabOrder="25" Text="허가번호" Top="96" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbCarNo" Left="8" Style="sty_Label" TabOrder="23" Text="차량번호" Top="40" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioTankInfo" Border="Flat" Column="TCARNO" Height="20" Id="edCarNo" ImeMode="native" Left="104" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="3" Top="40" UserData="S" Width="106"></Edit>
+		<Static Align="Center" Height="20" Id="lbCarYear" Left="8" Style="sty_Label" TabOrder="24" Text="차량년도" Top="68" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioTankInfo" Border="Flat" Column="TREMARK" Height="20" Id="edRemark" ImeMode="native" Left="104" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="6" Top="124" UserData="S" Width="412"></Edit>
+		<Static Align="Center" Height="20" Id="lbRemark" Left="8" Style="sty_Label" TabOrder="26" Text="기타정보" Top="124" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbParkPlace" Left="8" Style="sty_Label" TabOrder="27" Text="상치장소주소" Top="180" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbInstlrAddr" Left="8" Style="sty_Label" TabOrder="28" Text="설치자주소" Top="236" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbGateWayTank1" Left="8" Style="sty_Label" TabOrder="29" Text="민원정보시스템제조소등탱크PK1" Top="292" UserData="S" VAlign="Middle" Width="210"></Static>
+		<Static Align="Center" Height="20" Id="lbGateWayTank2" Left="8" Style="sty_Label" TabOrder="30" Text="민원정보시스템제조소등탱크PK2" Top="320" UserData="S" VAlign="Middle" Width="210"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearchParkZipCode" ImageID="BTN_SEARCH" Left="165" OnClick="btnSearchParkZipCode_OnClick" OnKeyDown="btnSearchParkZipCode_OnKeyDown" Style="sty_Button" TabOrder="15" Top="208" Transparent="TRUE" Width="22"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearchInstlrZipCode" ImageID="BTN_SEARCH" Left="164" OnClick="btnSearchInstlrZipCode_OnClick" OnKeyDown="btnSearchInstlrZipCode_OnKeyDown" Style="sty_Button" TabOrder="17" Top="264" Transparent="TRUE" Width="22"></Button>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioTankInfo" Border="Flat" Column="TGATEWAYTANK1" Enable="FALSE" Height="20" Id="edGateWayTank1" ImeMode="native" Left="224" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="18" Top="292" UserData="S" Width="106"></Edit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioTankInfo" Border="Flat" Column="TGATEWAYTANK2" Enable="FALSE" Height="20" Id="edGateWayTank2" ImeMode="native" Left="224" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="19" Top="320" UserData="S" Width="106"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnGateWayTank1" ImageID="BTN_SEARCH" Left="336" OnClick="btnGateWayTank1_OnClick" Style="sty_Button" TabOrder="12" Top="292" Transparent="TRUE" Width="22"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnGateWayTank2" ImageID="BTN_SEARCH" Left="336" OnClick="btnGateWayTank2_OnClick" Style="sty_Button" TabOrder="13" Top="320" Transparent="TRUE" Width="22"></Button>
+		<Radio BindDataset="ds_ioTankInfo" Border="None" CodeColumn="CD" Column="TPOSTREQGUBUN" ColumnCount="2" DataColumn="DATA" Height="20" Id="radPostGubun" INDEX="0" InnerDataset="ds_oGubun" Left="105" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="7" Top="152" UserData="S" Value="0" Width="180"></Radio>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioTankInfo" Border="Flat" Column="TCARYEAR" Height="20" Id="edCarYear" ImeMode="native" Left="104" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="4" Top="68" UserData="S" Width="36"></Edit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioTankInfo" Border="Flat" Column="TPERMISSIONNO" Height="20" Id="edPerMissionNo" ImeMode="native" Left="104" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="5" Top="96" UserData="S" Width="140"></Edit>
+		<Combo BindDataset="ds_ioTankInfo" Border="Flat" CodeColumn="CD" Column="TPARKPLACEADDRGUBUN" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxParkAddrGubun" ImeMode="none" INDEX="0" InnerDataset="ds_oAddr" Left="102" OnChanged="cbxParkAddrGubun_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="31" Top="179" UserData="S" Width="89"></Combo>
+		<Combo BindDataset="ds_ioTankInfo" Border="Flat" CodeColumn="CD" Column="TINSTLRADDRGUBUN" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxInstlrAddrGubun" ImeMode="none" INDEX="0" InnerDataset="ds_oAddr" Left="102" OnChanged="cbxInstlrAddrGubun_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="32" Top="235" UserData="S" Width="89"></Combo>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_ioTankInfo" BKColor="user4" Border="Flat" Column="TPARKPLACEROADZIPCD" Height="20" Id="medParkRoadZipCode" Left="104" LeftMargin="2" Mask="######" OnFocus="medOldZipCode_OnFocus" OnKeyDown="gfn_EnterNextFocus" Readonly="TRUE" Style="sty_ZipCodeReadOnly" TabOrder="35" Top="208" Type="STRING" UserData="S" Width="50"></MaskEdit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioTankInfo" Border="Flat" Column="TPARKPLACEROADADDR1" Height="20" Id="edParkRoadAddr1" ImeMode="native" Left="192" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edParkRoadAddr1_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="33" Top="180" UserData="S:상치주소" Width="324"></Edit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioTankInfo" Border="Flat" Column="TPARKPLACEROADADDR2" Height="20" Id="edParkRoadAddr2" ImeMode="native" Left="192" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="34" Top="208" UserData="S:상치주소상세" Width="324"></Edit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioTankInfo" Border="Flat" Column="TINSTLRROADADDR1" Height="20" Id="edInstlrRoadAddr1" ImeMode="native" Left="192" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edInstlrRoadAddr1_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="36" Top="236" UserData="S:설치자주소" Width="324"></Edit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioTankInfo" Border="Flat" Column="TINSTLRROADADDR2" Height="20" Id="edInstlrRoadAddr2" ImeMode="native" Left="192" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="37" Top="264" UserData="S:설치자주소상세" Width="324"></Edit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_ioTankInfo" BKColor="user4" Border="Flat" Column="TINSTLRROADZIPCD" Height="20" Id="medInstlrRoadZipCode" Left="104" LeftMargin="2" Mask="######" OnFocus="medNewZipCode_OnFocus" OnKeyDown="gfn_EnterNextFocus" Readonly="TRUE" Style="sty_ZipCodeReadOnly" TabOrder="38" Top="264" Type="STRING" UserData="S" Width="50"></MaskEdit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioTankInfo" Border="Flat" Column="TPARKPLACEADDR1" Height="20" Id="edParkAddr1" ImeMode="native" Left="192" LeftMargin="2" OnClick="chkAddr_OnClick" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edParkAddr1_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="8" Top="180" UserData="S:상치주소" Width="324"></Edit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioTankInfo" Border="Flat" Column="TPARKPLACEADDR2" Height="20" Id="edParkAddr2" ImeMode="native" Left="192" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="9" Top="208" UserData="S:상치주소상세" Width="324"></Edit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_ioTankInfo" BKColor="user4" Border="Flat" Column="TPARKPLACEZIPCD" Height="20" Id="medParkZipCode" Left="104" LeftMargin="2" Mask="######" OnFocus="medParkZipCode_OnFocus" OnKeyDown="gfn_EnterNextFocus" Readonly="TRUE" Style="sty_ZipCodeReadOnly" TabOrder="14" Top="208" Type="STRING" UserData="S" Width="50"></MaskEdit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioTankInfo" Border="Flat" Column="TINSTLRADDR1" Height="20" Id="edInstlrAddr1" ImeMode="native" Left="192" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edInstlrAddr1_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="10" Top="236" UserData="S:설치자주소" Width="324"></Edit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioTankInfo" Border="Flat" Column="TINSTLRADDR2" Height="20" Id="edInstlrAddr2" ImeMode="native" Left="192" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="11" Top="264" UserData="S:설치자주소상세" Width="324"></Edit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_ioTankInfo" BKColor="user4" Border="Flat" Column="TINSTLRZIPCD" Height="20" Id="medInstlrZipCode" Left="104" LeftMargin="2" Mask="######" OnFocus="medNewZipCode_OnFocus" OnKeyDown="gfn_EnterNextFocus" Readonly="TRUE" Style="sty_ZipCodeReadOnly" TabOrder="16" Top="264" Type="STRING" UserData="S" Width="50"></MaskEdit>
+		<Static Align="Center" BKColor="yellow" Color="user6" Font="굴림,9" Height="26" Id="lbParkConvStatus" Left="35" Style="sty_Label" TabOrder="39" Text="새&#32;주소&#10;변환요망" Top="202" VAlign="Middle" Visible="FALSE" Width="60"></Static>
+		<Static Align="Center" BKColor="yellow" Color="user6" Font="굴림,9" Height="26" Id="lbInstlrConvStatus" Left="35" Style="sty_Label" TabOrder="40" Text="새&#32;주소&#10;변환요망" Top="258" VAlign="Middle" Visible="FALSE" Width="60"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust0010PTankInfo.xml
+ * 설명 : 이동탱크부가정보
+ * 작성일 : 2009.12.08
+ * 작성자 : 이규희
+ */
+
+#include "LIB::cust.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    
+    if (IsExistVar("sDelGubun")) {
+        edCarNo.Enable = false;
+        edCarYear.Enable = false;
+        edPerMissionNo.Enable = false;
+        edRemark.Enable = false;
+        radPostGubun.Enable = false;
+        cbxParkAddrGubun.Enable = false;
+        edParkAddr1.Enable = false;
+        edParkAddr2.Enable = false;
+        edParkRoadAddr1.Enable = false;
+        edParkRoadAddr2.Enable = false;
+        cbxInstlrAddrGubun.Value = false;
+        edInstlrAddr1.Enable = false;
+        edInstlrAddr2.Enable = false;
+        edInstlrRoadAddr1.Enable = false;
+        edInstlrRoadAddr2.Enable = false;
+        btnSearchParkZipCode.Enable = false;
+        btnSearchInstlrZipCode.Enable = false;
+        btnGateWayTank1.Enable = false;
+        btnGateWayTank2.Enable = false;
+        btnSave.Enable = false;
+    }
+    
+    if (IsExistVar("sRow")) {
+        lfn_Search(obj);
+    } else {
+
+		ds_ioTankInfo.ClearData();
+		ds_ioTankInfo.AddRow();
+		radPostGubun.Index = 0;
+		cbxParkAddrGubun.Index = 0;
+		cbxInstlrAddrGubun.Index = 0;
+    }
+    edCarNo.SetFocus();
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 115 : // 저장(F4)
+            lfn_Save();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+	ds_ioTankInfo.ClearData();
+	ds_ioTankInfo.AddRow();
+	
+    ds_ioTankInfo.SetColumn(0, "TCARNO", Parent.ds_ioTankInfo.GetColumn(sRow, "TCARNO"));
+    ds_ioTankInfo.SetColumn(0, "TCARYEAR", Parent.ds_ioTankInfo.GetColumn(sRow, "TCARYEAR"));
+    ds_ioTankInfo.SetColumn(0, "TPERMISSIONNO", Parent.ds_ioTankInfo.GetColumn(sRow, "TPERMISSIONNO"));
+    ds_ioTankInfo.SetColumn(0, "TREMARK", Parent.ds_ioTankInfo.GetColumn(sRow, "TREMARK"));
+    ds_ioTankInfo.SetColumn(0, "TPOSTREQGUBUN", Parent.ds_ioTankInfo.GetColumn(sRow, "TPOSTREQGUBUN"));
+    ds_ioTankInfo.SetColumn(0, "TPARKPLACEADDRGUBUN", Parent.ds_ioTankInfo.GetColumn(sRow, "TPARKPLACEADDRGUBUN"));
+    ds_ioTankInfo.SetColumn(0, "TPARKPLACEZIPCD", Parent.ds_ioTankInfo.GetColumn(sRow, "TPARKPLACEZIPCD"));
+    ds_ioTankInfo.SetColumn(0, "TPARKPLACEADDR1", Parent.ds_ioTankInfo.GetColumn(sRow, "TPARKPLACEADDR1"));
+    ds_ioTankInfo.SetColumn(0, "TPARKPLACEADDR2", Parent.ds_ioTankInfo.GetColumn(sRow, "TPARKPLACEADDR2"));
+    ds_ioTankInfo.SetColumn(0, "TPARKPLACEROADZIPCD", Parent.ds_ioTankInfo.GetColumn(sRow, "TPARKPLACEROADZIPCD"));
+    ds_ioTankInfo.SetColumn(0, "TPARKPLACEROADADDR1", Parent.ds_ioTankInfo.GetColumn(sRow, "TPARKPLACEROADADDR1"));
+    ds_ioTankInfo.SetColumn(0, "TPARKPLACEROADADDR2", Parent.ds_ioTankInfo.GetColumn(sRow, "TPARKPLACEROADADDR2"));
+    ds_ioTankInfo.SetColumn(0, "TINSTLRADDRGUBUN", Parent.ds_ioTankInfo.GetColumn(sRow, "TINSTLRADDRGUBUN"));    
+    ds_ioTankInfo.SetColumn(0, "TINSTLRZIPCD", Parent.ds_ioTankInfo.GetColumn(sRow, "TINSTLRZIPCD"));
+    ds_ioTankInfo.SetColumn(0, "TINSTLRADDR1", Parent.ds_ioTankInfo.GetColumn(sRow, "TINSTLRADDR1"));
+    ds_ioTankInfo.SetColumn(0, "TINSTLRADDR2", Parent.ds_ioTankInfo.GetColumn(sRow, "TINSTLRADDR2"));    
+    ds_ioTankInfo.SetColumn(0, "TINSTLRROADZIPCD", Parent.ds_ioTankInfo.GetColumn(sRow, "TINSTLRROADZIPCD"));
+    ds_ioTankInfo.SetColumn(0, "TINSTLRROADADDR1", Parent.ds_ioTankInfo.GetColumn(sRow, "TINSTLRROADADDR1"));
+    ds_ioTankInfo.SetColumn(0, "TINSTLRROADADDR2", Parent.ds_ioTankInfo.GetColumn(sRow, "TINSTLRROADADDR2"));
+    ds_ioTankInfo.SetColumn(0, "TGATEWAYTANK1", Parent.ds_ioTankInfo.GetColumn(sRow, "TGATEWAYTANK1"));
+    ds_ioTankInfo.SetColumn(0, "TGATEWAYTANK2", Parent.ds_ioTankInfo.GetColumn(sRow, "TGATEWAYTANK2"));
+    ds_ioTankInfo.SetColumn(0, "TRPARKPNUCD", Parent.ds_ioTankInfo.GetColumn(sRow, "TRPARKPNUCD"));
+    ds_ioTankInfo.SetColumn(0, "TRPARKROADBUILDMGNO", Parent.ds_ioTankInfo.GetColumn(sRow, "TRPARKROADBUILDMGNO"));
+    ds_ioTankInfo.SetColumn(0, "TRPARKROADDETAIL", Parent.ds_ioTankInfo.GetColumn(sRow, "TRPARKROADDETAIL"));
+    ds_ioTankInfo.SetColumn(0, "TRPARKROADREMAIN", Parent.ds_ioTankInfo.GetColumn(sRow, "TRPARKROADREMAIN"));
+    ds_ioTankInfo.SetColumn(0, "TRPARKSANGUBUN", Parent.ds_ioTankInfo.GetColumn(sRow, "TRPARKSANGUBUN"));
+    ds_ioTankInfo.SetColumn(0, "TRPARKMAINBUNJI", Parent.ds_ioTankInfo.GetColumn(sRow, "TRPARKMAINBUNJI"));
+    ds_ioTankInfo.SetColumn(0, "TRPARKSUBBUNJI", Parent.ds_ioTankInfo.GetColumn(sRow, "TRPARKSUBBUNJI"));
+    ds_ioTankInfo.SetColumn(0, "TRPARKBUILDNM", Parent.ds_ioTankInfo.GetColumn(sRow, "TRPARKBUILDNM"));
+    ds_ioTankInfo.SetColumn(0, "TRPARKADDRETC", Parent.ds_ioTankInfo.GetColumn(sRow, "TRPARKADDRETC"));
+    ds_ioTankInfo.SetColumn(0, "TRINSTLRPNUCD", Parent.ds_ioTankInfo.GetColumn(sRow, "TRINSTLRPNUCD"));
+    ds_ioTankInfo.SetColumn(0, "TRINSTLRROADBUILDMGNO", Parent.ds_ioTankInfo.GetColumn(sRow, "TRINSTLRROADBUILDMGNO"));
+    ds_ioTankInfo.SetColumn(0, "TRINSTLRROADDETAIL", Parent.ds_ioTankInfo.GetColumn(sRow, "TRINSTLRROADDETAIL"));
+    ds_ioTankInfo.SetColumn(0, "TRINSTLRROADREMAIN", Parent.ds_ioTankInfo.GetColumn(sRow, "TRINSTLRROADREMAIN"));
+    ds_ioTankInfo.SetColumn(0, "TRINSTLRSANGUBUN", Parent.ds_ioTankInfo.GetColumn(sRow, "TRINSTLRSANGUBUN"));
+    ds_ioTankInfo.SetColumn(0, "TRINSTLRMAINBUNJI", Parent.ds_ioTankInfo.GetColumn(sRow, "TRINSTLRMAINBUNJI"));
+    ds_ioTankInfo.SetColumn(0, "TRINSTLRSUBBUNJI", Parent.ds_ioTankInfo.GetColumn(sRow, "TRINSTLRSUBBUNJI"));
+    ds_ioTankInfo.SetColumn(0, "TRINSTLRBUILDNM", Parent.ds_ioTankInfo.GetColumn(sRow, "TRINSTLRBUILDNM"));
+    ds_ioTankInfo.SetColumn(0, "TRINSTLRADDRETC", Parent.ds_ioTankInfo.GetColumn(sRow, "TRINSTLRADDRETC"));
+    ds_ioTankInfo.SetColumn(0, "TRCONVPGM", Parent.ds_ioTankInfo.GetColumn(sRow, "TRCONVPGM"));
+    ds_ioTankInfo.SetColumn(0, "TRCONVPARKSTATUS", Parent.ds_ioTankInfo.GetColumn(sRow, "TRCONVPARKSTATUS"));
+    ds_ioTankInfo.SetColumn(0, "TRCONVINSTLRSTATUS", Parent.ds_ioTankInfo.GetColumn(sRow, "TRCONVINSTLRSTATUS"));
+/*
+    edCarNo.Text = Parent.ds_ioTankInfo.GetColumn(sRow, "TCARNO");
+    edCarYear.Text = Parent.ds_ioTankInfo.GetColumn(sRow, "TCARYEAR");
+    edPerMissionNo.Text = Parent.ds_ioTankInfo.GetColumn(sRow, "TPERMISSIONNO");
+    edRemark.Text = Parent.ds_ioTankInfo.GetColumn(sRow, "TREMARK");
+    radPostGubun.Value = Parent.ds_ioTankInfo.GetColumn(sRow, "TPOSTREQGUBUN");
+    cbxParkAddrGubun.Value = Parent.ds_ioTankInfo.GetColumn(sRow, "TPARKPLACEADDRGUBUN");    
+    medParkZipCode.Value = Parent.ds_ioTankInfo.GetColumn(sRow, "TPARKPLACEZIPCD");
+    edParkAddr1.Text = Parent.ds_ioTankInfo.GetColumn(sRow, "TPARKPLACEADDR1");
+    edParkAddr2.Text = Parent.ds_ioTankInfo.GetColumn(sRow, "TPARKPLACEADDR2");
+    medParkRoadZipCode.Value = Parent.ds_ioTankInfo.GetColumn(sRow, "TPARKPLACEROADZIPCD");
+    edParkRoadAddr1.Text = Parent.ds_ioTankInfo.GetColumn(sRow, "TPARKPLACEROADADDR1");
+    edParkRoadAddr2.Text = Parent.ds_ioTankInfo.GetColumn(sRow, "TPARKPLACEROADADDR2");
+    cbxInstlrAddrGubun.Value = Parent.ds_ioTankInfo.GetColumn(sRow, "TINSTLRADDRGUBUN");    
+    medInstlrZipCode.Value = Parent.ds_ioTankInfo.GetColumn(sRow, "TINSTLRZIPCD");
+    edInstlrAddr1.Text = Parent.ds_ioTankInfo.GetColumn(sRow, "TINSTLRADDR1");
+    edInstlrAddr2.Text = Parent.ds_ioTankInfo.GetColumn(sRow, "TINSTLRADDR2");    
+    medInstlrRoadZipCode.Value = Parent.ds_ioTankInfo.GetColumn(sRow, "TINSTLRROADZIPCD");
+    edInstlrRoadAddr1.Text = Parent.ds_ioTankInfo.GetColumn(sRow, "TINSTLRROADADDR1");
+    edInstlrRoadAddr2.Text = Parent.ds_ioTankInfo.GetColumn(sRow, "TINSTLRROADADDR2");
+    edGateWayTank1.Text = Parent.ds_ioTankInfo.GetColumn(sRow, "TGATEWAYTANK1");
+    edGateWayTank2.Text = Parent.ds_ioTankInfo.GetColumn(sRow, "TGATEWAYTANK2");
+*/
+    medParkZipCode.Enable = false;
+    medParkRoadZipCode.Enable = false;
+    medInstlrZipCode.Enable = false;
+    medInstlrRoadZipCode.Enable = false;
+    edGateWayTank1.Enable = false;
+    edGateWayTank2.Enable = false;
+    
+    cbxParkAddrGubun_OnChanged(obj, cbxParkAddrGubun.Value);
+    lfn_ConvStatus_Change(lbParkConvStatus, ds_ioTankInfo.GetColumn(0, "TRCONVPARKSTATUS"));
+    cbxInstlrAddrGubun_OnChanged(obj, cbxInstlrAddrGubun.Value);
+    lfn_ConvStatus_Change(lbInstlrConvStatus, ds_ioTankInfo.GetColumn(0, "TRCONVINSTLRSTATUS"));
+}
+
+/*
+ * 기능 : 저장
+ */
+function lfn_Save(obj) {
+/*    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+    */
+    if (radPostGubun.Index == 0) {	// 청구지가 상치장소이면
+		if (((cbxParkAddrGubun.Value == 0) && ((edParkAddr1.Text = "") || (edParkAddr2.Text = ""))) 
+		 || ((cbxParkAddrGubun.Value == 1) && (edParkRoadAddr1.Text = ""))) {
+				gfn_Alert("상치장소를 입력해 주십시오.");
+				return false;
+			}
+	} else if (radPostGubun.Index == 1) {	// 청구지가 설치자주소이면
+		if (((cbxInstlrAddrGubun.Value == 0) && ((edInstlrAddr1.Text = "") || (edInstlrAddr2.Text = ""))) 
+		 || ((cbxInstlrAddrGubun.Value == 1) && (edInstlrRoadAddr1.Text = ""))) {
+			gfn_Alert("설치자주소를 입력해 주십시오.");
+			return false;
+		}
+	}
+    
+    
+    if (IsExistVar("sRow")) {
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TBMGNO", Parent.ds_ioBuildingInfo.GetColumn(Parent.ds_ioBuildingInfo.currow, "BMGNO"));    
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TCARNO", edCarNo.Text);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TCARYEAR", edCarYear.Text);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TPERMISSIONNO", edPerMissionNo.Text);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TREMARK", edRemark.Text);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TPOSTREQGUBUN", radPostGubun.Value);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TPARKPLACEADDRGUBUN", cbxParkAddrGubun.Value);        
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TPARKPLACEZIPCD", medParkZipCode.Value);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TPARKPLACEADDR1", edParkAddr1.Text);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TPARKPLACEADDR2", edParkAddr2.Text);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TPARKPLACEROADZIPCD", medParkRoadZipCode.Value);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TPARKPLACEROADADDR1", edParkRoadAddr1.Text);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TPARKPLACEROADADDR2", edParkRoadAddr2.Text);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TINSTLRADDRGUBUN", cbxInstlrAddrGubun.Value);                
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TINSTLRZIPCD", medInstlrZipCode.Value);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TINSTLRADDR1", edInstlrAddr1.Text);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TINSTLRADDR2", edInstlrAddr2.Text);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TINSTLRROADZIPCD", medInstlrRoadZipCode.Value);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TINSTLRROADADDR1", edInstlrRoadAddr1.Text);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TINSTLRROADADDR2", edInstlrRoadAddr2.Text);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TGATEWAYTANK1", edGateWayTank1.Text);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TGATEWAYTANK2", edGateWayTank2.Text);
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRPARKPNUCD", ds_ioTankInfo.GetColumn(0, "TRPARKPNUCD"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRPARKROADBUILDMGNO", ds_ioTankInfo.GetColumn(0, "TRPARKROADBUILDMGNO"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRPARKROADDETAIL", ds_ioTankInfo.GetColumn(0, "TRPARKROADDETAIL"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRPARKROADREMAIN", ds_ioTankInfo.GetColumn(0, "TRPARKROADREMAIN"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRPARKSANGUBUN", ds_ioTankInfo.GetColumn(0, "TRPARKSANGUBUN"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRPARKMAINBUNJI", ds_ioTankInfo.GetColumn(0, "TRPARKMAINBUNJI"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRPARKSUBBUNJI", ds_ioTankInfo.GetColumn(0, "TRPARKSUBBUNJI"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRPARKBUILDNM", ds_ioTankInfo.GetColumn(0, "TRPARKBUILDNM"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRPARKADDRETC", ds_ioTankInfo.GetColumn(0, "TRPARKADDRETC"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRINSTLRPNUCD", ds_ioTankInfo.GetColumn(0, "TRINSTLRPNUCD"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRINSTLRROADBUILDMGNO", ds_ioTankInfo.GetColumn(0, "TRINSTLRROADBUILDMGNO"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRINSTLRROADDETAIL", ds_ioTankInfo.GetColumn(0, "TRINSTLRROADDETAIL"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRINSTLRROADREMAIN", ds_ioTankInfo.GetColumn(0, "TRINSTLRROADREMAIN"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRINSTLRSANGUBUN", ds_ioTankInfo.GetColumn(0, "TRINSTLRSANGUBUN"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRINSTLRMAINBUNJI", ds_ioTankInfo.GetColumn(0, "TRINSTLRMAINBUNJI"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRINSTLRSUBBUNJI", ds_ioTankInfo.GetColumn(0, "TRINSTLRSUBBUNJI"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRINSTLRBUILDNM", ds_ioTankInfo.GetColumn(0, "TRINSTLRBUILDNM"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRINSTLRADDRETC", ds_ioTankInfo.GetColumn(0, "TRINSTLRADDRETC"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRCONVPGM", ds_ioTankInfo.GetColumn(0, "TRCONVPGM"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRCONVPARKSTATUS", ds_ioTankInfo.GetColumn(0, "TRCONVPARKSTATUS"));
+        Parent.ds_ioTankInfo.SetColumn(sRow, "TRCONVINSTLRSTATUS", ds_ioTankInfo.GetColumn(0, "TRCONVINSTLRSTATUS"));
+        
+        if (radPostGubun.Value == "0") {
+			if (edParkRoadAddr1.Text == "") {			// 지번주소
+				Parent.ds_ioTankInfo.SetColumn(sRow, "POSTPLACE", edParkAddr1.Text + " " + edParkAddr2.Text);
+			} else {									// 도로명주소
+				Parent.ds_ioTankInfo.SetColumn(sRow, "POSTPLACE", edParkRoadAddr1.Text + " " + edParkRoadAddr2.Text);
+			}
+        } else {
+			if (edInstlrRoadAddr1.Text == "") {        // 지번주소
+				Parent.ds_ioTankInfo.SetColumn(sRow, "POSTPLACE", edInstlrAddr1.Text + " " + edInstlrAddr2.Text);
+			} else {									// 도로명주소
+				Parent.ds_ioTankInfo.SetColumn(sRow, "POSTPLACE", edInstlrRoadAddr1.Text + " " + edInstlrRoadAddr2.Text);
+			}
+        }
+        Close();
+    } else {
+        var nRow = Parent.ds_ioTankInfo.AddRow();
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TBMGNO", Parent.ds_ioBuildingInfo.GetColumn(Parent.ds_ioBuildingInfo.currow, "BMGNO"));    
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TCARNO", edCarNo.Text);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TCARYEAR", edCarYear.Text);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TPERMISSIONNO", edPerMissionNo.Text);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TREMARK", edRemark.Text);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TPOSTREQGUBUN", radPostGubun.Value);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TPARKPLACEADDRGUBUN", cbxParkAddrGubun.Value);        
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TPARKPLACEZIPCD", medParkZipCode.Value);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TPARKPLACEADDR1", edParkAddr1.Text);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TPARKPLACEADDR2", edParkAddr2.Text);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TPARKPLACEROADZIPCD", medParkRoadZipCode.Value);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TPARKPLACEROADADDR1", edParkRoadAddr1.Text);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TPARKPLACEROADADDR2", edParkRoadAddr2.Text);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TINSTLRADDRGUBUN", cbxInstlrAddrGubun.Value);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TINSTLRZIPCD", medInstlrZipCode.Value);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TINSTLRADDR1", edInstlrAddr1.Text);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TINSTLRADDR2", edInstlrAddr2.Text);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TINSTLRROADZIPCD", medInstlrRoadZipCode.Value);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TINSTLRROADADDR1", edInstlrRoadAddr1.Text);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TINSTLRROADADDR2", edInstlrRoadAddr2.Text);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TGATEWAYTANK1", edGateWayTank1.Text);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TGATEWAYTANK2", edGateWayTank2.Text);
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRPARKPNUCD", ds_ioTankInfo.GetColumn(0, "TRPARKPNUCD"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRPARKROADBUILDMGNO", ds_ioTankInfo.GetColumn(0, "TRPARKROADBUILDMGNO"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRPARKROADDETAIL", ds_ioTankInfo.GetColumn(0, "TRPARKROADDETAIL"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRPARKROADREMAIN", ds_ioTankInfo.GetColumn(0, "TRPARKROADREMAIN"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRPARKSANGUBUN", ds_ioTankInfo.GetColumn(0, "TRPARKSANGUBUN"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRPARKMAINBUNJI", ds_ioTankInfo.GetColumn(0, "TRPARKMAINBUNJI"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRPARKSUBBUNJI", ds_ioTankInfo.GetColumn(0, "TRPARKSUBBUNJI"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRPARKBUILDNM", ds_ioTankInfo.GetColumn(0, "TRPARKBUILDNM"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRPARKADDRETC", ds_ioTankInfo.GetColumn(0, "TRPARKADDRETC"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRINSTLRPNUCD", ds_ioTankInfo.GetColumn(0, "TRINSTLRPNUCD"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRINSTLRROADBUILDMGNO", ds_ioTankInfo.GetColumn(0, "TRINSTLRROADBUILDMGNO"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRINSTLRROADDETAIL", ds_ioTankInfo.GetColumn(0, "TRINSTLRROADDETAIL"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRINSTLRROADREMAIN", ds_ioTankInfo.GetColumn(0, "TRINSTLRROADREMAIN"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRINSTLRSANGUBUN", ds_ioTankInfo.GetColumn(0, "TRINSTLRSANGUBUN"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRINSTLRMAINBUNJI", ds_ioTankInfo.GetColumn(0, "TRINSTLRMAINBUNJI"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRINSTLRSUBBUNJI", ds_ioTankInfo.GetColumn(0, "TRINSTLRSUBBUNJI"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRINSTLRBUILDNM", ds_ioTankInfo.GetColumn(0, "TRINSTLRBUILDNM"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRINSTLRADDRETC", ds_ioTankInfo.GetColumn(0, "TRINSTLRADDRETC"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRCONVPGM", ds_ioTankInfo.GetColumn(0, "TRCONVPGM"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRCONVPARKSTATUS", ds_ioTankInfo.GetColumn(0, "TRCONVPARKSTATUS"));
+        Parent.ds_ioTankInfo.SetColumn(nRow, "TRCONVINSTLRSTATUS", ds_ioTankInfo.GetColumn(0, "TRCONVINSTLRSTATUS"));
+        
+        if (radPostGubun.Value == "0") {
+			if (cbxParkAddrGubun.Value == "0") {			// 지번주소
+				Parent.ds_ioTankInfo.SetColumn(nRow, "POSTPLACE", edParkAddr1.Text + " " + edParkAddr2.Text);
+			} else {									// 도로명주소
+				Parent.ds_ioTankInfo.SetColumn(nRow, "POSTPLACE", edParkRoadAddr1.Text + " " + edParkRoadAddr2.Text);
+			}
+        } else {
+			if (cbxInstlrAddrGubun.Value == "0") {        // 지번주소
+				Parent.ds_ioTankInfo.SetColumn(nRow, "POSTPLACE", edInstlrAddr1.Text + " " + edInstlrAddr2.Text);
+			} else {									// 도로명주소
+				Parent.ds_ioTankInfo.SetColumn(nRow, "POSTPLACE", edInstlrRoadAddr1.Text + " " + edInstlrRoadAddr2.Text);
+			}
+        }
+               
+        Close();
+    }    
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 공통 함수 */
+
+/* 공통 이벤트 함수 */
+// 우편번호(구주소)
+function medParkZipCode_OnFocus(obj)
+{
+    btnSearchParkZipCode.SetFocus();
+}
+
+// 우편번호(구주소)
+function btnSearchParkZipCode_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if(nChar == 13) {	// Enter key
+		btnSearchParkZipCode_OnClick();
+	} else {
+		gfn_ComponentOnKillFocus(obj);
+	}
+}
+
+// 우편번호(구주소)
+function btnSearchParkZipCode_OnClick(obj)
+{
+	if(cbxParkAddrGubun.Value == 0)
+	{
+		var sAddrGubun = 0;
+		
+		if (cbxParkAddrGubun.Index == 0) {	// 구주소
+			sAddrGubun = 0;
+		} else {
+			sAddrGubun = 1;
+		}
+		
+		var arrAddrInfo = gfn_PostRoadListPopup(Parent.cbxJibu.Value			// 지부코드
+												, sAddrGubun						// 구새주소 구분[0:구주소, 1:새주소]
+												, medParkZipCode.Value			// 구:지번 우편번호
+												, edParkAddr1.Text		// 구:지번주소1
+												, edParkAddr2.Text		// 구:지번주소2
+												, ds_ioTankInfo.GetColumn(0, "TRPARKSANGUBUN")		// 구:산여부
+												, ds_ioTankInfo.GetColumn(0, "TRPARKMAINBUNJI")	// 구:주번지
+												, ds_ioTankInfo.GetColumn(0, "TRPARKSUBBUNJI")		// 구:부번지
+												, ds_ioTankInfo.GetColumn(0, "TRPARKBUILDNM")		// 구:아파트,건물명
+												, ds_ioTankInfo.GetColumn(0, "TRPARKADDRETC")	// 구:상세주소
+												, medParkRoadZipCode.Value	// 새1:도로명 우편번호
+												, edParkRoadAddr1.Text		// 새1:도로명주소11
+												, edParkRoadAddr2.Text		// 새1:도로명주소12
+												, ds_ioTankInfo.GetColumn(0, "TRPARKROADBUILDMGNO")	// 새1:건물관리번호1
+												, ds_ioTankInfo.GetColumn(0, "TRPARKROADDETAIL")	// 새1:상세주소1
+												, ds_ioTankInfo.GetColumn(0, "TRPARKROADREMAIN")		// 새1:부가주소1
+												, medParkRoadZipCode.Value	// 새2:도로명 우편번호
+												, edParkRoadAddr1.Text		// 새2:도로명주소21
+												, edParkRoadAddr2.Text		// 새2:도로명주소22
+												, ds_ioTankInfo.GetColumn(0, "TRPARKROADBUILDMGNO")	// 새2:건물관리번호2
+												, ds_ioTankInfo.GetColumn(0, "TRPARKROADDETAIL")	// 새2:상세주소2
+												, ds_ioTankInfo.GetColumn(0, "TRPARKROADREMAIN")	// 새2:부가주소2
+												); 
+				if (length(arrAddrInfo) > 0) {	
+			if (arrAddrInfo[0] == 0) {
+				
+				/* 지번주소 조회 Tab */
+				// 구주소
+				medParkZipCode.Value = arrAddrInfo[1];		
+				edParkAddr1.Text = arrAddrInfo[2];		
+				edParkAddr2.Text = arrAddrInfo[3];
+				
+				// 새주소
+				if (!gfn_IsNull(arrAddrInfo[10])) {
+				
+					medParkRoadZipCode.Value = arrAddrInfo[10];
+					
+				}
+				
+				edParkRoadAddr1.Text = arrAddrInfo[11];
+				
+				edParkRoadAddr2.Text = arrAddrInfo[12];		
+			 
+				ds_ioTankInfo.SetColumn(0, "TRPARKPNUCD", arrAddrInfo[9]);		// PNU 코드
+				
+				ds_ioTankInfo.SetColumn(0, "TRPARKROADBUILDMGNO", arrAddrInfo[13]);	// 건물관리번호
+				
+				ds_ioTankInfo.SetColumn(0, "TRPARKROADDETAIL", arrAddrInfo[14]);		// 상세주소
+				
+				ds_ioTankInfo.SetColumn(0, "TRPARKROADREMAIN", arrAddrInfo[15]);		// 부가주소
+					   
+				ds_ioTankInfo.SetColumn(0, "TRPARKSANGUBUN", arrAddrInfo[4]);
+				
+				ds_ioTankInfo.SetColumn(0, "TRPARKMAINBUNJI", arrAddrInfo[5]);
+				
+				ds_ioTankInfo.SetColumn(0, "TRPARKSUBBUNJI", arrAddrInfo[6]);
+				
+				ds_ioTankInfo.SetColumn(0, "TRPARKBUILDNM", arrAddrInfo[7]);
+				
+				ds_ioTankInfo.SetColumn(0, "TRPARKADDRETC", arrAddrInfo[8]);
+	
+				if (!gfn_IsNull(arrAddrInfo[11])) {	// 도로명주소1
+				
+					ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");	// TRCONVPGM
+					
+					ds_ioTankInfo.SetColumn(0, "TRCONVPARKSTATUS", "01");	// TRCONVSTATUS
+					
+					cbxParkAddrGubun.Value = 1;
+					
+					cbxParkAddrGubun_OnChanged(obj, cbxParkAddrGubun.Value);
+				
+				} else {
+				
+					ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "0");	// TRCONVPGM
+					
+					ds_ioTankInfo.SetColumn(0, "TRCONVPARKSTATUS", "00");	// TRCONVSTATUS
+					
+					cbxParkAddrGubun.Value = 0;
+					
+					cbxParkAddrGubun_OnChanged(obj, cbxParkAddrGubun.Value);
+					
+				}
+	
+			} else {
+			
+				/* 도로명주소 조회 Tab */
+				medParkRoadZipCode.Value = arrAddrInfo[10];	// 우편번호		
+				edParkRoadAddr1.Text = arrAddrInfo[11];		// 도로명주소1		
+				edParkRoadAddr2.Text = arrAddrInfo[12];		// 도로명주소2
+				
+				ds_ioTankInfo.SetColumn(0, "TRPARKSANGUBUN", arrAddrInfo[4]);		// 산여부
+				
+				ds_ioTankInfo.SetColumn(0, "TRPARKMAINBUNJI", arrAddrInfo[5]);		// 주번지
+				
+				ds_ioTankInfo.SetColumn(0, "TRPARKSUBBUNJI", arrAddrInfo[6]);		// 부번지
+				
+				ds_ioTankInfo.SetColumn(0, "TRPARKPNUCD", arrAddrInfo[9]);		// PNU코드				
+				
+				ds_ioTankInfo.SetColumn(0, "TRPARKROADBUILDMGNO", arrAddrInfo[13]);	// 건물관리번호
+				
+				ds_ioTankInfo.SetColumn(0, "TRPARKROADDETAIL", arrAddrInfo[14]);		// 상세주소
+				
+				ds_ioTankInfo.SetColumn(0, "TRPARKROADREMAIN", arrAddrInfo[15]);		// 부가주소
+	
+				if (!gfn_IsNull(arrAddrInfo[11])) {	// 도로명주소1
+				
+					ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");	// TRCONVPGM
+					
+					ds_ioTankInfo.SetColumn(0, "TRCONVPARKSTATUS", "01");	// TRCONVSTATUS
+					
+					cbxParkAddrGubun.Value = 1;
+					
+					cbxParkAddrGubun_OnChanged(obj, cbxParkAddrGubun.Value);
+				
+				} else {
+				
+					ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "0");	// TRCONVPGM
+					
+					ds_ioTankInfo.SetColumn(0, "TRCONVPARKSTATUS", "00");	// TRCONVSTATUS
+					
+					cbxParkAddrGubun.Value = 0;
+					
+					cbxParkAddrGubun_OnChanged(obj, cbxParkAddrGubun.Value);
+					
+				}
+			}
+		}
+	} 
+	else 
+	{
+		var arrAddrInfo = gfn_PostRoadListPopup_New();
+		if (length(arrAddrInfo) > 0) {
+			ds_ioTankInfo.SetColumn(0, "TPARKPLACEADDRGUBUN", "1");
+			medParkRoadZipCode.Value = arrAddrInfo[5];									// 우편번호
+			edParkRoadAddr1.Text = arrAddrInfo[1];										// 도로명주소
+			edParkRoadAddr2.Text = arrAddrInfo[29];										// 지번주소
+			ds_ioTankInfo.SetColumn(0, "TRPARKSANGUBUN", 		arrAddrInfo[15]);	// 산여부(0:대지, 1:산)
+			ds_ioTankInfo.SetColumn(0, "TRPARKMAINBUNJI", 		arrAddrInfo[22]);	// 주번지(지번주번지)
+			ds_ioTankInfo.SetColumn(0, "TRPARKSUBBUNJI", 		arrAddrInfo[23]);	// 부번지(지번부번지, 부번지없을 경우 0)
+			ds_ioTankInfo.SetColumn(0, "TRPARKPNUCD", "");						// PNU 코드 : 공백
+			ds_ioTankInfo.SetColumn(0, "TRPARKROADBUILDMGNO", 	arrAddrInfo[8]);	// 건물관리번호
+			ds_ioTankInfo.SetColumn(0, "TRPARKROADDETAIL", 		arrAddrInfo[1]);	// 상세주소(도로명주소)
+			ds_ioTankInfo.SetColumn(0, "TRPARKROADREMAIN", "");					// 부가주소
+			ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");
+			ds_ioTankInfo.SetColumn(0, "TRCONVPARKSTATUS", "01");
+		}
+	}
+    
+}
+
+// 우편번호(새주소)
+function medInstlrZipCode_OnFocus(obj)
+{
+	btnSearchInstlrZipCode.SetFocus();
+}
+
+// 우편번호(새주소)
+function btnSearchInstlrZipCode_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if(nChar == 13) {	// Enter key
+		btnSearchInstlrZipCode_OnClick();
+	} else {
+		gfn_ComponentOnKillFocus(obj);
+	}
+}
+
+// 우편번호(새주소)
+function btnSearchInstlrZipCode_OnClick(obj)
+{
+	
+	
+	if(cbxInstlrAddrGubun.Value == 0)
+	{
+		var sAddrGubun = 0;
+		
+		if (cbxInstlrAddrGubun.Index == 0) {	// 구주소
+			sAddrGubun = 0;
+		} else {
+			sAddrGubun = 1;
+		}
+		
+		var arrAddrInfo = gfn_PostRoadListPopup(Parent.cbxJibu.Value			// 지부코드
+												, sAddrGubun						// 구새주소 구분[0:구주소, 1:새주소]
+												, medInstlrZipCode.Value			// 구:지번 우편번호
+												, edInstlrAddr1.Text		// 구:지번주소1
+												, edInstlrAddr2.Text		// 구:지번주소2
+												, ds_ioTankInfo.GetColumn(0, "TRINSTLRSANGUBUN")		// 구:산여부
+												, ds_ioTankInfo.GetColumn(0, "TRINSTLRMAINBUNJI")	// 구:주번지
+												, ds_ioTankInfo.GetColumn(0, "TRINSTLRSUBBUNJI")		// 구:부번지
+												, ds_ioTankInfo.GetColumn(0, "TRINSTLRBUILDNM")		// 구:아파트,건물명
+												, ds_ioTankInfo.GetColumn(0, "TRINSTLRADDRETC")	// 구:상세주소
+												, medInstlrRoadZipCode.Value	// 새1:도로명 우편번호
+												, edInstlrRoadAddr1.Text		// 새1:도로명주소11
+												, edInstlrRoadAddr2.Text		// 새1:도로명주소12
+												, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADBUILDMGNO")	// 새1:건물관리번호1
+												, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADDETAIL")	// 새1:상세주소1
+												, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADREMAIN")		// 새1:부가주소1
+												, medInstlrRoadZipCode.Value	// 새2:도로명 우편번호
+												, edInstlrRoadAddr1.Text		// 새2:도로명주소21
+												, edInstlrRoadAddr2.Text		// 새2:도로명주소22
+												, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADBUILDMGNO")	// 새2:건물관리번호2
+												, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADDETAIL")	// 새2:상세주소2
+												, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADREMAIN")	// 새2:부가주소2
+												); 
+				if (length(arrAddrInfo) > 0) {	
+			if (arrAddrInfo[0] == 0) {
+				
+				/* 지번주소 조회 Tab */
+				// 구주소
+				medInstlrZipCode.Value = arrAddrInfo[1];		
+				edInstlrAddr1.Text = arrAddrInfo[2];		
+				edInstlrAddr2.Text = arrAddrInfo[3];
+				
+				// 새주소
+				if (!gfn_IsNull(arrAddrInfo[10])) {
+				
+					medInstlrRoadZipCode.Value = arrAddrInfo[10];
+					
+				}
+				
+				edInstlrRoadAddr1.Text = arrAddrInfo[11];
+				
+				edInstlrRoadAddr2.Text = arrAddrInfo[12];		
+			 
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRPNUCD", arrAddrInfo[9]);		// PNU 코드
+				
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRROADBUILDMGNO", arrAddrInfo[13]);	// 건물관리번호
+				
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRROADDETAIL", arrAddrInfo[14]);		// 상세주소
+				
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRROADREMAIN", arrAddrInfo[15]);		// 부가주소
+					   
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRSANGUBUN", arrAddrInfo[4]);
+				
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRMAINBUNJI", arrAddrInfo[5]);
+				
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRSUBBUNJI", arrAddrInfo[6]);
+				
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRBUILDNM", arrAddrInfo[7]);
+				
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRADDRETC", arrAddrInfo[8]);
+	
+				if (!gfn_IsNull(arrAddrInfo[11])) {	// 도로명주소1
+				
+					ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");	// TRCONVPGM
+					
+					ds_ioTankInfo.SetColumn(0, "TRCONVINSTLRSTATUS", "01");	// TRCONVSTATUS
+					
+					cbxInstlrAddrGubun.Value = 1;
+					
+					cbxInstlrAddrGubun_OnChanged(obj, cbxInstlrAddrGubun.Value);
+	
+				
+				} else {
+				
+					ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "0");	// TRCONVPGM
+					
+					ds_ioTankInfo.SetColumn(0, "TRCONVINSTLRSTATUS", "00");	// TRCONVSTATUS
+					
+					cbxInstlrAddrGubun.Value = 0;
+					
+					cbxInstlrAddrGubun_OnChanged(obj, cbxInstlrAddrGubun.Value);
+					
+				}
+	
+			} else {
+			
+				/* 도로명주소 조회 Tab */
+				medInstlrRoadZipCode.Value = arrAddrInfo[10];	// 우편번호		
+				edInstlrRoadAddr1.Text = arrAddrInfo[11];		// 도로명주소1		
+				edInstlrRoadAddr2.Text = arrAddrInfo[12];		// 도로명주소2
+				
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRSANGUBUN", arrAddrInfo[4]);		// 산여부
+				
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRMAINBUNJI", arrAddrInfo[5]);		// 주번지
+				
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRSUBBUNJI", arrAddrInfo[6]);		// 부번지
+				
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRPNUCD", arrAddrInfo[9]);		// PNU코드				
+				
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRROADBUILDMGNO", arrAddrInfo[13]);	// 건물관리번호
+				
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRROADDETAIL", arrAddrInfo[14]);		// 상세주소
+				
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRROADREMAIN", arrAddrInfo[15]);		// 부가주소
+				
+				if (!gfn_IsNull(arrAddrInfo[11])) {	// 도로명주소1
+				
+					ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");	// TRCONVPGM
+					
+					ds_ioTankInfo.SetColumn(0, "TRCONVINSTLRSTATUS", "01");	// TRCONVSTATUS
+					
+					cbxInstlrAddrGubun.Value = 1;
+					
+					cbxInstlrAddrGubun_OnChanged(obj, cbxInstlrAddrGubun.Value);
+				
+				} else {
+				
+					ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "0");	// TRCONVPGM
+					
+					ds_ioTankInfo.SetColumn(0, "TRCONVINSTLRSTATUS", "00");	// TRCONVSTATUS
+					
+					cbxInstlrAddrGubun.Value = 0;
+					
+					cbxInstlrAddrGubun_OnChanged(obj, cbxInstlrAddrGubun.Value);
+					
+				}
+				
+			}
+	
+		}
+	}
+	else 
+	{
+		var arrAddrInfo = gfn_PostRoadListPopup_New();
+		if (length(arrAddrInfo) > 0) {
+			radAddrGubun.Value = 1;	// 도로명주소
+			ds_ioTankInfo.SetColumn(0, "TINSTLRADDRGUBUN", "1");
+			medInstlrRoadZipCode.Value = arrAddrInfo[5];									// 우편번호
+			edInstlrRoadAddr1.Text = arrAddrInfo[1];										// 도로명주소
+			edInstlrRoadAddr2.Text = arrAddrInfo[29];										// 지번주소
+			ds_ioTankInfo.SetColumn(0, "TRINSTLRSANGUBUN", 		arrAddrInfo[15]);	// 산여부(0:대지, 1:산)
+			ds_ioTankInfo.SetColumn(0, "TRINSTLRMAINBUNJI", 		arrAddrInfo[22]);	// 주번지(지번주번지)
+			ds_ioTankInfo.SetColumn(0, "TRINSTLRSUBBUNJI", 		arrAddrInfo[23]);	// 부번지(지번부번지, 부번지없을 경우 0)
+			ds_ioTankInfo.SetColumn(0, "TRINSTLRPNUCD", "");							// PNU 코드 : 공백
+			ds_ioTankInfo.SetColumn(0, "TRINSTLRROADBUILDMGNO", 	arrAddrInfo[8]);	// 건물관리번호
+			ds_ioTankInfo.SetColumn(0, "TRINSTLRROADDETAIL", 		arrAddrInfo[1]);	// 상세주소(도로명주소)
+			ds_ioTankInfo.SetColumn(0, "TRINSTLRROADREMAIN", "");						// 부가주소
+			ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");
+			ds_ioTankInfo.SetColumn(0, "TRCONVINSTLRSTATUS", "01");
+		}
+	}
+}
+
+// 민원정보시스템제조소등탱크PK1
+function btnGateWayTank1_OnClick(obj)
+{
+	
+}
+
+// 민원정보시스템제조소등탱크PK2
+function btnGateWayTank2_OnClick(obj)
+{
+	
+}
+
+// 주소1
+function edParkAddr1_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam) {
+    if (nChar == 13) {
+       
+		trace("!@#!@#!"+cbxParkAddrGubun.Value);
+		
+		if(cbxParkAddrGubun.Value == 0)
+		{
+			btnSearchParkZipCode.SetFocus();
+			
+			var arrAddrInfo = gfn_PostRoadListPopup(Parent.cbxJibu.Value			// 지부코드
+													, 0						// 구새주소 구분[0:구주소, 1:새주소]
+													, medParkZipCode.Value			// 구:지번 우편번호
+													, edParkAddr1.Text		// 구:지번주소1
+													, edParkAddr2.Text		// 구:지번주소2
+													, ds_ioTankInfo.GetColumn(0, "TRPARKSANGUBUN")		// 구:산여부
+													, ds_ioTankInfo.GetColumn(0, "TRPARKMAINBUNJI")	// 구:주번지
+													, ds_ioTankInfo.GetColumn(0, "TRPARKSUBBUNJI")		// 구:부번지
+													, ds_ioTankInfo.GetColumn(0, "TRPARKBUILDNM")		// 구:아파트,건물명
+													, ds_ioTankInfo.GetColumn(0, "TRPARKADDRETC")	// 구:상세주소
+													, medParkRoadZipCode.Value	// 새1:도로명 우편번호
+													, edParkRoadAddr1.Text		// 새1:도로명주소11
+													, edParkRoadAddr2.Text		// 새1:도로명주소12
+													, ds_ioTankInfo.GetColumn(0, "TRPARKROADBUILDMGNO")	// 새1:건물관리번호1
+													, ds_ioTankInfo.GetColumn(0, "TRPARKROADDETAIL")	// 새1:상세주소1
+													, ds_ioTankInfo.GetColumn(0, "TRPARKROADREMAIN")		// 새1:부가주소1
+													, medParkRoadZipCode.Value	// 새2:도로명 우편번호
+													, edParkRoadAddr1.Text		// 새2:도로명주소21
+													, edParkRoadAddr2.Text		// 새2:도로명주소22
+													, ds_ioTankInfo.GetColumn(0, "TRPARKROADBUILDMGNO")	// 새2:건물관리번호2
+													, ds_ioTankInfo.GetColumn(0, "TRPARKROADDETAIL")	// 새2:상세주소2
+													, ds_ioTankInfo.GetColumn(0, "TRPARKROADREMAIN")	// 새2:부가주소2
+													); 
+						if (length(arrAddrInfo) > 0) {		
+				if (arrAddrInfo[0] == 0) {
+					
+					/* 지번주소 조회 Tab */
+					// 구주소
+					medParkZipCode.Value = arrAddrInfo[1];			
+					edParkAddr1.Text = arrAddrInfo[2];			
+					edParkAddr2.Text = arrAddrInfo[3];
+					
+					// 새주소
+					if (!gfn_IsNull(arrAddrInfo[10])) {
+					
+						medParkRoadZipCode.Value = arrAddrInfo[10];
+					
+					}
+					
+					edParkRoadAddr1.Text = arrAddrInfo[11];
+					
+					edParkRoadAddr2.Text = arrAddrInfo[12];			
+				 
+					ds_ioTankInfo.SetColumn(0, "TRPARKPNUCD", arrAddrInfo[9]);		// PNU 코드
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKROADBUILDMGNO", arrAddrInfo[13]);	// 건물관리번호
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKROADDETAIL", arrAddrInfo[14]);		// 상세주소
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKROADREMAIN", arrAddrInfo[15]);		// 부가주소
+						   
+					ds_ioTankInfo.SetColumn(0, "TRPARKSANGUBUN", arrAddrInfo[4]);
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKMAINBUNJI", arrAddrInfo[5]);
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKSUBBUNJI", arrAddrInfo[6]);
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKBUILDNM", arrAddrInfo[7]);
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKADDRETC", arrAddrInfo[8]);
+		
+					if (!gfn_IsNull(arrAddrInfo[11])) {	// 도로명주소1
+					
+						ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");	// TRCONVPGM
+						
+						ds_ioTankInfo.SetColumn(0, "TRCONVPARKSTATUS", "01");	// TRCONVSTATUS
+						
+						cbxParkAddrGubun.Value = 1;
+						
+						cbxParkAddrGubun_OnChanged(obj, cbxParkAddrGubun.Value);
+					
+					} else {
+					
+						ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "0");	// TRCONVPGM
+						
+						ds_ioTankInfo.SetColumn(0, "TRCONVPARKSTATUS", "00");	// TRCONVSTATUS
+						
+						cbxParkAddrGubun.Value = 0;
+						
+						cbxParkAddrGubun_OnChanged(obj, cbxParkAddrGubun.Value);
+						
+					}
+					
+				} else {
+				
+					/* 도로명주소 조회 Tab */
+					medParkRoadZipCode.Value = arrAddrInfo[10];	// 우편번호			
+					edParkRoadAddr1.Text = arrAddrInfo[11];		// 도로명주소1			
+					edParkRoadAddr2.Text = arrAddrInfo[12];		// 도로명주소2
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKSANGUBUN", arrAddrInfo[4]);		// 산여부
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKMAINBUNJI", arrAddrInfo[5]);		// 주번지
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKSUBBUNJI", arrAddrInfo[6]);		// 부번지
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKPNUCD", arrAddrInfo[9]);		// PNU코드				
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKROADBUILDMGNO", arrAddrInfo[13]);	// 건물관리번호
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKROADDETAIL", arrAddrInfo[14]);		// 상세주소
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKROADREMAIN", arrAddrInfo[15]);		// 부가주소
+					
+					if (!gfn_IsNull(arrAddrInfo[11])) {	// 도로명주소1
+					
+						ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");	// TRCONVPGM
+						
+						ds_ioTankInfo.SetColumn(0, "TRCONVPARKSTATUS", "01");	// TRCONVSTATUS
+						
+						cbxParkAddrGubun.Value = 1;
+						
+						cbxParkAddrGubun_OnChanged(obj, cbxParkAddrGubun.Value);
+	
+					
+					} else {
+					
+						ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "0");	// TRCONVPGM
+						
+						ds_ioTankInfo.SetColumn(0, "TRCONVPARKSTATUS", "00");	// TRCONVSTATUS
+						
+						cbxParkAddrGubun.Value = 0;
+						
+						cbxParkAddrGubun_OnChanged(obj, cbxParkAddrGubun.Value);
+	
+						
+					}
+					
+				}
+		
+			} else {	
+				edParkAddr1.SetFocus();	
+			}
+		}
+		else 
+		{
+			var arrAddrInfo = gfn_PostRoadListPopup_New();
+			if (length(arrAddrInfo) > 0) {
+				ds_ioTankInfo.SetColumn(0, "TPARKPLACEADDRGUBUN", "1");
+				medParkRoadZipCode.Value = arrAddrInfo[5];									// 우편번호
+				edParkRoadAddr1.Text = arrAddrInfo[1];										// 도로명주소
+				edParkRoadAddr2.Text = arrAddrInfo[29];										// 지번주소
+				ds_ioTankInfo.SetColumn(0, "TRPARKSANGUBUN", 		arrAddrInfo[15]);	// 산여부(0:대지, 1:산)
+				ds_ioTankInfo.SetColumn(0, "TRPARKMAINBUNJI", 		arrAddrInfo[22]);	// 주번지(지번주번지)
+				ds_ioTankInfo.SetColumn(0, "TRPARKSUBBUNJI", 		arrAddrInfo[23]);	// 부번지(지번부번지, 부번지없을 경우 0)
+				ds_ioTankInfo.SetColumn(0, "TRPARKPNUCD", "");						// PNU 코드 : 공백
+				ds_ioTankInfo.SetColumn(0, "TRPARKROADBUILDMGNO", 	arrAddrInfo[8]);	// 건물관리번호
+				ds_ioTankInfo.SetColumn(0, "TRPARKROADDETAIL", 		arrAddrInfo[1]);	// 상세주소(도로명주소)
+				ds_ioTankInfo.SetColumn(0, "TRPARKROADREMAIN", "");					// 부가주소
+				ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");
+				ds_ioTankInfo.SetColumn(0, "TRCONVPARKSTATUS", "01");
+			}	
+		}
+    }
+}
+
+function edParkRoadAddr1_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+    if (nChar == 13) {
+       
+		if(cbxParkAddrGubun.Value == 0)
+		{
+			btnSearchParkZipCode.SetFocus();
+			
+			var arrAddrInfo = gfn_PostRoadListPopup(Parent.cbxJibu.Value			// 지부코드
+													, 1						// 구새주소 구분[0:구주소, 1:새주소]
+													, medParkZipCode.Value			// 구:지번 우편번호
+													, edParkAddr1.Text		// 구:지번주소1
+													, edParkAddr2.Text		// 구:지번주소2
+													, ds_ioTankInfo.GetColumn(0, "TRPARKSANGUBUN")		// 구:산여부
+													, ds_ioTankInfo.GetColumn(0, "TRPARKMAINBUNJI")	// 구:주번지
+													, ds_ioTankInfo.GetColumn(0, "TRPARKSUBBUNJI")		// 구:부번지
+													, ds_ioTankInfo.GetColumn(0, "TRPARKBUILDNM")		// 구:아파트,건물명
+													, ds_ioTankInfo.GetColumn(0, "TRPARKADDRETC")	// 구:상세주소
+													, medParkRoadZipCode.Value	// 새1:도로명 우편번호
+													, edParkRoadAddr1.Text		// 새1:도로명주소11
+													, edParkRoadAddr2.Text		// 새1:도로명주소12
+													, ds_ioTankInfo.GetColumn(0, "TRPARKROADBUILDMGNO")	// 새1:건물관리번호1
+													, ds_ioTankInfo.GetColumn(0, "TRPARKROADDETAIL")	// 새1:상세주소1
+													, ds_ioTankInfo.GetColumn(0, "TRPARKROADREMAIN")		// 새1:부가주소1
+													, medParkRoadZipCode.Value	// 새2:도로명 우편번호
+													, edParkRoadAddr1.Text		// 새2:도로명주소21
+													, edParkRoadAddr2.Text		// 새2:도로명주소22
+													, ds_ioTankInfo.GetColumn(0, "TRPARKROADBUILDMGNO")	// 새2:건물관리번호2
+													, ds_ioTankInfo.GetColumn(0, "TRPARKROADDETAIL")	// 새2:상세주소2
+													, ds_ioTankInfo.GetColumn(0, "TRPARKROADREMAIN")	// 새2:부가주소2
+													); 
+						if (length(arrAddrInfo) > 0) {		
+				if (arrAddrInfo[0] == 0) {
+					
+					/* 지번주소 조회 Tab */
+					// 구주소
+					medParkZipCode.Value = arrAddrInfo[1];			
+					edParkAddr1.Text = arrAddrInfo[2];			
+					edParkAddr2.Text = arrAddrInfo[3];
+					
+					// 새주소
+					if (!gfn_IsNull(arrAddrInfo[10])) {
+					
+						medParkRoadZipCode.Value = arrAddrInfo[10];
+						
+					}
+					
+					edParkRoadAddr1.Text = arrAddrInfo[11];
+					
+					edParkRoadAddr2.Text = arrAddrInfo[12];			
+				 
+					ds_ioTankInfo.SetColumn(0, "TRPARKPNUCD", arrAddrInfo[9]);		// PNU 코드
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKROADBUILDMGNO", arrAddrInfo[13]);	// 건물관리번호
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKROADDETAIL", arrAddrInfo[14]);		// 상세주소
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKROADREMAIN", arrAddrInfo[15]);		// 부가주소
+						   
+					ds_ioTankInfo.SetColumn(0, "TRPARKSANGUBUN", arrAddrInfo[4]);
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKMAINBUNJI", arrAddrInfo[5]);
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKSUBBUNJI", arrAddrInfo[6]);
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKBUILDNM", arrAddrInfo[7]);
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKADDRETC", arrAddrInfo[8]);
+		
+					if (!gfn_IsNull(arrAddrInfo[11])) {	// 도로명주소1
+					
+						ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");	// TRCONVPGM
+						
+						ds_ioTankInfo.SetColumn(0, "TRCONVPARKSTATUS", "01");	// TRCONVSTATUS
+					
+					} else {
+					
+						ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "0");	// TRCONVPGM
+						
+						ds_ioTankInfo.SetColumn(0, "TRCONVPARKSTATUS", "00");	// TRCONVSTATUS
+						
+					}
+		
+				} else {
+				
+					/* 도로명주소 조회 Tab */
+					medParkRoadZipCode.Value = arrAddrInfo[10];	// 우편번호			
+					edParkRoadAddr1.Text = arrAddrInfo[11];		// 도로명주소1			
+					edParkRoadAddr2.Text = arrAddrInfo[12];		// 도로명주소2
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKSANGUBUN", arrAddrInfo[4]);		// 산여부
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKMAINBUNJI", arrAddrInfo[5]);		// 주번지
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKSUBBUNJI", arrAddrInfo[6]);		// 부번지
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKPNUCD", arrAddrInfo[9]);		// PNU코드				
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKROADBUILDMGNO", arrAddrInfo[13]);	// 건물관리번호
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKROADDETAIL", arrAddrInfo[14]);		// 상세주소
+					
+					ds_ioTankInfo.SetColumn(0, "TRPARKROADREMAIN", arrAddrInfo[15]);		// 부가주소
+					
+					if (!gfn_IsNull(arrAddrInfo[11])) {	// 도로명주소1
+					
+						ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");	// TRCONVPGM
+						
+						ds_ioTankInfo.SetColumn(0, "TRCONVPARKSTATUS", "01");	// TRCONVSTATUS
+					
+					} else {
+					
+						ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "0");	// TRCONVPGM
+						
+						ds_ioTankInfo.SetColumn(0, "TRCONVPARKSTATUS", "00");	// TRCONVSTATUS
+						
+					}
+					
+				}
+			}
+			else 
+			{
+				var arrAddrInfo = gfn_PostRoadListPopup_New();
+				if (length(arrAddrInfo) > 0) {
+					ds_ioTankInfo.SetColumn(0, "TPARKPLACEADDRGUBUN", "1");
+					medParkRoadZipCode.Value = arrAddrInfo[5];									// 우편번호
+					edParkRoadAddr1.Text = arrAddrInfo[1];										// 도로명주소
+					edParkRoadAddr2.Text = arrAddrInfo[29];										// 지번주소
+					ds_ioTankInfo.SetColumn(0, "TRPARKSANGUBUN", 		arrAddrInfo[15]);	// 산여부(0:대지, 1:산)
+					ds_ioTankInfo.SetColumn(0, "TRPARKMAINBUNJI", 		arrAddrInfo[22]);	// 주번지(지번주번지)
+					ds_ioTankInfo.SetColumn(0, "TRPARKSUBBUNJI", 		arrAddrInfo[23]);	// 부번지(지번부번지, 부번지없을 경우 0)
+					ds_ioTankInfo.SetColumn(0, "TRPARKPNUCD", "");						// PNU 코드 : 공백
+					ds_ioTankInfo.SetColumn(0, "TRPARKROADBUILDMGNO", 	arrAddrInfo[8]);	// 건물관리번호
+					ds_ioTankInfo.SetColumn(0, "TRPARKROADDETAIL", 		arrAddrInfo[1]);	// 상세주소(도로명주소)
+					ds_ioTankInfo.SetColumn(0, "TRPARKROADREMAIN", "");					// 부가주소
+					ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");
+					ds_ioTankInfo.SetColumn(0, "TRCONVPARKSTATUS", "01");
+				}	
+			}
+	
+        } else {
+            edParkRoadAddr1.SetFocus();
+        }
+        
+    }	
+}
+
+function edInstlrAddr1_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+    
+    if (nChar == 13) {
+        
+        if(cbxInstlrAddrGubun.Value == 0)
+        {
+			btnSearchParkZipCode.SetFocus();	
+			var arrAddrInfo = gfn_PostRoadListPopup(Parent.cbxJibu.Value			// 지부코드
+													, 0						// 구새주소 구분[0:구주소, 1:새주소]
+													, medInstlrZipCode.Value			// 구:지번 우편번호
+													, edInstlrAddr1.Text		// 구:지번주소1
+													, edInstlrAddr2.Text		// 구:지번주소2
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRSANGUBUN")		// 구:산여부
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRMAINBUNJI")	// 구:주번지
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRSUBBUNJI")		// 구:부번지
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRBUILDNM")		// 구:아파트,건물명
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRADDRETC")	// 구:상세주소
+													, medInstlrRoadZipCode.Value	// 새1:도로명 우편번호
+													, edInstlrRoadAddr1.Text		// 새1:도로명주소11
+													, edInstlrRoadAddr2.Text		// 새1:도로명주소12
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADBUILDMGNO")	// 새1:건물관리번호1
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADDETAIL")	// 새1:상세주소1
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADREMAIN")		// 새1:부가주소1
+													, medInstlrRoadZipCode.Value	// 새2:도로명 우편번호
+													, edInstlrRoadAddr1.Text		// 새2:도로명주소21
+													, edInstlrRoadAddr2.Text		// 새2:도로명주소22
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADBUILDMGNO")	// 새2:건물관리번호2
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADDETAIL")	// 새2:상세주소2
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADREMAIN")	// 새2:부가주소2
+													); 
+						if (length(arrAddrInfo) > 0) {		
+				if (arrAddrInfo[0] == 0) {
+					/* 지번주소 조회 Tab */
+					// 구주소
+					medInstlrZipCode.Value = arrAddrInfo[1];
+					edInstlrAddr1.Text = arrAddrInfo[2];
+					edInstlrAddr2.Text = arrAddrInfo[3];
+					// 새주소
+					if (!gfn_IsNull(arrAddrInfo[10])) {
+						medInstlrRoadZipCode.Value = arrAddrInfo[10];
+					}
+					edInstlrRoadAddr1.Text = arrAddrInfo[11];			
+					edInstlrRoadAddr2.Text = arrAddrInfo[12];
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRPNUCD", arrAddrInfo[9]);		// PNU 코드
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRROADBUILDMGNO", arrAddrInfo[13]);	// 건물관리번호
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRROADDETAIL", arrAddrInfo[14]);		// 상세주소
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRROADREMAIN", arrAddrInfo[15]);		// 부가주소
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRSANGUBUN", arrAddrInfo[4]);
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRMAINBUNJI", arrAddrInfo[5]);					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRSUBBUNJI", arrAddrInfo[6]);				
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRBUILDNM", arrAddrInfo[7]);					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRADDRETC", arrAddrInfo[8]);
+					if (!gfn_IsNull(arrAddrInfo[11])) {	// 도로명주소1					
+						ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");	// TRCONVPGM						
+						ds_ioTankInfo.SetColumn(0, "TRCONVINSTLRSTATUS", "01");	// TRCONVSTATUS						
+						cbxInstlrAddrGubun.Value = 1;						
+						cbxInstlrAddrGubun_OnChanged(obj, cbxInstlrAddrGubun.Value);				
+					} else {				
+						ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "0");	// TRCONVPGM						
+						ds_ioTankInfo.SetColumn(0, "TRCONVINSTLRSTATUS", "00");	// TRCONVSTATUS						
+						cbxInstlrAddrGubun.Value = 0;						
+						cbxInstlrAddrGubun_OnChanged(obj, cbxInstlrAddrGubun.Value);						
+					}		
+				} else {				
+					/* 도로명주소 조회 Tab */
+					medInstlrRoadZipCode.Value = arrAddrInfo[10];	// 우편번호			
+					edInstlrRoadAddr1.Text = arrAddrInfo[11];		// 도로명주소1			
+					edInstlrRoadAddr2.Text = arrAddrInfo[12];		// 도로명주소2					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRSANGUBUN", arrAddrInfo[4]);		// 산여부					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRMAINBUNJI", arrAddrInfo[5]);		// 주번지					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRSUBBUNJI", arrAddrInfo[6]);		// 부번지					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRPNUCD", arrAddrInfo[9]);		// PNU코드									
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRROADBUILDMGNO", arrAddrInfo[13]);	// 건물관리번호					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRROADDETAIL", arrAddrInfo[14]);		// 상세주소					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRROADREMAIN", arrAddrInfo[15]);		// 부가주소				
+					if (!gfn_IsNull(arrAddrInfo[11])) {	// 도로명주소1					
+						ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");	// TRCONVPGM						
+						ds_ioTankInfo.SetColumn(0, "TRCONVINSTLRSTATUS", "01");	// TRCONVSTATUS						
+						cbxInstlrAddrGubun.Value = 1;						
+						cbxInstlrAddrGubun_OnChanged(obj, cbxInstlrAddrGubun.Value);					
+					} else {					
+						ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "0");	// TRCONVPGM						
+						ds_ioTankInfo.SetColumn(0, "TRCONVINSTLRSTATUS", "00");	// TRCONVSTATUS						
+						cbxInstlrAddrGubun.Value = 0;						
+						cbxInstlrAddrGubun_OnChanged(obj, cbxInstlrAddrGubun.Value);						
+					}					
+				}
+			}
+		}
+		else 
+		{
+			var arrAddrInfo = gfn_PostRoadListPopup_New();
+			if (length(arrAddrInfo) > 0) {
+				radAddrGubun.Value = 1;	// 도로명주소
+				ds_ioTankInfo.SetColumn(0, "TINSTLRADDRGUBUN", "1");
+				medInstlrRoadZipCode.Value = arrAddrInfo[5];									// 우편번호
+				edInstlrRoadAddr1.Text = arrAddrInfo[1];										// 도로명주소
+				edInstlrRoadAddr2.Text = arrAddrInfo[29];										// 지번주소
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRSANGUBUN", 		arrAddrInfo[15]);	// 산여부(0:대지, 1:산)
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRMAINBUNJI", 		arrAddrInfo[22]);	// 주번지(지번주번지)
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRSUBBUNJI", 		arrAddrInfo[23]);	// 부번지(지번부번지, 부번지없을 경우 0)
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRPNUCD", "");							// PNU 코드 : 공백
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRROADBUILDMGNO", 	arrAddrInfo[8]);	// 건물관리번호
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRROADDETAIL", 		arrAddrInfo[1]);	// 상세주소(도로명주소)
+				ds_ioTankInfo.SetColumn(0, "TRINSTLRROADREMAIN", "");						// 부가주소
+				ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");
+				ds_ioTankInfo.SetColumn(0, "TRCONVINSTLRSTATUS", "01");
+			}
+		}	
+	}
+	else 
+	{
+		edInstlrAddr1.SetFocus();
+	}	
+}
+
+function edInstlrRoadAddr1_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+    if (nChar == 13) {
+
+		if(cbxInstlrAddrGubun.Value == 0)
+		{
+			btnSearchParkZipCode.SetFocus();	
+			var arrAddrInfo = gfn_PostRoadListPopup(Parent.cbxJibu.Value			// 지부코드
+													, 1						// 구새주소 구분[0:구주소, 1:새주소]
+													, medInstlrZipCode.Value			// 구:지번 우편번호
+													, edInstlrAddr1.Text		// 구:지번주소1
+													, edInstlrAddr2.Text		// 구:지번주소2
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRSANGUBUN")		// 구:산여부
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRMAINBUNJI")	// 구:주번지
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRSUBBUNJI")		// 구:부번지
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRBUILDNM")		// 구:아파트,건물명
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRADDRETC")	// 구:상세주소
+													, medInstlrRoadZipCode.Value	// 새1:도로명 우편번호
+													, edInstlrRoadAddr1.Text		// 새1:도로명주소11
+													, edInstlrRoadAddr2.Text		// 새1:도로명주소12
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADBUILDMGNO")	// 새1:건물관리번호1
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADDETAIL")	// 새1:상세주소1
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADREMAIN")		// 새1:부가주소1
+													, medInstlrRoadZipCode.Value	// 새2:도로명 우편번호
+													, edInstlrRoadAddr1.Text		// 새2:도로명주소21
+													, edInstlrRoadAddr2.Text		// 새2:도로명주소22
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADBUILDMGNO")	// 새2:건물관리번호2
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADDETAIL")	// 새2:상세주소2
+													, ds_ioTankInfo.GetColumn(0, "TRINSTLRROADREMAIN")	// 새2:부가주소2
+													); 
+						if (length(arrAddrInfo) > 0) {		
+				if (arrAddrInfo[0] == 0) {
+					
+					/* 지번주소 조회 Tab */
+					// 구주소
+					medInstlrZipCode.Value = arrAddrInfo[1];			
+					edInstlrAddr1.Text = arrAddrInfo[2];			
+					edInstlrAddr2.Text = arrAddrInfo[3];
+					
+					// 새주소
+					if (!gfn_IsNull(arrAddrInfo[10])) {
+					
+						medInstlrRoadZipCode.Value = arrAddrInfo[10];
+						
+					}
+					
+					edInstlrRoadAddr1.Text = arrAddrInfo[11];
+					
+					edInstlrRoadAddr2.Text = arrAddrInfo[12];			
+				 
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRPNUCD", arrAddrInfo[9]);		// PNU 코드
+					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRROADBUILDMGNO", arrAddrInfo[13]);	// 건물관리번호
+					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRROADDETAIL", arrAddrInfo[14]);		// 상세주소
+					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRROADREMAIN", arrAddrInfo[15]);		// 부가주소
+						   
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRSANGUBUN", arrAddrInfo[4]);
+					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRMAINBUNJI", arrAddrInfo[5]);
+					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRSUBBUNJI", arrAddrInfo[6]);
+					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRBUILDNM", arrAddrInfo[7]);
+					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRADDRETC", arrAddrInfo[8]);
+		
+					if (!gfn_IsNull(arrAddrInfo[11])) {	// 도로명주소1
+					
+						ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");	// TRCONVPGM
+						
+						ds_ioTankInfo.SetColumn(0, "TRCONVINSTLRSTATUS", "01");	// TRCONVSTATUS
+					
+					} else {
+					
+						ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "0");	// TRCONVPGM
+						
+						ds_ioTankInfo.SetColumn(0, "TRCONVINSTLRSTATUS", "00");	// TRCONVSTATUS
+						
+					}
+		
+				} else {
+				
+					/* 도로명주소 조회 Tab */
+					medInstlrRoadZipCode.Value = arrAddrInfo[10];	// 우편번호			
+					edInstlrRoadAddr1.Text = arrAddrInfo[11];		// 도로명주소1			
+					edInstlrRoadAddr2.Text = arrAddrInfo[12];		// 도로명주소2
+					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRSANGUBUN", arrAddrInfo[4]);		// 산여부
+					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRMAINBUNJI", arrAddrInfo[5]);		// 주번지
+					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRSUBBUNJI", arrAddrInfo[6]);		// 부번지
+					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRPNUCD", arrAddrInfo[9]);		// PNU코드				
+					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRROADBUILDMGNO", arrAddrInfo[13]);	// 건물관리번호
+					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRROADDETAIL", arrAddrInfo[14]);		// 상세주소
+					
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRROADREMAIN", arrAddrInfo[15]);		// 부가주소
+					
+					if (!gfn_IsNull(arrAddrInfo[11])) {	// 도로명주소1
+					
+						ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");	// TRCONVPGM
+						
+						ds_ioTankInfo.SetColumn(0, "TRCONVINSTLRSTATUS", "01");	// TRCONVSTATUS
+					
+					} else {
+					
+						ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "0");	// TRCONVPGM
+						
+						ds_ioTankInfo.SetColumn(0, "TRCONVINSTLRSTATUS", "00");	// TRCONVSTATUS
+						
+					}
+					
+				}
+			}
+		}
+		else {
+				var arrAddrInfo = gfn_PostRoadListPopup_New();
+				if (length(arrAddrInfo) > 0) {
+					radAddrGubun.Value = 1;	// 도로명주소
+					ds_ioTankInfo.SetColumn(0, "TINSTLRADDRGUBUN", "1");
+					medInstlrRoadZipCode.Value = arrAddrInfo[5];									// 우편번호
+					edInstlrRoadAddr1.Text = arrAddrInfo[1];										// 도로명주소
+					edInstlrRoadAddr2.Text = arrAddrInfo[29];										// 지번주소
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRSANGUBUN", 		arrAddrInfo[15]);	// 산여부(0:대지, 1:산)
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRMAINBUNJI", 		arrAddrInfo[22]);	// 주번지(지번주번지)
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRSUBBUNJI", 		arrAddrInfo[23]);	// 부번지(지번부번지, 부번지없을 경우 0)
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRPNUCD", "");							// PNU 코드 : 공백
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRROADBUILDMGNO", 	arrAddrInfo[8]);	// 건물관리번호
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRROADDETAIL", 		arrAddrInfo[1]);	// 상세주소(도로명주소)
+					ds_ioTankInfo.SetColumn(0, "TRINSTLRROADREMAIN", "");						// 부가주소
+					ds_ioTankInfo.SetColumn(0, "TRCONVPGM", "1");
+					ds_ioTankInfo.SetColumn(0, "TRCONVINSTLRSTATUS", "01");
+				}
+		}
+	
+	} else {
+		edInstlrRoadAddr1.SetFocus();
+	}
+}
+
+
+// 상치장소 구/새주소 구분 변경시
+function cbxParkAddrGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if (strCode == 0) {	// 지번주소
+		medParkZipCode.Visible = true;
+		edParkAddr1.Visible = true;
+		edParkAddr2.Visible = true;
+
+		medParkRoadZipCode.Visible = false;
+		edParkRoadAddr1.Visible = false;
+		edParkRoadAddr2.Visible = false;
+	
+	} else {			// 도로명주소
+		medParkRoadZipCode.Visible = true;
+		edParkRoadAddr1.Visible = true;
+		edParkRoadAddr2.Visible = true;
+		
+		medParkZipCode.Visible = false;
+		edParkAddr1.Visible = false;
+		edParkAddr2.Visible = false;
+
+	}	
+}
+
+// 설치자주소 구/새주소 구분 변경시
+function cbxInstlrAddrGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if (strCode == 0) {	// 지번주소
+		medInstlrZipCode.Visible = true;
+		edInstlrAddr1.Visible = true;
+		edInstlrAddr2.Visible = true;
+
+		medInstlrRoadZipCode.Visible = false;
+		edInstlrRoadAddr1.Visible = false;
+		edInstlrRoadAddr2.Visible = false;
+	
+	} else {			// 도로명주소
+		medInstlrRoadZipCode.Visible = true;
+		edInstlrRoadAddr1.Visible = true;
+		edInstlrRoadAddr2.Visible = true;
+		
+		medInstlrZipCode.Visible = false;
+		edInstlrAddr1.Visible = false;
+		edInstlrAddr2.Visible = false;
+
+	}		
+}
+
+
+// 도로명주소 변환멘트
+function lfn_ConvStatus_Change(obj, strConvStatus)
+{
+	if (strConvStatus == "00" || strConvStatus == "02") {
+	    ObjStatic.visible = true;
+	    ObjStatic.text = "새 주소\n변환요망";
+	} else {
+		ObjStatic.visible = false;
+	}
+}]]></Script>
+</Window>

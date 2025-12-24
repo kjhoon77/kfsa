@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="320" Id="frmposetc0020PPosReport" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="통합영수증&#32;집계관리" Top="8" Ver="1.0" Width="480" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="JJIBUCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="JJIBUNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>0</CD>
+						<DATA>수납</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>환불</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>폐기</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSunap">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>10</CD>
+						<DATA>현금직납</DATA>
+					</record>
+					<record>
+						<CD>14</CD>
+						<DATA>현금은납</DATA>
+					</record>
+					<record>
+						<CD>17</CD>
+						<DATA>지로</DATA>
+					</record>
+					<record>
+						<CD>11</CD>
+						<DATA>카드</DATA>
+					</record>
+					<record>
+						<CD>12</CD>
+						<DATA>현금영수증</DATA>
+					</record>
+					<record>
+						<CD>13</CD>
+						<DATA>가상계좌</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oDateGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>수납&#32;일자</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>시스템&#32;입력&#32;일자</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oOrder">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>수납&#32;일자</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>수납구분</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>결제구분</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPrintGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>집계(통계)</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>리스트(내역)</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioResult">
+				<Contents>
+					<colinfo id="PMPGMGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMPROCDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMPCORDERNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PGMID" size="256" summ="default" type="STRING"/>
+					<colinfo id="PGMNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMPCGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMPGMGUBUNNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMPAYMENTFLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMPAYMENTFLAGNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMITEM2" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMCLAS" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMAMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMCLASNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_CNT1" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_CNT2" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT1" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOT_AMT2" size="256" summ="default" type="STRING"/>
+					<colinfo id="CASH1_CNT1" size="256" summ="default" type="STRING"/>
+					<colinfo id="CASH1_CNT2" size="256" summ="default" type="STRING"/>
+					<colinfo id="CARD_CNT1" size="256" summ="default" type="STRING"/>
+					<colinfo id="CARD_CNT2" size="256" summ="default" type="STRING"/>
+					<colinfo id="CASH2_CNT1" size="256" summ="default" type="STRING"/>
+					<colinfo id="CASH2_CNT2" size="256" summ="default" type="STRING"/>
+					<colinfo id="CASH1_AMT1" size="256" summ="default" type="STRING"/>
+					<colinfo id="CASH1_AMT2" size="256" summ="default" type="STRING"/>
+					<colinfo id="CARD_AMT1" size="256" summ="default" type="STRING"/>
+					<colinfo id="CARD_AMT2" size="256" summ="default" type="STRING"/>
+					<colinfo id="CASH2_AMT1" size="256" summ="default" type="STRING"/>
+					<colinfo id="CASH2_AMT2" size="256" summ="default" type="STRING"/>
+					<colinfo id="PNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPosProgramId">
+				<Contents>
+					<colinfo id="PGMID" size="2" summ="default" type="STRING"/>
+					<colinfo id="PGMNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="PGMGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="PGMGUBUNNM" size="4" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPosJibu"></Dataset>
+		</Datasets>
+		<Shape Bottom="316" Height="64" Id="Shape0" Left="4" LineColor="user15" Right="476" TabOrder="24" Top="252" Type="Rectangle" Width="472"></Shape>
+		<Shape Bottom="53" Height="52" Id="shpBtnBox" Left="298" LineColor="user14" Right="476" TabOrder="6" Top="1" Type="Rectangle" Width="178"></Shape>
+		<Shape Bottom="240" Height="184" Id="Shape2" Left="4" LineColor="user15" Right="476" TabOrder="1" Top="56" Type="Rectangle" Width="472"></Shape>
+		<Static Align="Center" Height="20" Id="Static0" Left="20" Style="sty_LabelGruopBox" TabOrder="2" Text="조회&#32;정보" Top="48" VAlign="Middle" Width="120"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="301" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="3" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="388" OnClick="lfn_End" Style="sty_Button" TabOrder="4" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="388" OnClick="lfn_Excel" Style="sty_Button" TabOrder="5" ToolTipText="엑셀로&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="301" OnClick="lfn_Print" Style="sty_Button" TabOrder="7" ToolTipText="출력" Top="28" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbSunapGubun" Left="8" Style="sty_Label" TabOrder="9" Text="수납구분" Top="144" VAlign="Middle" Width="88"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="44" Id="radSunapGubun" INDEX="0" InnerDataset="ds_oSunap" Left="100" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="8" Top="144" Width="372"></Radio>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="10" Text="지부" Top="96" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static9" Left="276" Style="sty_Text" TabOrder="11" Text="~" Top="96" VAlign="Middle" Width="20"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radGubun" INDEX="0" InnerDataset="ds_oGubun" Left="100" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="12" Top="120" Width="372"></Radio>
+		<Static Align="Center" Height="20" Id="lbGubun" Left="8" Style="sty_Label" TabOrder="13" Text="처리구분" Top="120" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbPgmGubun" Left="8" Style="sty_Label" TabOrder="14" Text="프로그램" Top="72" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static13" Left="276" Style="sty_Text" TabOrder="15" Text="~" Top="72" VAlign="Middle" Width="20"></Static>
+		<Static Align="Center" Height="20" Id="Static14" Left="8" Style="sty_Label" TabOrder="16" Text="수납일자" Top="216" VAlign="Middle" Width="88"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calSunapDateStart" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="18" Top="216" WeeksFont="돋음,9" Width="100"></Calendar>
+		<Static Align="Center" Height="20" Id="Static15" Left="200" Style="sty_Text" TabOrder="17" Text="~" Top="216" VAlign="Middle" Width="20"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calSunapDateEnd" Left="220" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="19" Top="216" WeeksFont="돋음,9" Width="100"></Calendar>
+		<Static Align="Center" Height="20" Id="Static16" Left="8" Style="sty_Label" TabOrder="21" Text="정렬순서" Top="292" VAlign="Middle" Width="88"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radOrder" INDEX="0" InnerDataset="ds_oOrder" Left="100" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="20" Top="292" Value="1" Width="372"></Radio>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radReport" INDEX="0" InnerDataset="ds_oPrintGubun" Left="100" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="90" Style="sty_Radio" TabOrder="22" Top="268" Value="1" Width="372"></Radio>
+		<Static Align="Center" Height="20" Id="lbReport" Left="8" Style="sty_Label" TabOrder="23" Text="출력구분" Top="268" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static1" Left="20" Style="sty_LabelGruopBox" TabOrder="25" Text="출력&#32;정보" Top="244" VAlign="Middle" Width="120"></Static>
+		<Static Align="Center" Height="20" Id="lbDateGubun" Left="8" Style="sty_Label" TabOrder="27" Text="일자구분" Top="192" VAlign="Middle" Width="88"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radDateGubun" INDEX="0" InnerDataset="ds_oDateGubun" Left="100" LeftMargin="4" OnChanged="radDateGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="26" Top="192" Width="372"></Radio>
+		<Grid AutoEnter="TRUE" BindDataset="ds_ioResult" BkColor2="default" BoldHead="true" Bottom="404" Editable="TRUE" Enable="true" EndLineColor="default" Height="68" Id="gdList" InputPanel="FALSE" Left="-4" LineColor="default" OnKeyDown="gfn_EnterNextFocus" Right="480" TabOrder="28" TabStop="true" Top="336" UseDBuff="true" UsePopupMenu="true" UserData="통합영수증집계관리" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="484">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="45"/>
+						<col width="98"/>
+						<col width="101"/>
+						<col width="119"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="244"/>
+						<col width="91"/>
+						<col width="107"/>
+						<col width="94"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="순서"/>
+						<cell col="1" display="text" text="수납일자"/>
+						<cell col="2" display="text" text="발급번호"/>
+						<cell col="3" display="text" text="단위프로그램"/>
+						<cell col="4" display="text" text="수납구분"/>
+						<cell col="5" display="text" text="결제방법"/>
+						<cell col="6" display="text" text="항목2"/>
+						<cell col="7" display="text" text="직능"/>
+						<cell col="8" display="text" text="금액"/>
+						<cell col="9" display="text" text="처리자"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="number" edit="normal" expr="currow+1"/>
+						<cell align="center" col="1" colid="PMPROCDATE" display="text" Mask="####-##-##"/>
+						<cell align="left" col="2" colid="PMPCORDERNO" display="number" edit="normal"/>
+						<cell align="center" col="3" colid="PGMNM" display="number" edit="normal"/>
+						<cell align="center" col="4" colid="PMPGMGUBUNNM" display="number"/>
+						<cell align="center" col="5" colid="PMPAYMENTFLAGNM" display="text"/>
+						<cell align="left" col="6" colid="PMITEM2" display="number"/>
+						<cell align="center" col="7" colid="PMCLASNM" display="text"/>
+						<cell align="right" col="8" colid="PMAMT" display="number" edit="number"/>
+						<cell align="center" col="9" colid="PNM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Combo Border="Flat" CodeColumn="JJIBUCD" DataColumn="JJIBUNM" Height="20" Id="cbxJibu1" INDEX="0" InnerDataset="ds_oJibu" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="29" Top="95" UserData="I" Width="178"></Combo>
+		<Combo Border="Flat" CodeColumn="JJIBUCD" DataColumn="JJIBUNM" Height="20" Id="cbxJibu2" INDEX="0" InnerDataset="ds_oJibu" Left="295" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="30" Top="95" UserData="I" Width="178"></Combo>
+		<Combo Border="Flat" CodeColumn="PGMID" DataColumn="PGMNM" Height="20" Id="cbxPgmGubun1" INDEX="0" InnerDataset="ds_oPosProgramId" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="31" Top="71" Width="178"></Combo>
+		<Combo Border="Flat" CodeColumn="PGMID" DataColumn="PGMNM" Height="20" Id="cbxPgmGubun2" INDEX="0" InnerDataset="ds_oPosProgramId" Left="295" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="32" Top="71" Width="178"></Combo>
+		<Static Font="굴림,12,Bold" Height="20" Id="lbWorkFormTitle" Left="24" TabOrder="33" Text="통합영수증&#32;집계관리" VAlign="Middle" Width="216"></Static>
+		<Image Height="10" Id="imgImage" ImageID="IMG_BULLET" Left="4" Style="sty_Image" TabOrder="34" Top="5" Transparent="TRUE" Width="12"></Image>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmposetc0020PPosReport.xml
+ * 설명 : 통합영수증 집계 관리
+ * 작성일 : 2010. 02. 2
+ * 작성자 : 배기원
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+#include "LIB::COMMON.js"; // 공통 관련
+
+function Form_OnLoadCompleted(obj)
+{
+    gfn_OnLoadCompleted();
+//    lfn_loadPrintConfigFile(); //프린터환경 설정
+    tit_CreateActionInfo(); //X-framework 설정
+      
+    ds_oPosProgramId.ClearData();
+//    cbxPgmGubun1.Value = sProgramId;
+//    cbxPgmGubun2.Value = sProgramId;
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("com:searchPosProgramId", false);
+    tit_addSearchActionInfo("com:searchJibu", false);
+//    gfn_SearchPosJibu(ds_oPosJibu,"");
+
+    tit_callService(
+        ""
+        ,""
+        ,""
+        ,"ds_oPosProgramId=ds_oPosProgramId"
+         + " ds_oJibu=ds_oJibu"
+        ,""
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+/*
+    tit_callService(
+        ""
+        ,""
+        ,""
+        ,"ds_oPosProgramId=ds_oPosProgramId"
+         + " ds_oJibu=ds_oJibu"
+        ,"SJIBU=" + quote(sProgramId)
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+*/
+    radGubun.Index = 0; //처리구분
+    calSunapDateStart.Value = left(GetDate(), 6)+"01";   //수납일자
+    calSunapDateEnd.Value = left(GetDate(), 8);
+
+}
+
+
+function radDateGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(strCode==1){
+        Static14.Text='수납일자';
+	}
+	else{
+        Static14.Text='입력일자';
+	}
+}
+
+/**
+ * 버튼 실행 권한
+ */
+function lfn_SetFormAuth(bStatus) {
+
+//    btnToExcel.Enable = bStatus;
+}
+
+
+/*
+ * 기능 : 조회  lfn_Search
+ */
+function lfn_Excel(obj) {
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+    ds_ioResult.ClearData(); // 데이타셋 초기화       
+    tit_clearActionInfo();
+    tit_addCsvSearchActionInfo("posetc:searchPosEtc0020PosReportList", false);
+
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_ioResult=ds_oResult"	// outDs
+        ,"PGMGUBUN1=" + quote(cbxPgmGubun1.value)   //-- 프로그램1
+          +" PGMGUBUN2="+ quote(cbxPgmGubun2.value)  //-- 프로그램2
+          +" GTMGNO1=" + quote(cbxJibu1.value)       //-- 지부1
+          +" GTMGNO2=" + quote(cbxJibu2.value)       //-- 지부2          
+          +" SUNAPGUBUN=" +quote(radGubun.Value)     //-- 수납구분
+          +" SETLMTGUBUN="+quote(radSunapGubun.Value)//-- 결제구분
+          +" DATEGUBUN="+quote(radDateGubun.Value)   //-- 일자구분
+          +" SUNAPDATE1=" + quote(calSunapDateStart.Value) // 수납일자1
+          +" SUNAPDATE2=" + quote(calSunapDateEnd.Value)   // 수납일자2
+          +" ORDERGUBUN=" + quote(radOrder.Value)    // 정렬순서
+        ,"lfn_AfterSearch"
+        ,false
+        ,false
+        ,true
+    );
+}
+
+function lfn_AfterSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+	if(ds_ioResult.rowcount == 0){
+		alert("데이터가 없습니다.");
+		return;
+	}
+//	lfn_Excel();
+}
+
+
+
+
+/*
+ * parameter : 없음
+ * return : 없음
+ */
+function lfn_Print(obj)
+{
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+    ds_ioResult.ClearData(); // 데이타셋 초기화       
+    tit_clearActionInfo();
+
+    var searchInfo="";  //조회구분(1 집계, 2 리스트)
+    if(radReport.Value == "1")
+        searchInfo = "posetc:searchPosEtc0020PosReportState";    
+    else
+        searchInfo = "posetc:searchPosEtc0020PosReportList";
+
+    tit_addCsvSearchActionInfo(searchInfo, false);
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_ioResult=ds_oResult"	// outDs
+        ,"PGMGUBUN1=" + quote(cbxPgmGubun1.Value)   //-- 프로그램1
+          +" PGMGUBUN2="+ quote(cbxPgmGubun2.Value)  //-- 프로그램2
+          +" GTMGNO1=" + quote(cbxJibu1.Value)       //-- 지부1
+          +" GTMGNO2=" + quote(cbxJibu2.Value)       //-- 지부2          
+          +" SUNAPGUBUN=" +quote(radGubun.Value)     //-- 수납구분
+          +" SETLMTGUBUN="+quote(radSunapGubun.Value)//-- 결제구분
+          +" DATEGUBUN="+quote(radDateGubun.Value)   //-- 일자구분
+          +" SUNAPDATE1=" + quote(calSunapDateStart.Value) // 수납일자1
+          +" SUNAPDATE2=" + quote(calSunapDateEnd.Value)   // 수납일자2
+          +" ORDERGUBUN=" + quote(radOrder.Value)    // 정렬순서
+        ,"lfn_AfterPrintList"
+        ,false
+    );
+}
+
+/*
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterPrintList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    if (ds_ioResult.GetCount() < 1) {
+        gfn_Alert("출력할 데이터가 없습니다.");
+        return false;
+    }else{
+        var report = "";
+        var param  = "rpStartDate="+quote(calSunapDateStart.Value);
+            param += "^rpEndDate="+quote(calSunapDateEnd.Value);
+            param += "^Jibu1="+quote(cbxJibu1.Text);
+            param += "^Jibu2="+quote(cbxJibu2.Text);
+            param += "^Program1="+quote(cbxPgmGubun1.Text);
+            param += "^Program2="+quote(cbxPgmGubun2.Text);
+            param += "^Gubun1="+quote(radGubun.Text);
+            param += "^Gubun2="+quote(radSunapGubun.Text);
+
+        if(radReport.Value=="1")
+            report = "frmCOM9000R02PosReportState.rex";
+        else
+            report = "frmCOM9000R01PosReportList.rex" ;
+
+        gfn_CallReportPopup(report, "ds_ioResult", param);    
+    }
+
+}
+
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+
+function lfn_init() {
+    cbxPgmGubun1.Index = 0;
+    cbxPgmGubun2.Index = 0;
+    radGubun.Index = 0;
+    radSunapGubun.Index = 0;
+    radDateGubun.Value = "1";
+    calSunapDateStart.Value = left(GetDate(), 6)+"01";   //수납일자
+    calSunapDateEnd.Value = left(GetDate(), 8);
+    radReport.Index = 0;
+    radOrder.Index = 0;
+    ds_ioResult.ClearData(); // 데이타셋 초기화
+    Static14.Text='수납일자';
+    cbxPgmGubun1.Index=0;
+    cbxPgmGubun2.Index=0;
+    cbxPgmGubun1.SetFocus();
+
+}
+function lfn_Cancel(obj)
+{
+	lfn_CancelL();	
+}
+
+function lfn_CancelL(obj){
+    lfn_init();
+}]]></Script>
+</Window>

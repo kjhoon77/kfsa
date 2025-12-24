@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<svcdesc><![CDATA[답안지조회]]></svcdesc>
+	<header><![CDATA[]]></header>
+	<dataset id="output" io="OUTPUT" reserved="NO"></dataset>
+	<member_var>
+		<var id="ARYREPEATNO" reserved="NO" type="String"><![CDATA[]]></var>
+	</member_var>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_IMP_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[function Run()
+{
+	// TODO: Add your source code here
+	
+	var selectQuery = " SELECT	APSEQ "
+												+ "	, APREPEATNO "
+												+ " , APEOMGNO "
+												+ " , APAPLEXAMNO "
+												+ " , APTCCOURSECD "
+												+ " , APNUMTYPE "
+												+ " , APALPHATYPE "
+												+ " , APCAITEMNO "
+												+ " , APANSWER "
+												+ " , APANSWERYN "
+												+ " , APITEMSCORE "
+												+ " , APEXAMROOM "
+											  + " FROM ANSWERPAPERRESULT "
+												+ " WHERE APEOMGNO = :EOMGNO "
+												+ " AND APREPEATNO IN ("+ARYREPEATNO+") ";
+
+	ExecuteQuery(selectQuery, "output");
+}]]></source>
+</class2>

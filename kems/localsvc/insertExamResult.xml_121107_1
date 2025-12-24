@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="in_ExamResult" io="INPUT" reserved="NO"></dataset>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[function Run() {
+
+	var errSql;
+	var insertQuery;
+	var searchQuery;
+	
+	for ( var i = 0; i < in_ExamResult.getRowCount(); i++ ) {
+		
+		searchQuery = "SELECT IIF(ISNULL(MAX(ERSEQ)), 1, MAX(ERSEQ)+1) AS ERSEQ FROM EXAMRESULT WHERE EREJMGNO='" + dsGetColumn(in_ExamResult, i, "EREJMGNO") + "'";
+		ExecuteQuery(searchQuery, "output");
+
+		insertQuery = "INSERT INTO EXAMRESULT ( "
+			+ " EREJMGNO, ERSEQ, ERREPEATNO, ERAPLEXAMNO, ERPASSYN "
+			+ ", ERPASSDATE, ERSCORE, ERRANK, ERCORRECTCNT "
+			+ ", ERREGDATE, ERREGSABUN "
+			+ ") VALUES ( "
+			+ "'" + dsGetColumn(in_ExamResult, i, "EREJMGNO") + "' "
+			+ ",'" + dsGetColumn(output, 0, "ERSEQ")  + "' "
+			+ ",'" + dsGetColumn(in_ExamResult, i, "ERREPEATNO") + "' "
+			+ ",'" + dsGetColumn(in_ExamResult, i, "ERAPLEXAMNO") + "' "
+			+ ",'" + dsGetColumn(in_ExamResult, i, "ERPASSYN") + "' "
+			+ ",'" + dsGetColumn(in_ExamResult, i, "ERPASSDATE") + "' "
+			+ ","  + dsGetColumn(in_ExamResult, i, "ERSCORE") + " "
+			+ ","  + dsGetColumn(in_ExamResult, i, "ERRANK") + " "
+			+ ","  + dsGetColumn(in_ExamResult, i, "ERCORRECTCNT") + " "
+			+ ",'" + dsGetColumn(in_ExamResult, i, "ERREGDATE") + "' "
+			+ ",'" + dsGetColumn(in_ExamResult, i, "ERREGSABUN") + "' "
+			+ ") ";
+
+	errSql = ExecuteSql(insertQuery, in_ExamResult);
+
+	}
+}
+
+function dsGetColumn(ds, row, colid) {
+    return ds.getcolumn(row, colid);
+}
+]]></source>
+</class2>

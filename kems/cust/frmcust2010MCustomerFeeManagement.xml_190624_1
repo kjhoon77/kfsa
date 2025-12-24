@@ -1,0 +1,2884 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmcust2010CustomerFeeManagement" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="회비/교육비&#32;정보관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1000" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCustomer">
+				<Contents>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CDELDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CDELGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFEEPOSTADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFEEPOSTADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFEEPOSTZIPCD" size="6" summ="default" type="STRING"/>
+					<colinfo id="CFEEYYMM" size="6" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="COBMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="COVERGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CREGISTERYYMM" size="6" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="FMBIRTHDAY" size="7" summ="default" type="STRING"/>
+					<colinfo id="FMPERSONKEY" size="10" summ="default" type="STRING"/>
+					<colinfo id="BIRTHDAY" size="20" summ="default" type="STRING"/>
+					<colinfo id="MINAPFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="FMHHPTEL" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oFee" OnColumnChanged="ds_oFee_OnColumnChanged">
+				<Contents>
+					<colinfo id="CFCCGUBUN" size="1" type="STRING"/>
+					<colinfo id="CFCCGUBUNCD" size="2" type="STRING"/>
+					<colinfo id="CFGYEAR" size="4" type="STRING"/>
+					<colinfo id="CFPMMGNO" size="8" type="STRING"/>
+					<colinfo id="CFPMYEAR" size="4" type="STRING"/>
+					<colinfo id="CFSUNAPHALF" size="1" type="STRING"/>
+					<colinfo id="CFSUNAPMONTH" size="2" type="STRING"/>
+					<colinfo id="CMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="MINAPFEE" size="22" type="DECIMAL"/>
+					<colinfo id="SEL" size="1" type="STRING"/>
+					<colinfo id="SUNAPFEE" size="22" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSunap" OnRowPosChanged="ds_oSunap_OnRowPosChanged">
+				<Contents>
+					<colinfo id="CANCELDATE" size="18" summ="default" type="STRING"/>
+					<colinfo id="CFCMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFGROUPMGNO" size="29" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUN" size="58" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUNCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUNCDNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="CFREGNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="CFREMARK" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFREPAYREF" size="1" summ="default" type="STRING"/>
+					<colinfo id="FEESEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="MEMBERGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="MEMBERGUBUNNM" size="6" summ="default" type="STRING"/>
+					<colinfo id="MGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="MGGTNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="PMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMPCORDERNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="PMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="PONYDATE" size="18" summ="default" type="STRING"/>
+					<colinfo id="POSGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="POSGTNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="PROCDATE" size="18" summ="default" type="STRING"/>
+					<colinfo id="PROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="PROCGTNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="PVINFO" size="6" summ="default" type="STRING"/>
+					<colinfo id="REGDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="SETLMGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="SETLMGUBUNNM" size="6" summ="default" type="STRING"/>
+					<colinfo id="SUNAPFEE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="SUNAPYEAR" size="13" summ="default" type="STRING"/>
+					<colinfo id="PMRESULT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PVVMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PVVMBILLTYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PVVMVATNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMonthGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>YEAR</CD>
+						<DATA>년도</DATA>
+					</record>
+					<record>
+						<CD>HALF</CD>
+						<DATA>반기</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iReady">
+				<Contents>
+					<colinfo id="SEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFMGGTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFMEMBERGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFPROCAMOUNT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="CFPROCDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHECKDATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFMGGTNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CCOURSENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFMEMBERNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iCustomerFee">
+				<Contents>
+					<colinfo id="CFCMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFSETLMGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFMEMBERGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUNCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPMONTH" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPHALF" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFPROCAMOUNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFPROCDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFPONYGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFPONYDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFMGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPOSGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFGROUPMGNO" size="29" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFREMARK" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFREPAYREF" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFACTIVEGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFREGDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="CFREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFMODDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="CFMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iCustomerFeeBackup">
+				<Contents>
+					<colinfo id="CFCMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFSETLMGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFMEMBERGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUNCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPMONTH" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPHALF" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFPROCAMOUNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFPROCDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFPONYGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFPONYDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFMGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPOSGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFGROUPMGNO" size="29" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFREMARK" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFREPAYREF" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFACTIVEGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFREGDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="CFREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFMODDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="CFMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPosPrintM"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oFeeMonth">
+				<Contents>
+					<colinfo id="CFCCGUBUN" size="1" type="STRING"/>
+					<colinfo id="CFGYEAR" size="4" type="STRING"/>
+					<colinfo id="CFSUNAPHALF" size="1" type="STRING"/>
+					<colinfo id="CFSUNAPMONTH" size="2" type="STRING"/>
+					<colinfo id="CMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="MINAPFEE" size="22" type="DECIMAL"/>
+					<colinfo id="SEL" size="1" type="STRING"/>
+					<colinfo id="SUNAPFEE" size="22" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oYearbizlink"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iOverFee">
+				<Contents>
+					<colinfo id="CFCCGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFGYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPHALF" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPMONTH" size="2" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="MINAPFEE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="SEL" size="1" summ="default" type="STRING"/>
+					<colinfo id="SUNAPFEE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="VIEWTYPE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibuGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>S</CD>
+						<DATA>소속지부</DATA>
+					</record>
+					<record>
+						<CD>T</CD>
+						<DATA>타지부</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iMunjeCancel">
+				<Contents>
+					<colinfo id="CFGROUPMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFACTIVEGUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iPrintGoji">
+				<Contents>
+					<colinfo id="GTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="OKEY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPrintGoji">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCustomerAll">
+				<Contents>
+					<colinfo id="BNM" size="40" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" type="STRING"/>
+					<colinfo id="CDELDATE" size="8" type="STRING"/>
+					<colinfo id="CDELGUBUN" size="1" type="STRING"/>
+					<colinfo id="CFEEPOSTADDR1" size="100" type="STRING"/>
+					<colinfo id="CFEEPOSTADDR2" size="100" type="STRING"/>
+					<colinfo id="CFEEPOSTZIPCD" size="6" type="STRING"/>
+					<colinfo id="CFEEYYMM" size="6" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" type="STRING"/>
+					<colinfo id="CMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="CNO" size="6" type="STRING"/>
+					<colinfo id="COBMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="COVERGUBUN" size="1" type="STRING"/>
+					<colinfo id="CREGCD" size="2" type="STRING"/>
+					<colinfo id="CREGISTERYYMM" size="6" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="1" type="STRING"/>
+					<colinfo id="FMNM" size="20" type="STRING"/>
+					<colinfo id="FMBIRTHDAY" size="7" type="STRING"/>
+					<colinfo id="FMPERSONKEY" size="10" type="STRING"/>
+					<colinfo id="BIRTHDAY" size="20" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oAllPrintGoji"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioVirtualAccoutAllocation">
+				<Contents>
+					<colinfo id="SCMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SBNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SJIBU" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPosVatH"></Dataset>
+		</Datasets>
+		<Shape Bottom="212" Height="64" Id="Shape0" Left="4" LineColor="user15" Right="372" TabOrder="81" Top="148" Type="Rectangle" Width="368"></Shape>
+		<Shape Bottom="60" Height="28" Id="Shape5" Left="4" LineColor="user15" Right="801" TabOrder="57" Top="32" Type="Rectangle" Width="797"></Shape>
+		<Shape Bottom="184" Height="112" Id="shpCustomerBox" Left="376" LineColor="user15" Right="996" TabOrder="66" Top="72" Type="Rectangle" Width="620"></Shape>
+		<Shape Bottom="480" Height="284" Id="Shape3" Left="376" LineColor="user15" Right="996" TabOrder="45" Top="196" Type="Rectangle" Width="620"></Shape>
+		<Shape Bottom="584" Height="100" Id="Shape2" Left="4" LineColor="user15" Right="996" TabOrder="44" Top="484" Type="Rectangle" Width="992"></Shape>
+		<Shape Bottom="480" Height="256" Id="Shape1" Left="4" LineColor="user15" Right="372" TabOrder="42" Top="224" Type="Rectangle" Width="368"></Shape>
+		<Shape Bottom="29" Height="28" Id="frmcust0012BuildingHistory" Left="450" LineColor="user14" Right="996" TabOrder="33" Top="1" Type="Rectangle" Width="546"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="32" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="300">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="560" OnClick="lfn_Search" Style="sty_Button" TabOrder="2" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="647" OnClick="lfn_CancelConfirm" Style="sty_Button" TabOrder="3" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="821" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="4" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="908" OnClick="lfn_End" Style="sty_Button" TabOrder="5" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Shape Bottom="136" Height="64" Id="shpSearchBox" Left="4" LineColor="user15" Right="372" TabOrder="34" Top="72" Type="Rectangle" Width="368"></Shape>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Height="20" Id="medCustNo" Left="572" LeftMargin="2" Mask="######" OnCharChanged="medCustNo_OnCharChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medCustNo_OnKeyDown" OnKillFocus="medCustNo_OnKillFocus" Style="sty_Maskedit" TabOrder="9" Top="36" Type="STRING" Width="52"></MaskEdit>
+		<Static Align="Center" Height="20" Id="Static26" Left="20" Style="sty_LabelGruopBox" TabOrder="35" Text="조회&#32;정보" Top="64" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" Height="20" Id="lbManagerNm" Left="8" Style="sty_Label" TabOrder="36" Text="선임자명" Top="112" UserData="S" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edManagerNm" ImeMode="native" Left="72" LeftMargin="2" MaxLength="10" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edManagerNm_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="11" Top="112" Width="72"></Edit>
+		<Static Align="Center" Height="20" Id="lbBuildingNm" Left="8" Style="sty_Label" TabOrder="37" Text="대상물명" Top="88" UserData="S" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edBuildingNm" ImeMode="native" Left="72" LeftMargin="2" MaxLength="30" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edBuildingNm_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="10" Top="88" Width="272"></Edit>
+		<Static Align="Center" Height="20" Id="lbBirthday" Left="172" Style="sty_Label" TabOrder="38" Text="생년월일" Top="112" UserData="S" VAlign="Middle" Width="60"></Static>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Height="20" Id="medManagerNo" Left="236" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medManagerNo_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="12" Top="112" Type="STRING" Width="108"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbAddr" Left="380" Style="sty_Label" TabOrder="39" Text="주소" Top="136" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edAddr1" ImeMode="native" Left="504" LeftMargin="2" Style="sty_Edit" TabOrder="40" Top="136" Width="256"></Edit>
+		<Static Align="Center" Height="20" Id="lbFeeYear" Left="672" Style="sty_Label" TabOrder="41" Text="회비부과년월" Top="112" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" BKColor="user15" Height="20" Id="lbSunap" Left="20" Style="sty_Label" TabOrder="43" Text="결제&#32;정보" Top="140" VAlign="Middle" Width="104" WordWrap="TRUE"></Static>
+		<Static Align="Center" Height="20" Id="lbTotalCnt" Left="32" Style="sty_LabelStat" TabOrder="48" Text="전체건수" Top="488" VAlign="Middle" Width="80"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medTotalCnt" Left="32" Readonly="TRUE" Style="sty_Edit" TabOrder="46" Top="512" Value="0" Width="60"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbTotalAmount" Left="32" Style="sty_LabelStat" TabOrder="49" Text="전체금액" Top="536" VAlign="Middle" Width="80"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medTotalAmount" Left="32" Readonly="TRUE" Style="sty_Edit" TabOrder="47" Top="560" Value="0" Width="80"></MaskEdit>
+		<Static BKColor="user0" Height="20" Id="Static15" Left="96" TabOrder="50" Text="건" Top="512" VAlign="Middle" Width="16"></Static>
+		<Grid AutoEnter="TRUE" BindDataset="ds_iReady" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="580" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="92" Id="gdReady" InputPanel="FALSE" Left="120" LineColor="default" OnHeadClick="lfn_GridCheck" Right="912" RowHeight="20" Style="sty_Grid" TabOrder="28" TabStop="true" Top="488" UseDBuff="true" UsePopupMenu="true" UserData="결제대기" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="20"/>
+						<col width="34"/>
+						<col width="70"/>
+						<col width="69"/>
+						<col width="57"/>
+						<col width="96"/>
+						<col width="58"/>
+						<col width="154"/>
+						<col width="65"/>
+						<col width="80"/>
+						<col width="233"/>
+					</columns>
+					<head>
+						<cell col="0" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" display="text" text="순번"/>
+						<cell col="2" display="text" text="지부"/>
+						<cell align="center" col="3" display="text" text="관리번호"/>
+						<cell col="4" display="text" text="지역"/>
+						<cell col="5" display="text" text="직능"/>
+						<cell col="6" display="text" text="고객구분"/>
+						<cell align="center" col="7" display="text" text="대상물(업체)명"/>
+						<cell align="center" col="8" display="text" text="선임자명"/>
+						<cell col="9" display="text" text="금액"/>
+						<cell col="10" display="text" text="사유(비고)"/>
+					</head>
+					<body>
+						<cell col="0" colid="SEL" display="expr:iif(SEL&#32;==&#32;&apos;X&apos;,&#32;&apos;null&apos;,&#32;&apos;checkbox&apos;)" edit="expr:iif(SEL&#32;==&#32;&apos;X&apos;,&#32;&apos;none&apos;,&#32;&apos;checkbox&apos;)"/>
+						<cell align="center" col="1" display="number" expr="row+1"/>
+						<cell align="center" col="2" colid="CFMGGTNM" display="text"/>
+						<cell align="center" col="3" colid="CNO" display="text"/>
+						<cell align="center" col="4" colid="CREGCD" display="text"/>
+						<cell align="center" col="5" colid="CCOURSENM" display="text"/>
+						<cell align="center" col="6" colid="CFMEMBERNM" display="text"/>
+						<cell align="left" col="7" colid="BNM" display="text"/>
+						<cell align="center" col="8" colid="FMNM" display="text"/>
+						<cell align="right" col="9" colid="CFPROCAMOUNT" display="number"/>
+						<cell align="left" col="10" colid="CFREMARK" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="lbRemark" Left="8" Style="sty_Label" TabOrder="51" Text="비고" Top="164" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edRemark" ImeMode="native" Left="72" LeftMargin="2" MaxLength="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="13" Top="164" Width="296"></Edit>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_oFee" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="420" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="168" Id="gdFee" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" OnHeadClick="gdFee_OnHeadClick" Right="368" RowHeight="20" Style="sty_Grid" TabOrder="14" TabStop="true" Top="252" UseDBuff="true" UsePopupMenu="true" UserData="수납_미납정보" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="360">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="20"/>
+						<col width="93"/>
+						<col width="63"/>
+						<col width="90"/>
+						<col width="90"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="checkbox"/>
+						<cell align="center" col="1" display="text" text="년도"/>
+						<cell align="center" col="2" display="text" text="구분"/>
+						<cell align="center" col="3" display="text" text="미납"/>
+						<cell col="4" display="text" text="수납"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SEL" display="expr:iif(SEL&#32;==&#32;&apos;X&apos;,&#32;&apos;null&apos;,&#32;&apos;checkbox&apos;)" edit="expr:iif(SEL&#32;==&#32;&apos;X&apos;,&#32;&apos;none&apos;,&#32;&apos;checkbox&apos;)"/>
+						<cell align="center" col="1" colid="CFGYEAR" display="text" expr="CFGYEAR+&apos;년&apos;+IIF(cbxMonthGubun==&apos;YEAR&apos;,&apos;&apos;,IIF(cbxMonthGubun==&apos;HALF&apos;,IIF(CFSUNAPHALF==&apos;1&apos;,&apos;-상&apos;,&apos;-하&apos;),&#32;&apos;-&apos;+CFSUNAPMONTH+&apos;월&apos;))"/>
+						<cell align="center" col="2" colid="CFCCGUBUN" display="text" expr="IIF(CFCCGUBUN==&apos;0&apos;,&apos;회비&apos;,&apos;교육비&apos;)"/>
+						<cell align="right" col="3" colid="MINAPFEE" display="number"/>
+						<cell align="right" col="4" display="expr:iif(SUNAPFEE&#32;==&#32;0&#32;&amp;&amp;&#32;MINAPFEE&#32;==&#32;0&#32;&amp;&amp;&#32;REALSUNAPFEE&#32;==&#32;0,&#32;&apos;text&apos;,&#32;&apos;number&apos;)" expr="iif(SUNAPFEE&#32;==&#32;0&#32;&amp;&amp;&#32;MINAPFEE&#32;==&#32;0&#32;&amp;&amp;&#32;REALSUNAPFEE&#32;==&#32;0,&#32;&apos;면제&#32;&#32;&#32;&#32;&#32;&#32;&#32;&apos;,&#32;SUNAPFEE)"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AutoEnter="TRUE" BindDataset="ds_oSunap" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="452" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="228" Id="gdSunap" InputPanel="FALSE" Left="380" LineColor="default" OnCellPosChanged="gdSunap_OnCellPosChanged" Right="992" RowHeight="20" Style="sty_Grid" TabOrder="19" TabStop="true" Top="224" UseDBuff="true" UsePopupMenu="true" UserData="결제정보(POS)" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="612">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="106"/>
+						<col width="46"/>
+						<col width="44"/>
+						<col width="44"/>
+						<col width="76"/>
+						<col width="116"/>
+						<col width="54"/>
+						<col width="76"/>
+						<col width="78"/>
+						<col width="55"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="102"/>
+						<col width="296"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="년월"/>
+						<cell align="center" col="2" display="text" text="구분"/>
+						<cell col="3" display="text" text="결제"/>
+						<cell col="4" display="text" text="POS"/>
+						<cell col="5" display="text" text="결제구분"/>
+						<cell col="6" display="text" text="결제방법"/>
+						<cell col="7" display="text" text="금액"/>
+						<cell col="8" display="text" text="처리일자"/>
+						<cell col="9" display="text" text="정산일자"/>
+						<cell col="10" display="text" text="계산서"/>
+						<cell col="11" display="text" text="처리지부"/>
+						<cell col="12" display="text" text="처리자"/>
+						<cell col="13" display="text" text="관리지부"/>
+						<cell col="14" display="text" text="POS지부"/>
+						<cell col="15" display="text" text="주문번호"/>
+						<cell col="16" display="text" text="비고"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;USER6&quot;)' col="0" display="text" expr="ds_oSunap.GetRowCount()&#32;-&#32;currow" font='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;굴림,10,Italic&quot;)'/>
+						<cell align="center" bkcolor='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;USER6&quot;)' col="1" colid="SUNAPYEAR" display="text" font='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;굴림,10,Italic&quot;)'/>
+						<cell align="center" bkcolor='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;USER6&quot;)' col="2" colid="MEMBERGUBUNNM" display="text" font='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;굴림,10,Italic&quot;)'/>
+						<cell align="center" bkcolor='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;USER6&quot;)' col="3" colid="SETLMGUBUNNM" display="text" font='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;굴림,10,Italic&quot;)'/>
+						<cell align="center" bkcolor='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;USER6&quot;)' col="4" colid="PMRESULT" display="text" font='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;굴림,10,Italic&quot;)'/>
+						<cell align="center" bkcolor='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;USER6&quot;)' col="5" colid="CFGUBUN" display="text" font='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;굴림,10,Italic&quot;)'/>
+						<cell align="center" bkcolor='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;USER6&quot;)' col="6" colid="CFGUBUNCDNM" display="text" font='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;굴림,10,Italic&quot;)'/>
+						<cell align="right" bkcolor='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;USER6&quot;)' col="7" colid="SUNAPFEE" display="number" font='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;굴림,10,Italic&quot;)'/>
+						<cell align="center" bkcolor='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;USER6&quot;)' col="8" colid="PROCDATE" display="text" font='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;굴림,10,Italic&quot;)'/>
+						<cell align="center" bkcolor='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;USER6&quot;)' col="9" colid="PONYDATE" display="text" font='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;굴림,10,Italic&quot;)'/>
+						<cell align="center" bkcolor='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;USER6&quot;)' col="10" colid="PVINFO" display="text" font='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;굴림,10,Italic&quot;)'/>
+						<cell align="center" bkcolor='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;USER6&quot;)' col="11" colid="PROCGTNM" display="text" font='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;굴림,10,Italic&quot;)'/>
+						<cell align="center" bkcolor='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;USER6&quot;)' col="12" colid="CFREGNM" display="text" font='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;굴림,10,Italic&quot;)'/>
+						<cell align="center" bkcolor='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;USER6&quot;)' col="13" colid="MGGTNM" display="text" font='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;굴림,10,Italic&quot;)'/>
+						<cell align="center" bkcolor='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;USER6&quot;)' col="14" colid="POSGTNM" display="text" font='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;굴림,10,Italic&quot;)'/>
+						<cell align="center" bkcolor='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;USER6&quot;)' col="15" colid="PMPCORDERNO" display="text" font='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;굴림,10,Italic&quot;)'/>
+						<cell align="left" bkcolor='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;USER6&quot;)' col="16" colid="CFREMARK" display="text" font='expr:iif(SETLMGUBUN&#32;==&#32;&quot;1&quot;&#32;&amp;&amp;&#32;CFGUBUNCD&#32;&lt;&gt;&#32;&quot;31&quot;,&#32;&quot;굴림,10,Italic&quot;)'/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxMonthGubun" INDEX="1" InnerDataset="ds_oMonthGubun" Left="291" OnChanged="cbxMonthGubun_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="18" Top="227" Value="0" Width="78"></Combo>
+		<Static Align="Center" Height="20" Id="lbOverSunap" Left="128" Style="sty_Label" TabOrder="52" Text="과오납" Top="228" VAlign="Middle" Width="60"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnOverSunapAdd" ImageID="BTN_TEXT_01" Left="192" OnClick="btnOverSunapAdd_OnClick" Style="sty_Button" TabOrder="16" Text="+" ToolTipText="합격처리저장" Top="227" Width="31"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnOverSunapDel" ImageID="BTN_TEXT_01" Left="224" OnClick="btnOverSunapDel_OnClick" Style="sty_Button" TabOrder="17" Text="-" ToolTipText="합격처리저장" Top="227" Width="31"></Button>
+		<Static Align="Center" Height="20" Id="lbMinapAmount" Left="178" Style="sty_LabelStat" TabOrder="54" Text="미납금액" Top="432" VAlign="Middle" Width="92"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medMinapAmount" Left="273" Readonly="TRUE" Style="sty_Edit" TabOrder="53" Top="432" Value="0" Width="92"></MaskEdit>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edAddr2" ImeMode="native" Left="764" LeftMargin="2" Style="sty_Edit" TabOrder="55" Top="136" Width="228"></Edit>
+		<Static Align="Center" Height="20" Id="lbBarcode" Left="8" Style="sty_LabelGruopBox" TabOrder="56" Text="관리바코드" Top="36" UserData="S" VAlign="Middle" Width="72"></Static>
+		<Static Align="Center" Height="20" Id="lbMember" Left="380" Style="sty_Label" TabOrder="58" Text="고객구분" Top="112" VAlign="Middle" Width="60"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSunapPosInfo" ImageID="BTN_TEXT_05" Left="913" OnClick="btnSunapPosInfo_OnClick" Style="sty_Button" TabOrder="21" Text="상세정보" ToolTipText="합격처리저장" Top="199" Width="79"></Button>
+		<Static Align="Center" BKColor="user15" Height="92" Id="lbReady" Left="8" Style="sty_Label" TabOrder="59" Text="결&#13;&#10;제&#13;&#10;대&#13;&#10;기" Top="488" VAlign="Middle" Width="20" WordWrap="TRUE"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnRepay" ImageID="BTN_TEXT_07" Left="806" OnClick="btnRepay_OnClick" Style="sty_Button" TabOrder="20" Text="환불결제&#32;대기" ToolTipText="합격처리저장" Top="199" Width="105"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSunapReady" ImageID="BTN_TEXT_07" Left="155" OnClick="btnSunapReady_OnClick" Style="sty_Button" TabOrder="15" Text="수납결제&#32;대기" ToolTipText="합격처리저장" Top="187" Width="105"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnManagerNm" ImageID="BTN_SEARCH" Left="147" OnClick="btnManagerNm_OnClick" Style="sty_Button" TabOrder="60" Top="111" Transparent="TRUE" Width="22"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnBuildingNm" ImageID="BTN_SEARCH" Left="347" OnClick="btnBuildingNm_OnClick" Style="sty_Button" TabOrder="61" Top="87" Transparent="TRUE" Width="22"></Button>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medRegisterYear" Left="612" LeftMargin="2" Mask="####-##" Style="sty_Maskedit" TabOrder="62" Top="112" Type="STRING" Width="56"></MaskEdit>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medFeeYear" Left="764" LeftMargin="2" Mask="####-##" Style="sty_Maskedit" TabOrder="63" Top="112" Type="STRING" Width="56"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbOverBiz" Left="380" Style="sty_Label" TabOrder="64" Text="겸직여부" Top="160" VAlign="Middle" Width="60"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BKColor="user4" Border="Flat" Height="20" Id="medZipCd" Left="444" LeftMargin="2" Mask="######" Readonly="TRUE" Style="sty_ZipCodeReadOnly" TabOrder="65" Top="136" Type="STRING" Width="50"></MaskEdit>
+		<Static Align="Center" Height="20" Id="Static28" Left="392" Style="sty_LabelGruopBox" TabOrder="67" Text="고객&#32;정보" Top="64" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" BKColor="user15" Height="20" Id="Static12" Left="392" Style="sty_Label" TabOrder="68" Text="결제&#32;정보(POS)" Top="188" VAlign="Middle" Width="104" WordWrap="TRUE"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCustomerLink" ImageID="BTN_TEXT_07" Left="453" OnClick="btnCustomerLink_OnClick" Style="sty_Button" TabOrder="1" Text="고객&#32;정보&#32;관리" Top="4" Width="105"></Button>
+		<Static Align="Center" Height="20" Id="lbRegion" Left="380" Style="sty_Label" TabOrder="69" Text="지역" Top="88" VAlign="Middle" Width="60"></Static>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="760" Style="sty_Label" TabOrder="70" Text="세부직능" Top="88" VAlign="Middle" Width="60"></Static>
+		<Static Align="Center" Height="20" Id="lbJoinYear" Left="548" Style="sty_Label" TabOrder="71" Text="등록년월" Top="112" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edRegion" ImeMode="native" Left="444" LeftMargin="2" Style="sty_Edit" TabOrder="72" Top="88" Width="100"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edCourse" ImeMode="native" Left="824" LeftMargin="2" Style="sty_Edit" TabOrder="73" Top="88" Width="168"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edMember" ImeMode="native" Left="444" LeftMargin="2" Style="sty_Edit" TabOrder="74" Top="112" Width="56"></Edit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medSunapAmount" Left="72" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="75" Top="188" Value="0" Width="80"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbSunapAmount" Left="8" Style="sty_LabelStat" TabOrder="76" Text="결제금액" Top="188" VAlign="Middle" Width="60"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="411" OnChanged="cbxJibu_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="8" Top="35" Value="B" Width="82"></Combo>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="188" Style="sty_LabelGruopBox" TabOrder="77" Text="지부" Top="36" UserData="S" VAlign="Middle" Width="72"></Static>
+		<Static Align="Center" Height="20" Id="lbMgno" Left="496" Style="sty_LabelGruopBox" TabOrder="78" Text="관리번호" Top="36" UserData="S" VAlign="Middle" Width="72"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnManagerNo" ImageID="BTN_SEARCH" Left="347" OnClick="btnManagerNo_OnClick" Style="sty_Button" TabOrder="79" Top="111" Transparent="TRUE" Visible="FALSE" Width="22"></Button>
+		<Button BKColor="user17" ButtonStyle="TRUE" Cursor="HAND" Font="굴림,10,Bold" Height="64" Id="btnPos" Left="912" OnClick="btnPos_OnClick" Style="sty_Button" TabOrder="30" Text="결제&#13;&#10;(POS)" Top="516" Width="80"></Button>
+		<Button BKColor="user17" ButtonStyle="TRUE" Cursor="HAND" Font="굴림,10" Height="24" Id="btnPosDel" Left="912" OnClick="btnPosDel_OnClick" Style="sty_Button" TabOrder="29" Text="선택&#32;삭제" Top="488" Width="80"></Button>
+		<Static Align="Center" BKColor="user15" Height="20" Id="Static0" Left="20" Style="sty_Label" TabOrder="80" Text="수납/미납&#32;정보" Top="216" VAlign="Middle" Width="104" WordWrap="TRUE"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnMunje" ImageID="BTN_TEXT_07" Left="263" OnClick="btnMunje_OnClick" Style="sty_Button" TabOrder="31" Text="승계면제&#32;저장" ToolTipText="합격처리저장" Top="187" Width="105"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnChangeProcDate" ImageID="BTN_TEXT_06" Left="498" OnClick="btnChangeSunapInfo_OnClick" Style="sty_Button" TabOrder="24" Text="수납정보변경" Top="455" Transparent="TRUE" Width="92"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnProcRct" ImageID="BTN_TEXT_08" Left="592" OnClick="btnProcRct_OnClick" Style="sty_Button" TabOrder="25" Text="현금영수증&#32;처리" Top="455" Transparent="TRUE" Width="118"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnPrintReRct" ImageID="BTN_TEXT_06" Left="712" OnClick="btnPrintReRct_OnClick" Style="sty_Button" TabOrder="26" Text="영수증재발행" Top="455" Transparent="TRUE" Width="92"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnShowVirtualAccount" ImageID="BTN_TEXT_06" Left="404" OnClick="btnShowVirtualAccount_OnClick" Style="sty_Button" TabOrder="23" Text="가상계좌보기" Top="455" Transparent="TRUE" Width="92"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnPosResultList" ImageID="BTN_TEXT_08" Left="686" OnClick="btnPosResultList_OnClick" Style="sty_Button" TabOrder="22" Text="결제처리결과조회" Top="199" Transparent="TRUE" Width="118"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnPosvath" ImageID="BTN_TEXT_06" Left="901" OnClick="btnPrintEstimate_OnClick" Style="sty_Button" TabOrder="27" Text="부가세정보" Top="455" Transparent="TRUE" Width="92"></Button>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edOverBiz" ImeMode="native" Left="444" LeftMargin="2" Style="sty_Edit" TabOrder="82" Top="160" Width="56"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnOverBiz" ImageID="BTN_TEXT_05" Left="504" OnClick="btnOverBiz_OnClick" Style="sty_Button" TabOrder="83" Text="겸직현황" ToolTipText="합격처리저장" Top="159" Width="79"></Button>
+		<Static Align="Center" Height="20" Id="lbDelGubun" Left="592" Style="sty_Label" TabOrder="84" Text="삭제구분" Top="160" VAlign="Middle" Width="60"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radJibuGubun" INDEX="0" InnerDataset="ds_oJibuGubun" Left="264" LeftMargin="2" OnChanged="radJibuGubun_OnChanged" RightMargin="2" Style="sty_Radio" TabOrder="7" Top="36" Value="S" Width="144"></Radio>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edDelGubun" ImeMode="native" Left="656" LeftMargin="2" Style="sty_Edit" TabOrder="85" Top="160" Width="56"></Edit>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medDelDate" Left="716" LeftMargin="2" Mask="####-##-##" Style="sty_Maskedit" TabOrder="86" Top="160" Type="STRING" Width="80"></MaskEdit>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Height="20" Id="medBarcode" Left="84" LeftMargin="2" Mask="#############" OnCharChanged="medBarcode_OnCharChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medBarcode_OnKeyDown" OnKillFocus="medBarcode_OnKillFocus" Style="sty_Maskedit" TabOrder="6" Top="36" Type="STRING" Width="100"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="734" OnClick="lfn_Excel" Style="sty_Button" TabOrder="87" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbCourseGroup" Left="548" Style="sty_Label" TabOrder="88" Text="대표직능" Top="88" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edCourseGroup" ImeMode="native" Left="612" LeftMargin="2" Style="sty_Edit" TabOrder="89" Top="88" Width="144"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintGoji" ImageID="BTN_TEXT_07" Left="9" OnClick="btnPrintGoji_OnClick" Style="sty_Button" TabOrder="90" Text="고지서(신&#32;양식)" ToolTipText="합격처리저장" Top="455" Width="106"></Button>
+		<Static Align="Center" Height="20" Id="lbCloseDate" Left="8" Style="sty_Label" TabOrder="91" Text="마감일" Top="432" VAlign="Middle" Width="73"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calCloseDate" Left="83" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="92" Top="432" UserData="S" WeeksFont="돋음,9" Width="93"></Calendar>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnAllReady" ImageID="BTN_TEXT_12" Left="628" OnClick="btnAllReady_OnClick" Style="sty_Button" TabOrder="93" Text="대상물(업체)&#32;일괄&#32;수납" Top="35" Width="170"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnDel" ImageID="BTN_TEXT_05" Left="605" OnClick="btnDel_OnClick" Style="sty_Button" TabOrder="94" Text="결제삭제" ToolTipText="합격처리저장" Top="199" Visible="FALSE" Width="79"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button0" ImageID="BTN_TEXT_11" Left="208" OnClick="btnPrintAllReadyGoji_OnClick" Style="sty_Button" TabOrder="95" Text="수납대기&#32;일괄&#32;회비고지" ToolTipText="합격처리저장" Top="455" Visible="FALSE" Width="158"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintGojiImage" ImageID="BTN_TEXT_10" Left="223" OnClick="btnPrintGojiImage_OnClick" Style="sty_Button" TabOrder="96" Text="회비고지서(PDF용)" ToolTipText="합격처리저장" Top="455" Width="145"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnPrintReRctPDF" ImageID="BTN_TEXT_06" Left="807" OnClick="btnPrintReRctPDF_OnClick" Style="sty_Button" TabOrder="97" Text="영수증PDF" Top="455" Transparent="TRUE" Width="92"></Button>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edManagerNo" ImeMode="native" Left="236" LeftMargin="2" MaxLength="10" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edManagerNm_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="98" Top="112" Width="108"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnOldPrintGoji" ImageID="BTN_TEXT_07" Left="116" OnClick="btnOldPrintGoji_OnClick" OnKeyDown="edInstlrAddr1_OnKeyDown" Style="sty_Button" TabOrder="99" Text="고지서(구&#32;양식)" ToolTipText="합격처리저장" Top="455" Width="106"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust2010CustomerFeeManagement.xml
+ * 설명 : 회비/교육비 정보 관리
+ * 작성일 : 2009.12.01
+ * 작성자 : 김동현
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+var ls_MemberGubun = ""; // 회비/교육비 구분 [NULL:대기, 0:회비, 1:교육비]
+var ls_SetlmGubun = "0"; // 수납/환불 구분 [0:수납, 1:환불]
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+
+    gfn_Form_OnLoadCompletedCheck(obj);
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this, sFormUrl); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+    
+    if (gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "SM") {
+        btnDel.Visible = true;
+    }
+
+    // 공통 코드 조회
+    gfn_SearchAllJibu(cbxJibu, "Y", "선택"); // 지부 코드 조회
+
+    if (IsExistVar("sJibu") && IsExistVar("sCustNo")) {
+        cbxJibu.Value = sJibu;
+        medCustNo.Value = sCustNo;
+        lfn_Search();
+    } else if (IsExistVar("sCustMgno")) {
+         medBarcode.Value = sCustMgno;
+        lfn_Search();
+    } else {
+        lfn_Cancel();
+    }
+
+    medBarcode.SetFocus();
+    cbxJibu.Enable = false;
+    
+	// 콜센터 직원용 이면
+	if (gs_IsCallCenter == "Y") {
+		// 콜센터 Call ID 가져오기(Unique ID)
+		global.mnuLeft.lfn_CallUIDImport();
+	}
+}
+
+/**
+ * 폼 사이즈
+ */
+function Form_OnSize(obj,nCx,nCy,nState) {
+    if (gs_IsResizingForm == "Y") {
+        gdReady.Height = nCy - gdReady.Top - 8;
+        lbReady.Height = nCy - lbReady.Top - 8;
+        Shape2.Height = nCy - Shape2.Top - 4;
+        gdSunap.Width = nCx - gdSunap.Left - 8;
+        Shape3.Width = nCx - Shape3.Left - 4;
+    }
+}
+
+/**
+ * 버튼 실행 권한
+ */
+function lfn_SetFormAuth(bStatus) {
+
+    btnSunapReady.Enable = bStatus; //결제대기 버튼
+	btnOverSunapAdd.Enable = bStatus; //과오납 +
+	btnOverSunapDel.Enable = bStatus; //과오납 -
+	btnPos.Enable = bStatus; //결제(POS)버튼
+	btnRepay.Enable = bStatus; //환불 버튼
+	btnPosResultList.Enable = bStatus; //결제처리결과조회
+	btnShowVirtualAccount.Enable = bStatus; //가상계좌보기
+	btnChangeProcDate.Enable = bStatus; //처리일자변경
+	btnProcRct.Enable = bStatus; //현금영수증처리
+	btnPrintReRct.Enable = bStatus; //영수증재발행
+	
+	btnPrintReRctPDF.Enable = bStatus; //영수증PDF
+	btnPosvath.Enable = bStatus; //부가세정보
+	
+	btnChangeProcDate.Enable = bStatus; //수납정보변경
+	
+	btnMunje.Enable = bStatus; //승계면제
+
+    // 콜센터 직원 사용 이면
+	if (gs_IsCallCenter == "Y") {
+
+		btnToExcel.Enable = false; // 엑셀출력 버튼
+
+		btnPrintScreen.Enable = false; // 화면출력 버튼
+		
+	}
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 기본 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 조회
+ */
+function lfn_Search(obj) {
+
+    var sArg = "";
+    
+    var ls_HistoryArg = "";
+    
+    if (length(medBarcode.Value) < 1) {
+        if (length(medCustNo.Value) < 1 || length(cbxJibu.Value) < 1) {
+            return;
+        }
+    }
+
+    if (length(medBarcode.Value) >= 1) {
+
+        sArg = "CMGNO=" + quote(medBarcode.Value);
+		ls_HistoryArg = "고객관리바코드=" + medBarcode.Value;
+    } else {
+
+        sArg = "CGTMGNO=" + quote(cbxJibu.Value)
+            + " CNO=" + quote(medCustNo.Value);
+            
+        ls_HistoryArg = "지부=" + cbxJibu.text
+            + " 고객번호=" + medCustNo.Value;
+    }
+    
+    sArg += " FEEGUBUN=" + quote(cbxMonthGubun.Value);
+    
+    ls_HistoryArg += " 년도반기구분=" + cbxMonthGubun.Text;
+
+
+    // 조회이력을 저장한다.  
+                
+    gfn_InsertSearchPrintHistory(
+        "S"
+        , this.ID
+        , global.mnuLeft.cbxOpenForm.Text
+        , ls_HistoryArg
+    );
+    
+	// 콜센터 직원용 이면
+	if (gs_IsCallCenter == "Y") {
+		// 콜센터 직원 조회이력 저장
+		gfn_InsertCallCenterSearchPrintHistory(
+				"S"
+				, gs_CallCenterUID				, gds_OpenedForm.GetColumn(gds_OpenedForm.FindRow("MURL",this.ID),"MMENUID")
+				, this.ID				, global.mnuLeft.cbxOpenForm.Text				, ls_HistoryArg
+			);
+	}
+    lfn_init();
+    
+    tit_clearActionInfo();
+    tit_AddCsvSearchActionInfo("cust:searchCust2010Customer", false);
+    tit_callService(
+        ""
+        , ""
+        , "" // inDs
+        , "ds_oCustomer=ds_oCustomer"
+        , sArg
+        , "lfn_AfterSearch"
+        ,false
+        ,false
+        ,true
+    );
+    
+    tit_clearActionInfo();
+    tit_AddSearchActionInfo("cust:searchCust2010Sunap", false);
+    tit_AddSearchActionInfo("cust:searchCust2010Fee", false);
+    tit_AddSearchActionInfo("cust:searchCust2010Fee2", false);
+    tit_callService(
+        ""
+        , ""
+        , "" // inDs
+        , "ds_oSunap=ds_oSunap"
+            + " ds_oFee=ds_oFee"
+            + " ds_oFeeMonth=ds_oFee2"
+        , "CMGNO=" + quote(ds_oCustomer.GetColumn(0, "CMGNO"))
+            + " FEEGUBUN=" + quote(cbxMonthGubun.Value)
+            + " FEEGUBUN2='HALFMONTH'"
+        , "lfn_AfterSearch"
+        ,false
+        ,false
+        ,true
+    );
+
+    //과오납 체크
+    ds_iOverFee.Filter("CMGNO='" + ds_oCustomer.GetColumn(0, "CMGNO") + "'");
+    
+    if (ds_iOverFee.GetRowCount() > 0) {
+        cbxMonthGubun.Value = ds_iOverFee.GetColumn(0, "VIEWTYPE");
+    }
+    
+//    cbxMonthGubun_OnChanged(); //시작
+
+    medMinapAmount.Value = ds_oFee.Sum("MINAPFEE");
+    
+    for (var i=ds_iOverFee.GetRowCount()-1; i>=0; i--) {
+        ds_oFee.InsertRow(0);
+        ds_oFee.CopyRow(0, ds_iOverFee, i);
+    }
+    
+//    cbxMonthGubun_OnChanged(); //종료
+
+    if (ds_iReady.GetRowCount() > 0) {
+
+        if (ls_SetlmGubun == "0") { //수납 대기
+    
+            var sCheck = "";
+        
+            for (var i=0; i<ds_iReady.GetRowCount(); i++) {
+                if (ds_iReady.GetColumn(i, "CMGNO") == ds_oCustomer.GetColumn(0, "CMGNO")) {
+                    sCheck = split(ds_iReady.GetColumn(i, "CHECKDATA"), "|", "webstyle");
+                    cbxMonthGubun.Value = sCheck[0];
+                    lfn_SunapCheck(false);
+                    break;
+                }
+            }
+
+            for (var j=1; j<length(sCheck); j++) {
+                ds_oFee.SetColumn(sCheck[j], "SEL", "1");
+            }
+        } else if (ls_SetlmGubun == "1") {
+            lfn_SunapCheck(false);
+        }
+        
+    }
+        
+    if (ds_iOverFee.GetRowCount() > 0) { //과오납시 표현구분 disable
+        cbxMonthGubun.Enable = false;
+    }
+
+    ds_oSunap_OnRowPosChanged();
+}
+
+/*
+ * 기능 : 초기화
+ */
+function lfn_CancelConfirm(obj) {
+    if (!gfn_Confirm("결제대기를 포함한 모든 정보가 모두 초기화 됩니다.\n 초기화 하시겠습니까?")) {
+        return;
+    }
+	lfn_Cancel(obj);
+}
+
+
+/*
+ * 기능 : 취소
+ */
+function lfn_Cancel(obj) {
+
+    ds_iCustomerFee.ClearData();
+    ds_iReady.ClearData();
+    ds_iOverFee.ClearData();
+
+    medTotalAmount.Value = 0;
+    medTotalCnt.Value = 0;
+
+    medBarcode.Value = "";
+    medCustNo.Value = "";
+
+    lfn_init();
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 이벤트
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 소속지부 / 타지부 change
+ */
+function radJibuGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+
+    lfn_ChangeJibu();
+    medBarcode.Value = "";
+    medCustNo.Value = "";
+    lfn_init();
+
+}
+
+/**
+ * 소속지부 / 타지부 액션
+ */
+function lfn_ChangeJibu() {
+	if (radJibuGubun.Value = "T") {
+        radJibuGubun.BkColor = "red";
+        ds_oJibu.Filter("CD<>'" + gds_oUserInfo.GetColumn(0, "PDEPTCD") + "'");
+        cbxJibu.InnerDataset = "";
+        cbxJibu.InnerDataset = "ds_oJibu";
+        cbxJibu.Enable = true;
+	} else {
+        radJibuGubun.BkColor = "";
+        ds_oJibu.UnFilter();
+        cbxJibu.InnerDataset = "";
+        cbxJibu.InnerDataset = "ds_oJibu";
+        cbxJibu.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+        cbxJibu.Enable = false;
+	}
+}
+
+/**
+ * 바코드 값 변경
+ */
+function medBarcode_OnCharChanged(obj,strPreText,strPostText) {
+    medCustNo.Value = "";
+}
+
+/**
+ * 바코드 검색
+ */
+function medBarcode_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,LLParam,HLParam) {
+    if (nChar == 13) {
+        medBarcode.Value = lpad(medBarcode.Value, "0", 13);
+        lfn_Search();
+    }
+}
+
+/**
+ * 바코드 킬포커스
+ */
+function medBarcode_OnKillFocus(obj) {
+	medBarcode.Value = lpad(medBarcode.Value, "0", 13);
+	gfn_ComponentOnKillFocus(obj);
+}
+
+
+/**
+ * 지부 체인지
+ */
+function cbxJibu_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+	medBarcode.Value = "";
+	medCustNo.Value = "";
+}
+
+
+/**
+ * 고객번호 값 변경
+ */
+function medCustNo_OnCharChanged(obj,strPreText,strPostText) {
+    medBarcode.Value = "";
+}
+
+/**
+ * 고객번호 검색
+ */
+function medCustNo_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam) {
+    if (nChar == 13) {
+        medCustNo.Value = lpad(medCustNo.Value, "0", 6);
+        lfn_Search();
+    }
+}
+
+/**
+ * 고객번호 킬포커스
+ */
+function medCustNo_OnKillFocus(obj) {
+    medCustNo.Value = lpad(medCustNo.Value, "0", 6);
+    gfn_ComponentOnKillFocus(obj);
+}
+
+/**
+ * 대상물 검색
+ */
+function edBuildingNm_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,nLLParam,nHLParam) {
+    if (nChar == 117) {
+        btnBuildingNm_OnClick(obj);
+        return;
+    }
+    gfn_EnterNextFocus(obj,nChar,bShift,bCtrl, bAlt,nLLParam,nHLParam);
+}
+
+/**
+ * 선임자명 검색
+ */
+function edManagerNm_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam) {	
+    if (nChar == 117) {
+        btnManagerNm_OnClick(obj);
+        return;
+    }
+    gfn_EnterNextFocus(obj,nChar,bShift,bCtrl, bAlt,nLLParam,nHLParam);
+}
+
+/**
+ * 선임자 주민번호 검색
+ */
+function medManagerNo_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam) {
+    if (nChar == 117) {
+        btnManagerNo_OnClick(obj);
+        return;
+    }
+    gfn_EnterNextFocus(obj,nChar,bShift,bCtrl, bAlt,nLLParam,nHLParam);
+}
+
+/**
+ * 반기/월 변경
+ */
+function cbxMonthGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+
+    if (ds_oCustomer.GetRowCount() < 1) {
+        return;
+    }
+
+    ds_oFee.ClearData();
+    ds_oFeeMonth.ClearData();
+    
+    tit_clearActionInfo();
+    tit_AddSearchActionInfo("cust:searchCust2010Fee", false);
+    tit_AddSearchActionInfo("cust:searchCust2010Fee2", false);
+    tit_callService(
+        ""
+        , ""
+        , "" // inDs
+        , "ds_oFee=ds_oFee"
+            + " ds_oFeeMonth=ds_oFee2"
+        , "CMGNO=" + quote(ds_oCustomer.GetColumn(0, "CMGNO"))
+            + " FEEGUBUN=" + quote(cbxMonthGubun.Value)
+            + " FEEGUBUN2='HALFMONTH'"
+        , "lfn_AfterCall"
+        ,false
+        ,false
+        ,true
+    );
+
+    medMinapAmount.Value = ds_oFee.Sum("MINAPFEE");
+    
+    for (var i=ds_iOverFee.GetRowCount()-1; i>=0; i--) {
+        ds_oFee.InsertRow(0);
+        ds_oFee.CopyRow(0, ds_iOverFee, i);
+    }
+    
+}
+
+/**
+ * 수납/미납 정보 체크
+ */
+function gdFee_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+	var check = gdFee.GetCellProp("head", 0, "display");
+	if (check == "checkbox") {
+        lfn_GridCheck(obj,nCell,nX,nY,nPivotIndex);
+    }
+	
+}
+
+/**
+ * 수납/미납 정보에서 체크 후 결제 금액 계산
+ */
+function ds_oFee_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex) {
+
+    medSunapAmount.Value = ds_oFee.Sum("iif(SEL=='1', MINAPFEE, 0)");
+    ls_MemberGubun = ds_oFee.GetColumn(nRow, "CFCCGUBUN");
+    
+    if (cbxMonthGubun.Value == "YEAR") {
+
+        ds_oFeeMonth.Filter("CFGYEAR='" + ds_oFee.GetColumn(nRow, "CFGYEAR") + "'");
+        for (var i=0; i<ds_oFeeMonth.GetRowCount(); i++) {
+            if (ds_oFeeMonth.GetColumn(i, "SEL") <> "X") {
+                ds_oFeeMonth.SetColumn(i, "SEL", ds_oFee.GetColumn(nRow, "SEL"));
+            }
+        }
+        ds_oFeeMonth.UnFilter();
+        
+    } else if (cbxMonthGubun.Value == "HALF") {
+
+        ds_oFeeMonth.Filter("CFGYEAR='" + ds_oFee.GetColumn(nRow, "CFGYEAR") + "' && CFSUNAPHALF='" + ds_oFee.GetColumn(nRow, "CFSUNAPHALF") + "'");
+        for (var i=0; i<ds_oFeeMonth.GetRowCount(); i++) {
+            if (ds_oFeeMonth.GetColumn(i, "SEL") <> "X") {
+                ds_oFeeMonth.SetColumn(i, "SEL", ds_oFee.GetColumn(nRow, "SEL"));
+            }
+        }
+        ds_oFeeMonth.UnFilter();
+
+    } else {
+        ds_oFeeMonth.SetColumn(nRow, "SEL", ds_oFee.GetColumn(nRow, "SEL"));
+    }
+
+    if (ds_iOverFee.GetRowCount() >= 1) { //과오납이 있을 경우
+        ds_iOverFee.SetColumn(nRow, "SEL", ds_oFee.GetColumn(nRow, "SEL"));
+    }
+
+}
+
+/**
+ * 결제정보 선택
+ */
+function ds_oSunap_OnRowPosChanged(obj,nOldRow,nRow) {
+
+/*
+    10	방문현금[직납]
+    11	방문카드[카드]
+    12	방문현금(영)[직납]
+    13	방문가상계좌[데이콤]
+    14	방문무통장[은납]
+    15	방문가상계좌현금(영)[데이콤]
+    16	방문무통장현금(영)[은납]
+    17	지로
+    18	지로현금영수증
+    21	ⓘ카드[카드]
+    22	ⓘ현금(영)[직납]
+    23	ⓘ가상계좌[데이콤]
+    24	ⓘ무통장[직납]
+    25	ⓘ가상계좌현금(영)[데이콤]
+    26	ⓘ무통장현금(영)[은납]
+*/
+
+    //부가세 정보
+    if (ds_oSunap.GetColumn(ds_oSunap.currow, "PVINFO") == "발행") {
+        btnPosvath.Enable = true;
+    } else {
+        btnPosvath.Enable = false;
+    }
+    
+    //환불대기
+    if (ds_iReady.GetRowCount() < 1
+        && (ds_oSunap.GetColumn(ds_oSunap.currow, "SETLMGUBUN") == "0"
+            || left(ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUNCD"), 1) == "3"
+            )
+        && (ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUN") == "수납"
+            || ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUN") == "회계수납")
+        ) {
+		if (ms_FormAuth == "W") { // 쓰기 권한이면
+			btnRepay.Enable = true;
+			
+		}
+
+    } else {
+        btnRepay.Enable = false;
+    }
+
+
+	switch (ds_oSunap.GetColumn(nRow, "CFGUBUNCD")) {
+	
+        case "10": case "14": case "17": case "24": //현금, 무통장, 지로
+            btnPosResultList.Enable = false; //결제결과조회
+            //btnShowVirtualAccount.Enable = false; //가상계좌보기
+			if (ms_FormAuth == "W") { // 쓰기 권한이면
+			
+				btnChangeProcDate.Enable = true; //수납정보변경
+				btnProcRct.Enable = true; //현금영수증 처리
+			} else {
+			
+				// 콜센터 직원 사용 이면
+				if (gs_IsCallCenter == "Y") {
+				
+					btnProcRct.Enable = false; //현금영수증 처리
+					
+				} else {
+				
+					btnProcRct.Enable = true; //현금영수증 처리
+				}
+			
+			}
+
+            btnPrintReRct.Enable = true; //영수증 재발행
+            
+            btnPrintReRctPDF.Enable = true; //영수증PDF
+            btnDel.Enable = true; //결제삭제
+            
+            btnRepay.Text = "환불결제 대기";
+            btnProcRct.Text = "현금영수증 처리";
+            break;
+
+        case "11": case "21": //카드
+            btnPosResultList.Enable = true; //결제결과조회
+            //btnShowVirtualAccount.Enable = false; //가상계좌보기
+			if (ms_FormAuth == "W") { // 쓰기 권한이면
+
+				btnChangeProcDate.Enable = true; //수납정보변경	
+				btnProcRct.Enable = false; //현금영수증 처리
+            
+            } else {
+            
+				btnProcRct.Enable = false; //현금영수증 처리
+            			}
+						
+            btnPrintReRct.Enable = true; //영수증 재발행
+            
+            btnPrintReRctPDF.Enable = true; //영수증PDF
+            btnDel.Enable = false; //결제삭제
+                        
+            btnRepay.Text = "환불결제 대기";
+            btnProcRct.Text = "현금영수증 처리";
+            break;
+
+        case "12": case "16": case "18": case "22": case "26": //현금영수증
+            btnPosResultList.Enable = true; //결제결과조회
+            //btnShowVirtualAccount.Enable = false; //가상계좌보기
+			if (ms_FormAuth == "W") { // 쓰기 권한이면
+			
+				btnChangeProcDate.Enable = true; //수납정보변경	
+				btnProcRct.Enable = true; //현금영수증 처리
+			} else {
+			
+				// 콜센터 직원 사용 이면
+				if (gs_IsCallCenter == "Y") {
+				
+					btnProcRct.Enable = false; //현금영수증 처리
+					
+				} else {
+				
+					btnProcRct.Enable = true; //현금영수증 처리
+				}
+				
+			}
+			
+            btnPrintReRct.Enable = true; //영수증 재발행
+            
+            btnPrintReRctPDF.Enable = true; //영수증PDF
+            btnDel.Enable = false; //결제삭제
+
+            btnRepay.Text = "환불결제 대기";
+            btnProcRct.Text = "현금영수증 취소";
+            break;
+
+        case "13": case "23": //가상계좌
+            btnPosResultList.Enable = true; //결제결과조회
+            //btnShowVirtualAccount.Enable = true; //가상계좌보기
+            
+			if (ms_FormAuth == "W") { // 쓰기 권한이면
+				btnChangeProcDate.Enable = true; //수납정보변경
+				
+			}
+            if (ds_oSunap.GetColumn(ds_oSunap.currow, "SETLMGUBUN") == "0") {
+				if (ms_FormAuth == "W") { // 쓰기 권한이면
+
+					btnProcRct.Enable = true; //현금영수증 처리
+					
+				} else {
+				
+					// 콜센터 직원 사용 이면
+					if (gs_IsCallCenter == "Y") {
+					
+						btnProcRct.Enable = false; //현금영수증 처리
+						
+					} else {
+					
+						btnProcRct.Enable = true; //현금영수증 처리
+					}
+				
+				}
+                btnPrintReRct.Enable =  true; //영수증 재발행
+                
+                btnPrintReRctPDF.Enable = true; //영수증PDF
+            } else {
+            
+				if (ms_FormAuth == "W") { // 쓰기 권한이면
+					btnProcRct.Enable = false; //현금영수증 처리
+					
+				} else {
+				
+					btnProcRct.Enable = false; //현금영수증 처리
+				
+				}
+                btnPrintReRct.Enable =  false; //영수증 재발행
+                
+                btnPrintReRctPDF.Enable = false; //영수증PDF
+            }
+            btnDel.Enable = true; //결제삭제
+            
+            btnRepay.Text = "환불결제 대기";
+            btnProcRct.Text = "현금영수증 처리";
+
+            break;
+        
+        case "15": case "25": //가상계좌 현금영수증
+            btnPosResultList.Enable = true; //결제결과조회
+            //btnShowVirtualAccount.Enable = true; //가상계좌보기
+            
+			if (ms_FormAuth == "W") { // 쓰기 권한이면
+				btnChangeProcDate.Enable = true; //수납정보변경
+				
+			}
+            if (ds_oSunap.GetColumn(ds_oSunap.currow, "SETLMGUBUN") == "0") {
+				if (ms_FormAuth == "W") { // 쓰기 권한이면
+
+					btnProcRct.Enable = true; //현금영수증 처리
+				
+				} else {
+				
+					// 콜센터 직원 사용 이면
+					if (gs_IsCallCenter == "Y") {
+					
+						btnProcRct.Enable = false; //현금영수증 처리
+						
+					} else {
+					
+						btnProcRct.Enable = true; //현금영수증 처리
+					}
+					
+				}
+                btnPrintReRct.Enable =  true; //영수증 재발행
+                
+                btnPrintReRctPDF.Enable = true; //영수증PDF
+            } else {
+				if (ms_FormAuth == "W") { // 쓰기 권한이면
+
+					btnProcRct.Enable = false; //현금영수증 처리
+					
+				} else {
+				
+					btnProcRct.Enable = false; //현금영수증 처리
+					
+				}
+                btnPrintReRct.Enable =  false; //영수증 재발행
+                
+                btnPrintReRctPDF.Enable = false; //영수증PDF
+            }
+            btnDel.Enable = false; //결제삭제
+            
+            btnRepay.Text = "환불결제 대기";
+            btnProcRct.Text = "현금영수증 취소";
+            break;
+
+        case "30": //겸직면제
+            btnPosResultList.Enable = false; //결제결과조회
+            //btnShowVirtualAccount.Enable = false; //가상계좌보기
+			if (ms_FormAuth == "W") { // 쓰기 권한이면
+
+				btnChangeProcDate.Enable = false; //수납정보변경	
+				btnProcRct.Enable = false; //현금영수증 처리
+			} else {
+			
+				btnChangeProcDate.Enable = false; //수납정보변경	
+				btnProcRct.Enable = false; //현금영수증 처리			
+			}
+			
+            btnPrintReRct.Enable = false; //영수증 재발행
+            
+            btnPrintReRctPDF.Enable = false; //영수증PDF
+            btnDel.Enable = true; //결제삭제
+            
+            btnRepay.Text = "겸직면제 취소";
+            btnProcRct.Text = "현금영수증 처리";
+            break;
+
+        case "31": //승계면제
+            btnPosResultList.Enable = false; //결제결과조회
+            //btnShowVirtualAccount.Enable = false; //가상계좌보기
+			if (ms_FormAuth == "W") { // 쓰기 권한이면
+
+				btnChangeProcDate.Enable = false; //수납정보변경	
+				btnProcRct.Enable = false; //현금영수증 처리
+			} else {
+
+				btnChangeProcDate.Enable = false; //수납정보변경	
+				btnProcRct.Enable = false; //현금영수증 처리			
+			
+			}
+			
+            btnPrintReRct.Enable = false; //영수증 재발행
+            
+            btnPrintReRctPDF.Enable = false; //영수증PDF
+            btnDel.Enable = true; //결제삭제
+            
+            btnRepay.Text = "승계면제 취소";
+            btnProcRct.Text = "현금영수증 처리";
+            break;
+        
+	}
+
+	// 미입금일 경우 처리
+	if (ds_oSunap.GetColumn(nRow, "SETLMGUBUN") == "1") {
+
+		btnProcRct.Enable = false; //현금영수증 처리
+		btnPrintReRct.Enable = false; //영수증 재발행
+		
+		btnPrintReRctPDF.Enable = false; //영수증PDF
+		btnDel.Enable = true; //결제삭제	
+	}
+	
+	// POSPRINTM - PMRESUTL : 0 일 경우, 즉 결재실패일 경우 처리 
+	if (ds_oSunap.GetColumn(nRow, "PMRESULT") == "미승인") {
+
+		btnProcRct.Enable = false; //현금영수증 처리
+		btnPrintReRct.Enable = false; //영수증 재발행
+		
+		btnPrintReRctPDF.Enable = false; //영수증PDF
+	}	
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+// 처리 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 고객 정보 관리 링크
+ */
+function btnCustomerLink_OnClick(obj) {
+
+	//var ArrMenuInfo = gfn_SearchMenuInfo(iif(gs_SystemGubun=="crs","crs","cust"), "cust::frmcust0010MCustomerManagement.xml");	//메뉴정보조회	var ArrMenuInfo = "";
+	if (ls_SystemGubun == "cust") {
+		ArrMenuInfo = gfn_SearchMenuInfo("cust", "cust::frmcust0010MCustomerManagement.xml");	//메뉴정보조회
+	} else if (ls_SystemGubun == "crs") {
+		ArrMenuInfo = gfn_SearchMenuInfo("crs", "cust::frmcust0010MCustomerManagement.xml");	//메뉴정보조회
+	} else if (ls_SystemGubun == "outerbiz") {
+		ArrMenuInfo = gfn_SearchMenuInfo("outerbiz", "outerbiz::frmcust0010MCustomerManagement.xml");	//메뉴정보조회
+	}
+
+	if(length(ArrMenuInfo) > 0 ) {
+		var sArg = "sJibu=" + quote(ds_oCustomer.GetColumn(0, "CGTMGNO"))
+        + " sCustNo=" + quote(ds_oCustomer.GetColumn(0, "CNO"));
+		
+		ls_SystemGubun = arrMenuInfo[7];						//"cust";
+		gs_SystemMenuId = arrMenuInfo[5];						//"0000000254";
+		global.mnuLeft.tabMenu.tabpgMenu.Text = arrMenuInfo[6];	//"고객관리";
+		var ls_MenuId = arrMenuInfo[0];							//"0000000273";
+		var ls_MenuTitle = arrMenuInfo[1];						//"고객정보관리";
+		var ls_MenuUrl = arrMenuInfo[2];						//"cust::frmcust0010MCustomerManagement.xml";
+		
+		global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", ls_SystemGubun);
+		if (ls_SystemGubun == "outerbiz") {
+			gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId, sArg); 
+		} else {
+			gfn_OpenLinkChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId, sArg); 
+		}
+	} else {
+		gfn_Alert("해당 메뉴를 찾을 수 없습니다.");
+	}
+
+}
+
+/**
+ * 대상물(업체) 일괄 수납
+ */
+function btnAllReady_OnClick(obj) {
+
+    var vRow = 0;
+    var vArg = "sGtmgno=" + quote(cbxJibu.Value);
+    var aCmgno = Dialog("cust::frmcust2017PSearchBuilding.xml", vArg, 600, 312, "", -1, -1);
+    
+    tit_clearActionInfo();
+    tit_AddSearchActionInfo("cust:searchCust2010Customer", false);
+    tit_AddSearchActionInfo("cust:searchCust2010Fee", false);
+    tit_AddSearchActionInfo("cust:searchCust2010Fee2", false);
+
+    gdFee.Redraw = false;
+
+    for (var i=0; i<length(aCmgno); i++) {
+
+        medSunapAmount.Value = 0;  // 결재 금액을 체크하여 수납대기를 넣기 때문에 일괄 금액을 초기화 함
+
+        ds_oCustomer.ClearData();
+        ds_oFee.ClearData();
+        ds_oFeeMonth.ClearData();
+        
+        tit_callService(
+            ""
+            , ""
+            , "" // inDs
+            , "ds_oCustomer=ds_oCustomer"
+                + " ds_oFee=ds_oFee"
+                + " ds_oFeeMonth=ds_oFee2"
+            , "CMGNO=" + quote(aCmgno[i])
+                + " FEEGUBUN='YEAR'"
+                + " FEEGUBUN2='HALFMONTH'"
+            , "lfn_AfterAll"
+            ,false
+            ,false
+            ,true
+        );
+        
+    }
+
+    ds_oCustomer.ClearData();
+    ds_oFee.ClearData();
+    ds_oFeeMonth.ClearData();
+        
+    gdFee.Redraw = true;
+
+	medTotalCnt.Value = ds_iReady.GetRowCount();
+	medTotalAmount.Value = ds_iReady.Sum("CFPROCAMOUNT");
+
+    lfn_Search();
+
+}
+
+
+/**
+ * 대상물 조회
+ */
+function btnBuildingNm_OnClick(obj) {
+    var arrRet = lfn_SearchGroup(cbxJibu.Value, "1", edBuildingNm.Text);
+    if (length(arrRet) >= 2) {
+        medBarcode.Value = "";
+        cbxJibu.Value = arrRet[0];
+        medCustNo.Value = arrRet[1];
+        lfn_Search();
+    }
+}
+
+/**
+ * 선임자 성명 조회
+ */
+function btnManagerNm_OnClick(obj) {
+	var arrRet = lfn_SearchGroup(cbxJibu.Value, "5", edManagerNm.Text);
+    if (length(arrRet) >= 2) {
+        medBarcode.Value = "";
+        cbxJibu.Value = arrRet[0];
+        medCustNo.Value = arrRet[1];
+        lfn_Search();
+    }
+}
+
+/**
+ * 선임자 주민번호 조회
+ */
+function btnManagerNo_OnClick(obj) {
+	var arrRet = lfn_SearchGroup(cbxJibu.Value, "6", medManagerNo.Value);
+    if (length(arrRet) >= 2) {
+        medBarcode.Value = "";
+        cbxJibu.Value = arrRet[0];
+        medCustNo.Value = arrRet[1];
+        lfn_Search();
+    }
+}
+
+/**
+ * 겸직 현황
+ */
+function btnOverBiz_OnClick(obj){
+
+    var sArg = "sCmgno=" + quote(ds_oCustomer.GetColumn(0, "CMGNO"));
+        
+    var retDlg = Dialog("cust::frmcust0014POverStatus.xml", sArg, 724, 238, "", -1, -1);
+
+}
+
+/**
+ * 수납 상세 정보
+ */
+function btnSunapPosInfo_OnClick(obj) {
+
+    if (ds_oSunap.GetRowCount() < 1
+        || gfn_IsNull(ds_oSunap.GetColumn(ds_oSunap.currow, "PMYEAR"))
+        || gfn_IsNull(ds_oSunap.GetColumn(ds_oSunap.currow, "PMMGNO"))) {
+        gfn_Alert("결제정보가 없습니다.");
+        return;
+    }
+
+    var sArg = "sPmYear=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "PMYEAR"))
+        + " sPmMgno=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "PMMGNO"))
+        + " sGubun=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUN"))
+    ;
+
+    var retDlg = Dialog(ls_Prefix + "::frmcust2011PCustomerSunapInfo.xml", sArg, 700, 400, "", -1, -1);
+}
+
+/**
+ * 결제 대기
+ */
+function btnSunapReady_OnClick(obj) {
+
+    if (medSunapAmount.Value < 1) {
+        gfn_Alert("결제 대상이 없습니다.");
+        return;
+    }
+
+    if (ds_iReady.GetRowCount() >= 1 
+        && ds_iReady.GetColumn(0, "CFMEMBERGUBUN") <> ds_oCustomer.GetColumn(0, "CSTATUSGUBUN")) {
+        
+        var nMsg = iif(ds_iReady.GetColumn(0, "CFMEMBERGUBUN")=="0", "회비", "교육비") + " 결제 대기중입니다."
+            + "\n" + iif(ds_oCustomer.GetColumn(0, "CSTATUSGUBUN")=="0", "회비", "교육비") + "를 같이 결제할 수 없습니다.";
+        
+        gfn_Alert(nMsg);
+        return;
+    }
+
+    if (ds_iReady.GetRowCount() >= 1 
+        && ds_iReady.GetColumn(0, "CFMGGTMGNO") <> ds_oCustomer.GetColumn(0, "CGTMGNO")) {
+        
+        gfn_Alert("현재 결제대기의 지부와 다른 지부입니다.\n따로 수납하시거나 결제대기를 삭제 후 수납하여 주시기 바랍니다.");
+        return;
+    }
+
+    ls_SetlmGubun = "0"; //수납대기 구분 0:수납대기
+
+    var sCheck = cbxMonthGubun.Value;
+
+    ds_iReady.InsertRow(0);
+    ds_iReady.SetColumn(0, "SEL", "0");
+    ds_iReady.SetColumn(0, "CFGUBUN", "0");
+	ds_iReady.SetColumn(0, "CMGNO", ds_oCustomer.GetColumn(0, "CMGNO"));
+	ds_iReady.SetColumn(0, "CFMGGTMGNO", ds_oCustomer.GetColumn(0, "CGTMGNO"));
+	ds_iReady.SetColumn(0, "CNO", ds_oCustomer.GetColumn(0, "CNO"));
+	ds_iReady.SetColumn(0, "CREGCD", lfn_GetRegion(ds_oCustomer.GetColumn(0, "CGTMGNO"), ds_oCustomer.GetColumn(0, "CREGCD")));
+	ds_iReady.SetColumn(0, "CCOURSECD", ds_oCustomer.GetColumn(0, "CCOURSECD"));
+	ds_iReady.SetColumn(0, "CFMEMBERGUBUN", ls_MemberGubun);
+	ds_iReady.SetColumn(0, "BNM", ds_oCustomer.GetColumn(0, "BNM"));
+	ds_iReady.SetColumn(0, "FMNM", ds_oCustomer.GetColumn(0, "FMNM"));
+	ds_iReady.SetColumn(0, "CFPROCAMOUNT", medSunapAmount.Value);
+	ds_iReady.SetColumn(0, "CFPROCDATE", left(getDate(), 8));
+	ds_iReady.SetColumn(0, "CFREMARK", edRemark.Text);
+	ds_iReady.SetColumn(0, "CFMGGTNM", lfn_GetJibu(ds_oCustomer.GetColumn(0, "CGTMGNO")));
+	ds_iReady.SetColumn(0, "CFMEMBERNM", iif(ls_MemberGubun == "0", "회원", "비회원"));
+	ds_iReady.SetColumn(0, "CCOURSENM", lfn_GetCourseNick(ds_oCustomer.GetColumn(0, "CCOURSECD")));
+	
+	for (var i=0; i<ds_oFee.GetRowCount(); i++) {
+        if (ds_oFee.GetColumn(i, "SEL") == "1") {
+            sCheck += "|" + i;
+        }
+	}
+
+	ds_iReady.SetColumn(0, "CHECKDATA", sCheck); // 체크 row를 알기 위한 데이터
+
+    ds_oFeeMonth.Filter("SEL='1'");
+    for (var i=0; i<ds_oFeeMonth.GetRowCount(); i++) {
+        lfn_SetCustomerFee(i, "01");
+    }
+
+    ds_oFeeMonth.UnFilter();
+    
+    ds_iOverFee.Filter("CMGNO='" + ds_oCustomer.GetColumn(0, "CMGNO") + "' && SEL='1'");
+    for (var i=ds_iOverFee.GetRowCount()-1; i>=0; i--) {
+    
+        lfn_SetCustomerOverFee(i, cbxMonthGubun.Value); //과오납 set
+    }
+    ds_iOverFee.UnFilter();
+    //alert(ds_iCustomerfee.SaveXML());    
+    lfn_SunapCheck(false);
+    
+	medTotalCnt.Value = ds_iReady.GetRowCount();
+	medTotalAmount.Value = ds_iReady.Sum("CFPROCAMOUNT");
+
+}
+
+/**
+ * 승계면제
+ */
+function btnMunje_OnClick(obj) {
+var sBNM = "";
+
+    if (medSunapAmount.Value < 1) {
+        gfn_Alert("결제 대상이 없습니다.");
+        return;
+    }
+    
+    if (!gfn_Confirm("승계면제를 하시겠습니까?")) {
+        return;
+    }
+
+    ds_oFeeMonth.Filter("SEL='1'");
+    for (var i=0; i<ds_oFeeMonth.GetRowCount(); i++) {
+        lfn_SetCustomerFee(i, "01");
+    }
+    ds_oFeeMonth.UnFilter();
+    
+    for (var i=ds_iOverFee.GetRowCount()-1; i>=0; i--) {
+        lfn_SetCustomerOverFee(i, cbxMonthGubun.Value); //과오납 set
+    }
+
+    for (var i=0; i<ds_iCustomerFee.GetRowCount(); i++) {
+        ds_iCustomerFee.SetColumn(i, "CFGUBUNCD", "31");
+        ds_iCustomerFee.SetColumn(i, "CFMGGTMGNO", ds_oCustomer.GetColumn(0, "CGTMGNO"));
+        ds_iCustomerFee.SetColumn(i, "CFPROCAMOUNT", "0");
+        ds_iCustomerFee.SetColumn(i, "CFPROCDATE", left(getDate(), 8));
+        ds_iCustomerFee.SetColumn(i, "CFGROUPMGNO", getDate() + gds_oUserInfo.GetColumn(0, "PSABUN") + ds_oCustomer.GetColumn(0, "CMGNO"));
+        
+        ds_iCustomerFee.SetColumn(i, "CFSETLMGUBUN", "0");   //  결재로 처리 [20100625 
+        
+        ds_iCustomerFee.SetColumn(i, "CFACTIVEGUBUN", "0");   //  결재로 처리 [20100625 
+    }
+
+
+	if (ds_oCustomer.GetColumn(0, "CCOURSECD") == "61") {   // 개인회원이면 성명
+		sBNM = ds_oCustomer.GetColumn(0, "FMNM");
+	} else {  // 다른 직능이면 업체명
+		sBNM = ds_oCustomer.GetColumn(0, "BNM");
+	}
+    
+    // 가상계좌 정보 갱신
+	ds_ioVirtualAccoutAllocation.ClearData();
+	lfn_VirtualAccoutAllocation(ds_oCustomer.GetColumn(0, "CMGNO"), sBNM, ds_oCustomer.GetColumn(0, "CGTMGNO"));
+
+    tit_clearActionInfo();
+    tit_addMultiActionInfo("cust:insertCust2020CustomerFee", "", 0, "", "N");	tit_addSingleActionInfo("cust:executeCust0010VirtualAccoutAllocation", "", 0, "");
+	
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iCustomerFee=ds_iCustomerFee"
+         + " ds_iVirtualAccoutAllocation=ds_ioVirtualAccoutAllocation"
+        ,""
+        ,"MUNJE='Y'"
+        ,"lfn_AfterCall"
+        ,false
+        ,false
+        ,true
+    );
+
+    var sMgno = medBarcode.Value;
+    lfn_Cancel();
+    medBarcode.Value = sMgno;
+    lfn_Search();
+
+}
+
+/**
+ * 결제 삭제
+ */
+function btnDel_OnClick(obj) {
+var sBNM = "";
+    if (ds_oSunap.GetRowCount() < 1
+        || gfn_IsNull(ds_oSunap.GetColumn(ds_oSunap.currow, "PMYEAR"))
+        || gfn_IsNull(ds_oSunap.GetColumn(ds_oSunap.currow, "PMMGNO"))) {
+        gfn_Alert("결제정보가 없습니다.");
+        return;
+    }
+            
+    if (!gfn_confirm("결제를 삭제 하시겠습니까?")) {
+        return;
+    }
+
+	if (ds_oCustomer.GetColumn(0, "CCOURSECD") == "61") {   // 개인회원이면 성명
+		sBNM = ds_oCustomer.GetColumn(0, "FMNM");
+	} else {  // 다른 직능이면 업체명
+		sBNM = ds_oCustomer.GetColumn(0, "BNM");
+	}
+	
+	// 가상계좌 정보 갱신
+	ds_ioVirtualAccoutAllocation.ClearData();
+	lfn_VirtualAccoutAllocation(ds_oCustomer.GetColumn(0, "CMGNO"), sBNM, ds_oCustomer.GetColumn(0, "CGTMGNO"));
+
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("cust:deleteCust2010CustomerFee", "", 0, "");	tit_addSingleActionInfo("cust:executeCust0010VirtualAccoutAllocation", "", 0, "");
+	
+    tit_callService(
+        ""
+        ,""
+        ," ds_iVirtualAccoutAllocation=ds_ioVirtualAccoutAllocation" // inDs
+        ,""	// outDs
+        ,"SPMYEAR=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "PMYEAR"))
+            + " SPMMGNO=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "PMMGNO"))
+        ,"lfn_AfterDelete"
+        ,false
+    );
+}
+
+/**
+ * 삭제 TRANSACTION 처리 후
+ */
+function lfn_AfterDelete(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return "Transaction Error!";
+    }
+    
+    gfn_Alert("삭제가 완료 되었습니다.");
+    lfn_Search();
+}
+
+/**
+ * 환불 대기
+ */
+function btnRepay_OnClick(obj) {
+var sBNM ="";
+    switch (ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUNCD")) {
+        case "30": //겸직면제
+        case "31": //승계면제
+
+            if (!gfn_Confirm(lfn_GetSetlm(ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUNCD")) + "를 취소 하시겠습니까?")) {
+                return;
+            }
+            
+            ds_iMunjeCancel.ClearData();            ds_iMunjeCancel.InsertRow(0);            ds_iMunjeCancel.SetColumn(0, "CFGROUPMGNO", ds_oSunap.GetColumn(ds_oSunap.currow, "CFGROUPMGNO"));            ds_iMunjeCancel.SetColumn(0, "CFCANCELGUBUN", "1");            ds_iMunjeCancel.SetColumn(0, "CFCANCELDATE", left(getDate(), 8));            ds_iMunjeCancel.SetColumn(0, "CFCANCELSABUN", gds_oUserInfo.GetColumn(0, "PSABUN"));            ds_iMunjeCancel.SetColumn(0, "CFACTIVEGUBUN", "1");		
+			if (ds_oCustomer.GetColumn(0, "CCOURSECD") == "61") {   // 개인회원이면 성명
+				sBNM = ds_oCustomer.GetColumn(0, "FMNM");
+			} else {  // 다른 직능이면 업체명
+				sBNM = ds_oCustomer.GetColumn(0, "BNM");
+			}
+			
+			// 가상계좌 정보 갱신
+			ds_ioVirtualAccoutAllocation.ClearData();
+			lfn_VirtualAccoutAllocation(ds_oCustomer.GetColumn(0, "CMGNO"), sBNM, ds_oCustomer.GetColumn(0, "CGTMGNO"));
+		
+			tit_clearActionInfo();		
+            tit_addMultiActionInfo("cust:updateCust2010CustomerFee", "", 0, "", "N");			tit_addSingleActionInfo("cust:executeCust0010VirtualAccoutAllocation", "", 0, "");
+			
+            tit_callService(
+                ""
+                ,""
+                ,"ds_iCustomerFee=ds_iMunjeCancel"
+				+ " ds_iVirtualAccoutAllocation=ds_ioVirtualAccoutAllocation"
+                ,""
+                ,"MUNJE='Y'"
+                ,"lfn_AfterCall"
+                ,false
+                ,false
+                ,true
+            );
+            
+            lfn_Search();
+            
+            break;
+            
+        default: //기타 결제
+
+            if (ds_oSunap.GetRowCount() < 1
+                || gfn_IsNull(ds_oSunap.GetColumn(ds_oSunap.currow, "PMYEAR"))
+                || gfn_IsNull(ds_oSunap.GetColumn(ds_oSunap.currow, "PMMGNO"))) {
+                gfn_Alert("결제정보가 없습니다.");
+                return;
+            }
+            
+            
+            if (ds_oSunap.GetColumn(ds_oSunap.currow, "PVINFO") == "발행") {
+            
+				gfn_Alert("                   < (세금)계산서 발행 자료 >\n\n"		
+					 + "해당 자료는 (세금)계산서가 발행되어 있습니다.\n\n"		
+					 + "    - (세금)계산서 관리번호 : " + ds_oSunap.GetColumn(ds_oSunap.currow, "PVVMYEAR") +"-"
+														+ iif(ds_oSunap.GetColumn(ds_oSunap, "PVVMBILLTYPE")=="1","F","T") +"-"
+														+ ds_oSunap.GetColumn(ds_oSunap.currow, "PVVMVATNO") + "\n\n"		
+					 + "회계 담당자에게 (세금)계산서 삭제 후 환불해 주시기 바랍니다.");
+
+            }
+            
+            var sArg = "sPmYear=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "PMYEAR"))
+                + " sPmMgno=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "PMMGNO"))
+                + " sGubun=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUN"))
+            ;
+        
+            var retDlg = Dialog(ls_Prefix + "::frmcust2012PCustomerRepay.xml", sArg, 700, 400, "", -1, -1);
+            
+            if (retDlg) {
+                medTotalCnt.Value = ds_iReady.GetRowCount();
+                medTotalAmount.Value = ds_iReady.Sum("CFPROCAMOUNT");
+                lfn_SunapCheck(false);
+                ls_SetlmGubun = "1";
+            }
+            
+            break;
+    }
+
+
+}
+
+/**
+ * 과오납 추가
+ */
+function btnOverSunapAdd_OnClick(obj) {
+
+    if (ds_oFee.GetRowCount() < 1) {
+        return;
+    }
+
+	ds_oFee.InsertRow(0);
+	ds_oFee.SetColumn(0, "SEL", "1");
+	ds_oFee.SetColumn(0, "CMGNO", ds_oCustomer.GetColumn(0, "CMGNO"));
+
+	if (cbxMonthGubun.Value == "YEAR") {
+	
+        ds_oFee.SetColumn(0, "CFSUNAPMONTH", "00");
+        ds_oFee.SetColumn(0, "CFSUNAPHALF", "0");
+        ds_oFee.SetColumn(0, "CFGYEAR", toNumber(ds_oFee.GetColumn(1, "CFGYEAR"))+1);
+        
+    } else if (cbxMonthGubun.Value == "HALF") {
+    
+        ds_oFee.SetColumn(0, "CFSUNAPMONTH", "00");
+        
+        if (ds_oFee.GetColumn(1, "CFSUNAPHALF") == "1") {
+            ds_oFee.SetColumn(0, "CFSUNAPHALF", "2");
+            ds_oFee.SetColumn(0, "CFGYEAR", ds_oFee.GetColumn(1, "CFGYEAR"));
+        } else {
+            ds_oFee.SetColumn(0, "CFSUNAPHALF", "1");
+            ds_oFee.SetColumn(0, "CFGYEAR", toNumber(ds_oFee.GetColumn(1, "CFGYEAR"))+1);
+        }
+        
+	} else {
+        
+        if (ds_oFee.GetColumn(1, "CFSUNAPMONTH") < "12") {
+
+            if (ds_oFee.GetColumn(1, "CFSUNAPMONTH") >= "06") {
+                ds_oFee.SetColumn(0, "CFSUNAPHALF", "2");
+            } else {
+                ds_oFee.SetColumn(0, "CFSUNAPHALF", "1");
+            }
+
+            ds_oFee.SetColumn(0, "CFSUNAPMONTH", lpad(toNumber(ds_oFee.GetColumn(1, "CFSUNAPMONTH"))+1, "0", 2));
+            ds_oFee.SetColumn(0, "CFGYEAR", ds_oFee.GetColumn(1, "CFGYEAR"));
+
+        } else {
+
+            ds_oFee.SetColumn(0, "CFSUNAPMONTH", "01");
+            ds_oFee.SetColumn(0, "CFSUNAPHALF", "1");
+            ds_oFee.SetColumn(0, "CFGYEAR", toNumber(ds_oFee.GetColumn(1, "CFGYEAR"))+1);
+
+        }
+	}
+	
+	ds_oFee.SetColumn(0, "CFCCGUBUN", ds_oFee.GetColumn(1, "CFCCGUBUN"));
+
+    var vOverMinap = toNumber(iif(ds_oFeeMonth.GetColumn(0, "MINAPFEE") == 0, ds_oFeeMonth.GetColumn(0, "SUNAPFEE") , ds_oFeeMonth.GetColumn(0, "MINAPFEE")));
+
+    if (ds_oCustomer.GetColumn(0, "CSTATUSGUBUN") == "0") { //회원일 때
+        if (cbxMonthGubun == "YEAR") {
+            ds_oFee.SetColumn(0, "MINAPFEE", vOverMinap * 12);
+        } else if (cbxMonthGubun == "HALF") {
+            ds_oFee.SetColumn(0, "MINAPFEE", vOverMinap * 6);
+        } else {
+            ds_oFee.SetColumn(0, "MINAPFEE", vOverMinap);
+        }
+    } else { //비회원일 때
+        ds_oFee.SetColumn(0, "MINAPFEE", vOverMinap);
+    }
+
+	ds_oFee.SetColumn(0, "SUNAPFEE", 0);
+	
+	ds_iOverFee.InsertRow(0);
+	ds_iOverFee.CopyRow(0, ds_oFee, 0);
+	ds_iOverFee.SetColumn(0, "VIEWTYPE", cbxMonthGubun.Value);
+	
+	cbxMonthGubun.Enable = false; //과오납 등록시 표시형식 disable
+	
+}
+
+/**
+ * 과오납 삭제
+ */
+function btnOverSunapDel_OnClick(obj) {
+
+    if (ds_iOverFee.GetRowCount() > 0) {
+        ds_oFee.DeleteRow(0);
+        ds_iOverFee.DeleteRow(0);
+    }
+    
+    medSunapAmount.Value = ds_oFee.Sum("iif(SEL=='1', MINAPFEE, 0)");
+    
+    if (ds_iOverFee.GetRowCount() < 1) {
+        cbxMonthGubun.Enable = true;
+    }
+
+}
+
+/**
+ * 회비 고지서 출력
+ */
+function btnPrintGoji_OnClick(obj) {
+
+    if (medMinapAmount.Value <= 0) {
+        gfn_Alert("회비를 청구할 미납내역이 없습니다.");
+        return;
+    }
+
+    ds_iPrintGoji.ClearData();
+    ds_iPrintGoji.InsertRow(0);
+    ds_iPrintGoji.SetColumn(0, "GTMGNO", ds_oCustomer.GetColumn(0, "CGTMGNO"));
+    ds_iPrintGoji.SetColumn(0, "CNO", ds_oCustomer.GetColumn(0, "CNO"));
+
+    ds_oPrintGoji.ClearData();
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("cust:searchCust2010CustomerFeeGoji", "", 0, "");
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iFeeGoji=ds_iPrintGoji"
+        ,"ds_oPrintGoji=ds_oFeeGoji"
+        ,"YEARGUBUN=" + quote("0")
+            + " SCLOSEDATE=" + quote(calCloseDate.Value)
+        ,"lfn_AfterCall"
+        ,false
+        ,false
+        ,true
+    );	// 출력물보안 미적용 리포트
+/*  2018년 부터 1개 업체로 선정(고객서비스과)	
+    // 한국전산 고지서 사용지부 : 서울,대구경북,울산,경남 (2016.02.15)
+    if (cbxJibu.Value == "1011" || cbxJibu.Value == "1031" || cbxJibu.Value == "1131" || 
+        cbxJibu.Value == "1071") {
+    
+		gfn_CallReportPopup("frmcust2040R01CustomerFeeGoji_NewKoreaCS.rex", "ds_oPrintGoji", "", "", ""); 
+	// 부산정보시스템 고지서 사용지부 : 부산 (2016.02.15)
+	} else if (cbxJibu.Value == "1021") {
+	
+		gfn_CallReportPopup("frmcust2040R01CustomerFeeGoji_NewBusan.rex", "ds_oPrintGoji", "", "", ""); 
+	
+	// 썬디엠 고지서 사용지부 : 인천,광주전남,대전충남,경기,경기북부,강원,충북,전북,제주 (2016.02.15)
+	} else if (cbxJibu.Value == "1041" || cbxJibu.Value == "1051" || cbxJibu.Value == "1061" || 
+        cbxJibu.Value == "1081" || cbxJibu.Value == "1141" || cbxJibu.Value == "1091" ||
+        cbxJibu.Value == "1101" || cbxJibu.Value == "1111" || cbxJibu.Value == "1121") {
+	
+		gfn_CallReportPopup("frmcust2040R01CustomerFeeGoji_NewSunDM.rex", "ds_oPrintGoji", "", "", ""); 
+		
+	}
+*/
+
+//2018년 부터 1개 업체로 선정(고객서비스과)	 2018.02.07 업체 : 대명ITS
+	gfn_CallReportPopup("frmcust2040R01CustomerFeeGoji_NewDMITS.rex", "ds_oPrintGoji", "", "", ""); 
+}
+
+
+/**
+ * 결제(POS)
+ */
+function btnPos_OnClick(obj) {     // 지부 중복이면 막기
+    for (i=0; i<ds_iReady.GetRowCount(); i++) {
+        if (ds_iReady.GetRowCount() >= 1 
+            && ds_iReady.GetColumn(0, "CFMGGTMGNO") <> ds_iReady.GetColumn(i, "CFMGGTMGNO")) {
+            
+            gfn_Alert("현재 결제대기의 지부와 다른 지부입니다.\n따로 수납하시거나 결제대기를 삭제 후 수납하여 주시기 바랍니다.");
+            return;
+        }
+    }
+    
+    if (ds_iReady.GetRowCount() < 1) {
+        gfn_Alert("결제정보가 없습니다.");
+        return;
+    }
+        var sArgs = split(ds_iReady.GetColumn(0, "CHECKDATA"), "|", "webstyle");
+    var sArg = "sProgramId=" + quote(iif(ds_iReady.GetColumn(ds_iReady.currow, "CFMEMBERGUBUN") == "0", "11", "12"))
+        + " sSunapGubun=" + quote(ds_iReady.GetColumn(0, "CFGUBUN"))
+        + " sTotalAmount=" + quote(sArgs[0])
+        + " sAmount=" + quote(medTotalAmount.Value)
+        + " sJibu=" + quote(ds_oCustomer.GetColumn(0, "CGTMGNO"))
+        + " sBuyer=" + quote(sArgs[1])
+        + " sSetlmGubun=" + quote(sArgs[2])
+        + " sOrderNo=" + quote(sArgs[3])
+        
+        + " sPersonkey=" + quote(ds_oCustomer.GetColumn(0, "FMPERSONKEY"))
+    ;
+    
+
+
+	if (ds_iReady.GetRowCount() == 1) {
+	
+		sArg += " sCMgno=" + quote(ds_oCustomer.GetColumn(0, "CMGNO"));
+		
+		sArg += " sFMNM=" + quote(edManagerNm.Text);
+		
+		sArg += " sHPTEL=" + quote(ds_oCustomer.GetColumn(0, "FMHHPTEL"));
+		
+		sArg += " sBNMFMNM=" + quote(edBuildingNm.Text+"("+edManagerNm.Text+")");
+	
+		sArg += " sEduJubsu='' sEjmgno='' sEjhseq=''";
+	} else {
+
+		sArg += " sCMgno='' sFMNM='' sEduJubsu='' sEjmgno='' sEjhseq=''";
+
+		sArg += " sBNMFMNM=" + quote(edBuildingNm.Text+"등");
+		
+	}
+
+    var retDlg = Dialog(ls_Prefix + "::frmcust2020PCustomerFeePos.xml", sArg, 600, 312, "", -1, -1);
+    
+    if (retDlg[0] == "OK") {
+        var sMgno = medBarcode.Value;
+        lfn_Cancel();
+        medBarcode.Value = sMgno;
+        lfn_Search();
+    } else {
+        lfn_Search();
+        
+    }
+}
+
+/**
+ * 결제대기 삭제
+ */
+function btnPosDel_OnClick(obj) {
+
+    for (var i=ds_iReady.GetRowCount(); i>=0; i--) {
+
+        if (ds_iReady.GetColumn(i, "SEL") == "1") {
+            if (ls_SetlmGubun = "0"
+                && ds_iReady.GetColumn(i, "CMGNO") == ds_oCustomer.GetColumn(0, "CMGNO")) { //수납 대기
+                
+                lfn_SunapCheck(true);
+            }
+
+            //Customer 데이터 삭제
+            ds_iCustomerFeeBackup.ClearData();
+            ds_iCustomerFeeBackup.Copy(ds_iCustomerFee);
+            ds_iCustomerFeeBackup.Filter("CFCMGNO<>'" + ds_iReady.GetColumn(i, "CMGNO") + "'");
+            ds_iCustomerFee.ClearData();
+            ds_iCustomerFee.CopyF(ds_iCustomerFeeBackup);
+            ds_iCustomerFeeBackup.ClearData();
+            
+            ds_iReady.DeleteRow(i);
+        }
+    }
+    
+    if (ds_iReady.GetRowCount() < 1) {
+        lfn_SunapCheck(true);
+    }
+    
+    medTotalCnt.Value = ds_iReady.GetRowCount();
+    medTotalAmount.Value = ds_iReady.Sum("CFPROCAMOUNT");
+
+}
+
+/**
+ * 결제처리 결과 조회
+ */
+function btnPosResultList_OnClick(obj) {
+    
+    if (ds_oSunap.GetRowCount() < 1
+        || gfn_IsNull(ds_oSunap.GetColumn(ds_oSunap.currow, "PMYEAR"))
+        || gfn_IsNull(ds_oSunap.GetColumn(ds_oSunap.currow, "PMMGNO"))) {
+        gfn_Alert("결제정보가 없습니다.");
+        return;
+    }
+    
+    if (ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUNCD") == "30"
+        || ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUNCD") == "31") {
+            gfn_Alert(lfn_GetSetlm(ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUNCD")) + "된 결제 입니다.");
+            return;
+    }
+
+	var ls_Regfn_Check = gfn_CheckPosResult(ds_oSunap.GetColumn(ds_oSunap.currow, "PMYEAR")
+                            , ds_oSunap.GetColumn(ds_oSunap.currow, "PMMGNO"));
+}
+
+/**
+ * 가상계좌 보기
+ */
+function btnShowVirtualAccount_OnClick(obj) {
+	// LG U+ 가상계좌 폐지, 세틀뱅크 가상계좌 사용
+	if (left(getDate(), 8) < "20130820") {
+		if (ds_oSunap.GetRowCount() < 1	
+			|| gfn_IsNull(ds_oSunap.GetColumn(ds_oSunap.currow, "PMYEAR"))	
+			|| gfn_IsNull(ds_oSunap.GetColumn(ds_oSunap.currow, "PMMGNO"))) {	
+			gfn_Alert("결제정보가 없습니다.");	
+			return;	
+		}	
+			
+		if (!(right(ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUNCD"), 1) == "3"	
+			|| right(ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUNCD"), 1) == "5"	
+			)) {	
+				gfn_Alert("가상계좌 결제가 아닙니다.");	
+				return;	
+		}	
+		
+		var vRtl = "END";	
+		var sArg = "sPmYear=" + quote(left(ds_oSunap.GetColumn(ds_oSunap.currow, "PMPCORDERNO"), 4));	
+		sArg += " sPmMgno=" + quote(right(ds_oSunap.GetColumn(ds_oSunap.currow, "PMPCORDERNO"), 6));	
+		
+		vRtl = Dialog("cust::frmcust2013PVirtualAccount.xml", sArg, 400, 220, "", -1, -1);	
+			
+		if (vRtl == "OK") {	
+			lfn_Search();	
+		}
+	} else {
+	
+		// 세틀뱅크 가상계좌 사용
+		
+		if (ds_oCustomer.GetColumn(0, "CSTATUSGUBUN") == "0") { // 회원이면 가상계좌 보이기
+		
+			sArg = "sGUBUN=" + quote(ds_oCustomer.GetColumn(0, "CSTATUSGUBUN"));
+			sArg += " sTotalAmount=" + quote(ds_oCustomer.GetColumn(0, "MINAPFEE"));
+			sArg += " sJibu=" + quote(ds_oCustomer.GetColumn(0, "CGTMGNO"));
+			sArg += " sCMgno=" + quote(ds_oCustomer.GetColumn(0, "CMGNO"));
+			sArg += " sFMNM=" + quote(ds_oCustomer.GetColumn(0, "FMNM"));
+			sArg += " sHPTEL=''";
+			sArg += " sBNM=" + quote(ds_oCustomer.GetColumn(0, "BNM"));
+			sArg += " sCOURSENM=" + quote(edCourseGroup.Text);
+		
+			vRtl = Dialog("cust::frmcust2018PFixVirtualAccount.xml", sArg, 400, 220, "", -1, -1);	
+			
+		} else {	// 비회원이면 
+		
+			if (gfn_Confirm("비회원은 실무교육 접수시에만 가상계좌를 확인 및 부여할 수 있습니다.\n\n"+
+						"       1. '확인' : [실무교육 접수관리] 바로가기 ☞\n\n"+
+						"       2. '취소' : 닫기") == "1") {
+				   
+				if( gfn_IsNull(ds_oCustomer.GetColumn(0, "CGTMGNO")) || gfn_IsNull(ds_oCustomer.GetColumn(0, "CNO")) ) {			
+					gfn_Alert("해당 자료를 찾을 수 없습니다.");			
+					return;			
+				} else {			
+					//var ArrMenuInfo = gfn_SearchMenuInfo(iif(gs_SystemGubun=="crs","crs","cust"), "cust::frmcust1025MEduJubsuManagement.xml");	//메뉴정보조회					var ArrMenuInfo = "";
+					if (ls_SystemGubun == "cust") {
+						ArrMenuInfo = gfn_SearchMenuInfo("cust", "cust::frmcust1025MEduJubsuManagement.xml");	//메뉴정보조회
+					} else if (ls_SystemGubun == "crs") {
+						ArrMenuInfo = gfn_SearchMenuInfo("crs", "cust::frmcust1025MEduJubsuManagement.xml");	//메뉴정보조회
+					} else if (ls_SystemGubun == "outerbiz") {
+						ArrMenuInfo = gfn_SearchMenuInfo("outerbiz", "outerbiz::frmcust1025MEduJubsuManagement.xml");	//메뉴정보조회
+					} else {
+						ArrMenuInfo = gfn_SearchMenuInfo("cust", "cust::frmcust1025MEduJubsuManagement.xml");	//메뉴정보조회
+					}
+			
+					if(length(ArrMenuInfo) > 0 ) {			
+						var sArg = "sJibu=" + quote(ds_oCustomer.GetColumn(0, "CGTMGNO"))			
+						+ " sCustNo=" + quote(ds_oCustomer.GetColumn(0, "CNO"));			
+									
+						ls_SystemGubun = arrMenuInfo[7];						//"cust";			
+						gs_SystemMenuId = arrMenuInfo[5];						//"메뉴아이디			
+						global.mnuLeft.tabMenu.tabpgMenu.Text = arrMenuInfo[6];	//"고객관리";			
+						var ls_MenuId = arrMenuInfo[0];							//"0000000262";			
+						var ls_MenuTitle = arrMenuInfo[1];						//"실무교육접수관리";			
+						var ls_MenuUrl = arrMenuInfo[2];						//"cust::frmcust1025MEduJubsuManagement.xml";			
+									
+						global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", ls_SystemGubun);			
+						if (ls_SystemGubun == "outerbiz") {
+							gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId, sArg); 
+						} else {
+							gfn_OpenLinkChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId, sArg); 
+						}			
+					} else {			
+						gfn_Alert("해당 메뉴를 찾을 수 없습니다.");			
+					}			
+				}
+
+
+
+						
+			}
+		
+		}
+	
+	}
+}
+
+/**
+ * 수납정보 변경
+ */
+function btnChangeSunapInfo_OnClick(obj) {
+
+    if (ds_oSunap.GetRowCount() < 1
+        || gfn_IsNull(ds_oSunap.GetColumn(ds_oSunap.currow, "PMYEAR"))
+        || gfn_IsNull(ds_oSunap.GetColumn(ds_oSunap.currow, "PMMGNO"))) {
+        gfn_Alert("결제정보가 없습니다.");
+        return;
+    }
+    /*
+    // 카드, 가상계좌, 가상계좌 현금영수증 일 경우
+    if (right(ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUNCD"), 1) == "3"
+        || right(ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUNCD"), 1) == "5") {
+        gfn_Alert(lfn_GetSetlm(ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUNCD")) + "입니다.");
+        return;
+    }*/
+    
+    if (ds_oSunap.GetColumn(ds_oSunap.currow, "PVINFO") == "발행") {
+        gfn_Alert("계산서가 발행된 결제입니다.");
+        return;
+    }
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("com:searchYearbizlink", 0);
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_oYearbizlink=ds_oYearbizlink"	// outDs
+        ,"SORDERNO=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "PMPCORDERNO"))
+            + " SCMGNO=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "CFCMGNO"))
+            + " SPROCDATE=" + quote(replace(ds_oSunap.GetColumn(ds_oSunap.currow, "PROCDATE"), "-", ""))// args
+        ,"lfn_AfterCall"
+        ,false
+        ,""
+        ,true
+    );
+
+    if (ds_oYearbizlink.GetRowCount() >= 1) {
+        var msg = "           <수수료관리번호 및 수납일자 변경 불가>             \n";
+        msg += "\n\n";
+        msg += "해당 자료는 회계시스템에서 시스템연동을 통해 결의서를\n";
+        msg += "생성하였습니다. 생성정보는 아래와 같습니다.\n";
+        msg += "\n\n";
+        msg += "         - 결의서 번호 : " + ds_oYearbizlink.GetColumn(0,"KEYNO")+"\n";
+        msg += "\n";
+        msg += "         - 성          명 : " + ds_oYearbizlink.GetColumn(0,"YBLNM")+"\n";
+        msg += "\n";
+        msg += "         - 금          액 : " + NumFormat(ds_oYearbizlink.GetColumn(0,"YBLAMT"))+"\n";
+        msg += "\n";
+        msg += "         - 처 리  일 자 : " + gfn_ToDate(ds_oYearbizlink.GetColumn(0,"YBLPROCDATE"), "-");
+        msg += "\n\n";
+        msg += "해당 자료를 변경하고자 하는 경우,\n";
+        msg += "위의 결의서의 삭제를 회계담당에게 요청하세요.\n";
+        msg += "회계시스템에 결의서를 삭제한 후 해당 자료를 변경할 수 있습니다.\n";
+
+        gfn_Alert(msg);
+        return;
+	}
+
+    var sArg = "sCMgno=" + quote(ds_oCustomer.GetColumn(0, "CMGNO"))
+        + " sJibu=" + quote(ds_oCustomer.GetColumn(0, "CGTMGNO"))
+        + " sCno=" + quote(ds_oCustomer.GetColumn(0, "CNO"))
+        + " sRegion=" + quote(lfn_GetRegion(ds_oCustomer.GetColumn(0, "CGTMGNO"), ds_oCustomer.GetColumn(0, "CREGCD")))
+        + " sCourse=" + quote(ds_oCustomer.GetColumn(0, "CCOURSECD"))
+        + " sMember=" + quote(ds_oCustomer.GetColumn(0, "CSTATUSGUBUN"))
+        + " sName=" + quote(ds_oCustomer.GetColumn(0, "FMNM"))
+        + " sBuilding=" + quote(ds_oCustomer.GetColumn(0, "BNM"))
+    
+        + " sPmYear=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "PMYEAR"))
+        + " sPmMgno=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "PMMGNO"))
+        + " sProcDate=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "PROCDATE"))
+        + " sPonyDate=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "PONYDATE"))
+        + " sSetlmGubun=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUNCD"))
+        + " sSunapGubun=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUN"))
+    ;
+
+	var procCheck = Dialog(ls_Prefix + "::frmcust2014PSunapModify.xml", sArg, 560, 400, "", -1, -1);
+	
+    if (procCheck) {
+        lfn_Search();
+    }
+    
+}
+
+/**
+ * 현금영수증 처리
+ */
+function btnProcRct_OnClick(obj) {
+
+    if (ds_oSunap.GetRowCount() < 1
+        || gfn_IsNull(ds_oSunap.GetColumn(ds_oSunap.currow, "PMYEAR"))
+        || gfn_IsNull(ds_oSunap.GetColumn(ds_oSunap.currow, "PMMGNO"))) {
+        gfn_Alert("결제정보가 없습니다.");
+        return false;
+    }
+
+    if (!(ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUN") == "수납"
+        || ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUN") == "회계수납")) {
+        gfn_Alert("환불된 결제입니다.");
+        return false;
+    }
+
+    if (right(ds_oSunap.GetColumn(ds_oSunap.currow, "CFGUBUNCD"), 1) == "1") {
+        gfn_Alert("카드 결제입니다.");
+        return false;
+    }
+	if (ds_oSunap.GetColumn(ds_oSunap.currow, "PVINFO") == "발행") {
+	
+        gfn_Alert("부가세가 발행된 결제입니다.");
+        //return false;
+	
+	}
+
+
+    if (left(getDate(), 8) >= left(addDate(replace(ds_oSunap.GetColumn(ds_oSunap.currow, "PROCDATE"), "-", ""), 365), 8)) {
+        gfn_Alert("결제일로부터 1년이 지났습니다.");
+        return false;
+    }
+
+    var sArg = "sPmYear=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "PMYEAR"))
+        + " sPmMgno=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "PMMGNO"))
+    ;
+
+    var sPos = Dialog(ls_Prefix + "::frmcust2015PPosChangeCash.xml", sArg, 424, 268, "", -1, -1);
+
+    if (sPos == "OK") {
+        lfn_Search();
+    }
+
+}
+
+/**
+ * 영수증 재발행
+ */
+function btnPrintReRct_OnClick(obj) {
+	if (ds_oSunap.GetColumn(ds_oSunap.currow, "SETLMGUBUN") == "1") {
+		gfn_Alert("수납정보가 미입금 상태입니다. 영수증을 출력할 수 없습니다.");
+		return false;
+	}
+	
+	// POSPRINTM - PMRESUTL : 0 일 경우, 즉 결재실패일 경우 처리 
+	if (ds_oSunap.GetColumn(ds_oSunap.currow, "PMRESULT") == "미승인") {
+		gfn_Alert("POS 정보가 미결재 상태입니다. 영수증을 출력할 수 없습니다.");
+		return false;
+	}
+	
+    if (!gfn_Confirm("영수증을 재발행 하시겠습니까?")) {        return false;	}
+    gfn_PrintReceipt(ds_oSunap.GetColumn(ds_oSunap.currow, "PMYEAR"), ds_oSunap.GetColumn(ds_oSunap.currow, "PMMGNO"));}
+
+
+/**
+ * 영수증 PDF
+ */
+function btnPrintReRctPDF_OnClick(obj) {
+	if (ds_oSunap.GetColumn(ds_oSunap.currow, "SETLMGUBUN") == "1") {
+		gfn_Alert("수납정보가 미입금 상태입니다. 영수증을 출력할 수 없습니다.");
+		return false;
+	}
+	
+	// POSPRINTM - PMRESUTL : 0 일 경우, 즉 결재실패일 경우 처리 
+	if (ds_oSunap.GetColumn(ds_oSunap.currow, "PMRESULT") == "미승인") {
+		gfn_Alert("POS 정보가 미결재 상태입니다. 영수증을 출력할 수 없습니다.");
+		return false;
+	}
+	
+    if (!gfn_Confirm("영수증을 재발행 하시겠습니까?")) {        return false;	}
+    gfn_PrintReceiptPDF(ds_oSunap.GetColumn(ds_oSunap.currow, "PMYEAR"), ds_oSunap.GetColumn(ds_oSunap.currow, "PMMGNO"));}
+/**
+ * 부가세 정보
+ */
+function btnPrintEstimate_OnClick(obj) {
+        
+    var sArg = " sPmYear=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "PMYEAR"))
+        + " sPmMgno=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "PMMGNO"))
+    ;
+    return Dialog("cust::frmcust2016PPosVat.xml", sArg, 900, 590, "", -1, -1);
+    
+/*
+    ds_oPosVatH.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cust:searchCust2016PosVatH", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oPosVatH=ds_oPosVatH" // outDs
+		,"SPMYEAR=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "PMYEAR"))
+            + " SPMMGNO=" + quote(ds_oSunap.GetColumn(ds_oSunap.currow, "PMMGNO"))
+		,""
+		,false
+		,false
+		,true
+	);
+		var retArr = gfn_EstimatePopup(ds_oPosVatH.GetColumn(0, "PVVMYEAR"), 
+									   ds_oPosVatH.GetColumn(0, "PVVMJIBU"), 
+									   ds_oPosVatH.GetColumn(0, "PVVMBILLTYPE"), 
+									   ds_oPosVatH.GetColumn(0, "PVVMVATNO"));  //팝업 호출
+*/		
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 공통 함수
+/////////////////////////////////////////////////////////////////////////////////
+
+function lfn_init() {
+
+//데이타셋
+    ds_oCustomer.ClearData();
+    ds_oFee.ClearData();
+    ds_oFeeMonth.ClearData();
+    ds_oSunap.ClearData();
+
+//조회정보
+    edBuildingNm.Text = "";
+    edManagerNm.Text = "";
+    edManagerNo.Value = "";
+
+//고객정보
+    edRegion.Text = "";
+    edCourse.Text = "";
+    edMember.Text = "";
+    medRegisterYear.Value = "";
+    medFeeYear.Value = "";
+    medZipCd.Value = "";
+    edAddr1.Text = "";
+    edAddr2.Text = "";
+    
+ //결제정보
+    edRemark.Text = "";
+    medSunapAmount.Value = 0;
+    medMinapAmount.Value = 0;
+    
+    medBarcode.SetFocus();
+    
+}
+
+/**
+ * 회비/교육비 결제 정보 set
+ */
+function lfn_SetCustomerFee(nRow, sSunapGubun) {
+
+    ds_iCustomerFee.InsertRow(0);
+    ds_iCustomerFee.SetColumn(0, "CFCMGNO", ds_oCustomer.GetColumn(0, "CMGNO")); //고객번호
+//  ds_iCustomerFee.SetColumn(0, "CFSEQ", );
+    ds_iCustomerFee.SetColumn(0, "CFSETLMGUBUN", "1");
+    ds_iCustomerFee.SetColumn(0, "CFMEMBERGUBUN", ds_oFeeMonth.GetColumn(nRow, "CFCCGUBUN"));
+    ds_iCustomerFee.SetColumn(0, "CFGUBUN", sSunapGubun);
+//	ds_iCustomerFee.SetColumn(0, "CFGUBUNCD", );
+    ds_iCustomerFee.SetColumn(0, "CFSUNAPYEAR", ds_oFeeMonth.GetColumn(nRow, "CFGYEAR"));
+    ds_iCustomerFee.SetColumn(0, "CFSUNAPMONTH", ds_oFeeMonth.GetColumn(nRow, "CFSUNAPMONTH"));
+    ds_iCustomerFee.SetColumn(0, "CFSUNAPHALF", ds_oFeeMonth.GetColumn(nRow, "CFSUNAPHALF"));
+    ds_iCustomerFee.SetColumn(0, "CFPROCAMOUNT", ds_oFeeMonth.GetColumn(nRow, "MINAPFEE"));
+//	ds_iCustomerFee.SetColumn(0, "CFPROCDATE", );
+//	ds_iCustomerFee.SetColumn(0, "CFPONYGUBUN", );
+//	ds_iCustomerFee.SetColumn(0, "CFPONYDATE", );
+	ds_iCustomerFee.SetColumn(0, "CFMGGTMGNO", gds_oUserInfo.GetColumn(0, "PDEPTCD"));
+//	ds_iCustomerFee.SetColumn(0, "CFPROCGTMGNO",);
+//	ds_iCustomerFee.SetColumn(0, "CFPOSGTMGNO",);
+//	ds_iCustomerFee.SetColumn(0, "CFPMYEAR", );
+//	ds_iCustomerFee.SetColumn(0, "CFPMMGNO", );
+//  ds_iCustomerFee.SetColumn(0, "CFGROUPMGNO", );
+//	ds_iCustomerFee.SetColumn(0, "CFCANCELDATE", );
+//	ds_iCustomerFee.SetColumn(0, "CFCANCELSABUN", );
+    ds_iCustomerFee.SetColumn(0, "CFREMARK", edRemark.Text);
+//	ds_iCustomerFee.SetColumn(0, "CFREPAYREF", );
+//  ds_iCustomerFee.SetColumn(0, "CFACTIVEGUBUN", );
+
+}
+
+/**
+ * 과오납 결제 정보 set
+ */
+function lfn_SetCustomerOverFee(nRow, sGubun) {
+
+    var li_Start = 0;
+    var li_End = 0;
+    var li_Minap = 0;
+    var cRow = 0;
+
+    if (ds_iOverFee.GetColumn(nRow, "CFCCGUBUN") == "1") { //교육비
+        li_Start = 0;
+        li_End = 0;
+    } else if (sGubun == "YEAR") { //년도
+        li_Start = 1;
+        li_End = 12;
+    } else if (sGubun == "HALF") { //반기
+        li_Start = ((toNumber(ds_iOverFee.GetColumn(nRow, "CFSUNAPHALF")) - 1) * 6) +1;
+        li_End = toNumber(ds_iOverFee.GetColumn(nRow, "CFSUNAPHALF")) * 6;
+    } else {
+        li_Start = toNumber(ds_iOverFee.GetColumn(nRow, "CFSUNAPMONTH"));
+        li_End = toNumber(ds_iOverFee.GetColumn(nRow, "CFSUNAPMONTH"));
+    }
+    
+    li_Minap = li_End - li_Start + 1;
+    
+    for (var i=li_Start; i<=li_End; i++) {
+        cRow = ds_iCustomerFee.AddRow();
+        ds_iCustomerFee.SetColumn(cRow, "CFCMGNO", ds_oCustomer.GetColumn(0, "CMGNO")); //고객번호
+        ds_iCustomerFee.SetColumn(cRow, "CFSETLMGUBUN", "1");
+        ds_iCustomerFee.SetColumn(cRow, "CFMEMBERGUBUN", ds_iOverFee.GetColumn(nRow, "CFCCGUBUN"));
+        ds_iCustomerFee.SetColumn(cRow, "CFGUBUN", "01");
+        ds_iCustomerFee.SetColumn(cRow, "CFSUNAPYEAR", ds_iOverFee.GetColumn(nRow, "CFGYEAR"));
+        
+        if (ds_iOverFee.GetColumn(nRow, "CFCCGUBUN") == "1") {
+            ds_iCustomerFee.SetColumn(cRow, "CFSUNAPMONTH", "00");
+            ds_iCustomerFee.SetColumn(cRow, "CFSUNAPHALF", "0");
+        } else {
+            ds_iCustomerFee.SetColumn(cRow, "CFSUNAPMONTH", lpad(i, "0", 2));
+            ds_iCustomerFee.SetColumn(cRow, "CFSUNAPHALF", iif(i<=6, "1", "2"));
+        }
+        
+        ds_iCustomerFee.SetColumn(cRow, "CFPROCAMOUNT", toNumber(ds_iOverFee.GetColumn(nRow, "MINAPFEE")) / li_Minap);
+        ds_iCustomerFee.SetColumn(cRow, "CFMGGTMGNO", gds_oUserInfo.GetColumn(0, "PDEPTCD"));
+        ds_iCustomerFee.SetColumn(cRow, "CFACTIVEGUBUN", "0");
+        ds_iCustomerFee.SetColumn(cRow, "CFREMARK", edRemark.Text);
+    }
+
+}
+
+/**
+ * 조회 후 처리
+ */
+function lfn_AfterSearch(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return "Transaction Error!";
+    }
+    
+    if (ds_oCustomer.GetRowCount() > 0) {
+        if( gds_oUserInfo.GetColumn(0, "PDEPTCD") == ds_oCustomer.GetColumn(0, "CGTMGNO") ) {
+            radJibuGubun.Value = "S";
+        } else {
+            radJibuGubun.Value = "T";
+        }
+        lfn_ChangeJibu();
+
+        medBarcode.Value = lpad(ds_oCustomer.GetColumn(0, "CMGNO"), "0", 13);
+        cbxJibu.Value = ds_oCustomer.GetColumn(0, "CGTMGNO");
+        medCustNo.Value = ds_oCustomer.GetColumn(0, "CNO");
+
+    }
+    
+    edBuildingNm.Text = ds_oCustomer.GetColumn(0, "BNM");
+    edManagerNm.Text = ds_oCustomer.GetColumn(0, "FMNM");
+    edManagerNo.Text = ds_oCustomer.GetColumn(0, "BIRTHDAY");
+    edRegion.Text = lfn_GetRegion(ds_oCustomer.GetColumn(0, "CGTMGNO"), ds_oCustomer.GetColumn(0, "CREGCD"));
+    edCourseGroup.Text = lfn_GetCourseGroup(ds_oCustomer.GetColumn(0, "CCOURSECD"));
+    edCourse.Text = lfn_GetCourse(ds_oCustomer.GetColumn(0, "CCOURSECD"));
+    edMember.Text = iif(ds_oCustomer.GetColumn(0, "CSTATUSGUBUN")=="0", "회원", "비회원");
+    medRegisterYear.Value = ds_oCustomer.GetColumn(0, "CREGISTERYYMM");
+    medFeeYear.Value = ds_oCustomer.GetColumn(0, "CFEEYYMM");
+    medZipCd.Value = ds_oCustomer.GetColumn(0, "CFEEPOSTZIPCD");
+    edAddr1.Text = ds_oCustomer.GetColumn(0, "CFEEPOSTADDR1");
+    edAddr2.Text = ds_oCustomer.GetColumn(0, "CFEEPOSTADDR2");
+    edOverBiz.Text = iif(gfn_IsNull(ds_oCustomer.GetColumn(0, "COBMGNO")), "아니오", "예");
+    btnOverBiz.Enable = iif(gfn_IsNull(ds_oCustomer.GetColumn(0, "COBMGNO")), false, true);
+    edDelGubun.Text = lfn_GetDelGubun(ds_oCustomer.GetColumn(0, "CDELGUBUN"));
+    medDelDate.Value = ds_oCustomer.GetColumn(0, "CDELDATE");
+    
+    if (length(medDelDate.Value) > 1) {
+        shpSearchBox.BkColor = "user18";
+        shpCustomerBox.BkColor = "user18";
+        lfn_SunapCheck(false);
+    } else {
+        shpSearchBox.BkColor = "";
+        shpCustomerBox.BkColor = "";
+        lfn_SunapCheck(true);
+    }	
+	if (ds_oSunap.GetCount() > 0) {
+		if (ds_oSunap.GetColumn(0,"PMRESULT") == "승인" && ds_oSunap.GetColumn(0,"SETLMGUBUNNM") == "미결제") {
+			var meg = "미결제되었습니다. 결제하시겠습니까?";
+			if(gfn_Confirm(meg)) {	
+				lfn_PosProcess("U");
+			}			
+		} else if (ds_oSunap.GetColumn(0,"PMRESULT") == "미승인") {
+			
+			// 가상계좌는 제외
+			if (ds_oSunap.GetColumn(0,"CFGUBUNCD") != "13"    // 방문가상계좌[데이콤]
+			    && ds_oSunap.GetColumn(0,"CFGUBUNCD") != "15"  // 방문가상계좌현금(영)[데이콤]
+			    && ds_oSunap.GetColumn(0,"CFGUBUNCD") != "23"  // ⓘ가상계좌[데이콤]
+			    && ds_oSunap.GetColumn(0,"CFGUBUNCD") != "25")  // ⓘ가상계좌현금(영)[데이콤]
+			{			
+				var meg = "결제에 실패하였습니다. 삭제하시겠습니까?";
+				if(gfn_Confirm(meg)) {	
+					lfn_PosProcess("D");
+				}
+			}
+			
+		}
+    }
+}
+
+/**
+ * 수납/환불 제한
+ */
+function lfn_SunapCheck(nFlag) {
+    
+    ds_oFee.row = iif(nFlag, 0, -1);
+    gdFee.SetCellProp("head", 0, "display", iif(nFlag, "checkbox", "null"));
+    gdFee.SetCellProp("head", 0, "text", iif(nFlag, "0",""));
+    if (ms_FormAuth == "W") { // 쓰기 권한이면
+	
+		btnSunapReady.Enable = nFlag; //수납결제대기	
+		cbxMonthGubun.Enable = nFlag; //수납 표시 구분	
+		btnOverSunapAdd.Enable = nFlag; //과오납 +	
+		btnOverSunapDel.Enable = nFlag; //과오납 -	
+		btnMunje.Enable = nFlag; //승계 면제	
+		btnRepay.Enable = nFlag; //환불결제대기	
+	}
+    
+}
+
+/**
+ * 기타 TRANSACTION 처리 후
+ */
+function lfn_AfterCall(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return "Transaction Error!";
+    }
+}
+
+/**
+ * 기타 TRANSACTION 처리 후
+ */
+function lfn_AfterAll(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return "Transaction Error!";
+    }
+
+    ls_SetlmGubun = "0"; //수납대기 구분 0:수납대기
+
+    var sCheck = cbxMonthGubun.Value;
+    var vRow = 0;
+    
+	for (var i=0; i<ds_oFee.GetRowCount(); i++) {
+        if (ds_oFee.GetColumn(i, "SEL") == "0") {
+            ds_oFee.SetColumn(i, "SEL", "1");
+            sCheck += "|" + i;
+        }
+	}
+
+	if (medSunapAmount.Value == "0") {
+        return;
+	}
+	
+    vRow = ds_iReady.AddRow();
+    ds_iReady.SetColumn(vRow, "SEL", "0");
+    ds_iReady.SetColumn(vRow, "CFGUBUN", "0");
+	ds_iReady.SetColumn(vRow, "CMGNO", ds_oCustomer.GetColumn(0, "CMGNO"));
+	ds_iReady.SetColumn(vRow, "CFMGGTMGNO", ds_oCustomer.GetColumn(0, "CGTMGNO"));
+	ds_iReady.SetColumn(vRow, "CNO", ds_oCustomer.GetColumn(0, "CNO"));
+	ds_iReady.SetColumn(vRow, "CREGCD", lfn_GetRegion(ds_oCustomer.GetColumn(0, "CGTMGNO"), ds_oCustomer.GetColumn(0, "CREGCD")));
+	ds_iReady.SetColumn(vRow, "CCOURSECD", ds_oCustomer.GetColumn(0, "CCOURSECD"));
+	ds_iReady.SetColumn(vRow, "CFMEMBERGUBUN", ds_oCustomer.GetColumn(0, "CSTATUSGUBUN"));
+	ds_iReady.SetColumn(vRow, "BNM", ds_oCustomer.GetColumn(0, "BNM"));
+	ds_iReady.SetColumn(vRow, "FMNM", ds_oCustomer.GetColumn(0, "FMNM"));
+	ds_iReady.SetColumn(vRow, "CFPROCAMOUNT", medSunapAmount.Value);
+	ds_iReady.SetColumn(vRow, "CFPROCDATE", left(getDate(), 8));
+	ds_iReady.SetColumn(vRow, "CFREMARK", edRemark.Text);
+	ds_iReady.SetColumn(vRow, "CFMGGTNM", lfn_GetJibu(ds_oCustomer.GetColumn(0, "CGTMGNO")));
+	ds_iReady.SetColumn(vRow, "CFMEMBERNM", iif(ds_oCustomer.GetColumn(0, "CSTATUSGUBUN") == "0", "회원", "비회원"));
+	ds_iReady.SetColumn(vRow, "CCOURSENM", lfn_GetCourseNick(ds_oCustomer.GetColumn(0, "CCOURSECD")));
+	
+	ds_iReady.SetColumn(vRow, "CHECKDATA", sCheck); // 체크 row를 알기 위한 데이터
+
+    ds_oFeeMonth.Filter("SEL='1'");
+    for (var i=0; i<ds_oFeeMonth.GetRowCount(); i++) {
+        lfn_SetCustomerFee(i, "01");
+    }
+    ds_oFeeMonth.UnFilter();
+    
+    lfn_SunapCheck(false);
+    
+}
+
+/*
+ * 회비 고지서 일괄 출력
+ */
+function btnPrintAllReadyGoji_OnClick(obj)
+{
+/*
+    if (medMinapAmount.Value <= 0) {
+        gfn_Alert("회비를 청구할 미납내역이 없습니다.");
+        return;
+    }
+*/
+
+ // 지부 중복이면 막기
+    for (i=0; i<ds_iReady.GetRowCount(); i++) {
+        if (ds_iReady.GetRowCount() >= 1 
+            && ds_iReady.GetColumn(0, "CFMGGTMGNO") <> ds_iReady.GetColumn(i, "CFMGGTMGNO")) {
+            
+            gfn_Alert("현재 결제대기의 지부와 다른 지부입니다.\n따로 회비고지하시거나 결제대기를 삭제 후 회비고지 하여 주시기 바랍니다.");
+            return;
+        }
+    }
+
+    var sAllGoji = "";  // 일괄 고지 위한  in 조건 변수 ()
+    
+    for (var i=0; i<ds_iReady.GetRowCount(); i++) {
+        if (ds_iReady.GetColumn(i, "SEL") == "1") {
+            sAllGoji += ds_iReady.GetColumn(i, "CNO") ;          // CNO로 조회 하는거
+            //sAllGoji += ds_iReady.GetColumn(i, "CMGNO") ;          // CMGNO로 조회 하는거
+        }               
+    }
+    
+    if (gfn_isNull(sAllGoji)) {  // 회비관련 관리번호가 없습니다.
+        gfn_Alert("회비고지를 일괄 발행할 대상을 선택해 주시기 바랍니다."); 
+		return false;
+    
+    }
+
+   trace(sAllGoji);
+
+    ds_iPrintGoji.ClearData();
+    ds_iPrintGoji.InsertRow(0);
+    ds_iPrintGoji.SetColumn(0, "GTMGNO", ds_oCustomer.GetColumn(0, "CGTMGNO"));
+
+    ds_oPrintGoji.ClearData();
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("cust:searchCust2010CustomerFeeAllReadyGoji", "", 0, "");
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iManagerListAllReadyGoji=ds_iPrintGoji"
+        ,"ds_oPrintGoji=ds_oManagerListAllReadyGoji"
+        ,"YEARGUBUN=" + quote("0")
+            + " SCLOSEDATE=" + quote(calCloseDate.Value)
+            + " CNO_=" + quote(sAllGoji)
+        ,"lfn_AfterCall"
+        ,false
+        ,false
+        ,true
+    );
+
+    // 일괄 회비고지서 발행을 위해 조회함
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cust:searchCust2010CustomerFeeAllReadyGojiPrint", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+        ,"ds_oAllPrintGoji=ds_oManagerListAllReadyGojiPrint"	// outDs
+		,"FKEY=" + quote(ds_oPrintGoji.GetColumn(0, "FKEY")) 	// args  
+		,"lfn_AfterCall"
+		,false
+		,""
+		,true
+		
+	);
+	
+	// 출력물보안 미적용 리포트
+      gfn_CallReportPopup("frmcust2040R02CustomerFeeAllGoji.rex", "ds_oAllPrintGoji||ds_oPrintGoji", "", "", ""); //일괄 회비고지 양식 (대표회비고지)
+   // gfn_CallReportPopup("frmcust2040R01CustomerFeeGoji.rex", "ds_oPrintGoji", "", "", ""); 기존 양식 (상세회비고지)
+	
+}
+
+function gdSunap_OnCellPosChanged(obj,nRow,nCell,nOldRow,nOldCell,nPivotIndex,nOldPivotIndex)
+{
+
+    if (ds_oSunap.GetColumn(ds_oSunap.currow, "SETLMGUBUN") == "1") {
+		if (ds_oSunap.GetColumn(nRow, "CFGUBUNCD") == "30" ||
+		    ds_oSunap.GetColumn(nRow, "CFGUBUNCD") == "31") {
+
+		} else {
+			//gfn_Alert("미결제된 자료입니다. 정보지원과로 문의하세요!");
+
+			if (ds_oSunap.GetCount() > 0) {
+				if (ds_oSunap.GetColumn(ds_oSunap.currow,"PMRESULT") == "승인" && ds_oSunap.GetColumn(ds_oSunap.currow,"SETLMGUBUNNM") == "미결제") {
+					var meg = "미결제되었습니다. 결제하시겠습니까?";
+					if(gfn_Confirm(meg)) {	
+						lfn_PosProcess("U");
+					}
+				}
+			}		}
+		
+        return;
+    }	
+	
+}
+
+/*
+ 미결재시 처리 (잘못된 결재)
+ parameterValue :  gubun (U,D)
+*/
+function lfn_PosProcess(gubun) {
+	var parValue = "CFPMYEAR="+ds_oSunap.GetColumn(ds_oSunap.currow,"PMYEAR");
+		parValue += " CFPMMGNO="+ds_oSunap.GetColumn(ds_oSunap.currow,"PMMGNO");	
+	
+	
+	// 결재 처리 
+    tit_clearActionInfo();
+    
+	if (gubun == "U") { // 승인 미결재 일경우 결재 로 변경 처리 
+		tit_addSingleActionInfo("cust:updateCust2010PosProcess", "", 0, ""); 
+	} else if (gubun == "D") { // 미승인 경우 삭제	
+		tit_addSingleActionInfo("cust:deleteCust2010PosProcess", "", 0, ""); 
+	} else {
+		return;
+	}
+	
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+        ,""	// outDs
+		,parValue 	// args  
+		,"lfn_AfterPosProcess"
+		,false
+		,""
+		,true
+		
+	);
+}
+
+function lfn_AfterPosProcess(nErrorCode, strErrorMsg) {
+	if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }    
+	lfn_Search();
+}
+
+
+
+/**
+ * 회비 고지서 PDF용 출력
+ */
+function btnPrintGojiImage_OnClick(obj)
+{
+
+    if (medMinapAmount.Value <= 0) {
+        gfn_Alert("회비를 청구할 미납내역이 없습니다.");
+        return;
+    }
+
+    ds_iPrintGoji.ClearData();
+    ds_iPrintGoji.InsertRow(0);
+    ds_iPrintGoji.SetColumn(0, "GTMGNO", ds_oCustomer.GetColumn(0, "CGTMGNO"));
+    ds_iPrintGoji.SetColumn(0, "CNO", ds_oCustomer.GetColumn(0, "CNO"));
+
+    ds_oPrintGoji.ClearData();
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("cust:searchCust2010CustomerFeeGoji", "", 0, "");
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iFeeGoji=ds_iPrintGoji"
+        ,"ds_oPrintGoji=ds_oFeeGoji"
+        ,"YEARGUBUN=" + quote("0")
+            + " SCLOSEDATE=" + quote(calCloseDate.Value)
+        ,"lfn_AfterCall"
+        ,false
+        ,false
+        ,true
+    );
+    // 출력물보안 미적용 리포트	//gfn_CallReportPopup("frmcust2040R03CustomerFeeGojiImage.rex", "ds_oPrintGoji", "", "", ""); 
+	gfn_CallReportPopup("frmcust2040R03CustomerFeeGojiNewImage.rex", "ds_oPrintGoji", "", "", ""); // 2016.02.15 
+
+}	
+
+
+/**
+ * 가상계좌 정보 갱신
+ * Parameter : sCMGNO - 관리번호
+ *           : sBuyer - 대상물명
+ *           : sCGTMGNO - 지부
+ */
+function lfn_VirtualAccoutAllocation(sCMGNO, sBNM, sCGTMGNO) {
+
+    var nRow = ds_ioVirtualAccoutAllocation.AddRow();
+    ds_ioVirtualAccoutAllocation.SetColumn(nRow, "SCMGNO", sCMGNO);
+    ds_ioVirtualAccoutAllocation.SetColumn(nRow, "SBNM", sBNM);
+    ds_ioVirtualAccoutAllocation.SetColumn(nRow, "SJIBU", sCGTMGNO);
+	
+}
+
+// 회비고지서(구양식)
+function btnOldPrintGoji_OnClick(obj)
+{
+    if (medMinapAmount.Value <= 0) {
+        gfn_Alert("회비를 청구할 미납내역이 없습니다.");
+        return;
+    }
+
+    ds_iPrintGoji.ClearData();
+    ds_iPrintGoji.InsertRow(0);
+    ds_iPrintGoji.SetColumn(0, "GTMGNO", ds_oCustomer.GetColumn(0, "CGTMGNO"));
+    ds_iPrintGoji.SetColumn(0, "CNO", ds_oCustomer.GetColumn(0, "CNO"));
+
+    ds_oPrintGoji.ClearData();
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("cust:searchCust2010CustomerFeeGoji", "", 0, "");
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iFeeGoji=ds_iPrintGoji"
+        ,"ds_oPrintGoji=ds_oFeeGoji"
+        ,"YEARGUBUN=" + quote("0")
+            + " SCLOSEDATE=" + quote(calCloseDate.Value)
+        ,"lfn_AfterCall"
+        ,false
+        ,false
+        ,true
+    );	
+	// 출력물보안 미적용 리포트
+	
+    // 한국전산 고지서 사용지부 : 서울,부산,대구경북,인천,울산,경기북부,강원,경남 (2013.01.23)    if (cbxJibu.Value == "1011" || cbxJibu.Value == "1021" || cbxJibu.Value == "1031" ||         cbxJibu.Value == "1041" || cbxJibu.Value == "1131" || cbxJibu.Value == "1141" ||         cbxJibu.Value == "1091" || cbxJibu.Value == "1071") {
+		gfn_CallReportPopup("frmcust2040R01CustomerFeeGoji_KoreaCS.rex", "ds_oPrintGoji", "", "", ""); 	} else {
+	// 썬디엠 고지서 사용지부 : 광주전남,대전충남,경기,충북,전북,제주		gfn_CallReportPopup("frmcust2040R01CustomerFeeGoji_SunDM.rex", "ds_oPrintGoji", "", "", ""); 
+	}
+}
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_1001,dsc_0001]";	// 개인정보접속기록 시스템ID 
+}
+]]></Script>
+</Window>

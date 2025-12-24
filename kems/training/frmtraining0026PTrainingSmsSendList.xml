@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="400" Id="frmtraining0026PTrainingSmsSendList" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="SMS발송현황팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="600" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oSmsStat">
+				<Contents>
+					<colinfo id="TJHPROCDATE" size="7" type="DATE"/>
+					<colinfo id="TJHPROCJIBU" size="8" type="STRING"/>
+					<colinfo id="TJHPROCJIBUCD" size="2" type="STRING"/>
+					<colinfo id="TJHREASON" size="1000" type="STRING"/>
+					<colinfo id="TJHSABUN" size="20" type="STRING"/>
+					<colinfo id="TJHSABUNNM" size="100" type="STRING"/>
+					<colinfo id="TJHSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="TJHSTATUS" size="50" type="STRING"/>
+					<colinfo id="TJHSTATUSCD" size="30" type="STRING"/>
+					<colinfo id="TJMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="TPPERSONNM" size="100" type="STRING"/>
+					<colinfo id="TPPERSONKEY" size="13" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="506" LineColor="user14" Right="597" TabOrder="61" Top="1" Type="Rectangle" Width="91"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="Button1" ImageID="BTN_MULTI_SORT" Left="520" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="2" Top="32" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="509" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oSmsStat" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="396" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="342" Id="gdSmsStat" InputPanel="FALSE" Left="4" LineColor="default" OnCellDBLClick="gdSmsStat_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="596" RowHeight="20" Style="sty_Grid" TabOrder="4" TabStop="true" Top="54" UseDBuff="true" UsePopupMenu="true" UserData="문자메시지발송현황" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="592">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="52"/>
+						<col width="95"/>
+						<col width="93"/>
+						<col width="136"/>
+						<col width="59"/>
+						<col width="657"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="년도"/>
+						<cell align="center" col="2" display="text" text="직능"/>
+						<cell align="center" col="3" display="text" text="회차"/>
+						<cell align="center" col="4" display="text" text="접수번호"/>
+						<cell align="center" col="5" display="text" text="수신자"/>
+						<cell align="center" col="6" display="text" text="휴대폰번호"/>
+						<cell align="center" col="7" display="text" text="전송상태"/>
+						<cell align="center" col="8" display="text" text="발송시간"/>
+						<cell align="center" col="9" display="text" text="발송자"/>
+						<cell align="center" col="10" display="text" text="전문내용"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="TOMGGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="1" colid="TOYEAR" display="combo"/>
+						<cell align="center" col="2" colid="TOTCCOURSECD" combocol="CD" combodataset="ds_oCourse" combotext="DATA" display="combo"/>
+						<cell align="center" col="3" colid="TOTRAININGORDER" display="combo"/>
+						<cell align="center" col="4" colid="TOHJUBSUNO" display="text"/>
+						<cell align="center" col="5" colid="MRECVNM" display="text"/>
+						<cell align="center" col="6" colid="MRECVTEL" display="text"/>
+						<cell align="center" col="7" colid="MRECVRESULT" display="text"/>
+						<cell align="center" col="8" colid="MSENDDATE_A" display="text"/>
+						<cell align="center" col="9" colid="PNM" display="text"/>
+						<cell align="left" col="10" colid="MMSG" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Height="15" Id="lbSMS" Left="200" TabOrder="5" Text="※&#32;더블클릭&#32;시&#32;문자내용&#32;전체를&#32;보실&#32;수&#32;있습니다." Top="36" Width="304"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0026PTrainingSmsSendList.xml
+ * 설명 : SMS발송현황팝업
+ * 작성일 : 2009.09.18
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (IsExistVar("sTjmgno")) {
+        lfn_Search();
+    }
+
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_oSmsStat.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("training:searchTrainingSmsSendList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oSmsStat=ds_oSmsStat"	// outDs
+		,"TJMGNO=" + quote(sTjmgno) // args
+		,"lfn_AfterSearchTrainingSmsSendList"
+		,false
+	);
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchTrainingSmsSendList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SearchMessage(gdSmsStat); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 사용자 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdSmsStat, 0); // 멀티 정렬을 실행한다.
+}
+// 문자내용보기
+function gdSmsStat_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var sArg = "sMMSG=" + quote(ds_oSmsStat.GetColumn(nRow, "MMSG"));
+
+	Dialog("COM::frmCOM1130PSmsContentsView.xml", sArg, -1, -1, "", -1, -1);	
+}
+]]></Script>
+</Window>

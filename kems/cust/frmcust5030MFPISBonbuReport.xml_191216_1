@@ -1,0 +1,803 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="396" Id="frmcust5030MFPISBonbuReport" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="소방방재청&#32;본부별현황" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="519" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioOrder">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>소방서,&#32;119센터,&#32;대상물명</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>대상물명,&#32;소방서,&#32;119센터</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>구분(상세/세부구분),&#32;소방서,&#32;119센터</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioChoiceYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>선택</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioReport">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>소방서별&#32;집계</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>대상&#32;리스트</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>소방안전관리자</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>위험물안전관리자</DATA>
+					</record>
+					<record>
+						<CD>5</CD>
+						<DATA>소방기술자</DATA>
+					</record>
+					<record>
+						<CD>8</CD>
+						<DATA>위험물운송자</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oFireStation">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTCD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oBonbu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="JIBUCD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oDATA">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioFireStation">
+				<Contents>
+					<colinfo id="BID" size="256" summ="default" type="STRING"/>
+					<colinfo id="SID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CID" size="256" summ="default" type="STRING"/>
+					<colinfo id="GMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SNM&#32;" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="379" Height="112" Id="Shape1" Left="4" LineColor="user15" Right="510" TabOrder="14" Top="267" Type="Rectangle" Width="506"></Shape>
+		<Shape Bottom="246" Height="129" Id="Shape0" Left="4" LineColor="user15" Right="510" TabOrder="12" Top="117" Type="Rectangle" Width="506"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="11" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="272">
+			<Contents></Contents>
+		</Div>
+		<Static Align="Center" Height="20" Id="Static1" Left="15" Style="sty_LabelGruopBox" TabOrder="13" Text="조회&#32;조건" Top="112" VAlign="Middle" Width="112"></Static>
+		<Static Align="Center" Height="20" Id="Static13" Left="15" Style="sty_LabelGruopBox" TabOrder="15" Text="정렬순서" Top="265" VAlign="Middle" Width="112"></Static>
+		<Radio BindDataset="ds_ioOrder" Border="Flat" CodeColumn="CD" DataColumn="DATA" Enable="FALSE" Height="84" Id="radOrder" INDEX="0" InnerDataset="ds_ioOrder" Left="14" LeftMargin="8" OnKeyDown="gfn_EnterNextFocus" RightMargin="8" Style="sty_Radio" TabOrder="10" Top="290" Value="1" Width="487"></Radio>
+		<Shape Bottom="53" Height="52" Id="shpBtnBox" Left="322" LineColor="user14" Right="500" TabOrder="16" Top="1" Type="Rectangle" Width="178"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="412" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="412" OnClick="lfn_Excel" Style="sty_Button" TabOrder="4" ToolTipText="엑셀로&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="325" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="1" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="325" OnClick="lfn_Print" Style="sty_Button" TabOrder="3" ToolTipText="출력" Top="28" Width="85"></Button>
+		<Shape Bottom="96" Height="40" Id="Shape2" Left="4" LineColor="user15" Right="510" TabOrder="17" Top="56" Type="Rectangle" Width="506"></Shape>
+		<Static Align="Center" Height="20" Id="Static2" Left="20" Style="sty_LabelGruopBox" TabOrder="18" Text="출력물" Top="48" VAlign="Middle" Width="112"></Static>
+		<Radio BindDataset="ds_ioReport" Border="Flat" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="radPrtGubun" INDEX="0" InnerDataset="ds_ioReport" Left="32" LeftMargin="16" OnChanged="radPrtGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="16" Style="sty_Radio" TabOrder="5" Top="72" Value="N" Width="301"></Radio>
+		<Static Align="Center" Height="20" Id="Static4" Left="5" Style="sty_Label" TabOrder="19" Text="소방본부" Top="144" VAlign="Middle" Width="122"></Static>
+		<Static Align="Center" Height="20" Id="Static5" Left="5" Style="sty_Label" TabOrder="20" Text="소방서" Top="178" VAlign="Middle" Width="122"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Enable="FALSE" Height="20" Id="cbxFireStation1" INDEX="0" InnerDataset="ds_oFireStation" Left="246" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="7" Top="178" Value="01" Width="121"></Combo>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radFireStation" INDEX="0" InnerDataset="ds_ioChoiceYn" Left="133" LeftMargin="4" OnChanged="radFireStation_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="6" Top="178" Width="108"></Radio>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Enable="FALSE" Height="20" Id="cbxFireStation2" INDEX="0" InnerDataset="ds_oFireStation" Left="384" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="8" Top="178" Value="01" Width="120"></Combo>
+		<Static Align="Center" Height="20" Id="Static6" Left="364" Style="sty_Text" TabOrder="21" Text="~" Top="178" VAlign="Middle" Width="20"></Static>
+		<Static Align="Center" Height="20" Id="lbMemberGubun" Left="5" Style="sty_Label" TabOrder="22" Text="연계대상" Top="212" VAlign="Middle" Width="122"></Static>
+		<Combo BindDataset="ds_ioCourse" Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_ioCourse" Left="133" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="9" Top="212" UserData="S" Width="121"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxBonbu" INDEX="0" InnerDataset="ds_oBonbu" Left="133" OnChanged="cbxBonbu_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="23" Top="144" UserData="I" Width="104"></Combo>
+		<Grid AutoEnter="TRUE" BindDataset="ds_oDATA" BkColor2="default" BoldHead="true" Bottom="585" Editable="TRUE" Enable="true" EndLineColor="default" Height="165" Id="gdList1" InputPanel="FALSE" Left="-3" LineColor="default" Right="756" TabOrder="24" TabStop="true" Top="420" TopSummary="TRUE" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="759">
+			<contents>
+				<format id="firestation_1">
+					<columns>
+						<col width="70"/>
+						<col width="80"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell bkcolor="skyblue" col="0" colspan="10" display="text" text="소방방재청&#32;소방서별&#32;집계현황(소방안전관리자)"/>
+						<cell bkcolor="skyblue" col="0" display="text" row="1" rowspan="2" text="소방서"/>
+						<cell bkcolor="skyblue" col="1" display="text" row="1" rowspan="2" text="총&#32;계"/>
+						<cell bkcolor="skyblue" col="2" colspan="5" display="text" row="1" text="연계&#32;대상"/>
+						<cell bkcolor="skyblue" col="7" colspan="3" display="text" row="1" text="미연계&#32;대상"/>
+						<cell bkcolor="skyblue" col="2" display="text" row="2" text="소계"/>
+						<cell bkcolor="skyblue" col="3" display="text" row="2" text="1급&#32;소관"/>
+						<cell bkcolor="skyblue" col="4" display="text" row="2" text="2급&#32;소관"/>
+						<cell bkcolor="skyblue" col="5" display="text" row="2" text="공공&#32;1급"/>
+						<cell bkcolor="skyblue" col="6" display="text" row="2" text="공공&#32;2급"/>
+						<cell bkcolor="skyblue" col="7" display="text" row="2" text="소계"/>
+						<cell bkcolor="skyblue" col="8" display="text" row="2" text="일반대상"/>
+						<cell bkcolor="skyblue" col="9" display="text" row="2" text="그외자료"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SNM" display="text" edit="normal"/>
+						<cell align="right" bkcolor="user8" col="1" colid="N_TOT" display="number"/>
+						<cell bkcolor="user3" col="2" colid="N_TOT1" display="number"/>
+						<cell align="right" col="3" colid="N1" display="number" edit="normal"/>
+						<cell align="right" col="4" colid="N2" display="number" edit="normal"/>
+						<cell align="right" col="5" colid="N3" display="number"/>
+						<cell col="6" colid="N4" display="number"/>
+						<cell align="right" bkcolor="user3" col="7" colid="N_TOT2" display="number"/>
+						<cell align="right" col="8" colid="N5" display="number"/>
+						<cell align="right" col="9" colid="N6" display="number"/>
+					</body>
+					<summary>
+						<cell align="center" bkcolor="user4" col="0" display="text" text="총&#32;계"/>
+						<cell align="right" bkcolor="user4" col="1" display="number" expr="SUM(&apos;N_TOT&apos;)"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;N_TOT1&apos;)"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;N1&apos;)"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;N2&apos;)"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;N3&apos;)"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;N4&apos;)"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="SUM(&apos;N_TOT2&apos;)"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;N5&apos;)"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;N6&apos;)"/>
+					</summary>
+				</format>
+				<format id="firestation_3">
+					<columns>
+						<col width="70"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="120"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="120"/>
+					</columns>
+					<head>
+						<cell bkcolor="skyblue" col="0" colspan="8" display="text" text="소방방재청&#32;소방서별&#32;집계현황(위험물안전관리자)"/>
+						<cell bkcolor="skyblue" col="0" display="text" row="1" text="소방서"/>
+						<cell bkcolor="skyblue" col="1" display="text" row="1" text="총&#32;계"/>
+						<cell bkcolor="skyblue" col="2" display="text" row="1" text="제조소"/>
+						<cell bkcolor="skyblue" col="3" display="text" row="1" text="주유/판매취급소"/>
+						<cell bkcolor="skyblue" col="4" display="text" row="1" text="이송취급소"/>
+						<cell bkcolor="skyblue" col="6" display="text" row="1" text="저장소"/>
+						<cell bkcolor="skyblue" col="7" display="text" row="1" text="이동탱크저장소"/>
+						<cell bkcolor="skyblue" col="5" display="text" row="1" text="일반취급소"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SNM" display="text" edit="normal"/>
+						<cell align="right" bkcolor="user3" col="1" colid="N_TOT" display="number"/>
+						<cell align="right" col="2" colid="N1" display="number"/>
+						<cell align="right" col="3" colid="N2" display="number"/>
+						<cell align="right" col="4" colid="N3" display="number"/>
+						<cell align="right" col="5" colid="N4" display="number"/>
+						<cell align="right" col="6" colid="N5" display="number"/>
+						<cell align="right" col="7" colid="N6" display="number"/>
+					</body>
+					<summary>
+						<cell align="center" bkcolor="user4" col="0" display="text" text="총&#32;계"/>
+						<cell align="right" bkcolor="user4" col="1" display="number" expr="SUM(&apos;N_TOT&apos;)"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;N1&apos;)"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;N2&apos;)"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;N3&apos;)"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;N4&apos;)"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;N5&apos;)"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="SUM(&apos;N6&apos;)"/>
+					</summary>
+				</format>
+				<format id="firestation_5">
+					<columns>
+						<col width="94"/>
+						<col width="94"/>
+						<col width="94"/>
+						<col width="94"/>
+						<col width="94"/>
+						<col width="94"/>
+						<col width="94"/>
+						<col width="94"/>
+					</columns>
+					<head>
+						<cell bkcolor="skyblue" col="0" colspan="8" display="text" text="소방방재청&#32;소방서별&#32;집계현황(소방기술자)"/>
+						<cell bkcolor="skyblue" col="0" display="text" row="1" text="소방서"/>
+						<cell bkcolor="skyblue" col="1" display="text" row="1" text="총&#32;계"/>
+						<cell bkcolor="skyblue" col="2" display="text" row="1" text="설계업"/>
+						<cell bkcolor="skyblue" col="3" display="text" row="1" text="공사업"/>
+						<cell bkcolor="skyblue" col="4" display="text" row="1" text="감리업"/>
+						<cell bkcolor="skyblue" col="5" display="text" row="1" text="관리업"/>
+						<cell bkcolor="skyblue" col="6" display="text" row="1" text="방염업"/>
+						<cell bkcolor="skyblue" col="7" display="text" row="1" text="대행업"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SNM" display="text" edit="normal"/>
+						<cell align="right" bkcolor="user3" col="1" colid="N_TOT" display="number"/>
+						<cell align="right" col="2" colid="N1" display="number"/>
+						<cell align="right" col="3" colid="N2" display="number"/>
+						<cell align="right" col="4" colid="N3" display="number"/>
+						<cell align="right" col="5" colid="N4" display="number"/>
+						<cell align="right" col="6" colid="N5" display="number"/>
+						<cell align="right" col="7" colid="N6" display="number"/>
+					</body>
+					<summary>
+						<cell align="center" bkcolor="user4" col="0" display="text" text="총&#32;계"/>
+						<cell align="right" bkcolor="user4" col="1" display="number" expr="SUM(&apos;N_TOT&apos;)"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;N1&apos;)"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;N2&apos;)"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;N3&apos;)"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;N4&apos;)"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;N5&apos;)"/>
+						<cell align="right" bkcolor="user4" col="7" display="text" expr="SUM(&apos;N6&apos;)"/>
+					</summary>
+				</format>
+				<format id="firestation_8">
+					<columns>
+						<col width="186"/>
+						<col width="222"/>
+					</columns>
+					<head>
+						<cell bkcolor="skyblue" col="0" colspan="2" display="text" text="소방방재청&#32;소방서별&#32;집계현황(위험물운송자)"/>
+						<cell bkcolor="skyblue" col="0" display="text" row="1" text="소방서"/>
+						<cell bkcolor="skyblue" col="1" display="text" row="1" text="위험물운송자"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SNM" display="text" edit="normal"/>
+						<cell align="right" col="1" colid="N1" display="number"/>
+					</body>
+					<summary>
+						<cell align="center" bkcolor="user4" col="0" display="text" text="총&#32;계"/>
+						<cell align="right" bkcolor="user4" col="1" display="number" expr="SUM(&apos;N1&apos;)"/>
+					</summary>
+				</format>
+				<format id="list_1">
+					<columns>
+						<col width="50"/>
+						<col width="74"/>
+						<col width="70"/>
+						<col width="114"/>
+						<col width="66"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="150"/>
+						<col width="100"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell bkcolor="skyblue" col="0" colspan="10" display="text" text="소방방재청&#32;소방서별&#32;상세현황(소방안전관리자)"/>
+						<cell bkcolor="skyblue" col="0" display="text" row="1" text="순번"/>
+						<cell bkcolor="skyblue" col="1" display="text" row="1" text="소방서"/>
+						<cell bkcolor="skyblue" col="2" display="text" row="1" text="119센터"/>
+						<cell bkcolor="skyblue" col="3" display="text" row="1" text="대상물명"/>
+						<cell bkcolor="skyblue" col="4" display="text" row="1" text="구분"/>
+						<cell bkcolor="skyblue" col="5" display="text" row="1" text="선임자명"/>
+						<cell bkcolor="skyblue" col="6" display="text" row="1" text="선임일자"/>
+						<cell bkcolor="skyblue" col="7" display="text" row="1" text="주소"/>
+						<cell bkcolor="skyblue" col="8" display="text" row="1" text="연락처"/>
+						<cell bkcolor="skyblue" col="9" display="text" row="1" text="연계건수"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="RCCDNM" display="number" edit="normal" expr="currow+1"/>
+						<cell align="center" col="1" colid="G2" display="text" edit="normal"/>
+						<cell align="center" col="2" colid="G3" display="text" edit="normal"/>
+						<cell align="left" col="3" colid="G4" display="text"/>
+						<cell align="center" col="4" colid="G5" display="text"/>
+						<cell align="center" col="5" colid="G6" display="text"/>
+						<cell align="center" col="6" colid="G7" display="text"/>
+						<cell align="left" col="7" colid="G8" display="text"/>
+						<cell align="left" col="8" colid="G9" display="text"/>
+						<cell align="center" col="9" colid="G10" display="text"/>
+					</body>
+				</format>
+				<format id="list_3">
+					<columns>
+						<col width="50"/>
+						<col width="74"/>
+						<col width="70"/>
+						<col width="114"/>
+						<col width="66"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="150"/>
+						<col width="100"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell bkcolor="skyblue" col="0" colspan="11" display="text" text="소방방재청&#32;소방서별&#32;상세현황(소방안전관리자)"/>
+						<cell bkcolor="skyblue" col="0" display="text" row="1" text="순번"/>
+						<cell bkcolor="skyblue" col="1" display="text" row="1" text="소방서"/>
+						<cell bkcolor="skyblue" col="2" display="text" row="1" text="119센터"/>
+						<cell bkcolor="skyblue" col="3" display="text" row="1" text="대상물명"/>
+						<cell bkcolor="skyblue" col="4" display="text" row="1" text="구분"/>
+						<cell bkcolor="skyblue" col="5" display="text" row="1" text="상세구분"/>
+						<cell bkcolor="skyblue" col="6" display="text" row="1" text="선임자명"/>
+						<cell bkcolor="skyblue" col="7" display="text" row="1" text="선임일자"/>
+						<cell bkcolor="skyblue" col="8" display="text" row="1" text="주소"/>
+						<cell bkcolor="skyblue" col="9" display="text" row="1" text="연락처"/>
+						<cell bkcolor="skyblue" col="10" display="text" row="1" text="연계건수"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="RCCDNM" display="number" edit="normal" expr="currow+1"/>
+						<cell align="center" col="1" colid="G2" display="text" edit="normal"/>
+						<cell align="center" col="2" colid="G3" display="text" edit="normal"/>
+						<cell align="left" col="3" colid="G4" display="text"/>
+						<cell align="center" col="4" colid="G5" display="text"/>
+						<cell align="center" col="5" colid="G6" display="text"/>
+						<cell align="center" col="6" colid="G7" display="text"/>
+						<cell align="center" col="7" colid="G8" display="text"/>
+						<cell align="left" col="8" colid="G9" display="text"/>
+						<cell align="left" col="9" colid="G10" display="text"/>
+						<cell align="center" col="10" colid="G11" display="text"/>
+					</body>
+				</format>
+				<format id="list_5">
+					<columns>
+						<col width="50"/>
+						<col width="106"/>
+						<col width="74"/>
+						<col width="70"/>
+						<col width="114"/>
+						<col width="66"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="150"/>
+						<col width="100"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell bkcolor="skyblue" col="0" colspan="12" display="text" text="소방방재청&#32;소방서별&#32;상세현황(소방시설업)"/>
+						<cell bkcolor="skyblue" col="0" display="text" row="1" text="순번"/>
+						<cell bkcolor="skyblue" col="1" display="text" row="1" text="업체명"/>
+						<cell bkcolor="skyblue" col="2" display="text" row="1" text="소방서"/>
+						<cell bkcolor="skyblue" col="3" display="text" row="1" text="119센터"/>
+						<cell bkcolor="skyblue" col="4" display="text" row="1" text="업체구분"/>
+						<cell bkcolor="skyblue" col="5" display="text" row="1" text="세부구분"/>
+						<cell bkcolor="skyblue" col="6" display="text" row="1" text="인력구분"/>
+						<cell bkcolor="skyblue" col="7" display="text" row="1" text="선임자명"/>
+						<cell bkcolor="skyblue" col="8" display="text" row="1" text="선임일자"/>
+						<cell bkcolor="skyblue" col="9" display="text" row="1" text="주소"/>
+						<cell bkcolor="skyblue" col="10" display="text" row="1" text="연락처"/>
+						<cell bkcolor="skyblue" col="11" display="text" row="1" text="연계건수"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="RCCDNM" display="number" edit="normal" expr="currow+1"/>
+						<cell align="center" col="1" colid="G1" display="text"/>
+						<cell align="center" col="2" colid="G2" display="text" edit="normal"/>
+						<cell align="center" col="3" colid="G3" display="text" edit="normal"/>
+						<cell align="center" col="4" colid="G4" display="text"/>
+						<cell align="center" col="5" colid="G5" display="text"/>
+						<cell align="center" col="6" colid="G6" display="text"/>
+						<cell align="center" col="7" colid="G7" display="text"/>
+						<cell align="center" col="8" colid="G8" display="text"/>
+						<cell align="left" col="9" colid="G9" display="text"/>
+						<cell align="left" col="10" colid="G10" display="text"/>
+						<cell align="center" col="11" colid="G11" display="text"/>
+					</body>
+				</format>
+				<format id="list_8">
+					<columns>
+						<col width="50"/>
+						<col width="74"/>
+						<col width="70"/>
+						<col width="114"/>
+						<col width="66"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="150"/>
+						<col width="100"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell bkcolor="skyblue" col="0" colspan="11" display="text" text="소방방재청&#32;소방서별&#32;상세현황(위험물운송자)"/>
+						<cell bkcolor="skyblue" col="0" display="text" row="1" text="순번"/>
+						<cell bkcolor="skyblue" col="1" display="text" row="1" text="소방서"/>
+						<cell bkcolor="skyblue" col="2" display="text" row="1" text="119센터"/>
+						<cell bkcolor="skyblue" col="3" display="text" row="1" text="대상물명"/>
+						<cell bkcolor="skyblue" col="4" display="text" row="1" text="구분"/>
+						<cell bkcolor="skyblue" col="5" display="text" row="1" text="상세구분"/>
+						<cell bkcolor="skyblue" col="6" display="text" row="1" text="차량번호"/>
+						<cell bkcolor="skyblue" col="7" display="text" row="1" text="검사일자"/>
+						<cell bkcolor="skyblue" col="8" display="text" row="1" text="주소"/>
+						<cell bkcolor="skyblue" col="9" display="text" row="1" text="연락처"/>
+						<cell bkcolor="skyblue" col="10" display="text" row="1" text="연계건수"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="RCCDNM" display="number" edit="normal" expr="currow+1"/>
+						<cell align="center" col="1" colid="G2" display="text" edit="normal"/>
+						<cell align="center" col="2" colid="G3" display="text" edit="normal"/>
+						<cell align="left" col="3" colid="G4" display="text"/>
+						<cell align="center" col="4" colid="G5" display="text"/>
+						<cell align="center" col="5" colid="G6" display="text"/>
+						<cell align="center" col="6" colid="G7" display="text"/>
+						<cell align="center" col="7" colid="G8" display="text"/>
+						<cell align="left" col="8" colid="G9" display="text"/>
+						<cell align="left" col="9" colid="G10" display="text"/>
+						<cell align="center" col="10" colid="G11" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "LIB::cust.js"; // 공통업무 관련
+
+
+function Form_OnLoadCompleted(obj) {
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+	
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") {            // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true);           // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false);          // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    // 소방본부 콤보세팅
+    var adminGubun = gds_oUserInfo.GetColumn(0, "ADMINGUBUN");
+    var deptCD     = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+   
+    if (adminGubun == "BM" || adminGubun == "SM" || adminGubun == "PM") {  // 관리자 : 전체 지부 
+		ds_oBonbu.Copy("gds_oFireBonbuCode");
+	}
+	else if (SubStr(deptCD,0,1) == "1") {            // 지부 : 해당지부만 
+		
+		// 경기 북부는 경기로 .. 나머진 그대
+//		if (deptCD == "1141") {
+//			deptCD = "1081";
+//		} 
+		
+		gds_oFireBonbuCode.Filter("JIBUCD=='" + trim(deptCD) + "'");
+		for (var i = 0; i < gds_oFireBonbuCode.GetCount(); i++) {
+			nRow = ds_oBonbu.AddRow();
+			ds_oBonbu.SetColumn(nRow, "CD", gds_oFireBonbuCode.GetColumn(i, "CD"));
+			ds_oBonbu.SetColumn(nRow, "DATA", gds_oFireBonbuCode.GetColumn(i, "DATA"));
+			ds_oBonbu.SetColumn(nRow, "JIBUCD", gds_oFireBonbuCode.GetColumn(i, "JIBUCD"));
+		}
+		ds_oBonbu.row = 0;
+		cbxBonbu.Value = gds_oFireBonbuCode.GetColumn(0, "DATA");
+		cbxBonbu.Index = 0;
+		gds_oFireBonbuCode.UnFilter();
+	}
+	else {
+        gfn_Alert(MSGI00080);
+        close();
+	}
+		
+		
+	// 라디오버튼 초기화 
+	radPrtGubun.index=0;   // 출력물 
+    
+    //직능
+    cbxCourse.index=0;
+    
+    //소방서 SEARCH
+    lfn_search_FireStation();
+    lfn_filter_FireStation();
+}
+
+
+function Form_OnSize(obj,nCx,nCy,nState) {
+    if (gs_IsResizingForm == "Y") { }
+}
+
+function lfn_SetFormAuth(bStatus) {}
+
+
+// 소방서 search 
+function lfn_search_FireStation() {
+	ds_ioFireStation.ClearData(); 
+
+    tit_clearActionInfo();
+    tit_addCsvSearchActionInfo("cust:searchCust6520FireStation", false);
+    
+	// 서버 호출 
+	tit_callService("", "", "", "ds_ioFireStation=ds_ioFireStation", "", "lfn_AfterSearch", false, "", true); 
+}
+
+
+// 현재 선택한 소방본부에 소방서 찾기 
+function lfn_filter_FireStation() {
+	
+	var bonbu = cbxBonbu.Value;
+	
+	if (bonbu == "") {
+		bonbu = ds_ioFireStation.GetColumn(1, "BID");
+	}
+	
+	ds_oFireStation.ClearData();
+
+    var nRow = -1;
+    var ls_FilterExpr = "BID=='" + trim(bonbu) + "'";
+
+	ds_ioFireStation.Filter(ls_FilterExpr);
+	
+    for (var i = 0; i < ds_ioFireStation.GetCount(); i++) {
+        nRow = ds_oFireStation.AddRow();
+        ds_oFireStation.SetColumn(nRow, "CD", ds_ioFireStation.GetColumn(i, "SID"));
+		ds_oFireStation.SetColumn(nRow, "DATA", ds_ioFireStation.GetColumn(i, "SNM"));
+		ds_oFireStation.SetColumn(nRow, "GTCD", ds_ioFireStation.GetColumn(i, "GMGNO"));
+    }
+
+    ds_oFireStation.row = 0;
+    ds_ioFireStation.UnFilter();
+
+    cbxFireStation1.Index = 0;
+    cbxFireStation2.index = ds_oFireStation.rowcount-1;    
+}
+
+
+
+//초기화
+function lfn_Cancel(obj) {
+    lfn_CancelL(obj);
+}
+
+function lfn_CancelL(obj) {
+    radPrtGubun.Value="1";
+    radPrtGubun_OnChanged(obj, "1");
+
+	cbxBonbu.Index=0;
+
+	radRegion_OnChanged(obj, "1");
+}
+
+
+/***  조회 조건 변경  ***/
+// 출력물
+function radPrtGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if (strCode == "1") {
+		radOrder.Enable = false;
+	}
+	else {
+		radOrder.Enable = true;
+	}
+}
+
+
+// 소방본부
+function cbxBonbu_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	lfn_filter_FireStation();
+}
+
+//지역--라디오 버튼 선택시
+function radFireStation_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+    if (strCode == "2") { // 선택 
+        cbxFireStation1.Enable =  true;
+        cbxFireStation2.Enable =  true;                       
+        cbxFireStation1.SetFocus();
+        cbxFireStation1.Index = 0;
+        cbxFireStation2.index = ds_oFireStation.rowcount-1;    
+	} else {              // 전체
+        cbxFireStation1.Enable =  false;
+        cbxFireStation2.Enable =  false;                
+        cbxFireStation1.Index = 0;
+        cbxFireStation2.index = ds_oFireStation.rowcount-1;    
+	}
+}
+// -끝-
+
+
+
+
+
+/***   기능 : 출력   ***/
+function lfn_Print(obj){
+    lfn_Search();
+    
+    course = "";
+    if (ds_oDATA.GetCount() < 1) {
+        gfn_Alert("출력할 데이터가 없습니다.");
+        return false;
+    }
+
+    var rpt = "";
+    var params = "";
+    var params2 = "";
+    var sTopMargin = "";
+    var sLeftMargin = "";
+
+    if (radPrtGubun.Value == "1") {    // 출력구분 : 지역별
+        rpt = "frmcust5030Firestation_" + cbxCourse.Value + ".rex";
+		
+		if (cbxCourse.Value == "8") { 
+			sTopMargin = "100";
+			sLeftMargin = "200";
+		}
+    }
+    
+	else if (radPrtGubun.Value == "2") {    // 출력구분 : 리스트 
+		rpt = "frmcust5030List_" + cbxCourse.Value + ".rex";
+    }
+    
+	/*
+	 * 기능 : 렉스퍼트 보고서를 팝업화면으로 호출한다.
+	 * parameter : sReportName - 레포트명(예:레포트.rex)
+	 *             sReportDataset - 데이터셋명(예:dsReport1||dsResport2||...)
+	 *             sReportParams - 렉스퍼트용 파라메터(예: a에 1, b에 2, c에 3의 값을 넣는 경우, a=1^b=2^c=3...)
+	 *             bLcsYn - 수첩여부
+	 *             LeftMargin = 왼쪽
+	 *             RightMargin = 오른쪽
+	 *             TopMargin = 상단
+	 *             BottomMargin = 하단
+	 * return value : 정상출력 true, 출력 안했으면 false
+	 */    
+	 
+    //gfn_CallReportPopup(rpt, "ds_oDATA", params);
+    gfn_CallReportPopup(rpt, "ds_oDATA", params, '', '', sTopMargin, sLeftMargin);
+}
+
+
+
+
+function lfn_Search(obj) {
+    SetWaitCursor(false);
+    
+
+    
+    ds_oDATA.ClearData(); // 데이타셋 초기화
+    
+    tit_clearActionInfo();
+    
+    var qry = "";
+    var bizGubun = "0";  // MATCH 테이블 - 직능 구분  :: 소방안전관리자 
+    
+    if      (cbxCourse.Value == "3") { bizGubun = "1"; } // 위험물안전관리자 
+    else if (cbxCourse.Value == "5") { bizGubun = "3"; } // 소방기술자 
+    else if (cbxCourse.Value == "8") { bizGubun = "2"; } // 위험물운송자 
+    
+    
+    if (radPrtGubun.Value == "1") {     // 출력구분 : 소방서별
+		qry = "cust:searchCust5030Firestation_" + cbxCourse.Value;
+    }
+    
+	else if (radPrtGubun.Value == "2") { // 출력구분 : 리스트 
+        qry = "cust:searchCust5030List_" + cbxCourse.Value;
+    }
+
+    tit_addCsvSearchActionInfo(qry, false);
+    
+	// 서버 호출 
+	tit_callService(
+         "",""
+		,""	// inDs
+		,"ds_oDATA=ds_oDATA"	// outDs
+		,     " BID=" + quote(cbxBonbu.Value)        // 소방본부 
+	    	+ " SID=" +quote(radFireStation.value)   // 소방서 선택
+            + " SID1=" +quote(cbxFireStation1.value) // 소방서코드1 
+            + " SID2=" +quote(cbxFireStation2.value) // 소방서코드2
+            + " ORDER=" +quote(radOrder.Value)	     // 정렬순서 
+            + " BIZGUBUN=" +quote(bizGubun)	         // MATCH 테이블 - 직능 구분 
+		, "lfn_AfterSearch"
+		, false
+		, false  // 처리중 창 보여주기 (null or false : 보여줌) 
+		, true); 
+		   
+}
+
+function lfn_AfterSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);     
+        course = "";
+        return;
+    }
+    
+    // 조회결과 유무 체크 
+    if (ds_oDATA.GetCount() > 0) {
+		// 조회이력을 저장한다.  
+		ls_HistoryArg = "출력물=" + quote(radPrtGubun.Value)
+					+ ",소방본부=" + quote(cbxBonbu.Value)                
+					+ ",소방서선택=" + quote(radFireStation.Value)
+					+ ",소방서1=" + quote(cbxFireStation1.Value)
+					+ ",소방서2=" + quote(cbxFireStation2.Value)
+					+ ",연계대상=" + quote(cbxCourse.Value)
+					+ ",정렬순서=" + quote(radOrder.value);  
+	
+		gfn_InsertFPISSearchPrintHistory(
+			"P"
+			, this.ID
+			, global.mnuLeft.cbxOpenForm.Text
+			, radPrtGubun.Text
+			, ls_HistoryArg
+		);
+    }
+        
+    if (radPrtGubun.Value == "2") {
+		var meg = "출력건수 : " + ds_oDATA.GetCount() + "건 \n";
+			meg += "출력건수가 많으면 출력하는데 많은 시간이 소요될 수 있습니다.";
+		alert(meg);
+    }
+}
+
+
+
+
+
+
+
+/***  엑셀   ***/
+function lfn_Excel(obj) {	
+    lfn_ExcelL(obj);
+}
+
+function lfn_ExcelL(obj)
+{	
+    lfn_Search();
+
+	if(ds_oDATA.rowcount == 0){
+		alert("데이터가 없습니다.");
+		return;
+	}
+
+    gdList1.Format = "";
+
+    if (radPrtGubun.Value == "1") {    // 출력구분 : 지역별
+		gdList1.Format = "firestation_" + cbxCourse.Value;
+    }
+    
+    else if (radPrtGubun.Value == "2") {    // 출력구분 : 리스트 
+        gdList1.Format = "list_" + cbxCourse.Value;
+    }
+    
+    
+	gdList1.ExportExcelEx("sheet1");
+
+}
+/***  엑셀 출력 끝  ***/
+
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_1003,dsc_0003]";	// 개인정보접속기록 시스템ID 
+}
+]]></Script>
+</Window>

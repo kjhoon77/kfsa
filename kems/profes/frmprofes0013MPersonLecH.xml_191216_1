@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" BorderColor="user12" Height="590" Id="frmprofes0013MPersonLecH" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="개인별&#32;교육현황" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oJikwi">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>1급</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>2급</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>3급</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>4급</DATA>
+					</record>
+					<record>
+						<CD>5</CD>
+						<DATA>5급</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>전임</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>겸임</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ProfesList">
+				<Contents>
+					<colinfo id="LDPFMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="LDPFNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTDEPTNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GUBUNCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="JIKWI" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUMCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUMTIME" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT1" size="256" summ="default" type="STRING"/>
+					<colinfo id="TIME1" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT2" size="256" summ="default" type="STRING"/>
+					<colinfo id="TIME2" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SearchJogeon">
+				<Contents>
+					<colinfo id="STARTDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ENDDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="JIBU" size="256" summ="default" type="STRING"/>
+					<colinfo id="JIKWI" size="256" summ="default" type="STRING"/>
+					<colinfo id="GUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ProfesList_Chart">
+				<Contents>
+					<colinfo id="LDPFMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="LDPFNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTDEPTNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GUBUNCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="JIKWI" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUMCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUMTIME" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT1" size="256" summ="default" type="STRING"/>
+					<colinfo id="TIME1" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT2" size="256" summ="default" type="STRING"/>
+					<colinfo id="TIME2" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="60" Height="28" Id="shpGubunBox" Left="4" LineColor="user15" Right="796" TabOrder="10" Top="32" Type="Rectangle" Width="792"></Shape>
+		<Static Align="Center" Height="20" Id="lbEduDate" Left="186" Style="sty_Label" TabOrder="8" Text="교육시작일" Top="36" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calDateFr" Left="278" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="1" Top="36" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calDateTo" Left="392" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="2" Top="36" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Shape Bottom="28" Height="28" Id="shpBtnBox" Left="356" LineColor="user14" Right="796" TabOrder="11" Top="0" Type="Rectangle" Width="440"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="7" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="356">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="btnToExcel" Style="sty_Button" TabOrder="4" ToolTipText="엑셀로&#32;저장" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="5" ToolTipText="화면&#32;출력" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="6" ToolTipText="닫기" Top="3" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbDateWave1" Left="378" Style="sty_Text" TabOrder="9" Text="~" Top="36" VAlign="Middle" Width="10"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="360" OnClick="lfn_Search" Style="sty_Button" TabOrder="12" ToolTipText="조회" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="447" OnClick="lfn_Print" Style="sty_Button" TabOrder="13" ToolTipText="출력" Top="3" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="Static1" Left="8" Style="sty_Label" TabOrder="14" Text="지부" Top="36" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="0" Top="35" UserData="I" Width="85"></Combo>
+		<Static Align="Center" Height="20" Id="Static0" Left="494" Style="sty_Label" TabOrder="15" Text="직급" Top="36" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJikwi" INDEX="0" InnerDataset="ds_oJikwi" Left="583" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="16" Top="35" UserData="I" Width="54"></Combo>
+		<Static Align="Center" Height="20" Id="Static2" Left="640" Style="sty_Label" TabOrder="17" Text="교수구분" Top="36" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxGubun" INDEX="0" InnerDataset="ds_oGubun" Left="731" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="18" Top="35" UserData="I" Width="54"></Combo>
+		<Tab BKSelColor="user4" Border="Flat" Font="굴림,9,Bold" Height="520" Id="TAB_Profes" Left="3" TabButtonBorder="Flat" TabOrder="19" Top="64" Width="792">
+			<Contents>
+				<TabPage BorderColor="black" Font="굴림,9" Height="497" Id="tab1" Left="2" TabOrder="15" Text="&#32;&#32;&#32;&#32;현&#32;&#32;&#32;&#32;황&#32;&#32;&#32;&#32;" Top="21" Width="788">
+					<Edit Align="CENTER" AutoSelect="TRUE" Border="None" DisableBKColor="user7" Face3dColor="user7" Height="12" Id="StartDate" ImeMode="native" Left="470" LeftMargin="2" ShadowColor="user7" Style="sty_Edit" TabOrder="1" Top="-61" UserData="S" Width="76"></Edit>
+					<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_ProfesList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="495" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="494" Id="gdList" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnCellDBLClick="gdList_OnCellDblClick" Right="784" RowHeight="20" Style="sty_Grid" TabOrder="2" TabStop="true" Top="1" UseDBuff="true" UsePopupMenu="true" UserData="개인별교육현황" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="780">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="41"/>
+									<col width="130"/>
+									<col width="70"/>
+									<col width="50"/>
+									<col width="80"/>
+									<col width="80"/>
+									<col width="80"/>
+									<col width="80"/>
+								</columns>
+								<head>
+									<cell align="center" col="0" display="text" text="순번"/>
+									<cell align="center" col="1" display="text" text="교수"/>
+									<cell align="center" col="2" display="text" text="지부"/>
+									<cell col="3" display="text" text="구분"/>
+									<cell col="4" display="text" text="합계"/>
+									<cell col="5" display="text" text="실무"/>
+									<cell col="6" display="text" text="강습"/>
+									<cell col="7" display="text" text="전문교육"/>
+									<cell col="0" colspan="4" display="text" row="1" text="총계"/>
+									<cell align="right" col="4" display="number" expr="SUM(&apos;SUMCNT&apos;)" font="굴림,10" row="1"/>
+									<cell align="right" col="5" display="number" expr="SUM(&apos;CNT1&apos;)" font="굴림,10" row="1"/>
+									<cell align="right" col="6" display="number" expr="SUM(&apos;CNT2&apos;)" font="굴림,10" row="1"/>
+									<cell align="right" col="7" display="number" expr="SUM(&apos;CNT3&apos;)" font="굴림,10" row="1"/>
+								</head>
+								<body>
+									<cell align="center" col="0" display="text" expr="row+1"/>
+									<cell align="center" col="1" colid="LDPFNAME" display="text"/>
+									<cell align="center" col="2" colid="GTDEPTNM" display="text"/>
+									<cell align="center" col="3" colid="GUBUN" display="text"/>
+									<cell align="right" col="4" colid="SUMCNT" display="number" font="굴림,10"/>
+									<cell align="right" col="5" colid="CNT1" display="number" font="굴림,10"/>
+									<cell align="right" col="6" colid="CNT2" display="number" font="굴림,10"/>
+									<cell align="right" col="7" colid="CNT3" display="number" font="굴림,10"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="497" Id="tab2" Left="2" TabOrder="15" Text="&#32;&#32;&#32;&#32;&#32;Chart&#32;&#32;&#32;&#32;&#32;" Top="21" Width="788">
+					<XChart AllowEdit="false" BorderColor="#88153e" Bottom="492" Height="490" Id="XChart1" Left="2" MarkerShape="MarkerShape_Rect" Right="786" Top="2" Width="784">
+						<_PersistData>&#13;&#10;/6wsb87i30NGWDYA8vJNQ/9oYXJ0RlgsIP9WZXJzaW9uPf82LjIuMTM0Mv8uMCwgQ3VsdP91cmU9bmV1dP9yYWwsIFB1Yv9saWNL&#13;&#10;ZXlUb/9rZW49YTE4N/84ZTIwNTJjMP84ZGNlElNvZv90d2FyZUZYLlr59B/y8wAj8vAgXgR6aw0E8vABAf7/gQUqawUBawUCawYG&#13;&#10;pQSRBdUy8vAQ8vAD8vD7/4dvf4JlAXwCvwKRBQG/BUFyaWFs8vBBpG8P8vIFjgWsBQBGD1h/Ei5IaWdobCkQ/3RTZXR0aW5nZ3MQ&#13;&#10;CZMIRR8AB3YFzwEBAAgCHRMfWAWfLkF4aXOVAX0CAPECOhDy82UWKDjgAAUKRxULRxmeB88f3BmVAcCeA4UNbQ9/A40OjwUCDASb&#13;&#10;H60QDbEfYi90L+cf+R8oCy+dL8UlDloYD44FvAH68vFS+fQuQmFzZZAADxIPJA82DRd3H/wiDf8uSUdhbGxlcl95VHlwZZUBFDIl&#13;&#10;URH6DIk/lTgSlTUTjQdHCABLvwBxM/LwFeQt/Ec/+yMJLkxpbmXvSW5mb9sCAf//j/+IFT6VOdMDlQFCpJU/lwgBuBqBARYnRRe+&#13;&#10;hScPRGVmYRgwLn9XaW5kb3dz&#13;&#10;</_PersistData>
+					</XChart>
+				</TabPage>
+			</Contents>
+		</Tab>
+	</Form>
+	<Script><![CDATA[#include "LIB::profes.js"; // 공통업무 관련
+
+function Form_OnLoadCompleted(obj)
+{
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+	
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+	calDateFr.Value = left(GetDate(), 4) + "0101";
+	calDateTo.Value = left(GetDate(), 8);
+    
+//    Cbo_Jibu_Init(); 
+	gfn_SearchAllJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회
+    lfn_Search();    
+   
+}
+
+function lfn_SetFormAuth(bStatus) {
+
+}
+
+function lfn_Search(obj)
+{
+	
+	tit_clearActionInfo(this);
+	
+	//TAB_Training.TabIndex = 1; //조회버튼 선택시  나오게 한다.
+		tit_addCsvSearchActionInfo("profes:searchProfes0013StatPerson", false);
+	ds_SearchJogeon.DeleteAll();		ds_SearchJogeon.AddRow();
+	ds_SearchJogeon.setColumn(0, "JIBU", cbxJibu.Value);	
+	ds_SearchJogeon.setColumn(0, "STARTDATE", calDateFr.Value);	
+	ds_SearchJogeon.setColumn(0, "ENDDATE", calDateTo.Value);			
+	ds_SearchJogeon.setColumn(0, "JIKWI", cbxJikwi.Value);	
+	ds_SearchJogeon.setColumn(0, "GUBUN", cbxGubun.Value);	
+    				
+	tit_callService(  
+	                 ""
+	               , ""  
+	               , "ds_iProfesList=ds_SearchJogeon"//inDs 
+	               , "ds_ProfesList=ds_oProfesList" //outDs
+	               , ""
+	               , "afterSearch"  //callBack
+	               , false
+	               ); 
+}
+
+// 조회 후 callbackfunction afterSearch(errCode, errMsg){
+
+	if(errCode != 0 ){
+		alert("오류가 발생했습니다.");
+	}
+	else{
+		if(ds_ProfesList.rowcount > 0){
+		}
+		else{
+		}
+	}
+	Chart_Start();
+	}
+
+/*----------------------------------------------------*
+ *  텝의 위치를 변경할 때
+ *----------------------------------------------------*/
+/*
+function TAB_Training_OnChanged(obj,nOldIndex,nNewindex)
+{
+
+	var tabIdx = TAB_Training.TabIndex;
+	
+	if (tabIdx == 0 ) {
+	
+	} else if (tabIdx == 1) {
+	    //Chart_Start(TAB_Training.tab2.cbxBang.Value);
+	    
+	}
+}
+*/
+
+/*----------------------------------------------------*
+ *  아랫부분의 차트 처리한다. (막대차트형태)          *
+ *----------------------------------------------------*/
+
+function Chart_Start(strCode)
+{
+
+    //-----------소숫점 자리수 표현------------------------------------------------------- 
+    TAB_Profes.tab2.XChart1.Axis[0].LabelsFormat.Decimals = 0;	  //소수점 자리수 표현 
+    TAB_Profes.tab2.XChart1.AxisX.Font.size="6";
+    TAB_Profes.tab2.XChart1.Font.size="7";
+    //TAB_Training.tab2.XChart1.AxisY.LabelsFormat.Format = "AxisFormat_Currency"; 
+    TAB_Profes.tab2.XChart1.AxisY.LabelsFormat.Format = "AxisFormat_Number";
+    //------------------------------------------------------------------------------------
+
+	TAB_Profes.tab2.XChart1.OpenData("COD_Values", 1, 2);
+	
+	
+	TAB_Profes.tab2.XChart1.BackColor = "white";
+	TAB_Profes.tab2.XChart1.BorderColor = "white";
+
+	
+
+	//축에 이름을 넣는다.
+	TAB_Profes.tab2.XChart1.NValues = 10;
+	For(var j=0;j<10;j++)	{
+		TAB_Profes.tab2.XChart1.Legend(j) = ds_ProfesList.GetColumn(j,"NAME");   
+	}
+	
+	For(var j=0;j<10;j++)	{
+		TAB_Profes.tab2.XChart1.Value(0, j) = ds_ProfesList.GetColumn(j,"CNT1");  //실무
+		TAB_Profes.tab2.XChart1.Value(1, j) = ds_ProfesList.GetColumn(j,"CNT2");  //강습
+	}
+    
+	TAB_Profes.tab2.XChart1.DataEditor = True  ;
+	TAB_Profes.tab2.XChart1.DataEditorObj.Docked = "Docked_Bottom"; 
+	
+	TAB_Profes.tab2.XChart1.SerLeg(0) = "실무"  ;
+	TAB_Profes.tab2.XChart1.SerLeg(1) = "강습" ;
+
+}
+
+
+//----------------------------------★★★★★★★★
+//차트에서 콤보박스 변환 시(왼쪽)   
+//----------------------------------
+/*
+function TAB_Training_tab2_cbxBang_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	Chart_Start(strCode);
+}
+*/
+/*-----------------------------------------------------------------------------*
+*                                                                              *
+*           파이 형태 차트 보여주기(왼족)                                      *
+*                                                                              *
+*------------------------------------------------------------------------------*/
+/*
+function Phy_Start(strCode)
+{
+    //-----------소숫점 자리수 표현------------------------------------------------------- 
+    TAB_Training.tab2.XChart0.Axis[0].LabelsFormat.Decimals = 0;	  //소수점 자리수 표현
+    //------------------------------------------------------------------------------------
+
+	TAB_Training.tab2.XChart0.PointLabels = true;
+	
+    //TAB_Training.tab2.XChart0.Gallery = "Gallery_Pie";
+	TAB_Training.tab2.XChart0.Chart3D = true;
+	
+	TAB_Training.tab2.XChart0.BackColor = "white";
+	TAB_Training.tab2.XChart0.BorderColor = "white";
+
+	
+	TAB_Training.tab2.XChart0.OpenData("COD_Values", 1, ds_exampass.rowcount);
+
+	if (ds_exampass.rowcount == 0){
+		TAB_Training.tab2.XChart0.Visible = false;
+	}else{
+		TAB_Training.tab2.XChart0.Visible = true;
+	}
+	
+	if (strCode == "0") { //전체
+		For(i=0;i<ds_exampass.rowcount;i++){
+			var Value0 = ToNumber(ds_exampass.GetColumn(i,"TSPASSCNT"));  
+			TAB_Training.tab2.XChart0.Value(0, i) = Value0;
+		}
+    } else if (strCode == "1") { //1급
+		For(i=0;i<ds_exampass.rowcount;i++){
+			var Value0 = ToNumber(ds_exampass.GetColumn(i,"TSPASSCNT_BANG1"));  
+			TAB_Training.tab2.XChart0.Value(0, i) = Value0;
+		}     
+    } else if (strCode == "2") { //2급
+		For(i=0;i<ds_exampass.rowcount;i++){
+			var Value0 = ToNumber(ds_exampass.GetColumn(i,"TSPASSCNT_BANG2"));  
+			TAB_Training.tab2.XChart0.Value(0, i) = Value0;
+		}     
+    } else {
+         alert("확인요망");
+    }
+	
+	
+	
+	TAB_Training.tab2.XChart0.CloseData("COD_Values");
+	TAB_Training.tab2.XChart0.Point[2].SeparateSlice =35;
+	
+
+	For(var j=0;j<ds_exampass.rowcount;j++)	{
+		TAB_Training.tab2.XChart0.Legend(j) = ds_exampass.GetColumn(j,"GTTEAMNM");   
+	}
+
+
+}
+*/
+
+//----------------------------------★★★★★★★★
+//차트에서 콤보박스 변환 시(오른쪽)   
+//----------------------------------
+/*
+function TAB_Training_tab2_cbxJibu_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+    Phy2_Start(strCode);
+}   
+*/
+/*-----------------------------------------------------------------------------*
+*                                                                              *
+*           파이 형태 차트 보여주기(오른족)                                    *
+*                                                                              *
+*------------------------------------------------------------------------------*/
+/*
+function Phy2_Start(strCode)
+{
+    //-----------소숫점 자리수 표현------------------------------------------------------- 
+    TAB_Training.tab2.XChart2.Axis[0].LabelsFormat.Decimals = 0;	  //소수점 자리수 표현
+    //------------------------------------------------------------------------------------
+
+	TAB_Training.tab2.XChart2.PointLabels = true;
+	
+    //TAB_Training.tab2.XChart2.Gallery = "Gallery_Pie";
+	TAB_Training.tab2.XChart2.Chart3D = true;
+	
+	TAB_Training.tab2.XChart2.BackColor = "white";
+	TAB_Training.tab2.XChart2.BorderColor = "white";
+
+	
+	TAB_Training.tab2.XChart2.OpenData("COD_Values", 1, 2);
+
+
+    var strIdx =  ds_exampass.FindRow( "GTMGNO", strCode );//특정 지부의 index값을 자져온다.
+    var Value0 ;//1급
+	var Value1 ;//2급
+
+	if (strIdx == "-1"){//콤보에서 전체 선택시 각 지부별 합격자를 더한다.
+		if (strCode == ''){
+			For(i=0;i<ds_exampass.rowcount;i++){	
+				var Val0 = ToNumber(ds_exampass.GetColumn(i,"TSPASSCNT_BANG1")) ;  
+				var Val1 = ToNumber(ds_exampass.GetColumn(i,"TSPASSCNT_BANG2")) ;  
+				Value0 =  Value0 + Val0;
+				Value1 =  Value1 + Val1;
+			}	
+	    }else{
+			Value0 =  0;
+			Value1 =  0;
+	    }
+	} else {//특정 지부 선택시
+	    Value0 = ToNumber(ds_exampass.GetColumn(strIdx,"TSPASSCNT_BANG1")) ;  
+	    Value1 = ToNumber(ds_exampass.GetColumn(strIdx,"TSPASSCNT_BANG2")) ;  
+	}
+			
+	TAB_Training.tab2.XChart2.Value(0, 0) = Value0;//1급
+	TAB_Training.tab2.XChart2.Value(0, 1) = Value1;//2급
+	
+	
+    TAB_Training.tab2.XChart2.OpenData("COD_Values", 1, 2);
+	TAB_Training.tab2.XChart2.Point[2].SeparateSlice =35;
+
+	TAB_Training.tab2.XChart2.Legend(0) = "1급";   
+	TAB_Training.tab2.XChart2.Legend(1) = "2급";   
+
+}
+*/
+
+//======================================================================================================
+//엑샐인쇄 시작----------------------------------------------------------------------------------------
+function btnExcell_OnClick(obj)
+{
+	var strText = "개인별 교육현황";
+	setExcelGridHeader(gdList,strText);		
+}
+//엑셀 함수 입니다. (위에 제목을 넣기 위함)
+function setExcelGridHeader(grdObj,strText){
+	create("grid","grdExcel",'BindDataSet="' + grdObj.BindDataset +'"');
+	grdExcel.contents = grdObj.Contents;	
+	var headCnt = getHeadCount(grdExcel);
+	var totCol  = grdExcel.GetColCount();
+	var irow;
+	for(var i = 0 ; i < headCnt ; i++ )	{
+		irow = toInteger(grdExcel.GetCellProp("head",i,"row"));
+		grdExcel.SetCellProp("head",i,"row",irow+1);
+	}
+	var str_temp = grdExcel.GetCurContents();
+	var str_Head = '<cell align="left" col="0" colspan="' + totCol + '" display="text" text="' + strText + '"/>';	
+	str_temp = replace(str_temp, '</head>',str_Head +'</head>');
+	grdExcel.contents = str_temp;
+	grdExcel.ExportExcelEx("sheet1","A1",false,true,true);
+	Destroy(grdExcel);
+}
+//엑셀 함수 입니다. (위에 제목을 넣기 위함)
+function getHeadCount(grdObj){
+	var strConts = grdObj.Contents;	
+	var iPos = pos(strConts,"<head>");
+	var strHead = Mid(strConts,iPos);
+	iPos = pos(strHead,"</head>");
+	strHead = Mid(strHead,0,iPos+7);
+	var spObj = split(strHead,chr(10),"webstyle");
+	return spObj.length()-2;
+}
+//엑셀인쇄 끝-----------------------------------------------------------------------------------
+//======================================================================================================
+   
+    
+//보고서 출력
+function lfn_Print(obj)
+{
+	for(var i=0;i<10;i++){
+		ds_ProfesList_Chart.AddRow();
+		ds_ProfesList_Chart.CopyRow(i, "ds_ProfesList", i);
+	}
+	
+	gfn_CallReportPopup("frmProfes0013R01StatPerson.rex"
+                      , "ds_ProfesList||ds_ProfesList_Chart"
+                      , "jibu=" + cbxJibu.Text + "^datefr=" + calDateFr.Value  + "^dateto=" + calDateTo.Value 
+						 + "^jikwi=" + cbxJikwi.Text  + "^gubun=" + cbxGubun.Text
+                      , true);
+}
+
+//차트인쇄
+function btnPrintChart_OnClick(obj)
+{
+	//TAB_Training.TabIndex = 1;
+	//TAB_Training.tab2.XChart1.ToolBar = true;
+	//TAB_Training.tab2.XChart1.MenuBar = true;
+	
+}
+
+//화면인쇄
+function btnPrintWarmun_OnClick(obj)
+{ 
+	printscreen();
+}
+
+function gdList_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)  
+{
+    var sArg = "";
+    sArg += " name=" + ds_ProfesList.GetColumn(nRow,"NAME");
+    sArg += " jikwi=" + quote(ds_ProfesList.GetColumn(nRow,"JIKWI"));    
+    sArg += " gubun=" + quote(ds_ProfesList.GetColumn(nRow,"GUBUNCD"));    
+    sArg += " datefr=" + calDateFr.Text;
+    sArg += " dateto=" + calDateTo.Text; 
+    //조회조건
+    sArg += " sabun_Val=" + quote(ds_ProfesList.GetColumn(nRow,"LDPFMGNO"));    
+    sArg += " datefr_Val=" + quote(calDateFr.Value);
+    sArg += " dateto_Val=" + quote(calDateTo.Value); 
+   
+    
+    Dialog("profes::frmprofesPopup0001PersonLecturing.xml", sArg, 600, 400, "", -1, -1);
+    	
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+
+
+function btnToExcel(obj)
+{
+    var mobj_Component = null;
+    var marr_Grid = Array();
+
+    var i = 0;
+    for (var b = 0; b < Length(this.TAB_Profes.tab1.Components); b++) {
+        mobj_Component = this.TAB_Profes.tab1.components(b);
+        if (mobj_Component.GetType() == "Grid") {
+            if (Length(mobj_Component.UserData) > 0) {
+                marr_Grid[i] = mobj_Component;
+                i++;
+            }
+        }
+    }
+
+    if (Length(marr_Grid) == 0) {
+        return false;
+    }
+
+    var mobj_Export;
+    mobj_Export = CreateExportObject();
+    mobj_Export.ExportType = "Excel";
+    mobj_Export.ExportFileName = this.Title + ".xls";
+    mobj_Export.ActiveSheetName = marr_Grid[0].UserData;
+    mobj_Export.MakeEmptyFileWhenNotExist = false;
+
+    for (var j = 0; j < Length(marr_Grid); j++) {
+        mobj_Export.AddExportGrid(marr_Grid[j].UserData + "!" + "A1", marr_Grid[j], true, false);
+    }
+
+    mobj_Export.Export();
+    mobj_Export.Close();
+    mobj_Export = null;	
+}
+]]></Script>
+</Window>

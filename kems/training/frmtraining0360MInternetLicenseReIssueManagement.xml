@@ -1,0 +1,1572 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="576" Id="frmtraining0360MInternetLicenseReIssueManagement" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="gfn_Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="[인터넷]수첩재발급관리" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oStatus">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>01</CD>
+						<DATA>발급신청</DATA>
+					</record>
+					<record>
+						<CD>02</CD>
+						<DATA>입금완료</DATA>
+					</record>
+					<record>
+						<CD>03</CD>
+						<DATA>접수완료</DATA>
+					</record>
+					<record>
+						<CD>04</CD>
+						<DATA>발급완료</DATA>
+					</record>
+					<record>
+						<CD>15</CD>
+						<DATA>환불신청</DATA>
+					</record>
+					<record>
+						<CD>16</CD>
+						<DATA>환불접수</DATA>
+					</record>
+					<record>
+						<CD>17</CD>
+						<DATA>환불완료</DATA>
+					</record>
+					<record>
+						<CD>18</CD>
+						<DATA>환불취소</DATA>
+					</record>
+					<record>
+						<CD>06</CD>
+						<DATA>반송</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oList" OnRowPosChanged="ds_oList_OnRowPosChanged">
+				<Contents>
+					<colinfo id="LRMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LRTPMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LRLASTLRHSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LRLASTLPSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="PMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LRPROCDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="LRPAYGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="LRSTATUS" size="2" summ="default" type="STRING"/>
+					<colinfo id="LRPAYSTATUS" size="1" summ="default" type="STRING"/>
+					<colinfo id="LRSTATUSNM" size="4" summ="default" type="STRING"/>
+					<colinfo id="LLCSNO" size="19" summ="default" type="STRING"/>
+					<colinfo id="LHSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LBARCODE" size="12" summ="default" type="STRING"/>
+					<colinfo id="LPPROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="LPPROCJIBUNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="LTCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="LTCCOURSECDNICKNM" size="30" summ="default" type="STRING"/>
+					<colinfo id="LTCCOURSECDNM" size="30" summ="default" type="STRING"/>
+					<colinfo id="LISSUEGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="LISSUEGUBUNNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="LISSUEDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="LAMOUNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="IIIMGSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="IIDIRPATH" size="256" summ="default" type="STRING"/>
+					<colinfo id="IIREALNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LRNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="LRTPRESIDENTNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="LRJIBU" size="4" summ="default" type="STRING"/>
+					<colinfo id="LRJIBUNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="LRAUTHYN" size="5" summ="default" type="STRING"/>
+					<colinfo id="LRZIPCD" size="6" summ="default" type="STRING"/>
+					<colinfo id="LRADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="LRADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="LRTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="LRHPTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="LRRZIPCD" size="6" summ="default" type="STRING"/>
+					<colinfo id="LRRADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="LRRADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="LRRNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="LRRTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="LRWAYBILLNO" size="50" summ="default" type="STRING"/>
+					<colinfo id="PMBUYER" size="50" summ="default" type="STRING"/>
+					<colinfo id="PMAMT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMPAYMENTFLAG" size="1" summ="default" type="STRING"/>
+					<colinfo id="PMSETLMGUBUN" size="4" summ="default" type="STRING"/>
+					<colinfo id="PMSUNAPDATE" size="14" summ="default" type="STRING"/>
+					<colinfo id="PMPGMGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="PMPGMGUBUNNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="PPAOWNER" size="40" summ="default" type="STRING"/>
+					<colinfo id="PPAPROCDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="PPABANKNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="PPACCOUNT" size="30" summ="default" type="STRING"/>
+					<colinfo id="PPREASON" size="200" summ="default" type="STRING"/>
+					<colinfo id="PPAAMT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LHISSUEGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="LHISSUEREASON" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iLicenseReissueH">
+				<Contents>
+					<colinfo id="LRHLRMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LRHSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LRHSTATUS" size="2" summ="default" type="STRING"/>
+					<colinfo id="LRHPAYSTATUS" size="1" summ="default" type="STRING"/>
+					<colinfo id="LRHREGDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="LRHREGSABUN" size="8" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iLicenseImage">
+				<Contents>
+					<colinfo id="LILLCSNO" size="19" summ="default" type="STRING"/>
+					<colinfo id="LISEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LIDIRPATH" size="256" summ="default" type="STRING"/>
+					<colinfo id="LIREALNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iLicenseH">
+				<Contents>
+					<colinfo id="LHLLCSNO" size="19" summ="default" type="STRING"/>
+					<colinfo id="LHSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LHISSUEMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LHTPMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LHIIIMGSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LHISSUEDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="LHISSUEGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="LHPRTDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="LHISSUEREASON" size="50" summ="default" type="STRING"/>
+					<colinfo id="LHTCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="LHPERSONNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="LHRESIDENTNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="LHZIPCD" size="6" summ="default" type="STRING"/>
+					<colinfo id="LHADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="LHADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="LHADDR3" size="100" summ="default" type="STRING"/>
+					<colinfo id="LHTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="LHHPTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="LHPROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="LHCANCELDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="LHCANCELREASON" size="100" summ="default" type="STRING"/>
+					<colinfo id="LHCANCELPSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="LHLICENSEAMTTJMGNO" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iLicenseSettlement">
+				<Contents>
+					<colinfo id="LSLLCSNO" size="19" summ="default" type="STRING"/>
+					<colinfo id="LSLHSEQ" size="22" summ="default" type="STRING"/>
+					<colinfo id="LSGUBUNCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="LSGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="LSPROCAMOUNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LSPROCDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="LSPROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="LSPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="LSPMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LSREPAYREF" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oLicenseReport">
+				<Contents>
+					<colinfo id="BIRTHDAY" size="10" summ="default" type="STRING"/>
+					<colinfo id="IIFILENM" size="513" summ="default" type="STRING"/>
+					<colinfo id="LADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="LADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="LBARCODE" size="12" summ="default" type="STRING"/>
+					<colinfo id="LHPRTDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="LISSUEDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="LISSUEGUBUNNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="LLCSNO" size="19" summ="default" type="STRING"/>
+					<colinfo id="LPERSONNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="LTCCOURSENM" size="30" summ="default" type="STRING"/>
+					<colinfo id="LLASTHISTORYSEQ" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oLicenseReportEdu">
+				<Contents>
+					<colinfo id="EDUDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="GTDEPTNM" size="8" summ="default" type="STRING"/>
+					<colinfo id="TARGET" size="2" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSENM" size="2" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioLicenseReissuePay">
+				<Contents>
+					<colinfo id="LPLRMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LPSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LPLLCSNO" size="19" summ="default" type="STRING"/>
+					<colinfo id="LPSETLMTYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="LPGUBUNCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="LPGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="LPPROCAMOUNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LPLICENSEAMOUNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LPPOSTAMOUNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LPPROCDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="LPPONYGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="LPPONYDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="LPPROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="LPPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="LPPMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LPREPAYREF" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPmMgno">
+				<Contents>
+					<colinfo id="PMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosPayment">
+				<Contents>
+					<colinfo id="PPPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="PPPMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPNM" size="30" summ="default" type="STRING"/>
+					<colinfo id="PPUNITAMT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPQTY" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPTOTAMT" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosPrintM">
+				<Contents>
+					<colinfo id="PMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="PMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMINPUT" size="1" summ="default" type="STRING"/>
+					<colinfo id="PMPCGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="PMPCORDERNO" size="20" summ="default" type="STRING"/>
+					<colinfo id="PMPROCDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="PMPIID" size="12" summ="default" type="STRING"/>
+					<colinfo id="PMPGMID" size="2" summ="default" type="STRING"/>
+					<colinfo id="PMPGMPK" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMBUYER" size="50" summ="default" type="STRING"/>
+					<colinfo id="PMCLAS" size="2" summ="default" type="STRING"/>
+					<colinfo id="PMPGMGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="PMITEM1" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMITEM2" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMITEM3" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMITEM4" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMAMT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMVAT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMPAYMENTFLAG" size="1" summ="default" type="STRING"/>
+					<colinfo id="PMRESULT" size="1" summ="default" type="STRING"/>
+					<colinfo id="PCUSERTYPE" size="1" summ="default" type="STRING"/>
+					<colinfo id="PCSOCIALBUSINESSNO" size="18" summ="default" type="STRING"/>
+					<colinfo id="PCCARDINSTALL" size="2" summ="default" type="STRING"/>
+					<colinfo id="PCCLOSEDATE" size="14" summ="default" type="STRING"/>
+					<colinfo id="PCBANKCD" size="10" summ="default" type="STRING"/>
+					<colinfo id="PCBANKNM" size="20" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPosCas"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_AddrLable">
+				<Contents>
+					<colinfo id="ADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR2" size="256" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZIPCD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_PrintApplication" OnRowPosChanged="ds_oList_OnRowPosChanged">
+				<Contents>
+					<colinfo id="GUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISSUEGUBUNNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ISSUEREASON" size="256" summ="default" type="STRING"/>
+					<colinfo id="COURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="RESIDENTNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="TEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="HPTEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR2" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="448" Height="136" Id="Shape0" Left="332" LineColor="user15" Right="796" TabOrder="58" Top="312" Type="Rectangle" Width="464"></Shape>
+		<Shape Bottom="152" Height="112" Id="shpGubunBox1" Left="4" LineColor="user15" Right="328" TabOrder="44" Top="40" Type="Rectangle" Width="324"></Shape>
+		<Shape Bottom="152" Height="112" Id="shpGubunBox2" Left="332" LineColor="user15" Right="796" TabOrder="23" Top="40" Type="Rectangle" Width="464"></Shape>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="444" LineColor="user14" Right="796" TabOrder="39" Top="1" Type="Rectangle" Width="352"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="19" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="300">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="212" OnClick="lfn_Search" Style="sty_Button" TabOrder="10" ToolTipText="조회" Top="128" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="447" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="1" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="lfn_Excel" Style="sty_Button" TabOrder="2" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="3" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="4" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbPrintGubun" Left="348" Style="sty_LabelGruopBox" TabOrder="20" Text="수첩&#32;정보" Top="32" VAlign="Middle" Width="108"></Static>
+		<Shape Bottom="300" Height="136" Id="shpGubunBox3" Left="332" LineColor="user15" Right="796" TabOrder="22" Top="164" Type="Rectangle" Width="464"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnPrintAddr" ImageID="BTN_TEXT_06" Left="700" OnClick="btnPrintAddr_OnClick" Style="sty_Button" TabOrder="13" Text="주소라벨출력" Top="351" Transparent="TRUE" Width="92"></Button>
+		<Static Align="Center" Height="20" Id="lbResidentNo" Left="528" Style="sty_Label" TabOrder="27" Text="주민번호" Top="180" VAlign="Middle" Width="76"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_oList" Border="Flat" Column="LRTPRESIDENTNO" Enable="FALSE" Height="20" Id="medResidentNo" Left="608" LeftMargin="2" Mask="######-#######" Style="sty_Maskedit" TabOrder="25" Top="180" Type="STRING" Width="108"></MaskEdit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="LRNM" Enable="FALSE" Height="20" Id="edPersonNm" ImeMode="native" Left="416" LeftMargin="2" Style="sty_Edit" TabOrder="24" Top="180" Width="108"></Edit>
+		<Static Align="Center" Height="20" Id="lbPersonNm" Left="336" Style="sty_Label" TabOrder="26" Text="성명" Top="180" VAlign="Middle" Width="76"></Static>
+		<Static Align="Center" Height="20" Id="lbSendAddr" Left="336" Style="sty_Label" TabOrder="35" Text="발송주소" Top="328" VAlign="Middle" Width="76"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_oList" BKColor="user4" Border="Flat" Column="LRRZIPCD" Enable="FALSE" Height="20" Id="medSendZipCode" Left="356" LeftMargin="2" Mask="###-###" OnFocus="edZipCode_OnFocus" Readonly="TRUE" Style="sty_ZipCodeReadOnly" TabOrder="28" Top="352" Type="STRING" Width="56"></MaskEdit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="LRRADDR1" Enable="FALSE" Height="20" Id="edSendAddr1" ImeMode="native" Left="416" LeftMargin="2" Style="sty_Edit" TabOrder="29" Top="328" Width="376"></Edit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="LRRADDR2" Enable="FALSE" Height="20" Id="edSendAddr2" ImeMode="native" Left="416" LeftMargin="2" Style="sty_Edit" TabOrder="30" Top="352" Width="280"></Edit>
+		<Static Align="Center" Height="20" Id="lbTel" Left="336" Style="sty_Label" TabOrder="33" Text="전화번호" Top="252" VAlign="Middle" Width="76"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="LRRTEL" Enable="FALSE" Height="20" Id="edTel" ImeMode="native" Left="416" LeftMargin="2" Style="sty_Edit" TabOrder="31" Top="252" Width="108"></Edit>
+		<Static Align="Center" Height="20" Id="lbHpTel" Left="528" Style="sty_Label" TabOrder="34" Text="휴대폰" Top="252" VAlign="Middle" Width="76"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="LRHPTEL" Enable="FALSE" Height="20" Id="edHpTel" ImeMode="native" Left="608" LeftMargin="2" Style="sty_Edit" TabOrder="32" Top="252" Width="108"></Edit>
+		<Static Align="Center" Height="20" Id="lbLcsNo" Left="336" Style="sty_Label" TabOrder="37" Text="수첩번호" Top="56" VAlign="Middle" Width="76"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_oList" Border="Flat" Column="LLCSNO" Height="20" Id="medLcsNo" Left="416" LeftMargin="2" Mask="####-##-##-#-######" Readonly="TRUE" Style="sty_Maskedit" TabOrder="36" Top="56" Type="STRING" Width="140"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbIssueDate" Left="504" Style="sty_Label" TabOrder="38" Text="취득일자" Top="128" VAlign="Middle" Width="76"></Static>
+		<Static Align="Center" Height="20" Id="lbIssueGubun" Left="336" Style="sty_Label" TabOrder="39" Text="취득구분" Top="128" VAlign="Middle" Width="76" WordWrap="TRUE"></Static>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="42" Text="지부" Top="56" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="5" Top="55" Width="94"></Combo>
+		<Static Align="Center" Height="20" Id="lbInternetReIssueStatus" Left="8" Style="sty_Label" TabOrder="43" Text="신청상태" Top="80" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxStatus" INDEX="0" InnerDataset="ds_oStatus" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="6" Top="79" UserData="S" Width="94"></Combo>
+		<Static Align="Center" Height="20" Id="lbReIssueDate" Left="8" Style="sty_Label" TabOrder="40" Text="신청일자" Top="104" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calStartDate" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="7" Top="104" WeeksFont="돋음,9" Width="100"></Calendar>
+		<Static Align="Center" Height="20" Id="lbWave" Left="202" Style="sty_Text" TabOrder="41" Text="~" Top="104" VAlign="Middle" Width="18"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calEndDate" Left="224" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="8" Top="104" WeeksFont="돋음,9" Width="100"></Calendar>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="571" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" Format="Training" HeadBorder="Flat" HeadHeight="20" Height="415" Id="gdList" InputPanel="FALSE" Left="4" LineColor="default" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="328" RowHeight="20" Style="sty_Grid" TabOrder="18" TabStop="true" Top="156" UseDBuff="true" UsePopupMenu="true" UserData="인터넷수첩재발급신청목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="324">
+			<contents>
+				<format id="Training">
+					<columns>
+						<col width="57"/>
+						<col width="111"/>
+						<col width="68"/>
+						<col width="67"/>
+						<col width="84"/>
+						<col width="148"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="성명"/>
+						<cell align="center" col="1" display="text" text="주민번호"/>
+						<cell align="center" col="2" display="text" text="직능"/>
+						<cell align="center" col="3" display="text" text="신청상태"/>
+						<cell align="center" col="4" display="text" text="신청일자"/>
+						<cell col="5" display="text" text="수첩번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="LRNM" display="text"/>
+						<cell align="center" col="1" colid="LRTPRESIDENTNO" display="text" Mask="######-#######"/>
+						<cell align="center" col="2" colid="LTCCOURSECDNICKNM" display="text"/>
+						<cell align="center" col="3" colid="LRSTATUSNM" display="text"/>
+						<cell align="center" col="4" colid="LRPROCDATE" display="text" Mask="####-##-##"/>
+						<cell align="center" col="5" colid="LLCSNO" display="text"/>
+					</body>
+				</format>
+				<format id="Exam">
+					<columns>
+						<col width="40"/>
+						<col width="40"/>
+						<col width="84"/>
+						<col width="46"/>
+						<col width="85"/>
+						<col width="92"/>
+						<col width="95"/>
+						<col width="84"/>
+						<col width="81"/>
+						<col width="68"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="년도"/>
+						<cell align="center" col="2" display="text" text="직능"/>
+						<cell align="center" col="3" display="text" text="회차"/>
+						<cell align="center" col="4" display="text" text="수첩재발급신청번호"/>
+						<cell align="center" col="5" display="text" text="성명"/>
+						<cell align="center" col="6" display="text" text="생년월일"/>
+						<cell align="center" col="7" display="text" text="처리일자"/>
+						<cell align="center" col="8" display="text" text="수첩재발급신청상태"/>
+						<cell align="center" col="9" display="text" text="내역보기"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="CCGROUPCD" display="combo"/>
+						<cell align="center" col="1" colid="CCCD" display="combo"/>
+						<cell align="left" col="2" colid="CCCDNM" display="text"/>
+						<cell align="center" col="3" colid="CCCD" display="combo"/>
+						<cell align="left" col="4" colid="CCCDNM" display="text"/>
+						<cell align="left" col="5" colid="CCCDNM" display="text"/>
+						<cell align="left" col="6" colid="CCCDNM" display="text"/>
+						<cell align="left" col="7" colid="CCCDNM" display="text"/>
+						<cell align="left" col="8" colid="CCCDNM" display="text"/>
+						<cell align="left" col="9" colid="CCCDNM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_oList" Border="Flat" Column="LISSUEDATE" Enable="FALSE" Height="20" Id="medIssueDate" Left="584" LeftMargin="2" Mask="####-##-##" Style="sty_Time" TabOrder="45" Top="128" Type="STRING" Width="80"></MaskEdit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="LISSUEGUBUNNM" Enable="FALSE" Height="20" Id="edIssueGubun" ImeMode="native" Left="416" LeftMargin="2" Style="sty_Edit" TabOrder="46" Top="128" Width="84"></Edit>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="504" Style="sty_Label" TabOrder="47" Text="직능" Top="104" VAlign="Middle" Width="76"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="LTCCOURSECDNM" Enable="FALSE" Height="20" Id="edCourse" ImeMode="native" Left="584" LeftMargin="2" Style="sty_Edit" TabOrder="48" Top="104" Width="124"></Edit>
+		<Static Align="Center" Height="20" Id="lbJubsuInfo" Left="348" Style="sty_LabelGruopBox" TabOrder="49" Text="신청&#32;정보" Top="156" VAlign="Middle" Width="108"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnReIssue" ImageID="BTN_TEXT_06" Left="604" OnClick="btnReIssue_OnClick" Style="sty_Button" TabOrder="12" Text="수첩&#32;재발급" Top="275" Transparent="TRUE" Width="92"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnPrintAddrAll" ImageID="BTN_TEXT_08" Left="207" OnClick="btnPrintAddrAll_OnClick" Style="sty_Button" TabOrder="17" Text="주소라벨일괄출력" Top="56" Transparent="TRUE" Width="119"></Button>
+		<Static Align="Center" Height="20" Id="lbAddr" Left="336" Style="sty_Label" TabOrder="53" Text="주소" Top="204" VAlign="Middle" Width="76"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="LRADDR1" Enable="FALSE" Height="20" Id="edAddr1" ImeMode="native" Left="416" LeftMargin="2" Style="sty_Edit" TabOrder="51" Top="204" Width="376"></Edit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_oList" BKColor="user4" Border="Flat" Column="LRZIPCD" Enable="FALSE" Height="20" Id="medZipCode" Left="356" LeftMargin="2" Mask="###-###" Readonly="TRUE" Style="sty_ZipCodeReadOnly" TabOrder="50" Top="228" Type="STRING" Width="56"></MaskEdit>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="LRADDR2" Enable="FALSE" Height="20" Id="edAddr2" ImeMode="native" Left="416" LeftMargin="2" Style="sty_Edit" TabOrder="52" Top="228" Width="376"></Edit>
+		<Static Align="Center" Height="20" Id="lbBarcode" Left="336" Style="sty_Label" TabOrder="54" Text="바코드" Top="80" VAlign="Middle" Width="76"></Static>
+		<Image Border="Flat" FillType="STRETCH" Height="104" Id="imgPicture" Left="712" Style="sty_Image" TabOrder="55" Text="최근사진" Top="44" Transparent="TRUE" Width="80"></Image>
+		<Static Align="Center" Height="20" Id="Static1" Left="24" Style="sty_LabelGruopBox" TabOrder="56" Text="조회&#32;정보" Top="32" VAlign="Middle" Width="108"></Static>
+		<Static Align="Center" Height="20" Id="Static2" Left="8" Style="sty_Label" TabOrder="57" Text="성명" Top="128" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edName" ImeMode="native" Left="100" LeftMargin="2" MaxLength="10" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edName_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="9" Top="128" Width="108"></Edit>
+		<Static Align="Center" Height="20" Id="Static3" Left="348" Style="sty_LabelGruopBox" TabOrder="59" Text="발송&#32;정보" Top="304" VAlign="Middle" Width="108"></Static>
+		<Static Align="Center" Height="20" Id="lbSendNm" Left="336" Style="sty_Label" TabOrder="61" Text="수령자명" Top="376" VAlign="Middle" Width="76"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="LRRNM" Enable="FALSE" Height="20" Id="edSendNm" ImeMode="native" Left="416" LeftMargin="2" Style="sty_Edit" TabOrder="60" Top="376" Width="108"></Edit>
+		<Static Align="Center" Height="20" Id="lbSendTel" Left="528" Style="sty_Label" TabOrder="63" Text="연락처" Top="376" VAlign="Middle" Width="76"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="LRRTEL" Enable="FALSE" Height="20" Id="edSendTel" ImeMode="native" Left="608" LeftMargin="2" Style="sty_Edit" TabOrder="62" Top="376" Width="184"></Edit>
+		<Static Align="Center" Height="20" Id="lbTransNo" Left="336" Style="sty_Label" TabOrder="64" Text="운송장번호" Top="424" VAlign="Middle" Width="76"></Static>
+		<Static Align="Center" Height="20" Id="edJibu3" Left="336" Style="sty_Label" TabOrder="66" Text="발행지부" Top="400" VAlign="Middle" Width="76"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="LRJIBUNM" Enable="FALSE" Height="20" Id="Edit6" ImeMode="native" Left="416" LeftMargin="2" Style="sty_Edit" TabOrder="65" Top="400" Width="108"></Edit>
+		<Static BindDataset="ds_oList" Column="LRAUTHYN" Height="20" Id="lbNiceCheck" Left="720" Style="sty_TextBlue" TabOrder="67" Top="180" VAlign="Middle" Width="72"></Static>
+		<Static Align="Center" Height="20" Id="lbJibu2" Left="336" Style="sty_Label" TabOrder="68" Text="취득지부" Top="104" VAlign="Middle" Width="76" WordWrap="TRUE"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="LPPROCJIBUNM" Enable="FALSE" Height="20" Id="edJibu2" ImeMode="native" Left="416" LeftMargin="2" Style="sty_Edit" TabOrder="69" Top="104" Width="84"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnTransSave" ImageID="BTN_TEXT_07" Left="580" OnClick="btnTransSave_OnClick" Style="sty_Button" TabOrder="14" Text="운송장번호저장" Top="423" Transparent="TRUE" Width="105"></Button>
+		<Tab BKSelColor="user12" Border="Flat" BorderColor="user4" Height="120" Id="tabSettlement" Left="332" TabOrder="16" Top="451" Width="464">
+			<Contents>
+				<TabPage BorderColor="black" Height="96" Id="tabSunap" Left="2" TabOrder="88" Text="수납정보" Top="22" Width="460">
+					<Static Align="Center" Height="20" Id="lbBuyer" Left="2" Style="sty_Label" TabOrder="5" Text="입금자&#32;명" Top="2" VAlign="Middle" Width="72"></Static>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="PMBUYER" Enable="FALSE" Height="20" Id="edBuyer" ImeMode="native" Left="78" LeftMargin="2" Readonly="TRUE" Style="sty_Edit" TabOrder="6" Top="2" Width="148"></Edit>
+					<Static Align="Center" Height="20" Id="lbSunapGubun" Left="2" Style="sty_Label" TabOrder="8" Text="결제방법" Top="74" VAlign="Middle" Width="72"></Static>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="PMPGMGUBUNNM" Enable="FALSE" Height="20" Id="edSunapGubun" ImeMode="native" Left="78" LeftMargin="2" Readonly="TRUE" Style="sty_Edit" TabOrder="9" Top="74" Width="148"></Edit>
+					<Static Align="Center" Height="20" Id="lbStatus" Left="2" Style="sty_Label" TabOrder="4" Text="결제상태" Top="26" VAlign="Middle" Width="72"></Static>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="PMSETLMGUBUN" Enable="FALSE" Height="20" Id="edStatus" ImeMode="native" Left="78" LeftMargin="2" Readonly="TRUE" Style="sty_Edit" TabOrder="7" Top="26" Width="88"></Edit>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnVirtualAccount" ImageID="BTN_TEXT_06" Left="230" OnClick="tabSettlement_tabSunap_btnVirtualAccount_OnClick" Style="sty_Button" TabOrder="2" Text="가상계좌보기" Top="73" Transparent="TRUE" Width="92"></Button>
+					<Static Align="Center" Height="20" Id="lbDate" Left="2" Style="sty_Label" TabOrder="10" Text="입금일자" Top="50" VAlign="Middle" Width="72"></Static>
+					<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_oList" Border="Flat" Column="PMSUNAPDATE" Enable="FALSE" Height="20" Id="medDate" Left="78" LeftMargin="2" Mask="####-##-##&#32;##:##:##" Style="sty_Time" TabOrder="11" Top="50" Type="STRING" Width="148"></MaskEdit>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnPrintReRct" ImageID="BTN_TEXT_06" Left="230" OnClick="tabSettlement_tabSunap_btnPrintReRct_OnClick" Style="sty_Button" TabOrder="1" Text="영수증재발행" Top="49" Transparent="TRUE" Width="92"></Button>
+					<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_oList" Border="Flat" Column="PMAMT" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medAmount" Left="306" Style="sty_Maskedit" TabOrder="12" Top="2" Width="96"></MaskEdit>
+					<Static Align="Center" Height="20" Id="lbAmount" Left="230" Style="sty_LabelStat" TabOrder="13" Text="수납금액" Top="2" VAlign="Middle" Width="72"></Static>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnReapy" ImageID="BTN_TEXT_06" Left="366" OnClick="tabSettlement_tabSunap_btnReapy_OnClick" Style="sty_Button" TabOrder="3" Text="환불&#32;신청" Top="73" Transparent="TRUE" Visible="FALSE" Width="92"></Button>
+				</TabPage>
+				<TabPage BorderColor="black" Height="96" Id="tabRepay" Left="2" TabOrder="88" Text="환불정보" Top="22" Width="460">
+					<Static Align="Center" Height="20" Id="lbBuyer" Left="2" Style="sty_Label" TabOrder="6" Text="예금주" Top="2" VAlign="Middle" Width="72"></Static>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="PPAOWNER" Enable="FALSE" Height="20" Id="edBuyer" ImeMode="native" Left="78" LeftMargin="2" Readonly="TRUE" Style="sty_Edit" TabOrder="5" Top="2" Width="168"></Edit>
+					<Static Align="Center" Height="20" Id="lbBank" Left="2" Style="sty_Label" TabOrder="3" Text="환불은행" Top="26" VAlign="Middle" Width="72"></Static>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="PPABANKNM" Enable="FALSE" Height="20" Id="edBank" ImeMode="native" Left="78" LeftMargin="2" Readonly="TRUE" Style="sty_Edit" TabOrder="4" Top="26" Width="168"></Edit>
+					<Static Align="Center" Height="20" Id="lbDate" Left="250" Style="sty_Label" TabOrder="7" Text="신청일자" Top="2" VAlign="Middle" Width="72"></Static>
+					<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_oList" Border="Flat" Column="PPAPROCDATE" Enable="FALSE" Height="20" Id="medDate" Left="326" LeftMargin="2" Mask="####-##-##&#32;##:##:##" Style="sty_Time" TabOrder="8" Top="2" Type="STRING" Width="132"></MaskEdit>
+					<Static Align="Center" Height="20" Id="lbAccount" Left="250" Style="sty_Label" TabOrder="9" Text="환불계좌" Top="26" VAlign="Middle" Width="72"></Static>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="PPACCOUNT" Enable="FALSE" Height="20" Id="edAccount" ImeMode="native" Left="326" LeftMargin="2" Readonly="TRUE" Style="sty_Edit" TabOrder="10" Top="26" Width="132"></Edit>
+					<Static Align="Center" Height="20" Id="lbReason" Left="2" Style="sty_Label" TabOrder="11" Text="환불사유" Top="50" VAlign="Middle" Width="72"></Static>
+					<Static Align="Center" Height="20" Id="lbAmount" Left="2" Style="sty_LabelStat" TabOrder="13" Text="환불금액" Top="74" VAlign="Middle" Width="72"></Static>
+					<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_oList" Border="Flat" Column="PPAAMT" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medAmount" Left="78" Style="sty_Maskedit" TabOrder="12" Top="74" Width="92"></MaskEdit>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnJubsu" ImageID="BTN_TEXT_06" Left="174" OnClick="tabSettlement_tabRepay_btnJubsu_OnClick" Style="sty_Button" TabOrder="1" Text="환불&#32;접수" Top="73" Transparent="TRUE" Width="92"></Button>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnCancel" ImageID="BTN_TEXT_06" Left="366" OnClick="tabSettlement_tabRepay_btnCancel_OnClick" Style="sty_Button" TabOrder="2" Text="환불&#32;취소" Top="73" Transparent="TRUE" Width="92"></Button>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="PPREASON" Enable="FALSE" Height="20" Id="edReason" ImeMode="native" Left="78" LeftMargin="2" Readonly="TRUE" Style="sty_Edit" TabOrder="14" Top="50" Width="380"></Edit>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnRepay" ImageID="BTN_TEXT_06" Left="270" OnClick="tabSettlement_tabRepay_btnRepay_OnClick" Style="sty_Button" TabOrder="15" Text="환불&#32;완료" Top="73" Transparent="TRUE" Width="92"></Button>
+				</TabPage>
+			</Contents>
+		</Tab>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnJubsu" ImageID="BTN_TEXT_06" Left="508" OnClick="btnJubsu_OnClick" Style="sty_Button" TabOrder="11" Text="접수&#32;처리" Top="275" Transparent="TRUE" Width="92"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnTransSearch" ImageID="BTN_TEXT_07" Left="688" OnClick="btnTransSearch_OnClick" Style="sty_Button" TabOrder="15" Text="운송장번호조회" Top="423" Transparent="TRUE" Width="105"></Button>
+		<Edit Align="CENTER" AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="LBARCODE" Enable="FALSE" Height="20" Id="edBarcode" ImeMode="native" Left="416" LeftMargin="2" Style="sty_Edit" TabOrder="71" Top="80" Width="140"></Edit>
+		<Static Color="user1" Height="20" Id="Static0" Left="528" Style="sty_TextBlue" TabOrder="71" Text="&apos;-&apos;제외" Top="424" VAlign="Middle" Width="43"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oList" Border="Flat" Column="LRWAYBILLNO" Height="20" Id="edTransNo" ImeMode="native" Left="416" LeftMargin="2" MaxLength="13" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="72" Top="424" Width="108"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnReturn" ImageID="BTN_TEXT_06" Left="528" OnClick="btnReturn_OnClick" Style="sty_Button" TabOrder="73" Text="반송&#32;처리" Top="400" Transparent="TRUE" Width="92"></Button>
+		<Div BKColor="user0" Height="20" Id="divPos" Left="560" OnLoadCompleted="Form_OnLoadCompleted" OnTimer="frmCOM3010SPOS_OnTimer" OnUnloadCompleted="frmCOM3010SPOS_OnUnloadCompleted" Style="sty_Form" TabOrder="74" TabStop="FALSE" Text="Div0" Top="44" Url="COM::frmCOM3010SPOS.xml" Visible="FALSE" Width="124">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnLicensePrint" ImageID="BTN_TEXT_06" Left="700" OnClick="btnLicensePrint_OnClick" Style="sty_Button" TabOrder="75" Text="수첩&#32;출력" Top="275" Transparent="TRUE" Width="92"></Button>
+		<HttpFile Height="24" Id="hfImageFile" Left="684" Top="44" Width="24"></HttpFile>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnPrintApplication" ImageID="BTN_TEXT_06" Left="336" OnClick="btnPrintApplication_OnClick" Style="sty_Button" TabOrder="76" Text="신청서출력" Top="275" Transparent="TRUE" Width="92"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0360MInternetLicenseReIssueManagement.xml
+ * 설명 : [인터넷]수첩재발급관리
+ * 작성일 : 2010.02.08
+ * 작성자 : 김동현
+ */
+#include "LIB::training.js";
+
+var ls_SunapGubun = "1"; //수납/환불 구분
+var ls_SunapCode = ""; //결제방법
+var li_Currow = 0; //현재 위치
+
+function Form_OnLoadCompleted(obj) {
+
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    gfn_SearchAllJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회
+    lfn_Cancel(obj);
+    cbxJibu.SetFocus();
+    
+}
+
+/**
+ * 폼 사이즈
+ */
+function Form_OnSize(obj,nCx,nCy,nState) {
+
+    if (gs_IsResizingForm == "Y") {
+        gdList.Height = nCy - gdList.Top - 4;
+    }
+    
+}
+
+/**
+ * 버튼 실행 권한
+ */
+function lfn_SetFormAuth(bStatus) {
+
+    btnSearch.Enable = bStatus;
+    gdList.Enable = bStatus;
+    
+}
+
+/**
+ * 버튼 초기화
+ */
+function lfn_InitBtn() {
+
+    btnJubsu.Enable = false; //접수처리
+    btnReIssue.Enable = false; //수첩재발급
+    btnLicensePrint.Enable = false; //수첩출력
+    btnPrintApplication.Enable = false; //신청서출력
+
+    btnPrintAddr.Enable = false; //주소라벨출력
+    btnPrintAddrAll.Enable = false; //주소라벨일괄출력
+    btnReturn.Enable = false; //반송처리
+    btnTransSave.Enable = false; //운송장번호저장
+    tabSettlement.tabSunap.btnPrintReRct.Enable = false; //영수증 재발행
+    tabSettlement.tabSunap.btnVirtualAccount.Enable = false; //가상계좌 보기
+    tabSettlement.tabSunap.btnReapy.Enable = false; //환불신청
+    tabSettlement.tabRepay.btnJubsu.Enable = false; //환불접수
+    tabSettlement.tabRepay.btnRepay.Enable = false; //환불완료
+    tabSettlement.tabRepay.btnCancel.Enable = false; //환불취소
+    
+    btnReturn.Text = "반송 처리";
+
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+// 기본 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 초기화
+ */
+function lfn_Cancel(obj) {
+
+    cbxJibu.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+    cbxStatus.Value = "0";
+    calStartDate.Value = left(addDate(left(getDate(), 8), -15), 8);
+    calEndDate.Value = left(getDate(), 8);
+    edName.Text = "";
+    ds_oList.ClearData();
+    lfn_InitBtn();
+    
+}
+
+/**
+ * 조회
+ */
+function lfn_Search(obj) {
+
+    lfn_InitBtn();
+    ds_oList.ClearData();
+    
+    tit_clearActionInfo();
+    tit_addCsvSearchActionInfo("training:searchTraining0360ListAll", false);
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_oList=ds_oListAll"	// outDs
+        ,"SJIBU=" + quote(cbxJibu.Value)
+            + " SSTATUSGUBUN=" + quote(left(cbxStatus.Value, 1))
+            + " SSTATUS=" + quote(right(cbxStatus.Value, 1))
+            + " SSTARTDATE=" + quote(calStartDate.Value)
+            + " SENDDATE=" + quote(calEndDate.Value)
+            + " SPERSONNM=" + quote(edName.Text)
+        ,"lfn_AfterSearch"
+        ,true
+    );
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 신청 정보 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 재발급 신청접수 처리
+ */
+function btnJubsu_OnClick(obj) {
+
+    var vMsg = "수첩번호 : " + medLcsNo.Text;
+    vMsg += "\n\n직      능 : " + edCourse.Text;
+    vMsg += "\n\n성      명 : " + edPersonNm.Text;
+    vMsg += "\n\n주민번호 : " + medResidentNo.Text;
+    vMsg += "\n\n\n신청을 접수를 하시겠습니까?";
+    
+    if (gfn_Confirm(vMsg)) {
+        lfn_SetLicenseReissueH("3", ds_oList.GetColumn(ds_oList.currow, "LRPAYSTATUS"));
+    }
+
+}
+
+/**
+ * 수접 재발급
+ */
+function btnReIssue_OnClick(obj) {
+
+    var vMsg = "수첩번호 : " + medLcsNo.Text;
+    vMsg += "\n\n직      능 : " + edCourse.Text;
+    vMsg += "\n\n성      명 : " + edPersonNm.Text;
+    vMsg += "\n\n주민번호 : " + medResidentNo.Text;
+    vMsg += "\n\n\n수첩 재발급을 하시겠습니까?";
+
+    if (!gfn_Confirm(vMsg)) {
+        return;
+    }
+
+    ds_iLicenseH.ClearData(); //LICENSEH
+    ds_iLicenseH.InsertRow(0);
+    ds_iLicenseH.SetColumn(0, "LHLLCSNO", ds_oList.GetColumn(ds_oList.currow, "LLCSNO"));
+    ds_iLicenseH.SetColumn(0, "LHSEQ", ds_oList.GetColumn(ds_oList.currow, "LHSEQ"));
+    ds_iLicenseH.SetColumn(0, "LHISSUEMGNO", ds_oList.GetColumn(ds_oList.currow, "LRMGNO"));
+    ds_iLicenseH.SetColumn(0, "LHTPMGNO", ds_oList.GetColumn(ds_oList.currow, "LRTPMGNO"));
+    ds_iLicenseH.SetColumn(0, "LHIIIMGSEQ", ds_oList.GetColumn(ds_oList.currow, "IIIMGSEQ"));
+    ds_iLicenseH.SetColumn(0, "LHISSUEDATE", ds_oList.GetColumn(ds_oList.currow, "LISSUEDATE"));
+    ds_iLicenseH.SetColumn(0, "LHISSUEGUBUN", "2");
+    ds_iLicenseH.SetColumn(0, "LHPRTDATE", left(getDate(), 8));
+    ds_iLicenseH.SetColumn(0, "LHISSUEREASON", "재발급");
+    ds_iLicenseH.SetColumn(0, "LHTCCOURSECD", ds_oList.GetColumn(ds_oList.currow, "LTCCOURSECD"));
+    ds_iLicenseH.SetColumn(0, "LHPERSONNM", ds_oList.GetColumn(ds_oList.currow, "LRNM"));
+    ds_iLicenseH.SetColumn(0, "LHRESIDENTNO", ds_oList.GetColumn(ds_oList.currow, "LRTPRESIDENTNO"));
+    ds_iLicenseH.SetColumn(0, "LHZIPCD", ds_oList.GetColumn(ds_oList.currow, "LRZIPCD"));
+    ds_iLicenseH.SetColumn(0, "LHADDR1", ds_oList.GetColumn(ds_oList.currow, "LRADDR1"));
+    ds_iLicenseH.SetColumn(0, "LHADDR2", ds_oList.GetColumn(ds_oList.currow, "LRADDR2"));
+    ds_iLicenseH.SetColumn(0, "LHTEL", ds_oList.GetColumn(ds_oList.currow, "LRTEL"));
+    ds_iLicenseH.SetColumn(0, "LHHPTEL", ds_oList.GetColumn(ds_oList.currow, "LRHPTEL"));
+    ds_iLicenseH.SetColumn(0, "LHPROCGTMGNO", ds_oList.GetColumn(ds_oList.currow, "LRJIBU"));
+
+    ds_iLicenseSettlement.ClearData(); //LICENSESETTLEMENT
+    ds_iLicenseSettlement.InsertRow(0);
+    ds_iLicenseSettlement.SetColumn(0, "LSLLCSNO", ds_oList.GetColumn(ds_oList.currow, "LLCSNO"));
+    ds_iLicenseSettlement.SetColumn(0, "LSLHSEQ", ds_oList.GetColumn(ds_oList.currow, "LHSEQ"));
+    ds_iLicenseSettlement.SetColumn(0, "LSGUBUNCD", "01");
+    ds_iLicenseSettlement.SetColumn(0, "LSGUBUN", ds_oList.GetColumn(ds_oList.currow, "PMPGMGUBUN"));
+    ds_iLicenseSettlement.SetColumn(0, "LSPROCAMOUNT", ds_oList.GetColumn(ds_oList.currow, "LAMOUNT"));
+    ds_iLicenseSettlement.SetColumn(0, "LSPROCDATE", left(getDate(), 8));
+    ds_iLicenseSettlement.SetColumn(0, "LSPROCGTMGNO", ds_oList.GetColumn(ds_oList.currow, "LRJIBU"));
+    ds_iLicenseSettlement.SetColumn(0, "LSPMYEAR", ds_oList.GetColumn(ds_oList.currow, "PMYEAR"));
+    ds_iLicenseSettlement.SetColumn(0, "LSPMMGNO", ds_oList.GetColumn(ds_oList.currow, "PMMGNO"));
+    ds_iLicenseSettlement.SetColumn(0, "LSREPAYREF", "");
+
+    ds_iLicenseReissueH.ClearData(); //LICENSEREISSUEH
+    ds_iLicenseReissueH.InsertRow(0);
+    ds_iLicenseReissueH.SetColumn(0, "LRHLRMGNO", ds_oList.GetColumn(ds_oList.currow, "LRMGNO"));
+    ds_iLicenseReissueH.SetColumn(0, "LRHSTATUS", "4");
+    ds_iLicenseReissueH.SetColumn(0, "LRHPAYSTATUS", ds_oList.GetColumn(ds_oList.currow, "LRPAYSTATUS"));
+    
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("training:insertTraining0360LicenseH", "", 0, "");
+    tit_addSingleActionInfo("training:insertTraining0360LicenseSettlement", "", 0, "");
+    tit_addSingleActionInfo("training:insertTraining0360LicenseReissueH", "", 0, "");
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iLicenseH=ds_iLicenseH"
+            + " ds_iLicenseSettlement=ds_iLicenseSettlement"
+            + " ds_iLicenseReissueH=ds_iLicenseReissueH"
+        ,""	// outDs
+        ,""	// args 
+        ,"lfn_AfterSave"
+        ,false
+    );
+
+}
+
+/**
+ * 수첩 출력
+ */
+function btnLicensePrint_OnClick(obj) {
+
+    if (!gfn_Confirm("수첩을 출력 하시겠습니까?")) {
+        return false;
+    }
+    
+    var ls_LicenseImageDir = "/PRTDATA/" + left(getDate(),4) + "/" + SubStr(getDate(),4,2);
+
+    ds_oLicenseReport.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchLicenseReport", false);
+    tit_addSearchActionInfo("training:searchLicenseReportEdu", false);
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_oLicenseReport=ds_oLicenseReport"
+            + " ds_oLicenseReportEdu=ds_oLicenseReportEdu"
+        ,"LLCSNO=" + quote(ds_oList.getColumn(ds_oList.currow, "LLCSNO"))
+            + " LRESIDENTNO=" + quote(ds_oList.getColumn(ds_oList.currow, "LRTPRESIDENTNO"))
+            + " TCCOURSECD=" + quote(ds_oList.GetColumn(ds_oList.currow, "LTCCOURSECD")) // args
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+
+    var ls_RexFile = "";
+    switch (ds_oList.GetColumn(ds_oList.currow, "LTCCOURSECD")) {
+    
+    case 20: case 21: case 22:
+        ls_RexFile = "frmtraining0250R01License.rex";
+        break;
+        
+    case 24:
+        ls_RexFile = "frmtraining0250R02License.rex";
+        break;
+        
+    case 28:
+        ls_RexFile = "frmtraining0250R03License.rex";
+        break;
+
+    }
+
+    gfn_PrintReport(ls_RexFile
+        , "ds_oLicenseReport||ds_oLicenseReportEdu"
+        , "rpDirpath=" + GF_FILE_SERVER_URL + "kems"
+        , ""
+        , "수첩"
+        , true
+    );
+
+    //수첩정보
+    ds_iLicenseImage.InsertRow(0);
+    ds_iLicenseImage.SetColumn(0, "LILLCSNO", ds_oList.getColumn(ds_oList.currow, "LLCSNO"));
+    ds_iLicenseImage.SetColumn(0, "LISEQ", ds_oList.GetColumn(ds_oList.currow, "LHSEQ"));
+    ds_iLicenseImage.SetColumn(0, "LIDIRPATH", ls_LicenseImageDir);
+    ds_iLicenseImage.SetColumn(0, "LIREALNM", ds_oList.getColumn(ds_oList.currow, "LLCSNO")
+        + "_" + ds_oList.GetColumn(ds_oList.currow, "LHSEQ") + ".jpg");
+
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("training:insertLicenseImage", "", 0, "");
+
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iLicenseImage=ds_iLicenseImage:U" // inDs
+        ,""	// outDs
+        ,""	// args
+        ,""
+        ,false
+    );
+    
+    var arr = tit_FileWrite(
+        hfImageFile
+        , ls_LicenseImageDir
+        , "C:\\"
+        , "LCS.jpg"
+        , ds_iLicenseImage.GetColumn(0, "LIREALNM")
+        , "U"
+        , false
+    );
+    
+    hfImageFile.CloseFile();
+
+    if (arr[0] == "S") {
+        gfn_FooterMessage("수첩이미지 저장을 성공하였습니다.");
+        ExecProc("cmd", ' /c "del ' + replace("C:\\LCS.jpg",'\\\\','\\') + '" ');
+    } else {
+        gfn_FooterMessage("수첩이미지 저장을 실패하였습니다.");
+    }
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 발송 정보 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 주소라벨 일괄 출력
+ */
+function btnPrintAddrAll_OnClick(obj) {
+
+    var vRow = 0;
+    ds_AddrLable.ClearData();
+
+    for (var i=0; i<ds_oList.GetRowCount(); i++) {
+    
+        vRow = ds_AddrLable.AddRow();
+        ds_AddrLable.SetColumn(vRow, "ADDR1", ds_oList.GetColumn(i, "LRRADDR1"));
+        ds_AddrLable.SetColumn(vRow, "ADDR2", ds_oList.GetColumn(i, "LRRADDR2"));
+        ds_AddrLable.SetColumn(vRow, "BNM", ds_oList.GetColumn(i, "LRRNM"));
+        ds_AddrLable.SetColumn(vRow, "CNO", ds_oList.GetColumn(i, "LRJIBUNM") + "-" + ds_oList.GetColumn(i, "LTCCOURSECDNM"));
+        ds_AddrLable.SetColumn(vRow, "ZIPCD", left(ds_oList.GetColumn(i, "LRRZIPCD"), 3) + "-" + right(ds_oList.GetColumn(i, "LRRZIPCD"), 3));
+        
+    }
+
+    gfn_CallReportPopup("frmCust0130R01DMSendReport3J.rex"
+                      , "ds_AddrLable"
+                      , "REPORT_GUBUN=" + "1"
+                      , true);
+
+}
+
+/**
+ * 주소 라벨 출력
+ */
+function btnPrintAddr_OnClick(obj) {
+
+    ds_AddrLable.ClearData();
+    ds_AddrLable.InsertRow(0);
+    ds_AddrLable.SetColumn(0, "ADDR1", ds_oList.GetColumn(ds_oList.currow, "LRRADDR1"));
+    ds_AddrLable.SetColumn(0, "ADDR2", ds_oList.GetColumn(ds_oList.currow, "LRRADDR2"));
+    ds_AddrLable.SetColumn(0, "BNM", ds_oList.GetColumn(ds_oList.currow, "LRRNM"));
+    ds_AddrLable.SetColumn(0, "CNO", ds_oList.GetColumn(ds_oList.currow, "LRJIBUNM") + "-" + ds_oList.GetColumn(ds_oList.currow, "LTCCOURSECDNM"));
+    ds_AddrLable.SetColumn(0, "ZIPCD", left(ds_oList.GetColumn(ds_oList.currow, "LRRZIPCD"), 3) + "-" + right(ds_oList.GetColumn(ds_oList.currow, "LRRZIPCD"), 3));
+    
+	gfn_CallReportPopup("frmCust0130R01DMSendReport2J.rex"
+                      , "ds_AddrLable"
+                      , "REPORT_GUBUN=" + "1"
+                      , true);
+}
+
+/**
+ * 반송처리
+ */
+function btnReturn_OnClick(obj) {
+
+    if (ds_oList.GetColumn(ds_oList.currow, "LRSTATUS") == "6") { //반송
+
+        if (gfn_Confirm("재발송 하시겠습니까?")) {
+            lfn_SetLicenseReissueH("4", ds_oList.GetColumn(ds_oList.currow, "LRPAYSTATUS"));
+        }
+
+    } else {
+
+        if (gfn_Confirm("반송 처리를 하시겠습니까?")) {
+            lfn_SetLicenseReissueH("6", ds_oList.GetColumn(ds_oList.currow, "LRPAYSTATUS"));
+        }
+
+    }
+    
+}
+
+/**
+ * 운송장 번호 저장
+ */
+function btnTransSave_OnClick(obj) {
+
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("training:updateTraining0360TransNo", "", 0, "");
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iTransNo=ds_oList"	// inDs
+        ,""	// outDs
+        ,""	// args
+        ,"lfn_AfterSave"
+        ,false
+    );
+
+}
+
+/**
+ * 운송장 번호 조회
+ */
+function btnTransSearch_OnClick(obj) {
+
+    ExecProc('"C:\\Program Files\\Internet Explorer\\iexplore.exe"'
+        , '"http://service.epost.go.kr/trace.RetrieveRegiPrclDeliv.postal?sid1=' + edTransNo.Text + '"');
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 수납 정보 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 영수증 재발행
+ */
+function tabSettlement_tabSunap_btnPrintReRct_OnClick(obj) {
+
+    if (!gfn_Confirm("영수증을 재발행 하시겠습니까?")) {
+        return;
+    }
+
+    gfn_PrintReceipt(ds_oList.GetColumn(ds_oList.currow, "PMYEAR"), ds_oList.GetColumn(ds_oList.currow, "PMMGNO"));
+        
+}
+
+/**
+ * 가상계좌 보기
+ */
+function tabSettlement_tabSunap_btnVirtualAccount_OnClick(obj) {
+
+    ds_oPosCas.ClearData();
+
+    tit_clearActionInfo();
+    tit_addCsvSearchActionInfo("training:searchInternetPosAccount", false);
+    tit_callService(
+        ""
+        ,""
+        ,"" // inDs
+        ,"ds_oPosCas=ds_oInternetPosAccount"	// outDs
+        ," PCPMYEAR=" + quote(ds_oList.GetColumn(ds_oList.currow, "PMYEAR"))
+            + " PCPMMGNO=" + quote(ds_oList.GetColumn(ds_oList.currow, "PMMGNO")) // args 
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+
+    var sArg = ""; // 팝업파라메터
+    sArg = "sVirtCloseDate=" + quote(ds_oPosCas.GetColumn(0, "PCCLOSEDATE")); // 가상계좌유효기간
+    sArg += " sVirtStat=" + quote(ds_oPosCas.GetColumn(0, "PCFLAG")); // 입금여부(R-계좌 할당,I-입금,C-취소)
+    sArg += " sVirtAccountNo=" + quote(ds_oPosCas.GetColumn(0, "PCACCOUNT")); // 계좌번호
+    sArg += " sVirtBankCd=" + quote(ds_oPosCas.GetColumn(0, "PCBANKCD")); // 은행코드
+    sArg += " sVirtBankNm=" + quote(ds_oPosCas.GetColumn(0, "PCBANKNM")); // 은행명칭
+    sArg += " sVirtInputAmount=" + quote(ds_oPosCas.GetColumn(0, "PCAMOUNT")); // 입금액
+    sArg += " sVirtBankDate=" + quote(ds_oPosCas.GetColumn(0, "PCBANKDATE")); // 입금/취소일자
+
+	Dialog("COM::frmCOM3401PVirtualAccountPOSResult.xml", sArg, 400, 224, "", -1, -1);
+
+}
+
+/**
+ * 내방 환불 신청
+ */
+function tabSettlement_tabSunap_btnReapy_OnClick(obj) {
+
+    var sArg = "sPmYear=" + quote(ds_oList.GetColumn(ds_oList.currow, "PMYEAR"));
+    sArg += " sPmMgno=" + quote(ds_oList.GetColumn(ds_oList.currow, "PMMGNO"));
+    sArg += " sPmAmt=" + quote(ds_oList.GetColumn(ds_oList.currow, "PMAMT"));
+    
+    Dialog("training::frmtraining0361PRepay.xml", sArg, 500, 156, "", -1, -1);
+    
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 환불 정보 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 환불 접수
+ */
+function tabSettlement_tabRepay_btnJubsu_OnClick(obj) {
+
+    if (gfn_Confirm("환불 접수를 하시겠습니까?")) {
+        lfn_SetLicenseReissueH("5", "6");
+    }
+
+}
+
+/**
+ * 환불 완료
+ */
+function tabSettlement_tabRepay_btnRepay_OnClick(obj) {
+
+    if (!gfn_Confirm("환불 완료를 하시겠습니까?")) {
+        return;
+    }
+
+    ds_ioLicenseReissuePay.ClearData();
+    ds_ioPosPrintM.ClearData();
+    ds_ioPosPayment.ClearData();
+    ds_oPosCas.ClearData();
+/* 기존 수납정보 SELECT TRANSACTION */
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchTraining0360LicenseReissuePay", false);
+    tit_addSearchActionInfo("cust:searchCust2020Pos", false);
+    tit_addSearchActionInfo("cust:searchCust2020PosPayment", false);
+    tit_addSearchActionInfo("cust:searchCust2020PosCas", false);
+    tit_callService(
+        ""
+        ,""
+        ,""
+        ,"ds_ioLicenseReissuePay=ds_oLicenseReissuePay"	// outDs
+            + " ds_ioPosPrintM=ds_oPos"
+            + " ds_ioPosPayment=ds_oPosPayment"
+            + " ds_oPosCas=ds_oPosCas"
+        ,"SPMYEAR=" + quote(ds_oList.GetColumn(ds_oList.currow, "PMYEAR"))
+            + " SPMMGNO=" + quote(ds_oList.GetColumn(ds_oList.currow, "PMMGNO"))
+        ,"lfn_AfterCall"
+        ,false
+        ,false
+        ,true
+    );
+
+    if (ds_ioLicenseReissuePay.GetRowCount() < 1) { // 쿼리 오류시 종료
+        gfn_Alert("서버에 오류가 발생되었습니다. 정보지원과로 문의하시기 바랍니다.");
+        return "FAIL";
+    }
+    
+/* 가상계좌일 경우 */
+    if (right(ds_ioPosPrintM.GetColumn(0, "PMPGMGUBUN"), 1) == "3"
+        || right(ds_ioPosPrintM.GetColumn(0, "PMPGMGUBUN"), 1) == "5") {
+        
+        if (ds_oPosCas.GetColumn(0, "PCCLOSEDATE") > left(getDate(), 14)) {
+            gfn_Alert("가상계좌가 아직 닫히지 않았습니다.");
+            return "FAIL";
+        }
+
+    }
+
+//LicenseReissuePay 값 설정
+    ds_ioLicenseReissuePay.SetColumn(0, "LPGUBUNCD", "02");
+    ds_ioLicenseReissuePay.SetColumn(0, "LPPROCAMOUNT", (-1) * toNumber(ds_ioLicenseReissuePay.GetColumn(0, "LPPROCAMOUNT")));
+    ds_ioLicenseReissuePay.SetColumn(0, "LPLICENSEAMOUNT", (-1) * toNumber(ds_ioLicenseReissuePay.GetColumn(0, "LPLICENSEAMOUNT")));
+    ds_ioLicenseReissuePay.SetColumn(0, "LPPOSTAMOUNT", (-1) * toNumber(ds_ioLicenseReissuePay.GetColumn(0, "LPPOSTAMOUNT")));
+    ds_ioLicenseReissuePay.SetColumn(0, "LPPROCDATE", left(getDate(), 8));
+    
+//PosPrintM 값 설정
+    ds_ioPosPrintM.SetColumn(0, "PMPCGUBUN", "1");
+    ds_ioPosPrintM.SetColumn(0, "PMPROCDATE", left(getDate(), 8));
+    ds_ioPosPrintM.SetColumn(0, "PMITEM4", "환불일자 : " + gfn_ToDate(left(getDate(), 8), "-") );
+    ds_ioPosPrintM.SetColumn(0, "PMAMT", (-1) * toNumber(ds_oList.GetColumn(ds_oList.currow, "PMAMT")));
+    ds_ioPosPrintM.SetColumn(0, "PMPGMPK", ds_oList.GetColumn(ds_oList.currow, "LRMGNO"));
+
+//PosPayment 값 설정
+    for (var i=0; i<ds_ioPosPayment.RowCount(); i++) { //CUSTOMERFEE <= ds_ioCustomerFee
+        ds_ioPosPayment.SetColumn(i, "PPTOTAMT", (-1) * ds_ioPosPayment.GetColumn(i, "PPTOTAMT"));
+    }
+    
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("cust:searchCust2020CustomerFeePmMgno", false);
+    tit_addSingleActionInfo("training:insertTraining0360LicenseReissuePay", "", 0, "");
+    tit_addSingleActionInfo("cust:insertCust2020PosPrintM", "", 0, "");
+    tit_addMultiActionInfo("cust:insertCust2020PosPayment", "", 0, "", "N");
+    
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iLicenseReissuePay=ds_ioLicenseReissuePay"
+            + " ds_iPosPrintM=ds_ioPosPrintM"
+            + " ds_iPosPayment=ds_ioPosPayment"
+        ,"ds_oPmMgno=ds_oCustomerFeePmMgno"
+        ,"SPMYEAR=" + quote(left(getDate(), 4))
+        ,"lfn_AfterCall"
+        ,false
+        ,false
+        ,true
+    );
+
+    if (ds_oPmMgno.GetRowCount() < 1) { // 쿼리 오류시 종료
+        return "FAIL";
+    }
+
+/* POS실행 */
+    var sPos = lfn_Pos();
+    
+/* POS실행 후 TRANSACTION */
+    var vArg = "";
+
+    if (sPos == "OK") {
+    
+        ds_iLicenseReissueH.ClearData();
+        ds_iLicenseReissueH.InsertRow(0);
+        ds_iLicenseReissueH.SetColumn(0, "LRHLRMGNO", ds_oList.GetColumn(ds_oList.currow, "LRMGNO"));
+        ds_iLicenseReissueH.SetColumn(0, "LRHSTATUS", "5");
+        ds_iLicenseReissueH.SetColumn(0, "LRHPAYSTATUS", "7");
+    
+        tit_clearActionInfo();
+        tit_addSingleActionInfo("training:updateTraining0360PosAfter", "", 0, "");
+        tit_addSingleActionInfo("training:insertTraining0360LicenseReissueH", "", 0, "");
+        
+        vArg = "ds_iLicenseReissueH=ds_iLicenseReissueH";
+        
+    } else if (sPos == "FAIL") {
+        tit_clearActionInfo();
+        tit_addSingleActionInfo("training:deleteTraining0360PosAfter", "", 0, "");
+    } else {
+        return sPos;
+    }
+
+    tit_callService(
+        ""
+        ,""
+        ,vArg
+        ,"" // outDs
+        ,"SPMYEAR=" + quote(ds_oPmMgno.GetColumn(0, "PMYEAR"))
+            + " SPMMGNO=" + quote(ds_oPmMgno.GetColumn(0, "PMMGNO"))
+            + " SPCGUBUN=" + quote("1")
+            + " SUNAPPMYEAR=" + quote(ds_oList.GetColumn(ds_oList.currow, "PMYEAR"))
+            + " SUNAPPMMGNO=" + quote(ds_oList.GetColumn(ds_oList.currow, "PMMGNO"))
+        ,"lfn_AfterSave"
+        ,false
+    );
+
+}
+
+/**
+ * 환불 취소
+ */
+function tabSettlement_tabRepay_btnCancel_OnClick(obj) {
+
+    if (gfn_Confirm("환불 취소를 하시겠습니까?")) {
+        lfn_SetLicenseReissueH("5", "8");
+    }
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 이벤트 함수
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 신청서출력
+ */
+function btnPrintApplication_OnClick(obj)
+{
+    ds_PrintApplication.ClearData();
+    ds_PrintApplication.InsertRow(0);
+    ds_PrintApplication.SetColumn(0, "GUBUN", ds_oList.GetColumn(ds_oList.currow, "LHISSUEGUBUN"));
+    ds_PrintApplication.SetColumn(0, "ISSUEGUBUNNM", ds_oList.GetColumn(ds_oList.currow, "LISSUEGUBUNNM"));
+    ds_PrintApplication.SetColumn(0, "ISSUEREASON", ds_oList.GetColumn(ds_oList.currow, "LHISSUEREASON"));
+    ds_PrintApplication.SetColumn(0, "COURSECD", ds_oList.GetColumn(ds_oList.currow, "LTCCOURSECD"));
+    ds_PrintApplication.SetColumn(0, "NAME",ds_oList.GetColumn(ds_oList.currow, "LRNM"));
+    ds_PrintApplication.SetColumn(0, "RESIDENTNO",ds_oList.GetColumn(ds_oList.currow, "LRTPRESIDENTNO"));
+    ds_PrintApplication.SetColumn(0, "TEL",ds_oList.GetColumn(ds_oList.currow, "LRTEL"));
+    ds_PrintApplication.SetColumn(0, "HPTEL",ds_oList.GetColumn(ds_oList.currow, "LRHPTEL"));            
+    ds_PrintApplication.SetColumn(0, "ADDR1", ds_oList.GetColumn(ds_oList.currow, "LRRADDR1"));
+    ds_PrintApplication.SetColumn(0, "ADDR2", ds_oList.GetColumn(ds_oList.currow, "LRRADDR2"));
+/*
+   if (ds_PrintApplication.GetRowCount() < 1) { // 쿼리 오류시 종료
+        gfn_Alert("출력할 데이터가 없습니다.");
+        return false;
+    }
+*/
+	gfn_CallReportPopup("frmtraining0360R01PrintApplication.rex"
+                      , "ds_PrintApplication"
+                      , ""
+                      , true);
+}
+
+
+/**
+ * 신청 목록 선택
+ */
+function ds_oList_OnRowPosChanged(obj,nOldRow,nRow) {
+
+    /* 최근사진 */
+    if (ds_oList.getColumn(ds_oList.currow, "IIIMGSEQ") > "0"){
+        imgPicture.ImageID = GF_FILE_SERVER_URL + "kems" + ds_oList.getColumn(ds_oList.currow, "IIDIRPATH") + "/" + ds_oList.getColumn(ds_oList.currow, "IIREALNM");
+        imgPicture.Text = "";
+    } else {
+        imgPicture.ImageID = "";
+        imgPicture.Text = "최근사진";
+    }
+
+    /* 버튼 활성화 */
+    btnPrintAddr.Enable = true; //주소라벨출력
+    btnPrintAddrAll.Enable = true; //주소라벨일괄출력
+
+    if (ds_oList.getColumn(ds_oList.currow, "LRSTATUS") == "1") { //미입금
+        lfn_InitBtn();
+        btnPrintApplication.Enable = true; //신청서출력
+    } else { //입금 이후
+
+        tabSettlement.tabSunap.btnPrintReRct.Enable = true; //영수증 재발행
+
+        if (ds_oList.getColumn(ds_oList.currow, "PMPAYMENTFLAG") == "3") { //가상계좌 버튼 활성화
+            tabSettlement.tabSunap.btnVirtualAccount.Enable = true;
+        } else {
+            tabSettlement.tabSunap.btnVirtualAccount.Enable = false;
+        }
+        
+        switch (ds_oList.getColumn(ds_oList.currow, "LRSTATUS")) { //기본버튼 활성화
+                 
+            case "2": //입금완료
+                btnJubsu.Enable = true; //접수처리
+                btnReIssue.Enable = false; //수첩재발급
+                btnLicensePrint.Enable = false; //수첩출력
+                btnReturn.Enable = false; //반송처리
+                btnTransSave.Enable = false; //운송장번호저장
+                tabSettlement.tabSunap.btnReapy.Enable = true; //환불신청          
+                btnReturn.Text = "반송 처리";
+
+                btnPrintApplication.Enable = true; //신청서출력
+                break;
+                
+            case "3": //접수
+                btnJubsu.Enable = false; //접수처리
+                btnReIssue.Enable = true; //수첩재발급
+                btnLicensePrint.Enable = false; //수첩출력
+                btnReturn.Enable = false; //반송처리
+                btnTransSave.Enable = false; //운송장번호저장
+                tabSettlement.tabSunap.btnReapy.Enable = true; //환불신청             
+                btnReturn.Text = "반송 처리";
+
+                btnPrintApplication.Enable = true; //신청서출력
+                break;
+                
+            case "4": //발송
+                btnJubsu.Enable = false; //접수처리
+                btnReIssue.Enable = false; //수첩재발급
+                btnLicensePrint.Enable = true; //수첩출력
+                btnReturn.Enable = true; //반송처리
+                btnTransSave.Enable = true; //운송장번호저장
+                tabSettlement.tabSunap.btnReapy.Enable = false; //환불신청            
+                btnReturn.Text = "반송 처리";
+
+                btnPrintApplication.Enable = true; //신청서출력                
+                break;
+                
+            case "5": //환불
+                if (ds_oList.getColumn(ds_oList.currow, "LRPAYSTATUS") == "8") {
+                    btnJubsu.Enable = true; //접수처리
+                    tabSettlement.tabSunap.btnReapy.Enable = true; //환불신청
+                } else {
+                    btnJubsu.Enable = false; //접수처리
+                    tabSettlement.tabSunap.btnReapy.Enable = false; //환불신청
+                }
+                
+                btnReIssue.Enable = false; //수첩재발급
+                btnLicensePrint.Enable = false; //수첩출력
+                btnReturn.Enable = false; //반송처리
+                btnTransSave.Enable = false; //운송장번호저장
+                btnReturn.Text = "반송 처리";
+
+                btnPrintApplication.Enable = false; //신청서출력
+                break;
+
+            case "6": //반송
+                btnJubsu.Enable = false; //접수처리
+                btnReIssue.Enable = false; //수첩재발급
+                btnLicensePrint.Enable = false; //수첩출력
+                btnReturn.Enable = true; //반송처리
+                btnTransSave.Enable = false; //운송장번호저장
+                tabSettlement.tabSunap.btnReapy.Enable = false; //환불신청              
+                btnReturn.Text = "재발송";
+
+                btnPrintApplication.Enable = false; //신청서출력                
+                break;
+                
+        }
+
+        switch (ds_oList.getColumn(ds_oList.currow, "LRPAYSTATUS")) { //환불 버튼 활성화
+        
+            case "4": case "8": //입금완료, 환불취소
+                tabSettlement.tabRepay.btnJubsu.Enable = false; //환불접수
+                tabSettlement.tabRepay.btnCancel.Enable = false; //환불취소
+                tabSettlement.tabRepay.btnRepay.Enable = false; //환불완료
+                break;
+                
+            case "5": //환불신청
+                tabSettlement.tabRepay.btnJubsu.Enable = true; //환불접수
+                tabSettlement.tabRepay.btnCancel.Enable = true; //환불취소
+                tabSettlement.tabRepay.btnRepay.Enable = false; //환불완료
+                break;
+                
+            case "6": //환불접수
+                tabSettlement.tabRepay.btnJubsu.Enable = false; //환불접수
+                tabSettlement.tabRepay.btnCancel.Enable = true; //환불취소
+                tabSettlement.tabRepay.btnRepay.Enable = true; //환불완료
+                break;
+                
+            case "7": //환불접수
+                tabSettlement.tabRepay.btnJubsu.Enable = false; //환불접수
+                tabSettlement.tabRepay.btnCancel.Enable = false; //환불취소
+                tabSettlement.tabRepay.btnRepay.Enable = false; //환불완료
+                break;
+        }
+
+    }
+
+    /* 수납/환불 탭 변경 */
+    if (ds_oList.getColumn(ds_oList.currow, "LRPAYSTATUS") >= "5" && ds_oList.getColumn(ds_oList.currow, "LRPAYSTATUS") < "8") {
+        tabSettlement.TabIndex = 1;
+    } else {
+        tabSettlement.TabIndex = 0;
+    }
+    
+    ls_SunapCode = ds_oList.getColumn(ds_oList.currow, "PMPGMGUBUN");
+
+}
+
+/**
+ * 성명 키 다운
+ */
+function edName_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam) {
+
+    if (nChar == "13") {
+        lfn_Search();
+        return;
+    }
+
+    gfn_EnterNextFocus(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam);
+    
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+// 공통 함수
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * insert LICENSEREISSUEH
+ */
+function lfn_SetLicenseReissueH(nStatus, nPayStatus) {
+
+    ds_iLicenseReissueH.ClearData();
+    ds_iLicenseReissueH.InsertRow(0);
+    ds_iLicenseReissueH.SetColumn(0, "LRHLRMGNO", ds_oList.GetColumn(ds_oList.currow, "LRMGNO"));
+    ds_iLicenseReissueH.SetColumn(0, "LRHSTATUS", nStatus);
+    ds_iLicenseReissueH.SetColumn(0, "LRHPAYSTATUS", nPayStatus);
+
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("training:insertTraining0360LicenseReissueH", "", 0, "");
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iLicenseReissueH=ds_iLicenseReissueH"	// inDs
+        ,""	// outDs
+        ,""	// args 
+        ,"lfn_AfterSave"
+        ,false
+    );
+}
+
+/**
+ * 저장 TRANSACTION 처리 후
+ */
+function lfn_AfterSave(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        //gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        gfn_Alert("서버에 오류가 발생되었습니다. 정보지원과로 문의하시기 바랍니다.");
+        return "Transaction Error!";
+    }
+
+    li_Currow = ds_oList.currow;
+
+    gfn_Alert("정상적으로 처리되었습니다.");
+    lfn_Search();
+
+}
+
+/**
+ * 검색 TRANSACTION 처리 후
+ */
+function lfn_AfterSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        //gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        gfn_Alert("서버에 오류가 발생되었습니다. 정보지원과로 문의하시기 바랍니다.");
+        return "Transaction Error!";
+    }
+    
+    ds_oList.row = li_Currow;
+}
+
+/**
+ * 기타 TRANSACTION 처리 후
+ */
+function lfn_AfterCall(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        //gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        gfn_Alert("서버에 오류가 발생되었습니다. 정보지원과로 문의하시기 바랍니다.");
+        return "Transaction Error!";
+    }
+}
+/////////////////////////////////////////////////////////////////////////////////
+// 데이콤 처리
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * POS 처리
+ */
+function lfn_Pos() {
+
+    switch (ls_SunapCode) { //현금, 지로, 은납 바로 결과창 출력
+        case "10": case "14": case "17": case "24":
+            lfn_PosResultPopup();
+            return "OK";
+            
+        case "13": case "23": //가상계좌
+            if (ls_SunapGubun == "1") {  //환불일 경우
+                lfn_PosResultPopup();
+                return "OK";
+            }
+
+    }
+
+    var ls_PosMsg = ""; // Pos 처리결과 메세지
+    var ls_LgdMsg = ""; // LG데이콤결과메세지
+    var ls_KemsMsg = ""; // 안전원결과메세지
+    var ls_ReTransYn = "N"; // 데이콤 재전송 여부
+    var ls_PosResult = "4"; //데이콤 결과
+    var ls_ResultPopup = "RETRANS"; //최종 메시지
+
+// ds_iPosData에 데이터 저장
+    divPos.ds_ioPosInput.ClearData();
+    divPos.ds_ioPosInput.InsertRow(0);
+    divPos.ds_ioPosInput.SetColumn(0, "PMYEAR", ds_oPmMgno.GetColumn(0, "PMYEAR"));
+    divPos.ds_ioPosInput.SetColumn(0, "PMMGNO", ds_oPmMgno.GetColumn(0, "PMMGNO"));
+    divPos.ds_ioPosInput.SetColumn(0, "STATUS", "4");
+
+    switch (ls_SunapCode) {
+        case "11": case "21": //카드
+            divPos.ds_ioPosInput.SetColumn(0, "LGD_PAN", "");
+            break;
+            
+        case "15": case "25": //가상계좌 현금영수증
+            divPos.ds_ioPosInput.SetColumn(0, "LGD_CASHRECEIPTYN", "Y");
+            break;
+    }
+
+    while(ls_ResultPopup == "RETRANS") {
+    
+        ls_ReTransYn = "N";
+        ls_PosResult = lfn_PosProc();
+
+        switch (ls_PosResult) {
+        
+            case "0" : // 데이콤 성공, 안전원 성공
+                ls_LgdMsg = "성공";
+                ls_KemsMsg = "성공";
+                break;
+
+            case "1" : // 데이콤 성공, 안전원 실패
+                // 안전원 성공으로 수정
+                divPos.ds_ioPosInput.SetColumn(0, "STATUS", "1"); // 초기저장시 4
+                
+                var ls_RetRetry = "";
+                var ln_Cnt = 0; // 시도회수
+                while (true) {
+                    ls_RetRetry = divPos.lfn_POS(); // POS 호출
+                    if (ls_RetRetry == "0") { // 성공
+                        ls_LgdMsg = "성공"; // LG데이콤결과메세지
+                        ls_KemsMsg = "성공"; // 안전원결과메세지
+                        break;
+                    }
+                    if (ln_Cnt == 10) { // 안전원 성공으로 수정하기 실패
+                        gfn_Alert("데이콤 처리는 성공했으나, 안전원 저장 처리는 실패했습니다.\n정보지원과로 문의하시기 바랍니다.");
+                        return "KFSA-FAIL";
+                    }
+                    ln_Cnt++;
+                }
+                break;
+
+            case "3" : // 데이콤 실패, 안전원 실패
+            case "4" : // 초기 신청 상태
+                ls_LgdMsg = "실패"; // LG데이콤결과메세지
+                ls_KemsMsg = "실패"; // 안전원결과메세지
+                ls_ReTransYn = "Y";
+                break;
+
+            default : // 결과를 알 수 없는 상태
+                gfn_Alert("처리 결과를 알 수가 없습니다.\n정보지원과로 문의하시기 바랍니다.");
+                ls_ReTransYn = "Y";
+                return "FAIL";
+                break;
+        }
+
+        ls_ResultPopup = lfn_PosResultPopup(ls_PosMsg, ls_LgdMsg, ls_KemsMsg, ls_ReTransYn); // 결과출력팝업을 호출한다.
+
+    }
+    
+    return ls_ResultPopup;
+
+}
+
+/**
+ * POS 전송 처리
+ */
+function lfn_PosProc() {
+
+    var sArg = "";
+    var ls_PosResultCode = ""; // POS 결과코드
+    var ls_RetPos = Dialog("COM::frmCOM3001PPOSProgressBar.xml", sArg, 300, 123, "TitleBar=false", -1, -1);
+
+    if (ls_RetPos == "OK") {
+        ls_PosMsg = divPos.ds_ioPosOutput.GetColumn(0, "MI_RSMSG"); // 결과메세지
+        ls_PosResultCode = divPos.ds_ioPosOutput.GetColumn(0, "MI_RSCODE"); // 결과코드
+
+    } else if (ls_RetPos == "FAIL"){ // 실패
+        ls_PosMsg = divPos.ds_ioPosOutput.GetColumn(0, "MI_RSMSG"); // 결과메세지
+        if ("OK" == divPos.lfn_POSSearch()) { // 실시간 POS 결과를 조회한다.
+            ls_PosResultCode = divPos.ds_ioPosOutput.GetColumn(0, "MI_RSCODE"); // 결과코드
+        } else {
+            ls_PosResultCode = "5"; // 결과코드
+        }
+
+    } else { // 10초 이후(실패)
+        ls_PosMsg = "10초 - 시간 초과입니다.";
+        if ("OK" == divPos.lfn_POSSearch()) { // 실시간 POS 결과를 조회한다.
+            ls_PosResultCode = divPos.ds_ioPosOutput.GetColumn(0, "MI_RSCODE"); // 결과코드
+        } else {
+            ls_PosResultCode = "5"; // 결과코드
+        }
+
+    }
+
+    return ls_PosResultCode;
+
+}
+
+/**
+ * POS결과 조회
+ */
+function lfn_PosResultPopup(sPosMsg, sLgdMsg, sKemsMsg, sTransYn) {
+
+    var ls_RetReult = ""; // 결제처리결과팝업 리턴값용
+    var sArg = "sPmYear=" + quote(ds_oPmMgno.GetColumn(0, "PMYEAR"))
+        + " sPmMgno=" + quote(ds_oPmMgno.GetColumn(0, "PMMGNO"))
+        + " sPosMsg=" + quote(sPosMsg)
+        + " sLgdMsg=" + quote(sLgdMsg)
+        + " sKemsMsg=" + quote(sKemsMsg)
+        + " sTransYn=" + quote(sTransYn)
+        
+        + " sSunapGubun=" + quote(ls_SunapGubun)
+        + " sSunapCode=" + quote(ls_SunapCode)
+    ;
+
+    sArg += " sAmount=" + quote(iif(ls_SunapGubun == "0", tabSettlement.tabSunap.medAmount.Value, tabSettlement.tabRepay.medAmount.Value));
+
+    switch(ls_SunapCode) {
+    
+        case "10": case "17": case "14": case "24": //현금, 은납, 지로
+            ls_RetReult = Dialog("cust::frmcust2021PPosResultMoney.xml", sArg, 400, 216, "", -1, -1);
+            break;
+            
+        case "11": case "21": //카드
+            ls_RetReult = Dialog("cust::frmcust2022PPosResultCard.xml", sArg, 400, 392, "", -1, -1);
+            break;
+            
+        case "12": case "16": case "18": case "22": case "26":  //현금 영수증
+            ls_RetReult = Dialog("cust::frmcust2023PPosResultCash.xml", sArg, 400, 384, "", -1, -1);
+            break;
+            
+        case "13": case "15": case "23": case "25": //가상계좌
+            ls_RetReult = Dialog("cust::frmcust2024PPosResultCas.xml", sArg, 400, 372, "", -1, -1);
+            break;
+    }
+    
+    return ls_RetReult;
+}
+
+
+
+]]></Script>
+</Window>

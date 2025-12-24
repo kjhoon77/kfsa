@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="output" io="OUTPUT" reserved="NO"></dataset>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[function Run() {
+
+	var errSql;
+	var searchQuery;
+
+	searchQuery = "SELECT "
+		+ "	IIF(ISNULL(ERAPLEXAMNO), 'X', '0') AS SEL "
+		+ "	, EJMGNO "
+		+ "	, EJTPMGNO "
+		+ "	, EJPERSONNM "
+		+ "	, MID(EJBIRTHDAY,1,2) + '.' + MID(EJBIRTHDAY,3,2) + '.' + MID(EJBIRTHDAY,5,2) + '(' +  
+              IIF( MID(EJBIRTHDAY,7,1) = '1', '남','여' ) + ')' AS AS BIRTHDAY "
+		+ "	, EJLASTSUNAPGUBUN "
+		+ "	, EJZZIPCD "
+		+ "	, EJADDR1 "
+		+ "	, EJADDR2 "
+		+ "	, EJBULDNM "
+		+ "	, EJBULDADDR "
+		+ "	, EJEXPYN "
+		+ "	, EJPASSYN "
+		+ "	, EJCANCELREASON "
+		+ "	, EJCANCELPSABUN "
+		+ "	, EJIIIMGSEQ "
+		+ "	, ERAPLEXAMNO "
+		+ "	, EOTCCOURSECD "
+		+ "	, TPPASSNO "
+		+ "	, TPSTARTDATE "
+		+ "	, TPENDDATE "
+		+ "	, TCTERMTIME "
+		+ " FROM  "
+		+ " ( SELECT * "
+		+ " 	FROM "
+		+ "		TRAININGCOURSE ";
+	
+	if (ERREPEATNO == "0"){
+		searchQuery += ", (SELECT ERAPLEXAMNO, MAX(ERSEQ) "
+			+ "	FROM EXAMRESULT "
+			+ "	WHERE ERPASSYN = '" + ERPASSYN + "'"
+			+ "	GROUP BY ERAPLEXAMNO "
+			+ ") ";
+	} else {
+		searchQuery += ", (SELECT A.ERAPLEXAMNO "
+		  + "	      , A.ERREPEATNO "
+		  + "	      , A.ERSEQ "
+      + "	 FROM EXAMRESULT A "
+      + "	      , (SELECT EREJMGNO "
+      + "	      ,         MAX(CINT(ERSEQ)) AS ERSEQ "
+      + "	         FROM EXAMRESULT "
+      + "	         WHERE ERREPEATNO = '" + ERREPEATNO + "'"
+      + "	         GROUP BY EREJMGNO, ERREPEATNO) B "
+      + "	 WHERE A.EREJMGNO = B.EREJMGNO "
+      + "	   AND A.ERPASSYN = '" + ERPASSYN + "'"
+      + "	   AND CINT(A.ERSEQ) = B.ERSEQ ) ";
+	}
+
+	searchQuery += ", EXAMJUBSU "
+		+ "	, EXAMORDERH "
+		+ "	, EXAMORDER "
+		+ "WHERE 1=1 "
+		+ "	AND EOTCCOURSECD = TCCOURSECD "
+		+ "	AND EOEXAMORDER + RIGHT(EOHJUBSUNO, 3) = ERAPLEXAMNO "
+		+ "	AND EOHSEQ = EJLASTEOHSEQ "
+		+ "	AND EOHEJMGNO = EJMGNO "
+		+ "	AND EOMGNO = EOHEOMGNO "
+		+ "	AND EOMGNO = '" + EOMGNO + "'"
+		+ " ) EJ "
+		+ " LEFT JOIN "
+		+ " TRAININGPASS TP "
+		+ " ON "
+		+ " EJ.EJTJMGNO = TP.TPTJMGNO "
+		+ " ORDER BY ERAPLEXAMNO";
+
+	errSql = ExecuteQuery(searchQuery, "output");
+
+}]]></source>
+</class2>

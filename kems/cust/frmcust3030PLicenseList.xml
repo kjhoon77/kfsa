@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="544" Id="frmcust3030PLicenseList" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="자격정보&#32;및&#32;교육이수정보" Top="8" Ver="1.0" Width="680" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oFireManagerList">
+				<Contents>
+					<colinfo id="BILD_SN" size="201" summ="default" type="STRING"/>
+					<colinfo id="OBJ_NM" size="2" summ="default" type="STRING"/>
+					<colinfo id="CRQFC_CODE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CRQFC_NM" size="40" summ="default" type="STRING"/>
+					<colinfo id="APNT_DE" size="13" summ="default" type="STRING"/>
+					<colinfo id="BUILDADRES" size="20" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>연계</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>직접입력</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEdupassList">
+				<Contents>
+					<colinfo id="SEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="GUBUN" size="201" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSENM" size="2" summ="default" type="STRING"/>
+					<colinfo id="GTTEAMNM" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TOENDDATE" size="40" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oLicenseList">
+				<Contents>
+					<colinfo id="SEL" size="1" summ="default" type="STRING"/>
+					<colinfo id="LTCCOURSENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LLCSNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="LISSUEDATE" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="LORGGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="LORGGUBUNNMM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="168" Height="128" Id="Shape0" Left="4" LineColor="user15" Right="676" TabOrder="2" Top="40" Type="Rectangle" Width="672"></Shape>
+		<Static Align="Center" Height="20" Id="Static1" Left="20" Style="sty_LabelGruopBox" TabOrder="1" Text="선임정보" Top="32" VAlign="Middle" Width="112"></Static>
+		<Shape Bottom="378" Height="200" Id="Shape1" Left="4" LineColor="user15" Right="676" TabOrder="3" Top="178" Type="Rectangle" Width="672"></Shape>
+		<Shape Bottom="538" Height="136" Id="Shape2" Left="4" LineColor="user15" Right="676" TabOrder="4" Top="402" Type="Rectangle" Width="672"></Shape>
+		<Static Align="Center" Height="20" Id="Static0" Left="20" Style="sty_LabelGruopBox" TabOrder="5" Text="자격정보" Top="170" VAlign="Middle" Width="112"></Static>
+		<Static Align="Center" Height="20" Id="Static2" Left="20" Style="sty_LabelGruopBox" TabOrder="6" Text="교육정보" Top="380" VAlign="Middle" Width="112"></Static>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="492" LineColor="user14" Right="676" TabOrder="9" Top="1" Type="Rectangle" Width="184"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="588" OnClick="lfn_End" Style="sty_Button" TabOrder="8" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="24" Id="btnSelect" ImageID="BTN_TEXT_06" Left="494" OnClick="btnSelect_OnClick" Style="sty_Button" TabOrder="7" Text="확인" Top="4" Width="92"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oFireManagerList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="164" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="108" Id="gdFireManager" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" Right="672" RowHeight="20" Style="sty_Grid" TabOrder="10" TabStop="true" Top="56" UseDBuff="true" UsePopupMenu="true" UserData="대상물(업체)정보" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="664">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="152"/>
+						<col width="120"/>
+						<col width="87"/>
+						<col width="242"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="대상물명"/>
+						<cell align="center" col="2" display="text" text="등급"/>
+						<cell col="3" display="text" text="선임일자"/>
+						<cell col="4" display="text" text="소재지"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="number" expr="row+1"/>
+						<cell align="left" col="1" colid="OBJ_NM" display="text"/>
+						<cell align="left" col="2" colid="CRQFC_NM" combocol="CD" combodataset="ds_oBizGubun" combotext="DATA" display="combo"/>
+						<cell align="left" col="3" colid="APNT_DE" display="date"/>
+						<cell align="left" col="4" colid="BUILDADRES" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oLicenseList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="309" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="116" Id="gdLicense" InputPanel="FALSE" Left="114" LineColor="default" Right="674" RowHeight="20" Style="sty_Grid" TabOrder="11" TabStop="true" Top="193" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="560">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="28"/>
+						<col width="40"/>
+						<col width="132"/>
+						<col width="143"/>
+						<col width="79"/>
+						<col width="96"/>
+					</columns>
+					<head>
+						<cell col="0" display="normal" edit="checkbox"/>
+						<cell align="center" col="1" display="text" text="순번"/>
+						<cell col="2" display="text" text="자격등급"/>
+						<cell align="center" col="3" display="text" text="자격번호"/>
+						<cell col="4" display="text" text="취득일자"/>
+						<cell col="5" display="text" text="발급기관"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SEL" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" display="number" expr="row+1"/>
+						<cell align="left" col="2" colid="LTCCOURSENM" display="text"/>
+						<cell align="center" col="3" colid="LLCSNO" display="text"/>
+						<cell align="center" col="4" colid="LISSUEDATE" display="date"/>
+						<cell align="left" col="5" colid="LORGGUBUNNMM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Radio Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="180" Id="rdGubun" INDEX="1" InnerDataset="ds_iGubun" Left="16" LeftMargin="4" OnChanged="rdGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="12" Top="193" UserData="S" Width="96"></Radio>
+		<Static Align="Center" Height="20" Id="lbPersonNm2" Left="115" Style="sty_Label" TabOrder="14" Text="자격등급" Top="318" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edLicenseCourse" ImeMode="native" Left="207" LeftMargin="2" Style="sty_Edit" TabOrder="13" Top="318" Width="106"></Edit>
+		<Static Align="Center" Height="20" Id="Static3" Left="115" Style="sty_Label" TabOrder="16" Text="자격번호" Top="342" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edLicenseNo" ImeMode="native" Left="207" LeftMargin="2" Style="sty_Edit" TabOrder="15" Top="342" Width="106"></Edit>
+		<Static Font="굴림,12,Bold" Height="20" Id="lbWorkFormTitle" Left="28" TabOrder="17" Text="자격정보&#32;및&#32;교육이수정보" Top="4" VAlign="Middle" Width="244"></Static>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oEdupassList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="514" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="108" Id="gdEdupass" InputPanel="FALSE" Left="8" LineColor="default" Right="672" RowHeight="20" Style="sty_Grid" TabOrder="18" TabStop="true" Top="406" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="664">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="28"/>
+						<col width="40"/>
+						<col width="70"/>
+						<col width="224"/>
+						<col width="90"/>
+						<col width="189"/>
+					</columns>
+					<head>
+						<cell col="0" display="normal" edit="checkbox"/>
+						<cell align="center" col="1" display="text" text="순번"/>
+						<cell col="2" display="text" text="구분"/>
+						<cell col="3" display="text" text="등급"/>
+						<cell align="center" col="4" display="text" text="교육일자"/>
+						<cell col="5" display="text" text="지부"/>
+					</head>
+					<body>
+						<cell col="0" colid="SEL" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" display="number" expr="row+1"/>
+						<cell align="center" col="2" colid="GUBUN" display="text"/>
+						<cell align="left" col="3" colid="TCCOURSENM" combodisplayrowcnt="0" display="combo"/>
+						<cell align="center" col="4" colid="TOENDDATE" display="date"/>
+						<cell align="left" col="5" colid="GTTEAMNM" display="combo"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edsPNM" ImeMode="native" Left="240" LeftMargin="2" Style="sty_Edit" TabOrder="19" Top="8" Visible="FALSE" Width="58"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edsPIHIDNUM" ImeMode="native" Left="304" LeftMargin="2" Style="sty_Edit" TabOrder="20" Top="8" Visible="FALSE" Width="66"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edsPersonkey" ImeMode="native" Left="376" LeftMargin="2" Style="sty_Edit" TabOrder="21" Top="8" Visible="FALSE" Width="106"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust3030PLicenseList
+ * 설명 : 자격정보확인팝업
+ * 작성일 : 2022.11
+ * 작성자 : jjh
+ * 22.11.27 선반영
+ */
+ 
+    
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+var ls_sPNM = ""; // 이름 
+var ls_sPIHIDNUM = ""; // 주민번호(생년월일)
+var ls_sPersonkey = ""; // personkey
+
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+	rdGubun.Value = "Y";// 자격정보 (연계(Y), 직적입력 (N))
+	rdGubun_OnChanged();
+	
+    if (IsExistVar("sPNM")) {
+        ls_sPNM = sPNM; 
+    }
+    if (IsExistVar("sPIHIDNUM")) {
+        ls_sPIHIDNUM = sPIHIDNUM; 
+    }
+    if (IsExistVar("sPersonkey")) {
+        ls_sPersonkey = sPersonkey; 
+    }
+    
+	edsPNM.Text = ls_sPNM;
+	edsPIHIDNUM.Text = sPIHIDNUM;
+	edsPersonkey.Text = sPersonkey;
+	
+    lfn_Search();
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+// 자격정보 입력 선택 시  
+function rdGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex){ 
+	 
+    if(rdGubun.Value == "Y"){
+		gdLicense.Enable = true;
+		edLicenseCourse.Enable = false;
+		edLicenseNo.Enable = false;
+		edLicenseCourse.Text = "";
+		edLicenseNo.Text = "";
+    }else{
+		gdLicense.Enable = false;
+		edLicenseCourse.Enable = true;
+		edLicenseNo.Enable = true;
+					
+		for(i = 0; i < ds_oLicenseList.RowCount(); i++) {
+			ds_oLicenseList.SetColumn(i, "SEL", '');
+		}
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+
+    ds_oFireManagerList.ClearData(); // 데이타셋 초기화
+    ds_oLicenseList.ClearData(); // 데이타셋 초기화
+    ds_oEdupassList.ClearData(); // 데이타셋 초기화
+        
+    //이름, 주민번호(생년월일)로 선임정보 조회 
+    if(ls_sPNM <> "" && ls_sPIHIDNUM <> ""){			
+		tit_clearActionInfo();
+		tit_addCsvSearchActionInfo("cust:searchCust3030PFireManagerList", false);
+		tit_callService(
+			""
+			,""
+			,""	// inDs
+			,"ds_oFireManagerList=ds_oFireManagerList"	// outDs
+			,"PNM=" + quote(ls_sPNM)
+				+ " PIHIDNUM=" + quote(ls_sPIHIDNUM) // args 
+			,""
+			,false
+			,false
+			,true
+		);
+    }    
+    gfn_SearchMessage(gdFireManager); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+    
+    // personkey로 자격정보, 교육정보 조회 
+    if(ls_sPersonkey <> ""){			
+		tit_clearActionInfo();
+		tit_addCsvSearchActionInfo("cust:searchCust3030PLicenseList", false);
+		tit_addCsvSearchActionInfo("cust:searchCust3030PEdupassList", false);
+		tit_callService(
+			""
+			,""
+			,""	// inDs
+			,"ds_oLicenseList=ds_oLicenseList ds_oEdupassList=ds_oEdupassList"	// outDs
+			,"PPERSONKEY=" + quote(ls_sPersonkey) // args 
+			,""
+			,false
+			,false
+			,true
+		);		
+		gfn_SearchMessage(gdLicense); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+		gfn_SearchMessage(gdEdupass); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+		
+    }else{    
+		gdLicense.Enable = false;
+		gdEdupass.Enable = false;
+		rdGubun.Enable = false;
+		rdGubun.Value = "N";// 자격정보 (연계(Y), 직적입력 (N))
+		rdGubun_OnChanged(); 		
+     }
+}
+
+
+// 확인 선택 시
+function btnSelect_OnClick(obj)
+{
+	var ls_rLicenseNm = ""; 
+	var ls_rLicenseNo = "";
+	var ls_rLicenseGubun = rdGubun.Value; //연계(Y), 직적입력 (N)
+	var ls_rEduDate = "";
+	
+    // 자격정보 - 연계 선택 확인 
+    if(rdGubun.Value == "Y"){	
+    	//1건 선택 체크 
+    	var li_cnt = 0;	
+		for(i = 0; i < ds_oLicenseList.RowCount(); i++) {
+			if(ds_oLicenseList.GetColumn(i, "SEL") == '1') {
+				li_cnt++;
+			}
+		}	
+		if(li_cnt>1){
+			alert("자격정보를 한건만 선택해 주십시오.");      
+			return false;
+		}
+		// 선택한 자격정보 담기 
+		for(i = 0; i < ds_oLicenseList.RowCount(); i++) {
+			if(ds_oLicenseList.GetColumn(i, "SEL") == '1') {
+				ls_rLicenseNm = ds_oLicenseList.GetColumn(i,"LTCCOURSENM");
+				ls_rLicenseNo = ds_oLicenseList.GetColumn(i,"LLCSNO");
+			}
+		}		
+    }else{    
+		ls_rLicenseNm = edLicenseCourse.Text;
+		ls_rLicenseNo = edLicenseNo.Text;
+    }
+	if(ls_rLicenseNm == "" || ls_rLicenseNo == ""){
+		alert("자격정보를 선택(입력)해 주십시오.");      
+		return false;
+	}
+	
+    //교육정보     
+	if(ds_oEdupassList.RowCount() > 0 ){			
+    	var li_cnt = 0;	
+		for(i = 0; i < ds_oEdupassList.RowCount(); i++) {
+			if(ds_oEdupassList.GetColumn(i, "SEL") == '1') {
+				li_cnt++;
+			}
+		}	
+		if(li_cnt>1){
+			alert("교육정보를 한건만 선택해 주십시오.");      
+			return false;
+		}	
+		for(i = 0; i < ds_oEdupassList.RowCount(); i++) {
+			if(ds_oEdupassList.GetColumn(i, "SEL") == '1'){
+				ls_rEduDate = ds_oEdupassList.GetColumn(i,"TOENDDATE");
+			}
+		}
+		if(ls_rEduDate == ""){
+			alert("교육정보를 선택해 주십시오.");      
+			return false;
+		}
+	}
+	/*
+	trace("ls_rLicenseNm : " + ls_rLicenseNm );
+	trace("ls_rLicenseNo : " + ls_rLicenseNo );
+	trace("ls_rLicenseGubun : " + ls_rLicenseGubun );
+	trace("ls_rEduDate : " + ls_rEduDate );
+	*/
+	is_qualfuser_sn = ds_oFireManagerList.GetColumn(ds_oFireManagerList.currow, "QUALFUSER_SN");
+	 
+    var arrArg = Array(23);
+    arrArg[0] = ls_rLicenseGubun; 	// 자격연동 -연계(Y), 직적입력 (N)
+    arrArg[1] = ls_rLicenseNm; 		// 자격등급 
+    arrArg[2] = ls_rLicenseNo; 		// 자격번호 
+    arrArg[3] = ls_rEduDate; 		// 교육일자 
+    arrArg[4] = "";
+    arrArg[5] = is_qualfuser_sn; 	// 선임자 자격 일련번호
+    arrArg[6] = ls_sPersonkey; 		// 고유 KEY
+    
+    arrArg[7] = ds_oFireManagerList.GetColumn(ds_oFireManagerList.currow, "ZIP");			// 우편번호
+    arrArg[8] = ds_oFireManagerList.GetColumn(ds_oFireManagerList.currow, "CTRD_CODE");		// 시도코드
+    arrArg[9] = ds_oFireManagerList.GetColumn(ds_oFireManagerList.currow, "SIGNGU_CODE");	// 시군구코드
+	arrArg[10] = ds_oFireManagerList.GetColumn(ds_oFireManagerList.currow, "DONG_CODE");	// 동 코드
+	arrArg[11] = ds_oFireManagerList.GetColumn(ds_oFireManagerList.currow, "LI_CODE");		// 리 코드 
+	arrArg[12] = ds_oFireManagerList.GetColumn(ds_oFireManagerList.currow, "MNTN_LNBR_AT");	// 산번지 여부
+	arrArg[13] = ds_oFireManagerList.GetColumn(ds_oFireManagerList.currow, "MAIN_LNBR");	// 본 번지
+	arrArg[14] = ds_oFireManagerList.GetColumn(ds_oFireManagerList.currow, "SEC_LNBR");		// 부 번지
+	arrArg[15] = ds_oFireManagerList.GetColumn(ds_oFireManagerList.currow, "BASS_ADRES");	// 기본 주소
+	arrArg[16] = ds_oFireManagerList.GetColumn(ds_oFireManagerList.currow, "ETC_ADRES");	// 기타 주소
+	arrArg[17] = ds_oFireManagerList.GetColumn(ds_oFireManagerList.currow, "ROAD_NM");		// 도로명
+	arrArg[18] = ds_oFireManagerList.GetColumn(ds_oFireManagerList.currow, "MAIN_BDNBR");	// 본 건물 번호
+	arrArg[19] = ds_oFireManagerList.GetColumn(ds_oFireManagerList.currow, "SEC_BDNBR");	// 부 건물 번호
+	arrArg[20] = ds_oFireManagerList.GetColumn(ds_oFireManagerList.currow, "BULD_NM");		// 건물 명
+	arrArg[21] = ds_oFireManagerList.GetColumn(ds_oFireManagerList.currow, "BULD_NM_ETC");	// 건물 명 기타
+	arrArg[22] = rdGubun.Value;																// 선임유형
+	arrArg[23] = ds_oEdupassList.GetColumn(ds_oEdupassList.currow,"TOENDDATE");				// 교육일자
+    
+    Close(arrArg);    
+}
+ 
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}]]></Script>
+</Window>

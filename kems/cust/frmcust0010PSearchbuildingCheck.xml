@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="276" Id="frmcust0010PSearchbuildingCheck" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="대상물&#32;선택팝업" Top="8" Ver="1.0" Width="700" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oCustList">
+				<Contents>
+					<colinfo id="ADDR" size="201" summ="default" type="STRING"/>
+					<colinfo id="BBIZCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="BMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="BTEL" size="13" summ="default" type="STRING"/>
+					<colinfo id="DPERMISSIONNO" size="20" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oBizGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oCustList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="272" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="236" Id="gdBuidingList" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnCellDBLClick="gdBuidingList_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="692" RowHeight="20" Style="sty_Grid" TabOrder="3" TabStop="true" Top="36" UseDBuff="true" UsePopupMenu="true" UserData="공통코드목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="688">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="152"/>
+						<col width="120"/>
+						<col width="240"/>
+						<col width="90"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="대상물(업체)명"/>
+						<cell align="center" col="2" display="text" text="용도"/>
+						<cell col="3" display="text" text="주소"/>
+						<cell col="4" display="text" text="전화번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="number" expr="row+1"/>
+						<cell align="left" col="1" colid="BNM" display="text"/>
+						<cell align="left" col="2" colid="BBIZCD" combocol="CD" combodataset="ds_oBizGubun" combotext="DATA" display="combo"/>
+						<cell align="left" col="3" colid="ADDR" display="text"/>
+						<cell align="center" col="4" colid="BTEL" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="512" LineColor="user14" Right="692" TabOrder="4" Top="1" Type="Rectangle" Width="180"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="604" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect" ImageID="BTN_TEXT_COM" Left="516" OnClick="btnSelect_OnClick" Style="sty_Button" TabOrder="1" Text="선택" ToolTipText="선택" Top="4" Transparent="TRUE" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust0010PSearchbuildingCheck.xml
+ * 설명 : 동일한 대상물 체크 팝업
+ * 작성일 : 2009.12.12
+ * 작성자 : 이규희
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+    // 공통 코드 조회
+    gfn_SearchCommonCode(ds_oBizGubun, "BIZCD", "Y", "전체");
+    
+    if (IsExistVar("sBuildingNm")) {
+        lfn_Search();
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_oCustList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cust:searchCust0010BuildingInfo", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oCustList=ds_ioBuildingInfo"	// outDs
+		,"BNM=" + quote(sBuildingNm)
+		,"lfn_AfterSearchbuilding"
+		,false
+	);
+}
+
+/* 공통 필수 종료 */
+
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchbuilding(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    //trace(ds_oCustList.SaveXML());
+
+    gfn_SearchMessage(gdBuidingList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 이벤트 함수 종료 */
+
+
+/* 사용자 함수 */
+
+function btnSelect_OnClick(obj) {
+    var arrArg = Array(1);
+    arrArg[0] = ds_oCustList.GetColumn(ds_oCustList.currow,  "BMGNO");		        // 대상물관리번호 
+    
+    Close(arrArg);
+}
+
+function gdBuidingList_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+    btnSelect_OnClick(obj);
+}
+
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */]]></Script>
+</Window>

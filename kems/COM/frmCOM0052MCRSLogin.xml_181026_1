@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="406" Id="frmCOM0050MLogin" Left="8" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="로그인" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="606" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oServiceGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>ORACLE</CD>
+						<DATA>내부</DATA>
+					</record>
+					<record>
+						<CD>MDB</CD>
+						<DATA>외부</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oUserLoginPossiblecheck"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oUserCheck"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPasswordCheck"></Dataset>
+		</Datasets>
+		<Image Height="406" Id="imgImage" ImageID="IMG_CRS_LOGIN_BK" Style="sty_Image" TabOrder="6" Transparent="TRUE" Width="606"></Image>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edUserId" ImeMode="native" Left="331" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edUserId_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="2" Top="259" UserData="S:사용자" Width="120"></Edit>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edPassword" ImeMode="native" Left="331" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edPassword_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Password="TRUE" Style="sty_Edit" TabOrder="3" Top="284" UserData="S:비밀번호" Width="120"></Edit>
+		<Checkbox Height="20" Id="chkSaveUser" Left="460" Style="sty_Checkbox" TabOrder="1" Text="사용자&#32;저장" Top="260" Value="FALSE" Width="88"></Checkbox>
+		<Combo Border="Flat" CodeColumn="PSABUN" DataColumn="DEPTGUBUN" Editable="TRUE" Height="20" Id="cbxDept" INDEX="0" InnerDataset="gds_oSameUserInfo" Left="324" OnChanged="cbxDept_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Search="NOTFILTERED" Style="sty_Combo" TabOrder="7" Top="218" UserData="S" Visible="FALSE" Width="217"></Combo>
+		<Image Column="RROADNM" Cursor="HAND" Height="28" Id="imgLogin" ImageID="IMG_LOGIN" Left="324" LeftMargin="0" OnClick="imgLogin_OnClick" OnKeyDown="imgLogin_OnKeyDown" Static="FALSE" Style="sty_Image" TabOrder="4" Top="316" Width="72"></Image>
+		<Image Cursor="HAND" Height="28" Id="imgCancel" ImageID="IMG_CANCEL" Left="404" LeftMargin="0" OnClick="imgCancel_OnClick" Static="FALSE" Style="sty_Image" TabOrder="5" Top="316" Width="72"></Image>
+		<Static Align="Center" BKColor="white" Border="Flat" BorderColor="user5" Height="19" Id="lbDept" Left="263" TabOrder="8" Text="선택" Top="219" VAlign="Middle" Visible="FALSE" Width="58"></Static>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radServiceGubun" INDEX="0" InnerDataset="ds_oServiceGubun" OnChanged="radServiceGubun_OnChanged" Style="sty_Radio" TabOrder="9" Top="416" Value="ORACLE" Visible="FALSE" Width="120"></Radio>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM0050MLogin.xml
+ * 설명 : 로그인
+ * 작성일 : 2009.06.25
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+var ls_LoginStatus = false; // Login Pass Status 로그인여부
+var ln_LoginFailCnt = 0; // Login 실패 회수
+var ADMINIP = "";
+var IPAddr = "";
+var ls_IPAddr = "";
+var ls_SameChecked ="N";
+
+/* 공통 */
+function Form_OnLoadCompleted(obj) {
+    ext_SetTopWindow(true);
+    //ext_SetTopWindow(false);
+
+    tit_createActionInfo(); // X-Framework용
+
+    // Simulator구동시(개발) localhost, 서버로 접속시 "N"로 세팅
+    if (IsSimulator()) {
+        gs_IsLocal = "Y";
+        global.window.title = "[로컬]" + global.window.title;
+    } else {
+        gs_IsLocal = "N";
+    }
+
+    gs_DataGroupGubun = "ORACLE"; // DataGroup 구분
+
+    // 실행 중복 검사
+    // if (ext_FindWindow("", global.window.title) > 0) {
+        // gfn_Alert("교육종합관리시스템이 이미 실행 중입니다.\n종료 후 실행해 주십시오.");
+    // }
+
+    ext_RegSetValue("HKEY_LOCAL_MACHINE", "SOFTWARE\\Microsoft\\Internet\ Explorer\\Main\\FeatureControl\\FEATURE_WEBOC_MOVESIZECHILD", "MiPlatform320.exe", 1);
+    ext_RegSetValue("HKEY_LOCAL_MACHINE", "SOFTWARE\\Microsoft\\Internet\ Explorer\\Main\\FeatureControl\\FEATURE_WEBOC_MOVESIZECHILD", "MiSimulator320.exe", 1);
+    ext_RegSetValue("HKEY_CURRENT_USER", "SOFTWARE\\Microsoft\\Internet\ Explorer\\Main", "Disable Script Debugger", "yes");
+
+    edUserId.Text = GetReg("KEMSUserId"); // 레지스트리에 등록된 사용자 ID를 할당한다.
+    if (length(edUserId.Text) > 0) {
+        chkSaveUser.Value = "1";
+        edPassword.SetFocus();
+    }
+    
+    //아이피 가져오기
+	IPAddr = ext_GetIPAddress();
+	ls_IPAddr = split(IPAddr[0],".","webstyle");
+
+	if (ls_IPAddr[0]+ls_IPAddr[1]+ls_IPAddr[2]+ls_IPAddr[3] == "17219712") {
+		ADMINIP = "OK";
+	} else {
+		ADMINIP = "";
+	}
+	
+    if (gs_IsCallCenter == "Y") {
+		if ((ls_IPAddr[0]+ls_IPAddr[1]+ls_IPAddr[2] != "1721982") &&
+			(ls_IPAddr[0]+ls_IPAddr[1]+ls_IPAddr[2]+ls_IPAddr[3] != "17219712")) {	//관리자IP이면{	//콜센터 IP가 아니면
+			gfn_Alert("콜센터에서만 이용가능합니다!!!");
+			imgCancel_OnClick();
+		}
+	
+    } else {
+		if (ls_IPAddr[0]+ls_IPAddr[1]+ls_IPAddr[2]+ls_IPAddr[3] != "17219712") {	//관리자IP이면
+			gfn_Alert("콜센터에서만 이용가능합니다!!!");
+			imgCancel_OnClick();
+		}
+    } 
+}
+
+function Form_OnUnloadCompleted(obj) {
+    ext_SetTopWindow(false);
+
+    /*
+     * 로그인 버튼을 클릭하지 않은채 "취소" 버튼을 클릭 시 정상적으로 Login을 하면 해당 화면을 닫고
+     * 아니면 시스템 종료
+     */
+    if(ls_LoginStatus == true) {
+        obj.close();
+    } else {
+        obj.exit();
+    }
+}
+
+/* 사용자 함수 */
+/*
+ * 기능 : 상단메뉴를 조회한다.
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchTopMenu() {
+    var sCRS = " ISCRS='Y'";
+    var sTlogin = " ISTLOGIN='N'";
+	
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("com:searchTopMenu", false);
+	// 서버 호출
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"gds_oTopMenu=ds_oTopMenu"	// outDs
+		,"PSABUN=" + quote(edUserID.Text)
+            + " PDEPTCD=" + quote(gds_oUserInfo.GetColumn(0, "PDEPTCD"))
+            + " ISDEPTAUTH=" + quote(gs_IsDeptAuth)
+            + sTlogin
+            + sCRS
+		,"lfn_AfterSearchTopMenu"
+		,true
+		,true
+	);
+}
+
+/*
+ * 기능 : 상단메뉴 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchTopMenu(nErrorCode, strErrorMsg) {
+    if (length(gs_IsDeptAuth) > 0) {
+        if (gds_oTopMenu.GetCount() > 0) {
+            initSession(true);
+            ls_LoginStatus = true;
+            close();
+        } else {
+            gs_IsDeptAuth = "Y"; // 부서권한
+
+            // 기존 사번의 권한 전체 삭제
+            tit_addSingleActionInfo("com:deleteUserAuth", "", 0, "");
+            // 서버 호출 
+            tit_callService(
+                ""
+                ,""
+                ,""	// inDs
+                ,""	// outDs
+                ,""	// args 
+                ,""
+                ,false
+                ,true
+                ,true
+            );
+
+            lfn_SearchTopMenu();
+        }
+    } else {
+        initSession(true);
+        ls_LoginStatus = true;
+        close();
+    }
+}
+
+/*
+ * 기능 : 로그인을 한다.
+ * parameter : 없음
+ * Return : 없음
+ */
+var ls_IsCheckedSameUserId = false;
+function lfn_CheckSameUserId() {
+
+    tit_clearActionInfo();
+	//tit_addSearchActionInfo("com:searchUserLogIn", false);
+	// 서버 호출
+	tit_callService(
+		"AuthAction"
+		,"login"
+		,""	// inDs
+		,"gds_oSameUserInfo=ds_oUserInfo"	// outDs
+		,"PPERSONNM=" + quote(edUserID.Text)
+            + " PPW=" + quote("")
+            + " PSABUN=" + quote(cbxDept.Value)
+		,"lfn_AfterCheckSameUserId"
+		,false
+		,true
+		,true
+	);
+}
+
+/*
+ * 기능 : 동명이인 검사 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterCheckSameUserId(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) {
+        initSession(true);
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        initSession(false);
+        return;
+    }
+
+    ls_IsCheckedSameUserId = true;
+
+    if (gds_oSameUserInfo.GetRowCount() == 1) {
+        if (gds_oSameUserInfo.GetColumn(0, "NOAUTH") == "NOAUTH") {
+            gfn_Alert("민원응대시스템을 사용할 권한이 없습니다. 관리자에게 문의하십시오.");
+            exit();
+        } else {
+            lfn_SearchUserLogIn();
+        }
+    } else if(gds_oSameUserInfo.GetRowCount() > 1) { // 사용자가 여러 명인 경우
+        //lbDept.Visible = true;
+        cbxDept.Visible = true;
+        ls_SameChecked = "Y";
+        cbxDept.SetFocus();
+    } else {
+        gfn_Alert("등록된 사용자가 아닙니다.");
+        ls_IsCheckedSameUserId = false;
+        ls_SameChecked = "N";
+    }
+}
+
+function lfn_SearchUserLogIn() {
+
+	// 사용자가 있는지 체크
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("com:searchUserLogIn", false);
+	// 서버 호출
+	
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oUserCheck=ds_oUserInfo"	// outDs
+		,"PPERSONNM=" + quote(edUserID.Text)
+            + " PSABUN=" + quote(cbxDept.Value)
+            + " ADMINIP=" + quote(ADMINIP)
+		,"lfn_AfterSearchUserCheck"
+		,false
+		,true
+		,true
+	);
+}
+
+
+
+
+/*
+ * 기능 : 로그인 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchUserCheck(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) {
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    if (ds_oUserCheck.GetRowCount() == 1) {
+
+		// 비밀번호 체크
+		tit_clearActionInfo();
+		tit_addSearchActionInfo("com:searchUserLogIn", false);
+		// 서버 호출
+	
+		tit_callService(
+			""
+			,""
+			,""	// inDs
+			,"ds_oPasswordCheck=ds_oUserInfo"	// outDs
+			,"PPERSONNM=" + quote(edUserID.Text)
+				+ " PPW=" + quote(edPassword.Text)
+				+ " PSABUN=" + quote(cbxDept.Value)
+				+ " ADMINIP=" + quote(ADMINIP)
+			,"lfn_AfterSearchUserPasswordCheck"
+			,false
+			,true
+			,true
+		);
+        
+    } else {
+    
+		gfn_Alert("존재하지 않는 사용자입니다.");
+		return false;
+		
+    }
+}
+
+// callback  password Check
+function lfn_AfterSearchUserPasswordCheck(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) {
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+	if (ds_oPasswordCheck.GetRowCount() == 1) {
+
+		// 로그인
+		tit_clearActionInfo();
+		//tit_addSearchActionInfo("com:searchUserLogIn", false);
+		// 서버 호출
+	
+		tit_callService(
+			"AuthAction"
+			,"login"
+			,""	// inDs
+			,"gds_oUserInfo=ds_oUserInfo"	// outDs
+			,"PPERSONNM=" + quote(edUserID.Text)
+				+ " PPW=" + quote(edPassword.Text)
+				+ " PSABUN=" + quote(cbxDept.Value)
+				+ " ADMINIP=" + quote(ADMINIP)
+			,"lfn_AfterSearchUserLogIn"
+			,false
+			,true
+			,true
+		);
+	
+	
+	
+	} else { // 데이터가 없으면 비밀번호 체크
+	
+		//ALERT(ds_oUserCheck.SAVEXML());
+		if (ds_oUserCheck.GetColumn(0, "FAILCNT") == 5) {
+		
+			gfn_Alert("   ****** 비밀번호 5회 오류 로그인 차단 *****\n\n"+ 
+					  "비밀번호 5회 오류로 로그인이 차단되었습니다.\n\n"+
+					  "관리자에게 문의하십시오!");
+			exit();		
+	
+		} else if (ds_oUserCheck.GetColumn(0, "FAILCNT") == 4) {
+
+			// FailCnt update
+			UpdateLoginFailCnt();
+	
+			gfn_Alert("   ****** 비밀번호 5회 오류 로그인 차단 *****\n\n"+ 
+			  "비밀번호 5회 오류로 로그인이 차단되었습니다.\n\n"+
+			  "관리자에게 문의하십시오!");
+			exit();
+		
+		} else if (ds_oUserCheck.GetColumn(0, "FAILCNT") <= 3) {
+			// FailCnt update
+			UpdateLoginFailCnt();
+					
+			var fcnt = toNumber(ds_oUserCheck.GetColumn(0, "FAILCNT")) + 1;
+			gfn_Alert("비밀번호가 잘못되었습니다.("+fcnt+"회 오류)\n\n" +
+			          "비밀번호 5회 오류 시 로그인이 차단됩니다.");
+
+		}
+	
+	}
+
+}
+
+
+/*
+ * 기능 : 로그인 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchUserLogIn(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) {
+        initSession(true);
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        initSession(false);
+        return;
+    }
+    
+    UpdateLoginFailCntInit();	// 로그인실패회수 초기화
+    
+    lfn_SearchTopMenu();		// 메뉴
+
+/*
+    if (gds_oUserInfo.GetRowCount() == 1) {
+        if (gds_oSameUserInfo.GetColumn(0, "NOAUTH") == "NOAUTH") {
+            gfn_Alert("교육종합관리시스템을 사용할 권한이 없습니다. 관리자에게 문의하십시오.");
+            exit();
+        } else {
+        
+			if ((gds_oUserInfo.GetColumn(0, "LGNCHK") == "1") &&
+			   (!gfn_isNull(gds_oUserInfo.GetColumn(0, "REMAINTIME")))) {
+			
+				gfn_Alert("   ****** 비밀번호 5회 오류 로그인 차단 *****\n\n"+ 
+				          "비밀번호 5회 오류로 로그인이 차단되었습니다.\n\n"+
+						  "관리자에게 문의하십시오!");
+				exit();
+			} else {
+                lfn_SearchTopMenu();
+                //trace(http.SendHttpStr);
+            }
+        }
+    } else {
+        if ((++ln_LoginFailCnt) >= 5) {
+            gfn_Alert("비밀번호 " + ln_LoginFailCnt + "회 오류입니다. 로그인이 차단됩니다.\n\n"+
+                      "관리자에게 문의하십시오!");
+            UpdateLoginPossibleDate();
+            exit();
+        } else {
+			searchUserLoginPossibleCheck(); // 로그인 가능일시 체크
+			if ((ds_oUserLoginPossiblecheck.GetColumn(0, "LGNCHK") == "1") &&
+			   (!gfn_isNull(ds_oUserLoginPossiblecheck.GetColumn(0, "REMAINTIME")))) {
+			
+				gfn_Alert("   ****** 비밀번호 5회 오류 로그인 차단 *****\n\n"+ 
+				          "비밀번호 5회 오류로 로그인이 차단되었습니다.\n\n"+
+						  "관리자에게 문의하십시오!");
+				exit();
+			} else {
+				gfn_Alert("비밀번호가 잘못되었습니다.("+ln_LoginFailCnt+"회 오류)\n\n" +
+				          "비밀번호 5회 오류 시 로그인이 차단됩니다.");
+			}
+        }
+    }
+*/    
+    
+}
+
+// 로그인 실패시 업데이트
+function UpdateLoginFailCnt() {
+
+	tit_clearActionInfo();
+	tit_addSingleActionInfo("com:updateLoginFailCnt", "", 0, "");
+	// 서버 호출 
+	tit_callService( 
+		""
+		,""
+		,""	// inDs
+		,"" // outDs 
+        ,"PNM=" + quote(edUserID.Text)	
+       + " PSABUN=" + quote(cbxDept.Value) // args 
+		,"lfn_AfterUpdateLoginFailCnt"
+		,false
+		,false
+		,true
+	);
+}
+
+function lfn_AfterUpdateLoginFailCnt(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) {
+        initSession(true);
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        initSession(false);
+        return;
+    }
+}
+
+
+// 로그인 시 로그인실패회수 초기화 업데이트
+function UpdateLoginFailCntInit() {
+
+	tit_clearActionInfo();
+	tit_addSingleActionInfo("com:updateLoginFailCntInit", "", 0, "");
+	// 서버 호출 
+	tit_callService( 
+		""
+		,""
+		,""	// inDs
+		,"" // outDs 
+        ,"PNM=" + quote(edUserID.Text)	
+       + " PSABUN=" + quote(cbxDept.Value) // args 
+		,"lfn_AfterupdateLoginFailCntInit"
+		,false
+		,false
+		,true
+	);
+}
+
+function lfn_AfterupdateLoginFailCntInit(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) {
+        initSession(true);
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        initSession(false);
+        return;
+    }
+}
+
+/*
+// 로그인 가능일시 체크
+function searchUserLoginPossibleCheck() {
+
+	ds_oUserLoginPossiblecheck.ClearData();
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("com:searchUserLoginPossibleCheck", false);
+	// 서버 호출
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oUserLoginPossiblecheck=ds_oUserLoginPossiblecheck"	// outDs
+		,"PPERSONNM=" + quote(edUserID.Text)
+            + " PSABUN=" + quote(cbxDept.Value)
+		,""
+		,false
+		,false
+		,true
+	);
+}
+*/
+
+/*
+// 로그인 가능일시 업데이트
+function UpdateLoginPossibleDate() {
+
+	tit_clearActionInfo();
+	tit_addSingleActionInfo("com:updateLoginPossibleDate", "", 0, "");
+	// 서버 호출 
+	tit_callService( 
+		""
+		,""
+		,""	// inDs
+		,"" // outDs 
+        ,"PNM=" + quote(edUserID.Text)	
+       + " PSABUN=" + quote(cbxDept.Value) // args 
+		,""
+		,false
+		,false
+		,true
+	);
+}
+*/
+
+
+/* 사용자 이벤트 함수 */
+function imgCancel_OnClick(obj,nX,nY)
+{
+    ls_LoginStatus = false; //로그인여부 초기화
+	exit();
+}
+
+function imgLogin_OnClick(obj,nX,nY)
+{
+    initSession(false);
+
+    if (!gfn_FormValidate(this)) { // Validation Check
+        return false;
+    }
+    if (chkSaveUser.Value == "1") {
+        SetReg("KEMSUserId", edUserId.Text);
+    } else {
+        SetReg("KEMSUserId", "");
+    }
+
+    if (ls_IsCheckedSameUserId && ls_SameChecked == "N") {
+        lfn_SearchUserLogIn(); // 로그인한다.
+    } else {
+        lfn_CheckSameUserId(); // 같은 User ID(동명이인)을 검사한다.
+    }
+}
+
+function imgLogin_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+    if (nChar == 13) {
+        imgLogin_OnClick();
+    }
+}
+
+function edUserId_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+    if (nChar == 13) {
+        edPassword.SetFocus();
+    }
+}
+
+function edPassword_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+    if (nChar == 13) {
+        imgLogin_OnClick();
+    }
+}
+
+function cbxDept_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+    imgLogin_OnClick();
+}
+
+function radServiceGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+    gs_DataGroupGubun = strCode; // DataGroup 구분
+}
+]]></Script>
+</Window>

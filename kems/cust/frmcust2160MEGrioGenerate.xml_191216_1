@@ -1,0 +1,1634 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="635" Hilight3dColor="user3" Id="frmcust2160MEGiroGenerate" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnTimer="frmcust2160MEGiroGenerate_OnTimer" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="회비고지자료&#32;생성" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="780" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oRadioGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>회원</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>비회원</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMemberGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>상반기(1)</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>하반기(2)</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oNotification">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>회비고지</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>고지안함</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oLongNotSunap">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>2</CD>
+						<DATA>2년&#32;미납</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>3년&#32;미납</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>4년&#32;미납</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oNotification2">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>회비고지</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>고지안함</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oNotification3">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>회비고지</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>고지안함</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oOrderBy">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>우편번호,&#32;대상물순</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>지역,&#32;직능,&#32;관리번호순</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioCourseYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>0</CD>
+						<DATA>선택&#32;</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>다중선택</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oNotMemberFirsSecondHalf">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>상반기(1)</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>하반기(2)</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oRegion">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTCD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse_Minus">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA_A" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioCreateNotification">
+				<Contents>
+					<colinfo id="FGIJUN1" size="256" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSelectYN1">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>미지정</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>지정</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSelectYN2">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>미지정</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>지정</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oReturn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>해당없음</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>반송없는&#32;자료</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>회비</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>교육</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>기타</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioExcelLoad">
+				<Contents>
+					<colinfo id="col01" size="256" summ="default" type="STRING"/>
+					<colinfo id="col02" size="256" summ="default" type="STRING"/>
+					<colinfo id="col03" size="256" summ="default" type="STRING"/>
+					<colinfo id="col04" size="256" summ="default" type="STRING"/>
+					<colinfo id="col05" size="256" summ="default" type="STRING"/>
+					<colinfo id="col06" size="256" summ="default" type="STRING"/>
+					<colinfo id="col07" size="256" summ="default" type="STRING"/>
+					<colinfo id="col08" size="256" summ="default" type="STRING"/>
+					<colinfo id="col09" size="256" summ="default" type="STRING"/>
+					<colinfo id="col10" size="256" summ="default" type="STRING"/>
+					<colinfo id="col11" size="256" summ="default" type="STRING"/>
+					<colinfo id="col12" size="256" summ="default" type="STRING"/>
+					<colinfo id="col13" size="256" summ="default" type="STRING"/>
+					<colinfo id="col14" size="256" summ="default" type="STRING"/>
+					<colinfo id="col15" size="256" summ="default" type="STRING"/>
+					<colinfo id="col16" size="256" summ="default" type="STRING"/>
+					<colinfo id="col17" size="256" summ="default" type="STRING"/>
+					<colinfo id="col18" size="256" summ="default" type="STRING"/>
+					<colinfo id="col19" size="256" summ="default" type="STRING"/>
+					<colinfo id="col20" size="256" summ="default" type="STRING"/>
+					<colinfo id="col21" size="256" summ="default" type="STRING"/>
+					<colinfo id="col22" size="256" summ="default" type="STRING"/>
+					<colinfo id="col23" size="256" summ="default" type="STRING"/>
+					<colinfo id="col24" size="256" summ="default" type="STRING"/>
+					<colinfo id="col25" size="256" summ="default" type="STRING"/>
+					<colinfo id="col26" size="256" summ="default" type="STRING"/>
+					<colinfo id="col27" size="256" summ="default" type="STRING"/>
+					<colinfo id="col28" size="256" summ="default" type="STRING"/>
+					<colinfo id="col29" size="256" summ="default" type="STRING"/>
+					<colinfo id="col30" size="256" summ="default" type="STRING"/>
+					<colinfo id="col31" size="256" summ="default" type="STRING"/>
+					<colinfo id="col32" size="256" summ="default" type="STRING"/>
+					<colinfo id="col33" size="256" summ="default" type="STRING"/>
+					<colinfo id="col34" size="256" summ="default" type="STRING"/>
+					<colinfo id="col35" size="256" summ="default" type="STRING"/>
+					<colinfo id="col36" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSelectYN3">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>선택</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioNotificationJibge"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioNotificationTotaling"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioMemberGubunName">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>A</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>B</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oFeemode">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>일반회비고지</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>소방안전지+회비고지</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oRadioGubun2">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>회원(소방안전지&#32;+&#32;회비)</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>회원(회비만)</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>비회원</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="454" Height="336" Id="Shape4" Left="4" LineColor="user15" Right="776" TabOrder="53" Top="118" Type="Rectangle" Width="772"></Shape>
+		<Shape Bottom="240" Height="70" Id="Shape3" Left="168" LineColor="user15" Right="456" TabOrder="20" Top="170" Type="Rectangle" Width="288"></Shape>
+		<Shape Bottom="631" Height="173" Id="Shape5" Left="4" LineColor="user15" Right="776" TabOrder="61" Top="458" Type="Rectangle" Width="772"></Shape>
+		<Shape Bottom="84" Height="52" Id="Shape0" Left="4" LineColor="user15" Right="776" TabOrder="50" Top="32" Type="Rectangle" Width="772"></Shape>
+		<Static Align="Center" Height="20" Id="Static26" Left="36" Style="sty_Label" TabOrder="38" Text="회비총액" Top="510" UserData="S" VAlign="Middle" Width="128"></Static>
+		<Static Align="Center" Height="20" Id="Static23" Left="168" Style="sty_Label" TabOrder="35" Text="합&#32;계" Top="486" UserData="S" VAlign="Middle" Width="204"></Static>
+		<Shape Bottom="242" Height="112" Id="shpGubunBox1" Left="460" LineColor="user15" Right="772" TabOrder="1" Top="130" Type="Rectangle" Width="312"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" Left="-2" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="1" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="248">
+			<Contents></Contents>
+		</Div>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edCustYear" ImeMode="native" Left="168" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edCustYear_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="1" Top="60" Width="44"></Edit>
+		<Static Align="Center" Height="20" Id="Static0" Left="8" Style="sty_LabelGruopBox" TabOrder="5" Text="지부" Top="36" UserData="S" VAlign="Middle" Width="156"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" DisableBKColor="user0" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="167" OnChanged="lfn_SearchTrainingLatestOrder" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="4" Top="35" UserData="I:지부" Width="117"></Combo>
+		<Static Align="Center" Height="20" Id="Static1" Left="8" Style="sty_LabelGruopBox" TabOrder="6" Text="기준년도" Top="60" VAlign="Middle" Width="156"></Static>
+		<Static Align="Center" Height="20" Id="Static2" Left="8" Style="sty_Label" TabOrder="7" Text="회원구분" Top="122" UserData="S" VAlign="Middle" Width="156"></Static>
+		<Static Height="20" Id="lbText" Left="8" Style="sty_Text" TabOrder="8" Text="※&#32;신규등록일&#32;체크" Top="149" VAlign="Middle" Width="144"></Static>
+		<Static Height="64" Id="Static3" Left="8" Style="sty_Text" TabOrder="9" Text="체크하지&#32;않으면&#13;&#10;회원/비회원에&#32;대한&#32;&#13;&#10;전체자료&#32;조회&#32;후&#32;회비통지&#13;&#10;자료가&#32;생성됩니다." Top="173" Width="164"></Static>
+		<Static Align="Center" Height="20" Id="Static4" Left="8" Style="sty_Label" TabOrder="12" Text="재고지(반송구분)" Top="322" UserData="S" VAlign="Middle" Width="156"></Static>
+		<Static Align="Center" Height="20" Id="Static5" Left="8" Style="sty_Label" TabOrder="11" Text="직능" Top="274" UserData="S" VAlign="Middle" Width="156"></Static>
+		<Static Align="Center" Height="20" Id="Static6" Left="8" Style="sty_Label" TabOrder="10" Text="지역" Top="250" UserData="S" VAlign="Middle" Width="156"></Static>
+		<Static Align="Center" Height="21" Id="Static7" Left="8" Style="sty_Label" TabOrder="13" Text="장기미납" Top="346" UserData="S" VAlign="Middle" Width="156"></Static>
+		<Static Align="Center" Height="20" Id="Static8" Left="216" Style="sty_Label" TabOrder="14" Text="회원" Top="60" VAlign="Middle" Width="64"></Static>
+		<Static Align="Center" Height="20" Id="Static10" Left="468" Style="sty_Label" TabOrder="15" Text="비회원" Top="60" VAlign="Middle" Width="64"></Static>
+		<Static Align="Center" Height="20" Id="Static14" Left="286" Style="sty_Text" TabOrder="16" Text="~" Top="209" VAlign="Middle" Width="10"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radNotMemberFirsSecondHalf" INDEX="0" InnerDataset="ds_oNotMemberFirsSecondHalf" Left="572" LeftMargin="4" OnChanged="radNotMemberFirsSecondHalf_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="17" Top="194" Value="1" Width="196"></Radio>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radNotification" INDEX="0" InnerDataset="ds_oNotification" Left="572" LeftMargin="4" OnChanged="radNotification_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="8" Style="sty_Radio" TabOrder="18" Top="218" Value="1" Width="196"></Radio>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxRegion2" INDEX="0" InnerDataset="ds_oRegion" Left="167" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="21" Top="249" UserData="S" Width="174"></Combo>
+		<Static Align="Center" Height="20" Id="Static18" Left="344" Style="sty_Text" TabOrder="22" Text="~" Top="250" VAlign="Middle" Width="18"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxRegion3" INDEX="0" InnerDataset="ds_oRegion" Left="363" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="23" Top="249" UserData="S" Width="174"></Combo>
+		<Checkbox Enable="FALSE" FalseValue="N" Height="20" Id="chkYearNotSunap1" Left="292" OnKeyDown="gfn_EnterNextFocus" Style="sty_Checkbox" TabOrder="24" Text="2006" Top="370" TrueValue="Y" UserData="S" Value="FALSE" Width="56"></Checkbox>
+		<Checkbox Enable="FALSE" FalseValue="N" Height="20" Id="chkYearNotSunap2" Left="356" OnKeyDown="gfn_EnterNextFocus" Style="sty_Checkbox" TabOrder="25" Text="2007" Top="370" TrueValue="Y" UserData="S" Value="FALSE" Width="56"></Checkbox>
+		<Checkbox Enable="FALSE" FalseValue="N" Height="20" Id="chkYearNotSunap3" Left="420" OnKeyDown="gfn_EnterNextFocus" Style="sty_Checkbox" TabOrder="26" Text="2008" Top="370" TrueValue="Y" UserData="S" Value="FALSE" Width="56"></Checkbox>
+		<Checkbox Enable="FALSE" FalseValue="N" Height="20" Id="chkYearNotSunap4" Left="484" OnKeyDown="gfn_EnterNextFocus" Style="sty_Checkbox" TabOrder="27" Text="2009" Top="370" TrueValue="Y" UserData="S" Value="FALSE" Width="56"></Checkbox>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="32" Id="radNotification2" INDEX="0" InnerDataset="ds_oNotification2" Left="168" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="28" Top="394" Value="0" Width="220"></Radio>
+		<Static Align="Center" Height="32" Id="Static19" Left="8" Style="sty_Label" TabOrder="29" Text="공공기관&#32;기관장&#13;&#10;선임자료&#32;고지여부" Top="394" UserData="S" VAlign="Middle" Width="156"></Static>
+		<Static Align="Center" Height="20" Id="Static20" Left="8" Style="sty_Label" TabOrder="30" Text="정렬순서" Top="430" UserData="S" VAlign="Middle" Width="156"></Static>
+		<Static Align="Center" Height="32" Id="Static21" Left="392" Style="sty_Label" TabOrder="31" Text="관리제외대상&#13;&#10;회비고지&#32;여부" Top="394" UserData="S" VAlign="Middle" Width="156"></Static>
+		<Static Align="Center" Height="20" Id="Static22" Left="256" Style="sty_LabelGruopBox" TabOrder="32" Text="조회&#32;총&#32;대상수" Top="462" VAlign="Middle" Visible="FALSE" Width="132" WordWrap="TRUE"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="32" Id="radNotification3" INDEX="0" InnerDataset="ds_oNotification3" Left="552" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="33" Top="394" Value="1" Width="220"></Radio>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radOrderBy" INDEX="0" InnerDataset="ds_oOrderBy" Left="168" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="34" Top="430" Value="0" Width="353"></Radio>
+		<Static Align="Center" Height="20" Id="Static24" Left="376" Style="sty_Label" TabOrder="36" Text="상반기" Top="486" UserData="S" VAlign="Middle" Width="196"></Static>
+		<Static Align="Center" Height="20" Id="Static25" Left="576" Style="sty_Label" TabOrder="37" Text="하반기" Top="486" UserData="S" VAlign="Middle" Width="196"></Static>
+		<Static Align="Center" Height="141" Id="Static27" Left="8" Style="sty_Label" TabOrder="39" Text="징&#13;&#10;수&#13;&#10;할&#13;&#10;회&#13;&#10;비" Top="486" UserData="S" VAlign="Middle" Width="24"></Static>
+		<Static Align="Center" Height="20" Id="Static28" Left="36" Style="sty_Label" TabOrder="40" Text="회비" Top="534" UserData="S" VAlign="Middle" Width="128"></Static>
+		<Static Align="Center" Height="20" Id="Static29" Left="36" Style="sty_Label" TabOrder="41" Text="회비" Top="558" UserData="S" VAlign="Middle" Width="128"></Static>
+		<Static Align="Center" Height="20" Id="Static30" Left="36" Style="sty_Label" TabOrder="42" Text="회비" Top="582" UserData="S" VAlign="Middle" Width="128"></Static>
+		<Static Align="Center" Height="20" Id="Static31" Left="36" Style="sty_Label" TabOrder="43" Text="회비" Top="606" UserData="S" VAlign="Middle" Width="128"></Static>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="250" LineColor="user14" Right="776" TabOrder="48" Top="1" Type="Rectangle" Width="526"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="427" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="44" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="514" OnClick="lfn_localExcel" Style="sty_Button" TabOrder="45" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="601" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="46" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="688" OnClick="lfn_End" Style="sty_Button" TabOrder="47" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="Static32" Left="8" Style="sty_LabelGruopBox" TabOrder="49" Text="처리대상수" Top="462" VAlign="Middle" Width="156" WordWrap="TRUE"></Static>
+		<Static Align="Center" Height="20" Id="Static12" Left="184" Style="sty_LabelGruopBox" TabOrder="51" Text="회원" Top="162" UserData="S" VAlign="Middle" Width="72"></Static>
+		<Static Align="Center" Height="20" Id="Static13" Left="476" Style="sty_LabelGruopBox" TabOrder="52" Text="비회원" Top="122" UserData="S" VAlign="Middle" Width="72"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Column="ADDR1" Height="20" Id="edTotalCount" ImeMode="native" Left="392" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edAddr1_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="54" Top="462" UserData="S:주소" Visible="FALSE" Width="84"></Edit>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calEndDate1" Left="304" OnChanged="calEndDate1_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="55" Top="210" UserData="S" WeeksFont="돋음,9" Width="106"></Calendar>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calStartDate1" Left="172" OnChanged="calStartDate1_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="56" Top="210" UserData="S" WeeksFont="돋음,9" Width="106"></Calendar>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calEndDate2" Left="596" OnChanged="calEndDate2_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="58" Top="170" UserData="S" WeeksFont="돋음,9" Width="106"></Calendar>
+		<Static Align="Center" Height="20" Id="Static15" Left="576" Style="sty_Text" TabOrder="57" Text="~" Top="170" VAlign="Middle" Width="14"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calStartDate2" Left="464" OnChanged="calStartDate2_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="59" Top="170" UserData="S" WeeksFont="돋음,9" Width="106"></Calendar>
+		<Edit Align="RIGHT" AutoSelect="TRUE" Border="Flat" Column="ADDR1" Enable="FALSE" Height="20" Id="edProcessCount" ImeMode="native" Left="168" LeftMargin="2" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edAddr1_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="60" Top="462" Width="84"></Edit>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="radCourse" INDEX="0" InnerDataset="ds_ioCourseYn" Left="168" LeftMargin="4" OnChanged="radCourse_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="62" Top="274" Width="232"></Radio>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA_A" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse1" ImeMode="none" INDEX="0" InnerDataset="ds_oCourse_Minus" Left="247" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="63" Top="297" UserData="S" Width="153"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA_A" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse_1" INDEX="0" InnerDataset="ds_oCourse_Minus" Left="403" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="68" Top="273" UserData="S" Width="122"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA_A" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse_2" INDEX="0" InnerDataset="ds_oCourse_Minus" Left="527" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="64" Top="273" UserData="S" Width="122"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA_A" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse_3" INDEX="0" InnerDataset="ds_oCourse_Minus" Left="651" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="65" Top="273" UserData="S" Width="122"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA_A" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse_4" INDEX="0" InnerDataset="ds_oCourse_Minus" Left="403" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="66" Top="297" UserData="S" Width="122"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA_A" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse_5" INDEX="0" InnerDataset="ds_oCourse_Minus" Left="527" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="67" Top="297" UserData="S" Width="122"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA_A" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse_6" INDEX="0" InnerDataset="ds_oCourse_Minus" Left="651" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="68" Top="297" UserData="S" Width="122"></Combo>
+		<Grid AreaSelect="true" BindDataset="ds_ioCreateNotification" BkColor2="default" BoldHead="true" Bottom="736" Enable="true" EndLineColor="default" Height="92" Id="grdExport" InputPanel="FALSE" LineColor="default" MultiSelect="TRUE" Right="424" Style="sty_Grid" TabOrder="70" TabStop="true" Top="644" UseDBuff="true" UsePopupMenu="true" UserData="지로회비고지자료&#32;생성" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="424">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="360"/>
+						<col width="158"/>
+						<col width="209"/>
+						<col width="189"/>
+						<col width="210"/>
+						<col width="370"/>
+						<col width="243"/>
+						<col width="450"/>
+						<col width="329"/>
+						<col width="377"/>
+						<col width="508"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="176"/>
+						<col width="365"/>
+						<col width="352"/>
+						<col width="80"/>
+						<col width="139"/>
+						<col width="80"/>
+						<col width="156"/>
+						<col width="80"/>
+						<col width="132"/>
+						<col width="80"/>
+						<col width="143"/>
+						<col width="80"/>
+						<col width="102"/>
+						<col width="100"/>
+						<col width="97"/>
+						<col width="114"/>
+						<col width="363"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="103"/>
+						<col width="331"/>
+						<col width="338"/>
+						<col width="103"/>
+						<col width="103"/>
+						<col width="103"/>
+						<col width="103"/>
+						<col width="103"/>
+						<col width="103"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="268"/>
+						<col width="295"/>
+						<col width="289"/>
+						<col width="226"/>
+						<col width="150"/>
+						<col width="406"/>
+						<col width="449"/>
+						<col width="108"/>
+						<col width="102"/>
+						<col width="127"/>
+						<col width="123"/>
+						<col width="177"/>
+						<col width="73"/>
+						<col width="177"/>
+						<col width="177"/>
+						<col width="177"/>
+						<col width="177"/>
+						<col width="177"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="우편번호"/>
+						<cell col="1" display="text" text="지부주소"/>
+						<cell col="2" display="text" text="지부명"/>
+						<cell col="3" display="text" text="지부전화번호"/>
+						<cell col="4" display="text" text="지부팩스번호"/>
+						<cell col="5" display="text" text="반송처"/>
+						<cell col="6" display="text" text="관리번호"/>
+						<cell col="7" display="text" text="바코드"/>
+						<cell col="8" display="text" text="받는이주소1"/>
+						<cell col="9" display="text" text="받는이주소2"/>
+						<cell col="10" display="text" text="받는이성명"/>
+						<cell col="11" display="text" text="관계인"/>
+						<cell col="12" display="text" text="우편번호"/>
+						<cell col="13" display="text" text="바코드번호"/>
+						<cell col="14" display="text" text="지로번호"/>
+						<cell col="15" display="text" text="금액"/>
+						<cell col="16" display="text" text="구분직능"/>
+						<cell col="17" display="text" text="업체명"/>
+						<cell col="18" display="text" text="관리번호"/>
+						<cell col="19" display="text" text="년도1"/>
+						<cell col="20" display="text" text="년도1고지금액"/>
+						<cell col="21" display="text" text="년도2"/>
+						<cell col="22" display="text" text="년도2고지금액"/>
+						<cell col="23" display="text" text="년도3"/>
+						<cell col="24" display="text" text="년도3고지금액"/>
+						<cell col="25" display="text" text="년도4"/>
+						<cell col="26" display="text" text="년도4고지금액"/>
+						<cell col="27" display="text" text="합계금액"/>
+						<cell col="28" display="text" text="납부마감일(년)"/>
+						<cell col="29" display="text" text="납부마감일(월)"/>
+						<cell col="30" display="text" text="납부마감일(일)"/>
+						<cell col="31" display="text" text="지부명"/>
+						<cell col="32" display="text" text="지부명+전화번호"/>
+						<cell col="33" display="text" text="지로번호"/>
+						<cell col="34" display="text" text="총&#32;고지금액"/>
+						<cell col="35" display="text" text="구분직능"/>
+						<cell col="36" display="text" text="업체명"/>
+						<cell col="37" display="text" text="관리번호"/>
+						<cell col="38" display="text" text="납부총액"/>
+						<cell col="39" display="text" text="납부마감일(년)"/>
+						<cell col="40" display="text" text="납부마감일(월)"/>
+						<cell col="41" display="text" text="납부마감일(일)"/>
+						<cell col="42" display="text" text="지부명"/>
+						<cell col="43" display="text" text="지로승인번호"/>
+						<cell col="44" display="text" text="지로번호"/>
+						<cell col="45" display="text" text="총&#32;고지금액"/>
+						<cell col="46" display="text" text="지로코드1"/>
+						<cell col="47" display="text" text="지로코드2"/>
+						<cell col="48" display="text" text="지로코드3"/>
+						<cell col="49" display="text" text="지로코드4"/>
+						<cell col="50" display="text" text="구분직능"/>
+						<cell col="51" display="text" text="관리번호"/>
+						<cell col="52" display="text" text="업체명"/>
+						<cell col="53" display="text" text="납부총액원표시"/>
+						<cell col="54" display="text" text="납부마감일(년)"/>
+						<cell col="55" display="text" text="납부마감일(월)"/>
+						<cell col="56" display="text" text="납부마감일(일)"/>
+						<cell col="57" display="text" text="지부명"/>
+						<cell col="58" display="text" text="회원구분"/>
+						<cell col="59" display="text" text="국민은행&#32;가상계좌"/>
+						<cell col="60" display="text" text="신한은행&#32;가상계좌"/>
+						<cell col="61" display="text" text="우리은행&#32;가상계좌"/>
+						<cell col="62" display="text" text="농협은행&#32;가상계좌"/>
+						<cell col="63" display="text" text="예금주"/>
+					</head>
+					<body>
+						<cell col="0" colid="FJBZIPNO" display="text"/>
+						<cell col="1" colid="FJBADDR" display="text"/>
+						<cell col="2" colid="FJBFULLNM" display="text"/>
+						<cell col="3" colid="FJBTEL" display="text"/>
+						<cell col="4" colid="FJBFAX" display="text"/>
+						<cell col="5" display="text" text="반송처&#32;:&#32;우편집중국&#32;사서함&#32;99호"/>
+						<cell col="6" colid="FICNO" display="text"/>
+						<cell col="7" colid="FBARCODE" display="text"/>
+						<cell col="8" colid="FCUSTADDR1" display="text"/>
+						<cell col="9" colid="FCUSTADDR2" display="text"/>
+						<cell col="10" colid="FCUSTNM" display="text"/>
+						<cell col="11" colid="FETC" display="text"/>
+						<cell col="12" colid="FCUSTZIPNO" display="text"/>
+						<cell col="13" colid="FCMGNO" display="text"/>
+						<cell col="14" colid="FJBJIRO" display="text"/>
+						<cell col="15" colid="FTOTAL" display="text"/>
+						<cell col="16" colid="FGROUPNM" display="text"/>
+						<cell col="17" colid="FBNM" display="text"/>
+						<cell col="18" colid="FCUSTNO" display="text"/>
+						<cell col="19" colid="FGIJUN4YY" display="text"/>
+						<cell col="20" colid="FGIJUN4" display="text"/>
+						<cell col="21" colid="FGIJUN3YY" display="text"/>
+						<cell col="22" colid="FGIJUN3" display="text"/>
+						<cell col="23" colid="FGIJUN2YY" display="text"/>
+						<cell col="24" colid="FGIJUN2" display="text"/>
+						<cell col="25" colid="FGIJUN1YY" display="text"/>
+						<cell col="26" colid="FGIJUN1" display="text"/>
+						<cell col="27" colid="FTOTAL" display="text"/>
+						<cell col="28" display="text" expr="mid(FLIMITDATE,&#32;0,4)"/>
+						<cell col="29" display="text" expr="mid(FLIMITDATE,&#32;4,&#32;2)"/>
+						<cell col="30" display="text" expr="mid(FLIMITDATE,&#32;&#32;6,&#32;2)"/>
+						<cell col="31" colid="FJBFULLNM" display="text"/>
+						<cell col="32" colid="FJBNMTEL" display="text"/>
+						<cell col="33" colid="FJBJIRO" display="text"/>
+						<cell col="34" colid="FTOTAL" display="text"/>
+						<cell col="35" colid="FGROUPNM" display="text"/>
+						<cell col="36" colid="FBNM" display="text"/>
+						<cell col="37" colid="FCUSTNO" display="text"/>
+						<cell col="38" colid="FTOTAL" display="text"/>
+						<cell col="39" display="text" expr="mid(FLIMITDATE,0,&#32;4)"/>
+						<cell col="40" display="text" expr="mid(FLIMITDATE,&#32;4,2)"/>
+						<cell col="41" display="text" expr="mid(FLIMITDATE,&#32;6,&#32;2)"/>
+						<cell col="42" colid="FJBFULLNM" display="text"/>
+						<cell col="43" colid="FJBJIROARVNO" display="text"/>
+						<cell col="44" colid="FJBJIRO" display="text"/>
+						<cell col="45" colid="FTOTAL" display="text"/>
+						<cell col="46" colid="FJIRONOINFO1" display="text"/>
+						<cell col="47" colid="FJIRONOINFO2" display="text"/>
+						<cell col="48" colid="FJIRONOINFO3" display="text"/>
+						<cell col="49" colid="FJIRONOINFO4" display="text"/>
+						<cell col="50" colid="FGROUPNM" display="text"/>
+						<cell col="51" colid="FCUSTNO" display="text"/>
+						<cell col="52" colid="FBNM" display="text"/>
+						<cell col="53" colid="FTOTAL" display="text"/>
+						<cell col="54" display="text" expr="mid(FLIMITDATE,&#32;0,&#32;4)"/>
+						<cell col="55" display="text" expr="mid(FLIMITDATE,&#32;4,&#32;2)"/>
+						<cell col="56" display="text" expr="mid(FLIMITDATE,&#32;6,&#32;2)"/>
+						<cell col="57" colid="FJBFULLNM" display="text"/>
+						<cell col="58" colid="CSTATUSGUBUN" combocol="CD" combodataset="ds_ioMemberGubunName" combotext="DATA" display="combo"/>
+						<cell col="59" colid="FVIRTUALACCOUNT1" display="text"/>
+						<cell col="60" colid="FVIRTUALACCOUNT2" display="text"/>
+						<cell col="61" colid="FVIRTUALACCOUNT3" display="text"/>
+						<cell col="62" colid="FVIRTUALACCOUNT4" display="text"/>
+						<cell col="63" colid="FOWNERNM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="21" Id="Static33" Left="8" Style="sty_Label" TabOrder="71" Text="년도별&#32;미납" Top="370" UserData="S" VAlign="Middle" Width="156"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cboSelectYN1" ImeMode="none" INDEX="0" InnerDataset="ds_oSelectYN1" Left="167" OnChanged="cboSelectYN1_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="72" Top="345" UserData="S" Width="122"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cboSelectYN2" ImeMode="none" INDEX="0" InnerDataset="ds_oSelectYN2" Left="167" OnChanged="cboSelectYN2_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="73" Top="369" UserData="S" Width="121"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cboNotYear" ImeMode="none" INDEX="0" InnerDataset="ds_oLongNotSunap" Left="291" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="74" Top="345" Width="122"></Combo>
+		<Static Align="Center" Height="21" Id="Static34" Left="416" Style="sty_Label" TabOrder="75" Text="납부마감일" Top="346" UserData="S" VAlign="Middle" Width="156"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calEndDateDay" Left="576" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="76" Top="346" UserData="S:납부마감일" WeeksFont="돋음,9" Width="96"></Calendar>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="5" DataColumn="DATA" Height="20" Id="radReturn" INDEX="0" InnerDataset="ds_oReturn" Left="168" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="77" Top="322" Value="0" Width="604"></Radio>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSave" ImageID="BTN_TEXT_COM" Left="253" OnClick="lfn_Save" Style="sty_Button" TabOrder="78" Text="파일생성(F4)" ToolTipText="통지서자료를&#32;조회하여&#32;엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_TEXT_COM" Left="340" OnClick="lfn_Print" Style="sty_Button" TabOrder="79" Text="집계(F9)" ToolTipText="집계보고서" Top="4" Width="85"></Button>
+		<FileDialog Bottom="668" Filter="Excel&#32;File(*.xls)|*.xls|All(*.*)|*.*|" Height="24" Id="fdImport" Left="432" Right="456" TabOrder="105" Top="644" Width="24"></FileDialog>
+		<FileDialog Bottom="668" FileName="giroExcelData" Filter="Excel&#32;File(*.xls)|*.xls|All(*.*)|*.*|" Height="24" Id="fdExport" Left="464" Right="488" TabOrder="105" Top="644" Type="Save" Width="24"></FileDialog>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="chkMemberNewDate" INDEX="0" InnerDataset="ds_oSelectYN3" Left="280" LeftMargin="4" OnChanged="chkMemberNewDate_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="80" Top="186" Value="0" Width="124"></Radio>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="chkNotMemberNewDate" INDEX="0" InnerDataset="ds_oSelectYN3" Left="572" LeftMargin="4" OnChanged="chkNotMemberNewDate_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="81" Top="146" Value="0" Width="124"></Radio>
+		<MaskEdit DkshadowColor="user4" Enable="FALSE" Face3dColor="user4" Height="20" Hilight3dColor="user30" Id="edMemberFeeSum" Left="168" Mask="###,###,###,###" ShadowColor="user30" Style="sty_Edit" TabOrder="82" Top="510" UserData="S:회비" Value="MaskEdit0" Width="204"></MaskEdit>
+		<MaskEdit DkshadowColor="user4" Enable="FALSE" Face3dColor="user4" Height="20" Hilight3dColor="user30" Id="edMemberFeeYearSum1" Left="168" Mask="###,###,###,###" ShadowColor="user30" Style="sty_Edit" TabOrder="83" Top="534" UserData="S:회비" Value="MaskEdit0" Width="204"></MaskEdit>
+		<MaskEdit DkshadowColor="user4" Enable="FALSE" Face3dColor="user4" Height="20" Hilight3dColor="user30" Id="edMemberFeeYearSum2" Left="168" Mask="###,###,###,###" ShadowColor="user30" Style="sty_Edit" TabOrder="84" Top="558" UserData="S:회비" Value="MaskEdit0" Width="204"></MaskEdit>
+		<MaskEdit DkshadowColor="user4" Enable="FALSE" Face3dColor="user4" Height="20" Hilight3dColor="user30" Id="edMemberFeeYearSum3" Left="168" Mask="###,###,###,###" ShadowColor="user30" Style="sty_Edit" TabOrder="85" Top="582" UserData="S:회비" Value="MaskEdit0" Width="204"></MaskEdit>
+		<MaskEdit DkshadowColor="user4" Enable="FALSE" Face3dColor="user4" Height="20" Hilight3dColor="user30" Id="edMemberFeeYearSum4" Left="168" Mask="###,###,###,###" ShadowColor="user30" Style="sty_Edit" TabOrder="86" Top="606" UserData="S:회비" Value="MaskEdit0" Width="204"></MaskEdit>
+		<MaskEdit DkshadowColor="user4" Enable="FALSE" Face3dColor="user4" Height="20" Hilight3dColor="user30" Id="edMemberFeeYearFirst1" Left="376" ShadowColor="user30" Style="sty_Edit" TabOrder="88" Top="534" UserData="S:회비" Value="MaskEdit0" Width="196"></MaskEdit>
+		<MaskEdit DkshadowColor="user4" Enable="FALSE" Face3dColor="user4" Height="20" Hilight3dColor="user30" Id="edMemberFeeFirst" Left="376" Mask="###,###,###,###" ShadowColor="user30" Style="sty_Edit" TabOrder="87" Top="510" UserData="S:회비" Value="MaskEdit0" Width="196"></MaskEdit>
+		<MaskEdit DkshadowColor="user4" Enable="FALSE" Face3dColor="user4" Height="20" Hilight3dColor="user30" Id="edMemberFeeYearFirst2" Left="376" Mask="###,###,###,###" ShadowColor="user30" Style="sty_Edit" TabOrder="89" Top="558" UserData="S:회비" Value="MaskEdit0" Width="196"></MaskEdit>
+		<MaskEdit DkshadowColor="user4" Enable="FALSE" Face3dColor="user4" Height="20" Hilight3dColor="user30" Id="edMemberFeeYearFirst3" Left="376" Mask="###,###,###,###" ShadowColor="user30" Style="sty_Edit" TabOrder="90" Top="582" UserData="S:회비" Value="MaskEdit0" Width="196"></MaskEdit>
+		<MaskEdit DkshadowColor="user4" Enable="FALSE" Face3dColor="user4" Height="20" Hilight3dColor="user30" Id="edMemberFeeYearFirst4" Left="376" Mask="###,###,###,###" ShadowColor="user30" Style="sty_Edit" TabOrder="91" Top="606" UserData="S:회비" Value="MaskEdit0" Width="196"></MaskEdit>
+		<MaskEdit DkshadowColor="user4" Enable="FALSE" Face3dColor="user4" Height="20" Hilight3dColor="user30" Id="edMemberFeeYearSceond1" Left="576" Mask="###,###,###,###" ShadowColor="user30" Style="sty_Edit" TabOrder="93" Top="534" UserData="S:회비" Value="MaskEdit0" Width="196"></MaskEdit>
+		<MaskEdit DkshadowColor="user4" Enable="FALSE" Face3dColor="user4" Height="20" Hilight3dColor="user30" Id="edMemberFeeSceond" Left="576" Mask="###,###,###,###" ShadowColor="user30" Style="sty_Edit" TabOrder="92" Top="510" UserData="S:회비" Value="MaskEdit0" Width="196"></MaskEdit>
+		<MaskEdit DkshadowColor="user4" Enable="FALSE" Face3dColor="user4" Height="20" Hilight3dColor="user30" Id="edMemberFeeYearSceond2" Left="576" Mask="###,###,###,###" ShadowColor="user30" Style="sty_Edit" TabOrder="94" Top="558" UserData="S:회비" Value="MaskEdit0" Width="196"></MaskEdit>
+		<MaskEdit DkshadowColor="user4" Enable="FALSE" Face3dColor="user4" Height="20" Hilight3dColor="user30" Id="edMemberFeeYearSceond3" Left="576" Mask="###,###,###,###" ShadowColor="user30" Style="sty_Edit" TabOrder="95" Top="582" UserData="S:회비" Value="MaskEdit0" Width="196"></MaskEdit>
+		<MaskEdit DkshadowColor="user4" Enable="FALSE" Face3dColor="user4" Height="20" Hilight3dColor="user30" Id="edMemberFeeYearSceond4" Left="576" Mask="###,###,###,###" ShadowColor="user30" Style="sty_Edit" TabOrder="96" Top="606" UserData="S:회비" Value="MaskEdit0" Width="196"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button0" ImageID="BTN_TEXT_COM" Left="688" OnClick="lfn_Print_A" Style="sty_Button" TabOrder="97" Text="지로출력" ToolTipText="지로출력" Top="36" Visible="FALSE" Width="85"></Button>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="Static9" ImeMode="native" Left="284" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edCustYear_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="98" Top="60" Width="180"></Edit>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="Static11" ImeMode="native" Left="536" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edCustYear_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="99" Top="60" Width="180"></Edit>
+		<Static Align="Center" Height="20" Id="Static35" Left="172" Style="sty_Label" TabOrder="100" Text="신규등록일" Top="186" UserData="S" VAlign="Middle" Width="104"></Static>
+		<Static Align="Center" Height="20" Id="Static36" Left="464" Style="sty_Label" TabOrder="101" Text="신규등록일" Top="146" UserData="S" VAlign="Middle" Width="104"></Static>
+		<Static Align="Center" Height="20" Id="Static37" Left="464" Style="sty_Label" TabOrder="102" Text="회비부과구분" Top="194" UserData="S" VAlign="Middle" Width="104"></Static>
+		<Static Align="Center" Height="20" Id="Static38" Left="464" Style="sty_Label" TabOrder="103" Text="탈퇴비회원&#32;고지" Top="218" UserData="S" VAlign="Middle" Width="104"></Static>
+		<Shape BKColor="user5" Bottom="116" Height="30" Id="Shape1" Left="4" LineColor="user15" Right="776" TabOrder="104" Top="86" Type="Rectangle" Width="772"></Shape>
+		<Static Align="Center" BKColor="user36" Font="굴림,12,Bold" Height="26" Id="Static16" Left="8" Style="sty_Label" TabOrder="105" Text="회비고지방식" Top="88" UserData="S" VAlign="Middle" Width="156"></Static>
+		<Radio BKColor="user5" Border="Flat" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Font="굴림,12,Bold" Height="26" Id="radFeeMode" INDEX="0" InnerDataset="ds_oFeemode" Left="168" OnChanged="radFeeMode_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="106" Top="88" Value="0" Width="368"></Radio>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="38" Id="radMemberGubun2" INDEX="0" InnerDataset="ds_oRadioGubun2" Left="168" OnChanged="radMemberGubun2_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="107" Top="122" Value="0" Visible="FALSE" Width="288"></Radio>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="30" Id="radMemberGubun" INDEX="0" InnerDataset="ds_oRadioGubun" Left="168" OnChanged="radMemberGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="16" Top="122" Value="0" Width="288"></Radio>
+	</Form>
+	<Script><![CDATA[
+/*
+ * 프로그램명 : frmcust5340.xml
+ * 설명 : 회비고지자료 생성
+ * 작성일 : 2009.12.09
+ * 작성자 : 이창희
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+///////////////////  공통변수 (회원구분) 8개
+    var sChkMemberNewDate = "";       // 회원 전체/선택
+    var sCalStartDate1 = "";          // 날짜1
+    var sCalEndDate1 = "";            // 날짜2
+    var sCalStartDate1_Enable = "";          // 날짜1
+    var sCalEndDate1_Enable = "";            // 날짜2
+
+    var sChkNotMemberNewDate = "";    // 비회원 신규등록일
+    var sCalStartDate2 = "";          // 날짜1
+    var sCalEndDate2 = "";            // 날짜2
+    var sCalStartDate2_Enable = "";          // 날짜1
+    var sCalEndDate2_Enable = "";            // 날짜2
+    
+    var sChkNotMemberNewDateGubun = 0;  // 날짜 콤보 변경 가능 권한 여부 구분
+
+
+    var sRadNotMemberFirsSecondHalf = "";   // 상하반기
+    var sRadNotification = "";              // 회비고지 유무
+//////////////////
+
+function Form_OnLoadCompleted(obj)
+{    
+    ext_OleServerBusyTimeOut(true,5000,false,false);
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+	
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    Static9.Text = "회비산출기준(" + left(GetDate(), 4) + "상)";
+	Static11.Text = "회비산출기준(" + left(GetDate(), 4) + "상)";
+	   	 
+    edCustYear.Text = left(GetDate(), 4);
+    
+	//gfn_SearchAllJibu(cbxJibu, "Y", "선택"); // 지부 코드 조회
+    gfn_SearchJibu(cbxJibu, "Y", "선택"); // 지부 코드 조회    
+   
+    //gfn_SearchRegion(gds_oUserInfo.GetColumn(0, "PDEPTCD"), ds_oRegion, "0");	//지역 코드 조회
+    gfn_SearchCodeRegion(cbxJibu.Value, ds_oRegion, "0");	//지역 코드 조회
+    
+    lfn_SearchCommonCode_Minus();    // 위험물 운송자, 교육 희망자 제외함 80번 미만만 조회
+   // gfn_SearchCustomerCourseFullName(ds_oCourse, "0");	// 대표고객직능 조회  
+     
+    cbxRegion2.value = ds_oRegion.GetColumn(0, "cd");                         // 지역 첫번째 콤보 
+    //cbxRegion3.value = ds_oRegion.GetColumn(0, "cd");                         // 지역 두번째 콤보(처음값)
+    cbxRegion3.value = ds_oRegion.GetColumn(ds_oRegion.lastrow, "cd");        // 지역 두번째 콤보 (마지막 값)
+
+    
+    calStartDate1.Enable = false;  // 회원
+    calEndDate1.Enable = false;    // 회원
+    static14.Visible = false;
+    calStartDate2.Enable= false;  // 비회원
+    calEndDate2.Enable = false;    // 비회원
+    static15.Visible = false;
+              
+    /////////////////////////
+   /*     cbxCourse1.text = "";
+        cbxCourse_1.text = "";
+        cbxCourse_2.text = "";
+        cbxCourse_3.text = "";
+        cbxCourse_4.text = "";
+        cbxCourse_5.text = "";
+        cbxCourse_6.text = "";
+        cboNotYear.Text = "";*/
+    ///////////////////////// 
+        cbxCourse1.Value = "";
+        cbxCourse_1.Value = "";
+        cbxCourse_2.Value = "";
+        cbxCourse_3.Value = "";
+        cbxCourse_4.Value = "";
+        cbxCourse_5.Value = "";
+        cbxCourse_6.Value = "";
+        cboNotYear.Value = "";
+       
+///////////////////  공통변수 (회원구분) 8개
+        sChkMemberNewDate = ChkMemberNewDate.Value;       // 회원 전체/선택
+        sCalStartDate1 = CalStartDate1.Value;          // 날짜1
+        sCalEndDate1 = CalEndDate1.Value;            // 날짜2
+        sCalStartDate1_Enble = CalStartDate1.Enable;          // 날짜1
+        sCalEndDate1_Enble = CalEndDate1.Enable;            // 날짜2
+    
+        sChkNotMemberNewDate = ChkNotMemberNewDate.Value;    // 비회원 신규등록일
+        sCalStartDate2 = CalStartDate2.Value;          // 날짜1
+        sCalEndDate2 = CalEndDate2.Value;            // 날짜2
+        sCalStartDate2_Enble = CalStartDate2.Enable;          // 날짜1
+        sCalEndDate2_Enble = CalEndDate2.Enable;            // 날짜2 
+    
+        sRadNotMemberFirsSecondHalf = RadNotMemberFirsSecondHalf.Value;   // 상하반기
+        sRadNotification = RadNotification.Value;              // 회비고지 유무        
+//////////////////          
+        
+        chkYearNotSunap1.text = ToNumber((edCustYear.text))-3;          //기준년-1
+        chkYearNotSunap2.text = ToNumber((edCustYear.text))-2;          //기준년-1
+        chkYearNotSunap3.text = ToNumber((edCustYear.text))-1;          //기준년-1
+        chkYearNotSunap4.text = edCustYear.text;          //기준년-1
+        radMemberGubun.SetFocus();
+        
+}
+
+//공통처리
+//===================================================================
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+  //  btnSelect.Enable = bStatus;    
+  //  btnCreateList.Enable = bStatus;
+  //  btnProcElecApv.Enable = bStatus;
+}
+
+//====================================================================
+
+///////////////////
+/* 사용자 함수 */
+/*
+ * 기능 : 공통코드를 조회한다.
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchCommonCode_Minus() {
+    
+    ds_oCourse_Minus.Clear();
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("com:searchCustomerCourse_Minus", false); // 고객 직능
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oCourse_Minus=ds_oCustomerCourse_Minus" // outDs
+        ,""	// args 
+		,""
+		,true
+		,true
+	);
+}
+
+
+
+
+///////////////////
+//조회
+
+function lfn_NotificationDataSearch()
+{
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+//////////////////////////////////////////////////////////////////
+    var areaAllYN = "";                       //지역전체_선택 유무 !!
+    var radCourseAllYN = "";                  //직능전체_선택유무 !!
+  
+    var chkYearNotSunap1_value = "";
+    var chkYearNotSunap2_value = "";
+    var chkYearNotSunap3_value = "";
+    var chkYearNotSunap4_value = "";
+    
+    if (chkYearNotSunap1.Value == "Y") {
+     chkYearNotSunap1_value = chkYearNotSunap1.text;
+    } else {
+     chkYearNotSunap1_value = "";
+    }
+    if (chkYearNotSunap2.Value == "Y") {
+     chkYearNotSunap2_value = chkYearNotSunap2.text;
+    } else {
+     chkYearNotSunap2_value = "";
+    }
+    if (chkYearNotSunap3.Value == "Y") {
+     chkYearNotSunap3_value = chkYearNotSunap3.text;
+    } else {
+     chkYearNotSunap3_value = "";
+    }
+    if (chkYearNotSunap4.Value == "Y") {
+     chkYearNotSunap4_value = chkYearNotSunap4.text;
+    } else {
+     chkYearNotSunap4_value = "";
+    }
+    
+    // 조회값 넣기
+    edProcessCount.text = "" ;               //처리대상수
+    edMemberFeeSum.text = ""  ;              //회비총액 합계
+    edMemberFeeFirst.text = ""  ;            //회비총액 상반기
+    edMemberFeeSceond.text = ""  ;           //회비총액 하반기    
+    Static28.text = ""   ;          //기준년-1
+    edMemberFeeYearSum1.text = ""    ;       //합계
+    edMemberFeeYearFirst1.text = ""  ;       //상반기
+    edMemberFeeYearSceond1.text = "" ;       //하반기    
+    Static29.text = ""     ;        //기준년-2
+    edMemberFeeYearSum2.text = ""   ;        //합계
+    edMemberFeeYearFirst2.text = ""  ;       //상반기
+    edMemberFeeYearSceond2.text = "" ;       //하반기    
+    Static30.text = ""     ;        //기준년-3
+    edMemberFeeYearSum3.text = ""   ;       //합계
+    edMemberFeeYearFirst3.text = "" ;       //상반기
+    edMemberFeeYearSceond3.text = "" ;       //하반기    
+    Static31.text = ""          ;   //기준년-4
+    edMemberFeeYearSum4.text = ""   ;       //합계
+    edMemberFeeYearFirst4.text = ""  ;      //상반기
+    edMemberFeeYearSceond4.text = "" ;      //하반기   
+
+
+      /* + " chkYearNotSunap1=" + quote(chkYearNotSunap1.text)//년도별미납1
+        + " chkYearNotSunap2=" + quote(chkYearNotSunap2.text)//년도별미납2
+        + " chkYearNotSunap3=" + quote(chkYearNotSunap3.text)//년도별미납3
+        + " chkYearNotSunap4=" + quote(chkYearNotSunap4.text)//년도별미납4
+        */
+
+
+
+    //지역전체_선택 유무 !!
+    if( (cbxRegion2.value == ds_oRegion.GetColumn(0, "cd"))&&(cbxRegion3.value = ds_oRegion.GetColumn(ds_oRegion.lastrow, "cd")) ) {               
+        areaAllYN = "0";  // 전체값 전달
+    } else {
+        areaAllYN = "1";  // 선택값 전달
+    }       
+    //직능전체_선택유무 !!
+    if(radCourse.Value == "0") {      // 선택
+        radCourseAllYN = "1";         // 선택값 전달
+    }else if(radCourse.Value == "1"){ // 다중선택
+        radCourseAllYN = "1";         // 선택값 전달        
+    } else {                          // 직능 전체
+        radCourseAllYN = "0";
+    }   
+    
+    var MemberGubun = "";
+    // 일반회비고지
+    if (radFeeMode.Value == "0") {
+		MemberGubun = radMemberGubun.Value;
+    } else { // 소방안전지+회비고지
+		if (radMemberGubun2.Value == "0") MemberGubun = "3";
+		else if (radMemberGubun2.Value == "1") MemberGubun = "4";
+		else if (radMemberGubun2.Value == "2") MemberGubun = "5";
+    }
+///////////////////////////////////////////////////////////////// 
+    ds_ioCreateNotification.ClearData(); // 데이타셋 초기화	
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cust:searchCust2160Notification", false);
+	// 서버 호출 	
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioCreateNotification=ds_oNotification"	// outDs
+		, "cbxJibu=" + quote(cbxJibu.value)                    //지부
+        + " edCustYear=" + quote(edCustYear.text)              //기준년도
+        //+ " radMemberGubun=" + quote(radMemberGubun.value)     //회원구분
+        + " radMemberGubun=" + quote(MemberGubun)     //회원구분
+        + " calStartDate1=" + quote(calStartDate1.value)       //회원신규등록일1 (from)
+        + " calEndDate1=" + quote(calEndDate1.value)           //회원신규등록일2 (to)
+        + " chkMemberNewDate=" + quote(chkMemberNewDate.value)//회원신규등록일 체크        
+        + " chkNotMemberNewDate=" + quote(chkNotMemberNewDate.value)//비회원신규등록일 체크        
+        + " calStartDate2=" + quote(calStartDate2.value)//비회원신규등록일1 (from)
+        + " calEndDate2=" + quote(calEndDate2.value)//비회원신규등록일2 (to)
+        + " radNotMemberFirsSecondHalf=" + quote(radNotMemberFirsSecondHalf.value)//비회원회비부과상하반기
+        + " radNotification=" + quote(radNotification.value)//비회원탈퇴신청자 고지유무
+        + " areaAllYN=" + quote(areaAllYN)                //지역전체_선택 유무 !!
+        + " cbxRegion2=" + quote(cbxRegion2.value)  //지역1 (from)
+        + " cbxRegion3=" + quote(cbxRegion3.value)  //지역2 (to)
+        + " radCourseAllYN=" + quote(radCourseAllYN)    //직능전체_선택유무 !!
+        + " cbxCourse_1=" + quote(cbxCourse_1.value)//직능1
+        + " cbxCourse_2=" + quote(cbxCourse_2.value)//직능2
+        + " cbxCourse_3=" + quote(cbxCourse_3.value)//직능3
+        + " cbxCourse_4=" + quote(cbxCourse_4.value)//직능4
+        + " cbxCourse_5=" + quote(cbxCourse_5.value)//직능5
+        + " cbxCourse_6=" + quote(cbxCourse_6.value)//직능6
+        + " cbxCourse1=" + quote(cbxCourse1.value) //직능7
+        + " radReturn=" + quote(radReturn.Value)         //반송구분
+        + " cboSelectYN1=" + quote(cboSelectYN1.value)//장기미납 구분
+        + " cboNotYear=" + quote(cboNotYear.value)    //장기미납
+        + " cboSelectYN2=" + quote(cboSelectYN2.value)//년도별미납 구분
+        + " chkYearNotSunap1=" + quote(chkYearNotSunap1_value)//년도별미납1
+        + " chkYearNotSunap2=" + quote(chkYearNotSunap2_value)//년도별미납2
+        + " chkYearNotSunap3=" + quote(chkYearNotSunap3_value)//년도별미납3
+        + " chkYearNotSunap4=" + quote(chkYearNotSunap4_value)//년도별미납4
+        
+        + " radNotification2=" + quote(radNotification2.value)//공공기관기관장 회비고지여부
+        + " radNotification3=" + quote(radNotification3.value)//관리제외대상 회비고지여부
+        + " radOrderBy=" + quote(radOrderBy.value)            //정렬순서        
+        + " EndDateDay=" + quote(calEndDateDay.value)         //납부마감일  
+		,"lfn_AfterSearchElecAppr"
+		,false
+		,""
+		,true
+	);	
+}
+
+function lfn_AfterSearchElecAppr(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    } 
+     
+    // 조회값 넣기
+    edProcessCount.text = ds_ioCreateNotification.count;               //처리대상수
+    edMemberFeeSum.text = ds_ioCreateNotification.SUM("FGIJUN1")  
+                        + ds_ioCreateNotification.SUM("FGIJUN2")
+                        + ds_ioCreateNotification.SUM("FGIJUN3")
+                        + ds_ioCreateNotification.SUM("FGIJUN4");              //회비총액 합계
+                        
+    edMemberFeeFirst.text = ds_ioCreateNotification.SUM("FGIJUN1_1")
+                          + ds_ioCreateNotification.SUM("FGIJUN2_1")
+                          + ds_ioCreateNotification.SUM("FGIJUN3_1")
+                          + ds_ioCreateNotification.SUM("FGIJUN4_1");            //회비총액 상반기
+    
+    edMemberFeeSceond.text = ds_ioCreateNotification.SUM("FGIJUN1_2")
+                          + ds_ioCreateNotification.SUM("FGIJUN2_2")
+                          + ds_ioCreateNotification.SUM("FGIJUN3_2")
+                          + ds_ioCreateNotification.SUM("FGIJUN4_2");            //회비총액 하반기    
+                      
+    Static28.text = edCustYear.text + "년";          //기준년-1
+    edMemberFeeYearSum1.text = ds_ioCreateNotification.SUM("FGIJUN1");       //합계
+    edMemberFeeYearFirst1.text = ds_ioCreateNotification.SUM("FGIJUN1_1");       //상반기
+    edMemberFeeYearSceond1.text = ds_ioCreateNotification.SUM("FGIJUN1_2") ;       //하반기    
+    Static29.text =  ToNumber((edCustYear.text))-1 + "년";        //기준년-2
+    edMemberFeeYearSum2.text = ds_ioCreateNotification.SUM("FGIJUN2");        //합계
+    edMemberFeeYearFirst2.text = ds_ioCreateNotification.SUM("FGIJUN2_1");       //상반기
+    edMemberFeeYearSceond2.text = ds_ioCreateNotification.SUM("FGIJUN2_2");       //하반기    
+    Static30.text =  ToNumber((edCustYear.text))-2 + "년";        //기준년-3
+    edMemberFeeYearSum3.text = ds_ioCreateNotification.SUM("FGIJUN3");       //합계
+    edMemberFeeYearFirst3.text = ds_ioCreateNotification.SUM("FGIJUN3_1");       //상반기
+    edMemberFeeYearSceond3.text = ds_ioCreateNotification.SUM("FGIJUN3_2");       //하반기    
+    Static31.text =  ToNumber((edCustYear.text))-3 + "년";   //기준년-4
+    edMemberFeeYearSum4.text = ds_ioCreateNotification.SUM("FGIJUN4");       //합계
+    edMemberFeeYearFirst4.text = ds_ioCreateNotification.SUM("FGIJUN4_1");      //상반기
+    edMemberFeeYearSceond4.text = ds_ioCreateNotification.SUM("FGIJUN4_2");      //하반기    
+  
+ // ds_iExcelLoad.DeleteRow(0); //첫번째로우 삭제
+  
+    setTimer(1,1000);
+    
+    // lfn_ExcelFileSave();           // 엑셀 파일로 선택된 경로에 바로 저장하기
+        
+    gfn_SearchMessage(grdExport);       // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+};
+
+//-----------------------------------
+/*
+* 직능 변경시 
+*/
+function radCourse_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{			
+	if(strCode == "0"){             // 선택
+        cbxCourse1.Enable = true;
+        cbxCourse1.Value = ds_oCourse_Minus.GetColumn(1, "CD");
+        cbxCourse_1.Enable = false;
+        cbxCourse_2.Enable = false;
+        cbxCourse_3.Enable = false;
+        cbxCourse_4.Enable = false;
+        cbxCourse_5.Enable = false;
+        cbxCourse_6.Enable = false;        
+     
+        cbxCourse_1.Value = "";
+        cbxCourse_2.Value = "";
+        cbxCourse_3.Value = "";
+        cbxCourse_4.Value = "";
+        cbxCourse_5.Value = "";
+        cbxCourse_6.Value = "";        
+    }else if(strCode == "1") {       // 다중선택
+        cbxCourse1.Enable = false;
+        cbxCourse1.text = "";	    
+       // 기타 콤보 활성화
+        cbxCourse_1.Enable = true;
+        cbxCourse_2.Enable = true;
+        cbxCourse_3.Enable = true;
+        cbxCourse_4.Enable = true;
+        cbxCourse_5.Enable = true;
+        cbxCourse_6.Enable = true;
+        
+        /*
+        cbxCourse_1.Value = ds_oCourse.GetColumn(0, "CD");  
+        cbxCourse_2.Value = ds_oCourse.GetColumn(0, "CD");  
+        cbxCourse_3.Value = ds_oCourse.GetColumn(0, "CD");  
+        cbxCourse_4.Value = ds_oCourse.GetColumn(0, "CD");  
+        cbxCourse_5.Value = ds_oCourse.GetColumn(0, "CD");  
+        cbxCourse_6.Value = ds_oCourse.GetColumn(0, "CD");  
+        */                     
+	} else {                       // 전체
+	    cbxCourse1.Enable = false;
+	    cbxCourse_1.Enable = false;
+        cbxCourse_2.Enable = false;
+        cbxCourse_3.Enable = false;
+        cbxCourse_4.Enable = false;
+        cbxCourse_5.Enable = false;
+        cbxCourse_6.Enable = false;        
+
+        cbxCourse1.Value = "";
+        cbxCourse_1.Value = "";
+        cbxCourse_2.Value = "";
+        cbxCourse_3.Value = "";
+        cbxCourse_4.Value = "";
+        cbxCourse_5.Value = "";
+        cbxCourse_6.Value = "";
+	}	
+}
+
+/*
+ * 지부 변경시 지역 변경 
+*/
+function lfn_SearchTrainingLatestOrder(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+    //gfn_SearchRegion(ds_oJibu.GetColumn(nNewIndex, "CD"), ds_oRegion, "0");	//지역 코드 조회
+    gfn_SearchCodeRegion(ds_oJibu.GetColumn(nNewIndex, "CD"), ds_oRegion, "0");	//지역 코드 조회  
+    cbxRegion2.value = ds_oRegion.GetColumn(0, "cd");                         // 지역 첫번째 콤보 
+    cbxRegion3.value = ds_oRegion.GetColumn(ds_oRegion.lastrow, "cd");        // 지역 두번째 콤보
+}
+
+/*
+* 엑셀 다운받기
+*/
+function lfn_localExcel(obj)
+{
+	if (ds_ioCreateNotification.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return false;
+    }
+	lfn_Excel();
+}
+
+/* 
+* 장기미납 변경
+*/
+function cboSelectYN1_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(strCode == "0"){             // 미지정
+        cboNotYear.Enable = false;
+        cboNotYear.value = "";        
+    } else {                        // 지정
+        cboNotYear.Enable = true;
+        cboNotYear.Value = ds_oLongNotSunap.GetColumn(0, "CD");
+    }      
+}
+
+/* 
+* 년도별 미납 변경
+*/
+function cboSelectYN2_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(strCode == "0"){             // 미지정
+        chkYearNotSunap1.Enable = false;
+        chkYearNotSunap2.Enable = false;
+        chkYearNotSunap3.Enable = false;
+        chkYearNotSunap4.Enable = false;
+        chkYearNotSunap1.Value = false;
+        chkYearNotSunap2.Value = false;
+        chkYearNotSunap3.Value = false;
+        chkYearNotSunap4.Value = false;        
+    } else {                        // 지정
+        chkYearNotSunap1.Enable = true;
+        chkYearNotSunap2.Enable = true;
+        chkYearNotSunap3.Enable = true;
+        chkYearNotSunap4.Enable = true;
+        /*chkYearNotSunap1.Value = true;
+        chkYearNotSunap2.Value = true;
+        chkYearNotSunap3.Value = true;
+        chkYearNotSunap4.Value = true;*/        
+    }
+}
+
+/*
+* 엑셀 파일로 저장하기(파일생성)
+*/
+function lfn_Save(obj)
+{
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+    
+    if (!Confirm("회비고지 대상자를 조회 및 저장 하시겠습니까?")) {
+        return;
+	} 
+	
+	edProcessCount.text = ds_ioCreateNotification.count;               //처리대상수
+    edMemberFeeSum.text = "";              //회비총액 합계                        
+    edMemberFeeFirst.text = "";            //회비총액 상반기    
+    edMemberFeeSceond.text = "";            //회비총액 하반기                        
+    Static28.text = "";          //기준년-1
+    edMemberFeeYearSum1.text = "" ;       //합계
+    edMemberFeeYearFirst1.text = "";       //상반기
+    edMemberFeeYearSceond1.text = "";       //하반기    
+    Static29.text =  "";       //기준년-2
+    edMemberFeeYearSum2.text = "";        //합계
+    edMemberFeeYearFirst2.text = "";       //상반기
+    edMemberFeeYearSceond2.text = "";       //하반기    
+    Static30.text =  "";        //기준년-3
+    edMemberFeeYearSum3.text = "";   //합계
+    edMemberFeeYearFirst3.text =  "";   //상반기
+    edMemberFeeYearSceond3.text =  "";   //하반기    
+    Static31.text =  "";  //기준년-4
+    edMemberFeeYearSum4.text = "";   //합계
+    edMemberFeeYearFirst4.text = "";     //상반기
+    edMemberFeeYearSceond4.text = "";    //하반기     
+    //////////////////////   
+    lfn_NotificationDataSearch();  // 회비고지대상자 조회
+    
+}
+
+/*
+* 엑셀 파일로 바로 저장하기 (SaveExcelEx 용)
+*/
+function lfn_ExcelFileSave()
+{
+    fdExport.Type = "save";
+    fdExport.Filter = "Excel(.xls)|*.xls|";
+    
+    if (radFeeMode.Value == "0") {		// 일반회비고지
+		if (radMemberGubun.Value == "0") fdExport.FileName = "전체(회원+비회원)giroData";
+		else if (radMemberGubun.Value == "1") fdExport.FileName = "회원giroData";
+		else if (radMemberGubun.Value == "2") fdExport.FileName = "비회원giroData";
+	} else if (radFeeMode.Value == "1") {	// 소방안전지+회비고지
+		if (radMemberGubun2.Value == "0") fdExport.FileName = "회원(소방안전지+회비고지서)giroData";
+		else if (radMemberGubun2.Value == "1") fdExport.FileName = "회원(회비고지서만)giroData";
+		else if (radMemberGubun2.Value == "2") fdExport.FileName = "비회원giroData";
+	}
+		
+    var result = fdExport.Open("C:\\KFSA\\KEMS\\DATA\\GIRO");
+        
+    if (result) {
+        var ls_FilePath = fdExport.FilePath + '\\' + fdExport.FileName;        
+           grdExport.SaveExcelEx(ls_FilePath, "회비_고지_자료",,,,,,false);             
+
+    } else {
+        return;
+    }          
+}
+
+/*
+ * 기능 : 집계조회
+ */
+function lfn_Jibge_Search(obj) {
+      
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }    
+    ds_ioFireSurvey.Clear();        
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cust:searchCust5010FireSurvey", false);                 //1) 소방방제청 방화관리대상물>> 개황 조회
+	
+	// 서버 호출 
+	tit_callService( 
+		""
+		,""
+		,""	// inDs
+		,"ds_ioFireSurvey=ds_oFireSurvey"
+     	  // outDs	  	  
+	    ,"fkey=" + quote("28000000052646")//quote(sSerialNumber)   //-- 일련번호(매개변수)
+ 		,"lfn_AftersearchCust"
+		,false
+	);
+	
+}
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AftersearchCust(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }    
+      
+}
+
+/*
+*  집계를 위해 데이터 조회 함
+*/
+function lfn_TotalingSerch()  { 
+///////////////////////////////////////////////////////////////// 
+
+  //  ds_ioNotificationTotaling.ClearData(); // 데이타셋 초기화	
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cust:searchCust2160NotificationTotaling", false);
+	// 서버 호출 	
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioNotificationTotaling=ds_oNotificationTotaling"	// outDs
+		,"FKEY_A= " + quote(ds_ioCreateNotification.GetColumn(0, "FKEY")) 	    //   
+		,"lfn_AftersearchCust"
+		,false
+		,""
+		,true
+	);	
+}
+
+/*
+* 불러온 FKEY로 집계 한 데이터 조회하여 레포트 출력함
+*/
+function lfn_Print(obj)
+{
+    if(ds_ioCreateNotification.count == 0) {
+        alert("집계할 내용이 없습니다.");
+        return false;
+    }
+  
+    lfn_TotalingSerch();  // 집계 데이터 가져옴
+      
+    // 레포트 호출함    
+     
+     
+     gfn_CallReportPopup("frmcust2160R01SunapGojiCreate.rex"
+                ,"ds_ioNotificationTotaling"    // ds
+                ,"JIBU=" + quote(cbxJibu.text) 
+               + "^YEARDATE=" + quote(edCustYear.Text)                   // 매개변수
+                ,""                  // 수첩여부 
+                ,""                  // 서브레포트 사용여부
+     );   
+   
+}
+
+/*
+* 회원 신규등록일 선택여부 날짜값 null변경
+*/
+function chkMemberNewDate_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{        
+	if(chkMemberNewDate.Value == "0"){
+        calStartDate1.Value = "";                  // 회원
+        calEndDate1.Value = "";                    // 회원    
+        calStartDate1.Enable= false;              // 회원
+        calEndDate1.Enable = false;               // 회원
+        Static14.Visible = false;
+        sChkMemberNewDate = chkMemberNewDate.Value; 
+        sCalStartDate1 = CalStartDate1.Value;
+        sCalEndDate1 = CalEndDate1.Value;
+        sCalStartDate1_Enable = CalStartDate1.Enable;
+        sCalEndDate1_Enable = CalEndDate1.Enable;
+            
+        
+	} else if (chkMemberNewDate.Value == "1"){           
+        calStartDate1.Value = left(GetDate(), 8);  // 회원
+        calEndDate1.Value = left(GetDate(), 8);    // 회원    
+        calStartDate1.Enable= true;               // 회원
+        calEndDate1.Enable = true;                // 회원
+        Static14.Visible = true;
+        sChkMemberNewDate = chkMemberNewDate.Value; 
+        sCalStartDate1 = CalStartDate1.Value;
+        sCalEndDate1 = CalEndDate1.Value;
+        sCalStartDate1_Enable = CalStartDate1.Enable;
+        sCalEndDate1_Enable = CalEndDate1.Enable;                
+        
+	}
+          //  trace(sChkNotMemberNewDateGubun);
+}
+
+/*
+* 비회원 신규등록일 선택여부 날짜값 null변경
+*/
+function chkNotMemberNewDate_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(chkNotMemberNewDate.Value == "0"){
+        calStartDate2.Value = "";                  // 비회원
+        calEndDate2.Value = "";                    // 비회원    
+        calStartDate2.Enable= false;              // 비회원
+        calEndDate2.Enable = false;               // 비회원
+        sCalStartDate2_Enable = calStartDate2.Enable;              // 비회원
+        sCalEndDate2_Enable = calEndDate2.Enable;               // 비회원                
+        Static15.Visible = false;
+        sChkNotMemberNewDate = chkNotMemberNewDate.Value;
+	} else{	    
+        calStartDate2.Value = left(GetDate(), 8);  // 비회원
+        calEndDate2.Value = left(GetDate(), 8);    // 비회원    
+        calStartDate2.Enable= true;               // 비회원
+        calEndDate2.Enable = true;                // 비회원
+        sCalStartDate2_Enable = calStartDate2.Enable;               // 비회원
+        sCalEndDate2_Enable = calEndDate2.Enable;                // 비회원        
+        Static15.Visible = true;
+        sChkNotMemberNewDate = chkNotMemberNewDate.Value;
+	}	
+}
+
+/*
+*  회원구분 변경시 정보 활성화 구분 
+*/
+function radMemberGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+    sChkNotMemberNewDateGubun = "1";   // 날짜 변경 플래그, 날짜 변경시 변수에 날짜 값 넣는거 여기서는 안 넣게 하기 
+	                                   // 직접 날짜 변경시에만 변수에 넣게 하기 위함 이 플래그 첨은 1(저장) 후 다시 초기화 됨(0)저장 되게 함
+	if(strCode == "1") {  // 회원일 경우 비회원 정보를 enable        
+        // 비회원 정보
+        chkNotMemberNewDate.Enable = false;
+        chkNotMemberNewDate.Value = "";
+        calStartDate2.Enable = false;
+        calStartDate2.Value = "";
+        calEndDate2.Enable = false;
+        calEndDate2.Value = "";
+        
+        radNotMemberFirsSecondHalf.Enable = false;
+        radNotification.Enable = false;
+        radNotMemberFirsSecondHalf.Value = "";
+        radNotification.Value = "";
+        
+        //회원 정보
+        chkMemberNewDate.Enable = true;
+        //chkMemberNewDate.Value = "0";
+        
+        ChkMemberNewDate.Value = sChkMemberNewDate;       // 회원 전체/선택
+        CalStartDate1.Value = sCalStartDate1;          // 날짜1
+        CalEndDate1.Value = sCalEndDate1;            // 날짜2        
+        
+        calStartDate1.Enable = sCalStartDate1_Enable;      
+        calEndDate1.Enable = sCalEndDate1_Enable;       
+        
+	} else if(strcode == "2") { // 비회원 일 경우 	
+	    // 비회원 정보
+        chkNotMemberNewDate.Enable = true;
+        chkNotMemberNewDate.Value = sChkNotMemberNewDate;
+        calStartDate2.Enable = sCalStartDate2_Enable;  // 
+        calStartDate2.value = sCalStartDate2;
+        calEndDate2.Enable = sCalEndDate2_Enable;
+        calEndDate2.value = sCalEndDate2;                     
+       //chkNotMemberNewDate.Value = "0";
+       // calStartDate2.Enable = false;
+       // calStartDate2.value = "";
+       // calEndDate2.Enable = false;
+       // calEndDate2.value = "";
+        
+        radNotMemberFirsSecondHalf.Enable = true;
+        radNotMemberFirsSecondHalf.Value = sRadNotMemberFirsSecondHalf;
+        radNotification.Enable = true;
+        radNotification.value = sRadNotification;     
+        //회원 정보
+        chkMemberNewDate.Enable = false;
+        chkMemberNewDate.Value = "";
+        calStartDate1.Enable = false;
+        calStartDate1.value = "";
+        calEndDate1.Enable = false;	
+        calEndDate1.value = ""; 
+        
+	} else { //전체일 경우
+	    // 비회원 정보
+        chkNotMemberNewDate.Enable = true;
+        chkNotMemberNewDate.Value = sChkNotMemberNewDate;
+        calStartDate2.Enable = sCalStartDate2_Enable;//
+        calStartDate2.value = sCalStartDate2;
+        calEndDate2.Enable = sCalEndDate2_Enable;///////
+        calEndDate2.value = sCalEndDate2;
+        
+        radNotMemberFirsSecondHalf.Enable = true;
+        radNotMemberFirsSecondHalf.Value = sRadNotMemberFirsSecondHalf;
+        radNotification.Enable = true;
+        radNotification.Value = sRadNotification;
+        
+        //회원 정보
+        chkMemberNewDate.Enable = true;
+        chkMemberNewDate.Value = sChkMemberNewDate;
+        calStartDate1.Enable = sCalStartDate1_Enable;/////
+        calStartDate1.value = sCalStartDate1;
+         
+      //  trace(sCalStartDate1);//////////////////////////////
+      //  trace(sCalEndDate1);
+        calEndDate1.Enable = sCalEndDate1_Enable;	/////	
+        calEndDate1.value = sCalEndDate1;
+               
+	}
+	sChkNotMemberNewDateGubun = 0; // 날짜 변경 플래그, 날짜 변경시 변수에 날짜 값 넣는거 여기서는 안 넣게 하기 
+	                                // 직접 날짜 변경시에만 변수에 넣게 하기 위함 이 플래그 첨은 1(저장) 후 다시 초기화 됨(0)저장 되게 함
+}
+
+/*
+*  회원 / 비회원 제목에 년도 넣기
+*/
+function edCustYear_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) {  // 엔터시1 다음 컨트롤로 변경
+	 //  	 Static9.Text = "회비산출기준(" + edCustYear.Text + "상)";
+	 //  	 Static11.Text = "회비산출기준(" + edCustYear.Text + "상)";
+	}	
+}
+
+function lfn_Print_A(obj)
+{
+	
+     gfn_CallReportPopup("frmcust2040R01CustomerFeeGoji.rex"
+                ,"ds_ioCreateNotification"    // ds
+                ,                    // 매개변수
+                ,""                  // 수첩여부 
+                ,""                  // 서브레포트 사용여부
+    ); 
+      
+    
+}
+
+function frmcust2160MEGiroGenerate_OnTimer(obj,nEventID)
+{
+	killTimer(1);
+	lfn_ExcelFileSave();
+}
+
+/*
+* 비회원 회비부과 상하반기 선택 변경시
+*/
+function radNotMemberFirsSecondHalf_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	sRadNotMemberFirsSecondHalf = radNotMemberFirsSecondHalf.Value;
+}
+
+/*
+* 탈퇴신청한 비회원 회비고지 선택 변경시
+*/
+function radNotification_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	sRadNotification = radNotification.Value;
+}
+
+/*
+* 회원신규등록일 1
+*/
+function calStartDate1_OnChanged(obj,strOldText,strNewText)
+{
+	if(sChkNotMemberNewDateGubun == "0") {
+        sCalStartDate1 = calStartDate1.Value;
+     //   trace(sCalStartDate1 );
+	}
+}
+ 
+/*
+* 회원신규등록일 2
+*/
+function calEndDate1_OnChanged(obj,strOldText,strNewText)
+{   
+    if(sChkNotMemberNewDateGubun == "0") {
+        sCalEndDate1 = calEndDate1.Value;
+    } 
+}
+
+/*
+* 비회원 신규등록일 1
+*/
+function calStartDate2_OnChanged(obj,strOldText,strNewText)
+{
+    if(sChkNotMemberNewDateGubun == "0") {
+        scalStartDate2 = calStartDate2.Value;
+    } 	
+}
+
+/*
+* * 비회원 신규등록일 2
+*/
+function calEndDate2_OnChanged(obj,strOldText,strNewText)
+{
+    if(sChkNotMemberNewDateGubun == "0") {
+        scalEndDate2 = calEndDate2.Value;
+    } 	
+}
+
+
+
+
+// 회비고지방식
+function radFeeMode_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(radFeeMode.Value == "0") {
+		radMemberGubun.Visible = true;
+		radMemberGubun_OnChanged(radMemberGubun, radMemberGubun.Value);
+		radMemberGubun2.Visible = false;
+		
+		cboSelectYN1.Enable = true;
+		cboSelectYN2.Enable = true;
+	} else {
+		radMemberGubun.Visible = false;
+		radMemberGubun2.Visible = true;
+		radMemberGubun2_OnChanged(radMemberGubun2, radMemberGubun2.Value);
+		
+		cboSelectYN1.Enable = false;
+		cboSelectYN2.Enable = false;
+	}
+}
+
+// 소방안전지+회비고지시 회원구분 변경시
+function radMemberGubun2_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+    sChkNotMemberNewDateGubun = "1";   // 날짜 변경 플래그, 날짜 변경시 변수에 날짜 값 넣는거 여기서는 안 넣게 하기 
+	                                   // 직접 날짜 변경시에만 변수에 넣게 하기 위함 이 플래그 첨은 1(저장) 후 다시 초기화 됨(0)저장 되게 함
+	if(strCode == "0" || strCode == "1") {  // 회원일 경우 비회원 정보를 enable        
+        // 비회원 정보
+        chkNotMemberNewDate.Enable = false;
+        chkNotMemberNewDate.Value = "";
+        calStartDate2.Enable = false;
+        calStartDate2.Value = "";
+        calEndDate2.Enable = false;
+        calEndDate2.Value = "";
+        
+        radNotMemberFirsSecondHalf.Enable = false;
+        radNotification.Enable = false;
+        radNotMemberFirsSecondHalf.Value = "";
+        radNotification.Value = "";
+        
+        //회원 정보
+        chkMemberNewDate.Enable = true;
+        //chkMemberNewDate.Value = "0";
+        
+        ChkMemberNewDate.Value = sChkMemberNewDate;       // 회원 전체/선택
+        CalStartDate1.Value = sCalStartDate1;          // 날짜1
+        CalEndDate1.Value = sCalEndDate1;            // 날짜2        
+        
+        calStartDate1.Enable = sCalStartDate1_Enable;      
+        calEndDate1.Enable = sCalEndDate1_Enable;       
+        
+	} else if(strcode == "2") { // 비회원 일 경우 	
+	    // 비회원 정보
+        chkNotMemberNewDate.Enable = true;
+        chkNotMemberNewDate.Value = sChkNotMemberNewDate;
+        calStartDate2.Enable = sCalStartDate2_Enable;  // 
+        calStartDate2.value = sCalStartDate2;
+        calEndDate2.Enable = sCalEndDate2_Enable;
+        calEndDate2.value = sCalEndDate2;                     
+       //chkNotMemberNewDate.Value = "0";
+       // calStartDate2.Enable = false;
+       // calStartDate2.value = "";
+       // calEndDate2.Enable = false;
+       // calEndDate2.value = "";
+        
+        radNotMemberFirsSecondHalf.Enable = true;
+        radNotMemberFirsSecondHalf.Value = sRadNotMemberFirsSecondHalf;
+        radNotification.Enable = true;
+        radNotification.value = sRadNotification;     
+        //회원 정보
+        chkMemberNewDate.Enable = false;
+        chkMemberNewDate.Value = "";
+        calStartDate1.Enable = false;
+        calStartDate1.value = "";
+        calEndDate1.Enable = false;	
+        calEndDate1.value = ""; 
+        
+	} /*else { //전체일 경우
+	    // 비회원 정보
+        chkNotMemberNewDate.Enable = true;
+        chkNotMemberNewDate.Value = sChkNotMemberNewDate;
+        calStartDate2.Enable = sCalStartDate2_Enable;//
+        calStartDate2.value = sCalStartDate2;
+        calEndDate2.Enable = sCalEndDate2_Enable;///////
+        calEndDate2.value = sCalEndDate2;
+        
+        radNotMemberFirsSecondHalf.Enable = true;
+        radNotMemberFirsSecondHalf.Value = sRadNotMemberFirsSecondHalf;
+        radNotification.Enable = true;
+        radNotification.Value = sRadNotification;
+        
+        //회원 정보
+        chkMemberNewDate.Enable = true;
+        chkMemberNewDate.Value = sChkMemberNewDate;
+        calStartDate1.Enable = sCalStartDate1_Enable;/////
+        calStartDate1.value = sCalStartDate1;
+         
+      //  trace(sCalStartDate1);//////////////////////////////
+      //  trace(sCalEndDate1);
+        calEndDate1.Enable = sCalEndDate1_Enable;	/////	
+        calEndDate1.value = sCalEndDate1;
+               
+	} */
+	sChkNotMemberNewDateGubun = 0; // 날짜 변경 플래그, 날짜 변경시 변수에 날짜 값 넣는거 여기서는 안 넣게 하기 
+	                                // 직접 날짜 변경시에만 변수에 넣게 하기 위함 이 플래그 첨은 1(저장) 후 다시 초기화 됨(0)저장 되게 함
+}
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_1001,dsc_0003]";	// 개인정보접속기록 시스템ID 
+}
+]]></Script>
+</Window>

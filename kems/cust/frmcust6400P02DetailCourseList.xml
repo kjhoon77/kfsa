@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="400" Id="frmcust6400P02DetailCourseList" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="세부직능코드검색팝업" Top="8" Ver="1.0" Width="440" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oDetailCourseList">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="164" LineColor="user14" Right="431" TabOrder="61" Top="1" Type="Rectangle" Width="267"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect" ImageID="BTN_TEXT_COM" Left="167" OnClick="btnSelect_OnClick" Style="sty_Button" TabOrder="2" Text="선택" ToolTipText="선택" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="3" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Visible="FALSE" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="341" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oDetailCourseList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="396" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="360" Id="gdDetailCourseList" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnCellDBLClick="gdSubjectList_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="432" RowHeight="20" Style="sty_Grid" TabOrder="4" TabStop="true" Top="36" UseDBuff="true" UsePopupMenu="true" UserData="교육과목목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="428">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="31"/>
+						<col width="145"/>
+						<col width="182"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="직능코드"/>
+						<cell align="center" col="2" display="text" text="직능명"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow&#32;+&#32;1"/>
+						<cell align="center" col="1" colid="CD" display="combo"/>
+						<cell align="center" col="2" colid="DATA" display="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_TEXT_COM" Left="254" OnClick="btnCancel_OnClick" Style="sty_Button" TabOrder="6" Text="선택취소" ToolTipText="선택취소" Top="4" Transparent="TRUE" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust6400P02DatailCourseList.xml
+ * 설명 : 직능코드검색팝업
+ * 작성일 : 2010.6.3
+ * 작성자 : 정현호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    if ( sGROUPCD != "") {
+        //lfn_Search();
+        gfn_SearchCustomerDetailCourseFullName(sGROUPCD, ds_oDetailCourseList, "0");			// 세부고객직능 조회
+    }
+    
+    
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+
+
+/* 사용자 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+function btnSelect_OnClick(obj)
+{
+    var arrArg = Array(2);		arrArg[0] = ds_oDetailCourseList.GetColumn(ds_oDetailCourseList.currow, "CD"); // 직능코드		arrArg[1] = ds_oDetailCourseList.GetColumn(ds_oDetailCourseList.currow, "DATA"); // 직능명		Close(arrArg);}
+
+function gdSubjectList_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+    btnSelect_OnClick(obj);
+}
+
+function edTrainingSeatNo_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) {
+        lfn_Search();
+	}
+}
+
+function btnCancel_OnClick(obj)
+{
+	var arrArg = Array(2);
+		arrArg[0] = null; // 직능코드
+		arrArg[1] = null; // 직능명
+		Close();
+}
+]]></Script>
+</Window>

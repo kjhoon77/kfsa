@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="176" Id="frmcust2060MMonthMatching" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="수납현황&#32;회계와&#32;일치여부&#32;확인" Top="8" Ver="1.0" Width="456" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCusFeeChk">
+				<Contents>
+					<colinfo id="CFCCHKGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFCCLOSEGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFCYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFCMONTH" size="2" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iCusFeeChk">
+				<Contents>
+					<colinfo id="CFCCHKGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFCCLOSEGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFCYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFCMONTH" size="2" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="172" Height="108" Id="Shape1" Left="4" LineColor="user15" Right="452" TabOrder="11" Top="64" Type="Rectangle" Width="448"></Shape>
+		<Shape Bottom="60" Height="28" Id="Shape0" Left="4" LineColor="user15" Right="452" TabOrder="10" Top="32" Type="Rectangle" Width="448"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="6" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="360">
+			<Contents></Contents>
+		</Div>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="361" LineColor="user14" Right="452" TabOrder="7" Top="1" Type="Rectangle" Width="91"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="364" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbProcDate" Left="164" Style="sty_Label" TabOrder="8" Text="해당년월" Top="36" VAlign="Middle" Width="68"></Static>
+		<Static Height="92" Id="lbTextBlue" Left="12" Style="sty_TextBlue" TabOrder="9" Text="월보&#32;출력&#32;후&#32;반드시&#32;확인&#32;바랍니다.&#13;&#10;&#13;&#10;수납현황과&#32;회계와의&#32;금액이&#32;일치하면&#32;&apos;일치&apos;를&#32;눌러&#32;주시고,&#13;&#10;&#13;&#10;금액이&#32;일치하지&#32;않으면&#32;&apos;불일치&apos;를&#32;누르신&#32;후&#32;금액을&#32;맞추시고&#13;&#10;&#13;&#10;&apos;일치&apos;를&#32;눌러&#32;주십시오" Top="72" VAlign="Middle" Width="436"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="medProcDate" Left="236" LeftMargin="2" Mask="####년##월" OnCharChanged="medProcDate_OnCharChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="3" Top="36" Type="STRING" UserData="S" Width="76"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnMatched" ImageID="BTN_TEXT_04" Left="316" OnClick="btnMatched_OnClick" Style="sty_Button" TabOrder="4" Text="일치" Top="35" Width="66"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnUnmatched" ImageID="BTN_TEXT_04" Left="384" OnClick="btnUnmatched_OnClick" Style="sty_Button" TabOrder="5" Text="불일치" Top="35" Width="66"></Button>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="12" Text="지부" Top="36" VAlign="Middle" Width="68"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="79" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="2" Top="35" UserData="S" Width="82"></Combo>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust2060MMonthMatching.xml
+ * 설명 : 수납현황 회계와 일치여부 확인
+ * 작성일 : 2009.12.28
+ * 작성자 : 김동현
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    gfn_SearchJibu(cbxJibu, "Y", "선택"); // 지부 코드 조회
+    medProcDate.Value = left(getDate(), 6);
+    cbxJibu.SetFocus();
+    
+}
+
+/**
+ * 폼 사이즈
+ */
+function Form_OnSize(obj,nCx,nCy,nState) {
+}
+
+/**
+ * 버튼 실행 권한
+ */
+function lfn_SetFormAuth(bStatus) {
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 기본 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 일치
+ */
+function btnMatched_OnClick(obj) {
+
+    ds_iCusFeeChk.ClearData();
+    ds_iCusFeeChk.InsertRow(0);
+    ds_iCusFeeChk.SetColumn(0, "CFCCHKGUBUN", "0");
+
+    var sRtn = lfn_MatchedProc();
+    if (sRtn) {
+        gfn_Alert("일치로 적용되었습니다.");
+    }
+
+}
+
+/**
+ * 불일치
+ */
+function btnUnmatched_OnClick(obj) {
+
+    ds_iCusFeeChk.ClearData();
+    ds_iCusFeeChk.InsertRow(0);
+    ds_iCusFeeChk.SetColumn(0, "CFCCHKGUBUN", "1");
+
+    var sRtn = lfn_MatchedProc();
+    if (sRtn) {
+        gfn_Alert("불일치로 적용되었습니다.");
+    }
+
+}
+
+/**
+ * 처리
+ */
+function lfn_MatchedProc() {
+
+    if (gfn_IsNull(cbxJibu.Value)) {
+        gfn_Alert("지부를 선택해 주십시오.");
+        return false;
+    }
+
+    var sProcYear = left(medProcDate.Value, 4);
+    var sProcMonth = right(medProcDate.Value, 2);
+
+    ds_oCusFeeChk.ClearData();
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("cust:searchCust2060CusFeeChk", false);
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_oCusFeeChk=ds_oCusFeeChk"	// outDs
+        ,"CFCGTMGNO=" + quote(cbxJibu.Value)
+            + " CFCYEAR=" + quote(sProcYear)
+            + " CFCMONTH=" + quote(sProcMonth)	// args
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+
+    if (ds_oCusFeeChk.GetRowCount() > 0 && ds_oCusFeeChk.GetColumn(0, "CFCCLOSEGUBUN") == "0") { //마감일 경우
+        gfn_Alert(sProcYear + "년 " + sProcMonth + "월 " + "월보는 이미 마감되었습니다.");
+        return false;
+    }
+
+    ds_iCusFeeChk.SetColumn(0, "CFCCLOSEGUBUN", "1");
+    ds_iCusFeeChk.SetColumn(0, "CFCGTMGNO", cbxJibu.Value);
+    ds_iCusFeeChk.SetColumn(0, "CFCYEAR", sProcYear);
+    ds_iCusFeeChk.SetColumn(0, "CFCMONTH", sProcMonth);
+
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("cust:insertCust2060CusFeeChk", "", 0, "");
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iCusFeeChk=ds_iCusFeeChk"	// inDs
+        ,""	// outDs
+        ,""	// args 
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+    
+    return true;
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 이벤트
+/////////////////////////////////////////////////////////////////////////////////
+
+function medProcDate_OnCharChanged(obj,strPreText,strPostText) {
+	if (right(medProcDate.Value, 2) < "01") {
+        medProcDate.Value = left(medProcDate.Value, 4) + "01";
+	} else if (right(medProcDate.Value, 2) > "12") {
+        medProcDate.Value = left(medProcDate.Value, 4) + "12";
+	}
+}
+]]></Script>
+</Window>

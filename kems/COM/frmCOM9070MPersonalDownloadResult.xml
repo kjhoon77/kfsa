@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="600" Id="frmCOM9070MPersonalDownloadResult" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="개인정보&#32;다운로드&#32;점검결과&#32;확인" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioJibu">
+				<Contents>
+					<colinfo id="DEPTCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DEPTNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioMonth">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>01</CD>
+						<DATA>1월</DATA>
+					</record>
+					<record>
+						<CD>02</CD>
+						<DATA>2월</DATA>
+					</record>
+					<record>
+						<CD>03</CD>
+						<DATA>3월</DATA>
+					</record>
+					<record>
+						<CD>04</CD>
+						<DATA>4월</DATA>
+					</record>
+					<record>
+						<CD>05</CD>
+						<DATA>5월</DATA>
+					</record>
+					<record>
+						<CD>06</CD>
+						<DATA>6월</DATA>
+					</record>
+					<record>
+						<CD>07</CD>
+						<DATA>7월</DATA>
+					</record>
+					<record>
+						<CD>08</CD>
+						<DATA>8월</DATA>
+					</record>
+					<record>
+						<CD>09</CD>
+						<DATA>9월</DATA>
+					</record>
+					<record>
+						<CD>10</CD>
+						<DATA>10월</DATA>
+					</record>
+					<record>
+						<CD>11</CD>
+						<DATA>11월</DATA>
+					</record>
+					<record>
+						<CD>12</CD>
+						<DATA>12월</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioYear">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oDownloadChk">
+				<Contents>
+					<colinfo id="PDCCHKGUBUN" size="3" summ="default" type="STRING"/>
+					<colinfo id="PDCCLOSEGUBUN" size="3" summ="default" type="STRING"/>
+					<colinfo id="PDCREGDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="PDCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="PDCMONTH" size="2" summ="default" type="STRING"/>
+					<colinfo id="PDCREGSABUN" size="20" summ="default" type="STRING"/>
+					<colinfo id="PDCYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="SEL" size="1" summ="default" type="STRING"/>
+					<colinfo id="PDCCHKREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="PNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTDEPTNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iDownloadChk">
+				<Contents>
+					<colinfo id="CFCCHKGUBUN" size="3" type="STRING"/>
+					<colinfo id="CFCCLOSEGUBUN" size="3" type="STRING"/>
+					<colinfo id="CFCDATE" size="8" type="STRING"/>
+					<colinfo id="CFCGTMGNO" size="4" type="STRING"/>
+					<colinfo id="CFCMONTH" size="2" type="STRING"/>
+					<colinfo id="CFCSABUN" size="20" type="STRING"/>
+					<colinfo id="CFCYEAR" size="4" type="STRING"/>
+					<colinfo id="GTDEPTNM" size="20" type="STRING"/>
+					<colinfo id="SEL" size="1" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="596" Height="496" Id="Shape1" Left="4" LineColor="user15" Right="794" TabOrder="14" Top="100" Type="Rectangle" Width="790"></Shape>
+		<Shape Bottom="92" Height="44" Id="Shape0" Left="4" LineColor="user15" Right="794" TabOrder="11" Top="48" Type="Rectangle" Width="790"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="10" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="336">
+			<Contents></Contents>
+		</Div>
+		<Static Align="Center" Height="20" Id="Static1" Left="20" Style="sty_LabelGruopBox" TabOrder="12" Text="조회&#32;조건" Top="40" VAlign="Middle" Width="112"></Static>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="13" Text="지부" Top="64" VAlign="Middle" Width="60"></Static>
+		<Combo Border="Flat" CodeColumn="DEPTCD" DataColumn="DEPTNM" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_ioJibu" Left="71" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="4" Top="63" UserData="S" Width="118"></Combo>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="528" LineColor="user14" Right="793" TabOrder="15" Top="1" Type="Rectangle" Width="265"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="705" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="531" OnClick="lfn_Print" Style="sty_Button" TabOrder="3" ToolTipText="출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="618" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="1" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbDate" Left="192" Style="sty_Label" TabOrder="16" Text="년월" Top="64" VAlign="Middle" Width="60"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxMonth" INDEX="0" InnerDataset="ds_ioMonth" Left="323" OnFocus="gfn_ComponentOnFocus" OnKeyDown="cbxMonth_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="6" Top="63" UserData="S" Value="1" Width="50"></Combo>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oDownloadChk" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="592" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="488" Id="dsCloseCheck" InputPanel="FALSE" Left="7" LineColor="default" MinWidth="100" OnHeadClick="lfn_GridCheck" Right="791" RowHeight="30" Style="sty_Grid" TabOrder="9" TabStop="true" Top="104" UseDBuff="true" UsePopupMenu="true" UserData="개인정보다운로드&#32;점검결과&#32;목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="784">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="22"/>
+						<col width="81"/>
+						<col width="68"/>
+						<col width="327"/>
+						<col width="68"/>
+						<col width="87"/>
+						<col width="136"/>
+					</columns>
+					<head>
+						<cell col="0" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" display="text" text="지부"/>
+						<cell align="center" col="2" display="text" text="점검결과"/>
+						<cell align="center" col="3" display="text" text="조치사항"/>
+						<cell align="center" col="4" display="text" text="점검자"/>
+						<cell align="center" col="5" display="text" text="점검일자"/>
+						<cell col="6" display="text" text="정보지원과&#32;확인여부"/>
+					</head>
+					<body>
+						<cell col="0" colid="SEL" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" colid="GTDEPTNM" display="text"/>
+						<cell align="center" col="2" colid="CHKGUBUN" display="text"/>
+						<cell align="left" col="3" colid="PDCCHKREMARK" display="text"/>
+						<cell align="center" col="4" colid="PNM" display="text"/>
+						<cell align="center" col="5" colid="REGDATE" display="text" Mask="####-##-##"/>
+						<cell align="center" col="6" colid="CLOSEGUBUN" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="376" OnClick="lfn_Search" Style="sty_Button" TabOrder="7" ToolTipText="조회" Top="64" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnProc" ImageID="BTN_TEXT_05" Left="624" OnClick="btnProc_OnClick" Style="sty_Button" TabOrder="8" Text="확인처리" ToolTipText="확인처리" Top="64" Width="80"></Button>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxYear" INDEX="0" InnerDataset="ds_ioYear" Left="255" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="5" Top="63" UserData="S" Value="1" Width="66"></Combo>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnProcCancel" ImageID="BTN_TEXT_05" Left="706" OnClick="btnProcCancel_OnClick" Style="sty_Button" TabOrder="17" Text="확인취소" ToolTipText="확인취소" Top="64" Width="80"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM9070MPersonalDownloadResult.xml
+ * 설명 : 개인정보 다운로드 점검결과 확인
+ * 작성일 : 2019.12.10
+ * 작성자 : 정현호
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+//    gfn_SearchJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회
+    // 부서정보 조회 
+    lfn_DeptSearch();
+    
+    cbxJibu.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");    
+    
+    
+    
+    var currYear = toNumber(left(getDate(), 4));
+    ds_ioYear.ClearData();
+    
+    for (var i=-4; i<=1; i++) {
+        ds_ioYear.InsertRow(0);
+        ds_ioYear.SetColumn(0, "CD", currYear + i);
+        ds_ioYear.SetColumn(0, "DATA", currYear + i);
+    }
+    
+	if (substr(getDate(), 4, 2) == "01") { 
+		cbxYear.Value = toNumber(currYear)-1;
+		cbxMonth.Value = "12";
+	} else {
+		cbxYear.Value = currYear;
+		cbxMonth.Value = lpad(toNumber(substr(getDate(), 4, 2))-1, "0", 2);
+	}
+
+    cbxJibu.SetFocus();
+
+}
+
+/**
+ * 폼 사이즈
+ */
+function Form_OnSize(obj,nCx,nCy,nState) {
+}
+
+/**
+ * 버튼 실행 권한
+ */
+function lfn_SetFormAuth(bStatus) {
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 기본 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 초기화
+ */
+function lfn_Cancel(obj) {
+    cbxJibu.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+    cbxYear.Value = currYear;
+    cbxMonth.Value = substr(getDate(), 4, 2);
+    dsCloseCheck.SetCellProp("head", 0, "text", 0);
+}
+
+/*
+ * 기능 : 부서정보 조회
+ */
+function lfn_DeptSearch(obj) {
+
+    ds_ioJibu.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("sys:search0093DeptList", false);
+	
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioJibu=ds_ioDeptList"	// outDs
+		,""
+		,"lfn_AfterDeptSearch"
+		,false
+	);
+}
+
+/*
+ * 기능 : 부서정보 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterDeptSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+	// 부서정보 '전체'
+	ds_ioJibu.InsertRow(0);
+	ds_ioJibu.SetColumn(0,"DEPTNM","전체");
+}
+
+/**
+ * 조회
+ */
+function lfn_Search(obj) {
+
+    dsCloseCheck.SetCellProp("head", 0, "text", 0);
+
+    ds_oDownloadChk.ClearData();
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("com:searchPersonalDownloadChk", false);
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_oDownloadChk=ds_oDownloadChk"	// outDs
+        ,"PDCGTMGNO=" + quote(cbxJibu.Value)
+            + " PDCYEAR=" + quote(cbxYear.Value)
+            + " PDCMONTH=" + quote(cbxMonth.Value)	// args
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+    
+}
+
+/**
+ * 확인처리
+ */
+function btnProc_OnClick(obj) {
+    
+    ds_iDownloadChk.ClearData();
+    ds_oDownloadChk.Filter("SEL='1'");
+    ds_iDownloadChk.CopyF(ds_oDownloadChk);
+    ds_oDownloadChk.UnFilter();
+    
+    if (ds_iDownloadChk.GetRowCount() < 1) {
+        gfn_Alert("확인할 자료를 선택해 주십시오.");
+        return;
+    }
+    
+    if (!gfn_Confirm("확인처리 하시겠습니까?")) {
+        return;
+    }
+
+    for (var i=0; i<=ds_iDownloadChk.GetRowCount(); i++) {
+        ds_iDownloadChk.SetColumn(i, "PDCCLOSEGUBUN", "0");
+    }
+
+    tit_clearActionInfo();
+    tit_addMultiActionInfo("com:updatePersonalDownloadResult", "", 0, "", "N");
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iDownloadChk=ds_iDownloadChk"	// inDs
+        ,""	// outDs
+        ,""	// args 
+        ,"lfn_AfterSave"
+        ,false
+        ,false
+        ,true
+    );	
+
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+// 공통
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 저장 후 처리
+ */
+function lfn_AfterSave(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        gfn_Alert("오류가 발생되었습니다. 정보지원과에 문의 하시기 바랍니다.");
+        return "Transaction Error!";
+    }
+    
+    gfn_Alert("결과 확인이 완료되었습니다.");
+    lfn_Search();
+}
+
+function cbxMonth_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,LLParam,HLParam) {
+
+    if (nChar = "13") {
+        lfn_Search();
+    }
+    
+	gfn_EnterNextFocus(obj,nChar,bShift,bCtrl,bAlt,LLParam,HLParam);
+}
+
+// 확인취소
+function btnProcCancel_OnClick(obj)
+{
+    
+    ds_iDownloadChk.ClearData();
+    ds_oDownloadChk.Filter("SEL='1'");
+    ds_iDownloadChk.CopyF(ds_oDownloadChk);
+    ds_oDownloadChk.UnFilter();
+    
+    if (ds_iDownloadChk.GetRowCount() < 1) {
+        gfn_Alert("확인취소할 자료를 선택해 주십시오.");
+        return;
+    }
+    
+    if (!gfn_Confirm("확인취소 하시겠습니까?")) {
+        return;
+    }
+
+    for (var i=0; i<=ds_iDownloadChk.GetRowCount(); i++) {
+        ds_iDownloadChk.SetColumn(i, "PDCCLOSEGUBUN", "1");
+    }
+
+    tit_clearActionInfo();
+    tit_addMultiActionInfo("com:updatePersonalDownloadResult", "", 0, "", "N");
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iDownloadChk=ds_iDownloadChk"	// inDs
+        ,""	// outDs
+        ,""	// args 
+        ,"lfn_AfterSave"
+        ,false
+        ,false
+        ,true
+    );	
+}
+
+function lfn_Print(obj)
+{
+    if (ds_oDownloadChk.RowCount() < 1) {
+        gfn_Alert("출력할 데이터가 없습니다.");
+        return false;
+    }
+   
+    gfn_CallReportPopup("frmCOM9070R01PersonalDownloadResult.rex"
+                      , "ds_oDownloadChk"
+                      , "");
+}
+]]></Script>
+</Window>

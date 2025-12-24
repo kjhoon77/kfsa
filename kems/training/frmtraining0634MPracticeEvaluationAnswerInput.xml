@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmtraining0634MPracticeEvaluationAnswerInput" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="심폐소생술&#32;실기시험&#32;평가답안&#32;점수입력" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEvaluationJumsuInput">
+				<Contents>
+					<colinfo id="EOMGGTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTDEPTNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="EOMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="EOTCCOURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="EOYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMORDER" size="256" summ="default" type="STRING"/>
+					<colinfo id="EOHJUBSUNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="EJMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="EJPERSONNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="EJBIRTHDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="EJJUBSUGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="EJJUBSUREASON" size="256" summ="default" type="STRING"/>
+					<colinfo id="EJREJUBSUYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="EJCHASUGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="EISITEMSCORE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ITEMCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUBJECT1SCORE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUBJECT2SCORE" size="256" summ="default" type="STRING"/>
+					<colinfo id="EISRESULT" size="256" summ="default" type="STRING"/>
+					<colinfo id="APLEXAMNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="EJOLDPASSYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="EXAMDATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSort">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>EOHEXAMSEATNO</CD>
+						<DATA>좌석번호</DATA>
+					</record>
+					<record>
+						<CD>TPPERSONNM</CD>
+						<DATA>이름</DATA>
+					</record>
+					<record>
+						<CD>EOHJUBSUNO</CD>
+						<DATA>접수번호</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSunab">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>환불</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>수납</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioExcel">
+				<Contents>
+					<colinfo id="EISEOMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="EISAPLEXAMNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="EISPERSONNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="EISSUBJECTGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="EISITEMSCORE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioExcelCopy">
+				<Contents>
+					<colinfo id="EISEOMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="EISAPLEXAMNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="EISPERSONNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="EISSUBJECTGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="EISITEMSCORE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioExamResult">
+				<Contents>
+					<colinfo id="EREJMGNO" size="255" summ="default" type="STRING"/>
+					<colinfo id="ERSEQ" size="255" summ="default" type="STRING"/>
+					<colinfo id="ERREPEATNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERAPLEXAMNO" size="255" summ="default" type="STRING"/>
+					<colinfo id="ERPASSYN" size="255" summ="default" type="STRING"/>
+					<colinfo id="ERPASSDATE" size="255" summ="default" type="STRING"/>
+					<colinfo id="ERRANK" size="256" summ="default" type="STRING"/>
+					<colinfo id="EJPASSYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERSCORE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ER2SCORE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_ioExcel" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="48" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="16" Id="gdExcel" InputPanel="FALSE" Left="288" LineColor="default" MinWidth="100" Right="312" RowHeight="20" Style="sty_Grid" TabOrder="22" TabStop="true" Top="32" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="24">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="98"/>
+						<col width="108"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="수험번호"/>
+						<cell align="center" col="2" display="text" text="성명"/>
+						<cell align="center" col="3" display="text" text="점수"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="EISEOMGNO" display="text"/>
+						<cell align="center" col="1" colid="EISAPLEXAMNO" display="text"/>
+						<cell align="left" col="2" colid="EISPERSONNM" display="text"/>
+						<cell align="left" col="3" colid="EISITEMSCORE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="88" Height="32" Id="shpGubunBox" Left="4" LineColor="user15" Right="796" TabOrder="17" Top="56" Type="Rectangle" Width="792"></Shape>
+		<Shape Bottom="53" Height="52" Id="shpBtnBox" Left="352" LineColor="user14" Right="796" TabOrder="16" Top="1" Type="Rectangle" Width="444"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="11" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="344">
+			<Contents></Contents>
+		</Div>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_ioEvaluationJumsuInput" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="584" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="464" Id="gdExamJubsu" InputPanel="FALSE" Left="3" LineColor="default" OnHeadClick="lfn_SortGrid_OnHeadClick" OnKeyDown="Div4_edEduPost1_OnKeyDown" Right="795" RowHeight="20" Style="sty_Grid" TabOrder="12" TabStop="true" Top="120" UseDBuff="true" UsePopupMenu="true" UserData="심폐소생술&#32;실기시험결과&#32;목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="54"/>
+						<col width="105"/>
+						<col width="47"/>
+						<col width="63"/>
+						<col width="70"/>
+						<col width="92"/>
+						<col width="80"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="65"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="직능"/>
+						<cell align="center" col="2" display="text" text="회차"/>
+						<cell align="center" col="3" display="text" text="응시번호"/>
+						<cell align="center" col="4" display="text" text="성명"/>
+						<cell align="center" col="5" display="text" text="생년월일"/>
+						<cell align="center" col="6" display="text" text="시험일자"/>
+						<cell align="center" col="7" display="text" text="이론점수"/>
+						<cell align="center" bkcolor="blanchedalmond" col="8" display="text" text="실기점수"/>
+						<cell align="center" col="9" display="text" text="합산점수"/>
+						<cell align="center" col="10" display="text" text="결과"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="GTDEPTNM" display="text"/>
+						<cell align="center" col="1" colid="TCCOURSENM" display="normal"/>
+						<cell align="center" col="2" colid="EOEXAMORDER" display="combo"/>
+						<cell align="center" col="3" colid="EOHJUBSUNO" display="text"/>
+						<cell align="center" col="4" colid="EJPERSONNM" display="text"/>
+						<cell align="center" col="5" colid="BIRTHDAY" display="text"/>
+						<cell align="center" col="6" colid="EXAMDATE" display="text"/>
+						<cell align="right" col="7" colid="ER1CHASUSCORE" display="text"/>
+						<cell align="right" bkcolor="blanchedalmond" col="8" colid="EISITEMSCORE" display="text"/>
+						<cell align="right" col="9" colid="SCORESUM" display="text"/>
+						<cell align="center" col="10" colid="EISRESULT" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="722" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="10" Top="96" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="358" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="446" OnClick="lfn_Init" Style="sty_Button" TabOrder="2" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="lfn_localExcel" Style="sty_Button" TabOrder="3" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="4" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="5" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="345" Style="sty_Label" TabOrder="13" Text="직능" Top="62" UserData="S" VAlign="Middle" Width="80"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_oCourse" Left="428" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="8" Top="61" UserData="S:직능" Width="196"></Combo>
+		<Static Align="Center" Height="20" Id="lbExamYear" Left="208" Style="sty_Label" TabOrder="14" Text="년도" Top="62" UserData="S" VAlign="Middle" Width="80"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edExamYear" ImeMode="native" Left="292" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="7" Top="62" UserData="I:년도" Width="36"></Edit>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="91" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="6" Top="61" UserData="I:지부" Width="101"></Combo>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="15" Text="지부" Top="62" UserData="S" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Height="20" Id="lbTrainingOrder" Left="642" Style="sty_Label" TabOrder="18" Text="회차" Top="62" VAlign="Middle" Width="80"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edExamOrder" ImeMode="native" Left="726" LeftMargin="2" MaxLength="3" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="lfn_EnterNextFocus" Style="sty_Edit" TabOrder="9" Top="62" UserData="S:회차" Width="28"></Edit>
+		<Static Align="Center" Height="20" Id="Static0" Left="5" Style="sty_LabelStat" TabOrder="20" Text="시험응시건수" Top="96" VAlign="Middle" Width="90"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medExamList" Left="101" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="19" Top="96" Width="55"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSave" ImageID="BTN_TEXT_10" Left="446" OnClick="lfn_Save" Style="sty_Button" TabOrder="21" Text="답안점수엑셀등록(F4)" ToolTipText="답안점수엑셀등록" Top="28" Width="145"></Button>
+		<Static Border="Flat" Color="brown" Font="굴림,11,Bold" Height="20" Id="Static1" Left="322" TabOrder="23" Text="※&#32;회차를&#32;먼저&#32;조회하신&#32;후&#32;답안점수를&#32;등록하세요!" Top="93" Width="382"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDelete" ImageID="BTN_COM_DEL" Left="358" OnClick="lfn_Delete" Style="sty_Button" TabOrder="24" ToolTipText="삭제&#32;저장" Top="4" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0634MPracticeEvaluationAnswerInput.xml
+ * 설명 : 심폐소생술 실기시험 평가답안 점수입력
+ * 작성일 : 2016.08.01
+ * 작성자 : 정현호
+ */
+
+#include "LIB::training.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+	 // 평가관리과와 관리자만 삭제권한 부여
+	if (gds_oUserInfo.GetColumn(0, "PDEPTCD") == "0253" ||
+		gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "SM") {
+		
+		btnDelete.Enable = true;
+		
+	} else {
+		btnDelete.Enable = false;
+		
+	}
+
+
+
+    // 공통 코드 조회
+    gfn_SearchTrainingCourse("T", ds_oCourse, "Y", ""); // 직능 코드 조회
+    cbxCourse.Value = "51";
+    
+    cbxCourse.Enable = false;
+    
+    gfn_SearchJibu(cbxJibu, "Y", "선택"); // 지부 코드 조회  
+
+    edExamOrder.SetFocus();
+    
+    edExamYear.Text = left(GetDate(), 4);
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdExamJubsu.Height = nCy - gdExamJubsu.Top - 4;
+        gdExamJubsu.Width = nCx - gdExamJubsu.Left - 4;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+        
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+	edExamOrder.Text = iif(gfn_IsNull(edExamOrder.Text), "", lpad(edExamOrder.Text, "0", 3)); 
+    /////////////////////  
+        
+    ds_ioEvaluationJumsuInput.ClearData(); // 데이타셋 초기화    
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("training:searchExam0634EvaluationJumsuInput", false);
+	
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioEvaluationJumsuInput=ds_oEvaluationJumsuInput"	// outDs
+		,"EOMGGTMGNO=" + quote(cbxJibu.value)   //-- 지부
+              +" EOYEAR=" + quote(edExamYear.text)  //-- 년도 
+              +" EOTCCOURSECD=" + quote(cbxCourse.value)   //-- 직능              
+              +" EOEXAMORDER=" + quote(edExamOrder.text) // -- 회차             
+              // args 
+		,"lfn_AfterSearchEvaluationJumsuInput"
+		,false
+	);
+}
+
+
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 결강자 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchEvaluationJumsuInput(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SearchMessage(gdExamJubsu); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+    medExamList.Value = ds_ioEvaluationJumsuInput.count();
+}
+
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+
+}
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdExamJubsu, 0); // 멀티 정렬을 실행한다.
+}
+
+/* 회차 포커스 아웃될때 자동 0 입력 */
+function edExamOrder_OnKillFocus(obj)
+{
+	gfn_ComponentOnKillFocus(obj);
+
+    if (obj.Text != "") {
+        obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3));
+    }
+}
+
+function lfn_ComponentOnKillFocus(obj)
+{
+	gfn_ComponentOnKillFocus(obj);
+	obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3)); 
+	lfn_Search();
+}
+
+function lfn_EnterNextFocus(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) {
+        gfn_ComponentOnKillFocus(obj);
+        obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3));  
+        lfn_Search();
+    }  
+}
+
+function lfn_localExcel(obj)
+{  
+    if (ds_ioEvaluationJumsuInput.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return false;
+    }
+	// 개인정보 다운로드 사유 등록
+	var parValue = "sCode=1216";	// COMMON.PERSONALDOWNLOADH
+		parValue += " sRowCnt=" + ds_ioEvaluationJumsuInput.GetRowCount();
+		parValue += " sTitle=" + quote(gdExamJubsu.UserData);
+	ls_IsRemark = Dialog("COM::frmCOM2100PDownloadRemark.xml", parValue, "", "", "", -1, -1);	
+
+	if (ls_IsRemark == "" || ls_IsRemark == null || ls_IsRemark == "FAIL") {
+		return false;
+	}
+	lfn_Excel(obj);
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+
+}
+
+function lfn_Save(obj)
+{
+
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+ 
+    if (ds_ioEvaluationJumsuInput.GetCount() == 0) {
+    
+        gfn_Alert("조회된 내역이 없습니다.\n\n조회한 후 점수를 입력하세요!");
+        
+        return false;
+    }
+    
+    var sInputCnt1 = 0;
+    var sInputCnt2 = 0;
+
+    for (var i = 0; i < ds_ioEvaluationJumsuInput.GetCount(); i++ ) { 
+    
+		if (ds_ioEvaluationJumsuInput.GetColumn(i, "ER1CHASUSCORE") == "입력안됨") {	//이론점수
+		
+			sInputCnt1 = sInputCnt1 + 1;
+		
+		}
+    
+		if (ds_ioEvaluationJumsuInput.GetColumn(i, "EISITEMSCORE") <> "입력안됨") {		//실기점수
+		
+			sInputCnt2 = sInputCnt2 + 1;
+		
+		}
+		
+	}
+	
+	if (sInputCnt1 > 0 ) {
+	
+		gfn_Alert("이론점수가 입력안된 건이 " + sInputCnt1 + "건 있습니다.\n\n이론점수 입력 후 실기점수를 입력하세요!");
+		
+		return false;
+		
+	}
+	
+	
+	if (sInputCnt2 > 0 ) {
+	
+		gfn_Alert("실기점수가 입력된 건이 " + sInputCnt2 + "건 있습니다.\n\n확인 후 입력하세요!");
+		
+	}
+    
+    gfn_Excel2Grid("gdExcel", "", 0); // 엑셀로딩팝업 호출
+    if (ds_ioExcel.GetCount() < 1) { // 로딩할 데이타가 없는 경우
+        gfn_Alert("등록할 실기평가답안 점수가 없습니다.");
+        return false;
+    } else { // 저장 실행 ( 전체 삭제 후 전체 저장 )
+        lfn_AfterExcelCopy();
+    }
+    
+}
+
+
+/*
+ *  Excel 그리드를 copy 함
+ *  delete 상태값이 없는 DataSet을 이용해서 Table 를 Delete all 하기 위해서
+ *  select  할때 처럼 함수를 사용하면서 delete 쿼리를 호출함
+ */
+ // Excel 그리드에서 키값을 추출해서 삭제하려면 아래 주석을 풀어서 사용하면 됨
+function lfn_AfterExcelCopy() {
+
+    var ln_RowNo = "";
+    var ln_EPCOURSECD_Temp = Array(3);
+    var ln_EPNUMTYPE_Temp = Array(3);
+    var ln_EPALPHATYPE_Temp = Array(3);
+    var ln_Temp0 = "";
+    var ln_Temp1 = "";
+	var ln_OldAPLEXAMNO = "";
+	
+	var ln_1Score = 0;
+	
+	var ln_2Score = 0;
+	
+	var ln_ScoreSum = 0;
+	
+	var ln_CurrRow = "";
+
+	var ls_PassScore = 60; //합격 점수
+	
+	var ls_SubjectPassScore = 40; //과락 점수
+
+    ds_ioExcelCopy.ClearData();
+	ds_ioExamResult.ClearData();
+	
+    //ds_ioExamResult.AddRow();
+    
+    var ln_ExamResultRowCnt = 0;
+    
+    for (var i = 0; i < ds_ioExcel.GetCount(); i++ ) { //ds_ioExcel.GetCount()
+
+        ds_ioExcelCopy.AddRow();
+
+        ds_ioExcelCopy.SetColumn(i, "EISEOMGNO",			ds_ioEvaluationJumsuInput.GetColumn(0, "EOMGNO"));
+        ds_ioExcelCopy.SetColumn(i, "EISAPLEXAMNO",			ds_ioExcel.GetColumn(i, "EISAPLEXAMNO"));
+        ds_ioExcelCopy.SetColumn(i, "EISPERSONNM",			ds_ioExcel.GetColumn(i, "EISPERSONNM"));
+        ds_ioExcelCopy.SetColumn(i, "EISSUBJECTGUBUN",		"1");
+        
+        ds_ioExcelCopy.SetColumn(i, "EISITEMSCORE",			Round(ds_ioExcel.GetColumn(i, "EISITEMSCORE"), 1));
+        
+		// 점수등록
+		ln_1Score = ds_ioEvaluationJumsuInput.GetColumn(i, "ER1CHASUSCORE");	// 이론점수
+				
+		ds_ioExamResult.AddRow();
+		
+		ln_2Score = toNumber(Round(ds_ioExcel.GetColumn(i, "EISITEMSCORE"), 1)); // 실기점수
+		
+		ln_ScoreSum = (toNumber(ln_1Score)+toNumber(ln_2Score))/2;	// 이론점수+실기점수
+		
+		ds_ioExamResult.SetColumn(ln_ExamResultRowCnt, "EREJMGNO", ds_ioEvaluationJumsuInput.GetColumn(i, "EJMGNO"));
+		
+		ds_ioExamResult.SetColumn(ln_ExamResultRowCnt, "ERAPLEXAMNO", ds_ioExcel.GetColumn(i, "EISAPLEXAMNO"));
+		
+		ds_ioExamResult.SetColumn(ln_ExamResultRowCnt, "ERPASSDATE", ds_ioEvaluationJumsuInput.GetColumn(i, "EOEXAMDATE"));
+		
+		ds_ioExamResult.SetColumn(ln_ExamResultRowCnt, "ERSCORE", ln_ScoreSum);	// 이론+ 실기점수
+		
+		ds_ioExamResult.SetColumn(ln_ExamResultRowCnt, "ER2SCORE", ln_2Score);	// 실기점수
+
+
+		// 합격여부 계산
+		// 이론+실기 60점 이상, 이론,실기별 40점 미만 과락
+		if (toNumber(ln_ScoreSum) >= toNumber(ls_PassScore)) {	// 이론+실기 >= 60
+			if (toNumber(ln_1Score) >= toNumber(ls_SubjectPassScore) && toNumber(ln_2Score) >= toNumber(ls_SubjectPassScore)) {	//이론>=40 실기>=40
+			
+				ds_ioExamResult.SetColumn(ln_ExamResultRowCnt, "ERPASSYN", "Y");	// 합격
+				ds_ioExamResult.SetColumn(ln_ExamResultRowCnt, "EJPASSYN", "Y");	// 합격
+				
+			} else {
+			
+				ds_ioExamResult.SetColumn(ln_ExamResultRowCnt, "ERPASSYN", "N");	// 불합격
+				ds_ioExamResult.SetColumn(ln_ExamResultRowCnt, "EJPASSYN", "N");	// 불합격
+				ds_ioExamResult.SetColumn(ln_ExamResultRowCnt, "ERPASSDATE", "");
+			}
+			
+		} else {
+		
+			ds_ioExamResult.SetColumn(ln_ExamResultRowCnt, "ERPASSYN", "N");	// 불합격
+			ds_ioExamResult.SetColumn(ln_ExamResultRowCnt, "EJPASSYN", "N");	// 불합격
+			ds_ioExamResult.SetColumn(ln_ExamResultRowCnt, "ERPASSDATE", "");
+			
+		}
+			
+		ln_ExamResultRowCnt = ln_ExamResultRowCnt + 1;
+
+		// 점수 초기화
+		ln_1Score = 0;
+		ln_2Score = 0;
+		ln_ScoreSum = 0;
+    }
+	// 정렬하기
+	ds_ioExamResult.Sort("ERSCORE:D");
+	
+	// 석차 계산
+	for (var j=0; j<ds_ioExamResult.GetRowCount(); j++) {
+		if (ds_ioExamResult.GetColumn(j, "ERSCORE") == ds_ioExamResult.GetColumn(j - 1, "ERSCORE")) {
+			ds_ioExamResult.SetColumn(j, "ERRANK", ds_ioExamResult.GetColumn(j - 1, "ERRANK"));
+		} else {
+			ds_ioExamResult.SetColumn(j, "ERRANK", j + 1);
+		}
+	}
+	
+    lfn_AfterInsertAllExcel();
+
+}
+
+
+// Excel 자료 전체 Insert
+function lfn_AfterInsertAllExcel() {
+    tit_clearActionInfo();
+    tit_addSaveActionInfo(
+        "training:insertExam2TimeAnswerPaper"  // insert
+        , ""    // update
+        , ""    // delete
+        , ""    // flag column 명
+        , ""    // key sql id
+        , 0 // key 증가 값
+        , ""
+        , 0
+        , "N"   // 실행타입
+    );
+    
+	tit_addMultiActionInfo("training:updateExam0634ExamResult", "", 0, "", "N");
+	tit_addMultiActionInfo("training:updateExam0634ExamJubsu", "", 0, "", "N");
+
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iExcel=ds_ioExcelCopy:U ds_ioExamResult=ds_ioExamResult ds_ioExamResult=ds_ioExamResult"  // inDs
+        ,"" // outDs
+        ,"" // args
+        ,"lfn_AfterSaveExamJubsu2Score"
+        ,false
+    );
+
+}
+
+
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveExamJubsu2Score(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+
+        if ( SubStr(strErrorMsg,0,9) == "ORA-02291") {
+
+            gfn_Alert("로딩하려는 답안점수 중 등록되지 않은 답안점수가 있습니다.\n답안 엑셀자료를 먼저 확인 후 로딩하세요.");
+            return;
+
+        } else {
+
+            gfn_ErrorMsg(nErrorCode, strErrorMsg);
+            return;
+        }
+
+    }
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    
+    ds_ioExcel.ClearData();	// 엑셀로딩자료 클리어
+    lfn_Search(); // 조회
+	
+	//lfn_AfterSaveExamJubsu2Score();
+    //gfn_SearchMessage(gdExamJubsu); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+
+    //lfn_Search();
+}
+
+
+
+
+function lfn_Init(obj)
+{
+	cbxCourse.Value = "10";
+    
+    edExamOrder.Text = "";
+    ds_ioEvaluationJumsuInput.ClearData();
+    
+    medExamList.Text = "";
+    
+    edExamOrder.SetFocus();	
+    
+}
+
+function lfn_Delete(obj)
+{
+    if (ds_ioEvaluationJumsuInput.GetCount() == 0) {
+    
+        gfn_Alert("삭제할 내역이 없습니다.\n\n회차를 먼저 조회하세요!");
+        
+        return false;
+    }
+    
+    var sDeleteCnt = 0;
+
+    for (var i = 0; i < ds_ioEvaluationJumsuInput.GetCount(); i++ ) { 
+    
+		if (ds_ioEvaluationJumsuInput.GetColumn(i, "EISITEMSCORE") <> "입력안됨") {
+		
+			sDeleteCnt = sDeleteCnt + 1;
+		
+		}
+		
+	}
+	
+	if (sDeleteCnt == 0 ) {
+	
+        gfn_Alert("점수가 입력된 건이 없습니다.\n\n삭제할 내역이 없습니다.");
+        
+        return false;	
+	
+	} else if (sDeleteCnt > 0 ) {
+	
+        if (!gfn_Confirm("점수가 입력된 건이 " + sDeleteCnt + "건 있습니다.\n\n" + MSGW00030)) { // 삭제 하시겠습니까?
+            return false;
+        }
+		
+        tit_clearActionInfo();
+        tit_addSingleActionInfo("training:deleteExam2TimeAnswerPaper", "", 0, "");
+        //서버 호출
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,""	// outDs
+            ,"EISEOMGNO=" + quote(ds_ioEvaluationJumsuInput.GetColumn(0, "EOMGNO")) // args
+            ,"lfn_AfterDeleteExam2TimeAnswerPaper"
+            ,false
+            ,false
+            ,true
+        );
+    }
+	
+}
+
+function lfn_AfterDeleteExam2TimeAnswerPaper(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_Alert("정상적으로 삭제되었습니다.");
+    lfn_Search(); // 조회
+}
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_4000,dsc_0023]";	// 개인정보접속기록 시스템ID 
+}
+]]></Script>
+</Window>

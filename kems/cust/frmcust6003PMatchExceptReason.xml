@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="80" Id="frmcust6003PMatchExceptReason" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="연계제외사유" Top="8" Ver="1.0" Width="472" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioReasonCode">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Align="Center" Height="20" Id="Static1" Left="2" Style="sty_Label" TabOrder="2" Text="기타" Top="29" VAlign="Middle" Width="96"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" DisableBKColor="user4" Enable="FALSE" Height="20" Id="edReasonEtc" ImeMode="native" Left="99" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edKeyWord_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="1" Top="29" UserData="S" Width="367"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnConfirm" ImageID="BTN_TEXT_06" Left="374" OnClick="btnConfirm_OnClick" Style="sty_Button" TabOrder="3" Text="확인" ToolTipText="조회" Top="52" Width="93"></Button>
+		<Static Align="Center" Height="20" Id="Static0" Left="2" Style="sty_Label" TabOrder="4" Text="제외사유" Top="5" VAlign="Middle" Width="96"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxReasonCode" INDEX="0" InnerDataset="ds_ioReasonCode" Left="98" OnChanged="cbxReasonCode_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="5" Top="5" Width="157"></Combo>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust5010.xml
+ * 설명 : 소방민원정보시스템 연계정보 조회
+ * 작성일 : 2009.12.12
+ * 작성자 : 이창희
+ */
+ 
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+
+function Form_OnLoadCompleted(obj)
+{
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+	
+	// 코드값 조회
+	lfn_Search();
+}
+
+/*
+ *  연계제외코드 값 조회 
+*/
+function lfn_Search(obj) {  
+    
+	ds_ioReasonCode.ClearData();
+
+    tit_clearActionInfo();
+	tit_addSingleActionInfo("cust:searchCust6003PExceptMatchCode", false);
+	
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioReasonCode=ds_ioReasonCode"	// outDs
+		,""
+		,"lfn_AfterSearch"
+		,false
+	);
+}
+
+/*
+ * 기능 : 연계제외코드 값 조회 후 처리 
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/* 확인 버튼 처리*/
+function btnConfirm_OnClick(obj)
+{
+
+	// 
+	if (cbxReasonCode.Value == "09") {
+		if (edReasonEtc.Text == null || edReasonEtc.Text == "") {
+			alert("기타사유를 입력 해주세요");
+			edReasonEtc.SetFocus();
+			return;
+		} 
+	}
+
+	var arrArg = Array(2);
+    arrArg[0] = cbxReasonCode.Value;	  // 제외 사유 코드
+    arrArg[1] = edReasonEtc.Text;		 // 기타사유 
+    
+    Close(arrArg);
+}
+
+/* 엔터키 입력시 확인 버튼 실행 */
+function edKeyWord_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam) {
+    if (nChar == 13) { // Enter Key
+        btnConfirm_OnClick();
+    }
+}
+
+/* 제외코드 변경시 */
+function cbxReasonCode_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if (strCode == "09") {
+		edReasonEtc.Enable = true;
+		edReasonEtc.SetFocus();
+	} else {
+		edReasonEtc.Enable = false;
+	}	
+}
+]]></Script>
+</Window>

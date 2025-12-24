@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="633" Id="frmCOM0070MFrameLeft" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="frmCOM0070MFrameLeft_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="좌측프레임" Top="8" Ver="1.0" Width="200" WorkArea="true">
+		<Image Height="25" Id="imgFavoriteBox" ImageID="IMG_LEFT_LOGIN_BOX" Left="4" Style="sty_Image" TabOrder="17" Top="29" Transparent="TRUE" Width="191"></Image>
+		<Image Height="25" Id="imgLoginBox" ImageID="IMG_LEFT_LOGIN_BOX" Left="4" Style="sty_Image" TabOrder="15" Top="3" Transparent="TRUE" Width="191"></Image>
+		<Combo BindDataset="gds_SelectedForm" Border="Flat" CodeColumn="MURL" Column="SELECTEDFORM" DataColumn="MMENUNM" Height="20" Id="cbxOpenForm" INDEX="0" InnerDataset="gds_OpenedForm" Left="4" OnChanged="cbxOpenForm_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="9" Top="76" UserData="S" Width="192"></Combo>
+		<Static Height="20" Id="lbOpenForm" Left="19" Style="sty_Text" TabOrder="12" Text="열린&#32;화면&#32;:" Top="56" VAlign="Middle" Width="64"></Static>
+		<Static Height="20" Id="lbOpenFormCnt" Left="88" Style="sty_Text" TabOrder="11" Text="10&#32;개" Top="56" VAlign="Middle" Width="36"></Static>
+		<Image Cursor="HAND" Height="16" Id="imgFavoriteMenu3" ImageID="IMG_FAVORITE3" Left="76" LeftMargin="0" OnClick="imgFavoriteMenu3_OnClick" Static="FALSE" Style="sty_Image" TabOrder="4" ToolTipText="수첩발급" Top="33" Width="16"></Image>
+		<Image Cursor="HAND" Height="16" Id="imgFavoriteMenu6" ImageID="IMG_FAVORITE6" Left="166" LeftMargin="0" OnClick="imgFavoriteMenu6_OnClick" Static="FALSE" Style="sty_Image" TabOrder="7" ToolTipText="SMS관리" Top="33" Width="16"></Image>
+		<Image Cursor="HAND" Height="16" Id="imgFavoriteMenu5" ImageID="IMG_FAVORITE5" Left="136" LeftMargin="0" OnClick="imgFavoriteMenu5_OnClick" Static="FALSE" Style="sty_Image" TabOrder="6" ToolTipText="회비/교육비관리" Top="33" Width="16"></Image>
+		<Image Cursor="HAND" Height="16" Id="imgFavoriteMenu4" ImageID="IMG_FAVORITE4" Left="106" LeftMargin="0" OnClick="imgFavoriteMenu4_OnClick" Static="FALSE" Style="sty_Image" TabOrder="5" ToolTipText="고객관리" Top="33" Width="16"></Image>
+		<Image Cursor="HAND" Height="16" Id="imgFavoriteMenu1" ImageID="IMG_FAVORITE1" Left="16" LeftMargin="0" OnClick="imgFavoriteMenu1_OnClick" Static="FALSE" Style="sty_Image" TabOrder="2" ToolTipText="강습접수" Top="33" Width="16"></Image>
+		<Image Cursor="HAND" Height="16" Id="imgFavoriteMenu2" ImageID="IMG_FAVORITE2" Left="46" LeftMargin="0" OnClick="imgFavoriteMenu2_OnClick" Static="FALSE" Style="sty_Image" TabOrder="3" ToolTipText="시험접수" Top="33" Width="16"></Image>
+		<Static Align="Right" Font="굴림,9" Height="20" Id="lbLoginUserInfo" Left="4" TabOrder="13" Text="본부&#32;정보지원과&#32;홍길동" Top="6" VAlign="Middle" Width="136"></Static>
+		<Image Cursor="HAND" Height="11" Id="imgLogout" ImageID="IMG_LOGOUT" Left="143" LeftMargin="0" OnClick="imgLogout_OnClick" Static="FALSE" Style="sty_Image" TabOrder="1" Top="10" Width="46"></Image>
+		<Image Height="5" Id="imgLeftBull" ImageID="IMG_LEFT_BULL" Left="10" Style="sty_Image" TabOrder="14" Top="63" Transparent="TRUE" Width="3"></Image>
+		<Shape BKColor="user8" Bottom="633" Height="633" Id="shpLeftMenuLine" Left="199" LineColor="user8" LineWidth="0" Right="200" TabOrder="16" Top="0" Type="Rectangle" Width="1"></Shape>
+		<Image Cursor="HAND" Height="17" Id="imgCloseAllForm" ImageID="IMG_FORM_CLOSE" Left="130" LeftMargin="0" OnClick="imgCloseAllForm_OnClick" Static="FALSE" Style="sty_Image" TabOrder="8" ToolTipText="열려진&#32;모든&#32;화면&#32;닫기" Top="57" Width="64"></Image>
+		<Tab Border="Flat" BorderColor="user8" FixedImage="FALSE" Font="굴림,10,Bold" Height="528" Id="tabMenu" OnChanged="tabMenu_OnChanged" SelColor="white" SelectFont="굴림,10,Bold" TabOrder="10" Top="100" Width="198">
+			<Contents>
+				<TabPage BorderColor="black" Height="499" Id="tabpgMenu" ImageID="BTN_TAB_BK01" Left="2" TabOrder="14" Text="시스템구분" Top="27" Width="194">
+					<TreeView BindDataset="gds_oLeftMenu" Border="None" Expand="FALSE" Height="501" Id="tvLeftMenu" LevelColumn="MENULEVEL" OnClick="tvLeftMenu_OnClick" Style="sty_TreeView" TabOrder="1" TEXTColumn="MMENUNM" Width="196"></TreeView>
+				</TabPage>
+				<TabPage BorderColor="black" Height="499" Id="tabpgFavorite" ImageID="BTN_TAB_FAVORITE" Left="2" TabOrder="141" Text="즐겨찾기" Top="27" Width="194">
+					<TreeView BindDataset="gds_oLeftFavorite" BKColor="user29" Border="None" HasButtons="FALSE" HasLines="FALSE" Height="501" Id="tvLeftFavorite" LevelColumn="MENULEVEL" OnClick="tvLeftFavorite_OnClick" Style="sty_TreeView" TabOrder="1" TEXTColumn="MMENUNM" Width="196"></TreeView>
+				</TabPage>
+			</Contents>
+		</Tab>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM0070MFrameLeft.xml
+ * 설명 : 정보메세지 팝업
+ * 작성일 : 2009.06.26
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnActivate(obj) {
+    gfn_Form_OnActivate(obj);
+
+    // to do
+}
+
+function Form_OnDeactivate(obj) {
+    // to do
+
+    gfn_Form_OnDeactivate(obj);
+}
+
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj);
+
+    gfn_SetOpenedFormCnt();
+    if(gs_IsBSB == "Y")
+    {
+		lbLoginUserInfo = "시험채점관리";
+		global.mnuLeft.tabMenu.tabpgMenu.Text = "강습관리";
+		//global.mnuLeft.tabMenu.tabpgMenu.tvLeftMenu.Expand = true;
+		
+    } else {
+        lbLoginUserInfo = gds_oUserInfo.GetColumn(0, "PDEPTNM")
+                        + " " + gds_oUserInfo.GetColumn(0, "PPERSONNM");
+    }
+    if (gs_IsTlogin == "Y") {
+        imgFavoriteMenu1.Enable = false;
+        imgFavoriteMenu2.Enable = false;
+        imgFavoriteMenu3.Enable = false;
+        imgFavoriteMenu4.Enable = false;
+        imgFavoriteMenu5.Enable = false;
+        imgFavoriteMenu6.Enable = false;
+    }    
+}
+
+function Form_OnUnloadCompleted(obj) {
+    // to do
+
+    gfn_Form_OnUnloadCompleted(obj);
+}
+
+function Form_OnFocus(obj) {
+    gfn_Form_OnFocus(obj);
+
+    // to do
+}
+
+function Form_OnKillFocus(obj) {
+    // to do
+
+    gfn_Form_OnKillFocus(obj);
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam);
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : Open할 Form 정보를 gds_oLeftMenu에서 가져와 업무화면영역에 오픈한다.
+ * parameter : nRow - 오픈할 row 번호
+ * Return : 없음
+ */
+function lfn_OpenForm(nRow) {
+    var ls_FormUrl = gds_oLeftMenu.Getcolumn(nRow, "MURL");
+    var ls_FormTitle = gds_oLeftMenu.Getcolumn(nRow, "MMENUNM");
+    var ls_MenuId = gds_oLeftMenu.Getcolumn(nRow, "MMENUID");
+    var ls_FormId = split(ls_FormUrl, "::");
+
+    gs_SystemGubun = ls_FormId[0];
+
+    if (length(ls_FormUrl) > 0) {
+        gfn_OpenChildWindow(ls_FormUrl, ls_FormTitle, ls_MenuId);
+    }
+}
+
+/* 사용자 이벤트 함수 */
+function tvLeftMenu_OnClick(obj,nOldRow,nNewRow)
+{
+    obj.Visible = false;
+    obj.Expand = true;
+    obj.Expand = false;
+    obj.Visible = true;
+    obj.ExpandItem(nNewRow, true);
+    gds_oLeftMenu.row = nNewRow;
+    
+    lfn_OpenForm(nNewRow);
+
+}
+
+function cbxOpenForm_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+    if (length(cbxOpenForm.Value) < 1
+            || gds_OpenedForm.GetRowCount() < 1) {
+        return;
+    }
+
+    object(cbxOpenForm.Value).SetFocus();
+}
+
+function frmCOM0070MFrameLeft_OnSize(obj,nCx,nCy,nState)
+{
+    tabMenu.Height = nCy - 104;
+    tabMenu.Width = nCx - 2;
+    tabMenu.tabpgMenu.tvLeftMenu.Height = nCy - 104 - 25 - 4;
+    tabMenu.tabpgMenu.tvLeftMenu.Width = nCx - 6;
+    tabMenu.tabpgFavorite.tvLeftFavorite.Height = nCy - 104 - 25 - 4;
+    tabMenu.tabpgFavorite.tvLeftFavorite.Width = nCx - 6;
+
+    shpLeftMenuLine.Height = nCy;
+    shpLeftMenuLine.Left = nCx - 2;
+}
+
+function imgLogout_OnClick(obj,nX,nY)
+{
+	gfn_Logout();
+}
+
+function imgFavoriteMenu1_OnClick(obj,nX,nY)
+{
+    gs_SystemGubun = "training";
+    gs_SystemMenuId = "0000000003";
+    global.mnuLeft.tabMenu.tabpgMenu.Text = "강습관리";
+    var ls_MenuId = "0000000041";
+    var ls_MenuTitle = "강습접수관리";
+    var ls_MenuUrl = "training::frmtraining0020MTrainingJubsuManagement.xml";
+
+    global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+	if(gs_IsBSB == "N" && gs_isTlogin == "N")
+    {
+		gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId);
+    }	
+}
+
+function imgFavoriteMenu2_OnClick(obj,nX,nY)
+{
+    gs_SystemGubun = "training";
+    gs_SystemMenuId = "0000000003";
+    global.mnuLeft.tabMenu.tabpgMenu.Text = "강습관리";
+    var ls_MenuId = "0000000073";
+    var ls_MenuTitle = "시험접수관리";
+    var ls_MenuUrl = "training::frmtraining0400MExamJubsuManagement.xml";
+
+    global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+	if(gs_IsBSB == "N" && gs_isTlogin == "N")
+    {
+		gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId);
+    }
+}
+
+function imgFavoriteMenu3_OnClick(obj,nX,nY)
+{
+    gs_SystemGubun = "training";
+    gs_SystemMenuId = "0000000003";
+    global.mnuLeft.tabMenu.tabpgMenu.Text = "강습관리";
+    var ls_MenuId = "0000000063";
+    var ls_MenuTitle = "수첩발급정보관리";
+    var ls_MenuUrl = "training::frmtraining0250MLicenseIssueManagement.xml";
+
+    global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+	if(gs_IsBSB == "N" && gs_isTlogin == "N")
+    {
+		gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId);
+    }
+}
+
+function imgFavoriteMenu4_OnClick(obj,nX,nY)
+{
+
+	gs_SystemGubun = "cust";
+	
+    gs_SystemMenuId = "0000000265";
+    
+    global.mnuLeft.tabMenu.tabpgMenu.Text = "고객관리";
+    
+    var ls_MenuId = "0000000284";
+    
+    var ls_MenuTitle = "고객정보관리";
+    
+    var ls_MenuUrl = "cust::frmcust0010MCustomerManagement.xml";
+
+    global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+    
+	if(gs_IsBSB == "N" && gs_isTlogin == "N")
+    {
+		gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId);
+    }
+}
+
+function imgFavoriteMenu5_OnClick(obj,nX,nY)
+{
+	gs_SystemGubun = "cust";
+	
+    gs_SystemMenuId = "0000000265";
+    
+    global.mnuLeft.tabMenu.tabpgMenu.Text = "고객관리";
+    
+    var ls_MenuId = "0000000274";
+    
+    var ls_MenuTitle = "회비/교육비정보관리";
+    
+    var ls_MenuUrl = "cust::frmcust2010MCustomerFeeManagement.xml";
+
+    global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+    
+	if(gs_IsBSB == "N" && gs_isTlogin == "N")
+    {
+		gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId);
+    }
+}
+
+function imgFavoriteMenu6_OnClick(obj,nX,nY)
+{
+    gs_SystemGubun = "training";
+    gs_SystemMenuId = "0000000003";
+    global.mnuLeft.tabMenu.tabpgMenu.Text = "강습관리";
+    var ls_MenuId = "0000000095";
+    var ls_MenuTitle = "문자메시지발송";
+    var ls_MenuUrl = "training::frmtraining0680MSMSSendManagement.xml";
+
+    global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+	if(gs_IsBSB == "N" && gs_isTlogin == "N")
+    {
+		gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId);
+    }
+}
+
+function imgCloseAllForm_OnClick(obj,nX,nY)
+{
+    if (length(global.mnuLeft.cbxOpenForm.Value) < 1) {
+        return;
+    }
+
+    if (gfn_Confirm("열려진 모든 화면을 닫으시겠습니까?")) {
+        for (var index = gds_OpenedForm.GetRowCount(); index > 0; index--) {
+            object(global.mnuLeft.cbxOpenForm.Value).Close();
+            global.mnuLeft.cbxOpenForm.Index = gds_OpenedForm.GetLastRow();
+        }
+    }
+}
+
+function tabMenu_OnChanged(obj,nOldIndex,nNewindex)
+{
+	if (nNewindex == 1) { // 즐겨찾기
+        tit_clearActionInfo();
+        tit_addSearchActionInfo("com:searchLeftFavorite", false);
+        // 서버 호출
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"gds_oLeftFavorite=ds_oLeftFavorite"	// outDs
+            ,"PSABUN=" + quote(gds_oUserInfo.GetColumn(0, "PSABUN"))
+                + " PDEPTCD=" + quote(gds_oUserInfo.GetColumn(0, "PDEPTCD"))
+                + " ISDEPTAUTH=" + quote(gs_IsDeptAuth)
+            ,"gfn_AfterSearchFavorites"
+            ,true
+            ,true
+        );
+	}
+}
+
+function gfn_AfterSearchFavorites(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    if (gds_oLeftFavorite.GetCount() <= 1) {
+        gds_oLeftFavorite.ClearData();
+    }
+}
+
+function tvLeftFavorite_OnClick(obj,nOldRow,nNewRow) {
+    var ls_FormUrl = gds_oLeftFavorite.Getcolumn(nNewRow, "MURL");
+    var ls_FormTitle = gds_oLeftFavorite.Getcolumn(nNewRow, "MMENUNM");
+    var ls_MenuId = gds_oLeftFavorite.Getcolumn(nNewRow, "MMENUID");
+    var ls_FormId = split(ls_FormUrl, "::");
+
+    gs_SystemGubun = ls_FormId[0];
+    gs_SystemMenuId = gds_oTopMenu.Getcolumn(gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun), "MMENUID");
+    global.mnuLeft.tabMenu.tabpgMenu.Text = gds_oTopMenu.Getcolumn(gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun), "MMENUNM");
+
+    if (length(ls_FormUrl) > 0) {
+        gfn_OpenChildWindow(ls_FormUrl, ls_FormTitle, ls_MenuId);
+    }
+}
+]]></Script>
+</Window>

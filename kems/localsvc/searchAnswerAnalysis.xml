@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<svcdesc><![CDATA[문항분석조회]]></svcdesc>
+	<header><![CDATA[]]></header>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_IMP_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[function Run()
+{
+	// TODO: Add your source code here
+	
+	var selectQuery = " SELECT															" 
+								+ " 			  AATCCOURSECD      						" 
+								+ " 			, AACAEPNUMTYPE     						" 
+								+ " 			, AACAEPALPHATYPE   						" 
+								+ " 			, AACAITEMNO        						" 
+								+ " 			, AAREPEATNO        						" 
+								+ " 			, AAEOMGNO          						" 
+								+ " 			, AACORRECTCNT      						" 
+								+ " 			, AAMARKINGCNT      						" 
+								+ " 			, AACORRECTPERCENT  						" 
+								+ " 			, AA1CNT            						" 
+								+ " 			, AA2CNT            						" 
+								+ " 			, AA3CNT            						" 
+								+ " 			, AA4CNT            						" 
+								+ " 			, AAEMPTYCNT        						" 
+								+ " 			, AADOUBLECNT       						" 
+								+ " 			, AAREGDATE         						" 
+								+ " 			, AAREGSABUN        						" 
+								+ " 			, AAMODDATE         						" 
+								+ " 			, AAMODSABUN        						" 
+								+ "   FROM ANSWERANALYSIS     						" 
+								+ "   WHERE                   						" 
+								+ "  			AAEOMGNO = :EOMGNO  						" 
+								+ "  	AND AAREPEATNO IN ("+ARYREPEATNO+") ";
+
+	ExecuteQuery(selectQuery, "output");
+}]]></source>
+</class2>

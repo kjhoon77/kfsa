@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="SimpleSelect" template="SimpleSelect" update="NO">
+	<svcdesc><![CDATA[서버전송이력]]></svcdesc>
+	<header><![CDATA[]]></header>
+	<dataset id="input" io="INPUT" reserved="YES"></dataset>
+	<dataset id="output" io="OUTPUT" reserved="YES"></dataset>
+	<member_var>
+		<var id="Select_Sql" reserved="YES" type="Sql"><![CDATA[SELECT '0' AS SEL
+		, AA.SSHEOMGNO
+		, AA.SSHREPEATNO
+		, AA.SSHSENDYN
+		, IIF(AA.SSHREPEATNO='1', BB.JUBSUCNT, AA.JUBSUCNT) AS JUBSUCNT
+		, AA.EXAMCNT
+		, AA.MARKCNT
+		, AA.SENDCNT
+FROM (
+SELECT A.SSHEOMGNO
+		, A.SSHREPEATNO
+		, A.SSHSENDYN
+		, B.JUBSUCNT 	AS JUBSUCNT
+		, B.JUBSUCNT 	AS EXAMCNT
+		, B.JUBSUCNT 	AS MARKCNT
+		, B.JUBSUCNT 	AS SENDCNT
+FROM SERVERSENDH A
+INNER JOIN 
+			(SELECT A.EOMGNO, D.ERREPEATNO, COUNT(*) AS JUBSUCNT
+				FROM EXAMORDER A
+					, EXAMORDERH B
+					, EXAMJUBSU C
+					, (SELECT EREJMGNO, CINT(MAX(ERSEQ)) AS ERSEQQ, ERREPEATNO FROM EXAMRESULT WHERE ERPASSYN <> 'X' AND ERREPEATNO <> '' GROUP BY EREJMGNO, ERREPEATNO) D
+				WHERE A.EOMGNO = B.EOHEOMGNO
+				AND B.EOHEJMGNO = C.EJMGNO
+				AND B.EOHSEQ = C.EJLASTEOHSEQ
+				AND C.EJMGNO = D.EREJMGNO
+				GROUP BY A.EOMGNO, D.ERREPEATNO) B
+ON A.SSHEOMGNO = B.EOMGNO
+AND A.SSHREPEATNO = B.ERREPEATNO ) AA
+LEFT JOIN (
+					SELECT A.SSHEOMGNO
+							, A.SSHREPEATNO
+							, B.JUBSUCNT
+					FROM SERVERSENDH A
+					LEFT JOIN 
+								(SELECT EOMGNO
+											, '1' AS ERREPEATNO
+											, COUNT(*) AS JUBSUCNT
+									FROM EXAMJUBSU, EXAMORDERH, EXAMORDER
+									WHERE EOHSEQ = EJLASTEOHSEQ
+									AND EOHEJMGNO = EJMGNO
+									AND EOMGNO = EOHEOMGNO
+									GROUP BY EOMGNO, EOEXAMORDER) B
+					ON A.SSHEOMGNO = B.EOMGNO
+					AND A.SSHREPEATNO = B.ERREPEATNO ) BB
+ON AA.SSHEOMGNO = BB.SSHEOMGNO
+AND AA.SSHREPEATNO = BB.SSHREPEATNO
+WHERE AA.SSHEOMGNO = :EOMGNO]]></var>
+	</member_var>
+	<member_func>
+		<function id="OnBegin()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnExecuteQueryError()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnFetchRow()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnFetchEnd()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnFetchError()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnNoDataFound()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnEnd()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[]]></source>
+</class2>

@@ -1,0 +1,1548 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmcust2150MEGiroInput" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" TabOrder="1" Title="지로용&#32;회비&#32;고지&#32;입력" TooltipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioEGiro">
+				<Contents>
+					<column id="EGGROUPGUBUN_" type="STRING"></column>
+					<colinfo id="EGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EGGRDATE" size="10" summ="default" type="STRING"/>
+					<colinfo id="EGSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EGROWDATA" size="200" summ="default" type="STRING"/>
+					<colinfo id="EGERRORGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EGCHANGEGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EGREGDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="EGREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EGREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="EGGROUPGUBUN1_" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioError">
+				<Contents>
+					<colinfo id="EGSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EGCNO" size="200" summ="default" type="STRING"/>
+					<colinfo id="EGAMOUNT" size="1" summ="default" type="STRING"/>
+					<colinfo id="EGREMARK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioChange">
+				<Contents>
+					<colinfo id="EGSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EGCNO" size="200" summ="default" type="STRING"/>
+					<colinfo id="EGAMOUNT" size="1" summ="default" type="STRING"/>
+					<colinfo id="EGREMARK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCustomerFee">
+				<Contents>
+					<colinfo id="CMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="FMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="FMRESIDENTNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFEEYYMM" size="6" summ="default" type="STRING"/>
+					<colinfo id="CDELDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="BADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPMONTH" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPHALF" size="1" summ="default" type="STRING"/>
+					<colinfo id="SUNAPFEE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="MINAPFEE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFCFEE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CREGCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="COBMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="COVERGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CDELGUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iEGiroFee">
+				<Contents>
+					<colinfo id="EGGTMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EGGRDATE" size="10" summ="default" type="STRING"/>
+					<colinfo id="EGSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EGROWDATA" size="200" summ="default" type="STRING"/>
+					<colinfo id="EGERRORGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EGCHANGEGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EGINPUTGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EGREGDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="EGREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EGREMARK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iCustomerFee">
+				<Contents>
+					<colinfo id="CFCMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFSETLMGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFMEMBERGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUNCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPMONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPHALF" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFPROCAMOUNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFPROCDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFPONYGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFPONYDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFMGGTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFPROCGTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFPOSGTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFPMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFPMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFGROUPMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFREPAYREF" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFACTIVEGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosPrintM">
+				<Contents>
+					<colinfo id="PMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="PMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMINPUT" size="1" summ="default" type="STRING"/>
+					<colinfo id="PMPCGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="PMPCORDERNO" size="20" summ="default" type="STRING"/>
+					<colinfo id="PMPROCDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="PMPIID" size="12" summ="default" type="STRING"/>
+					<colinfo id="PMPGMID" size="2" summ="default" type="STRING"/>
+					<colinfo id="PMPGMPK" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMBUYER" size="50" summ="default" type="STRING"/>
+					<colinfo id="PMCLAS" size="2" summ="default" type="STRING"/>
+					<colinfo id="PMPGMGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="PMITEM1" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMITEM2" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMITEM3" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMITEM4" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMAMT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMVAT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMPAYMENTFLAG" size="1" summ="default" type="STRING"/>
+					<colinfo id="PMRESULT" size="1" summ="default" type="STRING"/>
+					<colinfo id="PCUSERTYPE" size="1" summ="default" type="STRING"/>
+					<colinfo id="PCSOCIALBUSINESSNO" size="18" summ="default" type="STRING"/>
+					<colinfo id="PCCARDINSTALL" size="2" summ="default" type="STRING"/>
+					<colinfo id="PCCLOSEDATE" size="14" summ="default" type="STRING"/>
+					<colinfo id="PCBANKCD" size="10" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosPayment">
+				<Contents>
+					<colinfo id="PPPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="PPPMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPNM" size="30" summ="default" type="STRING"/>
+					<colinfo id="PPUNITAMT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPQTY" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPTOTAMT" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPosJibu"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPmMgno">
+				<Contents>
+					<colinfo id="PMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCno">
+				<Contents>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioCustomerStatus">
+				<Contents>
+					<colinfo id="RETURN" size="256" summ="default" type="STRING"/>
+					<colinfo id="FMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="BADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="STARTDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="OBMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioMemberH">
+				<Contents>
+					<colinfo id="FMNM" size="255" summ="default" type="STRING"/>
+					<colinfo id="FMRESIDENTNO" size="255" summ="default" type="STRING"/>
+					<colinfo id="COURSE" size="255" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="255" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="255" summ="default" type="STRING"/>
+					<colinfo id="CFEEYYMM" size="6" summ="default" type="STRING"/>
+					<colinfo id="RETURN" size="255" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCustomerEduFee">
+				<Contents>
+					<colinfo id="CFCMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCustomerFeeBackup">
+				<Contents>
+					<colinfo id="CMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="FMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="FMRESIDENTNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFEEYYMM" size="6" summ="default" type="STRING"/>
+					<colinfo id="CDELDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="BADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPMONTH" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPHALF" size="1" summ="default" type="STRING"/>
+					<colinfo id="SUNAPFEE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="MINAPFEE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFCFEE" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEGiroBackup">
+				<Contents>
+					<colinfo id="EGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EGGRDATE" size="10" summ="default" type="STRING"/>
+					<colinfo id="EGSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EGROWDATA" size="200" summ="default" type="STRING"/>
+					<colinfo id="EGERRORGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EGCHANGEGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EGREGDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="EGREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EGREMARK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEGropuGiro">
+				<Contents>
+					<colinfo id="EGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EGGRDATE" size="10" summ="default" type="STRING"/>
+					<colinfo id="EGSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EGROWDATA" size="200" summ="default" type="STRING"/>
+					<colinfo id="EGERRORGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EGCHANGEGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EGREGDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="EGREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EGREMARK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEGiroGroupDetail"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioaa">
+				<Contents>
+					<colinfo id="EGGROUPGUBUN1_" size="256" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioCustomerInfoTmp">
+				<Contents>
+					<colinfo id="AGNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="CAGGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CAGMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CBMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CCOCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CDELDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CDELGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CEDUPOSTADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="CEDUPOSTADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="CEDUPOSTGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CEDUPOSTPLACE" size="100" summ="default" type="STRING"/>
+					<colinfo id="CEDUPOSTZIPCD" size="6" summ="default" type="STRING"/>
+					<colinfo id="CEXCEPTDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CEXCEPTGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFEEPOSTADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFEEPOSTADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFEEPOSTGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFEEPOSTPLACE" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFEEPOSTZIPCD" size="6" summ="default" type="STRING"/>
+					<colinfo id="CFEEYYMM" size="6" summ="default" type="STRING"/>
+					<colinfo id="CFIREMGNO" size="20" summ="default" type="STRING"/>
+					<colinfo id="CFMHMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFMHSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CGATEWAYPK1" size="14" summ="default" type="STRING"/>
+					<colinfo id="CGATEWAYPK2" size="13" summ="default" type="STRING"/>
+					<colinfo id="CGATEWAYPK3" size="13" summ="default" type="STRING"/>
+					<colinfo id="CGCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CLASTADDSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CLASTPRSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="COBMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="COLDMGNO" size="11" summ="default" type="STRING"/>
+					<colinfo id="COVERGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CPERSONGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CPOSTREQGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CREGISTERYYMM" size="6" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSREASONCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="204" Height="64" Id="Shape5" Left="4" LineColor="user15" Right="796" TabOrder="32" Top="140" Type="Rectangle" Width="792"></Shape>
+		<Shape Bottom="584" Height="172" Id="Shape4" Left="4" LineColor="user15" Right="796" TabOrder="30" Top="412" Type="Rectangle" Width="792"></Shape>
+		<Shape Bottom="104" Height="64" Id="Shape0" Left="420" LineColor="user15" Right="796" TabOrder="26" Top="40" Type="Rectangle" Width="376"></Shape>
+		<Shape Bottom="104" Height="64" Id="Shape3" Left="4" LineColor="user15" Right="416" TabOrder="16" Top="40" Type="Rectangle" Width="412"></Shape>
+		<Shape Bottom="29" Height="28" Id="frmcust0012BuildingHistory" Left="285" LineColor="user14" Right="796" TabOrder="15" Top="1" Type="Rectangle" Width="511"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="14" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="276">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="3" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="4" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="lfn_Excel" Style="sty_Button" TabOrder="2" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Static Align="Center" BKColor="user15" Height="20" Id="Static12" Left="20" Style="sty_Label" TabOrder="17" Text="지로&#32;정보" Top="32" VAlign="Middle" Width="124" WordWrap="TRUE"></Static>
+		<Static Align="Center" Height="20" Id="lbFileNm" Left="8" Style="sty_Label" TabOrder="18" Text="파일명" Top="56" VAlign="Middle" Width="68"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edFileNm" ImeMode="native" Left="80" LeftMargin="2" MaxLength="10" Style="sty_Edit" TabOrder="19" ToolTipText="GR15yymmdd" Top="56" Width="244"></Edit>
+		<Static Align="Center" Height="20" Id="lbProcDate" Left="424" Style="sty_Label" TabOrder="20" Text="처리일자" Top="56" VAlign="Middle" Width="84"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calProcDate" Left="512" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="7" Top="56" WeeksFont="돋음,9" Width="104"></Calendar>
+		<Static Align="Center" Height="20" Id="lbPonyDate" Left="424" Style="sty_Label" TabOrder="21" Text="정산일자" Top="80" VAlign="Middle" Width="84"></Static>
+		<Checkbox FalseValue="0" Height="20" Id="chkPonyDate" Left="512" OnClick="chkPonyDate_OnClick" OnKeyDown="gfn_EnterNextFocus" Style="sty_Checkbox" TabOrder="8" Top="80" TrueValue="1" Value="FALSE" Width="20"></Checkbox>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" Enable="FALSE" HeaderFont="돋음,10,Bold" Height="20" Id="calPonyDate" Left="528" OnChanged="calPonyDate_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="9" Top="80" WeeksFont="돋음,9" Width="108"></Calendar>
+		<Button BKColor="user17" ButtonStyle="TRUE" Cursor="HAND" Font="굴림,10,Bold" Height="44" Id="btnSave" Left="640" OnClick="lfn_Save" Style="sty_Button" TabOrder="10" Text="지로&#32;처리(저장)" Top="56" Width="152"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnGiroSite" ImageID="BTN_TEXT_11" Left="288" OnClick="btnGiroSite_OnClick" Style="sty_Button" TabOrder="5" Text="e-Giro&#32;사이트&#32;바로가기" Top="4" Width="157"></Button>
+		<Button BKColor="user17" ButtonStyle="TRUE" Cursor="HAND" Font="굴림,10" Height="44" Id="btnOpenFile" Left="328" OnClick="btnOpenFile_OnClick" Style="sty_Button" TabOrder="6" Text="지로&#32;파일&#13;&#10;불러오기" Top="56" Width="84"></Button>
+		<Static Align="Center" Height="20" Id="lbTotalCnt" Left="8" Style="sty_LabelStat" TabOrder="23" Text="전체&#32;건수" Top="156" VAlign="Middle" Width="92"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medTotalCnt" Left="104" Style="sty_Maskedit" TabOrder="22" Top="156" Value="0" Width="96"></MaskEdit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medDataRow" Left="80" Style="sty_Maskedit" TabOrder="24" Top="80" Width="84"></MaskEdit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medErrorCnt" Left="504" Style="sty_Maskedit" TabOrder="25" Top="156" Value="0" Width="96"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnFeeReport" ImageID="BTN_TEXT_08" Left="676" OnClick="btnFeeReport_OnClick" Style="sty_Button" TabOrder="11" Text="일별&#32;수납&#32;집계" Top="179" Width="118"></Button>
+		<Static Align="Center" BKColor="user15" Height="20" Id="Static3" Left="436" Style="sty_Label" TabOrder="27" Text="처리&#32;정보" Top="32" VAlign="Middle" Width="124" WordWrap="TRUE"></Static>
+		<Shape Bottom="400" Height="184" Id="Shape2" Left="4" LineColor="user15" Right="796" TabOrder="28" Top="216" Type="Rectangle" Width="792"></Shape>
+		<Static Align="Center" BKColor="user15" Height="20" Id="Static9" Left="20" Style="sty_Label" TabOrder="29" Text="오류&#32;목록" Top="208" VAlign="Middle" Width="124" WordWrap="TRUE"></Static>
+		<Static Align="Center" BKColor="user15" Height="20" Id="Static10" Left="20" Style="sty_Label" TabOrder="31" Text="비회원&#32;→&#32;회원&#32;목록" Top="404" VAlign="Middle" Width="124" WordWrap="TRUE"></Static>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_ioError" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="396" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="164" Id="dsError" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" Right="792" RowHeight="20" Style="sty_Grid" TabOrder="12" TabStop="true" Top="232" UseDBuff="true" UsePopupMenu="true" UserData="오류" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="784">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="130"/>
+						<col width="110"/>
+						<col width="300"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="지로&#32;순번"/>
+						<cell col="1" display="text" text="지부&#32;코드"/>
+						<cell col="2" display="text" text="관리번호"/>
+						<cell col="3" display="text" text="금액"/>
+						<cell col="4" display="text" text="예상&#32;오류&#32;내용"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="EGSEQ" display="text"/>
+						<cell align="center" col="1" colid="EGGTMGNO" display="text"/>
+						<cell align="center" col="2" colid="EGCNO" display="text"/>
+						<cell align="right" col="3" colid="EGAMOUNT" display="text"/>
+						<cell align="left" col="4" colid="EGREMARK" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" BKColor="user15" Height="20" Id="Static13" Left="20" Style="sty_Label" TabOrder="33" Text="처리완료&#32;정보" Top="132" VAlign="Middle" Width="124" WordWrap="TRUE"></Static>
+		<Static Align="Center" Height="20" Id="lbDataRow" Left="8" Style="sty_Label" TabOrder="34" Text="총&#32;건수" Top="80" VAlign="Middle" Width="68"></Static>
+		<Static Align="Center" Height="20" Id="lbErrorCnt" Left="404" Style="sty_Label" TabOrder="35" Text="오류&#32;건수" Top="156" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" Height="20" Id="lbProcCnt" Left="204" Style="sty_Label" TabOrder="37" Text="정상&#32;건수" Top="156" VAlign="Middle" Width="96"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medProcCnt" Left="304" Style="sty_Maskedit" TabOrder="36" Top="156" Value="0" Width="96"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbChangeCnt" Left="604" Style="sty_Label" TabOrder="39" Text="회원&#32;변경&#32;건수" Top="156" VAlign="Middle" Width="96"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medChangeCnt" Left="704" Style="sty_Maskedit" TabOrder="38" Top="156" Value="0" Width="88"></MaskEdit>
+		<Static Height="20" Id="lbTextBlue" Left="428" Style="sty_TextBlue" TabOrder="39" Text="※&#32;[지로&#32;처리(저장)]을&#32;눌러야&#32;최종&#32;처리됩니다." Top="108" VAlign="Middle" Width="288"></Static>
+		<File Bottom="132" Height="24" Id="fiFile" Left="740" Right="764" TabOrder="52" Top="108" Width="24"></File>
+		<FileDialog Bottom="132" Height="24" Id="fdFile" Left="768" Right="792" TabOrder="51" Top="108" Width="24"></FileDialog>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_ioChange" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="580" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="152" Id="gdChange" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" Right="792" RowHeight="20" Style="sty_Grid" TabOrder="13" TabStop="true" Top="428" UseDBuff="true" UsePopupMenu="true" UserData="비회원_회원변경" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="784">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="130"/>
+						<col width="110"/>
+						<col width="300"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="지로&#32;순번"/>
+						<cell col="1" display="text" text="지부"/>
+						<cell col="2" display="text" text="관리번호"/>
+						<cell col="3" display="text" text="금액"/>
+						<cell col="4" display="text" text="비고"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="EGSEQ" display="text"/>
+						<cell align="center" col="1" colid="EGGTMGNO" display="text"/>
+						<cell align="center" col="2" colid="EGCNO" display="text"/>
+						<cell align="right" col="3" colid="EGAMOUNT" display="number"/>
+						<cell align="left" col="4" display="text" text="비회원&#32;→&#32;회원"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="447" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="1" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbTotalAmount" Left="8" Style="sty_LabelStat" TabOrder="42" Text="전체&#32;금액" Top="180" VAlign="Middle" Width="92"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medTotalAmount" Left="104" Readonly="TRUE" Style="sty_Edit" TabOrder="41" Top="180" Value="0" Width="96"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbProcAmount" Left="204" Style="sty_Label" TabOrder="43" Text="정상&#32;처리&#32;금액" Top="180" VAlign="Middle" Width="96"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medProcAmount" Left="304" Readonly="TRUE" Style="sty_Edit" TabOrder="44" Top="180" Value="0" Width="96"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbErrorAmount" Left="404" Style="sty_Label" TabOrder="45" Text="오류&#32;예상&#32;금액" Top="180" VAlign="Middle" Width="96"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medErrorAmount" Left="504" Readonly="TRUE" Style="sty_Edit" TabOrder="46" Top="180" Value="0" Width="96"></MaskEdit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medProcDataRow" Left="256" Style="sty_Maskedit" TabOrder="47" Top="80" Width="68"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbProcDataRow" Left="168" Style="sty_Label" TabOrder="48" Text="미처리&#32;건수" Top="80" VAlign="Middle" Width="84"></Static>
+		<Static Height="20" Id="Static0" Left="4" Style="sty_TextBlue" TabOrder="49" Text="※&#32;파일이&#32;없더라도&#32;빈&#32;파일[GR15yymmdd&#32;형식]을&#32;불러오시면&#32;됩니다." Top="108" VAlign="Middle" Width="452"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust2150MEGiroInput.xml
+ * 설명 : 지로용 회비 고지 입력
+ * 작성일 : 2009.12.16
+ * 작성자 : 김동현
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+var ls_GiroDate = ""; // 지로 데이터 날짜
+var ls_PmPiid = ""; // POS 지부 ID
+var TransectionError = false; //쿼리 오류
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+      
+    gfn_SearchPosJibu(ds_oPosJibu, "0"); // POS 지부 조회
+    ls_PosJibu = substr(gds_oUserInfo.GetColumn(0, "PDEPTCD"), 1, 2); // POS 지부 코드
+    ls_PmPiid = ds_oPosJibu.GetColumn(ds_oPosJibu.FindRow("PICHPT", ls_PosJibu), "PIID"); // 지부관리ID
+    lfn_Init();
+    
+    btnGiroSite.SetFocus();
+    
+}
+
+/**
+ * 폼 사이즈
+ */
+function Form_OnSize(obj,nCx,nCy,nState) {
+}
+
+
+/**
+ * 버튼 실행 권한
+ */
+function lfn_SetFormAuth(bStatus) {
+
+    btnToExcel.Enable = bStatus; //Excel 생성
+    btnGiroSite.Enable = bStatus; //e-Giro사이트 링크
+    btnOpenFile.Enable = bStatus; //지로 파일 불러오기
+    btnSave.Enable = false; //지로처리
+    
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 기본 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 초기화
+ */
+function lfn_Cancel(obj) {
+
+    if (!gfn_Confirm("모든 데이터를 초기화 하시겠습니까?")) {
+        return;
+    }
+    
+	fdFile.FileName = "";
+	    
+    lfn_Init();
+}
+
+function lfn_Init() {
+
+	edFileNm.Text = "";
+	medDataRow.Value = "";
+	medProcDataRow.Value = "";
+	calProcDate.Value = "";
+	chkPonyDate.Value = "";
+    calProcDate.Value = left(getDate(), 8);
+	medTotalCnt.Value = "";
+	medProcCnt.Value = "";
+	medErrorCnt.Value = "";
+	medChangeCnt.Value = "";
+	
+    ds_oCustomerFee.ClearData();
+    ds_oCustomerFeeBackup.ClearData();
+    ds_iCustomerFee.ClearData();
+    ds_ioPosPrintM.ClearData();
+    ds_ioPosPayment.ClearData();
+    ds_ioError.ClearData();
+    ds_ioChange.ClearData();
+    ds_ioCustomerStatus.ClearData();
+
+    TransectionError = false;
+	btnSave.Enable = false; //지로처리
+	
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+// 이벤트
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 정산일자 처리
+ */
+function chkPonyDate_OnClick(obj,strValue) {
+
+	if (strValue == "1") {
+        calPonyDate.Enable = true;
+        calPonyDate.Value = left(addDate(left(calProcDate.Value, 8), -1), 8);
+    } else {
+        calPonyDate.Enable = false;
+        calPonyDate.Value = "";
+    }
+
+}
+
+/**
+ * 정산일자 제한
+ */
+function calPonyDate_OnChanged(obj,strOldText,strNewText) {
+	if (left(calProcDate.Value, 8) <= left(calPonyDate.Value, 8)) {
+        gfn_Alert("정산일자는 처리일자보다 이전이어야 합니다.");
+        calPonyDate.Value = left(addDate(left(getDate(), 8), -1), 8);
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+// 처리 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * e-Giro 사이트 링크
+ */
+function btnGiroSite_OnClick(obj) {
+    ExecProc('"C:\\Program Files\\Internet Explorer\\iexplore.exe"', '"http://e-giro.giro.or.kr/"');
+}
+
+/**
+ * 지로파일 불러오기
+ */
+function btnOpenFile_OnClick(obj) {
+
+    var vGiroData = "";
+    var vDataCnt = 1;
+    var vDataCntGroup = 1;  //그룹 지로 넣기 위함
+
+    fdFile.Type = "OPEN";
+    
+    if (fdFile.open("C:\\KFSA\\kems\\data\\giro\\")) {
+    
+    
+        if (medTotalCnt.Value > 0) {
+            if (!gfn_Confirm("현재 저장 처리된 지로 결과 정보가 있습니다.\n초기화하고 파일을 불러오시겠습니까?")) {
+                return;
+            }
+        }
+
+        lfn_Init();
+        
+        ds_ioEGiro.ClearData();
+        ds_ioEGiroBackup.ClearData();
+ 
+        tit_clearActionInfo();
+        tit_addCsvSearchActionInfo("cust:searchCust2150EGiro", false);
+        tit_callService(
+            ""
+            ,""
+            ,""
+            ,"ds_ioEGiro=ds_oEGiro"
+            ,"SGTMGNO=" + quote(gds_oUserInfo.GetColumn(0, "PDEPTCD"))
+                + " SGRDATE=" + quote(fdFile.FileName)
+            , ""
+            ,false
+            ,false
+            ,true
+        );
+
+        if (ds_ioEGiro.GetRowCount() > 1) { //지로 처리(저장)된 파일일 경우
+        
+            if (ds_ioEGiro.FindRow("EGERRORGUBUN", "2") == -1) { //데이터가 모두 처리된 경우
+                gfn_Alert("이미 모두 처리된 지로 파일입니다. [지로용 회비 고지 입력자료 조회]에서 확인가능합니다.");
+                return;
+            }
+            
+            ls_GiroDate = "20" + right(fdFile.FileName, 6);
+            
+            ds_ioEGiroBackup.ClearData();
+            ds_ioEGiroBackup.Copy(ds_ioEGiro);
+            ds_ioEGiroBackup.Filter("EGERRORGUBUN='2'");
+            ds_ioEGiro.ClearData();
+            ds_ioEGiro.CopyF(ds_ioEGiroBackup);
+            ds_ioEGiroBackup.UnFilter();
+        
+            medProcDataRow.Value = ds_ioEGiro.GetRowCount();
+            
+            gfn_Alert("지로 데이터가 [" + ds_ioEGiro.GetRowCount() + "]건 남았습니다. \n\n[지로 처리(저장)]을 누르면 나머지가 처리됩니다.");
+            
+        } else {
+
+            fiFile.FileName = fdFile.FilePath + "\\" + fdFile.FileName;
+            fiFile.Open("rt");
+            vGiroData = fiFile.Read();
+            fiFile.Close();
+            
+            vGiroData = split(vGiroData, "\n");
+            var vEGiroRow = 0;
+            var vEGroupGiroRow = 0;  // 그룹 지로 하기 위함
+           // var vDDataCnt = ""; // 그룹 지로 풀때 순차번호 
+            ds_ioEGiro.ClearData();
+        
+            vGGiroData = length(vGiroData);   // 그룹 지로 순차 번호 생성 위함 !!!
+            for (var i=0; i<length(vGiroData); i++) {
+            
+                vGiroData[i] = trim(vGiroData[i]);
+ 
+                if (left(vGiroData[i], 2) == "22") { //데이터만 걸러내기
+                    if ( ((substr(vGiroData[i], 56, 2) == substr(calProcDate.Value, 2, 2)) ||
+                          (substr(vGiroData[i], 56, 2) == lpad(toNumber(substr(calProcDate.Value, 2, 2)) - 1, "0", 2)))
+                         
+                         && (substr(vGiroData[i], 58, 2) > "12")
+                          
+                       )  {  // 지로 번호가 그룹이 이면 그룹 지로 테이블에 넣기    
+                        vEGroupGiroRow = ds_ioEGropuGiro.AddRow();
+                        ds_ioEGropuGiro.SetColumn(vEGroupGiroRow, "EGSEQ", vDataCntGroup++);
+                        ds_ioEGropuGiro.SetColumn(vEGroupGiroRow, "EGGTMGNO", gds_oUserInfo.GetColumn(0, "PDEPTCD"));
+                        ds_ioEGropuGiro.SetColumn(vEGroupGiroRow, "EGGRDATE", fdFile.FileName);
+                        ds_ioEGropuGiro.SetColumn(vEGroupGiroRow, "EGROWDATA", vGiroData[i]);
+                        ds_ioEGropuGiro.SetColumn(vEGroupGiroRow, "EGERRORGUBUN", "2"); // 미처리
+                        ds_ioEGropuGiro.SetColumn(vEGroupGiroRow, "EGCHANGEGUBUN", "1"); // 비회원->회원 미변경            
+            
+            
+                       // 1) 지로 정보로 fh테이블을 검색한다.
+                        ds_ioEGiroGroupDetail.ClearData();
+                
+                        tit_clearActionInfo();
+                        tit_addCsvSearchActionInfo("cust:searchCust2150EGiroGroupDetail", false);
+                        tit_callService(
+                            ""
+                            ,""
+                            ,""
+                            ,"ds_ioEGiroGroupDetail=ds_oEGiroGroupDetail"
+                            ,"FHFGROUPJIRONOINFO2=" + quote("+" + substr(vGiroData[i], 56, 15) +"+")
+                            //    + " SGRDATE=" + quote(fdFile.FileName)
+                            , "lfn_AfterFileLoad3"
+                            ,false
+                            ,false
+                            ,true
+                        );                        
+                        
+                        
+                        for (fh =0; fh<ds_ioEGiroGroupDetail.count(); fh++) { // 검색한 갯수 만큼  지로 ds에 set한다.
+                            vGGiroData = vGGiroData + 1;      // 그룹 지로 지로 풀때 순차번호                                                  
+                            
+                            vEGiroRow = ds_ioEGiro.AddRow();
+                            ds_ioEGiro.SetColumn(vEGiroRow, "EGSEQ", vDataCnt++);
+                            ds_ioEGiro.SetColumn(vEGiroRow, "EGGTMGNO", gds_oUserInfo.GetColumn(0, "PDEPTCD"));
+                            ds_ioEGiro.SetColumn(vEGiroRow, "EGGRDATE", fdFile.FileName);
+                            if (fh == "0") { 
+                                                        
+                                ds_ioEGiro.SetColumn(vEGiroRow, "EGROWDATA", substr(vGiroData[i], 0, 51) 
+                                + ds_ioEGiroGroupDetail.GetColumn(fh, "FHFJIRONOINFO2") + ds_ioEGiroGroupDetail.GetColumn(fh, "FHFTOTAL") + substr(vGiroData[i], 84, 5));   // 이것은 조회한 지로 정보를 넣는다.                             
+                                ds_ioEGiro.SetColumn(vEGiroRow, "EGCHANGEGUBUN", "1"); // 비회원->회원 미변경 !!!원래 1인데 egseq로 함 나중에 수정할 것임 할것임 쿼리에서 선택으로 받음 테이블에 안들어가서 그러함                                
+                                ds_ioEGiro.SetColumn(vEGiroRow, "EGGROUPGUBUN1_", ds_ioEGropuGiro.GetColumn(vEGroupGiroRow, "EGSEQ"));
+                              
+                            } else {                              
+                                
+                                ds_ioEGiro.SetColumn(vEGiroRow, "EGROWDATA", substr(vGiroData[i], 0, 2) + lpad(vGGiroData, 0, 7 ) 
+                                + toString(substr(vGiroData[i], 9, 42)) 
+                                + ds_ioEGiroGroupDetail.GetColumn(fh, "FHFJIRONOINFO2") + ds_ioEGiroGroupDetail.GetColumn(fh, "FHFTOTAL") + " 0000");   // 이것은 조회한 지로 정보를 넣는다.                             
+                                ds_ioEGiro.SetColumn(vEGiroRow, "EGCHANGEGUBUN", "1"); // 비회원->회원 미변경 !!!원래 1인데 egseq로 함 나중에 수정할 것임 할것임 테이블에 안들어가서 그러함
+                                ds_ioEGiro.SetColumn(vEGiroRow, "EGGROUPGUBUN1_", ds_ioEGropuGiro.GetColumn(vEGroupGiroRow, "EGSEQ"));                                                                                         
+                            }
+                            
+                            ds_ioEGiro.SetColumn(vEGiroRow, "EGERRORGUBUN", "2"); // 미처리                            
+                            
+                        }
+            
+                    } else { //if (substr(vGiroData[i], 58, 2) <= "12") {  // 지로 번호가 그룹이 아니면 정상 처리    
+
+                        vEGiroRow = ds_ioEGiro.AddRow();
+                        ds_ioEGiro.SetColumn(vEGiroRow, "EGSEQ", vDataCnt++);
+                        ds_ioEGiro.SetColumn(vEGiroRow, "EGGTMGNO", gds_oUserInfo.GetColumn(0, "PDEPTCD"));
+                        ds_ioEGiro.SetColumn(vEGiroRow, "EGGRDATE", fdFile.FileName);
+                        ds_ioEGiro.SetColumn(vEGiroRow, "EGROWDATA", vGiroData[i]);
+                        ds_ioEGiro.SetColumn(vEGiroRow, "EGERRORGUBUN", "2"); // 미처리
+                        ds_ioEGiro.SetColumn(vEGiroRow, "EGCHANGEGUBUN", "1"); // 비회원->회원 미변경  !!!원래 1인데 2로 함 나중에 2-1 할것임 테이블에 안들어가서 그러함
+                        ds_ioEGiro.SetColumn(vEGiroRow, "EGGROUPGUBUN1_", "0"); // 그룹 회비 고지 구분 (0: 일반 1: 그룹 회비고지)                        
+                    } 
+                } else if (left(vGiroData[i], 2) == "11") {
+                    ls_GiroDate = right(vGiroData[i], 8);
+                }
+                    
+            }
+       //trace(ds_ioEGropuGiro.count);
+        // return false;
+           /* tit_clearActionInfo(); // 원본 백업한것임
+            tit_addMultiActionInfo("cust:insertCust2150EGiro", "", 0, "", "N");
+            tit_callService(
+                ""
+                ,""
+                ,"ds_iEGiro=ds_ioEGiro"
+                ,""
+                ,"" // args
+                ,"lfn_AfterFileLoad"
+                ,false
+                ,false
+                ,true
+            );*/
+            
+            tit_clearActionInfo(); 
+            tit_addMultiActionInfo("cust:insertCust2150EGiro", "", 0, "", "N");      
+            tit_callService(
+                ""
+                ,""
+                ,"ds_iEGiro=ds_ioEGiro"
+                ,""
+                ,"" // args
+                ,"lfn_AfterFileLoad"
+                ,false
+                ,false
+                ,true
+            );            
+            ds_ioEGiroBackup.Copy(ds_ioEGiro);
+        }
+
+        if (TransectionError) { //쿼리 오류 시 종료
+            return;
+        }
+        edFileNm.Text = fdFile.FileName;
+        medDataRow.Value = ds_ioEGiroBackup.GetRowCount();
+        btnSave.Enable = true; //지로처리버튼 활성화
+    }
+}
+
+/**
+ * 파일 로드 TRANSACTION 처리 후
+ */
+function lfn_AfterFileLoad(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        TransectionError = true;
+        return "Transaction Error!";
+    }
+    
+    tit_clearActionInfo(); 
+    tit_addMultiActionInfo("cust:insertCust2150EGiroGroup", "", 0, "", "N"); // 그룹 지로 정보 넣기    
+    tit_callService(
+        ""
+        ,""
+        ,//"ds_iEGiro=ds_ioEGiro
+         "ds_iEGiroGroup=ds_ioEGropuGiro:U"
+        ,""
+        ,"" // args
+        ,"lfn_AfterFileLoad2"
+        ,false
+        ,false
+        ,true
+    );
+  
+}
+
+function lfn_AfterFileLoad2(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        TransectionError = true;
+        return "Transaction Error!";
+    }
+   
+    gfn_Alert("지로 데이터가 정상적으로 업로드되었습니다. \n\n[지로 처리(저장)]을 눌러야 최종 처리됩니다.");
+
+}
+
+function lfn_AfterFileLoad3(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        TransectionError = true;
+        return "Transaction Error!";
+    }
+   
+}
+/**
+ * 지로 처리(저장)
+ */
+function lfn_Save(obj) {
+
+    if (!gfn_Confirm("지로처리(저장) 하시겠습니까?")) {
+        return false;
+	}   
+    
+    if (TransectionError) {
+        gfn_Alert("오류가 발생했으므로 [지로파일 불러오기]를 다시 해주십시오.");
+        return;
+    }
+
+    if (left(calProcDate.Value, 4) < left(getDate(), 4)) {
+        gfn_Alert("처리일자가 잘못되었습니다. 이전 년도로 처리할 수 없습니다.");
+        return;
+    }
+    
+/* 고객 정보 관련 변수 */
+    var vCMgno = ""; //고객관리번호
+    var vRowCnt = ds_ioEGiro.GetRowCount();
+    var vRowData = "";
+    var vErrCheck = "OK";
+    var vCustomerRow = -1;
+    var vRowStart = 0;
+    var vRowEnd = 0;
+    var vRowCnt2 = 0;
+    var vGroup = 10; //한번에 처리 단위
+
+/* 회비 관련 변수 */
+    var vCno = "000000"; //고객번호
+    var vTotalSunapFee = 0; //총수납금액
+    var vSunapFee = 0; //수납금액
+    var vMinapFee = 0; //미납금액
+    var vOverYear = 0; //과오납 시작 년도
+    var vOverMonth = 0; //과오납 시작 월
+    var vOverHalf = 0; //과오납 시작 반기
+    var vItem = array(5); //POSPRINTM ITEM
+    var vBuyer = ""; //구매자
+    var vYear = ""; //고지입금 년도
+
+    var vPosPaymentYear = "0000"; //POSPAYMENT 년도
+    var vPosPaymentPmMgno = 0; //POSPAYMENT 관리번호
+    var vPosPaymentBuyer = ""; //구매자
+
+    var sChangeIn = ""; //insert 쿼리 입력 DS
+    var sChangeOut = ""; //insert 쿼리 출력 DS
+
+    if(vRowCnt >= vGroup) {   // 지로 조회 갯수 / 10 묶음
+        vRowCnt2 = floor(vRowCnt / vGroup);   // 나눈 몫
+    } else {
+        vRowCnt2 = vRowCnt;    // 지로 조회 갯수
+    }
+    
+    for (var j=0; j<=vRowCnt2; j++) {     // 나눈 몫 만큼 반복됨  속도로 인해 10개씩 묶어서 처리 하는 것으로 보임
+
+        // 데이터셋 초기화
+        ds_oCustomerFee.ClearData();
+        ds_iCustomerFee.ClearData();
+        ds_ioPosPrintM.ClearData();
+        ds_ioPosPayment.ClearData();
+        ds_ioMemberH.ClearData();
+        ds_ioCustomerStatus.ClearData();
+        ds_ioCustomerInfoTmp.ClearData();
+
+/*        // 고객 정보 불러오기
+        ds_oCustomerFee.ClearData(); // select Fee 초기화
+        ds_iCustomerFee.ClearData(); // insert Fee 초기화
+        ds_ioMemberH.ClearData(); //멤버등록
+        ds_ioCustomerStatus.ClearData(); //겸직처리
+*/       
+        vCMgno = "''";
+        vRowStart = j * vGroup;
+        vRowEnd = iif(vRowCnt < vRowStart + vGroup, vRowCnt, vRowStart + vGroup);
+        if (vRowStart <= vRowEnd) {
+        
+			for (var i=vRowStart; i<vRowEnd; i++) {	
+				vCMgno += ", '" + lfn_GetData(ds_ioEGiro.GetColumn(i, "EGROWDATA"), "CNO") + "'";	
+			}		} else {
+			alert("지로 수납처리가 완료되었습니다.");
+			lfn_InfoView();
+			return false;
+		}
+        
+        vCMgno = replace(vCMgno, "'', ", "");
+        
+        tit_clearActionInfo();
+        tit_addCsvSearchActionInfo("cust:searchCust2150CustomerFee", false);
+        tit_callService(
+            ""
+            ,""
+            ,""
+            ,"ds_oCustomerFee=ds_oCustomerFee"
+            ,"SCNO=" + quote(vCMgno)
+                + " SCGTMGNO=" + quote(gds_oUserInfo.GetColumn(0, "PDEPTCD"))
+            , "lfn_AfterCall"
+            ,false
+            ,false
+            ,true
+        );
+
+        if (TransectionError) { //쿼리 오류 시 종료
+            return;
+        }
+
+        for (var i=vRowStart; i<vRowEnd; i++) {
+        
+        // 데이터 정제 (정상/오류 체크 및 회원/비회원 구분)
+            vRowData = ds_ioEGiro.GetColumn(i, "EGROWDATA");
+            vErrCheck = lfn_CheckData(vRowData, ds_oCustomerFee.GetColumn(0, "CFCFEE"));
+    
+            if (vErrCheck == "OK") { //정상 데이터
+            
+                vCMgno = ""; //고객관리번호
+                vCno = "000000"; //고객번호
+                vTotalSunapFee = 0; //총수납금액
+                vSunapFee = 0; //수납금액
+                vMinapFee = 0; //미납금액
+                vOverYear = 0; //과오납 시작 년도
+                vOverMonth = 0; //과오납 시작 월
+                vOverHalf = 0; //과오납 시작 반기
+                vItem[0] = ""; //POSPRINTM 결제구분
+                vItem[1] = ""; //POSPRINTM ITEM1
+                vItem[2] = ""; //POSPRINTM ITEM2
+                vItem[3] = ""; //POSPRINTM ITEM3
+                vItem[4] = ""; //POSPRINTM 직능코드
+                vBuyer = ""; //구매자
+                vYear = ""; //고지입금 년도
+            
+                ds_ioEGiro.SetColumn(i, "EGERRORGUBUN", "0"); // 정상
+                ds_ioEGiro.SetColumn(i, "EGREMARK", "");
+                
+                vCno = lfn_GetData(vRowData, "CNO");
+                vTotalSunapFee = toNumber(lfn_GetData(vRowData, "AMOUNT"));
+                vSunapFee = vTotalSunapFee;
+                vYear = lfn_GetData(vRowData, "YEAR");
+                
+                vCustomerRow = ds_oCustomerFee.FindRow("CNO", vCno);
+    
+                if(ds_oCustomerFee.GetColumn(vCustomerRow, "CSTATUSGUBUN") == "1") { //비회원일 경우
+
+                    ds_ioEGiro.SetColumn(i, "EGCHANGEGUBUN", "0"); // 비회원->회원 변경
+                    
+                    ds_ioMemberH.InsertRow(0);
+                    ds_ioMemberH.SetColumn(0, "FMNM", ds_oCustomerFee.GetColumn(vCustomerRow, "FMNM"));
+                    ds_ioMemberH.SetColumn(0, "FMRESIDENTNO", ds_oCustomerFee.GetColumn(vCustomerRow, "FMRESIDENTNO"));
+                    ds_ioMemberH.SetColumn(0, "COURSE", ds_oCustomerFee.GetColumn(vCustomerRow, "CCOURSECD"));
+                    ds_ioMemberH.SetColumn(0, "CMGNO", ds_oCustomerFee.GetColumn(vCustomerRow, "CMGNO"));
+                    ds_ioMemberH.SetColumn(0, "BNM", ds_oCustomerFee.GetColumn(vCustomerRow, "BNM"));
+                    ds_ioMemberH.SetColumn(0, "CFEEYYMM", vYear + iif(toNumber(vYear) < left(calProcDate.Value, 4), "07", substr(calProcDate.Value, 4, 2)));
+                    
+                    ds_ioCustomerStatus.InsertRow(0); //겸직 처리 Function을 위한 값 setting
+                    ds_ioCustomerStatus.SetColumn(0, "FMMGNO", ds_oCustomerFee.GetColumn(vCustomerRow, "FMMGNO"));
+                    ds_ioCustomerStatus.SetColumn(0, "BADDR1", ds_oCustomerFee.GetColumn(vCustomerRow, "BADDR1"));
+                    ds_ioCustomerStatus.SetColumn(0, "STARTDATE", left(calProcDate.Value, 8));
+                    ds_ioCustomerStatus.SetColumn(0, "GTMGNO", ds_oCustomerFee.GetColumn(vCustomerRow, "CGTMGNO"));
+                    
+                    // 변경이력 저장을 위해 변경전 정보 보관
+                    ds_ioCustomerInfoTmp.InsertRow(0);
+                    ds_ioCustomerInfoTmp.SetColumn(0, "CMGNO", ds_oCustomerFee.GetColumn(vCustomerRow, "CMGNO"));
+                    ds_ioCustomerInfoTmp.SetColumn(0, "COBMGNO", ds_oCustomerFee.GetColumn(vCustomerRow, "COBMGNO"));
+                    ds_ioCustomerInfoTmp.SetColumn(0, "CSTATUSGUBUN", ds_oCustomerFee.GetColumn(vCustomerRow, "CSTATUSGUBUN"));
+                    ds_ioCustomerInfoTmp.SetColumn(0, "CREGCD", ds_oCustomerFee.GetColumn(vCustomerRow, "CREGCD"));
+                    ds_ioCustomerInfoTmp.SetColumn(0, "CDELGUBUN", ds_oCustomerFee.GetColumn(vCustomerRow, "CDELGUBUN"));
+                    ds_ioCustomerInfoTmp.SetColumn(0, "CCOURSECD", ds_oCustomerFee.GetColumn(vCustomerRow, "CCOURSECD"));
+                    ds_ioCustomerInfoTmp.SetColumn(0, "COVERGUBUN", ds_oCustomerFee.GetColumn(vCustomerRow, "COVERGUBUN"));
+                    
+                }
+                
+            //POSPRINTM 데이터 생성
+                ds_oCustomerFee.Filter("CNO='" + vCno + "'"); //해당 고객번호 필터
+                vCMgno = ds_oCustomerFee.GetColumn(0, "CMGNO"); //고객관리번호
+
+				if (ds_oCustomerFee.GetColumn(0, "CCOURSECD") == "61") { //개인회원이면 성명
+					vBuyer = ds_oCustomerFee.GetColumn(0, "FMNM");
+				} else {  // 그 외 직능은 대상물명
+	                vBuyer = ds_oCustomerFee.GetColumn(0, "BNM");
+				}
+        
+                //PMMGNO 생성
+                ds_oPmMgno.ClearData();
+                tit_clearActionInfo();
+                tit_addSearchActionInfo("cust:searchCust2020CustomerFeePmMgno", false);
+                tit_callService(
+                    ""
+                    ,""
+                    ,""
+                    ,"ds_oPmMgno=ds_oCustomerFeePmMgno"
+                    ,"SPMYEAR=" + quote(left(calProcDate.Value, 4))
+                    ,"lfn_AfterCall"
+                    ,false
+                    ,false
+                    ,true
+                );
+
+                if (TransectionError) { //쿼리 오류 시 종료
+                    return;
+                }
+
+                vItem[0] = "17"; //지로
+                vItem[1] = "구    분 : " + lfn_GetCourse(ds_oCustomerFee.GetColumn(0, "CCOURSECD"));
+
+				if (ds_oCustomerFee.GetColumn(0, "CCOURSECD") == "61") { //개인회원이면 성명
+	                vItem[2] = "성    명 : " + vBuyer;
+				} else {  // 그 외 직능은 대상물명
+	                vItem[2] = "업    체 : " + vBuyer;
+				}
+                vItem[3] = "관리번호 : " + lfn_GetJibu(ds_oCustomerFee.GetColumn(0, "CGTMGNO")) + "-" + lpad(ds_oCustomerFee.GetColumn(0, "CNO"), "0", 6);
+                vItem[4] = ds_oCustomerFee.GetColumn(0, "CCOURSECD"); //PMCLAS
+                
+                lfn_SetPosPrintM(ds_oPmMgno.GetColumn(0, "PMMGNO"), vBuyer, vItem, vTotalSunapFee);
+                
+                vBuyer += "(" + lfn_GetCourse(ds_oCustomerFee.GetColumn(0, "CCOURSECD")) + ")";
+        
+                vMinapFee = toNumber(ds_oCustomerFee.GetColumn(ds_oCustomerFee.GetRowCount()-1, "CFCFEE")); //마지막달의 미납금액- 미납이 없을 경우를 위함
+                vOverYear = toNumber(ds_oCustomerFee.GetColumn(ds_oCustomerFee.GetRowCount()-1, "CFSUNAPYEAR")); //마지막 년도
+                vOverMonth = toNumber(ds_oCustomerFee.GetColumn(ds_oCustomerFee.GetRowCount()-1, "CFSUNAPMONTH")); //마지막 월
+                vOverHalf = toNumber(ds_oCustomerFee.GetColumn(ds_oCustomerFee.GetRowCount()-1, "CFSUNAPHALF")); //마지막 반기
+
+                ds_oCustomerFee.UnFilter();
+                
+            //CUSTOMERFEE 데이터 생성
+                ds_oCustomerFee.Filter("CNO='" + vCno + "' && MINAPFEE>0"); //미납이 있는 월만 필터
+        
+                if (ds_ioEGiro.GetColumn(i, "EGCHANGEGUBUN") == "1") { //이미 회원일 경우 월별 생성
+                
+                    for (var j=0; j<ds_oCustomerFee.GetRowCount(); j++) { //미납금 수납
+        
+                        //vMinapFee = toNumber(ds_oCustomerFee.GetColumn(j, "CFCFEE")); //매월 미납금
+                        vMinapFee = toNumber(ds_oCustomerFee.GetColumn(j, "MINAPFEE")); //매월 미납금
+        
+                        lfn_SetCustomerFee(vCMgno
+                            , ds_oPmMgno.GetColumn(0, "PMMGNO")
+                            , ds_oCustomerFee.GetColumn(j, "CFSUNAPYEAR")
+                            , ds_oCustomerFee.GetColumn(j, "CFSUNAPMONTH")
+                            , ds_oCustomerFee.GetColumn(j, "CFSUNAPHALF")
+                            , vMinapFee
+                            , vBuyer
+                            , vTotalSunapFee
+                        );
+                        
+                        ds_oCustomerFee.SetColumn(j, "MINAPFEE", "0"); //미납분을 제거
+            
+                        vSunapFee -= vMinapFee;
+                        
+                        if (vSunapFee <= 0) { //수납금액이 0이 되면 중지
+                            break;
+                        }
+                    }
+        
+                    if (vSunapFee > 0) { //과오납이 있을 경우 과오납 시작일 지정
+                        vOverMonth++;
+                        if (vOverMonth > 12) {
+                            vOverMonth = 1;
+                            vOverHalf = 1;
+                            vOverYear++;
+                        } else if (vOverMonth > 6) {
+                            vOverHalf = 2;
+                        }
+                    }
+                
+                } else { // 비회원일 경우 수납 시작일 지정
+                        
+                    vOverYear = toNumber(lfn_GetData(vRowData, "YEAR")); //고지년도
+                    
+                    tit_clearActionInfo();
+                    tit_addSearchActionInfo("cust:searchCust2150CustomerEduFee", false);
+                    tit_callService(
+                        ""
+                        ,""
+                        ,""	// inDs
+                        ,"ds_oCustomerEduFee=ds_oCustomerEduFee"	// outDs
+                        ,"CGTMGNO=" + quote(ds_oCustomerFee.GetColumn(0, "CGTMGNO"))
+                            + " CNO=" + quote(vCno)
+                            + " CFSUNAPYEAR=" + quote(vOverYear)
+                        ,"lfn_AfterCall"
+                        ,false
+                        ,false
+                        ,true
+                    );
+
+                    if (TransectionError) { //쿼리 오류 시 종료
+                        return;
+                    }
+        
+                    if (ds_oCustomerEduFee.GetRowCount() > 0) { //고지년도에 교육비를 수납했을 경우
+                        vOverYear++;
+                    }
+                    
+                    if(vOverYear < left(calProcDate.Value, 4)) { //고지년도가 처리년도 이전 일 때
+                        vOverMonth = 7;
+                        vOverHalf = 2;
+                    } else { //고지년도가 처리년도와 같을 때
+						//if (ds_oCustomerFee.GetColumn(0, "CFEEYYMM") < left(calProcDate.Value, 4) + "07") {
+						//if (substr(getDate(), 4, 2) < "07") {
+						if (vTotalSunapFee > 24000) {
+							vOverMonth = 1;
+							vOverHalf = 1;
+						} else {
+							vOverMonth = 7;
+							vOverHalf = 2;
+						}
+                    }
+                }
+                
+                ds_oCustomerFee.UnFilter();
+                
+            //과오납 및 비회원일 경우
+                while (vSunapFee > 0) { //수납금액이 남았을 경우 과오납 수납, 비회원일 경우 이번 반기부터 수납
+                    lfn_SetCustomerFee(vCMgno
+                        , ds_oPmMgno.GetColumn(0, "PMMGNO")
+                        , vOverYear
+                        , vOverMonth
+                        , vOverHalf
+                        , vMinapFee
+                        , vBuyer
+                        , vTotalSunapFee
+                    );
+                    
+                    vSunapFee -= vMinapFee;
+                    
+                    vOverMonth++;
+                    if (vOverMonth > 12) { //년도 변경, 상반기 변경
+                        vOverMonth = 1;
+                        vOverHalf = 1;
+                        vOverYear++;
+                    } else if (vOverMonth > 6) { //하반기 변경
+                        vOverHalf = 2;
+                    }
+
+                }
+
+            } else { //오류 데이터
+                ds_ioEGiro.SetColumn(i, "EGERRORGUBUN", "1"); // 오류
+                ds_ioEGiro.SetColumn(i, "EGREMARK", vErrCheck);
+            }
+          
+        }
+
+    // Pospayment 데이터 생성
+        ds_ioPosPayment.ClearData();
+        vPosPaymentYear = "0000"; //POSPAYMENT 년도
+        vPosPaymentPmMgno = 0; //POSPAYMENT 관리번호
+        vPosPaymentBuyer = ""; //구매자
+    
+        for (var k=0; k<ds_iCustomerFee.GetRowCount(); k++) {
+        
+            if (vPosPaymentPmMgno <> ds_iCustomerFee.GetColumn(k, "CFPMMGNO")) { //대상이 바뀌면 년도 초기화
+                vPosPaymentPmMgno = ds_iCustomerFee.GetColumn(k, "CFPMMGNO");
+                vPosPaymentYear = "0000";
+            }
+        
+            if (vPosPaymentYear <> ds_iCustomerFee.GetColumn(k, "CFSUNAPYEAR")) { //년도가 바뀌면 1 row 등록
+            
+                vPosPaymentYear = ds_iCustomerFee.GetColumn(k, "CFSUNAPYEAR");
+                vPosPaymentBuyer = ds_iCustomerFee.GetColumn(k, "BNM");
+                
+                ds_iCustomerFee.Filter("CFCMGNO='" + ds_iCustomerFee.GetColumn(k, "CFCMGNO") + "' && CFSUNAPYEAR='" + vPosPaymentYear + "'");
+                lfn_SetPosPayment(vPosPaymentPmMgno
+                                , left(vPosPaymentBuyer, 25)
+                                , vPosPaymentYear
+                                , ds_iCustomerFee.Sum("CFPROCAMOUNT"));
+                ds_iCustomerFee.UnFilter();
+            }
+        }
+
+    // INSERT Transaction
+
+        sChangeIn = "";
+        sChangeOut = "";
+
+        tit_clearActionInfo();
+        tit_addMultiActionInfo("cust:updateCust2150EGiro", "", 0, "", "N");
+    
+        if (ds_iCustomerFee.GetRowCount() > 0) {
+            tit_addMultiActionInfo("cust:insertCust2020CustomerFee", "", 0, "", "N");
+            tit_addMultiActionInfo("cust:insertCust2020PosPrintM", "", 0, "", "N");
+            tit_addMultiActionInfo("cust:insertCust2020PosPayment", "", 0, "", "N");
+    
+            sChangeIn += " ds_iCustomerFee=ds_iCustomerFee";
+            sChangeIn += " ds_iPosPrintM=ds_ioPosPrintM";
+            sChangeIn += " ds_iPosPayment=ds_ioPosPayment";
+        }
+        
+        if (ds_ioMemberH.GetRowCount() > 0) {
+            tit_addMultiActionInfo("cust:updateCust2150Customer", "", 0, "", "N");
+            tit_addMultiActionInfo("cust:updateCust2150MemberH", "", 0, "", "N");
+            tit_addMultiActionInfo("cust:updateCust2150CustomerStatusTrue", "", 0, "", "N");
+            
+			// 변경이력
+			tit_addMultiActionInfo("cust:executeCust0010UpdateCustomerChangeH", "", 0, "");            
+			//tit_addSingleActionInfo("cust:executeCust0010UpdateCustomerChangeH", "", 0, "");            
+    
+            sChangeIn += " ds_iCustomer=ds_ioMemberH";
+            sChangeIn += " ds_iMemberH=ds_ioMemberH";
+            sChangeIn += " ds_iStatusTrue=ds_ioCustomerStatus";
+            sChangeIn += " ds_iCustomerInfoTmp=ds_ioCustomerInfoTmp";
+                
+            sChangeOut += "ds_ioCustomerStatus=ds_oStatusTrue";
+        }
+        
+        tit_callService(
+            ""
+            ,""
+            , "ds_iEGiro=ds_ioEGiro:U" + sChangeIn
+            , sChangeOut
+            ,"" // args
+            ,"lfn_AfterSave"
+            ,false
+            ,false
+            ,true
+        );
+        
+        if (TransectionError) { //쿼리 오류 시 종료
+            return;
+        }
+
+    }
+
+	gfn_Alert("지로 처리(저장)이 완료되었습니다.");
+	btnSave.Enable = false;
+	
+    lfn_InfoView();
+
+}
+
+/**
+ * 일별 수납 집계
+ */
+function btnFeeReport_OnClick(obj) {
+	var ArrMenuInfo = gfn_SearchMenuInfo("cust", "cust::frmcust2090MDailyFeeReport.xml");	//메뉴정보조회
+	if(length(ArrMenuInfo) > 0 ) {
+		var sArg = "";
+		
+		gs_SystemGubun = arrMenuInfo[7];						//"cust";
+		gs_SystemMenuId = arrMenuInfo[5];						//"0000000254";
+		global.mnuLeft.tabMenu.tabpgMenu.Text = arrMenuInfo[6];	//"고객관리";
+		var ls_MenuId = arrMenuInfo[0];							//"0000000273";
+		var ls_MenuTitle = arrMenuInfo[1];						//"고객정보관리";
+		var ls_MenuUrl = arrMenuInfo[2];						//"cust::frmcust0010MCustomerManagement.xml";
+		
+		global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+		gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId, sArg); 
+	} else {
+		gfn_Alert("해당 메뉴를 찾을 수 없습니다.");
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+// 공통 함수
+/////////////////////////////////////////////////////////////////////////////////
+/**
+ * 오류 데이터 및 회원변경 목록 걸러내기
+ */
+function lfn_InfoView() {
+
+    var vRowData = "";
+    var vRow = 0;
+    var vTotalAmount = 0;
+    var vProcAmount = 0; //처리 총 금액
+    var vProcCnt = 0; //처리 총 건수
+    var vAmount = 0;
+
+    ds_ioEGiro.ClearData();
+    ds_ioError.ClearData();
+    ds_ioChange.ClearData();
+    
+    tit_clearActionInfo();
+    tit_addCsvSearchActionInfo("cust:searchCust2150EGiro", false);
+    tit_callService(
+        ""
+        ,""
+        ,""
+        ,"ds_ioEGiro=ds_oEGiro"
+        ,"SGTMGNO=" + quote(gds_oUserInfo.GetColumn(0, "PDEPTCD"))
+            + " SGRDATE=" + quote(fdFile.FileName)
+        , ""
+        ,false
+        ,false
+        ,true
+    );
+    
+    for(var i=0; i<ds_ioEGiro.GetRowCount(); i++) {
+    
+        vRowData = ds_ioEGiro.GetColumn(i, "EGROWDATA");
+        vAmount = toNumber(lfn_GetData(vRowData, "AMOUNT"));
+        vTotalAmount += vAmount;
+        
+        if(ds_ioEGiro.GetColumn(i, "EGERRORGUBUN") == "0") { //정상
+        
+            vProcAmount += vAmount; //처리 총 금액
+            vProcCnt++; //처리 총 건수
+            
+            if (ds_ioEGiro.GetColumn(i, "EGCHANGEGUBUN") == "0") { //비회원 -> 회원
+                vRow = ds_ioChange.AddRow();
+                ds_ioChange.SetColumn(vRow, "EGSEQ", lfn_GetData(vRowData, "SEQ"));
+                ds_ioChange.SetColumn(vRow, "EGGTMGNO", lfn_GetJibu(lfn_GetData(vRowData, "GTMGNO")));
+                ds_ioChange.SetColumn(vRow, "EGCNO", lfn_GetData(vRowData, "CNO"));
+                ds_ioChange.SetColumn(vRow, "EGAMOUNT", vAmount);
+                ds_ioChange.SetColumn(vRow, "EGREMARK", ds_ioEGiroBackup.GetColumn(i, "EGREMARK"));
+            }
+            
+        } else { //오류
+        
+            vRow = ds_ioError.AddRow();
+            ds_ioError.SetColumn(vRow, "EGSEQ", lfn_GetData(vRowData, "SEQ"));
+            ds_ioError.SetColumn(vRow, "EGGTMGNO", lfn_GetData(vRowData, "GTMGNO"));
+            ds_ioError.SetColumn(vRow, "EGCNO", lfn_GetData(vRowData, "CNO"));
+            ds_ioError.SetColumn(vRow, "EGAMOUNT", vAmount);
+            ds_ioError.SetColumn(vRow, "EGREMARK", ds_ioEGiroBackup.GetColumn(i, "EGREMARK"));
+        }
+    }
+    
+    /* 처리 건수 및 금액 집계 */
+    medTotalCnt.Value = ds_ioEGiro.GetRowCount();
+	medTotalAmount.Value = vTotalAmount;
+	medProcCnt.Value = vProcCnt;
+	medProcAmount.Value = vProcAmount;
+	medErrorCnt.Value = ds_ioError.GetRowCount();
+	medErrorAmount.Value = vTotalAmount - vProcAmount;
+	medChangeCnt.Value = ds_ioChange.GetRowCount();
+	
+	ds_ioError.ApplyChange();
+    ds_ioChange.ApplyChange();
+}
+
+/**
+ * 이전자료 현재 자료 구분
+ * AS-IS : 지부(2)지역(2)직능(2)고객번호(5)
+ * TO-BE : 지부(4)고객번호(6)
+ */
+function lfn_CheckToBe(nRowData) {
+    
+    var vToBe = true;
+
+    if (substr(nRowData, 56, 2) < "10") {  // 57번째 열 수납년도 2010 년도 이전 일 경우 
+        vToBe = false;
+    }
+
+    return vToBe;
+
+}
+
+/**
+ * 데이터 SPLIT
+ * Parameter : nRowData - 레코드 데이터
+ *           : nType    - 가져올 데이터 구분
+ *                   SEQ       - 순번
+ *                   PROCDATE  - 이체일자
+ *                   GTMGNO    - 지부
+ *                   CNO       - 관리번호
+ *                   AMOUNT    - 납부액
+ *                   VAT       - 수수료
+ *                   YEAR      - 납부년도
+ */
+function lfn_GetData(nRowData, nType) {
+
+    var vData = "";
+
+    if (nType == "SEQ") {
+        vData = substr(nRowData, 2, 7);
+    } else if (nType == "PROCDATE") {
+        vData = substr(nRowData, 17, 8);
+    } else if (nType == "GTMGNO") {
+    
+        if (lfn_CheckToBe(nRowData)) {
+            vData = substr(nRowData, 60, 4);
+        } else {
+            vData = "1" + substr(nRowData, 59, 2) + "1";
+        }
+        
+    } else if (nType == "CNO") {
+       
+            if (lfn_CheckToBe(nRowData)) {
+                vData = substr(nRowData, 64, 6);
+            } else {
+    
+                vData = substr(nRowData, 61, 2) + "-" + substr(nRowData, 63, 2) + "-" + substr(nRowData, 65, 5);
+    
+                ds_oCno.ClearData();
+                tit_clearActionInfo();
+                tit_addSearchActionInfo("cust:searchCust2150CustomerCno", false);
+                tit_callService(
+                    ""
+                    ,""
+                    ,""
+                    ,"ds_oCno=ds_oCno"
+                    ,"CGTMGNO=" + quote("1" + substr(nRowData, 59, 2) + "1")
+                        + " COLDMGNO=" + quote(vData)
+                    ,"lfn_AfterCall"
+                    ,false
+                    ,false
+                    ,true
+                );
+    
+                if (ds_oCno.GetRowCount() > 0) {
+                    vData = ds_oCno.getColumn(0, "CNO");
+                }
+    
+            }           
+                
+    } else if (nType == "AMOUNT") {
+        vData = substr(nRowData, 71, 13);
+    } else if (nType == "VAT") {
+        vData = substr(nRowData, 85, 4);
+    } else if (nType == "YEAR") {
+        vData = substr(nRowData, 56, 2);
+        vData = iif (vData < "10", "2009", "20" + vData);
+    }
+    
+    return vData;
+}
+
+/**
+ * 데이터 체크
+ */
+function lfn_CheckData(nRowData, nFee) {
+
+    var vErrMsg = "OK";
+
+    if (length(nRowData) <> 89) {
+        vErrMsg = "데이터 오류";
+    } else if (lfn_GetData(nRowData, "GTMGNO") <> gds_oUserInfo.GetColumn(0, "PDEPTCD")) {
+        vErrMsg = "지부 오류";
+    } else if (ds_oCustomerFee.FindRow("CNO",(lfn_GetData(nRowData, "CNO"))) < 0) {
+        vErrMsg = "관리번호 오류";
+    } else if (lfn_GetData(nRowData, "PROCDATE") <> ls_GiroDate) {
+        vErrMsg = "이체일자 오류";
+    } else if (!isDigit(lfn_GetData(nRowData, "AMOUNT"))) {
+        vErrMsg = "금액 오류";
+    } else if (toNumber(lfn_GetData(nRowData, "AMOUNT"))%1000 > 0) {
+        vErrMsg = "금액 오류";
+    // 고지금액 이외의 금액일 경우 에러 발생, 과오납은 4년치까지만 허용(2013.01.29)
+    } else if (!((toNumber(lfn_GetData(nRowData, "AMOUNT"))/toNumber(nFee) == 6)	    // 반기
+              ||(toNumber(lfn_GetData(nRowData, "AMOUNT"))/toNumber(nFee) == 12)	// 1년
+              ||(toNumber(lfn_GetData(nRowData, "AMOUNT"))/toNumber(nFee) == 18)	// 1년반
+              ||(toNumber(lfn_GetData(nRowData, "AMOUNT"))/toNumber(nFee) == 24)	// 2년
+              ||(toNumber(lfn_GetData(nRowData, "AMOUNT"))/toNumber(nFee) == 30)	// 2년반
+              ||(toNumber(lfn_GetData(nRowData, "AMOUNT"))/toNumber(nFee) == 36)	// 3년
+              ||(toNumber(lfn_GetData(nRowData, "AMOUNT"))/toNumber(nFee) == 42)	// 3년반
+              ||(toNumber(lfn_GetData(nRowData, "AMOUNT"))/toNumber(nFee) == 48))) {	// 4년
+        vErrMsg = "금액 오류";
+    }
+
+    if (ds_oCustomerFee.GetColumn(0, "CDELGUBUN") <> "0") {	// 삭제된 회원이면 에러
+        vErrMsg = "회원삭제 오류";
+    }
+
+    return vErrMsg;
+}
+
+/**
+ * 회비/교육비 결제 정보 set
+ */
+function lfn_SetCustomerFee(nCMgno, nPmMgno, nYear, nMonth, nHalf, nAmount, nBuyer, nRemark) {
+
+    nRow = ds_iCustomerFee.AddRow();
+    ds_iCustomerFee.SetColumn(nRow, "CFCMGNO", nCMgno); //고객관리번호
+//  ds_iCustomerFee.SetColumn(nRow, "CFSEQ", );
+    ds_iCustomerFee.SetColumn(nRow, "CFSETLMGUBUN", "0");
+    ds_iCustomerFee.SetColumn(nRow, "CFMEMBERGUBUN", "0");
+    ds_iCustomerFee.SetColumn(nRow, "CFGUBUN", "01"); //수납
+	ds_iCustomerFee.SetColumn(nRow, "CFGUBUNCD", "17"); //지로
+    ds_iCustomerFee.SetColumn(nRow, "CFSUNAPYEAR", nYear);
+    ds_iCustomerFee.SetColumn(nRow, "CFSUNAPMONTH", lpad(nMonth, "0", 2));
+    ds_iCustomerFee.SetColumn(nRow, "CFSUNAPHALF", nHalf);
+    ds_iCustomerFee.SetColumn(nRow, "CFPROCAMOUNT", nAmount);
+	ds_iCustomerFee.SetColumn(nRow, "CFPROCDATE", left(calProcDate.Value, 8));
+	ds_iCustomerFee.SetColumn(nRow, "CFPONYGUBUN", chkPonyDate.Value);
+	if (chkPonyDate.Value == "1") {
+        ds_iCustomerFee.SetColumn(nRow, "CFPONYDATE", left(calPonyDate.Value, 8));
+    }
+	ds_iCustomerFee.SetColumn(nRow, "CFMGGTMGNO", gds_oUserInfo.GetColumn(0, "PDEPTCD"));
+//	ds_iCustomerFee.SetColumn(nRow, "CFPROCGTMGNO", );
+//	ds_iCustomerFee.SetColumn(nRow, "CFPOSGTMGNO",);
+	ds_iCustomerFee.SetColumn(nRow, "CFPMYEAR", left(calProcDate.Value, 4));
+	ds_iCustomerFee.SetColumn(nRow, "CFPMMGNO", nPmMgno);
+    ds_iCustomerFee.SetColumn(nRow, "CFGROUPMGNO", left(calProcDate.Value, 8) + gds_oUserInfo.GetColumn(0, "PSABUN") + nPmMgno);
+//	ds_iCustomerFee.SetColumn(nRow, "CFCANCELDATE", );
+//	ds_iCustomerFee.SetColumn(nRow, "CFCANCELSABUN", );
+    ds_iCustomerFee.SetColumn(nRow, "CFREMARK", "[수납 : " + nRemark + "원]-지로자동");
+//	ds_iCustomerFee.SetColumn(nRow, "CFREPAYREF", );
+    ds_iCustomerFee.SetColumn(nRow, "CFACTIVEGUBUN", "0");
+    ds_iCustomerFee.SetColumn(nRow, "BNM", nBuyer);
+
+}
+
+/**
+ * POSPRINTM 입력
+ * Parameter : sBuyer - 구매자명
+ *           : arrPmItem - 아이템 배열 및 추가 데이터 [0~3]
+ *           : sOrderNo - 주문번호(환불용)
+ */
+function lfn_SetPosPrintM(nPmMgno, sBuyer, arrItem, sAmount) {
+
+    var nRow = ds_ioPosPrintM.AddRow();
+    ds_ioPosPrintM.SetColumn(nRow, "PMYEAR", left(calProcDate.Value, 4));
+    ds_ioPosPrintM.SetColumn(nRow, "PMMGNO", nPmMgno);
+    ds_ioPosPrintM.SetColumn(nRow, "PMINPUT", "0"); // 내방 고정
+    ds_ioPosPrintM.SetColumn(nRow, "PMPCGUBUN", "0"); //수납
+    //ds_ioPosPrintM.SetColumn(nRow, "PMPCORDERNO", 주문번호);
+    ds_ioPosPrintM.SetColumn(nRow, "PMPROCDATE", left(calProcDate.Value, 8));
+    ds_ioPosPrintM.SetColumn(nRow, "PMPIID", ls_PmPiid);
+    ds_ioPosPrintM.SetColumn(nRow, "PMPGMID", "11"); // 회비
+    ds_ioPosPrintM.SetColumn(nRow, "PMPGMPK", left(calProcDate.Value, 8) + gds_oUserInfo.GetColumn(0, "PSABUN") + nPmMgno);
+    ds_ioPosPrintM.SetColumn(nRow, "PMBUYER", sBuyer);
+    ds_ioPosPrintM.SetColumn(nRow, "PMCLAS", arrItem[4]);
+    ds_ioPosPrintM.SetColumn(nRow, "PMPGMGUBUN", arrItem[0]);
+    ds_ioPosPrintM.SetColumn(nRow, "PMITEM1", arrItem[1]);
+    ds_ioPosPrintM.SetColumn(nRow, "PMITEM2", arrItem[2]);
+    ds_ioPosPrintM.SetColumn(nRow, "PMITEM3", arrItem[3]);
+    ds_ioPosPrintM.SetColumn(nRow, "PMITEM4", "수납일자 : " + calProcDate.Text);
+    ds_ioPosPrintM.SetColumn(nRow, "PMPAYMENTFLAG", "0"); //현금(지로)
+    ds_ioPosPrintM.SetColumn(nRow, "PMAMT", sAmount);
+    ds_ioPosPrintM.SetColumn(nRow, "PMVAT", "0");
+    ds_ioPosPrintM.SetColumn(nRow, "PMRESULT", "1");
+    
+}
+
+/**
+ * POSPAYMENT 입력
+ * Parameter : sPNm -영수증 출력 명
+ *           : sUnitAmt - 년도
+ *           : sTotAmt - 총액
+ */
+function lfn_SetPosPayment(nPmMgno, sPNm, sUnitAmt, sTotAmt) {
+    var nRow = 0;
+    nRow = ds_ioPosPayment.AddRow();
+    ds_ioPosPayment.SetColumn(nRow, "PPPMYEAR", left(calProcDate.Value, 4));
+    ds_ioPosPayment.SetColumn(nRow, "PPPMMGNO", nPmMgno);
+    ds_ioPosPayment.SetColumn(nRow, "PPNM", sPNm);
+    ds_ioPosPayment.SetColumn(nRow, "PPUNITAMT", sUnitAmt);
+    ds_ioPosPayment.SetColumn(nRow, "PPTOTAMT", sTotAmt);
+}
+
+/**
+ * 저장 후 처리
+ */
+function lfn_AfterSave(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_Alert("서버에 오류가 발생되었습니다. 정보지원과로 문의하시기 바랍니다.");
+        TransectionError = true;
+        return "Transaction Error!";
+    }
+
+}
+
+/**
+ * 기타 TRANSACTION 처리 후
+ */
+function lfn_AfterCall(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_Alert("서버에 오류가 발생되었습니다. 정보지원과로 문의하시기 바랍니다.");
+        TransectionError = true;
+        return "Transaction Error!";
+    }
+}
+]]></Script>
+</Window>

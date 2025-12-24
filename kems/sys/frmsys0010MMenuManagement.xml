@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmsys0010MMenuManagement" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="메뉴관리" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioMenuTree" OnRowPosChanged="ds_ioMenuTree_OnRowPosChanged">
+				<Contents>
+					<colinfo id="MENULEVEL" size="22" type="DECIMAL"/>
+					<colinfo id="MIMGFLAG" size="22" type="DECIMAL"/>
+					<colinfo id="MMENUID" size="13" type="STRING"/>
+					<colinfo id="MMENUNM" size="50" type="STRING"/>
+					<colinfo id="MORDERSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="MPARENTMENUID" size="13" type="STRING"/>
+					<colinfo id="MREMARK" size="1000" type="STRING"/>
+					<colinfo id="MSYSGUBUN" size="30" type="STRING"/>
+					<colinfo id="MURL" size="100" type="STRING"/>
+					<colinfo id="MURLTYPE" size="1" type="STRING"/>
+					<colinfo id="MUSEYN" size="1" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSysGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oUrlType">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioMenuTreeBackup">
+				<Contents>
+					<colinfo id="MENULEVEL" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="MIMGFLAG" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="MMENUID" size="13" summ="default" type="STRING"/>
+					<colinfo id="MMENUNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="MORDERSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="MPARENTMENUID" size="13" summ="default" type="STRING"/>
+					<colinfo id="MREMARK" size="1000" summ="default" type="STRING"/>
+					<colinfo id="MSYSGUBUN" size="30" summ="default" type="STRING"/>
+					<colinfo id="MURL" size="100" summ="default" type="STRING"/>
+					<colinfo id="MURLTYPE" size="1" summ="default" type="STRING"/>
+					<colinfo id="MUSEYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="MDEPTADMINGUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iMenuDelete">
+				<Contents>
+					<colinfo id="MENULEVEL" size="22" type="DECIMAL"/>
+					<colinfo id="MIMGFLAG" size="22" type="DECIMAL"/>
+					<colinfo id="MMENUID" size="13" type="STRING"/>
+					<colinfo id="MMENUNM" size="50" type="STRING"/>
+					<colinfo id="MORDERSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="MPARENTMENUID" size="13" type="STRING"/>
+					<colinfo id="MREMARK" size="1000" type="STRING"/>
+					<colinfo id="MSYSGUBUN" size="30" type="STRING"/>
+					<colinfo id="MURL" size="100" type="STRING"/>
+					<colinfo id="MURLTYPE" size="1" type="STRING"/>
+					<colinfo id="MUSEYN" size="1" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oDeptAdminGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>CO</CD>
+						<DATA>공통관리</DATA>
+					</record>
+					<record>
+						<CD>SD</CD>
+						<DATA>관리자</DATA>
+					</record>
+					<record>
+						<CD>CD</CD>
+						<DATA>고객관리과</DATA>
+					</record>
+					<record>
+						<CD>TD</CD>
+						<DATA>교육운영과</DATA>
+					</record>
+					<record>
+						<CD>ED</CD>
+						<DATA>평가관리과</DATA>
+					</record>
+					<record>
+						<CD>BD</CD>
+						<DATA>교재개발과</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="580" Height="100" Id="Shape0" Left="396" LineColor="user15" Right="592" TabOrder="42" Top="480" Type="Rectangle" Width="196"></Shape>
+		<Shape Bottom="584" Height="232" Id="shpGubunBox2" Left="392" LineColor="user15" Right="796" TabOrder="29" Top="352" Type="Rectangle" Width="404"></Shape>
+		<Shape Bottom="580" Height="100" Id="Shape1" Left="596" LineColor="user15" Right="792" TabOrder="43" Top="480" Type="Rectangle" Width="196"></Shape>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="183" LineColor="user14" Right="796" TabOrder="45" Top="1" Type="Rectangle" Width="613"></Shape>
+		<Shape Bottom="347" Height="315" Id="shpGubunBox1" Left="392" LineColor="user15" Right="796" TabOrder="28" Top="32" Type="Rectangle" Width="404"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="20" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="180">
+			<Contents></Contents>
+		</Div>
+		<TreeView BindDataset="ds_ioMenuTree" Border="Flat" Height="552" Id="tvMenu" ImageColumn="MIMGFLAG" Left="4" LevelColumn="MENULEVEL" Style="sty_TextArea" TabOrder="8" TEXTColumn="MMENUNM" Top="32" Width="384"></TreeView>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioMenuTree" Border="Flat" Column="MMENUNM" Height="20" Id="edMenuNm" ImeMode="native" Left="488" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="13" Top="108" Width="304"></Edit>
+		<Static Align="Center" Height="20" Id="lbMenuNm" Left="396" Style="sty_Label" TabOrder="23" Text="메뉴명" Top="108" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbSysGubun" Left="396" Style="sty_Label" TabOrder="22" Text="시스템구분" Top="60" VAlign="Middle" Width="88"></Static>
+		<Combo BindDataset="ds_ioMenuTree" Border="Flat" CodeColumn="CD" Column="MSYSGUBUN" DataColumn="DATA" Height="20" Id="cbxSysGubun" INDEX="0" InnerDataset="ds_oSysGubun" Left="487" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="10" Top="59" UserData="S" Width="200"></Combo>
+		<Static Align="Center" Height="20" Id="lbUseYn" Left="396" Style="sty_Label" TabOrder="21" Text="사용유무" Top="36" VAlign="Middle" Width="88"></Static>
+		<Checkbox BindDataset="ds_ioMenuTree" Column="MUSEYN" FalseValue="N" Height="20" Id="chkUseYn" Left="488" OnKeyDown="gfn_EnterNextFocus" Style="sty_Checkbox" TabOrder="9" Text="사용유무" Top="36" TrueValue="Y" Width="88"></Checkbox>
+		<Static Align="Center" Height="20" Id="lbOrderSeq" Left="396" Style="sty_Label" TabOrder="24" Text="프로그램URL" Top="132" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioMenuTree" Border="Flat" Column="MURL" Height="20" Id="edProgramId" ImeMode="native" Left="488" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="14" Top="132" Width="304"></Edit>
+		<Static Align="Center" Height="20" Id="lbMenuRemark" Left="396" Style="sty_Label" TabOrder="25" Text="메뉴설명" Top="181" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbUrlType" Left="396" Style="sty_Label" TabOrder="26" Text="메뉴&#32;구분" Top="84" VAlign="Middle" Width="88"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnUp" ImageID="BTN_TEXT_14" Left="496" OnClick="btnUp_OnClick" Style="sty_Button" TabOrder="16" Text="▲&#32;현재&#32;노드&#32;위로&#32;이동" Top="373" Transparent="TRUE" Width="196"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnDown" ImageID="BTN_TEXT_14" Left="496" OnClick="btnDown_OnClick" Style="sty_Button" TabOrder="19" Text="▼&#32;현재&#32;노드&#32;아래로&#32;이동" Top="437" Transparent="TRUE" Width="196"></Button>
+		<TextArea BindDataset="ds_ioMenuTree" Border="Flat" Column="MREMARK" Height="136" Id="taMenuRemark" Left="396" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_TextArea" TabOrder="15" Top="205" VScroll="TRUE" Width="396"></TextArea>
+		<Radio BindDataset="ds_ioMenuTree" Border="Flat" CodeColumn="CD" Column="MURLTYPE" ColumnCount="4" DataColumn="DATA" Height="20" Id="radSysGubun" INDEX="0" InnerDataset="ds_oUrlType" Left="488" LeftMargin="4" OnChanged="radSysGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="12" Top="84" UserData="S" Width="304"></Radio>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="186" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnInput" ImageID="BTN_COM_ADD" Left="273" OnClick="lfn_Input" Style="sty_Button" TabOrder="2" ToolTipText="추가&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDelete" ImageID="BTN_COM_DEL" Left="447" OnClick="lfn_Delete" Style="sty_Button" TabOrder="4" ToolTipText="삭제&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSave" ImageID="BTN_COM_SAVE" Left="360" OnClick="lfn_Save" Style="sty_Button" TabOrder="3" ToolTipText="수정&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="534" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="5" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="6" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="7" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnLevelDown" ImageID="BTN_TEXT_06" Left="600" OnClick="btnLevelDown_OnClick" Style="sty_Button" TabOrder="18" Text="Level&#32;Down&#32;▶" Top="405" Transparent="TRUE" Width="92"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnLevelUp" ImageID="BTN_TEXT_06" Left="496" OnClick="btnLevelUp_OnClick" Style="sty_Button" TabOrder="17" Text="◀&#32;Level&#32;Up" Top="405" Transparent="TRUE" Width="92"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnRenew" ImageID="BTN_TEXT_07" Left="688" OnClick="btnRenew_OnClick" Style="sty_Button" TabOrder="11" Text="폴더&#32;새로고침" Top="60" Transparent="TRUE" Width="105"></Button>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edMenuId" ImeMode="native" Left="500" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="30" Top="484" Width="88"></Edit>
+		<Static Align="Center" Height="20" Id="lbMenuId" Left="428" Style="sty_Label" TabOrder="31" Text="자신ID" Top="484" VAlign="Middle" Width="68"></Static>
+		<Static Align="Center" Height="20" Id="lbParentId" Left="628" Style="sty_Label" TabOrder="33" Text="상위ID" Top="484" VAlign="Middle" Width="68"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edParentId" ImeMode="native" Left="700" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="32" Top="484" Width="88"></Edit>
+		<Static Align="Center" Height="20" Id="lbLevel" Left="428" Style="sty_Label" TabOrder="35" Text="레벨" Top="532" VAlign="Middle" Width="68"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edLevel" ImeMode="native" Left="500" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="34" Top="532" Width="88"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edNextRow" ImeMode="native" Left="500" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="36" Top="556" Width="88"></Edit>
+		<Static Align="Center" Height="20" Id="lbNextRow" Left="428" Style="sty_Label" TabOrder="37" Text="다음&#32;위치" Top="556" VAlign="Middle" Width="68"></Static>
+		<Static Align="Center" Height="20" Id="lbRow" Left="428" Style="sty_Label" TabOrder="39" Text="자신&#32;ROW" Top="508" VAlign="Middle" Width="68"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edRow" ImeMode="native" Left="500" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="38" Top="508" Width="88"></Edit>
+		<Static Align="Center" Height="20" Id="lbPreRow" Left="628" Style="sty_Label" TabOrder="41" Text="이전&#32;위치" Top="556" VAlign="Middle" Width="68"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edPreRow" ImeMode="native" Left="700" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="40" Top="556" Width="88"></Edit>
+		<Static Align="Center" Height="91" Id="Static14" Left="600" Style="sty_LabelGruopBox" TabOrder="44" Text="R&#13;&#10;O&#13;&#10;W정보" Top="484" VAlign="Middle" Width="24" WordWrap="TRUE"></Static>
+		<Static Align="Center" Height="91" Id="Static15" Left="400" Style="sty_LabelGruopBox" TabOrder="45" Text="R&#13;&#10;O&#13;&#10;W정보" Top="484" VAlign="Middle" Width="24" WordWrap="TRUE"></Static>
+		<Static Align="Center" Height="20" Id="lbParentRow" Left="628" Style="sty_Label" TabOrder="47" Text="상위&#32;ROW" Top="508" VAlign="Middle" Width="68"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edParentRow" ImeMode="native" Left="700" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="46" Top="508" Width="88"></Edit>
+		<Static Align="Center" Height="20" Id="lbChildCnt" Left="628" Style="sty_Label" TabOrder="49" Text="하위&#32;수" Top="532" VAlign="Middle" Width="68"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edChildCnt" ImeMode="native" Left="700" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="48" Top="532" Width="88"></Edit>
+		<Static Align="Center" Height="20" Id="Static0" Left="396" Style="sty_Label" TabOrder="51" Text="권한부여구분" Top="156" VAlign="Middle" Width="88"></Static>
+		<Combo BindDataset="ds_ioMenuTree" Border="Flat" CodeColumn="CD" Column="MDEPTADMINGUBUN" DataColumn="DATA" Height="20" Id="cbxDeptAdminGubun" INDEX="0" InnerDataset="ds_oDeptAdminGubun" Left="487" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="50" Top="155" UserData="S" Width="200"></Combo>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmsys0010MMenuManagement.xml
+ * 설명 : 메뉴관리
+ * 작성일 : 2010.01.22
+ * 작성자 : 김동현
+ */
+
+#include "LIB::sys.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    // Tree Object 설정
+    objTree = tvMenu;
+    objTree.BindDataset = "ds_ioMenuTree";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    // 시스템권한(SM)인지 검사한다. (SM전용 프로그램임)	
+    if (gds_oUserInfo.GetColumn(0, "ADMINGUBUN") <> "SM") {
+        gfn_Alert(MSGI00080); // "사용 권한이 없습니다."
+        close();
+    }
+    
+    lfn_SetFormAuth(true);
+
+    // 공통 코드 조회
+    gfn_SearchCommonCode(ds_oSysGubun, "SYSGUBUN", "Y", "KEMS");
+    gfn_SearchCommonCode(ds_oUrlType, "URLTYPE", "Y", "폴더");
+
+    lfn_search(obj); // 메뉴 조회
+
+    tvMenu.SetFocus();
+
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState) {
+    if (gs_IsResizingForm == "Y") {
+        tvMenu.Height = nCy - tvMenu.Top - 4;
+    }
+}
+
+/**
+ * 버튼 실행 권한
+ */
+function lfn_SetFormAuth(bStatus) {
+
+    btnSearch.Enable = bStatus;
+    btnInput.Enable = bStatus;
+    btnSave.Enable = bStatus;
+    btnDelete.Enable = bStatus;
+    
+    btnUp.Enable = bStatus;
+    btnDown.Enable = bStatus;
+    btnLevelUp.Enable = bStatus;
+    btnLevelDown.Enable = bStatus;
+    
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 기본 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+/*
+ * 조회
+ */
+function lfn_Search(obj) {
+
+    ds_ioMenuTree.ClearData();
+    ds_iMenuDelete.ClearData();
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("sys:search0010Menu", false);
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_ioMenuTree=ds_oMenu"	// outDs
+        ,""	// args 
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+    
+    ds_ioMenuTree.ApplyChange();
+}
+
+/*
+ * 추가
+ */
+function lfn_Input(obj) {
+    
+    var vRow = ds_ioMenuTree.currow + 1;
+    
+	ds_ioMenuTree.InsertRow(vRow);
+	ds_ioMenuTree.CopyRow(vRow, ds_ioMenuTree, vRow - 1);
+	ds_ioMenuTree.SetColumn(vRow, "MMENUID", lpad(toNumber(ds_ioMenuTree.Max("MMENUID")) + 1, "0", 10));
+	ds_ioMenuTree.SetColumn(vRow, "MMENUNM", "");
+	ds_ioMenuTree.SetColumn(vRow, "MURL", "");
+	ds_ioMenuTree.SetColumn(vRow, "MREMARK", "");
+	ds_ioMenuTree.SetColumn(vRow, "MORDERSEQ", "");
+	
+	ds_ioMenuTree.SetColumn(vRow, "MDEPTADMINGUBUN", "");
+
+}
+
+/*
+ * 저장
+ */
+function lfn_Save(obj) {
+
+    if (!gfn_Confirm("메뉴를 저장 하시겠습니까?")) {
+        return;
+    }
+	
+	for(var i=0; i<ds_ioMenuTree.GetRowCount(); i++) {
+        ds_ioMenuTree.SetColumn(i, "MORDERSEQ", i);
+
+        if (gfn_IsNull(ds_ioMenuTree.GetColumn(i, "MMENUNM"))) {
+            ds_ioMenuTree.row = i;
+            gfn_Alert("메뉴명을 입력하셔야 됩니다.");
+            return;
+        }
+
+        if (!gfn_IsNull(ds_ioMenuTree.GetColumn(i, "MURLTYPE")) && gfn_IsNull(ds_ioMenuTree.GetColumn(i, "MURL"))) {
+            ds_ioMenuTree.row = i;
+            gfn_Alert("프로그램 URL을 입력하셔야 됩니다.");
+            return;
+        }
+    }
+    
+    tit_clearActionInfo();
+    tit_addMultiActionInfo("sys:delete0010Menu", "", 0, "", "N");
+    tit_addMultiActionInfo("sys:update0010Menu", "", 0, "", "N");
+    tit_callService(
+        ""
+        ,""
+        ,"ds_dMenu=ds_iMenuDelete"
+            + " ds_uMenu=ds_ioMenuTree"
+        ,""	// outDs
+        ,""	// args 
+        ,"lfn_AfterSave"
+        ,false
+        ,false
+        ,true
+    );
+    
+}
+
+/**
+ * 저장 TRANSACTION 처리 후
+ */
+function lfn_AfterSave(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_Alert("서버에 오류가 발생되었습니다. 정보지원과로 문의하시기 바랍니다.");
+        return "Transaction Error!";
+    }
+    
+    gfn_Alert("메뉴 저장이 완료되었습니다.");
+}
+
+/*
+ * 삭제
+ */
+function lfn_Delete(obj) {
+
+    var vRow = ds_ioMenuTree.currow;
+    var vSrc = tvMenu.VScrollPos; //스크롤 위치
+    
+    if (tvMenu.ChildCount(vRow) > 0) {
+        gfn_Alert("하위 메뉴가 없어야 합니다.");
+        return;
+    }
+
+    ds_iMenuDelete.InsertRow(0);
+    ds_iMenuDelete.CopyRow(0, ds_ioMenuTree, vRow);
+    ds_ioMenuTree.DeleteRow(vRow);
+    ds_ioMenuTree.row = vRow - 1;
+
+    tvMenu.VScrollPos = vSrc;
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 이벤트
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * DS 메뉴 선택
+ */
+function ds_ioMenuTree_OnRowPosChanged(obj,nOldRow,nRow) {
+
+    if (ds_ioMenuTree.GetColumn(ds_ioMenuTree.currow, "MENULEVEL") < ds_ioMenuTree.GetColumn(ds_ioMenuTree.currow + 1, "MENULEVEL")) {
+        radSysGubun.Enable = false;
+    } else {
+        radSysGubun.Enable = true;
+    }
+
+    if (toNumber(ds_ioMenuTree.GetColumn(tvMenu.GetParentRow(ds_ioMenuTree.currow), "MENULEVEL")) == 1) {
+        cbxSysGubun.Enable = true;
+    } else {
+        cbxSysGubun.Enable = false;
+    }
+
+    radSysGubun_OnChanged();
+	
+    edMenuId.Text = ds_ioMenuTree.GetColumn(ds_ioMenuTree.currow, "MMENUID");
+    edRow.Text = ds_ioMenuTree.currow;
+    edLevel.Text = lfn_Level(ds_ioMenuTree.currow);
+    edNextRow.Text = lfn_NextRow(ds_ioMenuTree.currow);
+    edParentId.Text = ds_ioMenuTree.GetColumn(ds_ioMenuTree.currow, "MPARENTMENUID");
+    edParentRow.Text = tvMenu.GetParentRow(ds_ioMenuTree.currow);
+    edPreRow.Text = lfn_PreRow(ds_ioMenuTree.currow);
+    edChildCnt.Text = tvMenu.ChildCount(ds_ioMenuTree.currow);
+
+}
+
+/**
+ * 메뉴 구분
+ */
+function radSysGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+/*
+null : 없음
+M : Form
+P : Popup
+L : Link
+*/
+    if (radSysGubun.Value == "") {
+        edProgramId.Enable = false;
+        ds_ioMenuTree.SetColumn(ds_ioMenuTree.currow, "MIMGFLAG", "0");
+    } else {
+        edProgramId.Enable = true;
+        ds_ioMenuTree.SetColumn(ds_ioMenuTree.currow, "MIMGFLAG", "2");
+    }
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 처리 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 새로고침
+ */
+function btnRenew_OnClick(obj) {
+
+    if (ds_ioMenuTree.currow == 0) {
+        return;
+    }
+
+    var vPath = tvMenu.GetItemPath(ds_ioMenuTree.currow);
+    var aPath = split(vPath, ".", "webstyle");
+    var vParentRow = tvMenu.GetItemRow("0." + aPath[1]);
+    var vChildCnt = vParentRow + lfn_ChildCnt(vParentRow);
+    var vParentRow2 = 0;
+    
+    for (var i=vParentRow + 1; i<=vChildCnt; i++) {
+        vParentRow2 = tvMenu.GetParentRow(i);
+        ds_ioMenuTree.SetColumn(vParentRow2, "MURLTYPE", "");
+        ds_ioMenuTree.SetColumn(i, "MPARENTMENUID", ds_ioMenuTree.GetColumn(vParentRow2, "MMENUID"));
+        ds_ioMenuTree.SetColumn(i, "MSYSGUBUN", ds_ioMenuTree.GetColumn(vParentRow2, "MSYSGUBUN"));
+    }
+    
+}
+
+/**
+ * 노드 위로 이동
+ */
+function btnUp_OnClick(obj) {
+
+    var vRow = ds_ioMenuTree.currow; //현재 row
+    var vPreRow = lfn_PreRow(vRow); //이전 row
+    var vSrc = tvMenu.VScrollPos; //스크롤 위치
+    var vLastChildRow = vRow + lfn_ChildCnt(vRow);
+        
+    if (vPreRow == -1) {
+        return;
+    }
+
+    if (ds_ioMenuTree.GetColumn(vRow, "MPARENTMENUID") <> ds_ioMenuTree.GetColumn(vPreRow, "MPARENTMENUID")) { //다음 메뉴의 부모가 다를 경우
+        vPreRow += lfn_ChildCnt(vPreRow) + 1;
+    }
+
+    lfn_Redraw(false);
+    ds_ioMenuTreeBackup.ClearData();
+    
+    for(var i=vRow; i<=vLastChildRow; i++) { //하위 메뉴를 포함하여 모두 이동
+    
+        ds_ioMenuTreeBackup.InsertRow(0);
+        ds_ioMenuTreeBackup.CopyRow(0, ds_ioMenuTree, vLastChildRow);
+        ds_ioMenuTree.DeleteRow(vLastChildRow);
+        ds_ioMenuTree.InsertRow(vPreRow);
+        ds_ioMenuTree.CopyRow(vPreRow, ds_ioMenuTreeBackup, 0);
+        
+    }
+
+    btnRenew_OnClick(); //부모ID, 시스템구분 set
+    ds_ioMenuTree_OnRowPosChanged();
+    tvMenu.SetFocus();
+    
+    lfn_Redraw(true);
+
+    tvMenu.VScrollPos = iif(ds_ioMenuTree.currow < vSrc, ds_ioMenuTree.currow, vSrc);
+
+
+}
+
+/**
+ * 노드 아래로 이동
+ */
+function btnDown_OnClick(obj) {
+
+    var vRow = ds_ioMenuTree.currow; //현재 row
+    var vNextRow = lfn_NextRow(vRow); //다음 row
+    var vSrc = tvMenu.VScrollPos; //스크롤 위치
+    var vLastChildRow = vRow + lfn_ChildCnt(vRow);
+        
+    if (vNextRow == -1) {
+        return;
+    }
+    
+    if (ds_ioMenuTree.GetColumn(vRow, "MPARENTMENUID") == ds_ioMenuTree.GetColumn(vNextRow, "MPARENTMENUID")) { //다음 메뉴의 부모가 같을 경우
+        vNextRow += lfn_ChildCnt(vNextRow) + 1;
+    } else if (vRow + 1 == vNextRow && lfn_Level(vRow) - 1 == lfn_Level(vNextRow)) { // 바로 다음 메뉴가 바로 밑이면서 레벨이 한단계 높은 경우 
+        vNextRow++;
+    }
+
+    lfn_Redraw(false);
+    
+    for(var i=vLastChildRow; i>=vRow; i--) { //하위 메뉴를 포함하여 모두 이동
+    
+        ds_ioMenuTree.InsertRow(vNextRow);
+        ds_ioMenuTree.CopyRow(vNextRow, ds_ioMenuTree, i);
+    }
+
+    for(var i=vRow; i<=vLastChildRow; i++) { //데이터 삭제
+        ds_ioMenuTree.DeleteRow(vRow);
+    }
+
+    btnRenew_OnClick(); //부모ID, 시스템구분 set
+    ds_ioMenuTree_OnRowPosChanged();
+    tvMenu.SetFocus();
+    
+    lfn_Redraw(true);
+
+    tvMenu.VScrollPos = iif(ds_ioMenuTree.currow > vSrc + 28, ds_ioMenuTree.currow - 27, vSrc);
+}
+
+/**
+ * 노드 왼쪽으로 이동
+ */
+function btnLevelUp_OnClick(obj) {
+
+    var nRow = ds_ioMenuTree.currow;
+    var vLevel = lfn_Level(nRow);
+    var vSrc = tvMenu.VScrollPos;
+
+    if (vLevel <= 2) {
+        return;
+    }
+    
+    if (!gfn_IsNull(radSysGubun.Value) && tvMenu.GetSiblingRow(nRow, 1) <> -1) {
+        alert("하위 메뉴가 포함되므로 현재 메뉴가 [폴더]이어야 합니다.");
+        return;
+    }
+
+    lfn_Redraw(false);
+
+    ds_ioMenuTree.SetColumn(nRow, "MENULEVEL", vLevel - 1);
+    btnRenew_OnClick(); //부모ID, 시스템구분 set
+    ds_ioMenuTree_OnRowPosChanged();
+    tvMenu.SetFocus();
+
+    lfn_Redraw(true);
+
+    tvMenu.VScrollPos = vSrc;
+}
+
+/**
+ * 노드 오른쪽으로 이동
+ */
+function btnLevelDown_OnClick(obj) {
+
+    var nRow = ds_ioMenuTree.currow;
+    var vLevel = lfn_Level(nRow);
+    var vSrc = tvMenu.VScrollPos;
+
+    if (nRow == 0 || vLevel - 1 == lfn_Level(nRow - 1)) { //위 메뉴가 상위 레벨일 때
+        return;
+    }
+    
+    if (!gfn_IsNull(ds_ioMenuTree.GetColumn(nRow - 1, "MURLTYPE")) && vLevel == lfn_Level(nRow - 1)) {
+        alert("바로 위의 메뉴가 [폴더]이어야 합니다.");
+        return;
+    }
+    
+    lfn_Redraw(false);
+
+    ds_ioMenuTree.SetColumn(nRow, "MENULEVEL", vLevel + 1);
+    btnRenew_OnClick(); //부모ID, 시스템구분 set
+    ds_ioMenuTree_OnRowPosChanged();
+    tvMenu.SetFocus();
+
+    lfn_Redraw(true);
+
+    tvMenu.VScrollPos = vSrc;
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 공통 함수
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 화면갱신
+ */
+function lfn_Redraw(nFlag) {
+
+    tvMenu.Redraw = nFlag;
+    chkUseYn.Redraw = nFlag;
+    cbxSysGubun.Redraw = nFlag;
+    radSysGubun.Redraw = nFlag;
+    edMenuNm.Redraw = nFlag;
+    edProgramId.Redraw = nFlag;
+    taMenuRemark.Redraw = nFlag;
+
+}
+
+/**
+ * 같은 레벨의 다음 메뉴 row
+ * return : (-1) 다음메뉴 없음
+ */
+function lfn_NextRow(nRow) {
+
+    if(nRow == 0) { //root인경우 (-1) 리턴
+        return (-1);
+    }
+    
+    var vLevel = lfn_Level(nRow); //level가져오기
+    var vNextLevel = 0;
+
+    for(var i=nRow+1; i<ds_ioMenuTree.GetRowCount(); i++) {
+        vNextLevel = lfn_Level(i);
+        if (vLevel == vNextLevel) { //같은 레벨일 경우
+            return i;
+        } else if (vLevel - 1 == vNextLevel) { //바로 상위일 경우
+            return i + 1;
+        }
+    }
+    
+    return (-1);
+}
+
+/**
+ * 같은 레벨의 이전 메뉴 row
+ * return : (-1) 다음메뉴 없음
+ */
+function lfn_PreRow(nRow) {
+
+    if(nRow < 1) { //root이거나 row가 1인 경우 (-1) 리턴
+        return (-1);
+    }
+    
+    var vLevel = lfn_Level(nRow); //level가져오기
+    var vPreLevel = lfn_Level(nRow - 1);
+    
+    if (vLevel == vPreLevel) { //이전메뉴의 레벨이 같을 때
+        return nRow - 1;
+    }
+        
+    for(var i=nRow-2; i>=0; i--) {
+        vPreLevel = lfn_Level(i);
+        
+        if (vLevel == vPreLevel || vLevel - 1 == vPreLevel) { //이전메뉴의 레벨이 같거나 한단계 상위일 경우
+            return i;
+        }
+    }
+    
+    return (-1);
+}
+
+/**
+ * 마지막 하위메뉴 총 개 수
+ */
+function lfn_ChildCnt(nRow) {
+
+    var vPath = tvMenu.GetItemPath(nRow);
+    var vPathChild = "";
+    var vCnt = tvMenu.ChildCount(nRow);
+    
+    for (var i=0; i<tvMenu.ChildCount(nRow); i++) {
+        vPathChild = vPath + "." + i;
+        vCnt += lfn_ChildCnt(tvMenu.GetItemRow(vPathChild));
+    }
+    
+    return vCnt;
+}
+
+/**
+ * 실제 Level
+ */
+function lfn_Level(nRow) {
+    var nPath = tvMenu.GetItemPath(nRow); //path 가져오기
+    var aPath = split(nPath, ".", "webstyle"); //path 자르기
+    return length(aPath);//level가져오기
+}
+]]></Script>
+</Window>

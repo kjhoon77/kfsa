@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="384" Id="frmCOM1120PSmsContentsView" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="SMS발송내용보기팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="500" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oSmsStat">
+				<Contents>
+					<colinfo id="MRECVRESULT" size="256" summ="default" type="STRING"/>
+					<colinfo id="MSENDDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MMSG" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="406" LineColor="user14" Right="497" TabOrder="61" Top="1" Type="Rectangle" Width="91"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="409" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<TextArea Font="굴림,12" Height="343" Id="taSMS" Left="3" Readonly="TRUE" TabOrder="3" Top="33" Width="493"></TextArea>
+		<Static Align="Center" Font="굴림,14,Bold,UnderLine" Height="21" Id="Static0" Left="120" TabOrder="4" Text="문자&#32;내용&#32;예시" Top="9" VAlign="Middle" Width="236"></Static>
+	</Form>
+	<Script><![CDATA[/*
+
+ * 프로그램명 : frmCOM1120PSmsContentsView.xml
+
+ * 설명 : SMS발송내용보기팝업
+
+ * 작성일 : 2016.04.04
+ * 작성자 : 정현호
+
+ */
+
+
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+// sWorkGubun
+// sCourse
+// sGTMGNO
+
+/* 공통 필수 시작 */
+
+function Form_OnLoadCompleted(obj) {
+
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+	//alert(sWorkGubun);
+
+    if (IsExistVar("sWorkGubun")) {
+
+        lfn_SMSContentsView(sWorkGubun, sCourse);
+
+    }
+
+
+
+}
+
+
+
+function Form_OnUnloadCompleted(obj) {
+
+    Close("0");
+
+}
+
+
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+
+    switch (nChar) {
+
+        case 27 : // 종료(Esc)
+
+            lfn_End();
+
+            break;
+
+    }
+
+}
+
+
+
+
+
+
+// 문자내용 보기
+function lfn_SMSContentsView(sWorkGubun, sCourse) {
+
+	if (sWorkGubun == "T") {	// 강습
+		taSMS.Text =  "\n   [한국소방안전원] 강습교육안내\n\n";
+		taSMS.Text += " ●수 강 자 : 홍길동\n";
+		taSMS.Text += " ●교육과정 : 2급소방안전관리자\n";
+ 		taSMS.Text += " ●교육일자 : 2016.01.01~2016.01.04 (09:00~18:00)\n";
+ 		taSMS.Text += " ●교육지부 : ○○지부(02-1234-5678)\n";
+		taSMS.Text += " ●교육장소 : 한국소방안전원 ○○지부 교육장\n";
+		taSMS.Text += " ●구비서류\n";
+		taSMS.Text += "   - 사진(3.5 * 4.5cm) 1매 제출(미등록자에 한함)\n";
+		taSMS.Text += "   - 주민등록증 또는 운전면허증(반드시 지참)\n";
+		taSMS.Text += "   - 공공기관 소방안전관리자 과정인 경우, 재직증명서 1부 지참(교육당일 반드시 제출)\n";
+		
+		if (sGTMGNO == "1011") {
+			taSMS.Text += " ※ 주차안내\n";
+			taSMS.Text += "   - 주차장이 협소하오니 대중교통을 이용해 주시기 바랍니다.\n";
+			taSMS.Text += "    (주차시설이 협소하여 차량 5부제를 시행하고 있으니 개인차량 이용을 자제해 주시기 바랍니다.)";
+		}
+	
+	} else if (sWorkGubun == "E") {	// 시험
+		taSMS.Text =  "\n   [한국소방안전원] 시험안내\n\n";
+		taSMS.Text += " ●응 시 자 : 홍길동\n";
+		taSMS.Text += " ●시험과정 : 2급소방안전관리자\n";
+		taSMS.Text += " ●시험일시 : 2016.01.01 16:00~17:00\n";
+		taSMS.Text += " ●시험지부 : ○○지부(02-1234-5678)\n";
+		taSMS.Text += " ●시험장소 : 한국소방안전원 서울특별시지부 교육장\n";
+		taSMS.Text += " ●구비서류\n"; 
+		taSMS.Text += "   - 시험응시원서 출력물\n";
+		taSMS.Text += "   - 사진(3.5*4.5cm) 1매 제출(접수시 미등록자에 한함)\n";
+		taSMS.Text += "   - 소방안전관리자 강습교육 수료증 사본 1부(해당자에 한함)\n";
+		taSMS.Text += "   - 경력 증빙서류\n";
+		taSMS.Text += "   - 주민등록증 또는 운전면허증(반드시 지참)\n";
+		if (sGTMGNO == "1011") {
+			taSMS.Text += " ※ 주의사항\n";
+			taSMS.Text += "   - 시험 30분전까지 입실완료 바랍니다.\n";
+			taSMS.Text += "   - 응시표, 주민등록증(운전면허증), 필기도구를 지참하셔야 합니다.\n";
+			taSMS.Text += "   - 주차장이 협소하오니 대중교통을 이용해 주시기 바랍니다.\n";
+			taSMS.Text += "    (주차시설이 협소하여 차량 5부제를 시행하고 있으니 개인차량 이용을 자제해 주시기 바랍니다.)";
+		} else {
+			taSMS.Text += " ※ 주의사항\n";
+			taSMS.Text += "   - 시험 30분전까지 입실완료 바랍니다.\n";
+			taSMS.Text += "   - 응시표, 주민등록증(운전면허증), 필기도구를 지참하셔야 합니다.\n";
+			taSMS.Text += "   - 주차장이 협소하오니 대중교통을 이용해 주시기 바랍니다.";
+		}
+	
+	} else if (sWorkGubun == "B") {	// 실무
+		taSMS.Text =  "\n   [한국소방안전원] 실무교육안내\n\n"; 
+		taSMS.Text += " ●수 강 자 : 홍길동\n";
+ 		taSMS.Text += " ●교육과정 : 소방안전관리자\n";
+ 		taSMS.Text += " ●교육일시 : 2016.01.01 09:00~13:00\n";
+ 		taSMS.Text += " ●교육지부 : ○○지부(02-1234-5678)\n";
+ 		taSMS.Text += " ●교육장소 : 한국소방안전원 서울특별시지부 교육장\n";
+ 		if (sCourse == "10") {
+		taSMS.Text += " ●준 비 물 : 선임된 자격수첩 또는 신분증\n";
+		} else if (sCourse == "30" || sCourse == "50") {
+		taSMS.Text += " ●준 비 물 : 선임된 자격수첩, 신분증\n";
+		} else if (sCourse == "20") {
+		taSMS.Text += " ●준 비 물 : 선임된 자격수첩 또는 선임증, 신분증\n";
+		} else {
+		taSMS.Text += " ●준 비 물 : 선임된 자격수첩 또는 신분증\n";
+		}
+		taSMS.Text += " ※ 주의사항\n";
+		taSMS.Text += "   - 대리참석은 불가하오니, 반드시 선임하신 분이 교육에 참석하셔야 합니다.\n";
+  		taSMS.Text += "   - 주차장이 협소하오니 대중교통을 이용해 주시기 바랍니다.\n";
+		if (sGTMGNO == "1011") {  		
+			taSMS.Text += "    (주차시설이 협소하여 차량 5부제를 시행하고 있으니 개인차량 이용을 자제해 주시기 바랍니다.)";
+		}
+	}
+
+}
+
+
+
+/*
+
+ * 기능 : 종료
+
+ */
+
+function lfn_End(obj) {
+
+    Close();
+
+}
+
+/* 공통 필수 종료 */
+
+
+
+
+]]></Script>
+</Window>

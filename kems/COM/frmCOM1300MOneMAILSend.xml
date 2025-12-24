@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="130" Id="frmCOM1300MOneMAILSend" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="단일메일발송팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="504" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioOneMailSendTraining"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioOneMailSendExam"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEmailSeq"></Dataset>
+		</Datasets>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSend" ImageID="BTN_TEXT_COM" Left="328" OnClick="lfn_Send" Style="sty_Button" TabOrder="1" Text="보내기(F4)" ToolTipText="MAIL&#32;보내기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbRecvNm" Left="5" Style="sty_Label" TabOrder="8" Text="수신자명" Top="6" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edRecvNm" ImeMode="native" Left="97" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="3" Top="6" UserData="S:수신자" Width="106"></Edit>
+		<Static Align="Center" Height="20" Id="lbRecvTel" Left="5" Style="sty_Label" TabOrder="9" Text="수신이메일" Top="30" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edRecvMail" ImeMode="native" Left="97" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="4" Top="30" UserData="I:수신번호" Width="200"></Edit>
+		<Static Align="Center" Height="20" Id="lbSmsGubun" Left="5" Style="sty_Label" TabOrder="10" Text="메일제목" Top="102" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edMailTitle" ImeMode="native" Left="97" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="7" Top="102" Width="400"></Edit>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="5" Style="sty_Label" TabOrder="11" Text="발송지부" Top="54" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edJibu" ImeMode="native" Left="97" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="5" Top="54" Width="106"></Edit>
+		<Static Align="Center" Height="20" Id="lbSabun" Left="5" Style="sty_Label" TabOrder="12" Text="발송자" Top="78" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edSabun" ImeMode="native" Left="97" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="6" Top="78" Width="106"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="415" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<WebBrowser Height="20" Id="wbSendMail" Left="480" TabOrder="13" Top="32" Visible="FALSE" Width="20"></WebBrowser>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM1300MOneMAILSend.xml
+ * 설명 : 단일메일메시지발송팝업
+ * 작성일 : 2009.10.28
+ * 작성자 : 김은규
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+//공통 변수
+//var md5_check_value = "12!@_kfsa";
+var training_md5_check_value = "Ab!@_kfsa"; //2016.04.04
+var exam_md5_check_value = "12!@_kfsa"; //2016.04.04
+var MD5;	//MD5 HashValue
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (!IsExistVar("sMgNo")) {
+        gfn_Alert("접수 정보가 없습니다. 저장 후 처리해 주십시오.");
+        Close();
+    }
+    
+    lfn_Search();	//메일발송정보 조회
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 115 : // 단일메일발송(F4)
+            lfn_Send();
+            break;
+    }
+}
+
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    
+    if (sGubun == "T") { //강습접수
+		ds_ioOneMailSendTraining.ClearData(); // 데이타셋 초기화
+		
+        tit_clearActionInfo();
+        tit_AddSearchActionInfo("training:searchOneMailSendTraining", false);
+        // 서버 호출
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_ioOneMailSendTraining=ds_ioOneMailSendTraining"	// outDs
+            ,"TJMGNO=" + quote(sMgNo)   //-- 접수관리번호
+            ,"lfn_AfterSearchMail"
+            ,false
+        );
+    } else { //시험접수
+        ds_ioOneMailSendExam.ClearData(); // 데이타셋 초기화
+        
+        tit_clearActionInfo();
+        tit_AddCsvSearchActionInfo("training:searchOneMailSendExam", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_ioOneMailSendExam=ds_ioOneMailSendExam"	// outDs
+            ,"EJMGNO=" + quote(sMgNo)   //-- 접수관리번호
+            ,"lfn_AfterSearchMail"
+            ,false
+        );	
+    }
+}
+
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchMail(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        Close();
+    }
+    
+    if (sGubun == "T") { //강습접수
+		if(ds_ioOneMailSendTraining.GetRowCount() == 0) {
+			gfn_Alert("강습 접수 정보가 없습니다. 저장 후 처리해 주십시오.");
+			Close();
+		}
+		edRecvNm.Text = ds_ioOneMailSendTraining.GetColumn(0, "TPNM");	//성명
+		edRecvMail.Text = ds_ioOneMailSendTraining.GetColumn(0, "TPEMAIL");
+		edMailTitle.Text = "[한국소방안전원] "+ds_ioOneMailSendTraining.GetColumn(0, "TPNM")+" 회원님의 강습접수 안내메일 입니다.";
+    } else { //시험접수
+		if(ds_ioOneMailSendExam.GetRowCount() == 0) {
+			gfn_Alert("시험 접수 정보가 없습니다. 저장 후 처리해 주십시오.");
+			Close();
+		}
+/*		
+		if(gfn_IsNull(ds_ioOneMailSendExam.GetColumn(0,"EPNM"))) {
+			gfn_Alert("시험장소를 입력 후 처리해 주십시오.");
+			Close();
+		}
+*/		
+		edRecvNm.Text = ds_ioOneMailSendExam.GetColumn(0, "TPNM");	//성명
+		edRecvMail.Text = ds_ioOneMailSendExam.GetColumn(0, "TPEMAIL");
+		edMailTitle.Text = "[한국소방안전원] "+ds_ioOneMailSendExam.GetColumn(0, "TPNM")+" 회원님의 시험접수 안내메일 입니다.";
+    }
+    
+    edJibu.Text = gds_oUserInfo.GetColumn(0, "PDEPTNM");
+    edSabun.Text = gds_oUserInfo.GetColumn(0, "PPERSONNM");
+    
+    btnSend.Enable = true;
+}
+
+/*
+ * 기능 : 메일발송
+ */
+function lfn_Send(obj) {
+	var lsConfirmStr = "";
+	if (sGubun == "T") { // 인터넷 강습접수
+		lsConfirmStr = "강습접수 안내메일을 발송 하시겠습니까?";
+	} else {
+		lsConfirmStr = "시험접수 안내메일을 발송 하시겠습니까?";
+	}
+	
+	if (!gfn_Confirm(lsConfirmStr)) {
+        return;
+    }
+	
+	if(sGubun == "T") {	//인터넷강습접수
+		ds_oEmailSeq.ClearData();
+		
+		tit_clearActionInfo();
+		tit_AddCsvSearchActionInfo("training:searchEmailSendSeq", false);
+		// 서버 호출 
+		tit_callService(
+			""
+			,""
+			,""	// inDs
+			,"ds_oEmailSeq=ds_oEmailSeq"	// outDs
+			,""	// args 
+			,""
+			,false
+			,true
+			,true
+		);
+		lfn_SendMailContentTraining(ds_ioOneMailSendTraining, 0, ds_oEmailSeq.GetColumn(0, "SEQ"));
+	} else {
+		ds_oEmailSeq.ClearData();
+		
+		tit_clearActionInfo();
+		tit_AddCsvSearchActionInfo("training:searchEmailSendSeq", false);
+		// 서버 호출 
+		tit_callService(
+			""
+			,""
+			,""	// inDs
+			,"ds_oEmailSeq=ds_oEmailSeq"	// outDs
+			,""	// args 
+			,""
+			,false
+			,true
+			,true
+		);
+		lfn_SendMailContentExam(ds_ioOneMailSendExam, 0, ds_oEmailSeq.GetColumn(0, "SEQ"));
+	}
+}
+
+/*
+ * 기능 : 메일발송 (강습)
+ */
+function lfn_SendMailContentTraining(ds_source, i, seq) {
+	//MAIL PROCESS
+	var plainChkVal = ds_source.GetColumn(i, "TJMGNO") + training_md5_check_value;	//평문
+	gfn_Cryptograph("Generation", "MD5", plainChkVal, "lfn_AfterCryptograph");	//Get MD5 Hash Value
+
+	var tjmgno = ds_source.GetColumn(i, "TJMGNO");
+	var chkVal = MD5;	//MD5 Hash Value
+	if(chkVal == "FAIL") {
+		gfn_Alert(toName+" 접수자에 대한 MD5 Hash 생성에 실패하였습니다.");
+		return;
+	}
+	
+	var application_print = "tjmgno="+tjmgno+"&chkVal="+chkVal;
+	
+	//메일 내용 변수
+	var HTTP_HOST = "www.kfsi.or.kr";	//소방안전원HOST
+	var HTTP_SUB = "edu/e_training";	//SUB FOLDER
+	var TPNM = ds_source.GetColumn(i, "TPNM");	//성명
+	var TOHPROCDATE = left(ds_source.GetColumn(i, "TOHPROCDATE"),4)+"년 "+substr(ds_source.GetColumn(i, "TOHPROCDATE"),4,2)+" 월 "+substr(ds_source.GetColumn(i, "TOHPROCDATE"),6,2)+"일 ";	//접수일자
+	var TPRESIDENT = ds_source.GetColumn(i, "TPRESIDENT");	//주민번호(앞6자리)
+	var TOEDUNM = ds_source.GetColumn(i, "TOEDUNM");	//교육과정
+	var TOEUDDATE = ds_source.GetColumn(i, "TOEUDDATE");	//교육일자
+	var JIBUNM = ds_source.GetColumn(i, "JIBUNM");	//교육지부
+	var JUBSUNO = ds_source.GetColumn(i, "JUBSUNO");	//접수번호
+	var EPNM = ds_source.GetColumn(i, "EPNM");	//교육장소
+	var EPPARKINGINFO = ds_source.GetColumn(i, "EPPARKINGINFO");	//주차안내
+	var TJZIPCD = ds_source.GetColumn(i, "TJZIPCD");	//우편번호
+	var TJADDR = ds_source.GetColumn(i, "TJADDR");	//주소
+	var TPTEL = ds_source.GetColumn(i, "TPTEL");	//전화번호
+	var ETCCOMMENT = ds_source.GetColumn(i, "ETCCOMMENT");	//기타내용
+	var EMAILSEQ = seq;	//이메일관리번호
+	
+	//메일 공통 변수
+	var toEmail = ds_source.GetColumn(i, "TPEMAIL");
+	var toName = ds_source.GetColumn(i, "TPNM");
+	var fromEmail = "helpdesk@kfsi.or.kr";
+	var title = "[한국소방안전원] "+toName+" 회원님의 강습접수 안내메일 입니다.";
+		
+	//메일 본문
+	var content  = "<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN''http://www.w3.org/TR/html4/loose.dtd'>";
+    content += " <html>";
+    content += " <head>";
+    content += " <meta http-equiv='Content-Type' content='text/html; charset=euc-kr'>";
+    content += " <title>한국소방안전원</title>";
+    content += " <basefont size=2>";
+    content += " </head>";
+    content += " <body>";
+    content += "   <table width='596' border='0' align='center' cellpadding='0' cellspacing='1' bgcolor='D8D8D8'>";
+    content += "     <tr>";
+    content += "       <td height='1' bgcolor='D8D8D8'></td>";
+    content += "     </tr>";
+    content += "     <tr>";
+    content += "       <td bgcolor='#FFFFFF'><table width='100%'  border='0' cellspacing='0' cellpadding='0'>";
+    content += "           <tr>";
+    content += "             <td height='45'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/maillogo.gif' width='173' height='25'></td>";
+    content += "             <td align='right'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailtitle.gif' width='132' height='26'></td>";
+    content += "           </tr>";
+    content += "       </table></td>";
+    content += "     </tr>";
+    content += "     <tr>";
+    content += "       <td height='189' valign='bottom' background='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/maillpic.gif' bgcolor='#FFFFFF'><table width='310' border='0' cellspacing='0' cellpadding='0'>";
+    content += "           <tr>";
+    content += "             <td width='75'>&nbsp;</td>";
+    content += "             <td width='235' height='60' valign='top'><font color='02FEFB'><b>"+TPNM+"</b></font>&nbsp;&nbsp;<font color='ffffff'>회원님!<br>";
+    content += "             강습접수 결과를 알려드립니다.</font> </td>";
+    content += "           </tr>";
+    content += "       </table></td>";
+    content += "     </tr>";
+    content += "     <tr>";
+    content += "       <td align='center' valign='top' bgcolor='#FFFFFF'><table width='100%'  border='0' cellspacing='0' cellpadding='0'>";
+    content += "           <tr>";
+    content += "             <td height='2' bgcolor='D8D8D8'></td>";
+    content += "           </tr>";
+    content += "           <tr>";
+    content += "             <td height='70' align='center'><table width='540' border='0' cellspacing='0' cellpadding='0'>";
+    content += "                 <tr>";
+    content += "                   <td width='9'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailleft.gif' width='9' height='35'></td>";
+    content += "                   <td width='522' align='center' bgcolor='DCDCDC'><font color='0056FF'><b>"+TPNM+"</b></font> 님께서 지난 "+TOHPROCDATE+"에 신청하신 <font color='0056FF'><b>강습접수결과</b></font>를 알려드립니다. </td>";
+    content += "                   <td width='9'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailright.gif' width='9' height='35'></td>";
+    content += "                 </tr>";
+    content += "             </table></td>";
+    content += "           </tr>";
+    content += "           <tr>";
+    content += "             <td height='15'></td>";
+    content += "           </tr>";
+    content += "           <tr>";
+    content += "             <td align='center'><table width='522' border='0' cellspacing='0' cellpadding='0'>";
+    content += "                 <tr>";
+    content += "                   <td valign='bottom'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailbox1.gif' width='522' height='29'></td>";
+    content += "                 </tr>";
+    content += "                 <tr style=padding:10,0>";
+    content += "                   <td align='center' background='images/mailbox2.gif'><table width='500' border='0' cellspacing='0' cellpadding='0'>";
+//    content += "                       <tr>";
+//    content += "                         <td height='35' align='left' valign='bottom' widht='50'><font size='-3' color='fe9602'>▶</font> <strong>강습원서</strong> : <a href='http://"+HTTP_HOST+"/"+HTTP_SUB+"/application_print.php?"+application_print+"' target='_print'> <img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/button_application.gif' width='111' height='19' border='0' align='absmiddle'> </a> </td>";
+//    content += "                       </tr>";
+//    content += "                       <tr>";
+//    content += "                         <td height='10'>  ";
+//    content += "                         <td></td>";
+//    content += "                       </tr>";
+//    content += "                       <tr>";
+//    content += "                         <td bgcolor='#69645A' height='1'>  ";
+//    content += "                         <td></td>";
+//    content += "                       </tr>";
+    content += "                       <tr>";
+    content += "                         <td height='5'>  ";
+    content += "                         <td></td>";
+    content += "                       </tr>";
+    content += "                       <tr>";
+    content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>교육과정</strong> : "+TOEDUNM+" </td>";
+    content += "                       </tr>";
+    content += "                       <tr>";
+    content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>교육일자</strong> : "+TOEUDDATE+" </td>";
+    content += "                       </tr>";
+    content += "                       <tr>";
+    content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>지&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부</strong> : "+JIBUNM+" </td>";
+    content += "                       </tr>";
+    content += "                       <tr>";
+    content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>접수번호</strong> : "+JUBSUNO+" </td>";
+    content += "                       </tr>";
+    content += "                       <tr>";
+    content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>교육장소</strong> : "+EPNM+" </td>";
+    content += "                       </tr>";
+    content += "                       <tr>";
+    content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>주차안내</strong> : "+EPPARKINGINFO+" </td>";
+    content += "                       </tr>";
+    content += "                       <tr>";
+    content += "                         <td align='left'><table width='489'  border='0' cellspacing='0' cellpadding='0'>";
+    content += "                           <tr>";
+    content += "                             <td width='83' rowspan='5' valign='top'><font size='-3' color='fe9602'>▶</font> <strong>구비서류</strong> :</td>";
+    content += "                             <td height='22' valign='top'>1. 강습원서 출력물(교육장에서 별도 교부 가능) </td>";
+    content += "                           </tr>";
+    content += "                           <tr>";
+    content += "                             <td height='22' valign='top'>2. 사진(3.5 * 4.5cm) 1매 제출(교육 접수시 사진 미등록자에 한함)</td>";
+    content += "                           </tr>";
+    content += "                           <tr>";
+    content += "                             <td height='22' valign='top'>3. 주민등록증(반드시 지참)</td>";
+    content += "                           </tr>";
+    content += "                           <tr>";
+    content += "                             <td height='22' valign='top'>4. 2급소방안전관리업무 면제과정은 위험물 안전관리자 수첩사본 또는<br>&nbsp;&nbsp;&nbsp;&nbsp;원본 지참</td>";
+    content += "                           </tr>";
+    content += "                           <tr>";
+    content += "                             <td width='406' height='22'>5. 공공기관소방안전관리자는 재직증명서 1부 지참(교육당일 반드시 제출) </td>";
+    content += "                           </tr>";
+    content += "                         </table></td>";
+    content += "                       </tr>";
+    content += "                   </table></td>";
+    content += "                 </tr>";
+    content += "                 <tr>";
+    content += "                   <td height='4'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailbox3.gif' width='522'></td>";
+    content += "                 </tr>";
+    content += "             </table></td>";
+    content += "           </tr>";
+    content += "           <tr>";
+    content += "             <td height='25' align='center'>&nbsp;</td>";
+    content += "           </tr>";
+    content += "           <tr>";
+    content += "             <td align='center'><table width='522' border='0' cellspacing='0' cellpadding='0'>";
+    content += "                 <tr>";
+    content += "                   <td valign='bottom'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailbox4.gif' width='522' height='31'></td>";
+    content += "                 </tr>";
+    content += "                 <tr style=padding:10,0>";
+    content += "                   <td align='center' background='images/mailbox2.gif'><table width='500' border='0' cellspacing='0' cellpadding='0'>";
+    content += "                       <tr>";
+    content += "                         <td height='5'></td>";
+    content += "                       </tr>";
+    content += "                       <tr>";
+    content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명</strong> : "+TPNM+" </td>";
+    content += "                       </tr>";
+    content += "                       <tr>";
+    content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>주민번호</strong> : "+TPRESIDENT+" </td>";
+    content += "                       </tr>";
+    content += "                       <tr>";
+    content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소</strong> : ["+TJZIPCD+"] "+TJADDR+" </td>";
+    content += "                       </tr>";
+    content += "                       <tr>";
+    content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>전화번호</strong> : "+TPTEL+" </td>";
+    content += "                       </tr>";
+    content += "                   </table></td>";
+    content += "                 </tr>";
+    content += "                 <tr>";
+    content += "                   <td height='4'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailbox3.gif' width='522' height='5'></td>";
+    content += "                 </tr>";
+    content += "             </table></td>";
+    content += "           </tr>";
+    content += "           <tr>";
+    content += "             <td height='40' align='left' valign='bottom'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailattention.gif' width='153' height='21'></td>";
+    content += "           </tr>";
+    content += "           <tr>";
+    content += "             <td><table width='100%'  border='0' cellpadding='10' cellspacing='10' bgcolor='edefef'>";
+    content += "               <tr>";
+    content += "                 <td align='left' bgcolor='#FFFFFF'><table width='100%'  border='0' cellspacing='0' cellpadding='4'>";
+    content += "                   <tr>";
+    content += "                     <td height='25'>○ <font color='fe9602'>교육일정 및 교육비 전액환불</font>은 교육시작 전일 근무시간(오후6시) 이내 신청자에 한합니다</td>";
+    content += "                   </tr>";
+    content += "                   <tr>";
+    content += "                     <td height='25'>○ <font color='fe9602'>교육시작일 이후 환불신청</font>시 수강여부등에 따라 차등지급 됩니다.</td>";
+    content += "                   </tr>";
+    content += "                   <tr>";
+    content += "                     <td height='25'>○ 전화, 팩스, 인터넷으로 환불신청시 환불금액은 송금수수료를 제외한 금액입니다.<br>&nbsp;&nbsp;&nbsp;(※ 자세한 환불기준 및 금액은 홈페이지 <font color='fe9602'>강습교육신청</font> 참조) </td>";
+    content += "                   </tr>";
+    content += "                   <tr>";
+    content += "                     <td height='25'>○ 교육시작전 <font color='fe9602'>사진(3.5 * 4.5cm) 1매 제출(교육 접수시 사진 미등록자), 수강증 교부</font> </td>";
+    content += "                   </tr>";
+    content += "                 </table>";
+    content += "                 </td>";
+    content += "               </tr>";
+    content += "             </table></td>";
+    content += "           </tr>";
+    content += "           <tr>";
+    content += "             <td height='100' align='right' style=padding-right:30><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/stamp.gif' width='234' height='76'></td>";
+    content += "           </tr>";
+    content += "           <tr>";
+    content += "             <td height='30' align='center' bgcolor='D8D8D8'>Copyrightⓒ2001 Korea Fire Safety Association, All Rights Reserved. </td>";
+    content += "           </tr>";
+    content += "       </table></td>";
+    content += "     </tr>";
+    content += "   </table>";
+    content += "   <table width='100%' border='0' cellpadding='10' cellspacing='0' bgcolor='#CCCCCC'>";
+    content += "     <tr>";
+    content += "       <td align='left' bgcolor='#FFFFFF'><p>&nbsp; </p></td>";
+    content += "     </tr>";
+    content += "   </table>";
+    content += "   <img src='http://www.kfsi.or.kr/check/emailcheck.php?mgno="+EMAILSEQ+"' width=1 height=1>";	//수신확인
+    content += " </body>";
+    content += " </html>";
+
+    var contents = UrlEncode(content);
+	wbSendMail.PageUrl = "http://118.128.25.79/nara/servlet/simple.SimpleMailSendServ";
+	wbSendMail.PostData = "ToEmail="+toEmail+"&ToName="+toName+"&FromEmail="+fromEmail+"&MailTitle="+title+"&MailContent="+contents;
+	wbSendMail.Run();
+	lfn_SendMailLog(ds_source, i, title, content, EMAILSEQ);
+}
+
+/*
+ * 기능 : 메일발송 (시험)
+ */
+function lfn_SendMailContentExam(ds_source, i, seq) {
+	//MAIL PROCESS
+	var plainChkVal = ds_source.GetColumn(i, "EJMGNO") + exam_md5_check_value;	//평문
+	gfn_Cryptograph("Generation", "MD5", plainChkVal, "lfn_AfterCryptograph");	//Get MD5 Hash Value
+	
+	var tjmgno = ds_source.GetColumn(i, "EJMGNO");
+	var chkVal = MD5;	//MD5 Hash Value
+	if(chkVal == "FAIL") {
+		gfn_Alert(toName+" 접수자에 대한 MD5 Hash 생성에 실패하였습니다.");
+		return;
+	}
+	
+	var application_print = "ejmgno="+tjmgno+"&chkVal="+chkVal;
+	
+	//메일 내용 변수
+	var HTTP_HOST = "www.kfsi.or.kr";	//소방안전원HOST
+	var HTTP_SUB = "edu/e_exam";	//SUB FOLDER
+	var TPNM = ds_source.GetColumn(i, "TPNM");	//성명
+	var TOHPROCDATE = left(ds_source.GetColumn(i, "EJHPROCDATE"),4)+"년 "+substr(ds_source.GetColumn(i, "EJHPROCDATE"),4,2)+" 월 "+substr(ds_source.GetColumn(i, "EJHPROCDATE"),6,2)+"일 ";	//접수일자
+	var TPRESIDENT = ds_source.GetColumn(i, "TPRESIDENT");	//주민번호(앞6자리)
+	var TOEDUNM = ds_source.GetColumn(i, "TOEDUNM");	//교육과정
+	var TOEUDDATE = ds_source.GetColumn(i, "TOEUDDATE");	//교육일자
+	var JIBUNM = ds_source.GetColumn(i, "JIBUNM");	//교육지부
+	var JUBSUNO = ds_source.GetColumn(i, "JUBSUNO");	//접수번호
+	var EPNM = ds_source.GetColumn(i, "EPNM");	//교육장소
+	var TJZIPCD = ds_source.GetColumn(i, "TJZIPCD");	//우편번호
+	var TJADDR = ds_source.GetColumn(i, "TJADDR");	//주소
+	var TPTEL = ds_source.GetColumn(i, "TPTEL");	//전화번호
+	var ETCCOMMENT = ds_source.GetColumn(i, "ETCCOMMENT");	//기타내용
+	var EMAILSEQ = seq;	//이메일관리번호
+	
+	//메일 공통 변수
+	var toEmail = ds_source.GetColumn(i, "TPEMAIL");
+	var toName = ds_source.GetColumn(i, "TPNM");
+	var fromEmail = "helpdesk@kfsi.or.kr";
+	var title = "[한국소방안전원] "+toName+" 회원님의 시험접수 안내메일 입니다.";
+		
+	//메일 본문
+	var content  = "<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN''http://www.w3.org/TR/html4/loose.dtd'>";
+		content += " <html>";
+		content += " <head>";
+		content += " <meta http-equiv='Content-Type' content='text/html; charset=euc-kr'>";
+		content += " <title>한국소방안전원</title>";
+		content += " <basefont size=2>";
+		content += " </head>";
+		content += " <body>";
+		content += "   <table width='596' border='0' align='center' cellpadding='0' cellspacing='1' bgcolor='D8D8D8'>";
+		content += "     <tr>";
+		content += "       <td height='1' bgcolor='D8D8D8'></td>";
+		content += "     </tr>";
+		content += "     <tr>";
+		content += "       <td bgcolor='#FFFFFF'><table width='100%'  border='0' cellspacing='0' cellpadding='0'>";
+		content += "           <tr>";
+		content += "             <td height='45'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/maillogo.gif' width='173' height='25'></td>";
+		content += "             <td align='right'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailtitle.gif' width='132' height='26'></td>";
+		content += "           </tr>";
+		content += "       </table></td>";
+		content += "     </tr>";
+		content += "     <tr>";
+		content += "       <td height='189' valign='bottom' background='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/maillpic.gif' bgcolor='#FFFFFF'><table width='310' border='0' cellspacing='0' cellpadding='0'>";
+		content += "           <tr>";
+		content += "             <td width='75'>&nbsp;</td>";
+		content += "             <td width='235' height='60' valign='top'><font color='02FEFB'><b>"+TPNM+"</b></font>&nbsp;&nbsp;<font color='ffffff'>회원님!<br>";
+		content += "             시험접수 결과를 알려드립니다.</font> </td>";
+		content += "           </tr>";
+		content += "       </table></td>";
+		content += "     </tr>";
+		content += "     <tr>";
+		content += "       <td align='center' valign='top' bgcolor='#FFFFFF'><table width='100%'  border='0' cellspacing='0' cellpadding='0'>";
+		content += "           <tr>";
+		content += "             <td height='2' bgcolor='D8D8D8'></td>";
+		content += "           </tr>";
+		content += "           <tr>";
+		content += "             <td height='70' align='center'><table width='540' border='0' cellspacing='0' cellpadding='0'>";
+		content += "                 <tr>";
+		content += "                   <td width='9'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailleft.gif' width='9' height='35'></td>";
+		content += "                   <td width='522' align='center' bgcolor='DCDCDC'><font color='0056FF'><b>"+TPNM+"</b></font> 님께서 지난 "+TOHPROCDATE+"에 신청하신 <font color='0056FF'><b>시험접수결과</b></font>를 알려드립니다. </td>";
+		content += "                   <td width='9'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailright.gif' width='9' height='35'></td>";
+		content += "                 </tr>";
+		content += "             </table></td>";
+		content += "           </tr>";
+		content += "           <tr>";
+		content += "             <td height='15'></td>";
+		content += "           </tr>";
+		content += "           <tr>";
+		content += "             <td align='center'><table width='522' border='0' cellspacing='0' cellpadding='0'>";
+		content += "                 <tr>";
+		content += "                   <td valign='bottom'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailbox1.gif' width='522' height='29'></td>";
+		content += "                 </tr>";
+		content += "                 <tr style=padding:10,0>";
+		content += "                   <td align='center' background='images/mailbox2.gif'><table width='500' border='0' cellspacing='0' cellpadding='0'>";
+		content += "                       <tr>";
+		content += "                         <td height='35' align='left' valign='bottom' widht='50'><font size='-3' color='fe9602'>▶</font> <strong>시험응시원서</strong> : <a href='http://"+HTTP_HOST+"/"+HTTP_SUB+"/application_print.php?"+application_print+"' target='_print'> <img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/button_application.gif' width='111' height='19' border='0' align='absmiddle'> </a> </td>";
+		content += "                       </tr>";
+		content += "                       <tr>";
+		content += "                         <td height='10'>  ";
+		content += "                         <td></td>";
+		content += "                       </tr>";
+		content += "                       <tr>";
+		content += "                         <td bgcolor='#69645A' height='1'>  ";
+		content += "                         <td></td>";
+		content += "                       </tr>";
+		content += "                       <tr>";
+		content += "                         <td height='5'>  ";
+		content += "                         <td></td>";
+		content += "                       </tr>";
+		content += "                       <tr>";
+		content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>시험과정</strong> : "+TOEDUNM+" </td>";
+		content += "                       </tr>";
+		content += "                       <tr>";
+		content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>시험일자</strong> : "+TOEUDDATE+" </td>";
+		content += "                       </tr>";
+		content += "                       <tr>";
+		content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>지&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부</strong> : "+JIBUNM+" </td>";
+		content += "                       </tr>";
+		content += "                       <tr>";
+		content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>접수번호</strong> : "+JUBSUNO+" </td>";
+		content += "                       </tr>";
+		content += "                       <tr>";
+		content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>시험장소</strong> : "+EPNM+" </td>";
+		content += "                       </tr>";
+		content += "                       <tr>";
+		content += "                         <td align='left'><table width='489'  border='0' cellspacing='0' cellpadding='0'>";
+		content += "                           <tr>";
+		content += "                             <td width='83' rowspan='5' valign='top'><font size='-3' color='fe9602'>▶</font> <strong>준&nbsp;&nbsp;비&nbsp;&nbsp;물</strong> :</td>";
+		content += "                             <td height='22' valign='top'>1. 시험응시표 </td>";
+		content += "                           </tr>";
+		content += "                           <tr>";
+		content += "                             <td height='22' valign='top'>2. 신분증(주민등록증, 운전면허증 등)</td>";
+		content += "                           </tr>";
+		content += "                           <tr>";
+		content += "                             <td height='22' valign='top'>3. 필기도구(적색 및 연필 제외)</td>";
+		content += "                           </tr>";
+		content += "                         </table></td>";
+		content += "                       </tr>";
+		content += "                   </table></td>";
+		content += "                 </tr>";
+		content += "                 <tr>";
+		content += "                   <td height='4'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailbox3.gif' width='522'></td>";
+		content += "                 </tr>";
+		content += "             </table></td>";
+		content += "           </tr>";
+		content += "           <tr>";
+		content += "             <td height='25' align='center'>&nbsp;</td>";
+		content += "           </tr>";
+		content += "           <tr>";
+		content += "             <td align='center'><table width='522' border='0' cellspacing='0' cellpadding='0'>";
+		content += "                 <tr>";
+		content += "                   <td valign='bottom'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailbox4.gif' width='522' height='31'></td>";
+		content += "                 </tr>";
+		content += "                 <tr style=padding:10,0>";
+		content += "                   <td align='center' background='images/mailbox2.gif'><table width='500' border='0' cellspacing='0' cellpadding='0'>";
+		content += "                       <tr>";
+		content += "                         <td height='5'></td>";
+		content += "                       </tr>";
+		content += "                       <tr>";
+		content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명</strong> : "+TPNM+" </td>";
+		content += "                       </tr>";
+		content += "                       <tr>";
+		content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>주민번호</strong> : "+TPRESIDENT+" </td>";
+		content += "                       </tr>";
+		content += "                       <tr>";
+		content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소</strong> : ["+TJZIPCD+"] "+TJADDR+" </td>";
+		content += "                       </tr>";
+		content += "                       <tr>";
+		content += "                         <td height='23' align='left'><font size='-3' color='fe9602'>▶</font> <strong>전화번호</strong> : "+TPTEL+" </td>";
+		content += "                       </tr>";
+		content += "                   </table></td>";
+		content += "                 </tr>";
+		content += "                 <tr>";
+		content += "                   <td height='4'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailbox3.gif' width='522' height='5'></td>";
+		content += "                 </tr>";
+		content += "             </table></td>";
+		content += "           </tr>";
+		content += "           <tr>";
+		content += "             <td height='40' align='left' valign='bottom'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailattention.gif' width='153' height='21'></td>";
+		content += "           </tr>";
+		content += "           <tr>";
+		content += "             <td><table width='100%'  border='0' cellpadding='10' cellspacing='10' bgcolor='edefef'>";
+		content += "               <tr>";
+		content += "                 <td align='left' bgcolor='#FFFFFF'><table width='100%'  border='0' cellspacing='0' cellpadding='4'>";
+		content += "                   <tr>";
+		content += "                     <td height='25'>○ <font color='fe9602'>시험시작 30분전까지</font> 입실하셔야 합니다.</td>";
+		content += "                   </tr>";
+		content += "                   <tr>";
+		content += "                     <td height='25'>○ 시험일정변경 또는 환불은 해당시험 <font color='fe9602'>전일 근무시간(18시)까지만</font> 가능합니다.</td>";
+		content += "                   </tr>";
+		content += "                   <tr>";
+		content += "                     <td height='25'>○ 전화, 팩스, 인터넷으로 환불신청시 환불금액은 <font color='fe9602'>송금수수료</font>를 제외한 금액입니다.<br>&nbsp;&nbsp;&nbsp;(※ 당해년도 시험일정에 한함)</td>";
+		content += "                   </tr>";
+		content += "                   <tr>";
+		content += "                     <td height='25'>○ 주차장이 협소하여 주차가 불가할 수 있습니다.</td>";
+		content += "                   </tr>";
+		content += "                 </table>";
+		content += "                 </td>";
+		content += "               </tr>";
+		content += "             </table></td>";
+		content += "           </tr>";
+		content += "           <tr>";
+		content += "             <td height='100' align='right' style=padding-right:30><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/stamp.gif' width='234' height='76'></td>";
+		content += "           </tr>";
+		content += "           <tr>";
+		content += "             <td height='30' align='center' bgcolor='D8D8D8'>Copyrightⓒ2001 Korea Fire Safety Association, All Rights Reserved. </td>";
+		content += "           </tr>";
+		content += "       </table></td>";
+		content += "     </tr>";
+		content += "   </table>";
+		content += "   <table width='100%' border='0' cellpadding='10' cellspacing='0' bgcolor='#CCCCCC'>";
+		content += "     <tr>";
+		content += "       <td align='left' bgcolor='#FFFFFF'><p>&nbsp; </p></td>";
+		content += "     </tr>";
+		content += "   </table>";
+		content += "   <img src='http://www.kfsi.or.kr/check/emailcheck.php?mgno="+EMAILSEQ+"' width=1 height=1>";	//수신확인
+		content += " </body>";
+		content += " </html>";
+
+    var contents = UrlEncode(content);
+	wbSendMail.PageUrl = "http://118.128.25.79/nara/servlet/simple.SimpleMailSendServ";
+	wbSendMail.PostData = "ToEmail="+toEmail+"&ToName="+toName+"&FromEmail="+fromEmail+"&MailTitle="+title+"&MailContent="+contents;
+	wbSendMail.Run();
+	lfn_SendMailLog(ds_source, i, title, content, EMAILSEQ);
+}
+
+/*
+ * 기능 : 메일 발송 이력
+ */
+function lfn_SendMailLog(ds_source, i, title, content, EMAILSEQ) {
+	if (sGubun == "T") { // 인터넷 강습접수
+
+        tit_clearActionInfo();
+        tit_addSingleActionInfo("training:insertEmailContents", "", 0, "");
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,""	// outDs 
+            , "ESHGTMGNO=" + quote(gds_oUserInfo.GetColumn(0,"PDEPTCD"))	//-- 발송지부
+              +" ESHSABUN=" + quote(gds_oUserInfo.GetColumn(0,"PSABUN"))	//-- 사번
+              +" ESHEMAILADDR=" + quote(ds_source.GetColumn(i,"TPEMAIL"))   //-- 이메일주소
+              +" ESHSENDYN=" + quote("Y") // -- 발송여부
+              +" ESHRECEIVEYN=" + quote("N") // -- 수신상태
+              +" ESHBIZGUBUN=" + quote("T") // -- 업무구분
+              +" ESHBIZMGNO=" + quote(ds_source.GetColumn(i,"TJMGNO")) // -- 업무참조
+              +" ECTITLE=" + quote(title) // -- 제목
+              +" ECCONTENTS=" + quote(content) // -- 내용
+              +" ESHMGNO=" + quote(EMAILSEQ)	//-- 이메일관리번호
+            ,"lfn_AfterSaveSendMailLog"
+            ,false
+            ,true
+        );
+    }
+    else {	//인터넷 시험접수
+        
+        tit_clearActionInfo();
+        tit_addSingleActionInfo("training:insertEmailContents", "", 0, "");
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,""	// outDs 
+            , "ESHGTMGNO=" + quote(gds_oUserInfo.GetColumn(0,"PDEPTCD"))	//-- 발송지부
+              +" ESHSABUN=" + quote(gds_oUserInfo.GetColumn(0,"PSABUN"))	//-- 사번
+              +" ESHEMAILADDR=" + quote(ds_source.GetColumn(i,"TPEMAIL"))   //-- 이메일주소
+              +" ESHSENDYN=" + quote('Y') // -- 발송여부
+              +" ESHRECEIVEYN=" + quote('N') // -- 수신상태
+              +" ESHBIZGUBUN=" + quote('E') // -- 업무구분
+              +" ESHBIZMGNO=" + quote(ds_source.GetColumn(i,"EJMGNO")) // -- 업무참조
+              +" ECTITLE=" + quote(title) // -- 제목
+              +" ECCONTENTS=" + quote(content) // -- 내용
+			  +" ESHMGNO=" + quote(EMAILSEQ)	//-- 이메일관리번호
+            ,"lfn_AfterSaveSendMailLog"
+            ,false
+            ,true
+        );
+    }
+}
+
+/*
+ * 기능 : 메일 발송 이력 저장 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveSendMailLog(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+	gfn_SaveMessage(); // 저장 메세지를 처리한다.
+	Close();
+}
+
+ /*
+ * 기능 : gfn_Cryptograph 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ *	           cRtnVal - 리턴값(암호문)
+ * Return : 성공:"OK", 실패:"FAIL"
+ */
+function lfn_AfterCryptograph(strSvcID, nErrorCode, strErrorMsg) {
+    if (strSvcID <> "Cryptograph") {
+        return "FAIL";
+    }
+
+    if (nErrorCode < 0) { // 트랜잭션 에러.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return "FAIL";
+    }
+
+    MD5 = cRtnVal; // POS 조회결과 코드값
+}]]></Script>
+</Window>

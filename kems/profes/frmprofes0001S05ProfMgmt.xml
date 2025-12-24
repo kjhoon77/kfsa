@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="184" Id="frmprofes0001S05ProfMgmt" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="교육훈련" Top="8" Ver="1.0" Width="782" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioProfPersonEdu">
+				<Contents>
+					<colinfo id="INSACODE" size="8" type="STRING"/>
+					<colinfo id="PECONTENT" size="200" type="STRING"/>
+					<colinfo id="PEENDDATE" size="8" type="STRING"/>
+					<colinfo id="PEOFFICE" size="100" type="STRING"/>
+					<colinfo id="PESEQ" size="22" type="DECIMAL"/>
+					<colinfo id="PESTARTDATE" size="8" type="STRING"/>
+					<colinfo id="PEUSEPROFESSOR" size="1" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oProfUseYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>허용</DATA>
+					</record>
+					<record>
+						<CD>A</CD>
+						<DATA>전체</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="180" Height="176" Id="shpGubunBox1" Left="4" LineColor="user15" Right="776" TabOrder="4" Top="4" Type="Rectangle" Width="772"></Shape>
+		<Static Align="Center" Height="20" Id="Static8" Left="-144" Style="sty_LabelGruopBox" TabOrder="5" Text="안전원&#32;교수&#32;관리" Top="63" VAlign="Middle" Width="120"></Static>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_ioProfPersonEdu" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="178" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="142" Id="gdProfPersonEdu" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" OnHeadClick="gdProfPersonEdu_OnHeadClick" Right="772" RowHeight="20" Style="sty_Grid" TabOrder="2" TabStop="true" Top="36" UseDBuff="true" UsePopupMenu="true" UserData="교육훈련목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="764">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="250"/>
+						<col width="200"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="교육시작일"/>
+						<cell col="2" display="text" text="교육종료일"/>
+						<cell align="center" col="3" display="text" text="교육내용"/>
+						<cell align="center" col="4" display="text" text="교육기관"/>
+						<cell col="5" display="text" text="감추기"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow+1"/>
+						<cell align="center" col="1" colid="PESTARTDATE" display="date"/>
+						<cell col="2" colid="PEENDDATE" display="date"/>
+						<cell align="center" col="3" colid="PECONTENT" display="text"/>
+						<cell align="center" col="4" colid="PEOFFICE" display="text"/>
+						<cell col="5" colid="PEUSEPROFESSOR" display="checkbox" edit="checkbox"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Height="16" Id="lbText" Left="12" Style="sty_Text" TabOrder="3" Text="■&#32;교육훈련&#32;(안전원&#32;교육훈련&#32;사항으로&#32;인사시스템에서&#32;입력)" Top="12" VAlign="Middle" Width="600"></Static>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="radUseYn" INDEX="0" InnerDataset="ds_oProfUseYn" Left="668" OnChanged="radUseYn_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="1" Top="12" UserData="S" Width="100"></Radio>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmPFM0001MProfMgmt.xml
+ * 설명 : 교육훈련
+ * 작성일 : 2009.11.11
+ * 작성자 : 김종복
+ */
+
+#include "LIB::profes.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    tit_createActionInfo(); // X-Framework용    
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+    
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+}
+
+/*
+ * 기능 : 그리드 정렬
+ */
+function gdProfPersonEdu_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+	var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1 && nCell > 0) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    gdProfPersonEdu.Editable = bStatus;
+}
+
+/*
+ * 기능 : 교육훈련 조회
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchProfPersonEdu(obj) {
+	gdProfPersonEdu.Redraw = false;
+	
+	ds_ioProfPersonEdu.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("profes:searchProfes0001ProfPersonEdu", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioProfPersonEdu=ds_oProfData" // outDs
+		,"INSACODE=" + quote(ds_ioProfUser.getColumn(ds_ioProfUser.row, "INSACODE")) //-- 사번 // args 
+		,"lfn_AfterSearchProfPersonEdu"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 교육훈련 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchProfPersonEdu(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    radUseYn.Index = 0; // 허용 선택
+    ds_ioProfPersonEdu.Filter("PEUSEPROFESSOR=='0'"); // 데이타셋 필터링
+    gfn_SearchMessage(gdProfPersonEdu); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+    gdProfPersonEdu.Redraw = true;
+}
+
+/*
+ * 기능 : 교육훈련 저장
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SaveProfPersonEdu(obj) {
+	// if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        // return false;
+    // }
+	
+	tit_clearActionInfo();
+    tit_AddSaveActionInfo(	
+        "" // insert  		
+        , "profes:updateProfes0001ProfPersonEdu" // update  
+        , "" // delete
+        , "" // flag column 명
+        , "" // key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N" // 실행타입
+    );
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iProfData=ds_ioProfPersonEdu:U" // inDs		
+        ,""	// outDs
+        ,"PSABUN=" + gds_oUserInfo.GetColumn(0, "PSABUN") //-- 작성자사번 // args 
+        ,"lfn_AfterSaveProfPersonLisence"
+        ,false
+        ,false
+		,true
+    );
+}
+
+/*
+ * 기능 : 교육훈련 저장 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveProfPersonLisence(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/*
+ * 기능 : 전체보기
+ */
+function radUseYn_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+	switch (strCode) {
+		case "Y":
+			ds_ioProfPersonEdu.Filter("PEUSEPROFESSOR=='0'");
+			break;
+		case "A":
+			ds_ioProfPersonEdu.UnFilter();
+			break;
+		default:
+			break;
+	}
+}
+]]></Script>
+</Window>

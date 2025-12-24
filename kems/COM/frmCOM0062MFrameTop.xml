@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="40" Id="frmCOM0062MFrameTop" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="상단프레임" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1022" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oBoardCnt"></Dataset>
+		</Datasets>
+		<Tab Font="굴림,10,Bold" Height="25" Id="tabTopMenu" Left="201" OnChanged="tabTopMenu_OnChanged" SelColor="white" SelectFont="굴림,10,Bold" TabButtonBorder="Flat" TabOrder="2" Top="51" Width="820">
+			<Contents>
+				<TabPage Enable="FALSE" Height="-4" Id="tab1" ImageID="BTN_TAB_BK01" Left="2" TabOrder="9" Text="tab1" Top="27" Width="816"></TabPage>
+			</Contents>
+		</Tab>
+		<Image Cursor="HAND" FillType="STRETCH" Height="34" Id="imgLeftFrameClose" ImageID="IMG_MENU_HIDE" Left="183" LeftMargin="0" OnClick="imgLeftFrameOpenClose_OnClick" OnMouseOut="imgLeftFrameClose_OnMouseOut" OnMouseOver="imgLeftFrameClose_OnMouseOver" Static="FALSE" Style="sty_Image" TabOrder="1" Top="42" Width="16"></Image>
+		<Shape BKColor="blue" Bottom="40" Height="4" Id="shpTopMenuBottom" Left="0" LineColor="blue" Right="1540" TabOrder="3" Top="36" Type="Rectangle" Width="1540"></Shape>
+		<Image Height="25" Id="imgLoginBox" ImageID="IMG_LEFT_LOGIN_BOX" Left="205" Style="sty_Image" TabOrder="6" Top="5" Transparent="TRUE" Width="191"></Image>
+		<Static Align="Right" Font="굴림,9" Height="20" Id="lbLoginUserInfo" Left="205" TabOrder="5" Text="본부&#32;정보지원과&#32;홍길동" Top="8" VAlign="Middle" Width="136"></Static>
+		<Image Cursor="HAND" Height="11" Id="imgLogout" ImageID="IMG_LOGOUT" Left="344" LeftMargin="0" OnClick="imgLogout_OnClick" Static="FALSE" Style="sty_Image" TabOrder="4" Top="14" Visible="FALSE" Width="46"></Image>
+		<Image Cursor="HAND" Height="36" Id="imgKemsLogo" ImageID="IMG_KEMSCTI_LOGO" OnClick="imgKemsLogo_OnClick" Static="FALSE" Style="sty_Image" TabOrder="7" Width="200"></Image>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM0010PInfoMessage.xml
+ * 설명 : 정보메세지 팝업
+ * 작성일 : 2009.06.26
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련 
+
+var ls_TabPageNamePrefix = "tbgTopMenu";
+
+/* 공통 필수 시작 */
+function Form_OnActivate(obj) {
+    gfn_Form_OnActivate(obj);
+    
+    // to do
+}
+
+function Form_OnDeactivate(obj) {
+    // to do
+
+    gfn_Form_OnDeactivate(obj);
+}
+
+
+function lfn_InitOnLoad(obj)
+{
+    lfn_SearchCommonCode(); // 공통코드를 조회한다.
+    lfn_loadPrintConfigFile(); // 로컬 프린터 환경을 로딩한다.
+    // 화면 로딩을 위한 delay용
+    for (var i = 0; i < 1000; i++) {
+        idle();
+    }
+    //global.AppStatus = "Max"; // 화면 최대화
+	// 23.04 좌측영역 안보이게 
+	imgLeftFrameClose.Visible = false;
+	global.mnuLeft.Visible = false;
+	// 23.04 좌측영역 안보이게 
+    tabTopMenu_OnChanged(obj,0,0);
+             
+     
+    //if (gds_oUserInfo.GetColumn(0, "PPWDATE") 
+    
+    /* 23.04 임시 막음 
+    if (gds_oUserInfo.GetColumn(0, "PPWCHANGE") == "Y") {
+    
+		gfn_Alert("비밀번호를 변경한지 3개월이 지났습니다.\n\n"+
+		          "그룹웨어의 '환경설정☞비밀번호' 메뉴에 가셔서 변경하세요!");
+    
+    }*/
+    
+    //23.04 기본화면 오픈  
+    var ls_FormUrl = "";
+    var ls_FormTitle = "";
+    var ls_MenuId = "";  
+    ls_FormUrl = "cti::frmcti0010MBoardMain.xml";
+	ls_FormTitle = "민원상담접수";
+		
+    gfn_OpenChildWindow(ls_FormUrl, ls_FormTitle, ls_MenuId);
+    //23.04 기본화면 오픈
+	//23.04 로그인 정보 
+	lbLoginUserInfo = gds_oUserInfo.GetColumn(0, "PDEPTNM")
+					+ " " + gds_oUserInfo.GetColumn(0, "PPERSONNM");                     
+}
+ 
+
+function Form_OnLoadCompleted(obj) {
+		lfn_InitOnLoad(obj); 
+}
+
+function Form_OnUnloadCompleted(obj) {
+    gfn_Form_OnUnloadCompleted(obj);
+}
+
+function Form_OnFocus(obj) {
+    gfn_Form_OnFocus(obj);
+}
+
+function Form_OnKillFocus(obj) {
+    gfn_Form_OnKillFocus(obj);
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam);
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 공통코드를 조회한다.
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchCommonCode() {	
+    tit_createActionInfo(); // X-Framework용
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("com:searchAllDept", false);	// 전체부서코드
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"gds_oAllDept=ds_oAllDept"
+		,""	// args 
+		,""
+		,true
+		,true
+	);
+}  
+
+function lfn_SearchCommonCodeBack() {	
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("com:searchCommonCode", false); // 공통코드
+	tit_addSearchActionInfo("com:searchJibu", false); // 지부
+	tit_addSearchActionInfo("com:searchTrainingCourse", false); // 직능
+	tit_addSearchActionInfo("com:searchPosProgramId", false); // POS단위업무프로그램
+	tit_addSearchActionInfo("com:searchPosJibu", false); // POS지부
+	tit_addSearchActionInfo("com:searchCustomerCourse", false); // 고객 직능
+	tit_addSearchActionInfo("com:searchRegion", false); // 지역
+	tit_addSearchActionInfo("com:searchLicenseCode", false);	//타자격증 코드
+
+	tit_addSearchActionInfo("com:searchFireInfoCode", false);	//지부별  소방서
+	tit_addSearchActionInfo("com:searchFireInfoCenterCode", false);	//소방서별 안전센터
+	
+	tit_addSearchActionInfo("com:searchFireInfoBonbuCode", false);	//지부별  소방본부
+
+	tit_addSearchActionInfo("com:searchPrivacyCourse", false);	// 개인정보동의서 직능코드
+	
+	tit_addSearchActionInfo("com:searchVirtualAccountBankCode", false);	// 가상계좌 은행코드
+	
+	tit_addSearchActionInfo("com:searchAllDept", false);	// 전체부서코드
+	
+	tit_addSearchActionInfo("com:searchKCode", false); // 선해임코드
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"gds_oCommonCode=ds_oCommonCode" // outDs
+		    + " gds_oJibu=ds_oJibu"
+		    + " gds_oCourse=ds_oCourse"
+		    + " gds_oPosProgramId=ds_oPosProgramId"
+		    + " gds_oPosJibu=ds_oPosJibu"
+		    + " gds_oCustomerCourse=ds_oCustomerCourse"
+		    + " gds_oRegion=ds_oRegion"
+		    + " gds_oLicenseCode=ds_oLicenseCode"
+			+ " gds_oFireBonbuCode=ds_oFireBonbuCode"
+			
+			+ " gds_oFireCode=ds_oFireCode"
+			+ " gds_oFireCenterCode=ds_oFireCenterCode"
+			
+			+ " gds_oPrivacyCourse=ds_oPrivacyCourse"
+			
+			+ " gds_oBankCode=ds_oBank"
+			
+			+ " gds_oAllDept=ds_oAllDept"
+			
+			+ " gds_oKCode=ds_oKCode"
+		,""	// args 
+		,""
+		,true
+		,true
+	);
+}  
+
+/*
+ * 기능 : 로컬환경을 로딩한다.
+ * parameter : 없음
+ * return : 없음
+ */
+function lfn_loadPrintConfigFile() {
+    gs_LocalDefaultPrinter = ext_GetDefaultPrinter();
+
+    var ln_Currow;
+    ln_Currow = gds_oLocalPrinter.AddRow();
+    gds_oLocalPrinter.SetColumn(ln_Currow, "NM", gs_LocalDefaultPrinter);
+    gds_oLocalPrinter.SetColumn(ln_Currow, "PATH", gs_LocalDefaultPrinter);
+
+    var larr_LocalPrinterList = ext_GetPrinterList();
+    for (var i = 0; i < larr_LocalPrinterList.length; i++) {
+        if (larr_LocalPrinterList[i] <> gs_LocalDefaultPrinter) {
+            ln_Currow = gds_oLocalPrinter.AddRow();
+            gds_oLocalPrinter.SetColumn(ln_Currow, "NM", larr_LocalPrinterList[i]);
+            gds_oLocalPrinter.SetColumn(ln_Currow, "PATH", larr_LocalPrinterList[i]);
+        }
+    }
+
+    // 로컬환경을 로딩한다.
+    Create("File", "filePrintConfigFile");
+    filePrintConfigFile.FileName = gs_PrintConfigFileName; // 파일 위치
+
+    if (filePrintConfigFile.IsExistFile()) { // 파일이 있을 경우
+        if (filePrintConfigFile.Open("t+")) { // 파일을 이상없이 열었을 경우(t: text 모드, +: 읽기/쓰기)
+            var ls_TotalString = filePrintConfigFile.Read(); // 전체 파일의 문자열 읽기
+            filePrintConfigFile.Close();
+
+            var larr_TotalString = split(ls_TotalString,"\n","");
+            ln_TotalLine = larr_TotalString.length;
+
+            var larr_Parsing;
+            var ln_CurLine = 0;
+            // 프린터6번까지 설정
+            for (; ln_CurLine < 6; ln_CurLine++) {
+                // 항목 파싱
+                larr_Parsing = split(larr_TotalString[ln_CurLine], "|");
+                gds_ioPrinter.SetColumn(gds_ioPrinter.FindRow("NO", larr_Parsing[0]), "PATH", larr_Parsing[1]);
+                gds_ioPrinter.SetColumn(gds_ioPrinter.FindRow("NO", larr_Parsing[0]), "PORT", larr_Parsing[2]);
+            }
+
+            // 출력환경 설정
+            for (; ln_CurLine < ln_TotalLine; ln_CurLine++) {
+                // 항목 파싱
+                larr_Parsing = split(larr_TotalString[ln_CurLine], "|");
+                gds_ioPrintConfig.SetColumn(gds_ioPrintConfig.FindRow("PCCD", larr_Parsing[0]), "PCLEFTMARGIN", larr_Parsing[1]);
+                gds_ioPrintConfig.SetColumn(gds_ioPrintConfig.FindRow("PCCD", larr_Parsing[0]), "PCTOPMARGIN", larr_Parsing[2]);
+                gds_ioPrintConfig.SetColumn(gds_ioPrintConfig.FindRow("PCCD", larr_Parsing[0]), "PCPRINTERNO", larr_Parsing[3]);
+            }
+        }
+    }
+    Destroy("filePrintConfigFile");
+
+    for (var i = 0; i < gds_ioPrinter.GetCount() - 1; i++) {
+        if (gfn_IsNull(gds_ioPrinter.GetColumn(i, "PATH"))) {
+            gds_ioPrinter.SetColumn(i, "PATH", gs_LocalDefaultPrinter);
+        }
+    }
+    gds_ioPrinter.SetColumn(6, "PATH", gs_LocalDefaultPrinter); // 기본 프린터
+}
+
+/* 사용자 이벤트 함수 */
+function tabTopMenu_OnChanged(obj,nOldIndex,nNewindex)
+{  
+	//gfn_ChangeLeftMenu(); // 좌측메뉴색상을 변경한다. 
+}
+
+
+function imgKemsLogo_OnClick(obj,nX,nY)
+{
+	// frmcti0010MBoardMain에서 이미지 로고 클릭시 확인용도 	gs_OpenGubun = "Y";
+}
+  
+function imgLogout_OnClick(obj,nX,nY)
+{
+	// 1.종료처리 
+	// 2.로그인 화면으로 
+	gfn_Logout();
+	//gfn_OnExit();
+	//Dialog("COM::frmCOM0053MCTILogin.xml", "", 600, 400, "", -1, -1);
+}
+]]></Script>
+</Window>

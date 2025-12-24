@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmsys0060MBoardManagement" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="공지사항관리" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioBoard" OnRowPosChanged="ds_ioBoard_OnRowPosChanged">
+				<Contents>
+					<colinfo id="AFDIRPATH" size="256" type="STRING"/>
+					<colinfo id="AFFILESIZE" size="22" type="DECIMAL"/>
+					<colinfo id="AFREALNM" size="256" type="STRING"/>
+					<colinfo id="AFSAVENM" size="256" type="STRING"/>
+					<colinfo id="AFSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="BBOARDDAYS" size="22" type="DECIMAL"/>
+					<colinfo id="BBOARDGUBUN" size="2" type="STRING"/>
+					<colinfo id="BCONTENTS" size="4000" type="STRING"/>
+					<colinfo id="BHIT" size="22" type="DECIMAL"/>
+					<colinfo id="BMODDATE" size="10" type="STRING"/>
+					<colinfo id="BMODSABUN" size="8" type="STRING"/>
+					<colinfo id="BREGDATE" size="10" type="STRING"/>
+					<colinfo id="BREGSABUN" size="20" type="STRING"/>
+					<colinfo id="BSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="BTITLE" size="200" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="53" Height="52" Id="shpBtnBox" Left="443" LineColor="user14" Right="796" TabOrder="26" Top="1" Type="Rectangle" Width="353"></Shape>
+		<Shape Bottom="284" Height="228" Id="shpGubunBox" Left="4" LineColor="user15" Right="796" TabOrder="29" Top="56" Type="Rectangle" Width="792"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="4" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="3" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="lfn_Excel" Style="sty_Button" TabOrder="2" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="446" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="1" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSave" ImageID="BTN_COM_SAVE" Left="621" OnClick="lfn_Save" Style="sty_Button" TabOrder="7" ToolTipText="수정&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDelete" ImageID="BTN_COM_DEL" Left="708" OnClick="lfn_Delete" Style="sty_Button" TabOrder="8" ToolTipText="삭제&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnInput" ImageID="BTN_COM_ADD" Left="534" OnClick="lfn_Input" Style="sty_Button" TabOrder="6" ToolTipText="추가&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="446" OnClick="lfn_Search" Style="sty_Button" TabOrder="5" ToolTipText="조회" Top="28" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_ioBoard" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="584" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="272" Id="gdBoard" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnCellClick="gdBoard_OnCellClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="796" RowHeight="20" Style="sty_Grid" TabOrder="17" TabStop="true" Top="312" UseDBuff="true" UsePopupMenu="true" UserData="공지사항목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="431"/>
+						<col width="104"/>
+						<col width="109"/>
+						<col width="48"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="제목"/>
+						<cell align="center" col="1" display="text" text="작성자"/>
+						<cell align="center" col="2" display="text" text="작성날짜"/>
+						<cell align="center" col="3" display="text" text="첨부"/>
+					</head>
+					<body>
+						<cell align="left" col="0" colid="BTITLE" display="text"/>
+						<cell align="center" col="1" colid="BREGSABUN" display="text"/>
+						<cell align="center" col="2" colid="BREGDATE" display="text"/>
+						<cell align="center" bkimageid="expr:iif(AFSEQ&#32;&gt;&#32;0,&#32;&apos;IMG_ATTACH_FILE&apos;,&#32;&apos;&apos;)" col="3" cursor="expr:iif(AFSEQ&#32;&gt;&#32;0,&#32;&apos;hand&apos;,&#32;&apos;arrow&apos;)" display="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edTitle" ImeMode="native" Left="100" LeftMargin="2" MaxLength="50" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="11" Top="84" UserData="S:제목" Width="477"></Edit>
+		<Static Align="Center" Height="20" Id="lbTitle" Left="8" Style="sty_Label" TabOrder="21" Text="제목" Top="84" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbCreateDate" Left="8" Style="sty_Label" TabOrder="19" Text="작성일자" Top="60" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbWriter" Left="184" Style="sty_Label" TabOrder="20" Text="작성자" Top="60" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbAttachFile" Left="8" Style="sty_Label" TabOrder="23" Text="첨부파일" Top="108" VAlign="Middle" Width="88"></Static>
+		<TextArea Border="Flat" Height="148" Id="taContents" Left="100" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_TextArea" TabOrder="15" Top="132" UserData="S:내용" VScroll="TRUE" Width="692"></TextArea>
+		<Static Align="Center" Height="20" Id="lbContents" Left="8" Style="sty_Label" TabOrder="25" Text="내용" Top="132" VAlign="Middle" Width="88"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnUploadFile" ImageID="BTN_TEXT_04" Left="511" OnClick="btnUploadFile_OnClick" Style="sty_Button" TabOrder="14" Text="업로드" ToolTipText="다운로드" Top="107" Transparent="TRUE" Width="66"></Button>
+		<FileDialog Bottom="308" Height="24" Id="fdAttachFile" Left="38" Right="62" TabOrder="22" Top="284" Width="24"></FileDialog>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BKColor="user4" Border="Flat" Height="20" Id="edCreateDate" Left="100" LeftMargin="2" Mask="####-##-##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_TimeReadOnly" TabOrder="9" Top="60" Type="STRING" UserData="S" Width="78"></MaskEdit>
+		<Edit AutoSelect="TRUE" BKColor="user4" Border="Flat" Cursor="HAND" Height="20" Id="edAttachFile" ImeMode="native" Left="100" LeftMargin="2" OnClick="lfn_DownloadFile" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_EditReadOnly" TabOrder="13" TabStop="FALSE" Top="108" UserData="S" Width="408"></Edit>
+		<Static Height="20" Id="lbFileSize" Left="580" Style="sty_Text" TabOrder="24" Top="108" UserData="S" VAlign="Middle" Width="212"></Static>
+		<File Bottom="308" Height="24" Id="fiAttachFile" Left="8" Right="32" TabOrder="23" Top="284" Width="24"></File>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edWriter" ImeMode="native" Left="276" LeftMargin="2" MaxLength="10" OnChanged="edWriter_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="10" Top="60" UserData="S:작성자:K" Width="93"></Edit>
+		<HttpFile Height="24" Id="hfAttachFile" Left="68" Top="284" Width="24"></HttpFile>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" Left="2" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="18" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="300">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="722" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="16" Top="288" Transparent="TRUE" Width="74"></Button>
+		<Static Height="20" Id="lbRealFileName" Left="504" Style="sty_Text" TabOrder="27" Top="288" UserData="S" VAlign="Middle" Visible="FALSE" Width="213"></Static>
+		<Static Align="Center" Height="20" Id="lbDays" Left="580" Style="sty_Label" TabOrder="22" Text="게시일수" Top="84" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edDays" ImeMode="native" Left="672" LeftMargin="2" MaxLength="3" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="12" Top="84" UserData="S" Width="84"></Edit>
+		<Static Height="20" Id="lbDays2" Left="760" Style="sty_Text" TabOrder="28" Text="일간" Top="84" VAlign="Middle" Width="36"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmsys0060MBoardManagement.xml
+ * 설명 : 공지사항관리
+ * 작성일 : 2009.07.08
+ * 작성자 : 김동현
+ */
+
+#include "LIB::sys.js"; // 공통업무 관련
+
+var lb_FileUpload = false;
+var ls_FileUploadPath = "/BBSDATA";
+var ls_BoardGubun = "N";
+var ls_RealFileName = "";
+var ls_UploadFileName = "NOTIS"; //서버에 저장될 파일 명
+
+////////////////////
+/* 공통 필수 시작 */
+////////////////////
+
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    lfn_Search();
+    edTitle.SetFocus();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState) {
+    if (gs_IsResizingForm == "Y") {
+        gdBoard.Height = nCy - gdBoard.Top - 4;
+    }
+}
+
+/**
+ * 엑셀 출력
+ */
+function lfn_Excel(obj) {
+    if (ds_ioBoard.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return;
+    }
+}
+
+/**
+ * 기능 : 초기화
+ */
+function lfn_Cancel(obj) {
+   gfn_FormInit(this);
+   ls_RealFileName = "";
+   lbFileSize.Text = "";
+   lfn_FileDownCheck();
+}
+
+/**
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+
+    ds_ioBoard.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("sys:searchBoard", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioBoard=ds_oBoard"	// outDs
+		,"BBOARDGUBUN=" + quote(ls_BoardGubun)
+            + " BREGSABUN=" + quote(edWriter.Text)
+            + " BTITLE=" + quote(edTitle.Text)	// args 
+		,"lfn_AfterSearchBoard"
+		,false
+	);
+}
+
+/**
+ * 기능 : 추가
+ */
+function lfn_Input(obj) {
+
+	if (!gfn_Confirm(MSGI00070)) { // 신규 추가 하시겠습니까?\n입력완료 후 저장 버튼을 누르세요.
+        return false;
+	}
+	
+    lfn_Cancel();
+    mb_IsNewData = true;
+    edCreateDate.Value = today();
+    edWriter.Text = gds_oUserInfo.GetColumn(0,"PPERSONNM");
+    edWriter.Readonly = true;
+    edWriter.BKColor = "user4";
+    
+    edTitle.SetFocus();
+}
+
+/**
+ * 기능 : 저장
+ */
+function lfn_Save(obj) {
+
+    var ls_FileUploadService = ""; //파일 업로드일 경우 사용되는 변수
+    var nRow = 0; //추가인지 수정인지 구분
+    var ls_UploadRealName = "";
+
+	if (!gfn_FormValidate(this)) { // 입력 Validation Check
+		return false;
+	}
+
+    if (mb_IsNewData) { //추가
+        if (!gfn_Confirm(MSGW00020)) { // 정말로 추가 저장 하시겠습니까?
+            return false;
+        }
+        ds_ioBoard.InsertRow(0);
+        
+    } else { //수정
+    
+        if (!gfn_Confirm(MSGW00040)) { // 정말로 수정 하시겠습니까?
+            return false;
+        }
+        nRow = ds_ioBoard.currow;
+        
+    }
+
+    ds_ioBoard.SetColumn(nRow, "BBOARDGUBUN", ls_BoardGubun);
+    ds_ioBoard.SetColumn(nRow, "BTITLE", edTitle.Text);
+    ds_ioBoard.SetColumn(nRow, "BCONTENTS", taContents.Text);
+    ds_ioBoard.SetColumn(nRow, "BBOARDDAYS", edDays.Text);
+    
+    //게시글 등록 액션
+	tit_clearActionInfo();
+	tit_addSaveActionInfo(
+		"sys:insertBoard" // insert
+		, "sys:updateBoard" // update
+		, "" // delete
+		, "" // flag column 명
+		, "" // key sql id
+		, 0	// key 증가 값
+		, "" 
+		, 0 
+		, "N" // 실행타입
+	);
+
+    if(lb_FileUpload) { //파일 업로드일 경우
+
+        ls_UploadRealName = ls_UploadFileName + "_" + getDate() + right(timem(),3) + gfn_GetFileExtensionName(fdAttachFile.FileName);
+
+        ds_ioBoard.SetColumn(nRow, "AFSAVENM", fdAttachFile.FileName);
+        ds_ioBoard.SetColumn(nRow, "AFREALNM", ls_UploadRealName);
+        ds_ioBoard.SetColumn(nRow, "AFFILESIZE", StripNum(lbFileSize.text));
+        ds_ioBoard.SetColumn(nRow, "AFDIRPATH", ls_FileUploadPath);
+        
+        tit_addSaveActionInfo(
+            "sys:insertAttachFile" // insert
+            , "sys:insertAttachFile" // update
+            , "" // delete
+            , "" // flag column 명
+            , "" // key sql id
+            , 0	// key 증가 값
+            , "" 
+            , 0 
+            , "N" // 실행타입
+        );
+        
+        ls_FileUploadService = " ds_iAttachFile=ds_ioBoard:U";
+
+    }
+	
+    gfn_FormInit(this); // 입력란 초기화
+
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,"ds_iBoard=ds_ioBoard:U" + ls_FileUploadService	// inDs
+		,""	// outDs
+		,""	// args
+		,"lfn_AfterSaveBoard"
+		,false
+	);
+
+    if (lb_FileUpload) { //파일 변경일 경우
+
+        if (Length(fdAttachFile.FileName) < 1) { //삭제 일 경우
+
+            tit_FileDelete(
+                ls_FileUploadPath
+                , ls_RealFileName
+                , false
+            );
+
+        } else { //변경일 경우
+
+            tit_FileWrite(
+                hfAttachFile
+                , ls_FileUploadPath
+                , fdAttachFile.FilePath
+                , fdAttachFile.FileName
+                , ls_UploadRealName
+                , "U"
+                , ls_RealFileName
+            );
+            
+            hfAttachFile.CloseFile();
+
+        }
+    }
+
+    mb_IsNewData = false;
+}
+
+/**
+ * 기능 : 삭제
+ */
+function lfn_Delete(obj) {
+
+    var ls_FileUploadService = ""; //파일 업로드일 경우 사용되는 변수
+    
+    if (ds_ioBoard.currow < 0) {
+        gfn_Alert(MSGI00030); // 삭제할 레코드가 없습니다.
+        return false;
+    }
+
+	if (!gfn_Confirm(MSGW00030)) { // 정말로 삭제 하시겠습니까?
+        return false;
+	}
+	
+    ds_ioBoard.DeleteRow(ds_ioBoard.currow); // 선택된 ROW를 삭제한다.
+    gfn_FormInit(this); // 입력란 초기화
+    
+	tit_clearActionInfo();
+
+    if (length(ls_RealFileName) >= 1) { //첨부 파일이 존재할 경우
+
+        tit_addSaveActionInfo(
+            ""	// insert
+            , ""	// update
+            , "sys:deleteAttachFile" // delete
+            , ""	// flag column 명
+            , ""	// key sql id
+            , 0	// key 증가 값
+            , "" 
+            , 0 
+            , "N"	// 실행타입
+        );
+        
+        ls_FileUploadService = "ds_iAttachFile=ds_ioBoard:A ";
+
+    }
+    
+	tit_addSaveActionInfo(
+		""	// insert
+		, ""	// update
+		, "sys:deleteBoard" // delete
+		, ""	// flag column 명
+		, ""	// key sql id
+		, 0	// key 증가 값
+		, "" 
+		, 0 
+		, "N"	// 실행타입
+	);
+
+	// 서버 호출
+	tit_callService(
+		""
+		,""
+		,ls_FileUploadService + "ds_iBoard=ds_ioBoard:A"	// inDs
+		,""	// outDs
+		,"" // args 
+		,"lfn_AfterSaveBoard"
+		,false
+	);
+
+    if (length(ls_RealFileName) >= 1) { //첨부 파일이 존재할 경우
+
+        tit_FileDelete( //파일 삭제
+            ls_FileUploadPath
+            , ls_RealFileName
+            , false
+        );
+        
+        ls_RealFileName = "";
+    }
+    
+}
+
+
+////////////////////
+/* 공통 필수 종료 */
+////////////////////
+
+/////////////////
+/* 사용자 함수 */
+/////////////////
+
+/**
+ * 버튼 정보 변경
+ */
+function lfn_FileDownCheck(){
+
+    if (length(ls_RealFileName) > 0 && !lb_FileUpload) {
+        btnUploadFile.Text = "삭제";
+    } else {
+        btnUploadFile.Text = "업로드";
+    }
+}
+
+////////////////////////
+/* 사용자 이벤트 함수 */
+////////////////////////
+
+/**
+ * 멀티 정렬
+ */
+function btnMutilSort_OnClick(obj) {
+	gfn_GridMultiSort(gdBoard, 0); // 멀티 정렬을 실행한다.
+}
+
+/**
+ * 조회 후 처리
+ */
+function lfn_AfterSearchBoard(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SearchMessage(gdBoard); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/**
+ * 저장 후 처리
+ */
+function lfn_AfterSaveBoard(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    lb_FileUpload = false; //업로드 구분을 해지시킨다.
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    lfn_Search(); // 공통코드 조회
+}
+
+/**
+ * 그리드의 값을 입력란에 복사
+ */
+function ds_ioBoard_OnRowPosChanged(obj,nOldRow,nRow) {
+
+    if (obj.GetRowType(nRow) <> "insert" && nRow <> -1) {
+        edCreateDate.Value = obj.GetColumn(nRow, "BREGDATE");
+        edWriter.Text = obj.GetColumn(nRow, "BREGSABUN");
+        edTitle.text = obj.GetColumn(nRow, "BTITLE");
+        taContents.text = replace(obj.GetColumn(nRow, "BCONTENTS"),"|r|n",chr(13)+chr(10));
+        edDays = obj.GetColumn(nRow, "BBOARDDAYS");
+        edAttachFile.Text = obj.GetColumn(nRow, "AFSAVENM");
+        ls_RealFileName = obj.GetColumn(nRow, "AFREALNM");
+        
+        if(length(ls_RealFileName) >= 1) {
+            lbFileSize.text = NumFormat(obj.GetColumn(nRow, "AFFILESIZE")) + " Byte";
+        } else {
+            lbFileSize.text = "";
+        }
+        
+        lb_FileUpload = false;
+	}
+	
+	lfn_FileDownCheck();
+    mb_IsNewData = false;
+    
+}
+
+/**
+ * 파일 업로드 되었을 때
+ */
+function btnUploadFile_OnClick(obj) {
+
+    if (btnUploadFile.Text == "삭제") {
+    
+        lbFileSize.text = "";
+        edAttachFile.text = "";
+        btnUploadFile.Text = "업로드";
+        lb_FileUpload = true;
+
+    } else {
+
+        fdAttachFile.Type = "OPEN";
+        
+        if (fdAttachFile.open()) {
+            fiAttachFile.FileName = fdAttachFile.FilePath + "\\" + fdAttachFile.FileName;
+            
+            edAttachFile.text = fdAttachFile.FileName;
+            lbFileSize.text = NumFormat(fiAttachFile.GetLength()) + " Byte";
+            
+            fiAttachFile.Close();
+
+            lb_FileUpload = true;
+        }
+    }
+
+}
+
+/**
+ * 파일 다운로드
+ */
+function lfn_DownloadFile(obj) {
+
+    if (length(ls_RealFileName) > 0) {
+
+        fdAttachFile.Type = "SAVE";
+        fdAttachFile.FileName = edAttachFile.text;
+
+        if (fdAttachFile.open()) {
+            var arrRtn = tit_fileRead(
+                hfAttachFile
+                , ls_FileUploadPath
+                , ls_RealFileName
+                , fdAttachFile.FilePath
+                , fdAttachFile.FileName
+            );
+
+            gfn_Alert(MSGI00060); //다운로드 완료 메시지
+        }
+    }
+	
+}
+
+/**
+ * 빠른파일 다운로드
+ */
+function gdBoard_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+
+    var lobj_Dataset = object(obj.BindDataset);
+ 
+    ds_ioBoard_OnRowPosChanged(lobj_Dataset,nRow,nRow);
+ 
+	if(nCell == 3) {
+        lfn_DownloadFile(obj);
+	}
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    btnInput.Enable = bStatus; // 추가 버튼
+    btnDelete.Enable = bStatus; // 삭제 버튼
+    btnSave.Enable = bStatus; // 수정&저장 버튼
+}
+]]></Script>
+</Window>

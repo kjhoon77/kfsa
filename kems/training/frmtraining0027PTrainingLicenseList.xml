@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="400" Id="frmtraining0027PTrainingLicenseList" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="수첩보유현황팝업" Top="8" Ver="1.0" Width="600" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oLicense">
+				<Contents>
+					<colinfo id="TJHPROCDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="TJHPROCJIBU" size="8" summ="default" type="STRING"/>
+					<colinfo id="TJHPROCJIBUCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="TJHREASON" size="1000" summ="default" type="STRING"/>
+					<colinfo id="TJHSABUN" size="20" summ="default" type="STRING"/>
+					<colinfo id="TJHSABUNNM" size="100" summ="default" type="STRING"/>
+					<colinfo id="TJHSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TJHSTATUS" size="50" summ="default" type="STRING"/>
+					<colinfo id="TJHSTATUSCD" size="30" summ="default" type="STRING"/>
+					<colinfo id="TJMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TPPERSONNM" size="100" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="504" LineColor="user14" Right="596" TabOrder="61" Top="1" Type="Rectangle" Width="92"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="Button1" ImageID="BTN_MULTI_SORT" Left="520" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="2" Top="32" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="507" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oLicense" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="396" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="340" Id="gdLcsInfo" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" Right="596" RowHeight="20" Style="sty_Grid" TabOrder="4" TabStop="true" Top="56" UseDBuff="true" UsePopupMenu="true" UserData="수첩정보" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="592">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="34"/>
+						<col width="109"/>
+						<col width="168"/>
+						<col width="79"/>
+						<col width="88"/>
+						<col width="99"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="직능"/>
+						<cell align="center" col="2" display="text" text="수첩번호"/>
+						<cell align="center" col="3" display="text" text="성명"/>
+						<cell align="center" col="4" display="text" text="취득일"/>
+						<cell align="center" col="5" display="text" text="취득구분"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow&#32;+&#32;1"/>
+						<cell align="center" col="1" colid="TCCOURSENM" display="text"/>
+						<cell align="center" col="2" colid="LHLLCSNO" display="text"/>
+						<cell align="center" col="3" colid="LPERSONNM" display="text"/>
+						<cell align="center" col="4" colid="LISSUEDATE" display="text" Mask="####-##-##"/>
+						<cell align="center" col="5" colid="LISSUEGUBUNNM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0027PTrainingLicenseList.xml
+ * 설명 : 수첩보유현황팝업
+ * 작성일 : 2009.10.01
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (IsExistVar("sTpmgno")) {
+        lfn_Search();
+    }
+
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_oLicense.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchTrainingLicenseList", false);
+    // 서버 호출
+    tit_callService(
+        ""
+        , ""
+        , "" // inDs
+        , "ds_oLicense=ds_oLicense" // outDs
+        , "TPMGNO=" + quote(sTpmgno) // args
+            + " PERSONNM=" + quote(sPersonNm) // args
+        , "lfn_AfterSearchTrainingLicenseList"
+        ,false
+        ,false
+        ,true
+    );
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchTrainingLicenseList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SearchMessage(gdLcsInfo); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 사용자 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    if (nCell > 0) {
+        var lobj_Dataset = object(obj.BindDataset);
+        // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+        if (lobj_Dataset.GetRowCount() > 1) {
+            gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+        }
+    }
+}
+
+function btnMutilSort_OnClick(obj) {
+	gfn_GridMultiSort(gdLcsInfo, 1); // 멀티 정렬을 실행한다.
+}
+
+]]></Script>
+</Window>

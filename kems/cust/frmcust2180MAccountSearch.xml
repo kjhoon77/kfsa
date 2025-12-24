@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmcust2180MAccountSearch" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="가상계좌&#32;입력자료&#32;조회" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oAccount">
+				<Contents>
+					<colinfo id="SEQ" size="7" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CGTNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CNICKNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="3" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="60" summ="default" type="STRING"/>
+					<colinfo id="TR_AMT" size="13" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="IACCT_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="INP_ST" size="256" summ="default" type="STRING"/>
+					<colinfo id="TR_IL" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oBank">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oError">
+				<Contents>
+					<colinfo id="SEQ" size="7" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CGTNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CNICKNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="3" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="60" summ="default" type="STRING"/>
+					<colinfo id="TR_AMT" size="13" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="IACCT_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="INP_ST" size="256" summ="default" type="STRING"/>
+					<colinfo id="ER_GUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ER_MSG" size="256" summ="default" type="STRING"/>
+					<colinfo id="TR_IL" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oChange">
+				<Contents>
+					<colinfo id="SEQ" size="7" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CGTNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CNICKNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="3" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="60" summ="default" type="STRING"/>
+					<colinfo id="TR_AMT" size="13" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="IACCT_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="INP_ST" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHANGEYN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMemberFee">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>회비</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>교육비</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSort">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>입금일자,지부&#32;순</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>지부,입금일자&#32;순</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oAccountCnt">
+				<Contents>
+					<colinfo id="SEQ" size="7" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CGTNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CNICKNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="3" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="60" summ="default" type="STRING"/>
+					<colinfo id="TR_AMT" size="13" summ="default" type="STRING"/>
+					<colinfo id="BANK_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="IACCT_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="INP_ST" size="256" summ="default" type="STRING"/>
+					<colinfo id="TR_IL" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="384" Height="264" Id="Shape0" Left="4" LineColor="user15" Right="796" TabOrder="31" Top="120" Type="Rectangle" Width="792"></Shape>
+		<Shape Bottom="584" Height="192" Id="Shape2" Left="4" LineColor="user15" Right="428" TabOrder="18" Top="392" Type="Rectangle" Width="424"></Shape>
+		<Shape Bottom="584" Height="192" Id="Shape4" Left="432" LineColor="user15" Right="796" TabOrder="20" Top="392" Type="Rectangle" Width="364"></Shape>
+		<Shape Bottom="104" Height="64" Id="Shape3" Left="4" LineColor="user15" Right="796" TabOrder="15" Top="40" Type="Rectangle" Width="792"></Shape>
+		<Shape Bottom="29" Height="28" Id="frmcust0012BuildingHistory" Left="357" LineColor="user14" Right="796" TabOrder="14" Top="1" Type="Rectangle" Width="439"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="13" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="352">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="4" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="5" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="btnToExcel_OnClick" Style="sty_Button" TabOrder="3" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Static Align="Center" BKColor="user15" Height="20" Id="Static12" Left="20" Style="sty_Label" TabOrder="16" Text="조회&#32;정보" Top="32" VAlign="Middle" Width="124" WordWrap="TRUE"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medErrorCnt" Left="76" Style="sty_Maskedit" TabOrder="17" Top="408" Value="0" Width="68"></MaskEdit>
+		<Static Align="Center" BKColor="user15" Height="20" Id="Static9" Left="20" Style="sty_Label" TabOrder="19" Text="오류&#32;목록" Top="384" VAlign="Middle" Width="124" WordWrap="TRUE"></Static>
+		<Static Align="Center" BKColor="user15" Height="20" Id="Static10" Left="448" Style="sty_Label" TabOrder="21" Text="정상처리&#32;목록&#32;중&#32;비회원&#32;→&#32;회원&#32;변경&#32;내역" Top="384" VAlign="Middle" Width="264" WordWrap="TRUE"></Static>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oError" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="580" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="148" Id="dsError" InputPanel="FALSE" Left="8" LineColor="default" Right="424" RowHeight="20" Style="sty_Grid" TabOrder="11" TabStop="true" Top="432" UseDBuff="true" UsePopupMenu="true" UserData="오류목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="416">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="76"/>
+						<col width="51"/>
+						<col width="59"/>
+						<col width="62"/>
+						<col width="57"/>
+						<col width="80"/>
+						<col width="335"/>
+						<col width="57"/>
+						<col width="121"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="순번"/>
+						<cell col="1" display="text" text="입금일자"/>
+						<cell col="2" display="text" text="지부"/>
+						<cell col="3" display="text" text="관리번호"/>
+						<cell col="4" display="text" text="금액"/>
+						<cell col="5" display="text" text="입금상태"/>
+						<cell col="6" display="text" text="오류상태"/>
+						<cell col="7" display="text" text="오류&#32;내용"/>
+						<cell col="8" display="text" text="은행"/>
+						<cell col="9" display="text" text="가상계좌"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SEQ" display="number"/>
+						<cell align="center" col="1" colid="TR_IL" display="text" Mask="####-##-##"/>
+						<cell align="center" col="2" colid="CGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="3" colid="CNO" display="text"/>
+						<cell align="right" col="4" colid="TR_AMT" display="number"/>
+						<cell align="center" col="5" colid="INP_ST" display="normal"/>
+						<cell align="center" col="6" colid="ER_GUBUN" display="normal"/>
+						<cell align="left" col="7" colid="ER_MSG" display="text"/>
+						<cell align="center" col="8" colid="BANK_NM" display="normal"/>
+						<cell align="center" col="9" colid="IACCT_NO" display="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="lbErrorCnt" Left="8" Style="sty_Label" TabOrder="22" Text="오류&#32;건수" Top="408" VAlign="Middle" Width="64"></Static>
+		<Static Align="Center" Height="20" Id="lbProcCnt" Left="8" Style="sty_Label" TabOrder="24" Text="정상&#32;건수" Top="132" VAlign="Middle" Width="96"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medProcCnt" Left="108" Style="sty_Maskedit" TabOrder="23" Top="132" Value="0" Width="108"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbChangeCnt" Left="436" Style="sty_Label" TabOrder="25" Text="회원&#32;변경&#32;건수" Top="408" VAlign="Middle" Width="96"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medChangeCnt" Left="536" Style="sty_Maskedit" TabOrder="25" Top="408" Value="0" Width="64"></MaskEdit>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oChange" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="580" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="148" Id="gdChange" InputPanel="FALSE" Left="436" LineColor="default" MinWidth="100" Right="792" RowHeight="20" Style="sty_Grid" TabOrder="12" TabStop="true" Top="432" UseDBuff="true" UsePopupMenu="true" UserData="비회원_회원변경목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="356">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="36"/>
+						<col width="60"/>
+						<col width="64"/>
+						<col width="68"/>
+						<col width="107"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="순번"/>
+						<cell col="1" display="text" text="지부"/>
+						<cell col="2" display="text" text="관리번호"/>
+						<cell col="3" display="text" text="금액"/>
+						<cell col="4" display="text" text="대상물명"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SEQ" display="number"/>
+						<cell align="center" col="1" colid="CGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="2" colid="CNO" display="text"/>
+						<cell align="right" col="3" colid="TR_AMT" display="number"/>
+						<cell align="left" col="4" colid="BNM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="447" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="2" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbProcAmount" Left="220" Style="sty_Label" TabOrder="27" Text="정상&#32;처리&#32;금액" Top="132" VAlign="Middle" Width="96"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medProcAmount" Left="320" Readonly="TRUE" Style="sty_Edit" TabOrder="28" Top="132" Value="0" Width="108"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbErrorAmount" Left="151" Style="sty_Label" TabOrder="29" Text="오류&#32;금액" Top="408" VAlign="Middle" Width="64"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medErrorAmount" Left="219" Readonly="TRUE" Style="sty_Edit" TabOrder="31" Top="408" Value="0" Width="88"></MaskEdit>
+		<Static Align="Center" BKColor="user15" Height="20" Id="Static0" Left="20" Style="sty_Label" TabOrder="32" Text="정상처리&#32;목록" Top="108" VAlign="Middle" Width="124" WordWrap="TRUE"></Static>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oAccount" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="376" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="220" Id="gdProc" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" OnCellDBLClick="gdProc_OnCellDblClick" Right="792" RowHeight="20" Style="sty_Grid" TabOrder="10" TabStop="true" Top="156" UseDBuff="true" UsePopupMenu="true" UserData="가상계좌&#32;수납처리완료목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="784">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="90"/>
+						<col width="60"/>
+						<col width="68"/>
+						<col width="81"/>
+						<col width="64"/>
+						<col width="166"/>
+						<col width="64"/>
+						<col width="63"/>
+						<col width="143"/>
+						<col width="58"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="순번"/>
+						<cell col="1" display="text" text="입금일자"/>
+						<cell col="2" display="text" text="지부"/>
+						<cell col="3" display="text" text="관리번호"/>
+						<cell col="4" display="text" text="직능"/>
+						<cell col="5" display="text" text="회원구분"/>
+						<cell col="6" display="text" text="대상물(업체)명"/>
+						<cell col="7" display="text" text="금액"/>
+						<cell col="8" display="text" text="은행"/>
+						<cell col="9" display="text" text="가상계좌"/>
+						<cell col="10" display="text" text="입금상태"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SEQ" display="number"/>
+						<cell align="center" col="1" colid="TR_IL" display="text" Mask="####-##-##"/>
+						<cell align="center" col="2" colid="CGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="3" colid="CNO" display="text"/>
+						<cell align="center" col="4" colid="CNICKNM" display="text"/>
+						<cell align="center" col="5" colid="CSTATUSGUBUN" display="text"/>
+						<cell align="left" col="6" colid="BNM" display="text"/>
+						<cell align="right" col="7" colid="TR_AMT" display="number"/>
+						<cell align="center" col="8" colid="BANK_NM" display="normal"/>
+						<cell align="center" col="9" colid="IACCT_NO" display="normal"/>
+						<cell align="center" col="10" colid="INP_ST" display="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="33" Text="지부" Top="56" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="6" Top="55" Width="93"></Combo>
+		<Static Align="Center" Height="20" Id="lbJifoDate" Left="9" Style="sty_Label" TabOrder="34" Text="입금일자" Top="80" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calDate1" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="8" Top="80" WeeksFont="돋음,9" Width="97"></Calendar>
+		<Static Align="Center" Height="20" Id="lbChangeAmount" Left="616" Style="sty_Label" TabOrder="35" Text="금액" Top="408" VAlign="Middle" Width="96"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medChangeAmount" Left="716" Readonly="TRUE" Style="sty_Edit" TabOrder="36" Top="408" Value="0" Width="76"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="360" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="Static2" Left="202" Style="sty_Label" TabOrder="37" Text="은행" Top="56" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxBank" INDEX="0" InnerDataset="ds_oBANK" Left="292" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="7" Top="55" Width="100"></Combo>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calDate2" Left="212" OnFocus="gfn_ComponentOnFocus" OnKeyDown="calDate2_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="9" Top="80" WeeksFont="돋음,9" Width="97"></Calendar>
+		<Static Align="Center" Height="20" Id="Static1" Left="194" Style="sty_Text" TabOrder="38" Text="~" Top="81" VAlign="Middle" Width="20"></Static>
+		<Static Align="Center" Height="20" Id="lbMemberGubun" Left="400" Style="sty_Label" TabOrder="39" Text="회비구분" Top="56" VAlign="Middle" Width="88"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="radMemberGubun" INDEX="0" InnerDataset="ds_oMemberFee" Left="492" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="40" Top="56" UserData="S" Width="228"></Radio>
+		<Static Align="Center" Height="20" Id="Static3" Left="400" Style="sty_Label" TabOrder="41" Text="정렬순서" Top="80" VAlign="Middle" Width="88"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radSort" INDEX="0" InnerDataset="ds_oSort" Left="492" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="42" Top="80" UserData="S" Width="268"></Radio>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust2180MAccountSearch.xml
+ * 설명 : 가상계좌 입금자료 조회
+ * 작성일 : 2013.09.26
+ * 작성자 : 정현호
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    gfn_SearchJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회
+    
+    // 은행 코드 조회
+    gfn_SearchVirtualAccountBankCode(ds_oBank, "Y", "전체"); // 가상계좌은행코드
+    cbxBank.Index = 0;
+    
+    calDate1.Value = left(getDate(), 8);
+    calDate2.Value = left(getDate(), 8);
+    calDate1.SetFocus();
+}
+
+/**
+ * 폼 사이즈
+ */
+function Form_OnSize(obj,nCx,nCy,nState) {
+}
+
+
+/**
+ * 버튼 실행 권한
+ */
+function lfn_SetFormAuth(bStatus) {
+
+    btnToExcel.Enable = bStatus; //Excel 생성
+    
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 기본 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 초기화
+ */
+function lfn_Cancel(obj) {
+
+	cbxJibu.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+	calDate1.Value = left(getDate(), 8);
+	calDate2.Value = left(getDate(), 8);
+	
+	medProcCnt = 0;
+	medProcAmount = 0;
+	medErrorCnt = 0;
+	medErrorAmount = 0;
+	medChangeCnt = 0;
+	medChangeAmount = 0;
+	medCharge = 0;
+	medErrorCharge = 0;
+
+	ds_oError.ClearData();
+	ds_oChange.ClearData();
+    ds_oAccount.ClearData();
+
+}
+
+/**
+ * 조회
+ */
+function lfn_Search(obj) {
+
+    if (length(calDate1.Value) < 8) {
+        gfn_Alert("수납일자가 잘못되었습니다.");
+        return;
+    }
+    if (length(calDate2.Value) < 8) {
+        gfn_Alert("수납일자가 잘못되었습니다.");
+        return;
+    }
+
+	ds_oError.ClearData();
+	ds_oChange.ClearData();
+    ds_oAccount.ClearData();
+
+    tit_clearActionInfo();
+    tit_addCsvSearchActionInfo("cust:searchCust2180Account", false);
+    tit_callService(
+        ""
+        ,""
+        ,""
+        ,"ds_oAccount=ds_oAccount"
+        ,"SGTMGNO=" + quote(cbxJibu.Value)
+            + " SDATE1=" + quote(left(calDate1.Value, 8))
+            + " SDATE2=" + quote(left(calDate2.Value, 8))
+            + " SBANK=" + quote(cbxBank.Value)
+            + " BIZGUBUN=" + quote(radMemberGubun.Value)
+            + " SORT=" + quote(radSort.Value)
+        , "lfn_AfterAccount"
+        ,false
+    );
+
+    tit_clearActionInfo();
+    tit_addCsvSearchActionInfo("cust:searchCust2180AccountError", false);
+    tit_callService(
+        ""
+        ,""
+        ,""
+        ,"ds_oError=ds_oAccountError"
+        ,"SGTMGNO=" + quote(cbxJibu.Value)
+            + " SDATE1=" + quote(left(calDate1.Value, 8))
+            + " SDATE2=" + quote(left(calDate2.Value, 8))
+            + " SBANK=" + quote(cbxBank.Value)
+            + " BIZGUBUN=" + quote(radMemberGubun.Value)
+            + " SORT=" + quote(radSort.Value)
+        , "lfn_AfterError"
+        ,false
+    );
+
+    ds_oAccount.ApplyChange();
+    ds_oError.ApplyChange();
+
+    calDate1.SetFocus();
+
+}
+
+/**
+ * 처리
+ */
+function lfn_AfterAccount(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_Alert("서버에 오류가 발생되었습니다. 정보지원과로 문의하시기 바랍니다.");
+        return "Transaction Error!";
+    }
+    
+    ds_oAccountCnt.copy("ds_oAccount");
+    ds_oAccountCnt.Filter("INP_ST='정상'");
+    ds_oAccountCnt.ApplyChange();
+    
+	medProcCnt.Value = ds_oAccountCnt.GetRowCount();
+	medProcAmount.Value = ds_oAccountCnt.Sum("TR_AMT");
+
+	ds_oChange.Copy(ds_oAccount);
+	ds_oChange.Filter("CHANGEYN='Y'");
+    ds_oChange.ApplyChange();
+    
+	medChangeCnt.Value = ds_oChange.GetRowCount();
+	medChangeAmount.Value = ds_oChange.Sum("TR_AMT");    
+}
+
+/**
+ * 에러
+ */
+function lfn_AfterError(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_Alert("서버에 오류가 발생되었습니다. 정보지원과로 문의하시기 바랍니다.");
+        return "Transaction Error!";
+    }
+    
+	medErrorCnt.Value = ds_oError.GetRowCount();
+	medErrorAmount.Value = ds_oError.Sum("TR_AMT");
+
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 이벤트
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 지로파일일자 엔터
+ */
+function calDate2_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam) {
+    if (nChar == 13) {
+        lfn_Search();
+    }
+}
+
+function btnToExcel_OnClick(obj)
+{
+	
+	if (ds_oAccount.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return false;
+    }
+
+	// 개인정보 다운로드 사유 등록
+	var parValue = "sCode=1438";	// COMMON.PERSONALDOWNLOADH
+		parValue += " sRowCnt=" + ds_oAccount.GetRowCount();
+		parValue += " sTitle=" + quote(gdProc.UserData);
+	var ls_IsRemark = Dialog("COM::frmCOM2100PDownloadRemark.xml", parValue, "", "", "", -1, -1);	
+
+	if (ls_IsRemark == "" || ls_IsRemark == null || ls_IsRemark == "FAIL") {
+		return false;
+	}
+    
+	lfn_Excel();
+	
+}
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_1001,dsc_0006]";	// 개인정보접속기록 시스템ID 
+}
+
+]]></Script>
+</Window>

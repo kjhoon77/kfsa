@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="496" Id="frmcti0010PCallTransfer" Left="8" OnLoadCompleted="Form_OnLoadCompleted" OnTimer="Form_OnTimer" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="호전환/내선전환" Top="8" Ver="1.0" Width="728" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>본부</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>지부</DATA>
+					</record>
+					<record>
+						<CD>9</CD>
+						<DATA>검색</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oUser">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oDept" OnRowPosChanged="ds_oDept_OnRowPosChanged">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_CtiAgentList">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_AgentState">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>로그아웃</DATA>
+					</record>
+					<record>
+						<CD>10</CD>
+						<DATA>로그아웃</DATA>
+					</record>
+					<record>
+						<CD>20</CD>
+						<DATA>로그인</DATA>
+					</record>
+					<record>
+						<CD>30</CD>
+						<DATA>자리비움</DATA>
+					</record>
+					<record>
+						<CD>40</CD>
+						<DATA>대기중</DATA>
+					</record>
+					<record>
+						<CD>41</CD>
+						<DATA>INBOUND&#32;Ready</DATA>
+					</record>
+					<record>
+						<CD>42</CD>
+						<DATA>OUTBOUND&#32;Ready</DATA>
+					</record>
+					<record>
+						<CD>50</CD>
+						<DATA>통화중</DATA>
+					</record>
+					<record>
+						<CD>60</CD>
+						<DATA>후처리</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioGubun2">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>내선번호</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>성명</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="34" Height="28" Id="shpBtnBox2" Left="549" LineColor="user14" Right="718" TabOrder="14" Top="6" Type="Rectangle" Width="169"></Shape>
+		<Radio CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="radKFSelectGubun" INDEX="0" InnerDataset="ds_ioGubun" Left="13" OnChanged="radKFSelectGubun_OnChanged" TabOrder="1" Top="14" Width="208"></Radio>
+		<Shape Bottom="480" Height="400" Id="shpGubunBox1" Left="8" LineColor="user15" Right="304" TabOrder="3" Top="80" Type="Rectangle" Width="296"></Shape>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oDept" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="476" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="392" Id="gdDeptList" InputPanel="FALSE" Left="12" LineColor="default" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="276" RowHeight="20" Style="sty_Grid" TabOrder="2" TabStop="true" Top="84" UseDBuff="true" UsePopupMenu="true" UserData="부서목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="264">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="120"/>
+						<col width="120"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="부서"/>
+						<cell col="1" display="text" text="과"/>
+					</head>
+					<body>
+						<cell align="left" col="0" colid="S_GTDEPTNM" display="text"/>
+						<cell align="left" col="1" colid="GTDEPTNM" display="text"/>
+					</body>
+				</format>
+				<format id="Jibu">
+					<columns>
+						<col width="120"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="지부"/>
+					</head>
+					<body>
+						<cell align="left" col="0" colid="GTDEPTNM" display="text"/>
+					</body>
+				</format>
+				<format id="Search">
+					<columns>
+						<col width="120"/>
+						<col width="120"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="소속"/>
+						<cell col="1" display="text" text="성명"/>
+					</head>
+					<body>
+						<cell align="left" col="0" colid="GTDEPTNM" display="text"/>
+						<cell align="left" col="1" colid="PPERSONNM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="480" Height="400" Id="Shape0" Left="312" LineColor="user15" Right="720" TabOrder="4" Top="80" Type="Rectangle" Width="408"></Shape>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oUser" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="467" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="360" Id="gdUserList" InputPanel="FALSE" Left="319" LineColor="default" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="711" RowHeight="20" Style="sty_Grid" TabOrder="5" TabStop="true" Top="107" UseDBuff="true" UsePopupMenu="true" UserData="담당자목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="392">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="68"/>
+						<col width="58"/>
+						<col width="44"/>
+						<col width="62"/>
+						<col width="64"/>
+						<col width="75"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="즐겨찾기"/>
+						<cell col="1" display="text" text="담당자"/>
+						<cell col="2" display="text" text="직위"/>
+						<cell col="3" display="text" text="업무"/>
+						<cell col="4" display="text" text="내선번호"/>
+						<cell col="5" display="text" text="상태"/>
+						<cell col="6" display="text" text="호전환가능"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text"/>
+						<cell align="left" col="1" colid="PPERSONNM" display="text"/>
+						<cell align="left" col="2" colid="PPOSITNNM" display="text"/>
+						<cell align="left" col="3" display="text"/>
+						<cell align="center" col="4" colid="IPDN" display="text"/>
+						<cell align="center" bkcolor='expr:iif(IPSTATE&#32;==&#32;&quot;40&quot;,&quot;user4&quot;,&quot;default&quot;)' col="5" colid="IPSTATE" color='expr:iif(IPSTATE&#32;==&#32;&quot;40&quot;,&quot;red&quot;,&quot;black&quot;)' combocol="CD" combodataset="ds_AgentState" combotext="DATA" display="combo"/>
+						<cell align="center" col="6" display="normal" expr='iif(IPSTATE&#32;==&#32;&quot;40&quot;&#32;||&#32;IPSTATE&#32;==&#32;&quot;10&quot;||&#32;IPSTATE&#32;==&#32;&quot;0&quot;,&quot;가능&quot;,&quot;&quot;)'/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="lbJubsu" Left="312" Style="sty_LabelGruopBox" TabOrder="6" Text="부서&#32;담당자&#32;현황" Top="72" VAlign="Middle" Width="120"></Static>
+		<Shape Bottom="58" Height="52" Id="shpBtnBox" Left="344" LineColor="user14" Right="721" TabOrder="9" Top="6" Type="Rectangle" Width="377"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="633" OnClick="lfn_End" Style="sty_Button" TabOrder="8" ToolTipText="닫기" Top="9" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect" ImageID="BTN_TEXT_08" Left="347" OnClick="btnSelect_OnClick" Style="sty_Button" TabOrder="7" Text="호전환(즉시전달)" ToolTipText="선택" Top="9" Transparent="TRUE" Width="120"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect3" ImageID="BTN_TEXT_08" Left="347" OnClick="btnSelect3_OnClick" Style="sty_Button" TabOrder="10" Text="호전환(통화후)" ToolTipText="선택" Top="33" Transparent="TRUE" Width="120"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect3Cancel" ImageID="BTN_TEXT_05" Left="466" OnClick="btnSelect3Cancel_OnClick" Style="sty_Button" TabOrder="11" Text="호전환취소" ToolTipText="선택" Top="33" Transparent="TRUE" Width="80"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect3Transfer" ImageID="BTN_TEXT_05" Left="546" OnClick="btnSelect3Transfer_OnClick" Style="sty_Button" TabOrder="12" Text="호전환전달" ToolTipText="선택" Top="33" Transparent="TRUE" Width="82"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCall" ImageID="BTN_TEXT_05" Left="552" OnClick="btnCall_OnClick" Style="sty_Button" TabOrder="13" Text="내선전환" ToolTipText="선택" Top="9" Transparent="TRUE" Width="82"></Button>
+		<Radio CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Font="굴림,10" Height="20" Id="radKFSelectGubun2" INDEX="0" InnerDataset="ds_ioGubun2" Left="13" OnChanged="radKFSelectGubun2_OnChanged" TabOrder="15" Top="39" Width="156"></Radio>
+		<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="edSearch" ImeMode="native" Left="172" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edSearch_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="16" Top="38" Width="74"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_TEXT_03" Left="248" OnClick="btnSearch_OnClick" Style="sty_Button" TabOrder="17" Text="조회" Top="36" Transparent="TRUE" Width="55"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Font="굴림,9" Height="22" Id="btnRe" ImageID="BTN_TEXT_03" Left="639" OnClick="btnRe_OnClick" Style="sty_Button" TabOrder="18" Text="재조회" Top="84" Transparent="TRUE" Width="55"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcti0010PCallTransfer.xml
+ * 설명 : 호전환
+ * 작성일 : 2023.04
+ * 작성자 : 
+ */
+
+#include "LIB::cti.js";
+
+var vCallFg = ""; // 호출한 버튼 구분 (C : 호전환, I : 내선전환) 
+
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+    btnSelect.Enable = true;
+	btnSelect3.Enable = true;
+	btnSelect3Cancel.Enable = false;
+	btnSelect3Transfer.Enable = false;
+    /*   
+    // 1) api 호출 후 목록 가져오기     
+	parent.fnApiGetAgentList();		
+	// 화면 로딩을 위한 delay용	
+	for (var i = 0; i < 5000; i++) {	
+		idle();	
+	}
+
+	ds_CtiAgentList.Clear();
+	ds_CtiAgentList.copy(parent.ds_CtiAgentList);    
+	*/
+	
+	
+    if (IsExistVar("sParam0")) { 
+		vCallFg = sParam0;
+    }
+    
+    if(vCallFg == "C"){
+		btnCall.Visible = false; 
+		shpBtnBox2.Visible = false;
+    }else{
+		btnSelect.Visible = false;
+		btnSelect3.Visible = false;
+		btnSelect3Cancel.Visible = false;
+		btnSelect3Transfer.Visible = false;
+		shpBtnBox.Visible = false;
+    }
+    
+	radKFSelectGubun2.Visible = false;
+	edSearch.Visible = false;
+	btnSearch.Visible = false;
+	
+	// 2) 부서 조회  
+	var vGubun = parent.gds_CtiInfo.GetColumn(0,"GTGUBUNCD"); //  본부(0), 지부(1) 	 
+	radKFSelectGubun.Value = vGubun;
+	radKFSelectGubun_OnChanged(radKFSelectGubun,vGubun);
+    //lfn_search(vGubun);
+    
+    parent.sConn2Yn = "";
+    parent.sCloseYnTran = ""; // 호전환 닫기 용도로 사용 
+    SetTimer(4, 1000); // Timer Start
+}
+
+function Form_OnTimer(obj,nEventID)
+{
+    if( parent.sConn2Yn == "Y"){
+        btnSelect3Transfer.Enable = true;
+		parent.sConn2Yn = "";		
+    }	
+    // // 호전환 닫기 용도로 사용 
+    if( parent.sCloseYnTran == "Y"){
+		parent.sCloseYnTran = "";
+		// 강제로 
+		btnSelect3.Enable = true;
+		Close();    
+    }
+    
+    /* 호전환 시 선택한 사람이 해제되고 맨 윗줄로 감
+    if (!gfn_IsNull(sStartTime)) {
+		
+		var vSdate = sStartTime;
+		var vEdate = Time();
+		var vCal = toNumber(vEdate) - toNumber(vSdate) ; 			
+		var vSecond = floor((vCal / 1 ) % 60); // 초
+		
+		if(vSecond > 5){			
+			// 다시 재조회 
+			ds_oDept_OnRowPosChanged(ds_oDept,0,ds_oDept.currow);
+		}	
+		
+    }
+    */
+    
+    
+}
+
+function Form_OnUnloadCompleted(obj) { 
+    if(!btnSelect3.Enable){ 
+		return false;	
+	} 
+    KillTimer(4); // TimerKill      
+    Close(); 
+}
+
+
+/* 공통 필수 종료 */
+
+
+
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    if(!btnSelect3.Enable){ 
+		return false;	
+	}
+    Close();
+}
+
+/* 공통 필수 종료 */
+
+
+function radKFSelectGubun2_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	edSearch.Text = "";
+	edSearch.SetFocus();
+}
+
+
+function radKFSelectGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(strCode == "0"){
+		gdDeptList.Format = "Default";
+	}else if(strCode == "1"){
+		gdDeptList.Format = "Jibu";
+	}else{
+		gdDeptList.Format = "Search";
+	}
+	
+	ds_oDept.ClearData(); // 데이타셋 초기화
+	ds_oUser.ClearData(); // 데이타셋 초기화
+	
+	if(strCode == '9'){
+	
+		radKFSelectGubun2.Visible = true;
+		edSearch.Visible = true;
+		btnSearch.Visible = true;
+		edSearch.SetFocus();
+	}else{
+	
+		radKFSelectGubun2.Visible = false;
+		edSearch.Visible = false;
+		btnSearch.Visible = false;
+		edSearch.Text = "";
+		lfn_search(strCode);
+	}
+}
+
+
+function edSearch_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	
+	if(nChar == 13) {	// Enter key
+		btnSearch_OnClick();
+	}
+}
+
+function btnSearch_OnClick(obj)
+{
+ 
+	if(gfn_IsNull(edSearch.Text)){				
+		gfn_Alert("검색어를 입력해주세요");
+		return ;			
+	}
+	
+	ds_oDept.ClearData(); // 데이타셋 초기화
+	ds_oUser.ClearData(); // 데이타셋 초기화
+	lfn_search("9");
+}
+
+function lfn_search(obj)
+{	
+	
+	if(obj == "0" || obj == "1" ){
+		tit_clearActionInfo();
+		tit_addSearchActionInfo("cti:searchTranDeptList", false);
+		// 서버 호출 
+		tit_callService(
+			""
+			,""
+			,""	// inDs
+			,"ds_oDept=ds_oDept"	// outDs
+			,"GUBUNCD=" + quote(obj) // args 
+				+ " GTMGNO=" + quote(gds_oUserInfo.GetColumn(0,"PDEPTCD"))   
+			,"lfn_AfterSearchDept"
+			,false
+		);	
+	}else{
+		tit_clearActionInfo();
+		tit_addSearchActionInfo("cti:searchTranDeptListForUser", false);
+		// 서버 호출 
+		tit_callService(
+			""
+			,""
+			,""	// inDs
+			,"ds_oDept=ds_oDept"	// outDs 
+			,"SERAHGUBUN=" + quote(radKFSelectGubun2.Value)
+				+ " SEARCHTEXT=" + quote(edSearch.Text)   
+			,"lfn_AfterSearchDept"
+			,false
+		);	
+	}
+}
+
+
+function lfn_AfterSearchDept(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    gfn_SearchMessage(gdDeptList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+    /*
+    var vDept = gds_oUserInfo.GetColumn(0,"PDEPTCD"); 
+    alert(vDept);
+    if (!gfn_IsNull(vDept)) {	
+    
+		var fRow = ds_oDept.findrow("GTMGNO",vDept);
+    alert(fRow);
+		if(fRow >= 0){
+			//ds_oDept_OnRowPosChanged(ds_oDept,0,fRow); 
+			gdDeptList.setCellPos( 1, fRow );
+		}
+    }
+    */
+	
+}
+ 
+
+function ds_oDept_OnRowPosChanged(obj,nOldRow,nRow)
+{	
+	var vDept = ds_oDept.GetColumn(nRow,"GTMGNO");
+	var vSearchSabun = "";
+	// 검색으로 조회된 경우 해당 사람만 나오게 
+	if(radKFSelectGubun.Value == "9"){
+		vSearchSabun = ds_oDept.GetColumn(nRow,"PSABUN");
+	}
+	
+	ds_oUser.ClearData(); // 데이타셋 초기화
+	
+	
+	// 부서정보 없으면 pass
+	if(gfn_IsNull(vDept)){
+		return false;
+	}
+	 
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cti:searchTranUserList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oUser=ds_oUser"	// outDs
+		,"DEPT=" + quote(vDept) // args 
+            + " PSABUN=" + quote(gds_oUserInfo.GetColumn(0, "PSABUN"))
+            + " SEARCHSABUN=" + quote(vSearchSabun)
+		,"lfn_AfterSearchUser"
+		,false
+	);	
+	
+}
+
+function lfn_AfterSearchUser(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    gfn_SearchMessage(gdUserList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+
+    // 1) api 호출 후 목록 가져오기     
+	//parent.fnApiGetAgentList(ds_oDept.GetColumn(ds_oDept.currow,"IPQUEUE"));		
+	parent.fnApiGetAgentList(ds_oDept.GetColumn(ds_oDept.currow,"IPGROUP"));		 
+	// 화면 로딩을 위한 delay용	
+	for (var i = 0; i < 5000; i++) {	
+		idle();	
+	}
+
+	ds_CtiAgentList.Clear();
+	ds_CtiAgentList.copy(parent.ds_CtiAgentList);    
+	
+	/*
+	// 2) api 목록과 사용자 비교해서 대기상태 셋팅 	
+    for (i=0;i<ds_oUser.GetCount();i++) {
+		var vDN = ds_oUser.GetColumn(i,"IPDN");
+		var fRow = ds_CtiAgentList.findrow("DN",vDN);
+		if (fRow >= 0){
+			ds_oUser.SetColumn(i,"IPSTATE",ds_CtiAgentList.GetColumn(fRow,"AgentState"));
+		}
+    }*/
+	
+	// 2) api 목록과 사용자 비교해서 대기상태 셋팅 	
+    for (i=0;i<ds_oUser.GetCount();i++) {
+		var vDN = ds_oUser.GetColumn(i,"IPAGENT");
+		var fRow = ds_CtiAgentList.findrow("AGENT",vDN);
+		if (fRow >= 0){
+			ds_oUser.SetColumn(i,"IPSTATE",ds_CtiAgentList.GetColumn(fRow,"AgentState"));
+		}
+    }
+	
+}
+
+
+function gdCtiAgent_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	btnSelect_OnClick(obj);	
+}
+
+function fnAgentChk()
+{    
+    // 호전환 전 다시 체크 
+    var vDn = ds_oUser.GetColumn(ds_oUser.currow,  "IPDN");
+        
+    // 대표번호 선택시 체크 없이 pass
+    var vDGUBUN = ds_oUser.GetColumn(ds_oUser.currow,  "DGUBUN");
+    
+    if(vDGUBUN == "D"){
+		return true;
+    }
+    
+    if(vDn == "" || vDn == null ){
+		gfn_Alert("호전환 담당자가 없습니다.");
+		return false ;
+    }
+    if(parent.txtDN == vDn ){
+		gfn_Alert("자신에게 호전환 할 수 없습니다.");
+		return false ;
+    }
+    
+    parent.txtChkAgentID.text = ds_oUser.GetColumn(ds_oUser.currow,  "IPAGENT");
+    parent.fnApiChkGetAgentState();
+	// 화면 로딩을 위한 delay용	
+	for (var i = 0; i < 5000; i++) {	
+		idle();	
+	}	
+		
+	if( parent.txtChkAgentState.Text = "0" || parent.txtChkAgentState.Text == "40" ){
+	
+		if(parent.txtChkAgentState.Text == "0"){			
+					
+			if (!gfn_Confirm("로그아웃으로 호전환시 상담이력에서 제외됩니다. 계속 하시겠습니까?")) { 
+		
+				return false;		
+			}	 
+		}  
+    
+	}else{
+	
+		gfn_Alert("담당자의 전화 연결 상태가 '수신 대기중'이 아닙니다.");
+		
+		// 다시 재조회 
+		//ds_oDept_OnRowPosChanged(ds_oDept,0,ds_oDept.currow);
+		
+		if(gs_IsLocal =="Y"){
+			//return false; // jjh 
+		}else{
+			return false;
+		}
+	}
+	
+    return true;
+}
+
+/*
+* 호전환(즉시전달)
+*/
+function btnSelect_OnClick(obj)
+{
+	// 호전환 전 다시 체크  
+	if (!fnAgentChk()) {
+		return;
+    }
+    
+    var arrArg = Array(2);
+    arrArg[0] = "Y";
+    arrArg[1] = ds_oUser.GetColumn(ds_oUser.currow,  "IPDN");  
+    parent.txtTransferGubun.Text = "1"; // 즉시전달 
+    
+	Close(arrArg);	  
+}
+
+/*
+* 호전환(통화후)
+*/
+function btnSelect3_OnClick(obj)
+{   
+	// 호전환 전 다시 체크 
+	if (!fnAgentChk()) {
+		return;
+    }
+	
+    parent.txtTransferGubun.Text = "2"; // 호전환(통화후) 
+	parent.txtDestDN.Text = ds_oUser.GetColumn(ds_oUser.currow,  "IPDN"); 
+	parent.sCallDn2Yn = "Y"; // 3자통화 연결 사용 
+	// 1)	ICHoldCall(c1)	호 대기
+	parent.fnApiHoldCall();
+	// 2) 	ICMakeCall (D3)	D3에게 전화 - 대기 response에서 처리 
+	//parent.fnApiMakeCall();
+	
+	btnSelect.Enable = false;
+	btnSelect3.Enable = false;
+	btnSelect3Cancel.Enable = true; 
+	btnSelect3Transfer.Enable = false; 
+	
+}
+
+/*
+* 호전환취소
+*/
+function btnSelect3Cancel_OnClick(obj)
+{
+	parent.txtDestDN.Text = "";
+	btnSelect.Enable = true;
+	btnSelect3.Enable = true;
+	btnSelect3Cancel.Enable = false; 
+	btnSelect3Transfer.Enable = false; 
+	
+	// 1) ClearCall (C2) 
+	parent.fnApiClearCallCon2();
+	// 2) RetrieveCall (C1) 
+	// parent.fnApiRetrieveCall();
+		
+}
+
+/*
+* 호전환 전달 
+*/
+function btnSelect3Transfer_OnClick(obj)
+{
+
+	// 강제로 
+	btnSelect3.Enable = true;
+		
+    var arrArg = Array(2);
+    arrArg[0] = "Y";
+    arrArg[1] = ds_oUser.GetColumn(ds_oUser.currow,  "IPDN");  
+	Close(arrArg);
+}
+
+
+function fnAgentChk2()
+{    
+    // 호전환 전 다시 체크 
+    var vDn = ds_oUser.GetColumn(ds_oUser.currow,  "IPDN");
+        
+    // 대표번호 선택시 체크 없이 pass
+    var vDGUBUN = ds_oUser.GetColumn(ds_oUser.currow,  "DGUBUN");
+    
+    if(vDGUBUN == "D"){
+		return true;
+    }
+    
+    if(vDn == "" || vDn == null ){
+		gfn_Alert("호전환 담당자가 없습니다.");
+		return false ;
+    }
+    if(parent.txtDN == vDn ){
+		gfn_Alert("자신에게 호전환 할 수 없습니다.");
+		return false ;
+    }
+    
+		
+    return true;
+}
+
+/*
+내선전환 
+*/
+function btnCall_OnClick(obj)
+{
+	// 호전환 전 다시 체크 
+	if (!fnAgentChk2()) {
+		return;
+    }	
+    
+    var arrArg = Array(2);
+    arrArg[0] = "Y";
+    arrArg[1] = ds_oUser.GetColumn(ds_oUser.currow,  "IPDN");
+    
+	Close(arrArg);	   
+}
+
+// 재조회 
+function btnRe_OnClick(obj)
+{
+	// 다시 재조회 
+	ds_oDept_OnRowPosChanged(ds_oDept,0,ds_oDept.currow);
+	
+}
+
+]]></Script>
+</Window>

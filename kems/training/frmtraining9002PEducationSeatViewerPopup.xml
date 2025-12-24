@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="768" Id="frmtraining9002PEducationSeatViewerPopup" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="좌석배치생성" Top="8" Ver="1.0" Width="860" WorkArea="true">
+		<MSIE Bottom="761" DocumentComplete="AxMsie_DocumentComplete" Height="778" Id="AxMsie" Right="860" TitleChange="AxMsie_TitleChange" Top="-17" Width="860"></MSIE>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining9002PEducationSeatViewerPopup.xml
+ * 설명 : 좌석배치생성
+ * 작성일 : 2009.11.20
+ * 작성자 : 김은규
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj)
+{
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+	
+	lfn_OpenAxMsie();
+}
+
+function AxMsie_DocumentComplete(obj,pDisp,URL)
+{
+	AxMsie.Document.body.Scroll = "yes";    //AxMsie scrollbar 
+	AxMsie.Document.body.leftmargin = "0"; //AxMsie leftmargin
+	AxMsie.Document.body.topmargin = "0";	//AxMsie topmargin
+}
+
+function lfn_OpenAxMsie(obj)
+{
+	//http://10.10.10.2/edu/flexConn/Admin.php?jibucode=99&jibuname=aa&educode=99&eduname=aa
+	var lsPostData  = "epmgno="  + sEducode;
+	//alert(sEducode); //교육장관리번호 확인
+	//var Url = "http://10.10.10.2/edu/flexConn/Admin.php";  // 개발실 주소
+	var Url = "http://www.kfsi.or.kr/edu/flexConn/Admin.php";  // 운영 서버 주소
+	//var PostData = TextToBin(UrlEncode(lsPostData));  //TextToBin을 해 주어야 Post로 정상적으로 전달됨
+	var PostData = TextToBin(lsPostData);  //TextToBin을 해 주어야 Post로 정상적으로 전달됨
+	var Headers = "Content-type: application/x-www-form-urlencoded";
+	
+	AxMsie.Navigate("about:blank", ,"_self", "", "");   //IE6 버그로 인해 넣어주어야 함
+	
+	AxMsie.Navigate(Url, "", "", PostData, Headers);
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam)
+{
+	switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+        break;
+    }
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close(this);
+}
+
+function Form_OnUnloadCompleted(obj)
+{
+	Close(this);
+}
+
+function AxMsie_TitleChange(obj,Text)
+{
+	if(Text = "close") {	
+		Close();
+	}
+}
+
+
+
+]]></Script>
+</Window>

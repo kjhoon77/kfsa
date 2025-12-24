@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="168" Id="frmcust1220MEduMonthReproduction" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="실무교육현황[업무통계]&#32;재생성&#32;및&#32;마감처리" TooltipFont="Default,0" Top="8" Ver="1.0" Width="584" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_iReprodection">
+				<Contents>
+					<colinfo id="STARTDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROCDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iCusEduChk">
+				<Contents>
+					<colinfo id="CECCHKGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CECCLOSEGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CECGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CECYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CECMONTH" size="2" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCusEduChk">
+				<Contents>
+					<colinfo id="CECCHKGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CECCLOSEGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CECGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CECYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CECMONTH" size="2" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="60" Height="28" Id="Shape0" Left="4" LineColor="user15" Right="579" TabOrder="9" Top="32" Type="Rectangle" Width="575"></Shape>
+		<Shape Bottom="161" Height="96" Id="Shape2" Left="4" LineColor="user15" Right="578" TabOrder="7" Top="65" Type="Rectangle" Width="574"></Shape>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="488" LineColor="user14" Right="579" TabOrder="6" Top="1" Type="Rectangle" Width="91"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="5" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="472">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="491" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="84"></Button>
+		<Static Align="Center" Height="20" Id="Static1" Left="164" Style="sty_Label" TabOrder="8" Text="해당년월" Top="36" VAlign="Middle" Width="68"></Static>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Height="20" Id="medProcDate" Left="236" LeftMargin="2" Mask="####년##월" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="3" Top="36" Type="STRING" UserData="S" Width="76"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Font="굴림,10,Bold" Height="22" Id="btnProc" ImageID="BTN_TEXT_COM" Left="490" OnClick="lfn_Save" Style="sty_Button" TabOrder="4" Text="자료&#32;재생성" Top="35" Width="85"></Button>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="79" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="2" Top="35" UserData="S" Width="82"></Combo>
+		<Static Align="Center" Height="20" Id="Static0" Left="8" Style="sty_Label" TabOrder="10" Text="지부" Top="36" VAlign="Middle" Width="68"></Static>
+		<Static Height="88" Id="Static2" Left="16" Style="sty_TextBlue" TabOrder="11" Text='해당월의&#32;마지막날&#32;자료가&#32;맞지&#32;않을&#32;경우&#32;&quot;재생성&quot;을&#32;실행하면&#13;&#10;&#32;&#13;&#10;그룹웨어&#32;[업무통계]&#32;-&#32;&quot;실무교육현황&quot;의&#32;해당월&#32;마지막&#32;날&#32;자료가&#32;재생성됩니다.&#13;&#10;&#13;&#10;매월&#32;&quot;마감&quot;&#32;처리를&#32;하셔야&#32;주무부서에서&#32;확인&#32;가능합니다.' Top="70" VAlign="Middle" Width="504"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnFinishProc" ImageID="BTN_TEXT_COM" Left="316" OnClick="btnFinishProc_OnClick" Style="sty_Button" TabOrder="12" Text="마감처리" Top="35" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnFinishCancel" ImageID="BTN_TEXT_COM" Left="403" OnClick="btnFinishCancel_OnClick" Style="sty_Button" TabOrder="13" Text="마감취소" Top="35" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust1220MEduMonthReproduction.xml
+ * 설명 : 실무교육현황 재생성
+ * 작성일 : 2010.11.05
+ * 작성자 : 정현호
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    gfn_SearchJibu(cbxJibu, "Y", "선택"); // 지부 코드 조회
+    
+    
+	medProcDate.Value = left(addDate(left(getDate(), 6) + "01", -1), 6); //left(getDate(), 6);
+    cbxJibu.SetFocus();
+
+}
+
+/**
+ * 폼 사이즈
+ */
+function Form_OnSize(obj,nCx,nCy,nState) {
+}
+
+/**
+ * 버튼 실행 권한
+ */
+function lfn_SetFormAuth(bStatus) {
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 기본 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+function lfn_Save(obj) {
+
+    if (gfn_IsNull(cbxJibu.Value)) {
+        gfn_Alert("지부를 선택해 주십시오.");
+        return;
+    }
+
+/*	if (toNumber(left(getDate(), 6)) - toNumber(medProcDate.Value) != 1) {
+        gfn_Alert("전월자료만 재생성 가능합니다.");
+        return;	
+	}
+*/    
+    if (!gfn_Confirm(left(medProcDate.Value, 4)+"년 "+
+					right(medProcDate.Value, 2)+"월 업무통계[실무교육현황]을 재생성 하시겠습니까?")) {
+        return;
+    }
+
+
+    var sProcYear = toNumber(left(medProcDate.Value, 4));
+    var sProcMonth = toNumber(right(medProcDate.Value, 2));
+    
+    sProcMonth++;
+    if (sProcMonth > 12) {
+        sProcMonth = 1;
+        sProcYear++;
+    }
+    
+    var sPorcDate = addDate(sProcYear + lpad(sProcMonth, "0", 2) + "01", -1);
+
+    ds_iReprodection.ClearData();
+    ds_iReprodection.InsertRow(0);
+    ds_iReprodection.SetColumn(0, "STARTDATE", left(medProcDate.Value, 4) + "0101");
+    ds_iReprodection.SetColumn(0, "PROCDATE", sPorcDate);
+    ds_iReprodection.SetColumn(0, "GTMGNO", cbxJibu.Value);
+
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("cust:searchCust1220EduMonthReprodection", "", 0, "");
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iReprodection=ds_iReprodection" // inDs
+        ,""	// outDs
+        ,""	// args 
+        ,"lfn_AfterSave"
+        ,false
+        ,false
+        ,true
+    );
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 이벤트
+/////////////////////////////////////////////////////////////////////////////////
+
+function medProcDate_OnCharChanged(obj,strPreText,strPostText) {
+	if (right(medProcDate.Value, 2) < "01") {
+        medProcDate.Value = left(medProcDate.Value, 4) + "01";
+	} else if (right(medProcDate.Value, 2) > "12") {
+        medProcDate.Value = left(medProcDate.Value, 4) + "12";
+	}
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 공통
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 저장 후 처리
+ */
+function lfn_AfterSave(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        gfn_Alert("오류가 발생되었습니다. 정보지원과에 문의하시기 바랍니다.");
+        return "Transaction Error!";
+    }
+    
+    gfn_Alert("업무통계[실무교육현황] 재생성이 완료되었습니다.");
+}
+
+
+// 마감
+function btnFinishProc_OnClick(obj)
+{
+/*	if (toNumber(left(getDate(), 6)) - toNumber(medProcDate.Value) != 1) {
+        gfn_Alert("전월자료만 마감처리 가능합니다.");
+        return;	
+	}
+*/	
+    if (!gfn_Confirm(left(medProcDate.Value, 4)+"년 "+
+					right(medProcDate.Value, 2)+"월 업무통계[실무교육현황]을 마감처리 하시겠습니까?")) {
+        return;
+    }
+    
+    ds_iCusEduChk.ClearData();
+    ds_iCusEduChk.InsertRow(0);
+    ds_iCusEduChk.SetColumn(0, "CECCHKGUBUN", "0");
+
+    var sRtn = lfn_FinishProc();
+    if (sRtn) {
+        gfn_Alert("마감처리 되었습니다.");
+    }
+}
+
+/**
+ * 마감취소
+ */
+function btnFinishCancel_OnClick(obj)
+{
+/*	if (toNumber(left(getDate(), 6)) - toNumber(medProcDate.Value) != 1) {
+        gfn_Alert("전월자료만 마감취소 가능합니다.");
+        return;	
+	}
+*/	
+    if (!gfn_Confirm(left(medProcDate.Value, 4)+"년 "+
+					right(medProcDate.Value, 2)+"월 업무통계[실무교육현황]을 마감취소 하시겠습니까?")) {
+        return;
+    }
+    
+    ds_iCusEduChk.ClearData();
+    ds_iCusEduChk.InsertRow(0);
+    ds_iCusEduChk.SetColumn(0, "CECCHKGUBUN", "1");
+
+    var sRtn = lfn_FinishProc();
+    if (sRtn) {
+        gfn_Alert("마감취소되었습니다.");
+    }
+
+}
+
+
+/**
+ * 처리
+ */
+function lfn_FinishProc() {
+
+    if (gfn_IsNull(cbxJibu.Value)) {
+        gfn_Alert("지부를 선택해 주십시오.");
+        return false;
+    }
+
+    var sProcYear = left(medProcDate.Value, 4);
+    var sProcMonth = right(medProcDate.Value, 2);
+
+    ds_oCusEduChk.ClearData();
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("cust:searchCust1220CusEduChk", false);
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_oCusEduChk=ds_oCusEduChk"	// outDs
+        ,"CECGTMGNO=" + quote(cbxJibu.Value)
+            + " CECYEAR=" + quote(sProcYear)
+            + " CECMONTH=" + quote(sProcMonth)	// args
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+
+    if (ds_oCusEduChk.GetRowCount() > 0 && ds_oCusEduChk.GetColumn(0, "CECCLOSEGUBUN") == "0") { //마감일 경우
+        gfn_Alert(sProcYear + "년 " + sProcMonth + "월 " + "현황은 이미 마감되었습니다.");
+        return false;
+    }
+
+    ds_iCusEduChk.SetColumn(0, "CECCLOSEGUBUN", "1");
+    ds_iCusEduChk.SetColumn(0, "CECGTMGNO", cbxJibu.Value);
+    ds_iCusEduChk.SetColumn(0, "CECYEAR", sProcYear);
+    ds_iCusEduChk.SetColumn(0, "CECMONTH", sProcMonth);
+
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("cust:insertCust1220CusEduChk", "", 0, "");
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iCusEduChk=ds_iCusEduChk"	// inDs
+        ,""	// outDs
+        ,""	// args 
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+    
+    return true;
+}
+
+]]></Script>
+</Window>

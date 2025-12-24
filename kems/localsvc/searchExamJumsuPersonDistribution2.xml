@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="output" io="OUTPUT" reserved="NO"></dataset>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_IMP_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[
+function Run()
+{
+	// TODO: Add your source code here
+	var selectQuery	= " SELECT EXAMORDER.EOEXAMORDER AS EOEXAMORDER 																																									"
+								+ " 		   ,EXAMORDER.EOMGGTMGNO                                                                                                  "
+								+ " 		   ,EXAMORDER.EOYEAR                                                                                                      "
+								+ " 		   ,MID(EXAMORDER.EOEXAMDATE, 1, 4)+'-'+MID(EXAMORDER.EOEXAMDATE, 5, 2)+'-'+MID(EXAMORDER.EOEXAMDATE, 7, 2) AS EOEXAMDATE "
+								+ "        ,G_TEAMCODE.GTTEAMNM AS GTTEAMNM                                                                                       "
+								+ "        ,TRAININGCOURSE.TCCOURSENM AS TCCOURSENM                                                                               "
+								+ " 			 ,SUM(IIF ((IIF(ISNULL((ERSCORE+ERSCORE2)/2),0,(ERSCORE+ERSCORE2)/2)) >=0 AND (IIF(ISNULL((ERSCORE+ERSCORE2)/2),0,(ERSCORE+ERSCORE2)/2))<10 ,1,0) ) AS CNT_1                "
+								+ " 			 ,SUM(IIF ((ERSCORE+ERSCORE2)/2 >=10 AND (ERSCORE+ERSCORE2)/2<20 ,1,0)) AS CNT_2                                                                  "
+								+ " 			 ,SUM(IIF ((ERSCORE+ERSCORE2)/2 >=20 AND (ERSCORE+ERSCORE2)/2<30 ,1,0)) AS CNT_3                                                                  "
+								+ " 			 ,SUM(IIF ((ERSCORE+ERSCORE2)/2 >=30 AND (ERSCORE+ERSCORE2)/2<40 ,1,0)) AS CNT_4                                                                  "
+								+ " 			 ,SUM(IIF ((ERSCORE+ERSCORE2)/2 >=40 AND (ERSCORE+ERSCORE2)/2<50 ,1,0)) AS CNT_5                                                                  "
+								+ " 			 ,SUM(IIF ((ERSCORE+ERSCORE2)/2 >=50 AND (ERSCORE+ERSCORE2)/2<60 ,1,0)) AS CNT_6                                                                  "
+								+ " 			 ,SUM(IIF ((ERSCORE+ERSCORE2)/2 >=60 AND (ERSCORE+ERSCORE2)/2<70 ,1,0)) AS CNT_7                                                                  "
+								+ " 			 ,SUM(IIF ((ERSCORE+ERSCORE2)/2 >=70 AND (ERSCORE+ERSCORE2)/2<80 ,1,0)) AS CNT_8                                                                  "
+								+ " 			 ,SUM(IIF ((ERSCORE+ERSCORE2)/2 >=80 AND (ERSCORE+ERSCORE2)/2<90 ,1,0)) AS CNT_9                                                                  "
+								+ " 			 ,SUM(IIF ((ERSCORE+ERSCORE2)/2 >=90 AND (ERSCORE+ERSCORE2)/2<=100 ,1,0)) AS CNT_10                                                               "
+								+ " FROM EXAMORDER,                                                                                                               ";
+	  if (REPEAT == "0") {
+	  selectQuery	 += "         (SELECT A.*                                                                                      "
+									+ " 				FROM EXAMRESULT A ,(                                                                             "
+									+ " 														SELECT EREJMGNO, MAX(CINT(ERSEQ)) AS ERSEQ                             						 "
+									+ " 														FROM EXAMRESULT                                                              "
+									+ " 														GROUP BY EREJMGNO) B                                             						 "
+									+ " 				WHERE A.EREJMGNO = B.EREJMGNO                                                                    "
+									+ " 				AND CINT(A.ERSEQ) = B.ERSEQ) AS EXAMRESULT                                                            ";
+	  } else {
+	  selectQuery	 += "         (SELECT A.*                                                                                      "
+									+ " 				FROM EXAMRESULT A ,(                                                                             "
+									+ " 														SELECT EREJMGNO, MAX(CINT(ERSEQ)) AS ERSEQ, ERREPEATNO                             "
+									+ " 														FROM EXAMRESULT                                                              "
+									+ " 														GROUP BY EREJMGNO, ERREPEATNO) B                                             "
+									+ " 				WHERE A.EREJMGNO = B.EREJMGNO                                                                    "
+									+ " 				AND CINT(A.ERSEQ) = B.ERSEQ) AS EXAMRESULT                                                            ";
+	  }								
+		selectQuery	 += "      ,EXAMJUBSU                                                                                "
+								+ "    ,EXAMORDERH                                                                                                                "
+								+ "    ,TRAININGCOURSE                                                                                                            "
+								+ " 	 ,G_TEAMCODE                                                                                                                "
+								+ " WHERE EXAMRESULT.EREJMGNO = EXAMJUBSU.EJMGNO                                                                                  "
+								+ " 	AND EXAMJUBSU.EJMGNO = EXAMORDERH.EOHEJMGNO                                                                                 "
+								+ " 	AND EXAMJUBSU.EJLASTEOHSEQ = EXAMORDERH.EOHSEQ                                                                              "
+								+ " 	AND EXAMORDERH.EOHEOMGNO = EXAMORDER.EOMGNO                                                                                 "
+								+ " 	AND EXAMORDER.EOMGGTMGNO = G_TEAMCODE.GTMGNO                                                                                "
+								+ "   AND TRAININGCOURSE.TCSEARCHGUBUN = 'E'                                                                                      "
+								+ "   AND EXAMORDER.EOTCCOURSECD = TRAININGCOURSE.TCCOURSECD                                                                      "
+								+ " 	AND EXAMORDER.EOMGNO = '" + EOMGNO + "'                                                                                              ";
+		if (REPEAT != "0") {
+	  selectQuery	 += " AND EXAMRESULT.ERREPEATNO = '" + REPEAT + "'                                                                      ";
+	  }
+		selectQuery	+= " GROUP BY EXAMORDER.EOMGGTMGNO, EOEXAMORDER, EXAMORDER.EOEXAMDATE                                                              "
+								+ " 		,G_TEAMCODE.GTTEAMNM, TRAININGCOURSE.TCCOURSENM,EXAMORDER.EOYEAR                                                          ";
+		ExecuteQuery(selectQuery, "output");
+}
+]]></source>
+</class2>

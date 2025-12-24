@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="238" Id="frmcust0010PEduNoticeList" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="교육통지서&#32;발행이력" Top="8" Ver="1.0" Width="724" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oEduNoticeList">
+				<Contents>
+					<colinfo id="CTOTALFEE1" size="10" type="STRING"/>
+					<colinfo id="ECUSTADDR1" size="100" type="STRING"/>
+					<colinfo id="ECUSTADDR2" size="100" type="STRING"/>
+					<colinfo id="EPLACE" size="200" type="STRING"/>
+					<colinfo id="EPROCDATE" size="8" type="STRING"/>
+					<colinfo id="ESCHEULE" size="100" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oEduNoticeList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="232" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="200" Id="gdEduNoticeList" InputPanel="FALSE" Left="4" LineColor="default" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="720" RowHeight="20" Style="sty_Grid" TabOrder="1" TabStop="true" Top="32" UseDBuff="true" UsePopupMenu="true" UserData="공통코드목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="716">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="120"/>
+						<col width="100"/>
+						<col width="220"/>
+						<col width="220"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="발행일"/>
+						<cell align="center" col="1" display="text" text="교육일시"/>
+						<cell col="2" display="text" text="교육장소"/>
+						<cell col="3" display="text" text="미납회비"/>
+						<cell col="4" display="text" text="주소1"/>
+						<cell col="5" display="text" text="주소2"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="EPROCDATE" display="text" Mask="####-##-##"/>
+						<cell align="center" col="1" colid="ESCHEULE" display="text" Mask="####-##-##"/>
+						<cell align="left" col="2" colid="EPLACE" display="text"/>
+						<cell align="right" col="3" colid="CTOTALFEE1" display="number"/>
+						<cell align="left" col="4" colid="ECUSTADDR1" display="text"/>
+						<cell align="left" col="5" colid="ECUSTADDR2" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="629" LineColor="user14" Right="720" TabOrder="3" Top="1" Type="Rectangle" Width="91"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="632" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust0010PEduNoticeList.xml
+ * 설명 : 교육통지서 발행이력
+ * 작성일 : 2009.12.29
+ * 작성자 : 김은규
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+var CMGNO = "";
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+        
+    // 공통 코드 조회
+    
+    
+    if (IsExistVar("sCmgno")) {
+        if (gfn_IsNull(sCmgno)) {
+            gfn_Alert("고객정보가 없습니다.");
+            Close();
+        }
+        CMGNO = sCmgno;
+        lfn_Search();
+    }
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_oEduNoticeList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cust:searchCust0010PEduNoticeList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oEduNoticeList=ds_oEduNoticeList"	// outDs
+		,"CMGNO=" + quote(lpad(CMGNO,'0',13))
+		,"lfn_AfterSearchEduNoticeList"
+		,false
+	);
+}
+
+/* 공통 필수 종료 */
+
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchEduNoticeList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SearchMessage(gdEduNoticeList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+]]></Script>
+</Window>

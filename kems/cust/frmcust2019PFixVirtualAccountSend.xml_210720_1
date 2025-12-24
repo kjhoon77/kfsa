@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="400" Id="frmcust2018PFixVirtualAccount" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="은행가상계좌정보" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="392" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioVirtualInfo">
+				<Contents>
+					<colinfo id="PCPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="PCPMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PCCLOSEDATE" size="14" summ="default" type="STRING"/>
+					<colinfo id="PCFLAG" size="5" summ="default" type="STRING"/>
+					<colinfo id="PCACCOUNT" size="15" summ="default" type="STRING"/>
+					<colinfo id="PCBANKCD" size="10" summ="default" type="STRING"/>
+					<colinfo id="PCBANKNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="PCAMOUNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PCBANKDATE" size="14" summ="default" type="STRING"/>
+					<colinfo id="PCTRANSACTION" size="24" summ="default" type="STRING"/>
+					<colinfo id="PMPIID" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_ioPosInput">
+				<Contents>
+					<colinfo id="PMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMPIID" size="256" summ="default" type="STRING"/>
+					<colinfo id="PCTRANSACTION" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosOutputJVM">
+				<Contents>
+					<colinfo id="MI_PMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_PMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_PRMGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_RESPCODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_CASHRECEIPTNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_RESPMSG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_OID" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_TID" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_AMOUNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_ACCOUNTNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_FINANCECODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_CASFLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_FINANCENAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_RSCODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_RSMSG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_TAXFREEAMOUNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oNewBankAccount">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCOUNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECVTEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="OWNER" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iAccountNotice">
+				<Contents>
+					<colinfo id="BANK" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCOUNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="OWNER" size="256" summ="default" type="STRING"/>
+					<colinfo id="AMOUNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="COURSENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="188" LineColor="user14" Right="388" TabOrder="7" Top="1" Type="Rectangle" Width="200"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="300" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Shape Bottom="395" Height="354" Id="shpGubunBox4" Left="4" LineColor="user15" Right="388" TabOrder="5" Top="41" Type="Rectangle" Width="384"></Shape>
+		<Static Align="Center" Height="20" Id="lbAmount" Left="10" Style="sty_Label" TabOrder="3" Text="미납금액" Top="176" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="85" Id="lbBankNm" Left="10" Style="sty_Label" TabOrder="4" Text="은행&#32;및&#10;&#10;가상계좌" Top="86" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="medAmount" Left="102" OnCharChanged="medAmount_OnCharChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="2" Top="176" UserData="S" Value="교육년도&#32;기준&#32;미납액" Width="72"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbRepay" Left="20" Style="sty_LabelGruopBox" TabOrder="6" Text="가상계좌정보&#32;[고객전용가상계좌]" Top="33" VAlign="Middle" Width="220"></Static>
+		<Shape Bottom="292" Height="84" Id="Shape0" Left="7" LineColor="user15" Right="384" TabOrder="8" Top="208" Type="Rectangle" Width="377"></Shape>
+		<Radio CodeColumn="CD" DataColumn="BANK" Height="88" Id="radBank" INDEX="0" InnerDataset="ds_oNewBankAccount" Left="102" OnChanged="radBank_OnChanged" TabOrder="13" Top="85" Width="218"></Radio>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edAccount1" ImeMode="native" Left="181" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="14" Top="87" UserData="S" Width="135"></Edit>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edAccount2" ImeMode="native" Left="181" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="15" Top="108" UserData="S" Width="135"></Edit>
+		<Static Align="Center" Border="Flat" BorderColor="user6" Font="굴림,12,Bold" Height="23" Id="lbNotice" Left="9" LineSpacing="5" TabOrder="16" Top="57" Width="375"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_TEXT_07" Left="192" OnClick="lfn_Print" Style="sty_Button" TabOrder="17" Text="납부안내문&#32;출력" ToolTipText="납부안내문&#32;출력" Top="4" Width="106"></Button>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edAccount3" ImeMode="native" Left="181" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="18" Top="129" UserData="S" Width="135"></Edit>
+		<Static Align="Center" Height="20" Id="Static1" Left="34" Style="sty_Label" TabOrder="19" Text="현재유효기간" Top="226" VAlign="Middle" Width="88"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" Enable="FALSE" HeaderFont="돋음,10,Bold" Height="20" Id="calExpireDate" Left="126" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="20" Top="226" UserData="S:교육일자" WeeksFont="돋음,9" Width="98"></Calendar>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="tmExpireTime" Left="227" LeftMargin="2" Mask="##:##:##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Time" TabOrder="21" Top="226" Type="STRING" UserData="S:교육시간" Width="61"></MaskEdit>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edAccount4" ImeMode="native" Left="181" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="22" Top="150" UserData="S" Width="135"></Edit>
+		<Static Align="Center" BKColor="crimson" Height="20" Id="Static0" Left="20" Style="sty_LabelGruopBox" TabOrder="23" Text="가상계좌&#32;유효기간&#32;부여&#32;&amp;&#32;문자발송" Top="201" VAlign="Middle" Width="220"></Static>
+		<Static Align="Center" BKColor="crimson" Height="20" Id="Static2" Left="34" Style="sty_Label" TabOrder="24" Text="변경유효기간" Top="250" VAlign="Middle" Width="88"></Static>
+		<Calendar Border="Flat" Color="user6" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" Font="굴림,10,Bold" HeaderFont="돋음,10,Bold" Height="20" Id="calExpireDate2" Left="126" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="25" TextColor="user11" Top="250" UserData="S:교육일자" WeeksFont="돋음,9" Width="106"></Calendar>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Color="user6" Font="굴림,10,Bold" Height="20" Id="tmExpireTime2" Left="234" LeftMargin="2" Mask="##:##:##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Time" TabOrder="26" Top="250" Type="STRING" UserData="S:교육시간" Width="66"></MaskEdit>
+		<Static Align="Center" Height="57" Id="Static3" Left="11" Style="sty_Label" TabOrder="27" Text="문&#13;&#10;자&#13;&#10;내&#13;&#10;용" Top="329" UserData="SK" VAlign="Middle" Width="20"></Static>
+		<Static Font="굴림,9,Bold" Height="14" Id="Static4" Left="29" TabOrder="28" Text="※미입금자&#32;:&#32;유효기간&#32;경과&#32;시&#32;접수내역&#32;삭제됨" Top="274" Width="280"></Static>
+		<Static Align="Center" BKColor="user15" Height="64" Id="Static5" Left="11" Style="sty_Label" TabOrder="29" Text="가&#13;&#10;상&#13;&#10;계&#13;&#10;좌" Top="224" UserData="SK" VAlign="Middle" Width="20"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Font="굴림,10,Bold" Height="72" Id="btnExpireDateChg" Left="312" OnClick="btnExpireDateChg_OnClick" Style="sty_Button" TabOrder="30" Text="유효기간&#13;&#10;(3일)&#13;&#10;부여" ToolTipText="유효기간&#32;갱신저장" Top="216" Width="72"></Button>
+		<Shape Bottom="391" Height="100" Id="Shape1" Left="7" LineColor="user15" Right="384" TabOrder="31" Top="291" Type="Rectangle" Width="377"></Shape>
+		<Button BKColor="user17" ButtonStyle="TRUE" Cursor="HAND" Font="굴림,10,Bold" Height="88" Id="btnSMSSend" Left="280" OnClick="btnSMSSend_OnClick" Style="sty_Button" TabOrder="12" Text="문자발송" Top="296" Width="96"></Button>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edHp" ImeMode="native" Left="133" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="10" Top="300" UserData="S" Width="139"></Edit>
+		<Static Align="Center" Height="30" Id="lbHp" Left="11" Style="sty_Label" TabOrder="9" Text="가상계좌&#32;문자발송&#10;휴대폰번호" Top="296" UserData="SK" VAlign="Middle" Width="119"></Static>
+		<Static BKColor="user0" Border="SunkenEdge" Color="user1" Font="굴림,9" Height="57" Id="lbMSG" Left="32" Style="sty_Label" TabOrder="11" Text="[한국소방안전원]&#13;&#10;국민은행(계좌:000000-00-000000)에&#10;48,000원&#32;입금바랍니다" Top="330" UserData="SK" VAlign="Middle" Width="240"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust2018PFixVirtualAccount.xml
+ * 설명 : 은행 고정가상계좌정보
+ * 작성일 : 2013.07.17
+ * 작성자 : 정현호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/*
+	sGUBUN			= 0:회비 1:교육비
+	sTotalAmount	= 미납회비
+	sJibu			= 지부
+	sCMgno			= 고객관리바코드
+	sFMNM			= 성명
+	sHPTEL			= 휴대폰번호
+	sBNM			= 업체명
+	sCOURSENM		= 직능명
+	sEJMGNO			= 접수관리번호
+	sESDATE			= 교육일자
+*/
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (IsExistVar("sCMgno")) {
+        lfn_Search();
+    } else {
+        gfn_Alert("고객 정보가 없습니다.");
+        lfn_Cancel();
+    }
+    
+	if (sGUBUN == "0") {	//회비
+		lbNotice = "[회비 가상계좌]";
+	} else {
+		lbNotice = "[교육비 가상계좌]";
+	}
+    
+}
+
+/**
+ * 조회
+ */
+function lfn_Search() {
+
+	var sCustomerGubun = "";
+	if (sGUBUN == "0") {
+		sCustomerGubun = "1";
+	} else {
+		sCustomerGubun = "2";
+	}
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("cust:searchVirtualAccount", false);
+    tit_callService(
+        ""
+        ,""
+        ,""
+        ,"ds_oNewBankAccount=ds_oNewBankAccount" // outDs
+        ,"sGUBUN=" + quote(sCustomerGubun)
+         + " sGTMGNO=" + quote(sJibu)
+         + " sCMGNO=" + quote(sCMgno)  // args 
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+    edAccount1.Text = ds_oNewBankAccount.GetColumn(0, "ACCOUNT");	// 농협
+    edAccount2.Text = ds_oNewBankAccount.GetColumn(1, "ACCOUNT");	// 국민
+    edAccount3.Text = ds_oNewBankAccount.GetColumn(2, "ACCOUNT");	// 신한
+    edAccount4.Text = ds_oNewBankAccount.GetColumn(3, "ACCOUNT");	// 우리
+    medAmount.Text = sTotalAmount;
+    calExpireDate.Value = ds_oNewBankAccount.GetColumn(0, "TREND_IL");
+    tmExpireTime.Value = ds_oNewBankAccount.GetColumn(0, "TREND_SI");
+    edHp.Text = sHPTEL;
+    radBank.Index = 0;
+    radBank_OnChanged(radBank, radBank.Index);
+
+    calExpireDate2.Value = left(gfn_SearchNextBusinessDateTime(left(GetDate(), 8), "B", sEJMGNO),8); // 다음 영업일시 조회
+    tmExpireTime2 = right(gfn_SearchNextBusinessDateTime(left(GetDate(), 8), "B", sEJMGNO),6); // 다음 영업일시 조회
+
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close("END");
+}
+
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam)
+{
+
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+    }
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close("END");
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+
+/* 사용자 이벤트 함수 */
+
+
+function btnSMSSend_OnClick(obj)
+{
+	if (gfn_isNull(edHp.Text)) {
+		gfn_Alert("휴대폰 번호를 입력해 주십시오.");
+		return;
+	}
+	
+	if (length(edHp.Text) < 10) {
+		gfn_Alert("휴대폰 번호를 정확하게 입력해 주십시오.");
+		return;	
+	}
+	
+	if (gfn_isNull(medAmount.Text)) {
+		gfn_Alert("미납금액이 없습니다. 입금받을 금액을 입력해 주십시오.");
+		return;	
+	}
+	
+	if (toNumber(medAmount.Value) < 18000) {
+		gfn_Alert("미납금액이 정확하지 않습니다. 확인해 주십시오.");
+		return;	
+	}
+	
+	if (!gfn_Confirm("문자를 발송하시겠습니까?")) { 
+
+		return false;
+
+	}
+	
+	// 유효기간(3일)이 부여되지 않았으면
+	if (calExpireDate.Value <> calExpireDate2.Value) {
+
+		var iArgsNm = "SCMGNO=" + quote(sCMgno);
+		iArgsNm += " SBNM=" + quote(sBNM);
+		iArgsNm += " TRAMTCOND='1'";
+		iArgsNm += " TRAMT=" + quote(medAmount.Value);
+		
+		// 입금시 거래금액체크
+		tit_clearActionInfo();
+		tit_addSingleActionInfo("cust:executeCust0010VirtualAccoutAllocation", "", 0, "");
+		tit_callService(
+			""
+			,""
+			,""	// inDs
+			,""	// outDs
+			,iArgsNm	// args
+			,""
+			,false
+	
+		);
+	}
+	
+	/*
+	 * 기능 : KT SMS 발송
+	 * parameter : sMBCCD - 업무구분코드 bizcode  NN
+	 *             sMPK1 - 업무PK1 [없는경우''] 
+				   sMPK2 - 업무PK2 [없는경우''] 
+				   sMPK3 - 업무PK3 [없는경우''] 
+				   sMBSMGNO - 일괄발송관리번호 [없는경우'']
+				   sMSENDTYPE - 발송구분 0:즉시, 1:예약 NN
+				   sMSENDDATE - 예약발송 14자리(즉시발송은 '')
+				   sMCALLBACK - 송신자전화번호 NN (‘- , ’제외) 
+				   sMRECVNM - 수신자명       NN
+				   sMRECVTEL - 수신자전화번호 NN (‘- , ’제외)
+				   sMTITLE - 문자제목
+				   sMMSG - 문자메시지    NN
+				   sMREGSABUN - 등록자사번  사번‘INTERNET’
+	  * return : 없음
+	*/
+	
+	gfn_InsertKTSMSSend("304",
+						sCMgno,
+						"",
+						"",
+						"",
+						"0",
+						"", 
+						mid(gfn_GetNumber(ds_oNewBankAccount.GetColumn(radBank.Index, "RECVTEL")), 0, 10),
+						sFMNM,
+						gfn_GetNumber(edHp.Text),
+						"한국소방안전원",
+						"[한국소방안전원]"+radBank.Text+"(계좌:"+iif(radBank.Index==0, edAccount1.Text, iif(radBank.Index==1, edAccount2.Text, iif(radBank.Index==2, edAccount3.Text, edAccount4.Text)))+")에 "+medAmount.Text+"원 입금바랍니다",
+						gds_oUserInfo.GetColumn(0, "PSABUN"));
+					   
+
+	gfn_Alert("고객 은행가상계좌가 문자로 발송되었습니다.");			
+	Close("OK");
+}
+
+function radBank_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	//edAccount.Text = ds_oNewBankAccount.GetColumn(nNewIndex, "ACCOUNT");
+	if (radBank.Index == 0) {	// 국민은행
+		edAccount1.BKColor = "moccasin";
+		edAccount2.BKColor = "White";
+		edAccount3.BKColor = "White";
+		edAccount4.BKColor = "White";
+		lbMSG.Text = "[한국소방안전원]\n"+radBank.Text+"(계좌:"+
+										edAccount1.Text+")에\n"+
+										medAmount.Text+"원 입금바랍니다";	
+	} else if (radBank.Index == 1) {	// 신한은행	
+		edAccount1.BKColor = "White";
+		edAccount2.BKColor = "moccasin";
+		edAccount3.BKColor = "White";
+		edAccount4.BKColor = "White";
+		lbMSG.Text = "[한국소방안전원]\n"+radBank.Text+"(계좌:"+
+										edAccount2.Text+")에\n"+
+										medAmount.Text+"원 입금바랍니다";	
+										
+	} else if (radBank.Index == 2) {	// 우리은행
+		edAccount1.BKColor = "White";
+		edAccount2.BKColor = "White";
+		edAccount3.BKColor = "moccasin";
+		edAccount4.BKColor = "White";
+		lbMSG.Text = "[한국소방안전원]\n"+radBank.Text+"(계좌:"+
+										edAccount3.Text+")에\n"+
+										medAmount.Text+"원 입금바랍니다";	
+	
+	} else if (radBank.Index == 3) {	// 농협은행
+		edAccount1.BKColor = "White";
+		edAccount2.BKColor = "White";
+		edAccount3.BKColor = "White";
+		edAccount4.BKColor = "moccasin";
+		lbMSG.Text = "[한국소방안전원]\n"+radBank.Text+"(계좌:"+
+										edAccount4.Text+")에\n"+
+										medAmount.Text+"원 입금바랍니다";	
+	}
+}
+
+function medAmount_OnCharChanged(obj,strPreText,strPostText)
+{
+	if (radBank.Index == 0) {	// 국민은행
+		lbMSG.Text = "[한국소방안전원]\n"+radBank.Text+"(계좌:"+
+										edAccount1.Text+")에\n"+
+										medAmount.Text+"원 입금바랍니다";	
+										
+	} else if (radBank.Index == 1) {	// 신한은행	
+		lbMSG.Text = "[한국소방안전원]\n"+radBank.Text+"(계좌:"+
+										edAccount2.Text+")에\n"+
+										medAmount.Text+"원 입금바랍니다";	
+	
+	} else if (radBank.Index == 2) {	// 우리은행
+		lbMSG.Text = "[한국소방안전원]\n"+radBank.Text+"(계좌:"+
+										edAccount3.Text+")에\n"+
+										medAmount.Text+"원 입금바랍니다";	
+	
+	} else if (radBank.Index == 3) {	// 농협은행
+		lbMSG.Text = "[한국소방안전원]\n"+radBank.Text+"(계좌:"+
+										edAccount4.Text+")에\n"+
+										medAmount.Text+"원 입금바랍니다";
+	}	
+}
+
+function lfn_Print(obj)
+{
+
+	ds_iAccountNotice.ClearData();
+	
+	ds_iAccountNotice.AddRow();
+	
+	ds_iAccountNotice.SetColumn(0, "BANK", radBank.Text);
+	ds_iAccountNotice.SetColumn(0, "ACCOUNT", iif(radBank.Index==0, edAccount1.Text, iif(radBank.Index==1, edAccount2.Text, iif(radBank.Index==2, edAccount3.Text, edAccount4.Text))));
+	ds_iAccountNotice.SetColumn(0, "OWNER", ds_oNewBankAccount.GetColumn(radBank.Index, "OWNER"));
+	ds_iAccountNotice.SetColumn(0, "AMOUNT", medAmount.Text+"원");
+	ds_iAccountNotice.SetColumn(0, "BNM", sBNM);	
+	ds_iAccountNotice.SetColumn(0, "COURSENM", sCOURSENM);
+	ds_iAccountNotice.SetColumn(0, "FMNM", sFMNM);
+	
+	if (sGUBUN == "0") {	//회비
+
+		gfn_CallReportPopup("frmcust2018R01VirtualAccountNotice2.rex"
+					   , "ds_iAccountNotice"
+		);
+    
+	} else if (sGUBUN == "1") {	//교육비
+
+		gfn_CallReportPopup("frmcust2018R02VirtualAccountNotice.rex"
+					   , "ds_iAccountNotice"
+		);
+    
+	}
+}
+
+
+// 유효기간 갱신 저장
+function btnExpireDateChg_OnClick(obj)
+{
+	if (gfn_isNull(medAmount.Text)) {
+		gfn_Alert("미납금액이 없습니다. 입금받을 금액을 입력해 주십시오.");
+		return false;	
+	}
+	
+	if (toNumber(medAmount.Value) < 18000) {
+		gfn_Alert("미납금액이 정확하지 않습니다. 확인해 주십시오.");
+		return false;	
+	}
+	
+	if (calExpireDate.Value == calExpireDate2.Value) {
+		gfn_Alert("이미 유효기간이 부여되었습니다.");
+		return false;	
+	}
+	
+	if (!gfn_Confirm("유효기간(3일)을 부여 하시겠습니까?")) { 
+
+		return false;
+
+	}
+	
+	var iArgsNm = "SCMGNO=" + quote(sCMgno);
+	iArgsNm += " SBNM=" + quote(sBNM);
+	iArgsNm += " TRAMTCOND='1'";
+	iArgsNm += " TRAMT=" + quote(medAmount.Value);
+	iArgsNm += " ENDIL=" + quote(left(calExpireDate2.Value,8));
+	iArgsNm += " ENDSI=" + quote(tmExpireTime2.Value);
+	iArgsNm += " CMGNO=" + quote(sCMgno);
+	iArgsNm += " EJMGNO=" + quote(sEJMGNO);
+	iArgsNm += " ESDATE=" + quote(sESDATE);
+	iArgsNm += " CLOSEDATE=" + quote(left(calExpireDate2.Value,8)+tmExpireTime2.Value);
+	
+	
+	// 입금시 거래금액체크
+	tit_clearActionInfo();
+	tit_addSingleActionInfo("cust:executeCust0010VirtualAccoutAllocation", "", 0, "");
+	tit_addSingleActionInfo("cust:insertCust2019EduJubsuAccount", "", 0, "");
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,""	// outDs
+		,iArgsNm	// args
+		,""
+		,false
+
+	);
+	
+	gfn_Alert("가상계좌 유효기간이 부여되었습니다.");
+	lfn_Search();
+}
+
+
+]]></Script>
+</Window>

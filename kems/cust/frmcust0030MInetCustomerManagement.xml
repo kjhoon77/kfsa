@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmcust0030MInetCustomerManagement" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnTimer="frmcust0030MInetCustomerManagement_OnTimer" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="[인터넷]선임신규변경관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1000" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>선임&#32;신규</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>선임대상물&#32;변경</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>기본정보&#32;변경</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>해임&#32;신청</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioStatus">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>신청</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>접수</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>수정완료</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>보류</DATA>
+					</record>
+					<record>
+						<CD>5</CD>
+						<DATA>신청취소</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oChangeList">
+				<Contents>
+					<colinfo id="FCMGNO" size="22" summ="default" type="STRING"/>
+					<colinfo id="FCSEQ" size="22" summ="default" type="STRING"/>
+					<colinfo id="FCCMGNO" size="22" summ="default" type="STRING"/>
+					<colinfo id="FCRESIDENT" size="14" summ="default" type="CHAR"/>
+					<colinfo id="FCSTATUS" size="22" summ="default" type="STRING"/>
+					<colinfo id="FCGUBUN" size="22" summ="default" type="STRING"/>
+					<colinfo id="FCBULDNAME" size="40" summ="default" type="STRING"/>
+					<colinfo id="FCPOST" size="6" summ="default" type="STRING"/>
+					<colinfo id="FCADDR1" size="50" summ="default" type="STRING"/>
+					<colinfo id="FCADDR2" size="50" summ="default" type="STRING"/>
+					<colinfo id="FCHOPEADDRGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="FCCPOST" size="6" summ="default" type="STRING"/>
+					<colinfo id="FCCADDR1" size="50" summ="default" type="STRING"/>
+					<colinfo id="FCCADDR2" size="40" summ="default" type="STRING"/>
+					<colinfo id="FCTELEPHONE" size="14" summ="default" type="STRING"/>
+					<colinfo id="FCFAX" size="14" summ="default" type="STRING"/>
+					<colinfo id="FCHANDPHONE" size="14" summ="default" type="STRING"/>
+					<colinfo id="FCEMAIL" size="30" summ="default" type="STRING"/>
+					<colinfo id="FCSIZE" size="22" summ="default" type="STRING"/>
+					<colinfo id="FCOWNERNAME" size="20" summ="default" type="STRING"/>
+					<colinfo id="FCOWNERTEL" size="14" summ="default" type="STRING"/>
+					<colinfo id="FCOWNERHP" size="14" summ="default" type="STRING"/>
+					<colinfo id="FCREGDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="MID" size="40" summ="default" type="STRING"/>
+					<colinfo id="MNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="MMGNO" size="22" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioJibuGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>기존지부</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>신규,변경지부</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="104" Height="64" Id="Shape0" Left="4" LineColor="user15" Right="996" TabOrder="7" Top="40" Type="Rectangle" Width="992"></Shape>
+		<Shape Bottom="28" Height="28" Id="shpBtnBox" Left="556" LineColor="user14" Right="995" TabOrder="6" Top="0" Type="Rectangle" Width="439"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="5" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="300">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="559" OnClick="lfn_Search" Style="sty_Button" TabOrder="4" ToolTipText="조회" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="733" OnClick="btnToExcel_OnClick" Style="sty_Button" TabOrder="1" ToolTipText="엑셀로&#32;저장" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="820" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="2" ToolTipText="화면&#32;출력" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="907" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="3" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbJubsu" Left="20" Style="sty_LabelGruopBox" TabOrder="8" Text="조회&#32;정보" Top="32" VAlign="Middle" Width="96"></Static>
+		<Shape Bottom="584" Height="476" Id="Shape1" Left="4" LineColor="user15" Right="996" TabOrder="9" Top="108" Type="Rectangle" Width="992"></Shape>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oChangeList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="580" ColSizing="TRUE" Enable="true" EndLineColor="default" Height="444" Id="gdCustomerList" InputPanel="FALSE" Left="8" LineColor="default" OnCellClick="gdCustomerList_OnCellClick" OnHeadClick="lfn_GridCellSort" Right="992" Style="sty_Grid" TabOrder="10" TabStop="true" Top="136" UseDBuff="true" UsePopupMenu="true" UserData="인터넷선임변경신청자&#32;목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="984">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="31"/>
+						<col width="45"/>
+						<col width="62"/>
+						<col width="55"/>
+						<col width="85"/>
+						<col width="45"/>
+						<col width="55"/>
+						<col width="118"/>
+						<col width="85"/>
+						<col width="48"/>
+						<col width="88"/>
+						<col width="126"/>
+						<col width="56"/>
+						<col width="67"/>
+						<col width="256"/>
+						<col width="226"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" rowspan="2" text="순번"/>
+						<cell col="1" colspan="4" display="text" text="기존&#32;정보"/>
+						<cell col="5" colspan="3" display="text" text="신규&#32;및&#32;변경&#32;정보"/>
+						<cell col="8" display="text" rowspan="2" text="신청구분"/>
+						<cell col="14" display="text" rowspan="2" text="주소1"/>
+						<cell col="15" display="text" rowspan="2" text="주소2"/>
+						<cell col="7" display="text" row="1" text="대상물(업체)명"/>
+						<cell col="9" display="text" rowspan="2" text="성명"/>
+						<cell col="10" display="text" rowspan="2" text="생년월일"/>
+						<cell col="11" display="text" rowspan="2" text="처리일자"/>
+						<cell col="12" display="text" rowspan="2" text="신청상태"/>
+						<cell col="13" display="text" rowspan="2" text="내역보기"/>
+						<cell col="1" display="text" row="1" text="지부"/>
+						<cell col="2" display="text" row="1" text="관리번호"/>
+						<cell col="3" display="text" row="1" text="직능"/>
+						<cell col="4" display="text" row="1" text="대상물명"/>
+						<cell col="5" display="text" row="1" text="지부"/>
+						<cell col="6" display="text" row="1" text="직능"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="ROW+1"/>
+						<cell align="center" col="1" colid="CGTMGNO" combocol="CD" combodataset="ds_ioJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="2" colid="CNO" display="text"/>
+						<cell align="center" col="3" colid="OLDNICKNM" display="text"/>
+						<cell align="left" col="4" colid="BNM" display="text"/>
+						<cell align="center" col="5" colid="FCGTMGNO" combocol="CD" combodataset="ds_ioJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="6" colid="NEWNICKNM" display="text"/>
+						<cell align="left" col="7" colid="FCBULDNAME" display="text"/>
+						<cell align="center" col="8" colid="FCGUBUN" combocol="CD" combodataset="ds_ioGubun" combotext="DATA" display="combo"/>
+						<cell align="center" col="9" colid="MNM" display="text"/>
+						<cell align="center" col="10" colid="MBIRTHDAY" display="text"/>
+						<cell align="center" col="11" colid="FCREGDATE2" display="text"/>
+						<cell align="center" col="12" colid="FCSTATUS" combocol="CD" combodataset="ds_ioStatus" combotext="DATA" display="combo"/>
+						<cell align="center" col="13" display="button" text="내역보기"/>
+						<cell align="left" col="14" colid="FCADDR1" display="normal"/>
+						<cell align="left" col="15" colid="FCADDR2" display="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="816" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="11" Top="112" Transparent="TRUE" Width="74"></Button>
+		<Static Align="Center" Height="20" Id="lbTotalCnt" Left="8" Style="sty_LabelStat" TabOrder="13" Text="총건수" Top="112" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medTotalCnt" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="12" Top="112" UserData="S" Width="64"></MaskEdit>
+		<Radio BindDataset="ds_ioGubun" Border="Flat" CodeColumn="CD" ColumnCount="5" DataColumn="DATA" Height="20" Id="radOrder" INDEX="0" InnerDataset="ds_ioGubun" Left="101" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="14" Top="80" UserData="S" Width="539"></Radio>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_ioJibu" Left="289" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="15" Top="55" UserData="S" Value="B" Width="94"></Combo>
+		<Combo BindDataset="ds_ioCourse" Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_ioCourse" Left="483" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="17" Top="55" UserData="S" Width="134"></Combo>
+		<Combo BindDataset="ds_ioStatus" Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxPlace" INDEX="0" InnerDataset="ds_ioStatus" Left="714" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="16" Top="55" UserData="S" Value="B" Width="122"></Combo>
+		<Static Align="Center" Height="20" Id="Static3" Left="8" Style="sty_Label" TabOrder="18" Text="지부" Top="56" VAlign="Middle" Width="90"></Static>
+		<Static Align="Center" Height="20" Id="Static4" Left="390" Style="sty_Label" TabOrder="19" Text="직능" Top="56" VAlign="Middle" Width="90"></Static>
+		<Static Align="Center" Height="20" Id="Static0" Left="8" Style="sty_Label" TabOrder="20" Text="접수구분" Top="80" VAlign="Middle" Width="90"></Static>
+		<Static Align="Center" Height="20" Id="Static1" Left="621" Style="sty_Label" TabOrder="21" Text="접수상태" Top="56" VAlign="Middle" Width="90"></Static>
+		<Static Align="Center" Height="20" Id="Static2" Left="645" Style="sty_Label" TabOrder="22" Text="신청일자" Top="80" VAlign="Middle" Width="90"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calStartDate" Left="739" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="24" Top="80" UserData="S" WeeksFont="돋음,9" Width="96"></Calendar>
+		<Static Align="Center" Height="20" Id="Static12" Left="835" Style="sty_Text" TabOrder="23" Text="~" Top="80" VAlign="Middle" Width="20"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calEndDate" Left="855" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="25" Top="80" UserData="S" WeeksFont="돋음,9" Width="96"></Calendar>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="646" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="26" ToolTipText="입력&#32;초기화" Top="3" Width="85"></Button>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radJibu" INDEX="0" InnerDataset="ds_ioJibuGubun" Left="102" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="27" Top="56" UserData="S" Width="186"></Radio>
+		<Edit Align="RIGHT" Height="21" Id="edTimer" Left="512" Readonly="TRUE" TabOrder="28" Top="7" Visible="FALSE" Width="36"></Edit>
+		<Static Align="Center" Height="20" Id="Static5" Left="376" Style="sty_Label" TabOrder="29" Text="자동재조회(10분마다)" Top="7" VAlign="Middle" Visible="FALSE" Width="134"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust0030MInetCustomerManagement.xml
+ * 설명 : [인터넷]선임신규변경관리
+ * 작성일 : 2010.01.25
+ * 작성자 : 이규희
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+var aa = 10;
+var oldTotalCnt = 0;
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+	
+	radJibu.Value = 1;
+    // 공통 코드 조회    
+    gfn_SearchAllJibu(cbxJibu, "Y", "전체"); 		                // 지부 코드 조회
+    gfn_SearchCustomerCourseFullName(ds_ioCourse, "0", "전체");		// 대표고객직능 조회
+    
+    cbxJibu.Index = 0;
+    cbxCourse.index = 0;
+    calStartDate.Value = left(GetDate(), 8);
+    calEndDate.Value = left(GetDate(), 8);
+    
+  
+//    SetTimer(1,1000); // Timer구동
+
+	// 콜센터 직원용 이면
+	if (gs_IsCallCenter == "Y") {
+		// 콜센터 Call ID 가져오기(Unique ID)
+		global.mnuLeft.lfn_CallUIDImport();
+	}
+
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdCustomerList.Width = nCx - gdCustomerList.Left - 8;
+        //Shape2.Width = nCx - Shape2.Left - 4;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    
+    ds_oChangeList.ClearData(); // 데이타셋 초기화
+    
+    // 조회이력을 저장한다.  
+    ls_HistoryArg = "지부=" + quote(cbxJibu.Text)
+                + ",직능=" + quote(cbxCourse.Text)
+                + ",접수상태=" + quote(cbxPlace.Text)
+                + ",접수구분=" + quote(radOrder.Text)
+                + ",신청일자FROM=" + quote(left(calStartDate.Value, 8))
+                + ",신청일자TO=" + quote(left(calEndDate.Value, 8));
+                
+                ;
+    gfn_InsertSearchPrintHistory(
+        "S"
+        , this.ID
+        , global.mnuLeft.cbxOpenForm.Text
+        , ls_HistoryArg
+    );
+    
+	// 콜센터 직원용 이면
+	if (gs_IsCallCenter == "Y") {
+		// 콜센터 직원 조회이력 저장
+		gfn_InsertCallCenterSearchPrintHistory(
+				"S"
+				, gs_CallCenterUID				, gds_OpenedForm.GetColumn(gds_OpenedForm.FindRow("MURL",this.ID),"MMENUID")
+				, this.ID				, global.mnuLeft.cbxOpenForm.Text				, ls_HistoryArg
+			);
+	}
+    
+    
+    medTotalCnt.Value = "";
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cust:searchCust0030MInetChangeManagement", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oChangeList=ds_oChangeList"	// outDs
+		,"CGTMGNO=" + quote(cbxJibu.Value)
+            + " JIBUGUBUN=" + quote(radJibu.Value)
+            + " CCOURSECD=" + quote(cbxCourse.Value)
+            + " FCSTATUS=" + quote(cbxPlace.Value)
+            + " FCGUBUN=" + quote(radOrder.Value)
+            + " FCREGDATESTART=" + quote(calStartDate.Value)
+            + " FCREGDATEEND=" + quote(calEndDate.Value)    // args 
+		,"lfn_AfterSearchInetChangeManagement"
+		,false
+		,false
+		,true
+	);
+}
+
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 교육일정관리 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchInetChangeManagement(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    //trace(ds_oChangeList.SaveXML());
+    
+    medTotalCnt.Value = ds_oChangeList.rowcount;
+    gfn_SearchMessage(gdCustomerList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    btnToExcel.Enable = bStatus; // 엑셀 버튼
+    // 콜센터 직원 사용 이면
+	if (gs_IsCallCenter == "Y") {
+		btnToExcel.Enable = bStatus; // 엑셀출력 버튼
+		btnPrintScreen.Enable = bStatus; // 화면출력 버튼
+	}
+}
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdCustomerList, 1); // 멀티 정렬을 실행한다.
+}
+
+function btnToExcel_OnClick(obj) {
+    if (ds_oChangeList.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return false;
+    }
+
+	// 개인정보 다운로드 사유 등록
+	var parValue = "sCode=1403";	// COMMON.PERSONALDOWNLOADH
+		parValue += " sRowCnt=" + ds_oChangeList.GetRowCount();
+		parValue += " sTitle=" + quote(gdCustomerList.UserData);
+	var ls_IsRemark = Dialog("COM::frmCOM2100PDownloadRemark.xml", parValue, "", "", "", -1, -1);	
+
+	if (ls_IsRemark == "" || ls_IsRemark == null || ls_IsRemark == "FAIL") {
+		return false;
+	}
+	lfn_Excel(obj);
+}
+
+/*
+ * 기능 : 업무 변경이력을 저장한다.
+ * parameter : sGubun - 변경구분. 예) I, U, D
+ * return : 없음
+ */
+function lfn_SaveModifyHistory(sGubun) {
+    if (sGubun = "I") { // 신규
+        gds_iModifyHistory.InsertRow(0);
+        gds_iModifyHistory.SetColumn(0, "MHWORKGUBUN", "선임변경신청"); // 업무구분
+        gds_iModifyHistory.SetColumn(0, "MHGUBUN", sGubun); // 변경구분
+        gds_iModifyHistory.SetColumn(0, "MHKEY", ""); // KEY값
+        gds_iModifyHistory.SetColumn(0, "MHCOLUMN", ""); // 변경 컬럼명
+        gds_iModifyHistory.SetColumn(0, "MHBEFOREDATA", ""); // 변경 전 값
+        gds_iModifyHistory.SetColumn(0, "MHAFTERDATA", ""); // 변경 후 값
+    } else if (sGubun = "D") { // 삭제
+        gds_iModifyHistory.InsertRow(0);
+        gds_iModifyHistory.SetColumn(0, "MHWORKGUBUN", "선임변경신청"); // 업무구분
+        gds_iModifyHistory.SetColumn(0, "MHGUBUN", sGubun); // 변경구분
+        gds_iModifyHistory.SetColumn(0, "MHKEY", ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGMGNO")); // KEY값
+        gds_iModifyHistory.SetColumn(0, "MHCOLUMN", ""); // 변경 컬럼명
+        gds_iModifyHistory.SetColumn(0, "MHBEFOREDATA", ""); // 변경 전 값
+        gds_iModifyHistory.SetColumn(0, "MHAFTERDATA", ""); // 변경 후 값
+    } else if (sGubun = "U") { // 수정
+        var ln_TotalCount = ds_oModifyColumn.GetCount();
+        var ls_ColumnCd = "";
+        var ls_ColumnNm = "";
+        for (var i = 0; i < ln_TotalCount; i++) {
+            ls_ColumnCd = ds_oModifyColumn.GetColumn(i, "COLUMNCD");
+            ls_ColumnNm = ds_oModifyColumn.GetColumn(i, "COLUMNNM");
+            if (ds_oAgentList.GetOrgBuffColumn(0, ls_ColumnCd) <> ds_oAgentList.GetColumn(ds_oAgentList.currow, ls_ColumnCd)) {
+                gds_iModifyHistory.InsertRow(0);
+                gds_iModifyHistory.SetColumn(0, "MHWORKGUBUN", "선임변경신청"); // 업무구분
+                gds_iModifyHistory.SetColumn(0, "MHGUBUN", sGubun); // 변경구분
+                gds_iModifyHistory.SetColumn(0, "MHKEY", ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGMGNO")); // KEY값
+                gds_iModifyHistory.SetColumn(0, "MHCOLUMN", ls_ColumnNm); // 변경 컬럼명
+                gds_iModifyHistory.SetColumn(0, "MHBEFOREDATA", ds_oAgentList.GetOrgBuffColumn(0, ls_ColumnCd)); // 변경 전 값
+                gds_iModifyHistory.SetColumn(0, "MHAFTERDATA", ds_oAgentList.GetColumn(ds_oAgentList.currow, ls_ColumnCd)); // 변경 후 값
+            }
+        }
+    }
+
+    gfn_InsertModifyHistory(); // 업무 변경이력을 저장한다.
+}
+
+// 초기화
+function btnCancel_OnClick(obj)
+{
+	ds_oAgentList.Clear();
+	radAgent.Value = "1";
+	lfn_Cancel(obj);
+	edKeyWord.SetFocus();
+}
+
+function gdCustomerList_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+var sWidth = "";
+
+	if(nCell == 13) {
+		var args  = "sFcmgno=" + ds_oChangeList.GetColumn(nRow, "FCMGNO");
+		args += " sFcseq=" + ds_oChangeList.GetColumn(nRow, "FCSEQ");
+		args += " sFcgubun=" + ds_oChangeList.GetColumn(nRow, "FCGUBUN");
+		args += " sCmgno=" + ds_oChangeList.GetColumn(nRow, "FCCMGNO");
+
+        Dialog("cust::frmcust0031PCustomerChange.xml", args, 1000, 540, "", -1, -1);
+	}
+}
+
+
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+
+}
+
+
+/*
+ * 기능 : 그리드 헤드 클릭시 해당 셀로 정렬한다(ASC,DESC 토글).
+ * Parameter : obj - Grid Object
+ *             nCell - 해당셀번호 (HeadClick 이벤트에서 받은 nCell을 그대로 지정)
+ * Return : 없음
+ */
+function lfn_GridCellSort(obj, nCell){
+var ASC_MARK  = "▲";   // Ascending  Sort Mark
+var DESC_MARK = "▼";   // Descending Sort MarkFxcl
+//alert(nCell);
+	if (!((nCell == 1) || (nCell == 2) || (nCell == 11))) {	// 내역보기가 아니면
+		SetWaitCursor(true);
+	
+		var ms_SortType = obj.GetCellProp("head", nCell, "text");
+		var mobj_Dataset = object(obj.BindDataset);
+		mobj_Dataset.row = -1;
+	
+		// Soft 구분자 분리
+		ms_SortType = right(ms_SortType, 1);
+	
+		var mn_Cnt = obj.GetCellCount("head");
+		for (var i=0; i < mn_Cnt; i++) {
+			// Head Sort 마크 제거
+			obj.SetCellProp("head", i, "text", replace(replace(obj.GetCellProp("head", i, "text"), ASC_MARK), DESC_MARK));
+		}
+	
+		if (ms_SortType == ASC_MARK) {
+			obj.SetCellProp("head", nCell, "text", obj.GetCellProp("head", nCell, "text") + DESC_MARK);
+			if (nCell == 12) nCell = 1;			// 기존지부
+			else if (nCell == 13) nCell = 2;	// 기존관리번호
+			else if (nCell == 14) nCell = 3;	// 기존직능
+			else if (nCell == 15) nCell = 4;	// 기존 대상물명
+			else if (nCell == 16) nCell = 5;	// 신규지부
+			else if (nCell == 17) nCell = 6;	// 신규직능
+			else if (nCell == 6) nCell = 7;		// 신규대상물명
+			else if (nCell == 3) nCell = 8;		// 신청구분
+			else if (nCell == 7) nCell = 9;		// 성명
+			else if (nCell == 8) nCell = 10;	// 생년월일
+			else if (nCell == 9) nCell = 11;	// 처리일자
+			else if (nCell == 10) nCell = 12;	// 신청상태
+			else if (nCell == 4) nCell = 13;	// 주소1
+			else if (nCell == 5) nCell = 14;	// 주소2
+			mobj_Dataset.Sort(obj.GetCellProp("body", nCell, "colid") + ":D");
+		} else {
+			obj.SetCellProp("head", nCell, "text", obj.GetCellProp("head", nCell, "text") + ASC_MARK);
+			if (nCell == 12) nCell = 1;			// 기존지부
+			else if (nCell == 13) nCell = 2;	// 기존관리번호
+			else if (nCell == 14) nCell = 3;	// 기존직능
+			else if (nCell == 15) nCell = 4;	// 기존 대상물명
+			else if (nCell == 16) nCell = 5;	// 신규지부
+			else if (nCell == 17) nCell = 6;	// 신규직능
+			else if (nCell == 6) nCell = 7;		// 신규대상물명
+			else if (nCell == 3) nCell = 8;		// 신청구분
+			else if (nCell == 7) nCell = 9;		// 성명
+			else if (nCell == 8) nCell = 10;	// 생년월일
+			else if (nCell == 9) nCell = 11;	// 처리일자
+			else if (nCell == 10) nCell = 12;	// 신청상태
+			else if (nCell == 4) nCell = 13;	// 주소1
+			else if (nCell == 5) nCell = 14;	// 주소2
+			mobj_Dataset.Sort(obj.GetCellProp("body", nCell, "colid") + ":A");
+		}
+	
+		SetWaitCursor(false);
+	}
+}
+
+
+function frmcust0030MInetCustomerManagement_OnTimer(obj,nEventID)
+{
+	aa--;
+	edTimer.Text = aa;
+	if(aa == 0) {
+		aa = 600;
+		lfn_Search(obj); 
+		//alert(medTotalCnt.text + "    " + oldTotalCnt);
+		//이쪽에 리로드하는 스크립트를 적용하시면 될꺼 같습니다.
+		if (medTotalCnt.Text <> oldTotalCnt) {
+		
+			alert("선임신규변경이 추가 신청되었습니다.");
+		
+		}
+		oldTotalCnt = medTotalCnt.Text;
+	}
+
+
+}
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_1000,dsc_0003]";	// 개인정보접속기록 시스템ID  
+}
+]]></Script>
+</Window>

@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="712" Id="frmtraining0290MTrainingJubsuBookPrint" Left="8" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="강습접수교재수령등기등록" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1000" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioBook"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iExcelLoad">
+				<Contents>
+					<colinfo id="COL01" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL02" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL03" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL04" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL05" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL06" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL07" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL08" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL09" size="256" summ="default" type="STRING"/>
+					<colinfo id="COL10" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSeq">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSMSTempList"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSMSList"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oBatchSendSeq"></Dataset>
+		</Datasets>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="1" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="272">
+			<Contents></Contents>
+		</Div>
+		<Shape Bottom="102" Height="28" Id="Shape1" Left="836" LineColor="user14" Right="991" TabOrder="6" Top="74" Type="Rectangle" Width="155"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnExcelUpload" ImageID="BTN_TEXT_10" Left="842" OnClick="btnExcelUpload_OnClick" Style="sty_Button" TabOrder="2" Text="①엑셀&#32;자료&#32;불러오기" ToolTipText="출력" Top="77" Width="145"></Button>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medUploadCnt" Left="148" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="3" Top="78" UserData="S" Width="88"></MaskEdit>
+		<Static Align="Center" Height="20" Id="Static14" Left="8" Style="sty_LabelGruopBox" TabOrder="5" Text="교재발송명단&#32;등기정보&#32;엑셀&#32;업로드" Top="55" VAlign="Middle" Width="240"></Static>
+		<Static Align="Center" Height="20" Id="Static0" Left="8" Style="sty_LabelStat" TabOrder="4" Text="엑셀&#32;업로드&#32;건수&#32;:" Top="78" VAlign="Middle" Width="135"></Static>
+		<Shape Bottom="33" Height="31" Id="shpBtnBox" Left="720" LineColor="user14" Right="992" TabOrder="9" Top="2" Type="Rectangle" Width="272"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="816" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="7" ToolTipText="화면&#32;출력" Top="6" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="904" OnClick="lfn_End" Style="sty_Button" TabOrder="8" ToolTipText="닫기" Top="6" Width="85"></Button>
+		<Shape Bottom="337" Height="28" Id="Shape0" Left="621" LineColor="user14" Right="994" TabOrder="11" Top="309" Type="Rectangle" Width="373"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnDataCheck" ImageID="BTN_TEXT_08" Left="627" OnClick="btnDataCheck_OnClick" Style="sty_Button" TabOrder="10" Text="②자료&#32;확인&#32;하기" ToolTipText="출력" Top="312" Width="124"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnResult" ImageID="BTN_TEXT_08" Left="749" OnClick="btnResult_OnClick" Style="sty_Button" TabOrder="12" Text="③등기정보&#32;반영" ToolTipText="출력" Top="312" Width="124"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="728" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="13" ToolTipText="입력&#32;초기화" Top="6" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="Static1" Left="12" Style="sty_LabelStat" TabOrder="15" Text="자료&#32;확인&#32;건수&#32;:" Top="318" VAlign="Middle" Width="135"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medSelectCnt" Left="152" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="14" Top="318" UserData="S" Width="88"></MaskEdit>
+		<Grid BindDataset="ds_ioBook" BkColor2="user2" BkSelColor="user3" BoldHead="true" Bottom="704" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Height="360" Id="grdBook" InputPanel="FALSE" Left="8" LineColor="default" OnHeadClick="grdBook_OnHeadClick" Right="992" RowHeight="20" Style="sty_Grid" TabOrder="16" TabStop="true" Top="344" UseDBuff="true" UsePopupMenu="true" UserData="교재수령지&#32;등기확인" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="984">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="29"/>
+						<col width="32"/>
+						<col width="102"/>
+						<col width="33"/>
+						<col width="80"/>
+						<col width="60"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="100"/>
+						<col width="112"/>
+						<col width="120"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="0"/>
+						<col width="114"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="checkbox" edit="checkbox"/>
+						<cell col="1" display="text" text="순번"/>
+						<cell col="2" display="text" text="등기번호"/>
+						<cell align="center" col="3" display="text" text="상태"/>
+						<cell col="4" display="text" text="배달우체국"/>
+						<cell align="center" col="5" display="text" text="수취인명"/>
+						<cell align="center" col="6" display="text" text="우편번호"/>
+						<cell align="center" col="7" display="text" text="수취인주소"/>
+						<cell align="center" col="8" display="text" text="상세주소"/>
+						<cell align="center" col="9" display="text" text="전화번호"/>
+						<cell align="center" col="10" display="text" text="상품명"/>
+						<cell align="center" col="11" display="text" text="공급지"/>
+						<cell bkcolor="user4" col="12" display="text" text="접수여부"/>
+						<cell bkcolor="user4" col="13" display="text" text="접수회차"/>
+						<cell bkcolor="user4" col="14" display="text" text="접수번호"/>
+						<cell bkcolor="user3" col="15" display="text" text="강습회차관리번호"/>
+						<cell bkcolor="user4" col="16" display="text" text="등록된등기번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SEL" display="expr:iif(REGYN==&apos;Y&apos;,&apos;checkbox&apos;,&apos;null&apos;)" edit="expr:iif(REGYN==&apos;Y&apos;,&apos;checkbox&apos;,&apos;none&apos;)"/>
+						<cell align="center" col="1" colid="TBPSEQ" display="normal"/>
+						<cell align="left" col="2" colid="TBPCOL1" display="normal"/>
+						<cell align="left" col="3" colid="TBPCOL2" display="normal"/>
+						<cell align="left" col="4" colid="TBPCOL3" display="normal"/>
+						<cell align="left" col="5" colid="TBPCOL4" display="normal"/>
+						<cell align="left" col="6" colid="TBPCOL5" display="text"/>
+						<cell align="left" col="7" colid="TBPCOL6" display="text"/>
+						<cell align="left" col="8" colid="TBPCOL7" display="text"/>
+						<cell align="left" col="9" colid="TBPCOL8" display="text"/>
+						<cell align="left" col="10" colid="TBPCOL9" display="text"/>
+						<cell align="left" col="11" colid="TBPCOL10" display="text"/>
+						<cell align="center" col="12" colid="REGYN" display="text"/>
+						<cell align="center" col="13" colid="TOTRAININGORDER" display="text"/>
+						<cell align="center" col="14" colid="TOHJUBSUNO" display="text"/>
+						<cell align="center" col="15" colid="TOMGNO" display="text"/>
+						<cell align="center" col="16" colid="TJBOOKREGNO" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<FileDialog Bottom="752" Filter="Excel&#32;File(*.xls)|*.xls|All(*.*)|*.*|" Height="24" Id="fdImport" Left="8" Right="32" TabOrder="18" Top="728" Width="24"></FileDialog>
+		<Static Align="Center" BKColor="user36" BorderColor="user0" Height="20" Id="lbTBPMGNO" Left="1008" Style="sty_Label" TabOrder="18" Text="TBPMGNO" Top="312" VAlign="Middle" Width="87"></Static>
+		<Edit Height="20" Id="edTBPMGNO" Left="1008" TabOrder="17" Top="336" Width="86"></Edit>
+		<Button Height="21" Id="btnSearchMgno" Left="1008" OnClick="btnSearchMgno_OnClick" TabOrder="19" Text="btnSearchMgno" Top="359" Width="104"></Button>
+		<Shape Bottom="68" Height="28" Id="Shape2" Left="836" LineColor="user14" Right="991" TabOrder="21" Top="40" Type="Rectangle" Width="155"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnHistory" ImageID="BTN_TEXT_10" Left="842" OnClick="btnHistory_OnClick" Style="sty_Button" TabOrder="20" Text="이력&#32;확인" ToolTipText="출력" Top="43" Width="145"></Button>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_iExcelLoad" BkColor2="user2" BkSelColor="user3" BoldHead="true" Bottom="305" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadHeight="20" Height="200" Id="Grid0" InputPanel="FALSE" Left="8" LineColor="default" Right="992" RowHeight="20" Style="sty_Grid" TabOrder="22" TabStop="true" Top="105" UseDBuff="true" UsePopupMenu="true" UserData="교재수령지엑셀업로드" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="984">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="34"/>
+						<col width="104"/>
+						<col width="37"/>
+						<col width="84"/>
+						<col width="60"/>
+						<col width="61"/>
+						<col width="84"/>
+						<col width="78"/>
+						<col width="117"/>
+						<col width="174"/>
+						<col width="129"/>
+					</columns>
+					<head>
+						<cell col="0" display="text"/>
+						<cell col="1" display="text" text="순번"/>
+						<cell col="2" display="text" text="등기번호"/>
+						<cell align="center" col="3" display="text" text="상태"/>
+						<cell col="4" display="text" text="배달우체국"/>
+						<cell align="center" col="5" display="text" text="수취인명"/>
+						<cell align="center" col="6" display="text" text="우편번호"/>
+						<cell align="center" col="7" display="text" text="수취인주소"/>
+						<cell align="center" col="8" display="text" text="상세주소"/>
+						<cell align="center" col="9" display="text" text="전화번호"/>
+						<cell align="center" col="10" display="text" text="상품명"/>
+						<cell align="center" col="11" display="text" text="공급지"/>
+					</head>
+					<body>
+						<cell col="0" display="text"/>
+						<cell align="center" col="1" display="text" edit="normal" expr="row&#32;+&#32;1"/>
+						<cell align="left" col="2" colid="COL01" display="normal"/>
+						<cell align="left" col="3" colid="COL02" display="normal"/>
+						<cell align="left" col="4" colid="COL03" display="normal"/>
+						<cell align="left" col="5" colid="COL04" display="normal"/>
+						<cell align="left" col="6" colid="COL05" display="normal"/>
+						<cell align="left" col="7" colid="COL06" display="normal"/>
+						<cell align="left" col="8" colid="COL07" display="normal"/>
+						<cell align="left" col="9" colid="COL08" display="normal"/>
+						<cell align="left" col="10" colid="COL09" display="normal"/>
+						<cell align="left" col="11" colid="COL10" display="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSmsSend" ImageID="BTN_TEXT_08" Left="870" OnClick="btnSmsSend_OnClick" Style="sty_Button" TabOrder="23" Text="문자메시지발송" ToolTipText="엑셀로&#32;저장" Top="312" Width="121"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0290MTrainingJubsuBookPrint.xml
+ * 설명 : 강습접수교재수령등기등록
+ * 작성일 : 2023.09.
+ * 작성자 : 
+ */
+
+
+#include "LIB::training.js"; // 공통업무 관련
+
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+
+    
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    
+    var ls_FormId = split(sFormUrl, "::");
+		ls_FormId = split(ls_FormId[1], ".");
+    
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+    gfn_MakeRequiredInputMark(this); 	 // 필수 입력란을 설정한다.
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        //lfn_SetFormAuth(true); // 저장 권한
+    } 
+    else if (ms_FormAuth == "R") {
+        //lfn_SetFormAuth(false); // 읽기 권한
+    } 
+    else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+    
+	// 시스템관리자만  보이도록 설정
+	if (gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "SM") {
+		lbTBPMGNO.Visible = true;
+		edTBPMGNO.Visible = true;
+		btnSearchMgno.Visible = true;
+	}else{
+		lbTBPMGNO.Visible = false;
+		edTBPMGNO.Visible = false;
+		btnSearchMgno.Visible = false;
+	}
+	
+	//화면 초기화 
+	lfn_Cancel();
+
+	
+}
+
+function Form_OnUnloadCompleted(obj)
+{
+	
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+
+
+
+/*
+ * 기능  : 엑셀 자료 불러오기
+ */
+
+
+function btnExcelUpload_OnClick(obj)
+{
+
+	if (!Confirm("교재발송명단 등기정보 자료를 불러 오시겠습니까?")) {
+		return;
+	}
+		
+    ds_iExcelLoad.ClearData();
+    medUploadCnt.Value = ""; 
+    
+   //////////////////////////////////////////////////////////////////////////   
+	
+	fdImport.Type = "OPEN";
+    fdImport.Filter = "Excel(.xlsx)|*.xlsx|";
+    var result = fdImport.Open("C:\\");
+    
+    if (result) {        
+        var ls_FilePath = fdImport.FilePath + '\\' + fdImport.FileName;
+        ds_iExcelLoad.ClearData();
+        ext_ExcelImportByIndex(ls_FilePath, 0,"ds_iExcelLoad");
+        ds_iExcelLoad.DeleteRow(0); //첫번째로우 삭제
+    } else {
+        return;
+    }
+   //////////////////////////////////////////////////////////////////////////   
+    
+    medUploadCnt.text = ds_iExcelLoad.count();
+    
+    ds_iExcelLoad.AddColumn("SEQ"); //순번 컬럼 추가 
+    for (var i = 0; i < ds_iExcelLoad.GetRowCount(); i++) { 
+		ds_iExcelLoad.SetColumn(i,"SEQ",i+1);
+    }    
+    gfn_Alert("자료 불러오기가 완료 되었습니다."); 
+    
+    // ②자료 확인 하기 활성화 
+	btnDataCheck.Enable = true;
+}
+
+
+function btnExcelUpload_OnClickback(obj)
+{	
+    ds_ioBookUpload.ClearData();
+    medUploadCnt.Value = ""; 
+    
+   //////////////////////////////////////////////////////////////////////////
+    fdImport.Type = "OPEN";
+    fdImport.Filter = "Excel(.xls)|*.xls|*.xlsx|";
+    var result = fdImport.Open("C:\\");
+    
+    if (result) {
+        if (!Confirm("교재발송명단 등기정보 자료를 불러 오시겠습니까?")) {
+			return;
+		}
+        
+        var ls_FilePath = fdImport.FilePath + '\\' + fdImport.FileName;
+        ds_ioBookUpload.ClearData();
+        ext_ExcelImportByIndex(ls_FilePath, 0,"ds_ioBookUpload");
+        
+        for(i = 0; i < toNumber(edStartRow.Text)-1; i++) {
+            ds_ioBookUpload.DeleteRow(0); //지정한 row번째 만큼 삭제, 자료 시작점 찾기 위해 
+        }
+               
+    } else {
+        return;
+    }
+    
+    medUploadCnt.text = ds_ioBookUpload.count();
+    gfn_Alert("자료 불러오기가 완료 되었습니다."); 
+}
+
+    
+/*
+ * 기능 : 자료 확인 하기
+ */
+function btnDataCheck_OnClick(obj)
+{    
+    if (ds_iExcelLoad.GetRowCount() < 1) {
+        gfn_Alert("처리 할 데이터가 존재하지 않습니다.");
+        return;
+    }
+    
+    if (!Confirm("자료 확인을 시작하시겠습니까? (약간의 시간이 소요됩니다.)")) {
+        return false;
+	}	
+	
+	// ①엑셀 자료 불러오기 비활성화 
+	btnExcelUpload.Enable = false;
+    // ②자료 확인 하기 비활성화 
+	btnDataCheck.Enable = false;
+	
+	ds_oSeq.ClearData();
+	tit_clearActionInfo();
+	tit_AddCsvSearchActionInfo("training:searchTraingBookPostSeq", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oSeq=ds_oSeq"	// outDs
+		,""	// args 
+		,""
+		,false
+		,true
+		,true
+	);
+	
+	if( ds_oSeq.GetRowCount() < 1 || gfn_isNull(ds_oSeq.GetColumn(0,"SEQ")) ) {
+        gfn_Alert("자료등록 시 오류가 발생하였습니다.");
+        return;
+	}	
+	
+	edTBPMGNO.Text = ds_oSeq.GetColumn(0, "SEQ");
+ 
+	//trace(ds_iExcelLoad.SaveXML());	 
+	//trace(ds_oSeq.SaveXML());
+	
+	// 1)  테이블 등록 
+    tit_clearActionInfo();
+    tit_AddMultiActionInfo(
+        "training:insertTrainingJubsuBookPrint"	// insert  		
+        , ""	// update  
+        , ""	// delete
+        , ""	// flag column 명
+        , ""	// key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N"	// 실행타입
+    );
+	// 서버 호출 
+	tit_callService( 
+		""
+		,""
+		,"ds_iExcelLoad=ds_iExcelLoad:U"	// inDs
+        ,""	// outDs	   
+        ,"V_TBPMGNO=" + ds_oSeq.GetColumn(0, "SEQ")         // args 
+        ,"lfn_AftertInsert"
+        ,false
+	);	
+	
+}
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용 
+ * Return : 없음
+ */
+function lfn_AftertInsert(nErrorCode, strErrorMsg) {
+	if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        
+		// ②자료 확인 하기 활성화 
+		btnDataCheck.Enable = true;
+	
+        return;
+    }  
+    
+	// 2) 업로드 정보 조회 
+	//trace(ds_iExcelLoadResult.SaveXML());			
+	lfnSearchBookPrint() ;
+	
+	if(ds_ioBook.GetRowCount() > 0){
+		// ③등기정보 반영 활성화 
+		btnResult.Enable = true;
+	}
+	 
+}
+
+/*
+ * 기능 : 자료 확인 후 조회 , 등기 등록 후 조회 
+ * Return : 없음
+ */
+
+function lfnSearchBookPrint(){
+	
+	ds_ioBook.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	tit_addSearchActionInfo("training:searchTrainingJubsuBookPrint", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioBook=ds_ioBook"	// outDs
+        ,"V_TBPMGNO=" + edTBPMGNO.Text        // args 
+		,""
+		,false		
+		,false
+		,true
+	);
+	
+	medSelectCnt.Text = ds_ioBook.count();
+	
+	// 문자발송 활성화 
+	btnSmsSend.Enable = true;
+	
+}
+
+/*
+ * 기능 : 등기정보 반영
+ */
+function btnResult_OnClick(obj)
+{
+	if(ds_ioBook.GetRowCount() < 1){     
+        gfn_Alert("처리 할 자료가 존재하지 않습니다.");  
+        return false;
+    }        
+    
+	if(!gfn_CheckChangedGrid(this)){     
+		gfn_Alert("처리 할 자료를 선택해 주십시오.");      
+        return false;
+    }      
+    
+	// ③등기정보 반영 활성화 
+	btnResult.Enable = false;
+	
+    tit_clearActionInfo();
+	tit_addMultiActionInfo("training:updateTrainingJubsuBookPrint", "", 0, "", "N");
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,"ds_ioBook=ds_ioBook:U"	// inDs
+		,""	// outDs
+		,""	// args 
+		,"lfn_AfterUpdateTrainingBook"
+		,false
+	);
+
+}
+ 
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용 
+ * Return : 없음
+ */
+function lfn_AfterUpdateTrainingBook(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        
+		// ③등기정보 반영 활성화 
+		btnResult.Enable = true;
+        return;
+    }   
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.   
+    
+
+	// 3) 화면에 재 조회  
+	lfnSearchBookPrint();
+	
+	/*
+	if (gfn_Confirm("등기정보 반영 내역을 문자메시지로 전송 하시겠습니까?")) {	
+		lfn_Send("");           
+
+	}else{
+		// 3) 화면에 재 조회  
+		lfnSearchBookPrint();
+    
+	} 
+	*/
+			
+    
+}
+
+function btnSmsSend_OnClick(obj)
+{    
+	
+	if(ds_ioBook.GetRowCount() < 1){     
+        gfn_Alert("처리 할 자료가 존재하지 않습니다.");  
+        return false;
+    }        
+    
+	if(!gfn_CheckChangedGrid(this)){     
+		gfn_Alert("처리 할 자료를 선택해 주십시오.");      
+        return false;
+    }  
+    
+	if (!Confirm("선택한 대상자의 문자를 발송하시겠습니까?")) {
+		return;
+	}  
+    	
+	ds_ioSMSTempList.copy(ds_ioBook); 
+    ds_ioSMSTempList.Filter("SEL= '1'");    // 선택한것만 걸러줌
+    ds_ioSMSList.copyf(ds_ioSMSTempList);   // 선택한것을 복사 담음   
+   	sBSCNT = ds_ioSMSList.rowcount ;
+
+	//등기번호 없는 자료 확인 
+    for(i = 0; i < ds_ioSMSList.RowCount(); i++) { 
+		if (gfn_isNull(ds_ioSMSList.GetColumn(i,"TJBOOKREGNO"))) {		
+			gfn_Alert("등기번호 없는 자료가 선택되었습니다.");      
+			return false;
+		}
+    }
+    
+	var sMSENDDATE = "";
+	var sMBSMGNO = "";
+	var sMBCCD = "131" ;  // --업무구분 
+	var sReplyNumber = mid(gfn_GetNumber(gds_oUserInfo.GetColumn(0, "TEL")), 0, 10);  
+	
+    for(i = 0; i < ds_ioSMSList.RowCount(); i++) {
+		var vMRECVNM = ds_ioSMSList.GetColumn(i,"MRECVNM");
+		var vTCCOURSENM = ds_ioSMSList.GetColumn(i,"TCCOURSENM");
+		var vTJDATE = ds_ioSMSList.GetColumn(i,"TJDATE");
+		var vTJJIBUNM = ds_ioSMSList.GetColumn(i,"TJJIBUNM");
+		var vTJBOOKREGNO = ds_ioSMSList.GetColumn(i,"TJBOOKREGNO");
+		 
+		var vMsg = "[한국소방안전원] 온라인 강습교재 발송 안내\n"+
+				   "\n"+
+				   "● 안내사항\n"+
+				   " - 한국소방안전원 온라인 강습교육 교재를 발송하였습니다.\n"+
+				   " - 교육 전일(휴일 제외)까지 교재가 도착하지 않은 경우에 교육신청 지부로 연락바랍니다.\n"+
+				   "\n"+
+				   "● 수 강 자 : " + vMRECVNM+"\n"+
+				   "● 교육과정 : " + vTCCOURSENM+"\n"+
+				   "● 교육일자 : " + vTJDATE+"\n"+
+				   "● 교육지부 : " + vTJJIBUNM+"\n"+
+				   "\n"+
+				   "● 등기번호 : " + vTJBOOKREGNO ;
+				   
+		ds_ioSMSList.SetColumn(i,"MMSG",vMsg);		
+    }
+    
+	//trace("ds_ioSMSList : " + ds_ioSMSList.SaveXML());
+	
+	//return; 
+    
+	// MBSMGNO 관리번호 추출 및 BATCHSEND INSERT 
+	ds_oBatchSendSeq.ClearData(); // 데이타셋 초기화    tit_clearActionInfo();
+	tit_addSingleActionInfo("com:insertKTSMSBatchSendSeq", "", 0, "");
+    // 서버 호출    tit_callService(        ""        , ""        , "" // inDs        , "ds_oBatchSendSeq=ds_oBatchSendSeq" // outDs        , "GTMGNO=" + quote(gds_oUserInfo.GetColumn(0, "PDEPTCD"))	// -- 지부
+          + " MBCCD=" + quote(sMBCCD)			// --업무구분
+          + " MSENDDATE=" + quote( left(getDate(),14))					// -- 발송일시
+          + " BSCNT=" + quote(sBSCNT)					// --발송건수
+          + " MREGSABUN=" + quote(gds_oUserInfo.GetColumn(0, "PSABUN")) // -- 사번        , ""        ,false        ,false        ,true    );
+	
+	// 일괄발송 관리번호
+	sMBSMGNO = ds_oBatchSendSeq.GetColumn(0, "O_BSMGNO");
+		
+	tit_clearActionInfo();
+	tit_AddMultiActionInfo(			"com:insertKTSMSSendBatch"	// insert  			, ""	// update  			, ""	// delete			, ""	// flag column 명			, ""	// key sql id			, 0	// key 증가 값			, "" 			, 0 			, "N"	// 실행타입		); 
+	// 서버 호출 	tit_callService(		""		,""		,"ds_iSms=ds_ioSMSList"// inDs		,""	// outDs		, "MBCCD=" + quote(sMBCCD)					// --업무구분
+		   +" MBSMGNO=" + quote(sMBSMGNO)	// --일괄발송MGNO(BATCHSEND.BSMGNO)
+		   +" MSENDTYPE=" + quote("0")		// --발송구분(0:즉시,1:예약)
+		   +" MSENDDATE=" + quote(sMSENDDATE) // --발송(예정)시간
+		   +" MCALLBACK=" + quote(sReplyNumber) 	// -- 송신자전화번호
+		   +" MTITLE=" + quote("한국소방안전원")		// -- 제목           //+" MMSG=" + quote("") 			// -- 문자메시지           +" MREGSABUN=" + quote(gds_oUserInfo.GetColumn(0, "PSABUN")) // -- 사번 // args
+		,"lfn_AfterSaveSms"		,false	);	
+	
+    
+    
+}
+
+
+function lfn_AfterSaveSms(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+	gfn_Alert("정상적으로 발송되었습니다."); 
+
+	// 3) 화면에 재 조회  
+	//lfnSearchBookPrint();
+		
+}
+
+
+function grdBook_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	
+	var lobj_Dataset = object(obj.BindDataset);
+
+	if (nCell == 0) { // 선택
+
+        if (obj.GetCellProp("head", nCell, "text") == 1) { // 전체가 이미 선택된 경우
+
+            obj.SetCellProp("head", nCell, "text", 0);
+
+            for(i = 0; i < lobj_Dataset.RowCount(); i++) {
+				if (lobj_Dataset.GetColumn(i, "REGYN") != "Y") {
+                    continue;
+                }
+
+                lobj_Dataset.SetColumn(i, "SEL", "0");
+
+            }
+
+        } else { // 전체가 이미 선택되지 않은 경우
+
+            obj.SetCellProp("head", nCell, "text", 1);
+
+            for(i = 0; i < lobj_Dataset.RowCount(); i++) {
+				if (lobj_Dataset.GetColumn(i, "REGYN") != "Y") {
+                    continue;
+                }
+                    
+                lobj_Dataset.SetColumn(i, "SEL", "1");
+
+            }
+
+        }
+
+	} else { // 헤드 정렬
+
+        lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex);
+
+	}
+}
+
+function btnHistory_OnClick(obj)
+{
+	
+	Dialog("training::frmtraining0291PBookPrintDetail.xml", "", 700, 450, "", -1, -1); 
+}
+
+/*
+ * 기능 : 초기화(F10)
+ */
+function lfn_Cancel(obj)
+{
+	ds_iExcelLoad.ClearData();
+	ds_ioBook.ClearData();
+	btnExcelUpload.Enable = true;
+	btnDataCheck.Enable = false;
+	btnResult.Enable = false;
+	btnSmsSend.Enable = false;
+		
+	medUploadCnt.Value = "";
+	medSelectCnt.Value = "";
+	edTBPMGNO.text = "";
+
+}
+
+// ---------------------------------------------------------
+function btnSearchMgno_OnClick(obj)
+{
+	
+	ds_ioBook.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	tit_addSearchActionInfo("training:searchTrainingJubsuBookPrint", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioBook=ds_ioBook"	// outDs
+        ,"V_TBPMGNO=" + quote(edTBPMGNO.Text)     // args 
+		,""
+		,false		
+		,false
+		,true
+	);
+	
+	medSelectCnt.Text = ds_ioBook.count();
+	
+	// ③등기정보 반영 활성화 
+	btnResult.Enable = true;
+	btnSmsSend.Enable = true;
+}
+
+
+]]></Script>
+</Window>

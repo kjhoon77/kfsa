@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="392" Id="frmsys0094MHistoryWorkGubun" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="업무명&#32;목록" Top="8" Ver="1.0" Width="520" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioWorkList">
+				<Contents>
+					<colinfo id="SHGUBUN" size="1" type="STRING"/>
+					<colinfo id="SHMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="SHPROCDATE" size="7" type="DATE"/>
+					<colinfo id="SHPROCIP" size="20" type="STRING"/>
+					<colinfo id="SHPROCSABUN" size="8" type="STRING"/>
+					<colinfo id="SHWHERE" size="1000" type="STRING"/>
+					<colinfo id="SHWORKGUBUN" size="100" type="STRING"/>
+					<colinfo id="SHWORKGUBUNNM" size="50" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" BindDataset="ds_ioWorkList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="384" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="352" Id="gdSearchHistory" InputPanel="FALSE" Left="1" LineColor="default" OnCellDBLClick="gdSearchHistory_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="513" RowHeight="20" Style="sty_Grid" TabOrder="1" TabStop="true" Top="32" UseDBuff="true" UsePopupMenu="true" UserData="사용자정보목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="512">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="74"/>
+						<col width="413"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="업무명"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="row+1"/>
+						<cell col="1" colid="WORKNM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="419" LineColor="user14" Right="511" TabOrder="3" Top="1" Type="Rectangle" Width="92"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="423" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmsys0094MHistoryWorkGubun.xml
+ * 설명 : 조회출력 이력 업무명
+ * 작성일 : 2010.07.06
+ * 작성자 : 김민호
+ */
+
+#include "LIB::sys.js"; // 공통업무 관련
+
+// 파라미터 값
+var sGubun = "";  // 접근 구분
+var sDept = "";  // 부서
+var sSabun = "";  // 사용자
+var sPrtGubun = "";  // 구분
+var sSdate = "";  // 시작일 
+var sEdate = "";  // 종료일
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+   
+    ms_FormAuth = gfn_GetFormAuth(this); // 사용자정보을 조회한다.
+    if (ms_FormAuth == "W") { // 사용자정보에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 사용자정보
+    } else {
+        lfn_SetFormAuth(false); // 읽기 사용자정보
+    }
+    
+    // 업무정보조회
+    lfn_WorkSearch();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdSearchHistory.Height = nCy - gdSearchHistory.Top - 4;
+        gdSearchHistory.Width = nCx - gdSearchHistory.Left - 4;
+    }
+}
+
+/*
+ * 기능 : 업무정보 조회
+ */
+function lfn_WorkSearch(obj) {
+
+    ds_ioWorkList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("sys:search0094WorkList", false);
+	
+	
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioWorkList=ds_ioWorkList"	// outDs
+		,"GUBUN="+quote(sGubun)
+			+ " DEPT="+quote(sDept)
+			+ " SABUN="+quote(sSabun)
+			+ " PGUBUN="+quote(sPrtGubun)
+			+ " SDATE="+quote(sSdate)
+			+ " EDATE="+quote(sEdate)
+		,"lfn_AfterDeptSearch"
+		,false
+	);
+}
+
+/*
+ * 기능 : 업무정보 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterDeptSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+
+function gdSearchHistory_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	close(ds_ioWorkList.GetColumn(nRow,"WORKNM"));
+}
+
+]]></Script>
+</Window>
