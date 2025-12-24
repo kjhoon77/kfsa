@@ -37,6 +37,9 @@ const menuItems: MenuItemData[] = [
         children: [
             { id: 'agent-search', title: '업무대행업체 검색 (Pilot)', path: '/cust/agent-info-list' },
             { id: 'cust-mgmt', title: '고객정보 관리', path: '/cust/customer-management' },
+            { id: 'edu-jubsu-mgmt', title: '실무교육접수관리', path: '/cust/edu-jubsu-management' },
+            { id: 'cust-fee-mgmt', title: '회비/교육비 정보관리', path: '/cust/customer-fee-management' },
+            { id: 'data-conn-mgmt', title: '데이터연계관리', path: '/cust/data-connection-management' },
         ]
     },
     {

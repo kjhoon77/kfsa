@@ -12,13 +12,16 @@ import ReportManagement from './modules/report/ReportManagement';
 import AppointManagement from './modules/appoint/AppointManagement';
 import PosEtcManagement from './modules/posetc/PosEtcManagement';
 import OtherIncomeManagement from './modules/otherincome/OtherIncomeManagement';
-import LocalSvcManagement from './modules/localsvc/LocalSvcManagement';
+import LocalServiceManagement from './modules/local-svc/LocalServiceManagement';
 import TrainingManagement from './modules/training/TrainingManagement';
 import SysManagement from './modules/sys/SysManagement';
 import SpclEduManagement from './modules/spcledu/SpclEduManagement';
 import Report30Management from './modules/report30/Report30Management';
 import MainLayout from './layouts/MainLayout';
 import { Typography } from '@mui/material';
+import EduJubsuManagement from './modules/cust/edu/EduJubsuManagement';
+import CustomerFeeManagement from './modules/cust/fee/CustomerFeeManagement';
+import DataConnectionManagement from './modules/cust/data/DataConnectionManagement';
 
 // Wrapper to allow MainLayout to be used as a Layout Route
 const AppLayout = () => {
@@ -50,6 +53,9 @@ function App() {
             <Route path="/" element={<HomeContent />} />
             <Route path="/cust/agent-info-list" element={<AgentInfoList />} />
             <Route path="/cust/customer-management" element={<CustomerManagement />} />
+            <Route path="/cust/edu-jubsu-management" element={<EduJubsuManagement />} />
+            <Route path="/cust/customer-fee-management" element={<CustomerFeeManagement />} />
+            <Route path="/cust/data-connection-management" element={<DataConnectionManagement />} />
             <Route path="/mem/management" element={<MemberManagement />} />
             <Route path="/profes/management" element={<ProfessorManagement />} />
             <Route path="/item/management" element={<ItemManagement />} />
@@ -58,7 +64,7 @@ function App() {
             <Route path="/appoint/management" element={<AppointManagement />} />
             <Route path="/posetc/management" element={<PosEtcManagement />} />
             <Route path="/otherincome/management" element={<OtherIncomeManagement />} />
-            <Route path="/localsvc/management" element={<LocalSvcManagement />} />
+            <Route path="/localsvc/management" element={<LocalServiceManagement />} />
             <Route path="/training/management" element={<TrainingManagement />} />
             <Route path="/sys/management" element={<SysManagement />} />
             <Route path="/spcledu/management" element={<SpclEduManagement />} />
