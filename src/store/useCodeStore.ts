@@ -72,6 +72,26 @@ async function fetchMockCodes(groupCode: string): Promise<CodeItem[]> {
           { code: '001', name: '한국은행', groupCode: 'BANK_CODE', orderSeq: 1, useYn: 'Y' },
           { code: '004', name: '국민은행', groupCode: 'BANK_CODE', orderSeq: 2, useYn: 'Y' },
         ]);
+      } else if (groupCode === 'REGION') {
+        resolve([
+          { code: '01', name: '서울', groupCode: 'REGION', orderSeq: 1, useYn: 'Y' },
+          { code: '02', name: '부산', groupCode: 'REGION', orderSeq: 2, useYn: 'Y' },
+          { code: '03', name: '대구', groupCode: 'REGION', orderSeq: 3, useYn: 'Y' },
+          { code: '04', name: '인천', groupCode: 'REGION', orderSeq: 4, useYn: 'Y' },
+          { code: '08', name: '경기', groupCode: 'REGION', orderSeq: 8, useYn: 'Y' },
+        ]);
+      } else if (groupCode === 'JIBU') {
+        resolve([
+          { code: '01', name: '서울지부', groupCode: 'JIBU', orderSeq: 1, useYn: 'Y' },
+          { code: '02', name: '부산지부', groupCode: 'JIBU', orderSeq: 2, useYn: 'Y' },
+          { code: '08', name: '경기지부', groupCode: 'JIBU', orderSeq: 3, useYn: 'Y' },
+        ]);
+      } else if (groupCode === 'JOB_TYPE') { // 직능 (Course Type)
+        resolve([
+          { code: '10', name: '소방안전관리자', groupCode: 'JOB_TYPE', orderSeq: 1, useYn: 'Y' },
+          { code: '20', name: '소방안전관리보조자', groupCode: 'JOB_TYPE', orderSeq: 2, useYn: 'Y' },
+          { code: '30', name: '위험물안전관리자', groupCode: 'JOB_TYPE', orderSeq: 3, useYn: 'Y' },
+        ]);
       } else {
         resolve([]);
       }

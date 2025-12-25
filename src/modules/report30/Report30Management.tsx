@@ -2,7 +2,6 @@ import { Box, Button, Grid, TextField } from '@mui/material';
 import { DataGrid, type GridColDef } from '@mui/x-data-grid';
 import PageContainer from '../../components/PageContainer';
 import SearchIcon from '@mui/icons-material/Search';
-import DescriptionIcon from '@mui/icons-material/Description';
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 100, align: 'center', headerAlign: 'center' },

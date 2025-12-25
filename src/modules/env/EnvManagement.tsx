@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
 import {
     Box,
     Button,
     Grid,
     Typography,
-    Paper,
-    Divider
+    Paper
 } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import type { GridColDef } from '@mui/x-data-grid';
@@ -34,8 +32,9 @@ const initialFavorites = [
 
 const EnvManagement = () => {
     // Stat for demonstration (not truly functional in this mockup without complex state/selection logic)
-    const [leftSelection, setLeftSelection] = useState<number[]>([]);
-    const [rightSelection, setRightSelection] = useState<number[]>([]);
+    // Stat for demonstration
+    // const [leftSelection, setLeftSelection] = useState<number[]>([]);
+    // const [rightSelection, setRightSelection] = useState<number[]>([]);
 
     return (
         <PageContainer title="즐겨찾기 관리" description="자주 사용하는 메뉴를 등록 및 관리">
@@ -48,7 +47,7 @@ const EnvManagement = () => {
 
             <Grid container spacing={2} sx={{ height: 600 }}>
                 {/* Left: All Menus */}
-                <Grid item xs={12} md={5.5}>
+                <Grid size={{ xs: 12, md: 5.5 }}>
                     <Paper sx={{ height: '100%', display: 'flex', flexDirection: 'column', p: 1 }}>
                         <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1, px: 1 }}>
                             전체 메뉴
@@ -60,7 +59,7 @@ const EnvManagement = () => {
                                 checkboxSelection
                                 density="compact"
                                 onRowSelectionModelChange={(newSelection) => {
-                                    setLeftSelection(newSelection as number[]);
+                                    console.log('Left selection:', newSelection);
                                 }}
                             />
                         </Box>
@@ -68,7 +67,7 @@ const EnvManagement = () => {
                 </Grid>
 
                 {/* Middle: Buttons */}
-                <Grid item xs={12} md={1} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 2 }}>
+                <Grid size={{ xs: 12, md: 1 }} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: 2 }}>
                     <Button variant="outlined" sx={{ minWidth: 0 }}>
                         <ArrowForwardIcon />
                     </Button>
@@ -78,7 +77,7 @@ const EnvManagement = () => {
                 </Grid>
 
                 {/* Right: Favorites */}
-                <Grid item xs={12} md={5.5}>
+                <Grid size={{ xs: 12, md: 5.5 }}>
                     <Paper sx={{ height: '100%', display: 'flex', flexDirection: 'column', p: 1 }}>
                         <Typography variant="subtitle1" fontWeight="bold" sx={{ mb: 1, px: 1 }}>
                             즐겨찾기 목록
@@ -90,7 +89,7 @@ const EnvManagement = () => {
                                 checkboxSelection
                                 density="compact"
                                 onRowSelectionModelChange={(newSelection) => {
-                                    setRightSelection(newSelection as number[]);
+                                    console.log('Right selection:', newSelection);
                                 }}
                             />
                         </Box>

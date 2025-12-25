@@ -2,6 +2,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { GlobalDialogProvider } from './context/GlobalDialogContext';
 import AgentInfoList from './modules/cust/AgentInfoList';
 import CustomerManagement from './modules/cust/CustomerManagement';
 import EnvManagement from './modules/env/EnvManagement';
@@ -48,30 +49,32 @@ function App() {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Routes>
-          <Route element={<AppLayout />}>
-            <Route path="/" element={<HomeContent />} />
-            <Route path="/cust/agent-info-list" element={<AgentInfoList />} />
-            <Route path="/cust/customer-management" element={<CustomerManagement />} />
-            <Route path="/cust/edu-jubsu-management" element={<EduJubsuManagement />} />
-            <Route path="/cust/customer-fee-management" element={<CustomerFeeManagement />} />
-            <Route path="/cust/data-connection-management" element={<DataConnectionManagement />} />
-            <Route path="/mem/management" element={<MemberManagement />} />
-            <Route path="/profes/management" element={<ProfessorManagement />} />
-            <Route path="/item/management" element={<ItemManagement />} />
-            <Route path="/env/management" element={<EnvManagement />} />
-            <Route path="/report/management" element={<ReportManagement />} />
-            <Route path="/appoint/management" element={<AppointManagement />} />
-            <Route path="/posetc/management" element={<PosEtcManagement />} />
-            <Route path="/otherincome/management" element={<OtherIncomeManagement />} />
-            <Route path="/localsvc/management" element={<LocalServiceManagement />} />
-            <Route path="/training/management" element={<TrainingManagement />} />
-            <Route path="/sys/management" element={<SysManagement />} />
-            <Route path="/spcledu/management" element={<SpclEduManagement />} />
-            <Route path="/report30/management" element={<Report30Management />} />
-          </Route>
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+        <GlobalDialogProvider>
+          <Routes>
+            <Route element={<AppLayout />}>
+              <Route path="/" element={<HomeContent />} />
+              <Route path="/cust/agent-info-list" element={<AgentInfoList />} />
+              <Route path="/cust/customer-management" element={<CustomerManagement />} />
+              <Route path="/cust/edu-jubsu-management" element={<EduJubsuManagement />} />
+              <Route path="/cust/customer-fee-management" element={<CustomerFeeManagement />} />
+              <Route path="/cust/data-connection-management" element={<DataConnectionManagement />} />
+              <Route path="/mem/management" element={<MemberManagement />} />
+              <Route path="/profes/management" element={<ProfessorManagement />} />
+              <Route path="/item/management" element={<ItemManagement />} />
+              <Route path="/env/management" element={<EnvManagement />} />
+              <Route path="/report/management" element={<ReportManagement />} />
+              <Route path="/appoint/management" element={<AppointManagement />} />
+              <Route path="/posetc/management" element={<PosEtcManagement />} />
+              <Route path="/otherincome/management" element={<OtherIncomeManagement />} />
+              <Route path="/localsvc/management" element={<LocalServiceManagement />} />
+              <Route path="/training/management" element={<TrainingManagement />} />
+              <Route path="/sys/management" element={<SysManagement />} />
+              <Route path="/spcledu/management" element={<SpclEduManagement />} />
+              <Route path="/report30/management" element={<Report30Management />} />
+            </Route>
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </GlobalDialogProvider>
       </ThemeProvider>
     </BrowserRouter>
   );

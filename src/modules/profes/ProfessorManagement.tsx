@@ -41,7 +41,8 @@ const ProfessorManagement = () => {
     const [profType, setProfType] = useState('ALL');
     const [tabValue, setTabValue] = useState(0);
 
-    const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
         setTabValue(newValue);
     };
 

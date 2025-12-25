@@ -84,7 +84,7 @@ const EduJubsuManagement = () => {
                     {/* Search Area */}
                     <Paper variant="outlined" sx={{ p: 2, mb: 2 }}>
                         <Grid container spacing={2} alignItems="center">
-                            <Grid xs={12} md={3}>
+                            <Grid size={{ xs: 12, md: 3 }}>
                                 <FormControl fullWidth size="small">
                                     <InputLabel>지부</InputLabel>
                                     <Select
@@ -98,13 +98,13 @@ const EduJubsuManagement = () => {
                                     </Select>
                                 </FormControl>
                             </Grid>
-                            <Grid xs={12} md={2}>
+                            <Grid size={{ xs: 12, md: 2 }}>
                                 <TextField fullWidth label="년도" size="small" defaultValue="2024" />
                             </Grid>
-                            <Grid xs={12} md={2}>
+                            <Grid size={{ xs: 12, md: 2 }}>
                                 <TextField fullWidth label="회차" size="small" />
                             </Grid>
-                            <Grid xs={12} md={3}>
+                            <Grid size={{ xs: 12, md: 3 }}>
                                 <TextField fullWidth label="성명/접수번호" size="small" />
                             </Grid>
                         </Grid>
@@ -113,7 +113,7 @@ const EduJubsuManagement = () => {
                     {/* Main Layout: Master List & Details */}
                     <Grid container spacing={2}>
                         {/* Left: Applicant List */}
-                        <Grid xs={12} md={5}>
+                        <Grid size={{ xs: 12, md: 5 }}>
                             <Typography variant="subtitle1" gutterBottom sx={{ mt: 1 }}>접수 목록</Typography>
                             <div style={{ height: 600, width: '100%' }}>
                                 <DataGrid
@@ -130,7 +130,7 @@ const EduJubsuManagement = () => {
                         </Grid>
 
                         {/* Right: Details & Tabs */}
-                        <Grid xs={12} md={7}>
+                        <Grid size={{ xs: 12, md: 7 }}>
                             <Typography variant="subtitle1" gutterBottom sx={{ mt: 1 }}>상세 정보</Typography>
                             <TabContext value={tabValue}>
                                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -144,28 +144,28 @@ const EduJubsuManagement = () => {
                                 {/* Tab 1: Applicant Info */}
                                 <TabPanel value="1" sx={{ p: 2 }}>
                                     <Grid container spacing={2}>
-                                        <Grid xs={12} md={6}>
+                                        <Grid size={{ xs: 12, md: 6 }}>
                                             <TextField fullWidth label="접수번호" size="small" defaultValue="240001" InputProps={{ readOnly: true }} />
                                         </Grid>
-                                        <Grid xs={12} md={6}>
+                                        <Grid size={{ xs: 12, md: 6 }}>
                                             <TextField fullWidth label="성명" size="small" defaultValue="홍길동" />
                                         </Grid>
-                                        <Grid xs={12} md={6}>
+                                        <Grid size={{ xs: 12, md: 6 }}>
                                             <TextField fullWidth label="생년월일" size="small" defaultValue="800101-1******" />
                                         </Grid>
-                                        <Grid xs={12} md={6}>
+                                        <Grid size={{ xs: 12, md: 6 }}>
                                             <TextField fullWidth label="휴대폰" size="small" defaultValue="010-1234-5678" />
                                         </Grid>
-                                        <Grid xs={12}>
+                                        <Grid size={{ xs: 12 }}>
                                             <TextField fullWidth label="주소" size="small" defaultValue="서울시 영등포구..." />
                                         </Grid>
-                                        <Grid xs={12}>
+                                        <Grid size={{ xs: 12 }}>
                                             <TextField fullWidth label="상세주소" size="small" defaultValue="101호" />
                                         </Grid>
-                                        <Grid xs={12} md={6}>
+                                        <Grid size={{ xs: 12, md: 6 }}>
                                             <TextField fullWidth label="이메일" size="small" defaultValue="hong@example.com" />
                                         </Grid>
-                                        <Grid xs={12} md={6}>
+                                        <Grid size={{ xs: 12, md: 6 }}>
                                             <FormControl fullWidth size="small">
                                                 <InputLabel>이수여부</InputLabel>
                                                 <Select value="Y" label="이수여부">
@@ -174,7 +174,7 @@ const EduJubsuManagement = () => {
                                                 </Select>
                                             </FormControl>
                                         </Grid>
-                                        <Grid xs={12}>
+                                        <Grid size={{ xs: 12 }}>
                                             <TextField fullWidth label="비고" multiline rows={3} size="small" />
                                         </Grid>
                                     </Grid>

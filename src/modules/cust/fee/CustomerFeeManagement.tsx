@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     Box,
     Grid,
@@ -30,13 +29,13 @@ const CustomerFeeManagement = () => {
     const feeColumns: GridColDef[] = [
         { field: 'year', headerName: '년도', width: 80 },
         { field: 'type', headerName: '구분', width: 100 },
-        { field: 'amount', headerName: '부과금액', width: 120, valueFormatter: (params) => params.value?.toLocaleString() },
-        { field: 'paid', headerName: '수납금액', width: 120, valueFormatter: (params) => params.value?.toLocaleString() },
-        { field: 'unpaid', headerName: '미납금액', width: 120, valueFormatter: (params) => params.value?.toLocaleString() },
+        { field: 'amount', headerName: '부과금액', width: 120, valueFormatter: (value: number) => value?.toLocaleString() },
+        { field: 'paid', headerName: '수납금액', width: 120, valueFormatter: (value: number) => value?.toLocaleString() },
+        { field: 'unpaid', headerName: '미납금액', width: 120, valueFormatter: (value: number) => value?.toLocaleString() },
         {
             field: 'status', headerName: '상태', width: 100, renderCell: (params) => (
                 <Chip
-                    label={params.value}
+                    label={params.value as string}
                     color={params.value === '완납' ? 'success' : 'error'}
                     size="small"
                 />
@@ -46,7 +45,7 @@ const CustomerFeeManagement = () => {
 
     const paymentColumns: GridColDef[] = [
         { field: 'date', headerName: '수납일자', width: 120 },
-        { field: 'amount', headerName: '금액', width: 120, valueFormatter: (params) => params.value?.toLocaleString() },
+        { field: 'amount', headerName: '금액', width: 120, valueFormatter: (value: number) => value?.toLocaleString() },
         { field: 'method', headerName: '수납방법', width: 100 },
         { field: 'approvalNo', headerName: '승인번호', width: 150 },
         { field: 'worker', headerName: '수납자', width: 100 },
@@ -66,16 +65,16 @@ const CustomerFeeManagement = () => {
                     {/* Search Area */}
                     <Paper variant="outlined" sx={{ p: 2, mb: 3 }}>
                         <Grid container spacing={2} alignItems="center">
-                            <Grid xs={12} md={3}>
+                            <Grid size={{ xs: 12, md: 3 }}>
                                 <TextField fullWidth label="고객(업체)명" size="small" />
                             </Grid>
-                            <Grid xs={12} md={3}>
+                            <Grid size={{ xs: 12, md: 3 }}>
                                 <TextField fullWidth label="고객지부" size="small" />
                             </Grid>
-                            <Grid xs={12} md={3}>
+                            <Grid size={{ xs: 12, md: 3 }}>
                                 <TextField fullWidth label="관리번호" size="small" />
                             </Grid>
-                            <Grid xs={12} md={3}>
+                            <Grid size={{ xs: 12, md: 3 }}>
                                 <TextField fullWidth label="바코드" size="small" />
                             </Grid>
                         </Grid>
@@ -84,7 +83,7 @@ const CustomerFeeManagement = () => {
                     {/* Content Grids */}
                     <Grid container spacing={3}>
                         {/* Left: Fee Status (Unpaid/Paid List) */}
-                        <Grid xs={12} md={6}>
+                        <Grid size={{ xs: 12, md: 6 }}>
                             <Typography variant="h6" gutterBottom>회비/교육비 내역</Typography>
                             <div style={{ height: 400, width: '100%' }}>
                                 <DataGrid
@@ -101,7 +100,7 @@ const CustomerFeeManagement = () => {
                         </Grid>
 
                         {/* Right: Payment History */}
-                        <Grid xs={12} md={6}>
+                        <Grid size={{ xs: 12, md: 6 }}>
                             <Typography variant="h6" gutterBottom>수납 이력</Typography>
                             <div style={{ height: 400, width: '100%' }}>
                                 <DataGrid

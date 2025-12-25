@@ -76,7 +76,7 @@ const DataConnectionManagement = () => {
 
                             <Paper variant="outlined" sx={{ p: 2, mb: 2 }}>
                                 <Grid container spacing={2} alignItems="center">
-                                    <Grid xs={12} md={3}>
+                                    <Grid size={{ xs: 12, md: 3 }}>
                                         <FormControl fullWidth size="small">
                                             <InputLabel>소방본부</InputLabel>
                                             <Select value="All" label="소방본부">
@@ -85,7 +85,7 @@ const DataConnectionManagement = () => {
                                             </Select>
                                         </FormControl>
                                     </Grid>
-                                    <Grid xs={12} md={3}>
+                                    <Grid size={{ xs: 12, md: 3 }}>
                                         <FormControl fullWidth size="small">
                                             <InputLabel>소방서</InputLabel>
                                             <Select value="All" label="소방서">
@@ -93,10 +93,10 @@ const DataConnectionManagement = () => {
                                             </Select>
                                         </FormControl>
                                     </Grid>
-                                    <Grid xs={12} md={3}>
+                                    <Grid size={{ xs: 12, md: 3 }}>
                                         <TextField fullWidth label="검색어 (대상물명)" size="small" />
                                     </Grid>
-                                    <Grid xs={12} md={3}>
+                                    <Grid size={{ xs: 12, md: 3 }}>
                                         <TextField fullWidth label="매칭 상태" size="small" select defaultValue="All">
                                             <MenuItem value="All">전체</MenuItem>
                                             <MenuItem value="Linked">연계</MenuItem>
@@ -110,7 +110,7 @@ const DataConnectionManagement = () => {
                         <TabPanel value="1" sx={{ p: 0 }}>
                             <Grid container spacing={2}>
                                 {/* Left: Agency Data */}
-                                <Grid xs={12} md={6}>
+                                <Grid size={{ xs: 12, md: 6 }}>
                                     <Typography variant="subtitle1" gutterBottom align="center" sx={{ bgcolor: 'secondary.light', p: 1, borderRadius: 1 }}>
                                         소방청 (소방민원정보시스템) 데이터
                                     </Typography>
@@ -125,7 +125,7 @@ const DataConnectionManagement = () => {
                                 </Grid>
 
                                 {/* Right: Institute Data */}
-                                <Grid xs={12} md={6}>
+                                <Grid size={{ xs: 12, md: 6 }}>
                                     <Typography variant="subtitle1" gutterBottom align="center" sx={{ bgcolor: 'primary.light', p: 1, borderRadius: 1, color: 'white' }}>
                                         한국소방안전원 (교육종합시스템) 데이터
                                     </Typography>

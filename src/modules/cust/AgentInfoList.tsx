@@ -11,14 +11,25 @@ import { showAlert } from '../../lib/utils';
 // import MainLayout from '../../layouts/MainLayout'; // Removed
 import PageContainer from '../../components/PageContainer';
 
+interface Agent {
+    id?: number;
+    AGMGNO?: string; // guessed unique ID from console log
+    AGNM: string;
+    AGOWNER: string;
+    AGCONO: string;
+    AGTEL: string;
+    AGADDR: string;
+    [key: string]: unknown; // Allow loose typing for other properties from backend
+}
+
 export default function AgentInfoList() {
     const [keyword, setKeyword] = useState('');
     const [loading, setLoading] = useState(false);
-    const [agents, setAgents] = useState<any[]>([]);
+    const [agents, setAgents] = useState<Agent[]>([]);
 
     // Columns definition based on `frmcust0010PAgentInfoList.xml`
-    const columns: GridColDef[] = [
-        { field: 'id', headerName: '순번', width: 70, valueGetter: (params: any) => params.row.id || 'N/A' }, // Row index simulation needed if no ID
+    const columns: GridColDef<Agent>[] = [
+        { field: 'id', headerName: '순번', width: 70, valueGetter: (_value, row) => row.id || 'N/A' }, // Row index simulation needed if no ID
         { field: 'AGNM', headerName: '대행업체명', width: 150 },
         { field: 'AGOWNER', headerName: '대표자', width: 100, align: 'center', headerAlign: 'center' },
         { field: 'AGCONO', headerName: '사업자등록번호', width: 120, align: 'center', headerAlign: 'center' },
@@ -36,11 +47,11 @@ export default function AgentInfoList() {
                 {},
                 'ds_oAgentList=ds_oAgentList',
                 `AGNM='${keyword}'`
-            );
+            ) as { ds_oAgentList: Agent[] };
 
             if (response && response.ds_oAgentList) {
                 // Add unique ID for DataGrid if not present
-                const rowsWithId = response.ds_oAgentList.map((item: any, index: number) => ({
+                const rowsWithId = response.ds_oAgentList.map((item: Agent, index: number) => ({
                     id: index + 1,
                     ...item
                 }));
@@ -54,7 +65,7 @@ export default function AgentInfoList() {
         }
     };
 
-    const handleSelect = (row: any) => {
+    const handleSelect = (row: Agent) => {
         // Mimics logic in `btnSelect_OnClick`
         console.log('Selected:', row);
         showAlert(`선택됨: ${row.AGNM} (${row.AGMGNO})`);

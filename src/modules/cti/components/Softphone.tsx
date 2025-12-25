@@ -10,7 +10,7 @@ import {
     PlayArrow as PlayArrowIcon,
     Headset as HeadsetIcon
 } from '@mui/icons-material';
-import { useCTIStore } from '../../../store/useCTIStore';
+import { useCTIStore, type AgentState } from '../../../store/useCTIStore';
 
 export default function Softphone() {
     const {
@@ -23,13 +23,15 @@ export default function Softphone() {
 
     // Timer logic for call duration
     useEffect(() => {
-        let interval: any;
+        let interval: ReturnType<typeof setInterval>;
         if (currentCall?.status === 'CONNECTED') {
             interval = setInterval(() => {
                 setTimer((prev) => prev + 1);
             }, 1000);
         } else {
-            setTimer(0);
+            // Reset timer asynchronously to avoid "setState during render" or "synchronous effect" warning
+            // although 'status' dependency change implies a new render cycle anyway.
+            setTimeout(() => setTimer(0), 0);
         }
         return () => clearInterval(interval);
     }, [currentCall?.status]);
@@ -79,7 +81,7 @@ export default function Softphone() {
                 <Select
                     value={agentState}
                     label="상태 변경"
-                    onChange={(e) => setAgentState(e.target.value as any)}
+                    onChange={(e) => setAgentState(e.target.value as AgentState)}
                     sx={{
                         color: 'white',
                         '.MuiOutlinedInput-notchedOutline': { borderColor: 'rgba(255,255,255,0.3)' },
@@ -210,7 +212,7 @@ export default function Softphone() {
 }
 
 // Helper icon
-function CloseIcon(props: any) {
+function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg {...props} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="18" y1="6" x2="6" y2="18" />

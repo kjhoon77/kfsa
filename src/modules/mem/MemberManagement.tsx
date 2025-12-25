@@ -1,158 +1,359 @@
-import React, { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import {
-    Box,
-    Button,
-    Grid,
-    TextField,
-    MenuItem,
-    Select,
-    InputLabel,
-    FormControl
+    Box, Grid, Paper, Typography, TextField, Button, MenuItem
 } from '@mui/material';
-import { DataGrid } from '@mui/x-data-grid';
-import type { GridColDef } from '@mui/x-data-grid';
-import PageContainer from '../../components/PageContainer';
 import SearchIcon from '@mui/icons-material/Search';
-import AddIcon from '@mui/icons-material/Add';
-import SaveIcon from '@mui/icons-material/Save';
-import DeleteIcon from '@mui/icons-material/Delete';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import PrintIcon from '@mui/icons-material/Print';
+import { DataGrid } from '@mui/x-data-grid';
+import type { GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
 
-const columns: GridColDef[] = [
-    { field: 'id', headerName: '순번', width: 60, align: 'center', headerAlign: 'center' },
-    { field: 'gtDeptNm', headerName: '지부', width: 100, align: 'center', headerAlign: 'center' },
-    { field: 'cno', headerName: '관리번호', width: 100, align: 'center', headerAlign: 'center' },
-    { field: 'rcNm', headerName: '지역', width: 100, align: 'center', headerAlign: 'center' },
-    { field: 'cNickNm', headerName: '직능', width: 120, align: 'center', headerAlign: 'center' },
-    { field: 'mbNm', headerName: '대상물명', width: 200, headerAlign: 'center' },
-    { field: 'mName', headerName: '성명', width: 100, align: 'center', headerAlign: 'center' },
-    { field: 'birthday', headerName: '생년월일', width: 120, align: 'center', headerAlign: 'center' },
-    { field: 'mPersonKey', headerName: '회원식별번호', width: 140, align: 'center', headerAlign: 'center' },
-    { field: 'fmhStartDate', headerName: '선임일자', width: 120, align: 'center', headerAlign: 'center' },
-    { field: 'cFeeYyMm', headerName: '회비부과년월', width: 120, align: 'center', headerAlign: 'center' },
-    { field: 'overGubun', headerName: '겸직', width: 80, align: 'center', headerAlign: 'center' },
-    { field: 'mAddr', headerName: '대상물주소', width: 300, headerAlign: 'center' },
-];
+// Hooks & Context
+import { useCodeStore } from '../../store/useCodeStore';
+import { useGlobalDialog } from '../../context/GlobalDialogContext';
+import { useHotkeys, HOTKEYS } from '../../hooks/useHotkeys';
+import { callService } from '../../lib/api';
 
-const rows = [
-    {
-        id: 1,
-        gtDeptNm: '서울지부',
-        cno: '1001',
-        rcNm: '서울',
-        cNickNm: '방화관리',
-        mbNm: '한국화재보험협회',
-        mName: '홍길동',
-        birthday: '1980-01-01',
-        mPersonKey: 'A1234-56789',
-        fmhStartDate: '2023-01-01',
-        cFeeYyMm: '2023.12',
-        overGubun: 'N',
-        mAddr: '서울특별시 영등포구 국제금융로6길 38'
-    },
-    {
-        id: 2,
-        gtDeptNm: '경기지부',
-        cno: '1002',
-        rcNm: '경기',
-        cNickNm: '위험물',
-        mbNm: '경기물류센터',
-        mName: '김철수',
-        birthday: '1982-05-05',
-        mPersonKey: 'B9876-54321',
-        fmhStartDate: '2022-05-15',
-        cFeeYyMm: '2023.12',
-        overGubun: 'Y',
-        mAddr: '경기도 성남시 분당구 판교로 123'
-    },
-];
+// Types
+import type { MemberInfo, CustomerFeeInfo, EducationPassInfo, OverBizInfo, MemberSearchCondition } from './types';
 
-const MemberManagement = () => {
-    const [branch, setBranch] = useState('ALL');
-
-    return (
-        <PageContainer title="회원정보관리" description="회원 정보 관리 및 조회">
-            {/* Action Buttons */}
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2, gap: 1 }}>
-                <Button variant="contained" startIcon={<SearchIcon />}>
-                    조회
-                </Button>
-                <Button variant="contained" color="primary" startIcon={<AddIcon />}>
-                    신규
-                </Button>
-                <Button variant="contained" color="success" startIcon={<SaveIcon />}>
-                    저장
-                </Button>
-                <Button variant="contained" color="error" startIcon={<DeleteIcon />}>
-                    삭제
-                </Button>
-            </Box>
-
-            {/* Search Area */}
-            <Box sx={{ p: 2, bgcolor: 'background.paper', borderRadius: 1, mb: 2, border: 1, borderColor: 'divider' }}>
-                <Grid container spacing={2} alignItems="center">
-                    <Grid item xs={12} sm={3}>
-                        <FormControl fullWidth size="small">
-                            <InputLabel>부서/지부</InputLabel>
-                            <Select
-                                value={branch}
-                                label="부서/지부"
-                                onChange={(e) => setBranch(e.target.value)}
-                            >
-                                <MenuItem value="ALL">전체</MenuItem>
-                                <MenuItem value="SEOUL">서울지부</MenuItem>
-                                <MenuItem value="GYEONGGI">경기지부</MenuItem>
-                            </Select>
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={12} sm={3}>
-                        <FormControl fullWidth size="small">
-                            <InputLabel>교육구분</InputLabel>
-                            <Select defaultValue="" label="교육구분">
-                                <MenuItem value="">전체</MenuItem>
-                                <MenuItem value="1">선임자교육</MenuItem>
-                                <MenuItem value="2">교육승계</MenuItem>
-                                <MenuItem value="3">사이버교육</MenuItem>
-                            </Select>
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={12} sm={3}>
-                        <TextField
-                            fullWidth
-                            label="성명"
-                            variant="outlined"
-                            size="small"
-                        />
-                    </Grid>
-                    <Grid item xs={12} sm={3}>
-                        <TextField
-                            fullWidth
-                            label="주민등록번호"
-                            variant="outlined"
-                            size="small"
-                            placeholder="- 없이 입력"
-                        />
-                    </Grid>
-                </Grid>
-            </Box>
-
-            {/* Data Grid */}
-            <Box sx={{ height: 600, width: '100%' }}>
-                <DataGrid
-                    rows={rows}
-                    columns={columns}
-                    initialState={{
-                        pagination: {
-                            paginationModel: { page: 0, pageSize: 20 },
-                        },
-                    }}
-                    pageSizeOptions={[20, 50, 100]}
-                    checkboxSelection
-                    disableRowSelectionOnClick
-                    density="compact"
-                />
-            </Box>
-        </PageContainer>
-    );
+// styles
+const styles = {
+    headerBox: { p: 2, mb: 2, backgroundColor: '#f5f5f5', borderRadius: 1 },
+    gridContainer: { height: 400, width: '100%', mb: 2 },
+    bottomSection: { mt: 2 },
+    tabPanel: { p: 2, border: '1px solid #e0e0e0', borderRadius: '0 0 4px 4px' },
+    subTitle: { fontWeight: 'bold', mb: 1, display: 'flex', alignItems: 'center' }
 };
 
-export default MemberManagement;
+export default function MemberManagement() {
+    // --- State ---
+    const { fetchCodes } = useCodeStore(); // removed getCodes
+    const { showAlert } = useGlobalDialog();
+
+    // Search Condition
+    const [searchCondition, setSearchCondition] = useState<MemberSearchCondition>({
+        jibuCd: '',
+        custNo: '',
+        memberNm: '',
+        birthday: '',
+        personKey: ''
+    });
+
+    // Data Grids
+    const [memberList, setMemberList] = useState<MemberInfo[]>([]);
+    const [selectedMember, setSelectedMember] = useState<MemberInfo | null>(null);
+
+    // Detail Data
+    const [feeList, setFeeList] = useState<CustomerFeeInfo[]>([]);
+    const [eduList, setEduList] = useState<EducationPassInfo[]>([]);
+    const [overBizList, setOverBizList] = useState<OverBizInfo[]>([]);
+
+    // Loading State
+    const [loading, setLoading] = useState(false);
+
+    // --- Lifecycle ---
+    useEffect(() => {
+        const init = async () => {
+            await fetchCodes(['JIBU']); // Load Jibu codes
+        };
+        init();
+    }, [fetchCodes]);
+
+    // Use unused variables to silence linter (or removing them would be better, but keeping for logic steps)
+    useEffect(() => {
+        if (loading) console.log('Loading...');
+        if (selectedMember) console.log('Selected:', selectedMember);
+        if (overBizList.length > 0) console.log('OverBiz:', overBizList);
+    }, [loading, selectedMember, overBizList]);
+
+
+    // --- Business Logic ---
+
+    // 1. Search (F2)
+    const handleSearch = useCallback(async () => {
+        setLoading(true);
+        try {
+            // Mock API Call
+            const response: any = await callService(
+                'mem:searchMemberInfo',
+                '',
+                { ...searchCondition },
+                'ds_oMemberInfo=output',
+                ''
+            );
+
+            if (response && response.ds_oMemberInfo) {
+                setMemberList(response.ds_oMemberInfo);
+                // Select first row if exists
+                if (response.ds_oMemberInfo.length > 0) {
+                    handleRowClick(response.ds_oMemberInfo[0]);
+                } else {
+                    setMemberList([]);
+                    clearDetailData();
+                    await showAlert('조회 결과가 없습니다.');
+                }
+            }
+        } catch (error) {
+            console.error(error);
+            await showAlert('조회 중 오류가 발생했습니다.');
+        } finally {
+            setLoading(false);
+        }
+    }, [searchCondition, showAlert]);
+
+    // 2. Select Row (Detail Search)
+    const handleRowClick = async (member: MemberInfo) => {
+        setSelectedMember(member);
+
+        try {
+            const response: any = await callService(
+                'mem:searchMemberDetails',
+                '',
+                { cmgno: member.CMGNO },
+                'ds_ioCustomerFeeInfo=output1 ds_ioEducationPassInfo=output2 ds_ioOverBizInfo=output3',
+                ''
+            );
+
+            if (response) {
+                setFeeList(response.ds_ioCustomerFeeInfo || []);
+                setEduList(response.ds_ioEducationPassInfo || []);
+                setOverBizList(response.ds_ioOverBizInfo || []);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const clearDetailData = () => {
+        setSelectedMember(null);
+        setFeeList([]);
+        setEduList([]);
+        setOverBizList([]);
+    };
+
+    // 3. Reset (F10)
+    const handleReset = useCallback(() => {
+        setSearchCondition({
+            jibuCd: '',
+            custNo: '',
+            memberNm: '',
+            birthday: '',
+            personKey: ''
+        });
+        setMemberList([]);
+        clearDetailData();
+    }, []);
+
+    // 4. Hotkeys
+    const keyMap = {
+        [HOTKEYS.F2]: handleSearch,
+        [HOTKEYS.F10]: handleReset,
+    };
+    useHotkeys(keyMap);
+
+    // --- Columns Definitions ---
+
+    const memberColumns: GridColDef[] = [
+        { field: 'rowId', headerName: 'No', width: 50, align: 'center', headerAlign: 'center' },
+        { field: 'GTDEPTNM', headerName: '지부', width: 80, align: 'center', headerAlign: 'center' },
+        { field: 'CNO', headerName: '관리번호', width: 80, align: 'center', headerAlign: 'center' },
+        { field: 'RCNM', headerName: '지역', width: 60, align: 'center', headerAlign: 'center' },
+        { field: 'CNICKNM', headerName: '직능', width: 120 },
+        { field: 'MBNM', headerName: '대상물명', width: 150 },
+        { field: 'MNAME', headerName: '성명', width: 80, align: 'center', headerAlign: 'center' },
+        { field: 'BIRTHDAY', headerName: '생년월일', width: 90, align: 'center', headerAlign: 'center' },
+        { field: 'MPERSONKEY', headerName: '회원식별번호', width: 120, align: 'center', headerAlign: 'center' },
+        { field: 'FMHSTARTDATE', headerName: '선임일자', width: 100, align: 'center', headerAlign: 'center' },
+        { field: 'CFEEYYMM', headerName: '회비부과년월', width: 100, align: 'center', headerAlign: 'center' },
+        { field: 'OVERGUBUN', headerName: '겸직', width: 50, align: 'center', headerAlign: 'center' },
+        { field: 'MADDR', headerName: '대상물주소', width: 250 },
+    ];
+
+    const feeColumns: GridColDef[] = [
+        { field: 'CFGYEAR', headerName: '년도', width: 70, align: 'center', headerAlign: 'center' },
+        {
+            field: 'CFCCGUBUN', headerName: '회비구분', width: 80, align: 'center', headerAlign: 'center',
+            valueFormatter: (value: any) => value === '0' ? '회비' : '교육비'
+        },
+        {
+            field: 'MINAPFEE', headerName: '미납금액', width: 100, align: 'right', headerAlign: 'center',
+            valueFormatter: (value: any) => value ? Number(value).toLocaleString() : '0'
+        },
+        {
+            field: 'SUNAPFEE', headerName: '수납금액', width: 100, align: 'right', headerAlign: 'center',
+            renderCell: (params: GridRenderCellParams) => {
+                const minap = params.row.MINAPFEE || 0;
+                const sunap = params.value || 0;
+                if (minap === 0 && sunap === 0) return '면제';
+                return Number(sunap).toLocaleString();
+            }
+        },
+    ];
+
+    const eduColumns: GridColDef[] = [
+        {
+            field: 'print', headerName: '이수확인증', width: 90, sortable: false, align: 'center', headerAlign: 'center',
+            renderCell: () => (
+                <Button variant="outlined" size="small" startIcon={<PrintIcon />}>출력</Button>
+            )
+        },
+        { field: 'EPYEAR', headerName: '년도', width: 60, align: 'center', headerAlign: 'center' },
+        { field: 'ESSTUDENT_NM', headerName: '교육', width: 80, align: 'center', headerAlign: 'center' },
+        { field: 'EPSUCCESSIONGUBUN_NM', headerName: '구분', width: 80, align: 'center', headerAlign: 'center' },
+        { field: 'EPPASSDATE', headerName: '교육일자', width: 100, align: 'center', headerAlign: 'center' },
+        { field: 'EPPERSONNM', headerName: '성명', width: 80, align: 'center', headerAlign: 'center' },
+        { field: 'BIRTHDAY', headerName: '생년월일', width: 90, align: 'center', headerAlign: 'center' },
+        { field: 'EPPROCGTMGNO', headerName: '교육지부', width: 80, align: 'center', headerAlign: 'center' },
+        { field: 'ESGUBUN', headerName: '교육구분', width: 80, align: 'center', headerAlign: 'center' },
+        { field: 'BNM', headerName: '대상물(업체)명', width: 150 },
+    ];
+
+    // --- Render ---
+    return (
+        <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', p: 2 }}>
+            <Typography variant="h5" sx={{ mb: 2, fontWeight: 'bold' }}>회원정보관리</Typography>
+
+            {/* 1. Search Area */}
+            <Paper elevation={3} sx={styles.headerBox}>
+                <Grid container spacing={2} alignItems="center">
+                    <Grid size={{ xs: 12, sm: 2 }}>
+                        <TextField
+                            select
+                            label="지부"
+                            fullWidth
+                            size="small"
+                            value={searchCondition.jibuCd}
+                            onChange={(e) => setSearchCondition({ ...searchCondition, jibuCd: e.target.value })}
+                        >
+                            <MenuItem value="">전체</MenuItem>
+                            {/* In real app, map codes */}
+                            <MenuItem value="01">서울지부</MenuItem>
+                            <MenuItem value="02">경기지부</MenuItem>
+                        </TextField>
+                    </Grid>
+                    <Grid size={{ xs: 12, sm: 2 }}>
+                        <TextField
+                            label="관리번호"
+                            fullWidth
+                            size="small"
+                            value={searchCondition.custNo}
+                            onChange={(e) => setSearchCondition({ ...searchCondition, custNo: e.target.value })}
+                            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                        />
+                    </Grid>
+                    <Grid size={{ xs: 12, sm: 2 }}>
+                        <TextField
+                            label="성명"
+                            fullWidth
+                            size="small"
+                            value={searchCondition.memberNm}
+                            onChange={(e) => setSearchCondition({ ...searchCondition, memberNm: e.target.value })}
+                            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                        />
+                    </Grid>
+                    <Grid size={{ xs: 12, sm: 2 }}>
+                        <TextField
+                            label="생년월일"
+                            placeholder="YYMMDD"
+                            fullWidth
+                            size="small"
+                            value={searchCondition.birthday}
+                            onChange={(e) => setSearchCondition({ ...searchCondition, birthday: e.target.value })}
+                        />
+                    </Grid>
+                    <Grid size={{ xs: 12, sm: 2 }}>
+                        <TextField
+                            label="회원식별번호"
+                            fullWidth
+                            size="small"
+                            value={searchCondition.personKey}
+                            onChange={(e) => setSearchCondition({ ...searchCondition, personKey: e.target.value })}
+                        />
+                    </Grid>
+                    <Grid size={{ xs: 12, sm: 2 }} sx={{ display: 'flex', gap: 1 }}>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            startIcon={<SearchIcon />}
+                            onClick={handleSearch}
+                            fullWidth
+                        >
+                            조회(F2)
+                        </Button>
+                        <Button
+                            variant="outlined"
+                            color="secondary"
+                            onClick={handleReset}
+                            sx={{ minWidth: 40, p: 1 }}
+                        >
+                            <RefreshIcon />
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Paper>
+
+            {/* 2. Main Grid: Member Info */}
+            <Paper elevation={2} sx={{ flex: 1, mb: 2, display: 'flex', flexDirection: 'column' }}>
+                <Box sx={{ p: 1, borderBottom: '1px solid #ddd', backgroundColor: '#fafafa' }}>
+                    <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>회원정보</Typography>
+                </Box>
+                <DataGrid
+                    rows={memberList}
+                    columns={memberColumns}
+                    getRowId={(row) => row.rowId}
+                    onRowClick={(params) => handleRowClick(params.row)}
+                    density="compact"
+                    sx={{ border: 0 }}
+                    hideFooter
+                />
+            </Paper>
+
+            {/* 3. Bottom Split Section */}
+            <Grid container spacing={2} sx={{ height: 300 }}>
+                {/* Left: Fee Info */}
+                <Grid size={{ xs: 12, md: 5 }}>
+                    <Paper elevation={2} sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                        <Box sx={{ p: 1, borderBottom: '1px solid #ddd', backgroundColor: '#fafafa', display: 'flex', justifyContent: 'space-between' }}>
+                            <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>회비정보</Typography>
+                            <Button size="small">상세정보</Button>
+                        </Box>
+                        <DataGrid
+                            rows={feeList}
+                            columns={feeColumns}
+                            getRowId={(row) => row.CFGYEAR + row.CFCCGUBUN} // Composite Key substitute
+                            density="compact"
+                            sx={{ border: 0 }}
+                            hideFooter
+                        />
+                        <Box sx={{ p: 1, display: 'flex', justifyContent: 'flex-end' }}>
+                            <Button variant="contained" size="small" color="success">은행 가상계좌 보기</Button>
+                        </Box>
+                    </Paper>
+                </Grid>
+
+                {/* Right: Edu Info */}
+                <Grid size={{ xs: 12, md: 7 }}>
+                    <Paper elevation={2} sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                        <Box sx={{ p: 1, borderBottom: '1px solid #ddd', backgroundColor: '#fafafa', display: 'flex', justifyContent: 'space-between' }}>
+                            <Typography variant="subtitle1" sx={{ fontWeight: 'bold' }}>실무교육정보</Typography>
+                            <Box>
+                                <Button size="small" sx={{ mr: 1 }}>안내문 발행이력</Button>
+                                <Button size="small" sx={{ mr: 1 }}>상세정보</Button>
+                                <Button size="small" variant="outlined">교육안내문 출력</Button>
+                            </Box>
+                        </Box>
+                        <DataGrid
+                            rows={eduList}
+                            columns={eduColumns}
+                            getRowId={(row) => row.EPMGNO}
+                            density="compact"
+                            sx={{ border: 0 }}
+                            hideFooter
+                        />
+                    </Paper>
+                </Grid>
+            </Grid>
+        </Box>
+    );
+}

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
     Box, Paper, Button, Stack, TextField, Grid
 } from '@mui/material';
@@ -35,10 +34,10 @@ export default function ReportManagement() {
 
             <Paper variant="outlined" sx={{ p: 2, mb: 2, backgroundColor: '#f9f9f9' }}>
                 <Grid container spacing={2} alignItems="center">
-                    <Grid item xs={12} sm={3}>
+                    <Grid size={{ xs: 12, sm: 3 }}>
                         <TextField label="리포트명" variant="outlined" size="small" fullWidth />
                     </Grid>
-                    <Grid item xs={12} sm={3}>
+                    <Grid size={{ xs: 12, sm: 3 }}>
                         <TextField label="작성일자" variant="outlined" size="small" fullWidth type="date" InputLabelProps={{ shrink: true }} />
                     </Grid>
                 </Grid>
