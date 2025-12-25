@@ -59,6 +59,30 @@ export interface OverBizInfo {
     BBIZCD: string; // 업종
 }
 
+export interface ScholarshipInfo {
+    rowId: number;
+    FSMGNO: number; // 소방안전장학금관리번호
+    FSMMGNO: number; // 회원정보관리번호
+    FSCMGNO: string; // 고객관리바코드
+    CGTMGNO: string; // 지부
+    CNO: string; // 관리번호
+    CGROUPCD: string; // 직능
+    FSNM: string; // 성명
+    BIRTHDAY: string; // 생년월일
+    FSPERSONKEY: string; // 개인식별번호
+    FSBNM: string; // 대상물(업체)명
+    FSYEAR: string; // 대상년도
+    FSSELECTYN: string; // 선발여부 (Y/N)
+    FSAMT: number; // 지급금액
+    FSDATE: string; // 지급일자
+    FSREMARK: string; // 비고
+    PNM: string; // 등록자
+    REGDATE: string; // 등록일자
+
+    // Virtual fields
+    FSSELECTYN_NM: string; // 선발여부 명
+}
+
 export interface MemberSearchCondition {
     jibuCd: string;
     custNo: string;

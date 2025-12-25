@@ -47,7 +47,8 @@ const menuItems: MenuItemData[] = [
         title: '회원관리',
         icon: <MemIcon />,
         children: [
-            { id: 'mem-mgmt', title: '회원 정보 관리', path: '/mem/management' }
+            { id: 'mem-mgmt', title: '회원 정보 관리', path: '/mem/management' },
+            { id: 'scholarship-mgmt', title: '소방안전장학금관리', path: '/mem/scholarship-management' }
         ]
     },
     {

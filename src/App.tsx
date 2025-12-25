@@ -8,6 +8,7 @@ import CustomerManagement from './modules/cust/CustomerManagement';
 import EnvManagement from './modules/env/EnvManagement';
 import ItemManagement from './modules/item/ItemManagement';
 import MemberManagement from './modules/mem/MemberManagement';
+import FireScholarshipManagement from './modules/mem/FireScholarshipManagement';
 import ProfessorManagement from './modules/profes/ProfessorManagement';
 import ReportManagement from './modules/report/ReportManagement';
 import AppointManagement from './modules/appoint/AppointManagement';
@@ -59,6 +60,7 @@ function App() {
               <Route path="/cust/customer-fee-management" element={<CustomerFeeManagement />} />
               <Route path="/cust/data-connection-management" element={<DataConnectionManagement />} />
               <Route path="/mem/management" element={<MemberManagement />} />
+              <Route path="/mem/scholarship-management" element={<FireScholarshipManagement />} />
               <Route path="/profes/management" element={<ProfessorManagement />} />
               <Route path="/item/management" element={<ItemManagement />} />
               <Route path="/env/management" element={<EnvManagement />} />

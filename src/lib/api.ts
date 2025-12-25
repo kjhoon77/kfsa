@@ -148,6 +148,36 @@ export const callService = async (
         };
     }
 
+    // [New] Fire Scholarship Management Mock Actions
+    if (actionName === 'mem:searchMem0050FireScholarship') {
+        console.log('Mock Search Fire Scholarship');
+        return {
+            ds_oScholarship: [
+                {
+                    rowId: 1, FSMGNO: 1, FSMMGNO: 101, FSCMGNO: 'C1001', CGTMGNO: '01', CNO: '123456',
+                    CGROUPCD: '10', FSNM: '홍길동', BIRTHDAY: '800101', FSPERSONKEY: '800101-1******',
+                    FSBNM: '대한빌딩', FSYEAR: '2024', FSSELECTYN: 'Y', FSSELECTYN_NM: '선발자',
+                    FSAMT: 1000000, FSDATE: '2024-05-15', FSREMARK: '우수회원', PNM: '관리자', REGDATE: '2024-05-01'
+                },
+                {
+                    rowId: 2, FSMGNO: 2, FSMMGNO: 102, FSCMGNO: 'C1002', CGTMGNO: '01', CNO: '654321',
+                    CGROUPCD: '20', FSNM: '김철수', BIRTHDAY: '850505', FSPERSONKEY: '850505-1******',
+                    FSBNM: '민국아파트', FSYEAR: '2024', FSSELECTYN: 'N', FSSELECTYN_NM: '탈락자',
+                    FSAMT: 0, FSDATE: '', FSREMARK: '대상아님', PNM: '관리자', REGDATE: '2024-05-02'
+                }
+            ]
+        };
+    }
+    if (actionName === 'mem:insertMem0050Scholarship') {
+        return { status: 'OK', message: 'Saved successfully' };
+    }
+    if (actionName === 'mem:updateMem0050Scholarship') {
+        return { status: 'OK', message: 'Updated successfully' };
+    }
+    if (actionName === 'mem:deleteMem0050FireScholarship') {
+        return { status: 'OK', message: 'Deleted successfully' };
+    }
+
     return {};
 };
 
