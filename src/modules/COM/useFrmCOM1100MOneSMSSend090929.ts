@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioSmsSingle {
-}
+import type { Ids_ioSmsSingle } from './FrmCOM1100MOneSMSSend090929Data';
 
 export const useFrmCOM1100MOneSMSSend090929 = () => {
     const [ds_ioSmsSingle, setds_ioSmsSingle] = useState<Ids_ioSmsSingle[]>([]);

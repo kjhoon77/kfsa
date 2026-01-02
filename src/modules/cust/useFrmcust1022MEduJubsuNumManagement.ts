@@ -1,24 +1,12 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioEduJubsuNum {
-    ELGTMGNO: string;
-    ELWORKGUBUN: string;
-    WORKGUBUN: string;
-    ELCOURSECD: string;
-    COURSENM: string;
-    ELJUBSUMAXCNT: string;
-}
+import type { Ids_oJibu, Ids_ioEduJubsuNum } from './Frmcust1022MEduJubsuNumManagementData';
 
 export const useFrmcust1022MEduJubsuNumManagement = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_ioEduJubsuNum, setds_ioEduJubsuNum] = useState<Ids_ioEduJubsuNum[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -49,6 +37,8 @@ export const useFrmcust1022MEduJubsuNumManagement = () => {
         isLoading,
         ds_oJibu,
         ds_ioEduJubsuNum,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Excel,

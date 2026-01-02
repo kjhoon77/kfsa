@@ -1,190 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioMemberGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTarget {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTemp {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioFeeGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYear {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYearHalf {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioPrintGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioOrder {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_a {
-    CD: string;
-}
-
-export interface Ids_ioBusinessType {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseYn_0 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseYn_1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseYn_2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_ioCourseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBizCd {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoiceYnReport {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioZipNum {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMEduNotice {
-    fkeyA: string;
-}
-
-export interface Ids_ioApply {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oDetailCourse {
-    CD: string;
-    DATA: string;
-    GCD: string;
-}
-
-export interface Ids_ioMEduNoticeDetail {
-}
-
-export interface Ids_oPersonGubun {
-    CD: string;
-    DATA: string;
-    PCD: string;
-}
-
-export interface Ids_ioGijun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoice {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBonbu {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-    CTCD: string;
-}
-
-export interface Ids_oFireCd {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-    CTCD: string;
-}
-
-export interface Ids_oFireCenterCd {
-    CD: string;
-    DATA: string;
-    UPCD: string;
-}
-
-export interface Ids_oFireCenterCd2 {
-    CD: string;
-    DATA: string;
-    UPCD: string;
-}
-
-export interface Ids_oMinap {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYN {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAgency {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoiceYn_1 {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioMemberGubun, Ids_ioTarget, Ids_ioTemp, Ids_ioFeeGubun, Ids_ioYear, Ids_oCourse, Ids_ioYearHalf, Ids_ioPrintGubun, Ids_ioOrder, Ids_a, Ids_ioBusinessType, Ids_ioCourseYn_0, Ids_ioCourseYn_1, Ids_ioChoiceYn, Ids_ioCourseYn_2, Ids_oJibu, Ids_oRegion, Ids_ioCourseYn, Ids_oBizCd, Ids_ioChoiceYnReport, Ids_ioZipNum, Ids_ioMEduNotice, Ids_ioApply, Ids_oDetailCourse, Ids_ioMEduNoticeDetail, Ids_oPersonGubun, Ids_ioGijun, Ids_ioChoice, Ids_oBonbu, Ids_oFireCd, Ids_oFireCenterCd, Ids_oFireCenterCd2, Ids_oMinap, Ids_ioYN, Ids_oAgency, Ids_ioChoiceYn_1 } from './Frmcust1100MEduNoticeData';
 
 export const useFrmcust1100MEduNotice = () => {
     const [ds_ioMemberGubun, setds_ioMemberGubun] = useState<Ids_ioMemberGubun[]>([]);
@@ -224,6 +40,8 @@ export const useFrmcust1100MEduNotice = () => {
     const [ds_oAgency, setds_oAgency] = useState<Ids_oAgency[]>([]);
     const [ds_ioChoiceYn_1, setds_ioChoiceYn_1] = useState<Ids_ioChoiceYn_1[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [isVisible_Div0, setIsVisible_Div0] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -268,6 +86,12 @@ export const useFrmcust1100MEduNotice = () => {
         }, 500);
     }, []);
 
+    const Div0_Button4Yes_OnClick = () => {
+        console.log('Div0_Button4Yes_OnClick clicked');
+    };
+    const Div0_Button4_OnClick = () => {
+        console.log('Div0_Button4_OnClick clicked');
+    };
     const btnBarCodeSearch_OnClick = () => {
         console.log('btnBarCodeSearch_OnClick clicked');
     };
@@ -340,6 +164,12 @@ export const useFrmcust1100MEduNotice = () => {
         ds_ioYN,
         ds_oAgency,
         ds_ioChoiceYn_1,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        isVisible_Div0,
+        setIsVisible_Div0,
+        Div0_Button4Yes_OnClick,
+        Div0_Button4_OnClick,
         btnBarCodeSearch_OnClick,
         btnSetlmt_OnClick,
         chkCheckbox2_OnClick,

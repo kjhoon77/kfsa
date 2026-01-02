@@ -1,12 +1,15 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmtraining1030MInternetRepayBatchProc } from './useFrmtraining1030MInternetRepayBatchProc';
 import * as Frmtraining1030MInternetRepayBatchProcData from './Frmtraining1030MInternetRepayBatchProcData';
+import { Frmtraining1040SInternetTrainingRepayBatchProc } from './Frmtraining1040SInternetTrainingRepayBatchProc';
+import { Frmtraining1050SInternetExamRepayBatchProc } from './Frmtraining1050SInternetExamRepayBatchProc';
+import { Frmtraining1060SInternetLcsRepayBatchProc } from './Frmtraining1060SInternetLcsRepayBatchProc';
 
 export const Frmtraining1030MInternetRepayBatchProc = () => {
     const hook = useFrmtraining1030MInternetRepayBatchProc();
@@ -25,7 +28,9 @@ export const Frmtraining1030MInternetRepayBatchProc = () => {
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
-                        
+                        <Grid container spacing={2} alignItems="center">
+<Grid item xs={12}><Box sx={{ width: "100%" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab} onChange={(e, v) => setTabValue_tabTab(v)} aria-label="tabTab"><Tab label="강습" /><Tab label="시험" /><Tab label="수첩" /></Tabs></Box><CustomTabPanel value={tabValue_tabTab} index={0}><Frmtraining1040SInternetTrainingRepayBatchProc /></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={1}><Frmtraining1050SInternetExamRepayBatchProc /></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={2}><Frmtraining1060SInternetLcsRepayBatchProc /></CustomTabPanel></Box></Grid></Grid>
+
                     </Paper>
                 </Grid>
 </Grid>

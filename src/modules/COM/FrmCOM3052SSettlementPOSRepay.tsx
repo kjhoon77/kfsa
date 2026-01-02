@@ -1,8 +1,8 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmCOM3052SSettlementPOSRepay } from './useFrmCOM3052SSettlementPOSRepay';
@@ -27,25 +27,25 @@ export const FrmCOM3052SSettlementPOSRepay = () => {
                         <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>구매자</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>주문번호</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>납부방법</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>환불금액</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>

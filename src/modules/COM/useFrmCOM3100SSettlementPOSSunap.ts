@@ -1,26 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oBankSunapGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSunapGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRepaySunapGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oBankSunapGubun, Ids_oSunapGubun, Ids_oRepaySunapGubun } from './FrmCOM3100SSettlementPOSSunapData';
 
 export const useFrmCOM3100SSettlementPOSSunap = () => {
     const [ds_oBankSunapGubun, setds_oBankSunapGubun] = useState<Ids_oBankSunapGubun[]>([]);
     const [ds_oSunapGubun, setds_oSunapGubun] = useState<Ids_oSunapGubun[]>([]);
     const [ds_oRepaySunapGubun, setds_oRepaySunapGubun] = useState<Ids_oRepaySunapGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divSunabDtl, setIsVisible_divSunabDtl] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -38,5 +25,7 @@ export const useFrmCOM3100SSettlementPOSSunap = () => {
         ds_oBankSunapGubun,
         ds_oSunapGubun,
         ds_oRepaySunapGubun,
+        isVisible_divSunabDtl,
+        setIsVisible_divSunabDtl,
     };
 };

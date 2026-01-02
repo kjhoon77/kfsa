@@ -1,50 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamCheat {
-    BIRTHDAY: string;
-    ECCHEATGUBUN: string;
-    ECCHEATREASON: string;
-    ECMGNO: string;
-    ECMODDATE: string;
-    ECREGDATE: string;
-    ECREGSABUN: string;
-    ECREMARK: string;
-    ECSTOPENDDATE: string;
-    ECSTOPSTARTDATE: string;
-    ECTCCOURSECD: string;
-    ECTPMGNO: string;
-    EXMODSABUN: string;
-    TCCOURSENM: string;
-    TPNM: string;
-    TPRESIDENTNO: string;
-}
-
-export interface Ids_oCheatGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oPrintGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamOrderMgno {
-}
-
-export interface Ids_oExamCheatReport {
-}
+import type { Ids_ioExamCheat, Ids_oCheatGubun, Ids_oCourse, Ids_oPrintGubun, Ids_oJibu, Ids_oExamOrderMgno, Ids_oExamCheatReport } from './Frmspcledu0420MExamCheatingManagementData';
 
 export const useFrmspcledu0420MExamCheatingManagement = () => {
     const [ds_ioExamCheat, setds_ioExamCheat] = useState<Ids_ioExamCheat[]>([]);
@@ -55,6 +11,7 @@ export const useFrmspcledu0420MExamCheatingManagement = () => {
     const [ds_oExamOrderMgno, setds_oExamOrderMgno] = useState<Ids_oExamOrderMgno[]>([]);
     const [ds_oExamCheatReport, setds_oExamCheatReport] = useState<Ids_oExamCheatReport[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -107,6 +64,8 @@ export const useFrmspcledu0420MExamCheatingManagement = () => {
         ds_oJibu,
         ds_oExamOrderMgno,
         ds_oExamCheatReport,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_Delete,

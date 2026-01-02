@@ -1,126 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamSeatPrint {
-    TPMGNO: string;
-    TPEMAIL: string;
-    TPHPTEL: string;
-    IIIMGSEQ: string;
-    TCCOURSECD: string;
-    THLASTORDERSEQ: string;
-    TJADDR1: string;
-    TJADDR2: string;
-    TJAMOUNTGUBUN: string;
-    TJBULDADDR: string;
-    TJBULDNM: string;
-    TJBUNJI: string;
-    TJCOMPNM: string;
-    TJDONG: string;
-    TJFIREMANYN: string;
-    TJKU: string;
-    TJLASTHISTORYSEQ: string;
-    TJLASTREPAYYN: string;
-    TJLASTSETLMTSEQ: string;
-    TJMGNO: string;
-    TJPASSYN: string;
-    TJPERSONNM: string;
-    TJREFUNDYN: string;
-    TJREMARK: string;
-    TJREMARKCD: string;
-    TJRESIDENTNO: string;
-    TJROADNM: string;
-    TJSIDO: string;
-    TJZIPCD: string;
-    TOENDDATE: string;
-    TOJUBSUNO: string;
-    TOMGNO: string;
-    TOSTARTDATE: string;
-    TOYEAR: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioReport {
-    TPMGNO: string;
-    TPEMAIL: string;
-    TPHPTEL: string;
-    IIIMGSEQ: string;
-    TCCOURSECD: string;
-    THLASTORDERSEQ: string;
-    TJADDR1: string;
-    TJADDR2: string;
-    TJAMOUNTGUBUN: string;
-    TJBULDADDR: string;
-    TJBULDNM: string;
-    TJBUNJI: string;
-    TJCOMPNM: string;
-    TJDONG: string;
-    TJFIREMANYN: string;
-    TJKU: string;
-    TJLASTHISTORYSEQ: string;
-    TJLASTREPAYYN: string;
-    TJLASTSETLMTSEQ: string;
-    TJMGNO: string;
-    TJPASSYN: string;
-    TJPERSONNM: string;
-    TJREFUNDYN: string;
-    TJREMARK: string;
-    TJREMARKCD: string;
-    TJRESIDENTNO: string;
-    TJROADNM: string;
-    TJSIDO: string;
-    TJZIPCD: string;
-    TOENDDATE: string;
-    TOJUBSUNO: string;
-    TOMGNO: string;
-    TOSTARTDATE: string;
-    TOYEAR: string;
-}
-
-export interface Ids_ioReport2 {
-    TPMGNO: string;
-    TPEMAIL: string;
-    TPHPTEL: string;
-    IIIMGSEQ: string;
-    TCCOURSECD: string;
-    THLASTORDERSEQ: string;
-    TJADDR1: string;
-    TJADDR2: string;
-    TJAMOUNTGUBUN: string;
-    TJBULDADDR: string;
-    TJBULDNM: string;
-    TJBUNJI: string;
-    TJCOMPNM: string;
-    TJDONG: string;
-    TJFIREMANYN: string;
-    TJKU: string;
-    TJLASTHISTORYSEQ: string;
-    TJLASTREPAYYN: string;
-    TJLASTSETLMTSEQ: string;
-    TJMGNO: string;
-    TJPASSYN: string;
-    TJPERSONNM: string;
-    TJREFUNDYN: string;
-    TJREMARK: string;
-    TJREMARKCD: string;
-    TJRESIDENTNO: string;
-    TJROADNM: string;
-    TJSIDO: string;
-    TJZIPCD: string;
-    TOENDDATE: string;
-    TOJUBSUNO: string;
-    TOMGNO: string;
-    TOSTARTDATE: string;
-    TOYEAR: string;
-}
+import type { Ids_oCourse, Ids_ioExamSeatPrint, Ids_oJibu, Ids_ioReport, Ids_ioReport2 } from './Frmspcledu0415MExamSeatNoPrintData';
 
 export const useFrmspcledu0415MExamSeatNoPrint = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -129,6 +9,7 @@ export const useFrmspcledu0415MExamSeatNoPrint = () => {
     const [ds_ioReport, setds_ioReport] = useState<Ids_ioReport[]>([]);
     const [ds_ioReport2, setds_ioReport2] = useState<Ids_ioReport2[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -171,6 +52,8 @@ export const useFrmspcledu0415MExamSeatNoPrint = () => {
         ds_oJibu,
         ds_ioReport,
         ds_ioReport2,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

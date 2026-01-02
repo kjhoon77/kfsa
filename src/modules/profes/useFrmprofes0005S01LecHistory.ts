@@ -1,9 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oEdutype {
-    EDUTYPE: string;
-}
+import type { Ids_oEdutype } from './Frmprofes0005S01LecHistoryData';
 
 export const useFrmprofes0005S01LecHistory = () => {
     const [ds_oEdutype, setds_oEdutype] = useState<Ids_oEdutype[]>([]);

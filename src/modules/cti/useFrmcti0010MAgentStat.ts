@@ -1,19 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oAgentStatList {
-}
-
-export interface Ids_ioUserList {
-}
-
-export interface Ids_AgentState {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAgentStatSubList {
-}
+import type { Ids_oAgentStatList, Ids_ioUserList, Ids_AgentState, Ids_oAgentStatSubList } from './Frmcti0010MAgentStatData';
 
 export const useFrmcti0010MAgentStat = () => {
     const [ds_oAgentStatList, setds_oAgentStatList] = useState<Ids_oAgentStatList[]>([]);
@@ -21,6 +8,7 @@ export const useFrmcti0010MAgentStat = () => {
     const [ds_AgentState, setds_AgentState] = useState<Ids_AgentState[]>([]);
     const [ds_oAgentStatSubList, setds_oAgentStatSubList] = useState<Ids_oAgentStatSubList[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -46,6 +34,8 @@ export const useFrmcti0010MAgentStat = () => {
         ds_ioUserList,
         ds_AgentState,
         ds_oAgentStatSubList,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         cbChk_OnClick,
         lfn_Search,
     };

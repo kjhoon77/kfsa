@@ -1,10 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oExamPassYn {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oExamPassYn } from './Frmtraining0350SLicenseIssueStatisticsData';
 
 export const useFrmtraining0350SLicenseIssueStatistics = () => {
     const [ds_oExamPassYn, setds_oExamPassYn] = useState<Ids_oExamPassYn[]>([]);

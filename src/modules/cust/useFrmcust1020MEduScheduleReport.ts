@@ -1,67 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTrainingOrder {
-    ESMGNO: string;
-    ESGTMGNO: string;
-    ESYEAR: string;
-    ESCOUSECD: string;
-    CNM: string;
-    ESDATE: string;
-    MESTARTTIME: string;
-    ESENDTIME: string;
-    ESEPMGNO: string;
-    EPNM: string;
-    ESPREPARED: string;
-    edudate: string;
-    edutime: string;
-    ESGUBUN: string;
-    ESINETOPENYN: string;
-    ESINETCLOSEDATE: string;
-    ESSTUDENT: string;
-    EPSAVENM: string;
-    ESSUBJECTGUBUN: string;
-    ESSEATCNT: string;
-    ESACCESSCNT: string;
-    ESINETJUBSUCNT: string;
-    ESORDERNOYN: string;
-    ESNOTICE: string;
-}
-
-export interface Ids_METARGET {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_MECOURSE {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_MEDAYGUBUNCD {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduType1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oUseYn {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oJibu, Ids_ioTrainingOrder, Ids_METARGET, Ids_MECOURSE, Ids_MEDAYGUBUNCD, Ids_oEduType1, Ids_oUseYn } from './Frmcust1020MEduScheduleReportData';
 
 export const useFrmcust1020MEduScheduleReport = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -73,6 +12,7 @@ export const useFrmcust1020MEduScheduleReport = () => {
     const [ds_oEduType1, setds_oEduType1] = useState<Ids_oEduType1[]>([]);
     const [ds_oUseYn, setds_oUseYn] = useState<Ids_oUseYn[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -124,6 +64,8 @@ export const useFrmcust1020MEduScheduleReport = () => {
         ds_MEDAYGUBUNCD,
         ds_oEduType1,
         ds_oUseYn,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnEduJoin_OnClick,
         btnMutilSort_OnClick,
         btnPrintWarmun_OnClick,

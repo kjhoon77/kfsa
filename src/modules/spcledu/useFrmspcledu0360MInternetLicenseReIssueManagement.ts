@@ -1,239 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oList {
-    LRMGNO: string;
-    LRTPMGNO: string;
-    LRLASTLRHSEQ: string;
-    LRLASTLPSEQ: string;
-    PMYEAR: string;
-    PMMGNO: string;
-    LRPROCDATE: string;
-    LRPAYGUBUN: string;
-    LRSTATUS: string;
-    LRPAYSTATUS: string;
-    LRSTATUSNM: string;
-    LLCSNO: string;
-    LHSEQ: string;
-    LBARCODE: string;
-    LPPROCGTMGNO: string;
-    LPPROCJIBUNM: string;
-    LTCCOURSECD: string;
-    LTCCOURSECDNICKNM: string;
-    LTCCOURSECDNM: string;
-    LISSUEGUBUN: string;
-    LISSUEGUBUNNM: string;
-    LISSUEDATE: string;
-    LAMOUNT: string;
-    IIIMGSEQ: string;
-    IIDIRPATH: string;
-    IIREALNM: string;
-    LRNM: string;
-    LRTPRESIDENTNO: string;
-    LRJIBU: string;
-    LRJIBUNM: string;
-    LRAUTHYN: string;
-    LRZIPCD: string;
-    LRADDR1: string;
-    LRADDR2: string;
-    LRTEL: string;
-    LRHPTEL: string;
-    LRRZIPCD: string;
-    LRRADDR1: string;
-    LRRADDR2: string;
-    LRRNM: string;
-    LRRTEL: string;
-    LRWAYBILLNO: string;
-    PMBUYER: string;
-    PMAMT: string;
-    PMPAYMENTFLAG: string;
-    PMSETLMGUBUN: string;
-    PMSUNAPDATE: string;
-    PMPGMGUBUN: string;
-    PMPGMGUBUNNM: string;
-    PPAOWNER: string;
-    PPAPROCDATE: string;
-    PPABANKNM: string;
-    PPACCOUNT: string;
-    PPREASON: string;
-    PPAAMT: string;
-    LHISSUEGUBUN: string;
-    LHISSUEREASON: string;
-}
-
-export interface Ids_iLicenseReissueH {
-    LRHLRMGNO: string;
-    LRHSEQ: string;
-    LRHSTATUS: string;
-    LRHPAYSTATUS: string;
-    LRHREGDATE: string;
-    LRHREGSABUN: string;
-}
-
-export interface Ids_iLicenseImage {
-    LILLCSNO: string;
-    LISEQ: string;
-    LIDIRPATH: string;
-    LIREALNM: string;
-}
-
-export interface Ids_iLicenseH {
-    LHLLCSNO: string;
-    LHSEQ: string;
-    LHISSUEMGNO: string;
-    LHTPMGNO: string;
-    LHIIIMGSEQ: string;
-    LHISSUEDATE: string;
-    LHISSUEGUBUN: string;
-    LHPRTDATE: string;
-    LHISSUEREASON: string;
-    LHTCCOURSECD: string;
-    LHPERSONNM: string;
-    LHRESIDENTNO: string;
-    LHZIPCD: string;
-    LHADDR1: string;
-    LHADDR2: string;
-    LHADDR3: string;
-    LHTEL: string;
-    LHHPTEL: string;
-    LHPROCGTMGNO: string;
-    LHCANCELDATE: string;
-    LHCANCELREASON: string;
-    LHCANCELPSABUN: string;
-    LHLICENSEAMTTJMGNO: string;
-}
-
-export interface Ids_iLicenseSettlement {
-    LSLLCSNO: string;
-    LSLHSEQ: string;
-    LSGUBUNCD: string;
-    LSGUBUN: string;
-    LSPROCAMOUNT: string;
-    LSPROCDATE: string;
-    LSPROCGTMGNO: string;
-    LSPMYEAR: string;
-    LSPMMGNO: string;
-    LSREPAYREF: string;
-}
-
-export interface Ids_oLicenseReport {
-    BIRTHDAY: string;
-    IIFILENM: string;
-    LADDR1: string;
-    LADDR2: string;
-    LBARCODE: string;
-    LHPRTDATE: string;
-    LISSUEDATE: string;
-    LISSUEGUBUNNM: string;
-    LLCSNO: string;
-    LPERSONNM: string;
-    LTCCOURSENM: string;
-    LLASTHISTORYSEQ: string;
-}
-
-export interface Ids_oLicenseReportEdu {
-    EDUDATE: string;
-    GTDEPTNM: string;
-    TARGET: string;
-    TCCOURSENM: string;
-}
-
-export interface Ids_ioLicenseReissuePay {
-    LPLRMGNO: string;
-    LPSEQ: string;
-    LPLLCSNO: string;
-    LPSETLMTYN: string;
-    LPGUBUNCD: string;
-    LPGUBUN: string;
-    LPPROCAMOUNT: string;
-    LPLICENSEAMOUNT: string;
-    LPPOSTAMOUNT: string;
-    LPPROCDATE: string;
-    LPPONYGUBUN: string;
-    LPPONYDATE: string;
-    LPPROCGTMGNO: string;
-    LPPMYEAR: string;
-    LPPMMGNO: string;
-    LPREPAYREF: string;
-}
-
-export interface Ids_oPmMgno {
-    PMYEAR: string;
-    PMMGNO: string;
-}
-
-export interface Ids_ioPosPayment {
-    PPPMYEAR: string;
-    PPPMMGNO: string;
-    PPSEQ: string;
-    PPNM: string;
-    PPUNITAMT: string;
-    PPQTY: string;
-    PPTOTAMT: string;
-}
-
-export interface Ids_ioPosPrintM {
-    PMYEAR: string;
-    PMMGNO: string;
-    PMINPUT: string;
-    PMPCGUBUN: string;
-    PMPCORDERNO: string;
-    PMPROCDATE: string;
-    PMPIID: string;
-    PMPGMID: string;
-    PMPGMPK: string;
-    PMBUYER: string;
-    PMCLAS: string;
-    PMPGMGUBUN: string;
-    PMITEM1: string;
-    PMITEM2: string;
-    PMITEM3: string;
-    PMITEM4: string;
-    PMAMT: string;
-    PMVAT: string;
-    PMPAYMENTFLAG: string;
-    PMRESULT: string;
-    PCUSERTYPE: string;
-    PCSOCIALBUSINESSNO: string;
-    PCCARDINSTALL: string;
-    PCCLOSEDATE: string;
-    PCBANKCD: string;
-    PCBANKNM: string;
-}
-
-export interface Ids_oPosCas {
-}
-
-export interface Ids_AddrLable {
-    ADDR1: string;
-    ADDR2: string;
-    BNM: string;
-    CNO: string;
-    ZIPCD: string;
-}
-
-export interface Ids_PrintApplication {
-    GUBUN: string;
-    ISSUEGUBUNNM: string;
-    ISSUEREASON: string;
-    COURSECD: string;
-    NAME: string;
-    RESIDENTNO: string;
-    TEL: string;
-    HPTEL: string;
-    ADDR1: string;
-    ADDR2: string;
-}
+import type { Ids_oJibu, Ids_oStatus, Ids_oList, Ids_iLicenseReissueH, Ids_iLicenseImage, Ids_iLicenseH, Ids_iLicenseSettlement, Ids_oLicenseReport, Ids_oLicenseReportEdu, Ids_ioLicenseReissuePay, Ids_oPmMgno, Ids_ioPosPayment, Ids_ioPosPrintM, Ids_oPosCas, Ids_AddrLable, Ids_PrintApplication } from './Frmspcledu0360MInternetLicenseReIssueManagementData';
 
 export const useFrmspcledu0360MInternetLicenseReIssueManagement = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
@@ -253,6 +20,9 @@ export const useFrmspcledu0360MInternetLicenseReIssueManagement = () => {
     const [ds_AddrLable, setds_AddrLable] = useState<Ids_AddrLable[]>([]);
     const [ds_PrintApplication, setds_PrintApplication] = useState<Ids_PrintApplication[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [isVisible_divPos, setIsVisible_divPos] = useState(false);
+    const [tabValue_tabSettlement, setTabValue_tabSettlement] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -356,6 +126,12 @@ export const useFrmspcledu0360MInternetLicenseReIssueManagement = () => {
         ds_oPosCas,
         ds_AddrLable,
         ds_PrintApplication,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        isVisible_divPos,
+        setIsVisible_divPos,
+        tabValue_tabSettlement,
+        setTabValue_tabSettlement,
         btnJubsu_OnClick,
         btnLicensePrint_OnClick,
         btnPrintAddrAll_OnClick,

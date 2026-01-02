@@ -1,31 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oTrainingList {
-    SEL: string;
-    GTTEAMNM: string;
-    TOMGGTMGNO: string;
-    TCCOURSENM: string;
-    TOHJUBSUNO: string;
-    TJREGDATE: string;
-    TOSTARTDATE: string;
-    TOENDDATE: string;
-}
-
-export interface Ids_oExamList {
-    SEL: string;
-    GTTEAMNM: string;
-    EOMGGTMGNO: string;
-    TCCOURSENM: string;
-    EOHJUBSUNO: string;
-    EJREGDATE: string;
-    EOEXAMDATE: string;
-}
-
-export interface Ids_iGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oTrainingList, Ids_oExamList, Ids_iGubun } from './Frmcust3040PLicenseListData';
 
 export const useFrmcust3040PLicenseList = () => {
     const [ds_oTrainingList, setds_oTrainingList] = useState<Ids_oTrainingList[]>([]);

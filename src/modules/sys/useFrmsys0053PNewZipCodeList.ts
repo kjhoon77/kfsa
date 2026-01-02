@@ -1,34 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oZipCode {
-    NZMGNO: string;
-    NZBULDNO: string;
-    NZLEGALCD: string;
-    NZZIPCDE: string;
-    NZSIDO: string;
-    NZKU: string;
-    NZDONG: string;
-    NZRI: string;
-    NZSAN: string;
-    NZJIBUNBON: string;
-    NZJIBUNBU: string;
-    NZROADNM: string;
-    NZNEWBONBEN: string;
-    NZNEWBUBEN: string;
-    NZBULDNM: string;
-    NZSANGSEBULDNM: string;
-}
-
-export interface Ids_oAddr {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oKu {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oZipCode, Ids_oAddr, Ids_oKu } from './Frmsys0053PNewZipCodeListData';
 
 export const useFrmsys0053PNewZipCodeList = () => {
     const [ds_oZipCode, setds_oZipCode] = useState<Ids_oZipCode[]>([]);

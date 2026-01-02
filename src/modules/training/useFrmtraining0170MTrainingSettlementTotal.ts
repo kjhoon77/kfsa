@@ -1,66 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingJubsu {
-    INCNT: string;
-    INOUTCNT: string;
-    JUBSUCNT: string;
-    MUNJE: string;
-    OUTCNT: string;
-    REPAYAMT: string;
-    REPAYCNT: string;
-    SUNABAMT: string;
-    SUNABCNT: string;
-    TOTALAMT: string;
-    TOTRAININGORDER: string;
-    GTTEAMNM: string;
-    TCCOURSENM: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMunjeGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTrainingSettlementTotal {
-    GTDEPTNM: string;
-    TSTCCOURSECD: string;
-    TCCOURSENICK: string;
-    TSTCOURSEGUBUN: string;
-    TSTMUNJEGUBUN: string;
-    TSTINCOME: string;
-    TSTBUBUNAMT: string;
-    TSTAFBUBUNAMT: string;
-    TSTSUNABAMT: string;
-    TSTREPAYAMT: string;
-    TSTBUBUNREPAYAMT: string;
-    TSTAFBUBUNREPAYAMT: string;
-    TSTDATE: string;
-    TSTGTMGNO: string;
-    GTPRTSEQ: string;
-    COURSEGUBUN: string;
-    MUNJEGUBUN: string;
-}
-
-export interface Ids_ioCourseFG {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oTrainingJubsu, Ids_oJibu, Ids_ioMunjeGubun, Ids_ioCourseGubun, Ids_ioTrainingSettlementTotal, Ids_ioCourseFG } from './Frmtraining0170MTrainingSettlementTotalData';
 
 export const useFrmtraining0170MTrainingSettlementTotal = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -71,6 +11,7 @@ export const useFrmtraining0170MTrainingSettlementTotal = () => {
     const [ds_ioTrainingSettlementTotal, setds_ioTrainingSettlementTotal] = useState<Ids_ioTrainingSettlementTotal[]>([]);
     const [ds_ioCourseFG, setds_ioCourseFG] = useState<Ids_ioCourseFG[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -117,6 +58,8 @@ export const useFrmtraining0170MTrainingSettlementTotal = () => {
         ds_ioCourseGubun,
         ds_ioTrainingSettlementTotal,
         ds_ioCourseFG,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

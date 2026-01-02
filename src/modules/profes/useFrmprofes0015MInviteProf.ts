@@ -1,47 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ProfesList {
-    MGNO: string;
-    GTDEPTNM: string;
-    NAME: string;
-    JIKWI: string;
-    GUBUN: string;
-    SUMCNT: string;
-    SUMTIME: string;
-    CNT1: string;
-    TIME1: string;
-    CNT2: string;
-    TIME2: string;
-    SOSOK: string;
-}
-
-export interface Ids_SearchJogeon {
-    STARTDATE: string;
-    ENDDATE: string;
-    JIBU: string;
-    JIKWI: string;
-    GUBUN: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ProfesList_Chart {
-    MGNO: string;
-    GTDEPTNM: string;
-    NAME: string;
-    JIKWI: string;
-    GUBUN: string;
-    SUMCNT: string;
-    SUMTIME: string;
-    CNT1: string;
-    TIME1: string;
-    CNT2: string;
-    TIME2: string;
-}
+import type { Ids_ProfesList, Ids_SearchJogeon, Ids_oJibu, Ids_ProfesList_Chart } from './Frmprofes0015MInviteProfData';
 
 export const useFrmprofes0015MInviteProf = () => {
     const [ds_ProfesList, setds_ProfesList] = useState<Ids_ProfesList[]>([]);
@@ -49,6 +8,8 @@ export const useFrmprofes0015MInviteProf = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_ProfesList_Chart, setds_ProfesList_Chart] = useState<Ids_ProfesList_Chart[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [tabValue_TAB_Profes, setTabValue_TAB_Profes] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -83,6 +44,10 @@ export const useFrmprofes0015MInviteProf = () => {
         ds_SearchJogeon,
         ds_oJibu,
         ds_ProfesList_Chart,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        tabValue_TAB_Profes,
+        setTabValue_TAB_Profes,
         btnToExcel,
         lfn_End,
         lfn_Print,

@@ -1,81 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioEvaluationJumsuInput {
-    EOMGGTMGNO: string;
-    GTDEPTNM: string;
-    EOMGNO: string;
-    TCCOURSENM: string;
-    EOTCCOURSECD: string;
-    EOYEAR: string;
-    EOEXAMORDER: string;
-    EOHJUBSUNO: string;
-    EJMGNO: string;
-    EJPERSONNM: string;
-    EJBIRTHDAY: string;
-    EJJUBSUGUBUN: string;
-    EJJUBSUREASON: string;
-    EJREJUBSUYN: string;
-    EJCHASUGUBUN: string;
-    EISITEMSCORE: string;
-    ITEMCNT: string;
-    SUBJECT1SCORE: string;
-    SUBJECT2SCORE: string;
-    EISRESULT: string;
-    APLEXAMNO: string;
-    EJOLDPASSYN: string;
-    EOEXAMDATE: string;
-    EXAMDATE: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSort {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSunab {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExcel {
-    EISEOMGNO: string;
-    EISAPLEXAMNO: string;
-    EISPERSONNM: string;
-    EISSUBJECTGUBUN: string;
-    EISITEMSCORE: string;
-}
-
-export interface Ids_ioExcelCopy {
-    EISEOMGNO: string;
-    EISAPLEXAMNO: string;
-    EISPERSONNM: string;
-    EISSUBJECTGUBUN: string;
-    EISITEMSCORE: string;
-}
-
-export interface Ids_ioExamResult {
-    EREJMGNO: string;
-    ERSEQ: string;
-    ERREPEATNO: string;
-    ERAPLEXAMNO: string;
-    ERPASSYN: string;
-    ERPASSDATE: string;
-    ERRANK: string;
-    EJPASSYN: string;
-    ERSCORE: string;
-    ER2SCORE: string;
-}
+import type { Ids_oCourse, Ids_ioEvaluationJumsuInput, Ids_oJibu, Ids_oSort, Ids_oSunab, Ids_ioExcel, Ids_ioExcelCopy, Ids_ioExamResult } from './Frmtraining0634MPracticeEvaluationAnswerInputData';
 
 export const useFrmtraining0634MPracticeEvaluationAnswerInput = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -87,6 +12,7 @@ export const useFrmtraining0634MPracticeEvaluationAnswerInput = () => {
     const [ds_ioExcelCopy, setds_ioExcelCopy] = useState<Ids_ioExcelCopy[]>([]);
     const [ds_ioExamResult, setds_ioExamResult] = useState<Ids_ioExamResult[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -138,6 +64,8 @@ export const useFrmtraining0634MPracticeEvaluationAnswerInput = () => {
         ds_ioExcel,
         ds_ioExcelCopy,
         ds_ioExamResult,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Delete,
         lfn_End,

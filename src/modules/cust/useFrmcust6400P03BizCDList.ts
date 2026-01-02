@@ -1,10 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oBizCd {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oBizCd } from './Frmcust6400P03BizCDListData';
 
 export const useFrmcust6400P03BizCDList = () => {
     const [ds_oBizCd, setds_oBizCd] = useState<Ids_oBizCd[]>([]);

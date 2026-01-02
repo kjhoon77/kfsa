@@ -1,12 +1,13 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmtraining0630MExamMarkingResultSend } from './useFrmtraining0630MExamMarkingResultSend';
 import * as Frmtraining0630MExamMarkingResultSendData from './Frmtraining0630MExamMarkingResultSendData';
+import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 
 export const Frmtraining0630MExamMarkingResultSend = () => {
     const hook = useFrmtraining0630MExamMarkingResultSend();
@@ -33,7 +34,7 @@ export const Frmtraining0630MExamMarkingResultSend = () => {
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
                 <Typography variant="h5">기본정보</Typography>
                 <Stack direction="row" spacing={1}>
-                    <Button variant="contained"  onClick={hook.lfn_End}>닫기</Button>
+                    <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 <Button variant="contained"  onClick={hook.lfn_Save}>결과전송(데이터&답안지)</Button>
 
                 </Stack>
@@ -44,6 +45,13 @@ export const Frmtraining0630MExamMarkingResultSend = () => {
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
                         <Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12}>
+                    <Paper sx={{ height: 400, width: '100%' }}>
+                        <DataGridWrapper rows={hook.ds_ioExamList} columns={columns_gdExam} />
+                    </Paper>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={2}><Box>결과데이터
 전송</Box></Grid>
                 <Grid item xs={12}>

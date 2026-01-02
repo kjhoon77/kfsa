@@ -1,18 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oLicenseH {
-    BIRTHDAY: string;
-    LHADDR1: string;
-    LHADDR2: string;
-    LHISSUEREASON: string;
-    LHLLCSNO: string;
-    LHPERSONNM: string;
-    LHPRTDATE: string;
-    LHTEL: string;
-    LIDIRPATH: string;
-    LIREALNM: string;
-}
+import type { Ids_oLicenseH } from './Frmspcledu0251PLicenseIssueHistData';
 
 export const useFrmspcledu0251PLicenseIssueHist = () => {
     const [ds_oLicenseH, setds_oLicenseH] = useState<Ids_oLicenseH[]>([]);

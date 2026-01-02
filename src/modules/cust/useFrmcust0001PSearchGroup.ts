@@ -1,61 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioa {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oGroupList {
-    BBIZCD: string;
-    BMGNO: string;
-    BNM: string;
-    CCOURSECD: string;
-    CDELGUBUN: string;
-    CFEEYYMM: string;
-    CGTMGNO: string;
-    CMGNO: string;
-    CNO: string;
-    CREGCD: string;
-    CREGISTERYYMM: string;
-    CSTATUSGUBUN: string;
-    EDU: string;
-    FMHFMMGNO: string;
-    FMHHPTEL: string;
-    FMHTEL: string;
-    FMMGNO: string;
-    FMNM: string;
-    FMBIRTHDAY: string;
-    FMPERSONKEY: string;
-    BIRTHDAY: string;
-    MADDR: string;
-    MINAP: string;
-    MISSIONNO: string;
-    CDELDATE: string;
-}
-
-export interface Ids_oBizGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBnmCode {
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oGroupJibu {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioGubun, Ids_ioa, Ids_oGroupList, Ids_oBizGubun, Ids_oBnmCode, Ids_oCourse, Ids_oGroupJibu } from './Frmcust0001PSearchGroupData';
 
 export const useFrmcust0001PSearchGroup = () => {
     const [ds_ioGubun, setds_ioGubun] = useState<Ids_ioGubun[]>([]);
@@ -66,6 +11,7 @@ export const useFrmcust0001PSearchGroup = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
     const [ds_oGroupJibu, setds_oGroupJibu] = useState<Ids_oGroupJibu[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_Div0, setIsVisible_Div0] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -103,6 +49,8 @@ export const useFrmcust0001PSearchGroup = () => {
         ds_oBnmCode,
         ds_oCourse,
         ds_oGroupJibu,
+        isVisible_Div0,
+        setIsVisible_Div0,
         btnSelect_OnClick,
         lfn_End,
         lfn_Excel,

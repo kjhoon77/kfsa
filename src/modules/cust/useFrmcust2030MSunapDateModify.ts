@@ -1,69 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSunapGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_FeeGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioPosPrintM {
-    CCOURSECD: string;
-    CCOURSENM: string;
-    CGTMGNO: string;
-    CNO: string;
-    CREGCD: string;
-    CREGNM: string;
-    CSTATUSGUBUN: string;
-    GTDEPTNM: string;
-    PMAMT: string;
-    PMBUYER: string;
-    PMMGNO: string;
-    PMPCGUBUN: string;
-    PMPCORDERNO: string;
-    PMPGMGUBUN: string;
-    PMPGMGUBUNMN: string;
-    PMPGMID: string;
-    PMPROCDATE: string;
-    PMYEAR: string;
-    SEL: string;
-}
-
-export interface Ids_ioPosPrintM_Backup {
-    CCOURSECD: string;
-    CCOURSENM: string;
-    CGTMGNO: string;
-    CNO: string;
-    CREGCD: string;
-    CREGNM: string;
-    CSTATUSGUBUN: string;
-    GTDEPTNM: string;
-    PMAMT: string;
-    PMBUYER: string;
-    PMMGNO: string;
-    PMPCGUBUN: string;
-    PMPCORDERNO: string;
-    PMPGMGUBUN: string;
-    PMPGMGUBUNMN: string;
-    PMPGMID: string;
-    PMPROCDATE: string;
-    PMYEAR: string;
-    SEL: string;
-}
+import type { Ids_oJibu, Ids_oCourse, Ids_oSunapGubun, Ids_FeeGubun, Ids_ioPosPrintM, Ids_ioPosPrintM_Backup } from './Frmcust2030MSunapDateModifyData';
 
 export const useFrmcust2030MSunapDateModify = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
@@ -73,6 +10,7 @@ export const useFrmcust2030MSunapDateModify = () => {
     const [ds_ioPosPrintM, setds_ioPosPrintM] = useState<Ids_ioPosPrintM[]>([]);
     const [ds_ioPosPrintM_Backup, setds_ioPosPrintM_Backup] = useState<Ids_ioPosPrintM_Backup[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -117,6 +55,8 @@ export const useFrmcust2030MSunapDateModify = () => {
         ds_FeeGubun,
         ds_ioPosPrintM,
         ds_ioPosPrintM_Backup,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

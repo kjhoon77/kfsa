@@ -1,20 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oInstallment {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_Month {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_Year {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oInstallment, Ids_Month, Ids_Year } from './FrmCOM3102SSettlementPOSSunapData';
 
 export const useFrmCOM3102SSettlementPOSSunap = () => {
     const [ds_oInstallment, setds_oInstallment] = useState<Ids_oInstallment[]>([]);

@@ -1,8 +1,8 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmTMP0010MComponentTemplate } from './useFrmTMP0010MComponentTemplate';
@@ -43,7 +43,7 @@ export const FrmTMP0010MComponentTemplate = () => {
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={2}><Box>그룹박스</Box></Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>시간형 MaskEdit 예</Typography>
                         <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
                     </Stack>
@@ -57,7 +57,7 @@ export const FrmTMP0010MComponentTemplate = () => {
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>클릭이벤트있는이미지 예</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Tooltip title="BTN_SEARCH"><IconButton color="primary"><Search /></IconButton></Tooltip></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+<Grid item xs={12} md={2}><Box>클릭이벤트있는이미지 예</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Tooltip title="BTN_SEARCH"><Button variant="outlined" size="small" color="primary" sx={{ minWidth: 30, p: 0.5 }}><Search fontSize="small" /></Button></Tooltip></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={12}><Box>TextArea</Box></Grid><Grid item xs={12} md={12}><Box>TextArea ReadOnly</Box></Grid><Grid item xs={12} md={2}><Box>Div0</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">

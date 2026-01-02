@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './SearchExamJumsuPersonDistributionData';
 
 export const useSearchExamJumsuPersonDistribution = () => {
     const [isLoading, setIsLoading] = useState(false);

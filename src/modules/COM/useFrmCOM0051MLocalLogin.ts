@@ -1,10 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oServiceGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oServiceGubun } from './FrmCOM0051MLocalLoginData';
 
 export const useFrmCOM0051MLocalLogin = () => {
     const [ds_oServiceGubun, setds_oServiceGubun] = useState<Ids_oServiceGubun[]>([]);

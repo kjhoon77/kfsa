@@ -1,75 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYear {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_MinapGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_MinapList {
-    CGTMGNO: string;
-    JIFULLNM: string;
-    RCREGCD: string;
-    RCNM: string;
-    BANG_CNT: string;
-    BANG_MINAP: string;
-    DANGER_CNT: string;
-    DANGER_MINAP: string;
-    SOBANG_CNT: string;
-    SOBANG_MINAP: string;
-    PERSON_CNT: string;
-    PERSON_MINAP: string;
-    DANCHE_CNT: string;
-    DANCHE_MINAP: string;
-}
-
-export interface Ids_MinapListExcel {
-    JIFULLNM: string;
-    RCNM: string;
-    CNO: string;
-    BNM: string;
-    FMNM: string;
-    FMRESIDENTNO: string;
-    FMHSTARTDATE: string;
-    ZIPCD: string;
-    BADDR: string;
-    COVER_GUBUN: string;
-    CREGISTERYYMM: string;
-    CFEEYYMM: string;
-    FMHTEL: string;
-    FMHHPTEL: string;
-    EMAIL: string;
-    YEAR3: string;
-    YEAR2: string;
-    YEAR1: string;
-    YEAR0: string;
-    CNT3: string;
-    CNT2: string;
-    CNT1: string;
-    CNT0: string;
-    AMT: string;
-    BTEL: string;
-}
-
-export interface Ids_SearchJogeon {
-    JIBU: string;
-    MINAP_GUBUN: string;
-    LONGMINAP: string;
-    MINAP1: string;
-    MINAP2: string;
-    MINAP3: string;
-    MINAP4: string;
-}
+import type { Ids_ioJibu, Ids_ioYear, Ids_MinapGubun, Ids_MinapList, Ids_MinapListExcel, Ids_SearchJogeon } from './Frmcust9999MStopNoticeData';
 
 export const useFrmcust9999MStopNotice = () => {
     const [ds_ioJibu, setds_ioJibu] = useState<Ids_ioJibu[]>([]);
@@ -79,6 +10,7 @@ export const useFrmcust9999MStopNotice = () => {
     const [ds_MinapListExcel, setds_MinapListExcel] = useState<Ids_MinapListExcel[]>([]);
     const [ds_SearchJogeon, setds_SearchJogeon] = useState<Ids_SearchJogeon[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -105,6 +37,8 @@ export const useFrmcust9999MStopNotice = () => {
         ds_MinapList,
         ds_MinapListExcel,
         ds_SearchJogeon,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_End,
     };
 };

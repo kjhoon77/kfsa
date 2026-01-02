@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './InsertServerSendHData';
 
 export const useInsertServerSendH = () => {
     const [isLoading, setIsLoading] = useState(false);

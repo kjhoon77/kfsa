@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './Frmprofes0007PMaterialReqUpdateData';
 
 export const useFrmprofes0007PMaterialReqUpdate = () => {
     const [isLoading, setIsLoading] = useState(false);

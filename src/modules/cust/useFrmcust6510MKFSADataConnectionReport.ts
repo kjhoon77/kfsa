@@ -1,69 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioGijun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioOrder {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMatch {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioReport {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBonbu {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-}
-
-export interface Ids_oDATA {
-}
-
-export interface Ids_ioFireStation {
-    BID: string;
-    SID: string;
-    CID: string;
-    GMGNO: string;
-    RCD: string;
-    SNM : string;
-}
-
-export interface Ids_ioExceptGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioGijun, Ids_ioOrder, Ids_ioChoiceYn, Ids_ioMatch, Ids_ioReport, Ids_ioCourse, Ids_oRegion, Ids_oJibu, Ids_oBonbu, Ids_oDATA, Ids_ioFireStation, Ids_ioExceptGubun } from './Frmcust6510MKFSADataConnectionReportData';
 
 export const useFrmcust6510MKFSADataConnectionReport = () => {
     const [ds_ioGijun, setds_ioGijun] = useState<Ids_ioGijun[]>([]);
@@ -79,6 +16,7 @@ export const useFrmcust6510MKFSADataConnectionReport = () => {
     const [ds_ioFireStation, setds_ioFireStation] = useState<Ids_ioFireStation[]>([]);
     const [ds_ioExceptGubun, setds_ioExceptGubun] = useState<Ids_ioExceptGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -126,6 +64,8 @@ export const useFrmcust6510MKFSADataConnectionReport = () => {
         ds_oDATA,
         ds_ioFireStation,
         ds_ioExceptGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Excel,

@@ -1,46 +1,12 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oExamOrder {
-    EOMGNO: string;
-    JJIBUNICK: string;
-    EOYEAR: string;
-    EOTCCOURSENM: string;
-    EOEXAMORDER: string;
-    EOEXAMDATE: string;
-    EXAMNM: string;
-}
-
-export interface Ids_oExamJubsuPersonList {
-    ADDR1: string;
-    ADDR2: string;
-    BIRTHDAY: string;
-    EJMGNO: string;
-    EOEXAMORDER: string;
-    EOHEXAMSEATNO: string;
-    EOMGJIBUCD: string;
-    EOYEAR: string;
-    ESFEE: string;
-    ESPROCDATE: string;
-    PPASSDATE: string;
-    PPASSNO: string;
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-    TPHPTEL: string;
-    TJPERSONNM: string;
-    TPBIRTHDAY: string;
-    TPTEL: string;
-    TJZIPCD: string;
-    JUBSUNO: string;
-    TPPASSNO: string;
-    TPPASSDATE_A: string;
-    GTTEAMNM: string;
-}
+import type { Ids_oExamOrder, Ids_oExamJubsuPersonList } from './Frmtraining0490MExamPersonManagementData';
 
 export const useFrmtraining0490MExamPersonManagement = () => {
     const [ds_oExamOrder, setds_oExamOrder] = useState<Ids_oExamOrder[]>([]);
     const [ds_oExamJubsuPersonList, setds_oExamJubsuPersonList] = useState<Ids_oExamJubsuPersonList[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -80,6 +46,8 @@ export const useFrmtraining0490MExamPersonManagement = () => {
         isLoading,
         ds_oExamOrder,
         ds_oExamJubsuPersonList,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnNext_OnClick,
         btnToExcel_OnClick,

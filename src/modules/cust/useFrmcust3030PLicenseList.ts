@@ -1,36 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oFireManagerList {
-    BILD_SN: string;
-    OBJ_NM: string;
-    CRQFC_CODE: string;
-    CRQFC_NM: string;
-    APNT_DE: string;
-    BUILDADRES: string;
-}
-
-export interface Ids_iGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEdupassList {
-    SEL: string;
-    GUBUN: string;
-    TCCOURSENM: string;
-    GTTEAMNM: string;
-    TOENDDATE: string;
-}
-
-export interface Ids_oLicenseList {
-    SEL: string;
-    LTCCOURSENM: string;
-    LLCSNO: string;
-    LISSUEDATE: string;
-    LORGGUBUN: string;
-    LORGGUBUNNMM: string;
-}
+import type { Ids_oFireManagerList, Ids_iGubun, Ids_oEdupassList, Ids_oLicenseList } from './Frmcust3030PLicenseListData';
 
 export const useFrmcust3030PLicenseList = () => {
     const [ds_oFireManagerList, setds_oFireManagerList] = useState<Ids_oFireManagerList[]>([]);

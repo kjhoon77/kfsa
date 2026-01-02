@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './Frmcust1093PEduIssueRemarkData';
 
 export const useFrmcust1093PEduIssueRemark = () => {
     const [isLoading, setIsLoading] = useState(false);

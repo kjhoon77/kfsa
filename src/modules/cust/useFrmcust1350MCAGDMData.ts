@@ -1,42 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioGijun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioDMList {
-}
-
-export interface Ids_3 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioDMList1 {
-    SELA: string;
-}
-
-export interface Ids_oTJubsu {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioGijun, Ids_oCourse, Ids_2, Ids_oJibu, Ids_ioDMList, Ids_3, Ids_ioDMList1, Ids_oTJubsu } from './Frmcust1350MCAGDMDataData';
 
 export const useFrmcust1350MCAGDMData = () => {
     const [ds_ioGijun, setds_ioGijun] = useState<Ids_ioGijun[]>([]);
@@ -48,6 +12,7 @@ export const useFrmcust1350MCAGDMData = () => {
     const [ds_ioDMList1, setds_ioDMList1] = useState<Ids_ioDMList1[]>([]);
     const [ds_oTJubsu, setds_oTJubsu] = useState<Ids_oTJubsu[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -87,6 +52,8 @@ export const useFrmcust1350MCAGDMData = () => {
         ds_3,
         ds_ioDMList1,
         ds_oTJubsu,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnExcelPrint1_OnClick,
         btnSms_OnClick,
         lfn_End,

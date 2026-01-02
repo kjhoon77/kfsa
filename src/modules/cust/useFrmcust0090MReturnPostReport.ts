@@ -1,78 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oReport {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBusinessType {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCheckList {
-    ADDRESS: string;
-    BNM: string;
-    BTEL: string;
-    CNO: string;
-    COVER1COUNT: string;
-    DELCOUNT: string;
-    FMNM: string;
-    NOCOVERCOUNT: string;
-    PMGNO: string;
-    PRBIZGUBUN: string;
-    PRBIZGUBUNNM: string;
-    PRPDREASON: string;
-}
-
-export interface Ids_oListSum {
-}
-
-export interface Ids_oSumList {
-    CGTMGNO: string;
-    CNT: string;
-    CREGCD: string;
-    GTTEAMNM: string;
-    RCNM: string;
-    RCORDERNO: string;
-}
-
-export interface Ids_oRegionForm {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oReport, Ids_oChoiceYn, Ids_oGubun, Ids_oBusinessType, Ids_oCourseYn, Ids_oCourse, Ids_oRegion, Ids_oJibu, Ids_oCheckList, Ids_oListSum, Ids_oSumList, Ids_oRegionForm } from './Frmcust0090MReturnPostReportData';
 
 export const useFrmcust0090MReturnPostReport = () => {
     const [ds_oReport, setds_oReport] = useState<Ids_oReport[]>([]);
@@ -88,6 +16,7 @@ export const useFrmcust0090MReturnPostReport = () => {
     const [ds_oSumList, setds_oSumList] = useState<Ids_oSumList[]>([]);
     const [ds_oRegionForm, setds_oRegionForm] = useState<Ids_oRegionForm[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -135,6 +64,8 @@ export const useFrmcust0090MReturnPostReport = () => {
         ds_oListSum,
         ds_oSumList,
         ds_oRegionForm,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_ExcelL,

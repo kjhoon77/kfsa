@@ -1,8 +1,8 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust5020 } from './useFrmcust5020';
@@ -11,11 +11,192 @@ import * as Frmcust5020Data from './Frmcust5020Data';
 export const Frmcust5020 = () => {
     const hook = useFrmcust5020();
     const [tabValue_tabTab1, setTabValue_tabTab1] = useState(0);
-    const [tabValue_tabTab1, setTabValue_tabTab1] = useState(0);
-    const [tabValue_tabTab1, setTabValue_tabTab1] = useState(0);
-    const [tabValue_tabTab1, setTabValue_tabTab1] = useState(0);
     const [tabValue_tabTab2, setTabValue_tabTab2] = useState(0);
-    const [tabValue_tabTab1, setTabValue_tabTab1] = useState(0);
+    const columns_gdAdminList = [
+        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'NM', headerName: '성명', width: 100 },
+        { field: 'OFCPS', headerName: '직위', width: 100 },
+        { field: 'IHIDNUM', headerName: '생년월일', width: 100 },
+        { field: 'BASS_ADRES', headerName: '주소', width: 271 },
+        { field: 'TLPHON_NO', headerName: '전화번호', width: 100 },
+        { field: 'MANAGE_ENTRPS_VRSC_AT', headerName: '업무대행여부', width: 99 },
+        { field: 'APNT_DE_8', headerName: '선임일자', width: 100 },
+        { field: 'RLSOFC_DE_8', headerName: '해임일자', width: 100 },
+    ];
+    const columns_gdLicense = [
+        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'CODE_NM', headerName: '자격증명', width: 200 },
+        { field: 'CRQFC_NO', headerName: '자격증번호', width: 136 },
+        { field: 'DELVRY_DE', headerName: '교부일자', width: 100 },
+        { field: 'ARSON_MANAGE_PKTBUK_NO', headerName: '안전원수첩정보', width: 183 },
+        { field: 'QUALF_FRFTR_ENNC', headerName: '자격상실유무', width: 99 },
+    ];
+    const columns_gdRelation = [
+        { field: 'PARTCPNT_SN', headerName: '순번', width: 94 },
+        { field: 'PARTCPNT_CODE', headerName: '구분', width: 153 },
+        { field: 'PARTCPNT', headerName: '성명', width: 177 },
+        { field: 'TLPHON_NO', headerName: '전화번호', width: 197 },
+    ];
+    const columns_gdDongStatus = [
+        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'BULDDONG_NM', headerName: '동명칭', width: 138 },
+        { field: 'BULDDONG_MAIN_PRPOS_CODE', headerName: '주용도', width: 120 },
+        { field: 'BULDDONG_SEC_PRPOS_CODE', headerName: '부용도', width: 187 },
+        { field: 'TRRPHNM_FLOOR_QT', headerName: '지상층', width: 73 },
+        { field: 'UNDGRND_FLOOR_QT', headerName: '지하층', width: 73 },
+        { field: 'PLOT_AR', headerName: '부지면적', width: 71 },
+        { field: 'BOTTOM_AR', headerName: '바닥면적', width: 71 },
+        { field: 'TOTAR', headerName: '연면적', width: 71 },
+        { field: 'BULDDONG_HG', headerName: '높이', width: 71 },
+        { field: 'ADDR', headerName: '주소', width: 362 },
+    ];
+    const columns_gdSFloorStatus = [
+        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'FLOOR', headerName: '층', width: 109 },
+        { field: 'SPCL_PRPOS_SE_CODE', headerName: '특수용도', width: 258 },
+        { field: 'AR', headerName: '면적', width: 115 },
+        { field: 'USE_AT', headerName: '사용여부', width: 112 },
+        { field: 'RM', headerName: '비고', width: 124 },
+        { field: 'regdate', headerName: '최초등록일', width: 100 },
+        { field: 'moddate', headerName: '최종수정일', width: 100 },
+    ];
+    const columns_gdFloorStatus = [
+        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'FLOOR', headerName: '층', width: 51 },
+        { field: 'MAIN_PROPS', headerName: '용도', width: 134 },
+        { field: 'AR', headerName: '면적', width: 68 },
+        { field: 'ARSON_CMPRT_QT', headerName: '방화구획수', width: 113 },
+        { field: 'ITRDECO_MATRL', headerName: '내장재료', width: 108 },
+        { field: 'USE_AT', headerName: '사용여부', width: 89 },
+        { field: 'RM', headerName: '비고', width: 142 },
+        { field: 'regdate', headerName: '최초등록일', width: 107 },
+        { field: 'moddate', headerName: '최종수정일', width: 107 },
+    ];
+    const columns_gdFloorE = [
+        { field: 'FLOOR_SE', headerName: '시설별', width: 80 },
+        { field: 'FLOOR', headerName: '층', width: 80 },
+        { field: 'GUBUN', headerName: '구분', width: 108 },
+        { field: 'EXTSHR_STDR', headerName: '소화설비', width: 30 },
+        { field: 'SIMPLCTY_FREXT_EQPMT_STDR', headerName: 'SIMPLCTY_FREXT_EQPMT_STDR', width: 30 },
+        { field: 'INSDHOUS_FRPLG_STDR', headerName: 'INSDHOUS_FRPLG_STDR', width: 30 },
+        { field: 'OUTHOUS_FRPLG_STDR', headerName: 'OUTHOUS_FRPLG_STDR', width: 30 },
+        { field: 'POWER_FGT_PUMP_STDR', headerName: 'POWER_FGT_PUMP_STDR', width: 30 },
+        { field: 'SPRINKLER_H_STDR', headerName: 'H', width: 30 },
+        { field: 'SPRINKLER_AV_STDR', headerName: 'AV', width: 30 },
+        { field: 'WATER_SPRAY_FREXT_H_STDR', headerName: 'H', width: 30 },
+        { field: 'WATER_SPRAY_FREXT_AV_STDR', headerName: 'AV', width: 30 },
+        { field: 'CANNON_FREXT_H_STDR', headerName: 'H', width: 30 },
+        { field: 'CANNON_FREXT_AV_STDR', headerName: 'AV', width: 30 },
+        { field: 'CARBON_DIOX_H_STDR', headerName: 'H', width: 30 },
+        { field: 'CARBON_DIOX_AV_STDR', headerName: 'AV', width: 30 },
+        { field: 'HALOGEN_COMP_H_STDR', headerName: 'H', width: 30 },
+        { field: 'HALOGEN_COMP_AV_STDR', headerName: 'AV', width: 30 },
+        { field: 'POWDER_FREXT_H_STDR', headerName: 'H', width: 30 },
+        { field: 'POWDER_FREXT_AV_STDR', headerName: 'AV', width: 30 },
+        { field: 'EMGNC_ALARM_STDR', headerName: '경보설비', width: 30 },
+        { field: 'EMGNC_BRDCST_STDR', headerName: 'EMGNC_BRDCST_STDR', width: 30 },
+        { field: 'SHCI_ALARM_STDR', headerName: 'SHCI_ALARM_STDR', width: 30 },
+        { field: 'ATMC_FIRE_DETCT_SENSOR_STDR', headerName: '감', width: 30 },
+        { field: 'ATMC_FIRE_DETCT_CRCT_STDR', headerName: '회', width: 30 },
+        { field: 'ATMC_FIRE_FNEWS_STDR', headerName: 'ATMC_FIRE_FNEWS_STDR', width: 30 },
+        { field: 'GAS_LKGE_ALARM_STDR', headerName: 'GAS_LKGE_ALARM_STDR', width: 30 },
+        { field: 'SLIDE_STDR', headerName: '피난설비', width: 30 },
+        { field: 'REFGE_LADDER_STDR', headerName: 'REFGE_LADDER_STDR', width: 30 },
+        { field: 'RSCUNT_STDR', headerName: 'RSCUNT_STDR', width: 30 },
+        { field: 'SLOW_DES_MCHN_STDR', headerName: 'SLOW_DES_MCHN_STDR', width: 30 },
+        { field: 'REFGE_BRIDGE_STDR', headerName: 'REFGE_BRIDGE_STDR', width: 30 },
+        { field: 'REFGE_ROPE_STDR', headerName: 'REFGE_ROPE_STDR', width: 30 },
+        { field: 'AIR_SAFE_MAT_STDR', headerName: 'AIR_SAFE_MAT_STDR', width: 30 },
+        { field: 'HNL_RESCUE_UTNSIL_STDR', headerName: 'HNL_RESCUE_UTNSIL_STDR', width: 30 },
+        { field: 'DLAMP_STDR', headerName: 'DLAMP_STDR', width: 30 },
+        { field: 'DERIVE_SGNAL_STDR', headerName: 'DERIVE_SGNAL_STDR', width: 30 },
+        { field: 'EMGNC_LLAMP_STDR', headerName: 'EMGNC_LLAMP_STDR', width: 30 },
+        { field: 'WRPP_FREXT_USWTR_STDR', headerName: '소방용수설비', width: 30 },
+        { field: 'FREXT_WTR_STDR', headerName: 'FREXT_WTR_STDR', width: 30 },
+        { field: 'WTRTNK_STDR', headerName: 'WTRTNK_STDR', width: 30 },
+        { field: 'FGT_USWTR_EQP_ETC_STDR', headerName: 'FGT_USWTR_EQP_ETC_STDR', width: 30 },
+        { field: 'RESMOKE_STDR', headerName: '소화활동상필요한설비', width: 30 },
+        { field: 'CNNC_WTRPIPE_STDR', headerName: 'CNNC_WTRPIPE_STDR', width: 30 },
+        { field: 'CNNC_SPRK_STDR', headerName: 'CNNC_SPRK_STDR', width: 30 },
+        { field: 'EMGNC_CNCNT_STDR', headerName: 'EMGNC_CNCNT_STDR', width: 30 },
+        { field: 'WLMC_ASSTN_STDR', headerName: 'WLMC_ASSTN_STDR', width: 30 },
+        { field: 'CURTAIN_STDR', headerName: '방염', width: 30 },
+        { field: 'CASSETTE_STDR', headerName: 'CASSETTE_STDR', width: 30 },
+        { field: 'RSTPRT_ETC_STDR', headerName: 'RSTPRT_ETC_STDR', width: 30 },
+    ];
+    const columns_gdStatusSucces = [
+        { field: 'FC_NM', headerName: '관할서/센터', width: 122 },
+        { field: 'POSIT_SUCCS_DE', headerName: '승계일자', width: 100 },
+        { field: 'PROCESS_DE', headerName: '신고일자', width: 100 },
+        { field: 'BEFINSTLR_CPR_NM', headerName: '전 설치 법인명', width: 138 },
+        { field: 'BEFINSTLR_NM', headerName: '전 설치자 명', width: 118 },
+        { field: 'BEFINSTLR_TELNO', headerName: '전화번호', width: 87 },
+        { field: 'REGIST_DE_14', headerName: '최초등록일', width: 100 },
+        { field: 'UPDT_DE_14', headerName: '최종수정일', width: 100 },
+    ];
+    const columns_gdManagerInfo = [
+        { field: 'NM', headerName: '선임자명', width: 122 },
+        { field: 'BIRTHDAY', headerName: '생년월일', width: 100 },
+        { field: 'CRQFC_CODE_NM', headerName: '자격증종류', width: 110 },
+        { field: 'DMCRQFC_NO', headerName: '자격증번호', width: 138 },
+        { field: 'AP_APNTRLSOFC_DE', headerName: '선임일자', width: 100 },
+        { field: 'AP_PROCESS_DE', headerName: '선임신고일자', width: 100 },
+        { field: 'RL_APNTRLSOFC_DE', headerName: '해임일자', width: 100 },
+        { field: 'RL_PROCESS_DE', headerName: '해임신고일자', width: 100 },
+    ];
+    const columns_gdManagerInfo_1 = [
+        { field: 'NM', headerName: '선임자명', width: 122 },
+        { field: 'BIRTHDAY', headerName: '생년월일', width: 100 },
+        { field: 'CRQFC_CODE_NM', headerName: '자격증종류', width: 110 },
+        { field: 'DMCRQFC_NO', headerName: '자격증번호', width: 138 },
+        { field: 'AP_APNTRLSOFC_DE', headerName: '선임일자', width: 100 },
+        { field: 'AP_PROCESS_DE', headerName: '선임신고일자', width: 100 },
+        { field: 'RL_APNTRLSOFC_DE', headerName: '해임일자', width: 100 },
+        { field: 'RL_PROCESS_DE', headerName: '해임신고일자', width: 100 },
+    ];
+    const columns_gdTankInfo = [
+        { field: 'OKND_CODE_NM', headerName: '유별', width: 59 },
+        { field: 'PRDNM_CODE_NM', headerName: '품명', width: 178 },
+        { field: 'PRDNM_DETAIL', headerName: '품명상세', width: 104 },
+        { field: 'APPN_QT', headerName: '지정수량', width: 81 },
+        { field: 'MXMM_QT', headerName: '최대수량', width: 80 },
+        { field: 'ANTY_MUL', headerName: '배수', width: 58 },
+        { field: 'REGIST_DE_14', headerName: '최초등록일', width: 100 },
+        { field: 'UPDT_DE_14', headerName: '최종수정일', width: 100 },
+    ];
+    const columns_gdStatusSucces_1 = [
+        { field: 'FC_NM', headerName: '관할서/센터', width: 122 },
+        { field: 'POSIT_SUCCS_DE', headerName: '승계일자', width: 100 },
+        { field: 'PROCESS_DE', headerName: '신고일자', width: 100 },
+        { field: 'BEFINSTLR_CPR_NM', headerName: '전 설치 법인명', width: 138 },
+        { field: 'BEFINSTLR_NM', headerName: '전 설치자 명', width: 118 },
+        { field: 'BEFINSTLR_TELNO', headerName: '전화번호', width: 87 },
+        { field: 'REGIST_DE_14', headerName: '최초등록일', width: 100 },
+        { field: 'UPDT_DE_14', headerName: '최종수정일', width: 100 },
+    ];
+    const columns_gdPHuman = [
+        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'NM', headerName: '성명', width: 83 },
+        { field: 'HNF_SE_NM', headerName: '인력구분', width: 107 },
+        { field: 'BIRTHDATE', headerName: '생년월일', width: 101 },
+        { field: 'TLPHON_NO', headerName: '연락처', width: 101 },
+        { field: 'ADDR', headerName: '주소', width: 289 },
+        { field: 'APNT_DE', headerName: '선임일', width: 80 },
+        { field: 'RLSOFC_DE', headerName: '해임일', width: 80 },
+        { field: 'REGDATE	', headerName: '최초등록일', width: 80 },
+        { field: 'MODDATE', headerName: '최근수정일', width: 80 },
+    ];
+    const columns_gdLicenscInfo = [
+        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'CRQFC_NM', headerName: '자격증명', width: 83 },
+        { field: 'CRQFC_DETAIL_SE_NM', headerName: '상세자격증명', width: 122 },
+        { field: 'CRQFC_NO', headerName: '자격증번호', width: 101 },
+        { field: 'DELVRY_DE', headerName: '교부일자', width: 151 },
+        { field: 'DELVRY_INSTT', headerName: '교부처', width: 130 },
+        { field: 'QUALF_FRFTR_ENNC', headerName: '상실여부', width: 80 },
+        { field: 'REGDATE', headerName: '최초등록일', width: 80 },
+        { field: 'MODDATE', headerName: '최근수정일', width: 80 },
+    ];
     const columns_gdList50 = [
         { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
         { field: 'CNT', headerName: '연계건수', width: 70 },
@@ -73,7 +254,8 @@ export const Frmcust5020 = () => {
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
                 <Typography variant="h5">기본정보</Typography>
                 <Stack direction="row" spacing={1}>
-                    <Button variant="contained"  onClick={hook.lfn_End}>닫기</Button>
+                    <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
+<Button variant="contained" startIcon={<Save />} onClick={hook.btnToExcel_OnClick}>엑셀로 저장</Button>
 <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 <Button variant="contained" startIcon={<Search />} onClick={hook.btnDataHistory_OnClick}>데이터조회이력</Button>
 
@@ -85,23 +267,44 @@ export const Frmcust5020 = () => {
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
                         <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>검색조건</Box></Grid><Grid item xs={12} md={4}><Box></Box></Grid>
+
+                <Grid item xs={12} md={5}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>검색조건</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust5020Data.ds_ds_ioSearch || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}></Typography>
-                        <FormControl size="small" fullWidth><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem></Select></FormControl>
+                        <FormControl size="small" sx={{ width: 150 }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem></Select></FormControl>
+                    </Stack>
+                </Grid>{ hook.isVisible_cbxCodeGubunD && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>공공기관여부</Typography>
+                        <FormControl size="small" sx={{ width: 150 }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust5020Data.ds_ds_ioPBLINSTT || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
                     </Stack>
                 </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>검색어</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid><Grid item xs={12} md={2}><Box>해당 문자열 포함</Box></Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>조회수</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
@@ -109,34 +312,72 @@ export const Frmcust5020 = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>총건수</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
+{ hook.isVisible_gdList50 && (
+                <Grid item xs={12} md={12}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }{ hook.isVisible_gdList80 && (
+                <Grid item xs={12} md={12}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }{ hook.isVisible_gdList10 && (
+                <Grid item xs={12} md={12}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }{ hook.isVisible_gdList30 && (
+                <Grid item xs={12} md={12}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
+<Grid container spacing={2} alignItems="center">
 <Grid item xs={12}><Box sx={{ width: "100%" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab1} onChange={(e, v) => setTabValue_tabTab1(v)} aria-label="tabTab1"><Tab label="          소방안전관리대상물          " /><Tab label="                  위험물                 " /><Tab label="              소방기술자              " /></Tabs></Box><CustomTabPanel value={tabValue_tabTab1} index={0}></CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={1}><Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>허가번호</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.PRMISN_NO || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>컨테이너허가번호</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.CNTANR_PRMISN_NO || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>최초착공일자</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.FRST_STRWRK_DE || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>완공일자</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.COMPET_DE || ''} />
                     </Stack>
@@ -144,25 +385,25 @@ export const Frmcust5020 = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>위험물임시저장</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.DGST_TMPRSTRE_AT || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>삭제(휴페업)구분</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.PAUSE_ABL_SE || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>삭제(휴페업)일자</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.PAUSE_ABL_DE || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>용도폐지사유</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.PRPOS_ABL_RESN || ''} />
                     </Stack>
@@ -172,25 +413,25 @@ export const Frmcust5020 = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>법인구분</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.CPR_AT_NM || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>법인명</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.INSTLR_CPR_NM || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>법인번호</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.INSTLR_JURIRNO || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>생년월일</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.INSTLR_IHIDNUM || ''} />
                     </Stack>
@@ -198,19 +439,19 @@ export const Frmcust5020 = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>성명(대표자)</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.INSTLR_NM || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>전화번호</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.edINSTLR_TELNO || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>설치자주소</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.INSTLR_ADRES || ''} />
                     </Stack>
@@ -220,19 +461,19 @@ export const Frmcust5020 = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={5}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>관할서/센터</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.CMPFRSTT_CMPN119SC_NM || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>대상물명</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.OBJ_NM || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>건물동/층</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
@@ -240,25 +481,25 @@ export const Frmcust5020 = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={6}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>설치장소</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.ITLPC_ADRES || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>지정수량배수</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.ANTY_MUL_SM || ''} />
                     </Stack>
                 </Grid><Grid item xs={12} md={2}><Box>배</Box></Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>자체소방대</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.ONSLFFBRD_AT || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>군용</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.ARMY_DGST_AT || ''} />
                     </Stack>
@@ -266,7 +507,7 @@ export const Frmcust5020 = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={11}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>위험물 취급
 방법의 개요</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.TRTMNT_SUMRY || ''} />
@@ -275,13 +516,13 @@ export const Frmcust5020 = () => {
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={2}><Box>시스템변경정보</Box></Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>최초등록일</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.REGIST_DE_14 || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>최종수정일</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.UPDT_DE_14 || ''} />
                     </Stack>
@@ -292,19 +533,19 @@ export const Frmcust5020 = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>유별</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanTankInfo?.OKND_CODE_NM || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>품명</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanTankInfo?.PRDNM_CODE_NM || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>품명상세</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanTankInfo?.PRDNM_DETAIL || ''} />
                     </Stack>
@@ -314,19 +555,19 @@ export const Frmcust5020 = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>검사일자</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanTankInfo?.BEGIN_DE || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>검사번호</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanTankInfo?.TANK_INSPCT_NO || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>탱크최대용량</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanTankInfo?.TANK_MXMMCPCTY || ''} />
                     </Stack>
@@ -334,40 +575,75 @@ export const Frmcust5020 = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>탱크실용량</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanTankInfo?.TNKROOM_CPCTY || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>최초등록일</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanTankInfo?.REGIST_DE_14 || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>최종수정일</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioDanTankInfo?.UPDT_DE_14 || ''} />
                     </Stack>
                 </Grid></Grid>
-</CustomTabPanel><CustomTabPanel value={tabValue_tabTab2} index={1}></CustomTabPanel><CustomTabPanel value={tabValue_tabTab2} index={2}></CustomTabPanel></Box></Grid><Grid item xs={12}><Box sx={{ width: "100%" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab1} onChange={(e, v) => setTabValue_tabTab1(v)} aria-label="tabTab1"><Tab label="      선임자정보      " /><Tab label="      설비정보      " /><Tab label="    탱크유별현황    " /><Tab label="       지위승계       " /></Tabs></Box><CustomTabPanel value={tabValue_tabTab1} index={0}></CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={1}></CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={2}></CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={3}></CustomTabPanel></Box></Grid></Grid>
+</CustomTabPanel><CustomTabPanel value={tabValue_tabTab2} index={1}><Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12}>
+                    <Paper sx={{ height: 400, width: '100%' }}>
+                        <DataGridWrapper rows={hook.ds_ioDanStatusSuccession} columns={columns_gdStatusSucces} />
+                    </Paper>
+                </Grid></Grid>
+</CustomTabPanel><CustomTabPanel value={tabValue_tabTab2} index={2}><Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12}>
+                    <Paper sx={{ height: 400, width: '100%' }}>
+                        <DataGridWrapper rows={hook.ds_ioDanManagerInfo} columns={columns_gdManagerInfo} />
+                    </Paper>
+                </Grid></Grid>
+</CustomTabPanel></Box></Grid><Grid item xs={12}><Box sx={{ width: "100%" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab1} onChange={(e, v) => setTabValue_tabTab1(v)} aria-label="tabTab1"><Tab label="      선임자정보      " /><Tab label="      설비정보      " /><Tab label="    탱크유별현황    " /><Tab label="       지위승계       " /></Tabs></Box><CustomTabPanel value={tabValue_tabTab1} index={0}><Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12}>
+                    <Paper sx={{ height: 400, width: '100%' }}>
+                        <DataGridWrapper rows={hook.ds_ioDanManagerInfo} columns={columns_gdManagerInfo_1} />
+                    </Paper>
+                </Grid></Grid>
+</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={1}></CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={2}><Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12}>
+                    <Paper sx={{ height: 400, width: '100%' }}>
+                        <DataGridWrapper rows={hook.ds_ioDanTankInfo} columns={columns_gdTankInfo} />
+                    </Paper>
+                </Grid></Grid>
+</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={3}><Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12}>
+                    <Paper sx={{ height: 400, width: '100%' }}>
+                        <DataGridWrapper rows={hook.ds_ioDanStatusSuccession} columns={columns_gdStatusSucces_1} />
+                    </Paper>
+                </Grid></Grid>
+</CustomTabPanel></Box></Grid></Grid>
 </CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={2}><Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>대표자</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioFightFireCompany?.RPRSNTV || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>관할서/센터</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioFightFireCompany?.CMPN119SC_NM || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={5}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>주소</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioFightFireCompany?.ADDR || ''} />
                     </Stack>
@@ -375,25 +651,25 @@ export const Frmcust5020 = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>전화번호</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioFightFireCompany?.TLPHON_NO || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>팩스번호</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioFightFireCompany?.FAX_NO || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>최초등록일</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioFightFireCompany?.regdate || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>최종수정일</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioFightFireCompany?.moddate || ''} />
                     </Stack>
@@ -404,7 +680,7 @@ export const Frmcust5020 = () => {
 
                 <Grid item xs={12}>
                     <Paper sx={{ height: 400, width: '100%' }}>
-                        <DataGridWrapper rows={hook.ds_ioFightFireCompanyPossessionHuman} columns={columns_ds_ioFightFireCompanyPossessionHuman} />
+                        <DataGridWrapper rows={hook.ds_ioFightFireCompanyPossessionHuman} columns={columns_gdPHuman} />
                     </Paper>
                 </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
@@ -413,7 +689,7 @@ export const Frmcust5020 = () => {
 
                 <Grid item xs={12}>
                     <Paper sx={{ height: 400, width: '100%' }}>
-                        <DataGridWrapper rows={hook.ds_ioFightFireCompanyFireLicenseInfo} columns={columns_ds_ioFightFireCompanyFireLicenseInfo} />
+                        <DataGridWrapper rows={hook.ds_ioFightFireCompanyFireLicenseInfo} columns={columns_gdLicenscInfo} />
                     </Paper>
                 </Grid></Grid>
 </CustomTabPanel></Box></Grid></Grid>

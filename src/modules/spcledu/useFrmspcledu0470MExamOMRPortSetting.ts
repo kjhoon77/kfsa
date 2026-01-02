@@ -1,34 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioOmrPort {
-    STDYEAR: string;
-}
-
-export interface Ids_oPort {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSpeed {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBoundRate {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oParityBit {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oStopBit {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioOmrPort, Ids_oPort, Ids_oSpeed, Ids_oBoundRate, Ids_oParityBit, Ids_oStopBit } from './Frmspcledu0470MExamOMRPortSettingData';
 
 export const useFrmspcledu0470MExamOMRPortSetting = () => {
     const [ds_ioOmrPort, setds_ioOmrPort] = useState<Ids_ioOmrPort[]>([]);
@@ -38,6 +10,7 @@ export const useFrmspcledu0470MExamOMRPortSetting = () => {
     const [ds_oParityBit, setds_oParityBit] = useState<Ids_oParityBit[]>([]);
     const [ds_oStopBit, setds_oStopBit] = useState<Ids_oStopBit[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -67,6 +40,8 @@ export const useFrmspcledu0470MExamOMRPortSetting = () => {
         ds_oBoundRate,
         ds_oParityBit,
         ds_oStopBit,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_End,
         lfn_Save,
     };

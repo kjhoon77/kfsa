@@ -1,51 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEmailStat {
-    ECTITLE: string;
-    ESHEMAILADDR: string;
-    ESHRECEIVEYN: string;
-    ESHSABUN: string;
-    ESHSENDDATE: string;
-    ESHSENDYN: string;
-    GTDEPTNM: string;
-    TCCOURSENM: string;
-    TOHJUBSUNO: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPNM: string;
-    ESHMGNO: string;
-}
-
-export interface Ids_oPrintList {
-}
-
-export interface Ids_oPrintOrder {
-}
-
-export interface Ids_oPrintDate {
-}
-
-export interface Ids_oPrintJibu {
-}
-
-export interface Ids_oViewMailDetail {
-}
+import type { Ids_oWorkGubun, Ids_oCourse, Ids_oJibu, Ids_oEmailStat, Ids_oPrintList, Ids_oPrintOrder, Ids_oPrintDate, Ids_oPrintJibu, Ids_oViewMailDetail } from './Frmspcledu0710MEmailSendStatisticsData';
 
 export const useFrmspcledu0710MEmailSendStatistics = () => {
     const [ds_oWorkGubun, setds_oWorkGubun] = useState<Ids_oWorkGubun[]>([]);
@@ -58,6 +13,7 @@ export const useFrmspcledu0710MEmailSendStatistics = () => {
     const [ds_oPrintJibu, setds_oPrintJibu] = useState<Ids_oPrintJibu[]>([]);
     const [ds_oViewMailDetail, setds_oViewMailDetail] = useState<Ids_oViewMailDetail[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -117,6 +73,8 @@ export const useFrmspcledu0710MEmailSendStatistics = () => {
         ds_oPrintDate,
         ds_oPrintJibu,
         ds_oViewMailDetail,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnPrintDate_OnClick,
         btnPrintJibu_OnClick,

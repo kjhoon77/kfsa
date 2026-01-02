@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oEduDataHList {
-}
+import type { Ids_oEduDataHList } from './Frmcust0010PEduDataHListData';
 
 export const useFrmcust0010PEduDataHList = () => {
     const [ds_oEduDataHList, setds_oEduDataHList] = useState<Ids_oEduDataHList[]>([]);

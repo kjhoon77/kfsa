@@ -1,39 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioRepayFeeCode {
-    CREATE_DATE: string;
-    CREATE_ID: string;
-    MODIFY_DATE: string;
-    MODIFY_ID: string;
-    RFCFEE: string;
-    RFCFEECD: string;
-    TCCOURSECD: string;
-    TCMUNJEGUBUN: string;
-    USE_YN: string;
-    RFCSTARTDATE: string;
-    RFCENDDATE: string;
-}
-
-export interface Ids_oRepayFeeGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRepayFee {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioRepayFeeCode, Ids_oRepayFeeGubun, Ids_oTrainingGubun, Ids_oCourse, Ids_oRepayFee } from './Frmsys0042MRepayFeeCodeManagementData';
 
 export const useFrmsys0042MRepayFeeCodeManagement = () => {
     const [ds_ioRepayFeeCode, setds_ioRepayFeeCode] = useState<Ids_ioRepayFeeCode[]>([]);
@@ -42,6 +9,7 @@ export const useFrmsys0042MRepayFeeCodeManagement = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
     const [ds_oRepayFee, setds_oRepayFee] = useState<Ids_oRepayFee[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -90,6 +58,8 @@ export const useFrmsys0042MRepayFeeCodeManagement = () => {
         ds_oTrainingGubun,
         ds_oCourse,
         ds_oRepayFee,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Delete,
         lfn_End,

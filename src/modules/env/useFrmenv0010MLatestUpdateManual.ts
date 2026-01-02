@@ -1,46 +1,12 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oUpdate {
-    AFDIRPATH: string;
-    AFFILESIZE: string;
-    AFREALNM: string;
-    AFSAVENM: string;
-    AFSEQ: string;
-    BBOARDGUBUN: string;
-    BCONTENTS: string;
-    BHIT: string;
-    BMODDATE: string;
-    BMODSABUN: string;
-    BREGDATE: string;
-    BREGSABUN: string;
-    BSEQ: string;
-    BTITLE: string;
-    NEW_YN: string;
-}
-
-export interface Ids_oManual {
-    AFDIRPATH: string;
-    AFFILESIZE: string;
-    AFREALNM: string;
-    AFSAVENM: string;
-    AFSEQ: string;
-    BBOARDGUBUN: string;
-    BCONTENTS: string;
-    BHIT: string;
-    BMODDATE: string;
-    BMODSABUN: string;
-    BREGDATE: string;
-    BREGSABUN: string;
-    BSEQ: string;
-    BTITLE: string;
-    NEW_YN: string;
-}
+import type { Ids_oUpdate, Ids_oManual } from './Frmenv0010MLatestUpdateManualData';
 
 export const useFrmenv0010MLatestUpdateManual = () => {
     const [ds_oUpdate, setds_oUpdate] = useState<Ids_oUpdate[]>([]);
     const [ds_oManual, setds_oManual] = useState<Ids_oManual[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -71,6 +37,8 @@ export const useFrmenv0010MLatestUpdateManual = () => {
         isLoading,
         ds_oUpdate,
         ds_oManual,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         imgManualMore_OnClick,
         imgUpdateMore_OnClick,
         lfn_End,

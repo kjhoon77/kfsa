@@ -1,36 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioTrainingPass {
-    ADDR: string;
-    SEL: string;
-    TJMGNO: string;
-    TJPERSONNM: string;
-    TJRESIDENTNO: string;
-    TOHJUBSUNO: string;
-    TPPASSNO: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSunapGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingOrderMgno {
-}
-
-export interface Ids_oTrainingAutoJubsuResult {
-}
+import type { Ids_ioTrainingPass, Ids_oCourse, Ids_oJibu, Ids_oSunapGubun, Ids_oTrainingOrderMgno, Ids_oTrainingAutoJubsuResult } from './Frmspcledu0100MPassMunjeAutoJubsuData';
 
 export const useFrmspcledu0100MPassMunjeAutoJubsu = () => {
     const [ds_ioTrainingPass, setds_ioTrainingPass] = useState<Ids_ioTrainingPass[]>([]);
@@ -40,6 +10,7 @@ export const useFrmspcledu0100MPassMunjeAutoJubsu = () => {
     const [ds_oTrainingOrderMgno, setds_oTrainingOrderMgno] = useState<Ids_oTrainingOrderMgno[]>([]);
     const [ds_oTrainingAutoJubsuResult, setds_oTrainingAutoJubsuResult] = useState<Ids_oTrainingAutoJubsuResult[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -93,6 +64,8 @@ export const useFrmspcledu0100MPassMunjeAutoJubsu = () => {
         ds_oSunapGubun,
         ds_oTrainingOrderMgno,
         ds_oTrainingAutoJubsuResult,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnSearchTrainingOrder_OnClick,
         chkJubsuProcGubun_OnClick,

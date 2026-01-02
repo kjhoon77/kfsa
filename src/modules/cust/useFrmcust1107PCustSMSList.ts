@@ -1,17 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioSmsPattern {
-    SPWORKGUBUN: string;
-    SPCODE: string;
-    SPCODENM: string;
-    SPMBCCD: string;
-}
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioSmsPattern, Ids_oWorkGubun } from './Frmcust1107PCustSMSListData';
 
 export const useFrmcust1107PCustSMSList = () => {
     const [ds_ioSmsPattern, setds_ioSmsPattern] = useState<Ids_ioSmsPattern[]>([]);

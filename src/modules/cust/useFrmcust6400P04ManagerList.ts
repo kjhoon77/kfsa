@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oFireManagerInfo {
-}
+import type { Ids_oFireManagerInfo } from './Frmcust6400P04ManagerListData';
 
 export const useFrmcust6400P04ManagerList = () => {
     const [ds_oFireManagerInfo, setds_oFireManagerInfo] = useState<Ids_oFireManagerInfo[]>([]);

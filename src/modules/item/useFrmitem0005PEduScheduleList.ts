@@ -1,55 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduSchedule {
-    CGROUPNM: string;
-    EDUTIME: string;
-    EPNM: string;
-    EPSAVENM: string;
-    ESACCESSCNT: string;
-    ESCOUSECD: string;
-    ESDATE: string;
-    ESENDTIME: string;
-    ESEPMGNO: string;
-    ESGTMGNO: string;
-    ESGUBUN: string;
-    ESINETCLOSEDATE: string;
-    ESINETJUBSUCNT: string;
-    ESMGNO: string;
-    ESNOTICE: string;
-    ESPREPARED: string;
-    ESSEATCNT: string;
-    ESSTARTTIME: string;
-    ESSTUDENT: string;
-    ESSUBJECTGUBUN: string;
-    ESYEAR: string;
-    ESEDUORDER: string;
-}
-
-export interface Ids_oEduGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduStudent {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduSubject {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oJibu, Ids_oCourse, Ids_oEduSchedule, Ids_oEduGubun, Ids_oEduStudent, Ids_oEduSubject } from './Frmitem0005PEduScheduleListData';
 
 export const useFrmitem0005PEduScheduleList = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);

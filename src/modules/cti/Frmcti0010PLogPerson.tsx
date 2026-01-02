@@ -1,12 +1,13 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcti0010PLogPerson } from './useFrmcti0010PLogPerson';
 import * as Frmcti0010PLogPersonData from './Frmcti0010PLogPersonData';
+import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 
 export const Frmcti0010PLogPerson = () => {
     const hook = useFrmcti0010PLogPerson();
@@ -33,17 +34,17 @@ export const Frmcti0010PLogPerson = () => {
                         <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>조회건수</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>선택건수</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
-                </Grid><Grid item xs={12} md={2}><Button variant="contained">조회</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">로그전송</Button></Grid></Grid>
+                </Grid><Grid item xs={12} md={2}><Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnSend_OnClick}>로그전송</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12}>

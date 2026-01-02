@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oAwaiterJubsu {
-}
+import type { Ids_oAwaiterJubsu } from './Frmtraining0029PTrainingAwaiterListData';
 
 export const useFrmtraining0029PTrainingAwaiterList = () => {
     const [ds_oAwaiterJubsu, setds_oAwaiterJubsu] = useState<Ids_oAwaiterJubsu[]>([]);

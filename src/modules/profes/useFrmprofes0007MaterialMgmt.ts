@@ -1,79 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_Year {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_Status {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_TpEduGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_TecProg {
-    TPMGNO: string;
-    TPEDUGUBUN: string;
-    TPYEAR: string;
-    TPREQUSERNM: string;
-    TPSEQ: string;
-    TPCOURSNM: string;
-    TPSUBJECTNM: string;
-    TPSTATUS: string;
-    STATUS: string;
-    TPREGDATE: string;
-    TPREGDATE2: string;
-    TPUSEDATE: string;
-    TPOKDATE: string;
-    INSNUM: string;
-    TPSTATUS_NM: string;
-    SATUS_OKDATE: string;
-    TPREGSABUN: string;
-    PNM: string;
-    PGTMGNO: string;
-    PGTMGNO_NM: string;
-}
-
-export interface Ids_Search {
-    TCCOURSECDYN: string;
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-    TCSEARCHGUBUN: string;
-    TCMUNJEGUBUN: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-    PCMGNO: string;
-    PCTCMUNJEGUBUN: string;
-    PCTCSEARCHGUBUN: string;
-}
-
-export interface Ids_oAllCourse {
-    CD: string;
-    DATA: string;
-    PCMGNO: string;
-    PCTCMUNJEGUBUN: string;
-    PCTCSEARCHGUBUN: string;
-}
-
-export interface Ids_oAllSubject {
-    CD: string;
-    DATA: string;
-    PSPCMGNO: string;
-}
-
-export interface Ids_oSubject {
-    CD: string;
-    DATA: string;
-    PSPCMGNO: string;
-}
+import type { Ids_Year, Ids_Status, Ids_TpEduGubun, Ids_TecProg, Ids_Search, Ids_oCourse, Ids_oAllCourse, Ids_oAllSubject, Ids_oSubject } from './Frmprofes0007MaterialMgmtData';
 
 export const useFrmprofes0007MaterialMgmt = () => {
     const [ds_Year, setds_Year] = useState<Ids_Year[]>([]);
@@ -86,6 +13,7 @@ export const useFrmprofes0007MaterialMgmt = () => {
     const [ds_oAllSubject, setds_oAllSubject] = useState<Ids_oAllSubject[]>([]);
     const [ds_oSubject, setds_oSubject] = useState<Ids_oSubject[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -145,6 +73,8 @@ export const useFrmprofes0007MaterialMgmt = () => {
         ds_oAllCourse,
         ds_oAllSubject,
         ds_oSubject,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMake_OnClick,
         btnMutilSort_OnClick,
         lfn_Cancel,

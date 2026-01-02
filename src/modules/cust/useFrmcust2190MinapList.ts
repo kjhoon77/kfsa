@@ -1,29 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_Gubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioList {
-}
-
-export interface Ids_ioList2 {
-}
-
-export interface Ids_oList {
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJubsuYN {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_Gubun, Ids_ioList, Ids_ioList2, Ids_oList, Ids_oJibu, Ids_oJubsuYN } from './Frmcust2190MinapListData';
 
 export const useFrmcust2190MinapList = () => {
     const [ds_Gubun, setds_Gubun] = useState<Ids_Gubun[]>([]);
@@ -33,6 +10,7 @@ export const useFrmcust2190MinapList = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_oJubsuYN, setds_oJubsuYN] = useState<Ids_oJubsuYN[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -74,6 +52,8 @@ export const useFrmcust2190MinapList = () => {
         ds_oList,
         ds_oJibu,
         ds_oJubsuYN,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnToExcel_OnClick,
         lfn_Cancel,
         lfn_EduCustSMSSend,

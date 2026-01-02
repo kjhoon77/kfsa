@@ -1,41 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_SearchJogeon {
-    JIBU: string;
-    REGION_GUBUN: string;
-    REGION1: string;
-    REGION2: string;
-    PRINT_GUBUN: string;
-}
-
-export interface Ids_oPrintGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_SendReport {
-    BNM: string;
-    ZIPCD: string;
-    ADDR1: string;
-    ADDR2: string;
-}
+import type { Ids_ioJibu, Ids_oRegion, Ids_SearchJogeon, Ids_oPrintGubun, Ids_ioChoiceYn, Ids_SendReport } from './Frmcust1110MDangerTransDMDataData';
 
 export const useFrmcust1110MDangerTransDMData = () => {
     const [ds_ioJibu, setds_ioJibu] = useState<Ids_ioJibu[]>([]);
@@ -45,6 +10,7 @@ export const useFrmcust1110MDangerTransDMData = () => {
     const [ds_ioChoiceYn, setds_ioChoiceYn] = useState<Ids_ioChoiceYn[]>([]);
     const [ds_SendReport, setds_SendReport] = useState<Ids_SendReport[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -77,6 +43,8 @@ export const useFrmcust1110MDangerTransDMData = () => {
         ds_oPrintGubun,
         ds_ioChoiceYn,
         ds_SendReport,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnToExcel_OnClick,
         lfn_End,
         lfn_Print,

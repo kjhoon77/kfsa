@@ -1,19 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCustList {
-    ADDR: string;
-    BBIZCD: string;
-    BMGNO: string;
-    BNM: string;
-    BTEL: string;
-    DPERMISSIONNO: string;
-}
-
-export interface Ids_oBizGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCustList, Ids_oBizGubun } from './Frmcust0010PSearchbuildingCheckData';
 
 export const useFrmcust0010PSearchbuildingCheck = () => {
     const [ds_oCustList, setds_oCustList] = useState<Ids_oCustList[]>([]);

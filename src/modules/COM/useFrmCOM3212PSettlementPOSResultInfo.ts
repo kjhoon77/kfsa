@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oResultOk {
-}
+import type { Ids_oResultOk } from './FrmCOM3212PSettlementPOSResultInfoData';
 
 export const useFrmCOM3212PSettlementPOSResultInfo = () => {
     const [ds_oResultOk, setds_oResultOk] = useState<Ids_oResultOk[]>([]);

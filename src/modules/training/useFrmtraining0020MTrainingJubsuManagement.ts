@@ -1,363 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioTrainingJubsu {
-    ABSENTDAY: string;
-    ABSENTYN: string;
-    ADDR1: string;
-    ADDR2: string;
-    AUTHYN: string;
-    BARCODE: string;
-    COMPNM: string;
-    COURSECD: string;
-    COURSEMUNJECD: string;
-    COURSENM: string;
-    DECISIONSEATNO: string;
-    EMAILDOMAIN: string;
-    EMAILID: string;
-    HPTEL: string;
-    IIDIRPATH: string;
-    IIIMGSEQ: string;
-    IIREALNM: string;
-    IISAVENM: string;
-    JUBSUNO: string;
-    LASTIMGSEQ: string;
-    LASTSUNAPGUBUN: string;
-    LASTTJHSEQ: string;
-    LASTTOHSEQ: string;
-    LASTTSSEQ: string;
-    MGJIBUCD: string;
-    MGJIBUNICK: string;
-    MGJIBUNM: string;
-    MUNJEGUBUN: string;
-    PASSYN: string;
-    PERSONNM: string;
-    REMARK: string;
-    REMARKCD: string;
-    RESIDENTNO: string;
-    TEL: string;
-    TJMGNO: string;
-    TPMGNO: string;
-    TOMGNO: string;
-    TORDER: string;
-    YEAR: string;
-    ZIPCD: string;
-    IIIMGBINARY: string;
-    TJFIREMANYN: string;
-    TJADDRGUBUN: string;
-    TJRPNUCD: string;
-    TJRROADBUILDMGNO: string;
-    TJRROADDETAIL: string;
-    TJRROADREMAIN: string;
-    TJRSANGUBUN: string;
-    TJRMAINBUNJI: string;
-    TJRSUBBUNJI: string;
-    TJRBUILDNM: string;
-    TJRADDRETC: string;
-    TJRCONVPGM: string;
-    TJRCONVSTATUS: string;
-    TJMEMAGREEGUBUN: string;
-    TJAMOUNTGUBUN: string;
-    EVALYN: string;
-    BIRTHDAY: string;
-    PERSONKEY: string;
-    DI: string;
-    CI: string;
-    CIVER: string;
-    BIRTHDAY7: string;
-    TOONLINEGUBUN: string;
-    TOONLINEGUBUNNM: string;
-    TPBOOKZIPCD: string;
-    TPBOOKADDR1: string;
-    TPBOOKADDR2: string;
-    TJTASKSUBMITGUBUN: string;
-    TJTASKSUBMITGUBUNNM: string;
-    TJBOOKRETURNYN: string;
-    TJBOOKPRINTTOMGNO: string;
-    PRNO: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEmailDomain {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oImage {
-    FILE_NAME: string;
-    SHORT_FILE_NAME: string;
-    FILE_SIZE: string;
-    CREATE_DATE: string;
-    UPDATE_DATE: string;
-    ACCESS_DATE: string;
-    ATTR_ARCHIVE: string;
-    ATTR_SYSTEM: string;
-    ATTR_HIDDEN: string;
-    ATTR_READONLY: string;
-    ATTR_DIRECTORY: string;
-}
-
-export interface Ids_oRemarkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingOrderMgno {
-}
-
-export interface Ids_oJubsuNo {
-}
-
-export interface Ids_oSeatNo {
-}
-
-export interface Ids_oJubsuAllInfo {
-    COURSECD: string;
-    COURSEMUNJECD: string;
-    JUBSUNO: string;
-    LASTSUNAPGUBUN: string;
-    MGJIBUCD: string;
-    PASSDATE: string;
-    TJMGNO: string;
-    TJPASSYN: string;
-    TOMGNO: string;
-    TORDER: string;
-    YEAR: string;
-}
-
-export interface Ids_oOrderHist {
-    ABSENTYN: string;
-    AFTERJIBU: string;
-    AFTERJUBSUNO: string;
-    AFTERMGNO: string;
-    AFTERORDER: string;
-    BEFORJIBU: string;
-    BEFORJUBSUNO: string;
-    BEFORMGNO: string;
-    BEFORORDER: string;
-    LASTSUNAPGUBUN: string;
-    TJLASTSUNAPGUBUN: string;
-    TJMGNO: string;
-    TOHSEQ: string;
-    BEFORTOTCCOURSECD: string;
-    BEFORTOMUNJEGUBUN: string;
-}
-
-export interface Ids_oSetlmentHist {
-}
-
-export interface Ids_ioMenuTree {
-    MORDERSEQ: string;
-    MMENUID: string;
-    MENULEVEL: string;
-    MPARENTMENUID: string;
-    MMENUNM: string;
-    USE_YN: string;
-    MURL: string;
-    MREMARK: string;
-    MURLTYPE: string;
-    MSYSGUBUN: string;
-}
-
-export interface Ids_oModifyColumn {
-    COLUMNCD: string;
-    COLUMNNM: string;
-}
-
-export interface Ids_oTrainingJubsuResult {
-}
-
-export interface Ids_oTrainingJubsuPrint {
-}
-
-export interface Ids_oTrainingOrder {
-}
-
-export interface Ids_oPosResult {
-}
-
-export interface Ids_oTrainingJubsuPrint1 {
-}
-
-export interface Ids_oTrainingJubsuPrint2 {
-}
-
-export interface Ids_oTrainingJubsuPrint3 {
-}
-
-export interface Ids_oTrainingCheck {
-}
-
-export interface Ids_oJibuGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingPearson {
-}
-
-export interface Ids_oChangeTpmgno {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYearbizlink {
-}
-
-export interface Ids_ioT_E_L_JubsuCheck {
-}
-
-export interface Ids_ioTraing_JubsuCheck {
-}
-
-export interface Ids_ioTraing_ReturnTpmgnoJubsuCheck {
-}
-
-export interface Ids_ioTrainingPerson {
-}
-
-export interface Ids_ioSettelYN {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEducationNo {
-}
-
-export interface Ids_ioControl {
-    No: string;
-}
-
-export interface Ids_ioTraingSeatNoCheck {
-}
-
-export interface Ids_oSiteMember {
-}
-
-export interface Ids_oCyberLearning {
-    CLPROGRESSPCT: string;
-    CLPROGRESSSCORE: string;
-    CLEXAMSCORE: string;
-    CLHOMEWORKSCORE: string;
-    CLDISCUSSSCORE: string;
-    CLPASSSCORE: string;
-    CLTJMGNO: string;
-    CPPASSSTATUS: string;
-}
-
-export interface Ids_oCyberPass {
-    CPPROGRESSPCT: string;
-    CPPASSSCORE: string;
-    CPPASSSTATUS: string;
-}
-
-export interface Ids_oAddr {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oYN {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioManager {
-    MMGNO: string;
-    FMLASTFMHSEQ: string;
-    FMRESIDENTERR: string;
-}
-
-export interface Ids_oMemberStatus {
-}
-
-export interface Ids_oDeleteSettlement {
-}
-
-export interface Ids_oAmountGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamCheat {
-}
-
-export interface Ids_oForm {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_iFormSave {
-    I_PROC: string;
-    I_FCCD: string;
-    I_FAMGNO: string;
-    I_PK1VAL: string;
-    I_PK2VAL: string;
-    I_FRDATE: string;
-    I_PATH: string;
-    I_FILENM: string;
-}
-
-export interface Ids_oFormSave {
-}
-
-export interface Ids_iFormDelete {
-    I_FCCD: string;
-    I_FAMGNO: string;
-    I_PK1VAL: string;
-    I_PK2VAL: string;
-    I_PATH: string;
-    I_FILENM: string;
-}
-
-export interface Ids_oFormDelete {
-}
-
-export interface Ids_ioScicheck {
-}
-
-export interface Ids_oTrainingJubsuPrint4 {
-}
-
-export interface Ids_oModifyTime {
-}
-
-export interface Ids_oTaskList {
-}
-
-export interface Ids_oBookReturn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_iTaskSave {
-    TASKGUBUN: string;
-    TJMGNO: string;
-    PATH: string;
-    FILENM: string;
-}
-
-export interface Ids_oTaskGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oResult_check {
-    CAGGUBUN: string;
-    LTCCOURSECD: string;
-    MANAGE_ENTRPS_VRSC_AT: string;
-}
-
-export interface Ids_oSmsData {
-}
+import type { Ids_ioTrainingJubsu, Ids_oJibu, Ids_oCourse, Ids_oEmailDomain, Ids_oImage, Ids_oRemarkGubun, Ids_oTrainingOrderMgno, Ids_oJubsuNo, Ids_oSeatNo, Ids_oJubsuAllInfo, Ids_oOrderHist, Ids_oSetlmentHist, Ids_ioMenuTree, Ids_oModifyColumn, Ids_oTrainingJubsuResult, Ids_oTrainingJubsuPrint, Ids_oTrainingOrder, Ids_oPosResult, Ids_oTrainingJubsuPrint1, Ids_oTrainingJubsuPrint2, Ids_oTrainingJubsuPrint3, Ids_oTrainingCheck, Ids_oJibuGubun, Ids_oTrainingPearson, Ids_oChangeTpmgno, Ids_ioYearbizlink, Ids_ioT_E_L_JubsuCheck, Ids_ioTraing_JubsuCheck, Ids_ioTraing_ReturnTpmgnoJubsuCheck, Ids_ioTrainingPerson, Ids_ioSettelYN, Ids_oEducationNo, Ids_ioControl, Ids_ioTraingSeatNoCheck, Ids_oSiteMember, Ids_oCyberLearning, Ids_oCyberPass, Ids_oAddr, Ids_oYN, Ids_ioManager, Ids_oMemberStatus, Ids_oDeleteSettlement, Ids_oAmountGubun, Ids_oExamCheat, Ids_oForm, Ids_iFormSave, Ids_oFormSave, Ids_iFormDelete, Ids_oFormDelete, Ids_ioScicheck, Ids_oTrainingJubsuPrint4, Ids_oModifyTime, Ids_oTaskList, Ids_oBookReturn, Ids_iTaskSave, Ids_oTaskGubun, Ids_oResult_check, Ids_oSmsData } from './Frmtraining0020MTrainingJubsuManagementData';
 
 export const useFrmtraining0020MTrainingJubsuManagement = () => {
     const [ds_ioTrainingJubsu, setds_ioTrainingJubsu] = useState<Ids_ioTrainingJubsu[]>([]);
@@ -419,6 +62,8 @@ export const useFrmtraining0020MTrainingJubsuManagement = () => {
     const [ds_oResult_check, setds_oResult_check] = useState<Ids_oResult_check[]>([]);
     const [ds_oSmsData, setds_oSmsData] = useState<Ids_oSmsData[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divTask, setIsVisible_divTask] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -638,6 +283,9 @@ export const useFrmtraining0020MTrainingJubsuManagement = () => {
     const btnUnSeatList_OnClick = () => {
         console.log('btnUnSeatList_OnClick clicked');
     };
+    const divTask_btnDivTaskSave_OnClick = () => {
+        console.log('divTask_btnDivTaskSave_OnClick clicked');
+    };
     const edBookPrint_OnClick = () => {
         console.log('edBookPrint_OnClick clicked');
     };
@@ -726,6 +374,10 @@ export const useFrmtraining0020MTrainingJubsuManagement = () => {
         ds_oTaskGubun,
         ds_oResult_check,
         ds_oSmsData,
+        isVisible_divTask,
+        setIsVisible_divTask,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnAbsentManageLink_OnClick,
         btnApplyPicture_OnClick,
         btnAuthResidentNo_OnClick,
@@ -777,6 +429,7 @@ export const useFrmtraining0020MTrainingJubsuManagement = () => {
         btnTraingJubsuInfo_OnClick,
         btnTrainingJubsuModify_OnClick,
         btnUnSeatList_OnClick,
+        divTask_btnDivTaskSave_OnClick,
         edBookPrint_OnClick,
         lfn_Cancel,
         lfn_Delete,

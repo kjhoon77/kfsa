@@ -1,21 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_iGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oPersonkeyInfoList {
-    BILD_SN: string;
-    OBJ_NM: string;
-    OBJ_SE_CODE_NM: string;
-    APNT_RLSOFC_GUBUN: string;
-    ARSON_MANAGE_PKTBUK_NO: string;
-    CRQFC_CODENM: string;
-    QUALFUSER_ADRES: string;
-    PERSONKEY: string;
-}
+import type { Ids_iGubun, Ids_oPersonkeyInfoList } from './Frmcust3030PPersonkeyInfoListData';
 
 export const useFrmcust3030PPersonkeyInfoList = () => {
     const [ds_iGubun, setds_iGubun] = useState<Ids_iGubun[]>([]);

@@ -1,83 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMemberGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oOrder {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInput {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oPostReturn {
-    BMGNO: string;
-    BNM: string;
-    CBMGNO: string;
-    CCOURSECD: string;
-    CEDUPOSTADDR1: string;
-    CEDUPOSTADDR2: string;
-    CEDUPOSTGUBUN: string;
-    CEDUPOSTPLACE: string;
-    CEDUPOSTZIPCD: string;
-    CFEEPOSTADDR1: string;
-    CFEEPOSTADDR2: string;
-    CFEEPOSTGUBUN: string;
-    CFEEPOSTPLACE: string;
-    CFEEPOSTZIPCD: string;
-    CGTMGNO: string;
-    CMGNO: string;
-    CNO: string;
-    CPOSTREQGUBUN: string;
-    CREGCD: string;
-    CSTATUSGUBUN: string;
-    GTDEPTNM: string;
-    PRBIZGUBUN: string;
-    PRIMGAE: string;
-    PRPDDATE: string;
-    PRPDGUBUN: string;
-    PRPDMGNO: string;
-    PRPRINTNO: string;
-    PRSENDDATE: string;
-    PRCNT: string;
-    MINAPFEE: string;
-}
-
-export interface Ids_oPrint {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMinap {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oGubun, Ids_oCourse, Ids_oJibu, Ids_oMemberGubun, Ids_oOrder, Ids_oCourseYn, Ids_oInput, Ids_oPostReturn, Ids_oPrint, Ids_oMinap } from './Frmcust0080MReturnPostHistoryData';
 
 export const useFrmcust0080MReturnPostHistory = () => {
     const [ds_oGubun, setds_oGubun] = useState<Ids_oGubun[]>([]);
@@ -91,6 +14,7 @@ export const useFrmcust0080MReturnPostHistory = () => {
     const [ds_oPrint, setds_oPrint] = useState<Ids_oPrint[]>([]);
     const [ds_oMinap, setds_oMinap] = useState<Ids_oMinap[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -146,6 +70,8 @@ export const useFrmcust0080MReturnPostHistory = () => {
         ds_oPostReturn,
         ds_oPrint,
         ds_oMinap,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btn_PostReturnImage_OnClick,
         lfn_Cancel,

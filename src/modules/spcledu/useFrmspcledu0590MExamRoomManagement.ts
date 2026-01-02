@@ -1,60 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamRoom {
-    EOEXAMORDER: string;
-    EOEXAMORDERGUBUN: string;
-    EOMGJIBUCD: string;
-    EOMGNO: string;
-    EOYEAR: string;
-    EPMGNO: string;
-    EREXAMROOM: string;
-    ERNUMTYPE: string;
-    EXAMNM: string;
-    JJIBUNM: string;
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-    USE_YN: string;
-}
-
-export interface Ids_oNumType {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamOrderMgno {
-}
-
-export interface Ids_ioExamRoomSearch {
-    EOEXAMORDER: string;
-    EOEXAMORDERGUBUN: string;
-    EOMGJIBUCD: string;
-    EOMGNO: string;
-    EOYEAR: string;
-    EPMGNO: string;
-    EREXAMROOM: string;
-    ERNUMTYPE: string;
-    EXAMNM: string;
-    JJIBUNM: string;
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-    USE_YN: string;
-}
-
-export interface Ids_oModifyColumn {
-    COLUMNCD: string;
-    COLUMNNM: string;
-}
+import type { Ids_ioExamRoom, Ids_oNumType, Ids_oCourse, Ids_oJibu, Ids_oExamOrderMgno, Ids_ioExamRoomSearch, Ids_oModifyColumn } from './Frmspcledu0590MExamRoomManagementData';
 
 export const useFrmspcledu0590MExamRoomManagement = () => {
     const [ds_ioExamRoom, setds_ioExamRoom] = useState<Ids_ioExamRoom[]>([]);
@@ -65,6 +11,7 @@ export const useFrmspcledu0590MExamRoomManagement = () => {
     const [ds_ioExamRoomSearch, setds_ioExamRoomSearch] = useState<Ids_ioExamRoomSearch[]>([]);
     const [ds_oModifyColumn, setds_oModifyColumn] = useState<Ids_oModifyColumn[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -117,6 +64,8 @@ export const useFrmspcledu0590MExamRoomManagement = () => {
         ds_oExamOrderMgno,
         ds_ioExamRoomSearch,
         ds_oModifyColumn,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

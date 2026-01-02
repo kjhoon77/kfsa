@@ -1,70 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oTrainingAbsent {
-    ABSENTDATE: string;
-    ABSENTDAY: string;
-    ADAY1: string;
-    ADAY2: string;
-    ADAY3: string;
-    ADAY4: string;
-    ADAY5: string;
-    ADDR: string;
-    BIRTHDAY: string;
-    JJIBUNM: string;
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-    TJADDR1: string;
-    TJADDR2: string;
-    TJPERSONNM: string;
-    PERSONKEY: string;
-    TOENDDATE: string;
-    TOHJUBSUNO: string;
-    TOMGJIBUCD: string;
-    TOSTARTDATE: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-}
-
-export interface Ids_oSearchGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingAbsentTemp {
-    ABSENTDATE: string;
-    ABSENTDAY: string;
-    ADAY1: string;
-    ADAY2: string;
-    ADAY3: string;
-    ADAY4: string;
-    ADAY5: string;
-    ADDR: string;
-    BIRTHDAY: string;
-    JJIBUNM: string;
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-    TJADDR1: string;
-    TJADDR2: string;
-    TJPERSONNM: string;
-    TJPERSONKEY: string;
-    TOENDDATE: string;
-    TOHJUBSUNO: string;
-    TOMGJIBUCD: string;
-    TOSTARTDATE: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-}
+import type { Ids_oTrainingAbsent, Ids_oSearchGubun, Ids_oCourse, Ids_oJibu, Ids_oTrainingAbsentTemp } from './Frmtraining0042MTrainingAbsentListData';
 
 export const useFrmtraining0042MTrainingAbsentList = () => {
     const [ds_oTrainingAbsent, setds_oTrainingAbsent] = useState<Ids_oTrainingAbsent[]>([]);
@@ -73,6 +9,7 @@ export const useFrmtraining0042MTrainingAbsentList = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_oTrainingAbsentTemp, setds_oTrainingAbsentTemp] = useState<Ids_oTrainingAbsentTemp[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -121,6 +58,8 @@ export const useFrmtraining0042MTrainingAbsentList = () => {
         ds_oCourse,
         ds_oJibu,
         ds_oTrainingAbsentTemp,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMunjeSave_OnClick,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,

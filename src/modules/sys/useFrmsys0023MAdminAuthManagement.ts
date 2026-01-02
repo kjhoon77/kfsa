@@ -1,25 +1,12 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioAdminAuth {
-    AAGUBUN: string;
-    PDEPTCD: string;
-    PDEPTNM: string;
-    PPERSONNM: string;
-    PPOSITNNM: string;
-    PSABUN: string;
-    USE_YN: string;
-}
-
-export interface Ids_oAdminGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioAdminAuth, Ids_oAdminGubun } from './Frmsys0023MAdminAuthManagementData';
 
 export const useFrmsys0023MAdminAuthManagement = () => {
     const [ds_ioAdminAuth, setds_ioAdminAuth] = useState<Ids_ioAdminAuth[]>([]);
     const [ds_oAdminGubun, setds_oAdminGubun] = useState<Ids_oAdminGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -65,6 +52,8 @@ export const useFrmsys0023MAdminAuthManagement = () => {
         isLoading,
         ds_ioAdminAuth,
         ds_oAdminGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnSearchUser_OnClick,
         lfn_Cancel,

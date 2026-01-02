@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oBoard {
-}
+import type { Ids_oBoard } from './FrmCOM5000PHelpViewerData';
 
 export const useFrmCOM5000PHelpViewer = () => {
     const [ds_oBoard, setds_oBoard] = useState<Ids_oBoard[]>([]);

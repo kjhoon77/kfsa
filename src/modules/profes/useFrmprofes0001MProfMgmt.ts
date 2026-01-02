@@ -1,132 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioProfUser {
-    SEL: string;
-    GTPRTSEQ: string;
-    PFGUBUN: string;
-    PFNM: string;
-    PFREMARK: string;
-    INSACODE: string;
-    JIKRYUL: string;
-    PFTEAM: string;
-    REGINO: string;
-    PFEDATE: string;
-}
-
-export interface Ids_oJibuGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oProfGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_iProfUserCnt {
-    CNT: string;
-    GUBUN: string;
-}
-
-export interface Ids_oProfGubunAll {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_iOnlyKey {
-    ONLYKEY: string;
-    ACTION: string;
-    TABINDEX: string;
-}
-
-export interface Ids_oProfUserReport {
-    SEL: string;
-    GTPRTSEQ: string;
-    PFGUBUN: string;
-    PFNM: string;
-    PFREMARK: string;
-    INSACODE: string;
-    JIKRYUL: string;
-    PFTEAM: string;
-    REGINO: string;
-}
-
-export interface Ids_oProfTeachingPlanReport {
-    CNT: string;
-    TPYEAR: string;
-}
-
-export interface Ids_oProfPersonSchoolReport {
-    HCNM: string;
-    PSNAME: string;
-    PSSABUN: string;
-    PSSUBJECT: string;
-}
-
-export interface Ids_oProfPersonLisenceReport {
-    PLDATE: string;
-    PLNAME: string;
-    PLOFFICE: string;
-    INSACODE: string;
-    PLSEQ: string;
-    PLUSEPROFESSOR: string;
-}
-
-export interface Ids_oProfSeminarReport {
-    INSACODE: string;
-    PSCONTENT: string;
-    PSINDATE: string;
-    PSOFFICE: string;
-    PSSEQ: string;
-}
-
-export interface Ids_oProfPaperReport {
-    INSACODE: string;
-    PPAUTHOR: string;
-    PPFIELD: string;
-    PPOFFICE: string;
-    PPPAGE: string;
-    PPPROFESSOR: string;
-    PPPUBDATE: string;
-    PPSEQ: string;
-    PPTITLE: string;
-    PPVOLUME: string;
-}
-
-export interface Ids_oProfPersonEduReport {
-    INSACODE: string;
-    PECONTENT: string;
-    PEENDDATE: string;
-    PEOFFICE: string;
-    PESEQ: string;
-    PESTARTDATE: string;
-    PEUSEPROFESSOR: string;
-}
-
-export interface Ids_oProfLectureReport {
-    LYEAR: string;
-    TIME1: string;
-    TIME2: string;
-    TIME3: string;
-    TOT_TIME: string;
-}
-
-export interface Ids_oProfExpertReport {
-    INSACODE: string;
-    PECONTENT: string;
-    PEEDATE: string;
-    PESDATE: string;
-    PESEQ: string;
-}
-
-export interface Ids_oProfPrizeReport {
-    INSACODE: string;
-    PPCONTENT: string;
-    PPSEQ: string;
-    PPTITLE: string;
-    PPYEAR: string;
-}
+import type { Ids_ioProfUser, Ids_oJibuGubun, Ids_oProfGubun, Ids_iProfUserCnt, Ids_oProfGubunAll, Ids_iOnlyKey, Ids_oProfUserReport, Ids_oProfTeachingPlanReport, Ids_oProfPersonSchoolReport, Ids_oProfPersonLisenceReport, Ids_oProfSeminarReport, Ids_oProfPaperReport, Ids_oProfPersonEduReport, Ids_oProfLectureReport, Ids_oProfExpertReport, Ids_oProfPrizeReport } from './Frmprofes0001MProfMgmtData';
 
 export const useFrmprofes0001MProfMgmt = () => {
     const [ds_ioProfUser, setds_ioProfUser] = useState<Ids_ioProfUser[]>([]);
@@ -146,6 +20,8 @@ export const useFrmprofes0001MProfMgmt = () => {
     const [ds_oProfExpertReport, setds_oProfExpertReport] = useState<Ids_oProfExpertReport[]>([]);
     const [ds_oProfPrizeReport, setds_oProfPrizeReport] = useState<Ids_oProfPrizeReport[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [tabValue_tabTab, setTabValue_tabTab] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -219,6 +95,10 @@ export const useFrmprofes0001MProfMgmt = () => {
         ds_oProfLectureReport,
         ds_oProfExpertReport,
         ds_oProfPrizeReport,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        tabValue_tabTab,
+        setTabValue_tabTab,
         btnMutilSort_OnClick,
         btnReport_OnClick,
         btnToExcel_OnClick,

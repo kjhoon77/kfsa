@@ -1,63 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oPassYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRepayYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamSpecialPassList {
-    BIRTHDAY: string;
-    EJMGNO: string;
-    PASSYN: string;
-    EJPERSONNM: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOHJUBSUNO: string;
-    EOMGNO: string;
-    EOTCCOURSECD: string;
-    EOYEAR: string;
-    GTDEPTNM: string;
-    TCCOURSENM: string;
-    JUBSUGUBUN: string;
-    ERSEQ: string;
-    ER1CHASU1SUBJECTSCORE: string;
-    ER1CHASU2SUBJECTSCORE: string;
-    ER1CHASURANK: string;
-    ER2CHASU1SUBJECTSCORE: string;
-    ER2CHASU2SUBJECTSCORE: string;
-    ER2CHASURANK: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioJubsuGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJubsuYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAbsentGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oPassYn, Ids_oCourse, Ids_oRepayYn, Ids_oExamSpecialPassList, Ids_oJibu, Ids_ioJubsuGubun, Ids_oJubsuYn, Ids_oAbsentGubun } from './Frmtraining0631MExamSpecialPassListData';
 
 export const useFrmtraining0631MExamSpecialPassList = () => {
     const [ds_oPassYn, setds_oPassYn] = useState<Ids_oPassYn[]>([]);
@@ -69,6 +12,7 @@ export const useFrmtraining0631MExamSpecialPassList = () => {
     const [ds_oJubsuYn, setds_oJubsuYn] = useState<Ids_oJubsuYn[]>([]);
     const [ds_oAbsentGubun, setds_oAbsentGubun] = useState<Ids_oAbsentGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -117,6 +61,8 @@ export const useFrmtraining0631MExamSpecialPassList = () => {
         ds_ioJubsuGubun,
         ds_oJubsuYn,
         ds_oAbsentGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

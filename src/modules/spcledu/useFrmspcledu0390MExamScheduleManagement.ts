@@ -1,84 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamOrder {
-    EOENDTIME: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOEXAMORDERGUBUN: string;
-    EOINETJUBSUCNT: string;
-    EOINETJUBSUYN: string;
-    EOJUBSUMAXCNT: string;
-    EOMGJIBUCD: string;
-    EOMGNO: string;
-    EOSEATCNT: string;
-    EOSTARTTIME: string;
-    EOYEAR: string;
-    EPMGNO: string;
-    EPNM: string;
-    TCCOURSECD: string;
-    USE_YN: string;
-    EOJUBSUSTATUS: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oUseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourseGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInternetJubsuStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamRoomMinimap {
-}
-
-export interface Ids_oInetJubsuYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamGubun2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamGubun3 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamOrderMgno {
-}
-
-export interface Ids_oModifyColumn {
-    COLUMNCD: string;
-    COLUMNNM: string;
-}
-
-export interface Ids_ioJubsu {
-}
+import type { Ids_ioExamOrder, Ids_oJibu, Ids_oCourse, Ids_oUseYn, Ids_oCourseGubun, Ids_oExamGubun, Ids_oInternetJubsuStatus, Ids_ioExamRoomMinimap, Ids_oInetJubsuYn, Ids_oExamGubun2, Ids_oExamGubun3, Ids_oExamOrderMgno, Ids_oModifyColumn, Ids_ioJubsu } from './Frmspcledu0390MExamScheduleManagementData';
 
 export const useFrmspcledu0390MExamScheduleManagement = () => {
     const [ds_ioExamOrder, setds_ioExamOrder] = useState<Ids_ioExamOrder[]>([]);
@@ -96,6 +18,7 @@ export const useFrmspcledu0390MExamScheduleManagement = () => {
     const [ds_oModifyColumn, setds_oModifyColumn] = useState<Ids_oModifyColumn[]>([]);
     const [ds_ioJubsu, setds_ioJubsu] = useState<Ids_ioJubsu[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -171,6 +94,8 @@ export const useFrmspcledu0390MExamScheduleManagement = () => {
         ds_oExamOrderMgno,
         ds_oModifyColumn,
         ds_ioJubsu,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnExamPlaceLink_OnClick,
         btnMinimap_OnClick,
         btnMutilSort_OnClick,

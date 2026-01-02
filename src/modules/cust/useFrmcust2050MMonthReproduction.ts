@@ -1,29 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_iCusFeeChk {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_iReprodection {
-    STARTDATE: string;
-    PROCDATE: string;
-    GTMGNO: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCusFeeChk {
-    CFCCHKGUBUN: string;
-    CFCCLOSEGUBUN: string;
-    CFCGTMGNO: string;
-    CFCYEAR: string;
-    CFCMONTH: string;
-}
+import type { Ids_iCusFeeChk, Ids_iReprodection, Ids_oJibu, Ids_oCusFeeChk } from './Frmcust2050MMonthReproductionData';
 
 export const useFrmcust2050MMonthReproduction = () => {
     const [ds_iCusFeeChk, setds_iCusFeeChk] = useState<Ids_iCusFeeChk[]>([]);
@@ -31,6 +8,7 @@ export const useFrmcust2050MMonthReproduction = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_oCusFeeChk, setds_oCusFeeChk] = useState<Ids_oCusFeeChk[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -56,6 +34,8 @@ export const useFrmcust2050MMonthReproduction = () => {
         ds_iReprodection,
         ds_oJibu,
         ds_oCusFeeChk,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_End,
         lfn_Save,
     };

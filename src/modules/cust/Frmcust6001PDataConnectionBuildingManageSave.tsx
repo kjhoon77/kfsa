@@ -1,8 +1,8 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust6001PDataConnectionBuildingManageSave } from './useFrmcust6001PDataConnectionBuildingManageSave';
@@ -61,7 +61,7 @@ export const Frmcust6001PDataConnectionBuildingManageSave = () => {
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
                 <Typography variant="h5">기본정보</Typography>
                 <Stack direction="row" spacing={1}>
-                    <Button variant="contained"  onClick={hook.lfn_End}>닫기</Button>
+                    <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Save}>연계처리(저장)</Button>
 <Button variant="contained"  onClick={hook.btnFPISInfo_OnClick}>청시스템 상세보기</Button>
 <Button variant="contained"  onClick={hook.btnAllChk_OnClick}>청정보 전체선택</Button>
@@ -76,7 +76,7 @@ export const Frmcust6001PDataConnectionBuildingManageSave = () => {
                         <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={6}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>대상물명</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioFPISBuldstaInfo?.OBJ_NM || ''} />
                     </Stack>
@@ -84,39 +84,39 @@ export const Frmcust6001PDataConnectionBuildingManageSave = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={6}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>주소</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioFPISBuldstaInfo?.LEGALDONG_ADRES_NM || ''} />
                     </Stack>
                 </Grid><Grid item xs={12} md={2}><Box> 대상물정보</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={5}><Box></Box></Grid><Grid item xs={12} md={2}><Box>대상물명</Box></Grid><Grid item xs={12} md={4}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained">대상물검색</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={5}><Box></Box></Grid><Grid item xs={12} md={2}><Box>대상물명</Box></Grid><Grid item xs={12} md={4}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnBuildingSearch_OnClick}>대상물검색</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={6}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>소방관서</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioFPISBuldstaInfo?.CMPN119SC_ID || ''} />
                     </Stack>
-                </Grid><Grid item xs={12} md={2}><Button variant="contained">적용</Button></Grid><Grid item xs={12} md={2}><Box>주소</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={4}><Box></Box></Grid><Grid item xs={12} md={4}><Box></Box></Grid></Grid>
+                </Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnApply_OnClick}>적용</Button></Grid><Grid item xs={12} md={2}><Box>주소</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={4}><Box></Box></Grid><Grid item xs={12} md={4}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>대상구분</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioFPISBuldstaInfo?.OBJ_SE || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>공공기관여부</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioFPISBuldstaInfo?.PBLINSTT_AT || ''} />
                     </Stack>
-                </Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Tooltip title="BTN_SEARCH"><IconButton color="primary"><Search /></IconButton></Tooltip></Grid><Grid item xs={12} md={5}><Box></Box></Grid><Grid item xs={12} md={5}><Box></Box></Grid></Grid>
+                </Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Tooltip title="BTN_SEARCH"><Button variant="outlined" size="small" color="primary" onClick={hook.btnSearchZipCode1_OnClick} sx={{ minWidth: 30, p: 0.5 }}><Search fontSize="small" /></Button></Tooltip></Grid><Grid item xs={12} md={5}><Box></Box></Grid><Grid item xs={12} md={5}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={6}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>용도</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioFPISBuldstaInfo?.MAIN_PRPOS || ''} />
                     </Stack>
@@ -124,13 +124,13 @@ export const Frmcust6001PDataConnectionBuildingManageSave = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>전화번호</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioFPISBuldstaInfo?.DYTM_TLPHON || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>업무대행여부</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
@@ -147,9 +147,9 @@ export const Frmcust6001PDataConnectionBuildingManageSave = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>고객상태</Typography>
-                        <FormControl size="small" fullWidth><Select value={hook.ds_ioCustomerInfo?.CSTATUSGUBUN || ''} displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust6001PDataConnectionBuildingManageSaveData.ds_ds_oCustomerStatus || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                        <FormControl size="small" sx={{ width: 150 }}><Select value={hook.ds_ioCustomerInfo?.CSTATUSGUBUN || ''} displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust6001PDataConnectionBuildingManageSaveData.ds_ds_oCustomerStatus || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
                     </Stack>
                 </Grid><Grid item xs={12} md={2}><Box>인력구분</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
@@ -160,31 +160,31 @@ export const Frmcust6001PDataConnectionBuildingManageSave = () => {
                     <Paper sx={{ height: 400, width: '100%' }}>
                         <DataGridWrapper rows={hook.ds_ioFPISLicenseInfo} columns={columns_gdFPISLicense} />
                     </Paper>
-                </Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Tooltip title="BTN_SEARCH"><IconButton color="primary"><Search /></IconButton></Tooltip></Grid><Grid item xs={12} md={4}><Box></Box></Grid><Grid item xs={12} md={4}><Box></Box></Grid></Grid>
+                </Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Tooltip title="BTN_SEARCH"><Button variant="outlined" size="small" color="primary" onClick={hook.btnSearchZipCode2_OnClick} sx={{ minWidth: 30, p: 0.5 }}><Search fontSize="small" /></Button></Tooltip></Grid><Grid item xs={12} md={4}><Box></Box></Grid><Grid item xs={12} md={4}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={2}><Box>정보</Box></Grid><Grid item xs={12} md={2}><Box>투입장소</Box></Grid><Grid item xs={12} md={5}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={2}><Box> 선임자정보</Box></Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>개인식별번호</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioManagerInfo?.FMPERSONKEY || ''} />
                     </Stack>
                 </Grid><Grid item xs={12} md={2}><Box>기존 선임대상물 해임처리</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>관계자정보</Box></Grid><Grid item xs={12} md={2}><Box>성명</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box>주민번호</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained">실명인증</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Box>관계자정보</Box></Grid><Grid item xs={12} md={2}><Box>성명</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box>주민번호</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnAuthResidentNo_OnClick}>실명인증</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12}>
                     <Paper sx={{ height: 400, width: '100%' }}>
                         <DataGridWrapper rows={hook.ds_ioFPISPartcpntInfo} columns={columns_gdFPISOwner} />
                     </Paper>
-                </Grid><Grid item xs={12} md={2}><Box>휴대폰</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained">자격·수료정보조회</Button></Grid></Grid>
+                </Grid><Grid item xs={12} md={2}><Box>휴대폰</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnLicenseList_OnClick}>자격·수료정보조회</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>선임일자</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid>
+<Grid item xs={12} md={2}><Box>선임일자</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box>해임여부</Box></Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
-                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>해임여부</Typography>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>해임</Typography>
                         <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
                     </Stack>
                 </Grid></Grid>

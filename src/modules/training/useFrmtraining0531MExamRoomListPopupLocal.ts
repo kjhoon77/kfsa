@@ -1,31 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oExamRoom {
-    EOEXAMORDER: string;
-    EOEXAMORDERGUBUN: string;
-    EOMGJIBUCD: string;
-    EOMGNO: string;
-    EOYEAR: string;
-    EPMGNO: string;
-    EREXAMROOM: string;
-    ERNUMTYPE: string;
-    EXAMNM: string;
-    JJIBUNM: string;
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-    USE_YN: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oExamRoom, Ids_oJibu, Ids_oCourse } from './Frmtraining0531MExamRoomListPopupLocalData';
 
 export const useFrmtraining0531MExamRoomListPopupLocal = () => {
     const [ds_oExamRoom, setds_oExamRoom] = useState<Ids_oExamRoom[]>([]);

@@ -1,7 +1,15 @@
 // @ts-nocheck
 export const Frmsys0095MDataMatchDetailSearchHistoryListData = {};
 
-export const ds_ds_oGubun = [
+export interface Ids_oSearchHistory {
+}
+
+export interface Ids_oGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oGubun: Ids_oGubun[] = [
     { CD: '', DATA: ' 전체' },
     { CD: '0', DATA: '소방안전관리자' },
     { CD: '1', DATA: '위험물안전관리자' },
@@ -9,7 +17,34 @@ export const ds_ds_oGubun = [
     { CD: '3', DATA: '소방기술자' },
 ];
 
-export const ds_ds_oMenu = [
+export interface Ids_ioUserList {
+    SHGUBUN?: string;
+    SHMGNO?: number;
+    SHPROCDATE?: string;
+    SHPROCIP?: string;
+    SHPROCSABUN?: string;
+    SHWHERE?: string;
+    SHWORKGUBUN?: string;
+    SHWORKGUBUNNM?: string;
+}
+
+export interface Ids_ioDeptList {
+    SHGUBUN?: string;
+    SHMGNO?: number;
+    SHPROCDATE?: string;
+    SHPROCIP?: string;
+    SHPROCSABUN?: string;
+    SHWHERE?: string;
+    SHWORKGUBUN?: string;
+    SHWORKGUBUNNM?: string;
+}
+
+export interface Ids_oMenu {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oMenu: Ids_oMenu[] = [
     { CD: '', DATA: '전체' },
     { CD: '0000000371', DATA: '소방민원정보시스템' },
     { CD: '0000000383', DATA: '청정보상세 팝업' },

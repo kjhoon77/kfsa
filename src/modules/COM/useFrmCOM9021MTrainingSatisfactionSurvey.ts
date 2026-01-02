@@ -1,14 +1,11 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioSession {
-    SHARE_SESSION: string;
-    SHARE_SABUN: string;
-}
+import type { Ids_ioSession } from './FrmCOM9021MTrainingSatisfactionSurveyData';
 
 export const useFrmCOM9021MTrainingSatisfactionSurvey = () => {
     const [ds_ioSession, setds_ioSession] = useState<Ids_ioSession[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -25,6 +22,8 @@ export const useFrmCOM9021MTrainingSatisfactionSurvey = () => {
     return {
         isLoading,
         ds_ioSession,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_End,
     };
 };

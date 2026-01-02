@@ -1,65 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInetJubsu {
-    EDPROCDATE: string;
-    EMCMGNO: string;
-    EMMGNO: string;
-    EMPAYSTATUS: string;
-    EMSEQ: string;
-    ESCOURSENM: string;
-    ESCOUSECD: string;
-    ESDATE: string;
-    ESGTMGNO: string;
-    ESTIME: string;
-    ESYEAR: string;
-    FMNM: string;
-    GTDEPTNM: string;
-    EMBUILDING: string;
-    PMPGMGUBUN: string;
-    PMPGMGUBUNNM: string;
-    ESEDUORDER: string;
-}
-
-export interface Ids_oProcGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oStatus1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oStatus2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oStatus3 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJubsuStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_MECOURSE {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oJibu, Ids_oCourse, Ids_oInetJubsu, Ids_oProcGubun, Ids_oStatus1, Ids_oStatus2, Ids_oStatus3, Ids_oJubsuStatus, Ids_MECOURSE } from './Frmcust1030MInetEduManagementData';
 
 export const useFrmcust1030MInetEduManagement = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
@@ -72,6 +13,7 @@ export const useFrmcust1030MInetEduManagement = () => {
     const [ds_oJubsuStatus, setds_oJubsuStatus] = useState<Ids_oJubsuStatus[]>([]);
     const [ds_MECOURSE, setds_MECOURSE] = useState<Ids_MECOURSE[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -131,6 +73,8 @@ export const useFrmcust1030MInetEduManagement = () => {
         ds_oStatus3,
         ds_oJubsuStatus,
         ds_MECOURSE,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnSearchSchedule_OnClick,
         btnSendMail_OnClick,

@@ -1,164 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_SearchJogeon {
-    JIBU: string;
-    REGION_GUBUN: string;
-    REGION1: string;
-    REGION2: string;
-    PRINT_GUBUN: string;
-}
-
-export interface Ids_oPrintGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_SendReport {
-    BNM: string;
-    ZIPCD: string;
-    ADDR1: string;
-    ADDR2: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioGijun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoice {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBonbu {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-    CTCD: string;
-}
-
-export interface Ids_oFireCd {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-    CTCD: string;
-}
-
-export interface Ids_oFireCenterCd {
-    CD: string;
-    DATA: string;
-    UPCD: string;
-}
-
-export interface Ids_oFireCenterCd2 {
-    CD: string;
-    DATA: string;
-    UPCD: string;
-}
-
-export interface Ids_ioCourseYn_0 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseYn_1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoiceYn_0 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseYn_2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBizCd {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oDetailCourse {
-    CD: string;
-    DATA: string;
-    GCD: string;
-}
-
-export interface Ids_ioChoiceYn_1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMemberGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoiceYnReport {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMEduData {
-    fkeyA: string;
-}
-
-export interface Ids_oMinap {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAgency {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMEduDataDetail {
-    fkeyA: string;
-}
-
-export interface Ids_ioMEduExcel {
-}
-
-export interface Ids_oEduJubsu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioOrder {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYearHalf {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oJibu, Ids_oRegion, Ids_SearchJogeon, Ids_oPrintGubun, Ids_ioChoiceYn, Ids_SendReport, Ids_oCourse, Ids_ioGijun, Ids_ioChoice, Ids_oBonbu, Ids_oFireCd, Ids_oFireCenterCd, Ids_oFireCenterCd2, Ids_ioCourseYn_0, Ids_ioCourseYn_1, Ids_ioChoiceYn_0, Ids_ioCourseYn_2, Ids_oBizCd, Ids_oDetailCourse, Ids_ioChoiceYn_1, Ids_ioMemberGubun, Ids_ioChoiceYnReport, Ids_ioMEduData, Ids_oMinap, Ids_oAgency, Ids_ioMEduDataDetail, Ids_ioMEduExcel, Ids_oEduJubsu, Ids_ioOrder, Ids_ioYearHalf } from './Frmcust1109MEduTargetStatData';
 
 export const useFrmcust1109MEduTargetStat = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
@@ -192,6 +34,7 @@ export const useFrmcust1109MEduTargetStat = () => {
     const [ds_ioOrder, setds_ioOrder] = useState<Ids_ioOrder[]>([]);
     const [ds_ioYearHalf, setds_ioYearHalf] = useState<Ids_ioYearHalf[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -275,6 +118,8 @@ export const useFrmcust1109MEduTargetStat = () => {
         ds_oEduJubsu,
         ds_ioOrder,
         ds_ioYearHalf,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnToExcel_OnClick,
         chkExceptDate_OnClick,
         lfn_End,

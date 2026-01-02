@@ -1,114 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oRecieptYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oPosJibu {
-}
-
-export interface Ids_oPosItem {
-}
-
-export interface Ids_iSettlementPos {
-    PROGRAMID: string;
-    SUNAPGUBUN: string;
-    PROCAMOUNT: string;
-    POSYEAR: string;
-    POSMGNO: string;
-    KEY1: string;
-    KEY2: string;
-    PROCDATE: string;
-    PONYDATE: string;
-    PRINTYN: string;
-    BANKSUNAPGUBUN: string;
-    CARDNO: string;
-    CARDINSTALL: string;
-    CASHRECEIPTUSE: string;
-    CASHCARDNO: string;
-    VIRTBANKCODE: string;
-    VIRTCLOSEDATE: string;
-    VIRTHPTEL: string;
-    VIRTCASHRECEIPTYN: string;
-    PAYMENTGUBUN: string;
-    PROCGUBUN: string;
-    PONYGUBUN: string;
-    JIBUMGID: string;
-    VIRTBANKNAME: string;
-    REPAYCD: string;
-    PARTREPAYYN: string;
-    SUNAPACTIONREF: string;
-    REPAYTSSEQ: string;
-    LICENSEAMOUNT: string;
-    EXAMAMOUNT: string;
-    TFCSEQ: string;
-    ORGGUBUN: string;
-    KEY3: string;
-    KEY4: string;
-}
-
-export interface Ids_oSettlementPos {
-}
-
-export interface Ids_oPrintHistory {
-}
-
-export interface Ids_oPosSunap {
-}
-
-export interface Ids_oDeleteSanap {
-}
-
-export interface Ids_oTrainingOrderChange {
-}
-
-export interface Ids_oExecuteRepay {
-}
-
-export interface Ids_oRepayCancel {
-}
-
-export interface Ids_oRepayOk {
-}
-
-export interface Ids_oChangeDate {
-}
-
-export interface Ids_oTrainingRepayFee {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingAbsentDay {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingSunapFee {
-    SUNAP: string;
-    SUNAPTEXT: string;
-}
-
-export interface Ids_oPosStartInfo {
-}
-
-export interface Ids_oTrainingEarlySunapFee {
-    SUNAP: string;
-    SUNAPTEXT: string;
-    TRAININGSUNAP: string;
-    LICENSESUNAP: string;
-}
-
-export interface Ids_ioTrainingEarlyRepayFee {
-}
-
-export interface Ids_ioEarlySunapGubun {
-}
-
-export interface Ids_ioTrainingStartEndDate {
-}
+import type { Ids_oRecieptYn, Ids_oPosJibu, Ids_oPosItem, Ids_iSettlementPos, Ids_oSettlementPos, Ids_oPrintHistory, Ids_oPosSunap, Ids_oDeleteSanap, Ids_oTrainingOrderChange, Ids_oExecuteRepay, Ids_oRepayCancel, Ids_oRepayOk, Ids_oChangeDate, Ids_oTrainingRepayFee, Ids_oTrainingAbsentDay, Ids_oTrainingSunapFee, Ids_oPosStartInfo, Ids_oTrainingEarlySunapFee, Ids_ioTrainingEarlyRepayFee, Ids_ioEarlySunapGubun, Ids_ioTrainingStartEndDate } from './FrmCOM8000PSettlementPOSData';
 
 export const useFrmCOM8000PSettlementPOS = () => {
     const [ds_oRecieptYn, setds_oRecieptYn] = useState<Ids_oRecieptYn[]>([]);
@@ -133,6 +25,11 @@ export const useFrmCOM8000PSettlementPOS = () => {
     const [ds_ioEarlySunapGubun, setds_ioEarlySunapGubun] = useState<Ids_ioEarlySunapGubun[]>([]);
     const [ds_ioTrainingStartEndDate, setds_ioTrainingStartEndDate] = useState<Ids_ioTrainingStartEndDate[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divSunap, setIsVisible_divSunap] = useState(true);
+    const [isVisible_divRepay, setIsVisible_divRepay] = useState(true);
+    const [isVisible_divProcGubun, setIsVisible_divProcGubun] = useState(true);
+    const [isVisible_divPos, setIsVisible_divPos] = useState(false);
+    const [isVisible_divSETTLEBANKPos, setIsVisible_divSETTLEBANKPos] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -201,6 +98,16 @@ export const useFrmCOM8000PSettlementPOS = () => {
         ds_ioTrainingEarlyRepayFee,
         ds_ioEarlySunapGubun,
         ds_ioTrainingStartEndDate,
+        isVisible_divSunap,
+        setIsVisible_divSunap,
+        isVisible_divRepay,
+        setIsVisible_divRepay,
+        isVisible_divProcGubun,
+        setIsVisible_divProcGubun,
+        isVisible_divPos,
+        setIsVisible_divPos,
+        isVisible_divSETTLEBANKPos,
+        setIsVisible_divSETTLEBANKPos,
         btnSetlmt_OnClick,
         chkCardChangeYn_OnClick,
         chkPonyDate_OnClick,

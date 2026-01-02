@@ -1,8 +1,8 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useDynamicMaskEdit2 } from './useDynamicMaskEdit2';
@@ -30,7 +30,7 @@ export const DynamicMaskEdit2 = () => {
                         <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={4}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={3}><Button variant="contained">Binding</Button></Grid></Grid>
+<Grid item xs={12} md={3}><Button variant="contained" onClick={hook.Button0_OnClick}>Binding</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12}>

@@ -1,89 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oRecieptYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oPosJibu {
-}
-
-export interface Ids_oPosItem {
-}
-
-export interface Ids_iSettlementPos {
-    PROGRAMID: string;
-    SUNAPGUBUN: string;
-    PROCAMOUNT: string;
-    POSYEAR: string;
-    POSMGNO: string;
-    KEY1: string;
-    KEY2: string;
-    PROCDATE: string;
-    PONYDATE: string;
-    PRINTYN: string;
-    BANKSUNAPGUBUN: string;
-    CARDNO: string;
-    CARDINSTALL: string;
-    CASHRECEIPTUSE: string;
-    CASHCARDNO: string;
-    VIRTBANKCODE: string;
-    VIRTCLOSEDATE: string;
-    VIRTHPTEL: string;
-    VIRTCASHRECEIPTYN: string;
-    PAYMENTGUBUN: string;
-    PROCGUBUN: string;
-    PONYGUBUN: string;
-    JIBUMGID: string;
-    VIRTBANKNAME: string;
-    REPAYCD: string;
-    PARTREPAYYN: string;
-    SUNAPACTIONREF: string;
-}
-
-export interface Ids_oSettlementPos {
-}
-
-export interface Ids_oPrintHistory {
-}
-
-export interface Ids_oPosSunap {
-}
-
-export interface Ids_oDeleteSanap {
-}
-
-export interface Ids_oTrainingOrderChange {
-}
-
-export interface Ids_oExecuteRepay {
-}
-
-export interface Ids_oRepayCancel {
-}
-
-export interface Ids_oRepayOk {
-}
-
-export interface Ids_oChangeDate {
-}
-
-export interface Ids_oTrainingRepayFee {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingAbsentDay {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingSunapFee {
-}
-
-export interface Ids_oPosStartInfo {
-}
+import type { Ids_oRecieptYn, Ids_oPosJibu, Ids_oPosItem, Ids_iSettlementPos, Ids_oSettlementPos, Ids_oPrintHistory, Ids_oPosSunap, Ids_oDeleteSanap, Ids_oTrainingOrderChange, Ids_oExecuteRepay, Ids_oRepayCancel, Ids_oRepayOk, Ids_oChangeDate, Ids_oTrainingRepayFee, Ids_oTrainingAbsentDay, Ids_oTrainingSunapFee, Ids_oPosStartInfo } from './FrmCOM8300PChangePOSData';
 
 export const useFrmCOM8300PChangePOS = () => {
     const [ds_oRecieptYn, setds_oRecieptYn] = useState<Ids_oRecieptYn[]>([]);
@@ -104,6 +21,10 @@ export const useFrmCOM8300PChangePOS = () => {
     const [ds_oTrainingSunapFee, setds_oTrainingSunapFee] = useState<Ids_oTrainingSunapFee[]>([]);
     const [ds_oPosStartInfo, setds_oPosStartInfo] = useState<Ids_oPosStartInfo[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divSunap, setIsVisible_divSunap] = useState(true);
+    const [isVisible_divRepay, setIsVisible_divRepay] = useState(true);
+    const [isVisible_divProcGubun, setIsVisible_divProcGubun] = useState(true);
+    const [isVisible_divPos, setIsVisible_divPos] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -161,6 +82,14 @@ export const useFrmCOM8300PChangePOS = () => {
         ds_oTrainingAbsentDay,
         ds_oTrainingSunapFee,
         ds_oPosStartInfo,
+        isVisible_divSunap,
+        setIsVisible_divSunap,
+        isVisible_divRepay,
+        setIsVisible_divRepay,
+        isVisible_divProcGubun,
+        setIsVisible_divProcGubun,
+        isVisible_divPos,
+        setIsVisible_divPos,
         btnSetlmt_OnClick,
         chkPonyDate_OnClick,
         lfn_End,

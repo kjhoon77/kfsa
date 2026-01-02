@@ -1,14 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oOtherPerson {
-    OPMGNO: string;
-    OPNM: string;
-    BIRTHDAY: string;
-    OPADDRESS: string;
-    STATUS: string;
-    VALUE: string;
-}
+import type { Ids_oOtherPerson } from './FrmCOM1000POtherPersonListData';
 
 export const useFrmCOM1000POtherPersonList = () => {
     const [ds_oOtherPerson, setds_oOtherPerson] = useState<Ids_oOtherPerson[]>([]);

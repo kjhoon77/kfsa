@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './SearchAnswerPaperData';
 
 export const useSearchAnswerPaper = () => {
     const [isLoading, setIsLoading] = useState(false);

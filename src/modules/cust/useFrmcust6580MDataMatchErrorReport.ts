@@ -1,47 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioOrder {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oDATA {
-}
-
-export interface Ids_ioFireStation {
-    BID: string;
-    SID: string;
-    CID: string;
-    GMGNO: string;
-    RCD: string;
-    SNM : string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioGubun, Ids_ioOrder, Ids_ioChoiceYn, Ids_ioStatus, Ids_ioCourse, Ids_oDATA, Ids_ioFireStation, Ids_oJibu } from './Frmcust6580MDataMatchErrorReportData';
 
 export const useFrmcust6580MDataMatchErrorReport = () => {
     const [ds_ioGubun, setds_ioGubun] = useState<Ids_ioGubun[]>([]);
@@ -53,6 +12,7 @@ export const useFrmcust6580MDataMatchErrorReport = () => {
     const [ds_ioFireStation, setds_ioFireStation] = useState<Ids_ioFireStation[]>([]);
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -95,6 +55,8 @@ export const useFrmcust6580MDataMatchErrorReport = () => {
         ds_oDATA,
         ds_ioFireStation,
         ds_oJibu,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnToExcel_OnClick,
         lfn_Cancel,
         lfn_ChkValueCheck,

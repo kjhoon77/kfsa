@@ -1,86 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oLecture {
-    EDUCCOURSECD: string;
-    EDUCOURSENM: string;
-    EDUDATE: string;
-    EDUEND: string;
-    EDUGTMGNO: string;
-    EDUGUBUN: string;
-    EDULMGNO: string;
-    EDULOWTIME: string;
-    EDUMGNO: string;
-    EDUMUNJEGUBUN: string;
-    EDUORDER: string;
-    EDUPCMGNO: string;
-    EDUREGSABUN: string;
-    EDUREMARK: string;
-    EDUSTART: string;
-    EDUSTATUS: string;
-    EDUSTATUSCD: string;
-    EDUTEAMNM: string;
-    EDUUNIONYN: string;
-    EDUWRTTIME: string;
-    EDUYEAR: string;
-    PSVERSION: string;
-}
-
-export interface Ids_oLectureSeq {
-    SEQ: string;
-}
-
-export interface Ids_oLectureProfessor {
-}
-
-export interface Ids_Status {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSubject {
-    CD: string;
-    DATA: string;
-    SJTCCOURSECD: string;
-    SJTCMUNJEGUBUN: string;
-}
-
-export interface Ids_oCourse_0 {
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-    PCTCCOURSECD: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-    PCMGNO: string;
-    PCTCMUNJEGUBUN: string;
-    PCTCSEARCHGUBUN: string;
-}
-
-export interface Ids_oAllCourse {
-    CD: string;
-    DATA: string;
-    PCMGNO: string;
-    PCTCMUNJEGUBUN: string;
-    PCTCSEARCHGUBUN: string;
-}
-
-export interface Ids_oCourseGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oGubun, Ids_oJibu, Ids_oLecture, Ids_oLectureSeq, Ids_oLectureProfessor, Ids_Status, Ids_oSubject, Ids_oCourse_0, Ids_oCourse, Ids_oAllCourse, Ids_oCourseGubun } from './Frmprofes0022MOldLecHistoryData';
 
 export const useFrmprofes0022MOldLecHistory = () => {
     const [ds_oGubun, setds_oGubun] = useState<Ids_oGubun[]>([]);
@@ -95,6 +15,8 @@ export const useFrmprofes0022MOldLecHistory = () => {
     const [ds_oAllCourse, setds_oAllCourse] = useState<Ids_oAllCourse[]>([]);
     const [ds_oCourseGubun, setds_oCourseGubun] = useState<Ids_oCourseGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [isVisible_div1, setIsVisible_div1] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -146,6 +68,10 @@ export const useFrmprofes0022MOldLecHistory = () => {
         ds_oCourse,
         ds_oAllCourse,
         ds_oCourseGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        isVisible_div1,
+        setIsVisible_div1,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

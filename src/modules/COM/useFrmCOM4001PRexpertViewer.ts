@@ -1,22 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioRexpert {
-    CREATE_DATE: string;
-    CREATE_GUBUN: string;
-    CREATE_ID: string;
-    CREATE_IP: string;
-    JJIBUCD: string;
-    MODIFY_DATE: string;
-    MODIFY_ID: string;
-    MODIFY_IP: string;
-    ZBUNJI: string;
-    SIKUDONG: string;
-    ZHO: string;
-    ZREGIONCD: string;
-    ZSEQ: string;
-    ZZIPCD: string;
-}
+import type { Ids_ioRexpert } from './FrmCOM4001PRexpertViewerData';
 
 export const useFrmCOM4001PRexpertViewer = () => {
     const [ds_ioRexpert, setds_ioRexpert] = useState<Ids_ioRexpert[]>([]);

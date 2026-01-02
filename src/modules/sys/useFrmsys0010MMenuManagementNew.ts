@@ -1,63 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioMenuTree {
-    MENULEVEL: string;
-    MIMGFLAG: string;
-    MMENUID: string;
-    MMENUNM: string;
-    MORDERSEQ: string;
-    MPARENTMENUID: string;
-    MREMARK: string;
-    MSYSGUBUN: string;
-    MURL: string;
-    MURLTYPE: string;
-    MUSEYN: string;
-}
-
-export interface Ids_oSysGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oUrlType {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMenuTreeBackup {
-    MENULEVEL: string;
-    MIMGFLAG: string;
-    MMENUID: string;
-    MMENUNM: string;
-    MORDERSEQ: string;
-    MPARENTMENUID: string;
-    MREMARK: string;
-    MSYSGUBUN: string;
-    MURL: string;
-    MURLTYPE: string;
-    MUSEYN: string;
-    MDEPTADMINGUBUN: string;
-}
-
-export interface Ids_iMenuDelete {
-    MENULEVEL: string;
-    MIMGFLAG: string;
-    MMENUID: string;
-    MMENUNM: string;
-    MORDERSEQ: string;
-    MPARENTMENUID: string;
-    MREMARK: string;
-    MSYSGUBUN: string;
-    MURL: string;
-    MURLTYPE: string;
-    MUSEYN: string;
-}
-
-export interface Ids_oDeptAdminGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioMenuTree, Ids_oSysGubun, Ids_oUrlType, Ids_ioMenuTreeBackup, Ids_iMenuDelete, Ids_oDeptAdminGubun } from './Frmsys0010MMenuManagementNewData';
 
 export const useFrmsys0010MMenuManagementNew = () => {
     const [ds_ioMenuTree, setds_ioMenuTree] = useState<Ids_ioMenuTree[]>([]);
@@ -67,6 +10,7 @@ export const useFrmsys0010MMenuManagementNew = () => {
     const [ds_iMenuDelete, setds_iMenuDelete] = useState<Ids_iMenuDelete[]>([]);
     const [ds_oDeptAdminGubun, setds_oDeptAdminGubun] = useState<Ids_oDeptAdminGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -126,6 +70,8 @@ export const useFrmsys0010MMenuManagementNew = () => {
         ds_ioMenuTreeBackup,
         ds_iMenuDelete,
         ds_oDeptAdminGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnDown_OnClick,
         btnLevelDown_OnClick,
         btnLevelUp_OnClick,

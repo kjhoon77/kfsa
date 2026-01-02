@@ -1,107 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioEducationPassInfo {
-    BNM: string;
-    CNO: string;
-    EPPASSDATE: string;
-    EPPERSONNM: string;
-    EPPROCGTMGNO: string;
-    EPBIRTHDAY: string;
-    BIRTHDAY: string;
-    EPSUCCESSIONGUBUN: string;
-    EPYEAR: string;
-    ESGUBUN: string;
-    ESSTUDENT: string;
-    EPMGNO: string;
-}
-
-export interface Ids_ioOverBizInfo {
-}
-
-export interface Ids_ioCustomerFeeInfo {
-}
-
-export interface Ids_oSunapGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduSuccessGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oOverBizProc {
-}
-
-export interface Ids_iCustomerModifyHistory {
-    CMHAFTERDATA: string;
-    CMHBEFOREDATA: string;
-    CMHCOLUMN: string;
-    CMHGUBUN: string;
-    CMHKEY: string;
-    CMHWORKGUBUN: string;
-}
-
-export interface Ids_oModifyColumnList {
-    TBLNM: string;
-    COLNM: string;
-    COLKORNM: string;
-    COMBOGUBUN: string;
-    INNERDSNM: string;
-}
-
-export interface Ids_oMemberInfo {
-}
-
-export interface Ids_oEduConfirmPrint {
-    ECMGNO: string;
-    EDUNAME: string;
-    COMPANY: string;
-    NAME: string;
-    CGROUPNM: string;
-    EPBIRTHDAY: string;
-    BIRTHDAY: string;
-    EDUDATE: string;
-    BIRTH: string;
-    GTTEAMNM: string;
-    MGNO: string;
-    RULE: string;
-}
-
-export interface Ids_oVirtualAccoutAllocation {
-    Rtn_status: string;
-}
-
-export interface Ids_oVirtualAccoutOwnerNM {
-}
-
-export interface Ids_oVirtualAccoutDelete {
-    RTN_STATUS: string;
-}
-
-export interface Ids_ioMEduData {
-}
-
-export interface Ids_ioMEduDataDetail {
-}
-
-export interface Ids_ioEduNoticeHistoryGetSysdate {
-}
-
-export interface Ids_oEduStudentGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMemJoinH {
-}
+import type { Ids_oJibu, Ids_ioEducationPassInfo, Ids_ioOverBizInfo, Ids_ioCustomerFeeInfo, Ids_oSunapGubun, Ids_oEduSuccessGubun, Ids_oOverBizProc, Ids_iCustomerModifyHistory, Ids_oModifyColumnList, Ids_oMemberInfo, Ids_oEduConfirmPrint, Ids_oVirtualAccoutAllocation, Ids_oVirtualAccoutOwnerNM, Ids_oVirtualAccoutDelete, Ids_ioMEduData, Ids_ioMEduDataDetail, Ids_ioEduNoticeHistoryGetSysdate, Ids_oEduStudentGubun, Ids_oMemJoinH } from './Frmmem0010MMemberManagementData';
 
 export const useFrmmem0010MMemberManagement = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
@@ -127,6 +26,7 @@ export const useFrmmem0010MMemberManagement = () => {
     const [isPopDiv0Open, setIsPopDiv0Open] = useState(false);
     const openPopDiv0 = () => setIsPopDiv0Open(true);
     const closePopDiv0 = () => setIsPopDiv0Open(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -209,6 +109,8 @@ export const useFrmmem0010MMemberManagement = () => {
         isPopDiv0Open,
         openPopDiv0,
         closePopDiv0,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnConcurrentH_OnClick,
         btnEduDataHList_OnClick,
         btnEduDetailInfo_OnClick,

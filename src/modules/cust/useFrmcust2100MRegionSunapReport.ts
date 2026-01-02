@@ -1,62 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_SearchJogeon {
-    JIBU: string;
-    REGION_GUBUN: string;
-    REGION1: string;
-    REGION2: string;
-    SETLM_GUBUN: string;
-}
-
-export interface Ids_SunapList {
-    GTTEAMNM: string;
-    RCNM: string;
-    TOTALFEE: string;
-    SUNAPFEE: string;
-    MINAPFEE: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSetlmGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseYnD {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseD {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioJibu, Ids_SearchJogeon, Ids_SunapList, Ids_oRegion, Ids_ioChoiceYn, Ids_oSetlmGubun, Ids_ioCourseYnD, Ids_ioCourseYn, Ids_ioCourse, Ids_ioCourseD } from './Frmcust2100MRegionSunapReportData';
 
 export const useFrmcust2100MRegionSunapReport = () => {
     const [ds_ioJibu, setds_ioJibu] = useState<Ids_ioJibu[]>([]);
@@ -70,6 +14,7 @@ export const useFrmcust2100MRegionSunapReport = () => {
     const [ds_ioCourse, setds_ioCourse] = useState<Ids_ioCourse[]>([]);
     const [ds_ioCourseD, setds_ioCourseD] = useState<Ids_ioCourseD[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -113,6 +58,8 @@ export const useFrmcust2100MRegionSunapReport = () => {
         ds_ioCourseYn,
         ds_ioCourse,
         ds_ioCourseD,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnExcell_OnClick,
         lfn_CancelL,
         lfn_End,

@@ -1,116 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMemberGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioBusinessType {
-}
-
-export interface Ids_ioSmsExam {
-}
-
-export interface Ids_oIssueGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioEduDataHistoryResearchEduSms {
-}
-
-export interface Ids_oEduGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduStudent {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oStatus1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioPracticeEduJubsu {
-}
-
-export interface Ids_ioSerchGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSMSMMS {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduSubject {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioEduIssue {
-}
-
-export interface Ids_iSms {
-    MPK1: string;
-    MPK2: string;
-    MPK3: string;
-    MRECVTEL: string;
-    MRECVNM: string;
-}
-
-export interface Ids_iSmsEduData {
-    EMGNO: string;
-    ECUSTBARCODE: string;
-    EFMHHPTEL: string;
-    ECUSTFMNM: string;
-}
-
-export interface Ids_iSmsEduIssue {
-    EPMGNO: string;
-    CMGNO: string;
-    HPTEL: string;
-    EPPERSONNM: string;
-}
-
-export interface Ids_oBatchSendSeq {
-}
+import type { Ids_oJibu, Ids_oRegion, Ids_ioChoiceYn, Ids_ioMemberGubun, Ids_ioCourseYn, Ids_oCourse, Ids_oWorkGubun, Ids_ioBusinessType, Ids_ioSmsExam, Ids_oIssueGubun, Ids_ioEduDataHistoryResearchEduSms, Ids_oEduGubun, Ids_oEduStudent, Ids_oStatus1, Ids_ioPracticeEduJubsu, Ids_ioSerchGubun, Ids_oSMSMMS, Ids_oEduSubject, Ids_ioEduIssue, Ids_iSms, Ids_iSmsEduData, Ids_iSmsEduIssue, Ids_oBatchSendSeq } from './Frmcust1170MSmsSendData';
 
 export const useFrmcust1170MSmsSend = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
@@ -137,6 +27,8 @@ export const useFrmcust1170MSmsSend = () => {
     const [ds_iSmsEduIssue, setds_iSmsEduIssue] = useState<Ids_iSmsEduIssue[]>([]);
     const [ds_oBatchSendSeq, setds_oBatchSendSeq] = useState<Ids_oBatchSendSeq[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [tabValue_tabTab2, setTabValue_tabTab2] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -224,6 +116,10 @@ export const useFrmcust1170MSmsSend = () => {
         ds_iSmsEduData,
         ds_iSmsEduIssue,
         ds_oBatchSendSeq,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        tabValue_tabTab2,
+        setTabValue_tabTab2,
         btnSearchEduSchedule_OnClick,
         chkReseve_OnClick,
         lfn_Cancel,

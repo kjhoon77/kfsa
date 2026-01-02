@@ -1,151 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioTrainingExam {
-    BIRTHDAY: string;
-    EJADDR1: string;
-    EJADDR2: string;
-    EJEXPYN: string;
-    EJIIIMGSEQ: string;
-    EJMGNO: string;
-    EJPERSONNM: string;
-    EJRESIDENTNO: string;
-    EJZZIPCD: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOHJUBSUNO: string;
-    EOMGNO: string;
-    EOTCCOURSECD: string;
-    ESPROCAMOUNT: string;
-    SEL: string;
-    SEL2: string;
-    TCCOURSENM: string;
-    EJTPMGNO: string;
-    TSPM: string;
-    REEJMGNO: string;
-    REJUBSUNO: string;
-    EJHSTATUSCD: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamOrder {
-    EOENDTIME: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOEXAMORDERGUBUN: string;
-    EOINETJUBSUCNT: string;
-    EOINETJUBSUYN: string;
-    EOJUBSUCNT: string;
-    EOJUBSUSTATUS: string;
-    EOMGJIBUCD: string;
-    EOMGNO: string;
-    EOSEATCNT: string;
-    EOSTARTTIME: string;
-    EOYEAR: string;
-    EPMGNO: string;
-    MAXJUBSUNO: string;
-    NEWJUBSUNO: string;
-    TCCOURSECD: string;
-    USE_YN: string;
-}
-
-export interface Ids_oSunapGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTrainingExamSettle {
-    BIRTHDAY: string;
-    EJADDR1: string;
-    EJADDR2: string;
-    EJEXPYN: string;
-    EJIIIMGSEQ: string;
-    EJMGNO: string;
-    EJPERSONNM: string;
-    EJRESIDENTNO: string;
-    EJZZIPCD: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOHJUBSUNO: string;
-    EOMGNO: string;
-    EOTCCOURSECD: string;
-    ESPROCAMOUNT: string;
-    SEL: string;
-    SEL2: string;
-    TCCOURSENM: string;
-    EJTPMGNO: string;
-}
-
-export interface Ids_ioTrainingExamJubsu {
-    BIRTHDAY: string;
-    EJADDR1: string;
-    EJADDR2: string;
-    EJEXPYN: string;
-    EJIIIMGSEQ: string;
-    EJMGNO: string;
-    EJPERSONNM: string;
-    EJRESIDENTNO: string;
-    EJZZIPCD: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOHJUBSUNO: string;
-    EOMGNO: string;
-    EOTCCOURSECD: string;
-    ESPROCAMOUNT: string;
-    SEL: string;
-    SEL2: string;
-    TCCOURSENM: string;
-    EJTPMGNO: string;
-}
-
-export interface Ids_ioExamJubsuChk {
-}
-
-export interface Ids_ioTrainingExamAmt {
-    BIRTHDAY: string;
-    EJADDR1: string;
-    EJADDR2: string;
-    EJEXPYN: string;
-    EJIIIMGSEQ: string;
-    EJMGNO: string;
-    EJPERSONNM: string;
-    EJRESIDENTNO: string;
-    EJZZIPCD: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOHJUBSUNO: string;
-    EOMGNO: string;
-    EOTCCOURSECD: string;
-    ESPROCAMOUNT: string;
-    SEL: string;
-    SEL2: string;
-    TCCOURSENM: string;
-    EJTPMGNO: string;
-}
-
-export interface Ids_oPrintReceiptMast {
-}
-
-export interface Ids_oPrintReceiptDtl {
-}
-
-export interface Ids_ioExamPrint {
-}
-
-export interface Ids_ioExamOrderMgno {
-}
-
-export interface Ids_ioRepayReport {
-}
+import type { Ids_ioTrainingExam, Ids_oCourse, Ids_oJibu, Ids_ioExamOrder, Ids_oSunapGubun, Ids_ioTrainingExamSettle, Ids_ioTrainingExamJubsu, Ids_ioExamJubsuChk, Ids_ioTrainingExamAmt, Ids_oPrintReceiptMast, Ids_oPrintReceiptDtl, Ids_ioExamPrint, Ids_ioExamOrderMgno, Ids_ioRepayReport } from './Frmspcledu0655MExamFailReJubsuData';
 
 export const useFrmspcledu0655MExamFailReJubsu = () => {
     const [ds_ioTrainingExam, setds_ioTrainingExam] = useState<Ids_ioTrainingExam[]>([]);
@@ -163,6 +18,7 @@ export const useFrmspcledu0655MExamFailReJubsu = () => {
     const [ds_ioExamOrderMgno, setds_ioExamOrderMgno] = useState<Ids_ioExamOrderMgno[]>([]);
     const [ds_ioRepayReport, setds_ioRepayReport] = useState<Ids_ioRepayReport[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -238,6 +94,8 @@ export const useFrmspcledu0655MExamFailReJubsu = () => {
         ds_ioExamPrint,
         ds_ioExamOrderMgno,
         ds_ioRepayReport,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnPrintRctTotal_OnClick,
         btnReportBatch_OnClick,

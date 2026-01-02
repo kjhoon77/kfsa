@@ -1,34 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSort {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingSeatNoPrint {
-    BIRTHDAY: string;
-    IMAGE: string;
-    NM: string;
-    ORDERJUBSUNO: string;
-    SEATNO: string;
-    SORTNO: string;
-}
-
-export interface Ids_oPoto {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oJibu, Ids_oSort, Ids_oTrainingSeatNoPrint, Ids_oPoto } from './Frmtraining0135STrainingExamSeatPrintData';
 
 export const useFrmtraining0135STrainingExamSeatPrint = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);

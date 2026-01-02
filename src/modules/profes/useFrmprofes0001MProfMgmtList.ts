@@ -1,25 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioList {
-    GTDEPTNM: string;
-    COL2: string;
-    NAME: string;
-}
-
-export interface Ids_oList {
-    GTDEPTNM: string;
-    COL2: string;
-    NAME: string;
-}
-
-export interface Ids_ioList3 {
-}
-
-export interface Ids_Check {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioList, Ids_oList, Ids_ioList3, Ids_Check } from './Frmprofes0001MProfMgmtListData';
 
 export const useFrmprofes0001MProfMgmtList = () => {
     const [ds_ioList, setds_ioList] = useState<Ids_ioList[]>([]);
@@ -27,6 +8,7 @@ export const useFrmprofes0001MProfMgmtList = () => {
     const [ds_ioList3, setds_ioList3] = useState<Ids_ioList3[]>([]);
     const [ds_Check, setds_Check] = useState<Ids_Check[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -58,6 +40,8 @@ export const useFrmprofes0001MProfMgmtList = () => {
         ds_oList,
         ds_ioList3,
         ds_Check,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         Button0_OnClick,
         lfn_End,
         lfn_PrintScreen,

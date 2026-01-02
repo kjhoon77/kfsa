@@ -1,7 +1,12 @@
 // @ts-nocheck
 export const Frmprofes0007HistoryData = {};
 
-export const ds_ds_oClass = [
+export interface Ids_oClass {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oClass: Ids_oClass[] = [
     { CD: '', DATA: '전체' },
     { CD: '1', DATA: '1급' },
     { CD: '2', DATA: '2급' },
@@ -10,14 +15,40 @@ export const ds_ds_oClass = [
     { CD: '5', DATA: '5급' },
 ];
 
-export const ds_ds_oProGubun = [
+export interface Ids_oProGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oProGubun: Ids_oProGubun[] = [
     { CD: '', DATA: '전체' },
     { CD: '1', DATA: '전임' },
     { CD: '2', DATA: '겸임' },
     { CD: '3', DATA: '초빙' },
 ];
 
-export const ds_ds_Status = [
+export interface Ids_SearchJogeon {
+    EDUDATEST?: string;
+    EDUDATEED?: string;
+    EDUCLASS?: string;
+    PROGUBUN?: string;
+}
+
+export interface Ids_ProfesList {
+    THMGNO?: string;
+    THSTATUS?: string;
+    THPROCDATE?: string;
+    THNAME?: string;
+    THJIKWI?: string;
+    THREMARK?: string;
+}
+
+export interface Ids_Status {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_Status: Ids_Status[] = [
     { CD: '', DATA: '전체' },
     { CD: '1', DATA: '작성중' },
     { CD: '2', DATA: '승인요청' },

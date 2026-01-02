@@ -1,45 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamPaper {
-    EPALPHATYPE: string;
-    EPCOURSECD: string;
-    EPNUMTYPE: string;
-    EPQSTITEMCNT: string;
-    EPTOTALPOINT: string;
-    EPREMARK: string;
-    USE_YN: string;
-}
-
-export interface Ids_oAlphaType {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oNumType {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamPaperSearch {
-    EPALPHATYPE: string;
-    EPCOURSECD: string;
-    EPNUMTYPE: string;
-    EPQSTITEMCNT: string;
-    EPTOTALPOINT: string;
-    EPREMARK: string;
-    USE_YN: string;
-}
-
-export interface Ids_oModifyColumn {
-    COLUMNCD: string;
-    COLUMNNM: string;
-}
+import type { Ids_ioExamPaper, Ids_oAlphaType, Ids_oCourse, Ids_oNumType, Ids_ioExamPaperSearch, Ids_oModifyColumn } from './Frmspcledu0580MExamPaperManagementData';
 
 export const useFrmspcledu0580MExamPaperManagement = () => {
     const [ds_ioExamPaper, setds_ioExamPaper] = useState<Ids_ioExamPaper[]>([]);
@@ -49,6 +10,7 @@ export const useFrmspcledu0580MExamPaperManagement = () => {
     const [ds_ioExamPaperSearch, setds_ioExamPaperSearch] = useState<Ids_ioExamPaperSearch[]>([]);
     const [ds_oModifyColumn, setds_oModifyColumn] = useState<Ids_oModifyColumn[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -99,6 +61,8 @@ export const useFrmspcledu0580MExamPaperManagement = () => {
         ds_oNumType,
         ds_ioExamPaperSearch,
         ds_oModifyColumn,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Delete,

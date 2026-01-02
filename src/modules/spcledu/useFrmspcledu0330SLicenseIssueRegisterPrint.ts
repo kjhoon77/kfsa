@@ -1,62 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingJubsu {
-    TPMGNO: string;
-    TPEMAIL: string;
-    TPHPTEL: string;
-    IIIMGSEQ: string;
-    TCCOURSECD: string;
-    THLASTORDERSEQ: string;
-    TJADDR1: string;
-    TJADDR2: string;
-    TJAMOUNTGUBUN: string;
-    TJBULDADDR: string;
-    TJBULDNM: string;
-    TJBUNJI: string;
-    TJCOMPNM: string;
-    TJDONG: string;
-    TJFIREMANYN: string;
-    TJKU: string;
-    TJLASTHISTORYSEQ: string;
-    TJLASTREPAYYN: string;
-    TJLASTSETLMTSEQ: string;
-    TJMGNO: string;
-    TJPASSYN: string;
-    TJPERSONNM: string;
-    TJREFUNDYN: string;
-    TJREMARK: string;
-    TJREMARKCD: string;
-    TJRESIDENTNO: string;
-    TJROADNM: string;
-    TJSIDO: string;
-    TJZIPCD: string;
-    TOENDDATE: string;
-    TOJUBSUNO: string;
-    TOMGNO: string;
-    TOSTARTDATE: string;
-    TOYEAR: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oPassGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oTrainingJubsu, Ids_oJibu, Ids_oGubun, Ids_oPassGubun } from './Frmspcledu0330SLicenseIssueRegisterPrintData';
 
 export const useFrmspcledu0330SLicenseIssueRegisterPrint = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -65,6 +9,7 @@ export const useFrmspcledu0330SLicenseIssueRegisterPrint = () => {
     const [ds_oGubun, setds_oGubun] = useState<Ids_oGubun[]>([]);
     const [ds_oPassGubun, setds_oPassGubun] = useState<Ids_oPassGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -107,6 +52,8 @@ export const useFrmspcledu0330SLicenseIssueRegisterPrint = () => {
         ds_oJibu,
         ds_oGubun,
         ds_oPassGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

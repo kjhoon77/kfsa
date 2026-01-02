@@ -1,185 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oIProcStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioRepayBundle {
-    COMPANYNAME: string;
-    EJADDR1: string;
-    EJADDR2: string;
-    EJHEJMGNO: string;
-    EJHEOHSEQREF: string;
-    EJHESSEQREF: string;
-    EJHMGGTMGNO: string;
-    EJHPROCDATE: string;
-    EJHSEQ: string;
-    EJHSTATUSCD: string;
-    EJPERSONNM: string;
-    EOHJUBSUNO: string;
-    EOMGGTMGNO: string;
-    EOTCCOURSECD: string;
-    ESEJMGNO: string;
-    ESGUBUN: string;
-    ESSEQ: string;
-    ONLYKEY: string;
-    PCUSERTYPE: string;
-    PMAMT: string;
-    PMBUYER: string;
-    PMCLAS: string;
-    PMINPUT: string;
-    PMITEM1: string;
-    PMITEM2: string;
-    PMITEM3: string;
-    PMITEM4: string;
-    PMMGNO: string;
-    PMPAYMENTFLAG: string;
-    PMPCGUBUN: string;
-    PMPCORDERNO: string;
-    PMPGMGUBUN: string;
-    PMPGMID: string;
-    PMPGMPK: string;
-    PMPIID: string;
-    PMPROCDATE: string;
-    PMRESULT: string;
-    PMVAT: string;
-    PMYEAR: string;
-    PPABANKCD: string;
-    PPABANKNM: string;
-    PPACCOUNT: string;
-    PPAOWNER: string;
-    PPAOWNER_A: string;
-    PPEXCELYN: string;
-    SEL: string;
-    STARTJUBSUDATE: string;
-    TCCOURSENM: string;
-    EOYEAR: string;
-    EOEXAMORDER: string;
-    CHK: string;
-}
-
-export interface Ids_ioRepayBundleCopy {
-    COMPANYNAME: string;
-    EJADDR1: string;
-    EJADDR2: string;
-    EJHEJMGNO: string;
-    EJHEOHSEQREF: string;
-    EJHESSEQREF: string;
-    EJHMGGTMGNO: string;
-    EJHPROCDATE: string;
-    EJHSEQ: string;
-    EJHSTATUSCD: string;
-    EJPERSONNM: string;
-    EOHJUBSUNO: string;
-    EOMGGTMGNO: string;
-    EOTCCOURSECD: string;
-    ESEJMGNO: string;
-    ESGUBUN: string;
-    ESSEQ: string;
-    ONLYKEY: string;
-    PCUSERTYPE: string;
-    PMAMT: string;
-    PMBUYER: string;
-    PMCLAS: string;
-    PMINPUT: string;
-    PMITEM1: string;
-    PMITEM2: string;
-    PMITEM3: string;
-    PMITEM4: string;
-    PMMGNO: string;
-    PMPAYMENTFLAG: string;
-    PMPCGUBUN: string;
-    PMPCORDERNO: string;
-    PMPGMGUBUN: string;
-    PMPGMID: string;
-    PMPGMPK: string;
-    PMPIID: string;
-    PMPROCDATE: string;
-    PMRESULT: string;
-    PMVAT: string;
-    PMYEAR: string;
-    PPABANKCD: string;
-    PPABANKNM: string;
-    PPACCOUNT: string;
-    PPAOWNER: string;
-    PPAOWNER_A: string;
-    PPEXCELYN: string;
-    SEL: string;
-    STARTJUBSUDATE: string;
-    TCCOURSENM: string;
-    EOYEAR: string;
-    EOEXAMORDER: string;
-    CHK: string;
-}
-
-export interface Ids_ioReport {
-}
-
-export interface Ids_ioReportFilter {
-}
-
-export interface Ids_iExcelLoad {
-    COL01: string;
-    COL02: string;
-    COL03: string;
-    COL04: string;
-    COL05: string;
-    COL06: string;
-    COL07: string;
-    COL08: string;
-    COL09: string;
-    COL10: string;
-    COL11: string;
-    COL12: string;
-    COL13: string;
-    COL14: string;
-    COL15: string;
-    COL16: string;
-    COL17: string;
-    COL18: string;
-}
-
-export interface Ids_ioPosData {
-    PMYEAR: string;
-    PMMGNO: string;
-    ESEJMGNO: string;
-    ESSEQ: string;
-    ESSUNAPACTIONREF: string;
-}
-
-export interface Ids_ioPosDataEnd {
-    PMYEAR: string;
-    PMMGNO: string;
-    TSTJMGNO: string;
-    TSSEQ: string;
-    TSSUNAPACTIONREF: string;
-}
-
-export interface Ids_ioPosDataFilter {
-    PMYEAR: string;
-    PMMGNO: string;
-    TSTJMGNO: string;
-    TSSEQ: string;
-    TSSUNAPACTIONREF: string;
-}
-
-export interface Ids_ioReportEnd {
-}
-
-export interface Ids_oInternetReport {
-}
+import type { Ids_oJibu, Ids_oCourse, Ids_oIProcStatus, Ids_ioRepayBundle, Ids_ioRepayBundleCopy, Ids_ioReport, Ids_ioReportFilter, Ids_iExcelLoad, Ids_ioPosData, Ids_ioPosDataEnd, Ids_ioPosDataFilter, Ids_ioReportEnd, Ids_oInternetReport } from './Frmspcledu1050SInternetExamRepayBatchProcData';
 
 export const useFrmspcledu1050SInternetExamRepayBatchProc = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
@@ -196,6 +17,7 @@ export const useFrmspcledu1050SInternetExamRepayBatchProc = () => {
     const [ds_ioReportEnd, setds_ioReportEnd] = useState<Ids_ioReportEnd[]>([]);
     const [ds_oInternetReport, setds_oInternetReport] = useState<Ids_oInternetReport[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divPos, setIsVisible_divPos] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -263,6 +85,8 @@ export const useFrmspcledu1050SInternetExamRepayBatchProc = () => {
         ds_ioPosDataFilter,
         ds_ioReportEnd,
         ds_oInternetReport,
+        isVisible_divPos,
+        setIsVisible_divPos,
         btnMutilSort_OnClick,
         btnReportBatch_OnClick,
         lfn_Cancel,

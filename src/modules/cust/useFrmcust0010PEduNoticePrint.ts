@@ -1,28 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioEduSchecule {
-    ESDATE: string;
-    TIME: string;
-    EDUGUBUN: string;
-    ESMGNO: string;
-    EPNM: string;
-    ESNOTICE: string;
-    ESYEAR: string;
-    CGROUPNM: string;
-    ESSEATCNT: string;
-    EDUPERSON: string;
-}
-
-export interface Ids_ioMEduNotice {
-    fkeyA: string;
-}
-
-export interface Ids_ioMEduNoticeDetail {
-}
-
-export interface Ids_ioEduNoticeHistoryGetSysdate {
-}
+import type { Ids_ioEduSchecule, Ids_ioMEduNotice, Ids_ioMEduNoticeDetail, Ids_ioEduNoticeHistoryGetSysdate } from './Frmcust0010PEduNoticePrintData';
 
 export const useFrmcust0010PEduNoticePrint = () => {
     const [ds_ioEduSchecule, setds_ioEduSchecule] = useState<Ids_ioEduSchecule[]>([]);

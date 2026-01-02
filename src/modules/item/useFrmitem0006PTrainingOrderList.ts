@@ -1,50 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oTrainingOrder {
-    COURSEMUNJECD: string;
-    JUBSUCNT: string;
-    TOCOURSEGUBUN: string;
-    TOCOURSEGUBUNNM: string;
-    TOEDUCONTENTS: string;
-    TOEDUREMARK: string;
-    TOENDDATE: string;
-    TOENDTIME: string;
-    TOEPMGNO: string;
-    TOINETJUBSUCNT: string;
-    TOINETJUBSUYN: string;
-    TOJUBSUMAXCNT: string;
-    TOJUBSUSTATUS: string;
-    TOMAILNOTICE: string;
-    TOMGGTMGNO: string;
-    TOMGNO: string;
-    TOMODDATE: string;
-    TOMODSABUN: string;
-    TOMUNJEGUBUN: string;
-    TOREGDATE: string;
-    TOREGSABUN: string;
-    TOREMARK: string;
-    TOSEATCNT: string;
-    TOSEATLIMITYN: string;
-    TOSEATSELECTYN: string;
-    TOSEXLIMITYN: string;
-    TOSTARTDATE: string;
-    TOSTARTTIME: string;
-    TOTCCOURSECD: string;
-    TOTRAININGORDER: string;
-    TOUSEYN: string;
-    TOYEAR: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oTrainingOrder, Ids_oJibu, Ids_oCourse } from './Frmitem0006PTrainingOrderListData';
 
 export const useFrmitem0006PTrainingOrderList = () => {
     const [ds_oTrainingOrder, setds_oTrainingOrder] = useState<Ids_oTrainingOrder[]>([]);

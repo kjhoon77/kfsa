@@ -1,98 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioTrainingPassExamBatchJubsu {
-    SEL: string;
-    TJADDR1: string;
-    TJADDR2: string;
-    TOENDDATE: string;
-    TOHJUBSUNO: string;
-    TOMGGTMGNO: string;
-    TOSTARTDATE: string;
-    TOTCCOURSECD: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPNM: string;
-    TJBIRTHDAY: string;
-    TJBIRTHDAY_SANG: string;
-    EJLICENSEAMTTJMGNO: string;
-    TJADDRGUBUN: string;
-    TJRPNUCD: string;
-    TJRROADBUILDMGNO: string;
-    TJRROADDETAIL: string;
-    TJRROADREMAIN: string;
-    TJRSANGUBUN: string;
-    TJRMAINBUNJI: string;
-    TJRSUBBUNJI: string;
-    TJRBUILDNM: string;
-    TJRADDRETC: string;
-    TJRCONVPGM: string;
-    TJRCONVSTATUS: string;
-    PRIVACYYN: string;
-    PAMGNO: string;
-    PPMGNO: string;
-    PABIZCD: string;
-    PACOURSECD: string;
-    EXAMBIZCD: string;
-    EXAMCOURSECD: string;
-    PHSEQ: string;
-    PHPROCSTATUS: string;
-    PHPROCDATE: string;
-    PHPROCMETHOD: string;
-    RUMGNO: string;
-    RUPATH: string;
-    RUFILENM: string;
-    PERSONKEY: string;
-}
-
-export interface Ids_oExamDateGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTrainingPassExamBatchJubsuOrder {
-    EOMGNO: string;
-    EomgNo_A: string;
-}
-
-export interface Ids_ioTrainingPassExamBatchJubsuReal {
-    EomgNo_A: string;
-    CCCDNM: string;
-}
-
-export interface Ids_oJibu_Filter {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu_FilterBak {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTrainingPassExamBatchJubsuCount {
-    EXAMJUBSUCOUNT: string;
-}
-
-export interface Ids_ioSqence {
-}
-
-export interface Ids_oLicenseCheck {
-}
-
-export interface Ids_ioTrainingTjPassYnCount {
-    TJPASSYNCNT: string;
-}
+import type { Ids_ioTrainingPassExamBatchJubsu, Ids_oExamDateGubun, Ids_oCourse, Ids_oJibu, Ids_ioTrainingPassExamBatchJubsuOrder, Ids_ioTrainingPassExamBatchJubsuReal, Ids_oJibu_Filter, Ids_oJibu_FilterBak, Ids_ioTrainingPassExamBatchJubsuCount, Ids_ioSqence, Ids_oLicenseCheck, Ids_ioTrainingTjPassYnCount } from './Frmtraining0410MExamBatchJubsuManagementData';
 
 export const useFrmtraining0410MExamBatchJubsuManagement = () => {
     const [ds_ioTrainingPassExamBatchJubsu, setds_ioTrainingPassExamBatchJubsu] = useState<Ids_ioTrainingPassExamBatchJubsu[]>([]);
@@ -108,6 +16,7 @@ export const useFrmtraining0410MExamBatchJubsuManagement = () => {
     const [ds_oLicenseCheck, setds_oLicenseCheck] = useState<Ids_oLicenseCheck[]>([]);
     const [ds_ioTrainingTjPassYnCount, setds_ioTrainingTjPassYnCount] = useState<Ids_ioTrainingTjPassYnCount[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -164,6 +73,8 @@ export const useFrmtraining0410MExamBatchJubsuManagement = () => {
         ds_ioSqence,
         ds_oLicenseCheck,
         ds_ioTrainingTjPassYnCount,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

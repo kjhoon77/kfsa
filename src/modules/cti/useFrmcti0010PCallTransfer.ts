@@ -1,29 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oUser {
-}
-
-export interface Ids_oDept {
-}
-
-export interface Ids_CtiAgentList {
-}
-
-export interface Ids_AgentState {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioGubun2 {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioGubun, Ids_oUser, Ids_oDept, Ids_CtiAgentList, Ids_AgentState, Ids_ioGubun2 } from './Frmcti0010PCallTransferData';
 
 export const useFrmcti0010PCallTransfer = () => {
     const [ds_ioGubun, setds_ioGubun] = useState<Ids_ioGubun[]>([]);

@@ -1,28 +1,12 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oMenuAuthUser {
-    SYSGUBUNNM: string;
-    CCORDERSEQ: string;
-    JORDERSEQ: string;
-    ADMINGUBUN: string;
-    PPOSITNCD: string;
-    PPOSITNNM: string;
-    PPERSONNM: string;
-    PSABUN: string;
-    PDEPTCD: string;
-    PDEPTNM: string;
-}
-
-export interface Ids_oSysGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oMenuAuthUser, Ids_oSysGubun } from './Frmsys0024MMenuAuthUserListData';
 
 export const useFrmsys0024MMenuAuthUserList = () => {
     const [ds_oMenuAuthUser, setds_oMenuAuthUser] = useState<Ids_oMenuAuthUser[]>([]);
     const [ds_oSysGubun, setds_oSysGubun] = useState<Ids_oSysGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -56,6 +40,8 @@ export const useFrmsys0024MMenuAuthUserList = () => {
         isLoading,
         ds_oMenuAuthUser,
         ds_oSysGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

@@ -1,838 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oAddrGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioDelete {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioLevel {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAddr {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBusinessGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEmailDomain {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioBuildingInfo {
-    BADDR1: string;
-    BADDR2: string;
-    BADDRGUBUN: string;
-    BAREA: string;
-    BBIZCD: string;
-    BBULDADDR: string;
-    BBULDNM: string;
-    BBUNJI1: string;
-    BBUNJI2: string;
-    BCONO: string;
-    BDONG: string;
-    BETCADDR: string;
-    BFAX: string;
-    BFIREBONBUCD: string;
-    BFIREUPCD: string;
-    BFIRECD: string;
-    BFIREMAN: string;
-    BMGNO: string;
-    BNM: string;
-    BRI: string;
-    BROADNM: string;
-    BSANGUBUN: string;
-    BSIDO: string;
-    BSIGUNGU: string;
-    BSMOKEGUBUN: string;
-    BTEL: string;
-    BZIPCD: string;
-    BRPNUCD: string;
-    BRROADBUILDMGNO: string;
-    BRROADDETAIL: string;
-    BRROADREMAIN: string;
-    BRSANGUBUN: string;
-    BRMAINBUNJI: string;
-    BRSUBBUNJI: string;
-    BRBUILDNM: string;
-    BRADDRETC: string;
-    BRCONVPGM: string;
-    BRCONVSTATUS: string;
-    BRCONVDATE: string;
-    BRCONVSABUN: string;
-    BROADADDR1: string;
-    BROADADDR2: string;
-}
-
-export interface Ids_ioDangerInfo {
-    DBMGNO: string;
-    DGATEWAYDAN: string;
-    DPERMISSIONNO: string;
-    DREMARK: string;
-    DSEQ: string;
-}
-
-export interface Ids_ioTankInfo {
-    TBMGNO: string;
-    TCARNO: string;
-    TCARYEAR: string;
-    TGATEWAYTANK1: string;
-    TGATEWAYTANK2: string;
-    TINSTLRADDR1: string;
-    TINSTLRADDR2: string;
-    TINSTLRZIPCD: string;
-    TPARKPLACEADDR1: string;
-    TPARKPLACEADDR2: string;
-    TPARKPLACEZIPCD: string;
-    TPERMISSIONNO: string;
-    TPOSTREQGUBUN: string;
-    TREMARK: string;
-    TSEQ: string;
-    POSTPLACE: string;
-    TPARKPLACEADDRGUBUN: string;
-    TPARKPLACEROADZIPCD: string;
-    TPARKPLACEROADADDR1: string;
-    TPARKPLACEROADADDR2: string;
-    TINSTLRADDRGUBUN: string;
-    TINSTLRROADZIPCD: string;
-    TINSTLRROADADDR1: string;
-    TINSTLRROADADDR2: string;
-    TRPARKPNUCD: string;
-    TRPARKROADBUILDMGNO: string;
-    TRPARKROADDETAIL: string;
-    TRPARKROADREMAIN: string;
-    TRPARKSANGUBUN: string;
-    TRPARKMAINBUNJI: string;
-    TRPARKSUBBUNJI: string;
-    TRPARKBUILDNM: string;
-    TRPARKADDRETC: string;
-    TRINSTLRPNUCD: string;
-    TRINSTLRROADBUILDMGNO: string;
-    TRINSTLRROADDETAIL: string;
-    TRINSTLRROADREMAIN: string;
-    TRINSTLRSANGUBUN: string;
-    TRINSTLRMAINBUNJI: string;
-    TRINSTLRSUBBUNJI: string;
-    TRINSTLRBUILDNM: string;
-    TRINSTLRADDRETC: string;
-    TRCONVPGM: string;
-    TRCONVPARKSTATUS: string;
-    TRCONVINSTLRSTATUS: string;
-}
-
-export interface Ids_ioEducationPassInfo {
-    BNM: string;
-    CNO: string;
-    EPPASSDATE: string;
-    EPPERSONNM: string;
-    EPPROCGTMGNO: string;
-    EPBIRTHDAY: string;
-    BIRTHDAY: string;
-    EPSUCCESSIONGUBUN: string;
-    EPYEAR: string;
-    ESGUBUN: string;
-    ESSTUDENT: string;
-    EPMGNO: string;
-}
-
-export interface Ids_ioCustomerInfo {
-    AGNM: string;
-    CAGGUBUN: string;
-    CAGMGNO: string;
-    CBMGNO: string;
-    CCOCD: string;
-    CCOURSECD: string;
-    CDELDATE: string;
-    CDELGUBUN: string;
-    CEDUPOSTADDR1: string;
-    CEDUPOSTADDR2: string;
-    CEDUPOSTGUBUN: string;
-    CEDUPOSTPLACE: string;
-    CEDUPOSTZIPCD: string;
-    CEXCEPTDATE: string;
-    CEXCEPTGUBUN: string;
-    CFEEPOSTADDR1: string;
-    CFEEPOSTADDR2: string;
-    CFEEPOSTGUBUN: string;
-    CFEEPOSTPLACE: string;
-    CFEEPOSTZIPCD: string;
-    CFEEYYMM: string;
-    CFIREMGNO: string;
-    CFMHMGNO: string;
-    CFMHSEQ: string;
-    CGATEWAYPK1: string;
-    CGATEWAYPK2: string;
-    CGATEWAYPK3: string;
-    CGCOURSECD: string;
-    CGTMGNO: string;
-    CLASTADDSEQ: string;
-    CLASTPRSEQ: string;
-    CMGNO: string;
-    CNO: string;
-    COBMGNO: string;
-    COLDMGNO: string;
-    COVERGUBUN: string;
-    CPERSONGUBUN: string;
-    CPOSTREQGUBUN: string;
-    CREGCD: string;
-    CREGISTERYYMM: string;
-    CSTATUSDATE: string;
-    CSTATUSGUBUN: string;
-    CSTATUSREASONCD: string;
-    MMCNT: string;
-    CFEEADDRGUBUN: string;
-    CFEEROADADDR1: string;
-    CFEEROADADDR2: string;
-    CEDUADDRGUBUN: string;
-    CEDUROADADDR1: string;
-    CEDUROADADDR2: string;
-    CRFEEPNUCD: string;
-    CRFEEROADBUILDMGNO: string;
-    CRFEEROADDETAIL: string;
-    CRFEEROADREMAIN: string;
-    CRFEESANGUBUN: string;
-    CRFEEMAINBUNJI: string;
-    CRFEESUBBUNJI: string;
-    CRFEEBUILDNM: string;
-    CRFEEADDRETC: string;
-    CREDUPNUCD: string;
-    CREDUROADBUILDMGNO: string;
-    CREDUROADDETAIL: string;
-    CREDUROADREMAIN: string;
-    CREDUSANGUBUN: string;
-    CREDUMAINBUNJI: string;
-    CREDUSUBBUNJI: string;
-    CREDUBUILDNM: string;
-    CREDUADDRETC: string;
-    CRCONVPGM: string;
-    CRCONVFEESTATUS: string;
-    CRCONVEDUSTATUS: string;
-    CRECEIVEEXCEPTGUBUN: string;
-    CEDUEXPIREDATE: string;
-    CMAINCMGNO: string;
-    CELECTQUALIFY: string;
-    CTECHBOOKEXCEPTGUBUN: string;
-    CTECHBOOKEXCEPTDATE: string;
-    MFPIS1: string;
-    CSUPPOTERCNT: string;
-    OVERMINAPFEE: string;
-    DUPLCNT: string;
-    CEDUEXPIREGUBUN: string;
-    TJEDUEXPIREDATE: string;
-}
-
-export interface Ids_ioManagerInfo {
-    FMAUTHGUBUN: string;
-    FMBUILDINGNM: string;
-    FMCMGNO: string;
-    FMCOURSECD: string;
-    FMHADDR1: string;
-    FMHADDR2: string;
-    FMHADDRGUBUN: string;
-    FMHBULDADDR: string;
-    FMHBULDNM: string;
-    FMHBUNJI1: string;
-    FMHBUNJI2: string;
-    FMHDONG: string;
-    FMHEMAILDOMAIN: string;
-    FMHEMAILID: string;
-    FMHENDDATE: string;
-    FMHENDGUBUN: string;
-    FMHENDSYSDATE: string;
-    FMHETCADDR: string;
-    FMHFMMGNO: string;
-    FMHHPTEL: string;
-    FMHOLDINFO: string;
-    FMHSEQ: string;
-    FMHSTARTDATE: string;
-    FMHTEL: string;
-    FMHZIPCD: string;
-    FMLASTFMHSEQ: string;
-    FMMGNO: string;
-    FMNM: string;
-    FMRESIDENTERR: string;
-    FMBIRTHDAY: string;
-    IIDIRPATH: string;
-    IIREALNM: string;
-    IISAVENM: string;
-    FMHROADADDR1: string;
-    FMHROADADDR2: string;
-    FMHRPNUCD: string;
-    FMHRROADBUILDMGNO: string;
-    FMHRROADDETAIL: string;
-    FMHRROADREMAIN: string;
-    FMHRSANGUBUN: string;
-    FMHRMAINBUNJI: string;
-    FMHRSUBBUNJI: string;
-    FMHRBUILDNM: string;
-    FMHRADDRETC: string;
-    FMHRCONVPGM: string;
-    FMHRCONVSTATUS: string;
-    FMHLICENSENO: string;
-    FMPERSONKEY: string;
-    PDI: string;
-}
-
-export interface Ids_ioLicenseInfo {
-    OLFMMGNO: string;
-    OLDATE: string;
-    OLHCD: string;
-    OLHNM: string;
-    OLNO: string;
-    OLSEQ: string;
-}
-
-export interface Ids_ioOwnerInfo {
-    OBMGNO: string;
-    OGUBUN: string;
-    OHPTEL: string;
-    ONM: string;
-    OREMARK: string;
-    OSEQ: string;
-    OTEL: string;
-}
-
-export interface Ids_ioAdditionInfo {
-    ADCMGNO: string;
-    ADCONTENT: string;
-    ADDELGUBUN: string;
-    ADCD: string;
-    ADSEQ: string;
-}
-
-export interface Ids_ioOverBizInfo {
-}
-
-export interface Ids_ioCustomerFeeInfo {
-}
-
-export interface Ids_oAddPost {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oDetailCourse {
-    CD: string;
-    DATA: string;
-    GCD: string;
-}
-
-export interface Ids_oCustomerStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAddition {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oOwnerGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oLicenseGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduStudentGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oPersonGubun {
-    CD: string;
-    DATA: string;
-    PCD: string;
-}
-
-export interface Ids_oBizCd {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oObjectMgno {
-    CMGNO: string;
-    CNO: string;
-    CREGCD: string;
-    CBMGNO: string;
-    CGTMGNO: string;
-    CCOURSECD: string;
-}
-
-export interface Ids_oJibuGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBuildingSeq {
-    SEQ: string;
-}
-
-export interface Ids_oCustomerSeq {
-    SEQ: string;
-}
-
-export interface Ids_oFireManagerSeq {
-    SEQ: string;
-}
-
-export interface Ids_oTest {
-    BD: string;
-    CM: string;
-    FM: string;
-    BBO: string;
-    BBD: string;
-    BBT: string;
-    CMA: string;
-    FML: string;
-}
-
-export interface Ids_oStatusReason {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCount {
-    CNT: string;
-}
-
-export interface Ids_oSunapGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oFireCd {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-}
-
-export interface Ids_oFireCenterCd {
-    CD: string;
-    DATA: string;
-    UPCD: string;
-}
-
-export interface Ids_oAgencyYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oManagerInfoTmp {
-    FMAUTHGUBUN: string;
-    FMBUILDINGNM: string;
-    FMCMGNO: string;
-    FMCOURSECD: string;
-    FMHADDR1: string;
-    FMHADDR2: string;
-    FMHADDRGUBUN: string;
-    FMHBULDADDR: string;
-    FMHBULDNM: string;
-    FMHBUNJI1: string;
-    FMHBUNJI2: string;
-    FMHDONG: string;
-    FMHEMAILDOMAIN: string;
-    FMHEMAILID: string;
-    FMHENDDATE: string;
-    FMHENDGUBUN: string;
-    FMHENDSYSDATE: string;
-    FMHETCADDR: string;
-    FMHFMMGNO: string;
-    FMHHPTEL: string;
-    FMHOLDINFO: string;
-    FMHRI: string;
-    FMHROADNM: string;
-    FMHSANGUBUN: string;
-    FMHSEQ: string;
-    FMHSIDO: string;
-    FMHSIGUNGU: string;
-    FMHSTARTDATE: string;
-    FMHTEL: string;
-    FMHZIPCD: string;
-    FMLASTFMHSEQ: string;
-    FMMGNO: string;
-    FMNM: string;
-    FMRESIDENTERR: string;
-    FMBIRTHDAY: string;
-    BIRTHDAY: string;
-    IIDIRPATH: string;
-    IIREALNM: string;
-    IISAVENM: string;
-}
-
-export interface Ids_oSPMain {
-    O_NEWFMMGNO: string;
-    O_NEWFMHSEQ: string;
-    O_OBMGNO: string;
-    O_STATUS: string;
-}
-
-export interface Ids_oEduSuccessGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSPMainIN {
-    O_NEWFMMGNO: string;
-    O_NEWFMHSEQ: string;
-    O_OBMGNO: string;
-    O_STATUS: string;
-}
-
-export interface Ids_oOverBizProc {
-}
-
-export interface Ids_iCustomerInfoTmp {
-    AGNM: string;
-    CAGGUBUN: string;
-    CAGMGNO: string;
-    CBMGNO: string;
-    CCOCD: string;
-    CCOURSECD: string;
-    CDELDATE: string;
-    CDELGUBUN: string;
-    CEDUPOSTADDR1: string;
-    CEDUPOSTADDR2: string;
-    CEDUPOSTGUBUN: string;
-    CEDUPOSTPLACE: string;
-    CEDUPOSTZIPCD: string;
-    CEXCEPTDATE: string;
-    CEXCEPTGUBUN: string;
-    CFEEPOSTADDR1: string;
-    CFEEPOSTADDR2: string;
-    CFEEPOSTGUBUN: string;
-    CFEEPOSTPLACE: string;
-    CFEEPOSTZIPCD: string;
-    CFEEYYMM: string;
-    CFIREMGNO: string;
-    CFMHMGNO: string;
-    CFMHSEQ: string;
-    CGATEWAYPK1: string;
-    CGATEWAYPK2: string;
-    CGATEWAYPK3: string;
-    CGCOURSECD: string;
-    CGTMGNO: string;
-    CLASTADDSEQ: string;
-    CLASTPRSEQ: string;
-    CMGNO: string;
-    CNO: string;
-    COBMGNO: string;
-    COLDMGNO: string;
-    COVERGUBUN: string;
-    CPERSONGUBUN: string;
-    CPOSTREQGUBUN: string;
-    CREGCD: string;
-    CREGISTERYYMM: string;
-    CSTATUSDATE: string;
-    CSTATUSGUBUN: string;
-    CSTATUSREASONCD: string;
-    CFEEADDRGUBUN: string;
-    CFEEROADADDR1: string;
-    CFEEROADADDR2: string;
-    CEDUADDRGUBUN: string;
-    CEDUROADADDR1: string;
-    CEDUROADADDR2: string;
-    CRFEEPNUCD: string;
-    CRFEEROADBUILDMGNO: string;
-    CRFEEROADDETAIL: string;
-    CRFEEROADREMAIN: string;
-    CRFEESANGUBUN: string;
-    CRFEEMAINBUNJI: string;
-    CRFEESUBBUNJI: string;
-    CRFEEBUILDNM: string;
-    CRFEEADDRETC: string;
-    CREDUPNUCD: string;
-    CREDUROADBUILDMGNO: string;
-    CREDUROADDETAIL: string;
-    CREDUROADREMAIN: string;
-    CREDUSANGUBUN: string;
-    CREDUMAINBUNJI: string;
-    CREDUSUBBUNJI: string;
-    CREDUBUILDNM: string;
-    CREDUADDRETC: string;
-    CRCONVPGM: string;
-    CRCONVFEESTATUS: string;
-    CRCONVEDUSTATUS: string;
-    CRECEIVEEXCEPTGUBUN: string;
-    CEDUEXPIREDATE: string;
-    CMAINCMGNO: string;
-    CELECTQUALIFY: string;
-    CTECHBOOKEXCEPTGUBUN: string;
-    CTECHBOOKEXCEPTDATE: string;
-    MFPIS1: string;
-    CSUPPOTERCNT: string;
-}
-
-export interface Ids_iCustomerModifyHistory {
-    CMHAFTERDATA: string;
-    CMHBEFOREDATA: string;
-    CMHCOLUMN: string;
-    CMHGUBUN: string;
-    CMHKEY: string;
-    CMHWORKGUBUN: string;
-}
-
-export interface Ids_oModifyColumnList {
-    TBLNM: string;
-    COLNM: string;
-    COLKORNM: string;
-    COMBOGUBUN: string;
-    INNERDSNM: string;
-}
-
-export interface Ids_oLicenseInfo {
-    LISSUEDATE: string;
-    LLCSNO: string;
-    TCCOURSENM: string;
-}
-
-export interface Ids_oResidentNoErr {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_AuthGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTankAddrGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCustomerCompare {
-    AGNM: string;
-    CAGGUBUN: string;
-    CAGMGNO: string;
-    CBMGNO: string;
-    CCOCD: string;
-    CCOURSECD: string;
-    CDELDATE: string;
-    CDELGUBUN: string;
-    CEDUPOSTADDR1: string;
-    CEDUPOSTADDR2: string;
-    CEDUPOSTGUBUN: string;
-    CEDUPOSTPLACE: string;
-    CEDUPOSTZIPCD: string;
-    CEXCEPTDATE: string;
-    CEXCEPTGUBUN: string;
-    CFEEPOSTADDR1: string;
-    CFEEPOSTADDR2: string;
-    CFEEPOSTGUBUN: string;
-    CFEEPOSTPLACE: string;
-    CFEEPOSTZIPCD: string;
-    CFEEYYMM: string;
-    CFIREMGNO: string;
-    CFMHMGNO: string;
-    CFMHSEQ: string;
-    CGATEWAYPK1: string;
-    CGATEWAYPK2: string;
-    CGATEWAYPK3: string;
-    CGCOURSECD: string;
-    CGTMGNO: string;
-    CLASTADDSEQ: string;
-    CLASTPRSEQ: string;
-    CMGNO: string;
-    CNO: string;
-    COBMGNO: string;
-    COLDMGNO: string;
-    COVERGUBUN: string;
-    CPERSONGUBUN: string;
-    CPOSTREQGUBUN: string;
-    CREGCD: string;
-    CREGISTERYYMM: string;
-    CSTATUSDATE: string;
-    CSTATUSGUBUN: string;
-    CSTATUSREASONCD: string;
-}
-
-export interface Ids_oAllObject {
-}
-
-export interface Ids_oBuildingInfoTmp {
-    BADDR1: string;
-    BADDR2: string;
-    BADDRGUBUN: string;
-    BAREA: string;
-    BBIZCD: string;
-    BBULDADDR: string;
-    BBULDNM: string;
-    BBUNJI1: string;
-    BBUNJI2: string;
-    BCONO: string;
-    BDONG: string;
-    BETCADDR: string;
-    BFAX: string;
-    BFIRECD: string;
-    BFIREMAN: string;
-    BMGNO: string;
-    BNM: string;
-    BRI: string;
-    BROADNM: string;
-    BSANGUBUN: string;
-    BSIDO: string;
-    BSIGUNGU: string;
-    BSMOKEGUBUN: string;
-    BTEL: string;
-    BZIPCD: string;
-    BFIREUPCD: string;
-}
-
-export interface Ids_ioNotOverBizFireManager {
-}
-
-export interface Ids_ioIsOverBizFireManager {
-}
-
-export interface Ids_oBnmCode {
-}
-
-export interface Ids_oFireBonbu {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-}
-
-export interface Ids_oEduConfirmPrint {
-    ECMGNO: string;
-    EDUNAME: string;
-    COMPANY: string;
-    NAME: string;
-    CGROUPNM: string;
-    EPBIRTHDAY: string;
-    BIRTHDAY: string;
-    EDUDATE: string;
-    BIRTH: string;
-    GTTEAMNM: string;
-    MGNO: string;
-    RULE: string;
-}
-
-export interface Ids_oAddr2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oReceiveExcept {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingPass {
-}
-
-export interface Ids_oMemberAgree {
-    MHNAME: string;
-    MHMEMCHK: string;
-    MHMEMNO: string;
-    MHCOMPANYNM: string;
-    MHREGCD: string;
-    MHSTATUS: string;
-    MHREGDATE: string;
-}
-
-export interface Ids_oVirtualAccoutAllocation {
-    Rtn_status: string;
-}
-
-export interface Ids_oVirtualAccoutOwnerNM {
-}
-
-export interface Ids_oElectQualify {
-    PCD: string;
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTechReceiveExcept {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioImageInfo {
-}
-
-export interface Ids_oINetChangeInfo {
-}
-
-export interface Ids_oRestoreStatus {
-}
-
-export interface Ids_oPostPlace {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oVirtualAccoutDelete {
-    RTN_STATUS: string;
-}
-
-export interface Ids_oTrainingPassList {
-}
-
-export interface Ids_ioMEduData {
-}
-
-export interface Ids_ioMEduDataDetail {
-}
-
-export interface Ids_ioEduNoticeHistoryGetSysdate {
-}
-
-export interface Ids_oCallKeyIn {
-}
-
-export interface Ids_oExpireGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduType50 {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oAddrGubun, Ids_ioDelete, Ids_ioLevel, Ids_oCourse, Ids_oAddr, Ids_oRegion, Ids_oJibu, Ids_oBusinessGubun, Ids_ioYn, Ids_oEmailDomain, Ids_ioBuildingInfo, Ids_ioDangerInfo, Ids_ioTankInfo, Ids_ioEducationPassInfo, Ids_ioCustomerInfo, Ids_ioManagerInfo, Ids_ioLicenseInfo, Ids_ioOwnerInfo, Ids_ioAdditionInfo, Ids_ioOverBizInfo, Ids_ioCustomerFeeInfo, Ids_oAddPost, Ids_oDetailCourse, Ids_oCustomerStatus, Ids_oAddition, Ids_oOwnerGubun, Ids_oLicenseGubun, Ids_oEduStudentGubun, Ids_oEduGubun, Ids_oPersonGubun, Ids_oBizCd, Ids_oObjectMgno, Ids_oJibuGubun, Ids_oBuildingSeq, Ids_oCustomerSeq, Ids_oFireManagerSeq, Ids_oTest, Ids_oStatusReason, Ids_oCount, Ids_oSunapGubun, Ids_oFireCd, Ids_oFireCenterCd, Ids_oAgencyYn, Ids_oManagerInfoTmp, Ids_oSPMain, Ids_oEduSuccessGubun, Ids_oSPMainIN, Ids_oOverBizProc, Ids_iCustomerInfoTmp, Ids_iCustomerModifyHistory, Ids_oModifyColumnList, Ids_oLicenseInfo, Ids_oResidentNoErr, Ids_AuthGubun, Ids_oTankAddrGubun, Ids_oCustomerCompare, Ids_oAllObject, Ids_oBuildingInfoTmp, Ids_ioNotOverBizFireManager, Ids_ioIsOverBizFireManager, Ids_oBnmCode, Ids_oFireBonbu, Ids_oEduConfirmPrint, Ids_oAddr2, Ids_oReceiveExcept, Ids_oTrainingPass, Ids_oMemberAgree, Ids_oVirtualAccoutAllocation, Ids_oVirtualAccoutOwnerNM, Ids_oElectQualify, Ids_oTechReceiveExcept, Ids_ioImageInfo, Ids_oINetChangeInfo, Ids_oRestoreStatus, Ids_oPostPlace, Ids_oVirtualAccoutDelete, Ids_oTrainingPassList, Ids_ioMEduData, Ids_ioMEduDataDetail, Ids_ioEduNoticeHistoryGetSysdate, Ids_oCallKeyIn, Ids_oExpireGubun, Ids_oEduType50 } from './Frmcust0010MCustomerManagementData';
 
 export const useFrmcust0010MCustomerManagement = () => {
     const [ds_oAddrGubun, setds_oAddrGubun] = useState<Ids_oAddrGubun[]>([]);
@@ -919,6 +87,18 @@ export const useFrmcust0010MCustomerManagement = () => {
     const [ds_oExpireGubun, setds_oExpireGubun] = useState<Ids_oExpireGubun[]>([]);
     const [ds_oEduType50, setds_oEduType50] = useState<Ids_oEduType50[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_div2, setIsVisible_div2] = useState(true);
+    const [isVisible_div1, setIsVisible_div1] = useState(true);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [isVisible_Div3, setIsVisible_Div3] = useState(false);
+    const [isVisible_Div0, setIsVisible_Div0] = useState(true);
+    const [isVisible_Div4, setIsVisible_Div4] = useState(false);
+    const [isVisible_Div6, setIsVisible_Div6] = useState(false);
+    const [isVisible_Div7, setIsVisible_Div7] = useState(false);
+    const [isVisible_Div8, setIsVisible_Div8] = useState(false);
+    const [tabValue_tabTab3, setTabValue_tabTab3] = useState(0);
+    const [tabValue_tabTab2, setTabValue_tabTab2] = useState(0);
+    const [tabValue_tabTab1, setTabValue_tabTab1] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -1010,6 +190,45 @@ export const useFrmcust0010MCustomerManagement = () => {
         }, 500);
     }, []);
 
+    const Div0_btnSearchPostZipCode_OnClick = () => {
+        console.log('Div0_btnSearchPostZipCode_OnClick clicked');
+    };
+    const Div0_btnSearchReturnPostH_OnClick = () => {
+        console.log('Div0_btnSearchReturnPostH_OnClick clicked');
+    };
+    const Div3_btnEduChange_OnClick = () => {
+        console.log('Div3_btnEduChange_OnClick clicked');
+    };
+    const Div3_btnEduDetailInfo2_OnClick = () => {
+        console.log('Div3_btnEduDetailInfo2_OnClick clicked');
+    };
+    const Div3_btn_EduDetailClose_OnClick = () => {
+        console.log('Div3_btn_EduDetailClose_OnClick clicked');
+    };
+    const Div4_btnSearchEduPostZipCode_OnClick = () => {
+        console.log('Div4_btnSearchEduPostZipCode_OnClick clicked');
+    };
+    const Div4_btnSearchEduReturnPostH_OnClick = () => {
+        console.log('Div4_btnSearchEduReturnPostH_OnClick clicked');
+    };
+    const Div6_btnAddRow1_OnClick = () => {
+        console.log('Div6_btnAddRow1_OnClick clicked');
+    };
+    const Div6_btnDelRow1_OnClick = () => {
+        console.log('Div6_btnDelRow1_OnClick clicked');
+    };
+    const Div7_btnAddRow1_OnClick = () => {
+        console.log('Div7_btnAddRow1_OnClick clicked');
+    };
+    const Div7_btnDelRow1_OnClick = () => {
+        console.log('Div7_btnDelRow1_OnClick clicked');
+    };
+    const Div8_btnAddRow1_OnClick = () => {
+        console.log('Div8_btnAddRow1_OnClick clicked');
+    };
+    const Div8_btnDelRow1_OnClick = () => {
+        console.log('Div8_btnDelRow1_OnClick clicked');
+    };
     const btnAddRow2_OnClick = () => {
         console.log('btnAddRow2_OnClick clicked');
     };
@@ -1117,6 +336,12 @@ export const useFrmcust0010MCustomerManagement = () => {
     };
     const lfn_Cancel = () => {
         console.log('lfn_Cancel clicked');
+    };
+    const lfn_EduDataPrint = () => {
+        console.log('lfn_EduDataPrint clicked');
+    };
+    const lfn_EduPrint = () => {
+        console.log('lfn_EduPrint clicked');
     };
     const lfn_End = () => {
         console.log('lfn_End clicked');
@@ -1240,6 +465,43 @@ export const useFrmcust0010MCustomerManagement = () => {
         ds_oCallKeyIn,
         ds_oExpireGubun,
         ds_oEduType50,
+        isVisible_div2,
+        setIsVisible_div2,
+        isVisible_div1,
+        setIsVisible_div1,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        isVisible_Div3,
+        setIsVisible_Div3,
+        isVisible_Div0,
+        setIsVisible_Div0,
+        isVisible_Div4,
+        setIsVisible_Div4,
+        isVisible_Div6,
+        setIsVisible_Div6,
+        isVisible_Div7,
+        setIsVisible_Div7,
+        isVisible_Div8,
+        setIsVisible_Div8,
+        tabValue_tabTab3,
+        setTabValue_tabTab3,
+        tabValue_tabTab2,
+        setTabValue_tabTab2,
+        tabValue_tabTab1,
+        setTabValue_tabTab1,
+        Div0_btnSearchPostZipCode_OnClick,
+        Div0_btnSearchReturnPostH_OnClick,
+        Div3_btnEduChange_OnClick,
+        Div3_btnEduDetailInfo2_OnClick,
+        Div3_btn_EduDetailClose_OnClick,
+        Div4_btnSearchEduPostZipCode_OnClick,
+        Div4_btnSearchEduReturnPostH_OnClick,
+        Div6_btnAddRow1_OnClick,
+        Div6_btnDelRow1_OnClick,
+        Div7_btnAddRow1_OnClick,
+        Div7_btnDelRow1_OnClick,
+        Div8_btnAddRow1_OnClick,
+        Div8_btnDelRow1_OnClick,
         btnAddRow2_OnClick,
         btnAuthResidentNo_OnClick,
         btnChangeBuilding_OnClick,
@@ -1276,6 +538,8 @@ export const useFrmcust0010MCustomerManagement = () => {
         btn_NextOldCNo_OnClick,
         btn_SearchFireManager_OnClick,
         lfn_Cancel,
+        lfn_EduDataPrint,
+        lfn_EduPrint,
         lfn_End,
         lfn_GroupSearch,
         lfn_Input,

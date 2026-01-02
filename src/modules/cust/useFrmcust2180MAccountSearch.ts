@@ -1,99 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAccount {
-    SEQ: string;
-    CMGNO: string;
-    CGTMGNO: string;
-    CGTNM: string;
-    CNO: string;
-    CCOURSECD: string;
-    CNICKNM: string;
-    CSTATUSGUBUN: string;
-    FMNM: string;
-    BNM: string;
-    TR_AMT: string;
-    BANK_NM: string;
-    IACCT_NO: string;
-    INP_ST: string;
-    TR_IL: string;
-}
-
-export interface Ids_oBank {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oError {
-    SEQ: string;
-    CMGNO: string;
-    CGTMGNO: string;
-    CGTNM: string;
-    CNO: string;
-    CCOURSECD: string;
-    CNICKNM: string;
-    CSTATUSGUBUN: string;
-    FMNM: string;
-    BNM: string;
-    TR_AMT: string;
-    BANK_NM: string;
-    IACCT_NO: string;
-    INP_ST: string;
-    ER_GUBUN: string;
-    ER_MSG: string;
-    TR_IL: string;
-}
-
-export interface Ids_oChange {
-    SEQ: string;
-    CMGNO: string;
-    CGTMGNO: string;
-    CGTNM: string;
-    CNO: string;
-    CCOURSECD: string;
-    CNICKNM: string;
-    CSTATUSGUBUN: string;
-    FMNM: string;
-    BNM: string;
-    TR_AMT: string;
-    BANK_NM: string;
-    IACCT_NO: string;
-    INP_ST: string;
-    CHANGEYN: string;
-}
-
-export interface Ids_oMemberFee {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSort {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAccountCnt {
-    SEQ: string;
-    CMGNO: string;
-    CGTMGNO: string;
-    CGTNM: string;
-    CNO: string;
-    CCOURSECD: string;
-    CNICKNM: string;
-    CSTATUSGUBUN: string;
-    FMNM: string;
-    BNM: string;
-    TR_AMT: string;
-    BANK_NM: string;
-    IACCT_NO: string;
-    INP_ST: string;
-    TR_IL: string;
-}
+import type { Ids_oJibu, Ids_oAccount, Ids_oBank, Ids_oError, Ids_oChange, Ids_oMemberFee, Ids_oSort, Ids_oAccountCnt } from './Frmcust2180MAccountSearchData';
 
 export const useFrmcust2180MAccountSearch = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
@@ -105,6 +12,7 @@ export const useFrmcust2180MAccountSearch = () => {
     const [ds_oSort, setds_oSort] = useState<Ids_oSort[]>([]);
     const [ds_oAccountCnt, setds_oAccountCnt] = useState<Ids_oAccountCnt[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -147,6 +55,8 @@ export const useFrmcust2180MAccountSearch = () => {
         ds_oMemberFee,
         ds_oSort,
         ds_oAccountCnt,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnToExcel_OnClick,
         lfn_Cancel,
         lfn_End,

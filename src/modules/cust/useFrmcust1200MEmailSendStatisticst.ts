@@ -1,50 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEmailStat {
-    CNO: string;
-    CSTATUSGUBUN: string;
-    FMHFMMGNO: string;
-    ESGTMGNO: string;
-    GTDEPTNM: string;
-    RCNM: string;
-    ESYEAR: string;
-    ESDATE: string;
-    ESTIME: string;
-    ESCOUSECD: string;
-    ESCOURSENM: string;
-    FMNM: string;
-    ESHEMAILADDR: string;
-    ESHRECEIVEYN: string;
-    ESHSENDYN: string;
-    ESHSENDDATE: string;
-    ESHSABUN: string;
-    ESHMGNO: string;
-    ECTITLE: string;
-    PNM: string;
-}
-
-export interface Ids_oPrintList {
-}
-
-export interface Ids_oPrintDate {
-}
-
-export interface Ids_oPrintJibu {
-}
-
-export interface Ids_oViewMailDetail {
-}
+import type { Ids_oCourse, Ids_oJibu, Ids_oEmailStat, Ids_oPrintList, Ids_oPrintDate, Ids_oPrintJibu, Ids_oViewMailDetail } from './Frmcust1200MEmailSendStatisticstData';
 
 export const useFrmcust1200MEmailSendStatisticst = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -55,6 +11,7 @@ export const useFrmcust1200MEmailSendStatisticst = () => {
     const [ds_oPrintJibu, setds_oPrintJibu] = useState<Ids_oPrintJibu[]>([]);
     const [ds_oViewMailDetail, setds_oViewMailDetail] = useState<Ids_oViewMailDetail[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -107,6 +64,8 @@ export const useFrmcust1200MEmailSendStatisticst = () => {
         ds_oPrintDate,
         ds_oPrintJibu,
         ds_oViewMailDetail,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnPrintDate_OnClick,
         btnPrintJibu_OnClick,

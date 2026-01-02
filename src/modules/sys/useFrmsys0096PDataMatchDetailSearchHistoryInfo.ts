@@ -1,28 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioWorkList {
-    SHGUBUN: string;
-    SHMGNO: string;
-    SHPROCDATE: string;
-    SHPROCIP: string;
-    SHPROCSABUN: string;
-    SHWHERE: string;
-    SHWORKGUBUN: string;
-    SHWORKGUBUNNM: string;
-}
-
-export interface Ids_ioMFFireObjD {
-}
-
-export interface Ids_ioFireManagerInfo {
-}
+import type { Ids_ioWorkList, Ids_ioMFFireObjD, Ids_ioFireManagerInfo } from './Frmsys0096PDataMatchDetailSearchHistoryInfoData';
 
 export const useFrmsys0096PDataMatchDetailSearchHistoryInfo = () => {
     const [ds_ioWorkList, setds_ioWorkList] = useState<Ids_ioWorkList[]>([]);
     const [ds_ioMFFireObjD, setds_ioMFFireObjD] = useState<Ids_ioMFFireObjD[]>([]);
     const [ds_ioFireManagerInfo, setds_ioFireManagerInfo] = useState<Ids_ioFireManagerInfo[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [tabValue_TabMain, setTabValue_TabMain] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -43,6 +28,8 @@ export const useFrmsys0096PDataMatchDetailSearchHistoryInfo = () => {
         ds_ioWorkList,
         ds_ioMFFireObjD,
         ds_ioFireManagerInfo,
+        tabValue_TabMain,
+        setTabValue_TabMain,
         lfn_End,
     };
 };

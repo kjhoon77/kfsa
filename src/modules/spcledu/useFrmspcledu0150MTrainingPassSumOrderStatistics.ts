@@ -1,35 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingPassSumOrderStatistics {
-    INCNT: string;
-    INOUTCNT: string;
-    JUBSUCNT: string;
-    MINABAMT: string;
-    MUNJE: string;
-    OUTCNT: string;
-    PASSCNT: string;
-    REPAYCNT: string;
-    SUNABCNT: string;
-    TCCOURSENM: string;
-    TOTRAININGORDER: string;
-    TPPASSDATE: string;
-}
-
-export interface Ids_oCourseGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oJibu, Ids_oTrainingPassSumOrderStatistics, Ids_oCourseGubun } from './Frmspcledu0150MTrainingPassSumOrderStatisticsData';
 
 export const useFrmspcledu0150MTrainingPassSumOrderStatistics = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -37,6 +8,7 @@ export const useFrmspcledu0150MTrainingPassSumOrderStatistics = () => {
     const [ds_oTrainingPassSumOrderStatistics, setds_oTrainingPassSumOrderStatistics] = useState<Ids_oTrainingPassSumOrderStatistics[]>([]);
     const [ds_oCourseGubun, setds_oCourseGubun] = useState<Ids_oCourseGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -68,6 +40,8 @@ export const useFrmspcledu0150MTrainingPassSumOrderStatistics = () => {
         ds_oJibu,
         ds_oTrainingPassSumOrderStatistics,
         ds_oCourseGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_PrintScreen,

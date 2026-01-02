@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './Frmtraining0253PLicenseRemarkData';
 
 export const useFrmtraining0253PLicenseRemark = () => {
     const [isLoading, setIsLoading] = useState(false);

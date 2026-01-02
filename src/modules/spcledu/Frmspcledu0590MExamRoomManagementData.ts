@@ -1,7 +1,28 @@
 // @ts-nocheck
 export const Frmspcledu0590MExamRoomManagementData = {};
 
-export const ds_ds_oNumType = [
+export interface Ids_ioExamRoom {
+    EOEXAMORDER?: string;
+    EOEXAMORDERGUBUN?: string;
+    EOMGJIBUCD?: string;
+    EOMGNO?: string;
+    EOYEAR?: string;
+    EPMGNO?: number;
+    EREXAMROOM?: string;
+    ERNUMTYPE?: string;
+    EXAMNM?: string;
+    JJIBUNM?: string;
+    TCCOURSECD?: string;
+    TCCOURSENM?: string;
+    USE_YN?: string;
+}
+
+export interface Ids_oNumType {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oNumType: Ids_oNumType[] = [
     { CD: '', DATA: '선택' },
     { CD: '01', DATA: '1종' },
     { CD: '02', DATA: '2종' },
@@ -25,7 +46,41 @@ export const ds_ds_oNumType = [
     { CD: '20', DATA: '20종' },
 ];
 
-export const ds_ds_oModifyColumn = [
+export interface Ids_oCourse {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oJibu {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oExamOrderMgno {
+}
+
+export interface Ids_ioExamRoomSearch {
+    EOEXAMORDER?: string;
+    EOEXAMORDERGUBUN?: string;
+    EOMGJIBUCD?: string;
+    EOMGNO?: string;
+    EOYEAR?: string;
+    EPMGNO?: number;
+    EREXAMROOM?: string;
+    ERNUMTYPE?: string;
+    EXAMNM?: string;
+    JJIBUNM?: string;
+    TCCOURSECD?: string;
+    TCCOURSENM?: string;
+    USE_YN?: string;
+}
+
+export interface Ids_oModifyColumn {
+    COLUMNCD?: string;
+    COLUMNNM?: string;
+}
+
+export const ds_ds_oModifyColumn: Ids_oModifyColumn[] = [
     { COLUMNCD: 'EOMGNO', COLUMNNM: '회차관리번호' },
     { COLUMNCD: 'ERNUMTYPE', COLUMNNM: '종별' },
     { COLUMNCD: 'EREXAMROOM', COLUMNNM: '시험장' },

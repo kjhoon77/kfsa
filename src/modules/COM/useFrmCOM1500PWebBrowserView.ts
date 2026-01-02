@@ -1,19 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oEducationPlace {
-    CREATE_DATE: string;
-    CREATE_ID: string;
-    JJIBUCD: string;
-    MODIFY_DATE: string;
-    MODIFY_ID: string;
-    ZBUNJI: string;
-    SIKUDONG: string;
-    ZHO: string;
-    ZREGIONCD: string;
-    ZSEQ: string;
-    ZZIPCD: string;
-}
+import type { Ids_oEducationPlace } from './FrmCOM1500PWebBrowserViewData';
 
 export const useFrmCOM1500PWebBrowserView = () => {
     const [ds_oEducationPlace, setds_oEducationPlace] = useState<Ids_oEducationPlace[]>([]);

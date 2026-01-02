@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './FrmCOM9030MOrderFormUploadStaticsData';
 
 export const useFrmCOM9030MOrderFormUploadStatics = () => {
     const [isLoading, setIsLoading] = useState(false);

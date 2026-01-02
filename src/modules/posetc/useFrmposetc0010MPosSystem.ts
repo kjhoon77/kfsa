@@ -1,175 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oYesNo {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oPosJibu {
-    PIID: string;
-    PICHPT: string;
-    PIONOFF: string;
-    PIBIZGUBUN: string;
-    PIBANKNM: string;
-    PIACCNUM: string;
-    PIMERTKEY: string;
-    PIMERTKEY_TEST: string;
-}
-
-export interface Ids_oPosProgramId {
-    PGMID: string;
-    PGMNM: string;
-    PGMGUBUN: string;
-    PGMGUBUNNM: string;
-}
-
-export interface Ids_oBank {
-    CCGROUPCD: string;
-    CCCD: string;
-    CCCDNM: string;
-    MORDERSEQ: string;
-    USE_YN: string;
-    CCREMARK: string;
-}
-
-export interface Ids_oBizDate {
-}
-
-export interface Ids_oCashGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInstallment {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMonth {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSunap {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSunapGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oYear {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSunapList {
-    PSPGMID: string;
-    PSSEQ: string;
-    PSSETLMGUBUN: string;
-    PSSETLMGUBUNNM: string;
-    PSGUBUN: string;
-    PSGUBUNNM: string;
-    PSGUBUNCD: string;
-    PSGUBUNCDNM: string;
-    PSGTMGNO: string;
-    PSGTNM: string;
-    PSPROCDATE: string;
-    PSPONYGUBUN: string;
-    PSPONYDATE: string;
-    PSAMT: string;
-    PSPMYEAR: string;
-    PSPMMGNO: string;
-    PMPCORDERNO: string;
-    PSREPAYSEQ: string;
-    PSBUYER: string;
-    PSCONTENT: string;
-    PSREGSABUN: string;
-    PSREGSABUNNM: string;
-}
-
-export interface Ids_oPmMgno {
-    PMYEAR: string;
-    PMMGNO: string;
-}
-
-export interface Ids_ioPosEtcSettlement {
-    PSPGMID: string;
-    PSSEQ: string;
-    PSSETLMGUBUN: string;
-    PSGUBUN: string;
-    PSGUBUNCD: string;
-    PSGTMGNO: string;
-    PSPROCDATE: string;
-    PSPONYGUBUN: string;
-    PSPONYDATE: string;
-    PSAMT: string;
-    PSPMYEAR: string;
-    PSPMMGNO: string;
-    PSREPAYSEQ: string;
-    PSBUYER: string;
-    PSCONTENT: string;
-    PSREGDATE: string;
-    PSREGSABUN: string;
-}
-
-export interface Ids_ioPosPrintM {
-    PMYEAR: string;
-    PMMGNO: string;
-    PMINPUT: string;
-    PMPCGUBUN: string;
-    PMPCORDERNO: string;
-    PMPROCDATE: string;
-    PMPIID: string;
-    PMPGMID: string;
-    PMPGMPK: string;
-    PMBUYER: string;
-    PMCLAS: string;
-    PMPGMGUBUN: string;
-    PMITEM1: string;
-    PMITEM2: string;
-    PMITEM3: string;
-    PMITEM4: string;
-    PMAMT: string;
-    PMVAT: string;
-    PMPAYMENTFLAG: string;
-    PMRESULT: string;
-    PCUSERTYPE: string;
-    PCSOCIALBUSINESSNO: string;
-    PCCARDINSTALL: string;
-    PCCLOSEDATE: string;
-    PCBANKCD: string;
-    PCBANKNM: string;
-}
-
-export interface Ids_ioPosPayment {
-    PPPMYEAR: string;
-    PPPMMGNO: string;
-    PPSEQ: string;
-    PPNM: string;
-    PPUNITAMT: string;
-    PPQTY: string;
-    PPTOTAMT: string;
-}
-
-export interface Ids_oPosCas {
-    PCPMYEAR: string;
-    PCPMMGNO: string;
-    PCCLOSEDATE: string;
-    PCFLAG: string;
-    PCACCOUNT: string;
-    PCBANKCD: string;
-    PCBANKNM: string;
-    PCAMOUNT: string;
-    PCBANKDATE: string;
-    PCTRANSACTION: string;
-}
-
-export interface Ids_oAuthCheck {
-}
+import type { Ids_oYesNo, Ids_oPosJibu, Ids_oPosProgramId, Ids_oBank, Ids_oBizDate, Ids_oCashGubun, Ids_oInstallment, Ids_oMonth, Ids_oSunap, Ids_oSunapGubun, Ids_oYear, Ids_oSunapList, Ids_oPmMgno, Ids_ioPosEtcSettlement, Ids_ioPosPrintM, Ids_ioPosPayment, Ids_oPosCas, Ids_oAuthCheck } from './Frmposetc0010MPosSystemData';
 
 export const useFrmposetc0010MPosSystem = () => {
     const [ds_oYesNo, setds_oYesNo] = useState<Ids_oYesNo[]>([]);
@@ -191,6 +22,12 @@ export const useFrmposetc0010MPosSystem = () => {
     const [ds_oPosCas, setds_oPosCas] = useState<Ids_oPosCas[]>([]);
     const [ds_oAuthCheck, setds_oAuthCheck] = useState<Ids_oAuthCheck[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divSunap, setIsVisible_divSunap] = useState(true);
+    const [isVisible_divRepay, setIsVisible_divRepay] = useState(false);
+    const [isVisible_divCard, setIsVisible_divCard] = useState(false);
+    const [isVisible_divCas, setIsVisible_divCas] = useState(false);
+    const [isVisible_divCash, setIsVisible_divCash] = useState(false);
+    const [isVisible_divPos, setIsVisible_divPos] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -222,6 +59,24 @@ export const useFrmposetc0010MPosSystem = () => {
     };
     const btnPrintReRct_OnClick = () => {
         console.log('btnPrintReRct_OnClick clicked');
+    };
+    const divCard_btnInit_OnClick = () => {
+        console.log('divCard_btnInit_OnClick clicked');
+    };
+    const divCard_btnUserInput_OnClick = () => {
+        console.log('divCard_btnUserInput_OnClick clicked');
+    };
+    const divRepay_btnPos_OnClick = () => {
+        console.log('divRepay_btnPos_OnClick clicked');
+    };
+    const divRepay_chkPonyDate_OnClick = () => {
+        console.log('divRepay_chkPonyDate_OnClick clicked');
+    };
+    const divSunap_btnPos_OnClick = () => {
+        console.log('divSunap_btnPos_OnClick clicked');
+    };
+    const divSunap_chkPonyDate_OnClick = () => {
+        console.log('divSunap_chkPonyDate_OnClick clicked');
     };
     const lfn_Cancel = () => {
         console.log('lfn_Cancel clicked');
@@ -259,8 +114,26 @@ export const useFrmposetc0010MPosSystem = () => {
         ds_ioPosPayment,
         ds_oPosCas,
         ds_oAuthCheck,
+        isVisible_divSunap,
+        setIsVisible_divSunap,
+        isVisible_divRepay,
+        setIsVisible_divRepay,
+        isVisible_divCard,
+        setIsVisible_divCard,
+        isVisible_divCas,
+        setIsVisible_divCas,
+        isVisible_divCash,
+        setIsVisible_divCash,
+        isVisible_divPos,
+        setIsVisible_divPos,
         btnPosReport_OnClick,
         btnPrintReRct_OnClick,
+        divCard_btnInit_OnClick,
+        divCard_btnUserInput_OnClick,
+        divRepay_btnPos_OnClick,
+        divRepay_chkPonyDate_OnClick,
+        divSunap_btnPos_OnClick,
+        divSunap_chkPonyDate_OnClick,
         lfn_Cancel,
         lfn_End,
         lfn_Excel,

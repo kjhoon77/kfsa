@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './SearchRepeatNoData';
 
 export const useSearchRepeatNo = () => {
     const [isLoading, setIsLoading] = useState(false);

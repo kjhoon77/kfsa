@@ -1,20 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oSmsStat {
-    TJHPROCDATE: string;
-    TJHPROCJIBU: string;
-    TJHPROCJIBUCD: string;
-    TJHREASON: string;
-    TJHSABUN: string;
-    TJHSABUNNM: string;
-    TJHSEQ: string;
-    TJHSTATUS: string;
-    TJHSTATUSCD: string;
-    TJMGNO: string;
-    TPPERSONNM: string;
-    BIRTHDAY: string;
-}
+import type { Ids_oSmsStat } from './Frmtraining0031PSmsSendListData';
 
 export const useFrmtraining0031PSmsSendList = () => {
     const [ds_oSmsStat, setds_oSmsStat] = useState<Ids_oSmsStat[]>([]);

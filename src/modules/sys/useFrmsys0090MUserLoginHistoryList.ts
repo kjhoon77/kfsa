@@ -1,17 +1,11 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oLoginHistory {
-    LHENDDATETIME: string;
-    LHLOGINHISTORYSEQ: string;
-    LHSTARTDATETIME: string;
-    LHUSERIP: string;
-    PSABUN: string;
-}
+import type { Ids_oLoginHistory } from './Frmsys0090MUserLoginHistoryListData';
 
 export const useFrmsys0090MUserLoginHistoryList = () => {
     const [ds_oLoginHistory, setds_oLoginHistory] = useState<Ids_oLoginHistory[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -46,6 +40,8 @@ export const useFrmsys0090MUserLoginHistoryList = () => {
     return {
         isLoading,
         ds_oLoginHistory,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnSearchUser_OnClick,
         lfn_Cancel,

@@ -1,23 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioPosInput {
-    PMYEAR: string;
-    PMMGNO: string;
-    PMPCORDERNO: string;
-    GTMGNO: string;
-    PHONE: string;
-    ORGGUBUN: string;
-    WORKGUBUN: string;
-    CLOSEDATE: string;
-    CLOSETIME: string;
-    OWNERNM: string;
-    PROCAMOUNT: string;
-}
-
-export interface Ids_ioPosOutput {
-    RTN_STATUS: string;
-}
+import type { Ids_ioPosInput, Ids_ioPosOutput } from './FrmCOM3011SPOSData';
 
 export const useFrmCOM3011SPOS = () => {
     const [ds_ioPosInput, setds_ioPosInput] = useState<Ids_ioPosInput[]>([]);

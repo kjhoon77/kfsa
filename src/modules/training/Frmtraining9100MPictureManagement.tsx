@@ -1,12 +1,13 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmtraining9100MPictureManagement } from './useFrmtraining9100MPictureManagement';
 import * as Frmtraining9100MPictureManagementData from './Frmtraining9100MPictureManagementData';
+import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 
 export const Frmtraining9100MPictureManagement = () => {
     const hook = useFrmtraining9100MPictureManagement();
@@ -25,13 +26,13 @@ export const Frmtraining9100MPictureManagement = () => {
                 <Typography variant="h5">기본정보</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
-<Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Input}>추가 저장</Button>
-<Button variant="contained" startIcon={<Delete />} onClick={hook.lfn_Delete}>삭제 저장</Button>
+<Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Input}>추가 저장</Button>
+<Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Delete}>삭제 저장</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Save}>수정 저장</Button>
-<Button variant="contained"  onClick={hook.lfn_Cancel}>입력 초기화</Button>
+<Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Cancel}>입력 초기화</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Excel}>엑셀로 저장</Button>
-<Button variant="contained"  onClick={hook.lfn_PrintScreen}>화면 출력</Button>
-<Button variant="contained"  onClick={hook.lfn_End}>닫기</Button>
+<Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
+<Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 
                 </Stack>
             </Stack>
@@ -43,35 +44,41 @@ export const Frmtraining9100MPictureManagement = () => {
                         <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={2}><Box>사진</Box></Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>등록구분</Typography>
-                        <FormControl size="small" fullWidth><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmtraining9100MPictureManagementData.ds_ds_oRegGubun || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                        <FormControl size="small" sx={{ width: 150 }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmtraining9100MPictureManagementData.ds_ds_oRegGubun || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
                     </Stack>
                 </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>성명</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>생년월일</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>승인여부</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>승인여부</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmtraining9100MPictureManagementData.ds_ds_oApproval || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Button variant="contained">SVP5300사진스캔</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">D400사진스캔</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnScanPicture_OnClick}>SVP5300사진스캔</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnPhotoScan_OnClick}>D400사진스캔</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Button variant="contained">스캔사진불러오기</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnLoadScanPicture_OnClick}>스캔사진불러오기</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Button variant="contained">사진찾기</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnLoadImage_OnClick}>사진찾기</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Button variant="contained"></Button></Grid></Grid>
+<Grid item xs={12} md={2}><Tooltip title="BTN_MULTI_SORT"><Button variant="outlined" size="small" color="primary" onClick={hook.btnMutilSort_OnClick} sx={{ minWidth: 30, p: 0.5 }}><Sort fontSize="small" /></Button></Tooltip></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12}>

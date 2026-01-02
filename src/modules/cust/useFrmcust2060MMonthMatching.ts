@@ -1,48 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCusFeeChk {
-    CFCCHKGUBUN: string;
-    CFCCLOSEGUBUN: string;
-    CFCGTMGNO: string;
-    CFCYEAR: string;
-    CFCMONTH: string;
-}
-
-export interface Ids_iCusFeeChk {
-    CFCCHKGUBUN: string;
-    CFCCLOSEGUBUN: string;
-    CFCGTMGNO: string;
-    CFCYEAR: string;
-    CFCMONTH: string;
-}
-
-export interface Ids_ioYear {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMonth {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCusFeeChk {
-    CFCCHKGUBUN: string;
-    CFCCLOSEGUBUN: string;
-    CFCDATE: string;
-    CFCGTMGNO: string;
-    CFCMONTH: string;
-    CFCSABUN: string;
-    CFCYEAR: string;
-    GTDEPTNM: string;
-    SEL: string;
-}
+import type { Ids_oJibu, Ids_oCusFeeChk, Ids_iCusFeeChk, Ids_ioYear, Ids_ioMonth, Ids_ioCusFeeChk } from './Frmcust2060MMonthMatchingData';
 
 export const useFrmcust2060MMonthMatching = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
@@ -52,6 +10,7 @@ export const useFrmcust2060MMonthMatching = () => {
     const [ds_ioMonth, setds_ioMonth] = useState<Ids_ioMonth[]>([]);
     const [ds_ioCusFeeChk, setds_ioCusFeeChk] = useState<Ids_ioCusFeeChk[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -87,6 +46,8 @@ export const useFrmcust2060MMonthMatching = () => {
         ds_ioYear,
         ds_ioMonth,
         ds_ioCusFeeChk,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMatched_OnClick,
         btnUnmatched_OnClick,
         lfn_End,

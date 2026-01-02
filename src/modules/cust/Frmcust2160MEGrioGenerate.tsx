@@ -1,12 +1,13 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust2160MEGrioGenerate } from './useFrmcust2160MEGrioGenerate';
 import * as Frmcust2160MEGrioGenerateData from './Frmcust2160MEGrioGenerateData';
+import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 
 export const Frmcust2160MEGrioGenerate = () => {
     const hook = useFrmcust2160MEGrioGenerate();
@@ -72,12 +73,13 @@ export const Frmcust2160MEGrioGenerate = () => {
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
                 <Typography variant="h5">기본정보</Typography>
                 <Stack direction="row" spacing={1}>
-                    <Button variant="contained"  onClick={hook.lfn_Cancel}>입력 초기화</Button>
+                    <Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Cancel}>입력 초기화</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_localExcel}>엑셀로 저장</Button>
-<Button variant="contained"  onClick={hook.lfn_PrintScreen}>화면 출력</Button>
-<Button variant="contained"  onClick={hook.lfn_End}>닫기</Button>
+<Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
+<Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 <Button variant="contained"  onClick={hook.lfn_Save}>파일생성(F4)</Button>
 <Button variant="contained"  onClick={hook.lfn_Print}>집계(F9)</Button>
+<Button variant="contained" startIcon={<Print />} onClick={hook.lfn_Print_A}>지로출력</Button>
 
                 </Stack>
             </Stack>
@@ -89,88 +91,142 @@ export const Frmcust2160MEGrioGenerate = () => {
                         <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>기준년도</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>회원</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>비회원</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>회비고지방식</Box></Grid><Grid item xs={12} md={4}><Box></Box></Grid></Grid>
+
+                <Grid item xs={12} md={6}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>회비고지방식</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2160MEGrioGenerateData.ds_ds_oFeemode || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>회원구분</Box></Grid><Grid item xs={12} md={3}><Box></Box></Grid><Grid item xs={12} md={2}><Box>비회원</Box></Grid></Grid>
+
+                <Grid item xs={12} md={5}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>회원구분</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2160MEGrioGenerateData.ds_ds_oRadioGubun2 || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid><Grid item xs={12} md={3}><Box></Box></Grid><Grid item xs={12} md={2}><Box>비회원</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>※ 신규등록일 체크</Box></Grid><Grid item xs={12} md={2}><Box>회원</Box></Grid><Grid item xs={12} md={2}><Box>신규등록일</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+<Grid item xs={12} md={2}><Box>※ 신규등록일 체크</Box></Grid><Grid item xs={12} md={2}><Box>회원</Box></Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>신규등록일</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2160MEGrioGenerateData.ds_ds_oSelectYN3 || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={2}><Box>체크하지 않으면
 회원/비회원에 대한 
 전체자료 조회 후 회비통지
-자료가 생성됩니다.</Box></Grid><Grid item xs={12} md={2}><Box>신규등록일</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid>
+자료가 생성됩니다.</Box></Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
-                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>~</Typography>
-                        <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
-                    </Stack>
-                </Grid></Grid>
-<Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box></Box></Grid>
-                <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
-                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>~</Typography>
-                        <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
-                    </Stack>
-                </Grid><Grid item xs={12} md={2}><Box>회비부과구분</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
-<Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>실무교육유효기간</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box>탈퇴비회원 고지</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
-<Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box></Box></Grid>
-                <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
-                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>~</Typography>
-                        <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
-                    </Stack>
-                </Grid></Grid>
-<Grid container spacing={2} alignItems="center">
-
-                <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
-                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>지역</Typography>
-                        <FormControl size="small" fullWidth><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust2160MEGrioGenerateData.ds_ds_oRegion || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
-                    </Stack>
-                </Grid>
-                <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
-                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>~</Typography>
-                        <FormControl size="small" fullWidth><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust2160MEGrioGenerateData.ds_ds_oRegion || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
-                    </Stack>
-                </Grid></Grid>
-<Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>직능</Box></Grid><Grid item xs={12} md={3}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
-<Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
-<Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>재고지(반송구분)</Box></Grid><Grid item xs={12} md={7}><Box></Box></Grid></Grid>
-<Grid container spacing={2} alignItems="center">
-
-                <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
-                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>장기미납</Typography>
-                        <FormControl size="small" fullWidth><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust2160MEGrioGenerateData.ds_ds_oSelectYN1 || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>신규등록일</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2160MEGrioGenerateData.ds_ds_oSelectYN3 || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
                     </Stack>
                 </Grid><Grid item xs={12} md={2}><Box></Box></Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>~</Typography>
+                        <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
+                    </Stack>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+<Grid item xs={12} md={2}><Box></Box></Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>~</Typography>
+                        <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
+                    </Stack>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>회비부과구분</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2160MEGrioGenerateData.ds_ds_oNotMemberFirsSecondHalf || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>실무교육유효기간</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2160MEGrioGenerateData.ds_ds_oSelectYN3 || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>탈퇴비회원 고지</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2160MEGrioGenerateData.ds_ds_oNotification || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+<Grid item xs={12} md={2}><Box></Box></Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>~</Typography>
+                        <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
+                    </Stack>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>지역</Typography>
+                        <FormControl size="small" sx={{ width: 150 }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust2160MEGrioGenerateData.ds_ds_oRegion || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                    </Stack>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>~</Typography>
+                        <FormControl size="small" sx={{ width: 150 }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust2160MEGrioGenerateData.ds_ds_oRegion || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                    </Stack>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={5}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>직능</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2160MEGrioGenerateData.ds_ds_ioCourseYn || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={9}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>재고지(반송구분)</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2160MEGrioGenerateData.ds_ds_oReturn || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>장기미납</Typography>
+                        <FormControl size="small" sx={{ width: 150 }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust2160MEGrioGenerateData.ds_ds_oSelectYN1 || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                    </Stack>
+                </Grid><Grid item xs={12} md={2}><Box></Box></Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>납부마감일</Typography>
                         <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
                     </Stack>
@@ -178,22 +234,46 @@ export const Frmcust2160MEGrioGenerate = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>년도별 미납</Typography>
-                        <FormControl size="small" fullWidth><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust2160MEGrioGenerateData.ds_ds_oSelectYN2 || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                        <FormControl size="small" sx={{ width: 150 }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust2160MEGrioGenerateData.ds_ds_oSelectYN2 || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
                     </Stack>
                 </Grid><Grid item xs={12} md={2}><Box>2006</Box></Grid><Grid item xs={12} md={2}><Box>2007</Box></Grid><Grid item xs={12} md={2}><Box>2008</Box></Grid><Grid item xs={12} md={2}><Box>2009</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>공공기관 기관장
-선임자료 고지여부</Box></Grid><Grid item xs={12} md={3}><Box></Box></Grid><Grid item xs={12} md={2}><Box>관리제외대상
-회비고지 여부</Box></Grid><Grid item xs={12} md={3}><Box></Box></Grid></Grid>
+
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>공공기관 기관장
+선임자료 고지여부</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2160MEGrioGenerateData.ds_ds_oNotification2 || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>관리제외대상
+회비고지 여부</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2160MEGrioGenerateData.ds_ds_oNotification3 || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>정렬순서</Box></Grid><Grid item xs={12} md={4}><Box></Box></Grid></Grid>
+
+                <Grid item xs={12} md={6}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>정렬순서</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2160MEGrioGenerateData.ds_ds_oOrderBy || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>처리대상수</Typography>
+                        <TextField size="small" fullWidth  />
+                    </Stack>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>조회 총 대상수</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid></Grid>
@@ -206,7 +286,7 @@ export const Frmcust2160MEGrioGenerate = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>회비총액</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
@@ -214,7 +294,7 @@ export const Frmcust2160MEGrioGenerate = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>회비</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
@@ -222,7 +302,7 @@ export const Frmcust2160MEGrioGenerate = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>회비</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
@@ -230,7 +310,7 @@ export const Frmcust2160MEGrioGenerate = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>회비</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
@@ -238,7 +318,7 @@ export const Frmcust2160MEGrioGenerate = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>회비</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>

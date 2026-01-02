@@ -1,65 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMemberGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oManagerList {
-    SEL: string;
-    CGTMGNO: string;
-    CNO: string;
-    CREGCD: string;
-    CCOURSECD: string;
-    CSTATUSGUBUN: string;
-    BNM: string;
-    FMNM: string;
-    CREGDATE: string;
-    CREGISTERYYMM: string;
-    CFEEYYMM: string;
-    FMHSTARTDATE: string;
-    CMGNO: string;
-    BADDR1: string;
-    CDELGUBUN: string;
-    STATUSGUBUN: string;
-    COVERGUBUN: string;
-    COBMGNO: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_oOverBizProc {
-}
+import type { Ids_ioChoiceYn, Ids_ioCourse, Ids_ioGubun, Ids_ioMemberGubun, Ids_ioCourseYn, Ids_oJibu, Ids_oManagerList, Ids_oRegion, Ids_oOverBizProc } from './Frmcust0060MCustomerBatchChangeData';
 
 export const useFrmcust0060MCustomerBatchChange = () => {
     const [ds_ioChoiceYn, setds_ioChoiceYn] = useState<Ids_ioChoiceYn[]>([]);
@@ -72,6 +13,7 @@ export const useFrmcust0060MCustomerBatchChange = () => {
     const [ds_oRegion, setds_oRegion] = useState<Ids_oRegion[]>([]);
     const [ds_oOverBizProc, setds_oOverBizProc] = useState<Ids_oOverBizProc[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -122,6 +64,8 @@ export const useFrmcust0060MCustomerBatchChange = () => {
         ds_oManagerList,
         ds_oRegion,
         ds_oOverBizProc,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnCancel_OnClick,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,

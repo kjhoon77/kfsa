@@ -1,28 +1,12 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioUser {
-    ADMINGUBUN: string;
-    PPOSITNCD: string;
-    PPOSITNNM: string;
-    PPERSONNM: string;
-    PSABUN: string;
-    PDEPTCD: string;
-    PDEPTNM: string;
-    PHPNO: string;
-    PCALLCENTERYN: string;
-    PUSEYN: string;
-}
+import type { Ids_oJibu, Ids_ioUser } from './Frmsys0098MIpPersonManagementData';
 
 export const useFrmsys0098MIpPersonManagement = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_ioUser, setds_ioUser] = useState<Ids_ioUser[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -59,6 +43,8 @@ export const useFrmsys0098MIpPersonManagement = () => {
         isLoading,
         ds_oJibu,
         ds_ioUser,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

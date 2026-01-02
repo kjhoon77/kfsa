@@ -1,51 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioEduCreate {
-    CD: string;
-    DATE: string;
-    TIME: string;
-    EDUNO: string;
-    TARGETNO: string;
-    EDUPERSON: string;
-    EDUGUBUN: string;
-    ESMGNO: string;
-    EPNM: string;
-    ESNOTICE: string;
-}
-
-export interface Ids_ioEduDay1 {
-}
-
-export interface Ids_ioEduDay2 {
-}
-
-export interface Ids_ioEduDay3 {
-}
-
-export interface Ids_ioEduDay4 {
-}
-
-export interface Ids_oEduGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduStudent {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMemberGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioEduNoticeHistoryDay {
-}
-
-export interface Ids_ioEduNoticeHistoryGetSysdate {
-}
+import type { Ids_ioEduCreate, Ids_ioEduDay1, Ids_ioEduDay2, Ids_ioEduDay3, Ids_ioEduDay4, Ids_oEduGubun, Ids_oEduStudent, Ids_ioMemberGubun, Ids_ioEduNoticeHistoryDay, Ids_ioEduNoticeHistoryGetSysdate } from './Frmcust1105MEduNoticeData';
 
 export const useFrmcust1105MEduNotice = () => {
     const [ds_ioEduCreate, setds_ioEduCreate] = useState<Ids_ioEduCreate[]>([]);
@@ -59,6 +14,7 @@ export const useFrmcust1105MEduNotice = () => {
     const [ds_ioEduNoticeHistoryDay, setds_ioEduNoticeHistoryDay] = useState<Ids_ioEduNoticeHistoryDay[]>([]);
     const [ds_ioEduNoticeHistoryGetSysdate, setds_ioEduNoticeHistoryGetSysdate] = useState<Ids_ioEduNoticeHistoryGetSysdate[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -111,6 +67,8 @@ export const useFrmcust1105MEduNotice = () => {
         ds_ioMemberGubun,
         ds_ioEduNoticeHistoryDay,
         ds_ioEduNoticeHistoryGetSysdate,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         Button1_OnClick,
         btnMutilSort_OnClick,
         lfn_EduCustSMSSend,

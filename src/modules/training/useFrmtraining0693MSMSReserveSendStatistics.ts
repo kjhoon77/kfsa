@@ -1,23 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioReserveSend {
-    SEL: string;
-}
-
-export interface Ids_oStatus {
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioReserveSend, Ids_oStatus, Ids_oJibu } from './Frmtraining0693MSMSReserveSendStatisticsData';
 
 export const useFrmtraining0693MSMSReserveSendStatistics = () => {
     const [ds_ioReserveSend, setds_ioReserveSend] = useState<Ids_ioReserveSend[]>([]);
     const [ds_oStatus, setds_oStatus] = useState<Ids_oStatus[]>([]);
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -56,6 +46,8 @@ export const useFrmtraining0693MSMSReserveSendStatistics = () => {
         ds_ioReserveSend,
         ds_oStatus,
         ds_oJibu,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnSendCancel_OnClick,
         lfn_Cancel,

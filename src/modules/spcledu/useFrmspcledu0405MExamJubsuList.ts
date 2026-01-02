@@ -1,72 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oPassYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRepayYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamJubsu {
-    BIRTHDAY: string;
-    EJADDR1: string;
-    EJADDR2: string;
-    EJEXAMDATE: string;
-    EJEXPYN: string;
-    EJLASTEJHSEQ: string;
-    EJLASTEOHSEQ: string;
-    EJLASTESSEQ: string;
-    EJLASTSUNAPGUBUN: string;
-    EJMGNO: string;
-    EJPASSYN: string;
-    EJPERSONNM: string;
-    EJPROCGTMGNO: string;
-    EJRESIDENTNO: string;
-    EJTPMGNO: string;
-    EJZZIPCD: string;
-    EOENDTIME: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOEXAMORDERGUBUN: string;
-    EOHAFTEREOMGNO: string;
-    EOHAFTERJUBSUNO: string;
-    EOHPROCDATE: string;
-    EOHEOMGNO: string;
-    EOHJUBSUGUBUN: string;
-    EOHJUBSUNO: string;
-    EOHLASTGUBUN: string;
-    EOHPROCGTMGNO: string;
-    EOHPSABUN: string;
-    EOHSEQ: string;
-    EOMGGTMGNO: string;
-    EOMGNO: string;
-    EOSTARTTIME: string;
-    EOTCCOURSECD: string;
-    EOYEAR: string;
-    TFCFEE: string;
-    GTDEPTNM: string;
-    GTTEAMNM: string;
-    IIDIRPATH: string;
-    IIREALNM: string;
-    TCCOURSENM: string;
-    TPHPTEL: string;
-    TPTEL: string;
-    TPEMAILID: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oPassYn, Ids_oCourse, Ids_oRepayYn, Ids_oExamJubsu, Ids_oJibu } from './Frmspcledu0405MExamJubsuListData';
 
 export const useFrmspcledu0405MExamJubsuList = () => {
     const [ds_oPassYn, setds_oPassYn] = useState<Ids_oPassYn[]>([]);
@@ -75,6 +9,7 @@ export const useFrmspcledu0405MExamJubsuList = () => {
     const [ds_oExamJubsu, setds_oExamJubsu] = useState<Ids_oExamJubsu[]>([]);
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -120,6 +55,8 @@ export const useFrmspcledu0405MExamJubsuList = () => {
         ds_oRepayYn,
         ds_oExamJubsu,
         ds_oJibu,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

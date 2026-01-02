@@ -1,34 +1,12 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oManagerList {
-    BBIZCD: string;
-    BNM: string;
-    CCOURSECD: string;
-    CGTMGNO: string;
-    CNO: string;
-    CREGCD: string;
-    CSTATUSGUBUN: string;
-    FMHENDDATE: string;
-    FMHMODSABUN: string;
-    FMHREGDATE: string;
-    FMHREGSABUN: string;
-    FMHSTARTDATE: string;
-    FMNM: string;
-    FMBIRTHDAY: string;
-    FMPERSONKEY: string;
-    BIRTHDAY: string;
-}
-
-export interface Ids_oBizGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oManagerList, Ids_oBizGubun } from './Frmcust3020MManagerHistoryData';
 
 export const useFrmcust3020MManagerHistory = () => {
     const [ds_oManagerList, setds_oManagerList] = useState<Ids_oManagerList[]>([]);
     const [ds_oBizGubun, setds_oBizGubun] = useState<Ids_oBizGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -62,6 +40,8 @@ export const useFrmcust3020MManagerHistory = () => {
         isLoading,
         ds_oManagerList,
         ds_oBizGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         btn_Cancel,

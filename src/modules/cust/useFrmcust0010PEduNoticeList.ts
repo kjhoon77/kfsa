@@ -1,14 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oEduNoticeList {
-    CTOTALFEE1: string;
-    ECUSTADDR1: string;
-    ECUSTADDR2: string;
-    EPLACE: string;
-    EPROCDATE: string;
-    ESCHEULE: string;
-}
+import type { Ids_oEduNoticeList } from './Frmcust0010PEduNoticeListData';
 
 export const useFrmcust0010PEduNoticeList = () => {
     const [ds_oEduNoticeList, setds_oEduNoticeList] = useState<Ids_oEduNoticeList[]>([]);

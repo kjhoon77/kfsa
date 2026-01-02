@@ -1,25 +1,11 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioZipCode {
-    CREATE_DATE: string;
-    CREATE_ID: string;
-    JJIBUCD: string;
-    MODIFY_DATE: string;
-    MODIFY_ID: string;
-    ZBUNJI: string;
-    ZDONG: string;
-    ZHO: string;
-    ZKU: string;
-    ZREGIONCD: string;
-    ZSEQ: string;
-    ZSIDO: string;
-    ZZIPCD: string;
-}
+import type { Ids_ioZipCode } from './Frmcust4040MAddressChangeData';
 
 export const useFrmcust4040MAddressChange = () => {
     const [ds_ioZipCode, setds_ioZipCode] = useState<Ids_ioZipCode[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -45,6 +31,8 @@ export const useFrmcust4040MAddressChange = () => {
     return {
         isLoading,
         ds_ioZipCode,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnSelectModify_OnClick,
         chkAll_OnClick,
         lfn_End,

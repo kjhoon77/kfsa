@@ -1,7 +1,31 @@
 // @ts-nocheck
 export const Frmsys0053PNewZipCodeListData = {};
 
-export const ds_ds_oAddr = [
+export interface Ids_oZipCode {
+    NZMGNO?: string;
+    NZBULDNO?: string;
+    NZLEGALCD?: string;
+    NZZIPCDE?: string;
+    NZSIDO?: string;
+    NZKU?: string;
+    NZDONG?: string;
+    NZRI?: string;
+    NZSAN?: string;
+    NZJIBUNBON?: string;
+    NZJIBUNBU?: string;
+    NZROADNM?: string;
+    NZNEWBONBEN?: string;
+    NZNEWBUBEN?: string;
+    NZBULDNM?: string;
+    NZSANGSEBULDNM?: string;
+}
+
+export interface Ids_oAddr {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oAddr: Ids_oAddr[] = [
     { CD: '', DATA: '선택' },
     { CD: '강원도', DATA: '강원도' },
     { CD: '경기도', DATA: '경기도' },
@@ -14,3 +38,8 @@ export const ds_ds_oAddr = [
     { CD: '충청남도', DATA: '충청남도' },
     { CD: '충청북도', DATA: '충청북도' },
 ];
+
+export interface Ids_oKu {
+    CD?: string;
+    DATA?: string;
+}

@@ -1,38 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioEducationPlace {
-    EPDIRPATH: string;
-    EPMGGTMGNO: string;
-    EPMGNO: string;
-    EPMODDATE: string;
-    EPMODSABUN: string;
-    EPNM: string;
-    EPPARKINGINFO: string;
-    EPREALNM: string;
-    EPREGDATE: string;
-    EPREGSABUN: string;
-    EPRREGIONCD: string;
-    EPSAVENM: string;
-    FILECHECK: string;
-    GTDEPTNM: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioFlexYN {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioEducationPlace, Ids_oJibu, Ids_ioFlexYN } from './Frmspcledu9000MEducationPlaceManagementData';
 
 export const useFrmspcledu9000MEducationPlaceManagement = () => {
     const [ds_ioEducationPlace, setds_ioEducationPlace] = useState<Ids_ioEducationPlace[]>([]);
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_ioFlexYN, setds_ioFlexYN] = useState<Ids_ioFlexYN[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -86,6 +61,8 @@ export const useFrmspcledu9000MEducationPlaceManagement = () => {
         ds_ioEducationPlace,
         ds_oJibu,
         ds_ioFlexYN,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnGenerateSeat_OnClick,
         btnMutilSort_OnClick,
         btnUploadFile_OnClick,

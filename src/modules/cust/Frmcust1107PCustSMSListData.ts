@@ -1,7 +1,14 @@
 // @ts-nocheck
 export const Frmcust1107PCustSMSListData = {};
 
-export const ds_ds_ioSmsPattern = [
+export interface Ids_ioSmsPattern {
+    SPWORKGUBUN?: string;
+    SPCODE?: string;
+    SPCODENM?: string;
+    SPMBCCD?: string;
+}
+
+export const ds_ds_ioSmsPattern: Ids_ioSmsPattern[] = [
     { SPCODE: '1', SPCODENM: '정기교육', SPMBCCD: '801', SPWORKGUBUN: '10' },
     { SPCODE: '2', SPCODENM: '특별교육(3월)', SPMBCCD: '802', SPWORKGUBUN: '10' },
     { SPCODE: '3', SPCODENM: '특별교육(9월)', SPMBCCD: '802', SPWORKGUBUN: '10' },
@@ -23,7 +30,12 @@ export const ds_ds_ioSmsPattern = [
     { SPCODE: '2', SPCODENM: '미수료자', SPMBCCD: '817', SPWORKGUBUN: '50' },
 ];
 
-export const ds_ds_oWorkGubun = [
+export interface Ids_oWorkGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oWorkGubun: Ids_oWorkGubun[] = [
     { CD: '10', DATA: '소방안전관리자' },
     { CD: '20', DATA: '소방안전관리보조자' },
     { CD: '30', DATA: '위험물안전관리자' },

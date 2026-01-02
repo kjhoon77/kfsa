@@ -1,12 +1,13 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust2040MCustomerFeeGoji } from './useFrmcust2040MCustomerFeeGoji';
 import * as Frmcust2040MCustomerFeeGojiData from './Frmcust2040MCustomerFeeGojiData';
+import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 
 export const Frmcust2040MCustomerFeeGoji = () => {
     const hook = useFrmcust2040MCustomerFeeGoji();
@@ -71,9 +72,9 @@ export const Frmcust2040MCustomerFeeGoji = () => {
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
                 <Typography variant="h5">기본정보</Typography>
                 <Stack direction="row" spacing={1}>
-                    <Button variant="contained"  onClick={hook.lfn_PrintScreen}>화면 출력</Button>
-<Button variant="contained"  onClick={hook.lfn_End}>닫기</Button>
-<Button variant="contained"  onClick={hook.lfn_Print}>출력</Button>
+                    <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
+<Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
+<Button variant="contained" startIcon={<Print />} onClick={hook.lfn_Print}>출력</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_localExcel}>엑셀로 저장</Button>
 
                 </Stack>
@@ -88,61 +89,146 @@ export const Frmcust2040MCustomerFeeGoji = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>년도</Typography>
-                        <FormControl size="small" fullWidth><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust2040MCustomerFeeGojiData.ds_ds_ioYear || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                        <FormControl size="small" sx={{ width: 150 }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust2040MCustomerFeeGojiData.ds_ds_ioYear || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>지부</Typography>
-                        <FormControl size="small" fullWidth><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust2040MCustomerFeeGojiData.ds_ds_oJibu || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                        <FormControl size="small" sx={{ width: 150 }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust2040MCustomerFeeGojiData.ds_ds_oJibu || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
                     </Stack>
                 </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>지역</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid>
+
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>지역</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2040MCustomerFeeGojiData.ds_ds_ioChoiceYn || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid><Grid item xs={12} md={2}><Box></Box></Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>~</Typography>
-                        <FormControl size="small" fullWidth><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust2040MCustomerFeeGojiData.ds_ds_oRegion || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                        <FormControl size="small" sx={{ width: 150 }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust2040MCustomerFeeGojiData.ds_ds_oRegion || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
                     </Stack>
                 </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>회원구분</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
-<Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>직능</Box></Grid><Grid item xs={12} md={3}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
-<Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
-<Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
-<Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>관리번호</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid>
+
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>회원구분</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2040MCustomerFeeGojiData.ds_ds_ioMemberGubun || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>직능</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2040MCustomerFeeGojiData.ds_ds_ioCourseYn || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>납부범위</Typography>
+                        <TextField size="small" fullWidth  />
+                    </Stack>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>관리번호</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2040MCustomerFeeGojiData.ds_ds_ioChoiceYn_Num || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid><Grid item xs={12} md={2}><Box></Box></Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>~</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>동일 대상물명 발행여부</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>동일 대상물명 발행여부</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2040MCustomerFeeGojiData.ds_ds_ioApply || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={3}><Box>비회원 회비부과 상하반기 선택</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+<Grid item xs={12} md={3}><Box>비회원 회비부과 상하반기 선택</Box></Grid>{ hook.isVisible_Div0 && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>Div0</Typography>
+                        <Grid container spacing={2}>
+                            <Grid container spacing={2} alignItems="center">
+<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={3}><Box>탈퇴신청한 비회원 회비고지 여부</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={3}><Box>관리제외 대상 회비고지 여부</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+<Grid item xs={12} md={2}><Button variant="contained" onClick={hook.Div0_Button4Yes_OnClick}>확인</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.Div0_Button4_OnClick}>취소</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={3}><Box>공공기관 기관장 선임자료 회비고지 여부</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+<Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }<Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={5}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>탈퇴신청한 비회원 회비고지 여부</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2040MCustomerFeeGojiData.ds_ds_ioMemberGubun_0 || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={5}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>관리제외 대상 회비고지 여부</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2040MCustomerFeeGojiData.ds_ds_ioMemberGubun_0 || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={5}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>공공기관 기관장 선임자료 회비고지 여부</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2040MCustomerFeeGojiData.ds_ds_ioMemberGubun_0 || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={2}><Box>출력 조건</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={3}><Box>지부주소, 지로번호, 지부명 출력여부</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+
+                <Grid item xs={12} md={5}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>지부주소, 지로번호, 지부명 출력여부</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2040MCustomerFeeGojiData.ds_ds_ioMemberGubun_0 || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={3}><Box>통지서 출력 범위조건</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+
+                <Grid item xs={12} md={5}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>통지서 출력 범위조건</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2040MCustomerFeeGojiData.ds_ds_ioMemberGubun_1_0 || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>납부일자</Typography>
                         <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
                     </Stack>
@@ -150,13 +236,13 @@ export const Frmcust2040MCustomerFeeGoji = () => {
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={2}><Box>통지서 여백조정</Box></Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>상단여백</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid><Grid item xs={12} md={2}><Box>mm</Box></Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>출력갯수</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
@@ -164,7 +250,7 @@ export const Frmcust2040MCustomerFeeGoji = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>왼쪽여백</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
@@ -173,6 +259,25 @@ export const Frmcust2040MCustomerFeeGoji = () => {
 <Grid item xs={12} md={2}><Box>정렬순서</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={5}><Box></Box></Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>발행일자</Typography>
+                        <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
+                    </Stack>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+{ hook.isVisible_grdExport && (
+                <Grid item xs={12} md={12}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
 
                     </Paper>
                 </Grid>

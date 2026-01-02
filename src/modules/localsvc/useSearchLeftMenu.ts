@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './SearchLeftMenuData';
 
 export const useSearchLeftMenu = () => {
     const [isLoading, setIsLoading] = useState(false);

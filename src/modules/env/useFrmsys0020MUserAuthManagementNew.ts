@@ -1,39 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioUserAuth {
-    UAAUTH: string;
-    MMENUID: string;
-    MMENUNM: string;
-    MURL: string;
-    USE_YN: string;
-    PSABUN: string;
-}
-
-export interface Ids_oMenuTree {
-    MORDERSEQ: string;
-    MMENUID: string;
-    MENULEVEL: string;
-    MPARENTMENUID: string;
-    MMENUNM: string;
-    USE_YN: string;
-    MURL: string;
-    MENU_REMARK: string;
-    MURLTYPE: string;
-    MSYSGUBUN: string;
-}
-
-export interface Ids_ioDeptAuth {
-    DAAGTMGNO: string;
-    DAAGUBUN: string;
-    DAAUSEYN: string;
-}
+import type { Ids_ioUserAuth, Ids_oMenuTree, Ids_ioDeptAuth } from './Frmsys0020MUserAuthManagementNewData';
 
 export const useFrmsys0020MUserAuthManagementNew = () => {
     const [ds_ioUserAuth, setds_ioUserAuth] = useState<Ids_ioUserAuth[]>([]);
     const [ds_oMenuTree, setds_oMenuTree] = useState<Ids_oMenuTree[]>([]);
     const [ds_ioDeptAuth, setds_ioDeptAuth] = useState<Ids_ioDeptAuth[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -75,6 +49,8 @@ export const useFrmsys0020MUserAuthManagementNew = () => {
         ds_ioUserAuth,
         ds_oMenuTree,
         ds_ioDeptAuth,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnDeleteKemsAuth_OnClick,
         btnSearchUser_OnClick,
         lfn_Cancel,

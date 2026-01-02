@@ -1,99 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamJubsu {
-    EJADDR1: string;
-    EJADDR2: string;
-    EJMGNO: string;
-    EJPASSYN: string;
-    EJPERSONNM: string;
-    EJBIRTHDAY: string;
-    EOEXAMDATE: string;
-    EOHJUBSUNO: string;
-    LADDR1: string;
-    LADDR2: string;
-    LCOMPNM: string;
-    LDATAAPPROVAL: string;
-    LHIIIMGSEQ: string;
-    LHISSUEREASON: string;
-    LHPROCGTMGNO: string;
-    LHPRTDATE: string;
-    LHPTEL: string;
-    LISSUEDATE: string;
-    LISSUEGUBUN: string;
-    LLCSNO: string;
-    LPERSONNM: string;
-    LBIRTHDAY: string;
-    LTCCOURSECD: string;
-    LTEL: string;
-    LTPMGNO: string;
-    LTRAININGENDDATE: string;
-    LTRAININGSTARTDATE: string;
-    LZIPCD: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamInfo {
-    PASS: string;
-    NOEXAM: string;
-    EOEXAMDATE: string;
-}
-
-export interface Ids_ioJubsuList {
-    EJPASSYN: string;
-    EJMGNO: string;
-    EJPERSONNM: string;
-    EJBIRTHDAY: string;
-    EJADDR1: string;
-    EJADDR2: string;
-    EOHJUBSUNO: string;
-}
-
-export interface Ids_ioEjpassLicenseNotYetSunab {
-}
-
-export interface Ids_ioWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioReport {
-}
-
-export interface Ids_ioReport2 {
-}
-
-export interface Ids_ioEjpassLicenseAlreadySunab {
-}
-
-export interface Ids_ioLicenseAlreadySunabNotRepay {
-}
-
-export interface Ids_ioExamPrint {
-}
-
-export interface Ids_ioRepayReport {
-}
-
-export interface Ids_oPrintReceiptMast {
-}
-
-export interface Ids_oPrintReceiptDtl {
-}
-
-export interface Ids_ioTrainingOrder {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioExamJubsu, Ids_oCourse, Ids_oJibu, Ids_ioExamInfo, Ids_ioJubsuList, Ids_ioEjpassLicenseNotYetSunab, Ids_ioWorkGubun, Ids_ioReport, Ids_ioReport2, Ids_ioEjpassLicenseAlreadySunab, Ids_ioLicenseAlreadySunabNotRepay, Ids_ioExamPrint, Ids_ioRepayReport, Ids_oPrintReceiptMast, Ids_oPrintReceiptDtl, Ids_ioTrainingOrder } from './Frmtraining0652MExamFailLicenseNotRepayListData';
 
 export const useFrmtraining0652MExamFailLicenseNotRepayList = () => {
     const [ds_ioExamJubsu, setds_ioExamJubsu] = useState<Ids_ioExamJubsu[]>([]);
@@ -113,6 +20,7 @@ export const useFrmtraining0652MExamFailLicenseNotRepayList = () => {
     const [ds_oPrintReceiptDtl, setds_oPrintReceiptDtl] = useState<Ids_oPrintReceiptDtl[]>([]);
     const [ds_ioTrainingOrder, setds_ioTrainingOrder] = useState<Ids_ioTrainingOrder[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -177,6 +85,8 @@ export const useFrmtraining0652MExamFailLicenseNotRepayList = () => {
         ds_oPrintReceiptMast,
         ds_oPrintReceiptDtl,
         ds_ioTrainingOrder,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnPrint_OnClick,
         btnToExcel_OnClick,

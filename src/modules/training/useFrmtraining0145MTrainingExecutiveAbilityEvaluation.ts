@@ -1,48 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oSort {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEvaluation {
-    EDUCNT: string;
-    EPNM: string;
-    INCNT: string;
-    INOUTCNT: string;
-    JUPSUCNT: string;
-    KULGANGCNT: string;
-    OUTCNT: string;
-    PASSCNT: string;
-    REPAYCNT: string;
-    TCCOURSENM: string;
-    TOENDDATE: string;
-    TOSTARTDATE: string;
-    TOTRAININGORDER: string;
-}
-
-export interface Ids_oEvaluationPoto {
-    ACTION: string;
-    GTTEAMNM: string;
-    ORGJUPSU: string;
-    SEATNO: string;
-    TCCOURSENM: string;
-    TJPERSONNM: string;
-    TOENDDATE: string;
-    TOSTARTDATE: string;
-    TOTRAININGORDER: string;
-}
+import type { Ids_oSort, Ids_oCourse, Ids_oJibu, Ids_oEvaluation, Ids_oEvaluationPoto } from './Frmtraining0145MTrainingExecutiveAbilityEvaluationData';
 
 export const useFrmtraining0145MTrainingExecutiveAbilityEvaluation = () => {
     const [ds_oSort, setds_oSort] = useState<Ids_oSort[]>([]);
@@ -51,6 +9,7 @@ export const useFrmtraining0145MTrainingExecutiveAbilityEvaluation = () => {
     const [ds_oEvaluation, setds_oEvaluation] = useState<Ids_oEvaluation[]>([]);
     const [ds_oEvaluationPoto, setds_oEvaluationPoto] = useState<Ids_oEvaluationPoto[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -84,6 +43,8 @@ export const useFrmtraining0145MTrainingExecutiveAbilityEvaluation = () => {
         ds_oJibu,
         ds_oEvaluation,
         ds_oEvaluationPoto,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_PrintScreen,

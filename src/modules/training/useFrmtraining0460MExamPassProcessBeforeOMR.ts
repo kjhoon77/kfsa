@@ -1,84 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamJubsu {
-    EJADDR1: string;
-    EJADDR2: string;
-    EJMGNO: string;
-    EJPASSYN: string;
-    EJPERSONNM: string;
-    EJBIRTHDAY: string;
-    EOEXAMDATE: string;
-    EOHJUBSUNO: string;
-    LADDR1: string;
-    LADDR2: string;
-    LCOMPNM: string;
-    LDATAAPPROVAL: string;
-    LHIIIMGSEQ: string;
-    LHISSUEREASON: string;
-    LHPROCGTMGNO: string;
-    LHPRTDATE: string;
-    LHPTEL: string;
-    LISSUEDATE: string;
-    LISSUEGUBUN: string;
-    LLCSNO: string;
-    LPERSONNM: string;
-    LBIRTHDAY: string;
-    LTCCOURSECD: string;
-    LTEL: string;
-    LTPMGNO: string;
-    LTRAININGENDDATE: string;
-    LTRAININGSTARTDATE: string;
-    LZIPCD: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamInfo {
-    PASS: string;
-    NOEXAM: string;
-    EOEXAMDATE: string;
-}
-
-export interface Ids_ioJubsuList {
-    EJPASSYN: string;
-    EJMGNO: string;
-    EJPERSONNM: string;
-    EJBIRTHDAY: string;
-    EJADDR1: string;
-    EJADDR2: string;
-    EOHJUBSUNO: string;
-}
-
-export interface Ids_ioJubsuList_BeforeAfter {
-}
-
-export interface Ids_ioWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioReport {
-}
-
-export interface Ids_ioReport2 {
-}
-
-export interface Ids_ioImageYN {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioLicenseCheck {
-}
+import type { Ids_ioExamJubsu, Ids_oCourse, Ids_oJibu, Ids_ioExamInfo, Ids_ioJubsuList, Ids_ioJubsuList_BeforeAfter, Ids_ioWorkGubun, Ids_ioReport, Ids_ioReport2, Ids_ioImageYN, Ids_ioLicenseCheck } from './Frmtraining0460MExamPassProcessBeforeOMRData';
 
 export const useFrmtraining0460MExamPassProcessBeforeOMR = () => {
     const [ds_ioExamJubsu, setds_ioExamJubsu] = useState<Ids_ioExamJubsu[]>([]);
@@ -93,6 +15,7 @@ export const useFrmtraining0460MExamPassProcessBeforeOMR = () => {
     const [ds_ioImageYN, setds_ioImageYN] = useState<Ids_ioImageYN[]>([]);
     const [ds_ioLicenseCheck, setds_ioLicenseCheck] = useState<Ids_ioLicenseCheck[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -147,6 +70,8 @@ export const useFrmtraining0460MExamPassProcessBeforeOMR = () => {
         ds_ioReport2,
         ds_ioImageYN,
         ds_ioLicenseCheck,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

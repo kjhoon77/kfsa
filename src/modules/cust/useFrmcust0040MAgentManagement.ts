@@ -1,50 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAgentList {
-    AGMGNO: string;
-    AGNM: string;
-    AGOWNER: string;
-    AGCONO: string;
-    AGTEL: string;
-    AGFAX: string;
-    AGZIPCD: string;
-    AGADDR1: string;
-    AGADDR2: string;
-    AGREMARK: string;
-    AGREGDATE: string;
-    AGREGSABUN: string;
-    AGMODDATE: string;
-    AGMODSABUN: string;
-    AGADDR: string;
-    AGADDRGUBUN: string;
-    ARPNUCD: string;
-    ARROADBUILDMGNO: string;
-    ARROADDETAIL: string;
-    ARROADREMAIN: string;
-    ARSANGUBUN: string;
-    ARMAINBUNJI: string;
-    ARSUBBUNJI: string;
-    ARBUILDNM: string;
-    ARADDRETC: string;
-    ARCONVPGM: string;
-    ARCONVSTATUS: string;
-}
-
-export interface Ids_oModifyColumn {
-    COLUMNCD: string;
-    COLUMNNM: string;
-}
-
-export interface Ids_oAddr {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioGubun, Ids_oAgentList, Ids_oModifyColumn, Ids_oAddr } from './Frmcust0040MAgentManagementData';
 
 export const useFrmcust0040MAgentManagement = () => {
     const [ds_ioGubun, setds_ioGubun] = useState<Ids_ioGubun[]>([]);
@@ -52,6 +8,7 @@ export const useFrmcust0040MAgentManagement = () => {
     const [ds_oModifyColumn, setds_oModifyColumn] = useState<Ids_oModifyColumn[]>([]);
     const [ds_oAddr, setds_oAddr] = useState<Ids_oAddr[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -101,6 +58,8 @@ export const useFrmcust0040MAgentManagement = () => {
         ds_oAgentList,
         ds_oModifyColumn,
         ds_oAddr,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnCancel_OnClick,
         btnMutilSort_OnClick,
         btnSearchZipCode_OnClick,

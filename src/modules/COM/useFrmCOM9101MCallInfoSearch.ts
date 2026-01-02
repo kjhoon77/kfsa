@@ -1,12 +1,11 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oSearch {
-}
+import type { Ids_oSearch } from './FrmCOM9101MCallInfoSearchData';
 
 export const useFrmCOM9101MCallInfoSearch = () => {
     const [ds_oSearch, setds_oSearch] = useState<Ids_oSearch[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -29,6 +28,8 @@ export const useFrmCOM9101MCallInfoSearch = () => {
     return {
         isLoading,
         ds_oSearch,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Search,

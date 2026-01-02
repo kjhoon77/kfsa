@@ -1,103 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMemberGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioReport {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_SearchJogeon {
-    REPORT_GUBUN: string;
-    YEAR: string;
-    JIBU: string;
-    REGION_GUBUN: string;
-    REGION1: string;
-    REGION2: string;
-    MEMBER_GUBUN: string;
-    COURSE_GUBUN: string;
-    COURSE: string;
-    COURSE1_6IN: string;
-    BIZ_GUBUN: string;
-    BIZ1: string;
-    BIZ2: string;
-    MEMBERYMD_GUBUN: string;
-    MEMBER_YMD_FR: string;
-    MEMBER_YMD_TO: string;
-    EDUYMD_GUBUN: string;
-    EDU_YMD_FR: string;
-    EDU_YMD_TO: string;
-    EDU_GUBUN: string;
-    EDU_ORDER: string;
-    EDU_ORDERGUBUN: string;
-}
-
-export interface Ids_EduList {
-    GTTEAMNM: string;
-    MGNO: string;
-    EPPERSONNM: string;
-    BIRTHDAY: string;
-    ADDR: string;
-    BNM: string;
-    PASSDATE: string;
-    MINAPAMT: string;
-    TAJIBU: string;
-}
-
-export interface Ids_CourseStatistics1 {
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_oAdditionInfo {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_CourseStatistics2 {
-}
-
-export interface Ids_CourseStatistics3 {
-}
-
-export interface Ids_CourseStatistics4 {
-}
-
-export interface Ids_CourseStatistics5 {
-}
+import type { Ids_ioChoiceYn, Ids_ioMemberGubun, Ids_ioCourse, Ids_ioJibu, Ids_ioCourseYn, Ids_ioReport, Ids_oEduGubun, Ids_SearchJogeon, Ids_EduList, Ids_CourseStatistics1, Ids_oRegion, Ids_oAdditionInfo, Ids_CourseStatistics2, Ids_CourseStatistics3, Ids_CourseStatistics4, Ids_CourseStatistics5 } from './Frmcust1160MCourseEduReportData';
 
 export const useFrmcust1160MCourseEduReport = () => {
     const [ds_ioChoiceYn, setds_ioChoiceYn] = useState<Ids_ioChoiceYn[]>([]);
@@ -117,6 +20,7 @@ export const useFrmcust1160MCourseEduReport = () => {
     const [ds_CourseStatistics4, setds_CourseStatistics4] = useState<Ids_CourseStatistics4[]>([]);
     const [ds_CourseStatistics5, setds_CourseStatistics5] = useState<Ids_CourseStatistics5[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -172,6 +76,8 @@ export const useFrmcust1160MCourseEduReport = () => {
         ds_CourseStatistics3,
         ds_CourseStatistics4,
         ds_CourseStatistics5,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Print,

@@ -1,108 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oTrainingJusu {
-    ENDJUBSUDATE: string;
-    GTDEPTNM: string;
-    STARTJUBSUDATE: string;
-    TCCOURSENM: string;
-    TJHSTATUSCD: string;
-    TJHSTATUSNM: string;
-    TJHTSSEQ: string;
-    TJMGNO: string;
-    TJPERSONNM: string;
-    TOHJUBSUGUBUN: string;
-    TOHJUBSUGUBUNNM: string;
-    TOHJUBSUNO: string;
-    TOMGGTMGNO: string;
-    TOMGNO: string;
-    TOTCCOURSECD: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-}
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJubsuStatus1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oProcGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJubsuStatus2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJubsuStatus3 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInternetReport {
-    TCCOURSENM: string;
-    TJPERSONNM: string;
-    BIRTHDAY: string;
-    TPTEL: string;
-    TPHPTEL: string;
-    TJZIPCD: string;
-    TJADDR: string;
-    TOTRAININGORDER: string;
-    TOHJUBSUNO: string;
-    TSPROCAMOUNT: string;
-    TJHREASON: string;
-    TJHCHANGEREASON: string;
-    TJHPROCDATE: string;
-    PPAOWNER: string;
-    PPABANKNM: string;
-    PPACCOUNT: string;
-    PPAPLANAMOUNT: string;
-    PPAFINISHAMOUNT: string;
-}
-
-export interface Ids_oInternetReportAll {
-    TCCOURSENM: string;
-    TJPERSONNM: string;
-    BIRTHDAY: string;
-    TPTEL: string;
-    TPHPTEL: string;
-    TJZIPCD: string;
-    TJADDR: string;
-    TOTRAININGORDER: string;
-    TOHJUBSUNO: string;
-    TSPROCAMOUNT: string;
-    TJHREASON: string;
-    TJHCHANGEREASON: string;
-    TJHPROCDATE: string;
-    PPAOWNER: string;
-    PPABANKNM: string;
-    PPACCOUNT: string;
-    PPAPLANAMOUNT: string;
-    PPAFINISHAMOUNT: string;
-}
-
-export interface Ids_ioReport {
-}
-
-export interface Ids_ioReportInternetJusuFilter {
-}
+import type { Ids_oTrainingJusu, Ids_oWorkGubun, Ids_oCourse, Ids_oJibu, Ids_oJubsuStatus1, Ids_oProcGubun, Ids_oJubsuStatus2, Ids_oJubsuStatus3, Ids_oInternetReport, Ids_oInternetReportAll, Ids_ioReport, Ids_ioReportInternetJusuFilter } from './Frmtraining0050MInternetTrainingJubsuManagementData';
 
 export const useFrmtraining0050MInternetTrainingJubsuManagement = () => {
     const [ds_oTrainingJusu, setds_oTrainingJusu] = useState<Ids_oTrainingJusu[]>([]);
@@ -118,6 +16,7 @@ export const useFrmtraining0050MInternetTrainingJubsuManagement = () => {
     const [ds_ioReport, setds_ioReport] = useState<Ids_ioReport[]>([]);
     const [ds_ioReportInternetJusuFilter, setds_ioReportInternetJusuFilter] = useState<Ids_ioReportInternetJusuFilter[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -177,6 +76,8 @@ export const useFrmtraining0050MInternetTrainingJubsuManagement = () => {
         ds_oInternetReportAll,
         ds_ioReport,
         ds_ioReportInternetJusuFilter,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnPrint_OnClick,
         btnToExcel_OnClick,

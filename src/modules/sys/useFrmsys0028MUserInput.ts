@@ -1,33 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioUser {
-    ADMINGUBUN: string;
-    PPOSITNCD: string;
-    PPOSITNNM: string;
-    PPERSONNM: string;
-    PSABUN: string;
-    PDEPTCD: string;
-    PDEPTNM: string;
-    PHPNO: string;
-    PCALLCENTERYN: string;
-    PUSEYN: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCallYN {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioUSEYN {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioUser, Ids_oJibu, Ids_ioCallYN, Ids_ioUSEYN } from './Frmsys0028MUserInputData';
 
 export const useFrmsys0028MUserInput = () => {
     const [ds_ioUser, setds_ioUser] = useState<Ids_ioUser[]>([]);
@@ -35,6 +8,7 @@ export const useFrmsys0028MUserInput = () => {
     const [ds_ioCallYN, setds_ioCallYN] = useState<Ids_ioCallYN[]>([]);
     const [ds_ioUSEYN, setds_ioUSEYN] = useState<Ids_ioUSEYN[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -72,6 +46,8 @@ export const useFrmsys0028MUserInput = () => {
         ds_oJibu,
         ds_ioCallYN,
         ds_ioUSEYN,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Input,

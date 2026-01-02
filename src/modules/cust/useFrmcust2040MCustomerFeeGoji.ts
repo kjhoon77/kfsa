@@ -1,88 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioReport {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYear {
-    CD: string;
-}
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMemberGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioOrder {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMemberGubun_0 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMemberGubun_1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMemberGubun_1_0 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioJibu_0 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_ioUpDown {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMCustomerFeeGoji {
-}
-
-export interface Ids_ioApply {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoiceYn_Num {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioReport, Ids_ioYear, Ids_ioChoiceYn, Ids_ioMemberGubun, Ids_oCourse, Ids_ioOrder, Ids_oJibu, Ids_ioMemberGubun_0, Ids_ioMemberGubun_1, Ids_ioMemberGubun_1_0, Ids_ioJibu_0, Ids_ioCourseYn, Ids_oRegion, Ids_ioUpDown, Ids_ioMCustomerFeeGoji, Ids_ioApply, Ids_ioChoiceYn_Num } from './Frmcust2040MCustomerFeeGojiData';
 
 export const useFrmcust2040MCustomerFeeGoji = () => {
     const [ds_ioReport, setds_ioReport] = useState<Ids_ioReport[]>([]);
@@ -103,6 +21,8 @@ export const useFrmcust2040MCustomerFeeGoji = () => {
     const [ds_ioApply, setds_ioApply] = useState<Ids_ioApply[]>([]);
     const [ds_ioChoiceYn_Num, setds_ioChoiceYn_Num] = useState<Ids_ioChoiceYn_Num[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [isVisible_Div0, setIsVisible_Div0] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -128,6 +48,12 @@ export const useFrmcust2040MCustomerFeeGoji = () => {
         }, 500);
     }, []);
 
+    const Div0_Button4Yes_OnClick = () => {
+        console.log('Div0_Button4Yes_OnClick clicked');
+    };
+    const Div0_Button4_OnClick = () => {
+        console.log('Div0_Button4_OnClick clicked');
+    };
     const lfn_End = () => {
         console.log('lfn_End clicked');
     };
@@ -160,6 +86,12 @@ export const useFrmcust2040MCustomerFeeGoji = () => {
         ds_ioMCustomerFeeGoji,
         ds_ioApply,
         ds_ioChoiceYn_Num,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        isVisible_Div0,
+        setIsVisible_Div0,
+        Div0_Button4Yes_OnClick,
+        Div0_Button4_OnClick,
         lfn_End,
         lfn_Print,
         lfn_PrintScreen,

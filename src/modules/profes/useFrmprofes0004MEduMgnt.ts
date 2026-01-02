@@ -1,35 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_Gubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_EduSubject {
-    MAXSJORDER: string;
-    INSERT_GUBUN: string;
-    INSERT_COURSECD: string;
-    INSERT_MUNJE: string;
-    INSERT_SEARCH: string;
-}
-
-export interface Ids_SearchEduSubject {
-    TCCOURSECDYN: string;
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-    TCSEARCHGUBUN: string;
-    TCMUNJEGUBUN: string;
-}
-
-export interface Ids_Cours {
-    TCCOURSECDYN: string;
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-}
-
-export interface Ids_ioProfesPcmgno {
-}
+import type { Ids_Gubun, Ids_EduSubject, Ids_SearchEduSubject, Ids_Cours, Ids_ioProfesPcmgno } from './Frmprofes0004MEduMgntData';
 
 export const useFrmprofes0004MEduMgnt = () => {
     const [ds_Gubun, setds_Gubun] = useState<Ids_Gubun[]>([]);
@@ -38,6 +9,7 @@ export const useFrmprofes0004MEduMgnt = () => {
     const [ds_Cours, setds_Cours] = useState<Ids_Cours[]>([]);
     const [ds_ioProfesPcmgno, setds_ioProfesPcmgno] = useState<Ids_ioProfesPcmgno[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -92,6 +64,8 @@ export const useFrmprofes0004MEduMgnt = () => {
         ds_SearchEduSubject,
         ds_Cours,
         ds_ioProfesPcmgno,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnAdd_OnClick,
         btnMutilSort_OnClick,
         btnSearch_OnClick,

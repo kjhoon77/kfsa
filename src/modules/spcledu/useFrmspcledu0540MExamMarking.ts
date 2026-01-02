@@ -1,102 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oExamOrder {
-    EOMGNO: string;
-    JJIBUNICK: string;
-    EOYEAR: string;
-    TCCOURSENM: string;
-    EOEXAMORDER: string;
-    EOEXAMDATE: string;
-    TCCOURSECD: string;
-    EXAMNM: string;
-}
-
-export interface Ids_oCorrectAnswer {
-    CATCCOURSECD: string;
-    CAEPNUMTYPE: string;
-    CAEPALPHATYPE: string;
-    CAITEMNO: string;
-    CACORRECTCNT: string;
-    CAITEMSCORE: string;
-    CACORRECTANSWER: string;
-}
-
-export interface Ids_oAnswerPaper {
-    APSEQ: string;
-    APREPEATNO: string;
-    APEOMGNO: string;
-    APAPLEXAMNO: string;
-    APTCCOURSECD: string;
-    APNUMTYPE: string;
-    APALPHATYPE: string;
-    APCAITEMNO: string;
-    APANSWER: string;
-    APANSWERYN: string;
-    APITEMSCORE: string;
-    APEXAMROOM: string;
-}
-
-export interface Ids_iAnswerPaper {
-    APSEQ: string;
-    APREPEATNO: string;
-    APEOMGNO: string;
-    APAPLEXAMNO: string;
-    APTCCOURSECD: string;
-    APNUMTYPE: string;
-    APALPHATYPE: string;
-    APCAITEMNO: string;
-    APANSWER: string;
-    APANSWERYN: string;
-    APITEMSCORE: string;
-    APEXAMROOM: string;
-}
-
-export interface Ids_iAnswerAnalysis {
-    AAEOMGNO: string;
-    AATCCOURSECD: string;
-    AACAEPNUMTYPE: string;
-    AACAEPALPHATYPE: string;
-    AACAITEMNO: string;
-    AAREPEATNO: string;
-    AACORRECTCNT: string;
-    AAMARKINGCNT: string;
-    AACORRECTPERCENT: string;
-    AA1CNT: string;
-    AA2CNT: string;
-    AA3CNT: string;
-    AA4CNT: string;
-    AAEMPTYCNT: string;
-    AADOUBLECNT: string;
-}
-
-export interface Ids_ioExamResult {
-    EREJMGNO: string;
-    ERSEQ: string;
-    ERREPEATNO: string;
-    ERAPLEXAMNO: string;
-    ERPASSYN: string;
-    ERPASSDATE: string;
-    ERSCORE: string;
-    ERRANK: string;
-    ERCORRECTCNT: string;
-}
-
-export interface Ids_ioServerSend {
-    SSHEOMGNO: string;
-    SSHREPEATNO: string;
-    SSHSENDYN: string;
-}
-
-export interface Ids_oCorrectAnswerTmp {
-    CATCCOURSECD: string;
-    CAEPNUMTYPE: string;
-    CAEPALPHATYPE: string;
-    CAITEMNO: string;
-    CACORRECTCNT: string;
-    CAITEMSCORE: string;
-    CACORRECTANSWER: string;
-}
+import type { Ids_oExamOrder, Ids_oCorrectAnswer, Ids_oAnswerPaper, Ids_iAnswerPaper, Ids_iAnswerAnalysis, Ids_ioExamResult, Ids_ioServerSend, Ids_oCorrectAnswerTmp } from './Frmspcledu0540MExamMarkingData';
 
 export const useFrmspcledu0540MExamMarking = () => {
     const [ds_oExamOrder, setds_oExamOrder] = useState<Ids_oExamOrder[]>([]);
@@ -108,6 +12,7 @@ export const useFrmspcledu0540MExamMarking = () => {
     const [ds_ioServerSend, setds_ioServerSend] = useState<Ids_ioServerSend[]>([]);
     const [ds_oCorrectAnswerTmp, setds_oCorrectAnswerTmp] = useState<Ids_oCorrectAnswerTmp[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -147,6 +52,8 @@ export const useFrmspcledu0540MExamMarking = () => {
         ds_ioExamResult,
         ds_ioServerSend,
         ds_oCorrectAnswerTmp,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnExcuteMark_OnClick,
         btnNext_OnClick,
         lfn_End,

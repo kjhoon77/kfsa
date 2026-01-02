@@ -1,28 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioINetGuide {
-    EGEDUGUBUN: string;
-    EGCOURSE: string;
-    EGMSG: string;
-    EGGUIDEYN: string;
-}
-
-export interface Ids_oMSG {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oJibu, Ids_ioINetGuide, Ids_oMSG } from './Frmtraining0011MiNetJubsuGuideData';
 
 export const useFrmtraining0011MiNetJubsuGuide = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_ioINetGuide, setds_ioINetGuide] = useState<Ids_ioINetGuide[]>([]);
     const [ds_oMSG, setds_oMSG] = useState<Ids_oMSG[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -55,6 +40,8 @@ export const useFrmtraining0011MiNetJubsuGuide = () => {
         ds_oJibu,
         ds_ioINetGuide,
         ds_oMSG,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Excel,

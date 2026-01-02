@@ -1,53 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioLicenseList {
-    ADDR: string;
-    CCCDNM: string;
-    GTTEAMNM: string;
-    LHISSUEREASON: string;
-    LHPERSONNM: string;
-    LHPROCGTMGNO: string;
-    LHBIRTHDAY_SANG: string;
-    LLCSNO: string;
-    LSPROCAMOUNT: string;
-    LTCCOURSECD: string;
-    PNM: string;
-    PRTDATE: string;
-    TCCOURSENM: string;
-    USEGUBUN: string;
-    PAMGNO: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oPassGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegisterYn {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_ioLicenseList, Ids_oJibu, Ids_oGubun, Ids_oPassGubun, Ids_oWorkGubun, Ids_oRegisterYn } from './Frmtraining0371MLicenseDatePrivacyRegisterData';
 
 export const useFrmtraining0371MLicenseDatePrivacyRegister = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -58,6 +11,7 @@ export const useFrmtraining0371MLicenseDatePrivacyRegister = () => {
     const [ds_oWorkGubun, setds_oWorkGubun] = useState<Ids_oWorkGubun[]>([]);
     const [ds_oRegisterYn, setds_oRegisterYn] = useState<Ids_oRegisterYn[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -101,6 +55,8 @@ export const useFrmtraining0371MLicenseDatePrivacyRegister = () => {
         ds_oPassGubun,
         ds_oWorkGubun,
         ds_oRegisterYn,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

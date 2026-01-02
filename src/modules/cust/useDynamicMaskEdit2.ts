@@ -1,9 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface IDataset0 {
-    column0: string;
-}
+import type { IDataset0 } from './DynamicMaskEdit2Data';
 
 export const useDynamicMaskEdit2 = () => {
     const [Dataset0, setDataset0] = useState<IDataset0[]>([]);

@@ -1,18 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_SortList {
-    COL_ID: string;
-    COL_SORT: string;
-    COL_SEQ: string;
-    COL_NM: string;
-    COL_INDEX: string;
-}
-
-export interface Ids_Sort {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_SortList, Ids_Sort } from './FrmCOM0040PMulitSortData';
 
 export const useFrmCOM0040PMulitSort = () => {
     const [ds_SortList, setds_SortList] = useState<Ids_SortList[]>([]);

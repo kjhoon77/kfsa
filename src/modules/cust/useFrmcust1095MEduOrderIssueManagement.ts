@@ -1,133 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioEduPassY {
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioEduPassYCnt {
-    ESGTMGNO: string;
-    PASSSUM: string;
-    ESCOUSECD: string;
-    ESEDUORDER: string;
-    ESYEAR: string;
-}
-
-export interface Ids_ioEduPassN {
-    SEL: string;
-    TOMGGTMGNO: string;
-    TPPASSDATE: string;
-    SUMADAY: string;
-    TOTCCOURSECD: string;
-    TJADDR1: string;
-    TJMGNO: string;
-    TJPASSYN: string;
-    TJPERSONNM: string;
-    TOENDDATE_A: string;
-    TOHJUBSUNO: string;
-    TOMGNO: string;
-    TOSTARTDATE_A: string;
-    TOEduORDER: string;
-    TOYEAR: string;
-    TJTPMGNO: string;
-    TJADDRGUBUN: string;
-    TJRPNUCD: string;
-    TJRROADBUILDMGNO: string;
-    TJRROADDETAIL: string;
-    TJRROADREMAIN: string;
-    TJRSANGUBUN: string;
-    TJRMAINBUNJI: string;
-    TJRSUBBUNJI: string;
-    TJRBUILDNM: string;
-    TJRADDRETC: string;
-    TJRCONVPGM: string;
-    TJRCONVSTATUS: string;
-}
-
-export interface Ids_EduPassYN {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioEduPassYlicense1 {
-    SEL: string;
-    TOMGGTMGNO: string;
-    TJADDR1: string;
-    TPPASSDATE: string;
-    SUMADAY: string;
-    TOTCCOURSECD: string;
-    TJADDR2: string;
-    TJMGNO: string;
-    TJPASSYN: string;
-    TJPERSONNM: string;
-    TOENDDATE: string;
-    TOHJUBSUNO: string;
-    TOMGNO: string;
-    TOSTARTDATE: string;
-    TOEduORDER: string;
-    TOYEAR: string;
-    TJTPMGNO: string;
-}
-
-export interface Ids_ioEduPassYlicense2_2 {
-    SEL: string;
-    TOMGGTMGNO: string;
-    TJADDR1: string;
-    TPPASSDATE: string;
-    SUMADAY: string;
-    TOTCCOURSECD: string;
-    TJADDR2: string;
-    TJMGNO: string;
-    TJPASSYN: string;
-    TJPERSONNM: string;
-    TOENDDATE: string;
-    TOHJUBSUNO: string;
-    TOMGNO: string;
-    TOSTARTDATE: string;
-    TOEduORDER: string;
-    TOYEAR: string;
-    TJTPMGNO: string;
-}
-
-export interface Ids_ioEduPassBak {
-}
-
-export interface Ids_ioEduPassBak2 {
-}
-
-export interface Ids_iEduPass {
-    EPCGATEWAYCD: string;
-    EPCMGNO: string;
-    EPCOURSECD: string;
-    EPESMGNO: string;
-    EPMGNO: string;
-    EPPASSDATE: string;
-    EPPERSONNM: string;
-    EPPROCGTMGNO: string;
-    EPBIRTHDAY: string;
-    EPSUCCESSIONGUBUN: string;
-    EPYEAR: string;
-    FMMGNO: string;
-    EPPASSREMARK: string;
-    CRECEIVEEXCEPTGUBUN: string;
-    SCMGNO: string;
-    BIRTHDAY: string;
-    EPPERSONKEY: string;
-    FSTARTDATE: string;
-    FNM: string;
-    FPERSONKEY: string;
-    CYBERISUGUBUN: string;
-    EDUEXPIREDATE: string;
-}
+import type { Ids_ioEduPassY, Ids_oCourse, Ids_oJibu, Ids_ioEduPassYCnt, Ids_ioEduPassN, Ids_EduPassYN, Ids_ioEduPassYlicense1, Ids_ioEduPassYlicense2_2, Ids_ioEduPassBak, Ids_ioEduPassBak2, Ids_iEduPass } from './Frmcust1095MEduOrderIssueManagementData';
 
 export const useFrmcust1095MEduOrderIssueManagement = () => {
     const [ds_ioEduPassY, setds_ioEduPassY] = useState<Ids_ioEduPassY[]>([]);
@@ -142,6 +15,7 @@ export const useFrmcust1095MEduOrderIssueManagement = () => {
     const [ds_ioEduPassBak2, setds_ioEduPassBak2] = useState<Ids_ioEduPassBak2[]>([]);
     const [ds_iEduPass, setds_iEduPass] = useState<Ids_iEduPass[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -196,6 +70,8 @@ export const useFrmcust1095MEduOrderIssueManagement = () => {
         ds_ioEduPassBak,
         ds_ioEduPassBak2,
         ds_iEduPass,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

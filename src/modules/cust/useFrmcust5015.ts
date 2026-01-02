@@ -1,39 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioGubun_0 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oFireCd {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-}
-
-export interface Ids_oFireCenterCd {
-    CD: string;
-    DATA: string;
-    UPCD: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oList {
-    ADDR: string;
-    MGNO: string;
-    NM: string;
-    TEL: string;
-}
+import type { Ids_ioGubun, Ids_ioGubun_0, Ids_oFireCd, Ids_oFireCenterCd, Ids_oJibu, Ids_oList } from './Frmcust5015Data';
 
 export const useFrmcust5015 = () => {
     const [ds_ioGubun, setds_ioGubun] = useState<Ids_ioGubun[]>([]);

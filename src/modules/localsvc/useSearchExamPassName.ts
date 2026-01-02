@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './SearchExamPassNameData';
 
 export const useSearchExamPassName = () => {
     const [isLoading, setIsLoading] = useState(false);

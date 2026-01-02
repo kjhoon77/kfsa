@@ -1,24 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioTrainingPerson {
-    TPMGNO: string;
-    TPNM: string;
-    KEY: string;
-}
-
-export interface Ids_ModifyGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oModifyColumn {
-    COLUMNCD: string;
-    COLUMNNM: string;
-}
-
-export interface Ids_oTrainingCheck {
-}
+import type { Ids_ioTrainingPerson, Ids_ModifyGubun, Ids_oModifyColumn, Ids_oTrainingCheck } from './FrmCOM1010PTrainingPersonModifyData';
 
 export const useFrmCOM1010PTrainingPersonModify = () => {
     const [ds_ioTrainingPerson, setds_ioTrainingPerson] = useState<Ids_ioTrainingPerson[]>([]);
@@ -26,6 +8,7 @@ export const useFrmCOM1010PTrainingPersonModify = () => {
     const [ds_oModifyColumn, setds_oModifyColumn] = useState<Ids_oModifyColumn[]>([]);
     const [ds_oTrainingCheck, setds_oTrainingCheck] = useState<Ids_oTrainingCheck[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -54,6 +37,8 @@ export const useFrmCOM1010PTrainingPersonModify = () => {
         ds_ModifyGubun,
         ds_oModifyColumn,
         ds_oTrainingCheck,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnAuthResidentNo_OnClick,
         lfn_End,
         lfn_Save,

@@ -1,33 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_Professor {
-    ATM_SMMGNO: string;
-    SMJIBUNM: string;
-    ATDYEAR: string;
-    ATDSDNAME: string;
-    ATM_RE_ALI_DOC_ID: string;
-    ATM_RE_APPROVER_STATUS: string;
-    AVM_SMMGNO: string;
-    AVM_RE_ALI_DOC_ID: string;
-    AVM_RE_APPROVER_STATUS: string;
-}
-
-export interface Ids_Jibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_Approval {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_Professor, Ids_Jibu, Ids_Approval } from './Frmprofes0023MInviteProfElectronicApprovalData';
 
 export const useFrmprofes0023MInviteProfElectronicApproval = () => {
     const [ds_Professor, setds_Professor] = useState<Ids_Professor[]>([]);
     const [ds_Jibu, setds_Jibu] = useState<Ids_Jibu[]>([]);
     const [ds_Approval, setds_Approval] = useState<Ids_Approval[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -66,6 +46,8 @@ export const useFrmprofes0023MInviteProfElectronicApproval = () => {
         ds_Professor,
         ds_Jibu,
         ds_Approval,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_Delete,

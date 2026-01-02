@@ -1,93 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioListChart1 {
-    EMSCCD: string;
-    EMSCNM: string;
-    TOTALCNT: string;
-    VAL1: string;
-    VAL2: string;
-    VAL3: string;
-    VAL4: string;
-    VAL5: string;
-    VAL6: string;
-    VAL_TT: string;
-}
-
-export interface Ids_ioListChart2 {
-    EMSCCD: string;
-    EMSCNM: string;
-    TOTALCNT: string;
-    VAL1: string;
-    VAL2: string;
-    VAL3: string;
-    VAL4: string;
-    VAL5: string;
-    VAL6: string;
-    VAL_TT: string;
-}
-
-export interface Ids_ioListChart3 {
-    EMSCCD: string;
-    EMSCNM: string;
-    TOTALCNT: string;
-    VAL1: string;
-    VAL2: string;
-    VAL3: string;
-    VAL4: string;
-    VAL5: string;
-    VAL6: string;
-    VAL_TT: string;
-}
-
-export interface Ids_ioListChart4 {
-    EMSCCD: string;
-    EMSCNM: string;
-    TOTALCNT: string;
-    VAL1: string;
-    VAL2: string;
-    VAL3: string;
-    VAL4: string;
-    VAL5: string;
-    VAL6: string;
-    VAL_TT: string;
-}
-
-export interface Ids_ioListChart5 {
-    EMSCCD: string;
-    EMSCNM: string;
-    TOTALCNT: string;
-    VAL1: string;
-    VAL2: string;
-    VAL3: string;
-    VAL4: string;
-    VAL5: string;
-    VAL6: string;
-    VAL_TT: string;
-}
-
-export interface Ids_ioListChart6 {
-    EMSCCD: string;
-    EMSCNM: string;
-    TOTALCNT: string;
-    VAL1: string;
-    VAL2: string;
-    VAL3: string;
-    VAL4: string;
-    VAL5: string;
-    VAL6: string;
-    VAL_TT: string;
-}
-
-export interface Ids_ioListChartCnt {
-    CNT1: string;
-    CNT2: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioListChart1, Ids_ioListChart2, Ids_ioListChart3, Ids_ioListChart4, Ids_ioListChart5, Ids_ioListChart6, Ids_ioListChartCnt, Ids_oJibu } from './Frmprofes0001MProfMgmtList7Data';
 
 export const useFrmprofes0001MProfMgmtList7 = () => {
     const [ds_ioListChart1, setds_ioListChart1] = useState<Ids_ioListChart1[]>([]);
@@ -99,6 +12,8 @@ export const useFrmprofes0001MProfMgmtList7 = () => {
     const [ds_ioListChartCnt, setds_ioListChartCnt] = useState<Ids_ioListChartCnt[]>([]);
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [tabValue_TAB_Profes, setTabValue_TAB_Profes] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -135,6 +50,10 @@ export const useFrmprofes0001MProfMgmtList7 = () => {
         ds_ioListChart6,
         ds_ioListChartCnt,
         ds_oJibu,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        tabValue_TAB_Profes,
+        setTabValue_TAB_Profes,
         lfn_End,
         lfn_PrintScreen,
         lfn_Search,

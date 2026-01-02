@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './Frmtraining0630PResultMessageData';
 
 export const useFrmtraining0630PResultMessage = () => {
     const [isLoading, setIsLoading] = useState(false);

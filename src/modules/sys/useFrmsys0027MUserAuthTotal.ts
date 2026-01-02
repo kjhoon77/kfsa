@@ -1,46 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oSearchHistory {
-    SHGUBUN: string;
-    SHMGNO: string;
-    SHPROCDATE: string;
-    SHPROCIP: string;
-    SHPROCSABUN: string;
-    SHWHERE: string;
-    SHWORKGUBUN: string;
-    SHWORKGUBUNNM: string;
-}
-
-export interface Ids_oBizGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioUserList {
-}
-
-export interface Ids_ioDeptList {
-}
-
-export interface Ids_ioDeptAuthList {
-    CD: string;
-    DATA: string;
-    DAAGTMGNO: string;
-}
-
-export interface Ids_ioUserAuthTotal {
-    UAGTMGNO: string;
-    GTDEPTNM: string;
-    UAPSABUN: string;
-    PNM: string;
-    UATD: string;
-    UABD: string;
-    UAED: string;
-    UACD: string;
-    UACOMMON: string;
-    UATOTAL: string;
-}
+import type { Ids_oSearchHistory, Ids_oBizGubun, Ids_ioUserList, Ids_ioDeptList, Ids_ioDeptAuthList, Ids_ioUserAuthTotal } from './Frmsys0027MUserAuthTotalData';
 
 export const useFrmsys0027MUserAuthTotal = () => {
     const [ds_oSearchHistory, setds_oSearchHistory] = useState<Ids_oSearchHistory[]>([]);
@@ -50,6 +10,7 @@ export const useFrmsys0027MUserAuthTotal = () => {
     const [ds_ioDeptAuthList, setds_ioDeptAuthList] = useState<Ids_ioDeptAuthList[]>([]);
     const [ds_ioUserAuthTotal, setds_ioUserAuthTotal] = useState<Ids_ioUserAuthTotal[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_lbTitle, setIsVisible_lbTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -88,6 +49,8 @@ export const useFrmsys0027MUserAuthTotal = () => {
         ds_ioDeptList,
         ds_ioDeptAuthList,
         ds_ioUserAuthTotal,
+        isVisible_lbTitle,
+        setIsVisible_lbTitle,
         lfn_End,
         lfn_Excel,
         lfn_Print,

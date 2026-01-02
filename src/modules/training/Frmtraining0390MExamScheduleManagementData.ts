@@ -1,39 +1,138 @@
 // @ts-nocheck
 export const Frmtraining0390MExamScheduleManagementData = {};
 
-export const ds_ds_oUseYn = [
+export interface Ids_ioExamOrder {
+    EOENDTIME?: string;
+    EOEXAMDATE?: string;
+    EOEXAMORDER?: string;
+    EOEXAMORDERGUBUN?: string;
+    EOINETJUBSUCNT?: number;
+    EOINETJUBSUYN?: string;
+    EOJUBSUMAXCNT?: number;
+    EOMGJIBUCD?: string;
+    EOMGNO?: string;
+    EOSEATCNT?: number;
+    EOSTARTTIME?: string;
+    EOYEAR?: string;
+    EPMGNO?: number;
+    EPNM?: string;
+    TCCOURSECD?: string;
+    USE_YN?: string;
+    EOJUBSUSTATUS?: string;
+    EOSTARTTIME2?: string;
+    EOENDTIME2?: string;
+    EOJUBSUSTARTDATE?: string;
+    EOJUBSUENDDATE?: string;
+    EOEXAM1OPENDATE?: string;
+    EOEXAM2OPENDATE?: string;
+    EODAYGUBUN?: string;
+    EXAMTIME?: string;
+    EOAUTOMSGGUBUN?: string;
+    EOAUTODATE?: string;
+    EOBSMGNO?: string;
+    EOREMARK?: string;
+    EOREGION?: string;
+    EOCHASUGUBUN?: string;
+    EOINJUBSUCNT?: string;
+    EOONLINEGUBUN?: string;
+}
+
+export interface Ids_oJibu {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oCourse {
+    CD?: string;
+    DATA?: string;
+    DATA2?: string;
+}
+
+export interface Ids_oUseYn {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oUseYn: Ids_oUseYn[] = [
     { CD: 'Y', DATA: '사용' },
     { CD: 'N', DATA: '폐기' },
 ];
 
-export const ds_ds_oExamGubun1 = [
+export interface Ids_oCourseGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oExamGubun1 {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oExamGubun1: Ids_oExamGubun1[] = [
     { CD: '0', DATA: '교육종료일 회차' },
     { CD: '5', DATA: '재시험 회차' },
     { CD: '7', DATA: '학·경력자 회차' },
     { CD: '8', DATA: '공공기관 회차' },
 ];
 
-export const ds_ds_oInternetJubsuStatus = [
+export interface Ids_oInternetJubsuStatus {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oInternetJubsuStatus: Ids_oInternetJubsuStatus[] = [
     { CD: '02', DATA: '접수예정' },
 ];
 
-export const ds_ds_oInetJubsuYn = [
+export interface Ids_ioExamRoomMinimap {
+}
+
+export interface Ids_oInetJubsuYn {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oInetJubsuYn: Ids_oInetJubsuYn[] = [
     { CD: 'Y', DATA: '사용' },
     { CD: 'N', DATA: '미사용' },
 ];
 
-export const ds_ds_oExamGubun2 = [
+export interface Ids_oExamGubun2 {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oExamGubun2: Ids_oExamGubun2[] = [
     { CD: '0', DATA: '교육종료일 회차' },
     { CD: '5', DATA: '재시험 회차' },
     { CD: '8', DATA: '공공기관 회차' },
 ];
 
-export const ds_ds_oExamGubun3 = [
+export interface Ids_oExamGubun3 {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oExamGubun3: Ids_oExamGubun3[] = [
     { CD: '0', DATA: '교육종료일 회차' },
     { CD: '5', DATA: '재시험 회차' },
 ];
 
-export const ds_ds_oModifyColumn = [
+export interface Ids_oExamOrderMgno {
+}
+
+export interface Ids_oModifyColumn {
+    COLUMNCD?: string;
+    COLUMNNM?: string;
+    EOEXAM1OPENDATE?: string;
+    EOEXAM2OPENDATE?: string;
+    EODAYGUBUN?: string;
+    EXAMTIME?: string;
+    EOAUTOMSGGUBUN?: string;
+    EOAUTODATE?: string;
+}
+
+export const ds_ds_oModifyColumn: Ids_oModifyColumn[] = [
     { COLUMNCD: 'EOENDTIME', COLUMNNM: '시험종료시간', EOAUTODATE: '', EOAUTOMSGGUBUN: '', EODAYGUBUN: '', EOEXAM1OPENDATE: '', EOEXAM2OPENDATE: '', EXAMTIME: '' },
     { COLUMNCD: 'EOEXAMDATE', COLUMNNM: '시험일', EOAUTODATE: '', EOAUTOMSGGUBUN: '', EODAYGUBUN: '', EOEXAM1OPENDATE: '', EOEXAM2OPENDATE: '', EXAMTIME: '' },
     { COLUMNCD: 'EOEXAMORDER', COLUMNNM: '시험회차', EOAUTODATE: '', EOAUTOMSGGUBUN: '', EODAYGUBUN: '', EOEXAM1OPENDATE: '', EOEXAM2OPENDATE: '', EXAMTIME: '' },
@@ -62,11 +161,24 @@ export const ds_ds_oModifyColumn = [
     { COLUMNCD: 'EOAUTODATE', COLUMNNM: '문자자동발송일', EOAUTODATE: '', EOAUTOMSGGUBUN: '', EODAYGUBUN: '', EOEXAM1OPENDATE: '', EOEXAM2OPENDATE: '', EXAMTIME: '' },
 ];
 
-export const ds_ds_oExamGubun4 = [
+export interface Ids_ioJubsu {
+}
+
+export interface Ids_oExamGubun4 {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oExamGubun4: Ids_oExamGubun4[] = [
     { CD: '1', DATA: '특급소방안전관리자 회차' },
 ];
 
-export const ds_ds_oExamGubun = [
+export interface Ids_oExamGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oExamGubun: Ids_oExamGubun[] = [
     { CD: '0', DATA: '교육종료일 회차' },
     { CD: '1', DATA: '특급 회차' },
     { CD: '5', DATA: '재시험 회차' },
@@ -75,23 +187,46 @@ export const ds_ds_oExamGubun = [
     { CD: '2', DATA: '특급 회차' },
 ];
 
-export const ds_ds_oDayGubun = [
+export interface Ids_oDayGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oDayGubun: Ids_oDayGubun[] = [
     { CD: '0', DATA: '평일 주간' },
     { CD: '1', DATA: '평일 야간' },
     { CD: '2', DATA: '휴일(주말)' },
 ];
 
-export const ds_ds_oSendYN = [
+export interface Ids_oSendYN {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oSendYN: Ids_oSendYN[] = [
     { CD: '1', DATA: '발송' },
     { CD: '0', DATA: '미발송' },
 ];
 
-export const ds_ds_ioChasuGubun = [
+export interface Ids_ioChasuGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_ioChasuGubun: Ids_ioChasuGubun[] = [
     { CD: '1', DATA: '1차 시험' },
     { CD: '2', DATA: '2차 시험' },
 ];
 
-export const ds_ds_oOnlineGubun = [
+export interface Ids_oModifyTime {
+}
+
+export interface Ids_oOnlineGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oOnlineGubun: Ids_oOnlineGubun[] = [
     { CD: '', DATA: '선택' },
     { CD: 'N', DATA: '소집교육' },
     { CD: 'Y', DATA: '실시간온라인교육' },

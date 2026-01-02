@@ -1,36 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTrainingOrder {
-    EYGTMGNO: string;
-    EYDEFYEAR1: string;
-    EYDEFYEAR2: string;
-    EYDEFYEAR3: string;
-    EYDANGERYEAR1: string;
-    EYDANGERYEAR2: string;
-    EYDANGERYEAR3: string;
-    EYENGRYEAR1: string;
-    EYENGRYEAR2: string;
-    EYENGRYEAR3: string;
-    EYTRANSYEAR1: string;
-    EYTRANSYEAR2: string;
-    EYTRANSYEAR3: string;
-}
-
-export interface Ids_RowCnt {
-    RowCnt: string;
-}
+import type { Ids_oJibu, Ids_ioTrainingOrder, Ids_RowCnt } from './Frmcust4010EduYearContData';
 
 export const useFrmcust4010EduYearCont = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_ioTrainingOrder, setds_ioTrainingOrder] = useState<Ids_ioTrainingOrder[]>([]);
     const [ds_RowCnt, setds_RowCnt] = useState<Ids_RowCnt[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -60,6 +37,8 @@ export const useFrmcust4010EduYearCont = () => {
         ds_oJibu,
         ds_ioTrainingOrder,
         ds_RowCnt,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_PrintScreen,

@@ -1,12 +1,13 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust1110MTaEduSearch } from './useFrmcust1110MTaEduSearch';
 import * as Frmcust1110MTaEduSearchData from './Frmcust1110MTaEduSearchData';
+import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 
 export const Frmcust1110MTaEduSearch = () => {
     const hook = useFrmcust1110MTaEduSearch();
@@ -16,7 +17,7 @@ export const Frmcust1110MTaEduSearch = () => {
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
                 <Typography variant="h5">기본정보</Typography>
                 <Stack direction="row" spacing={1}>
-                    <Button variant="contained"  onClick={hook.lfn_End}>닫기</Button>
+                    <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 
                 </Stack>
             </Stack>
@@ -46,9 +47,15 @@ export const Frmcust1110MTaEduSearch = () => {
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={3}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>처리일자</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid>
+
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>처리일자</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust1110MTaEduSearchData.ds_ds_ioChoiceYn || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid><Grid item xs={12} md={2}><Box></Box></Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>~</Typography>
                         <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
                     </Stack>
@@ -58,7 +65,7 @@ export const Frmcust1110MTaEduSearch = () => {
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={3}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={3}><Button variant="contained">리스트출력</Button></Grid><Grid item xs={12} md={3}><Button variant="contained">현황통계 출력</Button></Grid></Grid>
+<Grid item xs={12} md={3}><Button variant="contained" onClick={hook.btnListPrint_OnClick}>리스트출력</Button></Grid><Grid item xs={12} md={3}><Button variant="contained" onClick={hook.btnListPrint2_OnClick}>현황통계 출력</Button></Grid></Grid>
 
                     </Paper>
                 </Grid>

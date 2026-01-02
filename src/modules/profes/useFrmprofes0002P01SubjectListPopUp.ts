@@ -1,27 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oSubjectList {
-}
-
-export interface Ids_Gubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_Cours {
-    TCCOURSECDYN: string;
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-}
-
-export interface Ids_SearchEduSubject {
-    TCCOURSECDYN: string;
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-    TCSEARCHGUBUN: string;
-    TCMUNJEGUBUN: string;
-}
+import type { Ids_oSubjectList, Ids_Gubun, Ids_Cours, Ids_SearchEduSubject } from './Frmprofes0002P01SubjectListPopUpData';
 
 export const useFrmprofes0002P01SubjectListPopUp = () => {
     const [ds_oSubjectList, setds_oSubjectList] = useState<Ids_oSubjectList[]>([]);

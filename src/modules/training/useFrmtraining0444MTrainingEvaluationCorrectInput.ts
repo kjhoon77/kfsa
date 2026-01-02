@@ -1,59 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioLoadedCorrect {
-    TCCOURSECD: string;
-    EESCSUBJECTCD: string;
-    EESCSUBJECTNM: string;
-    TCCOURSENM: string;
-    WRITEYN: string;
-    EECPEVALGUBUN: string;
-    EVALGUBUN: string;
-    EESCORDERSEQ: string;
-}
-
-export interface Ids_ioExcel {
-    EECPCORRECTANSWER: string;
-    EECPCORRECTCNT: string;
-    EECPITEMNO: string;
-    EECPITEMSCORE: string;
-    EECPTCCOURSECD: string;
-    EECPEVALGUBUN: string;
-    EECPSUBJECTCD: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExcelDetail {
-    EECPCORRECTANSWER: string;
-    EECPCORRECTCNT: string;
-    EECPITEMNO: string;
-    EECPITEMSCORE: string;
-    EECPTCCOURSECD: string;
-    EECPEVALGUBUN: string;
-    EECPSUBJECTCD: string;
-}
-
-export interface Ids_oAnswer {
-    EPALPHATYPE: string;
-    EPCOURSECD: string;
-    EPNUMTYPE: string;
-    EPCHASUGUBUN: string;
-    EPSUBJECTGUBUN: string;
-}
-
-export interface Ids_ioExcelCopy {
-    EECPCORRECTANSWER: string;
-    EECPCORRECTCNT: string;
-    EECPITEMNO: string;
-    EECPITEMSCORE: string;
-    EECPTCCOURSECD: string;
-    EECPEVALGUBUN: string;
-    EECPSUBJECTCD: string;
-}
+import type { Ids_ioLoadedCorrect, Ids_ioExcel, Ids_oCourse, Ids_ioExcelDetail, Ids_oAnswer, Ids_ioExcelCopy } from './Frmtraining0444MTrainingEvaluationCorrectInputData';
 
 export const useFrmtraining0444MTrainingEvaluationCorrectInput = () => {
     const [ds_ioLoadedCorrect, setds_ioLoadedCorrect] = useState<Ids_ioLoadedCorrect[]>([]);
@@ -63,6 +10,7 @@ export const useFrmtraining0444MTrainingEvaluationCorrectInput = () => {
     const [ds_oAnswer, setds_oAnswer] = useState<Ids_oAnswer[]>([]);
     const [ds_ioExcelCopy, setds_ioExcelCopy] = useState<Ids_ioExcelCopy[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -104,6 +52,8 @@ export const useFrmtraining0444MTrainingEvaluationCorrectInput = () => {
         ds_ioExcelDetail,
         ds_oAnswer,
         ds_ioExcelCopy,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Delete,
         lfn_DeleteAll,
         lfn_End,

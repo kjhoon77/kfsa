@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioEstimateList {
-}
+import type { Ids_ioEstimateList } from './FrmCOM1013PEstimateListData';
 
 export const useFrmCOM1013PEstimateList = () => {
     const [ds_ioEstimateList, setds_ioEstimateList] = useState<Ids_ioEstimateList[]>([]);

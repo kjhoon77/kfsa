@@ -1,36 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oExamOrder {
-    EOENDTIME: string;
-    EOEPMGNO: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOEXAMORDERGUBUN: string;
-    EOINETJUBSUCNT: string;
-    EOINETJUBSUYN: string;
-    EOJUBSUCNT: string;
-    EOJUBSUSTATUS: string;
-    EOMGGTMGNO: string;
-    EOMGNO: string;
-    EOSEATCNT: string;
-    EOSTARTTIME: string;
-    EOTCCOURSECD: string;
-    EOTCCOURSENM: string;
-    EOUSEYN: string;
-    EOYEAR: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-    DATA2: string;
-}
+import type { Ids_oExamOrder, Ids_oJibu, Ids_oCourse } from './Frmtraining0391PExamOrderListData';
 
 export const useFrmtraining0391PExamOrderList = () => {
     const [ds_oExamOrder, setds_oExamOrder] = useState<Ids_oExamOrder[]>([]);

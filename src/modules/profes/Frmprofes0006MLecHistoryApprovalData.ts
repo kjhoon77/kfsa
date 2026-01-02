@@ -1,7 +1,12 @@
 // @ts-nocheck
 export const Frmprofes0006MLecHistoryApprovalData = {};
 
-export const ds_ds_test = [
+export interface Ids_test {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_test: Ids_test[] = [
     { CD: '1', DATA: '' },
     { CD: '2', DATA: '' },
     { CD: '3', DATA: '' },
@@ -19,7 +24,12 @@ export const ds_ds_test = [
     { CD: '', DATA: '' },
 ];
 
-export const ds_ds_test2 = [
+export interface Ids_test2 {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_test2: Ids_test2[] = [
     { CD: '1', DATA: '' },
     { CD: '2', DATA: '' },
     { CD: '3', DATA: '' },
@@ -31,7 +41,12 @@ export const ds_ds_test2 = [
     { CD: '', DATA: '' },
 ];
 
-export const ds_ds_oRadio = [
+export interface Ids_oRadio {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oRadio: Ids_oRadio[] = [
     { CD: '1', DATA: 'A' },
     { CD: '2', DATA: 'B' },
     { CD: '3', DATA: 'C' },

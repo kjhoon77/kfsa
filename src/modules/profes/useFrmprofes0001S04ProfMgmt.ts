@@ -1,31 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioProfPaper {
-    INSACODE: string;
-    PPAUTHOR: string;
-    PPFIELD: string;
-    PPOFFICE: string;
-    PPPAGE: string;
-    PPPROFESSOR: string;
-    PPPUBDATE: string;
-    PPSEQ: string;
-    PPTITLE: string;
-    PPVOLUME: string;
-}
-
-export interface Ids_oProfPaperSingle {
-    INSACODE: string;
-    PPAUTHOR: string;
-    PPFIELD: string;
-    PPOFFICE: string;
-    PPPAGE: string;
-    PPPROFESSOR: string;
-    PPPUBDATE: string;
-    PPSEQ: string;
-    PPTITLE: string;
-    PPVOLUME: string;
-}
+import type { Ids_ioProfPaper, Ids_oProfPaperSingle } from './Frmprofes0001S04ProfMgmtData';
 
 export const useFrmprofes0001S04ProfMgmt = () => {
     const [ds_ioProfPaper, setds_ioProfPaper] = useState<Ids_ioProfPaper[]>([]);

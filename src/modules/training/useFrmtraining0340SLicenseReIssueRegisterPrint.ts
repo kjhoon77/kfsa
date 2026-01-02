@@ -1,58 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oTrainingJubsu {
-    TPMGNO: string;
-    TPEMAIL: string;
-    TPHPTEL: string;
-    IIIMGSEQ: string;
-    TCCOURSECD: string;
-    THLASTORDERSEQ: string;
-    TJADDR1: string;
-    TJADDR2: string;
-    TJAMOUNTGUBUN: string;
-    TJBULDADDR: string;
-    TJBULDNM: string;
-    TJBUNJI: string;
-    TJCOMPNM: string;
-    TJDONG: string;
-    TJFIREMANYN: string;
-    TJKU: string;
-    TJLASTHISTORYSEQ: string;
-    TJLASTREPAYYN: string;
-    TJLASTSETLMTSEQ: string;
-    TJMGNO: string;
-    TJPASSYN: string;
-    TJPERSONNM: string;
-    TJREFUNDYN: string;
-    TJREMARK: string;
-    TJREMARKCD: string;
-    TJBIRTHDAY: string;
-    TJROADNM: string;
-    TJSIDO: string;
-    TJZIPCD: string;
-    TOENDDATE: string;
-    TOJUBSUNO: string;
-    TOMGNO: string;
-    TOSTARTDATE: string;
-    TOYEAR: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oTrainingJubsu, Ids_oJibu, Ids_oGubun } from './Frmtraining0340SLicenseReIssueRegisterPrintData';
 
 export const useFrmtraining0340SLicenseReIssueRegisterPrint = () => {
     const [ds_oTrainingJubsu, setds_oTrainingJubsu] = useState<Ids_oTrainingJubsu[]>([]);
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_oGubun, setds_oGubun] = useState<Ids_oGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -91,6 +46,8 @@ export const useFrmtraining0340SLicenseReIssueRegisterPrint = () => {
         ds_oTrainingJubsu,
         ds_oJibu,
         ds_oGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

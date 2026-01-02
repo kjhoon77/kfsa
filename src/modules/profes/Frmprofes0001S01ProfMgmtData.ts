@@ -1,26 +1,68 @@
 // @ts-nocheck
 export const Frmprofes0001S01ProfMgmtData = {};
 
-export const ds_ds_oProfGubun = [
+export interface Ids_oProfGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oProfGubun: Ids_oProfGubun[] = [
     { CD: '1', DATA: '전임' },
     { CD: '2', DATA: '겸임' },
 ];
 
-export const ds_ds_oProfGubun2 = [
+export interface Ids_ioProfBasicInfo {
+    INSACODE?: string;
+    PFEDATE?: string;
+    PFGUBUN?: string;
+    PFNM?: string;
+    PFREMARK?: string;
+    PFTEAM?: string;
+    JIKRYUL?: string;
+    PFGUBUN2?: string;
+    PFGUBUN3?: string;
+    PFSTARTDATE?: string;
+    PFENDDATE?: string;
+    PFJIBU?: string;
+}
+
+export interface Ids_ioProfPersonSchool {
+    HCNM?: string;
+    PSNAME?: string;
+    PSSABUN?: string;
+    PSSUBJECT?: string;
+}
+
+export interface Ids_oProfGubun2 {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oProfGubun2: Ids_oProfGubun2[] = [
     { CD: '', DATA: ' ' },
     { CD: 'A', DATA: '교수' },
     { CD: 'B', DATA: '부교수' },
     { CD: 'C', DATA: '조교수' },
 ];
 
-export const ds_ds_oProfGubun3 = [
+export interface Ids_oProfGubun3 {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oProfGubun3: Ids_oProfGubun3[] = [
     { CD: '', DATA: ' ' },
     { CD: 'A', DATA: '교수' },
     { CD: 'B', DATA: '부교수' },
     { CD: 'C', DATA: '기타' },
 ];
 
-export const ds_ds_PFJIBU = [
+export interface Ids_PFJIBU {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_PFJIBU: Ids_PFJIBU[] = [
     { CD: '', DATA: ' ' },
     { CD: '0211', DATA: '감사실' },
     { CD: '0220', DATA: '정책연구소' },
@@ -44,3 +86,7 @@ export const ds_ds_PFJIBU = [
     { CD: '1071', DATA: '경남' },
     { CD: '1121', DATA: '제주' },
 ];
+
+export interface Ids_ioListDelete {
+    SEL?: string;
+}

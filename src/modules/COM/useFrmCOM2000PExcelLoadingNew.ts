@@ -1,19 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface IDS_EXCELLOAD {
-}
-
-export interface IDS_PARENT {
-    Title: string;
-    Column: string;
-    CellValue: string;
-}
-
-export interface IDS_CELL {
-    Column: string;
-    CellText: string;
-}
+import type { IDS_EXCELLOAD, IDS_PARENT, IDS_CELL } from './FrmCOM2000PExcelLoadingNewData';
 
 export const useFrmCOM2000PExcelLoadingNew = () => {
     const [DS_EXCELLOAD, setDS_EXCELLOAD] = useState<IDS_EXCELLOAD[]>([]);

@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './Frmspcledu0280S01PassDiplomaPrintData';
 
 export const useFrmspcledu0280S01PassDiplomaPrint = () => {
     const [isLoading, setIsLoading] = useState(false);

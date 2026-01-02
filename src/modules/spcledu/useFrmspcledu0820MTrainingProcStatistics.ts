@@ -1,28 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourseGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTrainingResult {
-}
-
-export interface Ids_ioMunjeGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oJibu, Ids_oCourseGubun, Ids_ioTrainingResult, Ids_ioMunjeGubun } from './Frmspcledu0820MTrainingProcStatisticsData';
 
 export const useFrmspcledu0820MTrainingProcStatistics = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -31,6 +9,7 @@ export const useFrmspcledu0820MTrainingProcStatistics = () => {
     const [ds_ioTrainingResult, setds_ioTrainingResult] = useState<Ids_ioTrainingResult[]>([]);
     const [ds_ioMunjeGubun, setds_ioMunjeGubun] = useState<Ids_ioMunjeGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -64,6 +43,8 @@ export const useFrmspcledu0820MTrainingProcStatistics = () => {
         ds_oCourseGubun,
         ds_ioTrainingResult,
         ds_ioMunjeGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Print,

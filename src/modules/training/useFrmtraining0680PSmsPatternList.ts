@@ -1,29 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSendGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioSmsPattern {
-    SPMGNO: string;
-    SPGTMGNO: string;
-    SPTYPE: string;
-    SPBIZGUBUN: string;
-    SPPATTERN: string;
-    SPREGDATE: string;
-    SPREGSABUN: string;
-    GTDEPTNM: string;
-    SPREGNAME: string;
-    SPTYPENM: string;
-    SPBIZGUBUNNM: string;
-}
+import type { Ids_oWorkGubun, Ids_oSendGubun, Ids_ioSmsPattern } from './Frmtraining0680PSmsPatternListData';
 
 export const useFrmtraining0680PSmsPatternList = () => {
     const [ds_oWorkGubun, setds_oWorkGubun] = useState<Ids_oWorkGubun[]>([]);

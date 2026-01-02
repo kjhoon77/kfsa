@@ -1,7 +1,179 @@
 // @ts-nocheck
 export const Frmtraining0020MTrainingJubsuManagementData = {};
 
-export const ds_ds_oModifyColumn = [
+export interface Ids_ioTrainingJubsu {
+    ABSENTDAY?: string;
+    ABSENTYN?: string;
+    ADDR1?: string;
+    ADDR2?: string;
+    AUTHYN?: string;
+    BARCODE?: string;
+    COMPNM?: string;
+    COURSECD?: string;
+    COURSEMUNJECD?: string;
+    COURSENM?: string;
+    DECISIONSEATNO?: number;
+    EMAILDOMAIN?: string;
+    EMAILID?: string;
+    HPTEL?: string;
+    IIDIRPATH?: string;
+    IIIMGSEQ?: number;
+    IIREALNM?: string;
+    IISAVENM?: string;
+    JUBSUNO?: string;
+    LASTIMGSEQ?: number;
+    LASTSUNAPGUBUN?: string;
+    LASTTJHSEQ?: number;
+    LASTTOHSEQ?: number;
+    LASTTSSEQ?: number;
+    MGJIBUCD?: string;
+    MGJIBUNICK?: string;
+    MGJIBUNM?: string;
+    MUNJEGUBUN?: string;
+    PASSYN?: string;
+    PERSONNM?: string;
+    REMARK?: string;
+    REMARKCD?: string;
+    RESIDENTNO?: string;
+    TEL?: string;
+    TJMGNO?: number;
+    TPMGNO?: number;
+    TOMGNO?: number;
+    TORDER?: string;
+    YEAR?: string;
+    ZIPCD?: string;
+    IIIMGBINARY?: string;
+    TJFIREMANYN?: string;
+    TJADDRGUBUN?: string;
+    TJRPNUCD?: string;
+    TJRROADBUILDMGNO?: string;
+    TJRROADDETAIL?: string;
+    TJRROADREMAIN?: string;
+    TJRSANGUBUN?: string;
+    TJRMAINBUNJI?: string;
+    TJRSUBBUNJI?: string;
+    TJRBUILDNM?: string;
+    TJRADDRETC?: string;
+    TJRCONVPGM?: string;
+    TJRCONVSTATUS?: string;
+    TJMEMAGREEGUBUN?: string;
+    TJAMOUNTGUBUN?: string;
+    EVALYN?: string;
+    BIRTHDAY?: string;
+    PERSONKEY?: string;
+    DI?: string;
+    CI?: string;
+    CIVER?: string;
+    BIRTHDAY7?: string;
+    TOONLINEGUBUN?: string;
+    TOONLINEGUBUNNM?: string;
+    TPBOOKZIPCD?: string;
+    TPBOOKADDR1?: string;
+    TPBOOKADDR2?: string;
+    TJTASKSUBMITGUBUN?: string;
+    TJTASKSUBMITGUBUNNM?: string;
+    TJBOOKRETURNYN?: string;
+    TJBOOKPRINTTOMGNO?: string;
+    PRNO?: string;
+}
+
+export interface Ids_oJibu {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oCourse {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oEmailDomain {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oImage {
+    FILE_NAME?: string;
+    SHORT_FILE_NAME?: string;
+    FILE_SIZE?: number;
+    CREATE_DATE?: string;
+    UPDATE_DATE?: string;
+    ACCESS_DATE?: string;
+    ATTR_ARCHIVE?: number;
+    ATTR_SYSTEM?: number;
+    ATTR_HIDDEN?: number;
+    ATTR_READONLY?: number;
+    ATTR_DIRECTORY?: number;
+}
+
+export interface Ids_oRemarkGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oTrainingOrderMgno {
+}
+
+export interface Ids_oJubsuNo {
+}
+
+export interface Ids_oSeatNo {
+}
+
+export interface Ids_oJubsuAllInfo {
+    COURSECD?: string;
+    COURSEMUNJECD?: string;
+    JUBSUNO?: string;
+    LASTSUNAPGUBUN?: string;
+    MGJIBUCD?: string;
+    PASSDATE?: string;
+    TJMGNO?: number;
+    TJPASSYN?: string;
+    TOMGNO?: number;
+    TORDER?: string;
+    YEAR?: string;
+}
+
+export interface Ids_oOrderHist {
+    ABSENTYN?: string;
+    AFTERJIBU?: string;
+    AFTERJUBSUNO?: string;
+    AFTERMGNO?: number;
+    AFTERORDER?: string;
+    BEFORJIBU?: string;
+    BEFORJUBSUNO?: string;
+    BEFORMGNO?: number;
+    BEFORORDER?: string;
+    LASTSUNAPGUBUN?: string;
+    TJLASTSUNAPGUBUN?: string;
+    TJMGNO?: number;
+    TOHSEQ?: number;
+    BEFORTOTCCOURSECD?: string;
+    BEFORTOMUNJEGUBUN?: string;
+}
+
+export interface Ids_oSetlmentHist {
+}
+
+export interface Ids_ioMenuTree {
+    MORDERSEQ?: string;
+    MMENUID?: string;
+    MENULEVEL?: string;
+    MPARENTMENUID?: string;
+    MMENUNM?: string;
+    USE_YN?: string;
+    MURL?: string;
+    MREMARK?: string;
+    MURLTYPE?: string;
+    MSYSGUBUN?: string;
+}
+
+export interface Ids_oModifyColumn {
+    COLUMNCD?: string;
+    COLUMNNM?: string;
+}
+
+export const ds_ds_oModifyColumn: Ids_oModifyColumn[] = [
     { COLUMNCD: 'PERSONNM', COLUMNNM: '성명' },
     { COLUMNCD: 'RESIDENTNO', COLUMNNM: '주민번호' },
     { COLUMNCD: 'ZIPCD', COLUMNNM: '우편번호' },
@@ -37,37 +209,159 @@ export const ds_ds_oModifyColumn = [
     { COLUMNCD: 'TJBOOKRETURNYN', COLUMNNM: '교재반납여부' },
 ];
 
-export const ds_ds_oJibuGubun = [
+export interface Ids_oTrainingJubsuResult {
+}
+
+export interface Ids_oTrainingJubsuPrint {
+}
+
+export interface Ids_oTrainingOrder {
+}
+
+export interface Ids_oPosResult {
+}
+
+export interface Ids_oTrainingJubsuPrint1 {
+}
+
+export interface Ids_oTrainingJubsuPrint2 {
+}
+
+export interface Ids_oTrainingJubsuPrint3 {
+}
+
+export interface Ids_oTrainingCheck {
+}
+
+export interface Ids_oJibuGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oJibuGubun: Ids_oJibuGubun[] = [
     { CD: 'S', DATA: '소속지부접수' },
     { CD: 'T', DATA: '타지부접수' },
 ];
 
-export const ds_ds_oChangeTpmgno = [
+export interface Ids_oTrainingPearson {
+}
+
+export interface Ids_oChangeTpmgno {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oChangeTpmgno: Ids_oChangeTpmgno[] = [
     { CD: 'S', DATA: '조회' },
     { CD: 'C', DATA: '성명/주민번호 변경' },
 ];
 
-export const ds_ds_ioSettelYN = [
+export interface Ids_ioYearbizlink {
+}
+
+export interface Ids_ioT_E_L_JubsuCheck {
+}
+
+export interface Ids_ioTraing_JubsuCheck {
+}
+
+export interface Ids_ioTraing_ReturnTpmgnoJubsuCheck {
+}
+
+export interface Ids_ioTrainingPerson {
+}
+
+export interface Ids_ioSettelYN {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_ioSettelYN: Ids_ioSettelYN[] = [
     { CD: 'Y', DATA: '입금' },
     { CD: 'N', DATA: '미입금' },
 ];
 
-export const ds_ds_oAddr = [
+export interface Ids_oEducationNo {
+}
+
+export interface Ids_ioControl {
+    No?: string;
+}
+
+export interface Ids_ioTraingSeatNoCheck {
+}
+
+export interface Ids_oSiteMember {
+}
+
+export interface Ids_oCyberLearning {
+    CLPROGRESSPCT?: string;
+    CLPROGRESSSCORE?: string;
+    CLEXAMSCORE?: string;
+    CLHOMEWORKSCORE?: string;
+    CLDISCUSSSCORE?: string;
+    CLPASSSCORE?: string;
+    CLTJMGNO?: string;
+    CPPASSSTATUS?: string;
+}
+
+export interface Ids_oCyberPass {
+    CPPROGRESSPCT?: string;
+    CPPASSSCORE?: string;
+    CPPASSSTATUS?: string;
+}
+
+export interface Ids_oAddr {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oAddr: Ids_oAddr[] = [
     { CD: '0', DATA: '지번주소' },
     { CD: '1', DATA: '도로명주소' },
 ];
 
-export const ds_ds_oYN = [
+export interface Ids_oYN {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oYN: Ids_oYN[] = [
     { CD: 'Y', DATA: '예' },
     { CD: 'N', DATA: '아니오' },
 ];
 
-export const ds_ds_oAmountGubun = [
+export interface Ids_ioManager {
+    MMGNO?: string;
+    FMLASTFMHSEQ?: string;
+    FMRESIDENTERR?: string;
+}
+
+export interface Ids_oMemberStatus {
+}
+
+export interface Ids_oDeleteSettlement {
+}
+
+export interface Ids_oAmountGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oAmountGubun: Ids_oAmountGubun[] = [
     { CD: 'B', DATA: '선불' },
     { CD: 'A', DATA: '후불' },
 ];
 
-export const ds_ds_oForm = [
+export interface Ids_oExamCheat {
+}
+
+export interface Ids_oForm {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oForm: Ids_oForm[] = [
     { CD: '', DATA: '선택' },
     { CD: '0002', DATA: '강습교육 일정변경신청서' },
     { CD: '0003', DATA: '강습교육 환불신청서' },
@@ -82,12 +376,76 @@ export const ds_ds_oForm = [
     { CD: '0053', DATA: '심폐소생술전문자격 환불신청서' },
 ];
 
-export const ds_ds_oBookReturn = [
+export interface Ids_iFormSave {
+    I_PROC?: string;
+    I_FCCD?: string;
+    I_FAMGNO?: string;
+    I_PK1VAL?: string;
+    I_PK2VAL?: string;
+    I_FRDATE?: string;
+    I_PATH?: string;
+    I_FILENM?: string;
+}
+
+export interface Ids_oFormSave {
+}
+
+export interface Ids_iFormDelete {
+    I_FCCD?: string;
+    I_FAMGNO?: string;
+    I_PK1VAL?: string;
+    I_PK2VAL?: string;
+    I_PATH?: string;
+    I_FILENM?: string;
+}
+
+export interface Ids_oFormDelete {
+}
+
+export interface Ids_ioScicheck {
+}
+
+export interface Ids_oTrainingJubsuPrint4 {
+}
+
+export interface Ids_oModifyTime {
+}
+
+export interface Ids_oTaskList {
+}
+
+export interface Ids_oBookReturn {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oBookReturn: Ids_oBookReturn[] = [
     { CD: 'Y', DATA: '반납' },
     { CD: 'N', DATA: '미반납' },
 ];
 
-export const ds_ds_oTaskGubun = [
+export interface Ids_iTaskSave {
+    TASKGUBUN?: string;
+    TJMGNO?: string;
+    PATH?: string;
+    FILENM?: string;
+}
+
+export interface Ids_oTaskGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oTaskGubun: Ids_oTaskGubun[] = [
     { CD: '1', DATA: '1차' },
     { CD: '2', DATA: '2차' },
 ];
+
+export interface Ids_oResult_check {
+    CAGGUBUN?: string;
+    LTCCOURSECD?: string;
+    MANAGE_ENTRPS_VRSC_AT?: string;
+}
+
+export interface Ids_oSmsData {
+}

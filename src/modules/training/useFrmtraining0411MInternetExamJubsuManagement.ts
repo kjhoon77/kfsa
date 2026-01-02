@@ -1,96 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oExamJusu {
-    ENDJUBSUDATE: string;
-    GTDEPTNM: string;
-    STAREJUBSUDATE: string;
-    TCCOURSENM: string;
-    EJHSTATUSCD: string;
-    EJHSTATUSNM: string;
-    EJHTSSEQ: string;
-    EJMGNO: string;
-    EJPERSONNM: string;
-    EOHJUBSUGUBUN: string;
-    EOHJUBSUGUBUNNM: string;
-    EOHJUBSUNO: string;
-    EOMGGTMGNO: string;
-    EOMGNO: string;
-    EOTCCOURSECD: string;
-    EOEXAMORDER: string;
-    EOYEAR: string;
-}
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJubsuStatus1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oProcGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJubsuStatus2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJubsuStatus3 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInternetReport {
-    EJPERSONNM: string;
-    EJBIRTHDAY: string;
-    TPTEL: string;
-    TPHPTEL: string;
-    EJZZIPCD: string;
-    EJADDR: string;
-    TCCOURSENM: string;
-    EOEXAMORDER: string;
-    EOHJUBSUNO: string;
-    ESPROCAMOUNT: string;
-    EJHPROCREASON: string;
-    EJHPROCDATE: string;
-    PPAOWNER: string;
-    PPABANKNM: string;
-    PPACCOUNT: string;
-}
-
-export interface Ids_oInternetReportAll {
-    EJPERSONNM: string;
-    EJBIRTHDAY: string;
-    TPTEL: string;
-    TPHPTEL: string;
-    EJZZIPCD: string;
-    EJADDR: string;
-    TCCOURSENM: string;
-    EOEXAMORDER: string;
-    EOHJUBSUNO: string;
-    ESPROCAMOUNT: string;
-    EJHPROCREASON: string;
-    EJHPROCDATE: string;
-    PPAOWNER: string;
-    PPABANKNM: string;
-    PPACCOUNT: string;
-}
+import type { Ids_oExamJusu, Ids_oWorkGubun, Ids_oCourse, Ids_oJibu, Ids_oJubsuStatus1, Ids_oProcGubun, Ids_oJubsuStatus2, Ids_oJubsuStatus3, Ids_oInternetReport, Ids_oInternetReportAll } from './Frmtraining0411MInternetExamJubsuManagementData';
 
 export const useFrmtraining0411MInternetExamJubsuManagement = () => {
     const [ds_oExamJusu, setds_oExamJusu] = useState<Ids_oExamJusu[]>([]);
@@ -104,6 +14,7 @@ export const useFrmtraining0411MInternetExamJubsuManagement = () => {
     const [ds_oInternetReport, setds_oInternetReport] = useState<Ids_oInternetReport[]>([]);
     const [ds_oInternetReportAll, setds_oInternetReportAll] = useState<Ids_oInternetReportAll[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -159,6 +70,8 @@ export const useFrmtraining0411MInternetExamJubsuManagement = () => {
         ds_oJubsuStatus3,
         ds_oInternetReport,
         ds_oInternetReportAll,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnPrint_OnClick,
         btnToExcel_OnClick,

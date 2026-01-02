@@ -1,60 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJikwi {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ProfesList {
-    LDPFMGNO: string;
-    LDPFNAME: string;
-    NAME: string;
-    GTDEPTNM: string;
-    GUBUN: string;
-    GUBUNCD: string;
-    JIKWI: string;
-    SUMCNT: string;
-    SUMTIME: string;
-    CNT1: string;
-    TIME1: string;
-    CNT2: string;
-    TIME2: string;
-}
-
-export interface Ids_SearchJogeon {
-    STARTDATE: string;
-    ENDDATE: string;
-    JIBU: string;
-    JIKWI: string;
-    GUBUN: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ProfesList_Chart {
-    LDPFMGNO: string;
-    LDPFNAME: string;
-    NAME: string;
-    GTDEPTNM: string;
-    GUBUN: string;
-    GUBUNCD: string;
-    JIKWI: string;
-    SUMCNT: string;
-    SUMTIME: string;
-    CNT1: string;
-    TIME1: string;
-    CNT2: string;
-    TIME2: string;
-}
+import type { Ids_oJikwi, Ids_oGubun, Ids_ProfesList, Ids_SearchJogeon, Ids_oJibu, Ids_ProfesList_Chart } from './Frmprofes0013MPersonLecH20240305Data';
 
 export const useFrmprofes0013MPersonLecH20240305 = () => {
     const [ds_oJikwi, setds_oJikwi] = useState<Ids_oJikwi[]>([]);
@@ -64,6 +10,8 @@ export const useFrmprofes0013MPersonLecH20240305 = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_ProfesList_Chart, setds_ProfesList_Chart] = useState<Ids_ProfesList_Chart[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [tabValue_TAB_Profes, setTabValue_TAB_Profes] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -102,6 +50,10 @@ export const useFrmprofes0013MPersonLecH20240305 = () => {
         ds_SearchJogeon,
         ds_oJibu,
         ds_ProfesList_Chart,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        tabValue_TAB_Profes,
+        setTabValue_TAB_Profes,
         btnToExcel_OnClick,
         lfn_End,
         lfn_Print,

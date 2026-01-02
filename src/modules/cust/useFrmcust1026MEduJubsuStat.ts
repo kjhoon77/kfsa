@@ -1,34 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduJubsuStat {
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioReport {
-}
-
-export interface Ids_ioReportFilter {
-}
-
-export interface Ids_ioSerchGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCyberGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oEduJubsuStat, Ids_oJibu, Ids_ioReport, Ids_ioReportFilter, Ids_ioSerchGubun, Ids_oCyberGubun } from './Frmcust1026MEduJubsuStatData';
 
 export const useFrmcust1026MEduJubsuStat = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -39,6 +11,7 @@ export const useFrmcust1026MEduJubsuStat = () => {
     const [ds_ioSerchGubun, setds_ioSerchGubun] = useState<Ids_ioSerchGubun[]>([]);
     const [ds_oCyberGubun, setds_oCyberGubun] = useState<Ids_oCyberGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -79,6 +52,8 @@ export const useFrmcust1026MEduJubsuStat = () => {
         ds_ioReportFilter,
         ds_ioSerchGubun,
         ds_oCyberGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnToExcel_OnClick,
         lfn_Cancel,
         lfn_End,

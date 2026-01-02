@@ -1,56 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAgreeList {
-}
-
-export interface Ids_oCompare {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAgreeCnt {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_ioCourseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_iAgreeList {
-    SJIBU: string;
-    SCOURSE: string;
-    SFMNM: string;
-    SISHP: string;
-}
+import type { Ids_oCourse, Ids_oJibu, Ids_oAgreeList, Ids_oCompare, Ids_oAgreeCnt, Ids_ioChoiceYn, Ids_oRegion, Ids_ioCourseYn, Ids_ioCourse, Ids_iAgreeList } from './Frmcust0210MAgreeManagementData';
 
 export const useFrmcust0210MAgreeManagement = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -64,6 +14,7 @@ export const useFrmcust0210MAgreeManagement = () => {
     const [ds_ioCourse, setds_ioCourse] = useState<Ids_ioCourse[]>([]);
     const [ds_iAgreeList, setds_iAgreeList] = useState<Ids_iAgreeList[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -116,6 +67,8 @@ export const useFrmcust0210MAgreeManagement = () => {
         ds_ioCourseYn,
         ds_ioCourse,
         ds_iAgreeList,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_End,

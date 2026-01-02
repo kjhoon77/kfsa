@@ -1,37 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioZipCode {
-    CREATE_DATE: string;
-    CREATE_ID: string;
-    JJIBUCD: string;
-    MODIFY_DATE: string;
-    MODIFY_ID: string;
-    ZBUNJI: string;
-    ZDONG: string;
-    ZHO: string;
-    ZKU: string;
-    ZREGIONCD: string;
-    ZSEQ: string;
-    ZSIDO: string;
-    ZZIPCD: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioZipCode, Ids_oJibu, Ids_oRegion } from './Frmsys0050MZipCodeManagementData';
 
 export const useFrmsys0050MZipCodeManagement = () => {
     const [ds_ioZipCode, setds_ioZipCode] = useState<Ids_ioZipCode[]>([]);
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_oRegion, setds_oRegion] = useState<Ids_oRegion[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -76,6 +52,8 @@ export const useFrmsys0050MZipCodeManagement = () => {
         ds_ioZipCode,
         ds_oJibu,
         ds_oRegion,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_Delete,

@@ -1,14 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oLectureSeq {
-    SEQ: string;
-}
-
-export interface Ids_oOrder {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oLectureSeq, Ids_oOrder } from './Frmprofes0005P03EduUnionData';
 
 export const useFrmprofes0005P03EduUnion = () => {
     const [ds_oLectureSeq, setds_oLectureSeq] = useState<Ids_oLectureSeq[]>([]);

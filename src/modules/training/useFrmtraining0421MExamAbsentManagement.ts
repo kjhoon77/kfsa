@@ -1,50 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamAbsent {
-    EJADDR1: string;
-    EJADDR2: string;
-    EJMGNO: string;
-    EJPERSONNM: string;
-    EJBIRTHDAY: string;
-    EOEXAMDATE: string;
-    EOHJUBSUNO: string;
-    BIRTHDAY: string;
-    EOMGJIBUCD: string;
-    EOYEAR: string;
-    EOTCCOURSECD: string;
-    EOEXAMORDER: string;
-    SEL: string;
-    EAGUBUN: string;
-    EA1CHASU: string;
-    EA2CHASU: string;
-    EJCHASUGUBUN: string;
-    CHASUGUBUN: string;
-    EAOLDGUBUN: string;
-    EAOLD1CHASU: string;
-    EAOLD2CHASU: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAbsentChasuGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamJubsuCnt {
-    TJMGNO: string;
-    TOTCCOURSECD: string;
-    TOMUNJEGUBUN: string;
-}
+import type { Ids_ioExamAbsent, Ids_oCourse, Ids_oJibu, Ids_oAbsentChasuGubun, Ids_oExamJubsuCnt } from './Frmtraining0421MExamAbsentManagementData';
 
 export const useFrmtraining0421MExamAbsentManagement = () => {
     const [ds_ioExamAbsent, setds_ioExamAbsent] = useState<Ids_ioExamAbsent[]>([]);
@@ -53,6 +9,7 @@ export const useFrmtraining0421MExamAbsentManagement = () => {
     const [ds_oAbsentChasuGubun, setds_oAbsentChasuGubun] = useState<Ids_oAbsentChasuGubun[]>([]);
     const [ds_oExamJubsuCnt, setds_oExamJubsuCnt] = useState<Ids_oExamJubsuCnt[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -101,6 +58,8 @@ export const useFrmtraining0421MExamAbsentManagement = () => {
         ds_oJibu,
         ds_oAbsentChasuGubun,
         ds_oExamJubsuCnt,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnCancelAbsent_OnClick,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,

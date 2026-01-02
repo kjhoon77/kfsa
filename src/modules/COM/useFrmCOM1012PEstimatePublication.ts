@@ -1,28 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioTrainingPerson {
-    TPMGNO: string;
-    TPNM: string;
-    TPPERSONKEY: string;
-    KEY: string;
-}
-
-export interface Ids_ModifyGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEstimate {
-    O_RTNSTAT: string;
-    O_RTNMSG: string;
-}
+import type { Ids_ioTrainingPerson, Ids_ModifyGubun, Ids_oEstimate } from './FrmCOM1012PEstimatePublicationData';
 
 export const useFrmCOM1012PEstimatePublication = () => {
     const [ds_ioTrainingPerson, setds_ioTrainingPerson] = useState<Ids_ioTrainingPerson[]>([]);
     const [ds_ModifyGubun, setds_ModifyGubun] = useState<Ids_ModifyGubun[]>([]);
     const [ds_oEstimate, setds_oEstimate] = useState<Ids_oEstimate[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -46,6 +31,8 @@ export const useFrmCOM1012PEstimatePublication = () => {
         ds_ioTrainingPerson,
         ds_ModifyGubun,
         ds_oEstimate,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnEstimate_OnClick,
         lfn_End,
     };

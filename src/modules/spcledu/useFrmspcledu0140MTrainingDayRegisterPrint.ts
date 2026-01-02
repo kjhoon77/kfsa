@@ -1,34 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingDayRegisterPrint {
-    LDEDUTIME: string;
-    LDPFNAME: string;
-    LDSEQ: string;
-    LDSJSEQ: string;
-    SJTITLE: string;
-    TOENDDATE: string;
-    TOSTARTDATE: string;
-}
-
-export interface Ids_oTrainingDayRegisterTemp {
-    TODATE: string;
-    YOIL: string;
-    LDEDUTIME: string;
-    SJTITLE: string;
-    LDPFNAME: string;
-    TOTCCOURSENM: string;
-}
+import type { Ids_oCourse, Ids_oJibu, Ids_oTrainingDayRegisterPrint, Ids_oTrainingDayRegisterTemp } from './Frmspcledu0140MTrainingDayRegisterPrintData';
 
 export const useFrmspcledu0140MTrainingDayRegisterPrint = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -36,6 +8,7 @@ export const useFrmspcledu0140MTrainingDayRegisterPrint = () => {
     const [ds_oTrainingDayRegisterPrint, setds_oTrainingDayRegisterPrint] = useState<Ids_oTrainingDayRegisterPrint[]>([]);
     const [ds_oTrainingDayRegisterTemp, setds_oTrainingDayRegisterTemp] = useState<Ids_oTrainingDayRegisterTemp[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -67,6 +40,8 @@ export const useFrmspcledu0140MTrainingDayRegisterPrint = () => {
         ds_oJibu,
         ds_oTrainingDayRegisterPrint,
         ds_oTrainingDayRegisterTemp,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_PrintScreen,

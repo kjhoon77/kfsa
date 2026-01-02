@@ -1,12 +1,39 @@
 // @ts-nocheck
 export const Frmspcledu0661MExamNumberTypeScoreStatisticsData = {};
 
-export const ds_ds_oSearchGubun = [
+export interface Ids_oCourse {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oJibu {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oSearchGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oSearchGubun: Ids_oSearchGubun[] = [
     { CD: 'ORDER', DATA: '회차조회' },
     { CD: 'DATE', DATA: '일자조회' },
 ];
 
-export const ds_ds_oExamRepeat = [
+export interface Ids_oExamNumberTypeStat {
+}
+
+export interface Ids_oExamJubsuCnt {
+    JUPSUCNT?: string;
+}
+
+export interface Ids_oExamRepeat {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oExamRepeat: Ids_oExamRepeat[] = [
     { CD: '0', DATA: '최종차수' },
     { CD: '1', DATA: '평가1차' },
     { CD: '2', DATA: '평가2차' },
@@ -15,7 +42,12 @@ export const ds_ds_oExamRepeat = [
     { CD: '5', DATA: '평가5차' },
 ];
 
-export const ds_ds_oExamNumberType = [
+export interface Ids_oExamNumberType {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oExamNumberType: Ids_oExamNumberType[] = [
     { CD: '', DATA: '전체' },
     { CD: '01', DATA: '1종' },
     { CD: '02', DATA: '2종' },

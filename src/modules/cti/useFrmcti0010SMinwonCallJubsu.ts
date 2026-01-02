@@ -1,128 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioGubun1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioGubun2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioGubun3 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oHMinwonCallList {
-}
-
-export interface Ids_ioMinwonCall {
-    MWMGNO: string;
-    MWRECVTEL: string;
-    MWNM: string;
-    MWHP: string;
-    MWTEL: string;
-    MWMAIL: string;
-    MWFAX: string;
-    MWPERSONKEY: string;
-    MWGUBUN: string;
-    MWREMARK: string;
-    IPSABUN: string;
-    CIMGNO: string;
-    CIMWMGNO: string;
-    CIDATE: string;
-    CIKEMS: string;
-    CIPROCGUBUN: string;
-    CICALLBACKTEL: string;
-    CISTATUS: string;
-    CIGRCD: string;
-    CICD: string;
-    CICONENTS: string;
-    CHG_MWMGNO: string;
-    CICALLGUBUN: string;
-    CICALLDN: string;
-    CIREMOTEGUBUN: string;
-    CIREMOTESABUN: string;
-    CIREMOTESTATUS: string;
-    CIREMOTEGUBUNYN: string;
-}
-
-export interface Ids_oMinwonCallList {
-}
-
-export interface Ids_oCallCode {
-}
-
-export interface Ids_oCallCode1Cha {
-}
-
-export interface Ids_oCallCode2Cha {
-}
-
-export interface Ids_oResult {
-    O_MWMGNO_SEQ: string;
-    O_CIMGNO_SEQ: string;
-}
-
-export interface Ids_iSearhGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oHMinwonCallRow {
-}
-
-export interface Ids_ioUserList {
-}
-
-export interface Ids_ioDeptList {
-}
-
-export interface Ids_oCallCode1ChaH1 {
-}
-
-export interface Ids_oCallCode2ChaH1 {
-}
-
-export interface Ids_oCallCode1ChaH2 {
-}
-
-export interface Ids_oCallCode2ChaH2 {
-}
-
-export interface Ids_oMinwonTemp {
-}
-
-export interface Ids_ioGubun4 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioGubun1S {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioGubun2S {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioGubun5 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioGubun6 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRemoteUser {
-}
+import type { Ids_ioGubun1, Ids_ioGubun2, Ids_ioGubun3, Ids_oHMinwonCallList, Ids_ioMinwonCall, Ids_oMinwonCallList, Ids_oCallCode, Ids_oCallCode1Cha, Ids_oCallCode2Cha, Ids_oResult, Ids_iSearhGubun, Ids_oHMinwonCallRow, Ids_ioUserList, Ids_ioDeptList, Ids_oCallCode1ChaH1, Ids_oCallCode2ChaH1, Ids_oCallCode1ChaH2, Ids_oCallCode2ChaH2, Ids_oMinwonTemp, Ids_ioGubun4, Ids_ioGubun1S, Ids_ioGubun2S, Ids_ioGubun5, Ids_ioGubun6, Ids_oRemoteUser } from './Frmcti0010SMinwonCallJubsuData';
 
 export const useFrmcti0010SMinwonCallJubsu = () => {
     const [ds_ioGubun1, setds_ioGubun1] = useState<Ids_ioGubun1[]>([]);
@@ -151,6 +29,11 @@ export const useFrmcti0010SMinwonCallJubsu = () => {
     const [ds_ioGubun6, setds_ioGubun6] = useState<Ids_ioGubun6[]>([]);
     const [ds_oRemoteUser, setds_oRemoteUser] = useState<Ids_oRemoteUser[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_Div0, setIsVisible_Div0] = useState(true);
+    const [isVisible_Div0, setIsVisible_Div0] = useState(true);
+    const [isVisible_Div0, setIsVisible_Div0] = useState(true);
+    const [isVisible_Div0, setIsVisible_Div0] = useState(true);
+    const [tabValue_tab, setTabValue_tab] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -254,6 +137,16 @@ export const useFrmcti0010SMinwonCallJubsu = () => {
         ds_ioGubun5,
         ds_ioGubun6,
         ds_oRemoteUser,
+        isVisible_Div0,
+        setIsVisible_Div0,
+        isVisible_Div0,
+        setIsVisible_Div0,
+        isVisible_Div0,
+        setIsVisible_Div0,
+        isVisible_Div0,
+        setIsVisible_Div0,
+        tabValue_tab,
+        setTabValue_tab,
         btnExcel_OnClick,
         btnMinwon_OnClick,
         btnSave_OnClick,

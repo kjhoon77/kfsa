@@ -1,42 +1,137 @@
 // @ts-nocheck
 export const Frmcust1010MEduScheduleData = {};
 
-export const ds_ds_oUseYn = [
+export interface Ids_ioTrainingOrder {
+    ESMGNO?: string;
+    ESGTMGNO?: string;
+    ESYEAR?: string;
+    ESCOUSECD?: string;
+    CNM?: string;
+    ESDATE?: string;
+    MESTARTTIME?: string;
+    ESENDTIME?: string;
+    ESEPMGNO?: string;
+    EPNM?: string;
+    ESPREPARED?: string;
+    edudate?: string;
+    edutime?: string;
+    ESGUBUN?: string;
+    ESINETOPENYN?: string;
+    ESINETCLOSEDATE?: string;
+    ESSTUDENT?: string;
+    EPSAVENM?: string;
+    ESSUBJECTGUBUN?: string;
+    ESSEATCNT?: string;
+    ESACCESSCNT?: string;
+    ESINETJUBSUCNT?: string;
+    ESORDERNOYN?: string;
+    ESNOTICE?: string;
+    ESEDUORDER?: string;
+    ESEDUTYPE?: string;
+    ESEDUREGION?: string;
+    ESAUTOMSGGUBUN?: string;
+    ESAUTODATE?: string;
+    ESBSMGNO?: string;
+    ESCYBERSTARTDATE?: string;
+    ESCYBERENDDATE?: string;
+    ESJUBSUSTARTDATE?: string;
+    ESJUBSUENDDATE?: string;
+    ESONLINEID?: string;
+    ESONLINEPWD?: string;
+}
+
+export interface Ids_oUseYn {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oUseYn: Ids_oUseYn[] = [
     { CD: '0', DATA: '사용' },
     { CD: '1', DATA: '폐기' },
 ];
 
-export const ds_ds_oInetJubsuYn = [
+export interface Ids_oInetJubsuYn {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oInetJubsuYn: Ids_oInetJubsuYn[] = [
     { CD: '0', DATA: '사용' },
     { CD: '1', DATA: '미사용' },
 ];
 
-export const ds_ds_METARGET = [
+export interface Ids_METARGET {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_METARGET: Ids_METARGET[] = [
     { CD: '0', DATA: '실무교육' },
     { CD: '1', DATA: '제연설비교육' },
 ];
 
-export const ds_ds_MECOURSE = [
+export interface Ids_MECOURSE {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_MECOURSE: Ids_MECOURSE[] = [
     { CD: '0', DATA: '기본교육' },
     { CD: '2', DATA: '특별교육' },
     { CD: '4', DATA: '전문교육' },
 ];
 
-export const ds_ds_MEDAYGUBUNCD = [
+export interface Ids_MEDAYGUBUNCD {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_MEDAYGUBUNCD: Ids_MEDAYGUBUNCD[] = [
     { CD: '0', DATA: '0. 평일 주간' },
     { CD: '1', DATA: '1. 평일 야간' },
     { CD: '2', DATA: '2. 휴일 주간' },
     { CD: '3', DATA: '3. 휴일 야간' },
 ];
 
-export const ds_ds_oInternetJubsuStatus = [
+export interface Ids_oInternetJubsuStatus {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oInternetJubsuStatus: Ids_oInternetJubsuStatus[] = [
     { CD: '0', DATA: '0. 신청' },
     { CD: '1', DATA: '1. 마감' },
     { CD: '2', DATA: '2. 접수예정' },
     { CD: '3', DATA: '3. 일정안보이기' },
 ];
 
-export const ds_ds_oModifyColumn = [
+export interface Ids_Jibu {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oCourse {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_ioExamRoomMinimap {
+}
+
+export interface Ids_oJibu {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oTrainingOrderMgno {
+}
+
+export interface Ids_oModifyColumn {
+    COLUMNCD?: string;
+    COLUMNNM?: string;
+}
+
+export const ds_ds_oModifyColumn: Ids_oModifyColumn[] = [
     { COLUMNCD: 'ESMGNO', COLUMNNM: '실무교육일정관리번호' },
     { COLUMNCD: 'ESYEAR', COLUMNNM: '년도' },
     { COLUMNCD: 'ESGTMGNO', COLUMNNM: '지부' },
@@ -68,7 +163,12 @@ export const ds_ds_oModifyColumn = [
     { COLUMNCD: 'ESJUBSUENDDATE', COLUMNNM: '접수종료일' },
 ];
 
-export const ds_ds_oEduType1 = [
+export interface Ids_oEduType1 {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oEduType1: Ids_oEduType1[] = [
     { CD: '0', DATA: '입문반' },
     { CD: '1', DATA: '일반반' },
     { CD: '2', DATA: '중급반' },
@@ -76,22 +176,42 @@ export const ds_ds_oEduType1 = [
     { CD: '4', DATA: '업무대행자반' },
 ];
 
-export const ds_ds_oEduType2 = [
+export interface Ids_oEduType2 {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oEduType2: Ids_oEduType2[] = [
     { CD: '0', DATA: '입문반' },
     { CD: '1', DATA: '일반반' },
     { CD: '2', DATA: '중급반' },
 ];
 
-export const ds_ds_oEduType3 = [
+export interface Ids_oEduType3 {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oEduType3: Ids_oEduType3[] = [
     { CD: '0', DATA: '정기반' },
 ];
 
-export const ds_ds_oSendYN = [
+export interface Ids_oSendYN {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oSendYN: Ids_oSendYN[] = [
     { CD: '1', DATA: '발송' },
     { CD: '0', DATA: '미발송' },
 ];
 
-export const ds_ds_oEduType10 = [
+export interface Ids_oEduType10 {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oEduType10: Ids_oEduType10[] = [
     { CD: '11', DATA: '특급·1급' },
     { CD: '12', DATA: '2급' },
     { CD: '13', DATA: '3급' },
@@ -105,12 +225,22 @@ export const ds_ds_oEduType10 = [
     { CD: '27', DATA: '공동주택' },
 ];
 
-export const ds_ds_oEduType20 = [
+export interface Ids_oEduType20 {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oEduType20: Ids_oEduType20[] = [
     { CD: '10', DATA: '기초반' },
     { CD: '11', DATA: '심화반' },
 ];
 
-export const ds_ds_oEduType30 = [
+export interface Ids_oEduType30 {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oEduType30: Ids_oEduType30[] = [
     { CD: '10', DATA: '제조소·취급소' },
     { CD: '11', DATA: '저장소' },
     { CD: '12', DATA: '옥외탱크저장소' },
@@ -121,7 +251,12 @@ export const ds_ds_oEduType30 = [
     { CD: '34', DATA: '판매취급소' },
 ];
 
-export const ds_ds_oEduType50 = [
+export interface Ids_oEduType50 {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oEduType50: Ids_oEduType50[] = [
     { CD: '14', DATA: '설계업(기본)' },
     { CD: '09', DATA: '설계업(심화)' },
     { CD: '13', DATA: '공사업(기본)' },
@@ -134,29 +269,59 @@ export const ds_ds_oEduType50 = [
     { CD: '20', DATA: '양성인정교육' },
 ];
 
-export const ds_ds_oCyberGubun10 = [
+export interface Ids_oCyberGubun10 {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oCyberGubun10: Ids_oCyberGubun10[] = [
     { CD: '2', DATA: '사이버교육과정' },
     { CD: '1', DATA: '혼용교육과정' },
     { CD: '0', DATA: '집합교육과정' },
 ];
 
-export const ds_ds_oCyberGubun = [
+export interface Ids_oCyberGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oCyberGubun: Ids_oCyberGubun[] = [
     { CD: '2', DATA: '사이버교육과정' },
     { CD: '0', DATA: '집합교육과정' },
     { CD: '3', DATA: '실시간온라인' },
 ];
 
-export const ds_ds_oEduType40 = [
+export interface Ids_oEduType40 {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oEduType40: Ids_oEduType40[] = [
     { CD: '0', DATA: '정기반' },
 ];
 
-export const ds_ds_MECOURSEAll = [
+export interface Ids_MECOURSEAll {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_MECOURSEAll: Ids_MECOURSEAll[] = [
     { CD: '0', DATA: '기본교육' },
     { CD: '2', DATA: '특별교육' },
     { CD: '4', DATA: '전문교육' },
 ];
 
-export const ds_ds_oCyberGubun2 = [
+export interface Ids_oEduTypeFilter10 {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oCyberGubun2 {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oCyberGubun2: Ids_oCyberGubun2[] = [
     { CD: '2', DATA: '사이버교육과정' },
     { CD: '1', DATA: '혼용교육과정' },
     { CD: '0', DATA: '집합교육과정' },

@@ -1,8 +1,8 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmprofes0001S04ProfMgmt } from './useFrmprofes0001S04ProfMgmt';
@@ -27,7 +27,7 @@ export const Frmprofes0001S04ProfMgmt = () => {
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
                 <Typography variant="h5">논문 및 연구실적 (논문게재일은 '-'제외한 8자리 숫자로 입력, 권수와 면수는 숫자로 입력)</Typography>
                 <Stack direction="row" spacing={1}>
-                    <Button variant="contained"  onClick={hook.btnAdd_OnClick}>행 추가</Button>
+                    <Button variant="contained" startIcon={<Add />} onClick={hook.btnAdd_OnClick}>행 추가</Button>
 <Button variant="contained" startIcon={<Delete />} onClick={hook.btnDel_OnClick}>행 삭제</Button>
 
                 </Stack>
@@ -37,7 +37,14 @@ export const Frmprofes0001S04ProfMgmt = () => {
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
-                        
+                        <Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12}>
+                    <Paper sx={{ height: 400, width: '100%' }}>
+                        <DataGridWrapper rows={hook.ds_ioProfPaper} columns={columns_gdProfPaper} />
+                    </Paper>
+                </Grid></Grid>
+
                     </Paper>
                 </Grid>
 </Grid>

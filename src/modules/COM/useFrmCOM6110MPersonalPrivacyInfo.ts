@@ -1,61 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oBizGubun {
-    CD: string;
-    DATA: string;
-    GROUPCD: string;
-}
-
-export interface Ids_oPrivacyCourse {
-    CD: string;
-    DATA: string;
-    COURSECD: string;
-}
-
-export interface Ids_ioPrivacyAgree {
-}
-
-export interface Ids_ioPrivacyAgreeH {
-}
-
-export interface Ids_o16TimeStamp {
-}
-
-export interface Ids_iPrivacyAgree {
-    PPNM: string;
-    PPRESIDENTNO: string;
-    PPSTATUS: string;
-    NEWDATA: string;
-    PABIZCD: string;
-    PACOURSECD: string;
-    PHPROCSTATUS: string;
-    PHPROCDATE: string;
-    PHPROCMETHOD: string;
-    PHMGMTPK1: string;
-    PHMGMTPK2: string;
-    RUPATH: string;
-    RUFILENM: string;
-    RUMGNO: string;
-    PAMGNO: string;
-    PHSEQ: string;
-}
-
-export interface Ids_oPrivacyAgreeResult {
-}
-
-export interface Ids_iPrivacyAgreeDelete {
-    PPNM: string;
-    PPRESIDENTNO: string;
-    PAMGNO: string;
-    PHSEQ: string;
-    RUMGNO: string;
-}
-
-export interface Ids_oAgreeGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oBizGubun, Ids_oPrivacyCourse, Ids_ioPrivacyAgree, Ids_ioPrivacyAgreeH, Ids_o16TimeStamp, Ids_iPrivacyAgree, Ids_oPrivacyAgreeResult, Ids_iPrivacyAgreeDelete, Ids_oAgreeGubun } from './FrmCOM6110MPersonalPrivacyInfoData';
 
 export const useFrmCOM6110MPersonalPrivacyInfo = () => {
     const [ds_oBizGubun, setds_oBizGubun] = useState<Ids_oBizGubun[]>([]);
@@ -68,6 +13,7 @@ export const useFrmCOM6110MPersonalPrivacyInfo = () => {
     const [ds_iPrivacyAgreeDelete, setds_iPrivacyAgreeDelete] = useState<Ids_iPrivacyAgreeDelete[]>([]);
     const [ds_oAgreeGubun, setds_oAgreeGubun] = useState<Ids_oAgreeGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -106,6 +52,8 @@ export const useFrmCOM6110MPersonalPrivacyInfo = () => {
         ds_oPrivacyAgreeResult,
         ds_iPrivacyAgreeDelete,
         ds_oAgreeGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Search,

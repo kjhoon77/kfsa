@@ -1,43 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oSearchHistory {
-    SHGUBUN: string;
-    SHMGNO: string;
-    SHPROCDATE: string;
-    SHPROCIP: string;
-    SHPROCSABUN: string;
-    SHWHERE: string;
-    SHWORKGUBUN: string;
-    SHWORKGUBUNNM: string;
-}
-
-export interface Ids_oGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioUserList {
-    SHGUBUN: string;
-    SHMGNO: string;
-    SHPROCDATE: string;
-    SHPROCIP: string;
-    SHPROCSABUN: string;
-    SHWHERE: string;
-    SHWORKGUBUN: string;
-    SHWORKGUBUNNM: string;
-}
-
-export interface Ids_ioDeptList {
-    SHGUBUN: string;
-    SHMGNO: string;
-    SHPROCDATE: string;
-    SHPROCIP: string;
-    SHPROCSABUN: string;
-    SHWHERE: string;
-    SHWORKGUBUN: string;
-    SHWORKGUBUNNM: string;
-}
+import type { Ids_oSearchHistory, Ids_oGubun, Ids_ioUserList, Ids_ioDeptList } from './Frmsys0092MSearchHistoryListData';
 
 export const useFrmsys0092MSearchHistoryList = () => {
     const [ds_oSearchHistory, setds_oSearchHistory] = useState<Ids_oSearchHistory[]>([]);
@@ -45,6 +8,7 @@ export const useFrmsys0092MSearchHistoryList = () => {
     const [ds_ioUserList, setds_ioUserList] = useState<Ids_ioUserList[]>([]);
     const [ds_ioDeptList, setds_ioDeptList] = useState<Ids_ioDeptList[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -85,6 +49,8 @@ export const useFrmsys0092MSearchHistoryList = () => {
         ds_oGubun,
         ds_ioUserList,
         ds_ioDeptList,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnSearchWork_OnClick,
         lfn_Cancel,

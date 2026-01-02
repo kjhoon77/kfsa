@@ -1,133 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTrainingResult {
-}
-
-export interface Ids_ioMunjeGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTrainingResult2 {
-    LDPFMGNO: string;
-    LDPFNAME: string;
-    GUBUN: string;
-    JIKWI: string;
-    GUBUNCD: string;
-    NAME: string;
-    LPSPEAKERPAY: string;
-    LTEDUDATE: string;
-    EDUSTART: string;
-    EDUEND: string;
-    SUMTIME: string;
-    TIME220: string;
-    TIME221: string;
-    TIME222N: string;
-    TIME222Y: string;
-    TIME224: string;
-    TIME228: string;
-    TIME229: string;
-}
-
-export interface Ids_ioTrainingResult3 {
-    EDUTEAMNM: string;
-    EDUTIME: string;
-    LEDUGUBUN: string;
-    LEDUMGNO: string;
-    LGTMGNO: string;
-    LMGNO: string;
-    LPPFGUBUN: string;
-    LPPFJIKWINM: string;
-    LPPFJIKWI: string;
-    LPPFNM: string;
-    LPPFSABUN: string;
-    LPPFGUBUNCD: string;
-    LPPSSEQ: string;
-    LPSEQ: string;
-    LPSPEAKERPAY: string;
-    LPSVERSION: string;
-    LTCCOURSECD: string;
-    LTCMUNJEGUBUN: string;
-    LTDATESEQ: string;
-    LTEDUDATE: string;
-    LTEDUDAYS: string;
-    LTSCHEDULETYPE: string;
-    PSTITLE: string;
-    TSENDTIME: string;
-    TSSEQ: string;
-    TSSTARTTIME: string;
-    TSTIME: string;
-    TSTYPESEQ: string;
-}
-
-export interface Ids_ioTrainingResult4 {
-    TOMGGTMGNO: string;
-    ERPASSYN: string;
-    JUBSUADDR: string;
-    PPASSDATE_A: string;
-    PPASSNO: string;
-    TOTCCOURSECD: string;
-    TJMGNO: string;
-    TJPERSONNM: string;
-    TJRESIDENTNO_SANG: string;
-    TJRESIDENTNO: string;
-    TJZIPCD: string;
-    TOHJUBSUNO: string;
-    TOMGNO: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPMGNO: string;
-    TOEXAMORDER: string;
-    EDUCATIONTIME: string;
-    TCCOURSENM: string;
-    TOREMARK: string;
-    TJREMARK: string;
-}
-
-export interface Ids_ioTrainingResult5 {
-    BIRTHDAY: string;
-    EJPERSONNM: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOYEAR: string;
-    ERAPLEXAMNO: string;
-    ERPASSYN: string;
-    ERRANK: string;
-    ERSCORE: string;
-    GTTEAMNM: string;
-    TCCOURSENM: string;
-    CNT: string;
-    TCCOURSECD: string;
-}
-
-export interface Ids_ioTrainingResult6 {
-    LLCSNO: string;
-    LISSUEGUBUN: string;
-    LICENSELSGUBUNNM: string;
-    LHPERSONNM: string;
-    RESIDENT: string;
-    LHRESIDENTNO_SANG: string;
-    ADDR: string;
-    CCCDNM: string;
-    LISSUEDATE: string;
-    PRTDATE: string;
-    PRTDATE_1: string;
-    LCANCELREASON: string;
-    LCANCELREASON_A: string;
-    SEX: string;
-    USEGUBUN: string;
-}
+import type { Ids_oCourse, Ids_oJibu, Ids_ioTrainingResult, Ids_ioMunjeGubun, Ids_ioTrainingResult2, Ids_ioTrainingResult3, Ids_ioTrainingResult4, Ids_ioTrainingResult5, Ids_ioTrainingResult6 } from './Frmspcledu0830MProcStatisticsData';
 
 export const useFrmspcledu0830MProcStatistics = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -140,6 +13,7 @@ export const useFrmspcledu0830MProcStatistics = () => {
     const [ds_ioTrainingResult5, setds_ioTrainingResult5] = useState<Ids_ioTrainingResult5[]>([]);
     const [ds_ioTrainingResult6, setds_ioTrainingResult6] = useState<Ids_ioTrainingResult6[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -181,6 +55,8 @@ export const useFrmspcledu0830MProcStatistics = () => {
         ds_ioTrainingResult4,
         ds_ioTrainingResult5,
         ds_ioTrainingResult6,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Print,

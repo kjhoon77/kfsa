@@ -1,50 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamSupervisor {
-    EOEXAMORDER: string;
-    EOMGJIBUCD: string;
-    EOYEAR: string;
-    EREXAMROOM: string;
-    EXAMNM: string;
-    SAGUBUN: string;
-    SIBDAY: string;
-    SICOMPNM: string;
-    SIPERSONNM: string;
-    TCCOURSECD: string;
-    EOMGNO: string;
-    SIMGNO: string;
-}
-
-export interface Ids_oSupervisorGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamOrderMgno {
-}
-
-export interface Ids_oExamSupervisorChk {
-    SAEREOMGNO: string;
-    SAEREXAMROOM: string;
-    SAGUBUN: string;
-    SASIMGNO: string;
-}
-
-export interface Ids_oModifyColumn {
-    COLUMNCD: string;
-    COLUMNNM: string;
-}
+import type { Ids_ioExamSupervisor, Ids_oSupervisorGubun, Ids_oJibu, Ids_oCourse, Ids_oExamOrderMgno, Ids_oExamSupervisorChk, Ids_oModifyColumn } from './Frmspcledu0610MExamSupervisorAssignmentData';
 
 export const useFrmspcledu0610MExamSupervisorAssignment = () => {
     const [ds_ioExamSupervisor, setds_ioExamSupervisor] = useState<Ids_ioExamSupervisor[]>([]);
@@ -55,6 +11,7 @@ export const useFrmspcledu0610MExamSupervisorAssignment = () => {
     const [ds_oExamSupervisorChk, setds_oExamSupervisorChk] = useState<Ids_oExamSupervisorChk[]>([]);
     const [ds_oModifyColumn, setds_oModifyColumn] = useState<Ids_oModifyColumn[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -113,6 +70,8 @@ export const useFrmspcledu0610MExamSupervisorAssignment = () => {
         ds_oExamOrderMgno,
         ds_oExamSupervisorChk,
         ds_oModifyColumn,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnSearchExamRoom_OnClick,
         btnSearchExamSupervisor_OnClick,

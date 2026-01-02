@@ -1,22 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oEducationPlace {
-    EPDIRPATH: string;
-    EPMGGTMGNO: string;
-    EPMGNO: string;
-    EPMODDATE: string;
-    EPMODSABUN: string;
-    EPNM: string;
-    EPPARKINGINFO: string;
-    EPREALNM: string;
-    EPREGDATE: string;
-    EPREGSABUN: string;
-    EPRREGIONCD: string;
-    EPSAVENM: string;
-    FILECHECK: string;
-    GTDEPTNM: string;
-}
+import type { Ids_oEducationPlace } from './Frmtraining9001PEducationPlaceListData';
 
 export const useFrmtraining9001PEducationPlaceList = () => {
     const [ds_oEducationPlace, setds_oEducationPlace] = useState<Ids_oEducationPlace[]>([]);

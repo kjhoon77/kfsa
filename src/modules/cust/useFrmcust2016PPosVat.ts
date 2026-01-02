@@ -1,16 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oPosVatH {
-    PVPMYEAR: string;
-    PVPMMGNO: string;
-    PVVMYEAR: string;
-    PVVMJIBU: string;
-    PVVMVATNO: string;
-    PVVMBILLTYPE: string;
-    PVREGDATE: string;
-    PVREGSABUN: string;
-}
+import type { Ids_oPosVatH } from './Frmcust2016PPosVatData';
 
 export const useFrmcust2016PPosVat = () => {
     const [ds_oPosVatH, setds_oPosVatH] = useState<Ids_oPosVatH[]>([]);

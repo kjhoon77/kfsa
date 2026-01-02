@@ -1,140 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioTrainingPassY {
-    SEL: string;
-    TJADDR1: string;
-    TJADDR2: string;
-    TJBUNJI: string;
-    TJCOMPNM: string;
-    TJDONG: string;
-    TJKU: string;
-    TJMGNO: string;
-    TJPASSYN: string;
-    TJPERSONNM: string;
-    TJRESIDENTNO: string;
-    TJRESIDENTNO_SANG: string;
-    TJSIDO: string;
-    TJTPMGNO: string;
-    TJZIPCD: string;
-    TOENDDATE: string;
-    TOHJUBSUNO: string;
-    TOMGGTMGNO: string;
-    TOMGNO: string;
-    TOSTARTDATE: string;
-    TOTCCOURSECD: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPHPTEL: string;
-    TPLASTIMGSEQ: string;
-    TPPASSDATE: string;
-    TPTEL: string;
-    TPSABUN: string;
-    TPLASTIMGSEQ_A: string;
-}
-
-export interface Ids_oExamDateGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTrainingPassY_Group {
-    EPMGJIBUCD: string;
-    PASSSUM: string;
-    PPASSDATE_A: string;
-    TCCOURSECD: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-}
-
-export interface Ids_ioTrainingPassN {
-    SEL: string;
-    TOMGGTMGNO: string;
-    JUBSUADDR: string;
-    TPPASSDATE: string;
-    SUMADAY: string;
-    TOTCCOURSECD: string;
-    TJADDR1: string;
-    TJMGNO: string;
-    TJPASSYN: string;
-    TJPERSONNM: string;
-    TJRESIDENTNO_SANG: string;
-    TOENDDATE_A: string;
-    TOHJUBSUNO: string;
-    TOMGNO: string;
-    TOSTARTDATE_A: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TJTPMGNO: string;
-}
-
-export interface Ids_TraiingPassYN {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTrainingPassYlicense1 {
-    SEL: string;
-    TOMGGTMGNO: string;
-    TJADDR1: string;
-    TPPASSDATE: string;
-    SUMADAY: string;
-    TOTCCOURSECD: string;
-    TJADDR2: string;
-    TJMGNO: string;
-    TJPASSYN: string;
-    TJPERSONNM: string;
-    TJRESIDENTNO_SANG: string;
-    TOENDDATE: string;
-    TOHJUBSUNO: string;
-    TOMGNO: string;
-    TOSTARTDATE: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TJTPMGNO: string;
-}
-
-export interface Ids_ioTrainingPassYlicense2_2 {
-    SEL: string;
-    TOMGGTMGNO: string;
-    TJADDR1: string;
-    TPPASSDATE: string;
-    SUMADAY: string;
-    TOTCCOURSECD: string;
-    TJADDR2: string;
-    TJMGNO: string;
-    TJPASSYN: string;
-    TJPERSONNM: string;
-    TJRESIDENTNO_SANG: string;
-    TOENDDATE: string;
-    TOHJUBSUNO: string;
-    TOMGNO: string;
-    TOSTARTDATE: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TJTPMGNO: string;
-}
-
-export interface Ids_ioTrainingPassBak {
-}
-
-export interface Ids_ioTrainingPassBak2 {
-}
-
-export interface Ids_ioImageYN {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioTrainingPassY, Ids_oExamDateGubun, Ids_oCourse, Ids_oJibu, Ids_ioTrainingPassY_Group, Ids_ioTrainingPassN, Ids_TraiingPassYN, Ids_ioTrainingPassYlicense1, Ids_ioTrainingPassYlicense2_2, Ids_ioTrainingPassBak, Ids_ioTrainingPassBak2, Ids_ioImageYN } from './Frmspcledu0230MPassManagementData';
 
 export const useFrmspcledu0230MPassManagement = () => {
     const [ds_ioTrainingPassY, setds_ioTrainingPassY] = useState<Ids_ioTrainingPassY[]>([]);
@@ -150,6 +16,7 @@ export const useFrmspcledu0230MPassManagement = () => {
     const [ds_ioTrainingPassBak2, setds_ioTrainingPassBak2] = useState<Ids_ioTrainingPassBak2[]>([]);
     const [ds_ioImageYN, setds_ioImageYN] = useState<Ids_ioImageYN[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -206,6 +73,8 @@ export const useFrmspcledu0230MPassManagement = () => {
         ds_ioTrainingPassBak,
         ds_ioTrainingPassBak2,
         ds_ioImageYN,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

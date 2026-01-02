@@ -1,51 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamJubsuList {
-    CREATE_ID: string;
-    EJADDR1: string;
-    EJHPROCDATE: string;
-    EJHSTATUSCD: string;
-    EJLASTEXAMSEQ: string;
-    EJMGNO: string;
-    EOEXAMORDER: string;
-    EOHEXAMSEATNO: string;
-    EOHJUBSUNO: string;
-    EOMGNO: string;
-    EOYEAR: string;
-    EOMGGTMGNO: string;
-    ESFEE: string;
-    JUBSUADDR: string;
-    EOTCCOURSECD: string;
-    TJRESIDENTNO_SANG: string;
-    TPMGNO: string;
-    TPPERSONNM: string;
-    sortEOHEXAMSEATNO: string;
-    sortTPPERSONNM: string;
-    sortEOHJUBSUNO: string;
-    PNM: string;
-    EOHPROCDATE_A: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSort {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSunab {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_ioExamJubsuList, Ids_oJibu, Ids_oSort, Ids_oSunab } from './Frmspcledu0418MExamAttendanceRegisterPrintData';
 
 export const useFrmspcledu0418MExamAttendanceRegisterPrint = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -54,6 +9,7 @@ export const useFrmspcledu0418MExamAttendanceRegisterPrint = () => {
     const [ds_oSort, setds_oSort] = useState<Ids_oSort[]>([]);
     const [ds_oSunab, setds_oSunab] = useState<Ids_oSunab[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -96,6 +52,8 @@ export const useFrmspcledu0418MExamAttendanceRegisterPrint = () => {
         ds_oJibu,
         ds_oSort,
         ds_oSunab,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

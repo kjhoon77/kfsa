@@ -1,33 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioBook {
-}
-
-export interface Ids_iExcelLoad {
-    COL01: string;
-    COL02: string;
-    COL03: string;
-    COL04: string;
-    COL05: string;
-    COL06: string;
-    COL07: string;
-    COL08: string;
-    COL09: string;
-    COL10: string;
-}
-
-export interface Ids_oSeq {
-}
-
-export interface Ids_ioSMSTempList {
-}
-
-export interface Ids_ioSMSList {
-}
-
-export interface Ids_oBatchSendSeq {
-}
+import type { Ids_ioBook, Ids_iExcelLoad, Ids_oSeq, Ids_ioSMSTempList, Ids_ioSMSList, Ids_oBatchSendSeq } from './Frmtraining0290MTrainingJubsuBookPrintData';
 
 export const useFrmtraining0290MTrainingJubsuBookPrint = () => {
     const [ds_ioBook, setds_ioBook] = useState<Ids_ioBook[]>([]);
@@ -37,6 +10,7 @@ export const useFrmtraining0290MTrainingJubsuBookPrint = () => {
     const [ds_ioSMSList, setds_ioSMSList] = useState<Ids_ioSMSList[]>([]);
     const [ds_oBatchSendSeq, setds_oBatchSendSeq] = useState<Ids_oBatchSendSeq[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -87,6 +61,8 @@ export const useFrmtraining0290MTrainingJubsuBookPrint = () => {
         ds_ioSMSTempList,
         ds_ioSMSList,
         ds_oBatchSendSeq,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnDataCheck_OnClick,
         btnExcelUpload_OnClick,
         btnHistory_OnClick,

@@ -1,83 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamJubsuCommissionStatistics {
-    EJEXAMDATE: string;
-    EJEXAMDATE2: string;
-    EOMGGTMGNO: string;
-    EOTCCOURSECD: string;
-    EOYEAR: string;
-    ESPROCDATE: string;
-    ESPROCDATE2: string;
-    RECEIVE_COUNT1: string;
-    RECEIVE_COUNT2: string;
-    RECEIVE_COUNT3: string;
-    RECEIVE_COUNT4: string;
-    RECEIVE_COUNT5: string;
-    RECEIVE_COUNT6: string;
-    RECEIVE_COUNT7: string;
-    RECEIVE_COUNT8: string;
-    RECEIVE_COUNT9: string;
-    RECEIVE_MONEY1: string;
-    RECEIVE_MONEY2: string;
-    RECEIVE_MONEY3: string;
-    RECEIVE_MONEY4: string;
-    RECEIVE_MONEY5: string;
-    RECEIVE_MONEY6: string;
-    RECEIVE_MONEY7: string;
-    RECEIVE_MONEY8: string;
-    RECEIVE_MONEY9: string;
-    RECEIVE_MONEYSUM: string;
-    RECEIVESUM: string;
-    REFUND_COUNT1: string;
-    REFUND_COUNT2: string;
-    REFUND_COUNT3: string;
-    REFUND_COUNT4: string;
-    REFUND_COUNT5: string;
-    REFUND_COUNT6: string;
-    REFUND_COUNT7: string;
-    REFUND_COUNT8: string;
-    REFUND_COUNT9: string;
-    REFUND_MONEY1: string;
-    REFUND_MONEY2: string;
-    REFUND_MONEY3: string;
-    REFUND_MONEY4: string;
-    REFUND_MONEY5: string;
-    REFUND_MONEY6: string;
-    REFUND_MONEY7: string;
-    REFUND_MONEY8: string;
-    REFUND_MONEY9: string;
-    REFUND_MONEYSUM: string;
-    REFUND_SUM: string;
-    SUMCOUNT: string;
-    SUMMONEY: string;
-    ESMGGTMGNO: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourseGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oWork_Gubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSuNabGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_ioExamJubsuCommissionStatistics, Ids_oJibu, Ids_oCourseGubun, Ids_oWork_Gubun, Ids_oSuNabGubun } from './Frmtraining0670MExamPayAmountSumStatisticsData';
 
 export const useFrmtraining0670MExamPayAmountSumStatistics = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -87,6 +10,7 @@ export const useFrmtraining0670MExamPayAmountSumStatistics = () => {
     const [ds_oWork_Gubun, setds_oWork_Gubun] = useState<Ids_oWork_Gubun[]>([]);
     const [ds_oSuNabGubun, setds_oSuNabGubun] = useState<Ids_oSuNabGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -131,6 +55,8 @@ export const useFrmtraining0670MExamPayAmountSumStatistics = () => {
         ds_oCourseGubun,
         ds_oWork_Gubun,
         ds_oSuNabGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

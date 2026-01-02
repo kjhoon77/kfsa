@@ -1,21 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCyberLearning {
-    CLPROGRESSPCT: string;
-    CLPROGRESSSCORE: string;
-    CLEXAMSCORE: string;
-    CLHOMEWORKSCORE: string;
-    CLDISCUSSSCORE: string;
-    CLPASSSCORE: string;
-    CJTJMGNO: string;
-    CCCOURSECD: string;
-    CCEDUGUBUN: string;
-    CJYEAR: string;
-    CJGTMGNO: string;
-    CJTRAINNINGORDER: string;
-    CJJUBSUNO: string;
-}
+import type { Ids_oCyberLearning } from './Frmcust1025PEduCyberInfoData';
 
 export const useFrmcust1025PEduCyberInfo = () => {
     const [ds_oCyberLearning, setds_oCyberLearning] = useState<Ids_oCyberLearning[]>([]);

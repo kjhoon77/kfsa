@@ -1,14 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioListDelete {
-    SEL: string;
-}
-
-export interface Ids_oProfGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioListDelete, Ids_oProfGubun } from './Frmprofes0001ProfessorpfDeleteData';
 
 export const useFrmprofes0001ProfessorpfDelete = () => {
     const [ds_ioListDelete, setds_ioListDelete] = useState<Ids_ioListDelete[]>([]);

@@ -1,98 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioSmsTraining {
-    SEL: string;
-    PGUBUN: string;
-    TCCOURSECD: string;
-    TJMGNO: string;
-    TJMGNO2: string;
-    TJPERSONNM: string;
-    TOENDDATE: string;
-    TOMGNO: string;
-    TOSTARTDATE: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPHPTEL: string;
-    TPMGNO: string;
-    GTDEPTCD: string;
-    TSREPAYCD: string;
-    RECVTEL: string;
-    SMMSG: string;
-    SHSENDRESVTIME1: string;
-    SHSENDRESVTIME2: string;
-    PDEPTCD: string;
-    PSABUN: string;
-    TOHJUBSUNO: string;
-    TOHJUBSUNO2: string;
-    JUBSUNO2: string;
-    JUBSUNO: string;
-    TJLASTSUNAPGUBUN: string;
-    TJPASSYN: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingPassYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRepayYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamPassYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioSmsExam {
-    SEL: string;
-    ESPASSYN: string;
-    GTDEPTCD: string;
-    EOCOURSECD: string;
-    EJMGNO: string;
-    EJMGNO2: string;
-    TPPERSONNM: string;
-    EOMGNO: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOYEAR: string;
-    TPHPTEL: string;
-    TPMGNO: string;
-    ESREPAYCD: string;
-    RECVTEL: string;
-    SMMSG: string;
-    SHSENDRESVTIME1: string;
-    SHSENDRESVTIME2: string;
-    PDEPTCD: string;
-    PSABUN: string;
-    EOHEJMGNO: string;
-    EOMGGTMGNO: string;
-    TOTCCOURSECD: string;
-    TOYEAR: string;
-    TOTRAININGORDER: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioSmsTraining, Ids_oRegion, Ids_oTrainingPassYn, Ids_oRepayYn, Ids_oCourse, Ids_oWorkGubun, Ids_oExamPassYn, Ids_ioSmsExam, Ids_oJibu } from './Frmtraining0680MSMSSendManagement200909291448Data';
 
 export const useFrmtraining0680MSMSSendManagement200909291448 = () => {
     const [ds_ioSmsTraining, setds_ioSmsTraining] = useState<Ids_ioSmsTraining[]>([]);
@@ -105,6 +13,7 @@ export const useFrmtraining0680MSMSSendManagement200909291448 = () => {
     const [ds_ioSmsExam, setds_ioSmsExam] = useState<Ids_ioSmsExam[]>([]);
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -158,6 +67,8 @@ export const useFrmtraining0680MSMSSendManagement200909291448 = () => {
         ds_oExamPassYn,
         ds_ioSmsExam,
         ds_oJibu,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         chkReseve_OnClick,
         lfn_Cancel,

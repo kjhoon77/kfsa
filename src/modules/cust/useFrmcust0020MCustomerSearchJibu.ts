@@ -1,103 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_SearchJogeon {
-    JIBU: string;
-    CUST_NM: string;
-    PERSON_NM: string;
-    PERSONKEY: string;
-    COURSE_GUBUN: string;
-    CUST_GUBUN: string;
-    PERSON_GUBUN: string;
-    BIRTHDAY: string;
-}
-
-export interface Ids_CustomerList {
-    GTDEPTNM: string;
-    CNO: string;
-    BNM: string;
-    FMNM: string;
-    BIRTHDAY: string;
-    MADDR: string;
-    CGROUPNM: string;
-    TEL: string;
-    CREGISTERYY: string;
-    CFEEYY: string;
-    COVERYN: string;
-    COVERCNO: string;
-    CMGNO: string;
-    CMINAP: string;
-    CGTMGNO: string;
-    SCNO: string;
-    FMPERSONKEY: string;
-    FMBIRTHDAY: string;
-}
-
-export interface Ids_oEduStudentGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCustomerFeeInfo {
-}
-
-export interface Ids_oFee {
-    CFCCGUBUN: string;
-    CFCCGUBUNCD: string;
-    CFGYEAR: string;
-    MINAPFEE: string;
-    SUNAPFEE: string;
-}
-
-export interface Ids_oAdditionInfo {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioEducationPassInfo {
-    BNM: string;
-    CNO: string;
-    EPPASSDATE: string;
-    EPPERSONNM: string;
-    EPPROCGTMGNO: string;
-    EPBIRTHDAY: string;
-    EPSUCCESSIONGUBUN: string;
-    EPYEAR: string;
-    ESGUBUN: string;
-    ESSTUDENT: string;
-    BIRTHDAY: string;
-    EPPERSONKEY: string;
-}
-
-export interface Ids_oEduSuccessGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_ioChoiceYn, Ids_ioCourseYn, Ids_oJibu, Ids_SearchJogeon, Ids_CustomerList, Ids_oEduStudentGubun, Ids_oEduGubun, Ids_ioCustomerFeeInfo, Ids_oFee, Ids_oAdditionInfo, Ids_ioEducationPassInfo, Ids_oEduSuccessGubun } from './Frmcust0020MCustomerSearchJibuData';
 
 export const useFrmcust0020MCustomerSearchJibu = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -114,6 +17,7 @@ export const useFrmcust0020MCustomerSearchJibu = () => {
     const [ds_ioEducationPassInfo, setds_ioEducationPassInfo] = useState<Ids_ioEducationPassInfo[]>([]);
     const [ds_oEduSuccessGubun, setds_oEduSuccessGubun] = useState<Ids_oEduSuccessGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -172,6 +76,8 @@ export const useFrmcust0020MCustomerSearchJibu = () => {
         ds_oAdditionInfo,
         ds_ioEducationPassInfo,
         ds_oEduSuccessGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnBarCodeSearch_OnClick,
         btnExcell_OnClick,
         btnFeeDetailInfo1_OnClick,

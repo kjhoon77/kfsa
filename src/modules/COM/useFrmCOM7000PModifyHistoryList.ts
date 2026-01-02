@@ -1,24 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oModifyHistory {
-    DTL: string;
-    MHAFTERDATA: string;
-    MHBEFOREDATA: string;
-    MHCOLUMN: string;
-    MHGUBUN: string;
-    MHGUBUNNM: string;
-    MHKEY: string;
-    MHMGNO: string;
-    MHPROCDATE: string;
-    MHPROCIP: string;
-    MHPROCSABUN: string;
-    MHWORKGUBUN: string;
-    PDEPTCD: string;
-    PDEPTNM: string;
-    PPERSONNM: string;
-    PPOSITNNM: string;
-}
+import type { Ids_oModifyHistory } from './FrmCOM7000PModifyHistoryListData';
 
 export const useFrmCOM7000PModifyHistoryList = () => {
     const [ds_oModifyHistory, setds_oModifyHistory] = useState<Ids_oModifyHistory[]>([]);

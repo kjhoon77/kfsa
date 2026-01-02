@@ -1,19 +1,11 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioUser {
-    ADMINGUBUN: string;
-    PPOSITNCD: string;
-    PPOSITNNM: string;
-    PPERSONNM: string;
-    PSABUN: string;
-    PDEPTCD: string;
-    PDEPTNM: string;
-}
+import type { Ids_ioUser } from './Frmsys0026MUserManagementData';
 
 export const useFrmsys0026MUserManagement = () => {
     const [ds_ioUser, setds_ioUser] = useState<Ids_ioUser[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -48,6 +40,8 @@ export const useFrmsys0026MUserManagement = () => {
     return {
         isLoading,
         ds_ioUser,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

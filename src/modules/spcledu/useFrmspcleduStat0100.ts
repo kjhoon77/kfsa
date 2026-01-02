@@ -1,44 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_exampascond {
-    STARTDATE: string;
-    ENDDATE: string;
-    FLAG: string;
-    TODAYMONTH: string;
-}
-
-export interface Ids_TrainingList {
-    BF_LSDSCNT: string;
-    BF_LSOUTCNT: string;
-    BF_LSPASSCNT: string;
-    BF_LSRCNT: string;
-    GTPRTSEQ: string;
-    GTTEAMNM: string;
-    GUBN: string;
-    LSDSCNT: string;
-    LSDSCNT_T60: string;
-    LSDSCNT_T61: string;
-    LSOUTCNT: string;
-    LSOUTCNT_T60: string;
-    LSOUTCNT_T61: string;
-    LSPASSCNT: string;
-    LSPASSCNT_T60: string;
-    LSPASSCNT_T61: string;
-    LSRCNT: string;
-    LSRCNT_T60: string;
-    LSRCNT_T61: string;
-}
-
-export interface Ids_Jibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_Bang {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_exampascond, Ids_TrainingList, Ids_Jibu, Ids_Bang } from './FrmspcleduStat0100Data';
 
 export const useFrmspcleduStat0100 = () => {
     const [ds_exampascond, setds_exampascond] = useState<Ids_exampascond[]>([]);
@@ -46,6 +8,7 @@ export const useFrmspcleduStat0100 = () => {
     const [ds_Jibu, setds_Jibu] = useState<Ids_Jibu[]>([]);
     const [ds_Bang, setds_Bang] = useState<Ids_Bang[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [tabValue_TAB_Training, setTabValue_TAB_Training] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -83,6 +46,8 @@ export const useFrmspcleduStat0100 = () => {
         ds_TrainingList,
         ds_Jibu,
         ds_Bang,
+        tabValue_TAB_Training,
+        setTabValue_TAB_Training,
         btnExcell_OnClick,
         btnPrintChart_OnClick,
         btnPrintWarmun_OnClick,

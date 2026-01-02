@@ -1,36 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAdditionList {
-    ADCD: string;
-    ADCMGNO: string;
-    ADCONTENT: string;
-    ADDELGUBUN: string;
-    ADMODDATE: string;
-    ADMODSABUN: string;
-    ADREGDATE: string;
-    ADREGSABUN: string;
-    ADSEQ: string;
-    ADDELGUBUN1: string;
-}
-
-export interface Ids_oAdditionInfo {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSeq {
-}
+import type { Ids_ioGubun, Ids_oAdditionList, Ids_oAdditionInfo, Ids_oStatus, Ids_oSeq } from './Frmcust0017PAdditionHistoryData';
 
 export const useFrmcust0017PAdditionHistory = () => {
     const [ds_ioGubun, setds_ioGubun] = useState<Ids_ioGubun[]>([]);

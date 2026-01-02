@@ -1,92 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJubsu {
-}
-
-export interface Ids_oSunap {
-}
-
-export interface Ids_oChange {
-}
-
-export interface Ids_oRepay {
-}
-
-export interface Ids_oInternetReport {
-}
-
-export interface Ids_JubsuH {
-    EJHEJMGNO: string;
-    EJHSEQ: string;
-    EJHSTATUSCD: string;
-    EJHESSEQREF: string;
-    EJHEOHSEQREF: string;
-    EJHMGGTMGNO: string;
-    EJHPROCREASON: string;
-    PPAPMYEAR: string;
-    PPAPMMGNO: string;
-    PPAFINISHAMOUNT: string;
-}
-
-export interface Ids_ioSettlement {
-    ESEJMGNO: string;
-    ESGUBUNCD: string;
-    ESGUBUN: string;
-    ESPROCAMOUNT: string;
-    ESPONYGUBUN: string;
-    ESMGGTMGNO: string;
-    ESPROCGTMGNO: string;
-    ESREPAYCD: string;
-    ESSUNAPACTIONREF: string;
-    ESREPAYREF: string;
-    ESSEQ: string;
-    ESSETLMTYN: string;
-}
-
-export interface Ids_oPosData {
-    PMYEAR: string;
-    PMMGNO: string;
-}
-
-export interface Ids_iPosData {
-    PMYEAR: string;
-    PMMGNO: string;
-    PMINPUT: string;
-    PMPCGUBUN: string;
-    PMPROCDATE: string;
-    PMPIID: string;
-    PMPGMID: string;
-    PMPGMPK: string;
-    PMBUYER: string;
-    PMCLAS: string;
-    PMPGMGUBUN: string;
-    PMITEM1: string;
-    PMITEM2: string;
-    PMITEM3: string;
-    PMITEM4: string;
-    PMAMT: string;
-    PMVAT: string;
-    PMPAYMENTFLAG: string;
-    PMRESULT: string;
-    PMREGDATE: string;
-    PMREGSABUN: string;
-    PPNM: string;
-    PMPCORDERNO: string;
-    PCGUBUN: string;
-    PCORDERNO: string;
-    PCUSERTYPE: string;
-    PCTRANSACTIONDATE: string;
-    PCTRANSACTIONTIME: string;
-    PCSERIALNO: string;
-    PCAMT: string;
-    PCVAT: string;
-    PCSOCIALBUSINESSNO: string;
-    PCAUTHNO: string;
-    PCRESPONSECODE: string;
-    PCRESPONSEDATE: string;
-    PCTRANSACTIONCODE: string;
-}
+import type { Ids_oJubsu, Ids_oSunap, Ids_oChange, Ids_oRepay, Ids_oInternetReport, Ids_JubsuH, Ids_ioSettlement, Ids_oPosData, Ids_iPosData } from './Frmspcledu0091PInternetJubsuStatisticsData';
 
 export const useFrmspcledu0091PInternetJubsuStatistics = () => {
     const [ds_oJubsu, setds_oJubsu] = useState<Ids_oJubsu[]>([]);
@@ -99,6 +13,11 @@ export const useFrmspcledu0091PInternetJubsuStatistics = () => {
     const [ds_oPosData, setds_oPosData] = useState<Ids_oPosData[]>([]);
     const [ds_iPosData, setds_iPosData] = useState<Ids_iPosData[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divRepay, setIsVisible_divRepay] = useState(false);
+    const [isVisible_divChange, setIsVisible_divChange] = useState(false);
+    const [isVisible_divSunap, setIsVisible_divSunap] = useState(false);
+    const [isVisible_divJubsu, setIsVisible_divJubsu] = useState(false);
+    const [isVisible_divPos, setIsVisible_divPos] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -143,6 +62,16 @@ export const useFrmspcledu0091PInternetJubsuStatistics = () => {
         ds_ioSettlement,
         ds_oPosData,
         ds_iPosData,
+        isVisible_divRepay,
+        setIsVisible_divRepay,
+        isVisible_divChange,
+        setIsVisible_divChange,
+        isVisible_divSunap,
+        setIsVisible_divSunap,
+        isVisible_divJubsu,
+        setIsVisible_divJubsu,
+        isVisible_divPos,
+        setIsVisible_divPos,
         btnChange_OnClick,
         btnProc_OnClick,
         btnRepayCancel_OnClick,

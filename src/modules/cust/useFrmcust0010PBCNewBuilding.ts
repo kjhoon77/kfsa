@@ -1,96 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oAddr {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioBuildingInfo {
-    BADDR1: string;
-    BADDR2: string;
-    BADDRGUBUN: string;
-    BAREA: string;
-    BBIZCD: string;
-    BBULDADDR: string;
-    BBULDNM: string;
-    BBUNJI1: string;
-    BBUNJI2: string;
-    BCONO: string;
-    BDONG: string;
-    BFAX: string;
-    BFIRECD: string;
-    BFIREMAN: string;
-    BMGNO: string;
-    BNM: string;
-    BRI: string;
-    BROADNM: string;
-    BSANGUBUN: string;
-    BSIDO: string;
-    BSIGUNGU: string;
-    BSMOKEGUBUN: string;
-    BTEL: string;
-    BZIPCD: string;
-    BFIREUPCD: string;
-    BSEARCHNM: string;
-    BROADADDR1: string;
-    BROADADDR2: string;
-}
-
-export interface Ids_oBizCd {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBusinessGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioOwnerInfo {
-    OBMGNO: string;
-    OGUBUN: string;
-    OHPTEL: string;
-    ONM: string;
-    OREMARK: string;
-    OSEQ: string;
-    OTEL: string;
-}
-
-export interface Ids_ioDangerInfo {
-    DBMGNO: string;
-    DGATEWAYDAN: string;
-    DPERMISSIONNO: string;
-    DREMARK: string;
-    DSEQ: string;
-}
-
-export interface Ids_ioTankInfo {
-    TBMGNO: string;
-    TCARNO: string;
-    TCARYEAR: string;
-    TGATEWAYTANK1: string;
-    TGATEWAYTANK2: string;
-    TINSTLRADDR1: string;
-    TINSTLRADDR2: string;
-    TINSTLRZIPCD: string;
-    TPARKPLACEADDR1: string;
-    TPARKPLACEADDR2: string;
-    TPARKPLACEZIPCD: string;
-    TPERMISSIONNO: string;
-    TPOSTREQGUBUN: string;
-    TREMARK: string;
-    TSEQ: string;
-}
-
-export interface Ids_oBuildingSeq {
-    SEQ: string;
-}
+import type { Ids_oAddr, Ids_ioBuildingInfo, Ids_oBizCd, Ids_oBusinessGubun, Ids_ioYn, Ids_ioOwnerInfo, Ids_ioDangerInfo, Ids_ioTankInfo, Ids_oBuildingSeq } from './Frmcust0010PBCNewBuildingData';
 
 export const useFrmcust0010PBCNewBuilding = () => {
     const [ds_oAddr, setds_oAddr] = useState<Ids_oAddr[]>([]);
@@ -103,6 +13,8 @@ export const useFrmcust0010PBCNewBuilding = () => {
     const [ds_ioTankInfo, setds_ioTankInfo] = useState<Ids_ioTankInfo[]>([]);
     const [ds_oBuildingSeq, setds_oBuildingSeq] = useState<Ids_oBuildingSeq[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_Div6, setIsVisible_Div6] = useState(true);
+    const [tabValue_tabTab1, setTabValue_tabTab1] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -120,6 +32,12 @@ export const useFrmcust0010PBCNewBuilding = () => {
         }, 500);
     }, []);
 
+    const Div6_btnAddRow1_OnClick = () => {
+        console.log('Div6_btnAddRow1_OnClick clicked');
+    };
+    const Div6_btnDelRow1_OnClick = () => {
+        console.log('Div6_btnDelRow1_OnClick clicked');
+    };
     const btnSearchNewZipCode_OnClick = () => {
         console.log('btnSearchNewZipCode_OnClick clicked');
     };
@@ -144,6 +62,12 @@ export const useFrmcust0010PBCNewBuilding = () => {
         ds_ioDangerInfo,
         ds_ioTankInfo,
         ds_oBuildingSeq,
+        isVisible_Div6,
+        setIsVisible_Div6,
+        tabValue_tabTab1,
+        setTabValue_tabTab1,
+        Div6_btnAddRow1_OnClick,
+        Div6_btnDelRow1_OnClick,
         btnSearchNewZipCode_OnClick,
         btnSearchOldZipCode_OnClick,
         lfn_End,

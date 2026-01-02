@@ -1,21 +1,12 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioJibuCode {
-    JIGIROARVNO: string;
-    JIOCRNO: string;
-    JJIBUCD: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioJibuCode, Ids_oJibu } from './Frmsys0032MJibuCodeManagementData';
 
 export const useFrmsys0032MJibuCodeManagement = () => {
     const [ds_ioJibuCode, setds_ioJibuCode] = useState<Ids_ioJibuCode[]>([]);
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -58,6 +49,8 @@ export const useFrmsys0032MJibuCodeManagement = () => {
         isLoading,
         ds_ioJibuCode,
         ds_oJibu,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_Delete,

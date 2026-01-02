@@ -1,51 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oSort {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduAttendence {
-    EDUCNT: string;
-    EPNM: string;
-    INCNT: string;
-    INOUTCNT: string;
-    JUPSUCNT: string;
-    KULGANGCNT: string;
-    OUTCNT: string;
-    PASSCNT: string;
-    REPAYCNT: string;
-    TCCOURSENM: string;
-    TOENDDATE: string;
-    TOSTARTDATE: string;
-    TOEDUORDER: string;
-    COURSENM: string;
-    CYBERGUBUN: string;
-    ESCYBERGUBUN: string;
-}
-
-export interface Ids_oEduAttendencePoto {
-    ACTION: string;
-    GTTEAMNM: string;
-    ORGJUPSU: string;
-    SEATNO: string;
-    TCCOURSENM: string;
-    TJPERSONNM: string;
-    TOENDDATE: string;
-    TOSTARTDATE: string;
-    TOEDUORDER: string;
-}
+import type { Ids_oSort, Ids_oCourse, Ids_oJibu, Ids_oEduAttendence, Ids_oEduAttendencePoto } from './Frmcust1050MEduAttendanceRegisterPrintData';
 
 export const useFrmcust1050MEduAttendanceRegisterPrint = () => {
     const [ds_oSort, setds_oSort] = useState<Ids_oSort[]>([]);
@@ -54,6 +9,7 @@ export const useFrmcust1050MEduAttendanceRegisterPrint = () => {
     const [ds_oEduAttendence, setds_oEduAttendence] = useState<Ids_oEduAttendence[]>([]);
     const [ds_oEduAttendencePoto, setds_oEduAttendencePoto] = useState<Ids_oEduAttendencePoto[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -87,6 +43,8 @@ export const useFrmcust1050MEduAttendanceRegisterPrint = () => {
         ds_oJibu,
         ds_oEduAttendence,
         ds_oEduAttendencePoto,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_PrintScreen,

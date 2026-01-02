@@ -1,79 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingOrder {
-    EPMGNO: string;
-    TCCOURSECD: string;
-    TOCOURSEGUBUN: string;
-    TOEDUCONTENTS: string;
-    TOENDDATE: string;
-    TOENDTIME: string;
-    TOEXCEPTDATE: string;
-    TOINETJUBSUCNT: string;
-    TOINETJUBSUYN: string;
-    TOJUBSUMAXCNT: string;
-    TOJUBSUSTATUS: string;
-    TOLECTURENOTICE: string;
-    TOMAILNOTICE: string;
-    TOMGJIBUCD: string;
-    TOMGNO: string;
-    TOMUNJEGUBUN: string;
-    TOREMARK: string;
-    TOSEATCNT: string;
-    TOSEATLIMITYN: string;
-    TOSEATSELECTYN: string;
-    TOSEXLIMITYN: string;
-    TOSTARTDATE: string;
-    TOSTARTTIME: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    USE_YN: string;
-    EPNM: string;
-    PERSONCNT: string;
-    TODAYGUBUN: string;
-    TOMUNJEGUBUNNM: string;
-    TOINJUBSUCNT: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSearchGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourseGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMunjeGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMunjeGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oOnlineGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oTrainingOrder, Ids_oJibu, Ids_oSearchGubun, Ids_oCourseGubun, Ids_oMunjeGubun, Ids_ioCourseGubun, Ids_ioMunjeGubun, Ids_oOnlineGubun } from './Frmtraining0015MTrainingOrderListData';
 
 export const useFrmtraining0015MTrainingOrderList = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -86,6 +13,7 @@ export const useFrmtraining0015MTrainingOrderList = () => {
     const [ds_ioMunjeGubun, setds_ioMunjeGubun] = useState<Ids_ioMunjeGubun[]>([]);
     const [ds_oOnlineGubun, setds_oOnlineGubun] = useState<Ids_oOnlineGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -133,6 +61,8 @@ export const useFrmtraining0015MTrainingOrderList = () => {
         ds_ioCourseGubun,
         ds_ioMunjeGubun,
         ds_oOnlineGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

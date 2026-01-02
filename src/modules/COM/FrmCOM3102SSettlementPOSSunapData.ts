@@ -1,7 +1,12 @@
 // @ts-nocheck
 export const FrmCOM3102SSettlementPOSSunapData = {};
 
-export const ds_ds_oInstallment = [
+export interface Ids_oInstallment {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oInstallment: Ids_oInstallment[] = [
     { CD: '00', DATA: '일시불' },
     { CD: '01', DATA: '1개월' },
     { CD: '02', DATA: '2개월' },
@@ -17,7 +22,12 @@ export const ds_ds_oInstallment = [
     { CD: '12', DATA: '12개월' },
 ];
 
-export const ds_ds_Month = [
+export interface Ids_Month {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_Month: Ids_Month[] = [
     { CD: '01', DATA: '1개월' },
     { CD: '02', DATA: '2개월' },
     { CD: '03', DATA: '3개월' },
@@ -31,3 +41,8 @@ export const ds_ds_Month = [
     { CD: '11', DATA: '11개월' },
     { CD: '12', DATA: '12개월' },
 ];
+
+export interface Ids_Year {
+    CD?: string;
+    DATA?: string;
+}

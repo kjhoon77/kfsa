@@ -1,39 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioImageInfo {
-    BIRTHDAY: string;
-    IIAPPROVAL: string;
-    IIDIRPATH: string;
-    IIIMGBINARY: string;
-    IIIMGSEQ: string;
-    IIREALNM: string;
-    IIREGDATE: string;
-    IIREGGUBUN: string;
-    IIREGGUBUNNM: string;
-    IIREGSABUN: string;
-    IISAVENM: string;
-    TPLASTIMGSEQ: string;
-    TPMGNO: string;
-    TPNM: string;
-    TPRESIDENTNO: string;
-    TPAUTHYN: string;
-}
-
-export interface Ids_oApproval {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTrainingPerson {
-    TPMGNO: string;
-}
+import type { Ids_ioImageInfo, Ids_oApproval, Ids_ioTrainingPerson } from './Frmspcledu0255PTrainingPersonPictureData';
 
 export const useFrmspcledu0255PTrainingPersonPicture = () => {
     const [ds_ioImageInfo, setds_ioImageInfo] = useState<Ids_ioImageInfo[]>([]);
     const [ds_oApproval, setds_oApproval] = useState<Ids_oApproval[]>([]);
     const [ds_ioTrainingPerson, setds_ioTrainingPerson] = useState<Ids_ioTrainingPerson[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -63,6 +37,8 @@ export const useFrmspcledu0255PTrainingPersonPicture = () => {
         ds_ioImageInfo,
         ds_oApproval,
         ds_ioTrainingPerson,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnSelect_OnClick,
         imgPicture_OnClick,

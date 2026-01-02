@@ -1,55 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCustList {
-    SEL: string;
-    ADDR: string;
-    BBIZCD: string;
-    BMGNO: string;
-    BNM: string;
-    BTEL: string;
-    DPERMISSIONNO: string;
-}
-
-export interface Ids_oManagerList {
-    BADDR1: string;
-    BADDR2: string;
-    BNM: string;
-    BTEL: string;
-    BZIPCD: string;
-    CCOCD: string;
-    CCOURSECD: string;
-    CFIREMGNO: string;
-    CGTMGNO: string;
-    CNO: string;
-    COVERCMGNO: string;
-    CREGCD: string;
-    CSTATUSGUBUN: string;
-    EPPASSDATE: string;
-    FMHSTARTDATE: string;
-    FMNM: string;
-    FMPERSONKEY: string;
-    OLHNM: string;
-    SEL: string;
-    FMBIRTHDAY: string;
-    BIRTHDAY: string;
-}
-
-export interface Ids_oCustomerStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBizGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oManagerListCopy {
-}
-
-export interface Ids_oManagerListCopy1 {
-}
+import type { Ids_oCustList, Ids_oManagerList, Ids_oCustomerStatus, Ids_oBizGubun, Ids_oManagerListCopy, Ids_oManagerListCopy1 } from './Frmcust2017PSearchBuildingData';
 
 export const useFrmcust2017PSearchBuilding = () => {
     const [ds_oCustList, setds_oCustList] = useState<Ids_oCustList[]>([]);

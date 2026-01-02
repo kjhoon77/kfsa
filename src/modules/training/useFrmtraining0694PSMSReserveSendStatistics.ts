@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oReserveSend {
-}
+import type { Ids_oReserveSend } from './Frmtraining0694PSMSReserveSendStatisticsData';
 
 export const useFrmtraining0694PSMSReserveSendStatistics = () => {
     const [ds_oReserveSend, setds_oReserveSend] = useState<Ids_oReserveSend[]>([]);

@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oSmsStat {
-}
+import type { Ids_oSmsStat } from './Frmtraining0426PExamSmsSendListData';
 
 export const useFrmtraining0426PExamSmsSendList = () => {
     const [ds_oSmsStat, setds_oSmsStat] = useState<Ids_oSmsStat[]>([]);

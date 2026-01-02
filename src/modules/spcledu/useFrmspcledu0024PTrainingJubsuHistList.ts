@@ -1,20 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJubsuAllInfo {
-    TJHPROCDATE: string;
-    TJHPROCJIBU: string;
-    TJHPROCJIBUCD: string;
-    TJHREASON: string;
-    TJHSABUN: string;
-    TJHSABUNNM: string;
-    TJHSEQ: string;
-    TJHSTATUS: string;
-    TJHSTATUSCD: string;
-    TJMGNO: string;
-    TPPERSONNM: string;
-    TPRESIDENTNO: string;
-}
+import type { Ids_oJubsuAllInfo } from './Frmspcledu0024PTrainingJubsuHistListData';
 
 export const useFrmspcledu0024PTrainingJubsuHistList = () => {
     const [ds_oJubsuAllInfo, setds_oJubsuAllInfo] = useState<Ids_oJubsuAllInfo[]>([]);

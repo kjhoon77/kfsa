@@ -1,8 +1,8 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmspcleduStat0070 } from './useFrmspcleduStat0070';
@@ -11,6 +11,17 @@ import * as FrmspcleduStat0070Data from './FrmspcleduStat0070Data';
 export const FrmspcleduStat0070 = () => {
     const hook = useFrmspcleduStat0070();
     const [tabValue_TAB_Training, setTabValue_TAB_Training] = useState(0);
+    const columns_gdList = [
+        { field: 'GTDEPTNM', headerName: '지부', width: 60 },
+        { field: 'BCTHSLATSUM', headerName: '총계', width: 81 },
+        { field: 'PCFETHSLAT', headerName: '방화관리자', width: 65 },
+        { field: 'FTFETHSLAT', headerName: '1급', width: 65 },
+        { field: 'SDFETHSLAT', headerName: '2급정규', width: 65 },
+        { field: 'SDFEMUNJETHSLAT', headerName: '2급면제', width: 65 },
+        { field: 'DSSETHSLAT', headerName: '위험물', width: 65 },
+        { field: 'DSCRTHSLAT', headerName: '운송자', width: 65 },
+        { field: 'DSUYTHSLAT', headerName: '통합자', width: 65 },
+    ];
     return (
         <PageContainer>
 
@@ -28,19 +39,26 @@ export const FrmspcleduStat0070 = () => {
                         <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>조회일자</Typography>
                         <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>~</Typography>
                         <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
                     </Stack>
-                </Grid><Grid item xs={12} md={2}><Button variant="contained">검색</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">엑셀</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">출력</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">화면인쇄</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">화면인쇄</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">화면인쇄</Button></Grid></Grid>
+                </Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnSearch_OnClick}>검색</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnExcell_OnClick}>엑셀</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnPrint_OnClick}>출력</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnPrintChart_OnClick}>화면인쇄</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnPrintWarmun_OnClick}>화면인쇄</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.lfn_End}>화면인쇄</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12}><Box sx={{ width: "100%" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_TAB_Training} onChange={(e, v) => setTabValue_TAB_Training(v)} aria-label="TAB_Training"><Tab label="    현    황    " /><Tab label="    Chart    " /></Tabs></Box><CustomTabPanel value={tabValue_TAB_Training} index={0}></CustomTabPanel><CustomTabPanel value={tabValue_TAB_Training} index={1}></CustomTabPanel></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box>[단위 : 천원]</Box></Grid></Grid>
+<Grid item xs={12}><Box sx={{ width: "100%" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_TAB_Training} onChange={(e, v) => setTabValue_TAB_Training(v)} aria-label="TAB_Training"><Tab label="    현    황    " /><Tab label="    Chart    " /></Tabs></Box><CustomTabPanel value={tabValue_TAB_Training} index={0}><Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12}>
+                    <Paper sx={{ height: 400, width: '100%' }}>
+                        <DataGridWrapper rows={hook.ds_exampass} columns={columns_gdList} />
+                    </Paper>
+                </Grid></Grid>
+</CustomTabPanel><CustomTabPanel value={tabValue_TAB_Training} index={1}></CustomTabPanel></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box>[단위 : 천원]</Box></Grid></Grid>
 
                     </Paper>
                 </Grid>

@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './Frmcust2024PPosResultCasData';
 
 export const useFrmcust2024PPosResultCas = () => {
     const [isLoading, setIsLoading] = useState(false);

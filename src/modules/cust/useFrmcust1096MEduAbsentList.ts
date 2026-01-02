@@ -1,70 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oEduAbsent {
-    ABSENTDATE: string;
-    ABSENTDAY: string;
-    ADAY1: string;
-    ADAY2: string;
-    ADAY3: string;
-    ADAY4: string;
-    ADAY5: string;
-    ADDR: string;
-    BIRTHDAY: string;
-    JJIBUNM: string;
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-    TJADDR1: string;
-    TJADDR2: string;
-    TJPERSONNM: string;
-    PERSONKEY: string;
-    TOENDDATE: string;
-    TOHJUBSUNO: string;
-    TOMGJIBUCD: string;
-    TOSTARTDATE: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-}
-
-export interface Ids_oSearchGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduAbsentTemp {
-    ABSENTDATE: string;
-    ABSENTDAY: string;
-    ADAY1: string;
-    ADAY2: string;
-    ADAY3: string;
-    ADAY4: string;
-    ADAY5: string;
-    ADDR: string;
-    BIRTHDAY: string;
-    JJIBUNM: string;
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-    TJADDR1: string;
-    TJADDR2: string;
-    TJPERSONNM: string;
-    TJPERSONKEY: string;
-    TOENDDATE: string;
-    TOHJUBSUNO: string;
-    TOMGJIBUCD: string;
-    TOSTARTDATE: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-}
+import type { Ids_oEduAbsent, Ids_oSearchGubun, Ids_oCourse, Ids_oJibu, Ids_oEduAbsentTemp } from './Frmcust1096MEduAbsentListData';
 
 export const useFrmcust1096MEduAbsentList = () => {
     const [ds_oEduAbsent, setds_oEduAbsent] = useState<Ids_oEduAbsent[]>([]);
@@ -73,6 +9,7 @@ export const useFrmcust1096MEduAbsentList = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_oEduAbsentTemp, setds_oEduAbsentTemp] = useState<Ids_oEduAbsentTemp[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -121,6 +58,8 @@ export const useFrmcust1096MEduAbsentList = () => {
         ds_oCourse,
         ds_oJibu,
         ds_oEduAbsentTemp,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

@@ -1,48 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMonth {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYear {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCusEduChk {
-    CECCHKGUBUN: string;
-    CECCLOSEGUBUN: string;
-    CECDATE: string;
-    CECGTMGNO: string;
-    CECMONTH: string;
-    CECSABUN: string;
-    CECYEAR: string;
-    GTDEPTNM: string;
-    SEL: string;
-    CHKGUBUN: string;
-    CLOSEGUBUN: string;
-}
-
-export interface Ids_iCusEduChk {
-    CECCHKGUBUN: string;
-    CECCLOSEGUBUN: string;
-    CECDATE: string;
-    CECGTMGNO: string;
-    CECMONTH: string;
-    CECSABUN: string;
-    CECYEAR: string;
-    GTDEPTNM: string;
-    SEL: string;
-    CHKGUBUN: string;
-    CLOSEGUBUN: string;
-}
+import type { Ids_ioJibu, Ids_ioMonth, Ids_ioYear, Ids_ioCusEduChk, Ids_iCusEduChk } from './Frmcust1230MEduMonthJibuData';
 
 export const useFrmcust1230MEduMonthJibu = () => {
     const [ds_ioJibu, setds_ioJibu] = useState<Ids_ioJibu[]>([]);
@@ -51,6 +9,7 @@ export const useFrmcust1230MEduMonthJibu = () => {
     const [ds_ioCusEduChk, setds_ioCusEduChk] = useState<Ids_ioCusEduChk[]>([]);
     const [ds_iCusEduChk, setds_iCusEduChk] = useState<Ids_iCusEduChk[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -90,6 +49,8 @@ export const useFrmcust1230MEduMonthJibu = () => {
         ds_ioYear,
         ds_ioCusEduChk,
         ds_iCusEduChk,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnProc_OnClick,
         lfn_Cancel,
         lfn_End,

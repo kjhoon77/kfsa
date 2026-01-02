@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './FrmCOM0010PInfoMessageData';
 
 export const useFrmCOM0010PInfoMessage = () => {
     const [isLoading, setIsLoading] = useState(false);

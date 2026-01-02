@@ -1,60 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oChangeList {
-    FCMGNO: string;
-    FCSEQ: string;
-    FCCMGNO: string;
-    FCRESIDENT: string;
-    FCSTATUS: string;
-    FCGUBUN: string;
-    FCBULDNAME: string;
-    FCPOST: string;
-    FCADDR1: string;
-    FCADDR2: string;
-    FCHOPEADDRGUBUN: string;
-    FCCPOST: string;
-    FCCADDR1: string;
-    FCCADDR2: string;
-    FCTELEPHONE: string;
-    FCFAX: string;
-    FCHANDPHONE: string;
-    FCEMAIL: string;
-    FCSIZE: string;
-    FCOWNERNAME: string;
-    FCOWNERTEL: string;
-    FCOWNERHP: string;
-    FCREGDATE: string;
-    CGTMGNO: string;
-    MID: string;
-    MNM: string;
-    MMGNO: string;
-}
-
-export interface Ids_ioJibuGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioGubun, Ids_ioStatus, Ids_ioCourse, Ids_ioJibu, Ids_oChangeList, Ids_ioJibuGubun } from './Frmcust0030MInetCustomerManagementData';
 
 export const useFrmcust0030MInetCustomerManagement = () => {
     const [ds_ioGubun, setds_ioGubun] = useState<Ids_ioGubun[]>([]);
@@ -64,6 +10,7 @@ export const useFrmcust0030MInetCustomerManagement = () => {
     const [ds_oChangeList, setds_oChangeList] = useState<Ids_oChangeList[]>([]);
     const [ds_ioJibuGubun, setds_ioJibuGubun] = useState<Ids_ioJibuGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -105,6 +52,8 @@ export const useFrmcust0030MInetCustomerManagement = () => {
         ds_ioJibu,
         ds_oChangeList,
         ds_ioJibuGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

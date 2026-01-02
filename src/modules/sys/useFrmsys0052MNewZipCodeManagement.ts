@@ -1,40 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioZipCode {
-    NZBULDNM: string;
-    NZBULDNO: string;
-    NZDONG: string;
-    NZJIBUNBON: string;
-    NZJIBUNBU: string;
-    NZKU: string;
-    NZLEGALCD: string;
-    NZMGNO: string;
-    NZNEWBONBEN: string;
-    NZNEWBUBEN: string;
-    NZRI: string;
-    NZROADNM: string;
-    NZSAN: string;
-    NZSANGSEBULDNM: string;
-    NZSIDO: string;
-    NZZIPCDE: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioZipCode, Ids_oJibu, Ids_oRegion } from './Frmsys0052MNewZipCodeManagementData';
 
 export const useFrmsys0052MNewZipCodeManagement = () => {
     const [ds_ioZipCode, setds_ioZipCode] = useState<Ids_ioZipCode[]>([]);
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_oRegion, setds_oRegion] = useState<Ids_oRegion[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -79,6 +52,8 @@ export const useFrmsys0052MNewZipCodeManagement = () => {
         ds_ioZipCode,
         ds_oJibu,
         ds_oRegion,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_Delete,

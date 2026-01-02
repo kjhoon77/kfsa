@@ -1,45 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioAddrGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioDelete {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYear1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYear2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioBusiness {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYear {
-    CD: string;
-}
-
-export interface Ids_ioAccount {
-    YEAR: string;
-    GUBUN: string;
-    AMT: string;
-}
-
-export interface Ids_oRepayYn {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioAddrGubun, Ids_ioDelete, Ids_ioYear1, Ids_ioYear2, Ids_ioBusiness, Ids_ioYear, Ids_ioAccount, Ids_oRepayYn } from './Frmitem0004PEduItemMgmtData';
 
 export const useFrmitem0004PEduItemMgmt = () => {
     const [ds_ioAddrGubun, setds_ioAddrGubun] = useState<Ids_ioAddrGubun[]>([]);
@@ -51,6 +12,7 @@ export const useFrmitem0004PEduItemMgmt = () => {
     const [ds_ioAccount, setds_ioAccount] = useState<Ids_ioAccount[]>([]);
     const [ds_oRepayYn, setds_oRepayYn] = useState<Ids_oRepayYn[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -90,6 +52,8 @@ export const useFrmitem0004PEduItemMgmt = () => {
         ds_ioYear,
         ds_ioAccount,
         ds_oRepayYn,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_End,
         lfn_Excel,
         lfn_PrintScreen,

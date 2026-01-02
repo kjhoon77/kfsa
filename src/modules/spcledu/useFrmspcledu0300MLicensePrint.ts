@@ -1,48 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oPassGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oLicenseReport {
-    BIRTHDAY: string;
-    IIFILENM: string;
-    LADDR1: string;
-    LADDR2: string;
-    LBARCODE: string;
-    LHPRTDATE: string;
-    LISSUEDATE: string;
-    LISSUEGUBUNNM: string;
-    LLCSNO: string;
-    LPERSONNM: string;
-    LTCCOURSENM: string;
-    LLASTHISTORYSEQ: string;
-}
-
-export interface Ids_oLicenseCnt {
-    LLCSNO: string;
-    MINNO: string;
-    MAXNO: string;
-}
-
-export interface Ids_iLicenseImage {
-    LILLCSNO: string;
-    LISEQ: string;
-    LIDIRPATH: string;
-    LIREALNM: string;
-}
+import type { Ids_oCourse, Ids_oJibu, Ids_oPassGubun, Ids_oLicenseReport, Ids_oLicenseCnt, Ids_iLicenseImage } from './Frmspcledu0300MLicensePrintData';
 
 export const useFrmspcledu0300MLicensePrint = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -52,6 +10,7 @@ export const useFrmspcledu0300MLicensePrint = () => {
     const [ds_oLicenseCnt, setds_oLicenseCnt] = useState<Ids_oLicenseCnt[]>([]);
     const [ds_iLicenseImage, setds_iLicenseImage] = useState<Ids_iLicenseImage[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -87,6 +46,8 @@ export const useFrmspcledu0300MLicensePrint = () => {
         ds_oLicenseReport,
         ds_oLicenseCnt,
         ds_iLicenseImage,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Print,

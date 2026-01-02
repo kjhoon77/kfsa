@@ -1,68 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamFail__ {
-    CCCD: string;
-    CCCDNM: string;
-    CCGROUPCD: string;
-    CCORDERSEQ: string;
-    CCREMARK: string;
-    USE_YN: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamFail {
-    EJMGNO: string;
-    EJPERSONNM: string;
-    EJBIRTHDAY: string;
-    EJPASSYN: string;
-    ERSCORE: string;
-    TPYN: string;
-}
-
-export interface Ids_ioExamFailCountList {
-    EJPERSONNM: string;
-    EJBIRTHDAY: string;
-    EOHJUBSUNO: string;
-    ERPASSYN: string;
-    ERSCORE: string;
-    PASSYN: string;
-}
-
-export interface Ids_oExamLicense {
-    LLCSNO: string;
-    LPERSONNM: string;
-    EJCANCELREASON: string;
-    LSTATUSGUBUN: string;
-}
-
-export interface Ids_oPass {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamSeatTotalCount {
-}
-
-export interface Ids_ioExamSeat_YN_Count {
-}
-
-export interface Ids_ioExamPassCancelList {
-}
-
-export interface Ids_oResultYN {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioExamFail__, Ids_oCourse, Ids_oJibu, Ids_oExamFail, Ids_ioExamFailCountList, Ids_oExamLicense, Ids_oPass, Ids_ioExamSeatTotalCount, Ids_ioExamSeat_YN_Count, Ids_ioExamPassCancelList, Ids_oResultYN } from './Frmtraining0650MExamFailPassCancelData';
 
 export const useFrmtraining0650MExamFailPassCancel = () => {
     const [ds_ioExamFail__, setds_ioExamFail__] = useState<Ids_ioExamFail__[]>([]);
@@ -77,6 +15,7 @@ export const useFrmtraining0650MExamFailPassCancel = () => {
     const [ds_ioExamPassCancelList, setds_ioExamPassCancelList] = useState<Ids_ioExamPassCancelList[]>([]);
     const [ds_oResultYN, setds_oResultYN] = useState<Ids_oResultYN[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -128,6 +67,8 @@ export const useFrmtraining0650MExamFailPassCancel = () => {
         ds_ioExamSeat_YN_Count,
         ds_ioExamPassCancelList,
         ds_oResultYN,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

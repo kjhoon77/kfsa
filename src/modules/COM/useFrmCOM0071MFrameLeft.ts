@@ -1,8 +1,10 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './FrmCOM0071MFrameLeftData';
 
 export const useFrmCOM0071MFrameLeft = () => {
     const [isLoading, setIsLoading] = useState(false);
+    const [tabValue_tabMenu, setTabValue_tabMenu] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -29,6 +31,8 @@ export const useFrmCOM0071MFrameLeft = () => {
 
     return {
         isLoading,
+        tabValue_tabMenu,
+        setTabValue_tabMenu,
         btnUID_OnClick,
         imgCloseAllForm_OnClick,
         imgLogout_OnClick,

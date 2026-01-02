@@ -1,33 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSort {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingSeatNoPrint {
-    BIRTHDAY: string;
-    IMAGE: string;
-    NM: string;
-    ORDERJUBSUNO: string;
-    SEATNO: string;
-}
-
-export interface Ids_oPoto {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oJibu, Ids_oSort, Ids_oTrainingSeatNoPrint, Ids_oPoto } from './Frmspcledu0130STrainingSeatNoPrintData';
 
 export const useFrmspcledu0130STrainingSeatNoPrint = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -36,6 +9,7 @@ export const useFrmspcledu0130STrainingSeatNoPrint = () => {
     const [ds_oTrainingSeatNoPrint, setds_oTrainingSeatNoPrint] = useState<Ids_oTrainingSeatNoPrint[]>([]);
     const [ds_oPoto, setds_oPoto] = useState<Ids_oPoto[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -69,6 +43,8 @@ export const useFrmspcledu0130STrainingSeatNoPrint = () => {
         ds_oSort,
         ds_oTrainingSeatNoPrint,
         ds_oPoto,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_PrintScreen,

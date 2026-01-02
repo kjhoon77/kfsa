@@ -1,56 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioAssociationFireStation2_All {
-}
-
-export interface Ids_ioAssociationFireStation2_3yes {
-}
-
-export interface Ids_ioAssociationFireStation2 {
-}
-
-export interface Ids_ioAssociationFireStation2_defualt {
-}
-
-export interface Ids_ioAssociationFireStation2_2yes1 {
-}
-
-export interface Ids_ioAssociationFireStation2_2yes2 {
-}
-
-export interface Ids_ioAssociationFireStation2_2yes3 {
-}
-
-export interface Ids_ioAssociationFireStation2_1onlyyes {
-}
-
-export interface Ids_ioAssociationFireStation2_3no {
-}
-
-export interface Ids_ioFireStationAssociation_second {
-}
-
-export interface Ids_ioStatistics {
-    colNum0: string;
-    colNum1: string;
-    colNum2: string;
-    colNum3: string;
-    colNum4: string;
-    colNum5: string;
-    colNum6: string;
-    colNum7: string;
-    colNum8: string;
-}
-
-export interface Ids_ioFireStationAssociation_second_1onlyno {
-}
-
-export interface Ids_ioAssociationFireStationBnmaAddrFmnm {
-}
-
-export interface Ids_ioAssociationFireStationBnmaAddrFmnm_no {
-}
+import type { Ids_ioAssociationFireStation2_All, Ids_ioAssociationFireStation2_3yes, Ids_ioAssociationFireStation2, Ids_ioAssociationFireStation2_defualt, Ids_ioAssociationFireStation2_2yes1, Ids_ioAssociationFireStation2_2yes2, Ids_ioAssociationFireStation2_2yes3, Ids_ioAssociationFireStation2_1onlyyes, Ids_ioAssociationFireStation2_3no, Ids_ioFireStationAssociation_second, Ids_ioStatistics, Ids_ioFireStationAssociation_second_1onlyno, Ids_ioAssociationFireStationBnmaAddrFmnm, Ids_ioAssociationFireStationBnmaAddrFmnm_no } from './Frmcust4051PFiremanagerDataCheckData';
 
 export const useFrmcust4051PFiremanagerDataCheck = () => {
     const [ds_ioAssociationFireStation2_All, setds_ioAssociationFireStation2_All] = useState<Ids_ioAssociationFireStation2_All[]>([]);
@@ -68,6 +18,8 @@ export const useFrmcust4051PFiremanagerDataCheck = () => {
     const [ds_ioAssociationFireStationBnmaAddrFmnm, setds_ioAssociationFireStationBnmaAddrFmnm] = useState<Ids_ioAssociationFireStationBnmaAddrFmnm[]>([]);
     const [ds_ioAssociationFireStationBnmaAddrFmnm_no, setds_ioAssociationFireStationBnmaAddrFmnm_no] = useState<Ids_ioAssociationFireStationBnmaAddrFmnm_no[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [tabValue_tabTab1, setTabValue_tabTab1] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -122,6 +74,10 @@ export const useFrmcust4051PFiremanagerDataCheck = () => {
         ds_ioFireStationAssociation_second_1onlyno,
         ds_ioAssociationFireStationBnmaAddrFmnm,
         ds_ioAssociationFireStationBnmaAddrFmnm_no,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        tabValue_tabTab1,
+        setTabValue_tabTab1,
         btnMutilSort_OnClick,
         lfnAllviewExcel,
         lfn_End,

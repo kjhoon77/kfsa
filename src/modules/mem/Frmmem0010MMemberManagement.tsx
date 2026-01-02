@@ -1,12 +1,13 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmmem0010MMemberManagement } from './useFrmmem0010MMemberManagement';
 import * as Frmmem0010MMemberManagementData from './Frmmem0010MMemberManagementData';
+import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 
 export const Frmmem0010MMemberManagement = () => {
     const hook = useFrmmem0010MMemberManagement();
@@ -67,10 +68,9 @@ export const Frmmem0010MMemberManagement = () => {
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
                 <Typography variant="h5">기본정보</Typography>
                 <Stack direction="row" spacing={1}>
-                    <Button variant="contained"  onClick={hook.lfn_Cancel}>입력 초기화</Button>
-<Button variant="contained"  onClick={hook.lfn_PrintScreen}>화면 출력</Button>
-<Button variant="contained"  onClick={hook.lfn_End}>닫기</Button>
-<Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회(F2)</Button>
+                    <Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Cancel}>입력 초기화</Button>
+<Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
+<Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 
                 </Stack>
             </Stack>
@@ -80,23 +80,37 @@ export const Frmmem0010MMemberManagement = () => {
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
                         <Grid container spacing={2} alignItems="center">
+<Grid item xs={12} md={2}><Box>조
 
-                <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
-                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>관리번호</Typography>
-                        <TextField size="small" fullWidth  />
-                    </Stack>
-                </Grid></Grid>
+
+회</Box></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.lfn_Search}>조회(F2)</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>관리번호</Typography>
+                        <TextField size="small" fullWidth  />
+                    </Stack>
+                </Grid>{ hook.isVisible_gdMemJoinH && (
+                <Grid item xs={12} md={12}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
+<Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>성명</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>생년월일</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
@@ -104,13 +118,19 @@ export const Frmmem0010MMemberManagement = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>회원식별번호</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>회원정보</Box></Grid><Grid item xs={12} md={2}><Button variant="contained" color="secondary" onClick={hook.openPopDiv0}>겸직정보</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Box>회원정보</Box></Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>관리바코드</Typography>
+                        <TextField size="small" fullWidth  />
+                    </Stack>
+                </Grid><Grid item xs={12} md={2}><Button variant="contained" color="secondary" onClick={hook.openPopDiv0}>겸직정보</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12}>
@@ -119,7 +139,7 @@ export const Frmmem0010MMemberManagement = () => {
                     </Paper>
                 </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>회비정보</Box></Grid><Grid item xs={12} md={2}><Button variant="contained">상세정보</Button></Grid><Grid item xs={12} md={2}><Box>실무교육정보</Box></Grid><Grid item xs={12} md={2}><Button variant="contained">안내문 발행이력</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">상세정보</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">교육안내문 출력</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Box>회비정보</Box></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnFeeDetailInfo_OnClick}>상세정보</Button></Grid><Grid item xs={12} md={2}><Box>실무교육정보</Box></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnEduDataHList_OnClick}>안내문 발행이력</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnEduDetailInfo_OnClick}>상세정보</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.lfn_EduDataPrint}>교육안내문 출력</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12}>
@@ -133,7 +153,7 @@ export const Frmmem0010MMemberManagement = () => {
                     </Paper>
                 </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>고객 은행 가상계좌</Box></Grid><Grid item xs={12} md={2}><Button variant="contained">은행 가상계좌 보기</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Box>고객 은행 가상계좌</Box></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnShowVirtualAccount_OnClick}>은행 가상계좌 보기</Button></Grid></Grid>
 
                     </Paper>
                 </Grid>
@@ -143,7 +163,7 @@ export const Frmmem0010MMemberManagement = () => {
                         <DialogTitle>PopDiv0</DialogTitle>
                         <DialogContent>
                             <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Button variant="contained">닫기</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Button variant="contained" onClick={hook.Div3_btn_EduDetailClose_OnClick}>닫기</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12}>

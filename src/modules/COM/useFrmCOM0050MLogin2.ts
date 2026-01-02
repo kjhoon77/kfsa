@@ -1,10 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oServiceGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oServiceGubun } from './FrmCOM0050MLogin2Data';
 
 export const useFrmCOM0050MLogin2 = () => {
     const [ds_oServiceGubun, setds_oServiceGubun] = useState<Ids_oServiceGubun[]>([]);

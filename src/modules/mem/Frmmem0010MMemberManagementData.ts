@@ -1,7 +1,43 @@
 // @ts-nocheck
 export const Frmmem0010MMemberManagementData = {};
 
-export const ds_ds_oEduSuccessGubun = [
+export interface Ids_oJibu {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_ioEducationPassInfo {
+    BNM?: string;
+    CNO?: string;
+    EPPASSDATE?: string;
+    EPPERSONNM?: string;
+    EPPROCGTMGNO?: string;
+    EPBIRTHDAY?: string;
+    BIRTHDAY?: string;
+    EPSUCCESSIONGUBUN?: string;
+    EPYEAR?: string;
+    ESGUBUN?: string;
+    ESSTUDENT?: string;
+    EPMGNO?: string;
+}
+
+export interface Ids_ioOverBizInfo {
+}
+
+export interface Ids_ioCustomerFeeInfo {
+}
+
+export interface Ids_oSunapGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oEduSuccessGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oEduSuccessGubun: Ids_oEduSuccessGubun[] = [
     { CD: '0', DATA: '선임자교육' },
     { CD: '1', DATA: '교육승계' },
     { CD: '2', DATA: '사이버교육' },
@@ -9,7 +45,27 @@ export const ds_ds_oEduSuccessGubun = [
     { CD: '4', DATA: '교육이관' },
 ];
 
-export const ds_ds_oModifyColumnList = [
+export interface Ids_oOverBizProc {
+}
+
+export interface Ids_iCustomerModifyHistory {
+    CMHAFTERDATA?: string;
+    CMHBEFOREDATA?: string;
+    CMHCOLUMN?: string;
+    CMHGUBUN?: string;
+    CMHKEY?: string;
+    CMHWORKGUBUN?: string;
+}
+
+export interface Ids_oModifyColumnList {
+    TBLNM?: string;
+    COLNM?: string;
+    COLKORNM?: string;
+    COMBOGUBUN?: string;
+    INNERDSNM?: string;
+}
+
+export const ds_ds_oModifyColumnList: Ids_oModifyColumnList[] = [
     { COLKORNM: '고객정보관리번호', COLNM: 'CMGNO', COMBOGUBUN: 'N', INNERDSNM: '', TBLNM: 'CUSTOMER' },
     { COLKORNM: '지부', COLNM: 'CGTMGNO', COMBOGUBUN: 'Y', INNERDSNM: 'ds_oJibu', TBLNM: 'CUSTOMER' },
     { COLKORNM: '고객번호', COLNM: 'CNO', COMBOGUBUN: 'N', INNERDSNM: '', TBLNM: 'CUSTOMER' },
@@ -218,8 +274,54 @@ export const ds_ds_oModifyColumnList = [
     { COLKORNM: '보조자수', COLNM: 'CSUPPORTERCNT', COMBOGUBUN: 'N', INNERDSNM: '', TBLNM: 'CUSTOMER' },
 ];
 
-export const ds_ds_oEduStudentGubun = [
+export interface Ids_oMemberInfo {
+}
+
+export interface Ids_oEduConfirmPrint {
+    ECMGNO?: string;
+    EDUNAME?: string;
+    COMPANY?: string;
+    NAME?: string;
+    CGROUPNM?: string;
+    EPBIRTHDAY?: string;
+    BIRTHDAY?: string;
+    EDUDATE?: string;
+    BIRTH?: string;
+    GTTEAMNM?: string;
+    MGNO?: string;
+    RULE?: string;
+}
+
+export interface Ids_oVirtualAccoutAllocation {
+    Rtn_status?: string;
+}
+
+export interface Ids_oVirtualAccoutOwnerNM {
+}
+
+export interface Ids_oVirtualAccoutDelete {
+    RTN_STATUS?: string;
+}
+
+export interface Ids_ioMEduData {
+}
+
+export interface Ids_ioMEduDataDetail {
+}
+
+export interface Ids_ioEduNoticeHistoryGetSysdate {
+}
+
+export interface Ids_oEduStudentGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oEduStudentGubun: Ids_oEduStudentGubun[] = [
     { CD: '0', DATA: '실무교육' },
     { CD: '1', DATA: '제연설비등' },
     { CD: '2', DATA: '사이버' },
 ];
+
+export interface Ids_oMemJoinH {
+}

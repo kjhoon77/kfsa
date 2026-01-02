@@ -1,12 +1,15 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmtraining0105MTrainingRegisterPrint } from './useFrmtraining0105MTrainingRegisterPrint';
 import * as Frmtraining0105MTrainingRegisterPrintData from './Frmtraining0105MTrainingRegisterPrintData';
+import { Frmtraining0110STrainingJubsurRegisterPrint } from './Frmtraining0110STrainingJubsurRegisterPrint';
+import { Frmtraining0130STrainingSeatNoPrint } from './Frmtraining0130STrainingSeatNoPrint';
+import { Frmtraining0135STrainingExamSeatPrint } from './Frmtraining0135STrainingExamSeatPrint';
 
 export const Frmtraining0105MTrainingRegisterPrint = () => {
     const hook = useFrmtraining0105MTrainingRegisterPrint();
@@ -25,7 +28,9 @@ export const Frmtraining0105MTrainingRegisterPrint = () => {
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
-                        
+                        <Grid container spacing={2} alignItems="center">
+<Grid item xs={12}><Box sx={{ width: "100%" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab} onChange={(e, v) => setTabValue_tabTab(v)} aria-label="tabTab"><Tab label="접수부" /><Tab label="좌석번호표" /><Tab label="시험좌석표" /></Tabs></Box><CustomTabPanel value={tabValue_tabTab} index={0}><Frmtraining0110STrainingJubsurRegisterPrint /></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={1}><Frmtraining0130STrainingSeatNoPrint /></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={2}><Frmtraining0135STrainingExamSeatPrint /></CustomTabPanel></Box></Grid></Grid>
+
                     </Paper>
                 </Grid>
 </Grid>

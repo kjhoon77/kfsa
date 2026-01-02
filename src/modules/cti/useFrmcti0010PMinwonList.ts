@@ -1,11 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oMinwonList {
-}
-
-export interface Ids_oMinwonHistoryList {
-}
+import type { Ids_oMinwonList, Ids_oMinwonHistoryList } from './Frmcti0010PMinwonListData';
 
 export const useFrmcti0010PMinwonList = () => {
     const [ds_oMinwonList, setds_oMinwonList] = useState<Ids_oMinwonList[]>([]);

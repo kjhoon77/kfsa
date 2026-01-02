@@ -1,12 +1,11 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_List {
-}
+import type { Ids_List } from './Frmcti0010PLogPersonData';
 
 export const useFrmcti0010PLogPerson = () => {
     const [ds_List, setds_List] = useState<Ids_List[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -26,6 +25,8 @@ export const useFrmcti0010PLogPerson = () => {
     return {
         isLoading,
         ds_List,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnSend_OnClick,
         lfn_Search,
     };

@@ -1,76 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamAns {
-    EJMGNO: string;
-    EOHJUBSUNO: string;
-    EOTCCOURSECD: string;
-    TCCOURSENM: string;
-    EOEXAMORDER: string;
-    EJPERSONNM: string;
-    APSEQ: string;
-    APAPLEXAMNO: string;
-    EREXAMROOM: string;
-    APALPHATYPE: string;
-    APNUMTYPE: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSearchGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamOrder {
-    EOMGNO: string;
-    JJIBUNICK: string;
-    EOYEAR: string;
-    EOTCCOURSENM: string;
-    EOEXAMORDER: string;
-    EOEXAMDATE: string;
-    EXAMNM: string;
-}
-
-export interface Ids_ioAnswerPaper {
-    APCAITEMNO: string;
-    APEXAMROOM: string;
-    APAPLEXAMNO: string;
-    APTCCOURSECD: string;
-    APALPHATYPE: string;
-    APANSWER: string;
-}
-
-export interface Ids_ioExamAnsCopy {
-    APSEQ: string;
-    EPCOURSECD: string;
-    EPNUMTYPE: string;
-    EPALPHATYPE: string;
-    EJMGNO: string;
-    EOHJUBSUNO: string;
-    EREXAMROOM: string;
-    SEL: string;
-    TCCOURSENM: string;
-    TPPERSONNM: string;
-    CAITEMNO: string;
-    APANSWER: string;
-}
-
-export interface Ids_oType {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamAnsCnt {
-}
-
-export interface Ids_oExamRepeat {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioExamAns, Ids_oCourse, Ids_oSearchGubun, Ids_oExamOrder, Ids_ioAnswerPaper, Ids_ioExamAnsCopy, Ids_oType, Ids_oExamAnsCnt, Ids_oExamRepeat } from './Frmspcledu0530MExamAnswerPaperModifyData';
 
 export const useFrmspcledu0530MExamAnswerPaperModify = () => {
     const [ds_ioExamAns, setds_ioExamAns] = useState<Ids_ioExamAns[]>([]);
@@ -83,6 +13,7 @@ export const useFrmspcledu0530MExamAnswerPaperModify = () => {
     const [ds_oExamAnsCnt, setds_oExamAnsCnt] = useState<Ids_oExamAnsCnt[]>([]);
     const [ds_oExamRepeat, setds_oExamRepeat] = useState<Ids_oExamRepeat[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -139,6 +70,8 @@ export const useFrmspcledu0530MExamAnswerPaperModify = () => {
         ds_oType,
         ds_oExamAnsCnt,
         ds_oExamRepeat,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnNext_OnClick,
         btnSearchExamPlace_OnClick,

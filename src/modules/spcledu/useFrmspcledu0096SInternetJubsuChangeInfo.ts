@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './Frmspcledu0096SInternetJubsuChangeInfoData';
 
 export const useFrmspcledu0096SInternetJubsuChangeInfo = () => {
     const [isLoading, setIsLoading] = useState(false);

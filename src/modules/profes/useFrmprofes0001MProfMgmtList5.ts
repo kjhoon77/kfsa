@@ -1,22 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioList {
-}
-
-export interface Ids_PFGUBUN3 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioList2 {
-}
+import type { Ids_ioList, Ids_PFGUBUN3, Ids_ioList2 } from './Frmprofes0001MProfMgmtList5Data';
 
 export const useFrmprofes0001MProfMgmtList5 = () => {
     const [ds_ioList, setds_ioList] = useState<Ids_ioList[]>([]);
     const [ds_PFGUBUN3, setds_PFGUBUN3] = useState<Ids_PFGUBUN3[]>([]);
     const [ds_ioList2, setds_ioList2] = useState<Ids_ioList2[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -49,6 +40,8 @@ export const useFrmprofes0001MProfMgmtList5 = () => {
         ds_ioList,
         ds_PFGUBUN3,
         ds_ioList2,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnToExcel2_OnClick,
         btnToExcel_OnClick,
         lfn_End,

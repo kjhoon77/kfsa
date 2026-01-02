@@ -1,10 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oRegionList {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oRegionList } from './Frmcust6400P01RegionListData';
 
 export const useFrmcust6400P01RegionList = () => {
     const [ds_oRegionList, setds_oRegionList] = useState<Ids_oRegionList[]>([]);

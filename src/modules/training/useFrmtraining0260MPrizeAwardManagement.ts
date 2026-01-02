@@ -1,38 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioTrainingExamPrize {
-    TOMGGTMGNO: string;
-    TJADDR1: string;
-    PGUBUN: string;
-    PGUBUN2: string;
-    TOTCCOURSECD: string;
-    TJADDR2: string;
-    TJMGNO: string;
-    TJPERSONNM: string;
-    TJBIRTHDAY_SANG: string;
-    TOHJUBSUNO: string;
-    TOMGNO: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TJTPMGNO: string;
-    PMGNO: string;
-}
-
-export interface Ids_oPrizeGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioTrainingExamPrize, Ids_oPrizeGubun, Ids_oCourse, Ids_oJibu } from './Frmtraining0260MPrizeAwardManagementData';
 
 export const useFrmtraining0260MPrizeAwardManagement = () => {
     const [ds_ioTrainingExamPrize, setds_ioTrainingExamPrize] = useState<Ids_ioTrainingExamPrize[]>([]);
@@ -40,6 +8,7 @@ export const useFrmtraining0260MPrizeAwardManagement = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -83,6 +52,8 @@ export const useFrmtraining0260MPrizeAwardManagement = () => {
         ds_oPrizeGubun,
         ds_oCourse,
         ds_oJibu,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_Delete,

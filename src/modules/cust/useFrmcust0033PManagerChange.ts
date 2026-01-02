@@ -1,149 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioManager {
-    MMGNO: string;
-    MNM: string;
-    MRESIDENTNO: string;
-    FMLASTFMHSEQ: string;
-    FMRESIDENTERR: string;
-}
-
-export interface Ids_ModifyGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oManagerList {
-    BADDR1: string;
-    BADDR2: string;
-    BNM: string;
-    BTEL: string;
-    BZIPCD: string;
-    CCOCD: string;
-    CCOURSECD: string;
-    CFIREMGNO: string;
-    CGTMGNO: string;
-    CNO: string;
-    COVERCMGNO: string;
-    CREGCD: string;
-    CSTATUSGUBUN: string;
-    EPPASSDATE: string;
-    FMHSTARTDATE: string;
-    FMNM: string;
-    FMRESIDENTNO: string;
-    OLHNM: string;
-}
-
-export interface Ids_oStatus {
-}
-
-export interface Ids_MemberGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMemberStatus {
-}
-
-export interface Ids_iCustomerInfo {
-    AGNM: string;
-    CAGGUBUN: string;
-    CAGMGNO: string;
-    CBMGNO: string;
-    CCOCD: string;
-    CCOURSECD: string;
-    CDELDATE: string;
-    CDELGUBUN: string;
-    CEDUPOSTADDR1: string;
-    CEDUPOSTADDR2: string;
-    CEDUPOSTGUBUN: string;
-    CEDUPOSTPLACE: string;
-    CEDUPOSTZIPCD: string;
-    CEXCEPTDATE: string;
-    CEXCEPTGUBUN: string;
-    CFEEPOSTADDR1: string;
-    CFEEPOSTADDR2: string;
-    CFEEPOSTGUBUN: string;
-    CFEEPOSTPLACE: string;
-    CFEEYYMM: string;
-    CFIREMGNO: string;
-    CFMHMGNO: string;
-    CFMHSEQ: string;
-    CGATEWAYPK1: string;
-    CGATEWAYPK2: string;
-    CGATEWAYPK3: string;
-    CGCOURSECD: string;
-    CGTMGNO: string;
-    CLASTADDSEQ: string;
-    CLASTPRSEQ: string;
-    CMGNO: string;
-    CNO: string;
-    COBMGNO: string;
-    COLDMGNO: string;
-    COVERGUBUN: string;
-    CPERSONGUBUN: string;
-    CPOSTREQGUBUN: string;
-    CREGCD: string;
-    CREGISTERYYMM: string;
-    CSTATUSDATE: string;
-    CSTATUSGUBUN: string;
-    CSTATUSREASONCD: string;
-    CMAINCMGNO: string;
-    CELECTQUALIFY: string;
-    CFEEADDRGUBUN: string;
-    CEDUADDRGUBUN: string;
-    CFEEROADADDR1: string;
-    CFEEROADADDR2: string;
-    CEDUROADADDR1: string;
-    CEDUROADADDR2: string;
-    CFEEPOSTZIPCD: string;
-}
-
-export interface Ids_oOldInfo {
-    FMRESIDENTERR: string;
-    CCOURSECD: string;
-    BNM: string;
-    BADDR1: string;
-}
-
-export interface Ids_oMemberStat {
-    MHMEMCHK: string;
-    MHNAME: string;
-    MHRESIDENT: string;
-    MHREGDATE: string;
-}
-
-export interface Ids_oLicenseList {
-    ADDR: string;
-    LHPTEL: string;
-    LLCSNO: string;
-    LPERSONNM: string;
-    LRESIDENTNO: string;
-    LTEL: string;
-    TPNM: string;
-    TPRESIDENTNO: string;
-}
-
-export interface Ids_iCustomerModifyHistory {
-    CMHAFTERDATA: string;
-    CMHBEFOREDATA: string;
-    CMHCOLUMN: string;
-    CMHGUBUN: string;
-    CMHKEY: string;
-    CMHWORKGUBUN: string;
-}
-
-export interface Ids_oEduPass {
-    EPMGNO1: string;
-    EPMGNO2: string;
-}
-
-export interface Ids_oAccountInfo {
-}
-
-export interface Ids_oPersonInfoAll {
-}
+import type { Ids_ioManager, Ids_ModifyGubun, Ids_oManagerList, Ids_oStatus, Ids_MemberGubun, Ids_oMemberStatus, Ids_iCustomerInfo, Ids_oOldInfo, Ids_oMemberStat, Ids_oLicenseList, Ids_iCustomerModifyHistory, Ids_oEduPass, Ids_oAccountInfo, Ids_oPersonInfoAll } from './Frmcust0033PManagerChangeData';
 
 export const useFrmcust0033PManagerChange = () => {
     const [ds_ioManager, setds_ioManager] = useState<Ids_ioManager[]>([]);
@@ -161,6 +18,7 @@ export const useFrmcust0033PManagerChange = () => {
     const [ds_oAccountInfo, setds_oAccountInfo] = useState<Ids_oAccountInfo[]>([]);
     const [ds_oPersonInfoAll, setds_oPersonInfoAll] = useState<Ids_oPersonInfoAll[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_Div0, setIsVisible_Div0] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -212,6 +70,8 @@ export const useFrmcust0033PManagerChange = () => {
         ds_oEduPass,
         ds_oAccountInfo,
         ds_oPersonInfoAll,
+        isVisible_Div0,
+        setIsVisible_Div0,
         btnMutilSort_OnClick,
         btnSaveManager_OnClick,
         lfn_End,

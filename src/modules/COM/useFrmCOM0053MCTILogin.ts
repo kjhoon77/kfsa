@@ -1,19 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oServiceGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oUserLoginPossiblecheck {
-}
-
-export interface Ids_oUserCheck {
-}
-
-export interface Ids_oPasswordCheck {
-}
+import type { Ids_oServiceGubun, Ids_oUserLoginPossiblecheck, Ids_oUserCheck, Ids_oPasswordCheck } from './FrmCOM0053MCTILoginData';
 
 export const useFrmCOM0053MCTILogin = () => {
     const [ds_oServiceGubun, setds_oServiceGubun] = useState<Ids_oServiceGubun[]>([]);

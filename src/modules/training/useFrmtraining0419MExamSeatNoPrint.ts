@@ -1,33 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSort {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamSeatNoPrint {
-    BIRTHDAY: string;
-    IMAGE: string;
-    NM: string;
-    ORDERJUBSUNO: string;
-    SEATNO: string;
-}
-
-export interface Ids_oPoto {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oJibu, Ids_oSort, Ids_oExamSeatNoPrint, Ids_oPoto } from './Frmtraining0419MExamSeatNoPrintData';
 
 export const useFrmtraining0419MExamSeatNoPrint = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -36,6 +9,7 @@ export const useFrmtraining0419MExamSeatNoPrint = () => {
     const [ds_oExamSeatNoPrint, setds_oExamSeatNoPrint] = useState<Ids_oExamSeatNoPrint[]>([]);
     const [ds_oPoto, setds_oPoto] = useState<Ids_oPoto[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -69,6 +43,8 @@ export const useFrmtraining0419MExamSeatNoPrint = () => {
         ds_oSort,
         ds_oExamSeatNoPrint,
         ds_oPoto,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_PrintScreen,

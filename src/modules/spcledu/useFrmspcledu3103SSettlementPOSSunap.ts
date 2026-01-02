@@ -1,10 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oUseGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oUseGubun } from './Frmspcledu3103SSettlementPOSSunapData';
 
 export const useFrmspcledu3103SSettlementPOSSunap = () => {
     const [ds_oUseGubun, setds_oUseGubun] = useState<Ids_oUseGubun[]>([]);

@@ -1,19 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_DEPTCD {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioList {
-}
-
-export interface Ids_ioList2 {
-}
-
-export interface Ids_ioList3 {
-}
+import type { Ids_DEPTCD, Ids_ioList, Ids_ioList2, Ids_ioList3 } from './Frmprofes0001MProfMgmtList4Data';
 
 export const useFrmprofes0001MProfMgmtList4 = () => {
     const [ds_DEPTCD, setds_DEPTCD] = useState<Ids_DEPTCD[]>([]);
@@ -21,6 +8,8 @@ export const useFrmprofes0001MProfMgmtList4 = () => {
     const [ds_ioList2, setds_ioList2] = useState<Ids_ioList2[]>([]);
     const [ds_ioList3, setds_ioList3] = useState<Ids_ioList3[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [tabValue_TAB_Profes, setTabValue_TAB_Profes] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -55,6 +44,10 @@ export const useFrmprofes0001MProfMgmtList4 = () => {
         ds_ioList,
         ds_ioList2,
         ds_ioList3,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        tabValue_TAB_Profes,
+        setTabValue_TAB_Profes,
         lfn_End,
         lfn_PrintScreen,
         lfn_Search,

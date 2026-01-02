@@ -1,61 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingOrder {
-    EPMGNO: string;
-    TCCOURSECD: string;
-    TOCOURSEGUBUN: string;
-    TOEDUCONTENTS: string;
-    TOENDDATE: string;
-    TOENDTIME: string;
-    TOEXCEPTDATE: string;
-    TOINETJUBSUCNT: string;
-    TOINETJUBSUYN: string;
-    TOJUBSUMAXCNT: string;
-    TOJUBSUSTATUS: string;
-    TOLECTURENOTICE: string;
-    TOMAILNOTICE: string;
-    TOMGJIBUCD: string;
-    TOMGNO: string;
-    TOMUNJEGUBUN: string;
-    TOREMARK: string;
-    TOSEATCNT: string;
-    TOSEATLIMITYN: string;
-    TOSEATSELECTYN: string;
-    TOSEXLIMITYN: string;
-    TOSTARTDATE: string;
-    TOSTARTTIME: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    USE_YN: string;
-    EPNM: string;
-    PERSONCNT: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSearchGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourseGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMunjeGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oTrainingOrder, Ids_oJibu, Ids_oSearchGubun, Ids_oCourseGubun, Ids_oMunjeGubun } from './Frmspcledu0015MTrainingOrderListData';
 
 export const useFrmspcledu0015MTrainingOrderList = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -65,6 +10,7 @@ export const useFrmspcledu0015MTrainingOrderList = () => {
     const [ds_oCourseGubun, setds_oCourseGubun] = useState<Ids_oCourseGubun[]>([]);
     const [ds_oMunjeGubun, setds_oMunjeGubun] = useState<Ids_oMunjeGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -109,6 +55,8 @@ export const useFrmspcledu0015MTrainingOrderList = () => {
         ds_oSearchGubun,
         ds_oCourseGubun,
         ds_oMunjeGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

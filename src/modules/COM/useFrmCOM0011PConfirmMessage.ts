@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './FrmCOM0011PConfirmMessageData';
 
 export const useFrmCOM0011PConfirmMessage = () => {
     const [isLoading, setIsLoading] = useState(false);

@@ -1,32 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_iReprodection {
-    STARTDATE: string;
-    PROCDATE: string;
-    GTMGNO: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_iCusEduChk {
-    CECCHKGUBUN: string;
-    CECCLOSEGUBUN: string;
-    CECGTMGNO: string;
-    CECYEAR: string;
-    CECMONTH: string;
-}
-
-export interface Ids_oCusEduChk {
-    CECCHKGUBUN: string;
-    CECCLOSEGUBUN: string;
-    CECGTMGNO: string;
-    CECYEAR: string;
-    CECMONTH: string;
-}
+import type { Ids_iReprodection, Ids_oJibu, Ids_iCusEduChk, Ids_oCusEduChk } from './Frmcust1220MEduMonthReproductionData';
 
 export const useFrmcust1220MEduMonthReproduction = () => {
     const [ds_iReprodection, setds_iReprodection] = useState<Ids_iReprodection[]>([]);
@@ -34,6 +8,7 @@ export const useFrmcust1220MEduMonthReproduction = () => {
     const [ds_iCusEduChk, setds_iCusEduChk] = useState<Ids_iCusEduChk[]>([]);
     const [ds_oCusEduChk, setds_oCusEduChk] = useState<Ids_oCusEduChk[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -65,6 +40,8 @@ export const useFrmcust1220MEduMonthReproduction = () => {
         ds_oJibu,
         ds_iCusEduChk,
         ds_oCusEduChk,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnFinishCancel_OnClick,
         btnFinishProc_OnClick,
         lfn_End,

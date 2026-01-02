@@ -1,13 +1,23 @@
 // @ts-nocheck
 export const Frmcust0010MCustomerManagementOldData = {};
 
-export const ds_ds_oAddrGubun = [
+export interface Ids_oAddrGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oAddrGubun: Ids_oAddrGubun[] = [
     { CD: '0', DATA: '대상물' },
     { CD: '1', DATA: '선임자' },
     { CD: '2', DATA: '직접' },
 ];
 
-export const ds_ds_ioDelete = [
+export interface Ids_ioDelete {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_ioDelete: Ids_ioDelete[] = [
     { CD: '0', DATA: '정상' },
     { CD: '1', DATA: '삭제소멸' },
     { CD: '2', DATA: '삭제용폐' },
@@ -15,45 +25,319 @@ export const ds_ds_ioDelete = [
     { CD: '4', DATA: '삭제기타' },
 ];
 
-export const ds_ds_ioLevel = [
+export interface Ids_ioLevel {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_ioLevel: Ids_ioLevel[] = [
     { CD: '1', DATA: '1급' },
     { CD: '2', DATA: '2급' },
 ];
 
-export const ds_ds_oAddr = [
+export interface Ids_oCourse {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oAddr {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oAddr: Ids_oAddr[] = [
     { CD: '0', DATA: '구주소' },
     { CD: '1', DATA: '신주소' },
 ];
 
-export const ds_ds_ioYn = [
+export interface Ids_oRegion {
+    CD?: string;
+    DATA?: string;
+    GTCD?: string;
+}
+
+export interface Ids_oJibu {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oBusinessGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_ioYn {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_ioYn: Ids_ioYn[] = [
     { CD: '1', DATA: '아니오' },
     { CD: '0', DATA: '예' },
 ];
 
-export const ds_ds_oAddPost = [
+export interface Ids_oEmailDomain {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_ioBuildingInfo {
+    BADDR1?: string;
+    BADDR2?: string;
+    BADDRGUBUN?: string;
+    BAREA?: number;
+    BBIZCD?: string;
+    BBULDADDR?: string;
+    BBULDNM?: string;
+    BBUNJI1?: string;
+    BBUNJI2?: string;
+    BCONO?: string;
+    BDONG?: string;
+    BETCADDR?: string;
+    BFAX?: string;
+    BFIREBONBUCD?: string;
+    BFIREUPCD?: string;
+    BFIRECD?: string;
+    BFIREMAN?: string;
+    BMGNO?: number;
+    BNM?: string;
+    BRI?: string;
+    BROADNM?: string;
+    BSANGUBUN?: string;
+    BSIDO?: string;
+    BSIGUNGU?: string;
+    BSMOKEGUBUN?: string;
+    BTEL?: string;
+    BZIPCD?: string;
+}
+
+export interface Ids_ioDangerInfo {
+    DBMGNO?: number;
+    DGATEWAYDAN?: string;
+    DPERMISSIONNO?: string;
+    DREMARK?: string;
+    DSEQ?: number;
+}
+
+export interface Ids_ioTankInfo {
+    TBMGNO?: string;
+    TCARNO?: string;
+    TCARYEAR?: string;
+    TGATEWAYTANK1?: number;
+    TGATEWAYTANK2?: number;
+    TINSTLRADDR1?: string;
+    TINSTLRADDR2?: string;
+    TINSTLRZIPCD?: string;
+    TPARKPLACEADDR1?: string;
+    TPARKPLACEADDR2?: string;
+    TPARKPLACEZIPCD?: string;
+    TPERMISSIONNO?: string;
+    TPOSTREQGUBUN?: string;
+    TREMARK?: string;
+    TSEQ?: string;
+    POSTPLACE?: string;
+}
+
+export interface Ids_ioEducationPassInfo {
+    BNM?: string;
+    CNO?: string;
+    EPPASSDATE?: string;
+    EPPERSONNM?: string;
+    EPPROCGTMGNO?: string;
+    EPRESIDENTNO?: string;
+    EPSUCCESSIONGUBUN?: string;
+    EPYEAR?: string;
+    ESGUBUN?: string;
+    ESSTUDENT?: string;
+    EPMGNO?: string;
+}
+
+export interface Ids_ioCustomerInfo {
+    AGNM?: string;
+    CAGGUBUN?: string;
+    CAGMGNO?: number;
+    CBMGNO?: number;
+    CCOCD?: string;
+    CCOURSECD?: string;
+    CDELDATE?: string;
+    CDELGUBUN?: string;
+    CEDUPOSTADDR1?: string;
+    CEDUPOSTADDR2?: string;
+    CEDUPOSTGUBUN?: string;
+    CEDUPOSTPLACE?: string;
+    CEDUPOSTZIPCD?: string;
+    CEXCEPTDATE?: string;
+    CEXCEPTGUBUN?: string;
+    CFEEPOSTADDR1?: string;
+    CFEEPOSTADDR2?: string;
+    CFEEPOSTGUBUN?: string;
+    CFEEPOSTPLACE?: string;
+    CFEEPOSTZIPCD?: string;
+    CFEEYYMM?: string;
+    CFIREMGNO?: string;
+    CFMHMGNO?: number;
+    CFMHSEQ?: number;
+    CGATEWAYPK1?: string;
+    CGATEWAYPK2?: string;
+    CGATEWAYPK3?: string;
+    CGCOURSECD?: string;
+    CGTMGNO?: string;
+    CLASTADDSEQ?: number;
+    CLASTPRSEQ?: number;
+    CMGNO?: number;
+    CNO?: string;
+    COBMGNO?: number;
+    COLDMGNO?: string;
+    COVERGUBUN?: string;
+    CPERSONGUBUN?: string;
+    CPOSTREQGUBUN?: string;
+    CREGCD?: string;
+    CREGISTERYYMM?: string;
+    CSTATUSDATE?: string;
+    CSTATUSGUBUN?: string;
+    CSTATUSREASONCD?: string;
+    MMCNT?: string;
+}
+
+export interface Ids_ioManagerInfo {
+    FMAUTHGUBUN?: string;
+    FMBUILDINGNM?: string;
+    FMCMGNO?: number;
+    FMCOURSECD?: string;
+    FMHADDR1?: string;
+    FMHADDR2?: string;
+    FMHADDRGUBUN?: string;
+    FMHBULDADDR?: string;
+    FMHBULDNM?: string;
+    FMHBUNJI1?: string;
+    FMHBUNJI2?: string;
+    FMHDONG?: string;
+    FMHEMAILDOMAIN?: string;
+    FMHEMAILID?: string;
+    FMHENDDATE?: string;
+    FMHENDGUBUN?: string;
+    FMHENDSYSDATE?: string;
+    FMHETCADDR?: string;
+    FMHFMMGNO?: number;
+    FMHHPTEL?: string;
+    FMHOLDINFO?: string;
+    FMHRI?: string;
+    FMHROADNM?: string;
+    FMHSANGUBUN?: string;
+    FMHSEQ?: number;
+    FMHSIDO?: string;
+    FMHSIGUNGU?: string;
+    FMHSTARTDATE?: string;
+    FMHTEL?: string;
+    FMHZIPCD?: string;
+    FMLASTFMHSEQ?: number;
+    FMMGNO?: number;
+    FMNM?: string;
+    FMRESIDENTERR?: string;
+    FMRESIDENTNO?: string;
+    IIDIRPATH?: string;
+    IIREALNM?: string;
+    IISAVENM?: string;
+}
+
+export interface Ids_ioLicenseInfo {
+    OLFMMGNO?: number;
+    OLDATE?: string;
+    OLHCD?: string;
+    OLHNM?: string;
+    OLNO?: string;
+    OLSEQ?: number;
+}
+
+export interface Ids_ioOwnerInfo {
+    OBMGNO?: number;
+    OGUBUN?: string;
+    OHPTEL?: string;
+    ONM?: string;
+    OREMARK?: string;
+    OSEQ?: number;
+    OTEL?: string;
+}
+
+export interface Ids_ioAdditionInfo {
+    ADCMGNO?: number;
+    ADCONTENT?: string;
+    ADDELGUBUN?: string;
+    ADCD?: string;
+    ADSEQ?: number;
+}
+
+export interface Ids_ioOverBizInfo {
+}
+
+export interface Ids_ioCustomerFeeInfo {
+}
+
+export interface Ids_oAddPost {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oAddPost: Ids_oAddPost[] = [
     { CD: '0', DATA: '공통' },
     { CD: '1', DATA: '개별' },
 ];
 
-export const ds_ds_oCustomerStatus = [
+export interface Ids_oDetailCourse {
+    CD?: string;
+    DATA?: string;
+    GCD?: string;
+}
+
+export interface Ids_oCustomerStatus {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oCustomerStatus: Ids_oCustomerStatus[] = [
     { CD: '0', DATA: '회원' },
     { CD: '1', DATA: '비회원' },
 ];
 
-export const ds_ds_oOwnerGubun = [
+export interface Ids_oAddition {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oOwnerGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oOwnerGubun: Ids_oOwnerGubun[] = [
     { CD: '0', DATA: '관계자' },
     { CD: '1', DATA: '소유자' },
     { CD: '2', DATA: '점유자' },
     { CD: '3', DATA: '대표자' },
 ];
 
-export const ds_ds_oEduStudentGubun = [
+export interface Ids_oLicenseGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oEduStudentGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oEduStudentGubun: Ids_oEduStudentGubun[] = [
     { CD: '0', DATA: '실무교육' },
     { CD: '1', DATA: '제연설비등' },
     { CD: '2', DATA: '사이버' },
 ];
 
-export const ds_ds_oEduGubun = [
+export interface Ids_oEduGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oEduGubun: Ids_oEduGubun[] = [
     { CD: '0', DATA: '평일주간' },
     { CD: '1', DATA: '평일야간' },
     { CD: '2', DATA: '휴일주간' },
@@ -61,7 +345,13 @@ export const ds_ds_oEduGubun = [
     { CD: '4', DATA: '사이버' },
 ];
 
-export const ds_ds_oPersonGubun = [
+export interface Ids_oPersonGubun {
+    CD?: string;
+    DATA?: string;
+    PCD?: string;
+}
+
+export const ds_ds_oPersonGubun: Ids_oPersonGubun[] = [
     { CD: '0', DATA: '기관장', PCD: '10' },
     { CD: '1', DATA: '감독적직위', PCD: '10' },
     { CD: '2', DATA: '기타', PCD: '10' },
@@ -73,23 +363,222 @@ export const ds_ds_oPersonGubun = [
     { CD: '3', DATA: '보조인력', PCD: '50' },
 ];
 
-export const ds_ds_oJibuGubun = [
+export interface Ids_oBizCd {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oObjectMgno {
+    CMGNO?: string;
+    CNO?: string;
+    CREGCD?: string;
+    CBMGNO?: string;
+    CGTMGNO?: string;
+    CCOURSECD?: string;
+}
+
+export interface Ids_oJibuGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oJibuGubun: Ids_oJibuGubun[] = [
     { CD: 'S', DATA: '소속지부' },
     { CD: 'T', DATA: '타지부' },
 ];
 
-export const ds_ds_oAgencyYn = [
+export interface Ids_oBuildingSeq {
+    SEQ?: string;
+}
+
+export interface Ids_oCustomerSeq {
+    SEQ?: string;
+}
+
+export interface Ids_oFireManagerSeq {
+    SEQ?: string;
+}
+
+export interface Ids_oTest {
+    BD?: string;
+    CM?: string;
+    FM?: string;
+    BBO?: string;
+    BBD?: string;
+    BBT?: string;
+    CMA?: string;
+    FML?: string;
+}
+
+export interface Ids_oStatusReason {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oCount {
+    CNT?: string;
+}
+
+export interface Ids_oSunapGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oFireCd {
+    CD?: string;
+    DATA?: string;
+    JIBUCD?: string;
+}
+
+export interface Ids_oFireCenterCd {
+    CD?: string;
+    DATA?: string;
+    UPCD?: string;
+}
+
+export interface Ids_oAgencyYn {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oAgencyYn: Ids_oAgencyYn[] = [
     { CD: '0', DATA: '대행' },
     { CD: '1', DATA: '미대행' },
 ];
 
-export const ds_ds_oEduSuccessGubun = [
+export interface Ids_oManagerInfoTmp {
+    FMAUTHGUBUN?: string;
+    FMBUILDINGNM?: string;
+    FMCMGNO?: number;
+    FMCOURSECD?: string;
+    FMHADDR1?: string;
+    FMHADDR2?: string;
+    FMHADDRGUBUN?: string;
+    FMHBULDADDR?: string;
+    FMHBULDNM?: string;
+    FMHBUNJI1?: string;
+    FMHBUNJI2?: string;
+    FMHDONG?: string;
+    FMHEMAILDOMAIN?: string;
+    FMHEMAILID?: string;
+    FMHENDDATE?: string;
+    FMHENDGUBUN?: string;
+    FMHENDSYSDATE?: string;
+    FMHETCADDR?: string;
+    FMHFMMGNO?: number;
+    FMHHPTEL?: string;
+    FMHOLDINFO?: string;
+    FMHRI?: string;
+    FMHROADNM?: string;
+    FMHSANGUBUN?: string;
+    FMHSEQ?: number;
+    FMHSIDO?: string;
+    FMHSIGUNGU?: string;
+    FMHSTARTDATE?: string;
+    FMHTEL?: string;
+    FMHZIPCD?: string;
+    FMLASTFMHSEQ?: number;
+    FMMGNO?: number;
+    FMNM?: string;
+    FMRESIDENTERR?: string;
+    FMRESIDENTNO?: string;
+    IIDIRPATH?: string;
+    IIREALNM?: string;
+    IISAVENM?: string;
+}
+
+export interface Ids_oSPMain {
+    O_NEWFMMGNO?: string;
+    O_NEWFMHSEQ?: string;
+    O_OBMGNO?: string;
+    O_STATUS?: string;
+}
+
+export interface Ids_oEduSuccessGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oEduSuccessGubun: Ids_oEduSuccessGubun[] = [
     { CD: '0', DATA: '선임자교육' },
     { CD: '1', DATA: '교육승계' },
     { CD: '2', DATA: '사이버교육' },
 ];
 
-export const ds_ds_oModifyColumnList = [
+export interface Ids_oSPMainIN {
+    O_NEWFMMGNO?: string;
+    O_NEWFMHSEQ?: string;
+    O_OBMGNO?: string;
+    O_STATUS?: string;
+}
+
+export interface Ids_oOverBizProc {
+}
+
+export interface Ids_iCustomerInfoTmp {
+    AGNM?: string;
+    CAGGUBUN?: string;
+    CAGMGNO?: number;
+    CBMGNO?: number;
+    CCOCD?: string;
+    CCOURSECD?: string;
+    CDELDATE?: string;
+    CDELGUBUN?: string;
+    CEDUPOSTADDR1?: string;
+    CEDUPOSTADDR2?: string;
+    CEDUPOSTGUBUN?: string;
+    CEDUPOSTPLACE?: string;
+    CEDUPOSTZIPCD?: string;
+    CEXCEPTDATE?: string;
+    CEXCEPTGUBUN?: string;
+    CFEEPOSTADDR1?: string;
+    CFEEPOSTADDR2?: string;
+    CFEEPOSTGUBUN?: string;
+    CFEEPOSTPLACE?: string;
+    CFEEPOSTZIPCD?: string;
+    CFEEYYMM?: string;
+    CFIREMGNO?: string;
+    CFMHMGNO?: number;
+    CFMHSEQ?: number;
+    CGATEWAYPK1?: string;
+    CGATEWAYPK2?: string;
+    CGATEWAYPK3?: string;
+    CGCOURSECD?: string;
+    CGTMGNO?: string;
+    CLASTADDSEQ?: number;
+    CLASTPRSEQ?: number;
+    CMGNO?: number;
+    CNO?: string;
+    COBMGNO?: number;
+    COLDMGNO?: string;
+    COVERGUBUN?: string;
+    CPERSONGUBUN?: string;
+    CPOSTREQGUBUN?: string;
+    CREGCD?: string;
+    CREGISTERYYMM?: string;
+    CSTATUSDATE?: string;
+    CSTATUSGUBUN?: string;
+    CSTATUSREASONCD?: string;
+}
+
+export interface Ids_iCustomerModifyHistory {
+    CMHAFTERDATA?: string;
+    CMHBEFOREDATA?: string;
+    CMHCOLUMN?: string;
+    CMHGUBUN?: string;
+    CMHKEY?: string;
+    CMHWORKGUBUN?: string;
+}
+
+export interface Ids_oModifyColumnList {
+    TBLNM?: string;
+    COLNM?: string;
+    COLKORNM?: string;
+    COMBOGUBUN?: string;
+    INNERDSNM?: string;
+}
+
+export const ds_ds_oModifyColumnList: Ids_oModifyColumnList[] = [
     { COLKORNM: '고객정보관리번호', COLNM: 'CMGNO', COMBOGUBUN: 'N', INNERDSNM: '', TBLNM: 'CUSTOMER' },
     { COLKORNM: '지부', COLNM: 'CGTMGNO', COMBOGUBUN: 'Y', INNERDSNM: 'ds_oJibu', TBLNM: 'CUSTOMER' },
     { COLKORNM: '고객번호', COLNM: 'CNO', COMBOGUBUN: 'N', INNERDSNM: '', TBLNM: 'CUSTOMER' },
@@ -232,17 +721,145 @@ export const ds_ds_oModifyColumnList = [
     { COLKORNM: '우편청구지', COLNM: 'POSTPLACE', COMBOGUBUN: 'N', INNERDSNM: '', TBLNM: 'TANK' },
 ];
 
-export const ds_ds_oResidentNoErr = [
+export interface Ids_oLicenseInfo {
+    LISSUEDATE?: string;
+    LLCSNO?: string;
+    TCCOURSENM?: string;
+}
+
+export interface Ids_oResidentNoErr {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oResidentNoErr: Ids_oResidentNoErr[] = [
     { CD: '0', DATA: '정상' },
     { CD: '1', DATA: '오류' },
 ];
 
-export const ds_ds_AuthGubun = [
+export interface Ids_AuthGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_AuthGubun: Ids_AuthGubun[] = [
     { CD: '0', DATA: '인증' },
     { CD: '1', DATA: '미인증' },
 ];
 
-export const ds_ds_oTankAddrGubun = [
+export interface Ids_oTankAddrGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oTankAddrGubun: Ids_oTankAddrGubun[] = [
     { CD: '0', DATA: '상치주소' },
     { CD: '1', DATA: '설치자주소' },
 ];
+
+export interface Ids_oCustomerCompare {
+    AGNM?: string;
+    CAGGUBUN?: string;
+    CAGMGNO?: number;
+    CBMGNO?: number;
+    CCOCD?: string;
+    CCOURSECD?: string;
+    CDELDATE?: string;
+    CDELGUBUN?: string;
+    CEDUPOSTADDR1?: string;
+    CEDUPOSTADDR2?: string;
+    CEDUPOSTGUBUN?: string;
+    CEDUPOSTPLACE?: string;
+    CEDUPOSTZIPCD?: string;
+    CEXCEPTDATE?: string;
+    CEXCEPTGUBUN?: string;
+    CFEEPOSTADDR1?: string;
+    CFEEPOSTADDR2?: string;
+    CFEEPOSTGUBUN?: string;
+    CFEEPOSTPLACE?: string;
+    CFEEPOSTZIPCD?: string;
+    CFEEYYMM?: string;
+    CFIREMGNO?: string;
+    CFMHMGNO?: number;
+    CFMHSEQ?: number;
+    CGATEWAYPK1?: string;
+    CGATEWAYPK2?: string;
+    CGATEWAYPK3?: string;
+    CGCOURSECD?: string;
+    CGTMGNO?: string;
+    CLASTADDSEQ?: number;
+    CLASTPRSEQ?: number;
+    CMGNO?: number;
+    CNO?: string;
+    COBMGNO?: number;
+    COLDMGNO?: string;
+    COVERGUBUN?: string;
+    CPERSONGUBUN?: string;
+    CPOSTREQGUBUN?: string;
+    CREGCD?: string;
+    CREGISTERYYMM?: string;
+    CSTATUSDATE?: string;
+    CSTATUSGUBUN?: string;
+    CSTATUSREASONCD?: string;
+}
+
+export interface Ids_oAllObject {
+}
+
+export interface Ids_oBuildingInfoTmp {
+    BADDR1?: string;
+    BADDR2?: string;
+    BADDRGUBUN?: string;
+    BAREA?: number;
+    BBIZCD?: string;
+    BBULDADDR?: string;
+    BBULDNM?: string;
+    BBUNJI1?: string;
+    BBUNJI2?: string;
+    BCONO?: string;
+    BDONG?: string;
+    BETCADDR?: string;
+    BFAX?: string;
+    BFIRECD?: string;
+    BFIREMAN?: string;
+    BMGNO?: number;
+    BNM?: string;
+    BRI?: string;
+    BROADNM?: string;
+    BSANGUBUN?: string;
+    BSIDO?: string;
+    BSIGUNGU?: string;
+    BSMOKEGUBUN?: string;
+    BTEL?: string;
+    BZIPCD?: string;
+    BFIREUPCD?: string;
+}
+
+export interface Ids_ioNotOverBizFireManager {
+}
+
+export interface Ids_ioIsOverBizFireManager {
+}
+
+export interface Ids_oBnmCode {
+}
+
+export interface Ids_oFireBonbu {
+    CD?: string;
+    DATA?: string;
+    JIBUCD?: string;
+}
+
+export interface Ids_oEduConfirmPrint {
+    ECMGNO?: string;
+    EDUNAME?: string;
+    COMPANY?: string;
+    NAME?: string;
+    CGROUPNM?: string;
+    EPRESIDENTNO?: string;
+    EDUDATE?: string;
+    BIRTH?: string;
+    GTTEAMNM?: string;
+    MGNO?: string;
+    RULE?: string;
+}

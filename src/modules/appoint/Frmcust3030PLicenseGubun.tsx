@@ -1,12 +1,13 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust3030PLicenseGubun } from './useFrmcust3030PLicenseGubun';
 import * as Frmcust3030PLicenseGubunData from './Frmcust3030PLicenseGubunData';
+import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 
 export const Frmcust3030PLicenseGubun = () => {
     const hook = useFrmcust3030PLicenseGubun();
@@ -45,9 +46,9 @@ export const Frmcust3030PLicenseGubun = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}> 선임유형   </Typography>
-                        <FormControl size="small" fullWidth><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem></Select></FormControl>
+                        <FormControl size="small" sx={{ width: 150 }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem></Select></FormControl>
                     </Stack>
                 </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
@@ -67,7 +68,7 @@ export const Frmcust3030PLicenseGubun = () => {
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={2}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Button variant="contained">확인</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">닫기</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnSearchPersonInfo_OnClick}>확인</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnSearchPersonInfo_OnClick}>닫기</Button></Grid></Grid>
 
                     </Paper>
                 </Grid>

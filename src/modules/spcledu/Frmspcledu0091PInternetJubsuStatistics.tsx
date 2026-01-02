@@ -1,12 +1,17 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmspcledu0091PInternetJubsuStatistics } from './useFrmspcledu0091PInternetJubsuStatistics';
 import * as Frmspcledu0091PInternetJubsuStatisticsData from './Frmspcledu0091PInternetJubsuStatisticsData';
+import { FrmCOM3010SPOS } from '../COM/FrmCOM3010SPOS';
+import { Frmspcledu0093SInternetJubsuJubsuInfo } from '../spcledu/Frmspcledu0093SInternetJubsuJubsuInfo';
+import { Frmspcledu0094SInternetJubsuSunapInfo } from '../spcledu/Frmspcledu0094SInternetJubsuSunapInfo';
+import { Frmspcledu0095SInternetJubsuRepayInfo } from '../spcledu/Frmspcledu0095SInternetJubsuRepayInfo';
+import { Frmspcledu0096SInternetJubsuChangeInfo } from '../spcledu/Frmspcledu0096SInternetJubsuChangeInfo';
 
 export const Frmspcledu0091PInternetJubsuStatistics = () => {
     const hook = useFrmspcledu0091PInternetJubsuStatistics();
@@ -16,7 +21,11 @@ export const Frmspcledu0091PInternetJubsuStatistics = () => {
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
                 <Typography variant="h5">기본정보</Typography>
                 <Stack direction="row" spacing={1}>
-                    <Button variant="contained"  onClick={hook.lfn_End}>닫기</Button>
+                    <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
+<Button variant="contained"  onClick={hook.btnProc_OnClick}></Button>
+<Button variant="contained"  onClick={hook.btnRepay_OnClick}>환불접수처리</Button>
+<Button variant="contained" startIcon={<Print />} onClick={hook.btnChange_OnClick}>변경신청서 출력</Button>
+<Button variant="contained" startIcon={<Refresh />} onClick={hook.btnRepayCancel_OnClick}>환불취소</Button>
 
                 </Stack>
             </Stack>
@@ -28,19 +37,19 @@ export const Frmspcledu0091PInternetJubsuStatistics = () => {
                         <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>접수지부</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>시험년도</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>시험분야</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
@@ -48,19 +57,19 @@ export const Frmspcledu0091PInternetJubsuStatistics = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>회차+접수번호</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>시험일시</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>메일수신</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
@@ -68,17 +77,61 @@ export const Frmspcledu0091PInternetJubsuStatistics = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={6}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>시험장소</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>접수일시</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+{ hook.isVisible_divChange && (
+                <Grid item xs={12} md={8}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>Div0</Typography>
+                        <Grid container spacing={2}>
+                            <Frmspcledu0096SInternetJubsuChangeInfo />
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
+<Grid container spacing={2} alignItems="center">
+{ hook.isVisible_divJubsu && (
+                <Grid item xs={12} md={8}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>Div0</Typography>
+                        <Grid container spacing={2}>
+                            <Frmspcledu0093SInternetJubsuJubsuInfo />
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
+<Grid container spacing={2} alignItems="center">
+{ hook.isVisible_divSunap && (
+                <Grid item xs={12} md={8}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>Div0</Typography>
+                        <Grid container spacing={2}>
+                            <Frmspcledu0094SInternetJubsuSunapInfo />
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
+<Grid container spacing={2} alignItems="center">
+{ hook.isVisible_divRepay && (
+                <Grid item xs={12} md={8}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>Div0</Typography>
+                        <Grid container spacing={2}>
+                            <Frmspcledu0095SInternetJubsuRepayInfo />
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
 
                     </Paper>
                 </Grid>

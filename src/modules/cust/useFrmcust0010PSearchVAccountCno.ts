@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioVAccountCno {
-}
+import type { Ids_ioVAccountCno } from './Frmcust0010PSearchVAccountCnoData';
 
 export const useFrmcust0010PSearchVAccountCno = () => {
     const [ds_ioVAccountCno, setds_ioVAccountCno] = useState<Ids_ioVAccountCno[]>([]);

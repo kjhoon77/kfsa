@@ -1,29 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oOverBizList {
-    BBIZCD: string;
-    BNM: string;
-    CCOURSECD: string;
-    CGTMGNO: string;
-    CNO: string;
-    CREGCD: string;
-    CREGISTERYYMM: string;
-    CSTATUSGUBUN: string;
-    FMHADDR: string;
-    FMNM: string;
-    FMBIRTHDAY: string;
-    GUBUN: string;
-    OBSTARTDATE: string;
-    OBENDDATE: string;
-    BIRTHDAY: string;
-    FMPERSONKEY: string;
-}
-
-export interface Ids_oBizGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oOverBizList, Ids_oBizGubun } from './Frmcust0014POverHistoryData';
 
 export const useFrmcust0014POverHistory = () => {
     const [ds_oOverBizList, setds_oOverBizList] = useState<Ids_oOverBizList[]>([]);

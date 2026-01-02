@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oEmailStat {
-}
+import type { Ids_oEmailStat } from './FrmCOM1400POneMAILSendListData';
 
 export const useFrmCOM1400POneMAILSendList = () => {
     const [ds_oEmailStat, setds_oEmailStat] = useState<Ids_oEmailStat[]>([]);

@@ -1,121 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioElecApprConnection {
-    GYMGNO: string;
-    NEW_RECEIVE_DATE: string;
-    PROCDATE: string;
-    RE_ALI_DOC_ID: string;
-    RE_APPROVER_DATE: string;
-    RE_APPROVER_KIND: string;
-    RE_APPROVER_NAME: string;
-    RE_APPROVER_STATUS: string;
-    RE_PC_DEPARTMENT: string;
-    RE_PC_POSITION: string;
-    RECEIVE_DATE: string;
-    ROWNUM: string;
-}
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInternetJubsuStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_iElecApprResolveInsert {
-}
-
-export interface Ids_ioElecApprResolve {
-    TOYEAR: string;
-    TCCOURSENM: string;
-    JUBSUNO: string;
-    TJPERSONNM: string;
-    BIRTHDAY: string;
-    PAY: string;
-    REPAY: string;
-    JUBSUGUBUN: string;
-    PAYMENT: string;
-    PNM: string;
-    JIBU: string;
-    rpStartDate: string;
-    rpEndDate: string;
-}
-
-export interface Ids_oElecApprExamPay {
-    EOYEAR: string;
-    TCCOURSENM: string;
-    JUBSUNO: string;
-    EJPERSONNM: string;
-    BIRTHDAY: string;
-    PAY: string;
-    REPAY: string;
-    PAYMENT: string;
-    PNM: string;
-    JIBU: string;
-    rpStartDate: string;
-    rpEndDate: string;
-}
-
-export interface Ids_oElecApprExamRepay {
-    TOMGGTMGNO: string;
-    GTTEAMNM: string;
-    TOYEAR: string;
-    TOTCCOURSECD: string;
-    TCCOURSENM: string;
-    BF_JUBSUNO: string;
-    AF_JUBSUNO: string;
-    TJPERSONNM: string;
-    BIRTHDAY: string;
-    TJHREASON: string;
-    TJRESIDENTNO: string;
-    TOHTJMGNO: string;
-    JIBU: string;
-    rpStartDate: string;
-    rpEndDate: string;
-}
-
-export interface Ids_oElecApprEduExam {
-    TOMGGTMGNO: string;
-    GTTEAMNM: string;
-    TOYEAR: string;
-    TOTCCOURSECD: string;
-    TCCOURSENM: string;
-    BF_JUBSUNO: string;
-    AF_JUBSUNO: string;
-    TJPERSONNM: string;
-    BIRTHDAY: string;
-    TJHREASON: string;
-    TJRESIDENTNO: string;
-    TOHTJMGNO: string;
-    JIBU: string;
-    rpStartDate: string;
-    rpEndDate: string;
-}
-
-export interface Ids_ioElecApprResolvedecision {
-    TOYEAR: string;
-    TCCOURSENM: string;
-    JUBSUNO: string;
-    TJPERSONNM: string;
-    BIRTHDAY: string;
-    PAY: string;
-    REPAY: string;
-    JUBSUGUBUN: string;
-    PAYMENT: string;
-    PNM: string;
-    JIBU: string;
-    rpStartDate: string;
-    rpEndDate: string;
-}
+import type { Ids_ioElecApprConnection, Ids_oWorkGubun, Ids_oJibu, Ids_oInternetJubsuStatus, Ids_iElecApprResolveInsert, Ids_ioElecApprResolve, Ids_oElecApprExamPay, Ids_oElecApprExamRepay, Ids_oElecApprEduExam, Ids_ioElecApprResolvedecision } from './Frmspcledu0800MTrainingElectronicApprovalData';
 
 export const useFrmspcledu0800MTrainingElectronicApproval = () => {
     const [ds_ioElecApprConnection, setds_ioElecApprConnection] = useState<Ids_ioElecApprConnection[]>([]);
@@ -129,6 +14,7 @@ export const useFrmspcledu0800MTrainingElectronicApproval = () => {
     const [ds_oElecApprEduExam, setds_oElecApprEduExam] = useState<Ids_oElecApprEduExam[]>([]);
     const [ds_ioElecApprResolvedecision, setds_ioElecApprResolvedecision] = useState<Ids_ioElecApprResolvedecision[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -184,6 +70,8 @@ export const useFrmspcledu0800MTrainingElectronicApproval = () => {
         ds_oElecApprExamRepay,
         ds_oElecApprEduExam,
         ds_ioElecApprResolvedecision,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnCreateList_OnClick,
         btnMutilSort_OnClick,
         btnProcElecApv_OnClick,

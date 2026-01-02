@@ -1,36 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioTrainingFeeCode {
-    CREATE_DATE: string;
-    CREATE_ID: string;
-    MODIFY_DATE: string;
-    MODIFY_ID: string;
-    TCCOURSECD: string;
-    TCMUNJEGUBUN: string;
-    TFCENDDATE: string;
-    TFCFEE: string;
-    TFCSEQ: string;
-    TFCSTARTDATE: string;
-    USE_YN: string;
-    TFCFEEGUBUN: string;
-}
-
-export interface Ids_oFeeGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioTrainingFeeCode, Ids_oFeeGubun, Ids_oCourse } from './Frmsys0040MFeeCodeManagementData';
 
 export const useFrmsys0040MFeeCodeManagement = () => {
     const [ds_ioTrainingFeeCode, setds_ioTrainingFeeCode] = useState<Ids_ioTrainingFeeCode[]>([]);
     const [ds_oFeeGubun, setds_oFeeGubun] = useState<Ids_oFeeGubun[]>([]);
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -75,6 +52,8 @@ export const useFrmsys0040MFeeCodeManagement = () => {
         ds_ioTrainingFeeCode,
         ds_oFeeGubun,
         ds_oCourse,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_Delete,

@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './Frmcust2022PPosResultCardData';
 
 export const useFrmcust2022PPosResultCard = () => {
     const [isLoading, setIsLoading] = useState(false);

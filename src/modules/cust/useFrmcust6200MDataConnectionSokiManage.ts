@@ -1,146 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oFireCd {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-    CTCD: string;
-}
-
-export interface Ids_oFireCenterCd {
-    CD: string;
-    DATA: string;
-    UPCD: string;
-}
-
-export interface Ids_oFireHead {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-}
-
-export interface Ids_ioObjGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMFFireObj {
-}
-
-export interface Ids_ioKFFireObj {
-}
-
-export interface Ids_ioMFKeyfield {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_ioCourseD {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioFireEngineerInfo {
-}
-
-export interface Ids_oFire {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-    CTCD: string;
-}
-
-export interface Ids_ioPBLINSTT {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMFFireObjD {
-}
-
-export interface Ids_ioSelectGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMFFireObj2 {
-}
-
-export interface Ids_ioKFFireObj2 {
-}
-
-export interface Ids_ioFireEngineerInfo2 {
-}
-
-export interface Ids_ioMFFireObjD2 {
-}
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oFireCd2 {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-    CTCD: string;
-}
-
-export interface Ids_oFireCenterCd2 {
-    CD: string;
-    DATA: string;
-    UPCD: string;
-}
-
-export interface Ids_oFireHead2 {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-}
-
-export interface Ids_ioJibu2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegion2 {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_ioObjGubun2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioSelectGubun2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseD2 {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioCourse, Ids_ioJibu, Ids_oFireCd, Ids_oFireCenterCd, Ids_oFireHead, Ids_ioObjGubun, Ids_ioMFFireObj, Ids_ioKFFireObj, Ids_ioMFKeyfield, Ids_oRegion, Ids_ioCourseD, Ids_ioFireEngineerInfo, Ids_oFire, Ids_ioPBLINSTT, Ids_ioMFFireObjD, Ids_ioSelectGubun, Ids_ioMFFireObj2, Ids_ioKFFireObj2, Ids_ioFireEngineerInfo2, Ids_ioMFFireObjD2, Ids_ioGubun, Ids_oFireCd2, Ids_oFireCenterCd2, Ids_oFireHead2, Ids_ioJibu2, Ids_oRegion2, Ids_ioObjGubun2, Ids_ioSelectGubun2, Ids_ioCourseD2 } from './Frmcust6200MDataConnectionSokiManageData';
 
 export const useFrmcust6200MDataConnectionSokiManage = () => {
     const [ds_ioCourse, setds_ioCourse] = useState<Ids_ioCourse[]>([]);
@@ -173,6 +33,8 @@ export const useFrmcust6200MDataConnectionSokiManage = () => {
     const [ds_ioSelectGubun2, setds_ioSelectGubun2] = useState<Ids_ioSelectGubun2[]>([]);
     const [ds_ioCourseD2, setds_ioCourseD2] = useState<Ids_ioCourseD2[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [tabValue_tab, setTabValue_tab] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -332,6 +194,10 @@ export const useFrmcust6200MDataConnectionSokiManage = () => {
         ds_ioObjGubun2,
         ds_ioSelectGubun2,
         ds_ioCourseD2,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        tabValue_tab,
+        setTabValue_tab,
         btnDataHistory_OnClick,
         btnModMatch_OnClick,
         btnModMatch_OnClick2,

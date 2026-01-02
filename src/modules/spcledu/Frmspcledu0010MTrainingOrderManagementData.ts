@@ -1,17 +1,99 @@
 // @ts-nocheck
 export const Frmspcledu0010MTrainingOrderManagementData = {};
 
-export const ds_ds_oUseYn = [
+export interface Ids_ioTrainingOrder {
+    CREATE_DATE?: string;
+    CREATE_ID?: string;
+    EPMGNO?: number;
+    MODIFY_DATE?: string;
+    MODIFY_ID?: string;
+    RREGIONCD?: string;
+    TCCOURSECD?: string;
+    TOCOURSEGUBUN?: string;
+    TOENDDATE?: string;
+    TOENDTIME?: string;
+    TOEXCEPTDATE?: string;
+    TOINETJUBSUCNT?: number;
+    TOINETJUBSUYN?: string;
+    TOJUBSUMAXCNT?: number;
+    TOJUBSUSTATUS?: string;
+    TOLECTURENOTICE?: string;
+    TOMAILNOTICE?: string;
+    TOMGJIBUCD?: string;
+    TOMGNO?: string;
+    TOMUNJEGUBUN?: string;
+    TOSEATCNT?: number;
+    TOSEATLIMITYN?: string;
+    TOSEATSELECTYN?: string;
+    TOSEXLIMITYN?: string;
+    TOSTARTDATE?: string;
+    TOSTARTTIME?: string;
+    TOTRAININGORDER?: string;
+    TOYEAR?: string;
+    USE_YN?: string;
+    TOEDUCONTENTS?: string;
+    TOREMARK?: string;
+    EPNM?: string;
+    EPPARKINGINFO?: string;
+}
+
+export interface Ids_oJibu {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oCourse {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oUseYn {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oUseYn: Ids_oUseYn[] = [
     { CD: 'Y', DATA: '사용' },
     { CD: 'N', DATA: '폐기' },
 ];
 
-export const ds_ds_oInetJubsuYn = [
+export interface Ids_oCourseGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oInternetJubsuStatus {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oTrainingOrderMgno {
+}
+
+export interface Ids_oInetJubsuYn {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oInetJubsuYn: Ids_oInetJubsuYn[] = [
     { CD: 'Y', DATA: '사용' },
     { CD: 'N', DATA: '미사용' },
 ];
 
-export const ds_ds_oModifyColumn = [
+export interface Ids_oMunjeGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_ioExamRoomMinimap {
+}
+
+export interface Ids_oModifyColumn {
+    COLUMNCD?: string;
+    COLUMNNM?: string;
+}
+
+export const ds_ds_oModifyColumn: Ids_oModifyColumn[] = [
     { COLUMNCD: 'TCCOURSECD', COLUMNNM: '직능코드' },
     { COLUMNCD: 'TOCOURSEGUBUN', COLUMNNM: '직능구분' },
     { COLUMNCD: 'TOENDDATE', COLUMNNM: '강습종료일' },
@@ -38,7 +120,15 @@ export const ds_ds_oModifyColumn = [
     { COLUMNCD: 'EPMGNO', COLUMNNM: '교육장관리번호' },
 ];
 
-export const ds_ds_ioYN = [
+export interface Ids_ioJubsu {
+}
+
+export interface Ids_ioYN {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_ioYN: Ids_ioYN[] = [
     { CD: 'Y', DATA: '예' },
     { CD: 'N', DATA: '아니오' },
 ];

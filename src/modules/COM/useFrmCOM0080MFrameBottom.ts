@@ -1,11 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oLoginHistory {
-}
-
-export interface Ids_oLoginMgno {
-}
+import type { Ids_oLoginHistory, Ids_oLoginMgno } from './FrmCOM0080MFrameBottomData';
 
 export const useFrmCOM0080MFrameBottom = () => {
     const [ds_oLoginHistory, setds_oLoginHistory] = useState<Ids_oLoginHistory[]>([]);

@@ -1,23 +1,12 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioRegionManager {
-    RCGTMGNO: string;
-    RCREGCD: string;
-    RCCDNM: string;
-    RMPSABUN: string;
-    PNM: string;
-}
+import type { Ids_oJibu, Ids_ioRegionManager } from './Frmcust0190RegionManagerData';
 
 export const useFrmcust0190RegionManager = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_ioRegionManager, setds_ioRegionManager] = useState<Ids_ioRegionManager[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -48,6 +37,8 @@ export const useFrmcust0190RegionManager = () => {
         isLoading,
         ds_oJibu,
         ds_ioRegionManager,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Excel,

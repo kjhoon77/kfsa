@@ -1,128 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioSmsTraining {
-    SEL: string;
-    PGUBUN: string;
-    TCCOURSECD: string;
-    TJMGNO: string;
-    TJMGNO2: string;
-    TJPERSONNM: string;
-    TOENDDATE: string;
-    TOMGNO: string;
-    TOSTARTDATE: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPHPTEL: string;
-    TPMGNO: string;
-    GTDEPTCD: string;
-    TSREPAYCD: string;
-    RECVTEL: string;
-    SMMSG: string;
-    SHSENDRESVTIME1: string;
-    SHSENDRESVTIME2: string;
-    PDEPTCD: string;
-    PSABUN: string;
-    TOHJUBSUNO: string;
-    TOHJUBSUNO2: string;
-    JUBSUNO2: string;
-    JUBSUNO: string;
-    TJLASTSUNAPGUBUN: string;
-    TJPASSYN: string;
-    TRAN_SUBJECT: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingPassYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSunapYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamPassYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioSmsExam {
-    SEL: string;
-    ESPASSYN: string;
-    GTDEPTCD: string;
-    EOCOURSECD: string;
-    EJMGNO: string;
-    EJMGNO2: string;
-    TPPERSONNM: string;
-    EOMGNO: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOYEAR: string;
-    TPHPTEL: string;
-    TPMGNO: string;
-    ESREPAYCD: string;
-    RECVTEL: string;
-    SMMSG: string;
-    SHSENDRESVTIME1: string;
-    SHSENDRESVTIME2: string;
-    PDEPTCD: string;
-    PSABUN: string;
-    EOHEJMGNO: string;
-    EOMGGTMGNO: string;
-    TOTCCOURSECD: string;
-    TOYEAR: string;
-    TOTRAININGORDER: string;
-    TRAN_SUBJECT: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSMSMMS {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_SendYN {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioSmsSpeaker {
-}
-
-export interface Ids_ioSmsSupervisor {
-}
-
-export interface Ids_ioSms {
-}
-
-export interface Ids_oBatchSendSeq {
-    O_BSMGNO: string;
-}
-
-export interface Ids_oEvaluationPassYn {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioSmsTraining, Ids_oRegion, Ids_oTrainingPassYn, Ids_oSunapYn, Ids_oCourse, Ids_oWorkGubun, Ids_oExamPassYn, Ids_ioSmsExam, Ids_oJibu, Ids_oSMSMMS, Ids_SendYN, Ids_ioSmsSpeaker, Ids_ioSmsSupervisor, Ids_ioSms, Ids_oBatchSendSeq, Ids_oEvaluationPassYn } from './Frmtraining0680MSMSSendManagementData';
 
 export const useFrmtraining0680MSMSSendManagement = () => {
     const [ds_ioSmsTraining, setds_ioSmsTraining] = useState<Ids_ioSmsTraining[]>([]);
@@ -142,6 +20,10 @@ export const useFrmtraining0680MSMSSendManagement = () => {
     const [ds_oBatchSendSeq, setds_oBatchSendSeq] = useState<Ids_oBatchSendSeq[]>([]);
     const [ds_oEvaluationPassYn, setds_oEvaluationPassYn] = useState<Ids_oEvaluationPassYn[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWork4, setIsVisible_divWork4] = useState(false);
+    const [isVisible_divWork3, setIsVisible_divWork3] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [isVisible_divWork1, setIsVisible_divWork1] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -212,6 +94,14 @@ export const useFrmtraining0680MSMSSendManagement = () => {
         ds_ioSms,
         ds_oBatchSendSeq,
         ds_oEvaluationPassYn,
+        isVisible_divWork4,
+        setIsVisible_divWork4,
+        isVisible_divWork3,
+        setIsVisible_divWork3,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        isVisible_divWork1,
+        setIsVisible_divWork1,
         btnMutilSort_OnClick,
         chkReseve_OnClick,
         lfn_Cancel,

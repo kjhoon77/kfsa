@@ -1,103 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioMemberFee {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioSunap {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMemberfee1_1 {
-    SEL: string;
-    CFGUBUNCD_NAME: string;
-    COURSENM: string;
-    CNM: string;
-    CFMEMBERGUBUN_CD: string;
-    CFMEMBERGUBUN: string;
-    COURSECD: string;
-    CGTMGNO: string;
-    SUNAB_CNT: string;
-    SUNAB_AMT: string;
-    SUNAB1_CNT: string;
-    SUNAB1_AMT: string;
-    HWANBUL_CNT: string;
-    HWANBUL_AMT: string;
-    HWANBUL2_CNT: string;
-    HWANBUL2_AMT: string;
-}
-
-export interface Ids_oMemberfee2_1 {
-    CFGUBUNCD_NAME: string;
-    CFPROCDATE: string;
-    CNM: string;
-    CFMEMBERGUBUN: string;
-    COURSECD: string;
-    CGTMGNO: string;
-    SUNAB_CNT: string;
-    SUNAB_AMT: string;
-    SUNAB1_CNT: string;
-    SUNAB1_AMT: string;
-    HWANBUL_CNT: string;
-    HWANBUL_AMT: string;
-    HWANBUL2_CNT: string;
-    HWANBUL2_AMT: string;
-}
-
-export interface Ids_oMemberfee1 {
-    CNM: string;
-    CFMEMBERGUBUN: string;
-    CCOURSECD: string;
-    SUNAB_CNT: string;
-    SUNAB_AMT: string;
-    SUNAB1_CNT: string;
-    SUNAB1_AMT: string;
-    HWANBUL_CNT: string;
-    HWANBUL_AMT: string;
-    HWANBUL2_CNT: string;
-    HWANBUL2_AMT: string;
-}
-
-export interface Ids_oMemberfee2 {
-}
-
-export interface Ids_oMemberfee3 {
-    CFPROCDATE: string;
-    CGTMGNO: string;
-    GTDEPTNM: string;
-    CREGCD: string;
-    CCOURSECD: string;
-    CMGNO: string;
-    BNM: string;
-    CFGUBUN: string;
-    CFGROUPMGNO: string;
-    CFSUNAPYEAR: string;
-    CNM: string;
-    SUNAB_MONEY: string;
-    REPAY_MONEY: string;
-    CFSUNAPHALF: string;
-    CFCANCELDATE: string;
-    CFREMARK: string;
-    CNO_BUNHO: string;
-}
-
-export interface Ids_PrintGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioMemberFee, Ids_ioGubun, Ids_ioSunap, Ids_oJibu, Ids_oMemberfee1_1, Ids_oMemberfee2_1, Ids_oMemberfee1, Ids_oMemberfee2, Ids_oMemberfee3, Ids_PrintGubun } from './Frmcust2090MDailyFeeReportData';
 
 export const useFrmcust2090MDailyFeeReport = () => {
     const [ds_ioMemberFee, setds_ioMemberFee] = useState<Ids_ioMemberFee[]>([]);
@@ -111,6 +14,7 @@ export const useFrmcust2090MDailyFeeReport = () => {
     const [ds_oMemberfee3, setds_oMemberfee3] = useState<Ids_oMemberfee3[]>([]);
     const [ds_PrintGubun, setds_PrintGubun] = useState<Ids_PrintGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -154,6 +58,8 @@ export const useFrmcust2090MDailyFeeReport = () => {
         ds_oMemberfee2,
         ds_oMemberfee3,
         ds_PrintGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Print,

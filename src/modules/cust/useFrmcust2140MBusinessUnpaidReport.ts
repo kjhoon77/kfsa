@@ -1,84 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioOrder {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_UnpaidCompnm {
-    CMGNO: string;
-    CGTMGNO: string;
-    JIFULLNM: string;
-    RCREGCD: string;
-    RCNM: string;
-    CCOURSECD: string;
-    CNM: string;
-    CNO: string;
-    BNM: string;
-    YEAR3: string;
-    YEAR2: string;
-    YEAR1: string;
-    YEAR0: string;
-    CNT3: string;
-    CNT2: string;
-    CNT1: string;
-    CNT0: string;
-    AMT3: string;
-    AMT2: string;
-    AMT1: string;
-    AMT0: string;
-    AMT: string;
-    BTEL: string;
-    BADDR: string;
-}
-
-export interface Ids_SearchJogeon {
-    JIBU: string;
-    REGION_GUBUN: string;
-    REGION1: string;
-    REGION2: string;
-    COURSE_GUBUN: string;
-    COURSE: string;
-    COURSE_IN: string;
-    MGNO_GUBUN: string;
-    MGNO1: string;
-    MGNO2: string;
-    MINAP_CNT: string;
-    ORDER_GUBUN: string;
-    EXCEL_GUBUN: string;
-}
-
-export interface Ids_Year {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioChoiceYn, Ids_ioCourse, Ids_ioOrder, Ids_ioCourseYn, Ids_oRegion, Ids_oJibu, Ids_UnpaidCompnm, Ids_SearchJogeon, Ids_Year } from './Frmcust2140MBusinessUnpaidReportData';
 
 export const useFrmcust2140MBusinessUnpaidReport = () => {
     const [ds_ioChoiceYn, setds_ioChoiceYn] = useState<Ids_ioChoiceYn[]>([]);
@@ -91,6 +13,7 @@ export const useFrmcust2140MBusinessUnpaidReport = () => {
     const [ds_SearchJogeon, setds_SearchJogeon] = useState<Ids_SearchJogeon[]>([]);
     const [ds_Year, setds_Year] = useState<Ids_Year[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -132,6 +55,8 @@ export const useFrmcust2140MBusinessUnpaidReport = () => {
         ds_UnpaidCompnm,
         ds_SearchJogeon,
         ds_Year,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnToExcel_OnClick,
         lfn_Cancel,
         lfn_End,

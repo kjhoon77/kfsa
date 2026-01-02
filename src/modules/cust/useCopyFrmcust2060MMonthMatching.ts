@@ -1,32 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCusFeeChk {
-    CFCCHKGUBUN: string;
-    CFCCLOSEGUBUN: string;
-    CFCGTMGNO: string;
-    CFCYEAR: string;
-    CFCMONTH: string;
-}
-
-export interface Ids_iCusFeeChk {
-    CFCCHKGUBUN: string;
-    CFCCLOSEGUBUN: string;
-    CFCGTMGNO: string;
-    CFCYEAR: string;
-    CFCMONTH: string;
-}
+import type { Ids_oJibu, Ids_oCusFeeChk, Ids_iCusFeeChk } from './CopyFrmcust2060MMonthMatchingData';
 
 export const useCopyFrmcust2060MMonthMatching = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_oCusFeeChk, setds_oCusFeeChk] = useState<Ids_oCusFeeChk[]>([]);
     const [ds_iCusFeeChk, setds_iCusFeeChk] = useState<Ids_iCusFeeChk[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -53,6 +34,8 @@ export const useCopyFrmcust2060MMonthMatching = () => {
         ds_oJibu,
         ds_oCusFeeChk,
         ds_iCusFeeChk,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMatched_OnClick,
         btnUnmatched_OnClick,
         lfn_End,

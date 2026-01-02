@@ -1,40 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioMemberGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioOrder {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMemberGubun_0 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourse {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioMemberGubun, Ids_ioOrder, Ids_ioMemberGubun_0, Ids_ioChoiceYn, Ids_ioGubun, Ids_ioCourseYn, Ids_ioCourse } from './Frmcust1110MTaEduSearchData';
 
 export const useFrmcust1110MTaEduSearch = () => {
     const [ds_ioMemberGubun, setds_ioMemberGubun] = useState<Ids_ioMemberGubun[]>([]);
@@ -45,6 +11,7 @@ export const useFrmcust1110MTaEduSearch = () => {
     const [ds_ioCourseYn, setds_ioCourseYn] = useState<Ids_ioCourseYn[]>([]);
     const [ds_ioCourse, setds_ioCourse] = useState<Ids_ioCourse[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -79,6 +46,8 @@ export const useFrmcust1110MTaEduSearch = () => {
         ds_ioGubun,
         ds_ioCourseYn,
         ds_ioCourse,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnListPrint2_OnClick,
         btnListPrint_OnClick,
         lfn_End,

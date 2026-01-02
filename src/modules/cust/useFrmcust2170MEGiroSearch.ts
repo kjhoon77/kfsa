@@ -1,52 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEGiro {
-    SEQ: string;
-    CMGNO: string;
-    CGTMGNO: string;
-    CGTNM: string;
-    CNO: string;
-    CREGCD: string;
-    CREGNM: string;
-    CCOURSECD: string;
-    CCOURSENM: string;
-    CSTATUSGUBUN: string;
-    FMNM: string;
-    BNM: string;
-    AMOUNT: string;
-    CHARGE: string;
-}
-
-export interface Ids_oError {
-    EGSEQ: string;
-    EGGTMGNO: string;
-    EGCNO: string;
-    EGAMOUNT: string;
-    EGCHARGE: string;
-    EGROWDATA: string;
-    EGREMARK: string;
-}
-
-export interface Ids_oChange {
-    EGSEQ: string;
-    EGGTMGNO: string;
-    EGCNO: string;
-    EGAMOUNT: string;
-    EGCHARGE: string;
-    EGROWDATA: string;
-    EGREMARK: string;
-}
-
-export interface Ids_ioEGGROUPGUBUN {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oJibu, Ids_oEGiro, Ids_oError, Ids_oChange, Ids_ioEGGROUPGUBUN } from './Frmcust2170MEGiroSearchData';
 
 export const useFrmcust2170MEGiroSearch = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
@@ -55,6 +9,7 @@ export const useFrmcust2170MEGiroSearch = () => {
     const [ds_oChange, setds_oChange] = useState<Ids_oChange[]>([]);
     const [ds_ioEGGROUPGUBUN, setds_ioEGGROUPGUBUN] = useState<Ids_ioEGGROUPGUBUN[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -94,6 +49,8 @@ export const useFrmcust2170MEGiroSearch = () => {
         ds_oError,
         ds_oChange,
         ds_ioEGGROUPGUBUN,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnFeeReport_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

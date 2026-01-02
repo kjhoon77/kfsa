@@ -1,35 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oProgramId {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oDateGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSetlementGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSunapGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oProgramId, Ids_oWorkGubun, Ids_oDateGubun, Ids_oSetlementGubun, Ids_oSunapGubun, Ids_oJibu } from './FrmCOM3310POSStatisticsData';
 
 export const useFrmCOM3310POSStatistics = () => {
     const [ds_oProgramId, setds_oProgramId] = useState<Ids_oProgramId[]>([]);

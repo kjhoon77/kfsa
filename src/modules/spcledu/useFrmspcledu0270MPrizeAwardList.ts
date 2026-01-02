@@ -1,130 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oPassYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRepayYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioPrize {
-    PGUBUN: string;
-    TJMGNO: string;
-    TJPERSONNM: string;
-    TPRESIDENTNO_SANG: string;
-    TJTPMGNO: string;
-    TOMGGTMGNO: string;
-    TOTARTENDDATE: string;
-    TOTCCOURSECD: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPPASSDATE: string;
-    TPPASSNO: string;
-    TOHJUBSUNO: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oPrizeGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oPrizeImageGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioReport {
-    LLCSNO: string;
-    PGUBUN: string;
-    TJMGNO: string;
-    TJPERSONNM: string;
-    TJRESIDENTNO: string;
-    TJTPMGNO: string;
-    TOMGGTMGNO: string;
-    TOTARTENDDATE: string;
-    TOTCCOURSECD: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPPASSDATE: string;
-    TPPASSNO: string;
-}
-
-export interface Ids_ioReport2 {
-    LLCSNO: string;
-    PGUBUN: string;
-    TJMGNO: string;
-    TJPERSONNM: string;
-    TJRESIDENTNO: string;
-    TJTPMGNO: string;
-    TOMGGTMGNO: string;
-    TOTARTENDDATE: string;
-    TOTCCOURSECD: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPPASSDATE: string;
-    TPPASSNO: string;
-}
-
-export interface Ids_ioPrizeList {
-    PGUBUN: string;
-    TJMGNO: string;
-    TJPERSONNM: string;
-    TPRESIDENTNO_SANG: string;
-    TJTPMGNO: string;
-    TOMGGTMGNO: string;
-    TOTARTENDDATE: string;
-    TOTCCOURSECD: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPPASSDATE: string;
-    TPPASSNO: string;
-}
-
-export interface Ids_ioPrizePop {
-    PGUBUN: string;
-    TJMGNO: string;
-    TJPERSONNM: string;
-    TPRESIDENTNO_SANG: string;
-    TJTPMGNO: string;
-    TOMGGTMGNO: string;
-    TOTARTENDDATE: string;
-    TOTCCOURSECD: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPPASSDATE: string;
-    TPPASSNO: string;
-    TOHJUBSUNO: string;
-}
-
-export interface Ids_ioPrizePop2 {
-    PGUBUN: string;
-    TJMGNO: string;
-    TJPERSONNM: string;
-    TPRESIDENTNO_SANG: string;
-    TJTPMGNO: string;
-    TOMGGTMGNO: string;
-    TOTARTENDDATE: string;
-    TOTCCOURSECD: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPPASSDATE: string;
-    TPPASSNO: string;
-    TOHJUBSUNO: string;
-}
+import type { Ids_oPassYn, Ids_oCourse, Ids_oRepayYn, Ids_ioPrize, Ids_oJibu, Ids_oPrizeGubun, Ids_oPrizeImageGubun, Ids_ioReport, Ids_ioReport2, Ids_ioPrizeList, Ids_ioPrizePop, Ids_ioPrizePop2 } from './Frmspcledu0270MPrizeAwardListData';
 
 export const useFrmspcledu0270MPrizeAwardList = () => {
     const [ds_oPassYn, setds_oPassYn] = useState<Ids_oPassYn[]>([]);
@@ -140,6 +16,7 @@ export const useFrmspcledu0270MPrizeAwardList = () => {
     const [ds_ioPrizePop, setds_ioPrizePop] = useState<Ids_ioPrizePop[]>([]);
     const [ds_ioPrizePop2, setds_ioPrizePop2] = useState<Ids_ioPrizePop2[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -202,6 +79,8 @@ export const useFrmspcledu0270MPrizeAwardList = () => {
         ds_ioPrizeList,
         ds_ioPrizePop,
         ds_ioPrizePop2,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnPrintPrizeIssue_OnClick,
         btnPrintPrize_OnClick,

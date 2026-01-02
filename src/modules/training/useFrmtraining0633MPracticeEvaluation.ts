@@ -1,36 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oSort {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEvaluation {
-    EDUCNT: string;
-    EPNM: string;
-    INCNT: string;
-    INOUTCNT: string;
-    JUPSUCNT: string;
-    KULGANGCNT: string;
-    OUTCNT: string;
-    PASSCNT: string;
-    REPAYCNT: string;
-    TCCOURSENM: string;
-    TOENDDATE: string;
-    TOSTARTDATE: string;
-    TOTRAININGORDER: string;
-}
+import type { Ids_oSort, Ids_oCourse, Ids_oJibu, Ids_oEvaluation } from './Frmtraining0633MPracticeEvaluationData';
 
 export const useFrmtraining0633MPracticeEvaluation = () => {
     const [ds_oSort, setds_oSort] = useState<Ids_oSort[]>([]);
@@ -38,6 +8,7 @@ export const useFrmtraining0633MPracticeEvaluation = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_oEvaluation, setds_oEvaluation] = useState<Ids_oEvaluation[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -69,6 +40,8 @@ export const useFrmtraining0633MPracticeEvaluation = () => {
         ds_oCourse,
         ds_oJibu,
         ds_oEvaluation,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_PrintScreen,

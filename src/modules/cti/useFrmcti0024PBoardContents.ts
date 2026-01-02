@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oBoard {
-}
+import type { Ids_oBoard } from './Frmcti0024PBoardContentsData';
 
 export const useFrmcti0024PBoardContents = () => {
     const [ds_oBoard, setds_oBoard] = useState<Ids_oBoard[]>([]);

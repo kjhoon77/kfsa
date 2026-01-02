@@ -1,36 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioTimeSchedule {
-    TSENDTIME: string;
-    TSGEMGNO: string;
-    TSHOUR: string;
-    TSREMARK: string;
-    TSSEQ: string;
-    TSSTARTTIME: string;
-    TSTIME: string;
-    TSTYPE: string;
-    TSTYPESEQ: string;
-    TSTYPENM: string;
-    TSGUBUN: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTimeType {
-    CD: string;
-    DATA: string;
-    TSTYPESEQ: string;
-    TSGEMGNO: string;
-}
-
-export interface Ids_oEduGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioTimeSchedule, Ids_oJibu, Ids_oTimeType, Ids_oEduGubun } from './Frmprofes0021P01TimeScheduleListData';
 
 export const useFrmprofes0021P01TimeScheduleList = () => {
     const [ds_ioTimeSchedule, setds_ioTimeSchedule] = useState<Ids_ioTimeSchedule[]>([]);

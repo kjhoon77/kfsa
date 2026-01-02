@@ -1,175 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oRadio {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_Professor {
-    SEL: string;
-    SSEQ: string;
-    SNAME: string;
-    SNO: string;
-    STEL: string;
-    SPHONE: string;
-    SSOSOK: string;
-    SJIKWI: string;
-    SLICENSE: string;
-    SEDU: string;
-    SGUBUN: string;
-    SREMARK: string;
-    SFDATE: string;
-    STDATE: string;
-    SENDDATE: string;
-    SENDYN: string;
-    DATA: string;
-    DATEFOTO: string;
-    SGUBUN_CODE: string;
-    SENDYN_CODE: string;
-    GIBU: string;
-    SYEAR: string;
-    WRITER: string;
-    SSEQ_CD: string;
-    SMGNO: string;
-    SMODSABUN: string;
-    SREGSABUN: string;
-    SRESUME: string;
-    CAFSAVENM: string;
-    CAFREALNM: string;
-    CAFFILESIZE: string;
-    CAFDIRPATH: string;
-    SPAY: string;
-    CAFGUBUN: string;
-    CAFSEQ: string;
-    SJOBGUBUN: string;
-    SJOBGUBUN_CODE: string;
-    SEDU2: string;
-    BIRTHDAY: string;
-    SEXGUBUN: string;
-    SBIRTHDAY: string;
-    GTTEAMNM: string;
-    APPOINT_DOC_ID: string;
-    APPOINT_NAME: string;
-    APPOINT_DATE: string;
-    APPOINT_STATUS: string;
-    APPROVAL_DOC_ID: string;
-    APPROVAL_NAME: string;
-    APPROVAL_DATE: string;
-    APPROVAL_STATUS: string;
-    SYEARLIMITTIME: string;
-}
-
-export interface Ids_ProfessorDetail_Backup {
-    SSEQ: string;
-    SNAME: string;
-    SNO: string;
-    STEL: string;
-    SPHONE: string;
-    SSOSOK: string;
-    SJIKWI: string;
-    SLICENSE: string;
-    SEDU: string;
-    SGUBUN: string;
-    SREMARK: string;
-    SFDATE: string;
-    STDATE: string;
-    SENDDATE: string;
-    SENDYN: string;
-    DATA: string;
-    DATEFOTO: string;
-    SGUBUN_CODE: string;
-    SENDYN_CODE: string;
-    GIBU: string;
-    SYEAR: string;
-    WRITER: string;
-    SSEQ_CD: string;
-    SMGNO: string;
-    SMODSABUN: string;
-    SREGSABUN: string;
-    SEDU2: string;
-    SYEARLIMITTIME: string;
-}
-
-export interface Ids_Jibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_JibuInput {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ProfessorDetail_back {
-    SSEQ: string;
-    SNAME: string;
-    SNO: string;
-    STEL: string;
-    SPHONE: string;
-    SSOSOK: string;
-    SJIKWI: string;
-    SLICENSE: string;
-    SEDU: string;
-    SGUBUN: string;
-    SREMARK: string;
-    SFDATE: string;
-    STDATE: string;
-    SENDDATE: string;
-    SENDYN: string;
-    DATA: string;
-    DATEFOTO: string;
-    SGUBUN_CODE: string;
-    SENDYN_CODE: string;
-    GIBU: string;
-    SYEAR: string;
-    WRITER: string;
-    SSEQ_CD: string;
-    SMGNO: string;
-    SMODSABUN: string;
-    SREGSABUN: string;
-    SRESUME: string;
-    AFSAVENM: string;
-    AFREALNM: string;
-    AFFILESIZE: string;
-    AFDIRPATH: string;
-    SPAY: string;
-    CAFSEQ: string;
-    SEDU2: string;
-    SYEARLIMITTIME: string;
-}
-
-export interface Ids_TecProgMAX {
-    SMGNOMAX: string;
-}
-
-export interface Ids_Jumin {
-    JuminCnt: string;
-}
-
-export interface Ids_Job {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_SendYN {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSexGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAppointMgno {
-    NEXTMGNO: string;
-}
+import type { Ids_oRadio, Ids_oYn, Ids_Professor, Ids_ProfessorDetail_Backup, Ids_Jibu, Ids_JibuInput, Ids_ProfessorDetail_back, Ids_TecProgMAX, Ids_Jumin, Ids_Job, Ids_SendYN, Ids_oSexGubun, Ids_oAppointMgno } from './Frmprofes0002MInviteProfMgntData';
 
 export const useFrmprofes0002MInviteProfMgnt = () => {
     const [ds_oRadio, setds_oRadio] = useState<Ids_oRadio[]>([]);
@@ -186,6 +17,7 @@ export const useFrmprofes0002MInviteProfMgnt = () => {
     const [ds_oSexGubun, setds_oSexGubun] = useState<Ids_oSexGubun[]>([]);
     const [ds_oAppointMgno, setds_oAppointMgno] = useState<Ids_oAppointMgno[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -268,6 +100,8 @@ export const useFrmprofes0002MInviteProfMgnt = () => {
         ds_SendYN,
         ds_oSexGubun,
         ds_oAppointMgno,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnApproval_OnClick,
         btnMutilSort_OnClick,
         btnSendSms_OnClick,

@@ -1,15 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oChangeDate {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBankSunapGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oChangeDate, Ids_oBankSunapGubun } from './Frmspcledu0025PTrainingJubsuProcessDateChangeData';
 
 export const useFrmspcledu0025PTrainingJubsuProcessDateChange = () => {
     const [ds_oChangeDate, setds_oChangeDate] = useState<Ids_oChangeDate[]>([]);

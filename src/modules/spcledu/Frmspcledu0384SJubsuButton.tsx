@@ -1,8 +1,8 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmspcledu0384SJubsuButton } from './useFrmspcledu0384SJubsuButton';
@@ -18,7 +18,7 @@ export const Frmspcledu0384SJubsuButton = () => {
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained"  >접수제작 중</Button>
 <Button variant="contained"  >발송(발급완료)</Button>
-<Button variant="contained"  >신청취소</Button>
+<Button variant="contained" startIcon={<Refresh />} >신청취소</Button>
 
                 </Stack>
             </Stack>

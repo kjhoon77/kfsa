@@ -1,6 +1,10 @@
 // @ts-nocheck
 export const DynamicMaskEdit2Data = {};
 
-export const ds_Dataset0 = [
+export interface IDataset0 {
+    column0?: string;
+}
+
+export const ds_Dataset0: IDataset0[] = [
     { column0: '123456789' },
 ];

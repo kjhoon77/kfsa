@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCustomer {
-}
+import type { Ids_oCustomer } from './FrmCOM1050PCustomerListData';
 
 export const useFrmCOM1050PCustomerList = () => {
     const [ds_oCustomer, setds_oCustomer] = useState<Ids_oCustomer[]>([]);

@@ -1,56 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oSort {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingAttendence {
-    EDUCNT: string;
-    EPNM: string;
-    INCNT: string;
-    INOUTCNT: string;
-    JUPSUCNT: string;
-    KULGANGCNT: string;
-    OUTCNT: string;
-    PASSCNT: string;
-    REPAYCNT: string;
-    TCCOURSENM: string;
-    TOENDDATE: string;
-    TOSTARTDATE: string;
-    TOTRAININGORDER: string;
-}
-
-export interface Ids_oTrainingAttendencePoto {
-    ACTION: string;
-    GTTEAMNM: string;
-    ORGJUPSU: string;
-    SEATNO: string;
-    TCCOURSENM: string;
-    TJPERSONNM: string;
-    TOENDDATE: string;
-    TOSTARTDATE: string;
-    TOTRAININGORDER: string;
-}
-
-export interface Ids_oTrainingAttendenceJechul {
-    GTTEAMNM: string;
-    JUBSUNO: string;
-    TCCOURSENM: string;
-    TJPERSONNM: string;
-    TOENDDATE: string;
-}
+import type { Ids_oSort, Ids_oCourse, Ids_oJibu, Ids_oTrainingAttendence, Ids_oTrainingAttendencePoto, Ids_oTrainingAttendenceJechul } from './Frmspcledu0120MTrainingAttendanceRegisterPrintData';
 
 export const useFrmspcledu0120MTrainingAttendanceRegisterPrint = () => {
     const [ds_oSort, setds_oSort] = useState<Ids_oSort[]>([]);
@@ -60,6 +10,7 @@ export const useFrmspcledu0120MTrainingAttendanceRegisterPrint = () => {
     const [ds_oTrainingAttendencePoto, setds_oTrainingAttendencePoto] = useState<Ids_oTrainingAttendencePoto[]>([]);
     const [ds_oTrainingAttendenceJechul, setds_oTrainingAttendenceJechul] = useState<Ids_oTrainingAttendenceJechul[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -98,6 +49,8 @@ export const useFrmspcledu0120MTrainingAttendanceRegisterPrint = () => {
         ds_oTrainingAttendence,
         ds_oTrainingAttendencePoto,
         ds_oTrainingAttendenceJechul,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_PrintScreen,

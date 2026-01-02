@@ -1,12 +1,35 @@
 // @ts-nocheck
 export const Frmcust0200MFireManagerDuplicationData = {};
 
-export const ds_ds_oCompare = [
+export interface Ids_oCourse {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oJibu {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oDuplicationList {
+}
+
+export interface Ids_oCompare {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oCompare: Ids_oCompare[] = [
     { CD: '0', DATA: '=' },
     { CD: '1', DATA: '<=' },
 ];
 
-export const ds_ds_oDuplicationCnt = [
+export interface Ids_oDuplicationCnt {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oDuplicationCnt: Ids_oDuplicationCnt[] = [
     { CD: '', DATA: '전체' },
     { CD: '2', DATA: '2' },
     { CD: '3', DATA: '3' },

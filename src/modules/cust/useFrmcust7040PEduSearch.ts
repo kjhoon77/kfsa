@@ -1,30 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioMemberGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioOrder {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMemberGubun_0 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioMemberGubun, Ids_ioOrder, Ids_ioMemberGubun_0, Ids_ioChoiceYn, Ids_ioGubun } from './Frmcust7040PEduSearchData';
 
 export const useFrmcust7040PEduSearch = () => {
     const [ds_ioMemberGubun, setds_ioMemberGubun] = useState<Ids_ioMemberGubun[]>([]);
@@ -33,6 +9,7 @@ export const useFrmcust7040PEduSearch = () => {
     const [ds_ioChoiceYn, setds_ioChoiceYn] = useState<Ids_ioChoiceYn[]>([]);
     const [ds_ioGubun, setds_ioGubun] = useState<Ids_ioGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -63,6 +40,8 @@ export const useFrmcust7040PEduSearch = () => {
         ds_ioMemberGubun_0,
         ds_ioChoiceYn,
         ds_ioGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnListPrint2_OnClick,
         btnListPrint_OnClick,
         lfn_End,

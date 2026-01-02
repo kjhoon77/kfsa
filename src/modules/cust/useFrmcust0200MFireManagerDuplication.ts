@@ -1,28 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oDuplicationList {
-}
-
-export interface Ids_oCompare {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oDuplicationCnt {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oJibu, Ids_oDuplicationList, Ids_oCompare, Ids_oDuplicationCnt } from './Frmcust0200MFireManagerDuplicationData';
 
 export const useFrmcust0200MFireManagerDuplication = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -31,6 +9,7 @@ export const useFrmcust0200MFireManagerDuplication = () => {
     const [ds_oCompare, setds_oCompare] = useState<Ids_oCompare[]>([]);
     const [ds_oDuplicationCnt, setds_oDuplicationCnt] = useState<Ids_oDuplicationCnt[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -70,6 +49,8 @@ export const useFrmcust0200MFireManagerDuplication = () => {
         ds_oDuplicationList,
         ds_oCompare,
         ds_oDuplicationCnt,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

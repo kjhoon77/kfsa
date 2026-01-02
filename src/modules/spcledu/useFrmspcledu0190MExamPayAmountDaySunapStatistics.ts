@@ -1,62 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSort {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamJubsuCommissionDay {
-    EJPERSONNM: string;
-    EOHJUBSUGUBUN: string;
-    EOHJUBSUNO: string;
-    EOMGGTMGNO: string;
-    EOTCCOURSECD: string;
-    EOYEAR: string;
-    ESGUBUN: string;
-    ESPROCAMOUNT: string;
-    ESPROCDATE: string;
-    ESREGSABUN: string;
-    REFUND_MONEY1: string;
-    TJRESIDENTNO_SANG: string;
-    EDU: string;
-    ESGUBUNCD: string;
-    ESMGGTMGNO: string;
-    EOEXAMORDER: string;
-}
-
-export interface Ids_oSunabGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamJubsuCommissionDaySum {
-}
-
-export interface Ids_internetOffline {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSuNabGubun_A {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_Gubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oJibu, Ids_oSort, Ids_ioExamJubsuCommissionDay, Ids_oSunabGubun, Ids_ioExamJubsuCommissionDaySum, Ids_internetOffline, Ids_oSuNabGubun_A, Ids_Gubun } from './Frmspcledu0190MExamPayAmountDaySunapStatisticsData';
 
 export const useFrmspcledu0190MExamPayAmountDaySunapStatistics = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -69,6 +13,7 @@ export const useFrmspcledu0190MExamPayAmountDaySunapStatistics = () => {
     const [ds_oSuNabGubun_A, setds_oSuNabGubun_A] = useState<Ids_oSuNabGubun_A[]>([]);
     const [ds_Gubun, setds_Gubun] = useState<Ids_Gubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -119,6 +64,8 @@ export const useFrmspcledu0190MExamPayAmountDaySunapStatistics = () => {
         ds_internetOffline,
         ds_oSuNabGubun_A,
         ds_Gubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

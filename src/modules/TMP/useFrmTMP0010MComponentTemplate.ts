@@ -1,44 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oRadio {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCombo {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oList {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oGrid {
-    HGUL_NM: string;
-    PRESIDENTNO: string;
-    SEX: string;
-    COUNT: string;
-}
-
-export interface Ids_oMenu {
-    M_LEVEL: string;
-    JOB_DIV: string;
-    JOB_NM: string;
-    M_ID: string;
-    M_NM: string;
-    M_AUTH_CD: string;
-    M_SYS_MENU_GB: string;
-    M_SYS_GB: string;
-    M_ICON: string;
-    M_IMG: string;
-    M_PREFIX: string;
-    M_PAGE: string;
-    MORDERSEQ1: string;
-    MORDERSEQ2: string;
-}
+import type { Ids_oRadio, Ids_oCombo, Ids_oList, Ids_oGrid, Ids_oMenu } from './FrmTMP0010MComponentTemplateData';
 
 export const useFrmTMP0010MComponentTemplate = () => {
     const [ds_oRadio, setds_oRadio] = useState<Ids_oRadio[]>([]);
@@ -47,6 +9,8 @@ export const useFrmTMP0010MComponentTemplate = () => {
     const [ds_oGrid, setds_oGrid] = useState<Ids_oGrid[]>([]);
     const [ds_oMenu, setds_oMenu] = useState<Ids_oMenu[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divDiv, setIsVisible_divDiv] = useState(true);
+    const [tabValue_tabTab, setTabValue_tabTab] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -71,6 +35,10 @@ export const useFrmTMP0010MComponentTemplate = () => {
         ds_oList,
         ds_oGrid,
         ds_oMenu,
+        isVisible_divDiv,
+        setIsVisible_divDiv,
+        tabValue_tabTab,
+        setTabValue_tabTab,
         imgLogout_OnClick,
     };
 };

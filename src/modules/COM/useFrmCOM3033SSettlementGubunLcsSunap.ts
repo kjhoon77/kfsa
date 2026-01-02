@@ -1,10 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oProcGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oProcGubun } from './FrmCOM3033SSettlementGubunLcsSunapData';
 
 export const useFrmCOM3033SSettlementGubunLcsSunap = () => {
     const [ds_oProcGubun, setds_oProcGubun] = useState<Ids_oProcGubun[]>([]);

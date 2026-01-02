@@ -1,15 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oBank {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRecieptYn {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oBank, Ids_oRecieptYn } from './FrmCOM3105SSettlementPOSSunapData';
 
 export const useFrmCOM3105SSettlementPOSSunap = () => {
     const [ds_oBank, setds_oBank] = useState<Ids_oBank[]>([]);

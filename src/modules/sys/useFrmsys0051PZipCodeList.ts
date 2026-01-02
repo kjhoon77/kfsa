@@ -1,19 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oZipCode {
-    CREATE_DATE: string;
-    CREATE_ID: string;
-    JJIBUCD: string;
-    MODIFY_DATE: string;
-    MODIFY_ID: string;
-    ZBUNJI: string;
-    SIKUDONG: string;
-    ZHO: string;
-    ZREGIONCD: string;
-    ZSEQ: string;
-    ZZIPCD: string;
-}
+import type { Ids_oZipCode } from './Frmsys0051PZipCodeListData';
 
 export const useFrmsys0051PZipCodeList = () => {
     const [ds_oZipCode, setds_oZipCode] = useState<Ids_oZipCode[]>([]);

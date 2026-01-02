@@ -1,19 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oLicense {
-    TJHPROCDATE: string;
-    TJHPROCJIBU: string;
-    TJHPROCJIBUCD: string;
-    TJHREASON: string;
-    TJHSABUN: string;
-    TJHSABUNNM: string;
-    TJHSEQ: string;
-    TJHSTATUS: string;
-    TJHSTATUSCD: string;
-    TJMGNO: string;
-    TPPERSONNM: string;
-}
+import type { Ids_oLicense } from './Frmtraining0027PTrainingLicenseListData';
 
 export const useFrmtraining0027PTrainingLicenseList = () => {
     const [ds_oLicense, setds_oLicense] = useState<Ids_oLicense[]>([]);

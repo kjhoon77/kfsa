@@ -1,7 +1,12 @@
 // @ts-nocheck
 export const FrmCOM8102SSettlementPOSSunapData = {};
 
-export const ds_ds_oInstallment = [
+export interface Ids_oInstallment {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oInstallment: Ids_oInstallment[] = [
     { CD: '00', DATA: '일시불' },
     { CD: '01', DATA: '1개월' },
     { CD: '02', DATA: '2개월' },

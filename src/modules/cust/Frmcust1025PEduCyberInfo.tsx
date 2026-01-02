@@ -1,8 +1,8 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust1025PEduCyberInfo } from './useFrmcust1025PEduCyberInfo';
@@ -36,7 +36,7 @@ export const Frmcust1025PEduCyberInfo = () => {
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
                 <Typography variant="h5">기본정보</Typography>
                 <Stack direction="row" spacing={1}>
-                    <Button variant="contained"  onClick={hook.lfn_End}>닫기</Button>
+                    <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 
                 </Stack>
             </Stack>
@@ -49,6 +49,17 @@ export const Frmcust1025PEduCyberInfo = () => {
 <Grid item xs={12} md={2}><Box>수료상태</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box>수료점수</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box>점</Box></Grid><Grid item xs={12} md={2}><Box>진도율</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box>%</Box></Grid><Grid item xs={12} md={2}><Box>진도점수</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box>점</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={2}><Box>과제점수</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box>점</Box></Grid><Grid item xs={12} md={2}><Box>토론점수</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box>점</Box></Grid><Grid item xs={12} md={2}><Box>평가점수</Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box>점</Box></Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+{ hook.isVisible_gdEduJubsu && (
+                <Grid item xs={12} md={12}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
 
                     </Paper>
                 </Grid>

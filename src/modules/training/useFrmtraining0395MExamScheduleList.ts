@@ -1,45 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-    DATA2: string;
-}
-
-export interface Ids_oExamOrder {
-    EOENDTIME: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOEXAMORDERGUBUN: string;
-    EOINETJUBSUCNT: string;
-    EOINETJUBSUYN: string;
-    EOJUBSUMAXCNT: string;
-    EOMGJIBUCD: string;
-    EOMGNO: string;
-    EOSEATCNT: string;
-    EOSTARTTIME: string;
-    EOYEAR: string;
-    EPMGNO: string;
-    TCCOURSECD: string;
-    USE_YN: string;
-    EOINJUBSUCNT: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSearchGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourseGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oExamOrder, Ids_oJibu, Ids_oSearchGubun, Ids_oCourseGubun } from './Frmtraining0395MExamScheduleListData';
 
 export const useFrmtraining0395MExamScheduleList = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -48,6 +9,7 @@ export const useFrmtraining0395MExamScheduleList = () => {
     const [ds_oSearchGubun, setds_oSearchGubun] = useState<Ids_oSearchGubun[]>([]);
     const [ds_oCourseGubun, setds_oCourseGubun] = useState<Ids_oCourseGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -87,6 +49,8 @@ export const useFrmtraining0395MExamScheduleList = () => {
         ds_oJibu,
         ds_oSearchGubun,
         ds_oCourseGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

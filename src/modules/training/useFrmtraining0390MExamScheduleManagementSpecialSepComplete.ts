@@ -1,130 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamOrder {
-    EOENDTIME: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOEXAMORDERGUBUN: string;
-    EOINETJUBSUCNT: string;
-    EOINETJUBSUYN: string;
-    EOJUBSUMAXCNT: string;
-    EOMGJIBUCD: string;
-    EOMGNO: string;
-    EOSEATCNT: string;
-    EOSTARTTIME: string;
-    EOYEAR: string;
-    EPMGNO: string;
-    EPNM: string;
-    TCCOURSECD: string;
-    USE_YN: string;
-    EOJUBSUSTATUS: string;
-    EOSTARTTIME2: string;
-    EOENDTIME2: string;
-    EOJUBSUSTARTDATE: string;
-    EOJUBSUENDDATE: string;
-    EOEXAM1OPENDATE: string;
-    EOEXAM2OPENDATE: string;
-    EODAYGUBUN: string;
-    EXAMTIME: string;
-    EOAUTOMSGGUBUN: string;
-    EOAUTODATE: string;
-    EOBSMGNO: string;
-    EOREMARK: string;
-    EOREGION: string;
-    EOCHASUGUBUN: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-    DATA2: string;
-}
-
-export interface Ids_oUseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourseGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamGubun1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInternetJubsuStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamRoomMinimap {
-}
-
-export interface Ids_oInetJubsuYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamGubun2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamGubun3 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamOrderMgno {
-}
-
-export interface Ids_oModifyColumn {
-    COLUMNCD: string;
-    COLUMNNM: string;
-    EOEXAM1OPENDATE: string;
-    EOEXAM2OPENDATE: string;
-    EODAYGUBUN: string;
-    EXAMTIME: string;
-    EOAUTOMSGGUBUN: string;
-    EOAUTODATE: string;
-}
-
-export interface Ids_ioJubsu {
-}
-
-export interface Ids_oExamGubun4 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oDayGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSendYN {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChasuGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioExamOrder, Ids_oJibu, Ids_oCourse, Ids_oUseYn, Ids_oCourseGubun, Ids_oExamGubun1, Ids_oInternetJubsuStatus, Ids_ioExamRoomMinimap, Ids_oInetJubsuYn, Ids_oExamGubun2, Ids_oExamGubun3, Ids_oExamOrderMgno, Ids_oModifyColumn, Ids_ioJubsu, Ids_oExamGubun4, Ids_oExamGubun, Ids_oDayGubun, Ids_oSendYN, Ids_ioChasuGubun } from './Frmtraining0390MExamScheduleManagementSpecialSepCompleteData';
 
 export const useFrmtraining0390MExamScheduleManagementSpecialSepComplete = () => {
     const [ds_ioExamOrder, setds_ioExamOrder] = useState<Ids_ioExamOrder[]>([]);
@@ -147,6 +23,7 @@ export const useFrmtraining0390MExamScheduleManagementSpecialSepComplete = () =>
     const [ds_oSendYN, setds_oSendYN] = useState<Ids_oSendYN[]>([]);
     const [ds_ioChasuGubun, setds_ioChasuGubun] = useState<Ids_ioChasuGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -238,6 +115,8 @@ export const useFrmtraining0390MExamScheduleManagementSpecialSepComplete = () =>
         ds_oDayGubun,
         ds_oSendYN,
         ds_ioChasuGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnExamPlaceLink_OnClick,
         btnMinimap_OnClick,
         btnMutilSort_OnClick,

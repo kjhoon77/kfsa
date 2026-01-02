@@ -1,56 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamPaper {
-    EPALPHATYPE: string;
-    EPCOURSECD: string;
-    EPNUMTYPE: string;
-    EPQSTITEMCNT: string;
-    EPTOTALPOINT: string;
-    EPREMARK: string;
-    USE_YN: string;
-    EPCHASUGUBUN: string;
-    EPSUBJECTGUBUN: string;
-    SUBJECTGUBUN: string;
-}
-
-export interface Ids_oAlphaType {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oNumType {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamPaperSearch {
-    EPALPHATYPE: string;
-    EPCOURSECD: string;
-    EPNUMTYPE: string;
-    EPQSTITEMCNT: string;
-    EPTOTALPOINT: string;
-    EPREMARK: string;
-    USE_YN: string;
-    EPCHASUGUBUN: string;
-    EPSUBJECTGUBUN: string;
-    SUBJECTGUBUN: string;
-}
-
-export interface Ids_oModifyColumn {
-    COLUMNCD: string;
-    COLUMNNM: string;
-}
-
-export interface Ids_oSubjectGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioExamPaper, Ids_oAlphaType, Ids_oCourse, Ids_oNumType, Ids_ioExamPaperSearch, Ids_oModifyColumn, Ids_oSubjectGubun } from './TESTfrmtraining0580MExamPaperManagementData';
 
 export const useTESTfrmtraining0580MExamPaperManagement = () => {
     const [ds_ioExamPaper, setds_ioExamPaper] = useState<Ids_ioExamPaper[]>([]);
@@ -61,6 +11,7 @@ export const useTESTfrmtraining0580MExamPaperManagement = () => {
     const [ds_oModifyColumn, setds_oModifyColumn] = useState<Ids_oModifyColumn[]>([]);
     const [ds_oSubjectGubun, setds_oSubjectGubun] = useState<Ids_oSubjectGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -113,6 +64,8 @@ export const useTESTfrmtraining0580MExamPaperManagement = () => {
         ds_ioExamPaperSearch,
         ds_oModifyColumn,
         ds_oSubjectGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Delete,

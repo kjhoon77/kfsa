@@ -1,71 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oTimeSchedule {
-    LUNCHTIME: string;
-    TOTALHOUR: string;
-    TSENDTIME: string;
-    TSGEMGNO: string;
-    TSHOUR: string;
-    TSREMARK: string;
-    TSSTARTTIME: string;
-    TSTYPE: string;
-    TSTYPESEQ: string;
-    LUNCHTIMEYN: string;
-    TSTYPENM: string;
-    TSGUBUN: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTimeType {
-    CD: string;
-    DATA: string;
-    TSTYPESEQ: string;
-    TSGEMGNO: string;
-}
-
-export interface Ids_oLunchYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_iJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTotalTime {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oLunchTime {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_iTimeScheduleDetailList {
-    TSGEMGNO: string;
-    TSTYPE: string;
-    TSSEQ: string;
-    TSTYPESEQ: string;
-    TSTIME: string;
-    TSSTARTTIME: string;
-    TSENDTIME: string;
-    TSREMARK: string;
-    TSHOUR: string;
-    TSTYPENM: string;
-    TSGUBUN: string;
-}
-
-export interface Ids_oEduGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oTimeSchedule, Ids_oJibu, Ids_oTimeType, Ids_oLunchYn, Ids_iJibu, Ids_oTotalTime, Ids_oLunchTime, Ids_iTimeScheduleDetailList, Ids_oEduGubun } from './Frmprofes0021MTimeScheduleData';
 
 export const useFrmprofes0021MTimeSchedule = () => {
     const [ds_oTimeSchedule, setds_oTimeSchedule] = useState<Ids_oTimeSchedule[]>([]);
@@ -78,6 +13,7 @@ export const useFrmprofes0021MTimeSchedule = () => {
     const [ds_iTimeScheduleDetailList, setds_iTimeScheduleDetailList] = useState<Ids_iTimeScheduleDetailList[]>([]);
     const [ds_oEduGubun, setds_oEduGubun] = useState<Ids_oEduGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -128,6 +64,8 @@ export const useFrmprofes0021MTimeSchedule = () => {
         ds_oLunchTime,
         ds_iTimeScheduleDetailList,
         ds_oEduGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_End,
         lfn_Excel,

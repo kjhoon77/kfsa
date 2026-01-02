@@ -1,57 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioTrainingOrder1 {
-    CGTMGNO: string;
-    GTTEAMNM: string;
-    CFMHMGNO: string;
-    MEMNUM: string;
-    CBMGNO: string;
-    EPPROCGTMGNO: string;
-    EPPERSONNM: string;
-    ESYEAR: string;
-    ESDATE: string;
-    EPREGSABUN: string;
-    PNM: string;
-    BNM: string;
-}
-
-export interface Ids_ioTrainingOrder2 {
-    MEMNUM: string;
-    BNM: string;
-    EPPERSONNM: string;
-    ESYEAR: string;
-    ESDATE: string;
-    GTTEAMNM: string;
-    PNM: string;
-}
-
-export interface Ids_ioTrainingOrder3 {
-    CGTMGNO: string;
-    GTTEAMNM: string;
-    CFMHMGNO: string;
-    MEMNUM: string;
-    CBMGNO: string;
-    EPPROCGTMGNO: string;
-    EPPERSONNM: string;
-    ESYEAR: string;
-    ESDATE: string;
-    EPREGSABUN: string;
-    PNM: string;
-    BNM: string;
-    GTTEAMNM2: string;
-}
-
-export interface Ids_ioTrainingOrder4 {
-    MEMNUM: string;
-    BNM: string;
-    EPPERSONNM: string;
-    ESYEAR: string;
-    ESDATE: string;
-    GTTEAMNM: string;
-    PNM: string;
-    GTTEAMNM2: string;
-}
+import type { Ids_ioTrainingOrder1, Ids_ioTrainingOrder2, Ids_ioTrainingOrder3, Ids_ioTrainingOrder4 } from './Frmcust1111PTaEduSearchListData';
 
 export const useFrmcust1111PTaEduSearchList = () => {
     const [ds_ioTrainingOrder1, setds_ioTrainingOrder1] = useState<Ids_ioTrainingOrder1[]>([]);
@@ -59,6 +8,7 @@ export const useFrmcust1111PTaEduSearchList = () => {
     const [ds_ioTrainingOrder3, setds_ioTrainingOrder3] = useState<Ids_ioTrainingOrder3[]>([]);
     const [ds_ioTrainingOrder4, setds_ioTrainingOrder4] = useState<Ids_ioTrainingOrder4[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -90,6 +40,8 @@ export const useFrmcust1111PTaEduSearchList = () => {
         ds_ioTrainingOrder2,
         ds_ioTrainingOrder3,
         ds_ioTrainingOrder4,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnAttend_OnClick,
         btnMutilSort_OnClick,
         lfn_End,

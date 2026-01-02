@@ -1,53 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJikwi {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ProfesList {
-    LDPFMGNO: string;
-    NAME: string;
-    GUBUN: string;
-    NAME1: string;
-    JIKWI: string;
-    GUBUNCD: string;
-    TPCNT: string;
-    TOT: string;
-    TOT_1: string;
-    TOT_2: string;
-    YES: string;
-    YES_1: string;
-    YES_2: string;
-    NO: string;
-    NO_1: string;
-    NO_2: string;
-}
-
-export interface Ids_SearchJogeon {
-    STARTDATE: string;
-    ENDDATE: string;
-    JIBU: string;
-    JIKWI: string;
-    GUBUN: string;
-    EDUGUBUN: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oJikwi, Ids_oGubun, Ids_ProfesList, Ids_SearchJogeon, Ids_oJibu, Ids_oEduGubun } from './Frmprofes0020MLecvsMaterialData';
 
 export const useFrmprofes0020MLecvsMaterial = () => {
     const [ds_oJikwi, setds_oJikwi] = useState<Ids_oJikwi[]>([]);
@@ -57,6 +10,7 @@ export const useFrmprofes0020MLecvsMaterial = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_oEduGubun, setds_oEduGubun] = useState<Ids_oEduGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -95,6 +49,8 @@ export const useFrmprofes0020MLecvsMaterial = () => {
         ds_SearchJogeon,
         ds_oJibu,
         ds_oEduGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnExcell_OnClick,
         btnPrintWarmun_OnClick,
         lfn_End,

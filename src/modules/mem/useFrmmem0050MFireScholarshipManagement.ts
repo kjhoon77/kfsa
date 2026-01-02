@@ -1,106 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioPrintGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioScholarship {
-}
-
-export interface Ids_oJibu2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_CmbComder {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_CmbComder2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oYear {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oYear2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMember {
-}
-
-export interface Ids_iScholarship {
-    FSMMGNO: string;
-    FSCMGNO: string;
-    FSNM: string;
-    FSBIRTHDAY: string;
-    FSPERSONKEY: string;
-    FSBNM: string;
-    FSYEAR: string;
-    FSDATE: string;
-    FSAMT: string;
-    FSREMARK: string;
-    FSSELECTYN: string;
-}
-
-export interface Ids_oForm {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_iFormSave {
-    I_PROC: string;
-    I_FCCD: string;
-    I_FAMGNO: string;
-    I_PK1VAL: string;
-    I_PK2VAL: string;
-    I_FRDATE: string;
-    I_PATH: string;
-    I_FILENM: string;
-}
-
-export interface Ids_oFormSave {
-}
-
-export interface Ids_iFormDelete {
-    I_FCCD: string;
-    I_FAMGNO: string;
-    I_PK1VAL: string;
-    I_PK2VAL: string;
-    I_PATH: string;
-    I_FILENM: string;
-}
-
-export interface Ids_oFormDelete {
-}
-
-export interface Ids_oSelectGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioPrintGubun, Ids_oJibu, Ids_ioCourse, Ids_ioScholarship, Ids_oJibu2, Ids_oCourse2, Ids_CmbComder, Ids_CmbComder2, Ids_oYear, Ids_oYear2, Ids_oMember, Ids_iScholarship, Ids_oForm, Ids_iFormSave, Ids_oFormSave, Ids_iFormDelete, Ids_oFormDelete, Ids_oSelectGubun } from './Frmmem0050MFireScholarshipManagementData';
 
 export const useFrmmem0050MFireScholarshipManagement = () => {
     const [ds_ioPrintGubun, setds_ioPrintGubun] = useState<Ids_ioPrintGubun[]>([]);
@@ -122,6 +22,7 @@ export const useFrmmem0050MFireScholarshipManagement = () => {
     const [ds_oFormDelete, setds_oFormDelete] = useState<Ids_oFormDelete[]>([]);
     const [ds_oSelectGubun, setds_oSelectGubun] = useState<Ids_oSelectGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -214,6 +115,8 @@ export const useFrmmem0050MFireScholarshipManagement = () => {
         ds_iFormDelete,
         ds_oFormDelete,
         ds_oSelectGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnCustNo_OnClick,
         btnFormDelete_OnClick,
         btnLocalFormView_OnClick,

@@ -1,48 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oIsuGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJubsuGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInetJubsu {
-    CNO: string;
-    CREGCD: string;
-    CREGNM: string;
-    CSTATUSGUBUN: string;
-    EDPROCDATE: string;
-    EMBUILDING: string;
-    EMCMGNO: string;
-    EMEMAIL: string;
-    EMISUYN: string;
-    EMMGNO: string;
-    EMPHONE: string;
-    EMSEQ: string;
-    ESCOURSENM: string;
-    ESCOUSECD: string;
-    ESDATE: string;
-    ESGTMGNO: string;
-    ESGTNM: string;
-    ESTIME: string;
-    ESYEAR: string;
-    FMNM: string;
-}
+import type { Ids_oJibu, Ids_oCourse, Ids_oIsuGubun, Ids_oJubsuGubun, Ids_oInetJubsu } from './Frmcust1040MInetEduStatisticsData';
 
 export const useFrmcust1040MInetEduStatistics = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
@@ -51,6 +9,7 @@ export const useFrmcust1040MInetEduStatistics = () => {
     const [ds_oJubsuGubun, setds_oJubsuGubun] = useState<Ids_oJubsuGubun[]>([]);
     const [ds_oInetJubsu, setds_oInetJubsu] = useState<Ids_oInetJubsu[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -90,6 +49,8 @@ export const useFrmcust1040MInetEduStatistics = () => {
         ds_oIsuGubun,
         ds_oJubsuGubun,
         ds_oInetJubsu,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

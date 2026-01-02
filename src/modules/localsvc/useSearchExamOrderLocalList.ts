@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './SearchExamOrderLocalListData';
 
 export const useSearchExamOrderLocalList = () => {
     const [isLoading, setIsLoading] = useState(false);

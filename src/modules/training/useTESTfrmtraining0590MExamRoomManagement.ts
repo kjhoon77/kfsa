@@ -1,66 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamRoom {
-    EOEXAMORDER: string;
-    EOEXAMORDERGUBUN: string;
-    EOMGJIBUCD: string;
-    EOMGNO: string;
-    EOYEAR: string;
-    EPMGNO: string;
-    EREXAMROOM: string;
-    ERNUMTYPE: string;
-    EXAMNM: string;
-    JJIBUNM: string;
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-    USE_YN: string;
-    ERCHASUGUBUN: string;
-}
-
-export interface Ids_oNumType {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamOrderMgno {
-}
-
-export interface Ids_ioExamRoomSearch {
-    EOEXAMORDER: string;
-    EOEXAMORDERGUBUN: string;
-    EOMGJIBUCD: string;
-    EOMGNO: string;
-    EOYEAR: string;
-    EPMGNO: string;
-    EREXAMROOM: string;
-    ERNUMTYPE: string;
-    EXAMNM: string;
-    JJIBUNM: string;
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-    USE_YN: string;
-}
-
-export interface Ids_oModifyColumn {
-    COLUMNCD: string;
-    COLUMNNM: string;
-}
-
-export interface Ids_oChasuGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioExamRoom, Ids_oNumType, Ids_oCourse, Ids_oJibu, Ids_oExamOrderMgno, Ids_ioExamRoomSearch, Ids_oModifyColumn, Ids_oChasuGubun } from './TESTfrmtraining0590MExamRoomManagementData';
 
 export const useTESTfrmtraining0590MExamRoomManagement = () => {
     const [ds_ioExamRoom, setds_ioExamRoom] = useState<Ids_ioExamRoom[]>([]);
@@ -72,6 +12,7 @@ export const useTESTfrmtraining0590MExamRoomManagement = () => {
     const [ds_oModifyColumn, setds_oModifyColumn] = useState<Ids_oModifyColumn[]>([]);
     const [ds_oChasuGubun, setds_oChasuGubun] = useState<Ids_oChasuGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -126,6 +67,8 @@ export const useTESTfrmtraining0590MExamRoomManagement = () => {
         ds_ioExamRoomSearch,
         ds_oModifyColumn,
         ds_oChasuGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

@@ -1,71 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJubsuGubun {
-    CD: string;
-    DATA: string;
-    DATA2: string;
-    DATA3: string;
-}
-
-export interface Ids_oJubsuGubunCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_status {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJubsuGubunCheck {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oProfessor {
-    EAMGNO: string;
-    EATPMGNO: string;
-    EAMGGTMGNO: string;
-    EADATE: string;
-    EASTATUS: string;
-    EAJUBSUGUBUN: string;
-    EATCCOURSECD: string;
-    EATCCOURSENM: string;
-    EACONFIRMDATE: string;
-    EAJUBSUDATE: string;
-    EACONFIRMSABUN: string;
-    EAREASON: string;
-    EAREMARK: string;
-    EAMODREASON: string;
-    EAFILEPATH: string;
-    EAFILENM: string;
-    EACLASSGUBUN: string;
-    EAREGDATE: string;
-    EAREGSABUN: string;
-    EAMODDATE: string;
-    EAMODSABUN: string;
-    PERSONNM: string;
-    BIRTHDAY: string;
-    HPTEL: string;
-    ADRESS: string;
-    EAJUBSUGUBUN2: string;
-    EAADDRGUBUN: string;
-    YEAR: string;
-    MON: string;
-    DAY: string;
-    PAPERNB: string;
-}
-
-export interface Ids_KemsOnline {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oJubsuGubun, Ids_oJubsuGubunCourse, Ids_status, Ids_oJibu, Ids_oJubsuGubunCheck, Ids_oProfessor, Ids_KemsOnline } from './Frmtraining1000EXamConfirmListData';
 
 export const useFrmtraining1000EXamConfirmList = () => {
     const [ds_oJubsuGubun, setds_oJubsuGubun] = useState<Ids_oJubsuGubun[]>([]);
@@ -76,6 +11,7 @@ export const useFrmtraining1000EXamConfirmList = () => {
     const [ds_oProfessor, setds_oProfessor] = useState<Ids_oProfessor[]>([]);
     const [ds_KemsOnline, setds_KemsOnline] = useState<Ids_KemsOnline[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -119,6 +55,8 @@ export const useFrmtraining1000EXamConfirmList = () => {
         ds_oJubsuGubunCheck,
         ds_oProfessor,
         ds_KemsOnline,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

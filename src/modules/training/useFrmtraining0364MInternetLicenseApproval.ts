@@ -1,107 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioApproveList {
-    AJMGNO: string;
-    AJTJMGNO: string;
-    AJGTMGNO: string;
-    AJSTATUS: string;
-    AJISSUEGUBUN: string;
-    AJISSUEGUBUNNM: string;
-    AJTCCOURSECD: string;
-    AJTCCOURSENM: string;
-    AJJUBSUDATE: string;
-    AJCONFIRMDATE: string;
-    AJCONFIRMSABUN: string;
-    AJRESON: string;
-    AJFILEPATH: string;
-    AJFILENM: string;
-    AJREGDATE: string;
-    AJREGSABUN: string;
-    AJMODDATE: string;
-    AJMODSABUN: string;
-    AJGUBUN: string;
-    AJGUBUNNM: string;
-    AJREMARK: string;
-    TPMGNO: string;
-    TPNM: string;
-    TPBIRTHDAY: string;
-    BIRTHDAY: string;
-    TPPERSONKEY: string;
-    TPTEL: string;
-    TPHPTEL: string;
-    TPLASTIMGSEQ: string;
-    TPADDR_1: string;
-    TPADDR_2: string;
-    TPZIPCD: string;
-    IILASTDIRPATH: string;
-    IILASTREALNM: string;
-    IILASTIMGSEQ: string;
-    AJMODRESON: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_status {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_iApproveLicense {
-    AJMGNO: string;
-    AJTJMGNO: string;
-    AJSTATUS: string;
-    AJRESON: string;
-    AJREMARK: string;
-    IIIMGSEQ: string;
-    LLCSNO_A: string;
-    AJGUBUN: string;
-    AJISSUEGUBUN: string;
-    AJMODRESON: string;
-    AJSAVE: string;
-}
-
-export interface Ids_oApproveLicenseResult {
-    O_LLCSNO: string;
-    O_AJSTATUS: string;
-}
-
-export interface Ids_oImageInfo {
-    IILASTDIRPATH: string;
-    IILASTREALNM: string;
-    IILASTIMGSEQ: string;
-    IIDIRPATH: string;
-    IIREALNM: string;
-    IIIMGSEQ: string;
-}
-
-export interface Ids_oStatus {
-}
-
-export interface Ids_oAjgubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oLicense {
-    LICENSECNT: string;
-    LLCSNO: string;
-}
-
-export interface Ids_oAjgubunAll {
-    AJTCCOURSECD: string;
-    AJTCCOURSECDNM: string;
-    AJISSUEGUBUN: string;
-    AJISSUEGUBUNNM: string;
-    AJGUBUN: string;
-    AJGUBUNNM: string;
-}
-
-export interface Ids_ioApproveData {
-}
+import type { Ids_ioApproveList, Ids_oJibu, Ids_status, Ids_iApproveLicense, Ids_oApproveLicenseResult, Ids_oImageInfo, Ids_oStatus, Ids_oAjgubun, Ids_oLicense, Ids_oAjgubunAll, Ids_ioApproveData } from './Frmtraining0364MInternetLicenseApprovalData';
 
 export const useFrmtraining0364MInternetLicenseApproval = () => {
     const [ds_ioApproveList, setds_ioApproveList] = useState<Ids_ioApproveList[]>([]);
@@ -116,6 +15,7 @@ export const useFrmtraining0364MInternetLicenseApproval = () => {
     const [ds_oAjgubunAll, setds_oAjgubunAll] = useState<Ids_oAjgubunAll[]>([]);
     const [ds_ioApproveData, setds_ioApproveData] = useState<Ids_ioApproveData[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -194,6 +94,8 @@ export const useFrmtraining0364MInternetLicenseApproval = () => {
         ds_oLicense,
         ds_oAjgubunAll,
         ds_ioApproveData,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnApprove_OnClick,
         btnCancel_OnClick,
         btnDownload_OnClick,

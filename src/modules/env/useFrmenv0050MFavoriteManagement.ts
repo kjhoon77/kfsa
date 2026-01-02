@@ -1,42 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioFavorites {
-    FORDERSEQ: string;
-    MENUAAUTH: string;
-    MENULEVEL: string;
-    MMENUID: string;
-    MMENUNM: string;
-    MPARENTMENUID: string;
-    MREMARK: string;
-    MSYSGUBUN: string;
-    MURL: string;
-    MURLTYPE: string;
-    USE_YN: string;
-}
-
-export interface Ids_oMenuTree {
-    MORDERSEQ: string;
-    MMENUID: string;
-    MENULEVEL: string;
-    MPARENTMENUID: string;
-    MMENUNM: string;
-    FORDERSEQ: string;
-    MURL: string;
-    MENU_REMARK: string;
-    MURLTYPE: string;
-    MSYSGUBUN: string;
-}
-
-export interface Ids_iDelFavorites {
-    PSABUN: string;
-}
+import type { Ids_ioFavorites, Ids_oMenuTree, Ids_iDelFavorites } from './Frmenv0050MFavoriteManagementData';
 
 export const useFrmenv0050MFavoriteManagement = () => {
     const [ds_ioFavorites, setds_ioFavorites] = useState<Ids_ioFavorites[]>([]);
     const [ds_oMenuTree, setds_oMenuTree] = useState<Ids_oMenuTree[]>([]);
     const [ds_iDelFavorites, setds_iDelFavorites] = useState<Ids_iDelFavorites[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -75,6 +46,8 @@ export const useFrmenv0050MFavoriteManagement = () => {
         ds_ioFavorites,
         ds_oMenuTree,
         ds_iDelFavorites,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnAdd_OnClick,
         btnDel_OnClick,
         btnMoveDown_OnClick,

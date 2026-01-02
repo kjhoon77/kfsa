@@ -1,12 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oSmsStat {
-    MRECVRESULT: string;
-    MSENDDATE: string;
-    PNM: string;
-    MMSG: string;
-}
+import type { Ids_oSmsStat } from './FrmCOM1120PSmsContentsViewData';
 
 export const useFrmCOM1120PSmsContentsView = () => {
     const [ds_oSmsStat, setds_oSmsStat] = useState<Ids_oSmsStat[]>([]);

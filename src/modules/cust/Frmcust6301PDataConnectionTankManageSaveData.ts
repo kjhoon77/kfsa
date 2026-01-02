@@ -1,29 +1,566 @@
 // @ts-nocheck
 export const Frmcust6301PDataConnectionTankManageSaveData = {};
 
-export const ds_ds_oAddrGubun = [
+export interface Ids_oBizCd {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oCourse {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oRegion {
+    CD?: string;
+    DATA?: string;
+    GTCD?: string;
+}
+
+export interface Ids_oJibu {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oDetailCourse {
+    CD?: string;
+    DATA?: string;
+    GCD?: string;
+}
+
+export interface Ids_oAddrGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oAddrGubun: Ids_oAddrGubun[] = [
     { CD: '0', DATA: '대상물' },
     { CD: '1', DATA: '선임자' },
     { CD: '2', DATA: '직접' },
 ];
 
-export const ds_ds_oAddr = [
+export interface Ids_oAllObject {
+}
+
+export interface Ids_ioBuildingInfo {
+    BADDR1?: string;
+    BADDR2?: string;
+    BADDRGUBUN?: string;
+    BAREA?: number;
+    BBIZCD?: string;
+    BBULDADDR?: string;
+    BBULDNM?: string;
+    BBUNJI1?: string;
+    BBUNJI2?: string;
+    BCONO?: string;
+    BDONG?: string;
+    BFAX?: string;
+    BFIRECD?: string;
+    BFIREMAN?: string;
+    BMGNO?: number;
+    BNM?: string;
+    BRI?: string;
+    BROADNM?: string;
+    BSANGUBUN?: string;
+    BSIDO?: string;
+    BSIGUNGU?: string;
+    BSMOKEGUBUN?: string;
+    BTEL?: string;
+    BZIPCD?: string;
+    BFIREUPCD?: string;
+    BFIREBONBUCD?: string;
+}
+
+export interface Ids_ioCustomerInfo {
+    AGNM?: string;
+    CAGGUBUN?: string;
+    CAGMGNO?: number;
+    CBMGNO?: number;
+    CCOCD?: string;
+    CCOURSECD?: string;
+    CDELDATE?: string;
+    CDELGUBUN?: string;
+    CEDUPOSTADDR1?: string;
+    CEDUPOSTADDR2?: string;
+    CEDUPOSTGUBUN?: string;
+    CEDUPOSTPLACE?: string;
+    CEDUPOSTZIPCD?: string;
+    CEXCEPTDATE?: string;
+    CEXCEPTGUBUN?: string;
+    CFEEPOSTADDR1?: string;
+    CFEEPOSTADDR2?: string;
+    CFEEPOSTGUBUN?: string;
+    CFEEPOSTPLACE?: string;
+    CFEEPOSTZIPCD?: string;
+    CFEEYYMM?: string;
+    CFIREMGNO?: string;
+    CFMHMGNO?: number;
+    CFMHSEQ?: number;
+    CGATEWAYPK1?: string;
+    CGATEWAYPK2?: string;
+    CGATEWAYPK3?: string;
+    CGCOURSECD?: string;
+    CGTMGNO?: string;
+    CLASTADDSEQ?: number;
+    CLASTPRSEQ?: number;
+    CMGNO?: number;
+    CNO?: string;
+    COBMGNO?: number;
+    COLDMGNO?: string;
+    COVERGUBUN?: string;
+    CPERSONGUBUN?: string;
+    CPOSTREQGUBUN?: string;
+    CREGCD?: string;
+    CREGISTERYYMM?: string;
+    CSTATUSDATE?: string;
+    CSTATUSGUBUN?: string;
+    CSTATUSREASONCD?: string;
+}
+
+export interface Ids_ioManagerInfo {
+    FMAUTHGUBUN?: string;
+    FMBUILDINGNM?: string;
+    FMCMGNO?: number;
+    FMCOURSECD?: string;
+    FMHADDR1?: string;
+    FMHADDR2?: string;
+    FMHADDRGUBUN?: string;
+    FMHBULDADDR?: string;
+    FMHBULDNM?: string;
+    FMHBUNJI1?: string;
+    FMHBUNJI2?: string;
+    FMHDONG?: string;
+    FMHEMAILDOMAIN?: string;
+    FMHEMAILID?: string;
+    FMHENDDATE?: string;
+    FMHENDGUBUN?: string;
+    FMHENDSYSDATE?: string;
+    FMHETCADDR?: string;
+    FMHFMMGNO?: number;
+    FMHHPTEL?: string;
+    FMHOLDINFO?: string;
+    FMHRI?: string;
+    FMHROADNM?: string;
+    FMHSANGUBUN?: string;
+    FMHSEQ?: number;
+    FMHSIDO?: string;
+    FMHSIGUNGU?: string;
+    FMHSTARTDATE?: string;
+    FMHTEL?: string;
+    FMHZIPCD?: string;
+    FMLASTFMHSEQ?: number;
+    FMMGNO?: number;
+    FMNM?: string;
+    FMRESIDENTERR?: string;
+    FMRESIDENTNO?: string;
+    IIDIRPATH?: string;
+    IIREALNM?: string;
+    IISAVENM?: string;
+}
+
+export interface Ids_ioAdditionInfo {
+    ADCMGNO?: number;
+    ADCONTENT?: string;
+    ADDELGUBUN?: string;
+    ADCD?: string;
+    ADSEQ?: number;
+}
+
+export interface Ids_oAddr {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oAddr: Ids_oAddr[] = [
     { CD: '0', DATA: '구주소' },
     { CD: '1', DATA: '신주소' },
 ];
 
-export const ds_ds_oCustomerStatus = [
+export interface Ids_oBuildingSeq {
+    SEQ?: string;
+}
+
+export interface Ids_oCustomerSeq {
+    SEQ?: string;
+}
+
+export interface Ids_oFireManagerSeq {
+    SEQ?: string;
+}
+
+export interface Ids_ioCustomerInfoTmp {
+    AGNM?: string;
+    CAGGUBUN?: string;
+    CAGMGNO?: number;
+    CBMGNO?: number;
+    CCOCD?: string;
+    CCOURSECD?: string;
+    CDELDATE?: string;
+    CDELGUBUN?: string;
+    CEDUPOSTADDR1?: string;
+    CEDUPOSTADDR2?: string;
+    CEDUPOSTGUBUN?: string;
+    CEDUPOSTPLACE?: string;
+    CEDUPOSTZIPCD?: string;
+    CEXCEPTDATE?: string;
+    CEXCEPTGUBUN?: string;
+    CFEEPOSTADDR1?: string;
+    CFEEPOSTADDR2?: string;
+    CFEEPOSTGUBUN?: string;
+    CFEEPOSTPLACE?: string;
+    CFEEPOSTZIPCD?: string;
+    CFEEYYMM?: string;
+    CFIREMGNO?: string;
+    CFMHMGNO?: number;
+    CFMHSEQ?: number;
+    CGATEWAYPK1?: string;
+    CGATEWAYPK2?: string;
+    CGATEWAYPK3?: string;
+    CGCOURSECD?: string;
+    CGTMGNO?: string;
+    CLASTADDSEQ?: number;
+    CLASTPRSEQ?: number;
+    CMGNO?: number;
+    CNO?: string;
+    COBMGNO?: number;
+    COLDMGNO?: string;
+    COVERGUBUN?: string;
+    CPERSONGUBUN?: string;
+    CPOSTREQGUBUN?: string;
+    CREGCD?: string;
+    CREGISTERYYMM?: string;
+    CSTATUSDATE?: string;
+    CSTATUSGUBUN?: string;
+    CSTATUSREASONCD?: string;
+}
+
+export interface Ids_ioManagerInfoTmp {
+    FMAUTHGUBUN?: string;
+    FMBUILDINGNM?: string;
+    FMCMGNO?: number;
+    FMCOURSECD?: string;
+    FMHADDR1?: string;
+    FMHADDR2?: string;
+    FMHADDRGUBUN?: string;
+    FMHBULDADDR?: string;
+    FMHBULDNM?: string;
+    FMHBUNJI1?: string;
+    FMHBUNJI2?: string;
+    FMHDONG?: string;
+    FMHEMAILDOMAIN?: string;
+    FMHEMAILID?: string;
+    FMHENDDATE?: string;
+    FMHENDGUBUN?: string;
+    FMHENDSYSDATE?: string;
+    FMHETCADDR?: string;
+    FMHFMMGNO?: number;
+    FMHHPTEL?: string;
+    FMHOLDINFO?: string;
+    FMHRI?: string;
+    FMHROADNM?: string;
+    FMHSANGUBUN?: string;
+    FMHSEQ?: number;
+    FMHSIDO?: string;
+    FMHSIGUNGU?: string;
+    FMHSTARTDATE?: string;
+    FMHTEL?: string;
+    FMHZIPCD?: string;
+    FMLASTFMHSEQ?: number;
+    FMMGNO?: number;
+    FMNM?: string;
+    FMRESIDENTERR?: string;
+    FMRESIDENTNO?: string;
+    IIDIRPATH?: string;
+    IIREALNM?: string;
+    IISAVENM?: string;
+}
+
+export interface Ids_oBnmCode {
+}
+
+export interface Ids_oFireCd {
+    CD?: string;
+    DATA?: string;
+    JIBUCD?: string;
+}
+
+export interface Ids_oFireCenterCd {
+    CD?: string;
+    DATA?: string;
+    UPCD?: string;
+}
+
+export interface Ids_oCustomerStatus {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oCustomerStatus: Ids_oCustomerStatus[] = [
     { CD: '0', DATA: '회원' },
     { CD: '1', DATA: '비회원' },
 ];
 
-export const ds_ds_MemberGubun = [
+export interface Ids_ioMatchInfo {
+    MKFSAPK?: string;
+    MFPIS1?: string;
+    MFPIS2?: string;
+    MFPIS3?: string;
+    MFPIS4?: string;
+    MFPIS5?: string;
+    MFPIS6?: string;
+}
+
+export interface Ids_ioBizCdMatch {
+    CCBIZCD?: string;
+    CCBIZCDNM?: string;
+}
+
+export interface Ids_oFireBonbuCd {
+}
+
+export interface Ids_ioManager {
+    MMGNO?: string;
+    MNM?: string;
+    MRESIDENTNO?: string;
+    FMLASTFMHSEQ?: string;
+    FMRESIDENTERR?: string;
+}
+
+export interface Ids_oMemberStat {
+    MHMEMCHK?: string;
+    MHNAME?: string;
+    MHRESIDENT?: string;
+}
+
+export interface Ids_ioOldCustomerInfo {
+    AGNM?: string;
+    CAGGUBUN?: string;
+    CAGMGNO?: number;
+    CBMGNO?: number;
+    CCOCD?: string;
+    CCOURSECD?: string;
+    CDELDATE?: string;
+    CDELGUBUN?: string;
+    CEDUPOSTADDR1?: string;
+    CEDUPOSTADDR2?: string;
+    CEDUPOSTGUBUN?: string;
+    CEDUPOSTPLACE?: string;
+    CEDUPOSTZIPCD?: string;
+    CEXCEPTDATE?: string;
+    CEXCEPTGUBUN?: string;
+    CFEEPOSTADDR1?: string;
+    CFEEPOSTADDR2?: string;
+    CFEEPOSTGUBUN?: string;
+    CFEEPOSTPLACE?: string;
+    CFEEPOSTZIPCD?: string;
+    CFEEYYMM?: string;
+    CFIREMGNO?: string;
+    CFMHMGNO?: number;
+    CFMHSEQ?: number;
+    CGATEWAYPK1?: string;
+    CGATEWAYPK2?: string;
+    CGATEWAYPK3?: string;
+    CGCOURSECD?: string;
+    CGTMGNO?: string;
+    CLASTADDSEQ?: number;
+    CLASTPRSEQ?: number;
+    CMGNO?: number;
+    CNO?: string;
+    COBMGNO?: number;
+    COLDMGNO?: string;
+    COVERGUBUN?: string;
+    CPERSONGUBUN?: string;
+    CPOSTREQGUBUN?: string;
+    CREGCD?: string;
+    CREGISTERYYMM?: string;
+    CSTATUSDATE?: string;
+    CSTATUSGUBUN?: string;
+    CSTATUSREASONCD?: string;
+}
+
+export interface Ids_ioOldManagerInfo {
+    FMAUTHGUBUN?: string;
+    FMBUILDINGNM?: string;
+    FMCMGNO?: number;
+    FMCOURSECD?: string;
+    FMHADDR1?: string;
+    FMHADDR2?: string;
+    FMHADDRGUBUN?: string;
+    FMHBULDADDR?: string;
+    FMHBULDNM?: string;
+    FMHBUNJI1?: string;
+    FMHBUNJI2?: string;
+    FMHDONG?: string;
+    FMHEMAILDOMAIN?: string;
+    FMHEMAILID?: string;
+    FMHENDDATE?: string;
+    FMHENDGUBUN?: string;
+    FMHENDSYSDATE?: string;
+    FMHETCADDR?: string;
+    FMHFMMGNO?: number;
+    FMHHPTEL?: string;
+    FMHOLDINFO?: string;
+    FMHRI?: string;
+    FMHROADNM?: string;
+    FMHSANGUBUN?: string;
+    FMHSEQ?: number;
+    FMHSIDO?: string;
+    FMHSIGUNGU?: string;
+    FMHSTARTDATE?: string;
+    FMHTEL?: string;
+    FMHZIPCD?: string;
+    FMLASTFMHSEQ?: number;
+    FMMGNO?: number;
+    FMNM?: string;
+    FMRESIDENTERR?: string;
+    FMRESIDENTNO?: string;
+    IIDIRPATH?: string;
+    IIREALNM?: string;
+    IISAVENM?: string;
+}
+
+export interface Ids_oManagerList {
+    BADDR1?: string;
+    BADDR2?: string;
+    BNM?: string;
+    BTEL?: string;
+    BZIPCD?: string;
+    CCOCD?: string;
+    CCOURSECD?: string;
+    CFIREMGNO?: string;
+    CGTMGNO?: string;
+    CNO?: string;
+    COVERCMGNO?: string;
+    CREGCD?: string;
+    CSTATUSGUBUN?: string;
+    EPPASSDATE?: string;
+    FMHSTARTDATE?: string;
+    FMNM?: string;
+    FMRESIDENTNO?: string;
+    OLHNM?: string;
+}
+
+export interface Ids_MemberGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_MemberGubun: Ids_MemberGubun[] = [
     { CD: 'Y', DATA: '회원' },
     { CD: 'N', DATA: '비회원' },
     { CD: '', DATA: '비회원(미지정)' },
 ];
 
-export const ds_ds_oModifyColumnList = [
+export interface Ids_oStatus {
+}
+
+export interface Ids_ioOtherLicenseInfo {
+    OLFMMGNO?: string;
+    OLSEQ?: string;
+    OLHCD?: string;
+    OLNO?: string;
+    OLDATE?: string;
+    OLINGUBUN?: string;
+    OLNUM?: string;
+    OLHFPISNO?: string;
+}
+
+export interface Ids_oOverBizProc {
+}
+
+export interface Ids_ioNotOverBizFireManager {
+}
+
+export interface Ids_ioIsOverBizFireManager {
+}
+
+export interface Ids_ioOldBuildingInfo {
+    BADDR1?: string;
+    BADDR2?: string;
+    BADDRGUBUN?: string;
+    BAREA?: number;
+    BBIZCD?: string;
+    BBULDADDR?: string;
+    BBULDNM?: string;
+    BBUNJI1?: string;
+    BBUNJI2?: string;
+    BCONO?: string;
+    BDONG?: string;
+    BFAX?: string;
+    BFIRECD?: string;
+    BFIREMAN?: string;
+    BMGNO?: number;
+    BNM?: string;
+    BRI?: string;
+    BROADNM?: string;
+    BSANGUBUN?: string;
+    BSIDO?: string;
+    BSIGUNGU?: string;
+    BSMOKEGUBUN?: string;
+    BTEL?: string;
+    BZIPCD?: string;
+    BFIREUPCD?: string;
+    BFIREBONBUCD?: string;
+}
+
+export interface Ids_ioDanManagerInfo {
+    NM?: string;
+    IHIDNUM?: string;
+    CRQFC_CODE_NM?: string;
+    CRQFC_CODE?: string;
+    AP_APNTRLSOFC_DE?: string;
+    AP_PROCESS_DE?: string;
+    APNTRLSOFC_DATE?: string;
+    PROCESS_DATE?: string;
+    CRQFC_ACQDT?: string;
+    CRQFC_NO?: string;
+    CRQFC_ACQDATE?: string;
+    SEL?: string;
+}
+
+export interface Ids_ioDangerInfo {
+    DBMGNO?: number;
+    DPERMISSIONNO?: string;
+    DREMARK?: string;
+    DSEQ?: number;
+    SEL?: string;
+}
+
+export interface Ids_ioDangerInfoSave {
+    DBMGNO?: number;
+    DPERMISSIONNO?: string;
+    DREMARK?: string;
+    DSEQ?: number;
+    SEL?: string;
+}
+
+export interface Ids_iCustomerModifyHistory {
+    CMHAFTERDATA?: string;
+    CMHBEFOREDATA?: string;
+    CMHCOLUMN?: string;
+    CMHGUBUN?: string;
+    CMHKEY?: string;
+    CMHWORKGUBUN?: string;
+}
+
+export interface Ids_ioLicenseInfo {
+    OLFMMGNO?: number;
+    OLDATE?: string;
+    OLHCD?: string;
+    OLHNM?: string;
+    OLNO?: string;
+    OLSEQ?: number;
+}
+
+export interface Ids_oModifyColumnList {
+    TBLNM?: string;
+    COLNM?: string;
+    COLKORNM?: string;
+    COMBOGUBUN?: string;
+    INNERDSNM?: string;
+}
+
+export const ds_ds_oModifyColumnList: Ids_oModifyColumnList[] = [
     { COLKORNM: '고객정보관리번호', COLNM: 'CMGNO', COMBOGUBUN: 'N', INNERDSNM: '', TBLNM: 'CUSTOMER' },
     { COLKORNM: '지부', COLNM: 'CGTMGNO', COMBOGUBUN: 'Y', INNERDSNM: 'ds_oJibu', TBLNM: 'CUSTOMER' },
     { COLKORNM: '고객번호', COLNM: 'CNO', COMBOGUBUN: 'N', INNERDSNM: '', TBLNM: 'CUSTOMER' },
@@ -164,3 +701,6 @@ export const ds_ds_oModifyColumnList = [
     { COLKORNM: '자격증발급일자', COLNM: 'OLDATE', COMBOGUBUN: 'N', INNERDSNM: '', TBLNM: 'OTHERLICENSE' },
     { COLKORNM: '소방본부코드', COLNM: 'BFIREBONBUCD', COMBOGUBUN: 'Y', INNERDSNM: 'ds_oFireBonbuCd', TBLNM: 'BUILDING' },
 ];
+
+export interface Ids_ioFPISDanTankInfo {
+}

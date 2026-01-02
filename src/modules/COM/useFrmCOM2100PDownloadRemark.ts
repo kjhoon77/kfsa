@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oDownloadhResult {
-}
+import type { Ids_oDownloadhResult } from './FrmCOM2100PDownloadRemarkData';
 
 export const useFrmCOM2100PDownloadRemark = () => {
     const [ds_oDownloadhResult, setds_oDownloadhResult] = useState<Ids_oDownloadhResult[]>([]);

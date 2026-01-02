@@ -1,23 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oBoard {
-    AFDIRPATH: string;
-    AFFILESIZE: string;
-    AFREALNM: string;
-    AFSAVENM: string;
-    AFSEQ: string;
-    BBOARDGUBUN: string;
-    BCONTENTS: string;
-    BHIT: string;
-    BMODDATE: string;
-    BMODSABUN: string;
-    BREGDATE: string;
-    BREGSABUN: string;
-    BSEQ: string;
-    BTITLE: string;
-    NEW_YN: string;
-}
+import type { Ids_oBoard } from './Frmenv0022PLatestBoardData';
 
 export const useFrmenv0022PLatestBoard = () => {
     const [ds_oBoard, setds_oBoard] = useState<Ids_oBoard[]>([]);

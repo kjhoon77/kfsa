@@ -1,79 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioLoadedAnswer {
-    EPALPHATYPE: string;
-    EPCOURSECD: string;
-    EPNUMTYPE: string;
-    TCCOURSENM: string;
-    WRITEYN: string;
-    EPCHASUGUBUN: string;
-    EPSUBJECTGUBUN: string;
-    SUBJECTGUBUN: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExcel {
-    CACORRECTANSWER: string;
-    CACORRECTCNT: string;
-    CAITEMNO: string;
-    CAITEMSCORE: string;
-    EPALPHATYPE: string;
-    EPCOURSECD: string;
-    EPNUMTYPE: string;
-    EPCHASUGUBUN: string;
-    EPSUBJECTGUBUN: string;
-}
-
-export interface Ids_ioExcelDetail {
-    CACORRECTANSWER: string;
-    CACORRECTCNT: string;
-    CAITEMNO: string;
-    CAITEMSCORE: string;
-    EPALPHATYPE: string;
-    EPCOURSECD: string;
-    EPNUMTYPE: string;
-    EPCHASUGUBUN: string;
-    EPSUBJECTGUBUN: string;
-}
-
-export interface Ids_ioExcelCopy {
-    CACORRECTANSWER: string;
-    CACORRECTCNT: string;
-    CAITEMNO: string;
-    CAITEMSCORE: string;
-}
-
-export interface Ids_oAnswer {
-    EPALPHATYPE: string;
-    EPCOURSECD: string;
-    EPNUMTYPE: string;
-    EPCHASUGUBUN: string;
-    EPSUBJECTGUBUN: string;
-}
-
-export interface Ids_ioExcelDetailTmp {
-    CACORRECTANSWER: string;
-    CACORRECTCNT: string;
-    CAITEMNO: string;
-    CAITEMSCORE: string;
-    EPALPHATYPE: string;
-    EPCOURSECD: string;
-    EPNUMTYPE: string;
-    EPCHASUGUBUN: string;
-    EPSUBJECTGUBUN: string;
-}
-
-export interface Ids_ioExcelCopyTmp {
-    CACORRECTANSWER: string;
-    CACORRECTCNT: string;
-    CAITEMNO: string;
-    CAITEMSCORE: string;
-}
+import type { Ids_ioLoadedAnswer, Ids_oCourse, Ids_ioExcel, Ids_ioExcelDetail, Ids_ioExcelCopy, Ids_oAnswer, Ids_ioExcelDetailTmp, Ids_ioExcelCopyTmp } from './Frmtraining0510MExamCorrectAnswerPaperModifyData';
 
 export const useFrmtraining0510MExamCorrectAnswerPaperModify = () => {
     const [ds_ioLoadedAnswer, setds_ioLoadedAnswer] = useState<Ids_ioLoadedAnswer[]>([]);
@@ -85,6 +12,7 @@ export const useFrmtraining0510MExamCorrectAnswerPaperModify = () => {
     const [ds_ioExcelDetailTmp, setds_ioExcelDetailTmp] = useState<Ids_ioExcelDetailTmp[]>([]);
     const [ds_ioExcelCopyTmp, setds_ioExcelCopyTmp] = useState<Ids_ioExcelCopyTmp[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -127,6 +55,8 @@ export const useFrmtraining0510MExamCorrectAnswerPaperModify = () => {
         ds_oAnswer,
         ds_ioExcelDetailTmp,
         ds_ioExcelCopyTmp,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnNext_OnClick,
         lfn_End,
         lfn_PrintScreen,

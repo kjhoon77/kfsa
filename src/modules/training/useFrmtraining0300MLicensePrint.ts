@@ -1,89 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oPassGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oLicenseReport {
-    BIRTHDAY: string;
-    IIFILENM: string;
-    LADDR1: string;
-    LADDR2: string;
-    LBARCODE: string;
-    LHPRTDATE: string;
-    LISSUEDATE: string;
-    LISSUEGUBUNNM: string;
-    LLCSNO: string;
-    LPERSONNM: string;
-    LTCCOURSECD: string;
-    LLASTHISTORYSEQ: string;
-    SEL: string;
-    LHPROCGTMGNO: string;
-    YEAR: string;
-    JUBSUNO: string;
-    ONLINESURYOYN: string;
-    PRINTYN: string;
-    IJUBSU: string;
-    LICAMT: string;
-    LICAMTGUBUN: string;
-}
-
-export interface Ids_oLicenseCnt {
-    LLCSNO: string;
-    MINNO: string;
-    MAXNO: string;
-}
-
-export interface Ids_iLicenseImage {
-    LILLCSNO: string;
-    LISEQ: string;
-    LIDIRPATH: string;
-    LIREALNM: string;
-}
-
-export interface Ids_iLicensePrtHistory {
-    LPLLCSNO: string;
-    LPLHSEQ: string;
-    ILMGNO: string;
-    LHPRTGUBUN: string;
-}
-
-export interface Ids_oPrintGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioReport {
-}
-
-export interface Ids_ioReportFilter {
-}
-
-export interface Ids_oPrintGubun2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_LicenseCheck {
-    LICAMT: string;
-}
-
-export interface Ids_LicAmtGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oJibu, Ids_oPassGubun, Ids_oLicenseReport, Ids_oLicenseCnt, Ids_iLicenseImage, Ids_iLicensePrtHistory, Ids_oPrintGubun, Ids_ioReport, Ids_ioReportFilter, Ids_oPrintGubun2, Ids_LicenseCheck, Ids_LicAmtGubun } from './Frmtraining0300MLicensePrintData';
 
 export const useFrmtraining0300MLicensePrint = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -100,6 +17,7 @@ export const useFrmtraining0300MLicensePrint = () => {
     const [ds_LicenseCheck, setds_LicenseCheck] = useState<Ids_LicenseCheck[]>([]);
     const [ds_LicAmtGubun, setds_LicAmtGubun] = useState<Ids_LicAmtGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -155,6 +73,8 @@ export const useFrmtraining0300MLicensePrint = () => {
         ds_oPrintGubun2,
         ds_LicenseCheck,
         ds_LicAmtGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         chkLicenseAmt_OnClick,
         lfn_Cancel,
         lfn_End,

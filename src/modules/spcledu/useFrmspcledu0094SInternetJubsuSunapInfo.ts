@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oPosResult {
-}
+import type { Ids_oPosResult } from './Frmspcledu0094SInternetJubsuSunapInfoData';
 
 export const useFrmspcledu0094SInternetJubsuSunapInfo = () => {
     const [ds_oPosResult, setds_oPosResult] = useState<Ids_oPosResult[]>([]);

@@ -1,24 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_iGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAgentList {
-    ENTRPS_NM: string;
-    RPRSNTV: string;
-    POST_NO: string;
-    BASS_ADRES: string;
-    ETC_ADRES: string;
-    FULL_ADRES: string;
-    TLPHON_NO: string;
-    FAX_NO: string;
-    BSNM_REGIST_NO: string;
-    REGIST_NO: string;
-    ENTRPS_SN: string;
-}
+import type { Ids_iGubun, Ids_oAgentList } from './Frmcust3030PAgentListData';
 
 export const useFrmcust3030PAgentList = () => {
     const [ds_iGubun, setds_iGubun] = useState<Ids_iGubun[]>([]);

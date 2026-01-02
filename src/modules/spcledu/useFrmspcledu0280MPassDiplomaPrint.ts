@@ -1,56 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oSearchGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTrainingPass {
-    TOMGGTMGNO: string;
-    ERPASSYN: string;
-    JUBSUADDR: string;
-    PPASSDATE_A: string;
-    PPASSNO: string;
-    TOTCCOURSECD: string;
-    TJMGNO: string;
-    TJPERSONNM: string;
-    TJRESIDENTNO_SANG: string;
-    TJRESIDENTNO: string;
-    TJZIPCD: string;
-    TOHJUBSUNO: string;
-    TOMGNO: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPMGNO: string;
-    TOEXAMORDER: string;
-    EDUCATIONTIME: string;
-    TCCOURSENM: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamCheatReport {
-}
-
-export interface Ids_ioReport {
-}
-
-export interface Ids_ioReport2 {
-}
-
-export interface Ids_oPassGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oSearchGubun, Ids_oCourse, Ids_ioTrainingPass, Ids_oJibu, Ids_ioExamCheatReport, Ids_ioReport, Ids_ioReport2, Ids_oPassGubun } from './Frmspcledu0280MPassDiplomaPrintData';
 
 export const useFrmspcledu0280MPassDiplomaPrint = () => {
     const [ds_oSearchGubun, setds_oSearchGubun] = useState<Ids_oSearchGubun[]>([]);
@@ -62,6 +12,8 @@ export const useFrmspcledu0280MPassDiplomaPrint = () => {
     const [ds_ioReport2, setds_ioReport2] = useState<Ids_ioReport2[]>([]);
     const [ds_oPassGubun, setds_oPassGubun] = useState<Ids_oPassGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [isVisible_divSearchGubun, setIsVisible_divSearchGubun] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -122,6 +74,10 @@ export const useFrmspcledu0280MPassDiplomaPrint = () => {
         ds_ioReport,
         ds_ioReport2,
         ds_oPassGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        isVisible_divSearchGubun,
+        setIsVisible_divSearchGubun,
         btnAttend_OnClick,
         btnMolPass_OnClick,
         btnMutilSort_OnClick,

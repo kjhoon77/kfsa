@@ -1,37 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_SearchJogeon {
-    JIBU: string;
-    YEAR: string;
-    BIZ_GUBUN: string;
-    BIZ1: string;
-    BIZ2: string;
-    SETLM_GUBUN: string;
-}
-
-export interface Ids_SunapList {
-}
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSetlmGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAdditionInfo {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioJibu, Ids_SearchJogeon, Ids_SunapList, Ids_ioChoiceYn, Ids_oSetlmGubun, Ids_oAdditionInfo } from './Frmcust2110MBusinessSunapReportData';
 
 export const useFrmcust2110MBusinessSunapReport = () => {
     const [ds_ioJibu, setds_ioJibu] = useState<Ids_ioJibu[]>([]);
@@ -41,6 +10,7 @@ export const useFrmcust2110MBusinessSunapReport = () => {
     const [ds_oSetlmGubun, setds_oSetlmGubun] = useState<Ids_oSetlmGubun[]>([]);
     const [ds_oAdditionInfo, setds_oAdditionInfo] = useState<Ids_oAdditionInfo[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -76,6 +46,8 @@ export const useFrmcust2110MBusinessSunapReport = () => {
         ds_ioChoiceYn,
         ds_oSetlmGubun,
         ds_oAdditionInfo,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnExcell_OnClick,
         lfn_CancelL,
         lfn_End,

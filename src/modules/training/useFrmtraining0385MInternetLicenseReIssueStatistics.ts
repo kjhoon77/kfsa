@@ -1,29 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oInternetReIssue {
-    CCCD: string;
-    CCCDNM: string;
-    CCGROUPCD: string;
-    CCORDERSEQ: string;
-    CCREMARK: string;
-    USE_YN: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInternetReIssueStatus {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oInternetReIssue, Ids_oCourse, Ids_oJibu, Ids_oInternetReIssueStatus } from './Frmtraining0385MInternetLicenseReIssueStatisticsData';
 
 export const useFrmtraining0385MInternetLicenseReIssueStatistics = () => {
     const [ds_oInternetReIssue, setds_oInternetReIssue] = useState<Ids_oInternetReIssue[]>([]);
@@ -31,6 +8,7 @@ export const useFrmtraining0385MInternetLicenseReIssueStatistics = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_oInternetReIssueStatus, setds_oInternetReIssueStatus] = useState<Ids_oInternetReIssueStatus[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -68,6 +46,8 @@ export const useFrmtraining0385MInternetLicenseReIssueStatistics = () => {
         ds_oCourse,
         ds_oJibu,
         ds_oInternetReIssueStatus,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

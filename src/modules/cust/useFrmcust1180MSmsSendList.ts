@@ -1,121 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioSmsSendList {
-    EPMGJIBUCD: string;
-    PSABUN: string;
-    SHRCVRNAME: string;
-    SHSENDDATE_B: string;
-    SHSENDDATE_C: string;
-    SHSENDSTATE: string;
-    SHSENDTIME: string;
-    SHSYSGUBUN: string;
-    SHTEL: string;
-    SMMSG: string;
-    TCCOURSECD: string;
-    TJMGNO: string;
-    TOHJUBSUNO: string;
-    TOMGNO: string;
-    TOTRAININGORDER: string;
-    TOTRAININGORDER2: string;
-    TOYEAR: string;
-    TPMGNO: string;
-    SENDGUBUN: string;
-    RCNM: string;
-}
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioSmsPracticeEduJubsu {
-    EPMGJIBUCD: string;
-    PSABUN: string;
-    SHRCVRNAME: string;
-    SHSENDDATE_B: string;
-    SHSENDDATE_C: string;
-    SHSENDSTATE: string;
-    SHSENDTIME: string;
-    SHSYSGUBUN: string;
-    SHTEL: string;
-    SMMSG: string;
-    TCCOURSECD: string;
-    TJMGNO: string;
-    TOHJUBSUNO: string;
-    TOMGNO: string;
-    TOTRAININGORDER: string;
-    TOTRAININGORDER2: string;
-    TOYEAR: string;
-    TPMGNO: string;
-    SENDGUBUN: string;
-    RCNM: string;
-}
-
-export interface Ids_oGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioSmsStat_date {
-}
-
-export interface Ids_ioSmsStatEduJubsu_date {
-}
-
-export interface Ids_ioSmsStatInternet_jibu {
-}
-
-export interface Ids_ioSmsStat_jibu {
-}
-
-export interface Ids_ioSerchGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioSmsStatInternet_order {
-}
-
-export interface Ids_ioSmsStat_order {
-}
-
-export interface Ids_oSendGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioSmsEduData {
-}
-
-export interface Ids_ioSmsEduIssue {
-}
-
-export interface Ids_ioSerchGubun2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioSmsStatEduData_date {
-}
-
-export interface Ids_ioSmsStatEduIssue_date {
-}
-
-export interface Ids_ioSerchGubun3 {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioSmsSendList, Ids_oWorkGubun, Ids_oCourse, Ids_oJibu, Ids_ioSmsPracticeEduJubsu, Ids_oGubun, Ids_ioSmsStat_date, Ids_ioSmsStatEduJubsu_date, Ids_ioSmsStatInternet_jibu, Ids_ioSmsStat_jibu, Ids_ioSerchGubun, Ids_ioSmsStatInternet_order, Ids_ioSmsStat_order, Ids_oSendGubun, Ids_ioSmsEduData, Ids_ioSmsEduIssue, Ids_ioSerchGubun2, Ids_ioSmsStatEduData_date, Ids_ioSmsStatEduIssue_date, Ids_ioSerchGubun3 } from './Frmcust1180MSmsSendListData';
 
 export const useFrmcust1180MSmsSendList = () => {
     const [ds_ioSmsSendList, setds_ioSmsSendList] = useState<Ids_ioSmsSendList[]>([]);
@@ -139,6 +24,10 @@ export const useFrmcust1180MSmsSendList = () => {
     const [ds_ioSmsStatEduIssue_date, setds_ioSmsStatEduIssue_date] = useState<Ids_ioSmsStatEduIssue_date[]>([]);
     const [ds_ioSerchGubun3, setds_ioSerchGubun3] = useState<Ids_ioSerchGubun3[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [isVisible_divWork3, setIsVisible_divWork3] = useState(false);
+    const [isVisible_divWork2, setIsVisible_divWork2] = useState(false);
+    const [isVisible_divWork1, setIsVisible_divWork1] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -220,6 +109,14 @@ export const useFrmcust1180MSmsSendList = () => {
         ds_ioSmsStatEduData_date,
         ds_ioSmsStatEduIssue_date,
         ds_ioSerchGubun3,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        isVisible_divWork3,
+        setIsVisible_divWork3,
+        isVisible_divWork2,
+        setIsVisible_divWork2,
+        isVisible_divWork1,
+        setIsVisible_divWork1,
         btnMutilSort_OnClick,
         btnPrintDate,
         btnPrintJibu,

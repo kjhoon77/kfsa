@@ -1,79 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioApproveList {
-    AJMGNO: string;
-    AJTJMGNO: string;
-    AJGTMGNO: string;
-    AJSTATUS: string;
-    AJISSUEGUBUN: string;
-    AJISSUEGUBUNNM: string;
-    AJTCCOURSECD: string;
-    AJTCCOURSENM: string;
-    AJJUBSUDATE: string;
-    AJCONFIRMDATE: string;
-    AJCONFIRMSABUN: string;
-    AJRESON: string;
-    AJFILEPATH: string;
-    AJFILENM: string;
-    AJREGDATE: string;
-    AJREGSABUN: string;
-    AJMODDATE: string;
-    AJMODSABUN: string;
-    AJGUBUN: string;
-    AJGUBUNNM: string;
-    AJREMARK: string;
-    TPMGNO: string;
-    TPNM: string;
-    TPBIRTHDAY: string;
-    BIRTHDAY: string;
-    TPPERSONKEY: string;
-    TPTEL: string;
-    TPHPTEL: string;
-    TPLASTIMGSEQ: string;
-    TPADDR_1: string;
-    TPADDR_2: string;
-    TPZIPCD: string;
-    IILASTDIRPATH: string;
-    IILASTREALNM: string;
-    IILASTIMGSEQ: string;
-    AJMODRESON: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_status {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_Course {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAjgubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAjgubunG {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_Issuegubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_IssuegubunG {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioApproveList, Ids_oJibu, Ids_status, Ids_Course, Ids_oAjgubun, Ids_oAjgubunG, Ids_Issuegubun, Ids_IssuegubunG } from './Frmtraining0364MInternetLicenseApprovalListData';
 
 export const useFrmtraining0364MInternetLicenseApprovalList = () => {
     const [ds_ioApproveList, setds_ioApproveList] = useState<Ids_ioApproveList[]>([]);
@@ -85,6 +12,7 @@ export const useFrmtraining0364MInternetLicenseApprovalList = () => {
     const [ds_Issuegubun, setds_Issuegubun] = useState<Ids_Issuegubun[]>([]);
     const [ds_IssuegubunG, setds_IssuegubunG] = useState<Ids_IssuegubunG[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -130,6 +58,8 @@ export const useFrmtraining0364MInternetLicenseApprovalList = () => {
         ds_oAjgubunG,
         ds_Issuegubun,
         ds_IssuegubunG,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

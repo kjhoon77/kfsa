@@ -1,25 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYearHalf {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYear {
-    CD: string;
-}
+import type { Ids_ioGubun, Ids_ioYearHalf, Ids_ioYear } from './Frmcust0050MCourseRegionModifyData';
 
 export const useFrmcust0050MCourseRegionModify = () => {
     const [ds_ioGubun, setds_ioGubun] = useState<Ids_ioGubun[]>([]);
     const [ds_ioYearHalf, setds_ioYearHalf] = useState<Ids_ioYearHalf[]>([]);
     const [ds_ioYear, setds_ioYear] = useState<Ids_ioYear[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -52,6 +40,8 @@ export const useFrmcust0050MCourseRegionModify = () => {
         ds_ioGubun,
         ds_ioYearHalf,
         ds_ioYear,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnBarCodeSearch_OnClick,
         btnSearchZipCode_OnClick,
         lfn_Cancel,

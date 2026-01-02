@@ -1,28 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioSmsSingle {
-}
-
-export interface Ids_oSMSMMS {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBatchSendSeq {
-}
-
-export interface Ids_iSms {
-}
-
-export interface Ids_oSms {
-}
-
-export interface Ids_ioSMSList {
-}
-
-export interface Ids_ioSMSTempList {
-}
+import type { Ids_ioSmsSingle, Ids_oSMSMMS, Ids_oBatchSendSeq, Ids_iSms, Ids_oSms, Ids_ioSMSList, Ids_ioSMSTempList } from './Frmcust1351MCustSMSSendData';
 
 export const useFrmcust1351MCustSMSSend = () => {
     const [ds_ioSmsSingle, setds_ioSmsSingle] = useState<Ids_ioSmsSingle[]>([]);

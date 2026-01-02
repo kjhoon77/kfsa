@@ -1,61 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioInternetJusu {
-    BIRTHDAY: string;
-    SEL: string;
-    TCCOURSECD: string;
-    TJMGNO: string;
-    TJPERSONNM: string;
-    TJRESIDENTNO: string;
-    TOCOURSEGUBUN: string;
-    TOHJUBSUNO: string;
-    TOMGJIBUCD: string;
-    TOMUNJEGUBUN: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TSFEE: string;
-    TSGUBUN: string;
-    TSPROCDATE: string;
-    TSREGDATE: string;
-    TSSEQ: string;
-    TSSUNAPGUBUN: string;
-}
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInternetJubsuStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourseMunje {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMunjeGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioInternetJusu, Ids_oWorkGubun, Ids_oCourse, Ids_oJibu, Ids_oInternetJubsuStatus, Ids_oCourseMunje, Ids_oMunjeGubun, Ids_oGubun } from './Frmspcledu0080MInternetTrainingJubsuDateModifyData';
 
 export const useFrmspcledu0080MInternetTrainingJubsuDateModify = () => {
     const [ds_ioInternetJusu, setds_ioInternetJusu] = useState<Ids_ioInternetJusu[]>([]);
@@ -67,6 +12,7 @@ export const useFrmspcledu0080MInternetTrainingJubsuDateModify = () => {
     const [ds_oMunjeGubun, setds_oMunjeGubun] = useState<Ids_oMunjeGubun[]>([]);
     const [ds_oGubun, setds_oGubun] = useState<Ids_oGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -115,6 +61,8 @@ export const useFrmspcledu0080MInternetTrainingJubsuDateModify = () => {
         ds_oCourseMunje,
         ds_oMunjeGubun,
         ds_oGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

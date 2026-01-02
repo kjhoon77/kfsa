@@ -1,108 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oPrintGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamScoreOrderNo {
-    BIRTHDAY: string;
-    EJPERSONNM: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOYEAR: string;
-    ERAPLEXAMNO: string;
-    ERPASSYN: string;
-    ERRANK: string;
-    ERSCORE: string;
-    GTTEAMNM: string;
-    TCCOURSENM: string;
-    CNT: string;
-    ERSCORE2: string;
-    ERSCOREAVG: string;
-    ER1CHASU1SUBJECTSCORE: string;
-    ER1CHASU2SUBJECTSCORE: string;
-}
-
-export interface Ids_oExamPassName {
-    BIRTHDAY: string;
-    EJPERSONNM: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOYEAR: string;
-    ERAPLEXAMNO: string;
-    ERPASSYN: string;
-    ERRANK: string;
-    ERSCORE: string;
-    GTTEAMNM: string;
-    TCCOURSENM: string;
-    GTPRTSEQ: string;
-    ERSCORE2: string;
-    ERSCOREAVG: string;
-    ER1CHASU1SUBJECTSCORE: string;
-    ER1CHASU2SUBJECTSCORE: string;
-}
-
-export interface Ids_oExamNoPassName {
-    BIRTHDAY: string;
-    EJPERSONNM: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOYEAR: string;
-    ERAPLEXAMNO: string;
-    ERPASSYN: string;
-    ERRANK: string;
-    ERSCORE: string;
-    GTTEAMNM: string;
-    TCCOURSENM: string;
-    GTPRTSEQ: string;
-}
-
-export interface Ids_oSearchGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamOrderScoreStat {
-}
-
-export interface Ids_oExamJumsuPersonDistribution {
-}
-
-export interface Ids_oExamQuestionItemAnalysis {
-}
-
-export interface Ids_oExamJubsuCnt {
-    JUPSUCNT: string;
-}
-
-export interface Ids_oExamOrder {
-    EOMGNO: string;
-    JJIBUNICK: string;
-    EOYEAR: string;
-    EOTCCOURSENM: string;
-    EOEXAMORDER: string;
-    EOEXAMDATE: string;
-    EXAMNM: string;
-}
-
-export interface Ids_oExamRepeat {
-    SSHEOMGNO: string;
-    SSHREPEATNO: string;
-    SSHSENDYN: string;
-    DATA: string;
-}
+import type { Ids_oPrintGubun, Ids_oCourse, Ids_oJibu, Ids_oExamScoreOrderNo, Ids_oExamPassName, Ids_oExamNoPassName, Ids_oSearchGubun, Ids_oExamOrderScoreStat, Ids_oExamJumsuPersonDistribution, Ids_oExamQuestionItemAnalysis, Ids_oExamJubsuCnt, Ids_oExamOrder, Ids_oExamRepeat } from './Frmtraining0550MExamScoreManagementData';
 
 export const useFrmtraining0550MExamScoreManagement = () => {
     const [ds_oPrintGubun, setds_oPrintGubun] = useState<Ids_oPrintGubun[]>([]);
@@ -119,6 +17,7 @@ export const useFrmtraining0550MExamScoreManagement = () => {
     const [ds_oExamOrder, setds_oExamOrder] = useState<Ids_oExamOrder[]>([]);
     const [ds_oExamRepeat, setds_oExamRepeat] = useState<Ids_oExamRepeat[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -168,6 +67,8 @@ export const useFrmtraining0550MExamScoreManagement = () => {
         ds_oExamJubsuCnt,
         ds_oExamOrder,
         ds_oExamRepeat,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnNext_OnClick,
         lfn_End,
         lfn_Print,

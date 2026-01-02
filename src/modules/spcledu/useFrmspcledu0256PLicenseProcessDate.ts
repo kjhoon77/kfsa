@@ -1,22 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioSunapGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioProc {
-    LSGUBUN: string;
-    LSLHSEQ: string;
-    LSLLCSNO: string;
-    LSPONYDATE: string;
-    LSPROCDATE: string;
-    LSSEQ: string;
-    LSPMMGNO: string;
-    LSPMYEAR: string;
-    LSPONYGUBUN: string;
-}
+import type { Ids_ioSunapGubun, Ids_ioProc } from './Frmspcledu0256PLicenseProcessDateData';
 
 export const useFrmspcledu0256PLicenseProcessDate = () => {
     const [ds_ioSunapGubun, setds_ioSunapGubun] = useState<Ids_ioSunapGubun[]>([]);

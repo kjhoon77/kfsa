@@ -1,62 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioSearchGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_iSearchotherincome {
-    I_PROC: string;
-    I_JIBU: string;
-    I_YEAR: string;
-    I_FR: string;
-    I_TO: string;
-    O_STATUS: string;
-    O_VALUE: string;
-}
-
-export interface Ids_oSearchotherincome {
-    OPMGNO: string;
-    OPNM: string;
-    RESIDENT: string;
-    BIZGUBUN: string;
-    MGNO: string;
-    JIBU: string;
-    PAYMENTDATE: string;
-    REVERTMONTH: string;
-    STATUS: string;
-    NEEDYUL: string;
-    SEYUL: string;
-    OIMGNO: string;
-    OIBIZGUBUN: string;
-    OIJIBU: string;
-    OIYEAR: string;
-    OIPRTNO: string;
-    OIOPMGNO: string;
-    OIPAYMENTDATE: string;
-    CIMGNO: string;
-    OIREVERTMONTH: string;
-    OIINCOMECD: string;
-    OIPROJECT: string;
-    OISTATUS: string;
-    OIPAYMENT: string;
-    OINEEDCOST: string;
-    OIINCOME: string;
-    OIOINCOME: string;
-    OIOJURIDICAL: string;
-    OIOJUMIN: string;
-    OIONONGTUK: string;
-    OIOTOTAL: string;
-    OIREMARK: string;
-    OIREFMGNO: string;
-    OIREFKEY: string;
-    OIREGISTERDATE: string;
-    OIUSERID: string;
-}
-
-export interface Ids_oJIBU {
-}
+import type { Ids_ioSearchGubun, Ids_iSearchotherincome, Ids_oSearchotherincome, Ids_oJIBU } from './FrmCOM1000PIncomePaymentListData';
 
 export const useFrmCOM1000PIncomePaymentList = () => {
     const [ds_ioSearchGubun, setds_ioSearchGubun] = useState<Ids_ioSearchGubun[]>([]);

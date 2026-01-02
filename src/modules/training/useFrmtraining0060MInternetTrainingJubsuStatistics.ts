@@ -1,68 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oInternetJusu {
-    BIRTHDAY: string;
-    TCCOURSENM: string;
-    TJADDR: string;
-    TJPERSONNM: string;
-    TJZIPCD: string;
-    TOENDDATE: string;
-    TOHDECISIONSEATNO: string;
-    TOHJUBSUNO: string;
-    TOHLASTGUBUN: string;
-    TOSTARTDATE: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TSGUBUN: string;
-    TSGUBUNCD: string;
-    TSPROCDATE: string;
-    TSTRAININGAMOUNT: string;
-    TSPMMGNO: string;
-    TSPMYEAR: string;
-}
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInternetJubsuStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oPrintReceiptMast {
-}
-
-export interface Ids_oPrintReceiptDtl {
-}
-
-export interface Ids_oJubsuGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioReport {
-}
-
-export interface Ids_ioReportInternetJusuFilter {
-}
+import type { Ids_oInternetJusu, Ids_oWorkGubun, Ids_oCourse, Ids_oJibu, Ids_oInternetJubsuStatus, Ids_oGubun, Ids_oPrintReceiptMast, Ids_oPrintReceiptDtl, Ids_oJubsuGubun, Ids_ioReport, Ids_ioReportInternetJusuFilter } from './Frmtraining0060MInternetTrainingJubsuStatisticsData';
 
 export const useFrmtraining0060MInternetTrainingJubsuStatistics = () => {
     const [ds_oInternetJusu, setds_oInternetJusu] = useState<Ids_oInternetJusu[]>([]);
@@ -77,6 +15,7 @@ export const useFrmtraining0060MInternetTrainingJubsuStatistics = () => {
     const [ds_ioReport, setds_ioReport] = useState<Ids_ioReport[]>([]);
     const [ds_ioReportInternetJusuFilter, setds_ioReportInternetJusuFilter] = useState<Ids_ioReportInternetJusuFilter[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -143,6 +82,8 @@ export const useFrmtraining0060MInternetTrainingJubsuStatistics = () => {
         ds_oJubsuGubun,
         ds_ioReport,
         ds_ioReportInternetJusuFilter,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnPrintLect_OnClick,
         btnPrintList_OnClick,

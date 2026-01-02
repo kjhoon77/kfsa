@@ -1,63 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExcept {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioOrder {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioReport {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oFireStation {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_oDATA {
-}
-
-export interface Ids_ioFireStation {
-    BID: string;
-    SID: string;
-    CID: string;
-    GMGNO: string;
-    RCD: string;
-    SNM : string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMatch {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioExcept, Ids_ioOrder, Ids_ioChoiceYn, Ids_ioReport, Ids_ioCourse, Ids_oFireStation, Ids_oDATA, Ids_ioFireStation, Ids_oJibu, Ids_ioStatus, Ids_ioMatch } from './Frmcust6570MTotalDataMatchReportData';
 
 export const useFrmcust6570MTotalDataMatchReport = () => {
     const [ds_ioExcept, setds_ioExcept] = useState<Ids_ioExcept[]>([]);
@@ -72,6 +15,7 @@ export const useFrmcust6570MTotalDataMatchReport = () => {
     const [ds_ioStatus, setds_ioStatus] = useState<Ids_ioStatus[]>([]);
     const [ds_ioMatch, setds_ioMatch] = useState<Ids_ioMatch[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -117,6 +61,8 @@ export const useFrmcust6570MTotalDataMatchReport = () => {
         ds_oJibu,
         ds_ioStatus,
         ds_ioMatch,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Excel,

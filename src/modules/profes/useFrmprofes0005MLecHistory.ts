@@ -1,215 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-    PCMGNO: string;
-    PCTCMUNJEGUBUN: string;
-    PCTCSEARCHGUBUN: string;
-    CD2: string;
-    CD3: string;
-}
-
-export interface Ids_oWrtSatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioStudyCourse {
-    EDUCCOURSECD: string;
-    EDUCOURSENM: string;
-    EDUDATE: string;
-    EDUEND: string;
-    EDUGTMGNO: string;
-    EDUGUBUN: string;
-    EDULMGNO: string;
-    EDULOWTIME: string;
-    EDUMGNO: string;
-    EDUMUNJEGUBUN: string;
-    EDUORDER: string;
-    EDUPCMGNO: string;
-    EDUREGSABUN: string;
-    EDUREMARK: string;
-    EDUSTART: string;
-    EDUSTATUS: string;
-    EDUSTATUSCD: string;
-    EDUTEAMNM: string;
-    EDUUNIONYN: string;
-    EDUWRTTIME: string;
-    EDUYEAR: string;
-    PSVERSION: string;
-}
-
-export interface Ids_oLectureSeq {
-    SEQ: string;
-}
-
-export interface Ids_ioProfesAssign {
-    EDUTEAMNM: string;
-    EDUTIME: string;
-    LEDUGUBUN: string;
-    LEDUMGNO: string;
-    LGTMGNO: string;
-    LMGNO: string;
-    LPPFGUBUN: string;
-    LPPFJIKWINM: string;
-    LPPFJIKWI: string;
-    LPPFNM: string;
-    LPPFSABUN: string;
-    LPPFGUBUNCD: string;
-    LPPSSEQ: string;
-    LPSEQ: string;
-    LPSPEAKERPAY: string;
-    LPSVERSION: string;
-    LTCCOURSECD: string;
-    LTCMUNJEGUBUN: string;
-    LTDATESEQ: string;
-    LTEDUDATE: string;
-    LTEDUDAYS: string;
-    LTSCHEDULETYPE: string;
-    PSTITLE: string;
-    TSENDTIME: string;
-    TSSEQ: string;
-    TSSTARTTIME: string;
-    TSTIME: string;
-    TSTYPESEQ: string;
-    LPSOSOK: string;
-    PSTN: string;
-    USING_TIME: string;
-}
-
-export interface Ids_oSelectDays {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSubject {
-    CD: string;
-    DATA: string;
-    SJTCCOURSECD: string;
-    SJTCMUNJEGUBUN: string;
-}
-
-export interface Ids_ioTeachingTimeMaster {
-    LEDUGUBUN: string;
-    LPCMGNO: string;
-    LEDUMGNO: string;
-    LGTMGNO: string;
-    LMGNO: string;
-    LTDATESEQ: string;
-    LTEDUDATE: string;
-    LTEDUDAYS: string;
-    LTSCHEDULETYPE: string;
-    TSHOUR: string;
-    TSTYPESEQ: string;
-}
-
-export interface Ids_ioTeachingTimeDetail {
-    EDUTIME: string;
-    SUMTSHOUR: string;
-    TSGEMGNO: string;
-    TSSEQ: string;
-    TSTIME: string;
-    TSTYPE: string;
-}
-
-export interface Ids_oTimeType {
-    CD: string;
-    DATA: string;
-    TSTYPESEQ: string;
-    TSGEMGNO: string;
-}
-
-export interface Ids_oProfesAssignConfirm {
-    LMGNO: string;
-    LTDATESEQ: string;
-    TPFSEQ: string;
-    TPFPFSABUN: string;
-    TPFPFNM: string;
-    TTGTMGNO: string;
-    LTSCHEDULETYPE: string;
-    TPFTSSEQ: string;
-    LTEDUDATE: string;
-    TSTIME: string;
-    TSSTARTTIME: string;
-    TSENDTIME: string;
-}
-
-export interface Ids_ioProfesAssignTmp {
-    EDUTEAMNM: string;
-    EDUTIME: string;
-    LEDUGUBUN: string;
-    LEDUMGNO: string;
-    LGTMGNO: string;
-    LMGNO: string;
-    LPPFGUBUN: string;
-    LPPFJIKWINM: string;
-    LPPFJIKWI: string;
-    LPPFNM: string;
-    LPPFSABUN: string;
-    LPPFGUBUNCD: string;
-    LPPSSEQ: string;
-    LPSEQ: string;
-    LPSPEAKERPAY: string;
-    LPSVERSION: string;
-    LTCCOURSECD: string;
-    LTCMUNJEGUBUN: string;
-    LTDATESEQ: string;
-    LTEDUDATE: string;
-    LTEDUDAYS: string;
-    LTSCHEDULETYPE: string;
-    PSTITLE: string;
-    TSENDTIME: string;
-    TSSEQ: string;
-    TSSTARTTIME: string;
-    TSTIME: string;
-    TSTYPESEQ: string;
-}
-
-export interface Ids_oProfesAssignCount {
-    CNT: string;
-}
-
-export interface Ids_oStudyCourseWriteTime {
-    LMGNO: string;
-    TSHOUR: string;
-}
-
-export interface Ids_oCourseLowTime {
-    PCTCMUNJEGUBUN: string;
-    PCTCSEARCHGUBUN: string;
-    PSLOWTIME: string;
-    PSSEQ: string;
-    PSTITLE: string;
-    PSVERSION: string;
-    TCCOURSECD: string;
-    PSEDUTIME: string;
-}
-
-export interface Ids_Status {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAllCourse {
-    CD: string;
-    DATA: string;
-    PCMGNO: string;
-    PCTCMUNJEGUBUN: string;
-    PCTCSEARCHGUBUN: string;
-    CD3: string;
-}
+import type { Ids_oGubun, Ids_oJibu, Ids_oCourse, Ids_oWrtSatus, Ids_ioStudyCourse, Ids_oLectureSeq, Ids_ioProfesAssign, Ids_oSelectDays, Ids_oSubject, Ids_ioTeachingTimeMaster, Ids_ioTeachingTimeDetail, Ids_oTimeType, Ids_oProfesAssignConfirm, Ids_ioProfesAssignTmp, Ids_oProfesAssignCount, Ids_oStudyCourseWriteTime, Ids_oCourseLowTime, Ids_Status, Ids_oAllCourse } from './Frmprofes0005MLecHistoryData';
 
 export const useFrmprofes0005MLecHistory = () => {
     const [ds_oGubun, setds_oGubun] = useState<Ids_oGubun[]>([]);
@@ -232,6 +23,9 @@ export const useFrmprofes0005MLecHistory = () => {
     const [ds_Status, setds_Status] = useState<Ids_Status[]>([]);
     const [ds_oAllCourse, setds_oAllCourse] = useState<Ids_oAllCourse[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [isVisible_div1, setIsVisible_div1] = useState(false);
+    const [tabValue_tabTab, setTabValue_tabTab] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -323,6 +117,12 @@ export const useFrmprofes0005MLecHistory = () => {
         ds_oCourseLowTime,
         ds_Status,
         ds_oAllCourse,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        isVisible_div1,
+        setIsVisible_div1,
+        tabValue_tabTab,
+        setTabValue_tabTab,
         btnCreate_OnClick,
         btnEduUnion_OnClick,
         btnMutilSort_OnClick,

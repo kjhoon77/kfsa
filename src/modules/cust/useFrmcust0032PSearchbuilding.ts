@@ -1,60 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCustList {
-    ADDR: string;
-    BBIZCD: string;
-    BMGNO: string;
-    BNM: string;
-    BTEL: string;
-    DPERMISSIONNO: string;
-}
-
-export interface Ids_oManagerList {
-    BADDR1: string;
-    BADDR2: string;
-    BNM: string;
-    BTEL: string;
-    BZIPCD: string;
-    CCOCD: string;
-    CCOURSECD: string;
-    CFIREMGNO: string;
-    CGTMGNO: string;
-    CNO: string;
-    COVERCMGNO: string;
-    CREGCD: string;
-    CSTATUSGUBUN: string;
-    EPPASSDATE: string;
-    FMHSTARTDATE: string;
-    FMNM: string;
-    FMBIRTHDAY: string;
-    OLHNM: string;
-    BIRTHDAY: string;
-    FMPERSONKEY: string;
-}
-
-export interface Ids_oCustomerStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBizGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBnmCode {
-}
-
-export interface Ids_oSearchGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioGubun, Ids_oCustList, Ids_oManagerList, Ids_oCustomerStatus, Ids_oBizGubun, Ids_oBnmCode, Ids_oSearchGubun } from './Frmcust0032PSearchbuildingData';
 
 export const useFrmcust0032PSearchbuilding = () => {
     const [ds_ioGubun, setds_ioGubun] = useState<Ids_ioGubun[]>([]);

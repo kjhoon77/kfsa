@@ -1,74 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioInternetTrainingJubsu {
-    EPNM: string;
-    EPPARKINGINFO: string;
-    ETCCOMMENT: string;
-    GTDEPTNM: string;
-    GTTEAMNM: string;
-    SEL: string;
-    TCCOURSENM: string;
-    TJADDR: string;
-    TJHPROCDATE: string;
-    TJHSTATUSCD: string;
-    TJZIPCD: string;
-    TOEDUNM: string;
-    TOEUDDATE: string;
-    TOHPROCDATE: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPEMAIL: string;
-    TJMGNO: string;
-    TPNM: string;
-    TPRESIDENT: string;
-    TPTEL: string;
-    JUBSUNO: string;
-    TOHJUBSUNO: string;
-}
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioInternetExamJubsu {
-    SEL: string;
-    EJHPROCDATE: string;
-    EJMGNO: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOHJUBSUNO: string;
-    EOYEAR: string;
-    EREXAMROOM: string;
-    ETCCOMMENT: string;
-    GTDEPTNM: string;
-    JIBUNM: string;
-    JUBSUNO: string;
-    TCCOURSENM: string;
-    TJADDR: string;
-    TJHSTATUSCD: string;
-    TJZIPCD: string;
-    TOEDUNM: string;
-    TOEUDDATE: string;
-    TPEMAIL: string;
-    TPNM: string;
-    TPRESIDENT: string;
-    TPTEL: string;
-}
-
-export interface Ids_oEmailSeq {
-}
+import type { Ids_ioInternetTrainingJubsu, Ids_oWorkGubun, Ids_oCourse, Ids_oJibu, Ids_ioInternetExamJubsu, Ids_oEmailSeq } from './Frmspcledu0700MEmailSendManagementData';
 
 export const useFrmspcledu0700MEmailSendManagement = () => {
     const [ds_ioInternetTrainingJubsu, setds_ioInternetTrainingJubsu] = useState<Ids_ioInternetTrainingJubsu[]>([]);
@@ -78,6 +10,7 @@ export const useFrmspcledu0700MEmailSendManagement = () => {
     const [ds_ioInternetExamJubsu, setds_ioInternetExamJubsu] = useState<Ids_ioInternetExamJubsu[]>([]);
     const [ds_oEmailSeq, setds_oEmailSeq] = useState<Ids_oEmailSeq[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -122,6 +55,8 @@ export const useFrmspcledu0700MEmailSendManagement = () => {
         ds_oJibu,
         ds_ioInternetExamJubsu,
         ds_oEmailSeq,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

@@ -1,13 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oOldFMInfo {
-}
-
-export interface Ids_oRestoreStatus {
-    O_STATUS: string;
-    O_RESULT_MSG: string;
-}
+import type { Ids_oOldFMInfo, Ids_oRestoreStatus } from './Frmcust0010PFireManagerRestoreData';
 
 export const useFrmcust0010PFireManagerRestore = () => {
     const [ds_oOldFMInfo, setds_oOldFMInfo] = useState<Ids_oOldFMInfo[]>([]);

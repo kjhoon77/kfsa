@@ -1,7 +1,24 @@
 // @ts-nocheck
 export const Frmtraining0011MiNetJubsuGuideData = {};
 
-export const ds_ds_oMSG = [
+export interface Ids_oJibu {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_ioINetGuide {
+    EGEDUGUBUN?: string;
+    EGCOURSE?: string;
+    EGMSG?: string;
+    EGGUIDEYN?: string;
+}
+
+export interface Ids_oMSG {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oMSG: Ids_oMSG[] = [
     { CD: '', DATA: '미표기' },
     { CD: '계획없음', DATA: '계획없음' },
     { CD: '1월 예정', DATA: '1월 예정' },

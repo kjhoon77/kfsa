@@ -1,12 +1,13 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust1105MEduNotice } from './useFrmcust1105MEduNotice';
 import * as Frmcust1105MEduNoticeData from './Frmcust1105MEduNoticeData';
+import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 
 export const Frmcust1105MEduNotice = () => {
     const hook = useFrmcust1105MEduNotice();
@@ -124,10 +125,10 @@ export const Frmcust1105MEduNotice = () => {
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
                 <Typography variant="h5">기본정보</Typography>
                 <Stack direction="row" spacing={1}>
-                    <Button variant="contained"  onClick={hook.lfn_EduPrint}>교육통지서 출력</Button>
+                    <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_EduPrint}>교육통지서 출력</Button>
 <Button variant="contained"  onClick={hook.lfn_EduPrintSave}>교육자료생성</Button>
-<Button variant="contained"  onClick={hook.lfn_PrintScreen}>화면 출력</Button>
-<Button variant="contained"  onClick={hook.lfn_End}>닫기</Button>
+<Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
+<Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 
                 </Stack>
             </Stack>
@@ -139,19 +140,19 @@ export const Frmcust1105MEduNotice = () => {
                         <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>고객구분</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>교육대상</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>추출 대상자수</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
@@ -159,13 +160,13 @@ export const Frmcust1105MEduNotice = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>교육 대상자수</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid><Grid item xs={12} md={2}><Box>명</Box></Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>예정교육일수</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
@@ -185,15 +186,33 @@ export const Frmcust1105MEduNotice = () => {
                     </Paper>
                 </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>교육대상자 리스트</Box></Grid><Grid item xs={12} md={2}><Button variant="contained">Button1</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Box>교육대상자 리스트</Box></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.Button1_OnClick}>Button1</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>건수</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
-                </Grid><Grid item xs={12} md={2}><Button variant="contained"></Button></Grid></Grid>
+                </Grid>{ hook.isVisible_Static7 && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>(선임자명 출력안함)</Typography>
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }{ hook.isVisible_Button0 && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>문자메시지발송</Typography>
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }<Grid item xs={12} md={2}><Tooltip title="BTN_MULTI_SORT"><Button variant="outlined" size="small" color="primary" onClick={hook.btnMutilSort_OnClick} sx={{ minWidth: 30, p: 0.5 }}><Sort fontSize="small" /></Button></Tooltip></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12}>
@@ -209,7 +228,16 @@ export const Frmcust1105MEduNotice = () => {
                     </Paper>
                 </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+{ hook.isVisible_grdExport && (
+                <Grid item xs={12} md={12}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
 
                     </Paper>
                 </Grid>

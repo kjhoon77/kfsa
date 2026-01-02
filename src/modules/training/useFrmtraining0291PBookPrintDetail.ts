@@ -1,11 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_olist {
-}
-
-export interface Ids_olistDetail {
-}
+import type { Ids_olist, Ids_olistDetail } from './Frmtraining0291PBookPrintDetailData';
 
 export const useFrmtraining0291PBookPrintDetail = () => {
     const [ds_olist, setds_olist] = useState<Ids_olist[]>([]);

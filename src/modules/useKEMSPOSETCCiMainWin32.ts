@@ -1,48 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Igds_oUserInfo {
-    PSABUN: string;
-    PPERSONNM: string;
-    PRESIDENTNO: string;
-    PDEPTCD: string;
-    PDEPTNM: string;
-    PPOSITNCD: string;
-    PPOSITNNM: string;
-}
-
-export interface Igds_oPosResult {
-}
-
-export interface Igds_oPrintReceiptMast {
-}
-
-export interface Igds_oPrintReceiptDtl {
-}
-
-export interface Igds_oPrintReceiptHistory {
-}
-
-export interface Igds_ioPrinter {
-    NO: string;
-    NM: string;
-    PATH: string;
-    PORT: string;
-}
-
-export interface Igds_ioPrintConfig {
-    PCCD: string;
-    PCNM: string;
-    USE_YN: string;
-    PCLEFTMARGIN: string;
-    PCTOPMARGIN: string;
-    PCPRINTERNO: string;
-}
-
-export interface Igds_oLocalPrinter {
-    NM: string;
-    PATH: string;
-}
+import type { Igds_oUserInfo, Igds_oPosResult, Igds_oPrintReceiptMast, Igds_oPrintReceiptDtl, Igds_oPrintReceiptHistory, Igds_ioPrinter, Igds_ioPrintConfig, Igds_oLocalPrinter } from './KEMSPOSETCCiMainWin32Data';
 
 export const useKEMSPOSETCCiMainWin32 = () => {
     const [gds_oUserInfo, setgds_oUserInfo] = useState<Igds_oUserInfo[]>([]);

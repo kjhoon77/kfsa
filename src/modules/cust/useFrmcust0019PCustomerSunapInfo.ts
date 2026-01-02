@@ -1,43 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oMonthGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSunap {
-    CANCELDATE: string;
-    CFCMGNO: string;
-    CFGROUPMGNO: string;
-    CFGUBUN: string;
-    CFGUBUNCD: string;
-    CFGUBUNCDNM: string;
-    CFREGNM: string;
-    CFREMARK: string;
-    CFREPAYREF: string;
-    FEESEQ: string;
-    MEMBERGUBUN: string;
-    MEMBERGUBUNNM: string;
-    MGGTMGNO: string;
-    MGGTNM: string;
-    PMMGNO: string;
-    PMPCORDERNO: string;
-    PMYEAR: string;
-    PONYDATE: string;
-    POSGTMGNO: string;
-    POSGTNM: string;
-    PROCDATE: string;
-    PROCGTMGNO: string;
-    PROCGTNM: string;
-    PVINFO: string;
-    REGDATE: string;
-    SETLMGUBUN: string;
-    SETLMGUBUNNM: string;
-    SUNAPFEE: string;
-    SUNAPYEAR: string;
-    PMRESULT: string;
-}
+import type { Ids_oMonthGubun, Ids_oSunap } from './Frmcust0019PCustomerSunapInfoData';
 
 export const useFrmcust0019PCustomerSunapInfo = () => {
     const [ds_oMonthGubun, setds_oMonthGubun] = useState<Ids_oMonthGubun[]>([]);

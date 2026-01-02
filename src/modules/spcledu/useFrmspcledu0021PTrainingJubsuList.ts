@@ -1,49 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oTrainingJubsu {
-    ABSENTYN: string;
-    ADDR1: string;
-    ADDR2: string;
-    BARCODE: string;
-    COMPNM: string;
-    COURSECD: string;
-    COURSENM: string;
-    DECISIONSEATNO: string;
-    EMAILDOMAIN: string;
-    EMAILID: string;
-    HPTEL: string;
-    IIDIRPATH: string;
-    IIIMGSEQ: string;
-    IIREALNM: string;
-    IISAVENM: string;
-    JUBSUNO: string;
-    LASTSUNAPGUBUN: string;
-    LASTTJHSEQ: string;
-    LASTTOHSEQ: string;
-    LASTTSSEQ: string;
-    MGJIBUCD: string;
-    MGJIBUNICK: string;
-    MGJIBUNM: string;
-    MUNJEGUBUN: string;
-    PASSYN: string;
-    PERSONNM: string;
-    REMARK: string;
-    REMARKCD: string;
-    RESIDENTNO: string;
-    TEL: string;
-    TJMGNO: string;
-    TOMGNO: string;
-    TORDER: string;
-    TPMGNO: string;
-    YEAR: string;
-    ZIPCD: string;
-}
-
-export interface Ids_oPassYn {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oTrainingJubsu, Ids_oPassYn } from './Frmspcledu0021PTrainingJubsuListData';
 
 export const useFrmspcledu0021PTrainingJubsuList = () => {
     const [ds_oTrainingJubsu, setds_oTrainingJubsu] = useState<Ids_oTrainingJubsu[]>([]);

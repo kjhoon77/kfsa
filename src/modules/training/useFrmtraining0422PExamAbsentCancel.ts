@@ -1,21 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamAbsentCancel {
-    EAGUBUN: string;
-    EOTCCOURSECD: string;
-    EAEJMGNO: string;
-}
+import type { Ids_oJibu, Ids_oCourse, Ids_oExamAbsentCancel } from './Frmtraining0422PExamAbsentCancelData';
 
 export const useFrmtraining0422PExamAbsentCancel = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);

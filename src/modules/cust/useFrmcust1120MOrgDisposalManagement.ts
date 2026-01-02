@@ -1,70 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioPrintGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTrainingOrder {
-    ODMGNO: string;
-    ODNM: string;
-    ODBIRTHDAY: string;
-    ODGTMGNO: string;
-    GTTEAMNM: string;
-    ODCOURSECD: string;
-    PCTCCOURSENM: string;
-    ODORDERCD: string;
-    ODSTARTDATE: string;
-    ODENDDATE: string;
-    ODLAW: string;
-    ODORGDOC: string;
-    ODREMARK: string;
-    ODREGDATE: string;
-    ODREGSABUN: string;
-    ODMODDATE: string;
-    ODMODSABUN: string;
-    PNM: string;
-    BIRTHDAY: string;
-    ODCNO: string;
-    ODBNM: string;
-    ODEDUYEAR: string;
-}
-
-export interface Ids_oJibu2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_CmbComder {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_CmbComder2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oLaw {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioPrintGubun, Ids_oJibu, Ids_oCourse, Ids_ioTrainingOrder, Ids_oJibu2, Ids_oCourse2, Ids_CmbComder, Ids_CmbComder2, Ids_oLaw } from './Frmcust1120MOrgDisposalManagementData';
 
 export const useFrmcust1120MOrgDisposalManagement = () => {
     const [ds_ioPrintGubun, setds_ioPrintGubun] = useState<Ids_ioPrintGubun[]>([]);
@@ -77,6 +13,7 @@ export const useFrmcust1120MOrgDisposalManagement = () => {
     const [ds_CmbComder2, setds_CmbComder2] = useState<Ids_CmbComder2[]>([]);
     const [ds_oLaw, setds_oLaw] = useState<Ids_oLaw[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -133,6 +70,8 @@ export const useFrmcust1120MOrgDisposalManagement = () => {
         ds_CmbComder,
         ds_CmbComder2,
         ds_oLaw,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnPrintScreen_OnClick,
         btnToExcel_OnClick,

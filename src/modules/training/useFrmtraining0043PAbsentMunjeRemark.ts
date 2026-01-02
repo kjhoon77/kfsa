@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './Frmtraining0043PAbsentMunjeRemarkData';
 
 export const useFrmtraining0043PAbsentMunjeRemark = () => {
     const [isLoading, setIsLoading] = useState(false);

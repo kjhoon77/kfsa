@@ -1,24 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduJubsu {
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioReport {
-}
-
-export interface Ids_ioReportFilter {
-}
+import type { Ids_oCourse, Ids_oEduJubsu, Ids_oJibu, Ids_ioReport, Ids_ioReportFilter } from './Frmcust1145MEduPassSumOrderStatisticsData';
 
 export const useFrmcust1145MEduPassSumOrderStatistics = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -27,6 +9,7 @@ export const useFrmcust1145MEduPassSumOrderStatistics = () => {
     const [ds_ioReport, setds_ioReport] = useState<Ids_ioReport[]>([]);
     const [ds_ioReportFilter, setds_ioReportFilter] = useState<Ids_ioReportFilter[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -69,6 +52,8 @@ export const useFrmcust1145MEduPassSumOrderStatistics = () => {
         ds_oJibu,
         ds_ioReport,
         ds_ioReportFilter,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

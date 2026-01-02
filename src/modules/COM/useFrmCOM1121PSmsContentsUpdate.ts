@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioAutoSms {
-}
+import type { Ids_ioAutoSms } from './FrmCOM1121PSmsContentsUpdateData';
 
 export const useFrmCOM1121PSmsContentsUpdate = () => {
     const [ds_ioAutoSms, setds_ioAutoSms] = useState<Ids_ioAutoSms[]>([]);

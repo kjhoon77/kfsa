@@ -1,217 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_iLicense {
-    IIDIRPATH: string;
-    IIREALNM: string;
-    IISAVENM: string;
-    LADDR1: string;
-    LADDR2: string;
-    LBARCODE: string;
-    LCANCELDATE: string;
-    LCANCELPSABUN: string;
-    LCANCELREASON: string;
-    LCOMPNM: string;
-    LDATAAPPROVAL: string;
-    LHIIIMGSEQ: string;
-    LHISSUEREASON: string;
-    LHPROCGTMGNO: string;
-    LHPRTDATE: string;
-    LHPTEL: string;
-    LISSUEDATE: string;
-    LISSUEGUBUN: string;
-    LISSUEGUBUNNM: string;
-    LLASTHISTORYSEQ: string;
-    LHLLCSNO: string;
-    LLCSNO: string;
-    LPERSONNM: string;
-    LRESIDENTNO: string;
-    LSTATUSGUBUN: string;
-    LTCCOURSECD: string;
-    LTEL: string;
-    LTPMGNO: string;
-    LTRAININGENDDATE: string;
-    LTRAININGSTARTDATE: string;
-    LZIPCD: string;
-    TCCOURSENM: string;
-    TPAUTHYN: string;
-    TPCHECK: string;
-}
-
-export interface Ids_oPrintGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oIssueGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oLicenseReport {
-    BIRTHDAY: string;
-    IIFILENM: string;
-    LADDR1: string;
-    LADDR2: string;
-    LBARCODE: string;
-    LHPRTDATE: string;
-    LISSUEDATE: string;
-    LISSUEGUBUNNM: string;
-    LLCSNO: string;
-    LPERSONNM: string;
-    LTCCOURSENM: string;
-    LLASTHISTORYSEQ: string;
-}
-
-export interface Ids_ioImageInfo {
-    BIRTHDAY: string;
-    IIAPPROVAL: string;
-    IIDIRPATH: string;
-    IIIMGBINARY: string;
-    IIIMGSEQ: string;
-    IIREALNM: string;
-    IIREGDATE: string;
-    IIREGGUBUN: string;
-    IIREGGUBUNNM: string;
-    IIREGSABUN: string;
-    IISAVENM: string;
-    TPLASTIMGSEQ: string;
-    TPMGNO: string;
-    TPNM: string;
-    TPRESIDENTNO: string;
-    TPAUTHYN: string;
-    TPZIPCD: string;
-    TPADDR1: string;
-    TPADDR2: string;
-    TPBULDNM: string;
-    TPTEL: string;
-    TPHPTEL: string;
-}
-
-export interface Ids_oSetlmentHist {
-    LSACTIVEYN: string;
-    LSGUBUN: string;
-    LSGUBUNCD: string;
-    LSGUBUNCDNM: string;
-    LSGUBUNNM: string;
-    LSLHSEQ: string;
-    LSLLCSNO: string;
-    LSPMMGNO: string;
-    LSPMYEAR: string;
-    LSPONYDATE: string;
-    LSPONYGUBUN: string;
-    LSPROCAMOUNT: string;
-    LSPROCDATE: string;
-    LSPROCGTMGNO: string;
-    LSREGSABUN: string;
-    LSREGSABUNNM: string;
-    LSREPAYREF: string;
-    LSSEQ: string;
-    LSSETLMTYN: string;
-    PMPAYMENTFLAG: string;
-    TSJUMUNNO: string;
-    LSSUNAPGUBUN: string;
-}
-
-export interface Ids_oLicense {
-    IIDIRPATH: string;
-    IIREALNM: string;
-    IISAVENM: string;
-    LADDR1: string;
-    LADDR2: string;
-    LBARCODE: string;
-    LCANCELDATE: string;
-    LCANCELPSABUN: string;
-    LCANCELREASON: string;
-    LCOMPNM: string;
-    LDATAAPPROVAL: string;
-    LHIIIMGSEQ: string;
-    LHISSUEREASON: string;
-    LHPROCGTMGNO: string;
-    LHPRTDATE: string;
-    LHPTEL: string;
-    LISSUEDATE: string;
-    LISSUEGUBUN: string;
-    LISSUEGUBUNNM: string;
-    LLASTHISTORYSEQ: string;
-    LHLLCSNO: string;
-    LLCSNO: string;
-    LPERSONNM: string;
-    LRESIDENTNO: string;
-    LSTATUSGUBUN: string;
-    LTCCOURSECD: string;
-    LTEL: string;
-    LTPMGNO: string;
-    LTRAININGENDDATE: string;
-    LTRAININGSTARTDATE: string;
-    LZIPCD: string;
-    TCCOURSENM: string;
-    TPAUTHYN: string;
-    TPCHECK: string;
-}
-
-export interface Ids_iTrainingPerson {
-    TPAUTHYN: string;
-    TPNM: string;
-    TPRESIDENTNO: string;
-    TPMGNO: string;
-}
-
-export interface Ids_iLicenseImage {
-    LILLCSNO: string;
-    LISEQ: string;
-    LIDIRPATH: string;
-    LIREALNM: string;
-}
-
-export interface Ids_ioModifyHistory {
-}
-
-export interface Ids_oLicenseReportEdu {
-    EDUDATE: string;
-    GTDEPTNM: string;
-    TARGET: string;
-    TCCOURSENM: string;
-}
-
-export interface Ids_oTrainingPerson {
-    IIDIRPATH: string;
-    IIREALNM: string;
-    TPAUTHYN: string;
-    TPCUSTGUBUN: string;
-    TPEMAILDOMAIN: string;
-    TPEMAILID: string;
-    TPHPTEL: string;
-    TPLASTIMGSEQ: string;
-    TPMGNO: string;
-    TPNM: string;
-    TPRESIDENTNO: string;
-    TPTEL: string;
-}
-
-export interface Ids_oLicenseH {
-    BIRTHDAY: string;
-    LHADDR1: string;
-    LHADDR2: string;
-    LHISSUEREASON: string;
-    LHLLCSNO: string;
-    LHPERSONNM: string;
-    LHPRTDATE: string;
-    LHTEL: string;
-    LIDIRPATH: string;
-    LIREALNM: string;
-    LHSEQ: string;
-    LHTJMGNO: string;
-    LHISSUEMGNO: string;
-}
-
-export interface Ids_oYearbizlink {
-}
+import type { Ids_iLicense, Ids_oPrintGubun, Ids_oCourse, Ids_oIssueGubun, Ids_oLicenseReport, Ids_ioImageInfo, Ids_oSetlmentHist, Ids_oLicense, Ids_iTrainingPerson, Ids_iLicenseImage, Ids_ioModifyHistory, Ids_oLicenseReportEdu, Ids_oTrainingPerson, Ids_oLicenseH, Ids_oYearbizlink } from './Frmspcledu0250MLicenseIssueManagementData';
 
 export const useFrmspcledu0250MLicenseIssueManagement = () => {
     const [ds_iLicense, setds_iLicense] = useState<Ids_iLicense[]>([]);
@@ -230,6 +19,7 @@ export const useFrmspcledu0250MLicenseIssueManagement = () => {
     const [ds_oLicenseH, setds_oLicenseH] = useState<Ids_oLicenseH[]>([]);
     const [ds_oYearbizlink, setds_oYearbizlink] = useState<Ids_oYearbizlink[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -352,6 +142,8 @@ export const useFrmspcledu0250MLicenseIssueManagement = () => {
         ds_oTrainingPerson,
         ds_oLicenseH,
         ds_oYearbizlink,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnApplyPicture_OnClick,
         btnAuthResidentNo_OnClick,
         btnBarCodeSearch_OnClick,

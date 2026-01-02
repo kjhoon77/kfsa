@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './FrmCOM0020PErrorMessageData';
 
 export const useFrmCOM0020PErrorMessage = () => {
     const [isLoading, setIsLoading] = useState(false);

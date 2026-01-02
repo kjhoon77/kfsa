@@ -1,70 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamAns {
-    CCCD: string;
-    CCCDNM: string;
-    CCGROUPCD: string;
-    CCORDERSEQ: string;
-    CCREMARK: string;
-    USE_YN: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInternetJubsuStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSunapGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oType {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oUseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSearchGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamList {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamOrder {
-    EOMGNO: string;
-    JJIBUNICK: string;
-    EOYEAR: string;
-    EOTCCOURSENM: string;
-    EOEXAMORDER: string;
-    EOEXAMDATE: string;
-    EXAMNM: string;
-    TCCOURSECD: string;
-}
-
-export interface Ids_oExamRepeat {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioExamAns, Ids_oCourse, Ids_oJibu, Ids_oInternetJubsuStatus, Ids_oSunapGubun, Ids_oType, Ids_oUseYn, Ids_oSearchGubun, Ids_oExamList, Ids_oExamOrder, Ids_oExamRepeat } from './Frmtraining0520MExamAnswerPaperInputData';
 
 export const useFrmtraining0520MExamAnswerPaperInput = () => {
     const [ds_ioExamAns, setds_ioExamAns] = useState<Ids_ioExamAns[]>([]);
@@ -79,6 +15,7 @@ export const useFrmtraining0520MExamAnswerPaperInput = () => {
     const [ds_oExamOrder, setds_oExamOrder] = useState<Ids_oExamOrder[]>([]);
     const [ds_oExamRepeat, setds_oExamRepeat] = useState<Ids_oExamRepeat[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -127,6 +64,8 @@ export const useFrmtraining0520MExamAnswerPaperInput = () => {
         ds_oExamList,
         ds_oExamOrder,
         ds_oExamRepeat,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnNext_OnClick,
         btnScan_OnClick,
         lfn_End,

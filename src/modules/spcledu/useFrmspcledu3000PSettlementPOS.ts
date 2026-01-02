@@ -1,50 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oRecieptYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oPosProgramId {
-}
-
-export interface Ids_ioSetlm {
-    LSLLCSNO: string;
-    LSLHSEQ: string;
-    LSSEQ: string;
-    LSSETLMTYN: string;
-    LSGUBUNCD: string;
-    LSGUBUN: string;
-    LSPROCAMOUNT: string;
-    LSPROCDATE: string;
-    LSPONYGUBUN: string;
-    LSPONYDATE: string;
-    LSPROCGTMGNO: string;
-    LSPMYEAR: string;
-    LSPMMGNO: string;
-    LSREPAYREF: string;
-    LSACTIVEYN: string;
-    LSREGDATE: string;
-    LSREGSABUN: string;
-    LSMODDATE: string;
-    LSMODSABUN: string;
-}
-
-export interface Ids_oSunapGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBankSunapGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oProcGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oRecieptYn, Ids_oPosProgramId, Ids_ioSetlm, Ids_oSunapGubun, Ids_oBankSunapGubun, Ids_oProcGubun } from './Frmspcledu3000PSettlementPOSData';
 
 export const useFrmspcledu3000PSettlementPOS = () => {
     const [ds_oRecieptYn, setds_oRecieptYn] = useState<Ids_oRecieptYn[]>([]);
@@ -54,6 +10,8 @@ export const useFrmspcledu3000PSettlementPOS = () => {
     const [ds_oBankSunapGubun, setds_oBankSunapGubun] = useState<Ids_oBankSunapGubun[]>([]);
     const [ds_oProcGubun, setds_oProcGubun] = useState<Ids_oProcGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divPos, setIsVisible_divPos] = useState(false);
+    const [isVisible_divSunabDtl, setIsVisible_divSunabDtl] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -92,6 +50,10 @@ export const useFrmspcledu3000PSettlementPOS = () => {
         ds_oSunapGubun,
         ds_oBankSunapGubun,
         ds_oProcGubun,
+        isVisible_divPos,
+        setIsVisible_divPos,
+        isVisible_divSunabDtl,
+        setIsVisible_divSunabDtl,
         btnPosResultList_OnClick,
         btnSetlmt_OnClick,
         chkPonyDate_OnClick,

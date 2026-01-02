@@ -1,20 +1,12 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioHistorySearch {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioHistorySearch, Ids_ioGubun } from './Frmcust11051MEduNoticeData';
 
 export const useFrmcust11051MEduNotice = () => {
     const [ds_ioHistorySearch, setds_ioHistorySearch] = useState<Ids_ioHistorySearch[]>([]);
     const [ds_ioGubun, setds_ioGubun] = useState<Ids_ioGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -48,6 +40,8 @@ export const useFrmcust11051MEduNotice = () => {
         isLoading,
         ds_ioHistorySearch,
         ds_ioGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_DetailSerch_Ready,
         lfn_EduNoticeHistorySearch,

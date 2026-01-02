@@ -1,8 +1,10 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './FrmCOM9002MAddrSearchData';
 
 export const useFrmCOM9002MAddrSearch = () => {
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -17,6 +19,8 @@ export const useFrmCOM9002MAddrSearch = () => {
 
     return {
         isLoading,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_End,
     };
 };

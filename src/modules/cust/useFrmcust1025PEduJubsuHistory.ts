@@ -1,19 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJubsuHist {
-    TJHPROCDATE: string;
-    TJHPROCJIBU: string;
-    TJHPROCJIBUCD: string;
-    TJHREASON: string;
-    TJHSABUN: string;
-    TJHSABUNNM: string;
-    TJHSEQ: string;
-    TJHSTATUS: string;
-    TJHSTATUSCD: string;
-    TJMGNO: string;
-    TPPERSONNM: string;
-}
+import type { Ids_oJubsuHist } from './Frmcust1025PEduJubsuHistoryData';
 
 export const useFrmcust1025PEduJubsuHistory = () => {
     const [ds_oJubsuHist, setds_oJubsuHist] = useState<Ids_oJubsuHist[]>([]);

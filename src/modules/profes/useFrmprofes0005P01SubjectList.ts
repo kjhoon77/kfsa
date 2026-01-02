@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oSubjectList {
-}
+import type { Ids_oSubjectList } from './Frmprofes0005P01SubjectListData';
 
 export const useFrmprofes0005P01SubjectList = () => {
     const [ds_oSubjectList, setds_oSubjectList] = useState<Ids_oSubjectList[]>([]);

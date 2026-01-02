@@ -1,61 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oBizGubun {
-    CD: string;
-    DATA: string;
-    GROUPCD: string;
-}
-
-export interface Ids_oPrivacyCourse {
-    CD: string;
-    DATA: string;
-    COURSECD: string;
-}
-
-export interface Ids_ioPrivacyAgree {
-}
-
-export interface Ids_ioPrivacyAgreeH {
-}
-
-export interface Ids_o16TimeStamp {
-}
-
-export interface Ids_iPrivacyAgree {
-    PPNM: string;
-    PPRESIDENTNO: string;
-    PPSTATUS: string;
-    NEWDATA: string;
-    PABIZCD: string;
-    PACOURSECD: string;
-    PHPROCSTATUS: string;
-    PHPROCDATE: string;
-    PHPROCMETHOD: string;
-    PHMGMTPK1: string;
-    PHMGMTPK2: string;
-    RUPATH: string;
-    RUFILENM: string;
-    RUMGNO: string;
-    PAMGNO: string;
-    PHSEQ: string;
-}
-
-export interface Ids_oPrivacyAgreeResult {
-}
-
-export interface Ids_iPrivacyAgreeDelete {
-    PPNM: string;
-    PPRESIDENTNO: string;
-    PAMGNO: string;
-    PHSEQ: string;
-    RUMGNO: string;
-}
-
-export interface Ids_oAgreeGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oBizGubun, Ids_oPrivacyCourse, Ids_ioPrivacyAgree, Ids_ioPrivacyAgreeH, Ids_o16TimeStamp, Ids_iPrivacyAgree, Ids_oPrivacyAgreeResult, Ids_iPrivacyAgreeDelete, Ids_oAgreeGubun } from './FrmCOM6100PPrivacyManageData';
 
 export const useFrmCOM6100PPrivacyManage = () => {
     const [ds_oBizGubun, setds_oBizGubun] = useState<Ids_oBizGubun[]>([]);

@@ -1,12 +1,11 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oBoardCnt {
-}
+import type { Ids_oBoardCnt } from './FrmCOM0062MFrameTopData';
 
 export const useFrmCOM0062MFrameTop = () => {
     const [ds_oBoardCnt, setds_oBoardCnt] = useState<Ids_oBoardCnt[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [tabValue_tabTopMenu, setTabValue_tabTopMenu] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -29,6 +28,8 @@ export const useFrmCOM0062MFrameTop = () => {
     return {
         isLoading,
         ds_oBoardCnt,
+        tabValue_tabTopMenu,
+        setTabValue_tabTopMenu,
         imgKemsLogo_OnClick,
         imgLeftFrameOpenClose_OnClick,
         imgLogout_OnClick,

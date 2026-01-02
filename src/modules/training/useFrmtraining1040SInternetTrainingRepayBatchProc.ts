@@ -1,199 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioRepayBundle {
-    COMPANYNAME: string;
-    ONLYKEY: string;
-    PPACCOUNT: string;
-    PMAMT: string;
-    PPABANKNM: string;
-    PPAOWNER: string;
-    PPAOWNER_A: string;
-    SEL: string;
-    TJADDR1: string;
-    TJADDR2: string;
-    TJHMGGTMGNO: string;
-    TJHPROCDATE: string;
-    TJHSTATUSCD: string;
-    TJHTJMGNO: string;
-    TJHTOHSEQREF: string;
-    TJHTSSEQREF: string;
-    TJPERSONNM: string;
-    TOHJUBSUNO: string;
-    TOMGGTMGNO: string;
-    TOTCCOURSECD: string;
-    PPABANKCD: string;
-    STARTJUBSUDATE: string;
-    TSGUBUN: string;
-    TJHSEQ: string;
-    PMYEAR: string;
-    PMMGNO: string;
-    PMINPUT: string;
-    PMPCGUBUN: string;
-    PMPCORDERNO: string;
-    PMPROCDATE: string;
-    PMPIID: string;
-    PMPGMID: string;
-    PMPGMPK: string;
-    PMBUYER: string;
-    PMCLAS: string;
-    PMPGMGUBUN: string;
-    PMITEM1: string;
-    PMITEM2: string;
-    PMITEM3: string;
-    PMITEM4: string;
-    PMVAT: string;
-    PMPAYMENTFLAG: string;
-    PMRESULT: string;
-    TSTJMGNO: string;
-    TSSEQ: string;
-    TCCOURSENM: string;
-    REPAYDAY: string;
-    REPAYAMT: string;
-    PPEXCELYN: string;
-    PCUSERTYPE: string;
-    TOYEAR: string;
-    TOTRAININGORDER: string;
-    CHK: string;
-    TSPROCAMOUNT: string;
-    TSTRAININGAMOUNT: string;
-    TSEXAMAMOUNT: string;
-    TSLICENSEAMOUNT: string;
-    TSAMOUNTGUBUN: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oIProcStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioRepayBundleCopy {
-    COMPANYNAME: string;
-    ONLYKEY: string;
-    PPACCOUNT: string;
-    PMAMT: string;
-    PPABANKNM: string;
-    PPAOWNER: string;
-    PPAOWNER_A: string;
-    SEL: string;
-    TJADDR1: string;
-    TJADDR2: string;
-    TJHMGGTMGNO: string;
-    TJHPROCDATE: string;
-    TJHSTATUSCD: string;
-    TJHTJMGNO: string;
-    TJHTOHSEQREF: string;
-    TJHTSSEQREF: string;
-    TJPERSONNM: string;
-    TOHJUBSUNO: string;
-    TOMGGTMGNO: string;
-    TOTCCOURSECD: string;
-    PPABANKCD: string;
-    STARTJUBSUDATE: string;
-    TSGUBUN: string;
-    TJHSEQ: string;
-    PMYEAR: string;
-    PMMGNO: string;
-    PMINPUT: string;
-    PMPCGUBUN: string;
-    PMPCORDERNO: string;
-    PMPROCDATE: string;
-    PMPIID: string;
-    PMPGMID: string;
-    PMPGMPK: string;
-    PMBUYER: string;
-    PMCLAS: string;
-    PMPGMGUBUN: string;
-    PMITEM1: string;
-    PMITEM2: string;
-    PMITEM3: string;
-    PMITEM4: string;
-    PMVAT: string;
-    PMPAYMENTFLAG: string;
-    PMRESULT: string;
-    TSTJMGNO: string;
-    TSSEQ: string;
-    TCCOURSENM: string;
-    REPAYDAY: string;
-    REPAYAMT: string;
-    PPEXCELYN: string;
-    PCUSERTYPE: string;
-    TOYEAR: string;
-    TOTRAININGORDER: string;
-    CHK: string;
-    TSPROCAMOUNT: string;
-    TSTRAININGAMOUNT: string;
-    TSEXAMAMOUNT: string;
-    TSLICENSEAMOUNT: string;
-    TSAMOUNTGUBUN: string;
-}
-
-export interface Ids_iExcelLoad {
-    COL01: string;
-    COL02: string;
-    COL03: string;
-    COL04: string;
-    COL05: string;
-    COL06: string;
-    COL07: string;
-    COL08: string;
-    COL09: string;
-    COL10: string;
-    COL11: string;
-    COL12: string;
-    COL13: string;
-    COL14: string;
-    COL15: string;
-    COL16: string;
-    COL17: string;
-    COL18: string;
-}
-
-export interface Ids_ioReport {
-}
-
-export interface Ids_ioReportFilter {
-}
-
-export interface Ids_ioPosData {
-    PMYEAR: string;
-    PMMGNO: string;
-    TSTJMGNO: string;
-    TSSEQ: string;
-    TSSUNAPACTIONREF: string;
-}
-
-export interface Ids_ioReportEnd {
-}
-
-export interface Ids_ioPosDataEnd {
-    PMYEAR: string;
-    PMMGNO: string;
-    TSTJMGNO: string;
-    TSSEQ: string;
-    TSSUNAPACTIONREF: string;
-}
-
-export interface Ids_ioPosDataFilter {
-    PMYEAR: string;
-    PMMGNO: string;
-    TSTJMGNO: string;
-    TSSEQ: string;
-    TSSUNAPACTIONREF: string;
-}
-
-export interface Ids_oInternetReport {
-}
+import type { Ids_ioRepayBundle, Ids_oJibu, Ids_oCourse, Ids_oIProcStatus, Ids_ioRepayBundleCopy, Ids_iExcelLoad, Ids_ioReport, Ids_ioReportFilter, Ids_ioPosData, Ids_ioReportEnd, Ids_ioPosDataEnd, Ids_ioPosDataFilter, Ids_oInternetReport } from './Frmtraining1040SInternetTrainingRepayBatchProcData';
 
 export const useFrmtraining1040SInternetTrainingRepayBatchProc = () => {
     const [ds_ioRepayBundle, setds_ioRepayBundle] = useState<Ids_ioRepayBundle[]>([]);
@@ -210,6 +17,7 @@ export const useFrmtraining1040SInternetTrainingRepayBatchProc = () => {
     const [ds_ioPosDataFilter, setds_ioPosDataFilter] = useState<Ids_ioPosDataFilter[]>([]);
     const [ds_oInternetReport, setds_oInternetReport] = useState<Ids_oInternetReport[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divPos, setIsVisible_divPos] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -277,6 +85,8 @@ export const useFrmtraining1040SInternetTrainingRepayBatchProc = () => {
         ds_ioPosDataEnd,
         ds_ioPosDataFilter,
         ds_oInternetReport,
+        isVisible_divPos,
+        setIsVisible_divPos,
         btnMutilSort_OnClick,
         btnReportBatch_OnClick,
         lfn_Cancel,

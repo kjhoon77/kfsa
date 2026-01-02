@@ -1,44 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ResultList1 {
-}
-
-export interface Ids_SearchJogeon {
-    JIBU: string;
-    EDU_YEAR: string;
-    COURSE: string;
-    EDU_YMD_FR: string;
-    EDU_YMD_TO: string;
-    SUBJECT_GUBUN: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ResultList2 {
-}
-
-export interface Ids_ResultList3 {
-}
-
-export interface Ids_ResultList4 {
-}
-
-export interface Ids_ResultList5 {
-}
-
-export interface Ids_ioSubjectGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oJibu, Ids_ResultList1, Ids_SearchJogeon, Ids_oCourse, Ids_ResultList2, Ids_ResultList3, Ids_ResultList4, Ids_ResultList5, Ids_ioSubjectGubun } from './Frmcust1190MEduScheduleResultData';
 
 export const useFrmcust1190MEduScheduleResult = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
@@ -51,6 +13,7 @@ export const useFrmcust1190MEduScheduleResult = () => {
     const [ds_ResultList5, setds_ResultList5] = useState<Ids_ResultList5[]>([]);
     const [ds_ioSubjectGubun, setds_ioSubjectGubun] = useState<Ids_ioSubjectGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -89,6 +52,8 @@ export const useFrmcust1190MEduScheduleResult = () => {
         ds_ResultList4,
         ds_ResultList5,
         ds_ioSubjectGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Print,

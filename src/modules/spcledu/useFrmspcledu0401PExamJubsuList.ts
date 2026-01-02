@@ -1,24 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oExamJubsu {
-    EJPERSONNM: string;
-    EJRESIDENTNO: string;
-    EJADDR1: string;
-    EJADDR2: string;
-    EOHJUBSUNO: string;
-    EOHEXAMSEATNO: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oExamJubsu, Ids_oCourse, Ids_oJibu } from './Frmspcledu0401PExamJubsuListData';
 
 export const useFrmspcledu0401PExamJubsuList = () => {
     const [ds_oExamJubsu, setds_oExamJubsu] = useState<Ids_oExamJubsu[]>([]);

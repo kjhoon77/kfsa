@@ -1,11 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oHist {
-}
-
-export interface Ids_ioBook {
-}
+import type { Ids_oHist, Ids_ioBook } from './Frmtraining0020PBookPrintData';
 
 export const useFrmtraining0020PBookPrint = () => {
     const [ds_oHist, setds_oHist] = useState<Ids_oHist[]>([]);

@@ -1,101 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oFireCd {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-    CTCD: string;
-}
-
-export interface Ids_oFireCenterCd {
-    CD: string;
-    DATA: string;
-    UPCD: string;
-}
-
-export interface Ids_oFireHead {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-}
-
-export interface Ids_ioObjGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMFFireObj {
-}
-
-export interface Ids_ioKFFireObj {
-}
-
-export interface Ids_ioMFKeyfield {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_ioCourseD {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioFireManagerInfo {
-}
-
-export interface Ids_oFire {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-    CTCD: string;
-}
-
-export interface Ids_ioPBLINSTT {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMFFireObjD {
-}
-
-export interface Ids_ioSelectGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMFFireObj2 {
-}
-
-export interface Ids_ioKFFireObj2 {
-}
-
-export interface Ids_ioFireManagerInfo2 {
-}
-
-export interface Ids_ioMFFireObjD2 {
-}
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioCourse, Ids_ioJibu, Ids_oFireCd, Ids_oFireCenterCd, Ids_oFireHead, Ids_ioObjGubun, Ids_ioMFFireObj, Ids_ioKFFireObj, Ids_ioMFKeyfield, Ids_oRegion, Ids_ioCourseD, Ids_ioFireManagerInfo, Ids_oFire, Ids_ioPBLINSTT, Ids_ioMFFireObjD, Ids_ioSelectGubun, Ids_ioMFFireObj2, Ids_ioKFFireObj2, Ids_ioFireManagerInfo2, Ids_ioMFFireObjD2, Ids_ioGubun } from './FormData';
 
 export const useForm = () => {
     const [ds_ioCourse, setds_ioCourse] = useState<Ids_ioCourse[]>([]);
@@ -120,6 +25,7 @@ export const useForm = () => {
     const [ds_ioMFFireObjD2, setds_ioMFFireObjD2] = useState<Ids_ioMFFireObjD2[]>([]);
     const [ds_ioGubun, setds_ioGubun] = useState<Ids_ioGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [tabValue_tab, setTabValue_tab] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -275,6 +181,8 @@ export const useForm = () => {
         ds_ioFireManagerInfo2,
         ds_ioMFFireObjD2,
         ds_ioGubun,
+        tabValue_tab,
+        setTabValue_tab,
         btnDataHistory_OnClick,
         btnModMatch_OnClick,
         btnModMatch_OnClick2,

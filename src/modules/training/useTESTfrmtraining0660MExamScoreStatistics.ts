@@ -1,99 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oPrintGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamScoreOrderNo {
-    BIRTHDAY: string;
-    EJPERSONNM: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOYEAR: string;
-    ERAPLEXAMNO: string;
-    ERPASSYN: string;
-    ERRANK: string;
-    ERSCORE: string;
-    GTTEAMNM: string;
-    TCCOURSENM: string;
-    CNT: string;
-    TCCOURSECD: string;
-}
-
-export interface Ids_oExamPassName {
-    BIRTHDAY: string;
-    EJPERSONNM: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOYEAR: string;
-    ERAPLEXAMNO: string;
-    ERPASSYN: string;
-    ERRANK: string;
-    ERSCORE: string;
-    GTTEAMNM: string;
-    TCCOURSENM: string;
-    GTPRTSEQ: string;
-    TCCOURSECD: string;
-}
-
-export interface Ids_oExamNoPassName {
-    BIRTHDAY: string;
-    EJPERSONNM: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOYEAR: string;
-    ERAPLEXAMNO: string;
-    ERPASSYN: string;
-    ERRANK: string;
-    ERSCORE: string;
-    GTTEAMNM: string;
-    TCCOURSENM: string;
-    GTPRTSEQ: string;
-    TCCOURSECD: string;
-}
-
-export interface Ids_oSearchGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamOrderScoreStat {
-}
-
-export interface Ids_oExamJumsuPersonDistribution {
-}
-
-export interface Ids_oExamQuestionItemAnalysis {
-}
-
-export interface Ids_oExamJubsuCnt {
-    JUPSUCNT: string;
-}
-
-export interface Ids_oExamRepeat {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamNumberType {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamQuestionItemCorrectAnswer {
-}
+import type { Ids_oPrintGubun, Ids_oCourse, Ids_oJibu, Ids_oExamScoreOrderNo, Ids_oExamPassName, Ids_oExamNoPassName, Ids_oSearchGubun, Ids_oExamOrderScoreStat, Ids_oExamJumsuPersonDistribution, Ids_oExamQuestionItemAnalysis, Ids_oExamJubsuCnt, Ids_oExamRepeat, Ids_oExamNumberType, Ids_oExamQuestionItemCorrectAnswer } from './TESTfrmtraining0660MExamScoreStatisticsData';
 
 export const useTESTfrmtraining0660MExamScoreStatistics = () => {
     const [ds_oPrintGubun, setds_oPrintGubun] = useState<Ids_oPrintGubun[]>([]);
@@ -111,6 +18,7 @@ export const useTESTfrmtraining0660MExamScoreStatistics = () => {
     const [ds_oExamNumberType, setds_oExamNumberType] = useState<Ids_oExamNumberType[]>([]);
     const [ds_oExamQuestionItemCorrectAnswer, setds_oExamQuestionItemCorrectAnswer] = useState<Ids_oExamQuestionItemCorrectAnswer[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -159,6 +67,8 @@ export const useTESTfrmtraining0660MExamScoreStatistics = () => {
         ds_oExamRepeat,
         ds_oExamNumberType,
         ds_oExamQuestionItemCorrectAnswer,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_End,
         lfn_Print,
         lfn_PrintScreen,

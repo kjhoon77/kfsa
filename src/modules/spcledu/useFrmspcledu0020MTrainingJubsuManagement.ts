@@ -1,211 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioTrainingJubsu {
-    ABSENTDAY: string;
-    ABSENTYN: string;
-    ADDR1: string;
-    ADDR2: string;
-    AUTHYN: string;
-    BARCODE: string;
-    COMPNM: string;
-    COURSECD: string;
-    COURSEMUNJECD: string;
-    COURSENM: string;
-    DECISIONSEATNO: string;
-    EMAILDOMAIN: string;
-    EMAILID: string;
-    HPTEL: string;
-    IIDIRPATH: string;
-    IIIMGSEQ: string;
-    IIREALNM: string;
-    IISAVENM: string;
-    JUBSUNO: string;
-    LASTIMGSEQ: string;
-    LASTSUNAPGUBUN: string;
-    LASTTJHSEQ: string;
-    LASTTOHSEQ: string;
-    LASTTSSEQ: string;
-    MGJIBUCD: string;
-    MGJIBUNICK: string;
-    MGJIBUNM: string;
-    MUNJEGUBUN: string;
-    PASSYN: string;
-    PERSONNM: string;
-    REMARK: string;
-    REMARKCD: string;
-    RESIDENTNO: string;
-    TEL: string;
-    TJMGNO: string;
-    TPMGNO: string;
-    TOMGNO: string;
-    TORDER: string;
-    YEAR: string;
-    ZIPCD: string;
-    IIIMGBINARY: string;
-    TJFIREMANYN: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEmailDomain {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oImage {
-    FILE_NAME: string;
-    SHORT_FILE_NAME: string;
-    FILE_SIZE: string;
-    CREATE_DATE: string;
-    UPDATE_DATE: string;
-    ACCESS_DATE: string;
-    ATTR_ARCHIVE: string;
-    ATTR_SYSTEM: string;
-    ATTR_HIDDEN: string;
-    ATTR_READONLY: string;
-    ATTR_DIRECTORY: string;
-}
-
-export interface Ids_oRemarkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingOrderMgno {
-}
-
-export interface Ids_oJubsuNo {
-}
-
-export interface Ids_oSeatNo {
-}
-
-export interface Ids_oJubsuAllInfo {
-    COURSECD: string;
-    COURSEMUNJECD: string;
-    JUBSUNO: string;
-    LASTSUNAPGUBUN: string;
-    MGJIBUCD: string;
-    PASSDATE: string;
-    TJMGNO: string;
-    TJPASSYN: string;
-    TOMGNO: string;
-    TORDER: string;
-    YEAR: string;
-}
-
-export interface Ids_oOrderHist {
-    ABSENTYN: string;
-    AFTERJIBU: string;
-    AFTERJUBSUNO: string;
-    AFTERMGNO: string;
-    AFTERORDER: string;
-    BEFORJIBU: string;
-    BEFORJUBSUNO: string;
-    BEFORMGNO: string;
-    BEFORORDER: string;
-    LASTSUNAPGUBUN: string;
-    TJLASTSUNAPGUBUN: string;
-    TJMGNO: string;
-    TOHSEQ: string;
-}
-
-export interface Ids_oSetlmentHist {
-}
-
-export interface Ids_ioMenuTree {
-    MORDERSEQ: string;
-    MMENUID: string;
-    MENULEVEL: string;
-    MPARENTMENUID: string;
-    MMENUNM: string;
-    USE_YN: string;
-    MURL: string;
-    MREMARK: string;
-    MURLTYPE: string;
-    MSYSGUBUN: string;
-}
-
-export interface Ids_oModifyColumn {
-    COLUMNCD: string;
-    COLUMNNM: string;
-}
-
-export interface Ids_oTrainingJubsuResult {
-}
-
-export interface Ids_oTrainingJubsuPrint {
-}
-
-export interface Ids_oTrainingOrder {
-}
-
-export interface Ids_oPosResult {
-}
-
-export interface Ids_oTrainingJubsuPrint1 {
-}
-
-export interface Ids_oTrainingJubsuPrint2 {
-}
-
-export interface Ids_oTrainingJubsuPrint3 {
-}
-
-export interface Ids_oTrainingCheck {
-}
-
-export interface Ids_oJibuGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingPearson {
-}
-
-export interface Ids_oChangeTpmgno {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYearbizlink {
-}
-
-export interface Ids_ioT_E_L_JubsuCheck {
-}
-
-export interface Ids_ioTraing_JubsuCheck {
-}
-
-export interface Ids_ioTraing_ReturnTpmgnoJubsuCheck {
-}
-
-export interface Ids_ioTrainingPerson {
-}
-
-export interface Ids_ioSettelYN {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEducationNo {
-}
-
-export interface Ids_ioControl {
-    No: string;
-}
-
-export interface Ids_ioTraingSeatNoCheck {
-}
+import type { Ids_ioTrainingJubsu, Ids_oJibu, Ids_oCourse, Ids_oEmailDomain, Ids_oImage, Ids_oRemarkGubun, Ids_oTrainingOrderMgno, Ids_oJubsuNo, Ids_oSeatNo, Ids_oJubsuAllInfo, Ids_oOrderHist, Ids_oSetlmentHist, Ids_ioMenuTree, Ids_oModifyColumn, Ids_oTrainingJubsuResult, Ids_oTrainingJubsuPrint, Ids_oTrainingOrder, Ids_oPosResult, Ids_oTrainingJubsuPrint1, Ids_oTrainingJubsuPrint2, Ids_oTrainingJubsuPrint3, Ids_oTrainingCheck, Ids_oJibuGubun, Ids_oTrainingPearson, Ids_oChangeTpmgno, Ids_ioYearbizlink, Ids_ioT_E_L_JubsuCheck, Ids_ioTraing_JubsuCheck, Ids_ioTraing_ReturnTpmgnoJubsuCheck, Ids_ioTrainingPerson, Ids_ioSettelYN, Ids_oEducationNo, Ids_ioControl, Ids_ioTraingSeatNoCheck } from './Frmspcledu0020MTrainingJubsuManagementData';
 
 export const useFrmspcledu0020MTrainingJubsuManagement = () => {
     const [ds_ioTrainingJubsu, setds_ioTrainingJubsu] = useState<Ids_ioTrainingJubsu[]>([]);
@@ -243,6 +38,7 @@ export const useFrmspcledu0020MTrainingJubsuManagement = () => {
     const [ds_ioControl, setds_ioControl] = useState<Ids_ioControl[]>([]);
     const [ds_ioTraingSeatNoCheck, setds_ioTraingSeatNoCheck] = useState<Ids_ioTraingSeatNoCheck[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -454,6 +250,8 @@ export const useFrmspcledu0020MTrainingJubsuManagement = () => {
         ds_oEducationNo,
         ds_ioControl,
         ds_ioTraingSeatNoCheck,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnAbsentManageLink_OnClick,
         btnApplyPicture_OnClick,
         btnAuthResidentNo_OnClick,

@@ -1,109 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamResult {
-    EREJMGNO: string;
-    ERSEQ: string;
-    ERREPEATNO: string;
-    ERAPLEXAMNO: string;
-    ERPASSYN: string;
-    ERPASSDATE: string;
-    ERSCORE: string;
-    ERRANK: string;
-    ERCORRECTCNT: string;
-    ERREGDATE: string;
-    ERREGSABUN: string;
-    ERMODDATE: string;
-    ERMODSABUN: string;
-}
-
-export interface Ids_ioAnswerAnalysis {
-    AATCCOURSECD: string;
-    AACAEPNUMTYPE: string;
-    AACAEPALPHATYPE: string;
-    AACAITEMNO: string;
-    AAREPEATNO: string;
-    AAEOMGNO: string;
-    AACORRECTCNT: string;
-    AAMARKINGCNT: string;
-    AACORRECTPERCENT: string;
-    AA1CNT: string;
-    AA2CNT: string;
-    AA3CNT: string;
-    AA4CNT: string;
-    AAEMPTYCNT: string;
-    AADOUBLECNT: string;
-    AAREGDATE: string;
-    AAREGSABUN: string;
-    AAMODDATE: string;
-    AAMODSABUN: string;
-}
-
-export interface Ids_ioExamList {
-    EOMGNO: string;
-    EOYEAR: string;
-    EOEXAMORDER: string;
-    EOEXAMDATE: string;
-    TCCOURSECD: string;
-    EOTCCOURSENM: string;
-    JJIBUNICK: string;
-    EXAMNM: string;
-}
-
-export interface Ids_oAnswerPaper {
-    APSEQ: string;
-    APREPEATNO: string;
-    APEOMGNO: string;
-    APAPLEXAMNO: string;
-    APTCCOURSECD: string;
-    APNUMTYPE: string;
-    APALPHATYPE: string;
-    APCAITEMNO: string;
-    APANSWER: string;
-    APANSWERYN: string;
-    APITEMSCORE: string;
-    APEXAMROOM: string;
-}
-
-export interface Ids_iAnswerPaper {
-    APSEQ: string;
-    APREPEATNO: string;
-    APEOMGNO: string;
-    APAPLEXAMNO: string;
-    APTCCOURSECD: string;
-    APNUMTYPE: string;
-    APALPHATYPE: string;
-    APCAITEMNO: string;
-    APANSWER: string;
-    APANSWERYN: string;
-    APITEMSCORE: string;
-    APEXAMROOM: string;
-}
-
-export interface Ids_oExamResultCnt {
-}
-
-export interface Ids_ioServerSendH {
-    SEL: string;
-    SSHEOMGNO: string;
-    SSHREPEATNO: string;
-    SSHSENDYN: string;
-    JUBSUCNT: string;
-    EXAMCNT: string;
-    MARKCNT: string;
-    SENDCNT: string;
-}
-
-export interface Ids_ioTrainingPassH {
-    TPHTPTJMGNO: string;
-    TPHSEQ: string;
-    TPHDATE: string;
-    TPHTRUTHCD: string;
-    TPHREGDATE: string;
-    TPHREGSABUN: string;
-    TPHMODDATE: string;
-    TPHMODSABUN: string;
-}
+import type { Ids_ioExamResult, Ids_ioAnswerAnalysis, Ids_ioExamList, Ids_oAnswerPaper, Ids_iAnswerPaper, Ids_oExamResultCnt, Ids_ioServerSendH, Ids_ioTrainingPassH } from './Frmspcledu0630MExamMarkingResultSendData';
 
 export const useFrmspcledu0630MExamMarkingResultSend = () => {
     const [ds_ioExamResult, setds_ioExamResult] = useState<Ids_ioExamResult[]>([]);
@@ -115,6 +12,7 @@ export const useFrmspcledu0630MExamMarkingResultSend = () => {
     const [ds_ioServerSendH, setds_ioServerSendH] = useState<Ids_ioServerSendH[]>([]);
     const [ds_ioTrainingPassH, setds_ioTrainingPassH] = useState<Ids_ioTrainingPassH[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -148,6 +46,8 @@ export const useFrmspcledu0630MExamMarkingResultSend = () => {
         ds_oExamResultCnt,
         ds_ioServerSendH,
         ds_ioTrainingPassH,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_End,
         lfn_Save,
     };

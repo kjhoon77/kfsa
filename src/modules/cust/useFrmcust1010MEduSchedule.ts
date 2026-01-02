@@ -1,170 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioTrainingOrder {
-    ESMGNO: string;
-    ESGTMGNO: string;
-    ESYEAR: string;
-    ESCOUSECD: string;
-    CNM: string;
-    ESDATE: string;
-    MESTARTTIME: string;
-    ESENDTIME: string;
-    ESEPMGNO: string;
-    EPNM: string;
-    ESPREPARED: string;
-    edudate: string;
-    edutime: string;
-    ESGUBUN: string;
-    ESINETOPENYN: string;
-    ESINETCLOSEDATE: string;
-    ESSTUDENT: string;
-    EPSAVENM: string;
-    ESSUBJECTGUBUN: string;
-    ESSEATCNT: string;
-    ESACCESSCNT: string;
-    ESINETJUBSUCNT: string;
-    ESORDERNOYN: string;
-    ESNOTICE: string;
-    ESEDUORDER: string;
-    ESEDUTYPE: string;
-    ESEDUREGION: string;
-    ESAUTOMSGGUBUN: string;
-    ESAUTODATE: string;
-    ESBSMGNO: string;
-    ESCYBERSTARTDATE: string;
-    ESCYBERENDDATE: string;
-    ESJUBSUSTARTDATE: string;
-    ESJUBSUENDDATE: string;
-    ESONLINEID: string;
-    ESONLINEPWD: string;
-}
-
-export interface Ids_oUseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInetJubsuYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_METARGET {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_MECOURSE {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_MEDAYGUBUNCD {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInternetJubsuStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_Jibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamRoomMinimap {
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingOrderMgno {
-}
-
-export interface Ids_oModifyColumn {
-    COLUMNCD: string;
-    COLUMNNM: string;
-}
-
-export interface Ids_oEduType1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduType2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduType3 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSendYN {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduType10 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduType20 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduType30 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduType50 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCyberGubun10 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCyberGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduType40 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_MECOURSEAll {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduTypeFilter10 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCyberGubun2 {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioTrainingOrder, Ids_oUseYn, Ids_oInetJubsuYn, Ids_METARGET, Ids_MECOURSE, Ids_MEDAYGUBUNCD, Ids_oInternetJubsuStatus, Ids_Jibu, Ids_oCourse, Ids_ioExamRoomMinimap, Ids_oJibu, Ids_oTrainingOrderMgno, Ids_oModifyColumn, Ids_oEduType1, Ids_oEduType2, Ids_oEduType3, Ids_oSendYN, Ids_oEduType10, Ids_oEduType20, Ids_oEduType30, Ids_oEduType50, Ids_oCyberGubun10, Ids_oCyberGubun, Ids_oEduType40, Ids_MECOURSEAll, Ids_oEduTypeFilter10, Ids_oCyberGubun2 } from './Frmcust1010MEduScheduleData';
 
 export const useFrmcust1010MEduSchedule = () => {
     const [ds_ioTrainingOrder, setds_ioTrainingOrder] = useState<Ids_ioTrainingOrder[]>([]);
@@ -195,6 +31,7 @@ export const useFrmcust1010MEduSchedule = () => {
     const [ds_oEduTypeFilter10, setds_oEduTypeFilter10] = useState<Ids_oEduTypeFilter10[]>([]);
     const [ds_oCyberGubun2, setds_oCyberGubun2] = useState<Ids_oCyberGubun2[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -299,6 +136,8 @@ export const useFrmcust1010MEduSchedule = () => {
         ds_MECOURSEAll,
         ds_oEduTypeFilter10,
         ds_oCyberGubun2,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMinimap_OnClick,
         btnMutilSort_OnClick,
         btnSMSView_OnClick,

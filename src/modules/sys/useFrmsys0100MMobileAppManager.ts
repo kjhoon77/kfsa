@@ -1,24 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioKFSAmBizUser {
-}
-
-export interface Ids_oAuth {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oJibu, Ids_ioKFSAmBizUser, Ids_oAuth } from './Frmsys0100MMobileAppManagerData';
 
 export const useFrmsys0100MMobileAppManager = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_ioKFSAmBizUser, setds_ioKFSAmBizUser] = useState<Ids_ioKFSAmBizUser[]>([]);
     const [ds_oAuth, setds_oAuth] = useState<Ids_oAuth[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -51,6 +40,8 @@ export const useFrmsys0100MMobileAppManager = () => {
         ds_oJibu,
         ds_ioKFSAmBizUser,
         ds_oAuth,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Excel,

@@ -1,205 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oBCode {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMCode {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSCode {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSubulGubunH {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oUseTargetB {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibuAll {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRCode {
-    CD: string;
-    DATA: string;
-    EIBTITLE: string;
-    EIMTITLE: string;
-    EISTITLE: string;
-}
-
-export interface Ids_oEduSchedule {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSubulGubunV {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBCodeAll {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRCodeAll {
-    CD: string;
-    DATA: string;
-    EIBTITLE: string;
-    EIMTITLE: string;
-    EISTITLE: string;
-}
-
-export interface Ids_oMCodeAll {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioEduItemH {
-    EHCONTENT: string;
-    EHEDUMGNO: string;
-    EHEIMGNO: string;
-    EHGTMGNO: string;
-    EHMGNO: string;
-    EHSUBULDATE: string;
-    EHSUBULGUBUN: string;
-    EHSUBULQTY: string;
-    EHUSETARGET: string;
-    EIBCD: string;
-    EIBNM: string;
-    EIBTITLE: string;
-    EIKINDGUBUN: string;
-    EIKINDGUBUNNM: string;
-    EIKINDLEVEL: string;
-    EIKINDUSELEVEL: string;
-    EIMCD: string;
-    EIMGNO: string;
-    EIMNM: string;
-    EIMTITLE: string;
-    EISCD: string;
-    EISNM: string;
-    EISTITLE: string;
-    EIUSEGUBUN: string;
-    EHUSETARGETNM: string;
-    EDUYEAR: string;
-    EDUNM: string;
-    EDUDATE: string;
-    EDUTIME: string;
-    EDUCNT: string;
-}
-
-export interface Ids_ioEduItemHUnit {
-    EHCONTENT: string;
-    EHEDUMGNO: string;
-    EHEIMGNO: string;
-    EHGTMGNO: string;
-    EHMGNO: string;
-    EHSUBULDATE: string;
-    EHSUBULGUBUN: string;
-    EHSUBULQTY: string;
-    EHUSETARGET: string;
-}
-
-export interface Ids_ioEduItemSingle {
-    EIMGNO: string;
-}
-
-export interface Ids_iOnlyKey {
-    ONLYKEY: string;
-    ACTION: string;
-}
-
-export interface Ids_oEduScheduleSingle {
-    CGROUPNM: string;
-    EDUTIME: string;
-    EPNM: string;
-    EPSAVENM: string;
-    ESACCESSCNT: string;
-    ESCOUSECD: string;
-    ESDATE: string;
-    ESENDTIME: string;
-    ESEPMGNO: string;
-    ESGTMGNO: string;
-    ESGUBUN: string;
-    ESINETCLOSEDATE: string;
-    ESINETJUBSUCNT: string;
-    ESMGNO: string;
-    ESNOTICE: string;
-    ESPREPARED: string;
-    ESSEATCNT: string;
-    ESSTARTTIME: string;
-    ESSTUDENT: string;
-    ESSUBJECTGUBUN: string;
-    ESYEAR: string;
-}
-
-export interface Ids_oTrainingOrderSingle {
-    COURSEMUNJECD: string;
-    JUBSUCNT: string;
-    TOCOURSEGUBUN: string;
-    TOCOURSEGUBUNNM: string;
-    TOEDUCONTENTS: string;
-    TOEDUREMARK: string;
-    TOENDDATE: string;
-    TOENDTIME: string;
-    TOEPMGNO: string;
-    TOINETJUBSUCNT: string;
-    TOINETJUBSUYN: string;
-    TOJUBSUMAXCNT: string;
-    TOJUBSUSTATUS: string;
-    TOMAILNOTICE: string;
-    TOMGGTMGNO: string;
-    TOMGNO: string;
-    TOMODDATE: string;
-    TOMODSABUN: string;
-    TOMUNJEGUBUN: string;
-    TOREGDATE: string;
-    TOREGSABUN: string;
-    TOREMARK: string;
-    TOSEATCNT: string;
-    TOSEATLIMITYN: string;
-    TOSEATSELECTYN: string;
-    TOSEXLIMITYN: string;
-    TOSTARTDATE: string;
-    TOSTARTTIME: string;
-    TOTCCOURSECD: string;
-    TOTRAININGORDER: string;
-    TOUSEYN: string;
-    TOYEAR: string;
-    COURSENM: string;
-}
-
-export interface Ids_oUseTargetL {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oUseTargetF {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oUseTargetC {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oBCode, Ids_oMCode, Ids_oSCode, Ids_oSubulGubunH, Ids_oUseTargetB, Ids_oJibu, Ids_oJibuAll, Ids_oRCode, Ids_oEduSchedule, Ids_oSubulGubunV, Ids_oBCodeAll, Ids_oRCodeAll, Ids_oMCodeAll, Ids_ioEduItemH, Ids_ioEduItemHUnit, Ids_ioEduItemSingle, Ids_iOnlyKey, Ids_oEduScheduleSingle, Ids_oTrainingOrderSingle, Ids_oUseTargetL, Ids_oUseTargetF, Ids_oUseTargetC } from './Frmitem0007MEduItemHMgmtData';
 
 export const useFrmitem0007MEduItemHMgmt = () => {
     const [ds_oBCode, setds_oBCode] = useState<Ids_oBCode[]>([]);
@@ -225,6 +26,9 @@ export const useFrmitem0007MEduItemHMgmt = () => {
     const [ds_oUseTargetF, setds_oUseTargetF] = useState<Ids_oUseTargetF[]>([]);
     const [ds_oUseTargetC, setds_oUseTargetC] = useState<Ids_oUseTargetC[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divEdu, setIsVisible_divEdu] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [isVisible_divTra, setIsVisible_divTra] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -310,6 +114,12 @@ export const useFrmitem0007MEduItemHMgmt = () => {
         ds_oUseTargetL,
         ds_oUseTargetF,
         ds_oUseTargetC,
+        isVisible_divEdu,
+        setIsVisible_divEdu,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        isVisible_divTra,
+        setIsVisible_divTra,
         btnMutilSort_OnClick,
         btnSearchEduSchedule_OnClick,
         lfn_Cancel,

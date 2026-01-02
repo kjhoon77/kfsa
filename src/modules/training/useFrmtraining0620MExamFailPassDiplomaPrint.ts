@@ -1,51 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamList {
-}
-
-export interface Ids_oRepeatNo {
-    SSHEOMGNO: string;
-    SSHREPEATNO: string;
-    SSHSENDYN: string;
-    DATA: string;
-}
-
-export interface Ids_iPassGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioReport {
-}
-
-export interface Ids_ioExamFailList {
-    SEL: string;
-    EJMGNO: string;
-    EJTPMGNO: string;
-    EJPERSONNM: string;
-    BIRTHDAY: string;
-    EJLASTSUNAPGUBUN: string;
-    EJZZIPCD: string;
-    EJADDR1: string;
-    EJADDR2: string;
-    EJBULDNM: string;
-    EJBULDADDR: string;
-    EJEXPYN: string;
-    EJPASSYN: string;
-    EJCANCELREASON: string;
-    EJCANCELPSABUN: string;
-    EJIIIMGSEQ: string;
-    ERAPLEXAMNO: string;
-    EOTCCOURSECD: string;
-    TPPASSNO: string;
-    TPSTARTDATE: string;
-    TPENDDATE: string;
-    TCTERMTIME: string;
-}
-
-export interface Ids_ioReportFilter {
-}
+import type { Ids_ioExamList, Ids_oRepeatNo, Ids_iPassGubun, Ids_ioReport, Ids_ioExamFailList, Ids_ioReportFilter } from './Frmtraining0620MExamFailPassDiplomaPrintData';
 
 export const useFrmtraining0620MExamFailPassDiplomaPrint = () => {
     const [ds_ioExamList, setds_ioExamList] = useState<Ids_ioExamList[]>([]);
@@ -55,6 +10,7 @@ export const useFrmtraining0620MExamFailPassDiplomaPrint = () => {
     const [ds_ioExamFailList, setds_ioExamFailList] = useState<Ids_ioExamFailList[]>([]);
     const [ds_ioReportFilter, setds_ioReportFilter] = useState<Ids_ioReportFilter[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -99,6 +55,8 @@ export const useFrmtraining0620MExamFailPassDiplomaPrint = () => {
         ds_ioReport,
         ds_ioExamFailList,
         ds_ioReportFilter,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnNext_OnClick,
         lfn_End,

@@ -1,21 +1,11 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioUserAuthList {
-    MMENUID: string;
-    MMENUNM: string;
-    USE_YN: string;
-    UAREADWRITE: string;
-    UAREAD: string;
-    MORDERSEQ: string;
-    MENULEVEL1: string;
-    MENULEVEL2: string;
-    MENULEVEL3: string;
-}
+import type { Ids_ioUserAuthList } from './Frmsys0027PUserAuthListData';
 
 export const useFrmsys0027PUserAuthList = () => {
     const [ds_ioUserAuthList, setds_ioUserAuthList] = useState<Ids_ioUserAuthList[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -41,6 +31,8 @@ export const useFrmsys0027PUserAuthList = () => {
     return {
         isLoading,
         ds_ioUserAuthList,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_End,
         lfn_Excel,
         lfn_Print,

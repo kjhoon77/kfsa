@@ -1,14 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioOneMailSendTraining {
-}
-
-export interface Ids_ioOneMailSendExam {
-}
-
-export interface Ids_oEmailSeq {
-}
+import type { Ids_ioOneMailSendTraining, Ids_ioOneMailSendExam, Ids_oEmailSeq } from './FrmCOM1300MOneMAILSendData';
 
 export const useFrmCOM1300MOneMAILSend = () => {
     const [ds_ioOneMailSendTraining, setds_ioOneMailSendTraining] = useState<Ids_ioOneMailSendTraining[]>([]);

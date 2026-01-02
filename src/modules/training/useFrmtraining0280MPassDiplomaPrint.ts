@@ -1,67 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oSearchGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTrainingPass {
-    TOMGGTMGNO: string;
-    ERPASSYN: string;
-    JUBSUADDR: string;
-    PPASSDATE_A: string;
-    PPASSNO: string;
-    TOTCCOURSECD: string;
-    TJMGNO: string;
-    TJPERSONNM: string;
-    TJBIRTHDAY_SANG: string;
-    TJBIRTHDAY: string;
-    TJZIPCD: string;
-    TOHJUBSUNO: string;
-    TOMGNO: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPMGNO: string;
-    TOEXAMORDER: string;
-    EDUCATIONTIME: string;
-    TCCOURSENM: string;
-    TOMUNJEGUBUN: string;
-    TOCYBERSTARTDATE: string;
-    TOCYBERENDDATE: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamCheatReport {
-}
-
-export interface Ids_ioReport {
-}
-
-export interface Ids_ioReport2 {
-}
-
-export interface Ids_oPassGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oOnlineGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingPassYCmgno {
-}
+import type { Ids_oSearchGubun, Ids_oCourse, Ids_ioTrainingPass, Ids_oJibu, Ids_ioExamCheatReport, Ids_ioReport, Ids_ioReport2, Ids_oPassGubun, Ids_oOnlineGubun, Ids_oTrainingPassYCmgno } from './Frmtraining0280MPassDiplomaPrintData';
 
 export const useFrmtraining0280MPassDiplomaPrint = () => {
     const [ds_oSearchGubun, setds_oSearchGubun] = useState<Ids_oSearchGubun[]>([]);
@@ -75,6 +14,8 @@ export const useFrmtraining0280MPassDiplomaPrint = () => {
     const [ds_oOnlineGubun, setds_oOnlineGubun] = useState<Ids_oOnlineGubun[]>([]);
     const [ds_oTrainingPassYCmgno, setds_oTrainingPassYCmgno] = useState<Ids_oTrainingPassYCmgno[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [isVisible_divSearchGubun, setIsVisible_divSearchGubun] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -154,6 +95,10 @@ export const useFrmtraining0280MPassDiplomaPrint = () => {
         ds_oPassGubun,
         ds_oOnlineGubun,
         ds_oTrainingPassYCmgno,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        isVisible_divSearchGubun,
+        setIsVisible_divSearchGubun,
         btnAttend_OnClick,
         btnMolPass_OnClick,
         btnMutilSort_OnClick,

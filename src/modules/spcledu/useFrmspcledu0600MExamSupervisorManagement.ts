@@ -1,41 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamSupervisor {
-    SIBDAY: string;
-    SICOMPNM: string;
-    SIGTMGNO: string;
-    SIMGNO: string;
-    SIPERSONNM: string;
-    SISEXCD: string;
-    SITEL: string;
-    SIPOSITNNM: string;
-    SIHPTEL: string;
-    SISTARTDATE: string;
-    SIENDDATE: string;
-    SIREMARK: string;
-    SIPERSONYN: string;
-}
-
-export interface Ids_oSex {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oModifyColumn {
-    COLUMNCD: string;
-    COLUMNNM: string;
-}
-
-export interface Ids_oPersonYn {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioExamSupervisor, Ids_oSex, Ids_oJibu, Ids_oModifyColumn, Ids_oPersonYn } from './Frmspcledu0600MExamSupervisorManagementData';
 
 export const useFrmspcledu0600MExamSupervisorManagement = () => {
     const [ds_ioExamSupervisor, setds_ioExamSupervisor] = useState<Ids_ioExamSupervisor[]>([]);
@@ -44,6 +9,7 @@ export const useFrmspcledu0600MExamSupervisorManagement = () => {
     const [ds_oModifyColumn, setds_oModifyColumn] = useState<Ids_oModifyColumn[]>([]);
     const [ds_oPersonYn, setds_oPersonYn] = useState<Ids_oPersonYn[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -92,6 +58,8 @@ export const useFrmspcledu0600MExamSupervisorManagement = () => {
         ds_oJibu,
         ds_oModifyColumn,
         ds_oPersonYn,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

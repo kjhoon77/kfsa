@@ -1,8 +1,8 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmCOM1000PIncomePaymentList } from './useFrmCOM1000PIncomePaymentList';
@@ -39,13 +39,64 @@ export const FrmCOM1000PIncomePaymentList = () => {
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
                         <Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12}>
+                    <Paper sx={{ height: 400, width: '100%' }}>
+                        <DataGridWrapper rows={hook.ds_oSearchotherincome} columns={columns_gdIncomePayment} />
+                    </Paper>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={2}><Box>조회대상</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>조회구분</Box></Grid><Grid item xs={12} md={4}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained">조회</Button></Grid></Grid>
+
+                <Grid item xs={12} md={5}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>조회구분</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (FrmCOM1000PIncomePaymentListData.ds_ds_ioSearchGubun || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid><Grid item xs={12} md={2}><Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button></Grid>{ hook.isVisible_edsRange1 && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>적용년도</Box></Grid><Grid item xs={12} md={3}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained">선택</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Box>적용년도</Box></Grid><Grid item xs={12} md={3}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnSelect_OnClick}>선택</Button></Grid>{ hook.isVisible_edsRange2 && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box>~</Box></Grid><Grid item xs={12} md={2}><Button variant="contained">닫기</Button></Grid></Grid>
+{ hook.isVisible_medsRange1 && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
+<Grid container spacing={2} alignItems="center">
+<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box>~</Box></Grid><Grid item xs={12} md={2}><Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button></Grid>{ hook.isVisible_medsRange2 && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
 
                     </Paper>
                 </Grid>

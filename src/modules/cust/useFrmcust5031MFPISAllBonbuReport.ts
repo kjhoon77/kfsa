@@ -1,24 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioReport {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oDATA {
-}
+import type { Ids_ioReport, Ids_ioCourse, Ids_oDATA } from './Frmcust5031MFPISAllBonbuReportData';
 
 export const useFrmcust5031MFPISAllBonbuReport = () => {
     const [ds_ioReport, setds_ioReport] = useState<Ids_ioReport[]>([]);
     const [ds_ioCourse, setds_ioCourse] = useState<Ids_ioCourse[]>([]);
     const [ds_oDATA, setds_oDATA] = useState<Ids_oDATA[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -48,6 +37,8 @@ export const useFrmcust5031MFPISAllBonbuReport = () => {
         ds_ioReport,
         ds_ioCourse,
         ds_oDATA,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Excel,

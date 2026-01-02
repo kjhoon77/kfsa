@@ -1,9 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface IDataset0 {
-    column0: string;
-}
+import type { IDataset0 } from './GetSession20170216Data';
 
 export const useGetSession20170216 = () => {
     const [Dataset0, setDataset0] = useState<IDataset0[]>([]);

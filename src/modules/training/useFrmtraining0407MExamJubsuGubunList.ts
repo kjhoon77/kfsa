@@ -1,88 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oPassYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJubsuGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamJubsu {
-    BIRTHDAY: string;
-    EJADDR1: string;
-    EJADDR2: string;
-    EJEXAMDATE: string;
-    EJEXPYN: string;
-    EJLASTEJHSEQ: string;
-    EJLASTEOHSEQ: string;
-    EJLASTESSEQ: string;
-    EJLASTSUNAPGUBUN: string;
-    EJMGNO: string;
-    EJPASSYN: string;
-    EJPERSONNM: string;
-    EJPROCGTMGNO: string;
-    EJBIRTHDAY: string;
-    EJTPMGNO: string;
-    EJZZIPCD: string;
-    EOENDTIME: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOEXAMORDERGUBUN: string;
-    EOHAFTEREOMGNO: string;
-    EOHAFTERJUBSUNO: string;
-    EOHPROCDATE: string;
-    EOHEOMGNO: string;
-    EOHJUBSUGUBUN: string;
-    EOHJUBSUNO: string;
-    EOHLASTGUBUN: string;
-    EOHPROCGTMGNO: string;
-    EOHPSABUN: string;
-    EOHSEQ: string;
-    EOMGGTMGNO: string;
-    EOMGNO: string;
-    EOSTARTTIME: string;
-    EOTCCOURSECD: string;
-    EOYEAR: string;
-    TFCFEE: string;
-    GTDEPTNM: string;
-    GTTEAMNM: string;
-    IIDIRPATH: string;
-    IIREALNM: string;
-    TCCOURSENM: string;
-    TPHPTEL: string;
-    TPTEL: string;
-    TPEMAILID: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamJubsuTotal {
-    EOMGGTMGNO: string;
-    GTTEAMNM: string;
-    EOYEAR: string;
-    EOTCCOURSECD: string;
-    TCCOURSENICK: string;
-    EJPASSYN: string;
-    TOTALCNT: string;
-    JUBGUBUN20: string;
-    JUBGUBUN00: string;
-    JUBGUBUN01: string;
-    JUBGUBUN02: string;
-    JUBGUBUN05: string;
-    JUBGUBUN06: string;
-}
+import type { Ids_oPassYn, Ids_oCourse, Ids_oJubsuGubun, Ids_oExamJubsu, Ids_oJibu, Ids_oExamJubsuTotal } from './Frmtraining0407MExamJubsuGubunListData';
 
 export const useFrmtraining0407MExamJubsuGubunList = () => {
     const [ds_oPassYn, setds_oPassYn] = useState<Ids_oPassYn[]>([]);
@@ -92,6 +10,7 @@ export const useFrmtraining0407MExamJubsuGubunList = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_oExamJubsuTotal, setds_oExamJubsuTotal] = useState<Ids_oExamJubsuTotal[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -139,6 +58,8 @@ export const useFrmtraining0407MExamJubsuGubunList = () => {
         ds_oExamJubsu,
         ds_oJibu,
         ds_oExamJubsuTotal,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

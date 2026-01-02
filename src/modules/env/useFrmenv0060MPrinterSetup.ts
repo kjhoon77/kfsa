@@ -1,8 +1,10 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './Frmenv0060MPrinterSetupData';
 
 export const useFrmenv0060MPrinterSetup = () => {
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -23,6 +25,8 @@ export const useFrmenv0060MPrinterSetup = () => {
 
     return {
         isLoading,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_End,
         lfn_PrintScreen,
         lfn_Save,

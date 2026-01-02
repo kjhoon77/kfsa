@@ -1,56 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingJubsu {
-    AFTERJIBUCD: string;
-    AFTERJIBUNICK: string;
-    AFTERJIBUNM: string;
-    AFTERTRAININGORDER: string;
-    BIRTHDAY: string;
-    EPMGNO: string;
-    JJIBUNICK: string;
-    JJIBUNM: string;
-    PPERSONNM: string;
-    PSABUN: string;
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-    TJPERSONNM: string;
-    TJBIRTHDAY: string;
-    TOCOURSEGUBUN: string;
-    TOENDDATE: string;
-    TOHAFTERJUBSUNO: string;
-    TOHAFTERMGNO: string;
-    TOHJUBSUGUBUN: string;
-    TOHJUBSUNO: string;
-    TOHLASTGUBUN: string;
-    TOHPROCDATE: string;
-    TOHSEQ: string;
-    TOMGJIBUCD: string;
-    TOMGNO: string;
-    TOMUNJEGUBUN: string;
-    TOSTARTDATE: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPMGNO: string;
-    JUBSUNO: string;
-    AFTERJUBSUNO: string;
-    EDU: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSort {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oTrainingJubsu, Ids_oJibu, Ids_oSort } from './Frmtraining0220MTrainingOrderChangeListData';
 
 export const useFrmtraining0220MTrainingOrderChangeList = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -58,6 +8,7 @@ export const useFrmtraining0220MTrainingOrderChangeList = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_oSort, setds_oSort] = useState<Ids_oSort[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -98,6 +49,8 @@ export const useFrmtraining0220MTrainingOrderChangeList = () => {
         ds_oTrainingJubsu,
         ds_oJibu,
         ds_oSort,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

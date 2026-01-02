@@ -1,105 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oPassYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRepayYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingJubsu {
-    BIRTHDAY: string;
-    GTDEPTNM: string;
-    GTTEAMNM: string;
-    TCCOURSENM: string;
-    TJADDR: string;
-    TJADDR1: string;
-    TJADDR2: string;
-    TJAMOUNTGUBUN: string;
-    TJBARCODE: string;
-    TJIIIMGSEQ: string;
-    TJJUBSUYN: string;
-    TJLASTSUNAPGUBUN: string;
-    TJLASTTJHSEQ: string;
-    TJLASTTOHSEQ: string;
-    TJLASTTSSEQ: string;
-    TJMGNO: string;
-    TJPASSYN: string;
-    TJPERSONNM: string;
-    TJREFUNDYN: string;
-    TJREMARK: string;
-    TJREMARKCD: string;
-    TJRESIDENTNO: string;
-    TJTPMGNO: string;
-    TJZIPCD: string;
-    TOBOSUGUBUN: string;
-    TOCOURSEGUBUN: string;
-    TOEDUCONTENTS: string;
-    TOEDUREMARK: string;
-    TOENDDATE: string;
-    TOENDTIME: string;
-    TOEPMGNO: string;
-    TOHAFTERJUBSUNO: string;
-    TOHAFTERTOMGNO: string;
-    TOHBOOKINGSEATNO: string;
-    TOHDECISIONSEATNO: string;
-    TOHJUBSUGUBUN: string;
-    TOHJUBSUNO: string;
-    TOHLASTGUBUN: string;
-    TOHPROCDATE: string;
-    TOHPSABUN: string;
-    TOHSEATCHANGEYN: string;
-    TOHSEQ: string;
-    TOJUBSUSTATUS: string;
-    TOMAILNOTICE: string;
-    TOMGGTMGNO: string;
-    TOMGNO: string;
-    TOMUNJEGUBUN: string;
-    TOREMARK: string;
-    TOSTARTDATE: string;
-    TOSTARTTIME: string;
-    TOTCCOURSECD: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPEMAIL: string;
-    TPEMAILDOMAIN: string;
-    TPEMAILID: string;
-    TPHPTEL: string;
-    TPTEL: string;
-    EPNM: string;
-    EPEDUPLACEINFO: string;
-    EPPARKINGINFO: string;
-    TJCOMPNM: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMunjeGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourseMunje {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oLicenseYn {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oPassYn, Ids_oCourse, Ids_oRepayYn, Ids_oTrainingJubsu, Ids_oJibu, Ids_oMunjeGubun, Ids_oCourseMunje, Ids_oLicenseYn } from './Frmspcledu0030MTrainingJubsuListData';
 
 export const useFrmspcledu0030MTrainingJubsuList = () => {
     const [ds_oPassYn, setds_oPassYn] = useState<Ids_oPassYn[]>([]);
@@ -111,6 +12,7 @@ export const useFrmspcledu0030MTrainingJubsuList = () => {
     const [ds_oCourseMunje, setds_oCourseMunje] = useState<Ids_oCourseMunje[]>([]);
     const [ds_oLicenseYn, setds_oLicenseYn] = useState<Ids_oLicenseYn[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -168,6 +70,8 @@ export const useFrmspcledu0030MTrainingJubsuList = () => {
         ds_oMunjeGubun,
         ds_oCourseMunje,
         ds_oLicenseYn,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

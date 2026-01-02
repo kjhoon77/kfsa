@@ -1,11 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_iLicense {
-    LLCSNO: string;
-    LHCANCELREASON: string;
-    LHSEQ: string;
-}
+import type { Ids_iLicense } from './Frmtraining0257PLicenseIssueCancelData';
 
 export const useFrmtraining0257PLicenseIssueCancel = () => {
     const [ds_iLicense, setds_iLicense] = useState<Ids_iLicense[]>([]);

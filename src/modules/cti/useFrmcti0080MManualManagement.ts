@@ -1,27 +1,11 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioBoard {
-    AFDIRPATH: string;
-    AFFILESIZE: string;
-    AFREALNM: string;
-    AFSAVENM: string;
-    AFSEQ: string;
-    BBOARDDAYS: string;
-    BBOARDGUBUN: string;
-    BCONTENTS: string;
-    BHIT: string;
-    BMODDATE: string;
-    BMODSABUN: string;
-    BREGDATE: string;
-    BREGSABUN: string;
-    BSEQ: string;
-    BTITLE: string;
-}
+import type { Ids_ioBoard } from './Frmcti0080MManualManagementData';
 
 export const useFrmcti0080MManualManagement = () => {
     const [ds_ioBoard, setds_ioBoard] = useState<Ids_ioBoard[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -62,6 +46,8 @@ export const useFrmcti0080MManualManagement = () => {
     return {
         isLoading,
         ds_ioBoard,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnUploadFile_OnClick,
         lfn_Cancel,

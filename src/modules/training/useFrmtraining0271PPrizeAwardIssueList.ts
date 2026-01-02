@@ -1,27 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oPrize {
-    CREATE_DATE: string;
-    CREATE_GUBUN: string;
-    CREATE_ID: string;
-    CREATE_IP: string;
-    JJIBUCD: string;
-    MODIFY_DATE: string;
-    MODIFY_ID: string;
-    MODIFY_IP: string;
-    ZBUNJI: string;
-    SIKUDONG: string;
-    ZHO: string;
-    ZREGIONCD: string;
-    ZSEQ: string;
-    ZZIPCD: string;
-}
-
-export interface Ids_oPrizeGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oPrize, Ids_oPrizeGubun } from './Frmtraining0271PPrizeAwardIssueListData';
 
 export const useFrmtraining0271PPrizeAwardIssueList = () => {
     const [ds_oPrize, setds_oPrize] = useState<Ids_oPrize[]>([]);

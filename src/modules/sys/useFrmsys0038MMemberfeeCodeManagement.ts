@@ -1,47 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioMemberfeeCode {
-    CREATE_DATE: string;
-    CREATE_ID: string;
-    MFCOURSECD: string;
-    MFCOURSESEQ: string;
-    MFGUBUN: string;
-    MFMONTH01: string;
-    MFMONTH02: string;
-    MFMONTH03: string;
-    MFMONTH04: string;
-    MFMONTH05: string;
-    MFMONTH06: string;
-    MFMONTH07: string;
-    MFMONTH08: string;
-    MFMONTH09: string;
-    MFMONTH10: string;
-    MFMONTH11: string;
-    MFMONTH12: string;
-    MFPAYMENTGUBUN: string;
-    MFREMARK: string;
-    MFYEAR: string;
-    MODIFY_DATE: string;
-    MODIFY_ID: string;
-    TOT: string;
-    USE_YN: string;
-}
-
-export interface Ids_oPaymentMethod {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMemberfeeGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioMemberfeeCode, Ids_oPaymentMethod, Ids_oMemberfeeGubun, Ids_oCourse } from './Frmsys0038MMemberfeeCodeManagementData';
 
 export const useFrmsys0038MMemberfeeCodeManagement = () => {
     const [ds_ioMemberfeeCode, setds_ioMemberfeeCode] = useState<Ids_ioMemberfeeCode[]>([]);
@@ -49,6 +8,7 @@ export const useFrmsys0038MMemberfeeCodeManagement = () => {
     const [ds_oMemberfeeGubun, setds_oMemberfeeGubun] = useState<Ids_oMemberfeeGubun[]>([]);
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -95,6 +55,8 @@ export const useFrmsys0038MMemberfeeCodeManagement = () => {
         ds_oPaymentMethod,
         ds_oMemberfeeGubun,
         ds_oCourse,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_Delete,

@@ -1,8 +1,8 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust2019PFixVirtualAccountSend } from './useFrmcust2019PFixVirtualAccountSend';
@@ -16,8 +16,8 @@ export const Frmcust2019PFixVirtualAccountSend = () => {
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
                 <Typography variant="h5">기본정보</Typography>
                 <Stack direction="row" spacing={1}>
-                    <Button variant="contained"  onClick={hook.lfn_End}>닫기</Button>
-<Button variant="contained"  onClick={hook.lfn_Print}>납부안내문 출력</Button>
+                    <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
+<Button variant="contained" startIcon={<Print />} onClick={hook.lfn_Print}>납부안내문 출력</Button>
 
                 </Stack>
             </Stack>
@@ -29,9 +29,15 @@ export const Frmcust2019PFixVirtualAccountSend = () => {
                         <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={4}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>은행 및
 
-가상계좌</Box></Grid><Grid item xs={12} md={3}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>은행 및
+
+가상계좌</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2019PFixVirtualAccountSendData.ds_ds_oNewBankAccount || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={2}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
@@ -41,13 +47,13 @@ export const Frmcust2019PFixVirtualAccountSend = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>미납금액</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={3}><Box>가상계좌 유효기간 부여 & 문자발송</Box></Grid><Grid item xs={12} md={2}><Button variant="contained">유효기간
+<Grid item xs={12} md={3}><Box>가상계좌 유효기간 부여 & 문자발송</Box></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnExpireDateChg_OnClick}>유효기간
 (3일)부여
 [저장]</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
@@ -56,7 +62,7 @@ export const Frmcust2019PFixVirtualAccountSend = () => {
 계
 좌</Box></Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>현재유효기간</Typography>
                         <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
                     </Stack>
@@ -64,7 +70,7 @@ export const Frmcust2019PFixVirtualAccountSend = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>변경할 유효기간</Typography>
                         <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
                     </Stack>
@@ -74,12 +80,12 @@ export const Frmcust2019PFixVirtualAccountSend = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>가상계좌 문자발송
 휴대폰번호</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
-                </Grid><Grid item xs={12} md={2}><Button variant="contained">문자발송</Button></Grid></Grid>
+                </Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnSMSSend_OnClick}>문자발송</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={2}><Box>문
 자

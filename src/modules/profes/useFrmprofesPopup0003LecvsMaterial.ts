@@ -1,35 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ProfesList {
-    CMGNO: string;
-    CGUBUN2: string;
-    SJSEQ: string;
-    CNM: string;
-    SJTITLE: string;
-    TP_CNT: string;
-    TOT: string;
-    TOT_1: string;
-    TOT_2: string;
-    YES: string;
-    YES_1: string;
-    YES_2: string;
-    NO: string;
-    NO_1: string;
-    NO_2: string;
-}
-
-export interface Ids_SearchJogeon {
-    STARTDATE: string;
-    ENDDATE: string;
-    SABUN: string;
-    EDUGUBUN: string;
-}
-
-export interface Ids_oEduGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ProfesList, Ids_SearchJogeon, Ids_oEduGubun } from './FrmprofesPopup0003LecvsMaterialData';
 
 export const useFrmprofesPopup0003LecvsMaterial = () => {
     const [ds_ProfesList, setds_ProfesList] = useState<Ids_ProfesList[]>([]);

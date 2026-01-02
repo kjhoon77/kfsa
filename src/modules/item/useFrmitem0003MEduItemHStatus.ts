@@ -1,143 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibuAll {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMCodeAll {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRCodeAll {
-    CD: string;
-    DATA: string;
-    EIBTITLE: string;
-    EIMTITLE: string;
-    EISTITLE: string;
-}
-
-export interface Ids_oSCodeAll {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYearList {
-    EIMNM: string;
-    EISCD: string;
-    EISNM: string;
-    GTDEPTNM: string;
-    RECEIPT_CNT: string;
-    USE_CNT: string;
-    SUPPLY_CNT: string;
-    DEMAND_CNT: string;
-    DEFICIENCY_CNT: string;
-    TOTRECEIPT_CNT: string;
-    TAJIBURECEIPT_CNT: string;
-    TOTUSE_CNT: string;
-    TAJIBUUSE_CNT: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMCode {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRCode {
-    CD: string;
-    DATA: string;
-    EIBTITLE: string;
-    EIMTITLE: string;
-    EISTITLE: string;
-}
-
-export interface Ids_oSCode {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oYearAll {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBCode {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBCodeAll {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oReportGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYmdList {
-    EIMNM: string;
-    EISCD: string;
-    EISNM: string;
-    GTDEPTNM: string;
-    EHSUBULDATE: string;
-    RECEIPT_CNT: string;
-    USE_CNT: string;
-    SUPPLY_CNT: string;
-    DEMAND_CNT: string;
-    DEFICIENCY_CNT: string;
-    TOTRECEIPT_CNT: string;
-    TAJIBURECEIPT_CNT: string;
-    TOTUSE_CNT: string;
-    TAJIBUUSE_CNT: string;
-}
-
-export interface Ids_oMCodeAll2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioItemJibuList {
-    EIMNM: string;
-    EISCD: string;
-    EISNM: string;
-    GTDEPTNM: string;
-    EHSUBULDATE: string;
-    RECEIPT_CNT: string;
-    USE_CNT: string;
-    SUPPLY_CNT: string;
-    DEMAND_CNT: string;
-    DEFICIENCY_CNT: string;
-    TOTRECEIPT_CNT: string;
-    TAJIBURECEIPT_CNT: string;
-    TOTUSE_CNT: string;
-    TAJIBUUSE_CNT: string;
-}
-
-export interface Ids_ioJibuItemList {
-    EIMNM: string;
-    EISCD: string;
-    EISNM: string;
-    GTDEPTNM: string;
-    EHSUBULDATE: string;
-    RECEIPT_CNT: string;
-    USE_CNT: string;
-    SUPPLY_CNT: string;
-    DEMAND_CNT: string;
-    DEFICIENCY_CNT: string;
-    TOTRECEIPT_CNT: string;
-    TAJIBURECEIPT_CNT: string;
-    TOTUSE_CNT: string;
-    TAJIBUUSE_CNT: string;
-}
+import type { Ids_oJibuAll, Ids_oMCodeAll, Ids_oRCodeAll, Ids_oSCodeAll, Ids_ioYearList, Ids_oJibu, Ids_oMCode, Ids_oRCode, Ids_oSCode, Ids_oYearAll, Ids_oBCode, Ids_oBCodeAll, Ids_oReportGubun, Ids_ioYmdList, Ids_oMCodeAll2, Ids_ioItemJibuList, Ids_ioJibuItemList } from './Frmitem0003MEduItemHStatusData';
 
 export const useFrmitem0003MEduItemHStatus = () => {
     const [ds_oJibuAll, setds_oJibuAll] = useState<Ids_oJibuAll[]>([]);
@@ -158,6 +21,7 @@ export const useFrmitem0003MEduItemHStatus = () => {
     const [ds_ioItemJibuList, setds_ioItemJibuList] = useState<Ids_ioItemJibuList[]>([]);
     const [ds_ioJibuItemList, setds_ioJibuItemList] = useState<Ids_ioJibuItemList[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -224,6 +88,8 @@ export const useFrmitem0003MEduItemHStatus = () => {
         ds_oMCodeAll2,
         ds_ioItemJibuList,
         ds_ioJibuItemList,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

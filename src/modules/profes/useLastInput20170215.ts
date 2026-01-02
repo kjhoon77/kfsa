@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './LastInput20170215Data';
 
 export const useLastInput20170215 = () => {
     const [isLoading, setIsLoading] = useState(false);

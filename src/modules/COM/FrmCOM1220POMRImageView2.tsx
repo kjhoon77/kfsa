@@ -1,8 +1,8 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmCOM1220POMRImageView2 } from './useFrmCOM1220POMRImageView2';
@@ -17,7 +17,7 @@ export const FrmCOM1220POMRImageView2 = () => {
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
                 <Typography variant="h5">기본정보</Typography>
                 <Stack direction="row" spacing={1}>
-                    <Button variant="contained"  onClick={hook.lfn_End}>닫기</Button>
+                    <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 
                 </Stack>
             </Stack>
@@ -26,7 +26,13 @@ export const FrmCOM1220POMRImageView2 = () => {
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
-                        
+                        <Grid container spacing={2} alignItems="center">
+<Grid item xs={12}><Box sx={{ width: "100%" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_OMRTab} onChange={(e, v) => setTabValue_OMRTab(v)} aria-label="OMRTab"><Tab label="1과목" /><Tab label="2과목" /></Tabs></Box><CustomTabPanel value={tabValue_OMRTab} index={0}><Grid container spacing={2} alignItems="center">
+<Grid item xs={12} md={12}><Box></Box></Grid></Grid>
+</CustomTabPanel><CustomTabPanel value={tabValue_OMRTab} index={1}><Grid container spacing={2} alignItems="center">
+<Grid item xs={12} md={12}><Box></Box></Grid></Grid>
+</CustomTabPanel></Box></Grid></Grid>
+
                     </Paper>
                 </Grid>
 </Grid>

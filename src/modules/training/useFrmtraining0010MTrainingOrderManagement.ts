@@ -1,147 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioTrainingOrder {
-    CREATE_DATE: string;
-    CREATE_ID: string;
-    EPMGNO: string;
-    MODIFY_DATE: string;
-    MODIFY_ID: string;
-    RREGIONCD: string;
-    TCCOURSECD: string;
-    TOCOURSEGUBUN: string;
-    TOENDDATE: string;
-    TOENDTIME: string;
-    TOEXCEPTDATE: string;
-    TOINETJUBSUCNT: string;
-    TOINETJUBSUYN: string;
-    TOJUBSUMAXCNT: string;
-    TOJUBSUSTATUS: string;
-    TOLECTURENOTICE: string;
-    TOMAILNOTICE: string;
-    TOMGJIBUCD: string;
-    TOMGNO: string;
-    TOMUNJEGUBUN: string;
-    TOSEATCNT: string;
-    TOSEATLIMITYN: string;
-    TOSEATSELECTYN: string;
-    TOSEXLIMITYN: string;
-    TOSTARTDATE: string;
-    TOSTARTTIME: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    USE_YN: string;
-    TOEDUCONTENTS: string;
-    TOREMARK: string;
-    EPNM: string;
-    EPPARKINGINFO: string;
-    TODAYGUBUN: string;
-    TOCYBERSTARTDATE: string;
-    TOCYBERENDDATE: string;
-    TOMUNJEGUBUNNM: string;
-    CYBERDATE: string;
-    TOTFCSEQ: string;
-    TFCFEE: string;
-    TOREGION: string;
-    TOAUTOMSGGUBUN: string;
-    TOAUTODATE: string;
-    TOAWAITERCNT: string;
-    TOAWAITERREGCNT: string;
-    TOAWAITERYN: string;
-    TOJUBSUSTARTDATE: string;
-    TOINJUBSUCNT: string;
-    TODSTARTDATE: string;
-    TODENDDATE: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-    DATA2: string;
-}
-
-export interface Ids_oUseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourseGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInternetJubsuStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingOrderMgno {
-}
-
-export interface Ids_oInetJubsuYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMunjeGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamRoomMinimap {
-}
-
-export interface Ids_oModifyColumn {
-    COLUMNCD: string;
-    COLUMNNM: string;
-}
-
-export interface Ids_ioJubsu {
-}
-
-export interface Ids_ioYN {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oDayGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingFee {
-}
-
-export interface Ids_oSendYN {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInetWaitYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAcceptAwaiter {
-}
-
-export interface Ids_oModifyTime {
-}
-
-export interface Ids_oOnlineGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInetJubsuPwuseYn {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioTrainingOrder, Ids_oJibu, Ids_oCourse, Ids_oUseYn, Ids_oCourseGubun, Ids_oInternetJubsuStatus, Ids_oTrainingOrderMgno, Ids_oInetJubsuYn, Ids_oMunjeGubun, Ids_ioExamRoomMinimap, Ids_oModifyColumn, Ids_ioJubsu, Ids_ioYN, Ids_oDayGubun, Ids_oTrainingFee, Ids_oSendYN, Ids_oInetWaitYn, Ids_oAcceptAwaiter, Ids_oModifyTime, Ids_oOnlineGubun, Ids_oInetJubsuPwuseYn } from './Frmtraining0010MTrainingOrderManagementData';
 
 export const useFrmtraining0010MTrainingOrderManagement = () => {
     const [ds_ioTrainingOrder, setds_ioTrainingOrder] = useState<Ids_ioTrainingOrder[]>([]);
@@ -166,6 +25,7 @@ export const useFrmtraining0010MTrainingOrderManagement = () => {
     const [ds_oOnlineGubun, setds_oOnlineGubun] = useState<Ids_oOnlineGubun[]>([]);
     const [ds_oInetJubsuPwuseYn, setds_oInetJubsuPwuseYn] = useState<Ids_oInetJubsuPwuseYn[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -264,6 +124,8 @@ export const useFrmtraining0010MTrainingOrderManagement = () => {
         ds_oModifyTime,
         ds_oOnlineGubun,
         ds_oInetJubsuPwuseYn,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnAwaiter_OnClick,
         btnEduPlaceLink_OnClick,
         btnMinimap_OnClick,

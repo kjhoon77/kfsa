@@ -1,49 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioOrder {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioReport {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oFireStation {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_oBonbu {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-}
-
-export interface Ids_oDATA {
-}
-
-export interface Ids_ioFireStation {
-    BID: string;
-    SID: string;
-    CID: string;
-    GMGNO: string;
-    RCD: string;
-    SNM : string;
-}
+import type { Ids_ioOrder, Ids_ioChoiceYn, Ids_ioReport, Ids_ioCourse, Ids_oFireStation, Ids_oBonbu, Ids_oDATA, Ids_ioFireStation } from './Frmcust5030MFPISBonbuReportData';
 
 export const useFrmcust5030MFPISBonbuReport = () => {
     const [ds_ioOrder, setds_ioOrder] = useState<Ids_ioOrder[]>([]);
@@ -55,6 +12,7 @@ export const useFrmcust5030MFPISBonbuReport = () => {
     const [ds_oDATA, setds_oDATA] = useState<Ids_oDATA[]>([]);
     const [ds_ioFireStation, setds_ioFireStation] = useState<Ids_ioFireStation[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -94,6 +52,8 @@ export const useFrmcust5030MFPISBonbuReport = () => {
         ds_oBonbu,
         ds_oDATA,
         ds_ioFireStation,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnToExcel_OnClick,
         lfn_Cancel,
         lfn_End,

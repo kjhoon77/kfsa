@@ -1,42 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCustomerFee {
-    BNM: string;
-    CANCELDATE: string;
-    CCOURSECD: string;
-    CCOURSECDNM: string;
-    CFCMGNO: string;
-    CFGROUPMGNO: string;
-    CFGUBUN: string;
-    CFGUBUNCD: string;
-    CFGUBUNCDNM: string;
-    CFREGNM: string;
-    CFREMARK: string;
-    CFREPAYREF: string;
-    CNO: string;
-    CREGCD: string;
-    FEESEQ: string;
-    FMNM: string;
-    MEMBERGUBUN: string;
-    MGGTMGNO: string;
-    PMAMT: string;
-    PMBUYER: string;
-    PMMGNO: string;
-    PMPCORDERNO: string;
-    PMPGMGUBUN: string;
-    PMYEAR: string;
-    PONYDATE: string;
-    POSGTMGNO: string;
-    PROCDATE: string;
-    PROCGTMGNO: string;
-    REGDATE: string;
-    SEL: string;
-    SETLMGUBUN: string;
-    SETLMGUBUNNM: string;
-    SUNAPFEE: string;
-    SUNAPYEAR: string;
-}
+import type { Ids_oCustomerFee } from './Frmcust2011PCustomerSunapInfoData';
 
 export const useFrmcust2011PCustomerSunapInfo = () => {
     const [ds_oCustomerFee, setds_oCustomerFee] = useState<Ids_oCustomerFee[]>([]);

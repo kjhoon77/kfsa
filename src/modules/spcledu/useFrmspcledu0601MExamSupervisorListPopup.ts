@@ -1,14 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oExamSupervisor {
-    SIMGNO: string;
-    SIPERSONNM: string;
-    SIBDAY: string;
-    SITEL: string;
-    SICOMPNM: string;
-    SIJIBUCD: string;
-}
+import type { Ids_oExamSupervisor } from './Frmspcledu0601MExamSupervisorListPopupData';
 
 export const useFrmspcledu0601MExamSupervisorListPopup = () => {
     const [ds_oExamSupervisor, setds_oExamSupervisor] = useState<Ids_oExamSupervisor[]>([]);

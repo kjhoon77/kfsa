@@ -1,76 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamCheat {
-    BIRTHDAY: string;
-    ECCHEATGUBUN: string;
-    ECCHEATREASON: string;
-    ECMGNO: string;
-    ECMODDATE: string;
-    ECREGDATE: string;
-    ECREGSABUN: string;
-    ECREMARK: string;
-    ECSTOPENDDATE: string;
-    ECSTOPSTARTDATE: string;
-    ECTCCOURSECD: string;
-    ECTPMGNO: string;
-    EXMODSABUN: string;
-    TCCOURSENM: string;
-    TPNM: string;
-    TPBIRTHDAY: string;
-}
-
-export interface Ids_oCheatGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oPrintGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamOrderMgno {
-}
-
-export interface Ids_oExamCheatReport {
-}
-
-export interface Ids_iFormSave {
-    I_PROC: string;
-    I_FCCD: string;
-    I_FAMGNO: string;
-    I_PK1VAL: string;
-    I_PK2VAL: string;
-    I_FRDATE: string;
-    I_PATH: string;
-    I_FILENM: string;
-}
-
-export interface Ids_oFormSave {
-}
-
-export interface Ids_iFormDelete {
-    I_FCCD: string;
-    I_FAMGNO: string;
-    I_PK1VAL: string;
-    I_PK2VAL: string;
-    I_PATH: string;
-    I_FILENM: string;
-}
-
-export interface Ids_oFormDelete {
-}
+import type { Ids_ioExamCheat, Ids_oCheatGubun, Ids_oCourse, Ids_oPrintGubun, Ids_oJibu, Ids_oExamOrderMgno, Ids_oExamCheatReport, Ids_iFormSave, Ids_oFormSave, Ids_iFormDelete, Ids_oFormDelete } from './Frmtraining0420MExamCheatingManagementData';
 
 export const useFrmtraining0420MExamCheatingManagement = () => {
     const [ds_ioExamCheat, setds_ioExamCheat] = useState<Ids_ioExamCheat[]>([]);
@@ -85,6 +15,7 @@ export const useFrmtraining0420MExamCheatingManagement = () => {
     const [ds_iFormDelete, setds_iFormDelete] = useState<Ids_iFormDelete[]>([]);
     const [ds_oFormDelete, setds_oFormDelete] = useState<Ids_oFormDelete[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -166,6 +97,8 @@ export const useFrmtraining0420MExamCheatingManagement = () => {
         ds_oFormSave,
         ds_iFormDelete,
         ds_oFormDelete,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnFormDelete_OnClick,
         btnLocalFormView_OnClick,
         btnMutilSort_OnClick,

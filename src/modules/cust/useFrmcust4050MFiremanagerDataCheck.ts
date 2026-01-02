@@ -1,76 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioYear {
-    CD: string;
-}
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMemberGubun_0 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_ioAssociationFiremanagerData {
-}
-
-export interface Ids_ioFireStationFiremanagerData {
-    COL01: string;
-    COL02: string;
-    COL03: string;
-    COL04: string;
-    COL05: string;
-    COL06: string;
-    COL07: string;
-    COL08: string;
-    COL09: string;
-    COL10: string;
-    COL11: string;
-    COL12: string;
-    COL13: string;
-    COL14: string;
-    COL15: string;
-    COL16: string;
-    COL17: string;
-    COL18: string;
-}
-
-export interface Ids_ioGetSysdateSearch {
-}
-
-export interface Ids_ioAssociationFireStation {
-}
-
-export interface Ids_ioFireStationAssociation {
-}
-
-export interface Ids_ioAssociationFireStationBnmaAddrFmnm {
-}
+import type { Ids_ioYear, Ids_ioChoiceYn, Ids_oCourse, Ids_oJibu, Ids_ioMemberGubun_0, Ids_ioCourseYn, Ids_oRegion, Ids_ioAssociationFiremanagerData, Ids_ioFireStationFiremanagerData, Ids_ioGetSysdateSearch, Ids_ioAssociationFireStation, Ids_ioFireStationAssociation, Ids_ioAssociationFireStationBnmaAddrFmnm } from './Frmcust4050MFiremanagerDataCheckData';
 
 export const useFrmcust4050MFiremanagerDataCheck = () => {
     const [ds_ioYear, setds_ioYear] = useState<Ids_ioYear[]>([]);
@@ -87,6 +17,7 @@ export const useFrmcust4050MFiremanagerDataCheck = () => {
     const [ds_ioFireStationAssociation, setds_ioFireStationAssociation] = useState<Ids_ioFireStationAssociation[]>([]);
     const [ds_ioAssociationFireStationBnmaAddrFmnm, setds_ioAssociationFireStationBnmaAddrFmnm] = useState<Ids_ioAssociationFireStationBnmaAddrFmnm[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -145,6 +76,8 @@ export const useFrmcust4050MFiremanagerDataCheck = () => {
         ds_ioAssociationFireStation,
         ds_ioFireStationAssociation,
         ds_ioAssociationFireStationBnmaAddrFmnm,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         FireStation_Onclick,
         btnFireStationCheck_OnClick,
         btnResult_OnClick,

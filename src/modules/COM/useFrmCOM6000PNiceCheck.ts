@@ -1,35 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oTrainingPerson {
-    IIDIRPATH: string;
-    IIREALNM: string;
-    TPAUTHYN: string;
-    TPCUSTGUBUN: string;
-    TPEMAILDOMAIN: string;
-    TPEMAILID: string;
-    TPHPTEL: string;
-    TPLASTIMGSEQ: string;
-    TPMGNO: string;
-    TPNM: string;
-    TPRESIDENTNO: string;
-    TPTEL: string;
-}
-
-export interface Ids_iTrainingPerson {
-    IIDIRPATH: string;
-    IIREALNM: string;
-    TPAUTHYN: string;
-    TPCUSTGUBUN: string;
-    TPEMAILDOMAIN: string;
-    TPEMAILID: string;
-    TPHPTEL: string;
-    TPLASTIMGSEQ: string;
-    TPMGNO: string;
-    TPNM: string;
-    TPRESIDENTNO: string;
-    TPTEL: string;
-}
+import type { Ids_oTrainingPerson, Ids_iTrainingPerson } from './FrmCOM6000PNiceCheckData';
 
 export const useFrmCOM6000PNiceCheck = () => {
     const [ds_oTrainingPerson, setds_oTrainingPerson] = useState<Ids_oTrainingPerson[]>([]);

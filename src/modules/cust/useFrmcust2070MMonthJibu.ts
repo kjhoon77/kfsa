@@ -1,44 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMonth {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYear {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCusFeeChk {
-    CFCCHKGUBUN: string;
-    CFCCLOSEGUBUN: string;
-    CFCDATE: string;
-    CFCGTMGNO: string;
-    CFCMONTH: string;
-    CFCSABUN: string;
-    CFCYEAR: string;
-    GTDEPTNM: string;
-    SEL: string;
-}
-
-export interface Ids_iCusFeeChk {
-    CFCCHKGUBUN: string;
-    CFCCLOSEGUBUN: string;
-    CFCDATE: string;
-    CFCGTMGNO: string;
-    CFCMONTH: string;
-    CFCSABUN: string;
-    CFCYEAR: string;
-    GTDEPTNM: string;
-    SEL: string;
-}
+import type { Ids_ioJibu, Ids_ioMonth, Ids_ioYear, Ids_ioCusFeeChk, Ids_iCusFeeChk } from './Frmcust2070MMonthJibuData';
 
 export const useFrmcust2070MMonthJibu = () => {
     const [ds_ioJibu, setds_ioJibu] = useState<Ids_ioJibu[]>([]);
@@ -47,6 +9,7 @@ export const useFrmcust2070MMonthJibu = () => {
     const [ds_ioCusFeeChk, setds_ioCusFeeChk] = useState<Ids_ioCusFeeChk[]>([]);
     const [ds_iCusFeeChk, setds_iCusFeeChk] = useState<Ids_iCusFeeChk[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -89,6 +52,8 @@ export const useFrmcust2070MMonthJibu = () => {
         ds_ioYear,
         ds_ioCusFeeChk,
         ds_iCusFeeChk,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnProcCancel_OnClick,
         btnProc_OnClick,
         lfn_Cancel,

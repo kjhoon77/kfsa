@@ -1,24 +1,54 @@
 // @ts-nocheck
 export const Frmprofes0001MProfMgmtList3Data = {};
 
-export const ds_ds_pfgubun = [
+export interface Ids_ioList {
+    YEARQ?: string;
+}
+
+export interface Ids_oList {
+}
+
+export interface Ids_ioList3 {
+}
+
+export interface Ids_pfgubun {
+    CODE?: string;
+    CODENM?: string;
+}
+
+export const ds_ds_pfgubun: Ids_pfgubun[] = [
     { CODE: 'A', CODENM: '교수' },
     { CODE: 'B', CODENM: '부교수' },
     { CODE: 'C', CODENM: '기타교수' },
 ];
 
-export const ds_ds_oRepayYn = [
+export interface Ids_oRepayYn {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oRepayYn: Ids_oRepayYn[] = [
     { CD: '', DATA: '전체' },
     { CD: '1', DATA: '초과' },
     { CD: '2', DATA: '미준수' },
 ];
 
-export const ds_ds_TimeChage = [
+export interface Ids_TimeChage {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_TimeChage: Ids_TimeChage[] = [
     { CD: '1', DATA: '기존' },
     { CD: '2', DATA: '신규' },
 ];
 
-export const ds_ds_PFJIBU = [
+export interface Ids_PFJIBU {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_PFJIBU: Ids_PFJIBU[] = [
     { CD: '', DATA: ' ' },
     { CD: '0211', DATA: '감사실' },
     { CD: '0220', DATA: '정책연구소' },
@@ -42,3 +72,8 @@ export const ds_ds_PFJIBU = [
     { CD: '1071', DATA: '경남' },
     { CD: '1121', DATA: '제주' },
 ];
+
+export interface Ids_oJibu {
+    CD?: string;
+    DATA?: string;
+}

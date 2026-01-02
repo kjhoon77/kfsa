@@ -1,18 +1,11 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioCommonCode {
-    CCCD: string;
-    CCCDNM: string;
-    CCGROUPCD: string;
-    CCORDERSEQ: string;
-    CCREMARK: string;
-    USE_YN: string;
-}
+import type { Ids_ioCommonCode } from './Frmsys0030MCommonCodeManagementData';
 
 export const useFrmsys0030MCommonCodeManagement = () => {
     const [ds_ioCommonCode, setds_ioCommonCode] = useState<Ids_ioCommonCode[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -53,6 +46,8 @@ export const useFrmsys0030MCommonCodeManagement = () => {
     return {
         isLoading,
         ds_ioCommonCode,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_Delete,

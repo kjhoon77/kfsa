@@ -1,7 +1,17 @@
 // @ts-nocheck
 export const Frmcust1230MEduMonthJibuData = {};
 
-export const ds_ds_ioMonth = [
+export interface Ids_ioJibu {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_ioMonth {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_ioMonth: Ids_ioMonth[] = [
     { CD: '', DATA: '전체' },
     { CD: '01', DATA: '1월' },
     { CD: '02', DATA: '2월' },
@@ -16,3 +26,36 @@ export const ds_ds_ioMonth = [
     { CD: '11', DATA: '11월' },
     { CD: '12', DATA: '12월' },
 ];
+
+export interface Ids_ioYear {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_ioCusEduChk {
+    CECCHKGUBUN?: string;
+    CECCLOSEGUBUN?: string;
+    CECDATE?: string;
+    CECGTMGNO?: string;
+    CECMONTH?: string;
+    CECSABUN?: string;
+    CECYEAR?: string;
+    GTDEPTNM?: string;
+    SEL?: string;
+    CHKGUBUN?: string;
+    CLOSEGUBUN?: string;
+}
+
+export interface Ids_iCusEduChk {
+    CECCHKGUBUN?: string;
+    CECCLOSEGUBUN?: string;
+    CECDATE?: string;
+    CECGTMGNO?: string;
+    CECMONTH?: string;
+    CECSABUN?: string;
+    CECYEAR?: string;
+    GTDEPTNM?: string;
+    SEL?: string;
+    CHKGUBUN?: string;
+    CLOSEGUBUN?: string;
+}

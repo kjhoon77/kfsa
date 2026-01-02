@@ -1,82 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioInternetJusu {
-    EJADDR1: string;
-    EJADDR2: string;
-    EJBULDADDR: string;
-    EJBULDNM: string;
-    EJLASTEJHSEQ: string;
-    EJLASTEOHSEQ: string;
-    EJLASTESSEQ: string;
-    EJLASTSUNAPGUBUN: string;
-    EJMGNO: string;
-    EJPASSYN: string;
-    EJPERSONNM: string;
-    EJRESIDENTNO: string;
-    EJROADNM: string;
-    EJTPMGNO: string;
-    EJZZIPCD: string;
-    EOENDTIME: string;
-    EOEPMGNO: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOHAFTEREOMGNO: string;
-    EOHAFTERJUBSUNO: string;
-    EOHCHANGEDATE: string;
-    EOHJUBSUGUBUN: string;
-    EOHJUBSUNO: string;
-    EOHLASTGUBUN: string;
-    EOHSEQ: string;
-    EOINETJUBSUCNT: string;
-    EOINETJUBSUYN: string;
-    EOJUBSUMAXCNT: string;
-    EOJUBSUSTATUS: string;
-    EOMGGTMGNO: string;
-    EOMGNO: string;
-    EOSEATCNT: string;
-    EOSTARTTIME: string;
-    EOTCCOURSECD: string;
-    EOUSEYN: string;
-    EOYEAR: string;
-    ESGUBUNCD: string;
-    ESPONYDATE: string;
-    ESPROCDATE: string;
-    ESSEQ: string;
-    GTDEPTNM: string;
-    GTTEAMNM: string;
-    SEL: string;
-    TCCOURSENM: string;
-    TFCFEE: string;
-    ESGUBUN: string;
-    ESREGDATE: string;
-    ESSUNAPGUBUN: string;
-}
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oInternetJubsuStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioInternetJusu, Ids_oWorkGubun, Ids_oCourse, Ids_oJibu, Ids_oInternetJubsuStatus, Ids_oGubun } from './Frmspcledu0412MInternetExamJubsuDateModifyData';
 
 export const useFrmspcledu0412MInternetExamJubsuDateModify = () => {
     const [ds_ioInternetJusu, setds_ioInternetJusu] = useState<Ids_ioInternetJusu[]>([]);
@@ -86,6 +10,7 @@ export const useFrmspcledu0412MInternetExamJubsuDateModify = () => {
     const [ds_oInternetJubsuStatus, setds_oInternetJubsuStatus] = useState<Ids_oInternetJubsuStatus[]>([]);
     const [ds_oGubun, setds_oGubun] = useState<Ids_oGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -130,6 +55,8 @@ export const useFrmspcledu0412MInternetExamJubsuDateModify = () => {
         ds_oJibu,
         ds_oInternetJubsuStatus,
         ds_oGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

@@ -1,53 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamInfo {
-    PASS: string;
-    NOEXAM: string;
-    EOEXAMDATE: string;
-}
-
-export interface Ids_ioEjpassLicenseNotYetSunab {
-}
-
-export interface Ids_ioWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioReport {
-}
-
-export interface Ids_ioReport2 {
-}
-
-export interface Ids_ioEjpassLicenseAlreadySunab {
-}
-
-export interface Ids_ioEjpassEarlyLicenseAlreadySunab {
-}
-
-export interface Ids_ioExamPrint {
-}
-
-export interface Ids_ioRepayReport {
-}
-
-export interface Ids_oPrintReceiptMast {
-}
-
-export interface Ids_oPrintReceiptDtl {
-}
+import type { Ids_oCourse, Ids_oJibu, Ids_ioExamInfo, Ids_ioEjpassLicenseNotYetSunab, Ids_ioWorkGubun, Ids_ioReport, Ids_ioReport2, Ids_ioEjpassLicenseAlreadySunab, Ids_ioEjpassEarlyLicenseAlreadySunab, Ids_ioExamPrint, Ids_ioRepayReport, Ids_oPrintReceiptMast, Ids_oPrintReceiptDtl } from './Frmtraining0651MExamFailPassCancelLicenseRepayData';
 
 export const useFrmtraining0651MExamFailPassCancelLicenseRepay = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -64,6 +17,7 @@ export const useFrmtraining0651MExamFailPassCancelLicenseRepay = () => {
     const [ds_oPrintReceiptMast, setds_oPrintReceiptMast] = useState<Ids_oPrintReceiptMast[]>([]);
     const [ds_oPrintReceiptDtl, setds_oPrintReceiptDtl] = useState<Ids_oPrintReceiptDtl[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -131,6 +85,8 @@ export const useFrmtraining0651MExamFailPassCancelLicenseRepay = () => {
         ds_ioRepayReport,
         ds_oPrintReceiptMast,
         ds_oPrintReceiptDtl,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnPrintRctTotal_OnClick,
         btnReportBatch_OnClick,

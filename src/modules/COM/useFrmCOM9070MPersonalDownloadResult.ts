@@ -1,46 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioJibu {
-    DEPTCD: string;
-    DEPTNM: string;
-}
-
-export interface Ids_ioMonth {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioYear {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oDownloadChk {
-    PDCCHKGUBUN: string;
-    PDCCLOSEGUBUN: string;
-    PDCREGDATE: string;
-    PDCGTMGNO: string;
-    PDCMONTH: string;
-    PDCREGSABUN: string;
-    PDCYEAR: string;
-    SEL: string;
-    PDCCHKREMARK: string;
-    PNM: string;
-    GTDEPTNM: string;
-}
-
-export interface Ids_iDownloadChk {
-    CFCCHKGUBUN: string;
-    CFCCLOSEGUBUN: string;
-    CFCDATE: string;
-    CFCGTMGNO: string;
-    CFCMONTH: string;
-    CFCSABUN: string;
-    CFCYEAR: string;
-    GTDEPTNM: string;
-    SEL: string;
-}
+import type { Ids_ioJibu, Ids_ioMonth, Ids_ioYear, Ids_oDownloadChk, Ids_iDownloadChk } from './FrmCOM9070MPersonalDownloadResultData';
 
 export const useFrmCOM9070MPersonalDownloadResult = () => {
     const [ds_ioJibu, setds_ioJibu] = useState<Ids_ioJibu[]>([]);
@@ -49,6 +9,7 @@ export const useFrmCOM9070MPersonalDownloadResult = () => {
     const [ds_oDownloadChk, setds_oDownloadChk] = useState<Ids_oDownloadChk[]>([]);
     const [ds_iDownloadChk, setds_iDownloadChk] = useState<Ids_iDownloadChk[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -88,6 +49,8 @@ export const useFrmCOM9070MPersonalDownloadResult = () => {
         ds_ioYear,
         ds_oDownloadChk,
         ds_iDownloadChk,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnProcCancel_OnClick,
         btnProc_OnClick,
         lfn_Cancel,

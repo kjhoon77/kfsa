@@ -1,7 +1,30 @@
 // @ts-nocheck
 export const Frmsys0055PAddrSearchData = {};
 
-export const ds_ds_oSido = [
+export interface Ids_oPostCode {
+    PMGNO?: string;
+    PPOSTCD?: string;
+    PSEQ?: string;
+    PSIDO?: string;
+    PKU?: string;
+    PDONG?: string;
+    PRI?: string;
+    PDOSEO?: string;
+    PSAN?: string;
+    PSTARTBUNJI?: string;
+    PENDBUNJI?: string;
+    PBUILDNM?: string;
+    PFULLADDR?: string;
+    PADDR1?: string;
+}
+
+export interface Ids_oSido {
+    CD?: string;
+    DATA?: string;
+    JIBUCD?: string;
+}
+
+export const ds_ds_oSido: Ids_oSido[] = [
     { CD: '11', DATA: '서울특별시', JIBUCD: '1011' },
     { CD: '26', DATA: '부산광역시', JIBUCD: '1021' },
     { CD: '27', DATA: '대구광역시', JIBUCD: '1031' },
@@ -21,7 +44,83 @@ export const ds_ds_oSido = [
     { CD: '50', DATA: '제주특별자치도', JIBUCD: '1121' },
 ];
 
-export const ds_ds_oAddrGubun = [
+export interface Ids_oDong {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oRoad {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_iSearch {
+    SIDO?: string;
+    ADDR?: string;
+    BUILDMGNO?: string;
+    ROADMGNO?: string;
+}
+
+export interface Ids_oRoadList {
+    RBUILDMGNO?: string;
+    RZIPCD?: string;
+    RADDR?: string;
+    ROADPART1?: string;
+    ROADPART2?: string;
+    ROADMGNO?: string;
+}
+
+export interface Ids_iPostAddrDivide {
+    ADDR1?: string;
+    ADDR2?: string;
+    ZIPCD?: string;
+}
+
+export interface Ids_oPostAddrDivide {
+}
+
+export interface Ids_oRoadDetail {
+    ROADMGNO?: string;
+    RLAWCD?: string;
+    RSIDONM?: string;
+    RKUNM?: string;
+    RLAWDONGNM?: string;
+    RLAWRINM?: string;
+    RSANGUBUN?: string;
+    RMAINBUNJI?: string;
+    RSUBBUNJI?: string;
+    RROADNMCD?: string;
+    RROADNM?: string;
+    RUNDERGUBUN?: string;
+    RBUILDMAINNO?: string;
+    RBUILDSUBNO?: string;
+    RBUILDNM?: string;
+    RDETAILBUILDNM?: string;
+    RBUILDMGNO?: string;
+    RDONGNO?: string;
+    RDONGCD?: string;
+    RDONGNM?: string;
+    RZIPCD?: string;
+    RZIPNO?: string;
+    RLARGEDELIVERY?: string;
+    RSAUCD?: string;
+    RCHANGDATE?: string;
+    RKUBULDNM?: string;
+    RAPTGUBUN?: string;
+    RBASICMGNO?: string;
+    RDETAILADDRGUBUN?: string;
+    RETC1?: string;
+    RETC2?: string;
+    RGUBUN?: string;
+    RTABMGNO?: string;
+}
+
+export interface Ids_oAddrGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oAddrGubun: Ids_oAddrGubun[] = [
     { CD: '1', DATA: '도로명' },
     { CD: '0', DATA: '지번' },
 ];

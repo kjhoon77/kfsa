@@ -1,40 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioList {
-    YEARQ: string;
-}
-
-export interface Ids_oList {
-}
-
-export interface Ids_ioList3 {
-}
-
-export interface Ids_pfgubun {
-    CODE: string;
-    CODENM: string;
-}
-
-export interface Ids_oRepayYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_TimeChage {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_PFJIBU {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioList, Ids_oList, Ids_ioList3, Ids_pfgubun, Ids_oRepayYn, Ids_TimeChage, Ids_PFJIBU, Ids_oJibu } from './Frmprofes0001MProfMgmtList3Data';
 
 export const useFrmprofes0001MProfMgmtList3 = () => {
     const [ds_ioList, setds_ioList] = useState<Ids_ioList[]>([]);
@@ -46,6 +12,7 @@ export const useFrmprofes0001MProfMgmtList3 = () => {
     const [ds_PFJIBU, setds_PFJIBU] = useState<Ids_PFJIBU[]>([]);
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -85,6 +52,8 @@ export const useFrmprofes0001MProfMgmtList3 = () => {
         ds_TimeChage,
         ds_PFJIBU,
         ds_oJibu,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnToExcel_OnClick,
         lfn_End,
         lfn_PrintScreen,

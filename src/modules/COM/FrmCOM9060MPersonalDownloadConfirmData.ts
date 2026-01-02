@@ -1,7 +1,17 @@
 // @ts-nocheck
 export const FrmCOM9060MPersonalDownloadConfirmData = {};
 
-export const ds_ds_ioMonth = [
+export interface Ids_ioJibu {
+    DEPTCD?: string;
+    DEPTNM?: string;
+}
+
+export interface Ids_ioMonth {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_ioMonth: Ids_ioMonth[] = [
     { CD: '01', DATA: '1월' },
     { CD: '02', DATA: '2월' },
     { CD: '03', DATA: '3월' },
@@ -16,7 +26,37 @@ export const ds_ds_ioMonth = [
     { CD: '12', DATA: '12월' },
 ];
 
-export const ds_ds_ioChoiceGubun = [
+export interface Ids_ioYear {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_ioChoiceGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_ioChoiceGubun: Ids_ioChoiceGubun[] = [
     { CD: '0', DATA: '정상' },
     { CD: '1', DATA: '비정상' },
 ];
+
+export interface Ids_oDownloadList1 {
+}
+
+export interface Ids_oDownloadList2 {
+}
+
+export interface Ids_oDownloadList3 {
+}
+
+export interface Ids_oDownloadChk {
+}
+
+export interface Ids_iDownloadChk {
+    PDCGTMGNO?: string;
+    PDCYEAR?: string;
+    PDCMONTH?: string;
+    PDCCHKGUBUN?: string;
+    PDCCHKREMARK?: string;
+}

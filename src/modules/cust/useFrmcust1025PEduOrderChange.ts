@@ -1,38 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oEduOrder {
-    CREATE_DATE: string;
-    CREATE_GUBUN: string;
-    CREATE_ID: string;
-    CREATE_IP: string;
-    JJIBUCD: string;
-    MODIFY_DATE: string;
-    MODIFY_ID: string;
-    MODIFY_IP: string;
-    ZBUNJI: string;
-    SIKUDONG: string;
-    ZHO: string;
-    ZREGIONCD: string;
-    ZSEQ: string;
-    ZZIPCD: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduOrderChange {
-}
-
-export interface Ids_ioEduChangeinfo {
-}
+import type { Ids_oEduOrder, Ids_oJibu, Ids_oCourse, Ids_oEduOrderChange, Ids_ioEduChangeinfo } from './Frmcust1025PEduOrderChangeData';
 
 export const useFrmcust1025PEduOrderChange = () => {
     const [ds_oEduOrder, setds_oEduOrder] = useState<Ids_oEduOrder[]>([]);

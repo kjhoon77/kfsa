@@ -1,47 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCustStatus {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCustUser {
-    CCOURSECD: string;
-    CGTMGNO: string;
-    CMGNO: string;
-    CNO: string;
-    COVERCMGNO: string;
-    CREGCD: string;
-    CSTATUSGUBUN: string;
-    FMNM: string;
-    FMBIRTHDAY: string;
-    BNM: string;
-    BIRTHDAY: string;
-    FMPERSONKEY: string;
-}
-
-export interface Ids_oDetailCourse {
-    CD: string;
-    DATA: string;
-    PCD: string;
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
+import type { Ids_oJibu, Ids_oCourse, Ids_oCustStatus, Ids_oCustUser, Ids_oDetailCourse, Ids_oRegion } from './Frmcust1092PCustomerListData';
 
 export const useFrmcust1092PCustomerList = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);

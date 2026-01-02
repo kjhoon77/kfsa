@@ -1,36 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oClass {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oProGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_SearchJogeon {
-    EDUDATEST: string;
-    EDUDATEED: string;
-    EDUCLASS: string;
-    PROGUBUN: string;
-}
-
-export interface Ids_ProfesList {
-    THMGNO: string;
-    THSTATUS: string;
-    THPROCDATE: string;
-    THNAME: string;
-    THJIKWI: string;
-    THREMARK: string;
-}
-
-export interface Ids_Status {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oClass, Ids_oProGubun, Ids_SearchJogeon, Ids_ProfesList, Ids_Status } from './Frmprofes0007HistoryData';
 
 export const useFrmprofes0007History = () => {
     const [ds_oClass, setds_oClass] = useState<Ids_oClass[]>([]);

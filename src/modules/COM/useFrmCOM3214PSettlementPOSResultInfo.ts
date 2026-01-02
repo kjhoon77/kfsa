@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
+import type {  } from './FrmCOM3214PSettlementPOSResultInfoData';
 
 export const useFrmCOM3214PSettlementPOSResultInfo = () => {
     const [isLoading, setIsLoading] = useState(false);

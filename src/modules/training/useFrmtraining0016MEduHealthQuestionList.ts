@@ -1,29 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-    DATA2: string;
-}
-
-export interface Ids_oHealthQuestion {
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSearchGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBizGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oHealthQuestion, Ids_oJibu, Ids_oSearchGubun, Ids_oBizGubun } from './Frmtraining0016MEduHealthQuestionListData';
 
 export const useFrmtraining0016MEduHealthQuestionList = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -32,6 +9,7 @@ export const useFrmtraining0016MEduHealthQuestionList = () => {
     const [ds_oSearchGubun, setds_oSearchGubun] = useState<Ids_oSearchGubun[]>([]);
     const [ds_oBizGubun, setds_oBizGubun] = useState<Ids_oBizGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -71,6 +49,8 @@ export const useFrmtraining0016MEduHealthQuestionList = () => {
         ds_oJibu,
         ds_oSearchGubun,
         ds_oBizGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

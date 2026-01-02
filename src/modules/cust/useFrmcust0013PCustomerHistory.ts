@@ -1,33 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oModifyHistory {
-    DTL: string;
-    MHAFTERDATA: string;
-    MHBEFOREDATA: string;
-    MHCOLUMN: string;
-    MHGUBUN: string;
-    MHGUBUNNM: string;
-    MHKEY: string;
-    MHMGNO: string;
-    MHPROCDATE: string;
-    MHPROCIP: string;
-    MHPROCSABUN: string;
-    MHWORKGUBUN: string;
-    PDEPTCD: string;
-    PDEPTNM: string;
-    PPERSONNM: string;
-    PPOSITNNM: string;
-}
-
-export interface Ids_oManagerList {
-}
-
-export interface Ids_oChangeHistory {
-}
-
-export interface Ids_oMemberH {
-}
+import type { Ids_oModifyHistory, Ids_oManagerList, Ids_oChangeHistory, Ids_oMemberH } from './Frmcust0013PCustomerHistoryData';
 
 export const useFrmcust0013PCustomerHistory = () => {
     const [ds_oModifyHistory, setds_oModifyHistory] = useState<Ids_oModifyHistory[]>([]);
@@ -35,6 +8,7 @@ export const useFrmcust0013PCustomerHistory = () => {
     const [ds_oChangeHistory, setds_oChangeHistory] = useState<Ids_oChangeHistory[]>([]);
     const [ds_oMemberH, setds_oMemberH] = useState<Ids_oMemberH[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [tabValue_tabTab1, setTabValue_tabTab1] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -57,6 +31,8 @@ export const useFrmcust0013PCustomerHistory = () => {
         ds_oManagerList,
         ds_oChangeHistory,
         ds_oMemberH,
+        tabValue_tabTab1,
+        setTabValue_tabTab1,
         lfn_End,
     };
 };

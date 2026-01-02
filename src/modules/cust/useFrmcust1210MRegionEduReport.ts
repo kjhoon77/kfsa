@@ -1,108 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioChoiceYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMemberGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourseYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioReport {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_SearchJogeon {
-    REPORT_GUBUN: string;
-    YEAR: string;
-    JIBU: string;
-    REGION_GUBUN: string;
-    REGION1: string;
-    REGION2: string;
-    MEMBER_GUBUN: string;
-    COURSE_GUBUN: string;
-    COURSE: string;
-    COURSE1_6IN: string;
-    BIZ_GUBUN: string;
-    BIZ1: string;
-    BIZ2: string;
-    MEMBERYMD_GUBUN: string;
-    MEMBER_YMD_FR: string;
-    MEMBER_YMD_TO: string;
-    EDUYMD_GUBUN: string;
-    EDU_YMD_FR: string;
-    EDU_YMD_TO: string;
-    EDU_GUBUN: string;
-    EDU_ORDER: string;
-    EDU_ORDERGUBUN: string;
-}
-
-export interface Ids_EduList {
-}
-
-export interface Ids_oRegion {
-    CD: string;
-    DATA: string;
-    GTCD: string;
-}
-
-export interface Ids_oAdditionInfo {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioGijun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oFireCd {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-    CTCD: string;
-}
-
-export interface Ids_oBonbu {
-    CD: string;
-    DATA: string;
-    JIBUCD: string;
-    CTCD: string;
-}
-
-export interface Ids_ioExceptGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioSuccessionGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioChoiceYn, Ids_ioMemberGubun, Ids_ioCourse, Ids_ioJibu, Ids_ioCourseYn, Ids_ioReport, Ids_oEduGubun, Ids_SearchJogeon, Ids_EduList, Ids_oRegion, Ids_oAdditionInfo, Ids_ioGijun, Ids_oFireCd, Ids_oBonbu, Ids_ioExceptGubun, Ids_ioSuccessionGubun } from './Frmcust1210MRegionEduReportData';
 
 export const useFrmcust1210MRegionEduReport = () => {
     const [ds_ioChoiceYn, setds_ioChoiceYn] = useState<Ids_ioChoiceYn[]>([]);
@@ -122,6 +20,7 @@ export const useFrmcust1210MRegionEduReport = () => {
     const [ds_ioExceptGubun, setds_ioExceptGubun] = useState<Ids_ioExceptGubun[]>([]);
     const [ds_ioSuccessionGubun, setds_ioSuccessionGubun] = useState<Ids_ioSuccessionGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -174,6 +73,8 @@ export const useFrmcust1210MRegionEduReport = () => {
         ds_oBonbu,
         ds_ioExceptGubun,
         ds_ioSuccessionGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Print,

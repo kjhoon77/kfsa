@@ -1,35 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioHistorySearch {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioEduDataHistoryResearchEduList1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduStudent {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioHistorySearch, Ids_ioGubun, Ids_oJibu, Ids_ioEduDataHistoryResearchEduList1, Ids_oEduGubun, Ids_oEduStudent } from './Frmcust11081PEduDataHData';
 
 export const useFrmcust11081PEduDataH = () => {
     const [ds_ioHistorySearch, setds_ioHistorySearch] = useState<Ids_ioHistorySearch[]>([]);
@@ -39,6 +10,7 @@ export const useFrmcust11081PEduDataH = () => {
     const [ds_oEduGubun, setds_oEduGubun] = useState<Ids_oEduGubun[]>([]);
     const [ds_oEduStudent, setds_oEduStudent] = useState<Ids_oEduStudent[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -71,6 +43,8 @@ export const useFrmcust11081PEduDataH = () => {
         ds_ioEduDataHistoryResearchEduList1,
         ds_oEduGubun,
         ds_oEduStudent,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_EduDataHistorySearch,
         lfn_End,
         lfn_PrintScreen,

@@ -1,61 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioInternetCustomerJubsu {
-    SEL: string;
-    CNO: string;
-    EMMGNO: string;
-    EMSEQ: string;
-    EMEDSEQ: string;
-    EMCMGNO: string;
-    FMHFMMGNO: string;
-    ESGTMGNO: string;
-    ESGTDEPTNM: string;
-    ESYEAR: string;
-    ESDATE: string;
-    ESTIME: string;
-    EDUDATE: string;
-    ESCOUSECD: string;
-    ESCOURSENM: string;
-    FMNM: string;
-    EMEMAIL: string;
-    EMBUILDING: string;
-    EDPROCDATE: string;
-    EMTEL: string;
-    EMPHONE: string;
-    EMRESIDENT: string;
-    EMADDR: string;
-    EPNM: string;
-    EPFILE: string;
-    ESPREPARED: string;
-    ESGUBUN: string;
-    EMSTATUS: string;
-    EMPAYSTATUS: string;
-    EPPARKINGINFO: string;
-}
-
-export interface Ids_oEmailSeq {
-}
-
-export interface Ids_oStatus1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oIsuGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oJibu, Ids_oCourse, Ids_ioInternetCustomerJubsu, Ids_oEmailSeq, Ids_oStatus1, Ids_oIsuGubun } from './Frmcust1190MEmailSendManagementData';
 
 export const useFrmcust1190MEmailSendManagement = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
@@ -65,6 +10,7 @@ export const useFrmcust1190MEmailSendManagement = () => {
     const [ds_oStatus1, setds_oStatus1] = useState<Ids_oStatus1[]>([]);
     const [ds_oIsuGubun, setds_oIsuGubun] = useState<Ids_oIsuGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -109,6 +55,8 @@ export const useFrmcust1190MEmailSendManagement = () => {
         ds_oEmailSeq,
         ds_oStatus1,
         ds_oIsuGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

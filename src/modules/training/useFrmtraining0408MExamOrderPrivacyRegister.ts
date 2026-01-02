@@ -1,83 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oPassYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRepayYn {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamJubsu {
-    BIRTHDAY: string;
-    EJADDR1: string;
-    EJADDR2: string;
-    EJEXAMDATE: string;
-    EJEXPYN: string;
-    EJLASTEJHSEQ: string;
-    EJLASTEOHSEQ: string;
-    EJLASTESSEQ: string;
-    EJLASTSUNAPGUBUN: string;
-    EJMGNO: string;
-    EJPASSYN: string;
-    EJPERSONNM: string;
-    EJPROCGTMGNO: string;
-    EJBIRTHDAY: string;
-    EJTPMGNO: string;
-    EJZZIPCD: string;
-    EOENDTIME: string;
-    EOEXAMDATE: string;
-    EOEXAMORDER: string;
-    EOEXAMORDERGUBUN: string;
-    EOHAFTEREOMGNO: string;
-    EOHAFTERJUBSUNO: string;
-    EOHPROCDATE: string;
-    EOHEOMGNO: string;
-    EOHJUBSUGUBUN: string;
-    EOHJUBSUNO: string;
-    EOHLASTGUBUN: string;
-    EOHPROCGTMGNO: string;
-    EOHPSABUN: string;
-    EOHSEQ: string;
-    EOMGGTMGNO: string;
-    EOMGNO: string;
-    EOSTARTTIME: string;
-    EOTCCOURSECD: string;
-    EOYEAR: string;
-    TFCFEE: string;
-    GTDEPTNM: string;
-    GTTEAMNM: string;
-    IIDIRPATH: string;
-    IIREALNM: string;
-    TCCOURSENM: string;
-    TPHPTEL: string;
-    TPTEL: string;
-    TPEMAILID: string;
-    JUBSUGUBUN: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioJubsuGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRegisterYn {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oPassYn, Ids_oCourse, Ids_oRepayYn, Ids_oExamJubsu, Ids_oJibu, Ids_ioJubsuGubun, Ids_oRegisterYn } from './Frmtraining0408MExamOrderPrivacyRegisterData';
 
 export const useFrmtraining0408MExamOrderPrivacyRegister = () => {
     const [ds_oPassYn, setds_oPassYn] = useState<Ids_oPassYn[]>([]);
@@ -88,6 +11,7 @@ export const useFrmtraining0408MExamOrderPrivacyRegister = () => {
     const [ds_ioJubsuGubun, setds_ioJubsuGubun] = useState<Ids_ioJubsuGubun[]>([]);
     const [ds_oRegisterYn, setds_oRegisterYn] = useState<Ids_oRegisterYn[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -134,6 +58,8 @@ export const useFrmtraining0408MExamOrderPrivacyRegister = () => {
         ds_oJibu,
         ds_ioJubsuGubun,
         ds_oRegisterYn,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

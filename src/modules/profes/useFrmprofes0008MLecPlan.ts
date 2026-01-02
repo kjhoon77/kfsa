@@ -1,40 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oRadioGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRadioGubun1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRadioGubun2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRadioGubun3 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRadioGubun4 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRadioGubun5 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRadioGubun6 {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oRadioGubun, Ids_oRadioGubun1, Ids_oRadioGubun2, Ids_oRadioGubun3, Ids_oRadioGubun4, Ids_oRadioGubun5, Ids_oRadioGubun6 } from './Frmprofes0008MLecPlanData';
 
 export const useFrmprofes0008MLecPlan = () => {
     const [ds_oRadioGubun, setds_oRadioGubun] = useState<Ids_oRadioGubun[]>([]);
@@ -45,6 +11,7 @@ export const useFrmprofes0008MLecPlan = () => {
     const [ds_oRadioGubun5, setds_oRadioGubun5] = useState<Ids_oRadioGubun5[]>([]);
     const [ds_oRadioGubun6, setds_oRadioGubun6] = useState<Ids_oRadioGubun6[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -85,6 +52,8 @@ export const useFrmprofes0008MLecPlan = () => {
         ds_oRadioGubun4,
         ds_oRadioGubun5,
         ds_oRadioGubun6,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnCancelAbsent_OnClick,
         lfn_Cancel,
         lfn_End,

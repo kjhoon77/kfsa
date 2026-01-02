@@ -1,59 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oSearchGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioLicenseRsendSend {
-    ADDR: string;
-    CCCDNM: string;
-    FILEFULLPATH: string;
-    LHPERSONNM: string;
-    LLCSNO: string;
-    PRTDATE: string;
-    PRTDATE1: string;
-    RESIDENT: string;
-    SEX: string;
-    USEGUBUN: string;
-    RsendSend: string;
-    LicenseNo: string;
-    LRESIDENTNO: string;
-    LPERSONNM: string;
-    LHPRTDATE1: string;
-    LICENSEDATE2: string;
-    TJRESIDENTNO_SANG: string;
-    ImagePath: string;
-    ListGubun: string;
-    LicenseNo_DEFAULT: string;
-    LICENSENO_A: string;
-    LLCSNO2: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioExamCheatReport {
-}
-
-export interface Ids_ioReport {
-}
-
-export interface Ids_ioReport2 {
-}
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oSearchGubun, Ids_oCourse, Ids_ioLicenseRsendSend, Ids_oJibu, Ids_ioExamCheatReport, Ids_ioReport, Ids_ioReport2, Ids_oWorkGubun } from './Frmspcledu0310MLicenseRegisterPrintData';
 
 export const useFrmspcledu0310MLicenseRegisterPrint = () => {
     const [ds_oSearchGubun, setds_oSearchGubun] = useState<Ids_oSearchGubun[]>([]);
@@ -65,6 +12,8 @@ export const useFrmspcledu0310MLicenseRegisterPrint = () => {
     const [ds_ioReport2, setds_ioReport2] = useState<Ids_ioReport2[]>([]);
     const [ds_oWorkGubun, setds_oWorkGubun] = useState<Ids_oWorkGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [isVisible_divSearchGubun, setIsVisible_divSearchGubun] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -113,6 +62,10 @@ export const useFrmspcledu0310MLicenseRegisterPrint = () => {
         ds_ioReport,
         ds_ioReport2,
         ds_oWorkGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        isVisible_divSearchGubun,
+        setIsVisible_divSearchGubun,
         btnMutilSort_OnClick,
         btnPass_OnClick,
         lfn_Cancel,

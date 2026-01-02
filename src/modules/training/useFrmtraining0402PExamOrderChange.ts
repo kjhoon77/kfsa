@@ -1,48 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oExamOrder {
-    CREATE_DATE: string;
-    CREATE_GUBUN: string;
-    CREATE_ID: string;
-    CREATE_IP: string;
-    JJIBUCD: string;
-    MODIFY_DATE: string;
-    MODIFY_ID: string;
-    MODIFY_IP: string;
-    ZBUNJI: string;
-    SIKUDONG: string;
-    ZHO: string;
-    ZREGIONCD: string;
-    ZSEQ: string;
-    ZZIPCD: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-    DATA2: string;
-}
-
-export interface Ids_oExamOrderChange {
-}
-
-export interface Ids_ioExamChangeinfo {
-}
-
-export interface Ids_oStatus {
-}
-
-export interface Ids_oTrainingPassDate {
-}
-
-export interface Ids_oModifyTime {
-}
+import type { Ids_oExamOrder, Ids_oJibu, Ids_oCourse, Ids_oExamOrderChange, Ids_ioExamChangeinfo, Ids_oStatus, Ids_oTrainingPassDate, Ids_oModifyTime } from './Frmtraining0402PExamOrderChangeData';
 
 export const useFrmtraining0402PExamOrderChange = () => {
     const [ds_oExamOrder, setds_oExamOrder] = useState<Ids_oExamOrder[]>([]);

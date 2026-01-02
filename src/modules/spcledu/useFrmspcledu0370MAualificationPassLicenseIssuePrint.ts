@@ -1,45 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioLicenseList {
-    ADDR: string;
-    CCCDNM: string;
-    GTTEAMNM: string;
-    LHISSUEREASON: string;
-    LHPERSONNM: string;
-    LHPROCGTMGNO: string;
-    LHRESIDENTNO_SANG: string;
-    LLCSNO: string;
-    LSPROCAMOUNT: string;
-    LTCCOURSECD: string;
-    PNM: string;
-    PRTDATE: string;
-    PRTDATE_1: string;
-    RESIDENT: string;
-    SEX: string;
-    TCCOURSENM: string;
-    USEGUBUN: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oPassGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_ioLicenseList, Ids_oJibu, Ids_oGubun, Ids_oPassGubun } from './Frmspcledu0370MAualificationPassLicenseIssuePrintData';
 
 export const useFrmspcledu0370MAualificationPassLicenseIssuePrint = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -48,6 +9,7 @@ export const useFrmspcledu0370MAualificationPassLicenseIssuePrint = () => {
     const [ds_oGubun, setds_oGubun] = useState<Ids_oGubun[]>([]);
     const [ds_oPassGubun, setds_oPassGubun] = useState<Ids_oPassGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -90,6 +52,8 @@ export const useFrmspcledu0370MAualificationPassLicenseIssuePrint = () => {
         ds_oJibu,
         ds_oGubun,
         ds_oPassGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

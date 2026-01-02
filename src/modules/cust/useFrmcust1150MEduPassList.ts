@@ -1,34 +1,11 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_EduPassList {
-    EPPERSONNM: string;
-    EPBIRTHDAY: string;
-    BIRTHDAY: string;
-    CGTMGNO: string;
-    GTTEAMNM: string;
-    GTPRTSEQ: string;
-    CNO: string;
-    CREGCD: string;
-    RCNM: string;
-    RCORDERNO: string;
-    CCOURSECD: string;
-    CNM: string;
-    CSTATUSGUBUN: string;
-    CSTATUSGUBUNNM: string;
-    EPYEAR: string;
-    ESGUBUN: string;
-    ESSTUDENT: string;
-    ESSTUDENTNM: string;
-    BNM: string;
-    EPPASSDATE: string;
-    CNO_BUNHO: string;
-    EPPERSONKEY: string;
-}
+import type { Ids_EduPassList } from './Frmcust1150MEduPassListData';
 
 export const useFrmcust1150MEduPassList = () => {
     const [ds_EduPassList, setds_EduPassList] = useState<Ids_EduPassList[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -60,6 +37,8 @@ export const useFrmcust1150MEduPassList = () => {
     return {
         isLoading,
         ds_EduPassList,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

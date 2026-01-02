@@ -1,95 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioTrainingAbsent {
-    TJADDR1: string;
-    TJADDR2: string;
-    TJMGNO: string;
-    TJPERSONNM: string;
-    PERSONKEY: string;
-    BIRTHDAY: string;
-    TOENDDATE: string;
-    TOHJUBSUNO: string;
-    TOSTARTDATE: string;
-    BIRTHDAY: string;
-    ADAY1: string;
-    ADAY2: string;
-    ADAY3: string;
-    ADAY4: string;
-    ADAY5: string;
-    TOMGJIBUCD: string;
-    TOYEAR: string;
-    TOTCCOURSECD: string;
-    TOTRAININGORDER: string;
-    SEL: string;
-    TOMUNJEGUBUN: string;
-    ADAY6: string;
-    ADAY7: string;
-    ADAY8: string;
-    ADAY9: string;
-    ADAY10: string;
-    ADAY11: string;
-    ADAY12: string;
-    ADAY13: string;
-    ADAY14: string;
-    ADAY15: string;
-    ADAY16: string;
-    ADAY17: string;
-    ADAY18: string;
-    ADAY19: string;
-    ADAY20: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAbsentDateGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingJubsuCnt {
-    TJMGNO: string;
-    TOTCCOURSECD: string;
-    TOMUNJEGUBUN: string;
-}
-
-export interface Ids_oAbsentDateGubun1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAbsentDateGubun2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAbsentDateGubun3 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAbsentDateGubun4 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAbsentDateGubun5 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oAbsentDateGubun6 {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioTrainingAbsent, Ids_oCourse, Ids_oJibu, Ids_oAbsentDateGubun, Ids_oTrainingJubsuCnt, Ids_oAbsentDateGubun1, Ids_oAbsentDateGubun2, Ids_oAbsentDateGubun3, Ids_oAbsentDateGubun4, Ids_oAbsentDateGubun5, Ids_oAbsentDateGubun6 } from './Frmtraining0040MTrainingAbsentManagementData';
 
 export const useFrmtraining0040MTrainingAbsentManagement = () => {
     const [ds_ioTrainingAbsent, setds_ioTrainingAbsent] = useState<Ids_ioTrainingAbsent[]>([]);
@@ -104,6 +15,7 @@ export const useFrmtraining0040MTrainingAbsentManagement = () => {
     const [ds_oAbsentDateGubun5, setds_oAbsentDateGubun5] = useState<Ids_oAbsentDateGubun5[]>([]);
     const [ds_oAbsentDateGubun6, setds_oAbsentDateGubun6] = useState<Ids_oAbsentDateGubun6[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -164,6 +76,8 @@ export const useFrmtraining0040MTrainingAbsentManagement = () => {
         ds_oAbsentDateGubun4,
         ds_oAbsentDateGubun5,
         ds_oAbsentDateGubun6,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnCancelAbsent_OnClick,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,

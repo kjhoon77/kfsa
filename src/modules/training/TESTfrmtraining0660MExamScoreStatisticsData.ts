@@ -1,7 +1,12 @@
 // @ts-nocheck
 export const TESTfrmtraining0660MExamScoreStatisticsData = {};
 
-export const ds_ds_oPrintGubun = [
+export interface Ids_oPrintGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oPrintGubun: Ids_oPrintGubun[] = [
     { CD: '00', DATA: '성적일람표(게시용)' },
     { CD: '10', DATA: '성적일람표(응시번호순)' },
     { CD: '20', DATA: '성적일람표(석차순)' },
@@ -16,12 +21,93 @@ export const ds_ds_oPrintGubun = [
     { CD: '91', DATA: '문항별 정답현황' },
 ];
 
-export const ds_ds_oSearchGubun = [
+export interface Ids_oCourse {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oJibu {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oExamScoreOrderNo {
+    BIRTHDAY?: string;
+    EJPERSONNM?: string;
+    EOEXAMDATE?: string;
+    EOEXAMORDER?: string;
+    EOYEAR?: string;
+    ERAPLEXAMNO?: string;
+    ERPASSYN?: string;
+    ERRANK?: number;
+    ERSCORE?: number;
+    GTTEAMNM?: string;
+    TCCOURSENM?: string;
+    CNT?: string;
+    TCCOURSECD?: string;
+}
+
+export interface Ids_oExamPassName {
+    BIRTHDAY?: string;
+    EJPERSONNM?: string;
+    EOEXAMDATE?: string;
+    EOEXAMORDER?: string;
+    EOYEAR?: string;
+    ERAPLEXAMNO?: string;
+    ERPASSYN?: string;
+    ERRANK?: number;
+    ERSCORE?: number;
+    GTTEAMNM?: string;
+    TCCOURSENM?: string;
+    GTPRTSEQ?: string;
+    TCCOURSECD?: string;
+}
+
+export interface Ids_oExamNoPassName {
+    BIRTHDAY?: string;
+    EJPERSONNM?: string;
+    EOEXAMDATE?: string;
+    EOEXAMORDER?: string;
+    EOYEAR?: string;
+    ERAPLEXAMNO?: string;
+    ERPASSYN?: string;
+    ERRANK?: number;
+    ERSCORE?: number;
+    GTTEAMNM?: string;
+    TCCOURSENM?: string;
+    GTPRTSEQ?: string;
+    TCCOURSECD?: string;
+}
+
+export interface Ids_oSearchGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oSearchGubun: Ids_oSearchGubun[] = [
     { CD: 'ORDER', DATA: '회차조회' },
     { CD: 'DATE', DATA: '일자조회' },
 ];
 
-export const ds_ds_oExamRepeat = [
+export interface Ids_oExamOrderScoreStat {
+}
+
+export interface Ids_oExamJumsuPersonDistribution {
+}
+
+export interface Ids_oExamQuestionItemAnalysis {
+}
+
+export interface Ids_oExamJubsuCnt {
+    JUPSUCNT?: string;
+}
+
+export interface Ids_oExamRepeat {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oExamRepeat: Ids_oExamRepeat[] = [
     { CD: '0', DATA: '최종차수' },
     { CD: '1', DATA: '평가1차' },
     { CD: '2', DATA: '평가2차' },
@@ -30,7 +116,12 @@ export const ds_ds_oExamRepeat = [
     { CD: '5', DATA: '평가5차' },
 ];
 
-export const ds_ds_oExamNumberType = [
+export interface Ids_oExamNumberType {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oExamNumberType: Ids_oExamNumberType[] = [
     { CD: '01', DATA: '1종' },
     { CD: '02', DATA: '2종' },
     { CD: '03', DATA: '3종' },
@@ -132,3 +223,6 @@ export const ds_ds_oExamNumberType = [
     { CD: '99', DATA: '99종' },
     { CD: '100', DATA: '100종' },
 ];
+
+export interface Ids_oExamQuestionItemCorrectAnswer {
+}

@@ -1,7 +1,12 @@
 // @ts-nocheck
 export const Frmcust0011PSearchbuildingData = {};
 
-export const ds_ds_ioGubun = [
+export interface Ids_ioGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_ioGubun: Ids_ioGubun[] = [
     { CD: '1', DATA: '대상물명' },
     { CD: '2', DATA: '주소1' },
     { CD: '3', DATA: '번지' },
@@ -13,7 +18,52 @@ export const ds_ds_ioGubun = [
     { CD: '9', DATA: '이동탱크허가번호' },
 ];
 
-export const ds_ds_oCustomerStatus = [
+export interface Ids_oCustList {
+    ADDR?: string;
+    BBIZCD?: string;
+    BMGNO?: number;
+    BNM?: string;
+    BTEL?: string;
+    DPERMISSIONNO?: string;
+}
+
+export interface Ids_oManagerList {
+    BADDR1?: string;
+    BADDR2?: string;
+    BNM?: string;
+    BTEL?: string;
+    BZIPCD?: string;
+    CCOCD?: string;
+    CCOURSECD?: string;
+    CFIREMGNO?: string;
+    CGTMGNO?: string;
+    CNO?: string;
+    COVERCMGNO?: string;
+    CREGCD?: string;
+    CSTATUSGUBUN?: string;
+    EPPASSDATE?: string;
+    FMHSTARTDATE?: string;
+    FMNM?: string;
+    FMBIRTHDAY?: string;
+    OLHNM?: string;
+    BIRTHDAY?: string;
+    FMPERSONKEY?: string;
+}
+
+export interface Ids_oCustomerStatus {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oCustomerStatus: Ids_oCustomerStatus[] = [
     { CD: '0', DATA: '비회원' },
     { CD: '1', DATA: '회원' },
 ];
+
+export interface Ids_oBizGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oBnmCode {
+}

@@ -1,34 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioSmsPattern {
-    SPMGNO: string;
-    SPGTMGNO: string;
-    SPTYPE: string;
-    SPBIZGUBUN: string;
-    SPPATTERN: string;
-    SPREGDATE: string;
-    SPREGSABUN: string;
-    GTDEPTNM: string;
-    SPREGNAME: string;
-    SPTYPENM: string;
-    SPBIZGUBUNNM: string;
-}
-
-export interface Ids_oWorkGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSendGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioSmsPattern, Ids_oWorkGubun, Ids_oJibu, Ids_oSendGubun } from './Frmtraining0692MSMSPatternData';
 
 export const useFrmtraining0692MSMSPattern = () => {
     const [ds_ioSmsPattern, setds_ioSmsPattern] = useState<Ids_ioSmsPattern[]>([]);
@@ -36,6 +8,7 @@ export const useFrmtraining0692MSMSPattern = () => {
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [ds_oSendGubun, setds_oSendGubun] = useState<Ids_oSendGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -82,6 +55,8 @@ export const useFrmtraining0692MSMSPattern = () => {
         ds_oWorkGubun,
         ds_oJibu,
         ds_oSendGubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_Delete,

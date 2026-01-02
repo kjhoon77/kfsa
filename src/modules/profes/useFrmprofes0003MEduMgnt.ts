@@ -1,43 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_Gubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_Cours {
-    TCMUNJEGUBUN: string;
-    TCCOURSECD: string;
-    TCCOURSENM: string;
-    TCCOURSENM_A: string;
-    CGROUPCD: string;
-}
-
-export interface Ids_EduCourse {
-}
-
-export interface Ids_Gubun2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_MunJeGuBun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_Search2 {
-    TCSEARCHGUBUN: string;
-}
-
-export interface Ids_ioEduGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_EduCourseCDCheck {
-}
+import type { Ids_Gubun, Ids_Cours, Ids_EduCourse, Ids_Gubun2, Ids_MunJeGuBun, Ids_Search2, Ids_ioEduGubun, Ids_EduCourseCDCheck } from './Frmprofes0003MEduMgntData';
 
 export const useFrmprofes0003MEduMgnt = () => {
     const [ds_Gubun, setds_Gubun] = useState<Ids_Gubun[]>([]);
@@ -49,6 +12,7 @@ export const useFrmprofes0003MEduMgnt = () => {
     const [ds_ioEduGubun, setds_ioEduGubun] = useState<Ids_ioEduGubun[]>([]);
     const [ds_EduCourseCDCheck, setds_EduCourseCDCheck] = useState<Ids_EduCourseCDCheck[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -106,6 +70,8 @@ export const useFrmprofes0003MEduMgnt = () => {
         ds_Search2,
         ds_ioEduGubun,
         ds_EduCourseCDCheck,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_Delete,

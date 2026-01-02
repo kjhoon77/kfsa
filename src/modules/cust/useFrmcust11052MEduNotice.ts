@@ -1,37 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioEduNoticeHistoryResearchEdu {
-}
-
-export interface Ids_ioEduNoticeHistoryResearchEduList1 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioMemberGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioEduNoticeHistoryDay {
-}
-
-export interface Ids_ioEduNoticeHistoryResearchEduList2 {
-}
-
-export interface Ids_ioEduNoticeHistoryResearchEduList3 {
-}
-
-export interface Ids_oEduGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduStudent {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioEduNoticeHistoryResearchEdu, Ids_ioEduNoticeHistoryResearchEduList1, Ids_ioMemberGubun, Ids_ioEduNoticeHistoryDay, Ids_ioEduNoticeHistoryResearchEduList2, Ids_ioEduNoticeHistoryResearchEduList3, Ids_oEduGubun, Ids_oEduStudent } from './Frmcust11052MEduNoticeData';
 
 export const useFrmcust11052MEduNotice = () => {
     const [ds_ioEduNoticeHistoryResearchEdu, setds_ioEduNoticeHistoryResearchEdu] = useState<Ids_ioEduNoticeHistoryResearchEdu[]>([]);
@@ -43,6 +12,7 @@ export const useFrmcust11052MEduNotice = () => {
     const [ds_oEduGubun, setds_oEduGubun] = useState<Ids_oEduGubun[]>([]);
     const [ds_oEduStudent, setds_oEduStudent] = useState<Ids_oEduStudent[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -85,6 +55,8 @@ export const useFrmcust11052MEduNotice = () => {
         ds_ioEduNoticeHistoryResearchEduList3,
         ds_oEduGubun,
         ds_oEduStudent,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_EduPrint,
         lfn_End,

@@ -1,14 +1,42 @@
 // @ts-nocheck
 export const TESTfrmtraining0580MExamPaperManagementData = {};
 
-export const ds_ds_oAlphaType = [
+export interface Ids_ioExamPaper {
+    EPALPHATYPE?: string;
+    EPCOURSECD?: string;
+    EPNUMTYPE?: string;
+    EPQSTITEMCNT?: number;
+    EPTOTALPOINT?: number;
+    EPREMARK?: string;
+    USE_YN?: string;
+    EPCHASUGUBUN?: string;
+    EPSUBJECTGUBUN?: string;
+    SUBJECTGUBUN?: string;
+}
+
+export interface Ids_oAlphaType {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oAlphaType: Ids_oAlphaType[] = [
     { CD: 'A', DATA: 'A형' },
     { CD: 'B', DATA: 'B형' },
     { CD: 'C', DATA: 'C형' },
     { CD: 'D', DATA: 'D형' },
 ];
 
-export const ds_ds_oNumType = [
+export interface Ids_oCourse {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oNumType {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oNumType: Ids_oNumType[] = [
     { CD: '', DATA: '전체' },
     { CD: '01', DATA: '1종' },
     { CD: '02', DATA: '2종' },
@@ -112,14 +140,37 @@ export const ds_ds_oNumType = [
     { CD: '100', DATA: '100종' },
 ];
 
-export const ds_ds_oModifyColumn = [
+export interface Ids_ioExamPaperSearch {
+    EPALPHATYPE?: string;
+    EPCOURSECD?: string;
+    EPNUMTYPE?: string;
+    EPQSTITEMCNT?: number;
+    EPTOTALPOINT?: number;
+    EPREMARK?: string;
+    USE_YN?: string;
+    EPCHASUGUBUN?: string;
+    EPSUBJECTGUBUN?: string;
+    SUBJECTGUBUN?: string;
+}
+
+export interface Ids_oModifyColumn {
+    COLUMNCD?: string;
+    COLUMNNM?: string;
+}
+
+export const ds_ds_oModifyColumn: Ids_oModifyColumn[] = [
     { COLUMNCD: 'EPQSTITEMCNT', COLUMNNM: '문항수' },
     { COLUMNCD: 'EPTOTALPOINT', COLUMNNM: '총점' },
     { COLUMNCD: 'EPREMARK', COLUMNNM: '비고' },
     { COLUMNCD: 'USE_YN', COLUMNNM: '사용유무' },
 ];
 
-export const ds_ds_oSubjectGubun = [
+export interface Ids_oSubjectGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oSubjectGubun: Ids_oSubjectGubun[] = [
     { CD: '', DATA: '전체' },
     { CD: '1', DATA: '1과목' },
     { CD: '2', DATA: '2과목' },

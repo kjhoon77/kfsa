@@ -1,7 +1,38 @@
 // @ts-nocheck
 export const Frmcust2060MMonthMatchingData = {};
 
-export const ds_ds_ioMonth = [
+export interface Ids_oJibu {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oCusFeeChk {
+    CFCCHKGUBUN?: string;
+    CFCCLOSEGUBUN?: string;
+    CFCGTMGNO?: string;
+    CFCYEAR?: string;
+    CFCMONTH?: string;
+}
+
+export interface Ids_iCusFeeChk {
+    CFCCHKGUBUN?: string;
+    CFCCLOSEGUBUN?: string;
+    CFCGTMGNO?: string;
+    CFCYEAR?: string;
+    CFCMONTH?: string;
+}
+
+export interface Ids_ioYear {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_ioMonth {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_ioMonth: Ids_ioMonth[] = [
     { CD: '01', DATA: '1월' },
     { CD: '02', DATA: '2월' },
     { CD: '03', DATA: '3월' },
@@ -15,3 +46,15 @@ export const ds_ds_ioMonth = [
     { CD: '11', DATA: '11월' },
     { CD: '12', DATA: '12월' },
 ];
+
+export interface Ids_ioCusFeeChk {
+    CFCCHKGUBUN?: string;
+    CFCCLOSEGUBUN?: string;
+    CFCDATE?: string;
+    CFCGTMGNO?: string;
+    CFCMONTH?: string;
+    CFCSABUN?: string;
+    CFCYEAR?: string;
+    GTDEPTNM?: string;
+    SEL?: string;
+}

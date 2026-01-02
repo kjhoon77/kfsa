@@ -1,12 +1,13 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust2080MDailyFeeReportGateway } from './useFrmcust2080MDailyFeeReportGateway';
 import * as Frmcust2080MDailyFeeReportGatewayData from './Frmcust2080MDailyFeeReportGatewayData';
+import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 
 export const Frmcust2080MDailyFeeReportGateway = () => {
     const hook = useFrmcust2080MDailyFeeReportGateway();
@@ -27,9 +28,9 @@ export const Frmcust2080MDailyFeeReportGateway = () => {
                 <Typography variant="h5">기본정보</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_localExcel}>엑셀로 저장</Button>
-<Button variant="contained"  onClick={hook.lfn_PrintScreen}>화면 출력</Button>
-<Button variant="contained"  onClick={hook.lfn_End}>닫기</Button>
-<Button variant="contained"  onClick={hook.lfn_Cancel}>입력 초기화</Button>
+<Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
+<Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
+<Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Cancel}>입력 초기화</Button>
 
                 </Stack>
             </Stack>
@@ -41,34 +42,46 @@ export const Frmcust2080MDailyFeeReportGateway = () => {
                         <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>지부</Typography>
-                        <FormControl size="small" fullWidth><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust2080MDailyFeeReportGatewayData.ds_ds_ioJibu || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                        <FormControl size="small" sx={{ width: 150 }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust2080MDailyFeeReportGatewayData.ds_ds_ioJibu || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
                     </Stack>
                 </Grid><Grid item xs={12} md={5}><Box> 전자결재 연동 시 첨부파일(해당일자의 수납내역 리스트[PDF파일])</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>처리구분</Box></Grid><Grid item xs={12} md={4}><Box></Box></Grid><Grid item xs={12} md={5}><Box>
+
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>처리구분</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2080MDailyFeeReportGatewayData.ds_ds_ioGubun || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid><Grid item xs={12} md={5}><Box>
 을 미리 생성해 놓으신 후 전자결재 연동처리(기안) 시에 리스트를</Box></Grid></Grid>
-<Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>수납구분</Box></Grid><Grid item xs={12} md={4}><Box></Box></Grid><Grid item xs={12} md={5}><Box>첨부하시기 바랍니다.</Box></Grid></Grid>
-<Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>1)</Box></Grid><Grid item xs={12} md={4}><Button variant="contained">수납내역 리스트 생성(전자결재 첨부용)</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>수납구분</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2080MDailyFeeReportGatewayData.ds_ds_ioSunap || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid><Grid item xs={12} md={5}><Box>첨부하시기 바랍니다.</Box></Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+<Grid item xs={12} md={2}><Box>1)</Box></Grid><Grid item xs={12} md={4}><Button variant="contained" onClick={hook.btnCreateList_OnClick}>수납내역 리스트 생성(전자결재 첨부용)</Button></Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>수납일자</Typography>
                         <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>~</Typography>
                         <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
                     </Stack>
-                </Grid><Grid item xs={12} md={2}><Button variant="contained">출력</Button></Grid><Grid item xs={12} md={2}><Box>2)</Box></Grid><Grid item xs={12} md={4}><Button variant="contained">전자결재 연동 처리(기안)</Button></Grid></Grid>
+                </Grid><Grid item xs={12} md={2}><Button variant="contained" startIcon={<Print />} onClick={hook.btnCreateListTotaling_OnClick}>출력</Button></Grid><Grid item xs={12} md={2}><Box>2)</Box></Grid><Grid item xs={12} md={4}><Button variant="contained" onClick={hook.btnProcElecApv_OnClick}>전자결재 연동 처리(기안)</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>조회 정보</Box></Grid><Grid item xs={12} md={2}><Button variant="contained">진행현황 재조회</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Box>조회 정보</Box></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnSelect_OnClick}>진행현황 재조회</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={3}><Box>※ 더블클릭 시 결재문서를 보실 수 있습니다.</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">

@@ -1,12 +1,13 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmtraining0400MExamJubsuManagement } from './useFrmtraining0400MExamJubsuManagement';
 import * as Frmtraining0400MExamJubsuManagementData from './Frmtraining0400MExamJubsuManagementData';
+import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 
 export const Frmtraining0400MExamJubsuManagement = () => {
     const hook = useFrmtraining0400MExamJubsuManagement();
@@ -56,13 +57,13 @@ export const Frmtraining0400MExamJubsuManagement = () => {
                 <Typography variant="h5">기본정보</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
-<Button variant="contained" startIcon={<Delete />} onClick={hook.lfn_Delete}>삭제 저장</Button>
+<Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Delete}>삭제 저장</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Save}>수정 저장</Button>
-<Button variant="contained"  onClick={hook.lfn_Cancel}>입력 초기화</Button>
+<Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Cancel}>입력 초기화</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Excel}>엑셀로 저장</Button>
-<Button variant="contained"  onClick={hook.lfn_PrintScreen}>화면 출력</Button>
-<Button variant="contained"  onClick={hook.lfn_End}>닫기</Button>
-<Button variant="contained"  onClick={hook.lfn_Print}>응시원서출력(F9)</Button>
+<Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
+<Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
+<Button variant="contained" startIcon={<Print />} onClick={hook.lfn_Print}>응시원서출력(F9)</Button>
 
                 </Stack>
             </Stack>
@@ -74,19 +75,25 @@ export const Frmtraining0400MExamJubsuManagement = () => {
                         <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={5}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>지부</Typography>
-                        <FormControl size="small" fullWidth><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmtraining0400MExamJubsuManagementData.ds_ds_oJibu || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                        <FormControl size="small" sx={{ width: 150 }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmtraining0400MExamJubsuManagementData.ds_ds_oJibu || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>년도</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid><Grid item xs={12} md={3}><Box>성명</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box>직능</Box></Grid><Grid item xs={12} md={8}><Box></Box></Grid><Grid item xs={12} md={3}><Box>주민등록번호</Box></Grid></Grid>
+
+                <Grid item xs={12} md={9}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>직능</Typography>
+                        <FormControl component="fieldset"><RadioGroup row >{ (Frmtraining0400MExamJubsuManagementData.ds_ds_oCourse || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    </Stack>
+                </Grid><Grid item xs={12} md={3}><Box>주민등록번호</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={3}><Box>휴대폰</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
@@ -94,39 +101,48 @@ export const Frmtraining0400MExamJubsuManagement = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>회차</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
-                </Grid><Grid item xs={12} md={3}><Button variant="contained">접수가능회차</Button></Grid><Grid item xs={12} md={3}><Box>전화번호</Box></Grid></Grid>
+                </Grid><Grid item xs={12} md={3}><Button variant="contained" onClick={hook.btnSearchExamOrder_OnClick}>접수가능회차</Button></Grid><Grid item xs={12} md={3}><Box>전화번호</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>접수번호</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
-                </Grid><Grid item xs={12} md={3}><Button variant="contained">접수목록</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">빈번호</Button></Grid><Grid item xs={12} md={3}><Box>응시자격구분</Box></Grid></Grid>
+                </Grid><Grid item xs={12} md={3}><Button variant="contained" onClick={hook.btnSeqList_OnClick}>접수목록</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.lfn_SearchUnUseJubsuNo}>빈번호</Button></Grid><Grid item xs={12} md={3}><Box>응시자격구분</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>좌석번호</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
-                </Grid><Grid item xs={12} md={2}><Button variant="contained">변경이력</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">접수이력</Button></Grid></Grid>
+                </Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnModifyHistory_OnClick}>변경이력</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnJubsuHistory_OnClick}>접수이력</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={2}><Box>회차정보</Box></Grid><Grid item xs={12} md={8}><Box></Box></Grid><Grid item xs={12} md={3}><Box>재시험여부</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={8}><Box></Box></Grid></Grid>
+<Grid item xs={12} md={8}><Box></Box></Grid>{ hook.isVisible_lbChasuGubun && (
+                <Grid item xs={12} md={3}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>시험차수</Typography>
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={8}><Box></Box></Grid><Grid item xs={12} md={3}><Box>민원서류 등록</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={3}><Box>회차변경</Box></Grid><Grid item xs={12} md={2}><Button variant="contained">회차변경</Button></Grid><Grid item xs={12} md={3}><Button variant="contained">부정행위관리</Button></Grid><Grid item xs={12} md={3}><Box>결제내역</Box></Grid></Grid>
+<Grid item xs={12} md={3}><Box>회차변경</Box></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnExamJubsuModify_OnClick}>회차변경</Button></Grid><Grid item xs={12} md={3}><Button variant="contained" onClick={hook.btnExamCheatingManageLink_OnClick}>부정행위관리</Button></Grid><Grid item xs={12} md={3}><Box>결제내역</Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={3}><Box>점수</Box></Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>합격여부</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
@@ -134,13 +150,51 @@ export const Frmtraining0400MExamJubsuManagement = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>1차 점수</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
-                </Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={3}><Button variant="contained">결제(POS)</Button></Grid></Grid>
+                </Grid><Grid item xs={12} md={2}><Box></Box></Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>1</Typography>
+                        <TextField size="small" fullWidth  />
+                    </Stack>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>2</Typography>
+                        <TextField size="small" fullWidth  />
+                    </Stack>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>3</Typography>
+                        <TextField size="small" fullWidth  />
+                    </Stack>
+                </Grid><Grid item xs={12} md={3}><Button variant="contained" onClick={hook.btnSetlmt_OnClick}>결제(POS)</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={3}><Button variant="contained">답안지 보기</Button></Grid></Grid>
+
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>2차 점수</Typography>
+                        <TextField size="small" fullWidth  />
+                    </Stack>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>1과목</Typography>
+                        <TextField size="small" fullWidth  />
+                    </Stack>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>2과목</Typography>
+                        <TextField size="small" fullWidth  />
+                    </Stack>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+<Grid item xs={12} md={3}><Button variant="contained" onClick={hook.btnExamOmrImage_OnClick}>답안지 보기</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={3}><Box>개인접수정보</Box></Grid></Grid>
 
@@ -151,37 +205,162 @@ export const Frmtraining0400MExamJubsuManagement = () => {
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>List</Typography>
                         <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained">접수자  검색</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">접수자정보변경</Button></Grid><Grid item xs={12} md={2}><Box>최근사진</Box></Grid><Grid item xs={12} md={2}><Box>사진</Box></Grid></Grid>
+<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnSearchPersonInfo_OnClick}>접수자  검색</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnSearchPersonInfoChange_OnClick}>접수자정보변경</Button></Grid><Grid item xs={12} md={2}><Box>최근사진</Box></Grid><Grid item xs={12} md={2}><Box>사진</Box></Grid>{ hook.isVisible_radChangeTpmgno && (
+                <Grid item xs={12} md={4}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained">기존접수이력(F6)</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">실명인증</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnTraingJubsuHist_OnClick}>기존접수이력(F6)</Button></Grid>{ hook.isVisible_Edit0 && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>Edit0</Typography>
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained">문자발송</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">문자현황</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnAuthBIRTHDAY_OnClick}>실명인증</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Tooltip title="BTN_SEARCH"><IconButton color="primary"><Search /></IconButton></Tooltip></Grid><Grid item xs={12} md={5}><Box></Box></Grid></Grid>
+<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnSendSms_OnClick}>문자발송</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnSmsStat_OnClick}>문자현황</Button></Grid>{ hook.isVisible_btnPictureManagement && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>사진관리</Typography>
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={8}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained">최근사진반영</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Tooltip title="BTN_SEARCH"><Button variant="outlined" size="small" color="primary" onClick={hook.btnSearchZipCode_OnClick} sx={{ minWidth: 30, p: 0.5 }}><Search fontSize="small" /></Button></Tooltip></Grid><Grid item xs={12} md={5}><Box></Box></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained">등록사진조회</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">SVP5300사진스캔</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">D400사진스캔</Button></Grid></Grid>
+<Grid item xs={12} md={8}><Box></Box></Grid>{ hook.isVisible_cbxAddrGubun && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }<Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnApplyPicture_OnClick}>최근사진반영</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={11}><Box></Box></Grid><Grid item xs={12} md={11}><Box></Box></Grid><Grid item xs={12} md={3}><Box></Box></Grid></Grid>
+<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnSearchRegPicture_OnClick}>등록사진조회</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnScanPicture_OnClick}>SVP5300사진스캔</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnPhotoScan_OnClick}>D400사진스캔</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid></Grid>
+<Grid item xs={12} md={11}><Box></Box></Grid><Grid item xs={12} md={11}><Box></Box></Grid><Grid item xs={12} md={3}><Box></Box></Grid>{ hook.isVisible_btnEmailStat && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>메일현황</Typography>
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Box></Box></Grid>
-                <Grid item xs={12} md={5}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
-                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>학·경력 인정사유</Typography>
-                        <TextField size="small" fullWidth value={hook.ds_ioExamJubsu?.EJJUBSUREASON || ''} />
+<Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}> 강습수료횟수</Typography>
+                        <TextField size="small" fullWidth  />
                     </Stack>
-                </Grid><Grid item xs={12} md={2}><Button variant="contained">스캔사진불러오기</Button></Grid></Grid>
+                </Grid>{ hook.isVisible_lbTextBlue && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>회</Typography>
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}> 강습수료일(최종)</Typography>
+                        <TextField size="small" fullWidth  />
+                    </Stack>
+                </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={6}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained">사진찾기</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Box></Box></Grid>{ hook.isVisible_Static5 && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>응시료면제사유</Typography>
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }<Grid item xs={12} md={2}><Box>학·경력 인정사유</Box></Grid>
+                <Grid item xs={12} md={5}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>가접수 인정사유</Typography>
+                        <TextField size="small" fullWidth value={hook.ds_ioExamJubsu?.EJJUBSUREMARK || ''} />
+                    </Stack>
+                </Grid><Grid item xs={12} md={3}><Box></Box></Grid>{ hook.isVisible_edEJJUBSUREASON2 && (
+                <Grid item xs={12} md={3}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }<Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnLoadScanPicture_OnClick}>스캔사진불러오기</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={3}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Tooltip title="BTN_SEARCH"><IconButton color="primary"><Search /></IconButton></Tooltip></Grid><Grid item xs={12} md={2}><Button variant="contained">①스캔실행</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">②불러오기</Button></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Tooltip title="BTN_SEARCH"><IconButton color="primary"><Search /></IconButton></Tooltip></Grid><Grid item xs={12} md={2}><Button variant="contained">③서류저장</Button></Grid></Grid>
+<Grid item xs={12} md={6}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnLoadPicture_OnClick}>사진찾기</Button></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Button variant="contained">결제삭제</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">영수증PDF</Button></Grid><Grid item xs={12} md={3}><Button variant="contained">기준일자별 계산서발행</Button></Grid></Grid>
+<Grid item xs={12} md={3}><Box></Box></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Tooltip title="BTN_SEARCH"><Button variant="outlined" size="small" color="primary" onClick={hook.btnSeverFormView_OnClick} sx={{ minWidth: 30, p: 0.5 }}><Search fontSize="small" /></Button></Tooltip></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnScan_OnClick}>①스캔실행</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnScanSearch_OnClick}>②불러오기</Button></Grid><Grid item xs={12} md={2}><Box></Box></Grid><Grid item xs={12} md={2}><Tooltip title="BTN_SEARCH"><Button variant="outlined" size="small" color="primary" onClick={hook.btnLocalFormView_OnClick} sx={{ minWidth: 30, p: 0.5 }}><Search fontSize="small" /></Button></Tooltip></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnScanSave_OnClick}>③서류저장</Button></Grid>{ hook.isVisible_btnFormDelete && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>서류삭제</Typography>
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12} md={2}><Button variant="contained">통합영수증조회</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">가상계좌보기</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">처리일자변경</Button></Grid><Grid item xs={12} md={3}><Button variant="contained">현금영수증처리/취소</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">영수증재발행</Button></Grid><Grid item xs={12} md={2}><Button variant="contained">부가세정보</Button></Grid></Grid>
+<Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnDeleteSettlement_OnClick}>결제삭제</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnPrintReRctPDF_OnClick}>영수증PDF</Button></Grid><Grid item xs={12} md={3}><Button variant="contained" onClick={hook.btnEstimate_OnClick}>기준일자별 계산서발행</Button></Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+<Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnPosReport_OnClick}>통합영수증조회</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnShowVirtualAccount_OnClick}>가상계좌보기</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnChangeProcDate_OnClick}>처리일자변경</Button></Grid><Grid item xs={12} md={3}><Button variant="contained" onClick={hook.btnProcRct_OnClick}>현금영수증처리/취소</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnPrintReRct_OnClick}>영수증재발행</Button></Grid><Grid item xs={12} md={2}><Button variant="contained" onClick={hook.btnPrintEstimate_OnClick}>부가세정보</Button></Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>E-Mail</Typography>
+                        <TextField size="small" fullWidth  />
+                    </Stack>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>@</Typography>
+                        <TextField size="small" fullWidth  />
+                    </Stack>
+                </Grid>{ hook.isVisible_cbxEmailDomain && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }{ hook.isVisible_btnSendEmail && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>메일발송</Typography>
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }</Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12}>
@@ -192,13 +371,13 @@ export const Frmtraining0400MExamJubsuManagement = () => {
 <Grid container spacing={2} alignItems="center">
 <Grid item xs={12} md={2}><Box>개인접수회차이력</Box></Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>EJMGNO</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioExamJubsu?.EJMGNO || ''} />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>TPMGNO</Typography>
                         <TextField size="small" fullWidth value={hook.ds_ioExamJubsu?.TPMGNO || ''} />
                     </Stack>

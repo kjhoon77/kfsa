@@ -1,26 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioYear {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_SearchJogeon {
-    JIBU: string;
-    YEAR: string;
-    BFYEAR: string;
-    MONTH: string;
-    DATE_FR: string;
-    DATE_TO: string;
-    BFMONTH: string;
-}
-
-export interface Ids_iCustomerInsert {
-}
-
-export interface Ids_oEduSchedule {
-}
+import type { Ids_ioYear, Ids_SearchJogeon, Ids_iCustomerInsert, Ids_oEduSchedule } from './Frmcust4060MCyberEduOrderSaveData';
 
 export const useFrmcust4060MCyberEduOrderSave = () => {
     const [ds_ioYear, setds_ioYear] = useState<Ids_ioYear[]>([]);
@@ -28,6 +8,7 @@ export const useFrmcust4060MCyberEduOrderSave = () => {
     const [ds_iCustomerInsert, setds_iCustomerInsert] = useState<Ids_iCustomerInsert[]>([]);
     const [ds_oEduSchedule, setds_oEduSchedule] = useState<Ids_oEduSchedule[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -56,6 +37,8 @@ export const useFrmcust4060MCyberEduOrderSave = () => {
         ds_SearchJogeon,
         ds_iCustomerInsert,
         ds_oEduSchedule,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_End,
         lfn_Save,
         lfn_Search,

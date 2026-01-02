@@ -1,177 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oEduItemBCode {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduItemMCode {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduItemKindGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oEduItemLevel {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioEduItemR {
-    EIBCD: string;
-    EIBNM: string;
-    EIBTITLE: string;
-    EIKINDGUBUN: string;
-    EIKINDGUBUNNM: string;
-    EIKINDLEVEL: string;
-    EIKINDUSELEVEL: string;
-    EIMCD: string;
-    EIMGNO: string;
-    EIMNM: string;
-    EIMTITLE: string;
-    EISCD: string;
-    EISNM: string;
-    EISTITLE: string;
-}
-
-export interface Ids_ioEduItemB {
-    EIBCD: string;
-    EIBNM: string;
-    EIBTITLE: string;
-    EIKINDGUBUN: string;
-    EIKINDGUBUNNM: string;
-    EIKINDLEVEL: string;
-    EIKINDUSELEVEL: string;
-    EIMCD: string;
-    EIMGNO: string;
-    EIMNM: string;
-    EIMTITLE: string;
-    EISCD: string;
-    EISNM: string;
-    EISTITLE: string;
-}
-
-export interface Ids_ioEduItemM {
-    EIBCD: string;
-    EIBNM: string;
-    EIBTITLE: string;
-    EIKINDGUBUN: string;
-    EIKINDGUBUNNM: string;
-    EIKINDLEVEL: string;
-    EIKINDUSELEVEL: string;
-    EIMCD: string;
-    EIMGNO: string;
-    EIMNM: string;
-    EIMTITLE: string;
-    EISCD: string;
-    EISNM: string;
-    EISTITLE: string;
-}
-
-export interface Ids_ioEduItemS {
-    EIBCD: string;
-    EIBNM: string;
-    EIBTITLE: string;
-    EIKINDGUBUN: string;
-    EIKINDGUBUNNM: string;
-    EIKINDLEVEL: string;
-    EIKINDUSELEVEL: string;
-    EIMCD: string;
-    EIMGNO: string;
-    EIMNM: string;
-    EIMTITLE: string;
-    EISCD: string;
-    EISNM: string;
-    EISTITLE: string;
-}
-
-export interface Ids_ioEduItemRUnit {
-    EIBCD: string;
-    EIBNM: string;
-    EIBTITLE: string;
-    EIKINDGUBUN: string;
-    EIKINDGUBUNNM: string;
-    EIKINDLEVEL: string;
-    EIKINDUSELEVEL: string;
-    EIMCD: string;
-    EIMGNO: string;
-    EIMNM: string;
-    EIMTITLE: string;
-    EISCD: string;
-    EISNM: string;
-    EISTITLE: string;
-}
-
-export interface Ids_ioEduItemBUnit {
-    EIBCD: string;
-    EIBNM: string;
-    EIBTITLE: string;
-    EIKINDGUBUN: string;
-    EIKINDGUBUNNM: string;
-    EIKINDLEVEL: string;
-    EIKINDUSELEVEL: string;
-    EIMCD: string;
-    EIMGNO: string;
-    EIMNM: string;
-    EIMTITLE: string;
-    EISCD: string;
-    EISNM: string;
-    EISTITLE: string;
-}
-
-export interface Ids_ioEduItemMUnit {
-    EIBCD: string;
-    EIBNM: string;
-    EIBTITLE: string;
-    EIKINDGUBUN: string;
-    EIKINDGUBUNNM: string;
-    EIKINDLEVEL: string;
-    EIKINDUSELEVEL: string;
-    EIMCD: string;
-    EIMGNO: string;
-    EIMNM: string;
-    EIMTITLE: string;
-    EISCD: string;
-    EISNM: string;
-    EISTITLE: string;
-}
-
-export interface Ids_ioEduItemSUnit {
-    EIBCD: string;
-    EIBNM: string;
-    EIBTITLE: string;
-    EIKINDGUBUN: string;
-    EIKINDGUBUNNM: string;
-    EIKINDLEVEL: string;
-    EIKINDUSELEVEL: string;
-    EIMCD: string;
-    EIMGNO: string;
-    EIMNM: string;
-    EIMTITLE: string;
-    EISCD: string;
-    EISNM: string;
-    EISTITLE: string;
-}
-
-export interface Ids_ioEduItemRCheck {
-    CNT: string;
-}
-
-export interface Ids_ioEduItemBCheck {
-    CNT: string;
-}
-
-export interface Ids_ioEduItemMCheck {
-    CNT: string;
-}
-
-export interface Ids_ioEduItemSCheck {
-    CNT: string;
-}
+import type { Ids_oEduItemBCode, Ids_oEduItemMCode, Ids_oEduItemKindGubun, Ids_oEduItemLevel, Ids_ioEduItemR, Ids_ioEduItemB, Ids_ioEduItemM, Ids_ioEduItemS, Ids_ioEduItemRUnit, Ids_ioEduItemBUnit, Ids_ioEduItemMUnit, Ids_ioEduItemSUnit, Ids_ioEduItemRCheck, Ids_ioEduItemBCheck, Ids_ioEduItemMCheck, Ids_ioEduItemSCheck } from './Frmitem0001MEduItemMgmtData';
 
 export const useFrmitem0001MEduItemMgmt = () => {
     const [ds_oEduItemBCode, setds_oEduItemBCode] = useState<Ids_oEduItemBCode[]>([]);
@@ -191,6 +20,8 @@ export const useFrmitem0001MEduItemMgmt = () => {
     const [ds_ioEduItemMCheck, setds_ioEduItemMCheck] = useState<Ids_ioEduItemMCheck[]>([]);
     const [ds_ioEduItemSCheck, setds_ioEduItemSCheck] = useState<Ids_ioEduItemSCheck[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [tabValue_tabTab, setTabValue_tabTab] = useState(0);
 
     useEffect(() => {
         setIsLoading(true);
@@ -258,6 +89,10 @@ export const useFrmitem0001MEduItemMgmt = () => {
         ds_ioEduItemBCheck,
         ds_ioEduItemMCheck,
         ds_ioEduItemSCheck,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        tabValue_tabTab,
+        setTabValue_tabTab,
         lfn_Cancel,
         lfn_Delete,
         lfn_End,

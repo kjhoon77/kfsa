@@ -1,26 +1,13 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_test {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_test2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRadio {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_test, Ids_test2, Ids_oRadio } from './Frmprofes0006MLecHistoryApprovalData';
 
 export const useFrmprofes0006MLecHistoryApproval = () => {
     const [ds_test, setds_test] = useState<Ids_test[]>([]);
     const [ds_test2, setds_test2] = useState<Ids_test2[]>([]);
     const [ds_oRadio, setds_oRadio] = useState<Ids_oRadio[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -68,6 +55,8 @@ export const useFrmprofes0006MLecHistoryApproval = () => {
         ds_test,
         ds_test2,
         ds_oRadio,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnSelect_OnClick,
         lfn_Cancel,

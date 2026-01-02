@@ -1,40 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oSearchHistory {
-}
-
-export interface Ids_oGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioUserList {
-    SHGUBUN: string;
-    SHMGNO: string;
-    SHPROCDATE: string;
-    SHPROCIP: string;
-    SHPROCSABUN: string;
-    SHWHERE: string;
-    SHWORKGUBUN: string;
-    SHWORKGUBUNNM: string;
-}
-
-export interface Ids_ioDeptList {
-    SHGUBUN: string;
-    SHMGNO: string;
-    SHPROCDATE: string;
-    SHPROCIP: string;
-    SHPROCSABUN: string;
-    SHWHERE: string;
-    SHWORKGUBUN: string;
-    SHWORKGUBUNNM: string;
-}
-
-export interface Ids_oMenu {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oSearchHistory, Ids_oGubun, Ids_ioUserList, Ids_ioDeptList, Ids_oMenu } from './Frmsys0095MDataMatchDetailSearchHistoryListData';
 
 export const useFrmsys0095MDataMatchDetailSearchHistoryList = () => {
     const [ds_oSearchHistory, setds_oSearchHistory] = useState<Ids_oSearchHistory[]>([]);

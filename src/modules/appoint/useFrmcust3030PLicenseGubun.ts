@@ -1,14 +1,11 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_Chk {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_Chk } from './Frmcust3030PLicenseGubunData';
 
 export const useFrmcust3030PLicenseGubun = () => {
     const [ds_Chk, setds_Chk] = useState<Ids_Chk[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -25,6 +22,8 @@ export const useFrmcust3030PLicenseGubun = () => {
     return {
         isLoading,
         ds_Chk,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnSearchPersonInfo_OnClick,
     };
 };

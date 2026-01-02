@@ -1,23 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oSupporterList {
-    AGADDR: string;
-    AGADDR1: string;
-    AGADDR2: string;
-    AGCONO: string;
-    AGFAX: string;
-    AGMGNO: string;
-    AGMODDATE: string;
-    AGMODSABUN: string;
-    AGNM: string;
-    AGOWNER: string;
-    AGREGDATE: string;
-    AGREGSABUN: string;
-    AGREMARK: string;
-    AGTEL: string;
-    AGZIPCD: string;
-}
+import type { Ids_oSupporterList } from './Frmcust0010PSupporterListData';
 
 export const useFrmcust0010PSupporterList = () => {
     const [ds_oSupporterList, setds_oSupporterList] = useState<Ids_oSupporterList[]>([]);

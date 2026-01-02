@@ -1,97 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioBiztotalcode {
-}
-
-export interface Ids_iBizorder {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_iFormsave {
-    I_PROC: string;
-    I_FCCD: string;
-    I_FAMGNO: string;
-    I_PK1VAL: string;
-    I_PK2VAL: string;
-    I_FRDATE: string;
-    I_PATH: string;
-    I_FILENM: string;
-    I_SABUN: string;
-    O_status: string;
-    O_value: string;
-}
-
-export interface Ids_oEnroll {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_iTrainingFrom {
-    I_PROC: string;
-    I_FCCD: string;
-    I_FAMGNO: string;
-    I_PK1VAL: string;
-    I_PK2VAL: string;
-    I_FRDATE: string;
-    I_PATH: string;
-    I_FILENM: string;
-    I_SABUN: string;
-    O_status: string;
-    O_value: string;
-}
-
-export interface Ids_oTrainingFrom {
-    O_status: string;
-    O_value: string;
-}
-
-export interface Ids_iBizgubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_iTotalselect {
-    I_GTMGNO: string;
-    I_BIZ: string;
-    I_FRDATE: string;
-    I_TODATE: string;
-    I_FCCD: string;
-    I_COURSECD: string;
-    I_REGYN: string;
-}
-
-export interface Ids_oTotalselect {
-    PK1: string;
-    PK2: string;
-    FCCD: string;
-    FCFULLNM: string;
-    FCLINK: string;
-    COURSECD: string;
-    COUSENM: string;
-    ORDERNO: string;
-    JUPSUNO: string;
-    FRDATE: string;
-    OKDATE: string;
-    REGY: string;
-    REGN: string;
-}
-
-export interface Ids_inRegyn {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioBiztotalcode, Ids_iBizorder, Ids_oJibu, Ids_oCourse, Ids_iFormsave, Ids_oEnroll, Ids_iTrainingFrom, Ids_oTrainingFrom, Ids_iBizgubun, Ids_iTotalselect, Ids_oTotalselect, Ids_inRegyn } from './FrmCOM9040MFormUploadListData';
 
 export const useFrmCOM9040MFormUploadList = () => {
     const [ds_ioBiztotalcode, setds_ioBiztotalcode] = useState<Ids_ioBiztotalcode[]>([]);
@@ -107,6 +16,7 @@ export const useFrmCOM9040MFormUploadList = () => {
     const [ds_oTotalselect, setds_oTotalselect] = useState<Ids_oTotalselect[]>([]);
     const [ds_inRegyn, setds_inRegyn] = useState<Ids_inRegyn[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -154,6 +64,8 @@ export const useFrmCOM9040MFormUploadList = () => {
         ds_iTotalselect,
         ds_oTotalselect,
         ds_inRegyn,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_End,
         lfn_Excel,
         lfn_PrintScreen,

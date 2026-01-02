@@ -1,27 +1,12 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioRegionCode {
-    CREATE_DATE: string;
-    CREATE_ID: string;
-    JJIBUCD: string;
-    MODIFY_DATE: string;
-    MODIFY_ID: string;
-    RREGIONCD: string;
-    RREGIONNM: string;
-    RREMARK: string;
-    USE_YN: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioRegionCode, Ids_oJibu } from './Frmsys0034MRegionCodeManagementData';
 
 export const useFrmsys0034MRegionCodeManagement = () => {
     const [ds_ioRegionCode, setds_ioRegionCode] = useState<Ids_ioRegionCode[]>([]);
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -64,6 +49,8 @@ export const useFrmsys0034MRegionCodeManagement = () => {
         isLoading,
         ds_ioRegionCode,
         ds_oJibu,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_Delete,

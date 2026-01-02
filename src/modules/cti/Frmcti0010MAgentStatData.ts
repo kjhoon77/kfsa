@@ -1,7 +1,18 @@
 // @ts-nocheck
 export const Frmcti0010MAgentStatData = {};
 
-export const ds_ds_AgentState = [
+export interface Ids_oAgentStatList {
+}
+
+export interface Ids_ioUserList {
+}
+
+export interface Ids_AgentState {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_AgentState: Ids_AgentState[] = [
     { CD: '0', DATA: 'NULL' },
     { CD: '10', DATA: 'Logout' },
     { CD: '20', DATA: 'Login' },
@@ -12,3 +23,6 @@ export const ds_ds_AgentState = [
     { CD: '50', DATA: '통화중' },
     { CD: '60', DATA: '후처리' },
 ];
+
+export interface Ids_oAgentStatSubList {
+}

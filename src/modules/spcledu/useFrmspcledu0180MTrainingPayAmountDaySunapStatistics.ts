@@ -1,44 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSort {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingPayAmount {
-    BIRTHDAY: string;
-    MUNJEGUBUN: string;
-    PNM: string;
-    SUNAPGUBUN: string;
-    TCCOURSENM: string;
-    TJPERSONNM: string;
-    TJRESIDENTNO: string;
-    TOHJUBSUNO: string;
-    TOTCCOURSECD: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TSPROCDATE: string;
-    TSREPAYAMOUNT: string;
-    TSSUNAPAMOUNT: string;
-    GTTEAMNM: string;
-    SUNAPMETHOD: string;
-}
-
-export interface Ids_Gubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oCourse, Ids_oJibu, Ids_oSort, Ids_oTrainingPayAmount, Ids_Gubun } from './Frmspcledu0180MTrainingPayAmountDaySunapStatisticsData';
 
 export const useFrmspcledu0180MTrainingPayAmountDaySunapStatistics = () => {
     const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
@@ -47,6 +9,7 @@ export const useFrmspcledu0180MTrainingPayAmountDaySunapStatistics = () => {
     const [ds_oTrainingPayAmount, setds_oTrainingPayAmount] = useState<Ids_oTrainingPayAmount[]>([]);
     const [ds_Gubun, setds_Gubun] = useState<Ids_Gubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -89,6 +52,8 @@ export const useFrmspcledu0180MTrainingPayAmountDaySunapStatistics = () => {
         ds_oSort,
         ds_oTrainingPayAmount,
         ds_Gubun,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

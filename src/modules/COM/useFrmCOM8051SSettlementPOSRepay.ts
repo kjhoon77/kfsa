@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oPosPrintm {
-}
+import type { Ids_oPosPrintm } from './FrmCOM8051SSettlementPOSRepayData';
 
 export const useFrmCOM8051SSettlementPOSRepay = () => {
     const [ds_oPosPrintm, setds_oPosPrintm] = useState<Ids_oPosPrintm[]>([]);

@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oEvaluationAnswer {
-}
+import type { Ids_oEvaluationAnswer } from './Frmtraining0144PTrainingEvaluationAnswerViewData';
 
 export const useFrmtraining0144PTrainingEvaluationAnswerView = () => {
     const [ds_oEvaluationAnswer, setds_oEvaluationAnswer] = useState<Ids_oEvaluationAnswer[]>([]);

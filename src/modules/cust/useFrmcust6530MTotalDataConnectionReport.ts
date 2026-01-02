@@ -1,23 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioReport {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oDATA {
-}
-
-export interface Ids_ioStatus {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioReport, Ids_ioCourse, Ids_oDATA, Ids_ioStatus } from './Frmcust6530MTotalDataConnectionReportData';
 
 export const useFrmcust6530MTotalDataConnectionReport = () => {
     const [ds_ioReport, setds_ioReport] = useState<Ids_ioReport[]>([]);
@@ -25,6 +8,7 @@ export const useFrmcust6530MTotalDataConnectionReport = () => {
     const [ds_oDATA, setds_oDATA] = useState<Ids_oDATA[]>([]);
     const [ds_ioStatus, setds_ioStatus] = useState<Ids_ioStatus[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -56,6 +40,8 @@ export const useFrmcust6530MTotalDataConnectionReport = () => {
         ds_ioCourse,
         ds_oDATA,
         ds_ioStatus,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         lfn_Cancel,
         lfn_End,
         lfn_Excel,

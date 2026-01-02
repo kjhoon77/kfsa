@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oDownloadPopup {
-}
+import type { Ids_oDownloadPopup } from './FrmCOM9060PPersonalDownloadListData';
 
 export const useFrmCOM9060PPersonalDownloadList = () => {
     const [ds_oDownloadPopup, setds_oDownloadPopup] = useState<Ids_oDownloadPopup[]>([]);

@@ -1,64 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioTrainingPassExamBatchJubsu {
-    SEL: string;
-    TJADDR1: string;
-    TJADDR2: string;
-    TOENDDATE: string;
-    TOHJUBSUNO: string;
-    TOMGGTMGNO: string;
-    TOSTARTDATE: string;
-    TOTCCOURSECD: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TPNM: string;
-    TPRESIDENTNO: string;
-    TPRESIDENTNO_SANG: string;
-    EJLICENSEAMTTJMGNO: string;
-}
-
-export interface Ids_oExamDateGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTrainingPassExamBatchJubsuOrder {
-    EOMGNO: string;
-    EomgNo_A: string;
-}
-
-export interface Ids_ioTrainingPassExamBatchJubsuReal {
-    EomgNo_A: string;
-    CCCDNM: string;
-}
-
-export interface Ids_oJibu_Filter {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu_FilterBak {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioTrainingPassExamBatchJubsuCount {
-    EXAMJUBSUCOUNT: string;
-}
-
-export interface Ids_ioSqence {
-}
+import type { Ids_ioTrainingPassExamBatchJubsu, Ids_oExamDateGubun, Ids_oCourse, Ids_oJibu, Ids_ioTrainingPassExamBatchJubsuOrder, Ids_ioTrainingPassExamBatchJubsuReal, Ids_oJibu_Filter, Ids_oJibu_FilterBak, Ids_ioTrainingPassExamBatchJubsuCount, Ids_ioSqence } from './Frmspcledu0410MExamBatchJubsuManagementData';
 
 export const useFrmspcledu0410MExamBatchJubsuManagement = () => {
     const [ds_ioTrainingPassExamBatchJubsu, setds_ioTrainingPassExamBatchJubsu] = useState<Ids_ioTrainingPassExamBatchJubsu[]>([]);
@@ -72,6 +14,7 @@ export const useFrmspcledu0410MExamBatchJubsuManagement = () => {
     const [ds_ioTrainingPassExamBatchJubsuCount, setds_ioTrainingPassExamBatchJubsuCount] = useState<Ids_ioTrainingPassExamBatchJubsuCount[]>([]);
     const [ds_ioSqence, setds_ioSqence] = useState<Ids_ioSqence[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -124,6 +67,8 @@ export const useFrmspcledu0410MExamBatchJubsuManagement = () => {
         ds_oJibu_FilterBak,
         ds_ioTrainingPassExamBatchJubsuCount,
         ds_ioSqence,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

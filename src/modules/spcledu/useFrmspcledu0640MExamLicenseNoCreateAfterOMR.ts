@@ -1,83 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioExamPass {
-    CCCD: string;
-    CCCDNM: string;
-    CCGROUPCD: string;
-    CCORDERSEQ: string;
-    CCREMARK: string;
-    USE_YN: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oExamCount {
-    JUBSU: string;
-    PASS: string;
-    FAIL: string;
-    NOEXAM: string;
-}
-
-export interface Ids_oExamPass {
-    EJMGNO: string;
-    EJPERSONNM: string;
-    EJRESIDENTNO: string;
-    ERSCORE: string;
-    EJADDR1: string;
-    EJADDR2: string;
-    EJTPMGNO: string;
-}
-
-export interface Ids_oLicense {
-    LLCSNO: string;
-    LTPMGNO: string;
-    LSTATUSGUBUN: string;
-    LISSUEGUBUN: string;
-    LDATAAPPROVAL: string;
-    LTCCOURSECD: string;
-    LISSUEDATE: string;
-    LPERSONNM: string;
-    LRESIDENTNO: string;
-    LZIPCD: string;
-    LADDR1: string;
-    LADDR2: string;
-    LSIDO: string;
-    LKU: string;
-    LDONG: string;
-    LBUNJI: string;
-    LTEL: string;
-    LHPTEL: string;
-    LCOMPNM: string;
-    LTRAININGSTARTDATE: string;
-    LTRAININGENDDATE: string;
-}
-
-export interface Ids_oLicenseSeq {
-    LLCSNO: string;
-}
-
-export interface Ids_oBarCodeSeq {
-    LBARCODE_MAX: string;
-}
-
-export interface Ids_ioJubsuList {
-    EJPASSYN: string;
-    EJMGNO: string;
-    EJPERSONNM: string;
-    EJRESIDENTNO: string;
-    EJADDR1: string;
-    EJADDR2: string;
-    EOHJUBSUNO: string;
-}
+import type { Ids_ioExamPass, Ids_oCourse, Ids_oJibu, Ids_oExamCount, Ids_oExamPass, Ids_oLicense, Ids_oLicenseSeq, Ids_oBarCodeSeq, Ids_ioJubsuList } from './Frmspcledu0640MExamLicenseNoCreateAfterOMRData';
 
 export const useFrmspcledu0640MExamLicenseNoCreateAfterOMR = () => {
     const [ds_ioExamPass, setds_ioExamPass] = useState<Ids_ioExamPass[]>([]);
@@ -90,6 +13,7 @@ export const useFrmspcledu0640MExamLicenseNoCreateAfterOMR = () => {
     const [ds_oBarCodeSeq, setds_oBarCodeSeq] = useState<Ids_oBarCodeSeq[]>([]);
     const [ds_ioJubsuList, setds_ioJubsuList] = useState<Ids_ioJubsuList[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -140,6 +64,8 @@ export const useFrmspcledu0640MExamLicenseNoCreateAfterOMR = () => {
         ds_oLicenseSeq,
         ds_oBarCodeSeq,
         ds_ioJubsuList,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         btnToExcel_OnClick,
         lfn_Cancel,

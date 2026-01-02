@@ -1,10 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioReasonCode {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioReasonCode } from './Frmcust6003PMatchExceptReasonData';
 
 export const useFrmcust6003PMatchExceptReason = () => {
     const [ds_ioReasonCode, setds_ioReasonCode] = useState<Ids_ioReasonCode[]>([]);

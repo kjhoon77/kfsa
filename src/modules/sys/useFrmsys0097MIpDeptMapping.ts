@@ -1,18 +1,12 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioList {
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioList, Ids_oJibu } from './Frmsys0097MIpDeptMappingData';
 
 export const useFrmsys0097MIpDeptMapping = () => {
     const [ds_ioList, setds_ioList] = useState<Ids_ioList[]>([]);
     const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -52,6 +46,8 @@ export const useFrmsys0097MIpDeptMapping = () => {
         isLoading,
         ds_ioList,
         ds_oJibu,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_Delete,

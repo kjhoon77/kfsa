@@ -1,92 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJibuAll {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMCodeAll {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRCodeAll {
-    CD: string;
-    DATA: string;
-    EIBTITLE: string;
-    EIMTITLE: string;
-    EISTITLE: string;
-}
-
-export interface Ids_oSCodeAll {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioEduItemH {
-    EHGTMGNO: string;
-    EIKINDGUBUN: string;
-    EIKINDGUBUNNM: string;
-    EIBTITLE: string;
-    EIMTITLE: string;
-    EISTITLE: string;
-    EIBCD: string;
-    EIBNM: string;
-    EIMCD: string;
-    EIMNM: string;
-    EISCD: string;
-    EISNM: string;
-    MAKE_CNT: string;
-    RECEIPT_CNT: string;
-    USE_CNT: string;
-    USE_CNT0: string;
-    USE_CNT1: string;
-    USE_CNT2: string;
-    USE_CNT3: string;
-    USE_CNT4: string;
-    SUPPLY_CNT: string;
-    DEMAND_CNT: string;
-    DEFICIENCY_CNT: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oMCode {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oRCode {
-    CD: string;
-    DATA: string;
-    EIBTITLE: string;
-    EIMTITLE: string;
-    EISTITLE: string;
-}
-
-export interface Ids_oSCode {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oYearAll {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBCode {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oBCodeAll {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oJibuAll, Ids_oMCodeAll, Ids_oRCodeAll, Ids_oSCodeAll, Ids_ioEduItemH, Ids_oJibu, Ids_oMCode, Ids_oRCode, Ids_oSCode, Ids_oYearAll, Ids_oBCode, Ids_oBCodeAll } from './Frmitem0008MEduItemHStatusData';
 
 export const useFrmitem0008MEduItemHStatus = () => {
     const [ds_oJibuAll, setds_oJibuAll] = useState<Ids_oJibuAll[]>([]);
@@ -102,6 +16,7 @@ export const useFrmitem0008MEduItemHStatus = () => {
     const [ds_oBCode, setds_oBCode] = useState<Ids_oBCode[]>([]);
     const [ds_oBCodeAll, setds_oBCodeAll] = useState<Ids_oBCodeAll[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -158,6 +73,8 @@ export const useFrmitem0008MEduItemHStatus = () => {
         ds_oYearAll,
         ds_oBCode,
         ds_oBCodeAll,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnMutilSort_OnClick,
         lfn_Cancel,
         lfn_End,

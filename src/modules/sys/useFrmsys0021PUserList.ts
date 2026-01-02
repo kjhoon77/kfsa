@@ -1,20 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oUser {
-    ADMINGUBUN: string;
-    PPOSITNCD: string;
-    PPOSITNNM: string;
-    PPERSONNM: string;
-    PSABUN: string;
-    PDEPTCD: string;
-    PDEPTNM: string;
-}
-
-export interface Ids_oUserGubun {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_oUser, Ids_oUserGubun } from './Frmsys0021PUserListData';
 
 export const useFrmsys0021PUserList = () => {
     const [ds_oUser, setds_oUser] = useState<Ids_oUser[]>([]);

@@ -1,106 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oJubsu {
-}
-
-export interface Ids_oSunap {
-}
-
-export interface Ids_oChange {
-}
-
-export interface Ids_oRepay {
-}
-
-export interface Ids_oInternetReport {
-}
-
-export interface Ids_iJubsuH {
-    TJHTJMGNO: string;
-    TJHSEQ: string;
-    TJHSTATUSCD: string;
-    TJHTSSEQREF: string;
-    TJHTOHSEQREF: string;
-    TJHMGGTMGNO: string;
-    TJHREASON: string;
-    TSSEQ: string;
-    PPAPMYEAR: string;
-    PPAPMMGNO: string;
-    PPAFINISHAMOUNT: string;
-    TSSUNAPACTIONREF: string;
-    TOMGNO: string;
-}
-
-export interface Ids_ioSettlement {
-    TSTJMGNO: string;
-    TSGUBUNCD: string;
-    TSGUBUN: string;
-    TSPROCAMOUNT: string;
-    TSTRAININGAMOUNT: string;
-    TSEXAMAMOUNT: string;
-    TSLICENSEAMOUNT: string;
-    TSAMOUNTGUBUN: string;
-    TSPONYGUBUN: string;
-    TSMGGTMGNO: string;
-    TSPROCGTMGNO: string;
-    TSREPAYCD: string;
-    TSSUNAPACTIONREF: string;
-    TSREPAYREF: string;
-    TSSEQ: string;
-    TSSETLMTYN: string;
-    TSTFCSEQ: string;
-}
-
-export interface Ids_oPosData {
-    PMYEAR: string;
-    PMMGNO: string;
-}
-
-export interface Ids_iPosData {
-    PMYEAR: string;
-    PMMGNO: string;
-    PMINPUT: string;
-    PMPCGUBUN: string;
-    PMPROCDATE: string;
-    PMPIID: string;
-    PMPGMID: string;
-    PMPGMPK: string;
-    PMBUYER: string;
-    PMCLAS: string;
-    PMPGMGUBUN: string;
-    PMITEM1: string;
-    PMITEM2: string;
-    PMITEM3: string;
-    PMITEM4: string;
-    PMAMT: string;
-    PMVAT: string;
-    PMPAYMENTFLAG: string;
-    PMRESULT: string;
-    PMREGDATE: string;
-    PMREGSABUN: string;
-    PPNM: string;
-    PMPCORDERNO: string;
-    PCGUBUN: string;
-    PCORDERNO: string;
-    PCUSERTYPE: string;
-    PCTRANSACTIONDATE: string;
-    PCTRANSACTIONTIME: string;
-    PCSERIALNO: string;
-    PCAMT: string;
-    PCVAT: string;
-    PCSOCIALBUSINESSNO: string;
-    PCAUTHNO: string;
-    PCRESPONSECODE: string;
-    PCRESPONSEDATE: string;
-    PCTRANSACTIONCODE: string;
-}
-
-export interface Ids_oAttendance {
-}
-
-export interface Ids_oEstimate {
-}
+import type { Ids_oJubsu, Ids_oSunap, Ids_oChange, Ids_oRepay, Ids_oInternetReport, Ids_iJubsuH, Ids_ioSettlement, Ids_oPosData, Ids_iPosData, Ids_oAttendance, Ids_oEstimate } from './Frmtraining0090PInternetJubsuStatisticsData';
 
 export const useFrmtraining0090PInternetJubsuStatistics = () => {
     const [ds_oJubsu, setds_oJubsu] = useState<Ids_oJubsu[]>([]);
@@ -115,6 +15,11 @@ export const useFrmtraining0090PInternetJubsuStatistics = () => {
     const [ds_oAttendance, setds_oAttendance] = useState<Ids_oAttendance[]>([]);
     const [ds_oEstimate, setds_oEstimate] = useState<Ids_oEstimate[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divRepay, setIsVisible_divRepay] = useState(false);
+    const [isVisible_divChange, setIsVisible_divChange] = useState(false);
+    const [isVisible_divSunap, setIsVisible_divSunap] = useState(false);
+    const [isVisible_divJubsu, setIsVisible_divJubsu] = useState(false);
+    const [isVisible_divPos, setIsVisible_divPos] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
@@ -163,6 +68,16 @@ export const useFrmtraining0090PInternetJubsuStatistics = () => {
         ds_iPosData,
         ds_oAttendance,
         ds_oEstimate,
+        isVisible_divRepay,
+        setIsVisible_divRepay,
+        isVisible_divChange,
+        setIsVisible_divChange,
+        isVisible_divSunap,
+        setIsVisible_divSunap,
+        isVisible_divJubsu,
+        setIsVisible_divJubsu,
+        isVisible_divPos,
+        setIsVisible_divPos,
         btnOrderChange_OnClick,
         btnProc_OnClick,
         btnRepayCancel_OnClick,

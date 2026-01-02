@@ -1,8 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oViewMailDetail {
-}
+import type { Ids_oViewMailDetail } from './Frmcust1201PMailDetailViewerPopupData';
 
 export const useFrmcust1201PMailDetailViewerPopup = () => {
     const [ds_oViewMailDetail, setds_oViewMailDetail] = useState<Ids_oViewMailDetail[]>([]);

@@ -1,87 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_SearchJogeon {
-    JIBU: string;
-    RETURN_CNT: string;
-    CHECK_ALL: string;
-    CHECK_IN: string;
-    FEEMODE: string;
-    BIZGUBUN: string;
-    HOPEDATE: string;
-}
-
-export interface Ids_SendList {
-    JIBU_CNO: string;
-    BNM: string;
-    CEDUPOSTZIPCD: string;
-    CEDUPOSTADDR1: string;
-    CEDUPOSTADDR2: string;
-    CEDUPOSTPLACE: string;
-    CGROUPNM: string;
-    FMNM: string;
-    FMBIRTHDAY: string;
-    CGROUPCD: string;
-    CGTMGNO: string;
-    DISTINCT_GUBUN: string;
-    COURSECD: string;
-}
-
-export interface Ids_ioReport {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_SendList_D {
-    JIBU_CNO: string;
-    BNM: string;
-    CEDUPOSTZIPCD: string;
-    CEDUPOSTADDR1: string;
-    CEDUPOSTADDR2: string;
-    CEDUPOSTPLACE: string;
-    CGROUPNM: string;
-    FMNM: string;
-    FMBIRTHDAY: string;
-    CGROUPCD: string;
-    CGTMGNO: string;
-    DISTINCT_GUBUN: string;
-    COURSECD: string;
-}
-
-export interface Ids_SendList_Report {
-    CGROUPCD: string;
-    CGROUPNM: string;
-    COURSECD: string;
-    JIBU1: string;
-    JIBU2: string;
-    JIBU3: string;
-    JIBU4: string;
-    JIBU5: string;
-    JIBU6: string;
-    JIBU7: string;
-    JIBU8: string;
-    JIBU9: string;
-    JIBU10: string;
-    JIBU11: string;
-    JIBU12: string;
-    JIBU13: string;
-    JIBU14: string;
-}
-
-export interface Ids_ioBizGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCreateMode {
-    CD: string;
-    DATA: string;
-}
+import type { Ids_ioJibu, Ids_SearchJogeon, Ids_SendList, Ids_ioReport, Ids_SendList_D, Ids_SendList_Report, Ids_ioBizGubun, Ids_oCreateMode } from './Frmcust4020MBrochuresSendReportData';
 
 export const useFrmcust4020MBrochuresSendReport = () => {
     const [ds_ioJibu, setds_ioJibu] = useState<Ids_ioJibu[]>([]);
@@ -93,6 +12,7 @@ export const useFrmcust4020MBrochuresSendReport = () => {
     const [ds_ioBizGubun, setds_ioBizGubun] = useState<Ids_ioBizGubun[]>([]);
     const [ds_oCreateMode, setds_oCreateMode] = useState<Ids_oCreateMode[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -168,6 +88,8 @@ export const useFrmcust4020MBrochuresSendReport = () => {
         ds_SendList_Report,
         ds_ioBizGubun,
         ds_oCreateMode,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         chkAll_OnClick,
         chkBang1_OnClick,
         chkBang2_OnClick,

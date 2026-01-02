@@ -1,12 +1,21 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, Grid, IconButton, MenuItem, Paper, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Add, Close, ContentCopy, Delete, Description, Print, Refresh, Save, Search } from '@mui/icons-material';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
 import PageContainer from '../../components/PageContainer';
 import { useFrmprofes0001MProfMgmt } from './useFrmprofes0001MProfMgmt';
 import * as Frmprofes0001MProfMgmtData from './Frmprofes0001MProfMgmtData';
+import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
+import { Frmprofes0001S01ProfMgmt } from './Frmprofes0001S01ProfMgmt';
+import { Frmprofes0001S02ProfMgmt } from './Frmprofes0001S02ProfMgmt';
+import { Frmprofes0001S03ProfMgmt } from './Frmprofes0001S03ProfMgmt';
+import { Frmprofes0001S04ProfMgmt } from './Frmprofes0001S04ProfMgmt';
+import { Frmprofes0001S05ProfMgmt } from './Frmprofes0001S05ProfMgmt';
+import { Frmprofes0001S07ProfMgmt } from './Frmprofes0001S07ProfMgmt';
+import { Frmprofes0001S08ProfMgmt } from './Frmprofes0001S08ProfMgmt';
+import { Frmprofes0001S09ProfMgmt } from './Frmprofes0001S09ProfMgmt';
 
 export const Frmprofes0001MProfMgmt = () => {
     const hook = useFrmprofes0001MProfMgmt();
@@ -28,14 +37,14 @@ export const Frmprofes0001MProfMgmt = () => {
                 <Typography variant="h5">기본정보</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
-<Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Input}>추가 저장</Button>
-<Button variant="contained" startIcon={<Delete />} onClick={hook.lfn_Delete}>삭제 저장</Button>
+<Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Input}>추가 저장</Button>
+<Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Delete}>삭제 저장</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Save}>수정 저장</Button>
-<Button variant="contained"  onClick={hook.lfn_Cancel}>입력 초기화</Button>
+<Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Cancel}>입력 초기화</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.btnToExcel_OnClick}>엑셀로 저장</Button>
-<Button variant="contained"  onClick={hook.lfn_PrintScreen}>화면 출력</Button>
-<Button variant="contained"  onClick={hook.lfn_End}>닫기</Button>
-<Button variant="contained"  onClick={hook.btnReport_OnClick}>교수평가관리출력</Button>
+<Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
+<Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
+<Button variant="contained" startIcon={<Print />} onClick={hook.btnReport_OnClick}>교수평가관리출력</Button>
 
                 </Stack>
             </Stack>
@@ -47,19 +56,19 @@ export const Frmprofes0001MProfMgmt = () => {
                         <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>부서/지부</Typography>
-                        <FormControl size="small" fullWidth><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmprofes0001MProfMgmtData.ds_ds_oJibuGubun || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                        <FormControl size="small" sx={{ width: 150 }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmprofes0001MProfMgmtData.ds_ds_oJibuGubun || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>교수구분</Typography>
-                        <FormControl size="small" fullWidth><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmprofes0001MProfMgmtData.ds_ds_oProfGubunAll || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                        <FormControl size="small" sx={{ width: 150 }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmprofes0001MProfMgmtData.ds_ds_oProfGubunAll || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>성명</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
@@ -67,23 +76,23 @@ export const Frmprofes0001MProfMgmt = () => {
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>전임</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>겸임</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
                 </Grid>
                 <Grid item xs={12} md={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
                         <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>총건수</Typography>
                         <TextField size="small" fullWidth  />
                     </Stack>
-                </Grid><Grid item xs={12} md={2}><Button variant="contained"></Button></Grid></Grid>
+                </Grid><Grid item xs={12} md={2}><Tooltip title="BTN_MULTI_SORT"><Button variant="outlined" size="small" color="primary" onClick={hook.btnMutilSort_OnClick} sx={{ minWidth: 30, p: 0.5 }}><Sort fontSize="small" /></Button></Tooltip></Grid></Grid>
 <Grid container spacing={2} alignItems="center">
 
                 <Grid item xs={12}>
@@ -92,7 +101,7 @@ export const Frmprofes0001MProfMgmt = () => {
                     </Paper>
                 </Grid></Grid>
 <Grid container spacing={2} alignItems="center">
-<Grid item xs={12}><Box sx={{ width: "100%" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab} onChange={(e, v) => setTabValue_tabTab(v)} aria-label="tabTab"><Tab label="기본정보" /><Tab label="국가기술자격현황" /><Tab label="학술 및 세미나발표" /><Tab label="논문 및 연구실적" /><Tab label="교육훈련" /><Tab label="강의실적" /><Tab label="교수전문화" /><Tab label="강의시상" /><Tab label="교안실적" /></Tabs></Box><CustomTabPanel value={tabValue_tabTab} index={0}></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={1}></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={2}></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={3}></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={4}></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={5}></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={6}></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={7}></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={8}></CustomTabPanel></Box></Grid></Grid>
+<Grid item xs={12}><Box sx={{ width: "100%" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab} onChange={(e, v) => setTabValue_tabTab(v)} aria-label="tabTab"><Tab label="기본정보" /><Tab label="국가기술자격현황" /><Tab label="학술 및 세미나발표" /><Tab label="논문 및 연구실적" /><Tab label="교육훈련" /><Tab label="강의실적" /><Tab label="교수전문화" /><Tab label="강의시상" /><Tab label="교안실적" /></Tabs></Box><CustomTabPanel value={tabValue_tabTab} index={0}><Frmprofes0001S01ProfMgmt /></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={1}><Frmprofes0001S02ProfMgmt /></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={2}><Frmprofes0001S03ProfMgmt /></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={3}><Frmprofes0001S04ProfMgmt /></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={4}><Frmprofes0001S05ProfMgmt /></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={5}></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={6}><Frmprofes0001S07ProfMgmt /></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={7}><Frmprofes0001S08ProfMgmt /></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={8}><Frmprofes0001S09ProfMgmt /></CustomTabPanel></Box></Grid></Grid>
 
                     </Paper>
                 </Grid>

@@ -1,72 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_ioGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioSunap {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioElecApprConnection {
-    GYMGNO: string;
-    NEW_RECEIVE_DATE: string;
-    PROCDATE: string;
-    RE_ALI_DOC_ID: string;
-    RE_APPROVER_DATE: string;
-    RE_APPROVER_KIND: string;
-    RE_APPROVER_NAME: string;
-    RE_APPROVER_STATUS: string;
-    RE_PC_DEPARTMENT: string;
-    RE_PC_POSITION: string;
-    RECEIVE_DATE: string;
-    ROWNUM: string;
-}
-
-export interface Ids_oMemberfee1 {
-    CNM: string;
-    CFMEMBERGUBUN: string;
-    CCOURSECD: string;
-    SUNAB_CNT: string;
-    SUNAB_AMT: string;
-    SUNAB1_CNT: string;
-    SUNAB1_AMT: string;
-    HWANBUL_CNT: string;
-    HWANBUL_AMT: string;
-    HWANBUL2_CNT: string;
-    HWANBUL2_AMT: string;
-}
-
-export interface Ids_oMemberfee2 {
-}
-
-export interface Ids_oMemberfee3 {
-}
-
-export interface Ids_oMemberfee4 {
-}
-
-export interface Ids_oMemberfee1_2 {
-    CNM: string;
-    CFMEMBERGUBUN: string;
-    CCOURSECD: string;
-    SUNAB_CNT: string;
-    SUNAB_AMT: string;
-    SUNAB1_CNT: string;
-    SUNAB1_AMT: string;
-    HWANBUL_CNT: string;
-    HWANBUL_AMT: string;
-    HWANBUL2_CNT: string;
-    HWANBUL2_AMT: string;
-}
+import type { Ids_ioGubun, Ids_ioSunap, Ids_ioJibu, Ids_ioElecApprConnection, Ids_oMemberfee1, Ids_oMemberfee2, Ids_oMemberfee3, Ids_oMemberfee4, Ids_oMemberfee1_2 } from './Frmcust2080MDailyFeeReportGatewayData';
 
 export const useFrmcust2080MDailyFeeReportGateway = () => {
     const [ds_ioGubun, setds_ioGubun] = useState<Ids_ioGubun[]>([]);
@@ -79,6 +13,7 @@ export const useFrmcust2080MDailyFeeReportGateway = () => {
     const [ds_oMemberfee4, setds_oMemberfee4] = useState<Ids_oMemberfee4[]>([]);
     const [ds_oMemberfee1_2, setds_oMemberfee1_2] = useState<Ids_oMemberfee1_2[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -135,6 +70,8 @@ export const useFrmcust2080MDailyFeeReportGateway = () => {
         ds_oMemberfee3,
         ds_oMemberfee4,
         ds_oMemberfee1_2,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnCreateListTotaling_OnClick,
         btnCreateListTotaling_part1_OnClick,
         btnCreateList_OnClick,

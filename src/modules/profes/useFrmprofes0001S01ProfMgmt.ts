@@ -1,51 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oProfGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioProfBasicInfo {
-    INSACODE: string;
-    PFEDATE: string;
-    PFGUBUN: string;
-    PFNM: string;
-    PFREMARK: string;
-    PFTEAM: string;
-    JIKRYUL: string;
-    PFGUBUN2: string;
-    PFGUBUN3: string;
-    PFSTARTDATE: string;
-    PFENDDATE: string;
-    PFJIBU: string;
-}
-
-export interface Ids_ioProfPersonSchool {
-    HCNM: string;
-    PSNAME: string;
-    PSSABUN: string;
-    PSSUBJECT: string;
-}
-
-export interface Ids_oProfGubun2 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oProfGubun3 {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_PFJIBU {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_ioListDelete {
-    SEL: string;
-}
+import type { Ids_oProfGubun, Ids_ioProfBasicInfo, Ids_ioProfPersonSchool, Ids_oProfGubun2, Ids_oProfGubun3, Ids_PFJIBU, Ids_ioListDelete } from './Frmprofes0001S01ProfMgmtData';
 
 export const useFrmprofes0001S01ProfMgmt = () => {
     const [ds_oProfGubun, setds_oProfGubun] = useState<Ids_oProfGubun[]>([]);

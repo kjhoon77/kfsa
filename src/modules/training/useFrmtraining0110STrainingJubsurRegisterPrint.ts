@@ -1,102 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from 'react';
-
-export interface Ids_oResdentNoGubun {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oCourse {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oJibu {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oSort {
-    CD: string;
-    DATA: string;
-}
-
-export interface Ids_oTrainingJubsurRegisterPrint {
-    A1: string;
-    AFTERGTDEPTNM: string;
-    AFTERJUBSUNO: string;
-    AFTERORDER: string;
-    BIRTHDAY: string;
-    NM: string;
-    OLDGTDEPTNM: string;
-    OLDJUBSUNO: string;
-    OLDORDER: string;
-    REMARK: string;
-    TJADDR1: string;
-    TJADDR2: string;
-    TJLASTSUNAPGUBUN: string;
-    TJPASSYN: string;
-    PERSONKEY: string;
-    TOHDECISIONSEATNO: string;
-    TOHJUBSUNO: string;
-    TOHLASTGUBUN: string;
-    TOMGGTMGNO: string;
-    TOTCCOURSECD: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TRAINDATE: string;
-    TJMGNO: string;
-    TJLASTTOHSEQ: string;
-    TOHSEATCHANGEYN: string;
-    TJAMOUNTGUBUN: string;
-}
-
-export interface Ids_oTrainingOrderMgno {
-}
-
-export interface Ids_oTrainingJubsurRegisterPrintCopy {
-    A1: string;
-    AFTERGTDEPTNM: string;
-    AFTERJUBSUNO: string;
-    AFTERORDER: string;
-    BIRTHDAY: string;
-    NM: string;
-    OLDGTDEPTNM: string;
-    OLDJUBSUNO: string;
-    OLDORDER: string;
-    REMARK: string;
-    TJADDR1: string;
-    TJADDR2: string;
-    TJLASTSUNAPGUBUN: string;
-    TJPASSYN: string;
-    PERSONKEY: string;
-    TOHDECISIONSEATNO: string;
-    TOHJUBSUNO: string;
-    TOHLASTGUBUN: string;
-    TOMGGTMGNO: string;
-    TOTCCOURSECD: string;
-    TOTRAININGORDER: string;
-    TOYEAR: string;
-    TRAINDATE: string;
-    TJMGNO: string;
-    TJLASTTOHSEQ: string;
-    TOHSEATCHANGEYN: string;
-}
-
-export interface Ids_oTrainingJubsurRegisterTemp {
-    TOHDECISIONSEATNO: string;
-    TOHSEATCHANGEYN: string;
-    TJMGNO: string;
-    TJLASTTOHSEQ: string;
-}
-
-export interface Ids_oTrainingJubsurRegisterAll {
-    SEATNO: string;
-    TOHSEATCHANGEYN: string;
-}
-
-export interface Ids_oTrainingJubsurRegisterPersonList {
-}
+import type { Ids_oResdentNoGubun, Ids_oCourse, Ids_oJibu, Ids_oSort, Ids_oTrainingJubsurRegisterPrint, Ids_oTrainingOrderMgno, Ids_oTrainingJubsurRegisterPrintCopy, Ids_oTrainingJubsurRegisterTemp, Ids_oTrainingJubsurRegisterAll, Ids_oTrainingJubsurRegisterPersonList } from './Frmtraining0110STrainingJubsurRegisterPrintData';
 
 export const useFrmtraining0110STrainingJubsurRegisterPrint = () => {
     const [ds_oResdentNoGubun, setds_oResdentNoGubun] = useState<Ids_oResdentNoGubun[]>([]);
@@ -110,6 +14,7 @@ export const useFrmtraining0110STrainingJubsurRegisterPrint = () => {
     const [ds_oTrainingJubsurRegisterAll, setds_oTrainingJubsurRegisterAll] = useState<Ids_oTrainingJubsurRegisterAll[]>([]);
     const [ds_oTrainingJubsurRegisterPersonList, setds_oTrainingJubsurRegisterPersonList] = useState<Ids_oTrainingJubsurRegisterPersonList[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -159,6 +64,8 @@ export const useFrmtraining0110STrainingJubsurRegisterPrint = () => {
         ds_oTrainingJubsurRegisterTemp,
         ds_oTrainingJubsurRegisterAll,
         ds_oTrainingJubsurRegisterPersonList,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
         btnSeatNoAssignJubsu_OnClick,
         lfn_Cancel,
         lfn_End,
