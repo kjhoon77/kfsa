@@ -1,0 +1,89 @@
+// @ts-nocheck
+import { useState, useEffect } from 'react';
+
+export interface Ids_oCourse {
+    CD: string;
+    DATA: string;
+}
+
+export interface Ids_oTrainingPayAmountSumDate {
+    INCNT: string;
+    INOUTCNT: string;
+    JUBSUCNT: string;
+    OUTCNT: string;
+    REPAYAMT: string;
+    REPAYCNT: string;
+    SUNABAMT: string;
+    SUNABCNT: string;
+    TCCOURSENM: string;
+    TOTALAMT: string;
+    TSPROCDATE: string;
+    REMARK: string;
+    TOYEAR: string;
+}
+
+export interface Ids_oJibu {
+    CD: string;
+    DATA: string;
+}
+
+export interface Ids_oGubun {
+    CD: string;
+    DATA: string;
+}
+
+export const useFrmspcledu0200MTrainingPayAmountSumDateStatistics = () => {
+    const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
+    const [ds_oTrainingPayAmountSumDate, setds_oTrainingPayAmountSumDate] = useState<Ids_oTrainingPayAmountSumDate[]>([]);
+    const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
+    const [ds_oGubun, setds_oGubun] = useState<Ids_oGubun[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        setIsLoading(true);
+        setTimeout(() => {
+            setds_oCourse([]);
+            setds_oTrainingPayAmountSumDate([]);
+            setds_oJibu([]);
+            setds_oGubun([]);
+            setIsLoading(false);
+        }, 500);
+    }, []);
+
+    const btnMutilSort_OnClick = () => {
+        console.log('btnMutilSort_OnClick clicked');
+    };
+    const btnToExcel_OnClick = () => {
+        console.log('btnToExcel_OnClick clicked');
+    };
+    const lfn_Cancel = () => {
+        console.log('lfn_Cancel clicked');
+    };
+    const lfn_End = () => {
+        console.log('lfn_End clicked');
+    };
+    const lfn_Print = () => {
+        console.log('lfn_Print clicked');
+    };
+    const lfn_PrintScreen = () => {
+        console.log('lfn_PrintScreen clicked');
+    };
+    const lfn_Search = () => {
+        console.log('lfn_Search clicked');
+    };
+
+    return {
+        isLoading,
+        ds_oCourse,
+        ds_oTrainingPayAmountSumDate,
+        ds_oJibu,
+        ds_oGubun,
+        btnMutilSort_OnClick,
+        btnToExcel_OnClick,
+        lfn_Cancel,
+        lfn_End,
+        lfn_Print,
+        lfn_PrintScreen,
+        lfn_Search,
+    };
+};

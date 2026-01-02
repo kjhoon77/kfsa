@@ -178,6 +178,39 @@ export const callService = async (
         return { status: 'OK', message: 'Deleted successfully' };
     }
 
+    // [New] POS System Mock Actions
+    if (actionName === 'com:searchPosProgramId') {
+        return {
+            ds_oPosProgramId: [
+                { PGMID: '80', PGMNM: '기타수입관리', PGMGUBUN: '1', PGMGUBUNNM: '공통' },
+                { PGMID: '81', PGMNM: '교육비관리', PGMGUBUN: '1', PGMGUBUNNM: '교육' }
+            ],
+            ds_oJibu: [
+                { PIID: '01', JJIBUCD: '01', JJIBUNM: '서울지부' },
+                { PIID: '02', JJIBUCD: '02', JJIBUNM: '경기지부' }
+            ]
+        };
+    }
+    if (actionName === 'posetc:searchPosEtc0010PosEtcSettlement') {
+        return {
+            ds_oSunapList: [
+                {
+                    PSSEQ: 1, PSSETLMGUBUN: '1', PSSETLMGUBUNNM: '완료', PSAMT: 50000,
+                    PSPROCDATE: '2024-05-20', PSBUYER: '홍길동', PMPCORDERNO: 'ORD-2024-001',
+                    PSGUBUN: '0', PSGUBUNNM: '수납', PSGUBUNCDNM: '카드', PSCONTENT: '교육비 납부'
+                },
+                {
+                    PSSEQ: 2, PSSETLMGUBUN: '1', PSSETLMGUBUNNM: '완료', PSAMT: 30000,
+                    PSPROCDATE: '2024-05-21', PSBUYER: '김철수', PMPCORDERNO: 'ORD-2024-002',
+                    PSGUBUN: '1', PSGUBUNNM: '환불', PSGUBUNCDNM: '계좌이체', PSCONTENT: '교육 취소 환불'
+                }
+            ]
+        };
+    }
+    if (actionName === 'posetc:insertPosEtc0010PosEtcSettlement') {
+        return { status: 'OK', message: 'POS processed successfully' };
+    }
+
     return {};
 };
 

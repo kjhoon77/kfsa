@@ -14,7 +14,8 @@ import {
     Group as MemIcon,
     School as ProfesIcon,
     Assessment as ReportIcon,
-    Add as AddIcon
+    Add as AddIcon,
+    Receipt as PosEtcIcon
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -94,9 +95,10 @@ const menuItems: MenuItemData[] = [
     {
         id: 'posetc',
         title: 'POS/기타',
-        icon: <EnvIcon />,
+        icon: <PosEtcIcon />,
         children: [
-            { id: 'posetc-mgmt', title: 'POS/기타 관리', path: '/posetc/management' }
+            { id: 'pos-system', title: '기타결제(POS)시스템', path: '/posetc/pos-system' },
+            { id: 'posetc-mgmt', title: 'POS기타관리', path: '/posetc/management' }
         ]
     },
     {

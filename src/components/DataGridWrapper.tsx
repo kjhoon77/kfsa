@@ -7,11 +7,13 @@ interface DataGridWrapperProps {
     columns: GridColDef[];
     onRowDoubleClick?: (params: GridRowParams) => void;
     loading?: boolean;
+    height?: number | string;
+    pageSize?: number;
 }
 
-export default function DataGridWrapper({ rows, columns, onRowDoubleClick, loading }: DataGridWrapperProps) {
+export default function DataGridWrapper({ rows, columns, onRowDoubleClick, loading, height = 400, pageSize = 100 }: DataGridWrapperProps) {
     return (
-        <Box sx={{ height: 400, width: '100%', mt: 2 }}>
+        <Box sx={{ height: height, width: '100%' }}>
             <DataGrid
                 rows={rows}
                 columns={columns}
@@ -20,42 +22,43 @@ export default function DataGridWrapper({ rows, columns, onRowDoubleClick, loadi
                 loading={loading}
                 initialState={{
                     pagination: {
-                        paginationModel: { page: 0, pageSize: 15 },
+                        paginationModel: { page: 0, pageSize: pageSize },
                     },
                 }}
-                pageSizeOptions={[10, 15, 20, 50, 100]}
+                pageSizeOptions={[100, 500, 1000, 10000]}
                 disableRowSelectionOnClick
                 slots={{ toolbar: GridToolbar }}
                 density="compact"
                 sx={{
-                    border: 0,
+                    border: '1px solid #e0e0e0',
                     // Header Styling
                     '& .MuiDataGrid-columnHeaders': {
-                        backgroundColor: '#f5f5f5',
+                        backgroundColor: '#f0f0f0 !important',
                         borderBottom: '1px solid #e0e0e0',
                         fontSize: '0.875rem',
-                        fontWeight: 'bold',
                         color: '#333',
                     },
-                    '& .MuiDataGrid-columnHeader:focus': {
-                        outline: 'none',
+                    '& .MuiDataGrid-columnHeader': {
+                        borderRight: '1px solid #e0e0e0', // Separator between headers
+                        fontWeight: 'bold',
+                        '&:last-child': { borderRight: 'none' }, // No border on last header
+                        '&:focus': { outline: 'none' },
+                    },
+                    '& .MuiDataGrid-columnHeaderTitleContainer': {
+                        justifyContent: 'center',
                     },
                     // Row Styling
                     '& .MuiDataGrid-row': {
-                        '&:nth-of-type(odd)': {
-                            backgroundColor: '#fafafa', // Light stripe
-                        },
-                        '&:hover': {
-                            backgroundColor: '#e3f2fd', // Hover color
-                        },
+                        '&:nth-of-type(odd)': { backgroundColor: '#fafafa' },
+                        '&:hover': { backgroundColor: '#e3f2fd' },
                         cursor: 'pointer',
                     },
                     // Cell Styling
                     '& .MuiDataGrid-cell': {
+                        borderRight: '1px solid #f0f0f0', // Separator between cells
                         borderBottom: '1px solid #f0f0f0',
-                        '&:focus': {
-                            outline: 'none',
-                        },
+                        '&:last-child': { borderRight: 'none' },
+                        '&:focus': { outline: 'none' },
                     },
                     // Footer
                     '& .MuiDataGrid-footerContainer': {

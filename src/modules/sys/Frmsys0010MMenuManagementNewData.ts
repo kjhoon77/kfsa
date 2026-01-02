@@ -1,0 +1,11 @@
+// @ts-nocheck
+export const Frmsys0010MMenuManagementNewData = {};
+
+export const ds_ds_oDeptAdminGubun = [
+    { CD: 'CO', DATA: '공통관리' },
+    { CD: 'SD', DATA: '관리자' },
+    { CD: 'CD', DATA: '고객관리과' },
+    { CD: 'TD', DATA: '교육운영과' },
+    { CD: 'ED', DATA: '평가관리과' },
+    { CD: 'BD', DATA: '교재개발과' },
+];
