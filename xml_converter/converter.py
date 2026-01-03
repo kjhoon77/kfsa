@@ -330,12 +330,12 @@ class XMLToReactConverter:
             self.is_popup = is_popup
 
         def analyze(self):
-            # Filter visible items AND ensure coordinates are non-negative
+            # Filter visible items (Allow small negative coords for alignment)
             visible_items = [
                 e for e in self.elements 
                 if e['tag'] not in ['Datasets', 'Shape', 'PopDiv']
-                and e['left'] >= 0 
-                and e['top'] >= 0
+                and e['left'] >= -100 
+                and e['top'] >= -100
             ]
             
             if self.is_popup:
@@ -489,7 +489,7 @@ class XMLToReactConverter:
         return None
 
     def _generate_view(self, name, target_dir, datasets, ui_elements, ds_name_map, xml_source_path=None):
-        used_mui = {'Box', 'Grid', 'Button', 'Stack', 'Typography', 'Paper', 'TextField', 'FormControl', 'Select', 'MenuItem', 'IconButton', 'Tooltip', 'Dialog', 'DialogTitle', 'DialogContent', 'DialogActions', 'Tabs', 'Tab', 'Radio', 'RadioGroup', 'FormControlLabel'}
+        used_mui = {'Box', 'Grid', 'Button', 'Stack', 'Typography', 'Paper', 'TextField', 'FormControl', 'Select', 'MenuItem', 'IconButton', 'Tooltip', 'Dialog', 'DialogTitle', 'DialogContent', 'DialogActions', 'Tabs', 'Tab', 'Radio', 'RadioGroup', 'FormControlLabel', 'Checkbox'}
         used_icons = {'Search', 'Delete', 'Save', 'ContentCopy', 'Description', 'Add', 'Print', 'Close', 'Refresh', 'Check', 'Visibility', 'ZoomIn', 'Help', 'Sort', 'FilterList', 'TouchApp'} 
         
         def scan(els):
@@ -498,6 +498,46 @@ class XMLToReactConverter:
                 if 'children' in e: scan(e['children'])
         scan(ui_elements)
         
+        # Ensure Unique IDs (Fix for nested tabs with same ID)
+        def _ensure_unique_ids(elements, seen_ids=None):
+            if seen_ids is None: seen_ids = set()
+            
+            for elem in elements:
+                if 'id' in elem:
+                    original_id = elem['id']
+                    if original_id in seen_ids:
+                        # Conflict detected
+                        counter = 2
+                        new_id = f"{original_id}_{counter}"
+                        while new_id in seen_ids:
+                            counter += 1
+                            new_id = f"{original_id}_{counter}"
+                        elem['id'] = new_id
+                        # Also update 'text' if it was just the ID? No, keep text.
+                    seen_ids.add(elem['id'])
+                
+                if 'children' in elem:
+                    _ensure_unique_ids(elem['children'], seen_ids)
+                
+                if 'tabs' in elem:
+                    for tab in elem['tabs']:
+                        # Tab pages might not have IDs but let's check
+                        if 'id' in tab:
+                            original_id = tab['id']
+                            if original_id in seen_ids:
+                                counter = 2
+                                new_id = f"{original_id}_{counter}"
+                                while new_id in seen_ids:
+                                     counter += 1
+                                     new_id = f"{original_id}_{counter}"
+                                tab['id'] = new_id
+                            seen_ids.add(tab['id'])
+                        
+                        if 'children' in tab:
+                             _ensure_unique_ids(tab.get('children', []), seen_ids)
+
+        _ensure_unique_ids(ui_elements)
+
         # Build Popup Trigger Map
         # Map feature_name (from content inside PopDiv) -> pop_id
         popup_triggers = {}
@@ -524,12 +564,67 @@ class XMLToReactConverter:
         lines.append("import { DatePicker } from '@mui/x-date-pickers/DatePicker';")
         lines.append(f"import {{ {', '.join(sorted(list(used_icons)))} }} from '@mui/icons-material';")
         
+        # Calculate path to components directory
+        # Try to find 'components' dir by walking up
+        comp_path = "../components" # Default
         try:
-            rel_path = target_dir.relative_to(self.output_dir)
-            depth = len(rel_path.parts)
-        except ValueError:
-            depth = 0
-        comp_path = "../" * (depth + 1) + "components"
+            current_path = target_dir.resolve()
+            # Stop if we hit root or find 'components' sibling
+            levels_up = 0
+            found = False
+            # Check up to 5 levels
+            temp_path = current_path
+            for i in range(5):
+                 # Check if 'components' exists in this directory
+                 if (temp_path / "components").exists():
+                      comp_path = "../" * levels_up + "components"
+                      found = True
+                      break
+                 # Check if 'src' exists here, then components is likely inside src? 
+                 # No, we want to find where 'components' IS.
+                 
+                 # If we are in `src/modules/appoint`, we go up:
+                 # 0: appoint/ components? No.
+                 # 1: modules/ components? No.
+                 # 2: src/ components? YES.
+                 
+                 temp_path = temp_path.parent
+                 levels_up += 1
+                 if temp_path == temp_path.parent: break # Root
+            
+            if not found:
+                 # Fallback to logic based on relative path to output_dir if provided, else just ../components
+                 try:
+                    rel_path = target_dir.relative_to(self.output_dir)
+                    depth = len(rel_path.parts)
+                    # If direct match, depth 0 -> ../components.
+                    # This was the bug. If output_dir=appoint, depth=0. we want ../../components
+                    # But we don't know where components is if we don't look for it.
+                    # Let's assume standard structure: src/modules/X -> ../../components
+                    if 'modules' in target_dir.parts:
+                        # Find index of 'modules'
+                        idx = target_dir.parts.index('modules')
+                        # levels from end to modules
+                        # parts: .../src/modules/appoint
+                        # len = N. index of modules = N-2. 
+                        # we need to go up (N - (N-2)) = 2 levels.
+                        # so depth = len(parts) - index_of_modules
+                        # wait if index is N-2, then parts[N-2] is modules.
+                        # parts[N-1] is appoint.
+                        # so we are at appoint.
+                        # path to src (modules parent) is ../..
+                        # usually components is in src.
+                        
+                        dist = len(target_dir.parts) - idx
+                        comp_path = "../" * dist + "components"
+                    else:
+                         comp_path = "../" * (depth + 1) + "components"
+                 except ValueError:
+                    comp_path = "../components"
+
+        except Exception as e:
+            print(f"Error calculating component path: {e}")
+            comp_path = "../components"
         
         lines.append(f"import DataGridWrapper from '{comp_path}/DataGridWrapper';")
         lines.append(f"import PageContainer from '{comp_path}/PageContainer';")
@@ -630,6 +725,23 @@ class XMLToReactConverter:
             if tid in seen_tab_ids: continue
             seen_tab_ids.add(tid)
             lines.append(f"    const [tabValue_{tid}, setTabValue_{tid}] = useState(0);")
+        
+        # Checkbox State Generation (Unbound)
+        processed_chk_ids = set()
+        def scan_checkboxes(els):
+            for e in els:
+                if e['tag'] == 'Checkbox' and not e.get('BindDataset'):
+                     unique_chk_id = e.get('id')
+                     if unique_chk_id and unique_chk_id not in processed_chk_ids:
+                         initial_val = e.get('Value', e.get('FalseValue', '0'))
+                         processed_chk_ids.add(unique_chk_id)
+                         lines.append(f"    const [chk_{unique_chk_id}, setChk_{unique_chk_id}] = useState('{initial_val}');")
+                
+                if 'children' in e: scan_checkboxes(e['children'])
+                if 'tabs' in e:
+                    for page in e['tabs']:
+                        scan_checkboxes(page.get('children', []))
+        scan_checkboxes(ui_elements)
         
         used_col_vars = set()
         for g in all_grids:
@@ -849,7 +961,7 @@ class XMLToReactConverter:
                          menu_items = f"{{ ({name}Data.ds_{inner_ds} || []).map(opt => <MenuItem key={{opt.CD}} value={{opt.CD}}>{{opt.DATA}}</MenuItem>) }}"
                      field_jsx = f'<FormControl size="small" fullWidth sx={{{{ "& .MuiOutlinedInput-notchedOutline": {{ borderColor: "rgba(0,0,0,0.4)" }}, "& .MuiSelect-select": {{ padding: "4px 6px !important" }} }}}}><Select {val_prop} displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{menu_items}</Select></FormControl>'
                  elif field_tag == 'Calendar':
-                     field_jsx = '<DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />'
+                     field_jsx = '<DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />'
                  elif field_tag == 'Radio':
                      val_prop = ""
                      if field.get('bind_dataset') and field.get('column'):
@@ -889,7 +1001,7 @@ class XMLToReactConverter:
                                panel_content = f"<{cname} />"
 
                      if not panel_content:
-                         tab_layout = self._generate_layout(tab.get('children', []), is_popup=False)
+                         tab_layout = self._generate_layout(tab.get('children', []), is_popup=True)
                          if tab_layout['body']:
                              for row_panels in tab_layout['body']:
                                  for panel in row_panels:
@@ -900,6 +1012,46 @@ class XMLToReactConverter:
                 
                 tabs_header += '</Tabs></Box>'
                 content_jsx = f'<Box sx={{{{ {content_sx}, width: "100%", height: "auto", minHeight: "{item.get("height", 200)}px" }}}}>{tabs_header}{tabs_panels}</Box>'
+
+
+            elif tag == 'Checkbox':
+                 # <Checkbox Id="chkUseYn" BindDataset="ds_info" Column="USE_YN" TrueValue="Y" FalseValue="N" />
+                 # <Checkbox FalseValue="0" Height="14" Id="chkPerson" ... TrueValue="1" Value="FALSE" />
+                 
+                 c_id = item.get('id', 'chk')
+                 text = self._escape_jsx_text(item.get('text', ''))
+                 true_val = item.get('TrueValue', '1')
+                 false_val = item.get('FalseValue', '0')
+                 
+                 bind_ds = item.get('BindDataset')
+                 bind_col = item.get('Column')
+                 
+                 checked_expr = "false"
+                 change_handler = ""
+                 
+                 if bind_ds and bind_col:
+                     # Bound to dataset
+                     val_expr = f"hook.ds_{bind_ds}?.{bind_col}"
+                     checked_expr = f"{val_expr} === '{true_val}'"
+                     # onChange for bound: explicit logic not fully supported for writing back to hook yet, 
+                     # but we can try basic or leave empty to be read-only visually (but user wants interaction)
+                     # For now, we omit onChange or provide a comment if strict binding is needed.
+                     # But realistically, Checkbox without onChange is strict readonly.
+                     # We'll assume read-only for bound data for now unless we add a setter to the hook.
+                     pass 
+                 else:
+                     # Unbound -> Local state
+                     # State var: chk_{id}
+                     val_expr = f"chk_{c_id}"
+                     checked_expr = f"{val_expr} === '{true_val}'"
+                     change_handler = f" onChange={{(e) => setChk_{c_id}(e.target.checked ? '{true_val}' : '{false_val}')}}"
+                 
+                 content = (
+                     f'<FormControlLabel control={{<Checkbox checked={{{checked_expr}}}{change_handler} />}} label="{text}" />'
+                 )
+                 
+                 # Wrap in Box/Stack if needed for positioning? Default flow is fine.
+                 return content
 
             elif tag == 'Button':
                  text = self._escape_jsx_text(item.get('text'))
@@ -959,7 +1111,7 @@ class XMLToReactConverter:
                  content_jsx = f'<Box sx={{{{ {content_sx}, border: "1px solid #ddd", display: "flex", alignItems: "center", justifyContent: "center" }}}}>Image: {img_id}</Box>'
 
             elif tag == 'Calendar':
-                 content_jsx = f'<DatePicker format="yyyy/MM/dd" slotProps={{{{ textField: {{ size: "small", fullWidth: true }} }}}} sx={{{{ {content_sx}, "& .MuiOutlinedInput-notchedOutline": {{ borderColor: "rgba(0,0,0,0.4)" }}, "& .MuiInputBase-input": {{ padding: "4px 6px" }}, bgcolor: "#fff" }}}} />'
+                 content_jsx = f'<DatePicker format="yyyy/MM/dd" slotProps={{{{ textField: {{ size: "small", fullWidth: true }} }}}} sx={{{{ minWidth: "120px", {content_sx}, "& .MuiOutlinedInput-notchedOutline": {{ borderColor: "rgba(0,0,0,0.4)" }}, "& .MuiInputBase-input": {{ padding: "4px 6px" }}, bgcolor: "#fff" }}}} />'
             
             elif tag in ['Edit', 'MaskEdit', 'TextArea']:
                  val_prop = ""
