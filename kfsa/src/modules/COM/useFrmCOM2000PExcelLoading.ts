@@ -7,13 +7,27 @@ export const useFrmCOM2000PExcelLoading = () => {
     const [DS_PARENT, setDS_PARENT] = useState<IDS_PARENT[]>([]);
     const [DS_CELL, setDS_CELL] = useState<IDS_CELL[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_grd_excelLoad, setIsVisible_grd_excelLoad] = useState(true);
-    const [isVisible_grd_parent, setIsVisible_grd_parent] = useState(true);
-    const [isVisible_FileDlgExcel, setIsVisible_FileDlgExcel] = useState(true);
-    const [isVisible_btnOk, setIsVisible_btnOk] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_btnDel, setIsVisible_btnDel] = useState(true);
-    const [isVisible_btnSelectFile, setIsVisible_btnSelectFile] = useState(true);
+    const [rawVisible_grd_excelLoad, setRawVisible_grd_excelLoad] = useState(true);
+    const [rawVisible_grd_parent, setRawVisible_grd_parent] = useState(true);
+    const [rawVisible_FileDlgExcel, setRawVisible_FileDlgExcel] = useState(true);
+    const [rawVisible_btnOk, setRawVisible_btnOk] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_btnDel, setRawVisible_btnDel] = useState(true);
+    const [rawVisible_btnSelectFile, setRawVisible_btnSelectFile] = useState(true);
+    const isVisible_grd_excelLoad = rawVisible_grd_excelLoad;
+    const setIsVisible_grd_excelLoad = setRawVisible_grd_excelLoad;
+    const isVisible_grd_parent = rawVisible_grd_parent;
+    const setIsVisible_grd_parent = setRawVisible_grd_parent;
+    const isVisible_FileDlgExcel = rawVisible_FileDlgExcel;
+    const setIsVisible_FileDlgExcel = setRawVisible_FileDlgExcel;
+    const isVisible_btnOk = rawVisible_btnOk;
+    const setIsVisible_btnOk = setRawVisible_btnOk;
+    const isVisible_btnEnd = rawVisible_btnEnd;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_btnDel = rawVisible_btnDel;
+    const setIsVisible_btnDel = setRawVisible_btnDel;
+    const isVisible_btnSelectFile = rawVisible_btnSelectFile;
+    const setIsVisible_btnSelectFile = setRawVisible_btnSelectFile;
 
     useEffect(() => {
         setIsLoading(true);

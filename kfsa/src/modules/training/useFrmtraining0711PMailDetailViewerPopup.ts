@@ -5,8 +5,12 @@ import type { Ids_oViewMailDetail } from './Frmtraining0711PMailDetailViewerPopu
 export const useFrmtraining0711PMailDetailViewerPopup = () => {
     const [ds_oViewMailDetail, setds_oViewMailDetail] = useState<Ids_oViewMailDetail[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_AxMsie, setIsVisible_AxMsie] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
+    const [rawVisible_AxMsie, setRawVisible_AxMsie] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const isVisible_AxMsie = rawVisible_AxMsie;
+    const setIsVisible_AxMsie = setRawVisible_AxMsie;
+    const isVisible_btnEnd = rawVisible_btnEnd;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
 
     useEffect(() => {
         setIsLoading(true);

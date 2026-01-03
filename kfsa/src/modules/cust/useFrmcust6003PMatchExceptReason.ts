@@ -5,11 +5,21 @@ import type { Ids_ioReasonCode } from './Frmcust6003PMatchExceptReasonData';
 export const useFrmcust6003PMatchExceptReason = () => {
     const [ds_ioReasonCode, setds_ioReasonCode] = useState<Ids_ioReasonCode[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_Static1, setIsVisible_Static1] = useState(true);
-    const [isVisible_edReasonEtc, setIsVisible_edReasonEtc] = useState(true);
-    const [isVisible_btnConfirm, setIsVisible_btnConfirm] = useState(true);
-    const [isVisible_Static0, setIsVisible_Static0] = useState(true);
-    const [isVisible_cbxReasonCode, setIsVisible_cbxReasonCode] = useState(true);
+    const [rawVisible_Static1, setRawVisible_Static1] = useState(true);
+    const [rawVisible_edReasonEtc, setRawVisible_edReasonEtc] = useState(true);
+    const [rawVisible_btnConfirm, setRawVisible_btnConfirm] = useState(true);
+    const [rawVisible_Static0, setRawVisible_Static0] = useState(true);
+    const [rawVisible_cbxReasonCode, setRawVisible_cbxReasonCode] = useState(true);
+    const isVisible_Static1 = rawVisible_Static1;
+    const setIsVisible_Static1 = setRawVisible_Static1;
+    const isVisible_edReasonEtc = rawVisible_edReasonEtc;
+    const setIsVisible_edReasonEtc = setRawVisible_edReasonEtc;
+    const isVisible_btnConfirm = rawVisible_btnConfirm;
+    const setIsVisible_btnConfirm = setRawVisible_btnConfirm;
+    const isVisible_Static0 = rawVisible_Static0;
+    const setIsVisible_Static0 = setRawVisible_Static0;
+    const isVisible_cbxReasonCode = rawVisible_cbxReasonCode;
+    const setIsVisible_cbxReasonCode = setRawVisible_cbxReasonCode;
 
     useEffect(() => {
         setIsLoading(true);

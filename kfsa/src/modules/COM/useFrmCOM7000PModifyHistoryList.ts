@@ -5,10 +5,18 @@ import type { Ids_oModifyHistory } from './FrmCOM7000PModifyHistoryListData';
 export const useFrmCOM7000PModifyHistoryList = () => {
     const [ds_oModifyHistory, setds_oModifyHistory] = useState<Ids_oModifyHistory[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
-    const [isVisible_Button1, setIsVisible_Button1] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_gdModifyHistory, setIsVisible_gdModifyHistory] = useState(true);
+    const [rawVisible_shpBtnBox, setRawVisible_shpBtnBox] = useState(true);
+    const [rawVisible_Button1, setRawVisible_Button1] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_gdModifyHistory, setRawVisible_gdModifyHistory] = useState(true);
+    const isVisible_shpBtnBox = rawVisible_shpBtnBox;
+    const setIsVisible_shpBtnBox = setRawVisible_shpBtnBox;
+    const isVisible_Button1 = rawVisible_Button1;
+    const setIsVisible_Button1 = setRawVisible_Button1;
+    const isVisible_btnEnd = rawVisible_btnEnd && rawVisible_shpBtnBox;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_gdModifyHistory = rawVisible_gdModifyHistory;
+    const setIsVisible_gdModifyHistory = setRawVisible_gdModifyHistory;
 
     useEffect(() => {
         setIsLoading(true);

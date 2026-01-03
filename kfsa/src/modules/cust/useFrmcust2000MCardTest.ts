@@ -24,11 +24,21 @@ export const useFrmcust2000MCardTest = () => {
     const [ds_ioVirtualAccoutAllocation, setds_ioVirtualAccoutAllocation] = useState<Ids_ioVirtualAccoutAllocation[]>([]);
     const [ds_oPosVatH, setds_oPosVatH] = useState<Ids_oPosVatH[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_Button0, setIsVisible_Button0] = useState(true);
-    const [isVisible_Button1, setIsVisible_Button1] = useState(true);
-    const [isVisible_MSIE, setIsVisible_MSIE] = useState(true);
-    const [isVisible_WebBrowser, setIsVisible_WebBrowser] = useState(true);
-    const [isVisible_UPlusPGPOS_ClientOCX1, setIsVisible_UPlusPGPOS_ClientOCX1] = useState(true);
+    const [rawVisible_Button0, setRawVisible_Button0] = useState(true);
+    const [rawVisible_Button1, setRawVisible_Button1] = useState(true);
+    const [rawVisible_MSIE, setRawVisible_MSIE] = useState(true);
+    const [rawVisible_WebBrowser, setRawVisible_WebBrowser] = useState(true);
+    const [rawVisible_UPlusPGPOS_ClientOCX1, setRawVisible_UPlusPGPOS_ClientOCX1] = useState(true);
+    const isVisible_Button0 = rawVisible_Button0;
+    const setIsVisible_Button0 = setRawVisible_Button0;
+    const isVisible_Button1 = rawVisible_Button1;
+    const setIsVisible_Button1 = setRawVisible_Button1;
+    const isVisible_MSIE = rawVisible_MSIE;
+    const setIsVisible_MSIE = setRawVisible_MSIE;
+    const isVisible_WebBrowser = rawVisible_WebBrowser;
+    const setIsVisible_WebBrowser = setRawVisible_WebBrowser;
+    const isVisible_UPlusPGPOS_ClientOCX1 = rawVisible_UPlusPGPOS_ClientOCX1;
+    const setIsVisible_UPlusPGPOS_ClientOCX1 = setRawVisible_UPlusPGPOS_ClientOCX1;
 
     useEffect(() => {
         setIsLoading(true);

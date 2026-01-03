@@ -27,14 +27,14 @@ export const Frmtraining0093SInternetJubsuJubsuInfo = () => {
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "54px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '620px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 100, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>주소</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_btnEmailView ? undefined : 'none' }}><Button variant="contained"   sx={{ width: '92px', height: '24px' }}>메일 미리 보기</Button></Box></Stack>
+                 </Stack><Box sx={{ display: hook.isVisible_btnEmailView ? undefined : 'none' }}><Button variant="contained"    sx={{ width: '92px', height: '24px', whiteSpace: "nowrap" }}>메일 미리 보기</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '236px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 100, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>연락처</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '380px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 84, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>이메일</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_btnEmailResend ? undefined : 'none' }}><Button variant="contained"   sx={{ width: '92px', height: '24px' }}>메일 재발송</Button></Box></Stack>
+                 </Stack><Box sx={{ display: hook.isVisible_btnEmailResend ? undefined : 'none' }}><Button variant="contained"    sx={{ width: '92px', height: '24px', whiteSpace: "nowrap" }}>메일 재발송</Button></Box></Stack>
 
                     </Paper>
                 </Grid>

@@ -35,8 +35,8 @@ export const Frmenv0050MFavoriteManagement = () => {
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Detailed Info</Typography>
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "34px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_tvMenu ? undefined : 'none' }}><Box sx={{ width: '350px', height: '554px', border: '1px dashed grey' }}>Unknown: TreeView</Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnAdd ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnAdd_OnClick} sx={{ width: '66px', height: '24px' }}>추가 ▶</Button></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "22px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnDel ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnDel_OnClick} sx={{ width: '66px', height: '24px' }}>◀ 삭제</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnAdd ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnAdd_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>추가 ▶</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "22px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnDel ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnDel_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>◀ 삭제</Button></Box></Stack>
 
                     </Paper>
                 </Grid>

@@ -58,7 +58,7 @@ export const Frmsys0095MDataMatchDetailSearchHistoryList = () => {
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '119px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
                     <Typography variant="body2" sx={{ minWidth: 53, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>총건수</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_Button1 ? undefined : 'none' }}><Button variant="outlined" onClick={hook.btnMutilSort_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '22px' }}><Sort fontSize="small" /></Button></Box></Stack>
+                 </Stack><Box sx={{ display: hook.isVisible_Button1 ? undefined : 'none' }}><Button variant="outlined"  onClick={hook.btnMutilSort_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '22px', whiteSpace: "nowrap" }}><Sort fontSize="small" /></Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdSearchHistory ? undefined : 'none' }}><Paper sx={{ width: '792px', height: '466px', width: '100%', height: 'auto', minHeight: '466px' }}><DataGridWrapper rows={hook.ds_oSearchHistory} columns={columns_gdSearchHistory} /></Paper></Box></Stack>
 
                     </Paper>

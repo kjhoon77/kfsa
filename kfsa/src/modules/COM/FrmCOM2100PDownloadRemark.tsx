@@ -29,7 +29,7 @@ export const FrmCOM2100PDownloadRemark = () => {
                     <Typography variant="body2" sx={{ minWidth: 118, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>다운로드 사유</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "12px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnConfirm ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnConfirm_OnClick} sx={{ width: '93px', height: '24px' }}>확인</Button></Box><Box sx={{ display: hook.isVisible_btnCancel ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnCancel_OnClick} sx={{ width: '93px', height: '24px' }}>취소</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "12px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnConfirm ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnConfirm_OnClick} sx={{ width: '93px', height: '24px', whiteSpace: "nowrap" }}>확인</Button></Box><Box sx={{ display: hook.isVisible_btnCancel ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnCancel_OnClick} sx={{ width: '93px', height: '24px', whiteSpace: "nowrap" }}>취소</Button></Box></Stack>
 
                     </Paper>
                 </Grid>

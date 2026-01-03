@@ -26,7 +26,7 @@ export const Frmcust1107MCustSMSSend = () => {
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
-                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "55px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnSearchSmsPattern ? undefined : 'none' }}><Button variant="contained"  onClick={hook.lfn_SMSPatternList} sx={{ width: '112px', height: '27px' }}>    문자유형 선택</Button></Box></Stack>
+                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "55px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnSearchSmsPattern ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_SMSPatternList} sx={{ width: '112px', height: '27px', whiteSpace: "nowrap" }}>    문자유형 선택</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "14px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '198px', height: '22px', display: 'flex', alignItems: 'center', ml: '277px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>전송예정인원</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />

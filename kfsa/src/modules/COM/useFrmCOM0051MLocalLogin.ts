@@ -5,10 +5,18 @@ import type { Ids_oServiceGubun } from './FrmCOM0051MLocalLoginData';
 export const useFrmCOM0051MLocalLogin = () => {
     const [ds_oServiceGubun, setds_oServiceGubun] = useState<Ids_oServiceGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_imgImage, setIsVisible_imgImage] = useState(true);
-    const [isVisible_imgLogin, setIsVisible_imgLogin] = useState(true);
-    const [isVisible_imgCancel, setIsVisible_imgCancel] = useState(true);
-    const [isVisible_edPassword, setIsVisible_edPassword] = useState(true);
+    const [rawVisible_imgImage, setRawVisible_imgImage] = useState(true);
+    const [rawVisible_imgLogin, setRawVisible_imgLogin] = useState(true);
+    const [rawVisible_imgCancel, setRawVisible_imgCancel] = useState(true);
+    const [rawVisible_edPassword, setRawVisible_edPassword] = useState(true);
+    const isVisible_imgImage = rawVisible_imgImage;
+    const setIsVisible_imgImage = setRawVisible_imgImage;
+    const isVisible_imgLogin = rawVisible_imgLogin;
+    const setIsVisible_imgLogin = setRawVisible_imgLogin;
+    const isVisible_imgCancel = rawVisible_imgCancel;
+    const setIsVisible_imgCancel = setRawVisible_imgCancel;
+    const isVisible_edPassword = rawVisible_edPassword;
+    const setIsVisible_edPassword = setRawVisible_edPassword;
 
     useEffect(() => {
         setIsLoading(true);

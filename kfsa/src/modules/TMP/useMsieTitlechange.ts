@@ -6,8 +6,12 @@ export const useMsieTitlechange = () => {
     const [LgdacomIn, setLgdacomIn] = useState<ILgdacomIn[]>([]);
     const [LgdacomOut, setLgdacomOut] = useState<ILgdacomOut[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_Button0, setIsVisible_Button0] = useState(true);
-    const [isVisible_MSIE0, setIsVisible_MSIE0] = useState(true);
+    const [rawVisible_Button0, setRawVisible_Button0] = useState(true);
+    const [rawVisible_MSIE0, setRawVisible_MSIE0] = useState(true);
+    const isVisible_Button0 = rawVisible_Button0;
+    const setIsVisible_Button0 = setRawVisible_Button0;
+    const isVisible_MSIE0 = rawVisible_MSIE0;
+    const setIsVisible_MSIE0 = setRawVisible_MSIE0;
 
     useEffect(() => {
         setIsLoading(true);

@@ -44,9 +44,9 @@ export const Frmspcledu0255PTrainingPersonPicture = () => {
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '273px', height: '22px', display: 'flex', alignItems: 'center', ml: '131px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>승인여부</Typography>
-                    <FormControl component="fieldset"><RadioGroup row >{ (Frmspcledu0255PTrainingPersonPictureData.ds_ds_oApproval || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    <FormControl component="fieldset" sx={{ width: "max-content", whiteSpace: "nowrap" }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmspcledu0255PTrainingPersonPictureData.ds_ds_oApproval || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl>
                  </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "60px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnMutilSort ? undefined : 'none' }}><Button variant="outlined" onClick={hook.btnMutilSort_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '22px' }}><Sort fontSize="small" /></Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "60px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnMutilSort ? undefined : 'none' }}><Button variant="outlined"  onClick={hook.btnMutilSort_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '22px', whiteSpace: "nowrap" }}><Sort fontSize="small" /></Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdImageInfo ? undefined : 'none' }}><Paper sx={{ width: '528px', height: '264px', width: '100%', height: 'auto', minHeight: '264px' }}><DataGridWrapper rows={hook.ds_ioImageInfo} columns={columns_gdImageInfo} /></Paper></Box></Stack>
 
                     </Paper>

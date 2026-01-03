@@ -24,7 +24,7 @@ export const Frmcust6003PMatchExceptReason = () => {
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
-                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "54px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnConfirm ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnConfirm_OnClick} sx={{ width: '93px', height: '24px' }}>확인</Button></Box></Stack>
+                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "54px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnConfirm ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnConfirm_OnClick} sx={{ width: '93px', height: '24px', whiteSpace: "nowrap" }}>확인</Button></Box></Stack>
 
                     </Paper>
                 </Grid>

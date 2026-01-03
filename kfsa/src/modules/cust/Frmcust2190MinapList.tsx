@@ -65,7 +65,7 @@ export const Frmcust2190MinapList = () => {
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '208px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 96, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>총 수납금액</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_Button0 ? undefined : 'none' }}><Button variant="contained"  onClick={hook.lfn_EduCustSMSSend} sx={{ width: '105px', height: '24px' }}>문자메시지발송</Button></Box></Stack>
+                 </Stack><Box sx={{ display: hook.isVisible_Button0 ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_EduCustSMSSend} sx={{ width: '105px', height: '24px', whiteSpace: "nowrap" }}>문자메시지발송</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdProc ? undefined : 'none' }}><Paper sx={{ width: '1296px', height: '657px', width: '100%', height: 'auto', minHeight: '657px' }}><DataGridWrapper rows={hook.ds_oList} columns={columns_gdProc} /></Paper></Box></Stack>
 
                     </Paper>

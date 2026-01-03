@@ -31,7 +31,7 @@ export const Frmcust2019PFixVirtualAccountSend = () => {
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>은행 및
 
 가상계좌</Typography>
-                    <FormControl component="fieldset"><RadioGroup row >{ (Frmcust2019PFixVirtualAccountSendData.ds_ds_oNewBankAccount || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    <FormControl component="fieldset" sx={{ width: "max-content", whiteSpace: "nowrap" }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmcust2019PFixVirtualAccountSendData.ds_ds_oNewBankAccount || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl>
                  </Stack><Box sx={{ display: hook.isVisible_edAccount1 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '135px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_edAccount2 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '135px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_edAccount3 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '135px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
@@ -41,7 +41,7 @@ export const Frmcust2019PFixVirtualAccountSend = () => {
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static0 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '220px', height: '22px' }}><Typography variant="body2">가상계좌 유효기간 부여 & 문자발송</Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnExpireDateChg ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnExpireDateChg_OnClick} sx={{ width: '72px', height: '74px' }}>유효기간
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnExpireDateChg ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnExpireDateChg_OnClick} sx={{ width: '72px', height: '74px', whiteSpace: "nowrap" }}>유효기간
 (3일)부여
 [저장]</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static5 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '20px', height: '66px' }}><Typography variant="body2">가
@@ -60,7 +60,7 @@ export const Frmcust2019PFixVirtualAccountSend = () => {
                     <Typography variant="body2" sx={{ minWidth: 119, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>가상계좌 문자발송
 휴대폰번호</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_btnSMSSend ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnSMSSend_OnClick} sx={{ width: '96px', height: '34px' }}>문자발송</Button></Box></Stack>
+                 </Stack><Box sx={{ display: hook.isVisible_btnSMSSend ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnSMSSend_OnClick} sx={{ width: '96px', height: '34px', whiteSpace: "nowrap" }}>문자발송</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static3 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '20px', height: '113px' }}><Typography variant="body2">문
 자
 내

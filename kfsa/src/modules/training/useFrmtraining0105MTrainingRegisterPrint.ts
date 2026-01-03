@@ -5,7 +5,9 @@ import type { Ids_oTrainingSeatNoPrint } from './Frmtraining0105MTrainingRegiste
 export const useFrmtraining0105MTrainingRegisterPrint = () => {
     const [ds_oTrainingSeatNoPrint, setds_oTrainingSeatNoPrint] = useState<Ids_oTrainingSeatNoPrint[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_tabTab, setIsVisible_tabTab] = useState(true);
+    const [rawVisible_tabTab, setRawVisible_tabTab] = useState(true);
+    const isVisible_tabTab = rawVisible_tabTab;
+    const setIsVisible_tabTab = setRawVisible_tabTab;
     const [tabValue_tabTab, setTabValue_tabTab] = useState(0);
 
     useEffect(() => {

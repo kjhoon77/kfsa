@@ -6,11 +6,21 @@ export const useFrmCOM0040PMulitSort = () => {
     const [ds_SortList, setds_SortList] = useState<Ids_SortList[]>([]);
     const [ds_Sort, setds_Sort] = useState<Ids_Sort[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_gdSort, setIsVisible_gdSort] = useState(true);
-    const [isVisible_btnOK, setIsVisible_btnOK] = useState(true);
-    const [isVisible_btnCancel, setIsVisible_btnCancel] = useState(true);
-    const [isVisible_btnMoveUp, setIsVisible_btnMoveUp] = useState(true);
-    const [isVisible_btnMoveDown, setIsVisible_btnMoveDown] = useState(true);
+    const [rawVisible_gdSort, setRawVisible_gdSort] = useState(true);
+    const [rawVisible_btnOK, setRawVisible_btnOK] = useState(true);
+    const [rawVisible_btnCancel, setRawVisible_btnCancel] = useState(true);
+    const [rawVisible_btnMoveUp, setRawVisible_btnMoveUp] = useState(true);
+    const [rawVisible_btnMoveDown, setRawVisible_btnMoveDown] = useState(true);
+    const isVisible_gdSort = rawVisible_gdSort;
+    const setIsVisible_gdSort = setRawVisible_gdSort;
+    const isVisible_btnOK = rawVisible_btnOK;
+    const setIsVisible_btnOK = setRawVisible_btnOK;
+    const isVisible_btnCancel = rawVisible_btnCancel;
+    const setIsVisible_btnCancel = setRawVisible_btnCancel;
+    const isVisible_btnMoveUp = rawVisible_btnMoveUp;
+    const setIsVisible_btnMoveUp = setRawVisible_btnMoveUp;
+    const isVisible_btnMoveDown = rawVisible_btnMoveDown;
+    const setIsVisible_btnMoveDown = setRawVisible_btnMoveDown;
 
     useEffect(() => {
         setIsLoading(true);

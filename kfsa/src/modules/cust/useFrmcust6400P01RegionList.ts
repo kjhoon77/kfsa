@@ -5,12 +5,24 @@ import type { Ids_oRegionList } from './Frmcust6400P01RegionListData';
 export const useFrmcust6400P01RegionList = () => {
     const [ds_oRegionList, setds_oRegionList] = useState<Ids_oRegionList[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
-    const [isVisible_btnSelect, setIsVisible_btnSelect] = useState(true);
-    const [isVisible_btnSearch, setIsVisible_btnSearch] = useState(false);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_gdRegionList, setIsVisible_gdRegionList] = useState(true);
-    const [isVisible_btnCancel, setIsVisible_btnCancel] = useState(true);
+    const [rawVisible_shpBtnBox, setRawVisible_shpBtnBox] = useState(true);
+    const [rawVisible_btnSelect, setRawVisible_btnSelect] = useState(true);
+    const [rawVisible_btnSearch, setRawVisible_btnSearch] = useState(false);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_gdRegionList, setRawVisible_gdRegionList] = useState(true);
+    const [rawVisible_btnCancel, setRawVisible_btnCancel] = useState(true);
+    const isVisible_shpBtnBox = rawVisible_shpBtnBox;
+    const setIsVisible_shpBtnBox = setRawVisible_shpBtnBox;
+    const isVisible_btnSelect = rawVisible_btnSelect && rawVisible_shpBtnBox;
+    const setIsVisible_btnSelect = setRawVisible_btnSelect;
+    const isVisible_btnSearch = rawVisible_btnSearch;
+    const setIsVisible_btnSearch = setRawVisible_btnSearch;
+    const isVisible_btnEnd = rawVisible_btnEnd && rawVisible_shpBtnBox;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_gdRegionList = rawVisible_gdRegionList;
+    const setIsVisible_gdRegionList = setRawVisible_gdRegionList;
+    const isVisible_btnCancel = rawVisible_btnCancel && rawVisible_shpBtnBox;
+    const setIsVisible_btnCancel = setRawVisible_btnCancel;
 
     useEffect(() => {
         setIsLoading(true);

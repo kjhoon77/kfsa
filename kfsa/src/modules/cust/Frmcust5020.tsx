@@ -268,7 +268,7 @@ export const Frmcust5020 = () => {
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '420px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>검색조건</Typography>
-                    <FormControl component="fieldset"><RadioGroup row >{ (Frmcust5020Data.ds_ds_ioSearch || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    <FormControl component="fieldset" sx={{ width: "max-content", whiteSpace: "nowrap" }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmcust5020Data.ds_ds_ioSearch || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl>
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '225px', height: '22px', display: 'flex', alignItems: 'center', ml: '55px' }}>
                     <Typography variant="body2" sx={{ minWidth: 101, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}></Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem></Select></FormControl>

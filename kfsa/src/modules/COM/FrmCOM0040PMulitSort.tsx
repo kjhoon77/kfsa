@@ -32,7 +32,7 @@ export const FrmCOM0040PMulitSort = () => {
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "38px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdSort ? undefined : 'none' }}><Paper sx={{ width: '384px', height: '322px', width: '100%', height: 'auto', minHeight: '322px' }}><DataGridWrapper rows={hook.ds_SortList} columns={columns_gdSort} /></Paper></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnOK ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnOK_OnClick} sx={{ width: '66px', height: '24px' }}>정렬</Button></Box><Box sx={{ display: hook.isVisible_btnCancel ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnCancel_OnClick} sx={{ width: '66px', height: '24px' }}>취소</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnOK ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnOK_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>정렬</Button></Box><Box sx={{ display: hook.isVisible_btnCancel ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnCancel_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>취소</Button></Box></Stack>
 
                     </Paper>
                 </Grid>

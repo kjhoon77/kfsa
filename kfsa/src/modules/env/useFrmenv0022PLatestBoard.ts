@@ -5,11 +5,21 @@ import type { Ids_oBoard } from './Frmenv0022PLatestBoardData';
 export const useFrmenv0022PLatestBoard = () => {
     const [ds_oBoard, setds_oBoard] = useState<Ids_oBoard[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_imgMenuSearch, setIsVisible_imgMenuSearch] = useState(true);
-    const [isVisible_gdBoard, setIsVisible_gdBoard] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_imgUpdateMore, setIsVisible_imgUpdateMore] = useState(true);
-    const [isVisible_chkDispYn, setIsVisible_chkDispYn] = useState(true);
+    const [rawVisible_imgMenuSearch, setRawVisible_imgMenuSearch] = useState(true);
+    const [rawVisible_gdBoard, setRawVisible_gdBoard] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_imgUpdateMore, setRawVisible_imgUpdateMore] = useState(true);
+    const [rawVisible_chkDispYn, setRawVisible_chkDispYn] = useState(true);
+    const isVisible_imgMenuSearch = rawVisible_imgMenuSearch;
+    const setIsVisible_imgMenuSearch = setRawVisible_imgMenuSearch;
+    const isVisible_gdBoard = rawVisible_gdBoard;
+    const setIsVisible_gdBoard = setRawVisible_gdBoard;
+    const isVisible_btnEnd = rawVisible_btnEnd;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_imgUpdateMore = rawVisible_imgUpdateMore;
+    const setIsVisible_imgUpdateMore = setRawVisible_imgUpdateMore;
+    const isVisible_chkDispYn = rawVisible_chkDispYn;
+    const setIsVisible_chkDispYn = setRawVisible_chkDispYn;
 
     useEffect(() => {
         setIsLoading(true);

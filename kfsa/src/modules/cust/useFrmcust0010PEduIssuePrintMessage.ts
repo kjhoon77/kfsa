@@ -4,12 +4,24 @@ import type {  } from './Frmcust0010PEduIssuePrintMessageData';
 
 export const useFrmcust0010PEduIssuePrintMessage = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_btnOK, setIsVisible_btnOK] = useState(true);
-    const [isVisible_imgInfo, setIsVisible_imgInfo] = useState(true);
-    const [isVisible_btnNO, setIsVisible_btnNO] = useState(true);
-    const [isVisible_btnCancel, setIsVisible_btnCancel] = useState(true);
-    const [isVisible_taInfo, setIsVisible_taInfo] = useState(true);
-    const [isVisible_TextArea0, setIsVisible_TextArea0] = useState(true);
+    const [rawVisible_btnOK, setRawVisible_btnOK] = useState(true);
+    const [rawVisible_imgInfo, setRawVisible_imgInfo] = useState(true);
+    const [rawVisible_btnNO, setRawVisible_btnNO] = useState(true);
+    const [rawVisible_btnCancel, setRawVisible_btnCancel] = useState(true);
+    const [rawVisible_taInfo, setRawVisible_taInfo] = useState(true);
+    const [rawVisible_TextArea0, setRawVisible_TextArea0] = useState(true);
+    const isVisible_btnOK = rawVisible_btnOK;
+    const setIsVisible_btnOK = setRawVisible_btnOK;
+    const isVisible_imgInfo = rawVisible_imgInfo;
+    const setIsVisible_imgInfo = setRawVisible_imgInfo;
+    const isVisible_btnNO = rawVisible_btnNO;
+    const setIsVisible_btnNO = setRawVisible_btnNO;
+    const isVisible_btnCancel = rawVisible_btnCancel;
+    const setIsVisible_btnCancel = setRawVisible_btnCancel;
+    const isVisible_taInfo = rawVisible_taInfo;
+    const setIsVisible_taInfo = setRawVisible_taInfo;
+    const isVisible_TextArea0 = rawVisible_TextArea0;
+    const setIsVisible_TextArea0 = setRawVisible_TextArea0;
 
     useEffect(() => {
         setIsLoading(true);

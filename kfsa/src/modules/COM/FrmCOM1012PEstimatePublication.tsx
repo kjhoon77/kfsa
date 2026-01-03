@@ -34,7 +34,7 @@ export const FrmCOM1012PEstimatePublication = () => {
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "19px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '200px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 100, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>작성일자</Typography>
                     <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_btnEstimate ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnEstimate_OnClick} sx={{ width: '184px', height: '33px' }}>계산서 발행</Button></Box></Stack>
+                 </Stack><Box sx={{ display: hook.isVisible_btnEstimate ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnEstimate_OnClick} sx={{ width: '184px', height: '33px', whiteSpace: "nowrap" }}>계산서 발행</Button></Box></Stack>
 
                     </Paper>
                 </Grid>

@@ -24,7 +24,7 @@ export const GetSession20170216 = () => {
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
-                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "26px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Button0 ? undefined : 'none' }}><Button variant="contained"  onClick={hook.Button0_OnClick} sx={{ width: '242px', height: '115px' }}>Button0</Button></Box></Stack>
+                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "26px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Button0 ? undefined : 'none' }}><Button variant="contained"   onClick={hook.Button0_OnClick} sx={{ width: '242px', height: '115px', whiteSpace: "nowrap" }}>Button0</Button></Box></Stack>
 
                     </Paper>
                 </Grid>

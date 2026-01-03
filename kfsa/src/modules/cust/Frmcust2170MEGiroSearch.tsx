@@ -68,7 +68,7 @@ export const Frmcust2170MEGiroSearch = () => {
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '164px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 72, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>전체 금액</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_btnFeeReport ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnFeeReport_OnClick} sx={{ width: '118px', height: '24px' }}>일별 수납 집계</Button></Box></Stack>
+                 </Stack><Box sx={{ display: hook.isVisible_btnFeeReport ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnFeeReport_OnClick} sx={{ width: '118px', height: '24px', whiteSpace: "nowrap" }}>일별 수납 집계</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '188px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>지로파일일자</Typography>
                     <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />

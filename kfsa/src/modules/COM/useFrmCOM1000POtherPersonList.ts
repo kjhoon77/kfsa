@@ -5,14 +5,30 @@ import type { Ids_oOtherPerson } from './FrmCOM1000POtherPersonListData';
 export const useFrmCOM1000POtherPersonList = () => {
     const [ds_oOtherPerson, setds_oOtherPerson] = useState<Ids_oOtherPerson[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_btnSelect, setIsVisible_btnSelect] = useState(true);
-    const [isVisible_gdOtherPerson, setIsVisible_gdOtherPerson] = useState(true);
-    const [isVisible_btnSearch, setIsVisible_btnSearch] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_lbPersonNm, setIsVisible_lbPersonNm] = useState(true);
-    const [isVisible_edKeyword, setIsVisible_edKeyword] = useState(true);
-    const [isVisible_lbStartYear, setIsVisible_lbStartYear] = useState(true);
-    const [isVisible_edYear, setIsVisible_edYear] = useState(true);
+    const [rawVisible_btnSelect, setRawVisible_btnSelect] = useState(true);
+    const [rawVisible_gdOtherPerson, setRawVisible_gdOtherPerson] = useState(true);
+    const [rawVisible_btnSearch, setRawVisible_btnSearch] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_lbPersonNm, setRawVisible_lbPersonNm] = useState(true);
+    const [rawVisible_edKeyword, setRawVisible_edKeyword] = useState(true);
+    const [rawVisible_lbStartYear, setRawVisible_lbStartYear] = useState(true);
+    const [rawVisible_edYear, setRawVisible_edYear] = useState(true);
+    const isVisible_btnSelect = rawVisible_btnSelect;
+    const setIsVisible_btnSelect = setRawVisible_btnSelect;
+    const isVisible_gdOtherPerson = rawVisible_gdOtherPerson;
+    const setIsVisible_gdOtherPerson = setRawVisible_gdOtherPerson;
+    const isVisible_btnSearch = rawVisible_btnSearch;
+    const setIsVisible_btnSearch = setRawVisible_btnSearch;
+    const isVisible_btnEnd = rawVisible_btnEnd;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_lbPersonNm = rawVisible_lbPersonNm;
+    const setIsVisible_lbPersonNm = setRawVisible_lbPersonNm;
+    const isVisible_edKeyword = rawVisible_edKeyword;
+    const setIsVisible_edKeyword = setRawVisible_edKeyword;
+    const isVisible_lbStartYear = rawVisible_lbStartYear;
+    const setIsVisible_lbStartYear = setRawVisible_lbStartYear;
+    const isVisible_edYear = rawVisible_edYear;
+    const setIsVisible_edYear = setRawVisible_edYear;
 
     useEffect(() => {
         setIsLoading(true);

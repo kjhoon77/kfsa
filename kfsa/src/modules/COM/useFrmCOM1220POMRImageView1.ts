@@ -5,11 +5,21 @@ import type { Ids_oEducationPlace } from './FrmCOM1220POMRImageView1Data';
 export const useFrmCOM1220POMRImageView1 = () => {
     const [ds_oEducationPlace, setds_oEducationPlace] = useState<Ids_oEducationPlace[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_hfAttachFile, setIsVisible_hfAttachFile] = useState(true);
-    const [isVisible_fdAttachFile, setIsVisible_fdAttachFile] = useState(true);
-    const [isVisible_MSIE0, setIsVisible_MSIE0] = useState(true);
+    const [rawVisible_shpBtnBox, setRawVisible_shpBtnBox] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_hfAttachFile, setRawVisible_hfAttachFile] = useState(true);
+    const [rawVisible_fdAttachFile, setRawVisible_fdAttachFile] = useState(true);
+    const [rawVisible_MSIE0, setRawVisible_MSIE0] = useState(true);
+    const isVisible_shpBtnBox = rawVisible_shpBtnBox;
+    const setIsVisible_shpBtnBox = setRawVisible_shpBtnBox;
+    const isVisible_btnEnd = rawVisible_btnEnd && rawVisible_shpBtnBox;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_hfAttachFile = rawVisible_hfAttachFile;
+    const setIsVisible_hfAttachFile = setRawVisible_hfAttachFile;
+    const isVisible_fdAttachFile = rawVisible_fdAttachFile;
+    const setIsVisible_fdAttachFile = setRawVisible_fdAttachFile;
+    const isVisible_MSIE0 = rawVisible_MSIE0;
+    const setIsVisible_MSIE0 = setRawVisible_MSIE0;
 
     useEffect(() => {
         setIsLoading(true);

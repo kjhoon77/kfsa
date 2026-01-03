@@ -5,9 +5,15 @@ import type { Ids_oCustomer } from './FrmCOM1050PCustomerListData';
 export const useFrmCOM1050PCustomerList = () => {
     const [ds_oCustomer, setds_oCustomer] = useState<Ids_oCustomer[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_btnSelect, setIsVisible_btnSelect] = useState(true);
-    const [isVisible_gdCustomer, setIsVisible_gdCustomer] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
+    const [rawVisible_btnSelect, setRawVisible_btnSelect] = useState(true);
+    const [rawVisible_gdCustomer, setRawVisible_gdCustomer] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const isVisible_btnSelect = rawVisible_btnSelect;
+    const setIsVisible_btnSelect = setRawVisible_btnSelect;
+    const isVisible_gdCustomer = rawVisible_gdCustomer;
+    const setIsVisible_gdCustomer = setRawVisible_gdCustomer;
+    const isVisible_btnEnd = rawVisible_btnEnd;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
 
     useEffect(() => {
         setIsLoading(true);

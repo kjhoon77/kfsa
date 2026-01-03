@@ -34,7 +34,7 @@ export const Frmtraining0094SInternetJubsuSunapInfo = () => {
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '164px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 84, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>입금일자</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_btnPrintReRct ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnPrintReRct_OnClick} sx={{ width: '92px', height: '24px' }}>영수증재발행</Button></Box></Stack>
+                 </Stack><Box sx={{ display: hook.isVisible_btnPrintReRct ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnPrintReRct_OnClick} sx={{ width: '92px', height: '24px', whiteSpace: "nowrap" }}>영수증재발행</Button></Box></Stack>
 
                     </Paper>
                 </Grid>

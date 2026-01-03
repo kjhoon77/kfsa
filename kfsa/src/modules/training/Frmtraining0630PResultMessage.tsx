@@ -26,7 +26,7 @@ export const Frmtraining0630PResultMessage = () => {
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "43px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lsTitle ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '498px', height: '37px' }}><Typography variant="body2"></Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lsMsg ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '500px', height: '260px' }}><Typography variant="body2"></Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnOK ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnOK_OnClick} sx={{ width: '118px', height: '24px' }}>확  인</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnOK ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnOK_OnClick} sx={{ width: '118px', height: '24px', whiteSpace: "nowrap" }}>확  인</Button></Box></Stack>
 
                     </Paper>
                 </Grid>

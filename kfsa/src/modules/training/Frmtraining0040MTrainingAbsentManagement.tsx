@@ -66,10 +66,10 @@ export const Frmtraining0040MTrainingAbsentManagement = () => {
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '94px', height: '22px', display: 'flex', alignItems: 'center', ml: '7px' }}>
                     <Typography variant="body2" sx={{ minWidth: 10, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_btnAttendance ? undefined : 'none' }}><Button variant="contained"  onClick={hook.lfn_SaveAttendance} sx={{ width: '120px', height: '24px' }}>출결자료 생성</Button></Box></Stack>
+                 </Stack><Box sx={{ display: hook.isVisible_btnAttendance ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_SaveAttendance} sx={{ width: '120px', height: '24px', whiteSpace: "nowrap" }}>출결자료 생성</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '594px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>결강일차</Typography>
-                    <FormControl component="fieldset"><RadioGroup row >{ (Frmtraining0040MTrainingAbsentManagementData.ds_ds_oAbsentDateGubun || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                    <FormControl component="fieldset" sx={{ width: "max-content", whiteSpace: "nowrap" }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmtraining0040MTrainingAbsentManagementData.ds_ds_oAbsentDateGubun || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl>
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbCyberNotice ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '510px', height: '18px' }}><Typography variant="body2">└ 공공기관소방안전관리자 혼합과정의 경우 사이버교육은 1일차에 해당합니다.</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '180px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
@@ -78,7 +78,7 @@ export const Frmtraining0040MTrainingAbsentManagement = () => {
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '180px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>결강자수</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_btnMutilSort ? undefined : 'none' }}><Button variant="outlined" onClick={hook.btnMutilSort_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '22px' }}><Sort fontSize="small" /></Button></Box></Stack>
+                 </Stack><Box sx={{ display: hook.isVisible_btnMutilSort ? undefined : 'none' }}><Button variant="outlined"  onClick={hook.btnMutilSort_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '22px', whiteSpace: "nowrap" }}><Sort fontSize="small" /></Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdTrainingAbsent ? undefined : 'none' }}><Paper sx={{ width: '792px', height: '474px', width: '100%', height: 'auto', minHeight: '474px' }}><DataGridWrapper rows={hook.ds_ioTrainingAbsent} columns={columns_gdTrainingAbsent} /></Paper></Box></Stack>
 
                     </Paper>

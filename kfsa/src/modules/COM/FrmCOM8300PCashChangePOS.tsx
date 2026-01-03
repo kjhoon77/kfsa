@@ -42,7 +42,7 @@ export const FrmCOM8300PCashChangePOS = () => {
                     <TextField size="small" fullWidth value={hook.ds_oPosPrintm?.PLUSAMT || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_divSunabDtl ? undefined : 'none' }}><Paper sx={{ p: 2, width: '792px', height: '126px', width: '100%', height: 'auto', minHeight: '126px', overflow: 'auto' }}><Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>Div0</Typography><Stack direction="column" spacing={0}><FrmCOM3103SSettlementPOSSunap /></Stack></Paper></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnSetlmt ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnSetlmt_OnClick} sx={{ width: '200px', height: '46px' }}>현금영수증처리</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnSetlmt ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnSetlmt_OnClick} sx={{ width: '200px', height: '46px', whiteSpace: "nowrap" }}>현금영수증처리</Button></Box></Stack>
 
                     </Paper>
                 </Grid>

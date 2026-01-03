@@ -9,12 +9,24 @@ export const useFrmtraining0345SLicenseIssueStatistics = () => {
     const [ds_oPrtGubun, setds_oPrtGubun] = useState<Ids_oPrtGubun[]>([]);
     const [ds_oStatusGubun, setds_oStatusGubun] = useState<Ids_oStatusGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_cbxJibu, setIsVisible_cbxJibu] = useState(true);
-    const [isVisible_cbxCourse, setIsVisible_cbxCourse] = useState(true);
-    const [isVisible_cbxYear, setIsVisible_cbxYear] = useState(true);
-    const [isVisible_edTrainingOrder, setIsVisible_edTrainingOrder] = useState(true);
-    const [isVisible_cbxPrtGubun, setIsVisible_cbxPrtGubun] = useState(true);
-    const [isVisible_cbxStatusGubun, setIsVisible_cbxStatusGubun] = useState(true);
+    const [rawVisible_cbxJibu, setRawVisible_cbxJibu] = useState(true);
+    const [rawVisible_cbxCourse, setRawVisible_cbxCourse] = useState(true);
+    const [rawVisible_cbxYear, setRawVisible_cbxYear] = useState(true);
+    const [rawVisible_edTrainingOrder, setRawVisible_edTrainingOrder] = useState(true);
+    const [rawVisible_cbxPrtGubun, setRawVisible_cbxPrtGubun] = useState(true);
+    const [rawVisible_cbxStatusGubun, setRawVisible_cbxStatusGubun] = useState(true);
+    const isVisible_cbxJibu = rawVisible_cbxJibu;
+    const setIsVisible_cbxJibu = setRawVisible_cbxJibu;
+    const isVisible_cbxCourse = rawVisible_cbxCourse;
+    const setIsVisible_cbxCourse = setRawVisible_cbxCourse;
+    const isVisible_cbxYear = rawVisible_cbxYear;
+    const setIsVisible_cbxYear = setRawVisible_cbxYear;
+    const isVisible_edTrainingOrder = rawVisible_edTrainingOrder;
+    const setIsVisible_edTrainingOrder = setRawVisible_edTrainingOrder;
+    const isVisible_cbxPrtGubun = rawVisible_cbxPrtGubun;
+    const setIsVisible_cbxPrtGubun = setRawVisible_cbxPrtGubun;
+    const isVisible_cbxStatusGubun = rawVisible_cbxStatusGubun;
+    const setIsVisible_cbxStatusGubun = setRawVisible_cbxStatusGubun;
 
     useEffect(() => {
         setIsLoading(true);

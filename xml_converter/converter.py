@@ -858,8 +858,8 @@ class XMLToReactConverter:
                      inner_ds_raw = field.get('inner_dataset')
                      if inner_ds_raw:
                          inner_ds = ds_name_map.get(inner_ds_raw.lower(), inner_ds_raw)
-                         radio_items = f"{{ ({name}Data.ds_{inner_ds} || []).map(opt => <FormControlLabel key={{opt.CD}} value={{opt.CD}} control={{<Radio />}} label={{opt.DATA}} />) }}"
-                     field_jsx = f'<FormControl component="fieldset"><RadioGroup row {val_prop}>{radio_items}</RadioGroup></FormControl>'
+                         radio_items = f"{{ ({name}Data.ds_{inner_ds} || []).map(opt => <FormControlLabel key={{opt.CD}} value={{opt.CD}} control={{<Radio />}} label={{opt.DATA}} sx={{{{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }}}} />) }}"
+                     field_jsx = f'<FormControl component="fieldset" sx={{{{ width: "max-content", whiteSpace: "nowrap" }}}}><RadioGroup row sx={{{{ flexWrap: "nowrap" }}}} {val_prop}>{radio_items}</RadioGroup></FormControl>'
                  else:
                      field_jsx = f"<Box>Unknown: {field_tag}</Box>"
 
@@ -931,15 +931,24 @@ class XMLToReactConverter:
                      for k, v in icon_map.items():
                          if k in img_id: mapped_icon = v; break
                  
+                 
+                 is_green = False
+                 lower_text = text.lower()
+                 lower_id = item.get('id', '').lower()
+                 if any(k in lower_text or k in lower_id for k in ['file', 'excel', 'down', 'up', 'load', '엑셀', '파일', '업로드', '다운로드']):
+                     is_green = True
+                     
+                 color_prop = 'color="success"' if is_green else ''
+                 
                  click = item.get('onclick')
                  evt = f"onClick={{hook.{click.split('(')[0]}}}" if click else ""
                  
                  if not text and img_id:
                       if not mapped_icon: mapped_icon = 'TouchApp'
-                      content_jsx = f'<Button variant="outlined" {evt} size="small" sx={{{{ minWidth: 26, p: 0.2, {content_sx} }}}}><{mapped_icon} fontSize="small" /></Button>'
+                      content_jsx = f'<Button variant="outlined" {color_prop} {evt} size="small" sx={{{{ minWidth: 26, p: 0.2, {content_sx}, whiteSpace: "nowrap" }}}}><{mapped_icon} fontSize="small" /></Button>'
                  else:
                       icon_prop = f"startIcon={{<{mapped_icon} />}}" if mapped_icon else ""
-                      content_jsx = f'<Button variant="contained" {icon_prop} {evt} sx={{{{ {content_sx} }}}}>{text}</Button>'
+                      content_jsx = f'<Button variant="contained" {color_prop} {icon_prop} {evt} sx={{{{ {content_sx}, whiteSpace: "nowrap" }}}}>{text}</Button>'
             
             elif tag == 'Static':
                  label = self._escape_jsx_text(item.get('text', ''))
@@ -985,8 +994,8 @@ class XMLToReactConverter:
                  inner_ds_raw = item.get('inner_dataset')
                  if inner_ds_raw:
                      inner_ds = ds_name_map.get(inner_ds_raw.lower(), inner_ds_raw)
-                     radio_items = f"{{ ({name}Data.ds_{inner_ds} || []).map(opt => <FormControlLabel key={{opt.CD}} value={{opt.CD}} control={{<Radio />}} label={{opt.DATA}} />) }}"
-                 content_jsx = f'<FormControl component="fieldset" sx={{{{ {content_sx} }}}}><RadioGroup row {val_prop}>{radio_items}</RadioGroup></FormControl>'
+                     radio_items = f"{{ ({name}Data.ds_{inner_ds} || []).map(opt => <FormControlLabel key={{opt.CD}} value={{opt.CD}} control={{<Radio />}} label={{opt.DATA}} sx={{{{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }}}} />) }}"
+                 content_jsx = f'<FormControl component="fieldset" sx={{{{ {content_sx}, width: "max-content", whiteSpace: "nowrap", pr: 2 }}}}><RadioGroup row sx={{{{ flexWrap: "nowrap" }}}} {val_prop}>{radio_items}</RadioGroup></FormControl>'
 
             elif tag == 'Div':
                  div_content = ""
@@ -1030,6 +1039,11 @@ class XMLToReactConverter:
                 ds = item.get('bind_dataset') or 'ds_grid'
                 col_var = item.get('_col_var') or f"columns_{ds}"
                 content_jsx = f"""<Paper sx={{{{ {content_sx}, width: '100%', height: 'auto', minHeight: '{item.get('height', 200)}px' }}}}><DataGridWrapper rows={{hook.{ds}}} columns={{{col_var}}} /></Paper>"""
+
+            elif tag in ['FileDialog', 'HttpFile', 'File']:
+                 label = item.get('text') or item.get('id') or tag
+                 # Use Description icon for files
+                 content_jsx = f'<Button variant="contained" color="success" startIcon={{<Description />}} sx={{{{ {content_sx}, whiteSpace: "nowrap" }}}}>{label}</Button>'
 
             else:
                  content_jsx = f"<Box sx={{{{ {content_sx}, border: '1px dashed grey' }}}}>Unknown: {tag}</Box>"
@@ -1246,6 +1260,53 @@ function CustomTabPanel(props) {
         
         collect_elements(ui_elements)
 
+        # Geometric Parent-Child Map
+        def build_visibility_map(elements):
+            containers = [e for e in elements if e.get('tag') in ['Div', 'Shape', 'Group']]
+            def get_area(e): return int(e.get('width', 0)) * int(e.get('height', 0))
+            containers.sort(key=get_area) # Smallest first? No, we need checking. 
+            # Logic: If item is in Small and Small is in Large.
+            # We want parent of Item = Small.
+            # So iterate containers Small -> Large ?? or Large -> Small?
+            # If we check Small first: Item assigned to Small.
+            # If we check Large later: Item assigned to Large? We should Prevent overwrite.
+            # So Smallest Container first. If assigned, stop.
+            
+            parent_map = {}
+            for container in containers:
+                c_left = int(container.get('left', 0))
+                c_top = int(container.get('top', 0))
+                c_width = int(container.get('width', 0))
+                c_height = int(container.get('height', 0))
+                c_right = c_left + c_width
+                c_bottom = c_top + c_height
+                if c_width == 0 or c_height == 0: continue
+                
+                for item in elements:
+                    if item == container: continue
+                    if item.get('id') in parent_map: continue
+                    
+                    i_left = int(item.get('left', 0))
+                    i_top = int(item.get('top', 0))
+                    i_width = int(item.get('width', 0))
+                    i_height = int(item.get('height', 0))
+                    i_right = i_left + i_width
+                    i_bottom = i_top + i_height
+                    
+                    if i_left >= c_left and i_top >= c_top and i_right <= c_right and i_bottom <= c_bottom:
+                        parent_map[item.get('id')] = container.get('id')
+            return parent_map
+
+        # Flatten elements for map building
+        flat_elements = []
+        def gather(els):
+            for e in els:
+                flat_elements.append(e)
+                if 'children' in e: gather(e['children'])
+        gather(ui_elements)
+        
+        vis_parent_map = build_visibility_map(flat_elements)
+
         # PopDiv states
         for pop in all_pop_divs:
             pop_id = pop.get('id', 'pop')
@@ -1254,19 +1315,49 @@ function CustomTabPanel(props) {
             lines.append(f"    const close{pop_id} = () => setIs{pop_id}Open(false);")
             return_vars.extend([f"is{pop_id}Open", f"open{pop_id}", f"close{pop_id}"])
             
-        # Generic Visibility States (for Div, Grid, Button, etc.)
+        # Generic Visibility States (Computed)
         seen_ids = set()
+        # Sort by dependency? To ensure parent is defined?
+        # Actually we can just define all RAW states first.
+        # Then define COMPUTED states.
+        
+        # 1. Raw States
         for item in all_with_id:
             item_id = item.get('id')
             if not item_id or item_id in seen_ids: continue
-            if item['tag'] == 'PopDiv': continue # Skip PopDiv as it has its own open/close logic
+            if item['tag'] == 'PopDiv': continue
             
             seen_ids.add(item_id)
-            # Check initial visibility (defaults to True unless explicitly 'false')
             is_visible = str(item.get('visible', 'true')).lower() != 'false'
             js_bool = 'true' if is_visible else 'false'
-            lines.append(f"    const [isVisible_{item_id}, setIsVisible_{item_id}] = useState({js_bool});")
-            return_vars.extend([f"isVisible_{item_id}", f"setIsVisible_{item_id}"])
+            lines.append(f"    const [rawVisible_{item_id}, setRawVisible_{item_id}] = useState({js_bool});")
+
+        # 2. Computed States (Effective Visibility)
+        seen_computed = set()
+        for item in all_with_id:
+             item_id = item.get('id')
+             if not item_id or item['tag'] == 'PopDiv': continue
+             if item_id in seen_computed: continue
+             seen_computed.add(item_id)
+             
+             # Chain parents
+             chain = []
+             curr = item_id
+             while curr in vis_parent_map:
+                 pid = vis_parent_map[curr]
+                 chain.append(pid)
+                 curr = pid # Move up
+                 if curr in chain: break # Cycle protection
+                 
+             conditions = [f"rawVisible_{item_id}"]
+             for pid in chain:
+                 # Only if parent is a managed ID (not PopDiv, and actually exists)
+                 if any(e.get('id') == pid for e in all_with_id):
+                      conditions.append(f"rawVisible_{pid}")
+             
+             lines.append(f"    const isVisible_{item_id} = {' && '.join(conditions)};")
+             lines.append(f"    const setIsVisible_{item_id} = setRawVisible_{item_id};")
+             return_vars.extend([f"isVisible_{item_id}", f"setIsVisible_{item_id}"])
 
         # Tab states
         seen_tab_ids = set()

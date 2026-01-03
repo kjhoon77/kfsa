@@ -5,7 +5,9 @@ import type { Ids_oProcGubun } from './FrmCOM3042SSettlementGubunExamRepayData';
 export const useFrmCOM3042SSettlementGubunExamRepay = () => {
     const [ds_oProcGubun, setds_oProcGubun] = useState<Ids_oProcGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_radProcGubun, setIsVisible_radProcGubun] = useState(true);
+    const [rawVisible_radProcGubun, setRawVisible_radProcGubun] = useState(true);
+    const isVisible_radProcGubun = rawVisible_radProcGubun;
+    const setIsVisible_radProcGubun = setRawVisible_radProcGubun;
 
     useEffect(() => {
         setIsLoading(true);

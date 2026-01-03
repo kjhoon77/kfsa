@@ -5,9 +5,15 @@ import type { Ids_oEvaluationAnswer } from './Frmtraining0444PTrainingEvaluation
 export const useFrmtraining0444PTrainingEvaluationAnswerView = () => {
     const [ds_oEvaluationAnswer, setds_oEvaluationAnswer] = useState<Ids_oEvaluationAnswer[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_gdEvaluation, setIsVisible_gdEvaluation] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
+    const [rawVisible_gdEvaluation, setRawVisible_gdEvaluation] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_shpBtnBox, setRawVisible_shpBtnBox] = useState(true);
+    const isVisible_gdEvaluation = rawVisible_gdEvaluation;
+    const setIsVisible_gdEvaluation = setRawVisible_gdEvaluation;
+    const isVisible_btnEnd = rawVisible_btnEnd && rawVisible_shpBtnBox;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_shpBtnBox = rawVisible_shpBtnBox;
+    const setIsVisible_shpBtnBox = setRawVisible_shpBtnBox;
 
     useEffect(() => {
         setIsLoading(true);

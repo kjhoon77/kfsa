@@ -5,11 +5,21 @@ import type { Ids_oSmsStat } from './Frmcust0010PSmsSendListData';
 export const useFrmcust0010PSmsSendList = () => {
     const [ds_oSmsStat, setds_oSmsStat] = useState<Ids_oSmsStat[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
-    const [isVisible_Button1, setIsVisible_Button1] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_gdSmsStat, setIsVisible_gdSmsStat] = useState(true);
-    const [isVisible_lbSMS, setIsVisible_lbSMS] = useState(true);
+    const [rawVisible_shpBtnBox, setRawVisible_shpBtnBox] = useState(true);
+    const [rawVisible_Button1, setRawVisible_Button1] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_gdSmsStat, setRawVisible_gdSmsStat] = useState(true);
+    const [rawVisible_lbSMS, setRawVisible_lbSMS] = useState(true);
+    const isVisible_shpBtnBox = rawVisible_shpBtnBox;
+    const setIsVisible_shpBtnBox = setRawVisible_shpBtnBox;
+    const isVisible_Button1 = rawVisible_Button1;
+    const setIsVisible_Button1 = setRawVisible_Button1;
+    const isVisible_btnEnd = rawVisible_btnEnd && rawVisible_shpBtnBox;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_gdSmsStat = rawVisible_gdSmsStat;
+    const setIsVisible_gdSmsStat = setRawVisible_gdSmsStat;
+    const isVisible_lbSMS = rawVisible_lbSMS;
+    const setIsVisible_lbSMS = setRawVisible_lbSMS;
 
     useEffect(() => {
         setIsLoading(true);

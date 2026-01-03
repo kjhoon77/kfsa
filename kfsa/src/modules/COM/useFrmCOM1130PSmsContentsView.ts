@@ -5,9 +5,15 @@ import type { Ids_oSmsStat } from './FrmCOM1130PSmsContentsViewData';
 export const useFrmCOM1130PSmsContentsView = () => {
     const [ds_oSmsStat, setds_oSmsStat] = useState<Ids_oSmsStat[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_taSMS, setIsVisible_taSMS] = useState(true);
+    const [rawVisible_shpBtnBox, setRawVisible_shpBtnBox] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_taSMS, setRawVisible_taSMS] = useState(true);
+    const isVisible_shpBtnBox = rawVisible_shpBtnBox;
+    const setIsVisible_shpBtnBox = setRawVisible_shpBtnBox;
+    const isVisible_btnEnd = rawVisible_btnEnd && rawVisible_shpBtnBox;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_taSMS = rawVisible_taSMS;
+    const setIsVisible_taSMS = setRawVisible_taSMS;
 
     useEffect(() => {
         setIsLoading(true);

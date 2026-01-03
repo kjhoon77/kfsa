@@ -5,10 +5,18 @@ import type { Ids_oEmailStat } from './FrmCOM1400POneMAILSendListData';
 export const useFrmCOM1400POneMAILSendList = () => {
     const [ds_oEmailStat, setds_oEmailStat] = useState<Ids_oEmailStat[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
-    const [isVisible_Button1, setIsVisible_Button1] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_gdEmailStat, setIsVisible_gdEmailStat] = useState(true);
+    const [rawVisible_shpBtnBox, setRawVisible_shpBtnBox] = useState(true);
+    const [rawVisible_Button1, setRawVisible_Button1] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_gdEmailStat, setRawVisible_gdEmailStat] = useState(true);
+    const isVisible_shpBtnBox = rawVisible_shpBtnBox;
+    const setIsVisible_shpBtnBox = setRawVisible_shpBtnBox;
+    const isVisible_Button1 = rawVisible_Button1;
+    const setIsVisible_Button1 = setRawVisible_Button1;
+    const isVisible_btnEnd = rawVisible_btnEnd && rawVisible_shpBtnBox;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_gdEmailStat = rawVisible_gdEmailStat;
+    const setIsVisible_gdEmailStat = setRawVisible_gdEmailStat;
 
     useEffect(() => {
         setIsLoading(true);

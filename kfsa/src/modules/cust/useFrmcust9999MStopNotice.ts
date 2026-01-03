@@ -10,11 +10,21 @@ export const useFrmcust9999MStopNotice = () => {
     const [ds_MinapListExcel, setds_MinapListExcel] = useState<Ids_MinapListExcel[]>([]);
     const [ds_SearchJogeon, setds_SearchJogeon] = useState<Ids_SearchJogeon[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_Shape0, setIsVisible_Shape0] = useState(true);
-    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
-    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_Static0, setIsVisible_Static0] = useState(true);
+    const [rawVisible_Shape0, setRawVisible_Shape0] = useState(true);
+    const [rawVisible_divWorkFormTitle, setRawVisible_divWorkFormTitle] = useState(true);
+    const [rawVisible_shpBtnBox, setRawVisible_shpBtnBox] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_Static0, setRawVisible_Static0] = useState(true);
+    const isVisible_Shape0 = rawVisible_Shape0;
+    const setIsVisible_Shape0 = setRawVisible_Shape0;
+    const isVisible_divWorkFormTitle = rawVisible_divWorkFormTitle;
+    const setIsVisible_divWorkFormTitle = setRawVisible_divWorkFormTitle;
+    const isVisible_shpBtnBox = rawVisible_shpBtnBox;
+    const setIsVisible_shpBtnBox = setRawVisible_shpBtnBox;
+    const isVisible_btnEnd = rawVisible_btnEnd && rawVisible_shpBtnBox;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_Static0 = rawVisible_Static0 && rawVisible_Shape0;
+    const setIsVisible_Static0 = setRawVisible_Static0;
 
     useEffect(() => {
         setIsLoading(true);

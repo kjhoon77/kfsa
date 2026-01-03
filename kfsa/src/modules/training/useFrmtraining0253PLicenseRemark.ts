@@ -4,11 +4,21 @@ import type {  } from './Frmtraining0253PLicenseRemarkData';
 
 export const useFrmtraining0253PLicenseRemark = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_lbTitle, setIsVisible_lbTitle] = useState(true);
-    const [isVisible_edRemark, setIsVisible_edRemark] = useState(true);
-    const [isVisible_btnConfirm, setIsVisible_btnConfirm] = useState(true);
-    const [isVisible_btnCancel, setIsVisible_btnCancel] = useState(true);
-    const [isVisible_lbMeg, setIsVisible_lbMeg] = useState(true);
+    const [rawVisible_lbTitle, setRawVisible_lbTitle] = useState(true);
+    const [rawVisible_edRemark, setRawVisible_edRemark] = useState(true);
+    const [rawVisible_btnConfirm, setRawVisible_btnConfirm] = useState(true);
+    const [rawVisible_btnCancel, setRawVisible_btnCancel] = useState(true);
+    const [rawVisible_lbMeg, setRawVisible_lbMeg] = useState(true);
+    const isVisible_lbTitle = rawVisible_lbTitle;
+    const setIsVisible_lbTitle = setRawVisible_lbTitle;
+    const isVisible_edRemark = rawVisible_edRemark;
+    const setIsVisible_edRemark = setRawVisible_edRemark;
+    const isVisible_btnConfirm = rawVisible_btnConfirm;
+    const setIsVisible_btnConfirm = setRawVisible_btnConfirm;
+    const isVisible_btnCancel = rawVisible_btnCancel;
+    const setIsVisible_btnCancel = setRawVisible_btnCancel;
+    const isVisible_lbMeg = rawVisible_lbMeg;
+    const setIsVisible_lbMeg = setRawVisible_lbMeg;
 
     useEffect(() => {
         setIsLoading(true);

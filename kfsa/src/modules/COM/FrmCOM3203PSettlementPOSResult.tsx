@@ -61,7 +61,7 @@ export const FrmCOM3203PSettlementPOSResult = () => {
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Box sx={{ display: hook.isVisible_lbResultLgdText ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '76px', height: '22px' }}><Typography variant="body2">(실시간조회)</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "11px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbResultMsg ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '384px', height: '22px' }}><Typography variant="body2">※ 결과 메세지</Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnSetlmt ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnSetlmt_OnClick} sx={{ width: '200px', height: '46px' }}>재결제신청</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnSetlmt ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnSetlmt_OnClick} sx={{ width: '200px', height: '46px', whiteSpace: "nowrap" }}>재결제신청</Button></Box></Stack>
 
                     </Paper>
                 </Grid>

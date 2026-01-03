@@ -27,7 +27,7 @@ export const FrmCOM1100MOneSMSSend = () => {
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
-                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnSearchSmsPattern ? undefined : 'none' }}><Button variant="contained"  onClick={hook.lfn_SMSPatternList} sx={{ width: '112px', height: '27px' }}>    문자유형 선택</Button></Box></Stack>
+                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnSearchSmsPattern ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_SMSPatternList} sx={{ width: '112px', height: '27px', whiteSpace: "nowrap" }}>    문자유형 선택</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static0 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '194px', height: '27px' }}><Typography variant="body2">* 수신번호가 없으면 보내기 버튼이
  활성화되지 않습니다.</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "9px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '198px', height: '22px', display: 'flex', alignItems: 'center', ml: '282px' }}>

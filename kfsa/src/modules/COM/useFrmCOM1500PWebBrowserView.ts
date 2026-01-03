@@ -5,9 +5,15 @@ import type { Ids_oEducationPlace } from './FrmCOM1500PWebBrowserViewData';
 export const useFrmCOM1500PWebBrowserView = () => {
     const [ds_oEducationPlace, setds_oEducationPlace] = useState<Ids_oEducationPlace[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_AxMsie, setIsVisible_AxMsie] = useState(true);
+    const [rawVisible_shpBtnBox, setRawVisible_shpBtnBox] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_AxMsie, setRawVisible_AxMsie] = useState(true);
+    const isVisible_shpBtnBox = rawVisible_shpBtnBox;
+    const setIsVisible_shpBtnBox = setRawVisible_shpBtnBox;
+    const isVisible_btnEnd = rawVisible_btnEnd && rawVisible_shpBtnBox;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_AxMsie = rawVisible_AxMsie;
+    const setIsVisible_AxMsie = setRawVisible_AxMsie;
 
     useEffect(() => {
         setIsLoading(true);

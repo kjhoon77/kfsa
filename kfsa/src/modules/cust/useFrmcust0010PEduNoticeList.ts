@@ -5,9 +5,15 @@ import type { Ids_oEduNoticeList } from './Frmcust0010PEduNoticeListData';
 export const useFrmcust0010PEduNoticeList = () => {
     const [ds_oEduNoticeList, setds_oEduNoticeList] = useState<Ids_oEduNoticeList[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_gdEduNoticeList, setIsVisible_gdEduNoticeList] = useState(true);
-    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
+    const [rawVisible_gdEduNoticeList, setRawVisible_gdEduNoticeList] = useState(true);
+    const [rawVisible_shpBtnBox, setRawVisible_shpBtnBox] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const isVisible_gdEduNoticeList = rawVisible_gdEduNoticeList;
+    const setIsVisible_gdEduNoticeList = setRawVisible_gdEduNoticeList;
+    const isVisible_shpBtnBox = rawVisible_shpBtnBox;
+    const setIsVisible_shpBtnBox = setRawVisible_shpBtnBox;
+    const isVisible_btnEnd = rawVisible_btnEnd && rawVisible_shpBtnBox;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
 
     useEffect(() => {
         setIsLoading(true);

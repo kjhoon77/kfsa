@@ -25,7 +25,7 @@ export const Frmcust0010PEduNoticePrint = () => {
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
-                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "55px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnSearchEduSchedule ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnSearchEduSchedule_OnClick} sx={{ width: '144px', height: '24px' }}>실무교육일정 선택</Button></Box></Stack>
+                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "55px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnSearchEduSchedule ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnSearchEduSchedule_OnClick} sx={{ width: '144px', height: '24px', whiteSpace: "nowrap" }}>실무교육일정 선택</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "7px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '108px', height: '22px', display: 'flex', alignItems: 'center', ml: '12px' }}>
                     <Typography variant="body2" sx={{ minWidth: 60, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>교육년도</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioEduSchecule?.ESYEAR || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
@@ -56,7 +56,7 @@ export const Frmcust0010PEduNoticePrint = () => {
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Box sx={{ display: hook.isVisible_Static33 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '28px', height: '22px' }}><Typography variant="body2">mm</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static36 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '160px', height: '20px' }}><Typography variant="body2">상단, 왼쪽 여백 50은 기본값임</Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnPrint ? undefined : 'none' }}><Button variant="contained"  onClick={hook.lfn_Print} sx={{ width: '120px', height: '24px' }}>교육통지서 출력</Button></Box><Box sx={{ display: hook.isVisible_btnPDFPrint ? undefined : 'none' }}><Button variant="contained"  onClick={hook.lfn_PDFPrint} sx={{ width: '120px', height: '24px' }}>PDF 출력</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnPrint ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_Print} sx={{ width: '120px', height: '24px', whiteSpace: "nowrap" }}>교육통지서 출력</Button></Box><Box sx={{ display: hook.isVisible_btnPDFPrint ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_PDFPrint} sx={{ width: '120px', height: '24px', whiteSpace: "nowrap" }}>PDF 출력</Button></Box></Stack>
 
                     </Paper>
                 </Grid>

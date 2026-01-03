@@ -25,7 +25,7 @@ export const MsieTitlechange = () => {
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "18px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_MSIE0 ? undefined : 'none' }}><Box sx={{ width: '452px', height: '382px', border: '1px dashed grey' }}>Unknown: MSIE</Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Button0 ? undefined : 'none' }}><Button variant="contained"  onClick={hook.Button0_OnClick} sx={{ width: '184px', height: '122px' }}>dataset 던지기</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Button0 ? undefined : 'none' }}><Button variant="contained"   onClick={hook.Button0_OnClick} sx={{ width: '184px', height: '122px', whiteSpace: "nowrap" }}>dataset 던지기</Button></Box></Stack>
 
                     </Paper>
                 </Grid>

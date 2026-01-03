@@ -45,7 +45,7 @@ export const Frmcust2021PPosResultMoney = () => {
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbResultMsg ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '388px', height: '22px' }}><Typography variant="body2">※ 결과 메세지</Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnEnd ? undefined : 'none' }}><Button variant="contained"  onClick={hook.lfn_End} sx={{ width: '116px', height: '30px' }}>결제 완료</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnEnd ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_End} sx={{ width: '116px', height: '30px', whiteSpace: "nowrap" }}>결제 완료</Button></Box></Stack>
 
                     </Paper>
                 </Grid>

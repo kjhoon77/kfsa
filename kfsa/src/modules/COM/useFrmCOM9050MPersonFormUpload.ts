@@ -6,13 +6,27 @@ export const useFrmCOM9050MPersonFormUpload = () => {
     const [ds_ioBizformcode, setds_ioBizformcode] = useState<Ids_ioBizformcode[]>([]);
     const [ds_iBizgubun, setds_iBizgubun] = useState<Ids_iBizgubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
-    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
-    const [isVisible_btnSearch, setIsVisible_btnSearch] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_gdBizform, setIsVisible_gdBizform] = useState(true);
-    const [isVisible_Static1, setIsVisible_Static1] = useState(true);
-    const [isVisible_btnDataHistory, setIsVisible_btnDataHistory] = useState(false);
+    const [rawVisible_shpBtnBox, setRawVisible_shpBtnBox] = useState(true);
+    const [rawVisible_divWorkFormTitle, setRawVisible_divWorkFormTitle] = useState(true);
+    const [rawVisible_btnSearch, setRawVisible_btnSearch] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_gdBizform, setRawVisible_gdBizform] = useState(true);
+    const [rawVisible_Static1, setRawVisible_Static1] = useState(true);
+    const [rawVisible_btnDataHistory, setRawVisible_btnDataHistory] = useState(false);
+    const isVisible_shpBtnBox = rawVisible_shpBtnBox;
+    const setIsVisible_shpBtnBox = setRawVisible_shpBtnBox;
+    const isVisible_divWorkFormTitle = rawVisible_divWorkFormTitle;
+    const setIsVisible_divWorkFormTitle = setRawVisible_divWorkFormTitle;
+    const isVisible_btnSearch = rawVisible_btnSearch && rawVisible_shpBtnBox;
+    const setIsVisible_btnSearch = setRawVisible_btnSearch;
+    const isVisible_btnEnd = rawVisible_btnEnd && rawVisible_shpBtnBox;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_gdBizform = rawVisible_gdBizform;
+    const setIsVisible_gdBizform = setRawVisible_gdBizform;
+    const isVisible_Static1 = rawVisible_Static1;
+    const setIsVisible_Static1 = setRawVisible_Static1;
+    const isVisible_btnDataHistory = rawVisible_btnDataHistory;
+    const setIsVisible_btnDataHistory = setRawVisible_btnDataHistory;
 
     useEffect(() => {
         setIsLoading(true);

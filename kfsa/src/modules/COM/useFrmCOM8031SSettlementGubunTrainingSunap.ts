@@ -5,8 +5,12 @@ import type { Ids_oProcGubun } from './FrmCOM8031SSettlementGubunTrainingSunapDa
 export const useFrmCOM8031SSettlementGubunTrainingSunap = () => {
     const [ds_oProcGubun, setds_oProcGubun] = useState<Ids_oProcGubun[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_radProcGubun, setIsVisible_radProcGubun] = useState(true);
-    const [isVisible_edTrainingDateGubun, setIsVisible_edTrainingDateGubun] = useState(true);
+    const [rawVisible_radProcGubun, setRawVisible_radProcGubun] = useState(true);
+    const [rawVisible_edTrainingDateGubun, setRawVisible_edTrainingDateGubun] = useState(true);
+    const isVisible_radProcGubun = rawVisible_radProcGubun;
+    const setIsVisible_radProcGubun = setRawVisible_radProcGubun;
+    const isVisible_edTrainingDateGubun = rawVisible_edTrainingDateGubun;
+    const setIsVisible_edTrainingDateGubun = setRawVisible_edTrainingDateGubun;
 
     useEffect(() => {
         setIsLoading(true);

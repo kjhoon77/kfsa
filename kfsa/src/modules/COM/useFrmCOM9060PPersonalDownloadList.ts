@@ -5,10 +5,18 @@ import type { Ids_oDownloadPopup } from './FrmCOM9060PPersonalDownloadListData';
 export const useFrmCOM9060PPersonalDownloadList = () => {
     const [ds_oDownloadPopup, setds_oDownloadPopup] = useState<Ids_oDownloadPopup[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_lbNoJubsuCnt, setIsVisible_lbNoJubsuCnt] = useState(true);
-    const [isVisible_medTotalCnt, setIsVisible_medTotalCnt] = useState(true);
-    const [isVisible_cbxYear, setIsVisible_cbxYear] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_lbNoJubsuCnt, setRawVisible_lbNoJubsuCnt] = useState(true);
+    const [rawVisible_medTotalCnt, setRawVisible_medTotalCnt] = useState(true);
+    const [rawVisible_cbxYear, setRawVisible_cbxYear] = useState(true);
+    const isVisible_btnEnd = rawVisible_btnEnd;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_lbNoJubsuCnt = rawVisible_lbNoJubsuCnt;
+    const setIsVisible_lbNoJubsuCnt = setRawVisible_lbNoJubsuCnt;
+    const isVisible_medTotalCnt = rawVisible_medTotalCnt;
+    const setIsVisible_medTotalCnt = setRawVisible_medTotalCnt;
+    const isVisible_cbxYear = rawVisible_cbxYear;
+    const setIsVisible_cbxYear = setRawVisible_cbxYear;
 
     useEffect(() => {
         setIsLoading(true);

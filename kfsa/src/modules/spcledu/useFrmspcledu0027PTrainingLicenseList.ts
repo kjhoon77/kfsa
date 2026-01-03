@@ -5,10 +5,18 @@ import type { Ids_oLicense } from './Frmspcledu0027PTrainingLicenseListData';
 export const useFrmspcledu0027PTrainingLicenseList = () => {
     const [ds_oLicense, setds_oLicense] = useState<Ids_oLicense[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
-    const [isVisible_Button1, setIsVisible_Button1] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_gdLcsInfo, setIsVisible_gdLcsInfo] = useState(true);
+    const [rawVisible_shpBtnBox, setRawVisible_shpBtnBox] = useState(true);
+    const [rawVisible_Button1, setRawVisible_Button1] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_gdLcsInfo, setRawVisible_gdLcsInfo] = useState(true);
+    const isVisible_shpBtnBox = rawVisible_shpBtnBox;
+    const setIsVisible_shpBtnBox = setRawVisible_shpBtnBox;
+    const isVisible_Button1 = rawVisible_Button1;
+    const setIsVisible_Button1 = setRawVisible_Button1;
+    const isVisible_btnEnd = rawVisible_btnEnd && rawVisible_shpBtnBox;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_gdLcsInfo = rawVisible_gdLcsInfo;
+    const setIsVisible_gdLcsInfo = setRawVisible_gdLcsInfo;
 
     useEffect(() => {
         setIsLoading(true);

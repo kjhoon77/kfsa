@@ -5,14 +5,30 @@ import type { Ids_oExamSupervisor } from './Frmtraining0601MExamSupervisorListPo
 export const useFrmtraining0601MExamSupervisorListPopup = () => {
     const [ds_oExamSupervisor, setds_oExamSupervisor] = useState<Ids_oExamSupervisor[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
-    const [isVisible_btnSelect, setIsVisible_btnSelect] = useState(true);
-    const [isVisible_gdExamSupervisor, setIsVisible_gdExamSupervisor] = useState(true);
-    const [isVisible_Button1, setIsVisible_Button1] = useState(true);
-    const [isVisible_btnSearch, setIsVisible_btnSearch] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_lbExamSupervisor, setIsVisible_lbExamSupervisor] = useState(true);
-    const [isVisible_edExamSupervisor, setIsVisible_edExamSupervisor] = useState(true);
+    const [rawVisible_shpBtnBox, setRawVisible_shpBtnBox] = useState(true);
+    const [rawVisible_btnSelect, setRawVisible_btnSelect] = useState(true);
+    const [rawVisible_gdExamSupervisor, setRawVisible_gdExamSupervisor] = useState(true);
+    const [rawVisible_Button1, setRawVisible_Button1] = useState(true);
+    const [rawVisible_btnSearch, setRawVisible_btnSearch] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_lbExamSupervisor, setRawVisible_lbExamSupervisor] = useState(true);
+    const [rawVisible_edExamSupervisor, setRawVisible_edExamSupervisor] = useState(true);
+    const isVisible_shpBtnBox = rawVisible_shpBtnBox;
+    const setIsVisible_shpBtnBox = setRawVisible_shpBtnBox;
+    const isVisible_btnSelect = rawVisible_btnSelect && rawVisible_shpBtnBox;
+    const setIsVisible_btnSelect = setRawVisible_btnSelect;
+    const isVisible_gdExamSupervisor = rawVisible_gdExamSupervisor;
+    const setIsVisible_gdExamSupervisor = setRawVisible_gdExamSupervisor;
+    const isVisible_Button1 = rawVisible_Button1;
+    const setIsVisible_Button1 = setRawVisible_Button1;
+    const isVisible_btnSearch = rawVisible_btnSearch && rawVisible_shpBtnBox;
+    const setIsVisible_btnSearch = setRawVisible_btnSearch;
+    const isVisible_btnEnd = rawVisible_btnEnd && rawVisible_shpBtnBox;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_lbExamSupervisor = rawVisible_lbExamSupervisor;
+    const setIsVisible_lbExamSupervisor = setRawVisible_lbExamSupervisor;
+    const isVisible_edExamSupervisor = rawVisible_edExamSupervisor;
+    const setIsVisible_edExamSupervisor = setRawVisible_edExamSupervisor;
 
     useEffect(() => {
         setIsLoading(true);

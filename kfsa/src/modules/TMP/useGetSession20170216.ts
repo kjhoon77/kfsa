@@ -5,7 +5,9 @@ import type { IDataset0 } from './GetSession20170216Data';
 export const useGetSession20170216 = () => {
     const [Dataset0, setDataset0] = useState<IDataset0[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_Button0, setIsVisible_Button0] = useState(true);
+    const [rawVisible_Button0, setRawVisible_Button0] = useState(true);
+    const isVisible_Button0 = rawVisible_Button0;
+    const setIsVisible_Button0 = setRawVisible_Button0;
 
     useEffect(() => {
         setIsLoading(true);

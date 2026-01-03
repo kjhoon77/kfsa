@@ -4,11 +4,21 @@ import type {  } from './Frmtraining0630PResultMessageData';
 
 export const useFrmtraining0630PResultMessage = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_btnOK, setIsVisible_btnOK] = useState(true);
-    const [isVisible_imgInfo, setIsVisible_imgInfo] = useState(true);
-    const [isVisible_lbInfo, setIsVisible_lbInfo] = useState(true);
-    const [isVisible_lsTitle, setIsVisible_lsTitle] = useState(true);
-    const [isVisible_lsMsg, setIsVisible_lsMsg] = useState(true);
+    const [rawVisible_btnOK, setRawVisible_btnOK] = useState(true);
+    const [rawVisible_imgInfo, setRawVisible_imgInfo] = useState(true);
+    const [rawVisible_lbInfo, setRawVisible_lbInfo] = useState(true);
+    const [rawVisible_lsTitle, setRawVisible_lsTitle] = useState(true);
+    const [rawVisible_lsMsg, setRawVisible_lsMsg] = useState(true);
+    const isVisible_btnOK = rawVisible_btnOK;
+    const setIsVisible_btnOK = setRawVisible_btnOK;
+    const isVisible_imgInfo = rawVisible_imgInfo;
+    const setIsVisible_imgInfo = setRawVisible_imgInfo;
+    const isVisible_lbInfo = rawVisible_lbInfo;
+    const setIsVisible_lbInfo = setRawVisible_lbInfo;
+    const isVisible_lsTitle = rawVisible_lsTitle;
+    const setIsVisible_lsTitle = setRawVisible_lsTitle;
+    const isVisible_lsMsg = rawVisible_lsMsg;
+    const setIsVisible_lsMsg = setRawVisible_lsMsg;
 
     useEffect(() => {
         setIsLoading(true);

@@ -4,7 +4,9 @@ import type {  } from './Frmtraining0330SLicenseIssueStatisticsData';
 
 export const useFrmtraining0330SLicenseIssueStatistics = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_edLicenseName, setIsVisible_edLicenseName] = useState(true);
+    const [rawVisible_edLicenseName, setRawVisible_edLicenseName] = useState(true);
+    const isVisible_edLicenseName = rawVisible_edLicenseName;
+    const setIsVisible_edLicenseName = setRawVisible_edLicenseName;
 
     useEffect(() => {
         setIsLoading(true);

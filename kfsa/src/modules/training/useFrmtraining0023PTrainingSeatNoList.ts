@@ -6,13 +6,27 @@ export const useFrmtraining0023PTrainingSeatNoList = () => {
     const [ds_oTrainingSeatNo, setds_oTrainingSeatNo] = useState<Ids_oTrainingSeatNo[]>([]);
     const [ds_oPassYn, setds_oPassYn] = useState<Ids_oPassYn[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
-    const [isVisible_btnSelect, setIsVisible_btnSelect] = useState(true);
-    const [isVisible_Button1, setIsVisible_Button1] = useState(true);
-    const [isVisible_btnSearch, setIsVisible_btnSearch] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_gdTrainingSeatNo, setIsVisible_gdTrainingSeatNo] = useState(true);
-    const [isVisible_btnSeatNoLoopDelete, setIsVisible_btnSeatNoLoopDelete] = useState(true);
+    const [rawVisible_shpBtnBox, setRawVisible_shpBtnBox] = useState(true);
+    const [rawVisible_btnSelect, setRawVisible_btnSelect] = useState(true);
+    const [rawVisible_Button1, setRawVisible_Button1] = useState(true);
+    const [rawVisible_btnSearch, setRawVisible_btnSearch] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_gdTrainingSeatNo, setRawVisible_gdTrainingSeatNo] = useState(true);
+    const [rawVisible_btnSeatNoLoopDelete, setRawVisible_btnSeatNoLoopDelete] = useState(true);
+    const isVisible_shpBtnBox = rawVisible_shpBtnBox;
+    const setIsVisible_shpBtnBox = setRawVisible_shpBtnBox;
+    const isVisible_btnSelect = rawVisible_btnSelect && rawVisible_shpBtnBox;
+    const setIsVisible_btnSelect = setRawVisible_btnSelect;
+    const isVisible_Button1 = rawVisible_Button1 && rawVisible_shpBtnBox;
+    const setIsVisible_Button1 = setRawVisible_Button1;
+    const isVisible_btnSearch = rawVisible_btnSearch && rawVisible_shpBtnBox;
+    const setIsVisible_btnSearch = setRawVisible_btnSearch;
+    const isVisible_btnEnd = rawVisible_btnEnd && rawVisible_shpBtnBox;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_gdTrainingSeatNo = rawVisible_gdTrainingSeatNo;
+    const setIsVisible_gdTrainingSeatNo = setRawVisible_gdTrainingSeatNo;
+    const isVisible_btnSeatNoLoopDelete = rawVisible_btnSeatNoLoopDelete && rawVisible_shpBtnBox;
+    const setIsVisible_btnSeatNoLoopDelete = setRawVisible_btnSeatNoLoopDelete;
 
     useEffect(() => {
         setIsLoading(true);

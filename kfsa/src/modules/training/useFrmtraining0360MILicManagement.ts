@@ -4,10 +4,18 @@ import type {  } from './Frmtraining0360MILicManagementData';
 
 export const useFrmtraining0360MILicManagement = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
-    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_AxMsie, setIsVisible_AxMsie] = useState(true);
+    const [rawVisible_shpBtnBox, setRawVisible_shpBtnBox] = useState(true);
+    const [rawVisible_divWorkFormTitle, setRawVisible_divWorkFormTitle] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_AxMsie, setRawVisible_AxMsie] = useState(true);
+    const isVisible_shpBtnBox = rawVisible_shpBtnBox;
+    const setIsVisible_shpBtnBox = setRawVisible_shpBtnBox;
+    const isVisible_divWorkFormTitle = rawVisible_divWorkFormTitle;
+    const setIsVisible_divWorkFormTitle = setRawVisible_divWorkFormTitle;
+    const isVisible_btnEnd = rawVisible_btnEnd && rawVisible_shpBtnBox;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_AxMsie = rawVisible_AxMsie;
+    const setIsVisible_AxMsie = setRawVisible_AxMsie;
 
     useEffect(() => {
         setIsLoading(true);

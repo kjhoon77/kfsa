@@ -4,12 +4,24 @@ import type {  } from './Frmspcledu0511MExamCorrectAnswerPaperPasswordData';
 
 export const useFrmspcledu0511MExamCorrectAnswerPaperPassword = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
-    const [isVisible_btnSearch, setIsVisible_btnSearch] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_edPassword, setIsVisible_edPassword] = useState(true);
-    const [isVisible_lbPassword, setIsVisible_lbPassword] = useState(true);
-    const [isVisible_btnPrintScreen, setIsVisible_btnPrintScreen] = useState(false);
+    const [rawVisible_divWorkFormTitle, setRawVisible_divWorkFormTitle] = useState(true);
+    const [rawVisible_btnSearch, setRawVisible_btnSearch] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_edPassword, setRawVisible_edPassword] = useState(true);
+    const [rawVisible_lbPassword, setRawVisible_lbPassword] = useState(true);
+    const [rawVisible_btnPrintScreen, setRawVisible_btnPrintScreen] = useState(false);
+    const isVisible_divWorkFormTitle = rawVisible_divWorkFormTitle;
+    const setIsVisible_divWorkFormTitle = setRawVisible_divWorkFormTitle;
+    const isVisible_btnSearch = rawVisible_btnSearch;
+    const setIsVisible_btnSearch = setRawVisible_btnSearch;
+    const isVisible_btnEnd = rawVisible_btnEnd;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_edPassword = rawVisible_edPassword;
+    const setIsVisible_edPassword = setRawVisible_edPassword;
+    const isVisible_lbPassword = rawVisible_lbPassword;
+    const setIsVisible_lbPassword = setRawVisible_lbPassword;
+    const isVisible_btnPrintScreen = rawVisible_btnPrintScreen && rawVisible_divWorkFormTitle;
+    const setIsVisible_btnPrintScreen = setRawVisible_btnPrintScreen;
 
     useEffect(() => {
         setIsLoading(true);

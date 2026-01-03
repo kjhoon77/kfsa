@@ -5,10 +5,18 @@ import type { Ids_oSupporterList } from './Frmcust0010PSupporterListData';
 export const useFrmcust0010PSupporterList = () => {
     const [ds_oSupporterList, setds_oSupporterList] = useState<Ids_oSupporterList[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_gdSuppoterList, setIsVisible_gdSuppoterList] = useState(true);
-    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_btnSelect, setIsVisible_btnSelect] = useState(true);
+    const [rawVisible_gdSuppoterList, setRawVisible_gdSuppoterList] = useState(true);
+    const [rawVisible_shpBtnBox, setRawVisible_shpBtnBox] = useState(true);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_btnSelect, setRawVisible_btnSelect] = useState(true);
+    const isVisible_gdSuppoterList = rawVisible_gdSuppoterList;
+    const setIsVisible_gdSuppoterList = setRawVisible_gdSuppoterList;
+    const isVisible_shpBtnBox = rawVisible_shpBtnBox;
+    const setIsVisible_shpBtnBox = setRawVisible_shpBtnBox;
+    const isVisible_btnEnd = rawVisible_btnEnd && rawVisible_shpBtnBox;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_btnSelect = rawVisible_btnSelect && rawVisible_shpBtnBox;
+    const setIsVisible_btnSelect = setRawVisible_btnSelect;
 
     useEffect(() => {
         setIsLoading(true);

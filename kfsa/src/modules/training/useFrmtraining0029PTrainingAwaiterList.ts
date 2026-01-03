@@ -5,11 +5,21 @@ import type { Ids_oAwaiterJubsu } from './Frmtraining0029PTrainingAwaiterListDat
 export const useFrmtraining0029PTrainingAwaiterList = () => {
     const [ds_oAwaiterJubsu, setds_oAwaiterJubsu] = useState<Ids_oAwaiterJubsu[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
-    const [isVisible_Button1, setIsVisible_Button1] = useState(true);
-    const [isVisible_btnSearch, setIsVisible_btnSearch] = useState(false);
-    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
-    const [isVisible_gdAwaiterJubsu, setIsVisible_gdAwaiterJubsu] = useState(true);
+    const [rawVisible_shpBtnBox, setRawVisible_shpBtnBox] = useState(true);
+    const [rawVisible_Button1, setRawVisible_Button1] = useState(true);
+    const [rawVisible_btnSearch, setRawVisible_btnSearch] = useState(false);
+    const [rawVisible_btnEnd, setRawVisible_btnEnd] = useState(true);
+    const [rawVisible_gdAwaiterJubsu, setRawVisible_gdAwaiterJubsu] = useState(true);
+    const isVisible_shpBtnBox = rawVisible_shpBtnBox;
+    const setIsVisible_shpBtnBox = setRawVisible_shpBtnBox;
+    const isVisible_Button1 = rawVisible_Button1;
+    const setIsVisible_Button1 = setRawVisible_Button1;
+    const isVisible_btnSearch = rawVisible_btnSearch;
+    const setIsVisible_btnSearch = setRawVisible_btnSearch;
+    const isVisible_btnEnd = rawVisible_btnEnd && rawVisible_shpBtnBox;
+    const setIsVisible_btnEnd = setRawVisible_btnEnd;
+    const isVisible_gdAwaiterJubsu = rawVisible_gdAwaiterJubsu;
+    const setIsVisible_gdAwaiterJubsu = setRawVisible_gdAwaiterJubsu;
 
     useEffect(() => {
         setIsLoading(true);

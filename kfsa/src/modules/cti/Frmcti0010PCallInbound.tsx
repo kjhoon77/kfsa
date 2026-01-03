@@ -37,7 +37,7 @@ export const Frmcti0010PCallInbound = () => {
                     <Typography variant="body2" sx={{ minWidth: 80, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>고객성향</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "28px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnCallReceive ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnCallReceive_OnClick} sx={{ width: '95px', height: '24px' }}>전화받기</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "28px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnCallReceive ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnCallReceive_OnClick} sx={{ width: '95px', height: '24px', whiteSpace: "nowrap" }}>전화받기</Button></Box></Stack>
 
                     </Paper>
                 </Grid>

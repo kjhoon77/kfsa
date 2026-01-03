@@ -28,9 +28,15 @@ export const useFrmcust5011 = () => {
     const [ds_ioFireSurveyFloorE, setds_ioFireSurveyFloorE] = useState<Ids_ioFireSurveyFloorE[]>([]);
     const [ds_ioFireMapping, setds_ioFireMapping] = useState<Ids_ioFireMapping[]>([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_Static1, setIsVisible_Static1] = useState(true);
-    const [isVisible_edCancelReason, setIsVisible_edCancelReason] = useState(true);
-    const [isVisible_btnCancelReason, setIsVisible_btnCancelReason] = useState(true);
+    const [rawVisible_Static1, setRawVisible_Static1] = useState(true);
+    const [rawVisible_edCancelReason, setRawVisible_edCancelReason] = useState(true);
+    const [rawVisible_btnCancelReason, setRawVisible_btnCancelReason] = useState(true);
+    const isVisible_Static1 = rawVisible_Static1;
+    const setIsVisible_Static1 = setRawVisible_Static1;
+    const isVisible_edCancelReason = rawVisible_edCancelReason;
+    const setIsVisible_edCancelReason = setRawVisible_edCancelReason;
+    const isVisible_btnCancelReason = rawVisible_btnCancelReason;
+    const setIsVisible_btnCancelReason = setRawVisible_btnCancelReason;
 
     useEffect(() => {
         setIsLoading(true);

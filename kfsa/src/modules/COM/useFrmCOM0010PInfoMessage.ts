@@ -4,10 +4,18 @@ import type {  } from './FrmCOM0010PInfoMessageData';
 
 export const useFrmCOM0010PInfoMessage = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [isVisible_btnOK, setIsVisible_btnOK] = useState(true);
-    const [isVisible_taInfo, setIsVisible_taInfo] = useState(true);
-    const [isVisible_imgInfo, setIsVisible_imgInfo] = useState(true);
-    const [isVisible_lbInfo, setIsVisible_lbInfo] = useState(true);
+    const [rawVisible_btnOK, setRawVisible_btnOK] = useState(true);
+    const [rawVisible_taInfo, setRawVisible_taInfo] = useState(true);
+    const [rawVisible_imgInfo, setRawVisible_imgInfo] = useState(true);
+    const [rawVisible_lbInfo, setRawVisible_lbInfo] = useState(true);
+    const isVisible_btnOK = rawVisible_btnOK;
+    const setIsVisible_btnOK = setRawVisible_btnOK;
+    const isVisible_taInfo = rawVisible_taInfo;
+    const setIsVisible_taInfo = setRawVisible_taInfo;
+    const isVisible_imgInfo = rawVisible_imgInfo;
+    const setIsVisible_imgInfo = setRawVisible_imgInfo;
+    const isVisible_lbInfo = rawVisible_lbInfo;
+    const setIsVisible_lbInfo = setRawVisible_lbInfo;
 
     useEffect(() => {
         setIsLoading(true);

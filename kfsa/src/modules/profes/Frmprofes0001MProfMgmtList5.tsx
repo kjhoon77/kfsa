@@ -48,7 +48,7 @@ export const Frmprofes0001MProfMgmtList5 = () => {
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '116px', height: '22px', display: 'flex', alignItems: 'center', ml: '2px' }}>
                     <Typography variant="body2" sx={{ minWidth: 10, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
                     <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_btnToExcel ? undefined : 'none' }}><Button variant="contained" startIcon={<Save />} onClick={hook.btnToExcel_OnClick} sx={{ width: '85px', height: '24px' }}>엑셀로 저장</Button></Box></Stack>
+                 </Stack><Box sx={{ display: hook.isVisible_btnToExcel ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Save />} onClick={hook.btnToExcel_OnClick} sx={{ width: '85px', height: '24px', whiteSpace: "nowrap" }}>엑셀로 저장</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList ? undefined : 'none' }}><Paper sx={{ width: '484px', height: '587px', width: '100%', height: 'auto', minHeight: '587px' }}><DataGridWrapper rows={hook.ds_ioList} columns={columns_gdList} /></Paper></Box></Stack>
 
                     </Paper>
@@ -57,7 +57,7 @@ export const Frmprofes0001MProfMgmtList5 = () => {
                 <Grid item xs={12} md={4}>
                     <Paper sx={{ p: 2, height: '100%' }}>
                         <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>List</Typography>
-                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "46px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnToExcel2 ? undefined : 'none' }}><Button variant="contained" startIcon={<Save />} onClick={hook.btnToExcel2_OnClick} sx={{ width: '85px', height: '24px' }}>엑셀로 저장</Button></Box></Stack>
+                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "46px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnToExcel2 ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Save />} onClick={hook.btnToExcel2_OnClick} sx={{ width: '85px', height: '24px', whiteSpace: "nowrap" }}>엑셀로 저장</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList2 ? undefined : 'none' }}><Paper sx={{ width: '600px', height: '587px', width: '100%', height: 'auto', minHeight: '587px' }}><DataGridWrapper rows={hook.ds_ioList2} columns={columns_gdList2} /></Paper></Box></Stack>
 
                     </Paper>
