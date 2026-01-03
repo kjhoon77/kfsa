@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Cy_TemplateSelect" template="Select" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="input" io="INPUT" reserved="YES"></dataset>
+	<dataset id="output" io="OUTPUT" reserved="YES"></dataset>
+	<member_var>
+		<var id="Select_Sql" reserved="YES" type="Sql"><![CDATA[SELECT EO.EOMGNO AS EOMGNO  
+           , EO.EOYEAR AS EOYEAR 
+           , EO.EOEXAMORDERGUBUN AS EOEXAMORDERGUBUN
+           , EO.EOMGGTMGNO AS EOMGGTMGNO
+           , EO.EOEXAMORDER AS EOEXAMORDER
+           , EO.EOEXAMDATE AS EOEXAMDATE  
+           , TC.TCCOURSECD AS TCCOURSECD 
+           , TC.TCCOURSENM AS TCCOURSENM 
+           , GTC.GTTEAMNM AS GTTEAMNM
+           , ER.EREXAMROOM AS EREXAMROOM           
+   FROM EXAMORDER EO
+	    , TRAININGCOURSE TC
+      , G_TEAMCODE GTC
+      , EXAMROOM ER
+ WHERE EO.EOTCCOURSECD = TC.TCCOURSECD    
+   AND EO.EOMGNO	=	ER.EREOMGNO
+      AND TC.TCMUNJEGUBUN = 'N' 
+      AND TC.TCSEARCHGUBUN = 'E' 
+      AND TC.TCUSEYN = 'Y'
+      AND EO.EOMGGTMGNO = GTC.GTMGNO
+]]></var>
+	</member_var>
+	<member_func>
+		<function id="OnBegin()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnFetchRow()" needs="YES" reserved="YES" state="RES_IMP_FUNC" visible="YES"></function>
+		<function id="OnFetchEnd()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnExecuteQueryError()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnFetchError()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnNoDataFound()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnEnd()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[function OnFetchRow()
+{
+
+}
+
+]]></source>
+</class2>

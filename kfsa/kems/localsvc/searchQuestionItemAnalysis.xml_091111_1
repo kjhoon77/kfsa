@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="SimpleSelect" template="SimpleSelect" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="input" io="INPUT" reserved="YES"></dataset>
+	<dataset id="output" io="OUTPUT" reserved="YES"></dataset>
+	<member_var>
+		<var id="Select_Sql" reserved="YES" type="Sql"><![CDATA[SELECT EXAMORDER.EOEXAMDATE AS EOEXAMDATE                                         --시험일자  
+       ,G_TEAMCODE.GTTEAMNM AS GTTEAMNM                                        --지부
+       ,TRAININGCOURSE.TCCOURSENM AS TCCOURSENM                                    --직능명        
+       ,EXAMORDER.EOYEAR AS EOYEAR                                                 --실시년도
+       ,EXAMORDER.EOEXAMORDER AS EOEXAMORDER                                       --회차
+       ,ANSWERANALYSIS.AACAEPALPHATYPE AS AACAEPALPHATYPE                    --유형
+       ,ANSWERANALYSIS.AACAITEMNO AS AACAITEMNO                               --문항번호
+       ,CORRECTANSWER.CACORRECTANSWER AS CACORRECTANSWER                      --정답
+       ,ANSWERANALYSIS.AA1CNT AS AA1CNT                                       --1번마크수
+       ,ANSWERANALYSIS.AA2CNT AS AA2CNT                                       --2번마크수
+       ,ANSWERANALYSIS.AA3CNT AS AA3CNT                                       --3번마크수
+       ,ANSWERANALYSIS.AA4CNT AS AA4CNT                                       --4번마크수
+       ,AAEMPTYCNT AS AAEMPTYCNT                                              --공란
+       ,AADOUBLECNT AS AADOUBLECNT                                            --더블
+       ,ANSWERANALYSIS.AACORRECTPERCENT AS AACORRECTPERCENT                                     --정답율
+  FROM EXAMORDER
+      ,TRAININGCOURSE
+      ,G_TEAMCODE
+	    ,ANSWERANALYSIS                                                        --문항번석_T
+      ,CORRECTANSWER          
+WHERE  ANSWERANALYSIS.AATCCOURSECD = CORRECTANSWER.CATCCOURSECD            --직능코드
+  AND ANSWERANALYSIS.AACAEPNUMTYPE = CORRECTANSWER.CAEPNUMTYPE            --종별
+  AND ANSWERANALYSIS.AACAEPALPHATYPE = CORRECTANSWER.CAEPALPHATYPE        --유형
+  AND ANSWERANALYSIS.AACAITEMNO = CORRECTANSWER.CAITEMNO                  --문항번호
+  AND EXAMORDER.EOMGNO = ANSWERANALYSIS.AAEOMGNO                          --시험회차관리번호
+  AND EXAMORDER.EOTCCOURSECD = ANSWERANALYSIS.AATCCOURSECD 
+  AND EXAMORDER.EOMGNO = :EOMGNO
+  AND ANSWERANALYSIS.AAREPEATNO = :REPEAT
+  AND EXAMORDER.EOMGGTMGNO = G_TEAMCODE.GTMGNO                                --부서코드
+  AND TRAININGCOURSE.TCSEARCHGUBUN = 'E'                                          --강습직능코드
+  AND EXAMORDER.EOTCCOURSECD = TRAININGCOURSE.TCCOURSECD                          --강습직능]]></var>
+	</member_var>
+	<member_func>
+		<function id="OnBegin()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnExecuteQueryError()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnFetchRow()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnFetchEnd()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnFetchError()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnNoDataFound()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnEnd()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[]]></source>
+</class2>

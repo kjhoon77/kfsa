@@ -1,0 +1,1840 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="528" Id="frmcust0018PManagerChange" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="선임자정보변경" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="600" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioManager">
+				<Contents>
+					<colinfo id="MMGNO" size="22" summ="default" type="STRING"/>
+					<colinfo id="MNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="MPERSONKEY" size="13" summ="default" type="STRING"/>
+					<colinfo id="FMLASTFMHSEQ" size="22" summ="default" type="STRING"/>
+					<colinfo id="FMRESIDENTERR" size="256" summ="default" type="STRING"/>
+					<colinfo id="FMHLICENSENO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MBIRTHDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="PDI" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ModifyGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>01</CD>
+						<DATA>이름/주민번호&#32;변경</DATA>
+					</record>
+					<record>
+						<CD>02</CD>
+						<DATA>선임&#32;대상자&#32;변경</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oManagerList">
+				<Contents>
+					<colinfo id="BADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="BADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="BTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="BZIPCD" size="6" summ="default" type="STRING"/>
+					<colinfo id="CCOCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFIREMGNO" size="20" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="COVERCMGNO" size="2" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EPPASSDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="FMHSTARTDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="FMBIRTHDAY" size="13" summ="default" type="STRING"/>
+					<colinfo id="OLHNM" size="200" summ="default" type="STRING"/>
+					<colinfo id="BIRTHDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="FMPERSONKEY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oStatus">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_MemberGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>회원</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>비회원</DATA>
+					</record>
+					<record>
+						<CD></CD>
+						<DATA>동의내역&#32;없음</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMemberStatus">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iCustomerInfo">
+				<Contents>
+					<colinfo id="AGNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="CAGGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CAGMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CBMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CCOCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CDELDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CDELGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CEDUPOSTADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="CEDUPOSTADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="CEDUPOSTGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CEDUPOSTPLACE" size="100" summ="default" type="STRING"/>
+					<colinfo id="CEDUPOSTZIPCD" size="6" summ="default" type="STRING"/>
+					<colinfo id="CEXCEPTDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CEXCEPTGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFEEPOSTADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFEEPOSTADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFEEPOSTGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFEEPOSTPLACE" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFEEPOSTZIPCD" size="6" summ="default" type="STRING"/>
+					<colinfo id="CFEEYYMM" size="6" summ="default" type="STRING"/>
+					<colinfo id="CFIREMGNO" size="20" summ="default" type="STRING"/>
+					<colinfo id="CFMHMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFMHSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CGATEWAYPK1" size="14" summ="default" type="STRING"/>
+					<colinfo id="CGATEWAYPK2" size="13" summ="default" type="STRING"/>
+					<colinfo id="CGATEWAYPK3" size="13" summ="default" type="STRING"/>
+					<colinfo id="CGCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CLASTADDSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CLASTPRSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="COBMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="COLDMGNO" size="11" summ="default" type="STRING"/>
+					<colinfo id="COVERGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CPERSONGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CPOSTREQGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CREGISTERYYMM" size="6" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSREASONCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CRECEIVEEXCEPTGUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oOldInfo">
+				<Contents>
+					<colinfo id="FMRESIDENTERR" size="256" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUNYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="COVERGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="COBMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CDELGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CRECEIVEEXCEPTGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSREASONCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CMATCHCNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMemberStat">
+				<Contents>
+					<colinfo id="MHMEMCHK" size="1" summ="default" type="STRING"/>
+					<colinfo id="MHNAME" size="40" summ="default" type="STRING"/>
+					<colinfo id="MHPERSONKEY" size="13" summ="default" type="STRING"/>
+					<colinfo id="MHREGDATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oLicenseList">
+				<Contents>
+					<colinfo id="ADDR" size="201" summ="default" type="STRING"/>
+					<colinfo id="LHPTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="LLCSNO" size="19" summ="default" type="STRING"/>
+					<colinfo id="LPERSONNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="LPERSONKEY" size="13" summ="default" type="STRING"/>
+					<colinfo id="LTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="TPNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="TPPERSONKEY" size="13" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMemberAgree">
+				<Contents>
+					<colinfo id="MHNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="MHMEMCHK" size="256" summ="default" type="STRING"/>
+					<colinfo id="MHMEMNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MHCOMPANYNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MHREGCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="MHSTATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="MHREGDATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iCustomerModifyHistory">
+				<Contents>
+					<colinfo id="CMHAFTERDATA" size="1000" summ="default" type="STRING"/>
+					<colinfo id="CMHBEFOREDATA" size="1000" summ="default" type="STRING"/>
+					<colinfo id="CMHCOLUMN" size="100" summ="default" type="STRING"/>
+					<colinfo id="CMHGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CMHKEY" size="30" summ="default" type="STRING"/>
+					<colinfo id="CMHWORKGUBUN" size="50" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEduPass">
+				<Contents>
+					<colinfo id="EPMGNO1" size="256" summ="default" type="STRING"/>
+					<colinfo id="EPMGNO2" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oFPISSubManager"></Dataset>
+		</Datasets>
+		<Shape Bottom="263" Height="30" Id="Shape3" Left="4" LineColor="user15" Right="596" TabOrder="45" Top="233" Type="Rectangle" Width="592"></Shape>
+		<Shape Bottom="519" Height="260" Id="Shape2" Left="4" LineColor="user15" Right="596" TabOrder="33" Top="259" Type="Rectangle" Width="592"></Shape>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="412" LineColor="user14" Right="596" TabOrder="30" Top="1" Type="Rectangle" Width="184"></Shape>
+		<Shape Bottom="108" Height="76" Id="Shape1" Left="4" LineColor="user15" Right="596" TabOrder="26" Top="32" Type="Rectangle" Width="592"></Shape>
+		<Static Color="user6" Height="24" Id="lbText02" Left="118" Style="sty_TextBlue" TabOrder="29" Text="선임자를&#32;잘못&#32;선임한&#32;경우&#32;선임대상자를&#32;변경합니다.&#13;&#10;선임자가&#32;타인으로&#32;변경되오니&#32;신중히&#32;변경하시기&#32;바랍니다." Top="76" VAlign="Middle" Visible="FALSE" Width="356"></Static>
+		<Shape Bottom="233" Height="116" Id="Shape0" Left="216" LineColor="user15" Right="596" TabOrder="24" Top="117" Type="Rectangle" Width="380"></Shape>
+		<Shape Bottom="229" Height="112" Id="shpGubunBox3" Left="4" LineColor="user15" Right="212" TabOrder="22" Top="117" Type="Rectangle" Width="208"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="508" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbPersonNm1" Left="8" Style="sty_Label" TabOrder="18" Text="성명" Top="136" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edPersonNm1" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edPersonNm_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="9" Top="136" Width="106"></Edit>
+		<Static Align="Center" Height="20" Id="lbBirthday1" Left="8" Style="sty_Label" TabOrder="19" Text="생년월일" Top="160" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medBirthday" Left="100" LeftMargin="2" Mask="######" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medResidentNo_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="10" Top="160" Type="STRING" Width="50"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbPersonNm2" Left="220" Style="sty_Label" TabOrder="21" Text="성명" Top="136" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edPersonNm2" ImeMode="native" Left="312" LeftMargin="2" OnCharChanged="edPersonNm2_OnCharChanged" OnKeyDown="edPersonNm2_OnKeyDown" OnKillFocus="edPersonNm2_OnKillFocus" Style="sty_Edit" TabOrder="4" Top="136" Width="106"></Edit>
+		<Static Align="Center" Height="20" Id="lbResidentNo2" Left="220" Style="sty_Label" TabOrder="20" Text="주민번호" Top="160" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="medResidentNo2" Left="312" LeftMargin="2" Mask="######-#######" OnChanged="medResidentNo2_OnChanged" OnKeyDown="medResidentNo2_OnKeyDown" OnKillFocus="medResidentNo2_OnKillFocus" Style="sty_Maskedit" TabOrder="5" Top="160" Type="STRING" Width="106"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbPersonInfo" Left="14" Style="sty_LabelGruopBox" TabOrder="23" Text="기존정보" Top="112" VAlign="Middle" Width="88" WordWrap="TRUE"></Static>
+		<Static Align="Center" Height="20" Id="Static0" Left="226" Style="sty_LabelGruopBox" TabOrder="25" Text="변경정보" Top="112" VAlign="Middle" Width="88" WordWrap="TRUE"></Static>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Enable="FALSE" Height="20" Id="radModifyGubun" INDEX="0" InnerDataset="ds_ModifyGubun" Left="100" OnChanged="radModifyGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="3" Top="47" UserData="S" Value="02" Width="300"></Radio>
+		<Static Align="Center" Height="20" Id="Static1" Left="14" Style="sty_LabelGruopBox" TabOrder="27" Text="변경정보" Top="24" VAlign="Middle" Width="88" WordWrap="TRUE"></Static>
+		<Static Align="Center" Height="20" Id="Static2" Left="8" Style="sty_Label" TabOrder="28" Text="변경정보" Top="48" VAlign="Middle" Width="88"></Static>
+		<Button ButtonStyle="TRUE" Column="&#32;" Cursor="HAND" Height="22" Id="btnAuthResidentNo" ImageID="BTN_TEXT_06" Left="500" OnClick="btnAuthResidentNo_OnClick" Style="sty_Button" TabOrder="14" Text="실명인증" Top="158" Transparent="TRUE" Width="93"></Button>
+		<Button ButtonStyle="TRUE" Color="user6" Cursor="HAND" Height="24" Id="btnSave" ImageID="BTN_TEXT_06" Left="414" OnClick="lfn_Save" Style="sty_Button" TabOrder="1" Text="선임정보변경" Top="4" Width="92"></Button>
+		<Button ButtonStyle="TRUE" Column="&#32;" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_TEXT_06" Left="500" OnClick="btnSearch_OnClick" Style="sty_Button" TabOrder="11" Text="선임현황조회" Top="134" Transparent="TRUE" Width="93"></Button>
+		<Button ButtonStyle="TRUE" Column="&#32;" Cursor="HAND" Height="22" Id="btnSaveManager" ImageID="BTN_TEXT_06" Left="252" OnClick="btnSaveManager_OnClick" Style="sty_Button" TabOrder="15" Text="해임처리" Top="290" Transparent="TRUE" Width="93"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="520" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="16" Top="291" Transparent="TRUE" Width="74"></Button>
+		<Calendar Border="Flat" Column="FMHENDDATE" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calCancelDate" Left="152" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="13" Top="291" UserData="S" WeeksFont="돋음,9" Width="96"></Calendar>
+		<Static Align="Center" Height="20" Id="lbCancelDate" Left="8" Style="sty_Label" TabOrder="31" Text="해임일지정(선택사항)" Top="291" VAlign="Middle" Width="140"></Static>
+		<Grid AutoEnter="TRUE" BindDataset="ds_oManagerList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="517" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="202" Id="gdManagerList" InputPanel="FALSE" Left="8" LineColor="default" Right="592" RowHeight="20" Style="sty_Grid" TabOrder="17" TabStop="true" Top="315" UseDBuff="true" UsePopupMenu="true" UserData="선임현황목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="584">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="70"/>
+						<col width="90"/>
+						<col width="70"/>
+						<col width="67"/>
+						<col width="60"/>
+						<col width="140"/>
+						<col width="80"/>
+						<col width="240"/>
+						<col width="60"/>
+						<col width="80"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="해임여부"/>
+						<cell col="1" display="text" text="개인식별번호"/>
+						<cell col="2" display="text" text="지부"/>
+						<cell align="center" col="3" display="text" text="관리번호"/>
+						<cell col="4" display="text" text="지역"/>
+						<cell col="5" display="text" text="대상물(업체명)"/>
+						<cell col="6" display="text" text="직능"/>
+						<cell col="7" display="text" text="주소"/>
+						<cell col="8" display="text" text="회원구분"/>
+						<cell col="9" display="text" text="선임일자"/>
+						<cell col="10" display="text" text="겸직구분"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SEL" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" colid="FMPERSONKEY" display="text" Mask="A####-#####"/>
+						<cell align="center" col="2" colid="CGTMGNO" combocol="JJIBUCD" combodataset="gds_oJibu" combotext="JJIBUNM" display="combo"/>
+						<cell align="center" col="3" colid="CNO" display="text"/>
+						<cell align="center" col="4" colid="RCNM" display="combo"/>
+						<cell align="left" col="5" colid="BNM" display="text"/>
+						<cell align="left" col="6" colid="CCOURSECD" combocol="COURSECD" combodataset="gds_oCustomerCourse" combotext="CNICKNM" display="combo"/>
+						<cell align="left" col="7" colid="BADDR" display="text"/>
+						<cell align="center" col="8" colid="CSTATUSGUBUN" display="text"/>
+						<cell align="center" col="9" colid="FMHSTARTDATE" display="date"/>
+						<cell align="center" col="10" colid="COVERCMGNO" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="Static3" Left="9" Style="sty_LabelGruopBox" TabOrder="32" Top="267" VAlign="Middle" Width="584" WordWrap="TRUE"></Static>
+		<Static Align="Center" Height="20" Id="lbAppointDate" Left="220" Style="sty_Label" TabOrder="34" Text="선임일" Top="208" VAlign="Middle" Width="88"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calAppointDate" Left="312" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="8" Top="208" UserData="I:선임일" WeeksFont="돋음,9" Width="96"></Calendar>
+		<Static Color="user6" Height="28" Id="lbText01" Left="118" Style="sty_TextBlue" TabOrder="35" Text="동일인에&#32;대한&#32;이름&#32;또는&#32;주민번호를&#32;변경합니다.&#13;&#10;기존&#32;정보가&#32;변경되오니&#32;신중히&#32;변경하시기&#32;바랍니다." Top="74" VAlign="Middle" Width="450"></Static>
+		<Static Align="Center" Color="brown" Height="20" Id="lbResidentNoError" Left="420" Style="sty_TextRed" TabOrder="36" Text="정상" Top="160" VAlign="Middle" Visible="FALSE" Width="44"></Static>
+		<Static Align="Center" Height="20" Id="lbMemberGubun" Left="8" Style="sty_Label" TabOrder="37" Text="회원가입동의&#32;상태" Top="238" VAlign="Middle" Width="140"></Static>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="radMember" INDEX="0" InnerDataset="ds_MemberGubun" Left="640" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="12" Top="496" UserData="S" Value="N" Width="260"></Radio>
+		<Button ButtonStyle="TRUE" Column="&#32;" Cursor="HAND" Height="22" Id="btnMemberSave" ImageID="BTN_TEXT_06" Left="608" OnClick="btnMemberSave_OnClick" Style="sty_Button" TabOrder="38" Text="회원상태저장" Top="520" Transparent="TRUE" Visible="FALSE" Width="93"></Button>
+		<Grid AutoFit="TRUE" BindDataset="ds_oOldInfo" BkColor2="default" BoldHead="true" Bottom="633" Enable="true" EndLineColor="default" Height="62" Id="Grid0" InputPanel="FALSE" Left="5" LineColor="default" MinWidth="100" Right="595" TabOrder="39" TabStop="true" Top="571" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="590">
+			<contents>
+				<columns>
+					<col width="80"/>
+					<col width="80"/>
+					<col width="80"/>
+					<col width="80"/>
+				</columns>
+				<head>
+					<cell col="0" display="text" text="FMRESIDENTERR"/>
+					<cell col="1" display="text" text="CCOURSECD"/>
+					<cell col="2" display="text" text="BNM"/>
+					<cell col="3" display="text" text="BADDR1"/>
+				</head>
+				<body>
+					<cell col="0" colid="FMRESIDENTERR" display="text"/>
+					<cell col="1" colid="CCOURSECD" display="text"/>
+					<cell col="2" colid="BNM" display="text"/>
+					<cell col="3" colid="BADDR1" display="text"/>
+				</body>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnLicenseList" ImageID="BTN_TEXT_06" Left="500" OnClick="btnLicenseList_OnClick" Style="sty_Button" TabOrder="40" Text="자격정보조회" Top="182" Transparent="TRUE" Width="93"></Button>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Height="20" Id="medLcsNo" Left="704" LeftMargin="2" Mask="####-##-##-#-######" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="6" Top="240" Type="STRING" UserData="S" Width="142"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbPTel" Left="220" Style="sty_Label" TabOrder="41" Text="휴대폰" Top="184" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edPTel" ImeMode="native" Left="312" LeftMargin="2" MaxLength="16" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="edPTel_OnKillFocus" Style="sty_Edit" TabOrder="7" Top="184" UserData="S" Width="108"></Edit>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxMember" INDEX="0" InnerDataset="ds_MemberGubun" Left="151" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="42" Top="237" UserData="S" Value="B" Width="165"></Combo>
+		<Static Align="Center" Height="20" Id="Static4" Left="321" Style="sty_Label" TabOrder="43" Text="동의일자" Top="237" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edAgreeDate" ImeMode="native" Left="412" LeftMargin="2" OnCharChanged="edPersonNm2_OnCharChanged" OnKeyDown="edPersonNm2_OnKeyDown" OnKillFocus="edPersonNm2_OnKillFocus" Style="sty_Edit" TabOrder="44" Top="238" Width="106"></Edit>
+		<Div Height="5" Id="Div0" Left="217" TabOrder="46" Text="Div0" Top="231" Width="378">
+			<Contents></Contents>
+		</Div>
+		<Static Align="Center" Height="20" Id="lbPersonKey" Left="8" Style="sty_Label" TabOrder="47" Text="개인식별번호" Top="184" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medPersonKey" Left="100" LeftMargin="2" Mask="A####-#####" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medResidentNo_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="48" Top="184" Type="STRING" Width="86"></MaskEdit>
+		<Static Align="Center" Font="굴림,9" Height="15" Id="Static5" Left="320" Style="sty_Label" TabOrder="50" Text="개인식별번호" Top="120" VAlign="Middle" Width="80"></Static>
+		<MaskEdit AutoSelect="TRUE" BKColor="palegoldenrod" Border="Flat" Font="굴림,9" Height="15" Id="medPersonKey2" Left="401" LeftMargin="2" Mask="A####-#####" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Maskedit" TabOrder="49" Top="120" Type="STRING" Width="75"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbLcsNo" Left="612" Style="sty_Label" TabOrder="51" Text="수첩번호" Top="240" UserData="S" VAlign="Middle" Width="88"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 고객정보명 : frmcust0018PManagerChange.xml
+ * 설명 : 선임자정보변경
+ * 작성일 : 2009.12.09
+ * 작성자 : 이규희
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+var li_FMmgnoBefore  = "";  // 기존선임자관리번호
+var li_FMHseqBefore  = "";  // 기존선임자관리순번
+var li_Cmgno         = "";  // 고객관리번호
+var li_CourseCD      = "";  // 직능
+var li_Gtmgno		 = "";	// 지부
+var li_MFpis1		 = "";	// 연계된 소방청 관리번호1
+var li_FMmgnoAfter   = "";  // 변경선임자관리번호
+var ls_IsNiceCheckOk = "N"; // 실명인증 체크
+var jubsuYN = "";           // 유효 여부
+var arrArg = array(3);      // 변경 후 재 조회하여 값을 담음
+var retireYN = "N";			// 이수후퇴직 여부
+
+var ls_PersonKey = ""; // 개인식별번호
+var	ls_DI = ""; // DI
+var	ls_CI = ""; // CI
+var	ls_CIVER = ""; // CI버전
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+    // 폼 환경설정
+    
+    if (radModifyGubun.Value == "01") { // 이름 주민번호 정보 변경
+        lbText01.Visible = true;
+        lbText02.Visible = false;
+	} else { // 선임자 변경
+        lbText01.Visible = false;
+        lbText02.Visible = true;
+	}
+
+    if (IsExistVar("sMmgno")) {  //선임자관리번호
+        li_FMmgnoBefore = sMmgno;
+        li_Cmgno        = sCmgno;
+        li_CourseCD     = sCourseCD;
+        li_Gtmgno		= sGTMGNO;
+        li_MFpis1		= sMFPIS1;
+        //calAppointDate.Value = left(GetDate(), 8);   
+        calAppointDate.Value = sStartDate;
+        lfn_OldCustomerInfo();
+        lfn_Search();  // 있을 경우 조회를 함
+    } else {
+        gfn_Alert("선임자변경을 위한 선임자 정보가 없습니다.\n\n"
+                + "         선임자 정보를 입력해 주십시오.");
+        close(arrArg);
+    }    
+    edPersonNm2.SetFocus();
+    
+}
+
+function Form_OnUnloadCompleted(obj) {
+    close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+	if (GetKeyState(27) == "1") {
+        lfn_End();				// 종료(Esc)
+	} else if (GetKeyState(115) == "1") {
+		lfn_Save();				// 수정/저장(F4)
+	}
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+
+    lfn_PersonCheck("MGNO"); // 선임자 조회
+    
+    li_FMHseqBefore = ds_ioManager.GetColumn(0, "FMLASTFMHSEQ");
+    edPersonNm1.Text = ds_ioManager.GetColumn(0, "MNM");
+    medBirthday.Value = ds_ioManager.GetColumn(0, "MBIRTHDAY");
+    medPersonKey.Value = ds_ioManager.GetColumn(0, "MPERSONKEY");
+    
+    edPersonNm2.Text = ds_ioManager.GetColumn(0, "MNM");
+    medResidentNo2.Value = ds_ioManager.GetColumn(0, "MBIRTHDAY");
+    medPersonKey2.Value = ds_ioManager.GetColumn(0, "MPERSONKEY");
+    ls_PersonKey = ds_ioManager.GetColumn(0, "MPERSONKEY");
+        
+    Static3.Text = edPersonNm2.Text + "(" + medResidentNo2.Text + ")" + " 변경선임자 선임정보";
+    //lfn_ResidentNoCheck();
+    if (length(ds_ioManager.GetColumn(0, "PDI")) == 64) {	// DI가 64자리이면
+		lfn_ResidentNoChange(true);
+	} else {
+		lfn_ResidentNoChange(false);
+	}
+    btnSearch_OnClick();
+}
+
+// 기존정보 조회
+function lfn_OldCustomerInfo()
+{    
+	ds_oOldInfo.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cust:searchCust0018OldInfo", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oOldInfo=ds_oOldInfo"	// outDs
+		,"CMGNO=" + quote(li_Cmgno) //  고객관리번호
+		,"lfn_AfterSearchOldInfo"
+		,false
+		,false
+		,true
+	);
+}
+
+// 기존정보 조회후 처리
+function lfn_AfterSearchOldInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+
+/*
+ * 기능 : 변경저장
+ */
+function lfn_Save(obj) {    
+    if (gfn_IsNull(edPersonNm2.Text) && gfn_IsNull(medResidentNo2.Value)) {
+        gfn_Alert("변경될 성명이나 주민등록번호를 입력해 주십시오.");
+        edPersonNm2.SetFocus();
+        return false;
+    }
+
+    if (!gfn_IsNull(medResidentNo2.Value)) {
+		if (length(medResidentNo2.Value) < 6) {
+			gfn_Alert("주민등록번호(생년월일) 입력값(자리수)이 정확하지 않습니다.");
+			medResidentNo2.SetFocus();
+			return false;
+		}
+    }
+	
+	// personkey가 없으면
+    if (gfn_IsNull(medPersonKey2.Value) || medPersonKey2.Value == "NON-MATCH") {
+		// 실명인증 및 personkey 조회
+		ls_PERSONKEY = gfn_SearchPERSONKEY(edPersonNm2.Text, medResidentNo2.Value, edPTel.Text);
+		medPersonKey2.Value = ls_PERSONKEY; // PERSONKEY 값
+		ls_DI = gds_ioSciCheck.GetColumn(0, "STRDUP");
+		ls_CI = gds_ioSciCheck.GetColumn(0, "STRCI");
+		ls_CIVER = gds_ioSciCheck.GetColumn(0, "STRVER");
+		// 실명인증 값이 true이면 인증 값을 Y 로 함
+		if (gds_ioSciCheck.GetColumn(0, "STRRESULT") == "1") {
+			ls_IsNiceCheckOk = "Y";
+		} else {
+			ls_IsNiceCheckOk = "N";
+		}
+    }
+
+	// PERSONKEY가 없는 경우 생성 후 저장 진행
+	if (gfn_IsNull(medPersonKey2.Value) || medPersonKey2.Value == "NON-MATCH") {
+		ls_PERSONKEY = gfn_InsertPersonKey(edPersonNm2.Text,
+											ls_DI,
+											ls_CI,
+											ls_CIVER,
+											edPTel.text,
+											left(medResidentNo2.Value,7),
+											ls_IsNiceCheckOk
+											);
+
+		if (gfn_IsNull(ls_PERSONKEY)) {
+			gfn_Alert("개인식별번호를 생성할 수 없어서 저장에 실패했습니다.\n\n" + 
+					  " ※ 개인식별번호 생성 조건 : 성명+주민번호 or 성명+생년월일+휴대폰");
+			return false;
+		}
+		medPersonKey2.Value = ls_PERSONKEY;
+
+	}
+
+
+	var ls_SamePerson = "N";	// 동일인인지 여부
+
+    if (edPersonNm1.Text == edPersonNm2.Text && medBirthday.Value == left(medResidentNo2.Value,6)) {
+        if(!gfn_Confirm("기존정보와 성명, 생년월일이 동일합니다.\n강제로 재선임처리 하시겠습니까?")) {
+            return false;
+        }
+        ls_SamePerson = "Y";
+        retireYN = "N";
+        //gfn_Alert("변경 전 정보와 변경 후 정보가 같습니다.");
+        //edPersonNm2.SetFocus();
+        //return false;
+    } else {
+        ls_SamePerson = "N";
+        retireYN = "N";
+    }
+		
+   
+    if (ds_oManagerList.GetCount() > 0) {
+        if(!gfn_Confirm("이미 선임된 내역이 있습니다. 계속 처리하시겠습니까?")) {
+            return false;
+        }
+    }
+
+    lfn_TrainingPersonCheck("INFO"); 
+    // MANAGER 변경 예정 값으로 MANAGER 먼저 조회하여 중복여부를 체크함
+//alert(gds_oPersonKey.GetColumn(0,"PERSONKEY"));
+//return false;
+
+    if(radModifyGubun.Value == "01"){
+        if (!gfn_IsNull(li_FmmgnoAfter)) {
+              
+            radModifyGubun.Value = "02"; 
+            jubsuYN = "Y";   // 이름/주민번호 변경 시 이미 있는 사람일 경우 그냥 닫힘을 방지
+            
+            ///////////////////    다시 변경을 호출함 
+                lfn_Save();
+            ///////////////////     
+            return false;
+        }
+        
+        if (ls_SamePerson == "N") {	// 동일인으로 변경이 아닐경우
+        
+			lfn_EduPassCheck(edPersonNm1.Text, medBirthday.Value, medPersonKey.Value);	// 기존선임자가 당해년도 받은 실무교육이 있는지 체크
+		    if (!gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO1")) && gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO2"))) {
+				if(gfn_Confirm("현재대상물에 "+ edPersonNm1.Text+"님의 실무교육 이수정보가 있습니다.\n\n[현재대상물 이수후 퇴직] 처리를 하시겠습니까?")) {
+					retireYN = "Y";
+				} else {
+					retireYN = "N";
+				}
+		    } else if (!gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO1")) && !gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO2"))) {
+				if(gfn_Confirm("현재대상물에 "+ edPersonNm1.Text+"님의 실무교육 이수정보가 있습니다.\n\n[현재대상물 이수후 퇴직 및 현재대상물로 교육이관] 처리를 하시겠습니까?")) {
+					retireYN = "Y";
+				} else {
+					retireYN = "N";
+				}
+		    }
+		     
+		    lfn_EduPassCheck(edPersonNm2.Text, medResidentNo2.Value, ls_PERSONKEY); 	// 변경선임자가 당해년도 받은 실무교육이 있는지 체크
+		    if (gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO1")) && !gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO2"))) {
+				if(gfn_Confirm("타대상물에 "+ edPersonNm2.Text+"님의 실무교육 이수정보가 있습니다.\n\n[타대상물 이수후 퇴직 및 현재대상물로 교육이관] 처리를 하시겠습니까?")) {
+					retireYN = "Y";
+				} else {
+					retireYN = "N";
+				}
+			}
+			
+        }
+         
+        var state = lfn_FireManagerModify();   //선임자 정보 변경 함수 호출  update함
+        if (!state) {
+            return;
+        }
+        
+    } else if(radModifyGubun.Value == "02") {
+        if (!gfn_FormValidate(this)) { // 입력 Validation Check
+            return false;
+        }
+
+        var status = "";
+        if (!gfn_IsNull(li_FmmgnoAfter)) {  // 기존에 다른 대상물에 선임내역이 있으면
+            /****************  등록된선임자로 변경(기존선임자해임 - 새로운선임자선임) *****************/
+            jubsuYN = "Y";
+
+            var msg = "";             
+               
+			msg += "개인정보가 아래와 같이 변경 됩니다.\n\n";
+			msg += "변경내용 :  변경전  ->  변경후 \n\n";
+			msg += "성      명 :  " + edPersonNm1.Text + "  ->  " + edPersonNm2.Text + "\n\n";
+			msg += "주민번호 :  " + medBirthday.Text + "  ->  " + medResidentNo2.Text + "\n\n";
+			//msg += "선임자관리번호 :  " + sMmgno + "  ->  " + li_FmmgnoAfter + "\n\n";
+					// arg 받아온 선임자관리번호                변경할 선임자관리번호            
+/*               
+			if (edPersonNm1.Text <> edPersonNm2.Text || medResidentNo1.Value <> medResidentNo2.Value) {
+				if (ds_oOldInfo.GetColumn(0, "CRECEIVEEXCEPTGUBUN") == "0") {
+					msg += "기존 소방안전지 수령사항이 [제외]에서 [수령]으로 변경됩니다.\n\n";
+				}
+			}
+*/			
+            msg += "\n변경된 내용으로 선임자 정보를 수정 하시겠습니까?";
+
+            if (!gfn_Confirm(msg)) {
+                return false;
+            }
+//            alert(ls_SamePerson);
+			if (ls_SamePerson == "N") {	// 동일인으로 변경이 아닐경우
+				lfn_EduPassCheck(edPersonNm1.Text, medBirthday.Value, medPersonKey.Value);	// 기존선임자가 당해년도 받은 실무교육이 있는지 체크
+//				lfn_EduPassCheck("이용준", "6903181691015");	// 기존선임자가 당해년도 받은 실무교육이 있는지 체크
+				if (!gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO1")) && gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO2"))) {
+					if(gfn_Confirm("현재대상물에 "+ edPersonNm1.Text+"님의 실무교육 이수정보가 있습니다.\n\n[현재대상물 이수후 퇴직] 처리를 하시겠습니까?")) {
+						retireYN = "Y";
+					} else {
+						retireYN = "N";
+					}
+				} else if (!gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO1")) && !gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO2"))) {
+					if(gfn_Confirm("현재대상물에 "+ edPersonNm1.Text+"님의 실무교육 이수정보가 있습니다.\n\n[현재대상물 이수후 퇴직 및 현재대상물로 교육이관] 처리를 하시겠습니까?")) {
+						retireYN = "Y";
+					} else {
+						retireYN = "N";
+					}
+				}
+				
+				lfn_EduPassCheck(edPersonNm2.Text, medResidentNo2.Value, ls_PERSONKEY); 	// 변경선임자가 당해년도 받은 실무교육이 있는지 체크
+				if (gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO1")) && !gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO2"))) {
+					if(gfn_Confirm("타대상물에 "+ edPersonNm2.Text+"님의 실무교육 이수정보가 있습니다.\n\n[타대상물 이수후 퇴직 및 현재대상물로 교육이관] 처리를 하시겠습니까?")) {
+						retireYN = "Y";
+					} else {
+						retireYN = "N";
+					}
+				}
+			}
+            jubsuYN = "N";
+            status = "CHANGE";
+                
+       } else { // 기존에 다른 대상물에 선임내역이 없으면
+          /****************  신규선임자로 변경(기존선임자해임 - 신규선임자선임) *****************/
+            var msg = "";
+                  
+               
+			msg += "개인정보가 아래와 같이 변경 됩니다.\n\n";
+			msg += "변경내용 :  변경전  ->  변경후 \n\n";
+			msg += "성      명 :  " + edPersonNm1.Text + "  ->  " + edPersonNm2.Text + "\n\n";
+			msg += "주민번호 :  " + medBirthday.Text + "  ->  " + medResidentNo2.Text + "\n\n";
+			//msg += "선임자관리번호 :  " + sMmgno + "  ->  " + "새로운 선임자관리번호" + "\n\n";
+					// arg 받아온 선임자관리번호                변경할 선임자관리번호            
+/*
+			if (edPersonNm1.Text <> edPersonNm2.Text || medResidentNo1.Value <> medResidentNo2.Value) {
+				if (ds_oOldInfo.GetColumn(0, "CRECEIVEEXCEPTGUBUN") == "0") {
+					msg += "기존 소방안전지 수령사항이 [제외]에서 [수령]으로 변경됩니다.\n\n";
+				}
+			}
+*/			
+            msg += "\n변경된 내용으로 선임자 정보를 수정 하시겠습니까?";
+
+            if (!gfn_Confirm(msg)) {
+                return false;
+            }
+            
+			if (ls_SamePerson == "N") {	// 동일인으로 변경이 아닐경우
+				lfn_EduPassCheck(edPersonNm1.Text, medBirthday.Value, medPersonKey.Value);	// 기존선임자가 당해년도 받은 실무교육이 있는지 체크
+				if (!gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO1")) && gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO2"))) {
+					if(gfn_Confirm("현재대상물에 "+ edPersonNm1.Text+"님의 실무교육 이수정보가 있습니다.\n\n[현재대상물 이수후 퇴직] 처리를 하시겠습니까?")) {
+						retireYN = "Y";
+					} else {
+						retireYN = "N";
+					}
+				} else if (!gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO1")) && !gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO2"))) {
+					if(gfn_Confirm("현재대상물에 "+ edPersonNm1.Text+"님의 실무교육 이수정보가 있습니다.\n\n[현재대상물 이수후 퇴직 및 현재대상물로 교육이관] 처리를 하시겠습니까?")) {
+						retireYN = "Y";
+					} else {
+						retireYN = "N";
+					}
+				}
+
+				lfn_EduPassCheck(edPersonNm2.Text, medResidentNo2.Value, ls_PERSONKEY); 	// 변경선임자가 당해년도 받은 실무교육이 있는지 체크
+
+				if (gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO1")) && !gfn_IsNull(ds_oEduPass.GetColumn(0, "EPMGNO2"))) {
+					if(gfn_Confirm("타대상물에 "+ edPersonNm2.Text+"님의 실무교육 이수정보가 있습니다.\n\n[타대상물 이수후 퇴직 및 현재대상물로 교육이관] 처리를 하시겠습니까?")) {
+						retireYN = "Y";
+					} else {
+						retireYN = "N";
+					}
+				}
+			}
+            status = "NEW";
+       }
+
+      
+       lfn_ManagerChange(status); 
+       
+       if (ds_oStatus.GetColumn(0, "O_STATUS") == "FAIL") {
+           gfn_Alert("선임자 변경을 실패하였습니다.");
+           return false;
+       }
+       
+       gfn_Alert("선임자 변경을 완료하였습니다.");
+    }     
+    
+    lfn_PersonCheck("INFO"); // 변경 후 재 조회
+        
+    arrArg[0] = ds_ioManager.GetColumn(0, "MMGNO");
+    arrArg[1] = ds_ioManager.GetColumn(0, "FMLASTFMHSEQ");    
+    
+    if (jubsuYN = "Y") {
+    //    jubsuYN = "N";
+        
+    } else {
+        Close(arrArg);    
+    }
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+
+function radModifyGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+	if (radModifyGubun.Value == "01") { // 이름 주민번호 정보 변경
+        lbText01.Visible = true;
+        lbText02.Visible = false;
+        //lbAppointDate.Visible = false;
+        calAppointDate.Enable = false;
+        medLcsNo.Enable = false;
+        edPTel.Enable = false;
+        btnLicenseList.Enable = false;
+        calAppointDate.Value = "";
+	} else { // 선임자 변경
+        lbText01.Visible = false;
+        lbText02.Visible = true;
+        //lbAppointDate.Visible = true;
+        calAppointDate.Enable = true;
+        medLcsNo.Enable = true;
+        edPTel.Enable = true;
+        btnLicenseList.Enable = true;
+        calAppointDate.Value = left(GetDate(), 8);
+	}
+}
+
+/*
+ 트랜잭션 에러 처리
+*/
+function lfn_Aftersearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }   	
+}
+
+/**
+ * 기존선임자 정보검색
+ */
+function lfn_PersonCheck(gubun){
+
+    var sArg = "";
+    
+    sArg = "MMGNO=" + quote(li_Cmgno);   // 선임자관리번호를 arg로 넘김
+    
+    ds_ioManager.ClearData();
+    tit_clearActionInfo(); //사람이 이미 있는지 검색한다.
+    tit_addCsvSearchActionInfo("cust:searchCust0018ManagerOldInfo", false);
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_ioManager=ds_oManager"	// outDs
+        ,sArg // args
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+    
+    if (ds_ioManager.GetRowCount() == 1) {
+        li_FmmgnoAfter = ds_ioManager.GetColumn(0, "MMGNO");
+        if (gfn_IsNull(edPTel.Text)) {
+            edPTel.Text = ds_ioManager.GetColumn(0, "FMHHPTEL");
+        }
+        //medLcsNo.Text = ds_ioManager.GetColumn(0, "FMHLICENSENO");
+    } else {
+        li_FmmgnoAfter = "";
+    }
+}
+
+/**
+ * 선임자 검색
+ */
+function lfn_TrainingPersonCheck(gubun){
+
+    var sArg = "";
+    
+    var vPERSONKEY = "";
+    
+    if (gubun == "MGNO") {   // 선임자 조회
+        sArg = "MMGNO=" + quote(sMmgno);   // 선임자관리번호를 arg로 넘김
+    } else {
+		if ((ls_PERSONKEY == "NON-MATCH") || gfn_isNull(ls_PERSONKEY)) {
+			vPERSONKEY = "";
+		} else {
+			vPERSONKEY = ls_PERSONKEY;
+		}
+		
+    
+    
+        sArg = "MNM=" + quote(edPersonNm2.Text)
+			+ " BIRTHDAY=" + quote(left(medResidentNo2.Value,6))
+			+ " HP=" + quote(edPTel.Text)
+            + " PERSONKEY=" + quote(vPERSONKEY);
+    }
+    
+    ds_ioManager.ClearData();
+    tit_clearActionInfo(); //사람이 이미 있는지 검색한다.
+    tit_addCsvSearchActionInfo("cust:searchCust0018ManagerInfo", false);
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_ioManager=ds_oManager"	// outDs
+        ,sArg // args
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+    
+    if (ds_ioManager.GetRowCount() == 1) {
+        li_FmmgnoAfter = ds_ioManager.GetColumn(0, "MMGNO");
+        if (gfn_IsNull(edPTel.Text)) {
+            edPTel.Text = ds_ioManager.GetColumn(0, "FMHHPTEL");
+        }
+        //medLcsNo.Text = ds_ioManager.GetColumn(0, "FMHLICENSENO");
+    } else {
+        li_FmmgnoAfter = "";
+    }
+}
+
+/**
+ * 선임자 정보 변경
+ */
+function lfn_FireManagerModify(){
+    var msg = "";
+    msg += "개인정보가 아래와 같이 변경 됩니다.\n\n";
+    msg += "변경내용 :  변경전  ->  변경후 \n\n";
+    msg += "성      명 :  " + edPersonNm1.Text + "  ->  " + edPersonNm2.Text + "\n\n";
+    msg += "주민번호 :  " + medBirthday.Text + "  ->  " + medResidentNo2.Text + "\n\n";
+            
+    msg += "\n변경된 내용으로 선임자 정보를 수정 하시겠습니까?";
+    
+    if (!gfn_Confirm(msg)) {
+        return false;
+    }
+    ds_iCustomerModifyHistory.ClearData();
+    ds_ioManager.ClearData();
+    ds_ioManager.InsertRow(0);
+    
+    ds_ioManager.SetColumn(0, "MMGNO", sMmgno);   // arg로 넘겨온 선임자관리번호
+   
+    ds_ioManager.SetColumn(0, "MNM", edPersonNm2.Text);   // 바꿀 성명   
+    ds_ioManager.SetColumn(0, "MBIRTHDAY", left(medResidentNo2.Value,7));  // 바꿀 생년월일
+    ds_ioManager.SetColumn(0, "MPERSONKEY", medPersonKey2.Value);  // 바꿀 개인식별번호
+    var err = "";
+    if (lbResidentNoError.Text == "정상") {
+        err = "0";
+        ds_ioManager.SetColumn(0, "FMRESIDENTERR", err);
+    } else {
+        err = "1";
+        ds_ioManager.SetColumn(0, "FMRESIDENTERR", err);
+    }
+    
+	// 성명,주민번호 변경이력
+	if (edPersonNm1.Text <> edPersonNm2.Text) {
+		var nRow = ds_iCustomerModifyHistory.AddRow();
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHGUBUN", "U");
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHWORKGUBUN", "선임자정보");
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHKEY", ds_oOldInfo.GetColumn(0, "CMGNO"));
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHCOLUMN", "성명");
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHBEFOREDATA", edPersonNm1.Text);
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHAFTERDATA", edPersonNm2.Text);
+	}
+	if (medBirthday.Value <> left(medResidentNo2.Value,6)) {
+		var nRow = ds_iCustomerModifyHistory.AddRow();
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHGUBUN", "U");
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHWORKGUBUN", "선임자정보");
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHKEY", ds_oOldInfo.GetColumn(0, "CMGNO"));
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHCOLUMN", "생년월일");
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHBEFOREDATA", left(medBirthday.Value,6));
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHAFTERDATA", left(medResidentNo2.Value,6));
+	}
+    
+    var arg = "";
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("cust:updateCust0018ManagerInfo", "", 0, "");
+    // 소방안전관리자 or 소방안전관리보조자
+    if (left(li_CourseCD,1) == "1" || left(li_CourseCD,1) == "2" ) {
+		tit_addSingleActionInfo("cust:executeCust0010EduExpireDateUpdate", "", 0, "");	// 유효기간 업데이트 2014.12.19
+	}
+    if (medResidentNo1.Value != medResidentNo2.Value) {
+        if (ds_oOldInfo.GetColumn(0, "FMRESIDENTERR") == "1" && lbResidentNoError.Text == "정상") {
+        
+            tit_addSingleActionInfo("cust:executeCust0018MemberH", 0, "");
+            tit_addSingleActionInfo("cust:executeCust0018ResidentChangeOverbiz", 0, "");
+            arg = "I_MHMEMGUBUN=" + quote(left(ds_oOldInfo.GetColumn(0, "CCOURSECD"), 1)+"0");
+            //arg += " I_MHMEMCHK=" + quote(radMember.Value);   //회원상태 삭제됨
+            arg += " I_MHMEMCHK=" + quote(ds_oOldInfo.GetColumn(0, "CSTATUSGUBUNYN"));    // 고객 회원상태로 신규선임자 회원상태 처리
+            arg += " I_MHMEMNO=" + quote(li_Cmgno);
+            arg += " I_MHCOMPANYNM=" + quote(ds_oOldInfo.GetColumn(0, "BNM"));
+            arg += " I_MHAUTHYN=" + quote(iif(ls_IsNiceCheckOk=="Y","0","1"));    //  실명인증여부
+            arg += " sCMGNO=" + quote(li_Cmgno);    //  고객정보관리번호
+            
+            
+            arg += " FMMGNO=" + li_FMmgnoBefore;
+            arg += " BADDR1=" + quote(ds_oOldInfo.GetColumn(0, "BADDR1"));
+            arg += " STARTDATE=" + quote(left(GetDate(), 8));
+        } else if (ds_oOldInfo.GetColumn(0, "FMRESIDENTERR") == "0"
+            && lbResidentNoError.Text == "오류") {
+            tit_addSingleActionInfo("cust:executeCust0018ResidentChange", 0, "");
+            arg = "CMGNO=" + quote(li_Cmgno); // 고객정보관리번호
+            arg += " sCMGNO=" + quote(li_Cmgno);    //  고객정보관리번호
+            arg += " FMMGNO=" + li_FMmgnoBefore;    //  기존선임자관리번호
+            arg += " FMHSEQ=" + li_FMHseqBefore;    //  기존선임자관리순번
+            arg += " RETIREYN=" + retireYN;  // 교육이수후 퇴직 및 교육이관 여부
+        }
+        arg += " FSTARTDATE=" + quote(left(calAppointDate.Value, 8));	// 선임일자
+		arg += " FNM=" + quote(edPersonNm2.Text);						// 성명
+		arg += " FBIRTHDAY=" + quote(left(medResidentNo2.Value,7));		// 생년월일
+		arg += " FPERSONKEY=" + quote(medPersonKey2.Value);				// 개인식별번호
+    }
+    if (ds_iCustomerModifyHistory.GetCount() > 0) {
+        tit_addMultiActionInfo("cust:insertCust0010CustomerModifyHistory", "", 0, "", "N");
+    }
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,"ds_ioManagerInfo=ds_ioManager:U ds_iCustomerModifyHistory=ds_iCustomerModifyHistory:U" // inDs
+        ,"ds_oMemberStatus=ds_oMemberStatus"	// outDs
+        ,arg
+        ,""
+        ,false
+        ,""
+        ,true
+    );
+    
+    if (ds_oMemberStatus.GetColumn(0, "O_STATUS") == "FAIL") {
+        gfn_Alert("선임자 정보변경을 실패하였습니다.");
+        return false;
+    }
+    
+    return true; 
+ }
+
+/**
+ * 실명인증
+ */
+function btnAuthResidentNo_OnClick(obj) {
+
+	// 실명인증 및 personkey 조회
+	ls_PERSONKEY = gfn_SearchPERSONKEY(edPersonNm2.Text, medResidentNo2.Value, edPTel.Text);
+	medPersonKey2.Value = ls_PERSONKEY; // PERSONKEY 값
+
+	// 실명인증 값이 true이면 인증 값을 Y 로 함
+	if (gds_ioSciCheck.GetColumn(0, "STRRESULT") == "1") {
+		ls_IsNiceCheckOk = "Y";
+	} else {
+		ls_IsNiceCheckOk = "N";
+	}
+	ls_DI = gds_ioSciCheck.GetColumn(0, "STRDUP");
+	ls_CI = gds_ioSciCheck.GetColumn(0, "STRCI");
+	ls_CIVER = gds_ioSciCheck.GetColumn(0, "STRVER");
+	
+    lfn_ResidentCheck();
+    edPTel.SetFocus();
+}
+
+/**
+ * 실명인증 체크
+ */
+function lfn_ResidentCheck() {
+
+	if (ls_IsNiceCheckOk == "Y") {
+        btnAuthResidentNo.Text = "실명인증완료";
+        btnAuthResidentNo.Enable = false;
+        //btnSave.Enable = true;
+    } else {
+    
+    }
+    
+}
+
+/**
+ * 선임자변경 프로시져 호출(겸직포함)
+ * 신규선임자일 경우 FIREMANAGER 테이블에 INSERT 후에 선임자 변경처리.
+ * 선임자 변경시 : 1. FIREMANAGERH - 해임일자 등록
+ *                 2. 겸직인경우 겸직처리
+ * parameter : CMGNO - 고객정보관리번호
+ *             FMMGNO - 기존선임자관리번호
+ *             FMHSEQ - 기존선임자관리순번
+ *             FMHSTARTDATE - 선임일자
+ *             FMNM - 신규선임자 이름
+ *             FMRESIDENTNO - 신규선임자 주민번호
+ * return : 결과값
+ */
+function lfn_ManagerChange(status) {
+   
+
+	//보조자일 경우 소방청에 신규선임자 존재하는지 검색
+	if (left(li_CourseCD,1) == "2") {
+		lfn_FPISSubManagerSearch(li_MFpis1, edPersonNm2.Text, medResidentNo2.Value);
+	}
+   
+    ds_iCustomerInfo.ClearData();	//고객정보임시데이타셋 초기화
+	ds_iCustomerInfo.InsertRow(0);
+    ds_oOldInfo.CopyToRow(ds_oOldInfo.currow, "ds_iCustomerInfo", 0);	//고객정보 임시보관
+
+	ds_iCustomerModifyHistory.ClearData();    
+/*
+    // 소방안전지 수령사항이 [제외]에서 [수령]으로 변경
+	if (edPersonNm1.Text <> edPersonNm2.Text || medResidentNo1.Value <> medResidentNo2.Value) {
+		if (ds_oOldInfo.GetColumn(0, "CRECEIVEEXCEPTGUBUN") == "0") {
+			ds_iCustomerInfo.SetColumn(0, "CRECEIVEEXCEPTGUBUN", "1");
+			
+			var nRow1 = ds_iCustomerModifyHistory.AddRow();
+			ds_iCustomerModifyHistory.SetColumn(nRow1, "CMHGUBUN", "U");
+			ds_iCustomerModifyHistory.SetColumn(nRow1, "CMHWORKGUBUN", "고객정보");
+			ds_iCustomerModifyHistory.SetColumn(nRow1, "CMHKEY", ds_oOldInfo.GetColumn(0, "CMGNO"));
+			ds_iCustomerModifyHistory.SetColumn(nRow1, "CMHCOLUMN", "소방안전지 수령 제외");
+			ds_iCustomerModifyHistory.SetColumn(nRow1, "CMHBEFOREDATA", "제외");
+			ds_iCustomerModifyHistory.SetColumn(nRow1, "CMHAFTERDATA", "수령");
+		}
+	}
+*/	
+	var sCStatus = "";
+	
+	// 회원가입동의여부 체크
+	if(left(parent.cbxCourse.Value,1) == 1 ||
+	  (left(parent.cbxCourse.Value,1) >= 3 && left(parent.cbxCourse.Value,1) <= 6)) {	//보조자,운송자,교육희망자 제외
+	
+		if (ds_oMemberStat.GetCount() > 0) {
+		
+			if (ds_oOldInfo.GetColumn(0, "CSTATUSGUBUNYN") <> ds_oMemberStat.GetColumn(0, "MHMEMCHK")) {
+
+				if (ds_oMemberStat.GetColumn(0, "MHMEMCHK") == "Y") {
+				
+					if (!(ds_oOldInfo.GetColumn(0, "CSTATUSREASONCD") == "11" ||	// 탈퇴신청서 제출인 경우
+						 ds_oOldInfo.GetColumn(0, "CSTATUSREASONCD") == "13")) {	// 탈퇴희망인 경우
+				
+					
+						if (gfn_Confirm(ds_oMemberStat.GetColumn(0, "MHNAME")+
+										 "님은 " + ds_oMemberStat.GetColumn(0, "MHREGDATE")+"에 회원가입동의를 " +
+										 "하였습니다.\n\n"+
+										 "   ▶ 회원으로 변경하시려면 ☞ [확인]\n"+
+										 "   ▶ 선임변경을 취소하시려면 취소 ☞ [취소]")) {
+						
+							sCStatus = "0";
+							
+							var nRow = ds_iCustomerModifyHistory.AddRow();
+							ds_iCustomerModifyHistory.SetColumn(nRow, "CMHGUBUN", "U");
+							ds_iCustomerModifyHistory.SetColumn(nRow, "CMHWORKGUBUN", "고객정보");
+							ds_iCustomerModifyHistory.SetColumn(nRow, "CMHKEY", ds_oOldInfo.GetColumn(0, "CMGNO"));
+							ds_iCustomerModifyHistory.SetColumn(nRow, "CMHCOLUMN", "고객상태");
+							ds_iCustomerModifyHistory.SetColumn(nRow, "CMHBEFOREDATA", "비회원");
+							ds_iCustomerModifyHistory.SetColumn(nRow, "CMHAFTERDATA", "회원");
+							
+							nRow = ds_iCustomerModifyHistory.AddRow();
+							ds_iCustomerModifyHistory.SetColumn(nRow, "CMHGUBUN", "U");
+							ds_iCustomerModifyHistory.SetColumn(nRow, "CMHWORKGUBUN", "고객정보");
+							ds_iCustomerModifyHistory.SetColumn(nRow, "CMHKEY", ds_oOldInfo.GetColumn(0, "CMGNO"));
+							ds_iCustomerModifyHistory.SetColumn(nRow, "CMHCOLUMN", "고객상태");
+							ds_iCustomerModifyHistory.SetColumn(nRow, "CMHBEFOREDATA", "$1");
+							ds_iCustomerModifyHistory.SetColumn(nRow, "CMHAFTERDATA", "회원가입동의");
+							
+						} else {
+						
+							sCStatus = "";
+										 
+							return false;
+						}
+					}
+	
+				} else {
+				
+					// 예'을 선택한 경우 0가, '아니오'를 선택한 경우에는 1, '취소'를 선택한 경우에는 2
+					
+					var ls_return = gfn_ConfirmCancel(ds_oMemberStat.GetColumn(0, "MHNAME")+
+									 "님은 " + ds_oMemberStat.GetColumn(0, "MHREGDATE")+"에 회원탈퇴(또는 비회원등록)를 " +
+									 "하였습니다.\n"+
+									 "   ▶ 비회원으로 변경하시려면 ☞ [예]\n"+
+									 "   ▶ 회원이면서 선임변경을 하시려면 ☞ [아니오]\n"+
+									 "   ▶ 선임변경을 취소하시려면 취소 ☞ [취소]");
+							
+					if (ls_return == "0") {	
+								 
+						sCStatus = "1";
+						
+						var nRow = ds_iCustomerModifyHistory.AddRow();
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHGUBUN", "U");
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHWORKGUBUN", "고객정보");
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHKEY", ds_oOldInfo.GetColumn(0, "CMGNO"));
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHCOLUMN", "고객상태");
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHBEFOREDATA", "회원");
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHAFTERDATA", "비회원");
+						
+						nRow = ds_iCustomerModifyHistory.AddRow();
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHGUBUN", "U");
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHWORKGUBUN", "고객정보");
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHKEY", ds_oOldInfo.GetColumn(0, "CMGNO"));
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHCOLUMN", "고객상태");
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHBEFOREDATA", "$1");
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHAFTERDATA", "탈퇴희망");
+					
+					} else if (ls_return == "1") {	
+						
+						sCStatus = "0";
+
+						var nRow = ds_iCustomerModifyHistory.AddRow();
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHGUBUN", "U");
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHWORKGUBUN", "고객정보");
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHKEY", ds_oOldInfo.GetColumn(0, "CMGNO"));
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHCOLUMN", "고객상태");
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHBEFOREDATA", "비회원");
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHAFTERDATA", "회원");
+						
+						nRow = ds_iCustomerModifyHistory.AddRow();
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHGUBUN", "U");
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHWORKGUBUN", "고객정보");
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHKEY", ds_oOldInfo.GetColumn(0, "CMGNO"));
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHCOLUMN", "고객상태");
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHBEFOREDATA", "$1");
+						ds_iCustomerModifyHistory.SetColumn(nRow, "CMHAFTERDATA", "회원가입동의");
+
+					} else {
+					
+						sCStatus = "";
+									 
+						return false;
+					}
+				}
+			}
+		}
+	}    
+
+	/* 2016.4.18  변경시 신규고객이면 회원으로 등록 */
+	if (left(ds_oOldInfo.GetColumn(0, "CCOURSECD"), 1) == "1" || left(ds_oOldInfo.GetColumn(0, "CCOURSECD"), 1) == "3" ||
+	    left(ds_oOldInfo.GetColumn(0, "CCOURSECD"), 1) == "5" || left(ds_oOldInfo.GetColumn(0, "CCOURSECD"), 1) == "6") {
+	    
+		if (gfn_isNull(ds_oMemberStat.GetColumn(0, "MHMEMCHK"))) {		// MEMBERH에 이력이 없는 경우
+			if (ds_oOldInfo.GetColumn(0, "CSTATUSGUBUN") == "1") {	// 변경전 비회원이었으면
+				if (ds_oOldInfo.GetColumn(0, "CSTATUSREASONCD") == "11" ||	// 탈퇴신청서 제출인 경우
+				    ds_oOldInfo.GetColumn(0, "CSTATUSREASONCD") == "13") {	// 탈퇴희망인 경우
+			    	sCStatus = "";	// 비회원 : null이면 변경 안함
+				} else {
+					sCStatus = "0";	// 회원으로 변경
+					
+					var nRow = ds_iCustomerModifyHistory.AddRow();
+					ds_iCustomerModifyHistory.SetColumn(nRow, "CMHGUBUN", "U");
+					ds_iCustomerModifyHistory.SetColumn(nRow, "CMHWORKGUBUN", "고객정보");
+					ds_iCustomerModifyHistory.SetColumn(nRow, "CMHKEY", ds_oOldInfo.GetColumn(0, "CMGNO"));
+					ds_iCustomerModifyHistory.SetColumn(nRow, "CMHCOLUMN", "고객상태");
+					ds_iCustomerModifyHistory.SetColumn(nRow, "CMHBEFOREDATA", "비회원");
+					ds_iCustomerModifyHistory.SetColumn(nRow, "CMHAFTERDATA", "회원");
+					
+					nRow = ds_iCustomerModifyHistory.AddRow();
+					ds_iCustomerModifyHistory.SetColumn(nRow, "CMHGUBUN", "U");
+					ds_iCustomerModifyHistory.SetColumn(nRow, "CMHWORKGUBUN", "고객정보");
+					ds_iCustomerModifyHistory.SetColumn(nRow, "CMHKEY", ds_oOldInfo.GetColumn(0, "CMGNO"));
+					ds_iCustomerModifyHistory.SetColumn(nRow, "CMHCOLUMN", "고객상태");
+					ds_iCustomerModifyHistory.SetColumn(nRow, "CMHBEFOREDATA", "$1");
+					ds_iCustomerModifyHistory.SetColumn(nRow, "CMHAFTERDATA", "회원가입동의");
+				}
+			}
+		}
+	} else {	// 보조자, 운송자, 교육희망자
+	
+		sCStatus = "";	// 비회원 : null이면 변경 안함
+	
+	}
+	// 성명,주민번호 변경이력
+	if (edPersonNm1.Text <> edPersonNm2.Text) {
+		var nRow = ds_iCustomerModifyHistory.AddRow();
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHGUBUN", "U");
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHWORKGUBUN", "선임자정보");
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHKEY", ds_oOldInfo.GetColumn(0, "CMGNO"));
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHCOLUMN", "성명");
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHBEFOREDATA", edPersonNm1.Text);
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHAFTERDATA", edPersonNm2.Text);
+	}
+	if (medBirthday.Value <> left(medResidentNo2.Value,6)) {
+		var nRow = ds_iCustomerModifyHistory.AddRow();
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHGUBUN", "U");
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHWORKGUBUN", "선임자정보");
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHKEY", ds_oOldInfo.GetColumn(0, "CMGNO"));
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHCOLUMN", "생년월일");
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHBEFOREDATA", left(medBirthday.Value,6));
+		ds_iCustomerModifyHistory.SetColumn(nRow, "CMHAFTERDATA", left(medResidentNo2.Value,6));
+	}
+	
+
+	var sMHMEMCHK = "";
+	if (sCStatus == "0") {	// 회원
+		sMHMEMCHK = "Y";
+	} else if (sCStatus == "1") {	// 비회원
+		sMHMEMCHK = "N";
+	} else if (sCStatus == "") {	// null 변경없음
+		sMHMEMCHK = "";
+	}
+    
+    tit_clearActionInfo();
+
+    if (status == "NEW" && ds_oMemberStat.GetCount() < 1) {
+        //tit_addSingleActionInfo("cust:updateCust0018CustomerStatus", "", 0, "");
+        tit_addSingleActionInfo("cust:executeCust0018MemberH", 0, "");
+    }    
+    tit_addSingleActionInfo("cust:executeCust0018FireManagerChange", "", 0, "");
+    // 소방안전관리자 or 소방안전관리보조자
+    if (left(li_CourseCD,1) == "1" || left(li_CourseCD,1) == "2" ) {
+		// 소방청 연계된 보조자이고 선임자 변경이면 기존보조자 연계해지, 신규보조자 연계
+		if (left(li_CourseCD,1) == "2" && ds_oOldInfo.GetColumn(0, "CMATCHCNT") > 0) {	
+			if ((edPersonNm1.Text <> edPersonNm2.Text) &&
+			   (substr(medBirthday.Value,0,6) <> substr(medResidentNo2.Value,0,6))) {
+				tit_addSingleActionInfo("cust:updateCust6400SubManagerMatchCancel", "", 0, "");
+				if (!gfn_isNull(ds_oFPISSubManager.GetColumn(0, "BILD_SN"))) {
+					tit_addSingleActionInfo("cust:updateCust6400SubManagerMatch", "", 0, "");
+				}
+
+			}
+		}
+		// PKG_MANAGERERCHG.SP_MAIN 에서 유효기간 업데이트 처리함
+		//tit_addSingleActionInfo("cust:executeCust0010EduExpireDateUpdate", "", 0, "");	// 유효기간 업데이트 2014.12.19
+	}
+    tit_addSingleActionInfo("cust:executeCust0010UpdateCustomerChangeH", "", 0, "");
+    
+    if (ds_iCustomerModifyHistory.GetCount() > 0) {
+        tit_addMultiActionInfo("cust:insertCust0010CustomerModifyHistory", "", 0, "", "N");
+    }
+    
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iCustomerInfoTmp=ds_iCustomerInfo:U ds_iCustomerModifyHistory=ds_iCustomerModifyHistory:U"    // inDs  ds를 in한 후 
+        ,"ds_oStatus=ds_oStatus ds_oMemberStatus=ds_oMemberStatus"//"ds_ioManager=ds_oTrainingPerson"    // outDs    다시 ds를 out 함
+        ,"sCMGNO=" + quote(li_Cmgno) // 고객정보관리번호
+          + " FMMGNO=" + quote(li_FMmgnoBefore)    //  기존선임자관리번호
+          + " FMHSEQ=" + quote(li_FMHseqBefore)    //  기존선임자관리순번
+          + " FMHSTARTDATE=" + quote(left(calAppointDate.Value, 8))    //  선임일자
+          + " FSTARTDATE=" + quote(left(calAppointDate.Value, 8))	// 선임일자
+          + " FNM=" + quote(edPersonNm2.Text)//  신규선임자 이름
+		  + " FBIRTHDAY=" + quote(left(medResidentNo2.Value,7))		// 생년월일
+		  + " FPERSONKEY=" + quote(medPersonKey2.Value)				// 개인식별번호
+          + " FMNM=" + quote(edPersonNm2.Text)//  신규선임자 이름
+          + " FMBIRTHDAY=" + quote(left(medResidentNo2.Value,7))		// 생년월일
+          + " FMPERSONKEY=" + quote(medPersonKey2.Value)				// 개인식별번호
+          + " MNM=" + quote(edPersonNm2.Text)//  신규선임자 이름
+          + " MPERSONKEY=" + quote(medPersonKey2.Value)				// 개인식별번호
+          + " FMHHPTEL=" + quote(edPTel.Text)// 신규선임자 휴대폰
+          + " DI=" + quote(ls_DI)// 신규선임자 DI
+          + " CI=" + quote(ls_CI)// 신규선임자 CI
+          + " CIVER=" + quote(ls_CIVER)// 신규선임자 CIVER
+          + " AUTHYN=" + quote(iif(ls_IsNiceCheckOk=="Y","0","1"))    //  실명인증여부
+          //+ " LICENSENO=" + quote(iif(gfn_isNull(medLcsNo.Value),'',medLcsNo.Text))
+          + " I_MHMEMGUBUN=" + quote(left(ds_oOldInfo.GetColumn(0, "CCOURSECD"), 1)+"0")
+          // 2016.4.18  MemberH 신규등록은 회원으로 (보조자,운송자는 비회원)
+          + " I_MHMEMCHK=" + quote(sMHMEMCHK)
+          //+ " I_MHMEMCHK=" + quote(iif(left(ds_oOldInfo.GetColumn(0, "CCOURSECD"), 1),"1","Y","2","N","3","Y","5","Y","6","Y","8","N"))
+          //+ " I_MHMEMCHK=" + quote(ds_oOldInfo.GetColumn(0, "CSTATUSGUBUNYN"))    // 고객 회원상태로 신규선임자 회원상태 처리
+          + " I_MHMEMNO=" + quote(li_Cmgno)
+          + " I_MHCOMPANYNM=" + quote(ds_oOldInfo.GetColumn(0, "BNM"))
+          + " I_MHAUTHYN=" + quote(iif(ls_IsNiceCheckOk=="Y","0","1"))    //  실명인증여부
+          + " CRECEIVEEXCEPTGUBUN=" + quote(ds_iCustomerInfo.GetColumn(0, "CRECEIVEEXCEPTGUBUN"))
+          + " sCSTATUS=" + quote(sCStatus)
+          //+ " FMHLICENSENO=" + quote(medLcsNo.Text)
+          + " RETIREYN=" + quote(retireYN + sCStatus)
+          + " BILD_SN=" + quote(ds_oFPISSubManager.GetColumn(0, "BILD_SN"))
+          + " APNT_DE_8=" + quote(ds_oFPISSubManager.GetColumn(0, "APNT_DE_8"))
+          + " QUALFUSER_SN=" + quote(ds_oFPISSubManager.GetColumn(0, "QUALFUSER_SN"))
+          + " GTMGNO=" + quote(iif(li_Gtmgno == "1011", "11", "22"))
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+
+}
+
+function edPersonNm2_OnCharChanged(obj,strPreText,strPostText)
+{
+	ls_IsNiceCheckOk = "N" ;   // 실명 인증 유효를 해제
+    btnAuthResidentNo.Enable = true;    // 실명인증 버튼을 활성화함  
+    
+    medResidentNo2.Value = "";
+    edPTel.Text = "";
+    medLcsNo.Value = "";
+    medPersonKey2.Value = "";
+	ls_PersonKey = ""; // 개인식별번호
+	ls_DI = ""; // DI
+	ls_CI = ""; // CI
+	ls_CIVER = ""; // CI버전
+    ds_oManagerList.ClearData();
+    //btnSave.Enable = true;   
+}
+
+function edPersonNm2_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+    if (nChar == 13) { // Enter key
+        medResidentNo2.SetFocus();        
+	}	
+}
+
+function medResidentNo2_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == 13) { // Enter key
+        btnAuthResidentNo_OnClick();       
+	}
+}
+
+function medResidentNo2_OnChanged(obj,strText)
+{
+    // 길이가 주민번호와 일치하면 자동 조회 되게 하기 
+	if (length(medResidentNo2.Value) == "13") {
+		btnAuthResidentNo_OnClick();
+        medResidentNo2.SetFocus();
+	}
+    
+	//ls_IsNiceCheckOk = "N" ;   // 실명 인증 유효를 해제
+    //btnAuthResidentNo.Enable = true;    // 실명인증 버튼을 활성화함  
+    //btnSave.Enable = true;      
+}
+
+function medResidentNo2_OnKillFocus(obj)
+{
+    if (!gfn_IsNull(edPersonNm2.Text) && !gfn_IsNull(medResidentNo2.Value)) {
+		// PERSONKEY값이 없으면
+		//if (gfn_IsNull(medPersonKey2.Value)) {
+		//	if (length(medResidentNo2.Value) == 13) {	// 주민번호가 13자리이면
+				ls_PERSONKEY = gfn_SearchPERSONKEY(edPersonNm2.Text, medResidentNo2.Value, edPTel.Text);
+				medPersonKey2.Value = ls_PERSONKEY;
+		//	}    
+		//}
+        lfn_TrainingPersonCheck("INFO");    // 선임자 검색    
+        if (ds_ioManager.GetCount() > 0) { 
+            btnSearch_OnClick();
+            //btnSearch.Enable = true;   // 선임자가 있을 경우 조회버튼 활성화
+        } else {
+            btnSearch_OnClick();
+            //btnSearch.Enable = false;   // 선임자가 없을 경우 조회버튼 비활성화
+        }
+        lfn_ResidentNoCheck();
+        Static3.Text = edPersonNm2.Text + "(" + medResidentNo2.Text + ")" + " 변경선임자 선임정보";
+    }    
+}
+
+// 주민번호 유효성 체크
+function lfn_ResidentNoCheck(obj)
+{
+	var lb_ValidRedidentNoYn = gfn_CheckResidentNo(medResidentNo2.Value); // 주민번호체계 검사
+    var lb_ValidForeignNoYn = gfn_CheckForeignNo(medResidentNo2.Value); // 재외국인 등록번호 검사
+    if (!lb_ValidRedidentNoYn && !lb_ValidForeignNoYn) { // 둘다 실패면
+		//ds_ioManagerInfo.SetColumn(ds_ioManagerInfo.currow, "FMRESIDENTERR", 1);	//주민번호 오류
+		lfn_ResidentNoChange(false);		
+		//lbResidentNoError.Visible = true;		
+        /*
+        if (!gfn_Confirm("주민등록번호가 형식에 맞지않습니다.\n강제로 저장 하시겠습니까?")) {
+            medResidentNo2.SetFocus();
+            return false;
+        }
+        */
+    } else {
+        lfn_ResidentNoChange(true);
+		//lbResidentNoError.Visible = false;
+		//ds_ioManagerInfo.SetColumn(ds_ioManagerInfo.currow, "FMRESIDENTERR", 0);	//주민번호 정상
+		/*
+		if(!gfn_IsNull(edManagerNm.Text)) {	//선임자명 입력했을경우
+			
+		}
+		*/
+    }
+}
+
+function medResidentNo2_OnCharChanged(obj,strPreText,strPostText)
+{    
+	ls_IsNiceCheckOk = "N" ;   // 실명 인증 유효를 해제
+    btnAuthResidentNo.Enable = true;    // 실명인증 버튼을 활성화함  
+    //btnSave.Enable = true;
+}
+
+// 선임현황 조회
+function btnSearch_OnClick(obj)
+{   
+	if (gfn_IsNull(edPersonNm2.Text) && gfn_IsNull(medResidentNo2.Value)) {
+        gfn_Alert("변경정보의 이름이나 주민번호 중 하나는 입력해 주십시오.");
+        edPersonNm2.SetFocus();
+        return;
+    }
+	
+	ds_oManagerList.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cust:searchCust0011ManagerList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oManagerList=ds_oManagerList"	// outDs
+		,"FMNM=" + quote(edPersonNm2.Text)
+		 + " BIRTHDAY=" + quote(left(medResidentNo2.Value,7))
+		 + " PERSONKEY=" + quote(medPersonKey2.Value)
+		 + " CHK=0"
+		,"lfn_AfterSearchManager"
+		,false
+		,false
+		,true
+	);
+}
+
+// 선임현황 조회후 처리
+function lfn_AfterSearchManager(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    lfn_SearchMemberStat();
+    gfn_SearchMessage(gdManagerList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+// 회원상태 조회
+function lfn_SearchMemberStat(obj)
+{    
+	ds_oMemberStat.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cust:searchCust0018MemberStat", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oMemberStat=ds_oMemberStat"	// outDs
+		,"MHNAME=" + quote(edPersonNm2.Text)
+		 + " MHPERSONKEY=" + quote(medPersonKey2.Value)
+		 //+ " BMGNO=" + quote(parent.ds_ioBuildingInfo.GetColumn(parent.ds_ioBuildingInfo.currow, "BMGNO"))    //  대상물관리번호
+		,"lfn_AfterSearchMemberStat"
+		,false
+		,false
+		,true
+	);
+}
+
+// 회원상태 조회후 처리
+function lfn_AfterSearchMemberStat(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    //trace(ds_oMemberStat.SaveXML());
+    if (ds_oMemberStat.GetCount() > 0) {
+        ds_MemberGubun.Filter("CD<>''");
+        //radMember.Width = 150;
+        //btnMemberSave.Left = 310;
+        cbxMember.Value = ds_oMemberStat.GetColumn(0, "MHMEMCHK");
+        edAgreeDate.Text = ds_oMemberStat.GetColumn(0, "MHREGDATE");
+    } else {        
+        ds_MemberGubun.UnFilter();
+        //radMember.Width = 228;
+        //btnMemberSave.Left = 384;
+        cbxMember.Index = 2;
+		edAgreeDate.Text = "";
+    }
+    //radMember.Value = ds_oMemberStat.GetColumn(0, "MHMEMCHK");
+
+}
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdManagerList, 1); // 멀티 정렬을 실행한다.
+}
+
+// 해임처리
+function btnSaveManager_OnClick(obj)
+{
+    var chk = 0;
+    var sJibu = 0;
+    var sCourse = 0;
+    for (var i=0;i<ds_oManagerList.GetCount();i++) {
+        if (ds_oManagerList.GetColumn(i, "SEL") == "1") {
+            chk += 1;
+        }
+        if (gds_oJibu.GetColumn(0, "JJIBUCD") != ds_oManagerList.GetColumn(i, "CGTMGNO")) {
+            sJibu += 1;
+        }
+        if (ds_oOldInfo.GetColumn(0, "CCOURSECD") != ds_oManagerList.GetColumn(i, "CCOURSECD")) {
+            sCourse += 1;
+        }
+    }
+    if (chk == 0) {
+        gfn_Alert("해임처리 할 데이터가 없습니다.");
+        return;
+    }
+    if (sJibu > 0) {
+        if (!gfn_Confirm("타지부 자료가 있습니다.\n강제로 해임처리 하시겠습니까?")) {
+            return false;
+        }  
+    }    
+    if (sCourse > 0) {
+        if (!gfn_Confirm("직능이 다른 자료가 있습니다.\n강제로 해임처리 하시겠습니까?")) {
+            return false;
+        }  
+    }
+    
+    if (!gfn_Confirm("정말로 해임처리 하시겠습니까?")) { // 정말로 추가 저장 하시겠습니까?
+        return false;
+    }    
+    var cnt = 0;
+    for (var i=0;i<ds_oManagerList.GetCount();i++) {
+        if (ds_oManagerList.GetColumn(i, "SEL") == "1") {
+            ds_oStatus.Clear();
+            tit_clearActionInfo();
+            tit_addSingleActionInfo("cust:executeCust0018FireManagerEnd", "", 0, "");
+            // 서버 호출 
+            tit_callService(
+                ""
+                ,""
+                ,""/// inDs
+                ,"ds_oStatus=ds_oStatus"	// outDs
+                ,"CMGNO=" + quote(ds_oManagerList.GetColumn(i, "CMGNO")) 
+                 + " FMMGNO=" + quote(ds_oManagerList.GetColumn(i, "FMHFMMGNO"))
+                 + " FMHSEQ=" + quote(ds_oManagerList.GetColumn(i, "FMHSEQ"))
+                 + " FMHENDGUBUN='0'"
+                 + " FMHENDDATE=" + quote(left(calCancelDate.Value, 8)) 
+                 + " RETIREYN='N'"		// arg
+                ,""
+                ,false
+                ,false
+                ,true
+            );
+            
+            if (ds_oStatus.GetColumn(0, "OSTATUS") == "SUCCESS") {
+                cnt += 1;
+            }
+        }        
+    }
+    gfn_Alert("총 " + cnt + "건에 대해 해임처리 완료하였습니다.");
+    btnSearch_OnClick();
+}
+
+// 주민번호 오류/정상 표시
+function lfn_ResidentNoChange(bStatus) {
+	if(bStatus) {	//정상
+		lbResidentNoError.Text = "정상";
+		//lbResidentNoError.Style = "sty_TextBlue";
+		lbResidentNoError.Color = "blue";
+		//radMember.Enable = true;
+	} else {	//오류
+		lbResidentNoError.Text = "오류";
+		//lbResidentNoError.Color = "sty_TextRed";
+		lbResidentNoError.Color = "brown";
+		//radMember.Enable = false;
+	}
+	lbResidentNoError.Visible = true;
+}
+
+function edPersonNm2_OnKillFocus(obj)
+{
+    if (!gfn_IsNull(edPersonNm2.Text) && !gfn_IsNull(medResidentNo2.Value)) {
+        Static3.Text = edPersonNm2.Text + "(" + medResidentNo2.Text + ")" + " 변경선임자 선임정보";
+        btnSearch_OnClick();
+    }	
+}
+/*
+// 회원상태 저장
+function btnMemberSave_OnClick(obj)
+{
+    if (lbResidentNoError.Text == "오류") {
+        gfn_Alert("주민번호 오류로 등록이 불가능합니다.");
+        return;
+    }
+    
+    if (!gfn_Confirm("회원상태를 저장 하시겠습니까?")) { 
+        return false;
+    }
+	tit_clearActionInfo();
+    tit_addSingleActionInfo("cust:executeCust0018MemberH", 0, "");
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,""    // inDs  ds를 in한 후 
+        ,"ds_oMemberStatus=ds_oMemberStatus"  // outDs    다시 ds를 out 함
+        ,"MNM=" + quote(edPersonNm2.Text)//  신규선임자 이름
+          + " MRESIDENTNO=" + quote(medResidentNo2.value)// 신규선임자 주민번호
+          + " I_MHMEMGUBUN=" + quote(left(ds_oOldInfo.GetColumn(0, "CCOURSECD"), 1)+"0")
+          + " I_MHMEMNO=" + quote(li_Cmgno)
+          + " I_MHMEMCHK=" + quote(radMember.Value)
+          + " I_MHCOMPANYNM=" + quote(ds_oOldInfo.GetColumn(0, "BNM"))
+        ,"lfn_AfterSaveMember"
+        ,false
+    );
+}
+*/
+// 회원상태 저장후 처리
+function lfn_AfterSaveMember(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    gfn_Alert("회원상태 변경처리를 완료하였습니다.");
+    lfn_SearchMemberStat();
+}
+
+// 안전원수첩번호 조회
+function btnLicenseList_OnClick(obj)
+{
+/*	ds_oLicenseList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cust:searchCust0018LicenseList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oLicenseList=ds_oLicenseList"	// outDs
+		," LLCSNO=" + quote(medLcsNo.Text)
+		,"lfn_AfterSearchagentList"
+		,false
+	);
+	
+*/
+	var sArg  = "sManagerNm=" + quote(edPersonNm2.Text);
+		sArg += " sResidentNo=" + quote(medResidentNo2.Value);
+		//sArg += " sLcsNo=" + quote(medLcsNo.Value);
+	
+	var arrLicense = Dialog(ls_Prefix + "::frmcust0018PLicenseList.xml", sArg, 520, 188, "", -1, -1);	
+	
+	if (length(arrLicense) > 0) {
+		edPersonNm2.Text = arrLicense[0];
+		medResidentNo2.Value = arrLicense[1];
+		edPTel.Text = arrLicense[2];
+		//medLcsNo.Value = arrLicense[3];
+		medPersonKey2.Value = arrLicense[4];
+		
+		btnSearch_OnClick();
+	}
+}
+
+// 안전원수첩번호로 조회후 처리
+function lfn_AfterSearchagentList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    if (ds_oLicenseList.GetCount() < 1) {
+        gfn_Alert("조회된 정보가 없습니다.");
+        edPersonNm2.Text = "";
+        medResidentNo2.Value = "";
+        medPersonKey2.Value = "";
+		ls_PersonKey = ""; // 개인식별번호
+		ls_DI = ""; // DI
+		ls_CI = ""; // CI
+		ls_CIVER = ""; // CI버전
+        return false;
+    }
+    edPersonNm2.Text = ds_oLicenseList.GetColumn(0, "LPERSONNM");
+    medResidentNo2.Value = ds_oLicenseList.GetColumn(0, "LBIRTHDAY");
+    medPersonKey2.Value = ds_oLicenseList.GetColumn(0, "PERSONKEY");  
+    edPersonNm2_OnKillFocus();
+}
+
+// 회원가입동의여부 체크
+	
+function lfn_MemberAgreeCheck(sPERSONKEY)
+{
+
+    ds_oMemberAgree.ClearData();
+
+    
+
+    tit_clearActionInfo();
+
+    tit_addCsvSearchActionInfo("cust:searchCust0010MemberAgreeCheck", false);
+
+    // 서버 호출
+
+    tit_callService(
+
+        ""
+
+        , ""
+
+        , "" // inDs
+
+        , "ds_oMemberAgree=ds_oMemberAgree" // outDs
+
+        , "PERSONKEY=" + quote(sPERSONKEY)
+
+        , ""
+
+        ,false
+
+        ,false
+
+        ,true
+
+    );
+
+	return true;
+
+	// MEMBERH 에 있으면
+	if (ds_oMemberAgree.GetRowCount() > 0) {
+		// MEMBERH와 현재 회원상태값이 다르면
+		if (ds_oMemberAgree.GetColumn(0, "MHMEMCHK") <> ds_ioCustomerInfo.GetColumn(0, "CSTATUSGUBUN")) {
+		
+			if (ds_oMemberAgree.GetColumn(0, "MHMEMCHK") == "0") {
+			
+				var ls_return = gfn_ConfirmCancel(ds_oMemberAgree.GetColumn(0, "MHNAME")+
+				                 "님은 " + ds_oMemberAgree.GetColumn(0, "MHREGDATE")+"에 회원가입동의를 " +
+				                 "하였습니다.\n"+
+				                 "   ▶ 고객상태를 회원으로 변경하시려면 ☞ [예]\n"+
+				                 "   ▶ 비회원으로 등록하시려면 ☞ [아니오]\n"+
+								 "   ▶ 저장을 취소하시려면 ☞ [취소]");
+								 
+				if (ls_return == "0") {
+					ds_ioCustomerInfo.SetColumn(0, "CSTATUSGUBUN", "0");	// 고객상태를 회원으로 변경
+				} else if (ls_return == "1") {
+					ds_ioCustomerInfo.SetColumn(0, "CSTATUSGUBUN", "1");	// 비회원으로 등록
+				} else {
+					return false;
+				}
+
+			} else {
+			
+				var ls_return = gfn_ConfirmCancel(ds_oMemberAgree.GetColumn(0, "MHNAME")+
+				                 "님은 " + ds_oMemberAgree.GetColumn(0, "MHREGDATE")+"에 회원탈퇴(또는 비회원등록)를 " +
+				                 "하였습니다.\n"+
+				                 "   ▶ 고객상태를 비회원으로 변경하시려면 ☞ [예]\n"+
+				                 "   ▶ 회원으로 등록하시려면 ☞ [아니오]\n"+
+								 "   ▶ 저장을 취소하시려면 ☞ [취소]");
+								 
+				if (ls_return == "0") {
+					ds_ioCustomerInfo.SetColumn(0, "CSTATUSGUBUN", "1");	// 고객상태를 비회원으로 변경
+				} else if (ls_return == "1") {
+					ds_ioCustomerInfo.SetColumn(0, "CSTATUSGUBUN", "0");	// 회원으로 등록
+				} else {
+					return false;
+				}
+			
+			
+			}
+			
+			
+		}
+	
+	}
+
+
+}
+
+
+// 당해년도 실무교육 이수여부 체크
+	
+function lfn_EduPassCheck(sNM, sResidentNo, sPersonkey)
+{
+
+    ds_oEduPass.ClearData();
+    
+
+    tit_clearActionInfo();
+
+    tit_addCsvSearchActionInfo("cust:searchCust0018EduPassCheck", false);
+
+    // 서버 호출
+
+    tit_callService(
+
+        ""
+
+        , ""
+
+        , "" // inDs
+
+        , "ds_oEduPass=ds_oEduPass" // outDs
+
+        , "EPCMGNO=" + quote(li_Cmgno) //  고객관리번호
+        
+          + " EPPERSONNM=" + quote(sNM)	// 기존정보 성명
+        
+          + " EPBIRTHDAY=" + quote(left(sResidentNo,7)) // 기존정보 주민번호(생년월일)
+          
+          + " EPPERSONKEY=" + quote(sPersonkey) // 기존정보 개인식별번호
+          
+          + " EPCOURSECD=" + quote(li_CourseCD) // 직능코드
+
+        , ""
+
+        ,false
+
+        ,false
+
+        ,true
+
+    );
+
+}
+
+
+// 소방청 보조자가 있는지 조회(연계 위해)
+function lfn_FPISSubManagerSearch(sFPIS1, sNm, sBirthday)
+{    
+	ds_oFPISSubManager.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cust:searchCust0018FPISSubManagerInfo", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oFPISSubManager=ds_oFPISSubManager"	// outDs
+		,"MFPIS1=" + quote(sFPIS1) //  처 관리번호1
+		 + " NM=" + quote(sNM)
+		 + " BIRTHDAY=" + quote(substr(sBirthday,0,6))
+		 + " PERSONKEY=" + quote(sPersonkey)
+		,""
+		,false
+		,false
+		,true
+	);
+}
+
+function edPTel_OnKillFocus(obj)
+{
+    if (!gfn_IsNull(edPersonNm2.Text) && !gfn_IsNull(medResidentNo2.Value)) {
+		// DI값이 없으면
+		if (gfn_IsNull(medPersonKey2.Value)) {
+			if (length(medResidentNo2.Value) == 13) {	// 주민번호가 13자리이면
+				ls_PERSONKEY = gfn_SearchPERSONKEY(edPersonNm2.Text, medResidentNo2.Value, edPTel.Text);
+				medPersonKey2.Value = ls_PERSONKEY;
+			}    
+		}
+	}
+}
+]]></Script>
+</Window>

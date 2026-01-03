@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="384" Id="frmcti0010PLogPerson" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="로그목록" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="600" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_List">
+				<Contents></Contents>
+			</Dataset>
+		</Datasets>
+		<FileDialog Bottom="32" FilePath="C:\" Height="24" Id="fileDialogFile" Left="688" Right="712" TabOrder="1" Top="8" Type="Dir" Width="24"></FileDialog>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_List" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="376" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="280" Id="gdList" InputPanel="FALSE" Left="7" LineColor="default" MinWidth="100" OnCellClick="gdList_OnCellClick" OnHeadClick="gdList_OnHeadClick" Right="588" RowHeight="20" Style="sty_Grid" TabOrder="1" TabStop="true" Top="96" UseDBuff="true" UsePopupMenu="true" UserData="수첩일괄출력자&#32;조회" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="581">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="29"/>
+						<col width="297"/>
+						<col width="85"/>
+						<col width="147"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" display="text" text="FILE_NAME"/>
+						<cell align="center" col="2" display="text" text="FILE_SIZE"/>
+						<cell align="center" col="3" display="text" text="CREATE_DATE"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SEL" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" colid="FILE_NAME" display="text"/>
+						<cell align="center" col="2" colid="FILE_SIZE" display="text"/>
+						<cell align="center" col="3" colid="CREATE_DATE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" Left="8" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="2" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Visible="FALSE" Width="228">
+			<Contents></Contents>
+		</Div>
+		<Shape Bottom="84" Height="28" Id="shpBtnBox" Left="403" LineColor="user14" Right="585" TabOrder="4" Top="56" Type="Rectangle" Width="182"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="405" OnClick="lfn_Search" Style="sty_Button" TabOrder="3" ToolTipText="조회" Top="59" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="Static0" Left="8" Style="sty_LabelStat" TabOrder="6" Text="조회건수" Top="63" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medSearchCnt" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="5" Top="63" Width="55"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbLcsNo" Left="8" Style="sty_Label" TabOrder="7" Text="FilePath&#32;:&#32;" Top="38" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edPath" ImeMode="native" Left="100" LeftMargin="2" MaxLength="6" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="edLcsNoStart_OnKillFocus" Style="sty_Edit" TabOrder="8" Text="C:\\KFSA\\KEMS\\DATA\\CTI" Top="38" UserData="S" Width="268"></Edit>
+		<Static Align="Center" Height="20" Id="Static2" Left="219" Style="sty_LabelStat" TabOrder="10" Text="선택건수" Top="63" VAlign="Middle" Width="90"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medCheckCnt" Left="313" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="9" Top="63" Width="55"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSend" ImageID="BTN_TEXT_06" Left="491" OnClick="btnSend_OnClick" Style="sty_Button" TabOrder="10" Text="로그전송" ToolTipText="전송" Top="59" Width="92"></Button>
+		<HttpFile Height="24" Id="hfAttachFile" Left="739" Top="8" Width="24"></HttpFile>
+		<File Bottom="32" Height="24" Id="fileSaveFile" Left="713" Right="737" TabOrder="12" Top="8" Width="24"></File>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcti0010PLogPerson.xml
+ * 설명 : 로그대상자
+ * 작성일 :  
+ * 작성자 : 
+ */
+
+#include "LIB::cti.js";
+
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) { 
+ 	lfn_Search();
+}
+
+
+function lfn_Search(obj)
+{	
+	medCheckCnt.Value = "";
+	medSearchCnt.Value = "";
+	var strFilePath = edPath.Text ; // "C:\\KFSA\\KEMS\\DATA\\CTI";// 로그 파일 
+	var nFileCount = fileDialogFile.GetFileList( ds_List, strFilePath, "*.txt" );
+	medSearchCnt.Value = nFileCount;	
+	
+	ds_List.AddColumn("SEL");	
+	for (i=0; i<ds_List.GetRowCount(); i++) {
+		ds_List.SetColumn(i,"SEL",1);
+	}
+	medCheckCnt.Value = ds_List.GetRowCount();
+	
+    if (ds_List.GetRowCount() > 1) {        
+        ds_List.Sort("CREATE_DATE",false);
+    }
+    
+}
+
+
+function btnSend_OnClick(obj)
+{
+	var sFileUploadPath = "/CALLDATA";
+	var sFilePath = edPath.Text;
+	var sFileName = "";
+
+	if(medCheckCnt.Value == 0 || gfn_IsNull(medCheckCnt.Value)){					
+		gfn_Alert("선택 후 전송하세요");
+		return ;			
+	}
+	
+	
+	var ls_filSaveFile = "";
+	var ls_fileSize = "";
+	var ls_UploadRealName = "";
+	var ls_RealFileName = "";
+	var vCnt = 0;
+
+	for (i=0; i<ds_List.GetRowCount(); i++) {
+		
+		if (ds_List.GetColumn(i, "SEL") == 1 ){
+			sFileName = ds_List.GetColumn(i, "FILE_NAME");
+			ls_UploadRealName = sFileName;
+			fileSaveFile = sFilePath + "\\" + sFileName;
+			ls_fileSize = NumFormat(fileSaveFile.GetLength()) ;			
+			
+			if(ls_fileSize > 0 ){
+				vCnt++;
+							
+				tit_FileWrite(
+					hfAttachFile
+					, sFileUploadPath
+					, sFilePath
+					, sFileName
+					, ls_UploadRealName
+					, "U"
+					, ls_RealFileName
+				);
+				
+				hfAttachFile.CloseFile();
+			
+			
+			}
+			
+		} 
+	}
+	  	
+	gfn_Alert(vCnt + " 건 전송하였습니다.");
+}
+
+
+function gdList_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	
+	var lobj_Dataset = object(obj.BindDataset);
+	
+	if (nCell == 0) { // 선택
+		if (lobj_Dataset.GetColumn(nRow, "SEL") == "0") {
+			medCheckCnt.Value = toNumber(iif(gfn_isNull(medCheckCnt.Value),0,medCheckCnt.Value)) + 1;		
+		} else {		
+			medCheckCnt.Value = toNumber(iif(gfn_isNull(medCheckCnt.Value),0,medCheckCnt.Value)) - 1;		
+		}	
+	}
+}
+
+function gdList_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	var lobj_Dataset = object(obj.BindDataset);
+	if (nCell == 0) { // 선택
+        if (obj.GetCellProp("head", nCell, "text") == 1) { // 전체가 이미 선택된 경우
+            obj.SetCellProp("head", nCell, "text", 0);
+            for(i = 0; i < lobj_Dataset.RowCount(); i++) {
+                lobj_Dataset.SetColumn(i, "SEL", "0");
+                
+                medCheckCnt.Value = 0;
+            }
+        } else { // 전체가 이미 선택되지 않은 경우
+            obj.SetCellProp("head", nCell, "text", 1);
+            for(i = 0; i < lobj_Dataset.RowCount(); i++) {
+                lobj_Dataset.SetColumn(i, "SEL", "1");
+                
+                medCheckCnt.Value = lobj_Dataset.RowCount();
+            }
+        }
+	}
+}
+
+]]></Script>
+</Window>

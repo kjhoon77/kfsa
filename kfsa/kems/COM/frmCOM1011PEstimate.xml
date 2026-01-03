@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="760" Id="frmCOM1010PTrainingPersonModify" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="계산서&#32;확인&#32;팝업" Top="8" Ver="1.0" Width="896" WorkArea="true">
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="797" LineColor="user14" Right="888" TabOrder="4" Top="1" Type="Rectangle" Width="91"></Shape>
+		<Shape Bottom="752" Height="720" Id="Shape1" Left="2" LineColor="user15" Right="888" TabOrder="3" Top="32" Type="Rectangle" Width="886"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="800" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Div BKColor="user0" Height="24" Id="divWorkFormTitle" Left="4" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="2" TabStop="FALSE" Text="Div0" Top="4" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="228">
+			<Contents></Contents>
+		</Div>
+		<Edit Height="22" Id="Edit0" Left="296" TabOrder="5" Text="Edit0" Visible="FALSE" Width="70"></Edit>
+		<Static Height="23" Id="Static3" Left="232" TabOrder="6" Text="강습자관리" Visible="FALSE" Width="64"></Static>
+		<WebBrowser Height="709" Id="WebBrowserEstimate" Left="5" NavigateError="WebBrowserEstimate_OnNavigateError" TabOrder="7" Top="35" Width="875"></WebBrowser>
+	</Form>
+	<Script><![CDATA[/*
+ * 고객정보명 : frmCOM1010PTrainingPersonModify.xml
+ * 설명 : 접수자정보변경팝업
+ * 작성일 : 2009.11.03
+ * 작성자 : 이창희
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+var li_TpMgno = ""; // 강습자관리번호
+var ls_IsNiceCheckOk = "N"; // 실명인증 체크
+var jubsuYN = ""; // 접수대상자 유효 여부
+var arrArg = array(3);         // TRAININGPERSON 변경 후 재 조회하여 값을 담음
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    //trace(sVyear + " " + sVjibu + " " + sVbilltype + " "+sVvatno );
+    ///////////////////////
+//    var strAddress = "http://172.19.1.7/ReportingFile/cabsoftprint.php?moveURL=/GROUPWARE/vat/vat_prt.php&urlRPX=/vat/vat_lowest.rpx&urlPARA="
+//                    + "vyear=" + sVyear + "!@vjibu=" + sVjibu + "!@vbilltype=" + sVbilltype + "!@vvatno=" + sVvatno + "&cabSETZOOM=100&cabEXPORT=0";
+    var strAddress = "http://172.19.1.7/RexServer/vatPrint.php?vyear=" + sVyear + "&vjibu=" + sVjibu + "&vbilltype=" + sVbilltype + "&vvatno=" + sVvatno;
+	WebBrowserEstimate.PageUrl = strAddress;
+	WebBrowserEstimate.run();
+
+    ///////////////////////
+
+}
+
+function Form_OnUnloadCompleted(obj) {
+    close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+    }
+}
+
+/*
+ * 웹페이지 조회 에러시
+ */
+function WebBrowserEstimate_OnNavigateError(obj,strUrl,nStatusCode,strFrame)
+{
+	alert("네트워크 지연이 발생되었습니다. 잠시 후 다시 시도 바랍니다.");
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close(arrArg);
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+
+
+
+]]></Script>
+</Window>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="in_AnswerPaper" io="INPUT" reserved="NO"></dataset>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[function Run() {
+
+	var errSql;
+	var deleteQuery;
+	var insertQuery;
+	
+	deleteQuery = "DELETE FROM ANSWERPAPERRESULT";
+	errSql = ExecuteSql(deleteQuery);
+
+	for (var i=0; i<in_AnswerPaper.getRowCount(); i++) {
+		insertQuery = "INSERT INTO ANSWERPAPERRESULT ("
+			+ "APSEQ "
+			+ ", APREPEATNO"
+			+ ", APEOMGNO"
+			+ ", APAPLEXAMNO"
+			+ ", APTCCOURSECD"
+			+ ", APNUMTYPE"
+			+ ", APALPHATYPE"
+			+ ", APCAITEMNO"
+			+ ", APANSWER"
+			+ ", APANSWERYN"
+			+ ", APITEMSCORE"
+			+ ", APEXAMROOM"
+			+ ") VALUES ("
+			+ "'" + (i + 1) + "'"
+			+ ", '" + dsGetColumn(in_AnswerPaper, i, "APREPEATNO") + "'"
+			+ ", '" + dsGetColumn(in_AnswerPaper, i, "APEOMGNO") + "'"
+			+ ", '" + dsGetColumn(in_AnswerPaper, i, "APAPLEXAMNO") + "'"
+			+ ", '" + dsGetColumn(in_AnswerPaper, i, "APTCCOURSECD") + "'"
+			+ ", '" + dsGetColumn(in_AnswerPaper, i, "APNUMTYPE") + "'"
+			+ ", '" + dsGetColumn(in_AnswerPaper, i, "APALPHATYPE") + "'"
+			+ ", '" + dsGetColumn(in_AnswerPaper, i, "APCAITEMNO") + "'"
+			+ ", '" + dsGetColumn(in_AnswerPaper, i, "APANSWER") + "'"
+			+ ", '" + dsGetColumn(in_AnswerPaper, i, "APANSWERYN") + "'"
+			+ ", '" + dsGetColumn(in_AnswerPaper, i, "APITEMSCORE") + "'"
+			+ ", '" + dsGetColumn(in_AnswerPaper, i, "APEXAMROOM") + "'"
+			+ ")";
+
+		errSql = ExecuteSql(insertQuery);
+
+	}
+}
+
+function dsGetColumn(ds, row, colid) {
+    return ds.getcolumn(row, colid);
+}
+]]></source>
+</class2>

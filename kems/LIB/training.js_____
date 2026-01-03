@@ -1,0 +1,527 @@
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿/*
+ * 프로그램명 : training.js
+ * 설명 : 강습관리 업무 관련 js 파일을 포함한 파일
+ * 작성일 : 2009.07.07
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+var ls_SystemGubun; // 현재 화면 시스템 구분
+var ls_SystemMenuId; // 현재 화면 시스템 메뉴 ID
+var ms_FormAuth = ""; // 폼 권한
+var mb_IsNewData = true; // 저장버튼이 클릭되었는지 여부
+var ms_ExamMgno = ""; // 시험관리번호
+var ms_TrainingMgno = ""; // 강습관리번호
+
+/* 공통 필수 시작 */
+function Form_OnActivate(obj) {
+    gfn_Form_OnActivate(obj);
+
+    gs_SystemGubun = ls_SystemGubun;
+    gs_SystemMenuId = ls_SystemMenuId;
+
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    global.mnuLeft.cbxOpenForm.Value = ls_FormId[0];
+
+    global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+}
+
+function Form_OnDeactivate(obj) {
+    // to do
+
+    gfn_Form_OnDeactivate(obj);
+}
+
+function Form_OnUnloadCompleted(obj) {
+	if (gfn_CheckChangedGridTreeview(this)) {
+        if (!gfn_Confirm("변경된 내용이 있습니다. 그래도 [" + title + "] 창을 닫으시겠습니까?")) {
+            return false;
+        }
+    }
+
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    gfn_DeleteOpenedMenu(ls_FormId[0]);
+
+    gfn_Form_OnUnloadCompleted(obj);
+}
+
+function Form_OnFocus(obj) {
+    gfn_Form_OnFocus(obj);
+
+    // to do
+}
+
+function Form_OnKillFocus(obj) {
+    // to do
+
+    gfn_Form_OnKillFocus(obj);
+}
+
+/*
+ * 기능 : 취소
+ */
+function lfn_Cancel(obj) {
+    gfn_FormInit(this);
+    mb_IsNewData = true;
+    ms_ExamMgno = ""; // 시험관리번호
+    ms_TrainingMgno = ""; // 강습관리번호
+    ms_TrainingPersonMgno = ""; // 강습자관리번호
+}
+
+/*
+ * 기능 : 엑셀
+ */
+function lfn_Excel(obj) {
+    gfn_GridToExcel(this);
+}
+
+/*
+ * 기능 : 인쇄
+ */
+function lfn_PrintScreen(obj) {
+    gfn_PrintScreen(this);
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+
+/* 사용자 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+/* 사용자 함수 */
+/*
+ * 기능 : 강습회차목록 팝업을 호출한다.
+ * parameter : sPosiYn - 접수가능여부
+ *             sJibu - 지부
+ *             sYear - 강습년도
+ *             sCourse - 직능
+ *             sNoChange - 변경불가여부 Y:변경불가
+ * return value : 강습회차목록 정보를 가진 배열 오브젝트
+ */
+function gfn_TrainingOrderListPopup(sPosiYn, sJibu, sYear, sCourse, sNoChange) {
+    var sArg = "sPosiYn=" + quote(sPosiYn);
+    sArg += " sJibu=" + quote(sJibu);
+    sArg += " sYear=" + quote(sYear);
+    sArg += " sCourse=" + quote(sCourse);
+    sArg += " sNoChange=" + quote(sNoChange);
+
+    return Dialog("training::frmtraining0011PTrainingOrderList.xml", sArg, 800, 400, "", -1, -1);
+}
+
+/*
+ * 기능 : 시험회차목록 팝업을 호출한다.
+ * parameter : sPosiYn - 접수가능여부
+ *             sJibu - 지부
+ *             sYear - 시험년도
+ *             sCourse - 직능
+ * return value : 시험회차목록 정보를 가진 배열 오브젝트
+ */
+function gfn_ExamOrderListPopup(sPosiYn, sJibu, sYear, sCourse) {
+    var sArg = "sPosiYn=" + quote(sPosiYn);
+    sArg += " sJibu=" + quote(sJibu);
+    sArg += " sYear=" + quote(sYear);
+    sArg += " sCourse=" + quote(sCourse);
+    return Dialog("training::frmtraining0391PExamOrderList.xml", sArg, 600, 400, "", -1, -1);
+}
+
+/*
+ * 기능 : 시험접수자목록 팝업을 호출한다.
+ * parameter : sJibu - 지부
+ *             sYear - 시험년도
+ *             sOrder - 회차
+ * return value : 시험접수자목록 정보를 가진 배열 오브젝트
+ */
+function gfn_ExamJubsuSeqListPopup(sJibu, sYear, sOrder) {
+    var sArg = "sJibu=" + quote(sJibu);
+    sArg += " sYear=" + quote(sYear);
+    sArg += " sOrder=" + quote(sOrder);
+    return Dialog("training::frmtraining0401PExamJubsuList.xml", sArg, 600, 400, "", -1, -1);
+}
+
+/*
+ * 기능 : 시험장목록 팝업을 호출한다.
+ * parameter : sExamOrder - 시험회차
+ *             sExamNm - 시험명
+ *             sExamRoomNm - 시험장명
+ * return value : 시험장목록 정보를 가진 배열 오브젝트
+ */
+function gfn_ExamRoomListPopup(sExamOrder, sExamNm, sExamRoomNm) {
+    var sArg = "sExamOrder=" + quote(sExamOrder);
+    sArg += " sExamNm=" + quote(sExamNm);
+    sArg += " sExamRoomNm=" + quote(sExamRoomNm);
+    return Dialog("training::frmtraining0591MExamRoomListPopup.xml", sArg, 600, 400, "", -1, -1);
+}
+
+/*
+ * 기능 : 시험감독관배정목록 팝업을 호출한다.
+ * parameter : sExamSupervisorNm - 시험감독관명
+ * return value : 시험감독관배정목록 정보를 가진 배열 오브젝트
+ */
+function gfn_ExamSupervisorListPopup(sExamSupervisorNm) {
+    var sArg = "sExamSupervisorNm=" + quote(sExamSupervisorNm);
+    return Dialog("training::frmtraining0601MExamSupervisorListPopup.xml", sArg, 600, 400, "", -1, -1);
+}
+
+/*
+ * 기능 : 해당 갯수만큼의 문항입력란을 생성한다.
+ * parameter : nCnt - 생성할 문항입력란 갯수. 디폴트 40
+ *                bEnable - 컴포넌트의 활성화여부 boolean. 디폴트 false
+ * return value : 없음
+ */
+var ms_MAKE_QITEMES_EDIT_NAME = "QuestionItem"; // 생성할 컴포넌트 이름 prefix명. 생성될 컴포넌트 명 : edprefix명0, edprefix명1, ...
+var mn_MAKE_QITEMES_CNT = 0; // 생성할 문항입력란 갯수
+var mn_MAKE_QITEMES_ROW_CNT = 20; // 가로로 생성할 문항입력란 갯수
+function gfn_MakeQitemes(nCnt, bEnable) {
+    var sCompID = ""; // 생성할 컴포넌트 종류
+    var sCompName = ""; // 생성할 컴포넌트 이름
+    var sAttrib = ''; // 생성할 컴포넌트 속성
+
+    var sHeight = 20; // STATIC/EDIT 높이
+    var sSaticWidth = 30; // 표시(STATIC) 폭
+    var sEditWidth = 60; // 입력(EDIT) 폭
+    var sSpace = 4; // 컴포넌트간 간격
+    var sLeft = 444; // 시작 left 좌표
+    var sSTART_TOP = 64;
+    var sTop = sSTART_TOP; // 시작 top 좌표
+    var sTabOrder = 100; // // 시작 tab order 번호
+
+    if (nCnt == null || nCnt == "") {
+        mn_MAKE_QITEMES_CNT = 50; // 디폴트 50으로 문항입력란 갯수로 할당
+    } else {
+        mn_MAKE_QITEMES_CNT = nCnt; // 생성할 문항입력란 갯수
+    }
+
+    var sEnable = ""; // 컴포넌트의 활성화여부 문자열
+    if (bEnable == null || bEnable == "" || bEnable == false) {
+        sEnable = "FALSE";
+    } else {
+        sEnable = "TRUE";
+    }
+
+    // 문항 타이틀을 생성한다. 문항, 득점 STATIC
+    for (var iQitemNumber = 1; iQitemNumber <= ceil(mn_MAKE_QITEMES_CNT / mn_MAKE_QITEMES_ROW_CNT); iQitemNumber++) {
+        // <Static Align="Center" Height="20" Id="lbQuestItemNoTitle" Left="444" Style="sty_Label" TabOrder="12" Text="번호" Top="60" VAlign="Middle" Width="30"></Static>
+        // 번호 생성
+        sCompID = "Static";
+        sCompName = "lb" + ms_MAKE_QITEMES_EDIT_NAME + "NoTitle" + toString(iQitemNumber);
+        sAttrib = 'Align="Center" Height="' + toString(sHeight);
+        sAttrib += '" Left="' + toString(sLeft + (sSaticWidth * 3 + sSpace * 10 + sEditWidth) * (iQitemNumber - 1));
+        sAttrib += '" Style="sty_Label" TabOrder="' + toString(sTabOrder++);
+        sAttrib += '" Text="' + "번호";
+        sAttrib += '" Top="' + toString(sTop);
+        sAttrib += '" VAlign="Middle" Width="' + toString(sSaticWidth) + '"';
+        Create(sCompID, sCompName, sAttrib);
+
+        //<Static Align="Center" Height="20" Id="lbCorrectAns" Left="478" Style="sty_Label" TabOrder="13" Text="정답" Top="60" VAlign="Middle" Width="60"></Static>
+        // 정답 생성
+        sCompID = "Static";
+        sCompName = "lb" + ms_MAKE_QITEMES_EDIT_NAME + "AnsTitle" + toString(iQitemNumber);
+        sAttrib = 'Align="Center" Height="' + toString(sHeight);
+        sAttrib += '" Left="' + toString(sLeft + sSaticWidth + sSpace + (sSaticWidth * 3 + sSpace * 10 + sEditWidth) * (iQitemNumber - 1));
+        sAttrib += '" Style="sty_Label" TabOrder="' + toString(sTabOrder++);
+        sAttrib += '" Text="' + "정답";
+        sAttrib += '" Top="' + toString(sTop);
+        sAttrib += '" VAlign="Middle" Width="' + toString(sEditWidth) + '"';
+        Create(sCompID, sCompName, sAttrib);
+
+        // 개수 생성
+        sCompID = "Static";
+        sCompName = "lb" + ms_MAKE_QITEMES_EDIT_NAME + "CntTitle" + toString(iQitemNumber);
+        sAttrib = 'Align="Center" Height="' + toString(sHeight);
+        sAttrib += '" Left="' + toString(sLeft + sSaticWidth + sSpace + sEditWidth + sSpace + (sSaticWidth * 3 + sSpace * 10 + sEditWidth) * (iQitemNumber - 1));
+        sAttrib += '" Style="sty_Label" TabOrder="' + toString(sTabOrder++);
+        sAttrib += '" Text="' + "개수";
+        sAttrib += '" Top="' + toString(sTop);
+        sAttrib += '" VAlign="Middle" Width="' + toString(sSaticWidth) + '"';
+        Create(sCompID, sCompName, sAttrib);
+
+        // 배점 생성
+        sCompID = "Static";
+        sCompName = "lb" + ms_MAKE_QITEMES_EDIT_NAME + "PntTitle" + toString(iQitemNumber);
+        sAttrib = 'Align="Center" Height="' + toString(sHeight);
+        sAttrib += '" Left="' + toString(sLeft + sSaticWidth + sSpace + sEditWidth + sSpace + sSaticWidth + sSpace + (sSaticWidth * 3 + sSpace * 10 + sEditWidth) * (iQitemNumber - 1));
+        sAttrib += '" Style="sty_Label" TabOrder="' + toString(sTabOrder++);
+        sAttrib += '" Text="' + "배점";
+        sAttrib += '" Top="' + toString(sTop);
+        sAttrib += '" VAlign="Middle" Width="' + toString(sSaticWidth) + '"';
+        Create(sCompID, sCompName, sAttrib);
+    }
+
+    sTop = sTop + sHeight + sSpace;
+    var iRow = 1; // 생성될 row번호
+    // 문항번호와 득점 입력란을 생성한다. 문항번호, 득점입력란 EDIT
+    for (var iQitemNumber = 1; iQitemNumber <= mn_MAKE_QITEMES_CNT; iQitemNumber++) {
+        // <Static Align="Center" Height="20" Id="lbQuestItemNo01" Left="444" Style="sty_Text" TabOrder="20" Text="1" Top="84" VAlign="Middle" Width="30"></Static>
+        // 번호 생성
+        sCompID = "Static";
+        sCompName = "lb" + ms_MAKE_QITEMES_EDIT_NAME + "No" + toString(iQitemNumber);
+        sAttrib = 'Align="Center" Height="' + toString(sHeight);
+        sAttrib += '" Left="' + toString(sLeft);
+        sAttrib += '" Style="sty_Text" TabOrder="' + toString(sTabOrder++);
+        sAttrib += '" Text="' + toString(iQitemNumber);
+        sAttrib += '" Top="' + toString(sTop + (sHeight + sSpace) * (iRow - 1));
+        sAttrib += '" VAlign="Middle" Width="' + toString(sSaticWidth) + '"';
+        Create(sCompID, sCompName, sAttrib);
+
+        // <Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="Edit0" ImeMode="native" Left="478" LeftMargin="2" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="21" Top="108" Width="60"></Edit>
+        // 정답 입력란점 생성
+        sCompID = "Edit";
+        sCompName = "ed" + ms_MAKE_QITEMES_EDIT_NAME + "Ans" + toString(iQitemNumber);
+        sAttrib = 'Align="CENTER" AutoSelect="TRUE" AutoSkip="FALSE" Border="Flat" Enable="' + sEnable;
+        sAttrib += '" Height="' + toString(sHeight);
+        sAttrib += '" Left="' + toString(sLeft + sSaticWidth + sSpace);
+        sAttrib += '" Number="TRUE" OnChanged="edQuestionItemAns_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="' + toString(sTabOrder++);
+        sAttrib += '" Top="' + toString(sTop + (sHeight + sSpace) * (iRow - 1));
+        sAttrib += '" UserData="I:' + "정답" + toString(iQitemNumber);
+        sAttrib += '" Width="' + toString(sEditWidth) + '"';
+        Create(sCompID, sCompName, sAttrib);
+
+        // 개수 입력란점 생성
+        sCompID = "Edit";
+        sCompName = "ed" + ms_MAKE_QITEMES_EDIT_NAME + "Cnt" + toString(iQitemNumber);
+        sAttrib = 'Align="CENTER" AutoSelect="TRUE" AutoSkip="FALSE" Border="Flat" Enable="' + sEnable;
+        sAttrib += '" Height="' + toString(sHeight);
+        sAttrib += '" Left="' + toString(sLeft + sSaticWidth + sSpace + sEditWidth + sSpace);
+        sAttrib += '" Number="TRUE" OnChanged="edQuestionItemCnt_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="' + toString(sTabOrder++);
+        sAttrib += '" Top="' + toString(sTop + (sHeight + sSpace) * (iRow - 1));
+        sAttrib += '" UserData="I:' + "개수" + toString(iQitemNumber);
+        sAttrib += '" Width="' + toString(sSaticWidth) + '"';
+        Create(sCompID, sCompName, sAttrib);
+
+        // 배점 입력란점 생성
+        sCompID = "Edit";
+        sCompName = "ed" + ms_MAKE_QITEMES_EDIT_NAME + "Pnt" + toString(iQitemNumber);
+        sAttrib = 'Align="CENTER" AutoSelect="TRUE" AutoSkip="FALSE" Border="Flat" Enable="' + sEnable;
+        sAttrib += '" Height="' + toString(sHeight);
+        sAttrib += '" Left="' + toString(sLeft + sSaticWidth + sSpace + sEditWidth + sSpace + sSaticWidth + sSpace);
+        sAttrib += '" Number="TRUE" OnChanged="edQuestionItemPnt_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="edQuestionItemPnt_OnKillFocus" Style="sty_Edit" TabOrder="' + toString(sTabOrder++);
+        sAttrib += '" Top="' + toString(sTop + (sHeight + sSpace) * (iRow - 1));
+        sAttrib += '" UserData="I:' + "배점" + toString(iQitemNumber);
+        sAttrib += '" Width="' + toString(sSaticWidth) + '"';
+        Create(sCompID, sCompName, sAttrib);
+
+        if ((iQitemNumber % 5) == 0) {
+            sTop = sTop + (sSpace * 2);
+        }
+
+        if ((iQitemNumber % mn_MAKE_QITEMES_ROW_CNT) == 0) {
+            sLeft = sLeft + (sSaticWidth * 3 + sSpace * 10 + sEditWidth);
+            sTop = sSTART_TOP + sHeight + sSpace;
+            iRow = 1;
+        } else {
+            iRow++;
+        }
+    }
+}
+
+/*
+ * 기능 : 생성된 문항입력란을 제거한다.
+ * parameter : nCnt - 삭제할 문항입력란 갯수
+ * return value : 없음
+ */
+function gfn_DestroyQitemes(nCnt) {
+    var iQitemTotalCnt = 0; // 삭제할 문항입력란 갯수
+    if (nCnt == null || nCnt == "") {
+        iQitemTotalCnt = mn_MAKE_QITEMES_CNT; // 생성된 문항입력란 갯수로 할당
+    } else {
+        iQitemTotalCnt = nCnt;
+    }
+
+    // 문항 타이틀을 삭제한다.
+    for (var iQitemNumber = 1; iQitemNumber <= ceil(iQitemTotalCnt / mn_MAKE_QITEMES_ROW_CNT); iQitemNumber++) {
+        Destroy("lb" + ms_MAKE_QITEMES_EDIT_NAME + "NoTitle" + toString(iQitemNumber));
+        Destroy("lb" + ms_MAKE_QITEMES_EDIT_NAME + "AnsTitle" + toString(iQitemNumber));
+        Destroy("lb" + ms_MAKE_QITEMES_EDIT_NAME + "CntTitle" + toString(iQitemNumber));
+        Destroy("lb" + ms_MAKE_QITEMES_EDIT_NAME + "PntTitle" + toString(iQitemNumber));
+    }
+
+    // 문항번호와 정답, 배점, 개수 입력란을 삭제한다.
+    for (var iQitemNumber = 1; iQitemNumber <= iQitemTotalCnt; iQitemNumber++) {
+        Destroy("lb" + ms_MAKE_QITEMES_EDIT_NAME + "No" + toString(iQitemNumber));
+        Destroy("ed" + ms_MAKE_QITEMES_EDIT_NAME + "Ans" + toString(iQitemNumber));
+        Destroy("ed" + ms_MAKE_QITEMES_EDIT_NAME + "Cnt" + toString(iQitemNumber));
+        Destroy("ed" + ms_MAKE_QITEMES_EDIT_NAME + "Pnt" + toString(iQitemNumber));
+    }
+}
+
+/*
+ * 기능 : 생성된 문항입력란을 활성/비활성화한다.
+ * parameter : bEnable - 컴포넌트의 활성화여부 boolean. 디폴트 false
+ *             nCnt - 삭제할 문항입력란 갯수
+ * return value : 없음
+ */
+function gfn_EnableQitemes(bEnable, nCnt) {
+    var iQitemTotalCnt = 0; // 삭제할 문항입력란 갯수
+    if (nCnt == null || nCnt == "") {
+        iQitemTotalCnt = mn_MAKE_QITEMES_CNT; // 생성된 문항입력란 갯수로 할당
+    } else {
+        iQitemTotalCnt = nCnt;
+    }
+
+    for (var iQitemNumber = 1; iQitemNumber <= iQitemTotalCnt; iQitemNumber++) {
+        object("ed" + ms_MAKE_QITEMES_EDIT_NAME + "Ans" + toString(iQitemNumber)).Enable = iif(bEnable, true, false);
+        object("ed" + ms_MAKE_QITEMES_EDIT_NAME + "Cnt" + toString(iQitemNumber)).Enable = iif(bEnable, true, false);
+        object("ed" + ms_MAKE_QITEMES_EDIT_NAME + "Pnt" + toString(iQitemNumber)).Enable = iif(bEnable, true, false);
+    }
+}
+
+
+/*
+ * 기능 : 해당 갯수만큼의 답안입력란을 생성한다.
+ * parameter : nCnt - 생성할 답안입력란 갯수. 디폴트 40
+ *                bEnable - 컴포넌트의 활성화여부 boolean. 디폴트 false
+ * return value : 없음
+ */
+var ms_MAKE_ANSWERS_EDIT_NAME = "QuestionItem"; // 생성할 컴포넌트 이름 prefix명. 생성될 컴포넌트 명 : edprefix명0, edprefix명1, ...
+var mn_MAKE_ANSWERS_CNT = 0; // 생성할 답안입력란 갯수
+var mn_MAKE_ANSWERS_ROW_CNT = 20; // 가로로 생성할 답안입력란 갯수
+function gfn_MakeAnswers(nCnt, bEnable) {
+    var sCompID = ""; // 생성할 컴포넌트 종류
+    var sCompName = ""; // 생성할 컴포넌트 이름
+    var sAttrib = ''; // 생성할 컴포넌트 속성
+
+    var sHeight = 20; // STATIC/EDIT 높이
+    var sSaticWidth = 30; // 표시(STATIC) 폭
+    var sEditWidth = 50; // 입력(EDIT) 폭
+    var sSpace = 2; // 컴포넌트간 간격
+    var sLeft = 96; // 시작 left 좌표
+    var sSTART_TOP = 108;
+    var sTop = sSTART_TOP; // 시작 top 좌표
+    var sTabOrder = 100; // // 시작 tab order 번호
+
+    if (nCnt == null || nCnt == "") {
+        mn_MAKE_ANSWERS_CNT = 50; // 디폴트 50으로 답안입력란 갯수로 할당
+    } else {
+        mn_MAKE_ANSWERS_CNT = nCnt; // 생성할 답안입력란 갯수
+    }
+
+    var sEnable = ""; // 컴포넌트의 활성화여부 문자열
+    if (bEnable == null || bEnable == "" || bEnable == false) {
+        sEnable = "FALSE";
+    } else {
+        sEnable = "TRUE";
+    }
+
+    // 답안 타이틀을 생성한다. 답안, 득점 STATIC
+    for (var iAnswerNumber = 1; iAnswerNumber <= ceil(mn_MAKE_ANSWERS_CNT / mn_MAKE_ANSWERS_ROW_CNT); iAnswerNumber++) {
+        // 번호 생성
+        sCompID = "Static";
+        sCompName = "lb" + ms_MAKE_ANSWERS_EDIT_NAME + "NoTitle" + toString(iAnswerNumber);
+        sAttrib = 'Align="Center" Height="' + toString(sHeight);
+        sAttrib += '" Left="' + toString(sLeft + (sSaticWidth * 1 + sSpace * 3 + sEditWidth) * (iAnswerNumber - 1));
+        sAttrib += '" Style="sty_Label" TabOrder="' + toString(sTabOrder++);
+        sAttrib += '" Text="' + "번호";
+        sAttrib += '" Top="' + toString(sTop);
+        sAttrib += '" VAlign="Middle" Width="' + toString(sSaticWidth) + '"';
+        Create(sCompID, sCompName, sAttrib);
+
+        // 답안 생성
+        sCompID = "Static";
+        sCompName = "lb" + ms_MAKE_ANSWERS_EDIT_NAME + "AnsTitle" + toString(iAnswerNumber);
+        sAttrib = 'Align="Center" Height="' + toString(sHeight);
+        sAttrib += '" Left="' + toString(sLeft + sSaticWidth + sSpace + (sSaticWidth * 1 + sSpace * 3 + sEditWidth) * (iAnswerNumber - 1));
+        sAttrib += '" Style="sty_Label" TabOrder="' + toString(sTabOrder++);
+        sAttrib += '" Text="' + "답안";
+        sAttrib += '" Top="' + toString(sTop);
+        sAttrib += '" VAlign="Middle" Width="' + toString(sEditWidth) + '"';
+        Create(sCompID, sCompName, sAttrib);
+    }
+
+    sTop = sTop + sHeight + sSpace;
+    var iRow = 1; // 생성될 row번호
+    // 답안번호와 득점 입력란을 생성한다. 답안번호, 득점입력란 EDIT
+    for (var iAnswerNumber = 1; iAnswerNumber <= mn_MAKE_ANSWERS_CNT; iAnswerNumber++) {
+        // 번호 생성
+        sCompID = "Static";
+        sCompName = "lb" + ms_MAKE_ANSWERS_EDIT_NAME + "No" + toString(iAnswerNumber);
+        sAttrib = 'Align="Center" Height="' + toString(sHeight);
+        sAttrib += '" Left="' + toString(sLeft);
+        sAttrib += '" Style="sty_Text" TabOrder="' + toString(sTabOrder++);
+        sAttrib += '" Text="' + toString(iAnswerNumber);
+        sAttrib += '" Top="' + toString(sTop + (sHeight + sSpace) * (iRow - 1));
+        sAttrib += '" VAlign="Middle" Width="' + toString(sSaticWidth) + '"';
+        Create(sCompID, sCompName, sAttrib);
+
+        // 답안 입력란점 생성
+        sCompID = "Edit";
+        sCompName = "ed" + ms_MAKE_ANSWERS_EDIT_NAME + "Ans" + toString(iAnswerNumber);
+        sAttrib = 'Align="CENTER" AutoSelect="TRUE" AutoSkip="FALSE" Border="Flat" Enable="' + sEnable;
+        sAttrib += '" Height="' + toString(sHeight);
+        sAttrib += '" Left="' + toString(sLeft + sSaticWidth + sSpace);
+        sAttrib += '" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="' + toString(sTabOrder++);
+        sAttrib += '" Top="' + toString(sTop + (sHeight + sSpace) * (iRow - 1));
+        sAttrib += '" UserData="I:' + "답안" + toString(iAnswerNumber);
+        sAttrib += '" Width="' + toString(sEditWidth) + '"';
+        Create(sCompID, sCompName, sAttrib);
+
+        if ((iAnswerNumber % 5) == 0) {
+            sTop = sTop + (sSpace * 2);
+        }
+
+        if ((iAnswerNumber % mn_MAKE_ANSWERS_ROW_CNT) == 0) {
+            sLeft = sLeft + (sSaticWidth * 1 + sSpace * 3 + sEditWidth);
+            sTop = sSTART_TOP + sHeight + sSpace;
+            iRow = 1;
+        } else {
+            iRow++;
+        }
+    }
+}
+
+/*
+ * 기능 : 생성된 답안입력란을 제거한다.
+ * parameter : nCnt - 삭제할 답안입력란 갯수
+ * return value : 없음
+ */
+function gfn_DestroyAnswers(nCnt) {
+    var iAnswerTotalCnt = 0; // 삭제할 답안입력란 갯수
+    if (nCnt == null || nCnt == "") {
+        iAnswerTotalCnt = mn_MAKE_ANSWERS_CNT; // 생성된 답안입력란 갯수로 할당
+    } else {
+        iAnswerTotalCnt = nCnt;
+    }
+
+    // 답안 타이틀을 삭제한다.
+    for (var iAnswerNumber = 1; iAnswerNumber <= ceil(iAnswerTotalCnt / mn_MAKE_ANSWERS_ROW_CNT); iAnswerNumber++) {
+        Destroy("lb" + ms_MAKE_ANSWERS_EDIT_NAME + "NoTitle" + toString(iAnswerNumber));
+        Destroy("lb" + ms_MAKE_ANSWERS_EDIT_NAME + "AnsTitle" + toString(iAnswerNumber));
+    }
+
+    // 답안번호와 답안 입력란을 삭제한다.
+    for (var iAnswerNumber = 1; iAnswerNumber <= iAnswerTotalCnt; iAnswerNumber++) {
+        Destroy("lb" + ms_MAKE_ANSWERS_EDIT_NAME + "No" + toString(iAnswerNumber));
+        Destroy("ed" + ms_MAKE_ANSWERS_EDIT_NAME + "Ans" + toString(iAnswerNumber));
+    }
+}
+
+/*
+ * 기능 : 생성된 답안입력란을 활성/비활성화한다.
+ * parameter : bEnable - 컴포넌트의 활성화여부 boolean. 디폴트 false
+ *             nCnt - 삭제할 답안입력란 갯수
+ * return value : 없음
+ */
+function gfn_EnableAnswers(bEnable, nCnt) {
+    var iAnswerTotalCnt = 0; // 삭제할 답안입력란 갯수
+    if (nCnt == null || nCnt == "") {
+        iAnswerTotalCnt = mn_MAKE_ANSWERS_CNT; // 생성된 답안입력란 갯수로 할당
+    } else {
+        iAnswerTotalCnt = nCnt;
+    }
+
+    for (var iAnswerNumber = 1; iAnswerNumber <= iAnswerTotalCnt; iAnswerNumber++) {
+        object("ed" + ms_MAKE_ANSWERS_EDIT_NAME + "Ans" + toString(iAnswerNumber)).Enable = iif(bEnable, true, false);
+    }
+}

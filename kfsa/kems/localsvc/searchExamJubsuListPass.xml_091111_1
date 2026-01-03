@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="output" io="OUTPUT" reserved="NO"></dataset>
+	<dataset id="input" io="INPUT" reserved="NO"></dataset>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_IMP_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[
+function Run()
+{
+	// TODO: Add your source code here
+var insertQuery = " SELECT VE.*  "
+								+ "      , TPS.TPPASSNO AS TPPASSNO "
+								+ "      , MID(TPS.TPPASSDATE, 1,4) + '-' + MID(TPS.TPPASSDATE, 5,2) + '-' + MID(TPS.TPPASSDATE, 7,2) AS TPPASSDATE_A "
+								+ "      , TPS.TPPASSDATE AS TPPASSDATE "
+								+ " FROM ( "
+								+ " 			SELECT VE.EJMGNO AS EJMGNO "
+								+ " 				 , VE.EJTJMGNO AS EJTJMGNO "
+								+ " 				 , ORH.EOHJUBSUNO AS JUBSUNO "
+								+ " 				 , VE.EJZZIPCD AS TJZIPCD "
+								+ " 				 , VE.EJADDR1 AS ADDR1 "
+								+ " 				 , VE.EJADDR2 AS ADDR2 "
+								+ " 				 , VE.EJADDR1 + ' ' + VE.EJADDR2 AS JUBSUADDR "
+								+ " 				 , ORH.EOHEXAMSEATNO AS EOHEXAMSEATNO "
+								+ " 				 , ORH.EOHJUBSUNO AS EOHJUBSUNO "
+								+ " 				 , ORA.EOMGGTMGNO AS EOMGJIBUCD "
+								+ " 				 , ORA.EOTCCOURSECD AS TCCOURSECD "
+								+ " 				 , TC.TCCOURSENM AS TCCOURSENM "
+								+ " 				 , ORA.EOYEAR AS EOYEAR "
+								+ " 				 , ORA.EOEXAMORDER AS EOEXAMORDER "
+								+ " 				 , TP.TPRESIDENTNO AS TPRESIDENTNO "
+								+ " 				 , MID(TP.TPRESIDENTNO,1,2) + '.' + MID(TP.TPRESIDENTNO,3,2) + '.' + MID(TP.TPRESIDENTNO,5,2) + '(' + "
+								+ " 				   IIF( MID(TP.TPRESIDENTNO,7,1) = '1', '남','여' ) + ')' AS BIRTHDAY "
+								+ " 				 , TP.TPNM AS TJPERSONNM "
+								+ " 				 , TP.TPTEL AS TPTEL "
+								+ " 				 , TP.TPHPTEL AS TPHPTEL "
+								+ " 				 , GT.GTTEAMNM AS GTTEAMNM "
+								+ " 			FROM   EXAMJUBSU         VE "
+								+ " 				 , EXAMORDERH      ORH "
+								+ " 				 , EXAMORDER       ORA "
+								+ " 				 , TRAININGPERSON  TP "
+								+ " 				 , TRAININGCOURSE  TC "
+								+ " 				 , G_TEAMCODE		 GT "
+								+ " 			WHERE VE.EJMGNO        = ORH.EOHEJMGNO "
+								+ " 			  AND VE.EJLASTEOHSEQ  = ORH.EOHSEQ "
+								+ " 			  AND   ORH.EOHEOMGNO    = ORA.EOMGNO "
+								+ " 			  AND   VE.EJTPMGNO      = TP.TPMGNO "
+								+ " 			  AND   TC.TCCOURSECD    = ORA.EOTCCOURSECD "
+								+ " 			  AND	 ORA.EOMGGTMGNO   = GT.GTMGNO "
+								+ " 			  AND   TC.TCSEARCHGUBUN = 'E' "
+								+ " 			  AND	 ORA.EOMGNO			 = :EOMGNO "
+								+ " 		 ) VE "
+								+ " 		 LEFT JOIN TRAININGPASS	TPS "
+								+ " 		  ON VE.EJTJMGNO = TPS.TPTJMGNO ";
+					if (EOHJUBSUNO != "")	{
+						insertQuery += " WHERE VE.EOHJUBSUNO	= '" + EOHJUBSUNO + "'";
+				  }			
+				  if (EJPERSONNM != "")	{
+						insertQuery += " WHERE VE.TJPERSONNM	like '" + EJPERSONNM + "%'";
+				  }
+  insertQuery += "	 ORDER BY VE.EOHJUBSUNO ";
+			   
+			ExecuteQuery(insertQuery, "output");
+}
+]]></source>
+</class2>

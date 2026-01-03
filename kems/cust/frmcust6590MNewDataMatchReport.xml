@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="192" Id="frmcust6590MNewDataMatchReport" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="신규대상연계현황" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="516" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioExcept">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>포함</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>미포함</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioOrder">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>대상물명(청),&#32;소방관서(청)</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>소방관서(청),&#32;대상물명(청)</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>대상물명(안전원),&#32;지역(안전원)</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>지역(안전원),&#32;대상물명(안전원)</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioChoiceYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>선택</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioReport">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>일별&#32;집계</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>일별&#32;리스트</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oFireStation">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTCD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oDATA">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioFireStation">
+				<Contents>
+					<colinfo id="BID" size="256" summ="default" type="STRING"/>
+					<colinfo id="SID" size="256" summ="default" type="STRING"/>
+					<colinfo id="CID" size="256" summ="default" type="STRING"/>
+					<colinfo id="GMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SNM&#32;" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioStatus">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>0</CD>
+						<DATA>기존대상일치화</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>신규대상연계</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioYear">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>소방안전관리자</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>위험물안전관리자</DATA>
+					</record>
+					<record>
+						<CD>5</CD>
+						<DATA>소방기술자</DATA>
+					</record>
+					<record>
+						<CD>8</CD>
+						<DATA>위험물운송자</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="184" Height="115" Id="Shape0" Left="4" LineColor="user15" Right="510" TabOrder="7" Top="69" Type="Rectangle" Width="506"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="6" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="272">
+			<Contents></Contents>
+		</Div>
+		<Static Align="Center" Height="20" Id="Static1" Left="15" Style="sty_LabelGruopBox" TabOrder="8" Text="조회&#32;조건" Top="64" VAlign="Middle" Width="112"></Static>
+		<Shape Bottom="53" Height="52" Id="shpBtnBox" Left="322" LineColor="user14" Right="500" TabOrder="9" Top="1" Type="Rectangle" Width="178"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="412" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="412" OnClick="lfn_Excel" Style="sty_Button" TabOrder="4" ToolTipText="엑셀로&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="325" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="1" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="325" OnClick="lfn_Print" Style="sty_Button" TabOrder="3" ToolTipText="출력" Top="28" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbMemberGubun" Left="5" Style="sty_Label" TabOrder="10" Text="직&#32;능" Top="127" VAlign="Middle" Width="122"></Static>
+		<Combo BindDataset="ds_ioCourse" Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_ioCourse" Left="133" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="5" Top="127" UserData="S" Width="121"></Combo>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calStartDate" Left="133" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="11" Top="157" UserData="S" WeeksFont="돋음,9" Width="100"></Calendar>
+		<Static Align="Center" Height="20" Id="Static17" Left="233" Style="sty_Text" TabOrder="13" Text="~" Top="157" VAlign="Middle" Width="20"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calEndDate" Left="254" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="12" Top="157" UserData="S" WeeksFont="돋음,9" Width="100"></Calendar>
+		<Static Align="Center" Height="20" Id="Static3" Left="5" Style="sty_Label" TabOrder="14" Text="신규등록일자" Top="157" VAlign="Middle" Width="122"></Static>
+		<Static Align="Center" Height="20" Id="Static0" Left="5" Style="sty_Label" TabOrder="16" Text="지&#32;부" Top="95" VAlign="Middle" Width="122"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="133" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="15" Top="95" UserData="S" Width="121"></Combo>
+		<Grid AutoEnter="TRUE" BindDataset="ds_oDATA" BkColor2="default" BoldHead="true" Bottom="544" Editable="TRUE" Enable="true" EndLineColor="default" Height="280" Id="gdList1" InputPanel="FALSE" LineColor="default" Right="759" TabOrder="17" TabStop="true" Top="264" TopSummary="TRUE" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="759">
+			<contents>
+				<format id="firestation_1">
+					<columns>
+						<col width="91"/>
+						<col width="65"/>
+						<col width="43"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell bkcolor="skyblue" col="0" colspan="9" display="text"/>
+						<cell bkcolor="skyblue" col="0" display="text" row="1"/>
+						<cell bkcolor="skyblue" col="1" colspan="2" display="text" row="1" text="구&#32;&#32;분"/>
+						<cell bkcolor="skyblue" col="3" display="text" row="1" text="총&#32;계"/>
+						<cell bkcolor="skyblue" col="4" display="text" row="1" text="1급소관"/>
+						<cell bkcolor="skyblue" col="5" display="text" row="1" text="2급소관"/>
+						<cell bkcolor="skyblue" col="6" display="text" row="1" text="공공1급"/>
+						<cell bkcolor="skyblue" col="7" display="text" row="1" text="공공2급"/>
+						<cell bkcolor="skyblue" col="8" display="text" row="1" text="일반대상"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor2="user8" col="0" colid="NM" display="text" edit="normal" rowspan="5"/>
+						<cell align="center" bkcolor2="user8" col="1" colspan="2" display="normal" text="계"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="SUM_TOT" display="number" edit="normal"/>
+						<cell align="right" bkcolor2="user8" col="4" colid="SUM_1" display="number"/>
+						<cell align="right" bkcolor2="user8" col="5" colid="SUM_2" display="number"/>
+						<cell align="right" bkcolor2="user8" col="6" colid="SUM_3" display="number"/>
+						<cell align="right" bkcolor2="user8" col="7" colid="SUM_4" display="number"/>
+						<cell align="right" bkcolor2="user8" col="8" colid="SUM_5" display="number"/>
+						<cell align="center" bkcolor2="user8" col="1" display="normal" row="1" rowspan="2" text="일치완료"/>
+						<cell align="center" bkcolor2="user8" col="2" display="normal" row="1" text="기존"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="OM_TOT" display="number" row="1"/>
+						<cell align="right" bkcolor2="user8" col="4" colid="OM_1" display="number" row="1"/>
+						<cell align="right" bkcolor2="user8" col="5" colid="OM_2" display="number" row="1"/>
+						<cell align="right" bkcolor2="user8" col="6" colid="OM_3" display="number" row="1"/>
+						<cell align="right" bkcolor2="user8" col="7" colid="OM_4" display="number" row="1"/>
+						<cell align="right" bkcolor2="user8" col="8" colid="OM_5" display="number" row="1"/>
+						<cell align="center" bkcolor2="user8" col="2" display="normal" row="2" text="신규"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="NM_TOT" display="number" row="2"/>
+						<cell align="right" bkcolor2="user8" col="4" colid="NM_1" display="number" row="2"/>
+						<cell align="right" bkcolor2="user8" col="5" colid="NM_2" display="number" row="2"/>
+						<cell align="right" bkcolor2="user8" col="6" colid="NM_3" display="number" row="2"/>
+						<cell align="right" bkcolor2="user8" col="7" colid="NM_4" display="number" row="2"/>
+						<cell align="right" bkcolor2="user8" col="8" colid="NM_5" display="number" row="2"/>
+						<cell align="center" bkcolor2="user8" col="1" colspan="2" display="normal" row="3" text="연계제외"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="EX_TOT" display="number" row="3"/>
+						<cell align="right" bkcolor2="user8" col="4" colid="EX_1" display="number" row="3"/>
+						<cell align="right" bkcolor2="user8" col="5" colid="EX_2" display="number" row="3"/>
+						<cell align="right" bkcolor2="user8" col="6" colid="EX_3" display="number" row="3"/>
+						<cell align="right" bkcolor2="user8" col="7" colid="EX_4" display="number" row="3"/>
+						<cell align="right" bkcolor2="user8" col="8" display="number" row="3" text="0"/>
+						<cell align="center" bkcolor2="user8" col="1" colspan="2" display="normal" row="4" text="미처리"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="NOT_TOT" display="number" row="4"/>
+						<cell align="right" bkcolor2="user8" col="4" colid="NOT_1" display="number" row="4"/>
+						<cell align="right" bkcolor2="user8" col="5" colid="NOT_2" display="number" row="4"/>
+						<cell align="right" bkcolor2="user8" col="6" colid="NOT_3" display="number" row="4"/>
+						<cell align="right" bkcolor2="user8" col="7" colid="NOT_4" display="number" row="4"/>
+						<cell align="right" bkcolor2="user8" col="8" display="number" row="4" text="0"/>
+					</body>
+					<summary>
+						<cell align="center" bkcolor="user4" col="0" display="text" rowspan="5" text="총&#32;계"/>
+						<cell align="center" bkcolor="user4" col="1" colspan="2" display="normal" text="계"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;SUM_TOT&apos;)"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;SUM_1&apos;)"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;SUM_2&apos;)"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;SUM_3&apos;)"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="SUM(&apos;SUM_4&apos;)"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;SUM_5&apos;)"/>
+						<cell align="center" bkcolor="user4" col="1" display="normal" row="1" rowspan="2" text="일치완료"/>
+						<cell align="center" bkcolor="user4" col="2" display="normal" row="1" text="기존"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;OM_TOT&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;OM_1&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;OM_2&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;OM_3&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="SUM(&apos;OM_4&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;OM_5&apos;)" row="1"/>
+						<cell align="center" bkcolor="user4" col="2" display="normal" row="2" text="신규"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;NM_TOT&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;NM_1&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;NM_2&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;NM_3&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="SUM(&apos;NM_4&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;NM_5&apos;)" row="2"/>
+						<cell align="center" bkcolor="user4" col="1" colspan="2" display="normal" row="3" text="연계제외"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;EX_TOT&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;EX_1&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;EX_2&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;EX_3&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="SUM(&apos;EX_4&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" row="3" text="0"/>
+						<cell align="center" bkcolor="user4" col="1" colspan="2" display="normal" row="4" text="미처리"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;NOT_TOT&apos;)" row="4"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;NOT_1&apos;)" row="4"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;NOT_2&apos;)" row="4"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;NOT_3&apos;)" row="4"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="SUM(&apos;NOT_4&apos;)" row="4"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" row="4" text="0"/>
+					</summary>
+				</format>
+				<format id="firestation_3">
+					<columns>
+						<col width="91"/>
+						<col width="65"/>
+						<col width="43"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="110"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell bkcolor="skyblue" col="0" colspan="9" display="text"/>
+						<cell bkcolor="skyblue" col="0" display="text" row="1"/>
+						<cell bkcolor="skyblue" col="1" colspan="2" display="text" row="1" text="구&#32;&#32;분"/>
+						<cell bkcolor="skyblue" col="3" display="text" row="1" text="총&#32;계"/>
+						<cell bkcolor="skyblue" col="4" display="text" row="1" text="제조소"/>
+						<cell bkcolor="skyblue" col="5" display="text" row="1" text="주유/판매취급소"/>
+						<cell bkcolor="skyblue" col="6" display="text" row="1" text="이동취급소"/>
+						<cell bkcolor="skyblue" col="7" display="text" row="1" text="일반취급소"/>
+						<cell bkcolor="skyblue" col="8" display="text" row="1" text="저장소"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor2="user8" col="0" colid="NM" display="text" edit="normal" rowspan="5"/>
+						<cell align="center" bkcolor2="user8" col="1" colspan="2" display="normal" text="신규대상"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="SUM_TOT" display="number" edit="normal"/>
+						<cell align="right" bkcolor2="user8" col="4" colid="SUM_1" display="number"/>
+						<cell align="right" bkcolor2="user8" col="5" colid="SUM_2" display="number"/>
+						<cell align="right" bkcolor2="user8" col="6" colid="SUM_3" display="number"/>
+						<cell align="right" bkcolor2="user8" col="7" colid="SUM_4" display="number"/>
+						<cell align="right" bkcolor2="user8" col="8" colid="SUM_5" display="number"/>
+						<cell align="center" bkcolor2="user8" col="1" display="normal" row="1" rowspan="2" text="일치완료"/>
+						<cell align="center" bkcolor2="user8" col="2" display="normal" row="1" text="기존"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="OM_TOT" display="number" row="1"/>
+						<cell align="right" bkcolor2="user8" col="4" colid="OM_1" display="number" row="1"/>
+						<cell align="right" bkcolor2="user8" col="5" colid="OM_2" display="number" row="1"/>
+						<cell align="right" bkcolor2="user8" col="6" colid="OM_3" display="number" row="1"/>
+						<cell align="right" bkcolor2="user8" col="7" colid="OM_4" display="number" row="1"/>
+						<cell align="right" bkcolor2="user8" col="8" colid="OM_5" display="number" row="1"/>
+						<cell align="center" bkcolor2="user8" col="2" display="normal" row="2" text="신규"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="NM_TOT" display="number" row="2"/>
+						<cell align="right" bkcolor2="user8" col="4" colid="NM_1" display="number" row="2"/>
+						<cell align="right" bkcolor2="user8" col="5" colid="NM_2" display="number" row="2"/>
+						<cell align="right" bkcolor2="user8" col="6" colid="NM_3" display="number" row="2"/>
+						<cell align="right" bkcolor2="user8" col="7" colid="NM_4" display="number" row="2"/>
+						<cell align="right" bkcolor2="user8" col="8" colid="NM_5" display="number" row="2"/>
+						<cell align="center" bkcolor2="user8" col="1" colspan="2" display="normal" row="3" text="연계제외"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="EX_TOT" display="number" row="3"/>
+						<cell align="right" bkcolor2="user8" col="4" colid="EX_1" display="number" row="3"/>
+						<cell align="right" bkcolor2="user8" col="5" colid="EX_2" display="number" row="3"/>
+						<cell align="right" bkcolor2="user8" col="6" colid="EX_3" display="number" row="3"/>
+						<cell align="right" bkcolor2="user8" col="7" colid="EX_4" display="number" row="3"/>
+						<cell align="right" bkcolor2="user8" col="8" colid="EX_5" display="number" row="3"/>
+						<cell align="center" bkcolor2="user8" col="1" colspan="2" display="normal" row="4" text="미처리"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="NOT_TOT" display="number" row="4"/>
+						<cell align="right" bkcolor2="user8" col="4" colid="NOT_1" display="number" row="4"/>
+						<cell align="right" bkcolor2="user8" col="5" colid="NOT_2" display="number" row="4"/>
+						<cell align="right" bkcolor2="user8" col="6" colid="NOT_3" display="number" row="4"/>
+						<cell align="right" bkcolor2="user8" col="7" colid="NOT_4" display="number" row="4"/>
+						<cell align="right" bkcolor2="user8" col="8" colid="NOT_5" display="number" row="4"/>
+					</body>
+					<summary>
+						<cell align="center" bkcolor="user4" col="0" display="text" rowspan="5" text="총&#32;계"/>
+						<cell align="center" bkcolor="user4" col="1" colspan="2" display="normal" text="신규대상"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;SUM_TOT&apos;)"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;SUM_1&apos;)"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;SUM_2&apos;)"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;SUM_3&apos;)"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="SUM(&apos;SUM_4&apos;)"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;SUM_5&apos;)"/>
+						<cell align="center" bkcolor="user4" col="1" display="normal" row="1" rowspan="2" text="일치완료"/>
+						<cell align="center" bkcolor="user4" col="2" display="normal" row="1" text="기존"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;OM_TOT&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;OM_1&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;OM_2&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;OM_3&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="SUM(&apos;OM_4&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;OM_5&apos;)" row="1"/>
+						<cell align="center" bkcolor="user4" col="2" display="normal" row="2" text="신규"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;NM_TOT&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;NM_1&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;NM_2&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;NM_3&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="SUM(&apos;NM_4&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;NM_5&apos;)" row="2"/>
+						<cell align="center" bkcolor="user4" col="1" colspan="2" display="normal" row="3" text="연계제외"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;EX_TOT&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;EX_1&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;EX_2&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;EX_3&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="SUM(&apos;EX_4&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;EX_5&apos;)" row="3" text="0"/>
+						<cell align="center" bkcolor="user4" col="1" colspan="2" display="normal" row="4" text="미처리"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;NOT_TOT&apos;)" row="4"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;NOT_1&apos;)" row="4"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;NOT_2&apos;)" row="4"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;NOT_3&apos;)" row="4"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="SUM(&apos;NOT_4&apos;)" row="4"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;NOT_5&apos;)" row="4" text="0"/>
+					</summary>
+				</format>
+				<format id="firestation_5">
+					<columns>
+						<col width="91"/>
+						<col width="65"/>
+						<col width="43"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="110"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell bkcolor="skyblue" col="0" colspan="10" display="text"/>
+						<cell bkcolor="skyblue" col="0" display="text" row="1"/>
+						<cell bkcolor="skyblue" col="1" colspan="2" display="text" row="1" text="구&#32;&#32;분"/>
+						<cell bkcolor="skyblue" col="3" display="text" row="1" text="총&#32;계"/>
+						<cell bkcolor="skyblue" col="4" display="text" row="1" text="소방시설관리업"/>
+						<cell bkcolor="skyblue" col="5" display="text" row="1" text="방염업"/>
+						<cell bkcolor="skyblue" col="6" display="text" row="1" text="소방시설감리업"/>
+						<cell bkcolor="skyblue" col="7" display="text" row="1" text="소방시설공사업"/>
+						<cell bkcolor="skyblue" col="8" display="text" row="1" text="소방시설설계업"/>
+						<cell bkcolor="skyblue" col="9" display="text" row="1" text="안전관리대행업"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor2="user8" col="0" colid="NM" display="text" edit="normal" rowspan="5"/>
+						<cell align="center" bkcolor2="user8" col="1" colspan="2" display="normal" text="신규대상"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="SUM_TOT" display="number" edit="normal"/>
+						<cell align="right" bkcolor2="user8" col="4" colid="SUM_1" display="number"/>
+						<cell align="right" bkcolor2="user8" col="5" colid="SUM_2" display="number"/>
+						<cell align="right" bkcolor2="user8" col="6" colid="SUM_3" display="number"/>
+						<cell align="right" bkcolor2="user8" col="7" colid="SUM_4" display="number"/>
+						<cell align="right" bkcolor2="user8" col="8" colid="SUM_5" display="number"/>
+						<cell align="right" bkcolor2="user8" col="9" colid="SUM_6" display="number"/>
+						<cell align="center" bkcolor2="user8" col="1" display="normal" row="1" rowspan="2" text="일치완료"/>
+						<cell align="center" bkcolor2="user8" col="2" display="normal" row="1" text="기존"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="OM_TOT" display="number" row="1"/>
+						<cell align="right" bkcolor2="user8" col="4" colid="OM_1" display="number" row="1"/>
+						<cell align="right" bkcolor2="user8" col="5" colid="OM_2" display="number" row="1"/>
+						<cell align="right" bkcolor2="user8" col="6" colid="OM_3" display="number" row="1"/>
+						<cell align="right" bkcolor2="user8" col="7" colid="OM_4" display="number" row="1"/>
+						<cell align="right" bkcolor2="user8" col="8" colid="OM_5" display="number" row="1"/>
+						<cell align="right" bkcolor2="user8" col="9" colid="OM_6" display="number" row="1"/>
+						<cell align="center" bkcolor2="user8" col="2" display="normal" row="2" text="신규"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="NM_TOT" display="number" row="2"/>
+						<cell align="right" bkcolor2="user8" col="4" colid="NM_1" display="number" row="2"/>
+						<cell align="right" bkcolor2="user8" col="5" colid="NM_2" display="number" row="2"/>
+						<cell align="right" bkcolor2="user8" col="6" colid="NM_3" display="number" row="2"/>
+						<cell align="right" bkcolor2="user8" col="7" colid="NM_4" display="number" row="2"/>
+						<cell align="right" bkcolor2="user8" col="8" colid="NM_5" display="number" row="2"/>
+						<cell align="right" bkcolor2="user8" col="9" colid="NM_6" display="number" row="2"/>
+						<cell align="center" bkcolor2="user8" col="1" colspan="2" display="normal" row="3" text="연계제외"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="EX_TOT" display="number" row="3"/>
+						<cell align="right" bkcolor2="user8" col="4" colid="EX_1" display="number" row="3"/>
+						<cell align="right" bkcolor2="user8" col="5" colid="EX_2" display="number" row="3"/>
+						<cell align="right" bkcolor2="user8" col="6" colid="EX_3" display="number" row="3"/>
+						<cell align="right" bkcolor2="user8" col="7" colid="EX_4" display="number" row="3"/>
+						<cell align="right" bkcolor2="user8" col="8" colid="EX_5" display="number" row="3"/>
+						<cell align="right" bkcolor2="user8" col="9" colid="EX_6" display="number" row="3"/>
+						<cell align="center" bkcolor2="user8" col="1" colspan="2" display="normal" row="4" text="미처리"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="NOT_TOT" display="number" row="4"/>
+						<cell align="right" bkcolor2="user8" col="4" colid="NOT_1" display="number" row="4"/>
+						<cell align="right" bkcolor2="user8" col="5" colid="NOT_2" display="number" row="4"/>
+						<cell align="right" bkcolor2="user8" col="6" colid="NOT_3" display="number" row="4"/>
+						<cell align="right" bkcolor2="user8" col="7" colid="NOT_4" display="number" row="4"/>
+						<cell align="right" bkcolor2="user8" col="8" colid="NOT_5" display="number" row="4"/>
+						<cell align="right" bkcolor2="user8" col="9" colid="NOT_6" display="number" row="4"/>
+					</body>
+					<summary>
+						<cell align="center" bkcolor="user4" col="0" display="text" rowspan="5" text="총&#32;계"/>
+						<cell align="center" bkcolor="user4" col="1" colspan="2" display="normal" text="신규대상"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;SUM_TOT&apos;)"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;SUM_1&apos;)"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;SUM_2&apos;)"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;SUM_3&apos;)"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="SUM(&apos;SUM_4&apos;)"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;SUM_5&apos;)"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;SUM_6&apos;)"/>
+						<cell align="center" bkcolor="user4" col="1" display="normal" row="1" rowspan="2" text="일치완료"/>
+						<cell align="center" bkcolor="user4" col="2" display="normal" row="1" text="기존"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;OM_TOT&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;OM_1&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;OM_2&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;OM_3&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="SUM(&apos;OM_4&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;OM_5&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;OM_6&apos;)" row="1"/>
+						<cell align="center" bkcolor="user4" col="2" display="normal" row="2" text="신규"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;NM_TOT&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;NM_1&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;NM_2&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;NM_3&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="SUM(&apos;NM_4&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;NM_5&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;NM_6&apos;)" row="2"/>
+						<cell align="center" bkcolor="user4" col="1" colspan="2" display="normal" row="3" text="연계제외"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;EX_TOT&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;EX_1&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;EX_2&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;EX_3&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="SUM(&apos;EX_4&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;EX_5&apos;)" row="3" text="0"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;EX_6&apos;)" row="3" text="0"/>
+						<cell align="center" bkcolor="user4" col="1" colspan="2" display="normal" row="4" text="미처리"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;NOT_TOT&apos;)" row="4"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="SUM(&apos;NOT_1&apos;)" row="4"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;NOT_2&apos;)" row="4"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;NOT_3&apos;)" row="4"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="SUM(&apos;NOT_4&apos;)" row="4"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;NOT_5&apos;)" row="4" text="0"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;NOT_6&apos;)" row="4" text="0"/>
+					</summary>
+				</format>
+				<format id="firestation_8">
+					<columns>
+						<col width="91"/>
+						<col width="65"/>
+						<col width="43"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell bkcolor="skyblue" col="0" colspan="4" display="text"/>
+						<cell bkcolor="skyblue" col="0" display="text" row="1"/>
+						<cell bkcolor="skyblue" col="1" colspan="2" display="text" row="1" text="구&#32;&#32;분"/>
+						<cell bkcolor="skyblue" col="3" display="text" row="1" text="계"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor2="user8" col="0" colid="NM" display="text" edit="normal" rowspan="5"/>
+						<cell align="center" bkcolor2="user8" col="1" colspan="2" display="normal" text="신규대상"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="SUM_TOT" display="number" edit="normal"/>
+						<cell align="center" bkcolor2="user8" col="1" display="normal" row="1" rowspan="2" text="일치완료"/>
+						<cell align="center" bkcolor2="user8" col="2" display="normal" row="1" text="기존"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="OM_TOT" display="number" row="1"/>
+						<cell align="center" bkcolor2="user8" col="2" display="normal" row="2" text="신규"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="NM_TOT" display="number" row="2"/>
+						<cell align="center" bkcolor2="user8" col="1" colspan="2" display="normal" row="3" text="연계제외"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="EX_TOT" display="number" row="3"/>
+						<cell align="center" bkcolor2="user8" col="1" colspan="2" display="normal" row="4" text="미처리"/>
+						<cell align="right" bkcolor2="user8" col="3" colid="NOT_TOT" display="number" row="4"/>
+					</body>
+					<summary>
+						<cell align="center" bkcolor="user4" col="0" display="text" rowspan="5" text="총&#32;계"/>
+						<cell align="center" bkcolor="user4" col="1" colspan="2" display="normal" text="신규대상"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;SUM_TOT&apos;)"/>
+						<cell align="center" bkcolor="user4" col="1" display="normal" row="1" rowspan="2" text="일치완료"/>
+						<cell align="center" bkcolor="user4" col="2" display="normal" row="1" text="기존"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;OM_TOT&apos;)" row="1"/>
+						<cell align="center" bkcolor="user4" col="2" display="normal" row="2" text="신규"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;NM_TOT&apos;)" row="2"/>
+						<cell align="center" bkcolor="user4" col="1" colspan="2" display="normal" row="3" text="연계제외"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;EX_TOT&apos;)" row="3"/>
+						<cell align="center" bkcolor="user4" col="1" colspan="2" display="normal" row="4" text="미처리"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;NOT_TOT&apos;)" row="4"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[#include "LIB::cust.js"; // 공통업무 관련
+
+
+function Form_OnLoadCompleted(obj) {
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+	
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") {            // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true);           // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false);          // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+	
+	// 지부 
+    var adminGubun = gds_oUserInfo.GetColumn(0, "ADMINGUBUN");
+    var deptCD     = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+    if (adminGubun == "BM" || adminGubun == "SM" || adminGubun == "PM") {  // 관리자 : 전체 지부 
+		gfn_SearchAllJibu(cbxJibu, "Y","전체");
+	}
+	else if (SubStr(deptCD,0,1) == "1") {            // 지부 : 해당지부만 
+	    // 지부 
+        var nRow = ds_oJibu.AddRow();
+        ds_oJibu.SetColumn(nRow, "CD", deptCD);
+        ds_oJibu.SetColumn(nRow, "DATA", gds_oUserInfo.GetColumn(0, "PDEPTNM"));	
+		ds_oJibu.row = 0;
+		cbxJibu.Value = gds_oUserInfo.GetColumn(0, "PDEPTNM");
+		cbxJibu.Index = 0;
+	}
+	else {
+        gfn_Alert(MSGI00080);
+        close();
+	}
+	
+
+	// 처리일자 초기화
+	calStartDate.Value = left(GetDate(), 6)+"01";
+	calEndDate.Value = left(GetDate(), 8);
+		
+	// 24.01  직능에서 위험물운송자 완전삭제, 소방기술자는 임시로 안보이기 삭제(추후 만들것임)
+	for(var i=ds_ioCourse.GetRowCount()-1; i>0; i--) {
+		if ((ds_ioCourse.GetColumn(i, "CD") == "5") ||
+		    (ds_ioCourse.GetColumn(i, "CD") == "8"))
+		ds_ioCourse.DeleteRow(i);
+	}
+	
+}
+
+
+function Form_OnSize(obj,nCx,nCy,nState) {
+    if (gs_IsResizingForm == "Y") { }
+}
+
+
+//초기화
+function lfn_Cancel(obj) {
+    lfn_CancelL(obj);
+}
+
+function lfn_CancelL(obj) {
+    radExcept.Index=1;
+}
+
+
+function lfn_ChkDate(obj) {
+	var reVal = true;
+	if (gfn_IsNull(calStartDate.Value) || Length(calStartDate.Value) != 8) {
+		alert("신규등록일자를 입력해주세요");
+		calStartDate.SetFocus();
+		reVal = false;
+	}
+	
+	if (gfn_IsNull(calEndDate.Value) || Length(calEndDate.Value) != 8) {
+		alert("신규등록일자를 입력해주세요");
+		calEndDate.SetFocus();	
+		reVal = false;
+	}
+	
+	return reVal;
+}
+
+/***  조회 조건 변경  ***/
+
+
+
+// -끝-
+
+
+
+
+
+/***   기능 : 출력   ***/
+function lfn_Print(obj){
+
+	// 신규 등록 일자 체크 
+	if (!lfn_ChkDate()) {
+		return;
+	}
+	
+    lfn_Search();
+    
+    course = "";
+    if (ds_oDATA.GetCount() < 1) {
+        gfn_Alert("출력할 데이터가 없습니다.");
+        return false;
+    }
+
+    var rpt = "";
+    var params = "";
+    var params2 = "";
+    var params3 = "";
+    var sTopMargin = "";
+    var sLeftMargin = "";
+
+        
+	rpt = "frmcust6590NewDataMatch_" + cbxCourse.Value + ".rex";
+	
+	if (cbxCourse.Value == "8") { 
+		sTopMargin = "100";
+		sLeftMargin = "200";
+	}
+	
+	if (cbxCourse.Value == "1") {
+		params = "(소방안전관리자) 신규대상 연계현황"; 
+	} else if (cbxCourse.Value == "3") {
+		params = "(위험물안전관리자) 신규대상 연계현황"; 
+	} else if (cbxCourse.Value == "5") {
+		params = "(소방기술자) 신규대상 연계현황"; 
+	} else if (cbxCourse.Value == "8") {
+		params = "(위험물운송자) 신규대상 연계현황"; 
+	}
+	
+	
+	if (gfn_IsNull(cbxJibu.Value)) {
+		params2 = "지부";
+	} else {
+		params2 = "지역";
+	}
+	
+	var StartDate = substr(calStartDate.Value,0,4) + "." + substr(calStartDate.Value,4,2) + "." + substr(calStartDate.Value,6,2);
+    var EndDate = substr(calEndDate.Value,0,4) + "." + substr(calEndDate.Value,4,2) + "." + substr(calEndDate.Value,6,2);
+    params3 = "신규등록일자 : "+ StartDate + " ~ " + EndDate;
+    
+    params = "rd_TITLE=" + quote(params) + "^s_TITLE=" + quote(params2)+ "^DATE=" + quote(params3); 
+    
+    
+	/*
+	 * 기능 : 렉스퍼트 보고서를 팝업화면으로 호출한다.
+	 * parameter : sReportName - 레포트명(예:레포트.rex)
+	 *             sReportDataset - 데이터셋명(예:dsReport1||dsResport2||...)
+	 *             sReportParams - 렉스퍼트용 파라메터(예: a에 1, b에 2, c에 3의 값을 넣는 경우, a=1^b=2^c=3...)
+	 *             bLcsYn - 수첩여부
+	 *             LeftMargin = 왼쪽
+	 *             RightMargin = 오른쪽
+	 *             TopMargin = 상단
+	 *             BottomMargin = 하단
+	 * return value : 정상출력 true, 출력 안했으면 false
+	 */    
+	 
+    //gfn_CallReportPopup(rpt, "ds_oDATA", params);
+    gfn_CallReportPopup(rpt, "ds_oDATA", params, '', '', sTopMargin, sLeftMargin);
+}
+
+
+
+
+function lfn_Search(obj) {
+
+    SetWaitCursor(false);  
+    ds_oDATA.ClearData(); // 데이타셋 초기화
+    
+    tit_clearActionInfo();    
+   
+    if (gfn_IsNull(cbxJibu.Value)) {
+		tit_addCsvSearchActionInfo("cust:searchCust6590NewDataMatch", false);
+    } else {
+		tit_addCsvSearchActionInfo("cust:searchCust6590NewDataMatchJibu", false);
+    }
+    
+    
+	// 서버 호출 
+	tit_callService(
+         "",""
+		,""	// inDs
+		,"ds_oDATA=ds_oDATA"	// outDs
+		,     " COURSE=" + quote(cbxCourse.Value)
+	    	+ " JIBU=" + quote(cbxJibu.value)
+            + " SDATE="  + quote(calStartDate.value + "000000") 
+            + " EDATE="  + quote(calEndDate.value + "235959")
+		, "lfn_AfterSearch"
+		, false		, false  // 처리중 창 보여주기 (null or false : 보여줌) 
+		, true); 
+		   
+}
+
+function lfn_AfterSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);     
+        course = "";
+        return;
+    }
+}
+
+
+
+
+
+
+
+/***  엑셀   ***/
+function lfn_Excel(obj) {	
+    lfn_ExcelL(obj);
+}
+
+function lfn_ExcelL(obj)
+{	
+	// 신규 등록 일자 체크 
+	if (!lfn_ChkDate()) {
+		return;
+	}
+	
+    lfn_Search();
+
+	if(ds_oDATA.rowcount == 0){
+		alert("데이터가 없습니다.");
+		return;
+	}
+	
+    gdList1.Format = "";
+
+   
+	gdList1.Format = "firestation_" + cbxCourse.Value;
+	
+	
+	if (cbxCourse.Value == "1") {
+		gdList1.SetCellProp("head",0,"text","(소방안전관리자) 신규대상 연계현황"); 
+	} else if (cbxCourse.Value == "3") {
+		gdList1.SetCellProp("head",0,"text","(위험물안전관리자) 신규대상 연계현황"); 
+	} else if (cbxCourse.Value == "5") {
+		gdList1.SetCellProp("head",0,"text","(소방기술자) 신규대상 연계현황"); 
+	} else if (cbxCourse.Value == "8") {
+		gdList1.SetCellProp("head",0,"text","(위험물운송자) 신규대상 연계현황"); 
+	}
+	
+	
+	if (gfn_IsNull(cbxJibu.Value)) {
+		gdList1.SetCellProp("head",1,"text","지부");    
+	} else {
+		gdList1.SetCellProp("head",1,"text","지역");    
+	}
+    
+	gdList1.ExportExcelEx("sheet1");
+
+}
+/***  엑셀 출력 끝  ***/
+
+]]></Script>
+</Window>

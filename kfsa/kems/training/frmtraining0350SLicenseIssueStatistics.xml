@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="22" Id="frmtraining0280S05PassDiplomaPrint" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="전자교부대장/전자재교부대장" Top="8" Ver="1.0" Width="336" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oExamPassYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>Y</CD>
+						<DATA>합격</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>불합격</DATA>
+					</record>
+					<record>
+						<CD>S</CD>
+						<DATA>미응시</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radExamPassYn" INDEX="0" InnerDataset="ds_oExamPassYn" Left="36" Style="sty_Radio" TabOrder="1" Width="300"></Radio>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edTrainingOrder2" ImeMode="native" LeftMargin="2" MaxLength="3" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="lfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="2" UserData="S:회차" Width="28"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0280S05PassDiplomaPrint.xml
+ * 설명 : 수료현황(수료증및참가증출력)
+ * 작성일 : 2009.08.24
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+function Form_OnLoadCompleted(obj) {
+
+}
+
+function lfn_ComponentOnKillFocus(obj)
+{
+	gfn_ComponentOnKillFocus(obj);
+	obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3));  
+}
+]]></Script>
+</Window>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="500" Id="frmCOM1500PWebBrowserView" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="웹브라우져보기팝업" TooltipFont="Default,0" Top="8" Ver="1.0" Width="700" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oEducationPlace">
+				<Contents>
+					<colinfo id="CREATE_DATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="CREATE_ID" size="20" summ="default" type="STRING"/>
+					<colinfo id="JJIBUCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="MODIFY_DATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="MODIFY_ID" size="20" summ="default" type="STRING"/>
+					<colinfo id="ZBUNJI" size="30" summ="default" type="STRING"/>
+					<colinfo id="SIKUDONG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZHO" size="30" summ="default" type="STRING"/>
+					<colinfo id="ZREGIONCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="ZSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="ZZIPCD" size="6" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="600" LineColor="user14" Right="694" TabOrder="61" Top="1" Type="Rectangle" Width="94"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="605" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<MSIE Bottom="496" Height="463" Id="AxMsie" Left="5" Right="696" Top="33" Width="691"></MSIE>
+	</Form>
+	<Script><![CDATA[/*
+ * 교육장약도명 : frmCOM1500PWebBrowserView.xml
+ * 설명 : 웹브라우져보기팝업
+ * 작성일 : 2012.03.12
+ * 작성자 : 정현호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (IsExistVar("sURL")) {
+
+      	var rtn = AxMsie.Navigate2(sURL, ,"_self", "", "");
+      	
+    }
+
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+    }
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 사용자 이벤트 함수 */
+function imgImage_OnLoadCompleted(obj) {
+    var arrXy = imgImage.GetImageSize();
+    window.Height = arrXy[1] + imgImage.Top + 4 + window.Height - this.Height;
+    window.Width = arrXy[0] + 12;
+
+    imgImage.Height = arrXy[1];
+    imgImage.Width = arrXy[0];
+
+    btnDownload.Left = arrXy[0] + 4 - btnDownload.Width - 2 - btnEnd.Width;
+    btnEnd.Left = arrXy[0] + 4 - btnEnd.Width;
+    shpBtnBox.Left = arrXy[0] + 4 - shpBtnBox.Width;
+}
+
+]]></Script>
+</Window>

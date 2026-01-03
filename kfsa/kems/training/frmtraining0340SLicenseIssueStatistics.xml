@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="22" Id="frmtraining0330SLicenseIssueStatistics" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="전자교부대장/전자재교부대장" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="660" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPrtGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>L</CD>
+						<DATA>수첩형</DATA>
+					</record>
+					<record>
+						<CD>P</CD>
+						<DATA>상장형</DATA>
+					</record>
+					<record>
+						<CD>NULL</CD>
+						<DATA>출력없음</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oStatusGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>폐기</DATA>
+					</record>
+					<record>
+						<CD>Y</CD>
+						<DATA>정상</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calDateStart" Left="280" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="1" UserData="S:수료일자" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Static Align="Center" Height="20" Id="lbDateWave3" Left="384" Style="sty_Text" TabOrder="3" Text="~" VAlign="Middle" Width="10"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calDateEnd" Left="400" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="2" UserData="S:수료일자" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="4" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="4" Top="-1" UserData="I" Width="88"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_oCourse" Left="94" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="5" Top="-1" UserData="S:직능" Width="182"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxPrtGubun" INDEX="0" InnerDataset="ds_oPrtGubun" Left="502" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="6" Top="-1" UserData="I" Width="72"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxStatusGubun" INDEX="0" InnerDataset="ds_oStatusGubun" Left="580" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="7" Top="-1" UserData="I" Width="72"></Combo>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0280S03PassDiplomaPrint.xml
+ * 설명 : 수료현황(수료증및참가증출력)
+ * 작성일 : 2009.08.24
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+function Form_OnLoadCompleted(obj) {
+    gfn_SearchJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회   
+    gfn_SearchTrainingCourse("L", ds_oCourse, "Y","전체"); // 직능 코드 조회
+    cbxCourse.Value = "22";
+    calDateStart.Value = substr(Getdate(),0,8);
+    calDateEnd.Value = substr(Getdate(),0,8);
+}
+]]></Script>
+</Window>

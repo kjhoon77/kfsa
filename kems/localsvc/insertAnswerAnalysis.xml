@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<svcdesc><![CDATA[문항분석]]></svcdesc>
+	<header><![CDATA[]]></header>
+	<dataset id="in_AnswerAnalysis" io="INPUT" reserved="NO"></dataset>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[function Run() {
+	
+	var errSql;
+	var deleteQuery;
+	var insertQuery;
+	
+	deleteQuery = "DELETE FROM ANSWERANALYSIS";
+	errSql = ExecuteSql(deleteQuery);
+	
+	for (var i = 0; i < in_AnswerAnalysis.getRowCount(); i++) {
+	
+		insertQuery = "INSERT INTO ANSWERANALYSIS ( "
+			+ "AAEOMGNO, AATCCOURSECD, AACAEPNUMTYPE, AACAEPALPHATYPE, AACAITEMNO, "
+			+ "AAREPEATNO, AACORRECTCNT, AAMARKINGCNT, AACORRECTPERCENT, "
+			+ "AA1CNT, AA2CNT, AA3CNT, AA4CNT, "
+			+ "AAEMPTYCNT, AADOUBLECNT, AAREGDATE, AAREGSABUN "
+			+ ") VALUES ( "
+			+ "'" + dsGetColumn(in_AnswerAnalysis, i, "AAEOMGNO")
+			+ "', '" + dsGetColumn(in_AnswerAnalysis, i, "AATCCOURSECD")
+			+ "', '" + dsGetColumn(in_AnswerAnalysis, i, "AACAEPNUMTYPE")
+			+ "', '" + dsGetColumn(in_AnswerAnalysis, i, "AACAEPALPHATYPE")
+			+ "', '" + dsGetColumn(in_AnswerAnalysis, i, "AACAITEMNO")
+			+ "', '" + dsGetColumn(in_AnswerAnalysis, i, "AAREPEATNO")
+			+ "', '" + dsGetColumn(in_AnswerAnalysis, i, "AACORRECTCNT")
+			+ "', '" + dsGetColumn(in_AnswerAnalysis, i, "AAMARKINGCNT")
+			+ "', '" + dsGetColumn(in_AnswerAnalysis, i, "AACORRECTPERCENT")
+			+ "', '" + dsGetColumn(in_AnswerAnalysis, i, "AA1CNT")
+			+ "', '" + dsGetColumn(in_AnswerAnalysis, i, "AA2CNT")
+			+ "', '" + dsGetColumn(in_AnswerAnalysis, i, "AA3CNT")
+			+ "', '" + dsGetColumn(in_AnswerAnalysis, i, "AA4CNT")
+			+ "', '" + dsGetColumn(in_AnswerAnalysis, i, "AAEMPTYCNT")
+			+ "', '" + dsGetColumn(in_AnswerAnalysis, i, "AADOUBLECNT")
+			+ "', '" + dsGetColumn(in_AnswerAnalysis, i, "AAREGDATE")
+			+ "', '" + dsGetColumn(in_AnswerAnalysis, i, "AAREGSABUN")
+			+ "')";
+
+		errSql = ExecuteSql(insertQuery);
+
+	}
+}
+
+function dsGetColumn(ds, row, colid) {
+	return ds.getcolumn(row, colid);
+}
+]]></source>
+</class2>

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="328" Id="frmcust4041MNewAddressChange" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="신주소변경" Top="8" Ver="1.0" Width="580" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioZipCode" OnRowPosChanged="ds_ioZipCode_OnRowPosChanged">
+				<Contents>
+					<colinfo id="CREATE_DATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="CREATE_ID" size="20" summ="default" type="STRING"/>
+					<colinfo id="JJIBUCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="MODIFY_DATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="MODIFY_ID" size="20" summ="default" type="STRING"/>
+					<colinfo id="ZBUNJI" size="30" summ="default" type="STRING"/>
+					<colinfo id="ZDONG" size="60" summ="default" type="STRING"/>
+					<colinfo id="ZHO" size="30" summ="default" type="STRING"/>
+					<colinfo id="ZKU" size="20" summ="default" type="STRING"/>
+					<colinfo id="ZREGIONCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="ZSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="ZSIDO" size="10" summ="default" type="STRING"/>
+					<colinfo id="ZZIPCD" size="6" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="324" Height="232" Id="Shape0" Left="4" LineColor="user15" Right="288" TabOrder="17" Top="92" Type="Rectangle" Width="284"></Shape>
+		<Shape Bottom="80" Height="40" Id="shpGubunBox1" Left="4" LineColor="user15" Right="576" TabOrder="15" Top="40" Type="Rectangle" Width="572"></Shape>
+		<Shape Bottom="28" Height="28" Id="Shape3" Left="312" LineColor="user14" Right="576" TabOrder="9" Top="0" Type="Rectangle" Width="264"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="8" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="196">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="489" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnZipcodeModify" ImageID="BTN_TEXT_COM" Left="314" OnClick="lfn_Save" Style="sty_Button" TabOrder="1" Text="신주소변경" ToolTipText="신주소변경" Top="3" Transparent="TRUE" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelectModify" ImageID="BTN_TEXT_COM" Left="402" OnClick="btnSelectModify_OnClick" Style="sty_Button" TabOrder="2" Text="해당자료변경" ToolTipText="선택" Top="3" Transparent="TRUE" Width="85"></Button>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Height="20" Id="medZipCode" Left="114" LeftMargin="2" Mask="###-###" OnFocus="gfn_ComponentOnFocus" OnKeyDown="lfn_SearchAddressPopup" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_ZipCode" TabOrder="4" Top="56" Type="STRING" UserData="S" Width="60"></MaskEdit>
+		<Static Align="Center" BKColor="blueviolet" Height="20" Id="lbAddr" Left="7" Style="sty_Label" TabOrder="11" Text="변&#32;경&#32;전" Top="56" VAlign="Middle" Width="104"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" DisableBKColor="user4" Enable="FALSE" Height="20" Id="edSido" ImeMode="native" Left="99" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edAddr1_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="10" Top="108" UserData="S" Width="184"></Edit>
+		<Static Align="Center" BKColor="brown" Height="20" Id="Static0" Left="296" Style="sty_Label" TabOrder="12" Text="변&#32;경&#32;후" Top="56" VAlign="Middle" Width="100"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="medZipCodeAfter" Left="399" LeftMargin="2" Mask="###-###" OnFocus="gfn_ComponentOnFocus" OnKeyDown="lfn_SearchAddressPopupAfter" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_ZipCodeReadOnly" TabOrder="5" Top="56" Type="STRING" UserData="S:우편번호" Width="60"></MaskEdit>
+		<Static Align="Center" Height="20" Id="Static3" Left="35" Style="sty_Label" TabOrder="13" Text="시&#32;/&#32;도" Top="108" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" DisableBKColor="user4" Enable="FALSE" Height="20" Id="edKu" ImeMode="native" Left="99" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edAddr1_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="14" Top="132" UserData="S" Width="184"></Edit>
+		<Static Align="Center" Height="20" Id="Static1" Left="20" Style="sty_LabelGruopBox" TabOrder="16" Text="우편번호" Top="32" VAlign="Middle" Width="104"></Static>
+		<Static Align="Center" Height="20" Id="Static2" Left="20" Style="sty_LabelGruopBox" TabOrder="18" Text="주소" Top="84" VAlign="Middle" Width="104"></Static>
+		<Static Align="Center" Height="20" Id="Static10" Left="35" Style="sty_Label" TabOrder="19" Text="구&#32;/&#32;군" Top="132" VAlign="Middle" Width="60"></Static>
+		<Shape Bottom="324" Height="232" Id="Shape1" Left="290" LineColor="user15" Right="576" TabOrder="21" Top="92" Type="Rectangle" Width="286"></Shape>
+		<Edit AutoSelect="TRUE" Border="Flat" DisableBKColor="user4" Height="20" Id="edSidoAfter" ImeMode="native" Left="384" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="6" Top="108" UserData="S:시/도" Width="184"></Edit>
+		<Static Align="Center" Height="20" Id="Static4" Left="320" Style="sty_Label" TabOrder="20" Text="시&#32;/&#32;도" Top="108" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" DisableBKColor="user4" Height="20" Id="edKuAfter" ImeMode="native" Left="384" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="7" Top="132" UserData="S:구/군" Width="184"></Edit>
+		<Static Align="Center" Height="20" Id="Static6" Left="320" Style="sty_Label" TabOrder="22" Text="구&#32;/&#32;군" Top="132" VAlign="Middle" Width="60"></Static>
+		<Static Align="Center" BKColor="brown" Height="140" Id="Static8" Left="293" Style="sty_LabelGruopBox" TabOrder="23" Text="변&#13;&#10;경&#13;&#10;&#10;후" Top="108" VAlign="Middle" Width="24"></Static>
+		<Static Align="Center" BKColor="blueviolet" Height="140" Id="Static5" Left="8" Style="sty_LabelGruopBox" TabOrder="24" Text="변&#10;경&#10;&#10;전" Top="108" VAlign="Middle" Width="24"></Static>
+		<Static Align="Center" Height="20" Id="Static12" Left="35" Style="sty_Label" TabOrder="26" Text="도로명" Top="156" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" DisableBKColor="user4" Enable="FALSE" Height="20" Id="edRoadNm" ImeMode="native" Left="99" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edAddr1_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="25" Top="156" UserData="S" Width="184"></Edit>
+		<Static Align="Center" Height="20" Id="Static13" Left="35" Style="sty_Label" TabOrder="28" Text="건물명" Top="228" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" DisableBKColor="user4" Enable="FALSE" Height="20" Id="edBuldNm" ImeMode="native" Left="99" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edAddr1_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="27" Top="228" UserData="S" Width="184"></Edit>
+		<Static Align="Center" Height="20" Id="Static14" Left="320" Style="sty_Label" TabOrder="30" Text="도로명" Top="156" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" DisableBKColor="user4" Height="20" Id="edRoadNmAfter" ImeMode="native" Left="384" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="29" Top="156" UserData="S" Width="184"></Edit>
+		<Static Align="Center" Height="20" Id="Static15" Left="320" Style="sty_Label" TabOrder="32" Text="건물명" Top="228" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" DisableBKColor="user4" Height="20" Id="edBuldNmAfter" ImeMode="native" Left="384" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="31" Top="228" UserData="S" Width="184"></Edit>
+		<Static Align="Center" Height="20" Id="lbLegalCd" Left="7" Style="sty_Label" TabOrder="42" Text="법정관리번호" Top="276" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edLegalCd" ImeMode="native" Left="99" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="33" Top="276" UserData="S" Width="184"></Edit>
+		<Static Align="Center" Height="20" Id="lbBuldNo" Left="7" Style="sty_Label" TabOrder="40" Text="건물관리번호" Top="300" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edBuldNo" ImeMode="native" Left="99" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="36" Top="300" UserData="S" Width="184"></Edit>
+		<Static Align="Center" Height="20" Id="lbJibunBun" Left="35" Style="sty_Label" TabOrder="38" Text="본번" Top="180" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edNewbunBun" ImeMode="native" Left="99" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="34" Top="180" UserData="S" Width="184"></Edit>
+		<Static Align="Center" Height="20" Id="lbJibunBu" Left="35" Style="sty_Label" TabOrder="39" Text="부번" Top="204" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edNewbunBu" ImeMode="native" Left="99" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="35" Top="204" UserData="S" Width="184"></Edit>
+		<Static Align="Center" Height="20" Id="lbSangseBuldNm" Left="7" Style="sty_Label" TabOrder="41" Text="상세건물명" Top="252" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edSangseBuldNm" ImeMode="native" Left="99" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="37" Top="252" UserData="S" Width="184"></Edit>
+		<Static Align="Center" Height="20" Id="Static7" Left="320" Style="sty_Label" TabOrder="48" Text="본번" Top="180" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edNewbunBunAfter" ImeMode="native" Left="384" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="44" Top="180" UserData="S" Width="184"></Edit>
+		<Static Align="Center" Height="20" Id="Static9" Left="320" Style="sty_Label" TabOrder="49" Text="부번" Top="204" VAlign="Middle" Width="60"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edNewbunBuAfter" ImeMode="native" Left="384" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="45" Top="204" UserData="S" Width="184"></Edit>
+		<Static Align="Center" Height="20" Id="Static11" Left="295" Style="sty_Label" TabOrder="51" Text="상세건물명" Top="252" VAlign="Middle" Width="85"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edSangseBuldNmAfter" ImeMode="native" Left="384" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="47" Top="252" UserData="S" Width="184"></Edit>
+		<Static Align="Center" Height="20" Id="Static16" Left="295" Style="sty_Label" TabOrder="52" Text="법정관리번호" Top="276" VAlign="Middle" Width="85"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edLegalCdAfter" ImeMode="native" Left="384" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="43" Top="276" UserData="S" Width="184"></Edit>
+		<Static Align="Center" Height="20" Id="Static17" Left="295" Style="sty_Label" TabOrder="50" Text="건물관리번호" Top="300" VAlign="Middle" Width="85"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edBuldNoAfter" ImeMode="native" Left="384" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="46" Top="300" UserData="S" Width="184"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust4041MNewAddressChange.xml
+ * 설명 : 신주소변경
+ * 작성일 : 2010.02.12
+ * 작성자 : 이규희
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+var sZseq = ""; // 일련번호
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        //gdZipCode.Height = nCy - gdZipCode.Top - 4;
+        //gdZipCode.Width = nCx - gdZipCode.Left - 4;
+    }
+}
+
+/*
+ * 기능 : 저장
+ */
+function lfn_Save(obj) {
+	if (!gfn_FormValidate(this)) { // 입력 Validation Check
+		return false;
+	}
+    
+    if (medZipCode.Value == medZipCodeAfter.Value
+        && edSido.Text == edSidoAfter.Text
+        && edKu.Text == edKuAfter.Text
+        
+        && edRoadNm.Text == edRoadNmAfter.Text
+        && edNewbunBun.Text == edNewbunBunAfter.Text
+        && edNewbunBu.Text == edNewbunBuAfter.Text
+        && edBuldNm.Text == edBuldNmAfter.Text
+        && edSangseBuldNm.Text == edSangseBuldNmAfter.Text
+        && edLegalCd.Text == edLegalCdAfter.Text
+        && edBuldNo.Text == edBuldNoAfter.Text) {
+        gfn_Alert("변경된 정보가 없습니다.");
+        return false;
+    }
+    
+    if (!gfn_Confirm(MSGW00040)) { // 정말로 수정 저장 하시겠습니까?
+        return false;
+    }
+    // 입력된 값을 그리드로 복사한다.
+    
+	tit_clearActionInfo();
+	tit_addSingleActionInfo("cust:updateCust4041NewAddressChange", "", 0, "");
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,""	// outDs
+		,"NZMGNO=" + quote(sZseq)
+          + " NZZIPCDE=" + quote(medZipCodeAfter.Text)
+          + " NZSIDO=" + quote(edSidoAfter.Text)
+          + " NZKU=" + quote(edKuAfter.Text)
+          + " NZROADNM=" + quote(edRoadNmAfter.Text)          
+          + " NZNEWBONBEN=" + quote(edNewbunBunAfter.Text)
+          + " NZNEWBUBEN=" + quote(edNewbunBuAfter.Text)
+          + " NZBULDNM=" + quote(edBuldNmAfter.Text)
+          + " NZSANGSEBULDNM=" + quote(edSangseBuldNmAfter.Text)
+          + " NZLEGALCD=" + quote(edLegalCdAfter.Text)
+          + " NZBULDNO=" + quote(edBuldNoAfter.Text)// args 
+		,"lfn_AfterSaveZipCode"
+		,false
+	);
+}
+
+// 해당자료변경
+function btnSelectModify_OnClick(obj)
+{    
+	if (!gfn_Confirm("해당자료를 수정하시겠습니까?")) {
+        return false;
+    }
+    
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("cust:updateCust4041BuildingNewAddressChange", "", 0, ""); // 대상물(업체)신주소
+    
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,""	// outDs
+		,"NZZIPCDE=" + quote(medZipCodeAfter.Text)
+          + " NZSIDO=" + quote(edSidoAfter.Text)
+          + " NZKU=" + quote(edKuAfter.Text)
+          + " NZROADNM=" + quote(edRoadNmAfter.Text)          
+          + " NZNEWBONBEN=" + quote(edNewbunBunAfter.Text)
+          + " NZNEWBUBEN=" + quote(edNewbunBuAfter.Text)
+          + " NZBULDNM=" + quote(edBuldNmAfter.Text)
+          + " NZSANGSEBULDNM=" + quote(edSangseBuldNmAfter.Text)
+          + " NZLEGALCD=" + quote(edLegalCdAfter.Text)
+          + " NZBULDNO=" + quote(edBuldNoAfter.Text)          
+          + " ZZIPCDE=" + quote(medZipCode.Text)
+          + " ZSIDO=" + quote(edSido.Text)
+          + " ZKU=" + quote(edKu.Text)
+          + " ZROADNM=" + quote(edRoadNm.Text)          
+          + " ZNEWBONBEN=" + quote(edNewbunBun.Text)
+          + " ZNEWBUBEN=" + quote(edNewbunBu.Text)
+          + " ZBULDNM=" + quote(edBuldNm.Text)
+          + " ZSANGSEBULDNM=" + quote(edSangseBuldNm.Text)
+          + " ZLEGALCD=" + quote(edLegalCd.Text)
+          + " ZBULDNO=" + quote(edBuldNo.Text)// args 
+		,"lfn_AfterSaveZipCode"
+		,false
+	);
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveZipCode(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    //btnInput.Enable = bStatus; // 추가 버튼
+    //btnDelete.Enable = bStatus; // 삭제 버튼
+    //btnSave.Enable = bStatus; // 수정&저장 버튼
+}
+
+// 변경전 주소검색 팝업
+function lfn_SearchAddressPopup(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	//if (nChar == 13) {
+	if (nChar == 13 || Length(medZipCode.Value) == 5) {
+        var sArg = "sZipcode=" + quote(medZipCode.Value);
+        var arrZipCode = Dialog("sys::frmsys0053PNewZipCodeList.xml", sArg, 600, 400, "", -1, -1); // 우편번호 조회 팝업
+        if (length(arrZipCode) > 0) {
+            var arrArg = Array(5);
+            medZipCode.Value = arrZipCode[0];
+            sZseq = arrZipCode[2];
+            arrArg = split(arrZipCode[1], " ");
+            edSido.Text = arrArg[0];
+            edKu.Text = arrArg[1];
+            edRoadNm.Text = arrZipCode[3];
+            edBuldNm.Text = arrZipCode[4];            
+            edNewbunBun.Text = arrZipCode[5];
+            edNewbunBu.Text = arrZipCode[6];
+            edSangseBuldNm.Text = arrZipCode[7];
+            edLegalCd.Text = arrZipCode[8];
+            edBuldNo.Text = arrZipCode[9];
+            
+            medZipCodeAfter.Value = arrZipCode[0];
+            edSidoAfter.Text = arrArg[0];
+            edKuAfter.Text = arrArg[1];
+            edRoadNmAfter.Text = arrZipCode[3];
+            edBuldNmAfter.Text = arrZipCode[4];
+            edNewbunBunAfter.Text = arrZipCode[5];
+            edNewbunBuAfter.Text = arrZipCode[6];
+            edSangseBuldNmAfter.Text = arrZipCode[7];
+            edLegalCdAfter.Text = arrZipCode[8];
+            edBuldNoAfter.Text = arrZipCode[9];
+            medZipCodeAfter.SetFocus();
+        } else {
+            medZipCode.SetFocus();
+        }
+	}
+}
+
+// 변경후 주소검색 팝업
+function lfn_SearchAddressPopupAfter(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	//if (nChar == 13) {
+	if (nChar == 13 || Length(medZipCodeAfter.Value) == 5) {
+        var sArg = "sZipcode=" + quote(medZipCode.Value);
+        var arrZipCode = Dialog("sys::frmsys0053PNewZipCodeList.xml", sArg, 600, 400, "", -1, -1); // 우편번호 조회 팝업
+        if (length(arrZipCode) > 0) {
+            var arrArg = Array(5);
+            arrArg = split(arrZipCode[1], " ");            
+            medZipCodeAfter.Value = arrZipCode[0];
+            edSidoAfter.Text = arrArg[0];
+            edKuAfter.Text = arrArg[1];
+            medZipCodeAfter.SetFocus();
+        } else {
+            medZipCodeAfter.SetFocus();
+        }
+	}
+}
+function chkAll_OnClick(obj,strValue)
+{
+	if (chkAll.Value == "Y") {
+        chkManager.Value = "Y";
+        chkBuilding.Value = "Y";
+        //chkEdu.Value = "Y";
+        chkAgency.Value = "Y";
+        chkMemberFee.Value = "Y";
+        chkEduFee.Value = "Y";
+        chkTank1.Value = "Y";
+        chkTank2.Value = "Y";
+	}
+}
+]]></Script>
+</Window>

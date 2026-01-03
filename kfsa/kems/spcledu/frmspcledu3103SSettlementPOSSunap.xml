@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="76" Id="frmtrainig3103SSettlementPOSSunap" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="현금영수증납부상세" Top="8" Ver="1.0" Width="780" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oUseGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>소득공제</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>지출증빙</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Align="Center" Height="20" Id="lbUseGubun" Left="4" Style="sty_Label" TabOrder="1" Text="용도" Top="4" VAlign="Middle" Width="100"></Static>
+		<Static Align="Center" Height="20" Id="lbCardNo" Left="4" Style="sty_Label" TabOrder="3" Text="현금영수증번호" Top="28" VAlign="Middle" Width="100"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edCashCardNo" ImeMode="native" Left="108" LeftMargin="2" MaxLength="40" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="2" Top="28" UserData="S:현금영수증번호" Width="120"></Edit>
+		<Static Height="20" Id="lbText2" Left="230" Style="sty_Text" TabOrder="4" Text="(&apos;-&apos;제외.국세청&#32;등록된&#32;주민번호나&#32;카드번호&#32;입력)" Top="29" VAlign="Middle" Width="294"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnInitInput" ImageID="BTN_TEXT_COM" Left="436" OnClick="btnInitInput_OnClick" Style="sty_Button" TabOrder="5" Text="초기화" Top="3" Width="85"></Button>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radUseGubun" INDEX="0" InnerDataset="ds_oUseGubun" Left="112" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="6" Top="4" Value="0" Width="176"></Radio>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM3103SSettlementPOSSunap.xml
+ * 설명 : 현금영수증납부상세
+ * 작성일 : 2009.08.25
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+}
+
+function btnInitInput_OnClick(obj)
+{
+	gfn_FormInit(this);
+}
+]]></Script>
+</Window>

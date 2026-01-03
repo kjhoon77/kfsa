@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="136" Id="frmCOM3003PPOSCardProgressBar" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="카드결제진행팝업" Top="8" Ver="1.0" Width="312" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosOutput">
+				<Contents>
+					<colinfo id="MI_PMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_PMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_PRMGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_RESPCODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_CASHRECEIPTNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_RESPMSG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_OID" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_TID" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_AMOUNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_ACCOUNTNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_FINANCECODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_CASFLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_FINANCENAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_RSCODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_RSMSG" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_LguplusOut">
+				<Contents>
+					<colinfo id="Respcode" size="256" summ="default" type="STRING"/>
+					<colinfo id="Msg" size="256" summ="default" type="STRING"/>
+					<colinfo id="Trancode" size="256" summ="default" type="STRING"/>
+					<colinfo id="Mid" size="256" summ="default" type="STRING"/>
+					<colinfo id="Oid" size="256" summ="default" type="STRING"/>
+					<colinfo id="Tamt" size="256" summ="default" type="STRING"/>
+					<colinfo id="Tran_serial" size="256" summ="default" type="STRING"/>
+					<colinfo id="Trandate" size="256" summ="default" type="STRING"/>
+					<colinfo id="Financecode" size="256" summ="default" type="STRING"/>
+					<colinfo id="Financename" size="256" summ="default" type="STRING"/>
+					<colinfo id="Cardno" size="256" summ="default" type="STRING"/>
+					<colinfo id="Halbu" size="256" summ="default" type="STRING"/>
+					<colinfo id="Authno" size="256" summ="default" type="STRING"/>
+					<colinfo id="Stlinst" size="256" summ="default" type="STRING"/>
+					<colinfo id="Reqinst" size="256" summ="default" type="STRING"/>
+					<colinfo id="Merno" size="256" summ="default" type="STRING"/>
+					<colinfo id="Signpath" size="256" summ="default" type="STRING"/>
+					<colinfo id="Cardgubun" size="256" summ="default" type="STRING"/>
+					<colinfo id="Giftchange" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<MSIE Bottom="224" Height="80" Id="MSIE" Right="312" TitleChange="MSIE_TitleChange" Top="144" Width="312"></MSIE>
+		<Image Height="128" Id="imgProgress" ImageID="IMAGE::IMG_PROGRESS.gif" Left="5" TabOrder="2" Top="5" Width="300"></Image>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM3003PPOSCardProgressBar.xml
+ * 설명 : LG U+ 오프라인PG 카드결제 진행팝업
+ * 작성일 : 2018.05.29
+ * 작성자 : 정현호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+var sCardYN = ""; //			: 카드결제 여부
+var sCardSETTLEGUBUN = ""; //	: 0:카드승인 1:카드취소
+/*
+var sPOSID  = ""; 			//	: 상점아이디
+//(카드승인)
+var sLGD_TXNAME	= ""; //		: (필수)업무명 CardAuthOfflinePos
+var sLGD_REQTYPE = ""; //		: (필수)업무요청명 "APPR"
+var sLGD_OID = ""; //			: (필수)주문번호
+var sLGD_AMOUNT = ""; //		: (필수)결제금액(,없이 입력)
+var sLGD_INSTALL = ""; //		: (필수)할부개월 (2자리) ex) 00:일시불, 03:3개월
+var sLGD_PRIVATENO = ""; //		: (선택)구매자 생년월일 6자리 (YYMMDD) or 사업자번호 10자리
+var sLGD_NOINT = ""; //			: (선택)신용카드 무이자할부 여부(0: 일반할부, 1: 무이자할부)☞ 계약 시, “대표가맹” 상점에 한함
+var sLGD_BUYER = ""; //			: (선택)구매자명
+var sLGD_BUYERID = ""; //		: (선택)구매자 아이디
+var sLGD_BUYERPHONE = ""; //	: (선택)고객휴대폰번호
+var sLGD_BUYEREMAIL = ""; //	: (선택)구매자 이메일
+var sLGD_PRODUCTINFO = ""; //	: 선택)구매내역
+var sLGD_DIVIDE_INFO = ""; //	: 선택)분할정산
+var sLGD_TAXFREEAMOUNT = ""; //	: (필수)면세금액(결제금액에 면세대상금액 포함시 사용)☞ 계약 시, “부분면세” 적용여부 확인요망
+var sLGD_VAT = ""; //			: (필수)부가세
+var sVAN_SFEEAMOUNT = ""; //	: (필수)봉사료
+var sVAN_TRANTYPE = ""; //		: (필수)거래구분 S0 : 신용승인요청, K0 : 키인승인요청, E0 : 은련승인요청, P0 : APP카드 승인요청
+
+//(카드취소)
+var sLGD_TID = ""; //			: (필수)LG유플러스 거래번호 (신용승인응답에서 Tran_serial 값)
+var sVAN_CAPDATE = ""; //		: (필수)원거래 승인일(YYYYMMDD)
+var sVAN_AUTHNO	= ""; //		: (필수)원거래 승인번호
+*/
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj);
+    
+	// UPlusPGPOSWeb.exe 실행되지 않았으면 실행시킴
+//    var rtnProcess = ext_FindProcessInfo("UPlusPGPOSWeb.exe");
+//	if (gfn_isNull(rtnProcess[0])) {
+//		ExecProc("C:\\UPlusPG\\UPlusPGPOSWeb.exe");
+//    }
+    
+	var params =   "LGD_TXNAME="+quote(sLGD_TXNAME);
+		params += " LGD_REQTYPE="+quote(sLGD_REQTYPE);
+		params += " LGD_OID="+quote(sLGD_OID);
+		params += " LGD_AMOUNT="+quote(sLGD_AMOUNT);
+		params += " LGD_INSTALL="+quote(sLGD_INSTALL);
+		params += " LGD_PRIVATENO="+quote(sLGD_PRIVATENO);
+		params += " LGD_NOINT="+quote(sLGD_NOINT);
+		params += " LGD_BUYER="+quote(sLGD_BUYER);
+		params += " LGD_BUYERID="+quote(sLGD_BUYERID);
+		params += " LGD_BUYERPHONE="+quote(sLGD_BUYERPHONE);
+		params += " LGD_BUYEREMAIL="+quote(sLGD_BUYEREMAIL);
+		params += " LGD_PRODUCTINFO="+quote(sLGD_PRODUCTINFO);
+		params += " LGD_DIVIDE_INFO="+quote(sLGD_DIVIDE_INFO);
+		params += " LGD_TAXFREEAMOUNT="+quote(sLGD_TAXFREEAMOUNT);
+		params += " LGD_VAT="+quote(sLGD_VAT);
+		params += " VAN_SFEEAMOUNT="+quote(sVAN_SFEEAMOUNT);
+		params += " VAN_TRANTYPE="+quote(sVAN_TRANTYPE);
+	//	params += " LGD_TID="+quote(sLGD_TID);			// 승인취소시 사용
+	//	params += " VAN_CAPDATE="+quote(sVAN_CAPDATE);	// 승인취소시 사용
+	//	params += " VAN_AUTHNO="+quote(sVAN_AUTHNO);	// 승인취소시 사용
+		params += " PMREGSABUN="+gds_oUserInfo.GetColumn(0,"PSABUN");
+	//	trace(params);
+
+	var URL = "https://intrawork.kfsi.or.kr/kems/pos/UPlusPOS_Input.jsp";
+
+	var PostData = "";
+
+	PostData =TextToBin("lgdtxname="+sLGD_TXNAME+
+						"&lgdreqtype="+sLGD_REQTYPE+
+						"&lgdoid="+sLGD_OID+
+						"&lgdamount="+sLGD_AMOUNT+
+						"&lgdinstall="+sLGD_INSTALL+
+						"&lgdprivateno="+sLGD_PRIVATENO+
+						"&lgdnoint="+sLGD_NOINT+
+						"&lgdbuyer="+urlEncodeUtf8(sLGD_BUYER)+
+						"&lgdbuyerid="+sLGD_BUYERID+
+						"&lgdbuyerphone="+sLGD_BUYERPHONE+
+						"&lgdbuyeremail="+sLGD_BUYEREMAIL+
+						"&lgdproductinfo="+sLGD_PRODUCTINFO+
+						"&lgddivideinfo="+sLGD_DIVIDE_INFO+
+						"&lgdtaxfreeamount="+sLGD_TAXFREEAMOUNT+
+						"&lgdvat="+sLGD_VAT+
+						"&vansfeeamount="+sVAN_SFEEAMOUNT+
+						"&vantrantype="+sVAN_TRANTYPE,
+						"utf-8");
+
+//	alert(PostData);
+	var Headers = "Content-Type: application/x-www-form-urlencoded";
+	
+	MSIE.Navigate(URL, "", "", PostData, Headers);
+}
+
+var ReturnMsg;
+function MSIE_TitleChange(obj,Text)
+{
+//trace("Title : " + Text);
+	if(ReturnMsg != Text) {
+		ReturnMsg = Text;
+//		trace(ReturnMsg);   // ReturnMsg
+	}
+	
+	// 타이틀에 결과값 리턴
+	if("https://intrawork.kfsi.or.kr/kems/pos/UPlusPOS_Input.jsp" == ReturnMsg) {
+	} else {
+	
+		var ResultArr = ReturnMsg.split("|");
+		var tmp = "";
+		
+		// dataset 저장변수
+		var rRespcode = "";			// 응답코드, '0000' 이면 성공 이외는 실패
+		var rTrancode = "";			// 거래 구분 0210 : 승인응답, 0450 : 망취소
+		var rMid = "";				// LG 유플러스에서 부여한 상점 ID
+		var rOid = "";				// 상점 거래번호(주문번호)
+		var rTamt = "";				// 결제금액
+		var rTran_serial = "";		// LG 유플러스 거래번호 (취소시 LGD_TID에 입력할 값)
+		var rTrandate = "";			// 결제일시(YYYYMMDDhhmmss)
+		var rFinancecode = "";		// 결제기관코드
+		var rFinancename = "";		// 결제기관명
+		var rCardno = "";			// 마스킹된 신용카드번호
+		var rHalbu = "";			// 신용카드 할부개월
+		var rAuthno = "";			// 결제기관 승인번호
+		var rStlinst = "";			// 신용카드 발급사코드
+		var rReqinst = "";			// 신용카드 매입사코드
+		var rMerno = "";			// 가맹점번호
+		var rCardgubun = "";		// 1: 신용 2: 체크 3: 기프트
+		var rGiftchange = "";		// 기프티카드일 경우 잔액
+		var rSignpath = "";			// 사인 이미지 경로
+		var rMsg = "";				// 응답 메시지
+		
+		ds_LguplusOut.ClearData();
+		ds_LguplusOut.AddRow();
+		
+		for(var i=0;i<ResultArr.length;i++) {
+	
+			if(!IndexOf(ResultArr[i], "R01")) {		// Respcode
+				tmp = ResultArr[i].split("^");
+				rRespcode = tmp[1];
+				
+				//trace("Respcode:"+rRespcode);
+				ds_LguplusOut.SetColumn(0, "Respcode", rRespcode);
+			} else if(!IndexOf(ResultArr[i], "R02")) {		// Trancode
+				tmp = ResultArr[i].split("^");
+				rTrancode = tmp[1];
+				
+				//trace("Trancode:"+rTrancode);
+				ds_LguplusOut.SetColumn(0, "Trancode", rTrancode);
+			} else if(!IndexOf(ResultArr[i], "R03")) {		// Mid
+				tmp = ResultArr[i].split("^");
+				rMid = tmp[1];
+				
+				//trace("Mid:"+rMid);
+				ds_LguplusOut.SetColumn(0, "Mid", rMid);
+			} else if(!IndexOf(ResultArr[i], "R04")) {		// Oid
+				tmp = ResultArr[i].split("^");
+				rOid = tmp[1];
+				
+				//trace("Oid:"+rOid);
+				ds_LguplusOut.SetColumn(0, "Oid", rOid);
+			} else if(!IndexOf(ResultArr[i], "R05")) {		// Tamt
+				tmp = ResultArr[i].split("^");
+				rTamt = tmp[1];
+				
+				//trace("Tamt:"+rTamt);
+				ds_LguplusOut.SetColumn(0, "Tamt", rTamt);
+			} else if(!IndexOf(ResultArr[i], "R06")) {		// Tran_serial
+				tmp = ResultArr[i].split("^");
+				rTran_serial = tmp[1];
+				
+				//trace("Tran_serial:"+rTran_serial);
+				ds_LguplusOut.SetColumn(0, "Tran_serial", rTran_serial);
+			} else if(!IndexOf(ResultArr[i], "R07")) {		// Trandate
+				tmp = ResultArr[i].split("^");
+				rTrandate = tmp[1];
+				
+				//trace("Trandate:"+rTrandate);
+				ds_LguplusOut.SetColumn(0, "Trandate", rTrandate);
+			} else if(!IndexOf(ResultArr[i], "R08")) {		// Financecode
+				tmp = ResultArr[i].split("^");
+				rFinancecode = tmp[1];
+				
+				//trace("Financecode:"+rFinancecode);
+				ds_LguplusOut.SetColumn(0, "Financecode", rFinancecode);
+			} else if(!IndexOf(ResultArr[i], "R09")) {		// Financename
+				tmp = ResultArr[i].split("^");
+				rFinancename = tmp[1];
+				
+				//trace("Financename:"+rFinancename);
+				ds_LguplusOut.SetColumn(0, "Financename", rFinancename);
+			} else if(!IndexOf(ResultArr[i], "R10")) {		// Cardno
+				tmp = ResultArr[i].split("^");
+				rCardno = tmp[1];
+				
+				//trace("Cardno:"+rCardno);
+				ds_LguplusOut.SetColumn(0, "Cardno", rCardno);
+			} else if(!IndexOf(ResultArr[i], "R11")) {		// Halbu
+				tmp = ResultArr[i].split("^");
+				rHalbu = tmp[1];
+				
+				//trace("Halbu:"+rHalbu);
+				ds_LguplusOut.SetColumn(0, "Halbu", rHalbu);
+			} else if(!IndexOf(ResultArr[i], "R12")) {		// Authno
+				tmp = ResultArr[i].split("^");
+				rAuthno = tmp[1];
+				
+				//trace("Authno:"+rAuthno);
+				ds_LguplusOut.SetColumn(0, "Authno", rAuthno);
+			} else if(!IndexOf(ResultArr[i], "R13")) {		// Stlinst
+				tmp = ResultArr[i].split("^");
+				rStlinst = tmp[1];
+				
+				//trace("Stlinst:"+rStlinst);
+				ds_LguplusOut.SetColumn(0, "Stlinst", rStlinst);
+			} else if(!IndexOf(ResultArr[i], "R14")) {		// Reqinst
+				tmp = ResultArr[i].split("^");
+				rReqinst = tmp[1];
+				
+				//trace("Reqinst:"+rReqinst);
+				ds_LguplusOut.SetColumn(0, "Reqinst", rReqinst);
+			} else if(!IndexOf(ResultArr[i], "R15")) {		// Merno
+				tmp = ResultArr[i].split("^");
+				rMerno = tmp[1];
+				
+				//trace("Merno:"+rMerno);
+				ds_LguplusOut.SetColumn(0, "Merno", rMerno);
+			} else if(!IndexOf(ResultArr[i], "R16")) {		// Cardgubun
+				tmp = ResultArr[i].split("^");
+				rCardgubun = tmp[1];
+				
+				//trace("Cardgubun:"+rCardgubun);
+				ds_LguplusOut.SetColumn(0, "Cardgubun", rCardgubun);
+			} else if(!IndexOf(ResultArr[i], "R17")) {		// Giftchange
+				tmp = ResultArr[i].split("^");
+				rGiftchange = tmp[1];
+				
+				//trace("Giftchange:"+rGiftchange);
+				ds_LguplusOut.SetColumn(0, "Giftchange", rGiftchange);
+			} else if(!IndexOf(ResultArr[i], "R18")) {		// Signpath
+				tmp = ResultArr[i].split("^");
+				rSignpath = tmp[1];
+				
+				//trace("Signpath:"+rSignpath);
+				ds_LguplusOut.SetColumn(0, "Signpath", rSignpath);
+			} else if(!IndexOf(ResultArr[i], "R19")) {		// Msg
+				tmp = ResultArr[i].split("^");
+				rMsg = tmp[1];
+				
+				//trace("Msg:"+rMsg);
+				ds_LguplusOut.SetColumn(0, "Msg", rMsg);
+			}
+			
+		}
+//		trace(ds_LguplusOut.SaveXML());
+		parent.divPos.ds_ioOfflinePosOutput.ClearData();
+		parent.divPos.ds_ioOfflinePosOutput.Copy(ds_LguplusOut);	// 결과 데이터셋 복사
+//		trace(parent.divPos.ds_ioOfflinePosOutput.SaveXML());
+		if (ds_LguplusOut.GetColumn(0, "Respcode") == "0000") {	// 응답코드가 성공이면
+			close("OK");
+		} else {
+			close("FAIL");
+		}
+	}
+}
+
+function Form_OnUnloadCompleted(obj) {
+
+    gfn_Form_OnUnloadCompleted(obj);
+}
+/* 공통 필수 종료 */
+
+
+
+]]></Script>
+</Window>

@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="376" Id="frmCOM3010SPOS" Left="8" OnLoadCompleted="Form_OnLoadCompleted" OnTimer="frmCOM3010SPOS_OnTimer" OnUnloadCompleted="frmCOM3010SPOS_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="결제(POS)DIV" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="600" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_ioPosInput">
+				<Contents>
+					<colinfo id="PMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="STATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_PAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_CASHRECEIPTYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CASHFLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHONE" size="256" summ="default" type="STRING"/>
+					<record>
+						<CASHFLAG></CASHFLAG>
+						<LGD_CASHRECEIPTYN></LGD_CASHRECEIPTYN>
+						<LGD_PAN>4119045215715124=15022011919676391750</LGD_PAN>
+						<PHONE></PHONE>
+						<PMMGNO>375105</PMMGNO>
+						<PMYEAR>2009</PMYEAR>
+						<STATUS>4</STATUS>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosOutputJVM">
+				<Contents>
+					<colinfo id="MI_PMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_PMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_PRMGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_RESPCODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_CASHRECEIPTNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_RESPMSG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_OID" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_TID" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_AMOUNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_ACCOUNTNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_FINANCECODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_CASFLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_FINANCENAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_RSCODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_RSMSG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_TAXFREEAMOUNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosOutput">
+				<Contents>
+					<colinfo id="MI_PMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_PMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_PRMGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_RESPCODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_CASHRECEIPTNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_RESPMSG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_OID" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_TID" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_AMOUNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_ACCOUNTNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_FINANCECODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_CASFLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_FINANCENAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_RSCODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_RSMSG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_TAXFREEAMOUNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioOfflinePosOutput">
+				<Contents>
+					<colinfo id="Respcode" size="256" summ="default" type="STRING"/>
+					<colinfo id="Msg" size="256" summ="default" type="STRING"/>
+					<colinfo id="Trancode" size="256" summ="default" type="STRING"/>
+					<colinfo id="Mid" size="256" summ="default" type="STRING"/>
+					<colinfo id="Oid" size="256" summ="default" type="STRING"/>
+					<colinfo id="Tamt" size="256" summ="default" type="STRING"/>
+					<colinfo id="Tran_serial" size="256" summ="default" type="STRING"/>
+					<colinfo id="Trandate" size="256" summ="default" type="STRING"/>
+					<colinfo id="Financecode" size="256" summ="default" type="STRING"/>
+					<colinfo id="Financename" size="256" summ="default" type="STRING"/>
+					<colinfo id="Cardno" size="256" summ="default" type="STRING"/>
+					<colinfo id="Halbu" size="256" summ="default" type="STRING"/>
+					<colinfo id="Authno" size="256" summ="default" type="STRING"/>
+					<colinfo id="Stlinst" size="256" summ="default" type="STRING"/>
+					<colinfo id="Reqinst" size="256" summ="default" type="STRING"/>
+					<colinfo id="Merno" size="256" summ="default" type="STRING"/>
+					<colinfo id="Signpath" size="256" summ="default" type="STRING"/>
+					<colinfo id="Cardgubun" size="256" summ="default" type="STRING"/>
+					<colinfo id="Giftchange" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" BindDataset="ds_ioPosInput" BkColor2="default" BoldHead="true" Bottom="81" ColSelect="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Height="56" Id="Grid1" InputPanel="FALSE" Left="6" LineColor="default" Right="596" TabOrder="1" TabStop="true" Top="25" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="590">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="57"/>
+						<col width="207"/>
+						<col width="80"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="PMYEAR"/>
+						<cell col="1" display="text" text="PMMGNO"/>
+						<cell col="2" display="text" text="STATUS"/>
+						<cell col="3" display="text" text="LGD_PAN"/>
+						<cell col="4" display="text" text="LGD_CASHRECEIPTYN"/>
+						<cell col="5" display="text" text="CASHFLAG"/>
+					</head>
+					<body>
+						<cell col="0" colid="PMYEAR" display="text" edit="normal"/>
+						<cell col="1" colid="PMMGNO" display="text" edit="normal"/>
+						<cell col="2" colid="STATUS" display="text" edit="normal"/>
+						<cell col="3" colid="LGD_PAN" display="text" edit="normal"/>
+						<cell col="4" colid="LGD_CASHRECEIPTYN" display="text" edit="normal"/>
+						<cell col="5" colid="CASHFLAG" display="text" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid BindDataset="ds_ioPosOutput" BkColor2="default" BoldHead="true" Bottom="174" ColSizing="TRUE" Enable="true" EndLineColor="default" Height="64" Id="Grid0" InputPanel="FALSE" Left="6" LineColor="default" Right="596" TabOrder="2" TabStop="true" Top="110" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="590">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="MI_PMYEAR"/>
+						<cell col="1" display="text" text="MI_PMMGNO"/>
+						<cell col="2" display="text" text="MI_PRMGUBUN"/>
+						<cell col="3" display="text" text="LGD_RESPCODE"/>
+						<cell col="4" display="text" text="LGD_CASHRECEIPTNUM"/>
+						<cell col="5" display="text" text="LGD_RESPMSG"/>
+						<cell col="6" display="text" text="LGD_OID"/>
+						<cell col="7" display="text" text="LGD_TID"/>
+						<cell col="8" display="text" text="LGD_AMOUNT"/>
+						<cell col="9" display="text" text="LGD_ACCOUNTNUM"/>
+						<cell col="10" display="text" text="LGD_FINANCECODE"/>
+						<cell col="11" display="text" text="LGD_CASFLAG"/>
+						<cell col="12" display="text" text="LGD_FINANCENAME"/>
+						<cell col="13" display="text" text="MI_RSCODE"/>
+						<cell col="14" display="text" text="MI_RSMSG"/>
+					</head>
+					<body>
+						<cell col="0" colid="MI_PMYEAR" display="text" edit="normal"/>
+						<cell col="1" colid="MI_PMMGNO" display="text" edit="normal"/>
+						<cell col="2" colid="MI_PRMGUBUN" display="text" edit="normal"/>
+						<cell col="3" colid="LGD_RESPCODE" display="text" edit="normal"/>
+						<cell col="4" colid="LGD_CASHRECEIPTNUM" display="text" edit="normal"/>
+						<cell col="5" colid="LGD_RESPMSG" display="text" edit="normal"/>
+						<cell col="6" colid="LGD_OID" display="text" edit="normal"/>
+						<cell col="7" colid="LGD_TID" display="text" edit="normal"/>
+						<cell col="8" colid="LGD_AMOUNT" display="text" edit="normal"/>
+						<cell col="9" colid="LGD_ACCOUNTNUM" display="text" edit="normal"/>
+						<cell col="10" colid="LGD_FINANCECODE" display="text" edit="normal"/>
+						<cell col="11" colid="LGD_CASFLAG" display="text" edit="normal"/>
+						<cell col="12" colid="LGD_FINANCENAME" display="text" edit="normal"/>
+						<cell col="13" colid="MI_RSCODE" display="text" edit="normal"/>
+						<cell col="14" colid="MI_RSMSG" display="text" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid BindDataset="ds_ioPosOutputJVM" BkColor2="default" BoldHead="true" Bottom="263" ColSizing="TRUE" Enable="true" EndLineColor="default" Height="64" Id="Grid2" InputPanel="FALSE" Left="6" LineColor="default" Right="596" TabOrder="3" TabStop="true" Top="199" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="590">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="MI_PMYEAR"/>
+						<cell col="1" display="text" text="MI_PMMGNO"/>
+						<cell col="2" display="text" text="MI_PRMGUBUN"/>
+						<cell col="3" display="text" text="LGD_RESPCODE"/>
+						<cell col="4" display="text" text="LGD_CASHRECEIPTNUM"/>
+						<cell col="5" display="text" text="LGD_RESPMSG"/>
+						<cell col="6" display="text" text="LGD_OID"/>
+						<cell col="7" display="text" text="LGD_TID"/>
+						<cell col="8" display="text" text="LGD_AMOUNT"/>
+						<cell col="9" display="text" text="LGD_ACCOUNTNUM"/>
+						<cell col="10" display="text" text="LGD_FINANCECODE"/>
+						<cell col="11" display="text" text="LGD_CASFLAG"/>
+						<cell col="12" display="text" text="LGD_FINANCENAME"/>
+						<cell col="13" display="text" text="MI_RSCODE"/>
+						<cell col="14" display="text" text="MI_RSMSG"/>
+					</head>
+					<body>
+						<cell col="0" colid="MI_PMYEAR" display="text" edit="normal"/>
+						<cell col="1" colid="MI_PMMGNO" display="text" edit="normal"/>
+						<cell col="2" colid="MI_PRMGUBUN" display="text" edit="normal"/>
+						<cell col="3" colid="LGD_RESPCODE" display="text" edit="normal"/>
+						<cell col="4" colid="LGD_CASHRECEIPTNUM" display="text" edit="normal"/>
+						<cell col="5" colid="LGD_RESPMSG" display="text" edit="normal"/>
+						<cell col="6" colid="LGD_OID" display="text" edit="normal"/>
+						<cell col="7" colid="LGD_TID" display="text" edit="normal"/>
+						<cell col="8" colid="LGD_AMOUNT" display="text" edit="normal"/>
+						<cell col="9" colid="LGD_ACCOUNTNUM" display="text" edit="normal"/>
+						<cell col="10" colid="LGD_FINANCECODE" display="text" edit="normal"/>
+						<cell col="11" colid="LGD_CASFLAG" display="text" edit="normal"/>
+						<cell col="12" colid="LGD_FINANCENAME" display="text" edit="normal"/>
+						<cell col="13" colid="MI_RSCODE" display="text" edit="normal"/>
+						<cell col="14" colid="MI_RSMSG" display="text" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button Height="21" Id="Button0" Left="490" OnClick="Button0_OnClick" TabOrder="4" Text="결제요청" Top="2" Width="104"></Button>
+		<Button Height="21" Id="Button1" Left="382" OnClick="Button1_OnClick" TabOrder="5" Text="승인확인" Top="2" Width="104"></Button>
+		<Static Height="21" Id="Static0" Left="16" TabOrder="6" Text="ds_ioPosInput" VAlign="Middle" Width="104"></Static>
+		<Static Height="21" Id="Static1" Left="13" TabOrder="7" Text="ds_ioPosOutput" Top="84" VAlign="Middle" Width="104"></Static>
+		<Static Height="21" Id="Static2" Left="12" TabOrder="8" Text="ds_ioPosOutputJVM(Temp)" Top="175" VAlign="Middle" Width="180"></Static>
+		<Grid BkColor2="default" BoldHead="true" Bottom="367" Enable="true" EndLineColor="default" Height="76" Id="Grid3" InputPanel="FALSE" Left="5" LineColor="default" Right="596" TabOrder="9" TabStop="true" Top="291" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="591">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="Respcode"/>
+						<cell col="1" display="text" text="Trancode"/>
+						<cell col="2" display="text" text="Mid"/>
+						<cell col="3" display="text" text="Oid"/>
+						<cell col="4" display="text" text="Tamt"/>
+						<cell col="5" display="text" text="Tran_serial"/>
+						<cell col="6" display="text" text="Trandate"/>
+						<cell col="7" display="text" text="Financecode"/>
+						<cell col="8" display="text" text="Financename"/>
+						<cell col="9" display="text" text="Cardno"/>
+						<cell col="10" display="text" text="Halbu"/>
+						<cell col="11" display="text" text="Authno"/>
+						<cell col="12" display="text" text="Stlinst"/>
+						<cell col="13" display="text" text="Reqinst"/>
+						<cell col="14" display="text" text="Merno"/>
+						<cell col="15" display="text" text="Cardgubun"/>
+						<cell col="16" display="text" text="Giftchange"/>
+						<cell col="17" display="text" text="Signpath"/>
+						<cell col="18" display="text" text="Msg"/>
+					</head>
+					<body>
+						<cell col="0" colid="Respcode" display="text"/>
+						<cell col="1" colid="Trancode" display="text"/>
+						<cell col="2" colid="Mid" display="text"/>
+						<cell col="3" colid="Oid" display="text"/>
+						<cell col="4" colid="Tamt" display="text"/>
+						<cell col="5" colid="Tran_serial" display="text"/>
+						<cell col="6" colid="Trandate" display="text"/>
+						<cell col="7" colid="Financecode" display="text"/>
+						<cell col="8" colid="Financename" display="text"/>
+						<cell col="9" colid="Cardno" display="text"/>
+						<cell col="10" colid="Halbu" display="text"/>
+						<cell col="11" colid="Authno" display="text"/>
+						<cell col="12" colid="Stlinst" display="text"/>
+						<cell col="13" colid="Reqinst" display="text"/>
+						<cell col="14" colid="Merno" display="text"/>
+						<cell col="15" colid="Cardgubun" display="text"/>
+						<cell col="16" colid="Giftchange" display="text"/>
+						<cell col="17" colid="Signpath" display="text"/>
+						<cell col="18" colid="Msg" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Height="21" Id="Static3" Left="12" TabOrder="10" Text="ds_ioOfflinePosOutput" Top="269" VAlign="Middle" Width="156"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM3010SPOS.xml
+ * 설명 : 결제(POS)DIV
+ * 작성일 : 2009.09.11
+ * 작성자 : 김은규
+ */
+
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+var ls_PosService = "";
+
+function Form_OnLoadCompleted(obj) {
+    // Local인 경우 Local service 타도록
+    if (gs_IsLocal != "Y") {
+        ls_PosService = "POS";
+    } else {
+        ls_PosService = "DEV_POS";
+    }
+    SetTimer(2, 100);
+}
+
+
+/*
+ * 트랜젝션에 사용되는 데이타셋의 ROW
+ */
+var tRow;
+
+/*
+ * 승인/환불 요청에 사용되는 플래그 변수
+ */
+var ls_Ret = "FAIL";
+var sWorkFlag = 'Y';
+var nPosRow = 0;
+
+/*
+ * 결제 확인 요청에 사용되는 플래그 변수
+ */
+var ls_Ret2 = "FAIL";
+var sWorkFlag2 = "Y";
+var nPosRow2 = 0;
+
+/*
+ * 기능 : 부모창에서 POS 호출시에 사용될 함수
+ */
+ 
+function lfn_POS() {
+	lfn_PosCall();
+    KillTimer(2);
+    return ls_Ret;
+}
+
+/*
+ * 기능 : 입력건수에 따라 트랜잭션을 수행한다.(승인/환불)
+ */
+function lfn_PosCall(obj)
+{	
+	// 서버 호출 
+	ls_Ret = "FAIL";
+	sWorkFlag = 'Y';
+	ds_ioPosOutput.ClearData();
+	
+	for(var nPosRow=0; nPosRow<ds_ioPosInput.GetRowCount(); nPosRow++) {
+		if(sWorkFlag == 'Y') {
+			lfn_PosProcessCall(nPosRow);
+		}
+		else {
+			lfn_ExceptionTransactionPOS(nPosRow);
+		}
+	}
+}
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+
+function lfn_PosProcessCall(row)
+{
+	Https.Sync = true;	ds_ioPosOutputJVM.ClearData();	//가비지 데이타 제거
+	var params = "ROW="+quote(row);	params += " PMREGSABUN="+gds_oUserInfo.GetColumn(0,"PSABUN");	//params += " PMREGSABUN=TEST001";	params += " COMMAND=process";
+		
+	Transaction("PosRun", ls_PosService + "::Platform.jsp", "ioPosInput=ds_ioPosInput", "ds_ioPosOutputJVM=ioPosOutput", params, "lfn_AfterSaveSettlementPOS");
+
+	Https.Sync = false;
+}
+
+
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveSettlementPOS(strSvcID, nErrorCode, strErrorMsg) {
+
+	if (strSvcID == "PosRun") {
+		if (nErrorCode < 0) { // 트랜잭션 에러.
+			//gfn_ErrorMsg(nErrorCode, strErrorMsg);
+			sWorkFlag = 'N';
+			ls_Ret = "FAIL";
+			lfn_ExceptionTransactionPOS(tRow);
+		}
+		else {	// 트랜잭션 성공.
+			if (ds_ioPosOutputJVM.GetColumn(0, "MI_RSCODE") == "3" or ds_ioPosOutputJVM.GetColumn(0, "MI_RSCODE") == "2") {
+				sWorkFlag = 'N';
+			}
+			lfn_SuccessTransactionPOS(tRow);
+			ls_Ret = "OK";
+		}
+	}
+	ds_ioPosOutputJVM.ClearData();	//가비지 데이타 제거
+}
+
+/*
+ * 기능 : Transaction 서비스 에러일 경우 처리 ds_ioPosOutput 처리(값셋팅)
+ * parameter : row - 데이타셋의 로우
+ * Return : 없음
+ */
+function lfn_ExceptionTransactionPOS(row) {
+	
+	trace("====== Exception ======");
+	var nRow = 0;
+	
+	if(ds_ioPosOutput.GetRowCount() == 0) {
+		ds_ioPosOutput.InsertRow(0);
+	}
+	else {
+		nRow = ds_ioPosOutput.AddRow();
+	}
+	if(ds_ioPosOutputJVM.GetRowCount() > 0) {	//JAVA단의 결과를 셋팅해줌
+		ds_ioPosOutput.SetColumn(nRow, "MI_PMYEAR", ds_ioPosOutputJVM.GetColumn(0, "MI_PMYEAR"));
+		ds_ioPosOutput.SetColumn(nRow, "MI_PMMGNO", ds_ioPosOutputJVM.GetColumn(0, "MI_PMMGNO"));
+		ds_ioPosOutput.SetColumn(nRow, "MI_RSCODE", ds_ioPosOutputJVM.GetColumn(0, "MI_RSCODE"));	//LGD 실패, MI 실패
+	}
+	else {	//입력받은 데이타셋의 내용을 셋팅해줌
+		
+		ds_ioPosOutput.SetColumn(nRow, "MI_PMYEAR", ds_ioPosInput.GetColumn(row, "PMYEAR"));
+		ds_ioPosOutput.SetColumn(nRow, "MI_PMMGNO", ds_ioPosInput.GetColumn(row, "PMMGNO"));
+		ds_ioPosOutput.SetColumn(nRow, "MI_RSCODE", "3");	//LGD 실패, MI 실패
+	}
+}
+
+/*
+ * 기능 : Transaction 서비스 성공일 경우 ds_ioPosOutput 처리(값셋팅)
+ * parameter : row - 데이타셋의 로우
+ * Return : 없음
+ */
+function lfn_SuccessTransactionPOS(row) {
+
+	var nRow = 0;
+	
+	if(ds_ioPosOutput.GetRowCount() == 0) {
+		ds_ioPosOutput.InsertRow(0);
+	}
+	else {
+		nRow = ds_ioPosOutput.AddRow();
+	}
+	if(ds_ioPosOutputJVM.GetRowCount() > 0) {	//JAVA단의 결과를 셋팅해줌
+		ds_ioPosOutput.SetColumn(nRow, "MI_PMYEAR", ds_ioPosOutputJVM.GetColumn(0, "MI_PMYEAR"));
+		ds_ioPosOutput.SetColumn(nRow, "MI_PMMGNO", ds_ioPosOutputJVM.GetColumn(0, "MI_PMMGNO"));
+		ds_ioPosOutput.SetColumn(nRow, "MI_PRMGUBUN", ds_ioPosOutputJVM.GetColumn(0, "MI_PRMGUBUN"));
+		ds_ioPosOutput.SetColumn(nRow, "LGD_RESPCODE", ds_ioPosOutputJVM.GetColumn(0, "LGD_RESPCODE"));
+		ds_ioPosOutput.SetColumn(nRow, "LGD_CASHRECEIPTNUM", ds_ioPosOutputJVM.GetColumn(0, "LGD_CASHRECEIPTNUM"));
+		ds_ioPosOutput.SetColumn(nRow, "LGD_RESPMSG", ds_ioPosOutputJVM.GetColumn(0, "LGD_RESPMSG"));
+		ds_ioPosOutput.SetColumn(nRow, "LGD_OID", ds_ioPosOutputJVM.GetColumn(0, "LGD_OID"));
+		ds_ioPosOutput.SetColumn(nRow, "LGD_TID", ds_ioPosOutputJVM.GetColumn(0, "LGD_TID"));
+		ds_ioPosOutput.SetColumn(nRow, "LGD_AMOUNT", ds_ioPosOutputJVM.GetColumn(0, "LGD_AMOUNT"));
+		ds_ioPosOutput.SetColumn(nRow, "LGD_ACCOUNTNUM", ds_ioPosOutputJVM.GetColumn(0, "LGD_ACCOUNTNUM"));
+		ds_ioPosOutput.SetColumn(nRow, "LGD_FINANCECODE", ds_ioPosOutputJVM.GetColumn(0, "LGD_FINANCECODE"));
+		ds_ioPosOutput.SetColumn(nRow, "LGD_CASFLAG", ds_ioPosOutputJVM.GetColumn(0, "LGD_CASFLAG"));
+		ds_ioPosOutput.SetColumn(nRow, "LGD_FINANCENAME", ds_ioPosOutputJVM.GetColumn(0, "LGD_FINANCENAME"));
+		ds_ioPosOutput.SetColumn(nRow, "MI_RSCODE", ds_ioPosOutputJVM.GetColumn(0, "MI_RSCODE"));
+		ds_ioPosOutput.SetColumn(nRow, "MI_RSMSG", ds_ioPosOutputJVM.GetColumn(0, "MI_RSMSG"));
+		ds_ioPosOutput.SetColumn(nRow, "LGD_TAXFREEAMOUNT", ds_ioPosOutputJVM.GetColumn(0, "LGD_TAXFREEAMOUNT"));		
+	}
+	else {	//LGD 성공,실패결과를 확인못함.(특이한 케이스)
+		ds_ioPosOutput.SetColumn(nRow, "MI_PMYEAR", ds_ioPosInput.GetColumn(row, "PMYEAR"));
+		ds_ioPosOutput.SetColumn(nRow, "MI_PMMGNO", ds_ioPosInput.GetColumn(row, "PMMGNO"));
+		ds_ioPosOutput.SetColumn(nRow, "MI_RSCODE", ds_ioPosInput.GetColumn(row, "5"));
+	}
+}
+
+function frmCOM3010SPOS_OnTimer(obj,nEventID)
+{
+	idle();
+}
+
+function frmCOM3010SPOS_OnUnloadCompleted(obj)
+{
+	KillTimer(2);
+//	Close("END");
+}
+
+/*
+ * 기능 : POS Confirm 처리
+ */ 
+
+function lfn_POSSearch() {
+    lfn_PosCall2();
+    KillTimer(2);
+    return ls_Ret2;
+}
+
+/*
+ * 기능 : 입력건수에 따라 트랜잭션을 수행한다.(결제 확인)
+ */
+function lfn_PosCall2(obj)
+{	
+	// 서버 호출 
+	ls_Ret2 = "FAIL";
+	sWorkFlag2 = 'Y';
+	ds_ioPosOutput.ClearData();
+	
+	for(var nPosRow2=0; nPosRow2<ds_ioPosInput.GetRowCount(); nPosRow2++) {
+		if(sWorkFlag2 == 'Y') {
+			lfn_PosSearchCall(nPosRow2);
+		}
+		else {
+			lfn_ExceptionTransactionPOS(nPosRow2);
+		}
+	}
+}
+
+////////////////////////////////////////////////////////////////
+/*
+ * 기능 : 원와 LGD 결과 내용 조회하기
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+
+function lfn_PosSearchCall(row)
+{
+	Https.Sync = true;
+	ds_ioPosOutputJVM.ClearData();	//가비지 데이타 제거
+
+	var params = "ROW="+quote(row);
+	params += " PMREGSABUN="+gds_oUserInfo.GetColumn(0,"PSABUN");
+	//params += " PMREGSABUN=TEST001";
+	params += " COMMAND=search";
+		
+	Transaction("PosRun2", ls_PosService + "::Platform.jsp", "ioPosInput=ds_ioPosInput", "ds_ioPosOutputJVM=ioPosOutput", params, "lfn_AfterSearchSettlementPOS");
+	Https.Sync = false;
+}
+
+/*
+ * 기능 : lfn_PosConfirmCall 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+
+function lfn_AfterSearchSettlementPOS(strSvcID, nErrorCode, strErrorMsg) {
+	if (strSvcID == "PosRun2") {
+		trace("tRow = "+tRow);
+		if (nErrorCode < 0) { // 트랜잭션 에러.
+			//gfn_ErrorMsg(nErrorCode, strErrorMsg);
+			sWorkFlag2 = 'N';
+			ls_Ret2 = "FAIL";
+			lfn_ExceptionTransactionPOS(tRow);
+		}
+		else {	// 트랜잭션 성공.
+			lfn_SuccessTransactionPOS(tRow);
+			ls_Ret2 = "OK";
+		}
+	}
+	ds_ioPosOutputJVM.ClearData();	//가비지 데이타 제거
+}
+
+
+
+function Button0_OnClick(obj)
+{
+	alert("lfn_POS() = "+lfn_POS());
+}
+
+function Button1_OnClick(obj)
+{
+	alert("lfn_POS() = "+lfn_POSSearch());
+}
+]]></Script>
+</Window>

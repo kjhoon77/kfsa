@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="350" Id="frmCOM0040PMulitSort" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="멀티정렬팝업" Top="8" Ver="1.0" Width="400" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_SortList">
+				<Contents>
+					<colinfo id="COL_ID" size="20" type="STRING"/>
+					<colinfo id="COL_SORT" size="1" type="STRING"/>
+					<colinfo id="COL_SEQ" size="2" type="INT"/>
+					<colinfo id="COL_NM" size="256" type="STRING"/>
+					<colinfo id="COL_INDEX" size="2" type="INT"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Sort">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>N</CD>
+						<DATA>선택</DATA>
+					</record>
+					<record>
+						<CD>A</CD>
+						<DATA>오름차순</DATA>
+					</record>
+					<record>
+						<CD>D</CD>
+						<DATA>내림차순</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_SortList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="316" Editable="TRUE" Enable="true" EndLineColor="default" HeadBorder="Flat" HeadHeight="20" Height="280" Id="gdSort" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" OnCellDBLClick="lfn_gdSort_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="392" RowHeight="20" Style="sty_Grid" TabOrder="1" TabStop="true" Top="36" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="384">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="60"/>
+						<col width="243"/>
+						<col width="77"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="정렬순서"/>
+						<cell col="1" display="text" text="컬럼명"/>
+						<cell col="2" display="text" text="정렬방식"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="number" expr="currow+1"/>
+						<cell col="1" colid="COL_ID" display="text"/>
+						<cell align="center" col="2" colid="COL_SORT" combocol="CD" combodataset="ds_Sort" combotext="DATA" display="combo" edit="combo"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnOK" ImageID="BTN_TEXT_04" Left="126" OnClick="btnOK_OnClick" TabOrder="2" Text="정렬" Top="321" Width="66"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_TEXT_04" Left="206" OnClick="btnCancel_OnClick" TabOrder="3" Text="취소" Top="321" Width="66"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnMoveUp" ImageID="BTN_TEXT_01" Left="8" OnClick="btnMoveUp_OnClick" TabOrder="4" Text="▲" Top="8" Width="30"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnMoveDown" ImageID="BTN_TEXT_01" Left="40" OnClick="btnMoveDown_OnClick" TabOrder="5" Text="▼" Top="8" Width="30"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM0040PMulitSort.xml
+ * 설명 : 멀티 정렬을 하기 위해 정렬 순서 및 정렬 방법을 설정한다.
+ * 작성일 : 2009.06.23
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+var gdParent; // Parent의 Grid Object
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj);
+
+    gdParent = object(sGrid);  // Parent의 Grid 할당.
+    var ln_Row;
+    var ln_Colnm;
+    var ln_Col = gdParent.GetColCount();
+
+    gdParent.Redraw = false;
+
+    for (var i = ParseInt(nStartCell); i < ParseInt(ln_Col); i++) // nStartCell번 셀부터
+    {
+        ln_Row = ds_SortList.AddRow();
+        ln_Colnm = replace(replace(gdParent.GetCellProp("head", i, "text"), ASC_MARK), DESC_MARK);
+		
+		ds_SortList.SetColumn(ln_Row, "COL_ID", ln_Colnm);
+        ds_SortList.SetColumn(ln_Row, "COL_NM", gdParent.GetCellProp("body", i, "colid"));
+        ds_SortList.SetColumn(ln_Row, "COL_SORT", "N");
+        ds_SortList.SetColumn(ln_Row, "COL_INDEX", i);
+    }
+
+    ds_SortList.row = 0;
+    gdParent.Redraw = true;
+}
+
+function Form_OnUnloadCompleted(obj) {
+    // to do
+
+    gfn_Form_OnUnloadCompleted(obj);
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam);
+}
+/* 공통 필수 종료 */
+
+var lb_WorkFlag = false;
+function ds_SortList_OnColumnChanged(obj,nRow,sColumnID,varOldValue,sNewValue) {
+    var ln_MaxSeq;
+
+    if (lb_WorkFlag) {
+        return;
+    }
+
+    lb_WorkFlag = true;
+    if (sColumnID == "COL_SORT") {
+        if (sNewValue == "N") {
+            ds_SortList.SetColumn(nRow, "COL_SEQ", null);
+        } else {
+            if (varOldValue == "N") {
+                ln_MaxSeq = (ds_SortList.Max("tonumber(COL_SEQ)")) + 1;
+                ds_SortList.SetColumn(nRow, "COL_SEQ", ln_MaxSeq);
+            }
+        }
+    }
+    lb_WorkFlag = false;
+}
+
+function btnOK_OnClick(obj) {
+    var ls_Title;
+    var ls_ReturnStr = "";
+    var ln_CellIndex;
+    var ls_SortType;
+    var ln_Cnt = ds_SortList.rowcount;
+
+    //ds_SortList.Sort("COL_SEQ",true);
+    for (var i=0; i < ln_Cnt; i++ ) {
+        ls_SortType = ds_SortList.GetColumn(i, "COL_SORT");
+        ln_CellIndex = ds_SortList.GetColumn(i, "COL_INDEX");
+        ls_Title = ds_SortList.GetColumn(i, "COL_ID");
+
+        if (ls_SortType <> "N") {
+            if (ls_ReturnStr <> "") {
+                ls_ReturnStr += ",";
+            }
+            ls_ReturnStr += ds_SortList.GetColumn(i, "COL_NM") + ":" + ls_SortType;
+
+            // Head Sort 표시 추가
+            if (ls_SortType == "A") {
+                gdParent.SetCellProp("head", ln_CellIndex, "text", ls_Title + ASC_MARK);
+            } else {
+                gdParent.SetCellProp("head", ln_CellIndex, "text", ls_Title + DESC_MARK);
+            }
+        } else {
+            gdParent.SetCellProp("head", ln_CellIndex, "text", ls_Title);
+        }
+    }
+
+    if (sDivFlag) {
+        // Popupdiv로 오픈한 경우 사용
+        closePopUp(ls_ReturnStr);
+    } else {
+        //Dialog인 경우 사용
+        close(ls_ReturnStr);
+    }
+
+}
+
+function btnCancel_OnClick(obj) {
+    if (sDivFlag) {
+        //Popupdiv로 오픈한 경우 사용
+        closePopUp("");
+    } else {
+        //Dialog인 경우 사용
+        close("");
+    }
+}
+
+/*
+ * 기능 : ▲ 버튼의 OnClick 이벤트를 처리하는 함수
+ */
+function btnMoveUp_OnClick(obj) {
+    gfn_GridSortMarkClear(gdSort); // Head Sort 마크 제거한다.
+	ds_SortList.MoveRow(ds_SortList.currow, ds_SortList.currow - 1);
+	ds_SortList.row = ds_SortList.currow - 1;
+}
+
+/*
+ * 기능 : ▼ 버튼의 OnClick 이벤트를 처리하는 함수
+ */
+function btnMoveDown_OnClick(obj) {
+    gfn_GridSortMarkClear(gdSort); // Head Sort 마크 제거한다.
+	ds_SortList.MoveRow(ds_SortList.currow, ds_SortList.currow + 1);
+	ds_SortList.row = ds_SortList.currow + 1;
+}
+
+function lfn_gdSort_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+	btnMoveUp_OnClick(obj);
+}
+
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        if (nCell <> 0) {
+            gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+        }
+    }
+}
+]]></Script>
+</Window>

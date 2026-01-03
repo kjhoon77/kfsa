@@ -1,0 +1,179 @@
+﻿﻿﻿﻿/*
+ * 프로그램명 : DATE.js
+ * 설명 : 날짜 관련
+ * 작성일 : 2009.06.23
+ * 작성자 : 장성호
+ */
+
+/*
+ * 기능 : 조회기간 Validation 체크한다.
+ * parameter : objStart - 조회기간 시작일
+ *             objEnd - 조회기간 종료일
+ *             bIsNotNull - 값 필수여부 : true 필수, false 필수 아님
+ *             sMsg - 메세지
+ *             nTerm - 최대기간
+ *             sUnit - 기간단위 : 년, 개월, 일
+ * return : 이상 없으면 true, 이상 있으면 false
+ */
+function gfn_CheckDateTerm(objStart, objEnd, bIsNotNull, sMsg, nTerm, sUnit) {
+    if (bIsNotNull == null || bIsNotNull == "") {
+        bIsNotNull = false;
+    }
+    if (bIsNotNull && gfn_IsNull(objStart.Value)) {
+        gfn_Alert(sMsg + "시작" + MSGW00010);
+        objStart.SetFocus();
+        return false;
+    } else if (bIsNotNull && gfn_IsNull(objEnd.Value)) {
+        gfn_Alert(sMsg + "종료" + MSGW00010);
+        objEnd.SetFocus();
+        objEnd.SetSel();
+        return false;
+    } else if (ToNumber(objStart.Value) > ToNumber(objEnd.Value)) {
+        gfn_Alert(sMsg + "시작이 " + sMsg + "종료보다 늦습니다.");
+        objStart.SetFocus();
+        objStart.SetSel();
+        return false;
+    }
+    if (nTerm != null) {
+        if (sUnit == "년") {
+            if (substr(objEnd.Value, 0, 4) > substr(AddMonth(objStart.Value, (nTerm - 1) * 12), 0, 4)) {
+                gfn_Alert(sMsg + "은 " + nTerm + "년을 초과할 수 없습니다.");
+                objStart.Value = AddMonth(objEnd.Value, -((nTerm - 1) * 12));
+                objStart.SetFocus();
+                objStart.SetSel();
+                return false;
+            }
+        } else if (sUnit == "개월") {
+            if (substr(objEnd.Value, 0, 6) > substr(AddMonth(objStart.Value, nTerm - 1), 0, 6)) {
+                gfn_Alert(sMsg + "은 " + nTerm + "개월을 초과할 수 없습니다.");
+                objStart.Value = AddMonth(objEnd.Value, -(nTerm - 1));
+                objStart.SetFocus();
+                objStart.SetSel();
+                return false;
+            }
+        } else {
+            if (objEnd.Value > AddDate(objStart.Value, nTerm - 1)) {
+                gfn_Alert(sMsg + "은 " + nTerm + "일을 초과할 수 없습니다.");
+                objStart.Value = AddDate(objEnd.Value, -(nTerm - 1));
+                objStart.SetFocus();
+                objStart.SetSel();
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+/*
+ * 기능 : 시간형식인지 체크한다.
+ * parameter : sTime - 시간문자열
+ * return : 시간형식이면 true, 아니면 false
+ */
+function gfn_IsTime(sTime) {
+    var mn_Temp = 0;
+
+    //입력된 값이 숫자인지 먼저 체크
+    if (!IsDigit(sTime)) {
+        return false;
+    }
+
+    //입력된 값의 자리수 체크
+    if (length(sTime) < 4) {
+        return false;
+    } else if (length(sTime) > 6) {
+        return false;
+    } else if (length(sTime) == 4) {
+        sTime += '00';
+    }
+
+    //시간 체크
+    mn_Temp = toNumber(left(sTime, 2));
+    if (mn_Temp < 0 || mn_Temp > 23) {
+        return false;
+    }
+
+    //분 체크
+    mn_Temp = toNumber(substr(sTime, 2, 2));
+    if (mn_Temp < 0 || mn_Temp > 59) {
+        return false;
+    }
+
+    //초 체크
+    mn_Temp = toNumber(right(sTime, 2));
+    if (mn_Temp < 0 || mn_Temp > 59) {
+        return false;
+    }
+
+    return true;
+}
+
+/*
+ * 기능 : 날자형식인지 체크한다.
+ * parameter : sDate - 날자문자열
+ * return : 날자형식이면 true, 아니면 false
+ */
+function gfn_IsDate(sDate) {
+    var mn_Temp = 0;
+
+    //입력된 값이 숫자인지 먼저 체크
+    if (!IsDigit(sDate)) {
+        return false;
+    }
+
+    //입력된 값의 자리수 체크
+    if (length(sDate) < 8) {
+        return false;
+    } else if (length(trim(sDate)) > 8) {
+        return false;
+    }
+
+    //년도 체크
+    mn_Temp = toNumber(left(sDate, 2));
+	if (mn_Temp < "19" || mn_Temp > "20") {
+		return false;
+	}
+
+
+    //월 체크
+    mn_Temp = toNumber(substr(sDate, 4, 2));
+	if (mn_Temp < 1 || mn_Temp > 12) {
+		return false;
+	}
+
+    //일 체크
+    mn_Temp = toNumber(right(sDate, 2));
+	if (!gfn_isValidDay(sDate)) {
+		return false;
+	}
+
+    return true;
+}
+
+/**
+	유효한 일인지 체크
+	param yyyy, mm, dd
+	return true, false
+**/
+function gfn_isValidDay(yyyymmdd) {
+	var mm = parseInt(substr(yyyymmdd,4,2), 10)-1;
+	var dd = parseInt(right(yyyymmdd,2), 10);
+	var yyyy = left(yyyymmdd,4);
+	var end = Array(12);
+	end[0] = 31;
+	end[1] = 28;
+	end[2] = 31;
+	end[3] = 30;
+	end[4] = 31;
+	end[5] = 30;
+	end[6] = 31;
+	end[7] = 31;
+	end[8] = 30;
+	end[9] = 31;
+	end[10] = 30;
+	end[11] = 31;
+	
+	if (((floor(yyyy) % 4) == 0 && (floor(yyyy) % 100) != 0) || (floor(yyyy) % 400) == 0) {
+		end[1] = 29;
+	}
+	return (dd >= 1 && dd <= end[mm]);
+}

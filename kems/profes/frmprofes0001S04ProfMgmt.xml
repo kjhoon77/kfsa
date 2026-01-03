@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="184" Id="frmprofes0001S04ProfMgmt" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="논문&#32;및&#32;연구실적" Top="8" Ver="1.0" Width="782" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioProfPaper">
+				<Contents>
+					<colinfo id="INSACODE" size="8" type="STRING"/>
+					<colinfo id="PPAUTHOR" size="300" type="STRING"/>
+					<colinfo id="PPFIELD" size="300" type="STRING"/>
+					<colinfo id="PPOFFICE" size="300" type="STRING"/>
+					<colinfo id="PPPAGE" size="22" type="DECIMAL"/>
+					<colinfo id="PPPROFESSOR" size="100" type="STRING"/>
+					<colinfo id="PPPUBDATE" size="8" type="STRING"/>
+					<colinfo id="PPSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="PPTITLE" size="500" type="STRING"/>
+					<colinfo id="PPVOLUME" size="22" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oProfPaperSingle">
+				<Contents>
+					<colinfo id="INSACODE" size="8" type="STRING"/>
+					<colinfo id="PPAUTHOR" size="300" type="STRING"/>
+					<colinfo id="PPFIELD" size="300" type="STRING"/>
+					<colinfo id="PPOFFICE" size="300" type="STRING"/>
+					<colinfo id="PPPAGE" size="22" type="DECIMAL"/>
+					<colinfo id="PPPROFESSOR" size="100" type="STRING"/>
+					<colinfo id="PPPUBDATE" size="8" type="STRING"/>
+					<colinfo id="PPSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="PPTITLE" size="500" type="STRING"/>
+					<colinfo id="PPVOLUME" size="22" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="180" Height="176" Id="shpGubunBox1" Left="4" LineColor="user15" Right="776" TabOrder="5" Top="4" Type="Rectangle" Width="772"></Shape>
+		<Static Align="Center" Height="20" Id="Static8" Left="-144" Style="sty_LabelGruopBox" TabOrder="6" Text="안전원&#32;교수&#32;관리" Top="63" VAlign="Middle" Width="120"></Static>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_ioProfPaper" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="178" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="142" Id="gdProfPaper" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" OnHeadClick="gdProfPaper_OnHeadClick" Right="772" RowHeight="20" Style="sty_Grid" TabOrder="3" TabStop="true" Top="36" UseDBuff="true" UsePopupMenu="true" UserData="논문&#32;및&#32;연구실적목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="764">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="200"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="60"/>
+						<col width="60"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="연구분야"/>
+						<cell align="center" col="2" display="text" text="논문개재일"/>
+						<cell align="center" col="3" display="text" text="논문명"/>
+						<cell align="center" col="4" display="text" text="게재지명"/>
+						<cell align="center" col="5" display="text" text="지도교수"/>
+						<cell align="center" col="6" display="text" text="저자"/>
+						<cell align="center" col="7" display="text" text="권수"/>
+						<cell align="center" col="8" display="text" text="면수"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow+1"/>
+						<cell align="left" col="1" colid="PPFIELD" display="text" edit="normal"/>
+						<cell align="center" col="2" colid="PPPUBDATE" display="date" edit="date"/>
+						<cell align="left" col="3" colid="PPTITLE" display="text" edit="normal"/>
+						<cell align="left" col="4" colid="PPOFFICE" display="text" edit="normal"/>
+						<cell align="center" col="5" colid="PPPROFESSOR" display="text" edit="normal"/>
+						<cell align="center" col="6" colid="PPAUTHOR" display="text" edit="normal"/>
+						<cell align="right" col="7" colid="PPVOLUME" display="number" edit="number"/>
+						<cell align="right" col="8" colid="PPPAGE" display="number" edit="number"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Height="16" Id="lbText" Left="12" Style="sty_Text" TabOrder="4" Text="■&#32;논문&#32;및&#32;연구실적&#32;(논문게재일은&#32;&apos;-&apos;제외한&#32;8자리&#32;숫자로&#32;입력,&#32;권수와&#32;면수는&#32;숫자로&#32;입력)" Top="12" VAlign="Middle" Width="600"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnAdd" ImageID="BTN_TEXT_03" Left="666" OnClick="btnAdd_OnClick" Style="sty_Button" TabOrder="1" Text="행&#32;추가" Top="10" Transparent="TRUE" Width="52"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnDel" ImageID="BTN_TEXT_03" Left="720" OnClick="btnDel_OnClick" Style="sty_Button" TabOrder="2" Text="행&#32;삭제" ToolTipText="행&#32;삭제&#32;후&#32;저장버튼을&#32;눌러&#32;저장하세요." Top="10" Transparent="TRUE" Width="52"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmPFM0001S04ProfMgmt.xml
+ * 설명 : 논문 및 연구실적
+ * 작성일 : 2009.11.09
+ * 작성자 : 김종복
+ */
+
+#include "LIB::profes.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    tit_createActionInfo(); // X-Framework용    
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+    
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }    
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    gdProfPaper.Editable = bStatus;
+}
+
+/*
+ * 기능 : 그리드정렬
+ */
+function gdProfPaper_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+	var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1 && nCell > 0) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+/*
+ * 기능 : 행추가
+ */
+function btnAdd_OnClick(obj) {
+	ds_ioProfPaper.AddRow(); // Dataset에 빈 Record한줄 추가
+	ds_ioProfPaper.SetColumn(ds_ioProfPaper.row, "INSACODE", ds_ioProfUser.GetColumn(ds_ioProfUser.row, "INSACODE"));
+}
+
+/*
+ * 기능 : 행삭제
+ */
+function btnDel_OnClick(obj) {
+	ds_ioProfPaper.DeleteRow(ds_ioProfPaper.row);
+}
+
+/*
+ * 기능 : 논문 및 연구실적 조회
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchProfPaper(obj) {
+	gdProfPaper.Redraw = false;
+	
+	ds_ioProfPaper.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("profes:searchProfes0001ProfPaper", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioProfPaper=ds_oProfData" // outDs
+		,"INSACODE=" + quote(ds_ioProfUser.getColumn(ds_ioProfUser.row, "INSACODE")) //-- 사번 // args 
+		,"lfn_AfterSearchProfPaper"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 논문 및 연구실적 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchProfPaper(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    gfn_SearchMessage(gdProfPaper); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+    gdProfPaper.Redraw = true;
+}
+
+/*
+ * 기능 : 논문 및 연구실적 저장
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SaveProfPaper(obj) {
+	// if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        // return false;
+    // }
+	
+	for (var j=0; j<ds_ioProfPaper.GetRowCount(); j++) {
+		if (ds_ioProfPaper.GetRowType(j) == "insert") {
+			ds_oProfPaperSingle.AddRow();
+			ds_oProfPaperSingle.CopyRow(ds_oProfPaperSingle.row, ds_ioProfPaper, j);
+			lfn_InsProfPaper(); // 논문 및 연구실적 입력
+			ds_oProfPaperSingle.ClearData();
+		}
+    }
+    
+	tit_clearActionInfo();
+    tit_AddSaveActionInfo(	
+        "" // insert  		
+        , "profes:updateProfes0001ProfPaper" // update  
+        , "profes:deleteProfes0001ProfPaper" // delete
+        , "" // flag column 명
+        , "" // key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N" // 실행타입
+    );
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iProfData=ds_ioProfPaper:U" // inDs		
+        ,""	// outDs
+        ,"PSABUN=" + gds_oUserInfo.GetColumn(0, "PSABUN") //-- 작성자사번 // args 
+        ,"lfn_AfterSaveProfPaper"
+        ,false
+        ,false
+		,true
+    );
+}
+
+/*
+ * 기능 : 논문 및 연구실적 저장 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveProfPaper(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/*
+ * 기능 : 논문 및 연구실적 입력
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_InsProfPaper(obj) {
+	tit_clearActionInfo();
+	tit_AddSingleActionInfo("profes:insertProfes0001ProfPaper", "", 0, "", "N");
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,"ds_iProfData=ds_oProfPaperSingle:A" // inDs		
+		,""	// outDs
+		,"PSABUN=" + gds_oUserInfo.GetColumn(0, "PSABUN") //-- 작성자사번 // args 
+		,"lfn_AfterInsProfPaper"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 논문 및 연구실적 입력 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterInsProfPaper(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/*
+ * 기능 : 논문 및 연구실적 입력 삭제
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_DelProfPaper(obj) {
+	tit_clearActionInfo();
+	tit_AddMultiActionInfo("profes:deleteProfes0001ProfPaper", "", 0, "", "N");
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iProfData=ds_ioProfPaper:A" // inDs		
+        ,""	// outDs
+        ,"PSABUN=" + gds_oUserInfo.GetColumn(0, "PSABUN") //-- 작성자사번 // args 
+        ,"lfn_AfterDelProfPaper"
+        ,false
+        ,false
+		,true
+    );
+}
+
+/*
+ * 기능 : 논문 및 연구실적 삭제 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterDelProfPaper(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}]]></Script>
+</Window>

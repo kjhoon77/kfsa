@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="704" Id="frmcti0040MManualList" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="MANUAL조회" Top="8" Ver="1.0" Width="1192" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oBoard">
+				<Contents>
+					<colinfo id="AFDIRPATH" size="256" type="STRING"/>
+					<colinfo id="AFFILESIZE" size="22" type="DECIMAL"/>
+					<colinfo id="AFREALNM" size="256" type="STRING"/>
+					<colinfo id="AFSAVENM" size="256" type="STRING"/>
+					<colinfo id="AFSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="BBOARDGUBUN" size="2" type="STRING"/>
+					<colinfo id="BCONTENTS" size="4000" type="STRING"/>
+					<colinfo id="BHIT" size="22" type="DECIMAL"/>
+					<colinfo id="BMODDATE" size="10" type="STRING"/>
+					<colinfo id="BMODSABUN" size="8" type="STRING"/>
+					<colinfo id="BREGDATE" size="10" type="STRING"/>
+					<colinfo id="BREGSABUN" size="20" type="STRING"/>
+					<colinfo id="BSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="BTITLE" size="200" type="STRING"/>
+					<colinfo id="NEW_YN" size="10" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="60" Height="28" Id="shpGubunBox" Left="4" LineColor="user15" Right="1184" TabOrder="12" Top="32" Type="Rectangle" Width="1180"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="8" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Visible="FALSE" Width="300">
+			<Contents></Contents>
+		</Div>
+		<Static Align="Center" Height="20" Id="lbTitle" Left="8" Style="sty_Label" TabOrder="9" Text="제목" Top="36" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edTitle" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edTitle_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="6" Top="36" UserData="S" Width="400"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="1106" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="7" Top="64" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="750" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="837" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="2" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="925" OnClick="lfn_Excel" Style="sty_Button" TabOrder="3" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="1012" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="4" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="1099" OnClick="lfn_End" Style="sty_Button" TabOrder="5" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oBoard" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="696" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="608" Id="gdBoard" InputPanel="FALSE" Left="3" LineColor="default" MinWidth="100" OnCellClick="gdBoard_OnCellClick" OnHeadClick="lfn_SortGrid_OnHeadClick" OnMouseOver="gdBoard_OnMouseOver" Right="1184" RowHeight="20" Style="sty_Grid" TabOrder="10" TabStop="true" Top="88" UseDBuff="true" UsePopupMenu="true" UserData="공지사항목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1181">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="431"/>
+						<col width="104"/>
+						<col width="109"/>
+						<col width="48"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="제목"/>
+						<cell align="center" col="1" display="text" text="작성자"/>
+						<cell align="center" col="2" display="text" text="작성날짜"/>
+						<cell align="center" col="3" display="text" text="첨부"/>
+					</head>
+					<body>
+						<cell align="left" col="0" colid="BTITLE" display="text"/>
+						<cell align="center" col="1" colid="BREGSABUN" display="text"/>
+						<cell align="center" col="2" colid="BREGDATE" display="text"/>
+						<cell align="center" bkimageid="expr:iif(AFSEQ&#32;&gt;&#32;0,&#32;&apos;IMG_ATTACH_FILE&apos;,&#32;&apos;&apos;)" col="3" cursor="expr:iif(AFSEQ&#32;&gt;&#32;0,&#32;&apos;hand&apos;,&#32;&apos;arrow&apos;)" display="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<HttpFile Height="24" Id="hfAttachFile" Left="696" Top="32" Width="24"></HttpFile>
+		<FileDialog Bottom="56" Height="24" Id="fdAttachFile" Left="672" Right="696" TabOrder="11" Top="32" Width="24"></FileDialog>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="747" LineColor="user14" Right="1187" TabOrder="61" Top="1" Type="Rectangle" Width="440"></Shape>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcti0040MManualList.xml
+ * 설명 : MANUAL 목록 조회
+ * 작성일 : 
+ * 작성자 :  
+ */
+
+#include "LIB::cti.js"; // 공통업무 관련
+
+var ls_BoardGubun = "C";
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    //ls_SystemGubun = gs_SystemGubun;
+    //ls_SystemMenuId = gs_SystemMenuId;
+    //var ls_FormId = split(sFormUrl, "::");
+    //ls_FormId = split(ls_FormId[1], ".");
+    //obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+    
+    lfn_search();
+    edTitle.SetFocus();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState) {
+    if (gs_IsResizingForm == "Y") {
+        gdBoard.Height = nCy - gdBoard.Top - 4;
+    }
+}
+
+/**
+ * 엑셀 출력
+ */
+function lfn_Excel(obj) {
+    if (ds_oBoard.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+
+    ds_oBoard.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cti:searchBoardenv", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oBoard=ds_oBoard"	// outDs
+		,"BBOARDGUBUN=" + quote(ls_BoardGubun)
+            + " BTITLE=" + quote(edTitle.Text)	// args 
+		,""
+		,false
+	);
+	
+}
+/* 공통 필수 종료 */
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj) {
+	gfn_GridMultiSort(gdBoard, 0); // 멀티 정렬을 실행한다.
+}
+
+function edTitle_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam) {
+	if (nChar == 13) {
+        lfn_search();
+	}
+}
+
+function gdBoard_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+
+	if(nCell == 3) {
+        lfn_DownloadFile(obj);
+	} else {
+        var sArg = "sBoardSeq=" + quote(ds_oBoard.GetColumn(nRow, "BSEQ"))
+            + " sFormTitle=" + quote(sFormTitle);
+        return Dialog("cti::frmcti0024PBoardContents.xml", sArg, 600, 400, "", -1, -1);
+    }
+}
+
+function lfn_DownloadFile(obj){
+    fdAttachFile.Type = "SAVE";
+    fdAttachFile.FileName = ds_oBoard.GetColumn(ds_oBoard.currow, "AFSAVENM");
+
+    if (fdAttachFile.open()) {
+        var arrRtn = tit_fileRead(
+            hfAttachFile
+            , ds_oBoard.GetColumn(ds_oBoard.currow, "AFDIRPATH")
+            , ds_oBoard.GetColumn(ds_oBoard.currow, "AFREALNM")
+            , fdAttachFile.FilePath
+            , fdAttachFile.FileName
+        );
+
+        gfn_Alert(MSGI00060); //다운로드 완료 메시지
+    }
+}
+
+
+function gdBoard_OnMouseOver(obj,nPosX,nPosY,nRow,nCell,nPivotIndex) {
+	ds_oBoard.row = nRow;
+}
+]]></Script>
+</Window>

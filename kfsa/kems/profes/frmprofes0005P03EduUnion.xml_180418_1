@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="230" Id="frmprofes0005P03EduUnion" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="통합강의등록" Top="8" Ver="1.0" Width="776" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oLectureSeq">
+				<Contents>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="225" Height="192" Id="Shape1" Left="4" LineColor="user15" Right="772" TabOrder="4" Top="33" Type="Rectangle" Width="768"></Shape>
+		<Shape Bottom="29" Height="28" Id="Shape0" Left="592" LineColor="user14" Right="773" TabOrder="3" Top="1" Type="Rectangle" Width="181"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSave" ImageID="BTN_COM_SAVE" Left="597" OnClick="lfn_Save" Style="sty_Button" TabOrder="2" ToolTipText="수정&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="684" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="Static1" Left="10" Style="sty_Label" TabOrder="6" Text="지부" Top="39" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edJibu" ImeMode="native" Left="102" LeftMargin="2" MaxLength="1" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="8" Top="39" UpperOnly="TRUE" UseIME="FALSE" UserData="S" Width="100"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edCourse" ImeMode="native" Left="102" LeftMargin="2" MaxLength="1" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="12" Top="64" UpperOnly="TRUE" UseIME="FALSE" UserData="S" Width="250"></Edit>
+		<Static Align="Center" Height="20" Id="Static2" Left="10" Style="sty_Label" TabOrder="11" Text="과정" Top="64" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static0" Left="10" Style="sty_Label" TabOrder="9" Text="교육시간" Top="89" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edEduTime" ImeMode="native" Left="102" LeftMargin="2" MaxLength="1" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="10" Top="89" UpperOnly="TRUE" UseIME="FALSE" UserData="S" Width="100"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edWrtTime" ImeMode="native" Left="102" LeftMargin="2" MaxLength="1" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="16" Top="114" UpperOnly="TRUE" UseIME="FALSE" UserData="S" Width="100"></Edit>
+		<Static Align="Center" Height="20" Id="Static4" Left="10" Style="sty_Label" TabOrder="15" Text="입력시간" Top="114" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static3" Left="10" Style="sty_Label" TabOrder="13" Text="교육일" Top="139" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edEduDate" ImeMode="native" Left="102" LeftMargin="2" MaxLength="1" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="14" Top="139" UpperOnly="TRUE" UseIME="FALSE" UserData="S" Width="250"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edUnionCourse" ImeMode="native" Left="102" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="7" Top="163" UpperOnly="TRUE" UserData="I:통합강의" Width="664"></Edit>
+		<Static Align="Center" Height="20" Id="Static5" Left="10" Style="sty_Label" TabOrder="17" Text="통합강의" Top="163" VAlign="Middle" Width="88"></Static>
+		<Static Height="20" Id="lbAddLabel1" Left="6" Style="sty_TextBlue" TabOrder="5" Text="※&#32;입력예&#32;:&#32;소관2급(정규)과정&#32;xx회차&#32;교육일&#32;20xx.xx.xx&#32;~&#32;20.xx.xx.xx&#32;통합강의함" Top="188" VAlign="Middle" Width="764"></Static>
+		<Static Height="20" Id="lbAddLabel2" Left="6" Style="sty_TextBlue" TabOrder="18" Text="※&#32;통합강의&#32;적용시&#32;기존의&#32;저장된&#32;강의실적은&#32;모두&#32;초기화됩니다." Top="204" VAlign="Middle" Width="764"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmprofes0005P03EduUnion.xml
+ * 설명 : 통합강의 등록 팝업
+ * 작성일 : 2009.12.05
+ * 작성자 : 김은규
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+    
+    lfn_InitData();	//초기데이타 셋팅
+
+}
+
+/*
+ * 기능 : 초기데이타 셋팅
+ */
+function lfn_InitData(obj) {
+	edJibu.Text = parent.ds_ioStudyCourse.GetColumn(parent.ds_ioStudyCourse.currow, "EDUTEAMNM");
+	edCourse.Text = parent.ds_ioStudyCourse.GetColumn(parent.ds_ioStudyCourse.currow, "EDUCOURSENM"); 
+	edEduTime.Text = parent.ds_ioStudyCourse.GetColumn(parent.ds_ioStudyCourse.currow, "EDULOWTIME") + "시간";
+	edWrtTime.Text = parent.ds_ioStudyCourse.GetColumn(parent.ds_ioStudyCourse.currow, "EDUWRTTIME") + "시간";
+	edEduDate.Text = parent.ds_ioStudyCourse.GetColumn(parent.ds_ioStudyCourse.currow, "EDUDATE");
+	edUnionCourse.Text = parent.ds_ioStudyCourse.GetColumn(parent.ds_ioStudyCourse.currow, "EDUREMARK");
+}
+
+/*
+ * 기능 : 강의실적관리번호 채번
+ */
+function lfn_GenerationMgno(obj) {
+	this.ds_oLectureSeq.ClearData();
+		
+	tit_clearActionInfo();
+	tit_addSearchActionInfo("profes:searchProfes0005LectureSeq", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oLectureSeq=ds_oLectureSeq"	// outDs
+		,""	// args 
+		,"lfn_EducationUnionInsert"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 등록(입력)
+ */
+function lfn_EducationUnionInsert(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+	
+	tit_clearActionInfo();
+	tit_addSingleActionInfo("profes:insertProfes0005Lecture", "", 0, "");
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,""	// outDs 
+		, "EDULMGNO=" + quote(ds_oLectureSeq.GetColumn(0, "SEQ"))	//-- 강의실적관리번호
+		  +" EDUGUBUN=" + quote(parent.ds_ioStudyCourse.GetColumn(ds_ioStudyCourse.currow,"EDUGUBUN"))	//-- 교육과정구분
+		  +" EDUMGNO=" + quote(parent.ds_ioStudyCourse.GetColumn(ds_ioStudyCourse.currow,"EDUMGNO"))	//-- 교육관리번호
+		  +" EDUGTMGNO=" + quote(parent.ds_ioStudyCourse.GetColumn(ds_ioStudyCourse.currow,"EDUGTMGNO"))   //-- 지부코드
+		  +" EDUYEAR=" + quote(parent.ds_ioStudyCourse.GetColumn(ds_ioStudyCourse.currow,"EDUYEAR"))   //-- 교육년도
+		  +" EDUCCOURSECD=" + quote(parent.ds_ioStudyCourse.GetColumn(ds_ioStudyCourse.currow,"EDUCCOURSECD"))   //-- 직능코드
+		  +" EDUMUNJEGUBUN=" + quote(parent.ds_ioStudyCourse.GetColumn(ds_ioStudyCourse.currow,"EDUMUNJEGUBUN"))   //-- 면제구분
+		  +" EDUORDER=" + quote(parent.ds_ioStudyCourse.GetColumn(ds_ioStudyCourse.currow,"EDUORDER"))   //-- 회차
+		  +" EDUREMARK=" + quote(edUnionCourse.Text)   //-- 비고
+		  +" EDUUNIONYN=" + quote("Y")   //-- 통합강의사용유무
+		,"lfn_AfterSaveEducationUnionInsert"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 등록(입력)
+ */
+function lfn_AfterSaveEducationUnionInsert(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    Close(true);
+}
+
+/*
+ * 기능 : 등록(수정)
+ */
+function lfn_EducationUnionUpdate(obj) {
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("profes:updateProfes0005EduUnionLecture", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,""	// outDs
+		,"EDULMGNO=" + quote(ds_ioStudyCourse.GetColumn(ds_ioStudyCourse.currow,"EDULMGNO"))	//-- 강의실적관리번호
+		 + " EDUREMARK=" + quote(edUnionCourse.Text) //-- 비고
+		 + " EDUUNIONYN=" + quote("Y")	//-- 통합강의사용유무
+		,"lfn_AfterSaveEducationUnionUpdate"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 등록(수정)
+ */
+function lfn_AfterSaveEducationUnionUpdate(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    Close(true);
+}
+
+/*
+ * 기능 : 저장
+ */
+function lfn_Save(obj)
+{
+	if(!gfn_FormValidate(this)) { // 입력 Validation Check
+		return false;
+    }
+    
+    if(!gfn_Confirm("통합강의 적용시 기존의 저장된 강의실적은 모두 초기화됩니다.\n저장하시겠습니까?")) {
+		return;
+    }
+    
+	if(sWorkFlag = "insert") {
+		lfn_GenerationMgno();	//신규등록
+	} else if(sWorkFlag = "update") {
+		lfn_EducationUnionUpdate();	//수정
+	}
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close(false);
+}
+
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    btnSave.Enable = bStatus; // 수정&저장 버튼
+}
+
+/* 사용자 이벤트 함수 */]]></Script>
+</Window>

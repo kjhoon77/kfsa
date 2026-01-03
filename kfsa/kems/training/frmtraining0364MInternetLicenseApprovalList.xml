@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="696" Id="frmtraining0364MInternetLicenseApprovalList" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" PidAttrib="7" Title="[인터넷]자격심사현황" Top="8" Ver="1.0" Width="1048" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioApproveList">
+				<Contents>
+					<colinfo id="AJMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="AJTJMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="AJGTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJSTATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJISSUEGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJISSUEGUBUNNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJTCCOURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJTCCOURSENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJJUBSUDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJCONFIRMDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJCONFIRMSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJRESON" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJFILEPATH" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJFILENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJREGDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJREGSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJMODDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJMODSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJGUBUNNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPBIRTHDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIRTHDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPPERSONKEY" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPTEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPHPTEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPLASTIMGSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPADDR_1" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPADDR_2" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPZIPCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="IILASTDIRPATH" size="256" summ="default" type="STRING"/>
+					<colinfo id="IILASTREALNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="IILASTIMGSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="AJMODRESON" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_status">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>신청</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>접수</DATA>
+					</record>
+					<record>
+						<CD>5</CD>
+						<DATA>보완</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>승인</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>반려</DATA>
+					</record>
+					<record>
+						<CD>9</CD>
+						<DATA>신청취소</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Course">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>10</CD>
+						<DATA>특급소방안전관리자</DATA>
+					</record>
+					<record>
+						<CD>21</CD>
+						<DATA>1급소방안전관리자</DATA>
+					</record>
+					<record>
+						<CD>22</CD>
+						<DATA>2급소방안전관리자</DATA>
+					</record>
+					<record>
+						<CD>23</CD>
+						<DATA>3급소방안전관리자</DATA>
+					</record>
+					<record>
+						<CD>24</CD>
+						<DATA>위험물안전관리자</DATA>
+					</record>
+					<record>
+						<CD>28</CD>
+						<DATA>위험물운송자</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oAjgubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oAjgubunG">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Issuegubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>경력인정</DATA>
+					</record>
+					<record>
+						<CD>6</CD>
+						<DATA>자격인정</DATA>
+					</record>
+					<record>
+						<CD>7</CD>
+						<DATA>자격및경력인정</DATA>
+					</record>
+					<record>
+						<CD>9</CD>
+						<DATA>겸직인정</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_IssuegubunG">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>3</CD>
+						<DATA>경력인정</DATA>
+					</record>
+					<record>
+						<CD>6</CD>
+						<DATA>자격인정</DATA>
+					</record>
+					<record>
+						<CD>7</CD>
+						<DATA>자격및경력인정</DATA>
+					</record>
+					<record>
+						<CD>9</CD>
+						<DATA>겸직인정</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" Left="2" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="1" TabStop="FALSE" Text="Div0" Top="1" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="268">
+			<Contents></Contents>
+		</Div>
+		<Shape Bottom="30" Height="28" Id="shpBtnBox" Left="355" LineColor="user14" Right="795" TabOrder="6" Top="2" Type="Rectangle" Width="440"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="358" OnClick="lfn_Search" Style="sty_Button" TabOrder="2" ToolTipText="조회" Top="5" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="533" OnClick="btnToExcel_OnClick" Style="sty_Button" TabOrder="3" ToolTipText="엑셀로&#32;저장" Top="5" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="620" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="4" ToolTipText="화면&#32;출력" Top="5" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="707" OnClick="lfn_End" Style="sty_Button" TabOrder="5" ToolTipText="닫기" Top="5" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="445" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="7" ToolTipText="입력&#32;초기화" Top="5" Width="85"></Button>
+		<Shape Bottom="116" Height="72" Id="shpGubunBox" Left="2" LineColor="user15" Right="793" TabOrder="8" Top="44" Type="Rectangle" Width="791"></Shape>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="6" Style="sty_Label" TabOrder="10" Text="지부" Top="47" UserData="S" VAlign="Middle" Width="95"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="103" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="9" Top="46" UserData="I:지부" Width="100"></Combo>
+		<Static Align="Center" Height="20" Id="lbDate" Left="206" Style="sty_Label" TabOrder="13" Text="신청일자" Top="47" VAlign="Middle" Width="96"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="cldFromdt" Left="305" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="11" Top="47" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Static Align="Center" Height="20" Id="lbDateWave1" Left="407" Style="sty_Text" TabOrder="14" Text="~" Top="47" VAlign="Middle" Width="10"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="cldTodt" Left="418" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="12" Top="47" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Static Align="Center" Height="20" Id="Static0" Left="6" Style="sty_Label" TabOrder="16" Text="신청상태" Top="70" VAlign="Middle" Width="95"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxStatus" INDEX="0" InnerDataset="ds_status" Left="103" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="15" Top="69" Width="100"></Combo>
+		<Static Align="Center" Height="20" Id="Static9" Left="206" Style="sty_Label" TabOrder="17" Text="직능" Top="70" UserData="S" VAlign="Middle" Width="96"></Static>
+		<Combo CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_Course" Left="305" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Combo" TabOrder="18" Top="69" Width="130"></Combo>
+		<Static Align="Center" Height="20" Id="lbAbsentCnt" Left="2" Style="sty_LabelStat" TabOrder="20" Text="조회수" Top="121" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medJubsuCnt" Left="94" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="19" Top="121" UserData="S" Width="88"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="719" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="21" Top="121" Transparent="TRUE" Width="74"></Button>
+		<Static Align="Center" Height="20" Id="Static3" Left="206" Style="sty_Label" TabOrder="22" Text="취득구분" Top="93" VAlign="Middle" Width="96"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbAjgubun" INDEX="0" InnerDataset="ds_oAjgubun" Left="304" OnChanged="cbAjgubun_OnChanged" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="23" Top="92" UserData="S" Width="371"></Combo>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_ioApproveList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="688" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="542" Id="gdList" InputPanel="FALSE" Left="3" LineColor="default" OnCellClick="gdList_OnCellClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="1040" RowHeight="20" Style="sty_Grid" TabOrder="24" TabStop="true" Top="146" UseDBuff="true" UsePopupMenu="true" UserData="자격발급심사승인목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="1037">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="63"/>
+						<col width="70"/>
+						<col width="79"/>
+						<col width="66"/>
+						<col width="85"/>
+						<col width="130"/>
+						<col width="130"/>
+						<col width="98"/>
+						<col width="222"/>
+						<col width="182"/>
+						<col width="182"/>
+						<col width="182"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="신청상태"/>
+						<cell align="center" col="1" display="text" text="지부"/>
+						<cell align="center" col="2" display="text" text="신청일"/>
+						<cell col="3" display="text" text="성명"/>
+						<cell col="4" display="text" text="생년월일"/>
+						<cell col="5" display="text" text="휴대폰번호"/>
+						<cell col="6" display="text" text="직능"/>
+						<cell col="7" display="text" text="발급구분"/>
+						<cell col="8" display="text" text="취득구분"/>
+						<cell col="9" display="text" text="승인사유"/>
+						<cell col="10" display="text" text="보완사유"/>
+						<cell col="11" display="text" text="반려사유"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="AJSTATUS" combocol="CD" combodataset="ds_status" combotext="DATA" display="combo"/>
+						<cell align="center" col="1" colid="AJGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="2" colid="AJREGDATE" display="date"/>
+						<cell align="center" col="3" colid="TPNM" display="text"/>
+						<cell align="center" col="4" colid="BIRTHDAY" display="text"/>
+						<cell align="center" col="5" colid="TPHPTEL" display="text"/>
+						<cell align="left" col="6" colid="AJTCCOURSENM" display="text"/>
+						<cell align="left" col="7" colid="AJISSUEGUBUN" combocol="CD" combodataset="ds_IssuegubunG" combotext="DATA" display="combo"/>
+						<cell align="left" col="8" colid="AJGUBUN" combocol="CD" combodataset="ds_oAjgubunG" combotext="DATA" display="combo"/>
+						<cell col="9" colid="AJREMARK" display="text"/>
+						<cell col="10" colid="AJMODRESON" display="text"/>
+						<cell col="11" colid="AJRESON" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="Static1" Left="6" Style="sty_Label" TabOrder="25" Text="발급구분" Top="93" VAlign="Middle" Width="95"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbx_Issuegubun" INDEX="0" InnerDataset="ds_Issuegubun" Left="103" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="26" Top="92" Width="100"></Combo>
+	</Form>
+	<Script><![CDATA[/*
+
+ * 프로그램명 : frmtraining0364MInternetLicenseApprovalList
+
+ * 설명 : [인터넷]자격심사의뢰현황
+
+ * 작성일 : 2024.02.21
+
+ * 작성자 : 김동한
+
+ */
+ 
+#include "LIB::training.js"; // 공통업무 관련
+ 
+function Form_OnLoadCompleted(obj) 
+{
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+	// 폼 환경설정
+
+    ls_SystemGubun = gs_SystemGubun;
+
+    ls_SystemMenuId = gs_SystemMenuId;
+
+    var ls_FormId = split(sFormUrl, "::");
+
+    ls_FormId = split(ls_FormId[1], ".");
+
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+    
+    gfn_SearchJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회
+    
+    gfn_SearchKCode(ds_oAjgubun, "L", "전체"); //발급구분 
+    gfn_SearchKCode(ds_oAjgubunG, "L", ""); //발급구분 
+
+	cbAjgubun.Index = 0;
+	
+	cldfromdt.Value = left(toString(AddMonth(GetDate(), -1)), 6) + "01"; // 시작일을 전달 1일로 설정
+    cldtodt.Value = today();    
+   
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) 
+{
+    // to do
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+
+function lfn_Search(obj)
+{
+    ds_ioApproveList.ClearData(); // 데이타셋 초기화
+
+    medJubsuCnt.Value = "";
+
+    tit_clearActionInfo();
+
+	tit_addCsvSearchActionInfo("training:searchTraining0364MInternetLicenseApprovalList", false);
+
+	// 서버 호출 
+
+	tit_callService(
+
+		""
+
+		,""
+
+		,""	// inDs
+
+		,"ds_ioApproveList=ds_ioApproveList"	// outDs
+
+		,"AJGTMGNO=" + quote(cbxJibu.Value)
+
+            + " AJCCOURSECD=" + quote(cbxCourse.Value)
+
+            + " AJFROMDT=" + quote(cldFromdt.Value)
+
+            + " AJTODT=" + quote(cldTodt.Value)
+
+            + " AJSTATUS=" + quote(cbxStatus.Value)
+            	
+            + " AJGUBUN=" + quote(cbAjgubun.Value)	// args 
+            
+            + " AJISSUEGUBUN=" + quote(cbx_Issuegubun.Value)
+      
+		,"lfn_AfterSearchTraining0364MInternetLicenseApprovalList"
+
+		,false
+	);	
+}
+
+function lfn_AfterSearchTraining0364MInternetLicenseApprovalList(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+
+        return;
+
+    }
+
+    medJubsuCnt.Value = ds_ioApproveList.RowCount();
+
+    gfn_SearchMessage(gdList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+
+}
+
+function btnToExcel_OnClick(obj)
+{
+   if (ds_ioApproveList.GetRowCount() < 1) {
+
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+
+        return false;
+
+    }
+
+	lfn_Excel(obj);		
+}
+
+
+function Form_OnSize(obj,nCx,nCy,nState) {
+    if (gs_IsResizingForm == "Y") {
+        gdList.Height = nCy - gdList.Top - 1;
+        gdList.Width = nCx - gdList.Left - 1;
+    }
+}
+
+
+
+]]></Script>
+</Window>

@@ -1,0 +1,187 @@
+// @ts-nocheck
+import { useState, useEffect } from 'react';
+import type { Ids_oTrainingJubsu, Ids_oCourse, Ids_oJibu, Ids_oWorkGubun, Ids_oPassGubun, Ids_ioLicenseSusuList, Ids_ioLicenseSusuStatistics, Ids_ioLicenseSusuDecision, Ids_oPrintGubun, Ids_oSerchGubun, Ids_LicenseGubun, Ids_oLicenseYn } from './Frmtraining0380MLicenseIssuePaymentStatisticsData';
+
+export const useFrmtraining0380MLicenseIssuePaymentStatistics = () => {
+    const [ds_oTrainingJubsu, setds_oTrainingJubsu] = useState<Ids_oTrainingJubsu[]>([]);
+    const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
+    const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
+    const [ds_oWorkGubun, setds_oWorkGubun] = useState<Ids_oWorkGubun[]>([]);
+    const [ds_oPassGubun, setds_oPassGubun] = useState<Ids_oPassGubun[]>([]);
+    const [ds_ioLicenseSusuList, setds_ioLicenseSusuList] = useState<Ids_ioLicenseSusuList[]>([]);
+    const [ds_ioLicenseSusuStatistics, setds_ioLicenseSusuStatistics] = useState<Ids_ioLicenseSusuStatistics[]>([]);
+    const [ds_ioLicenseSusuDecision, setds_ioLicenseSusuDecision] = useState<Ids_ioLicenseSusuDecision[]>([]);
+    const [ds_oPrintGubun, setds_oPrintGubun] = useState<Ids_oPrintGubun[]>([]);
+    const [ds_oSerchGubun, setds_oSerchGubun] = useState<Ids_oSerchGubun[]>([]);
+    const [ds_LicenseGubun, setds_LicenseGubun] = useState<Ids_LicenseGubun[]>([]);
+    const [ds_oLicenseYn, setds_oLicenseYn] = useState<Ids_oLicenseYn[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
+    const [isVisible_shpGubunBox, setIsVisible_shpGubunBox] = useState(true);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [isVisible_btnCancel, setIsVisible_btnCancel] = useState(true);
+    const [isVisible_btnPrintScreen, setIsVisible_btnPrintScreen] = useState(true);
+    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
+    const [isVisible_lbCourse, setIsVisible_lbCourse] = useState(true);
+    const [isVisible_cbxCourseStart, setIsVisible_cbxCourseStart] = useState(true);
+    const [isVisible_lbJibu, setIsVisible_lbJibu] = useState(true);
+    const [isVisible_cbxJibu, setIsVisible_cbxJibu] = useState(true);
+    const [isVisible_lbDate, setIsVisible_lbDate] = useState(true);
+    const [isVisible_calDateStart, setIsVisible_calDateStart] = useState(true);
+    const [isVisible_lbDateWave1, setIsVisible_lbDateWave1] = useState(true);
+    const [isVisible_calDateEnd, setIsVisible_calDateEnd] = useState(true);
+    const [isVisible_lbWorkGubun, setIsVisible_lbWorkGubun] = useState(true);
+    const [isVisible_radWorkGubun, setIsVisible_radWorkGubun] = useState(true);
+    const [isVisible_lbPassGubun, setIsVisible_lbPassGubun] = useState(true);
+    const [isVisible_cbxPassGubunStart, setIsVisible_cbxPassGubunStart] = useState(true);
+    const [isVisible_cbxCourseEnd, setIsVisible_cbxCourseEnd] = useState(true);
+    const [isVisible_cbxPassGubunEnd, setIsVisible_cbxPassGubunEnd] = useState(true);
+    const [isVisible_lbWave1, setIsVisible_lbWave1] = useState(true);
+    const [isVisible_lbWave2, setIsVisible_lbWave2] = useState(true);
+    const [isVisible_btnSearch, setIsVisible_btnSearch] = useState(true);
+    const [isVisible_Static0, setIsVisible_Static0] = useState(true);
+    const [isVisible_radPrintGubun, setIsVisible_radPrintGubun] = useState(true);
+    const [isVisible_Radio0, setIsVisible_Radio0] = useState(true);
+    const [isVisible_Static1, setIsVisible_Static1] = useState(true);
+    const [isVisible_gdLicenseSendResend, setIsVisible_gdLicenseSendResend] = useState(true);
+    const [isVisible_btnToExcel, setIsVisible_btnToExcel] = useState(true);
+    const [isVisible_Button1, setIsVisible_Button1] = useState(true);
+    const [isVisible_radLicenseYn, setIsVisible_radLicenseYn] = useState(true);
+    const [isVisible_lbLicenseYn, setIsVisible_lbLicenseYn] = useState(true);
+    const [isVisible_Static2, setIsVisible_Static2] = useState(true);
+    const [isVisible_edYearStart, setIsVisible_edYearStart] = useState(true);
+    const [isVisible_lbYearWave, setIsVisible_lbYearWave] = useState(true);
+    const [isVisible_edYearEnd, setIsVisible_edYearEnd] = useState(true);
+
+    useEffect(() => {
+        setIsLoading(true);
+        setTimeout(() => {
+            setds_oTrainingJubsu([]);
+            setds_oCourse([]);
+            setds_oJibu([]);
+            setds_oWorkGubun([]);
+            setds_oPassGubun([]);
+            setds_ioLicenseSusuList([]);
+            setds_ioLicenseSusuStatistics([]);
+            setds_ioLicenseSusuDecision([]);
+            setds_oPrintGubun([]);
+            setds_oSerchGubun([]);
+            setds_LicenseGubun([]);
+            setds_oLicenseYn([]);
+            setIsLoading(false);
+        }, 500);
+    }, []);
+
+    const lfn_Cancel = () => {
+        console.log('lfn_Cancel clicked');
+    };
+    const lfn_End = () => {
+        console.log('lfn_End clicked');
+    };
+    const lfn_Print = () => {
+        console.log('lfn_Print clicked');
+    };
+    const lfn_PrintScreen = () => {
+        console.log('lfn_PrintScreen clicked');
+    };
+    const lfn_Search = () => {
+        console.log('lfn_Search clicked');
+    };
+    const lfn_localExcel = () => {
+        console.log('lfn_localExcel clicked');
+    };
+
+    return {
+        isLoading,
+        ds_oTrainingJubsu,
+        ds_oCourse,
+        ds_oJibu,
+        ds_oWorkGubun,
+        ds_oPassGubun,
+        ds_ioLicenseSusuList,
+        ds_ioLicenseSusuStatistics,
+        ds_ioLicenseSusuDecision,
+        ds_oPrintGubun,
+        ds_oSerchGubun,
+        ds_LicenseGubun,
+        ds_oLicenseYn,
+        isVisible_shpBtnBox,
+        setIsVisible_shpBtnBox,
+        isVisible_shpGubunBox,
+        setIsVisible_shpGubunBox,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        isVisible_btnCancel,
+        setIsVisible_btnCancel,
+        isVisible_btnPrintScreen,
+        setIsVisible_btnPrintScreen,
+        isVisible_btnEnd,
+        setIsVisible_btnEnd,
+        isVisible_lbCourse,
+        setIsVisible_lbCourse,
+        isVisible_cbxCourseStart,
+        setIsVisible_cbxCourseStart,
+        isVisible_lbJibu,
+        setIsVisible_lbJibu,
+        isVisible_cbxJibu,
+        setIsVisible_cbxJibu,
+        isVisible_lbDate,
+        setIsVisible_lbDate,
+        isVisible_calDateStart,
+        setIsVisible_calDateStart,
+        isVisible_lbDateWave1,
+        setIsVisible_lbDateWave1,
+        isVisible_calDateEnd,
+        setIsVisible_calDateEnd,
+        isVisible_lbWorkGubun,
+        setIsVisible_lbWorkGubun,
+        isVisible_radWorkGubun,
+        setIsVisible_radWorkGubun,
+        isVisible_lbPassGubun,
+        setIsVisible_lbPassGubun,
+        isVisible_cbxPassGubunStart,
+        setIsVisible_cbxPassGubunStart,
+        isVisible_cbxCourseEnd,
+        setIsVisible_cbxCourseEnd,
+        isVisible_cbxPassGubunEnd,
+        setIsVisible_cbxPassGubunEnd,
+        isVisible_lbWave1,
+        setIsVisible_lbWave1,
+        isVisible_lbWave2,
+        setIsVisible_lbWave2,
+        isVisible_btnSearch,
+        setIsVisible_btnSearch,
+        isVisible_Static0,
+        setIsVisible_Static0,
+        isVisible_radPrintGubun,
+        setIsVisible_radPrintGubun,
+        isVisible_Radio0,
+        setIsVisible_Radio0,
+        isVisible_Static1,
+        setIsVisible_Static1,
+        isVisible_gdLicenseSendResend,
+        setIsVisible_gdLicenseSendResend,
+        isVisible_btnToExcel,
+        setIsVisible_btnToExcel,
+        isVisible_Button1,
+        setIsVisible_Button1,
+        isVisible_radLicenseYn,
+        setIsVisible_radLicenseYn,
+        isVisible_lbLicenseYn,
+        setIsVisible_lbLicenseYn,
+        isVisible_Static2,
+        setIsVisible_Static2,
+        isVisible_edYearStart,
+        setIsVisible_edYearStart,
+        isVisible_lbYearWave,
+        setIsVisible_lbYearWave,
+        isVisible_edYearEnd,
+        setIsVisible_edYearEnd,
+        lfn_Cancel,
+        lfn_End,
+        lfn_Print,
+        lfn_PrintScreen,
+        lfn_Search,
+        lfn_localExcel,
+    };
+};

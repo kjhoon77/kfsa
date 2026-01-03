@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="160" Id="frmtraining0041PTrainingAbsentCancel" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="결강취소팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="292" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oTrainingAbsentCancel">
+				<Contents>
+					<colinfo id="ABSENT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOTCCOURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOMUNJEGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ATJMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="156" Height="124" Id="shpGubunBox" Left="4" LineColor="user15" Right="288" TabOrder="13" Top="32" Type="Rectangle" Width="284"></Shape>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="110" LineColor="user14" Right="288" TabOrder="8" Top="1" Type="Rectangle" Width="178"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="200" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="8" Style="sty_Label" TabOrder="10" Text="직능" Top="84" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_oCourse" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="5" Top="84" UserData="S:직능" Width="182"></Combo>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="9" Text="지부" Top="36" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="3" Top="35" UserData="I:지부" Width="88"></Combo>
+		<Static Align="Center" Height="20" Id="lbTrainingYear" Left="8" Style="sty_Label" TabOrder="11" Text="년도" Top="60" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edTrainingYear" ImeMode="native" Left="100" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="4" Top="60" UserData="I:년도" Width="36"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSave" ImageID="BTN_COM_SAVE" Left="113" OnClick="lfn_Save" Style="sty_Button" TabOrder="1" ToolTipText="저장" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbSeq" Left="8" Style="sty_Label" TabOrder="12" Text="접수번호" Top="132" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit Align="RIGHT" AutoSelect="TRUE" Border="Flat" Height="20" Id="edSeq" ImeMode="native" Left="100" LeftMargin="2" MaxLength="6" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="edSeq_OnKillFocus" Style="sty_Edit" TabOrder="7" Top="132" UserData="S:접수번호" Width="56"></Edit>
+		<Static Align="Center" Height="20" Id="lbTrainingOrder" Left="8" Style="sty_Label" TabOrder="14" Text="회차" Top="108" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edTrainingOrder" ImeMode="native" Left="100" LeftMargin="2" MaxLength="3" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="edTrainingOrder_OnKillFocus" Style="sty_Edit" TabOrder="6" Top="108" UserData="S:회차" Width="28"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0041PTrainingAbsentCancel.xml
+ * 설명 : 결강취소팝업
+ * 작성일 : 2009.08.27
+ * 작성자 : 이규희
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    // 공통 코드 조회
+    gfn_SearchTrainingCourse("T", ds_oCourse, "Y", "선택"); // 직능 코드 조회
+    cbxCourse.Value = "22";
+    gfn_SearchJibu(cbxJibu, "Y", "선택"); // 지부 코드 조회
+
+    edTrainingYear.Text = left(GetDate(), 4);
+    edTrainingOrder.SetFocus();
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 115 : // 저장(F4)
+            lfn_Save();
+            break;
+    }
+}
+
+/*
+ * 기능 : 저장
+ */
+function lfn_Save(obj) {
+    if (!gfn_FormValidate(this)) { // 저장 Validation Check
+        return false;
+    }
+    
+    if (!gfn_Confirm("결강취소처리를 하시겠습니까?")) {
+        return false;
+	}
+    
+    ds_oTrainingAbsentCancel.ClearData(); // 데이타셋 초기화
+    
+    // 조회이력을 저장한다.  
+    ls_HistoryArg = "지부=" + quote(cbxJibu.Text)
+			+ ",년도=" + quote(edTrainingYear.Text)
+			+ ",직능=" + quote(cbxCourse.Text)
+			+ ",회차=" + quote(edTrainingOrder.Text)
+			+ ",접수번호=" + quote(edSeq.Text);
+    gfn_InsertSearchPrintHistory(
+        "S"
+        , this.ID
+        , "결강자취소팝업"
+        , ls_HistoryArg
+    );
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("training:searchTrainingAbsentCancel", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oTrainingAbsentCancel=ds_oTrainingAbsentCancel"	// outDs
+		,"TOMGGTMGNO=" + quote(cbxJibu.Value)
+			+ " TOYEAR=" + quote(edTrainingYear.Text)
+			+ " TOTCCOURSECD=" + quote(cbxCourse.Value)
+			+ " TOTRAININGORDER=" + quote(edTrainingOrder.Text)
+			+ " TOHJUBSUNO=" + quote(edSeq.Text)	// args 
+		,"lfn_AfterSearchTrainingAbsentCancel"
+		,false
+	);     
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 공통 함수 */
+
+/* 공통 이벤트 함수 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+ var flag = 0;
+ function lfn_AfterSearchTrainingAbsentCancel(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    if (ds_oTrainingAbsentCancel.GetColumn(0, "ABSENT") != "1") {
+        gfn_Alert("일치하는 결강자가 없습니다.");
+        return false;
+    }
+    
+    // 직능별 교육일차
+	if (ds_oTrainingAbsentCancel.GetColumn(0, "TOTCCOURSECD") == "61"	// 소방기술세미나
+	 
+	    || ds_oTrainingJubsuCnt.GetColumn(0, "TOTCCOURSECD") == "51") {	// 심폐소생술
+        flag = 1;
+	} else if (ds_oTrainingAbsentCancel.GetColumn(0, "TOTCCOURSECD") == "28") {
+        flag = 2;
+	} else if (ds_oTrainingAbsentCancel.GetColumn(0, "TOTCCOURSECD") == "22" && ds_oTrainingAbsentCancel.GetColumn(0, "TOMUNJEGUBUN") == "Y"
+               || ds_oTrainingAbsentCancel.GetColumn(0, "TOTCCOURSECD") == "23"
+               
+               || ds_oTrainingAbsentCancel.GetColumn(0, "TOTCCOURSECD") == "24"
+               
+               || ds_oTrainingAbsentCancel.GetColumn(0, "TOTCCOURSECD") == "50") {
+        flag = 3;
+	} else if (ds_oTrainingAbsentCancel.GetColumn(0, "TOTCCOURSECD") == "22" && ds_oTrainingAbsentCancel.GetColumn(0, "TOMUNJEGUBUN") == "N"
+               || ds_oTrainingAbsentCancel.GetColumn(0, "TOTCCOURSECD") == "29") {
+        flag = 4;
+	} else if (ds_oTrainingAbsentCancel.GetColumn(0, "TOTCCOURSECD") == "20"
+               || ds_oTrainingAbsentCancel.GetColumn(0, "TOTCCOURSECD") == "21"
+			   || ds_oTrainingAbsentCancel.GetColumn(0, "TOTCCOURSECD") == "52"
+               || ds_oTrainingAbsentCancel.GetColumn(0, "TOTCCOURSECD") == "60") {
+        flag = 5;
+	} else if (ds_oTrainingAbsentCancel.GetColumn(0, "TOTCCOURSECD") == "10") {
+        flag = 10;
+
+	}
+	
+	lfn_SaveModifyHistory("U"); // 변경이력을 저장한다.
+    
+    tit_clearActionInfo();
+	tit_addSingleActionInfo("training:updateTrainingAbsentCancel", "", 0, "");
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,""	// outDs
+		,"TOMGJIBUCD=" + quote(cbxJibu.Value)
+			+ " TOYEAR=" + quote(edTrainingYear.Text)
+			+ " TOTCCOURSECD=" + quote(cbxCourse.Value)
+			+ " TOTRAININGORDER=" + quote(edTrainingOrder.Text)
+			+ " TOHJUBSUNO=" + quote(edSeq.Text)
+			+ " FLAG=" + quote(flag)// args 
+		,"lfn_AfterSaveTrainingAbsentCancel"
+		,false
+	);
+}
+ 
+function lfn_AfterSaveTrainingAbsentCancel(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    edSeq.Text = ""; // 접수번호 초기화.
+    parent.lfn_Search(); // 부모창 그리드 Redraw.
+}
+
+/* 회차 포커스 아웃될때 자동 0 입력 */
+function edTrainingOrder_OnKillFocus(obj) {
+	gfn_ComponentOnKillFocus(obj);
+
+    obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3));    
+}
+
+function edSeq_OnKillFocus(obj) {
+	gfn_ComponentOnKillFocus(obj);
+
+    obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 6));
+}
+
+/*
+ * 기능 : 업무 변경이력을 저장한다.
+ * parameter : sGubun - 변경구분. 예) I, U, D
+ * return : 없음
+ */
+function lfn_SaveModifyHistory(sGubun) {    
+    gds_iModifyHistory.InsertRow(0);                 // 데이터셋 row 추가            
+    gds_iModifyHistory.SetColumn(0, "MHWORKGUBUN", "결강취소"); // 업무구분
+    gds_iModifyHistory.SetColumn(0, "MHGUBUN", sGubun); // 변경구분
+    gds_iModifyHistory.SetColumn(0, "MHKEY", ds_oTrainingAbsentCancel.GetColumn(0, "ATJMGNO")); // KEY값
+    gds_iModifyHistory.SetColumn(0, "MHCOLUMN", "출결"); // 변경 컬럼명
+    gds_iModifyHistory.SetColumn(0, "MHBEFOREDATA", "N"); // 변경 전 값
+    gds_iModifyHistory.SetColumn(0, "MHAFTERDATA", "Y"); // 변경 후 값        
+
+    gfn_InsertModifyHistory(); // 업무 변경이력을 저장한다.
+}]]></Script>
+</Window>

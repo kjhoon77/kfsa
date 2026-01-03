@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="384" Id="frmcust3030PAgentList" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="소방시설관리업체정보" Top="8" Ver="1.0" Width="784" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_iGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD> 
+						<DATA>업체명</DATA>
+					</record>
+					<record>          
+						<CD>2</CD>
+						<DATA>주소</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>대표자</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>전화번호</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oAgentList">
+				<Contents>
+					<colinfo id="ENTRPS_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RPRSNTV" size="256" summ="default" type="STRING"/>
+					<colinfo id="POST_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="BASS_ADRES" size="256" summ="default" type="STRING"/>
+					<colinfo id="ETC_ADRES" size="256" summ="default" type="STRING"/>
+					<colinfo id="FULL_ADRES" size="256" summ="default" type="STRING"/>
+					<colinfo id="TLPHON_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="FAX_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="BSNM_REGIST_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="REGIST_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ENTRPS_SN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="379" Height="296" Id="Shape0" Left="4" LineColor="user15" Right="778" TabOrder="6" Top="83" Type="Rectangle" Width="774"></Shape>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oAgentList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="375" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="253" Id="gdAgentList" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" OnCellDBLClick="gdAgentList_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" OnKeyDown="gdAgentList_OnKeyDown" Right="774" RowHeight="20" Style="sty_Grid" TabOrder="5" TabStop="true" Top="122" UseDBuff="true" UsePopupMenu="true" UserData="공통코드목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="766">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="152"/>
+						<col width="89"/>
+						<col width="262"/>
+						<col width="90"/>
+						<col width="90"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="업체명"/>
+						<cell align="center" col="2" display="text" text="대표자"/>
+						<cell col="3" display="text" text="주소"/>
+						<cell col="4" display="text" text="전화번호"/>
+						<cell col="5" display="text" text="팩스번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="number" expr="row+1"/>
+						<cell align="left" col="1" colid="ENTRPS_NM" display="text"/>
+						<cell align="center" col="2" colid="RPRSNTV" display="text"/>
+						<cell align="left" col="3" colid="FULL_ADRES" display="text"/>
+						<cell align="left" col="4" colid="TLPHON_NO" display="text"/>
+						<cell col="5" colid="FAX_NO" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="513" LineColor="user14" Right="778" TabOrder="7" Top="1" Type="Rectangle" Width="265"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="690" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="516" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect" ImageID="BTN_TEXT_COM" Left="603" OnClick="btnSelect_OnClick" Style="sty_Button" TabOrder="2" Text="선택" ToolTipText="선택" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbTotalCnt" Left="8" Style="sty_LabelStat" TabOrder="9" Text="총건수" Top="97" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medTotalCnt" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="8" Top="97" UserData="S" Width="64"></MaskEdit>
+		<Shape Bottom="84" Height="52" Id="Shape2" Left="4" LineColor="user15" Right="778" TabOrder="10" Top="32" Type="Rectangle" Width="774"></Shape>
+		<Static Align="Center" Height="20" Id="Static0" Left="8" Style="sty_Label" TabOrder="10" Text="검색조건" Top="36" VAlign="Middle" Width="100"></Static>
+		<Static Align="Center" Height="20" Id="lbAddr" Left="8" Style="sty_Label" TabOrder="11" Text="검색어" Top="60" VAlign="Middle" Width="100"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edSearch" ImeMode="native" Left="112" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edSearch_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="4" Top="60" UserData="S:구주소1" Width="436"></Edit>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="rdGubun" INDEX="0" InnerDataset="ds_iGubun" Left="116" OnChanged="rdGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="13" Top="36" UserData="S" Width="328"></Radio>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust3030PAgentList.xml
+ * 설명 : 소방시설관리업정보
+ * 작성일 : 2022.11.
+ * 작성자 : jjh
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+ 
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+    edSearch.SetFocus();
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    var sSearchGubun = rdGubun.Value;
+    var sKeyWord = edSearch.Text;
+    
+    if(sSearchGubun == "" || sKeyWord == ""){
+		gfn_Alert("검색어를 입력하십시오.");
+		edSearch.SetFocus();
+		return false;
+	}
+	
+    medTotalCnt.Value = "";
+    ds_oAgentList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cust:searchCust3030PAgentList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oAgentList=ds_oAgentList"	// outDs
+		,"PSEARCHGUBUN=" + quote(sSearchGubun)
+			+ " PSEARCH=" + quote(sKeyWord) // args
+		,"lfn_AfterSearch"
+		,false
+	);	
+}
+
+/* 공통 필수 종료 */
+
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    medTotalCnt.Value = ds_oAgentList.GetCount();
+    gfn_SearchMessage(gdAgentList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 이벤트 함수 종료 */
+
+
+/* 사용자 함수 */
+function gdAgentList_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+    btnSelect_OnClick(obj);
+}
+
+function btnSelect_OnClick(obj) {
+	if(ds_oAgentList.RowCount() <= 0 || ds_oAgentList.currow <= 0 ){
+		gfn_Alert("선택 목록이 없습니다.");
+		return false;
+	}
+	
+    var arrArg = Array(8);
+    arrArg[0] = ds_oAgentList.GetColumn(ds_oAgentList.currow,  "ENTRPS_NM"); 	//상호
+    arrArg[1] = ds_oAgentList.GetColumn(ds_oAgentList.currow,  "RPRSNTV"); 	//대표자
+    arrArg[2] = ds_oAgentList.GetColumn(ds_oAgentList.currow,  "POST_NO");	//주소-우편번호
+    arrArg[3] = ds_oAgentList.GetColumn(ds_oAgentList.currow,  "BASS_ADRES");	//주소-기본주소
+    arrArg[4] = ds_oAgentList.GetColumn(ds_oAgentList.currow,  "ETC_ADRES");	//주소-상세주소
+    arrArg[5] = ds_oAgentList.GetColumn(ds_oAgentList.currow,  "TLPHON_NO");	//전화번호 
+    arrArg[6] = ds_oAgentList.GetColumn(ds_oAgentList.currow,  "BSNM_REGIST_NO");	//사업자 등록 번호
+    arrArg[7] = ds_oAgentList.GetColumn(ds_oAgentList.currow,  "REGIST_NO");	//등록번호 -면허번호 
+    arrArg[8] = ds_oAgentList.GetColumn(ds_oAgentList.currow,  "ENTRPS_SN");	//업체일련번호
+    
+    Close(arrArg);
+}
+
+function gdAgentList_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == 13) { // Enter Key   
+        btnSelect_OnClick(obj);
+    }
+}
+
+function edSearch_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) { // Enter Key
+        lfn_Search();
+    }
+}
+
+function rdGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	edSearch.Text = "";
+	edSearch.SetFocus();
+}
+]]></Script>
+</Window>

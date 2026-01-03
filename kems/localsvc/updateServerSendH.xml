@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<svcdesc><![CDATA[서버전송이력변경]]></svcdesc>
+	<header><![CDATA[]]></header>
+	<dataset id="input" io="INPUT" reserved="NO"></dataset>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[function Run() {
+
+	var errSql;
+	var updateQuery;
+	
+	for ( var i=0; i < input.getRowCount(); i++ ) {
+	
+		if( dsGetColumn(input,i,"SEL") == "1" ){
+			updateQuery  = " UPDATE SERVERSENDH       ";
+			updateQuery += " SET SSHSENDYN = 'Y'      ";
+			updateQuery += " WHERE SSHEOMGNO = '" + dsGetColumn(input, i, "SSHEOMGNO") + "'";
+			updateQuery += " AND SSHREPEATNO = '" + dsGetColumn(input, i, "SSHREPEATNO") + "'";
+					
+			errSql = ExecuteSql(updateQuery);
+			trace(errSql +" :: " + updateQuery);		
+		}
+	}
+}
+
+function dsGetColumn(ds,row,colid) {
+    return ds.getcolumn(row,colid);
+}
+]]></source>
+</class2>

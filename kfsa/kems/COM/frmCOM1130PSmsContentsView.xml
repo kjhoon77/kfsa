@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="400" Id="frmCOM1130PSmsContentsView" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="문자발송내용보기팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="500" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oSmsStat">
+				<Contents>
+					<colinfo id="MRECVRESULT" size="256" summ="default" type="STRING"/>
+					<colinfo id="MSENDDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MMSG" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="406" LineColor="user14" Right="497" TabOrder="61" Top="1" Type="Rectangle" Width="91"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="409" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<TextArea Font="굴림,12" Height="359" Id="taSMS" Left="3" Readonly="TRUE" TabOrder="3" Top="33" VScroll="TRUE" Width="493"></TextArea>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM1130PSmsContentsView.xml
+ * 설명 : SMS발송내용보기팝업
+ * 작성일 : 2016.04.04
+ * 작성자 : 정현호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (IsExistVar("sMMSG")) {
+        taSMS.Text = sMMSG;
+    }
+
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close("0");
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+    }
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+
+]]></Script>
+</Window>

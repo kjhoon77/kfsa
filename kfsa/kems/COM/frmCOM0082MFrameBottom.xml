@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user7" Height="24" Id="frmCOM0082MFrameBottom" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnTimer="frmCOM0082MFrameBottom_OnTimer" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="하단프레임" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1022" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oLoginHistory"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oLoginMgno"></Dataset>
+		</Datasets>
+		<Static Height="20" Id="lbLoginTime" Left="6" Style="sty_Text" TabOrder="1" Text="2009-09-09&#32;23:59:59" Top="3" VAlign="Middle" Width="128"></Static>
+		<Static Height="20" Id="lbBottomMessage" Left="338" Style="sty_Text" TabOrder="2" Top="3" VAlign="Middle" Width="630"></Static>
+		<Image Height="15" Id="imgLine" ImageID="IMG_BOTTOM_LINE" Left="254" Style="sty_Image" TabOrder="3" Top="4" Transparent="TRUE" Width="2"></Image>
+		<Image Height="22" Id="imgKfsiLogo" ImageID="IMG_KFSI_LOGO" Left="930" Style="sty_Image" TabOrder="4" Top="32" Transparent="TRUE" Width="86"></Image>
+		<Shape BKColor="user8" Bottom="1" Height="1" Id="shpBottomLine" Left="0" LineColor="user8" LineWidth="0" Right="1022" TabOrder="5" Top="0" Type="Rectangle" Width="1022"></Shape>
+		<Static Height="20" Id="lbLoginIpAddr" Left="138" Style="sty_Text" TabOrder="6" Text="[123.456.789.123]" Top="3" VAlign="Middle" Visible="FALSE" Width="116"></Static>
+		<Image Cursor="HAND" Height="17" Id="imgMenuExpand" ImageID="IMG_MENU_EXPAND" Left="85" LeftMargin="0" OnClick="imgMenuExpand_OnClick" Static="FALSE" Style="sty_Image" TabOrder="10" Top="36" Visible="FALSE" Width="108"></Image>
+		<Image Cursor="HAND" FillType="STRETCH" Height="17" Id="imgHorizont" ImageID="IMG_HORIZONT" Left="58" LeftMargin="0" OnClick="imgHorizont_OnClick" Static="FALSE" Style="sty_Image" TabOrder="9" ToolTipText="화면수직배열" Top="36" Visible="FALSE" Width="25"></Image>
+		<Image Cursor="HAND" FillType="STRETCH" Height="17" Id="imgVertical" ImageID="IMG_VERTICAL" Left="31" LeftMargin="0" OnClick="imgVertical_OnClick" Static="FALSE" Style="sty_Image" TabOrder="8" ToolTipText="화면수평배열" Top="36" Visible="FALSE" Width="25"></Image>
+		<Image Cursor="HAND" FillType="STRETCH" Height="17" Id="imgCascade" ImageID="IMG_CASCADE" Left="4" LeftMargin="0" OnClick="imgCascade_OnClick" Static="FALSE" Style="sty_Image" TabOrder="7" ToolTipText="화면계단배열" Top="36" Visible="FALSE" Width="25"></Image>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM0082MFrameBottom.xml
+ * 설명 : 정보메세지 팝업
+ * 작성일 :  
+ * 작성자 : 
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnActivate(obj) {
+    gfn_Form_OnActivate(obj);
+    
+    // to do
+}
+
+function Form_OnDeactivate(obj) {
+    // to do
+
+    gfn_Form_OnDeactivate(obj);
+}
+
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj);
+
+    ldt_StartLoginDateTime = getdate(); // 최초 로그인 시간. 10분 간격 체크용.
+    
+    if(gs_IsLocal <> "Y"){
+		// 로그인 이력 관리
+        lfn_SearchLoginMgno(); // 로그인관리번호를 조회한다.
+        lfn_SearchLastLoginHistory(); // 최근 로그인 정보를 조회한다.
+    }
+    
+    var arrIpAdd = ext_GetIPAddress(); // 자신의 IP Address를 조회한다.
+    lbLoginIpAddr.Text = "IP[" + arrIpAdd[0] + "]";
+
+    lbLoginTime.Text  = toString(getdate(), "@@@@-@@-@@ @@:@@:@@"); // 현재 시간 Display 
+    SetTimer(1, 1000); // Timer Start
+}
+
+function Form_OnUnloadCompleted(obj) {
+    KillTimer(1); // TimerKill
+    gfn_Form_OnUnloadCompleted(obj);
+}
+
+function Form_OnFocus(obj) {
+    gfn_Form_OnFocus(obj);
+
+    // to do
+}
+
+function Form_OnKillFocus(obj) {
+    // to do
+
+    gfn_Form_OnKillFocus(obj);
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam);
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 로그인관리번호를 조회한다.
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchLoginMgno() {
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cti:searchCtiLoginMgno", false);
+	// 서버 호출
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oLoginMgno=ds_oLoginMgno"	// outDs
+		,""
+		,"lfn_AfterSearchLoginMgno"
+		,true
+		,true
+	);
+}
+
+/*
+ * 기능 : 로그인관리번호 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchLoginMgno(nErrorCode, strErrorMsg) {
+    gs_LoginMgno = ds_oLoginMgno.GetColumn(0, "LOGINMGNO");
+    lfn_InsertLastLoginHistory(); // 로그인 이력을 생성한다.
+}
+
+/*
+ * 기능 : 최근 로그인 정보를 조회한다.
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchLastLoginHistory() {
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("com:searchLastLoginHistory", false);
+	// 서버 호출
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oLoginHistory=ds_oLoginHistory"	// outDs
+		,""
+		,"lfn_AfterSearchLastLoginHistory"
+		,true
+		,true
+	);
+}
+
+/*
+ * 기능 : 최근 로그인 정보 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchLastLoginHistory(nErrorCode, strErrorMsg) {
+    if (ds_oLoginHistory.GetCount() == 0) {
+        lbBottomMessage.Text = "민원상담관리시스템에 처음으로 접속하셨습니다.";
+    } else {
+        lbBottomMessage.Text = ds_oLoginHistory.GetColumn(0, "LASTLOGININFO");
+    }
+}
+
+/*
+ * 기능 : 로그인 이력을 생성한다.
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_InsertLastLoginHistory() {
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("cti:insertCtiLastLoginHistory", "", 0, "");
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,""	// outDs
+        ,"GLOBALLOGINMGNO=" + quote(gs_LoginMgno) // args
+        ,""
+		,true
+		,true
+    );
+}
+
+/*
+ * 기능 : 로그인 이력을 갱신한다.
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_UpdateLastLoginHistory() {
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("cti:updateCtiLastLoginHistory", "", 0, "");
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,""	// outDs
+        ,"GLOBALLOGINMGNO=" + quote(gs_LoginMgno) // args
+        ,""
+		,true
+		,true
+    );
+}
+
+/* 사용자 이벤트 함수 */
+var ldt_StartLoginDateTime;
+function frmCOM0082MFrameBottom_OnTimer(obj,nEventID) {
+    lbLoginTime.Text  = toString(getdate(), "@@@@-@@-@@ @@:@@:@@"); // 현재 시간 Display
+
+    if ((toNumber(getdate()) - toNumber(ldt_StartLoginDateTime)) > (10 * 60)) { // 10 분 간격
+        ldt_StartLoginDateTime = getdate();
+        lbBottomMessage.Text = "";
+        if (gs_IsLocal == "N") { 
+			//lfn_UpdateLastLoginHistory(); // 로그인 이력을 갱신한다.
+        }        
+    }
+}
+
+]]></Script>
+</Window>

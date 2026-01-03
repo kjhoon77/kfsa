@@ -1,0 +1,271 @@
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿/*
+ * 프로그램명 : cust.js
+ * 설명 : 회권관리 js 프로그램
+ * 작성일 : 2009.11.10
+ * 작성자 : 김동현
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+var ls_SystemGubun; // 현재 화면 시스템 구분
+var ls_SystemMenuId; // 현재 화면 시스템 메뉴 ID
+var ms_FormAuth = ""; // 폼 권한
+var mb_IsNewData = true; // 저장버튼이 클릭되었는지 여부
+var ls_Prefix = iif(gs_IsTlogin == "N", "cust", "outerbiz"); // 핸드폰 접속으로 구분 위해 만듬 
+
+/* 공통 필수 시작 */
+function Form_OnActivate(obj) {
+    gfn_Form_OnActivate(obj);
+
+    gs_SystemGubun = ls_SystemGubun;
+    gs_SystemMenuId = ls_SystemMenuId;
+
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    global.mnuLeft.cbxOpenForm.Value = ls_FormId[0];
+
+    global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+}
+
+function Form_OnDeactivate(obj) {
+    // to do
+
+    gfn_Form_OnDeactivate(obj);
+}
+
+function Form_OnUnloadCompleted(obj) {
+	if (gfn_CheckChangedGridTreeview(this)) {
+        if (!gfn_Confirm("변경된 내용이 있습니다. 그래도 [" + title + "] 창을 닫으시겠습니까?")) {
+            return false;
+        }
+    }
+
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    gfn_DeleteOpenedMenu(ls_FormId[0]);
+
+    gfn_Form_OnUnloadCompleted(obj);
+}
+
+/**
+ * 폼 키 다운
+ */
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam);
+}
+
+
+function Form_OnFocus(obj) {
+    gfn_Form_OnFocus(obj);
+
+    // to do
+}
+
+function Form_OnKillFocus(obj) {
+    // to do
+
+    gfn_Form_OnKillFocus(obj);
+}
+
+/*
+ * 기능 : 취소
+ */
+function lfn_Cancel(obj) {
+    gfn_FormInit(this);
+}
+
+/*
+ * 기능 : 엑셀
+ */
+function lfn_Excel(obj) {
+    gfn_GridToExcel(this);
+}
+
+/*
+ * 기능 : 인쇄
+ */
+function lfn_PrintScreen(obj) {
+    gfn_PrintScreen(this);
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+
+/* 사용자 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+/*
+ * 그룹조회
+ * parameter : sGtmgno - 지부 코드
+ *             sGubun - 조회 구분
+ *             sKeyword - 키워드
+ * return : [0]지부
+ *          [1]고객번호
+ */
+function lfn_SearchGroup(sJibu, sGubun, sKeyword, sRoadKeyword) {
+
+	var sArg = "sGtmgno=" + quote(sJibu)
+        + " sGubun=" + quote(sGubun)
+        + " sKeyword=" + quote(sKeyword)
+        + " sRoadKeyword=" + quote(sRoadKeyword);
+    return Dialog(ls_Prefix + "::frmcust0001PSearchGroup.xml", sArg, 800, 402, "", -1, -1);
+    
+}
+
+/**
+ * 그리드 전체 체크
+ */
+function lfn_GridCheck(obj,nCell,nX,nY,nPivotIndex) {
+	var lobj_Dataset = object(obj.BindDataset);
+	if (nCell == 0) { // 선택
+        if (obj.GetCellProp("head", nCell, "text") == 1) { // 전체가 이미 선택된 경우
+            obj.SetCellProp("head", nCell, "text", 0);
+            for(i = 0; i < lobj_Dataset.RowCount(); i++) {
+                if (lobj_Dataset.GetColumn(i, "SEL") != "X") {
+                    lobj_Dataset.SetColumn(i, "SEL", "0");
+                }
+            }
+        } else { // 전체가 이미 선택되지 않은 경우
+            obj.SetCellProp("head", nCell, "text", 1);
+            for(i = 0; i < lobj_Dataset.RowCount(); i++) {
+                if (lobj_Dataset.GetColumn(i, "SEL") != "X") {
+                    lobj_Dataset.SetColumn(i, "SEL", "1");
+                }
+            }
+        }
+	}
+}
+
+/*
+ * 기능 : 실무교육일정검색 팝업을 호출한다.
+ * parameter : 없음
+ * return value : 실무교육일정 정보를 가진 배열 오브젝트
+ */
+function lfn_EduScheduleListPopup(sJibuCode, sEduYear, sCourseCode) {
+    var sArg = "sJibuCode=" + quote(sJibuCode)
+				+ " sEduYear=" + quote(sEduYear)
+				+ " sCourseCode=" + quote(sCourseCode);
+    return Dialog(ls_Prefix + "::frmcust1091PEduScheduleList.xml", sArg, 600, 400, "", -1, -1);
+}
+
+/*
+ * 기능 : 실무교육일정검색 팝업을 호출한다.
+ * parameter : 없음
+ * return value : 실무교육일정 정보를 가진 배열 오브젝트
+ */
+function lfn_CustUserListPopup(sJibuCode, sCustNo, sCustStatus, sCourseCd) {
+    var sArg = "sJibuCode=" + quote(sJibuCode)
+				+ " sCustNo=" + quote(sCustNo)
+				+ " sCustStatus=" + quote(sCustStatus)
+				+ " sCourseCd=" + quote(sCourseCd);
+    return Dialog(ls_Prefix + "::frmcust1092PCustomerList.xml", sArg, 600, 400, "", -1, -1);
+}
+
+/**
+ * 지부명
+ */
+function lfn_GetJibu(sCode) {
+    return gds_oJibu.GetColumn(gds_oJibu.FindRow("JJIBUCD", sCode), "JJIBUNM");
+}
+
+/**
+ * 지역명
+ */
+function lfn_GetRegion(sJibu, sCode) {
+    return gds_oRegion.GetColumn(gds_oRegion.SearchRow("RCGTMGNO='" + sJibu + "' && RCREGCD='" + sCode + "'"), "RCNM");
+}
+
+/**
+ * 직능명
+ */
+function lfn_GetCourse(sCode) {
+    return gds_oCustomerCourse.GetColumn(gds_oCustomerCourse.FindRow("COURSECD", sCode), "CNM");
+}
+
+/**
+ * 직능 닉네임
+ */
+function lfn_GetCourseNick(sCode) {
+    return gds_oCustomerCourse.GetColumn(gds_oCustomerCourse.FindRow("COURSECD", sCode), "CNICKNM");
+}
+
+/**
+ * 직능 출력네임
+ */
+function lfn_GetCoursePrint(sCode) {
+    return gds_oCustomerCourse.GetColumn(gds_oCustomerCourse.FindRow("COURSECD", sCode), "CPRINTNM");
+}
+
+/**
+ * 직능 그룹명
+ */
+function lfn_GetCourseGroup(sCode) {
+    return gds_oCustomerCourse.GetColumn(gds_oCustomerCourse.FindRow("COURSECD", sCode), "CGROUPNM");
+}
+
+/**
+ * 결제방법
+ */
+function lfn_GetSunap(sCode) {
+    switch (sCode) {
+        case "01": return "수납";
+        case "02": return "환불";
+        case "11": return "회계수납";
+        case "12": return "회계환불";
+        default : return "";
+    }
+}
+
+/**
+ * 결제방법
+ */
+function lfn_GetSetlm(sCode) {
+    return gds_oCommonCode.GetColumn(gds_oCommonCode.SearchRow("CCGROUPCD='SUNAPGUBUN' && CCCD='" + sCode + "'"), "CCCDNM");
+}
+
+/**
+ * 삭제 구분
+ */
+function lfn_GetDelGubun(sCode) {
+    switch (sCode) {
+        case "0": return "정상";
+        case "1": return "소멸";
+        case "2": return "용폐";
+        case "3": return "중복";
+        case "4": return "기타";
+        default : return "정상";
+    }
+}
+
+/*
+ * 기능 : 업무대행업체 정보관리 팝업을 호출한다.
+ * parameter : 없음
+ * return value : 업무대행업체 정보를 가진 배열 오브젝트
+ */
+function lfn_AgencyPopup(sAgNm) {
+    var sArg = "sAgNm=" + quote(sAgNm)
+				+ " sIsPopup=" + quote("Y");
+    return Dialog(ls_Prefix + "::frmcust0040MAgentManagement.xml", sArg, 800, 600, "", -1, -1);
+}
+
+/*
+ * 기능 : 선임자정보변경 팝업을 호출한다.
+ * parameter : 없음
+ * return value : 선임자정보변경 정보를 가진 배열 오브젝트
+ */
+function lfn_FireManagerPopup(sMmgno, sCmgno, sCourseCD) {
+    var sArg = "sMmgno=" + quote(sMmgno)
+			+ " sCmgno=" + quote(sCmgno);
+			+ " sCourseCD=" + quote(sCourseCD);
+    return Dialog(ls_Prefix + "::frmcust0018PManagerChange.xml", sArg, 400, 520, "", -1, -1);
+}

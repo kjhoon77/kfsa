@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="672" Id="frmcust2000MCardTest" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="카드결제&#32;테스트" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="936" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCustomer">
+				<Contents>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CDELDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CDELGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFEEPOSTADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFEEPOSTADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFEEPOSTZIPCD" size="6" summ="default" type="STRING"/>
+					<colinfo id="CFEEYYMM" size="6" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="COBMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="COVERGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CREGISTERYYMM" size="6" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="FMBIRTHDAY" size="7" summ="default" type="STRING"/>
+					<colinfo id="FMPERSONKEY" size="10" summ="default" type="STRING"/>
+					<colinfo id="BIRTHDAY" size="20" summ="default" type="STRING"/>
+					<colinfo id="MINAPFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="FMHHPTEL" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oFee" OnColumnChanged="ds_oFee_OnColumnChanged">
+				<Contents>
+					<colinfo id="CFCCGUBUN" size="1" type="STRING"/>
+					<colinfo id="CFCCGUBUNCD" size="2" type="STRING"/>
+					<colinfo id="CFGYEAR" size="4" type="STRING"/>
+					<colinfo id="CFPMMGNO" size="8" type="STRING"/>
+					<colinfo id="CFPMYEAR" size="4" type="STRING"/>
+					<colinfo id="CFSUNAPHALF" size="1" type="STRING"/>
+					<colinfo id="CFSUNAPMONTH" size="2" type="STRING"/>
+					<colinfo id="CMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="MINAPFEE" size="22" type="DECIMAL"/>
+					<colinfo id="SEL" size="1" type="STRING"/>
+					<colinfo id="SUNAPFEE" size="22" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSunap" OnRowPosChanged="ds_oSunap_OnRowPosChanged">
+				<Contents>
+					<colinfo id="CANCELDATE" size="18" summ="default" type="STRING"/>
+					<colinfo id="CFCMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFGROUPMGNO" size="29" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUN" size="58" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUNCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUNCDNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="CFREGNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="CFREMARK" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFREPAYREF" size="1" summ="default" type="STRING"/>
+					<colinfo id="FEESEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="MEMBERGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="MEMBERGUBUNNM" size="6" summ="default" type="STRING"/>
+					<colinfo id="MGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="MGGTNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="PMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMPCORDERNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="PMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="PONYDATE" size="18" summ="default" type="STRING"/>
+					<colinfo id="POSGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="POSGTNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="PROCDATE" size="18" summ="default" type="STRING"/>
+					<colinfo id="PROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="PROCGTNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="PVINFO" size="6" summ="default" type="STRING"/>
+					<colinfo id="REGDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="SETLMGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="SETLMGUBUNNM" size="6" summ="default" type="STRING"/>
+					<colinfo id="SUNAPFEE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="SUNAPYEAR" size="13" summ="default" type="STRING"/>
+					<colinfo id="PMRESULT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PVVMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PVVMBILLTYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PVVMVATNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMonthGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>YEAR</CD>
+						<DATA>년도</DATA>
+					</record>
+					<record>
+						<CD>HALF</CD>
+						<DATA>반기</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iReady">
+				<Contents>
+					<colinfo id="SEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFMGGTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFMEMBERGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFPROCAMOUNT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="CFPROCDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHECKDATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFMGGTNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CCOURSENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFMEMBERNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iCustomerFee">
+				<Contents>
+					<colinfo id="CFCMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFSETLMGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFMEMBERGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUNCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPMONTH" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPHALF" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFPROCAMOUNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFPROCDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFPONYGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFPONYDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFMGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPOSGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFGROUPMGNO" size="29" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFREMARK" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFREPAYREF" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFACTIVEGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFREGDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="CFREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFMODDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="CFMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iCustomerFeeBackup">
+				<Contents>
+					<colinfo id="CFCMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFSETLMGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFMEMBERGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUNCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPMONTH" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPHALF" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFPROCAMOUNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFPROCDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFPONYGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFPONYDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFMGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPOSGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFGROUPMGNO" size="29" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFREMARK" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFREPAYREF" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFACTIVEGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFREGDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="CFREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFMODDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="CFMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPosPrintM"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oFeeMonth">
+				<Contents>
+					<colinfo id="CFCCGUBUN" size="1" type="STRING"/>
+					<colinfo id="CFGYEAR" size="4" type="STRING"/>
+					<colinfo id="CFSUNAPHALF" size="1" type="STRING"/>
+					<colinfo id="CFSUNAPMONTH" size="2" type="STRING"/>
+					<colinfo id="CMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="MINAPFEE" size="22" type="DECIMAL"/>
+					<colinfo id="SEL" size="1" type="STRING"/>
+					<colinfo id="SUNAPFEE" size="22" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oYearbizlink"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iOverFee">
+				<Contents>
+					<colinfo id="CFCCGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFGYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPHALF" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPMONTH" size="2" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="MINAPFEE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="SEL" size="1" summ="default" type="STRING"/>
+					<colinfo id="SUNAPFEE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="VIEWTYPE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibuGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>S</CD>
+						<DATA>소속지부</DATA>
+					</record>
+					<record>
+						<CD>T</CD>
+						<DATA>타지부</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iMunjeCancel">
+				<Contents>
+					<colinfo id="CFGROUPMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFACTIVEGUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iPrintGoji">
+				<Contents>
+					<colinfo id="GTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="OKEY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPrintGoji">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCustomerAll">
+				<Contents>
+					<colinfo id="BNM" size="40" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" type="STRING"/>
+					<colinfo id="CDELDATE" size="8" type="STRING"/>
+					<colinfo id="CDELGUBUN" size="1" type="STRING"/>
+					<colinfo id="CFEEPOSTADDR1" size="100" type="STRING"/>
+					<colinfo id="CFEEPOSTADDR2" size="100" type="STRING"/>
+					<colinfo id="CFEEPOSTZIPCD" size="6" type="STRING"/>
+					<colinfo id="CFEEYYMM" size="6" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" type="STRING"/>
+					<colinfo id="CMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="CNO" size="6" type="STRING"/>
+					<colinfo id="COBMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="COVERGUBUN" size="1" type="STRING"/>
+					<colinfo id="CREGCD" size="2" type="STRING"/>
+					<colinfo id="CREGISTERYYMM" size="6" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="1" type="STRING"/>
+					<colinfo id="FMNM" size="20" type="STRING"/>
+					<colinfo id="FMBIRTHDAY" size="7" type="STRING"/>
+					<colinfo id="FMPERSONKEY" size="10" type="STRING"/>
+					<colinfo id="BIRTHDAY" size="20" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oAllPrintGoji"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioVirtualAccoutAllocation">
+				<Contents>
+					<colinfo id="SCMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SBNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SJIBU" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPosVatH"></Dataset>
+		</Datasets>
+		<Button Height="72" Id="Button0" Left="88" OnClick="Button0_OnClick" TabOrder="2" Text="승인" Top="16" Width="100"></Button>
+		<Button Height="72" Id="Button1" Left="208" OnClick="Button1_OnClick" TabOrder="2" Text="취소" Top="16" Width="100"></Button>
+		<MSIE Bottom="384" Height="288" Id="MSIE" Left="8" Right="920" Top="96" Width="912"></MSIE>
+		<WebBrowser Height="264" Id="WebBrowser" TabOrder="4" Top="392" Width="936"></WebBrowser>
+		<UPlusPGPOS_ClientOCX Bottom="104" Height="58" Id="UPlusPGPOS_ClientOCX1" Left="367" Right="430" Top="46" Width="63"></UPlusPGPOS_ClientOCX>
+	</Form>
+	<Script><![CDATA[#include "LIB::cust.js"; // 공통업무 관련
+
+
+
+var ls_MemberGubun = ""; // 회비/교육비 구분 [NULL:대기, 0:회비, 1:교육비]
+
+var ls_SetlmGubun = "0"; // 수납/환불 구분 [0:수납, 1:환불]
+
+
+
+/* 공통 필수 시작 */
+
+function Form_OnLoadCompleted(obj) {
+
+
+
+    gfn_Form_OnLoadCompletedCheck(obj);
+
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+
+
+    // 폼 환경설정
+
+    ls_SystemGubun = gs_SystemGubun;
+
+    ls_SystemMenuId = gs_SystemMenuId;
+
+    var ls_FormId = split(sFormUrl, "::");
+
+    ls_FormId = split(ls_FormId[1], ".");
+
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+
+
+    ms_FormAuth = gfn_GetFormAuth(this, sFormUrl); // 권한을 조회한다.
+
+    var url = "https://intrawork.kfsi.or.kr/kems/pos/UPlusPOS_Ajax_Sample.html";
+	var rtn = MSIE.Navigate2(url, ,"_self", "", "");
+	WebBrowser.PageUrl = "https://intrawork.kfsi.or.kr/kems/pos/UPlusPOS_Ajax_Sample.html";
+	WebBrowser.Run();
+}
+
+
+// ic카드 승인 테스트
+function Button0_OnClick(obj)
+{
+	// 결제모듈 초기화 UPayInit 함수 (UPlusPGPOS_Client 모듈을 사용하기 위한 초기화 함수)
+	// 반환 0 : 정상, -9 : 내부 클래스 생성 오류
+
+//	var url = "https://intrawork.kfsi.or.kr/kems/lgdacom/UPlusPOS_Ajax_Sample.jsp";
+//	var rtn = MSIE.Navigate2(url, ,"_self", "", "");
+
+	var vPayInit = UPlusPGPOS_ClientOCX1.UPayInit();
+	trace("vPayInit="+vPayInit);
+	if (vPayInit <> 0) {
+		gfn_Alert("카드결제 초기화에 실패했습니다.");
+		return false;
+	}
+
+
+	// 파라미터 세팅 UPaySet 함수 (UPlusPGPOS로 전달할 값을 설정하는 함수)
+	// 반환 0 : 정상, -9 : 내부 클래스 없음
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_TXNAME","CardAuthOfflinePos");		// (필수)업무명
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_REQTYPE","APPR");					// (필수)업무요청명
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_OID","2018052911394454112");				// (필수)주문번호
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_PAYTYPE","SC0100");
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_AMOUNT","1000");						// (필수)결제금액(,없이 입력)
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_INSTALL","00");						// (필수)할부개월 (2자리) ex) 00:일시불, 03:3개월
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_PRIVATENO","");						// (선택)구매자 생년월일 6자리 (YYMMDD) or 사업자번호 10자리
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_NOINT","0");							// (선택)신용카드 무이자할부 여부(0: 일반할부, 1: 무이자할부)☞ 계약 시, “대표가맹” 상점에 한함
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_BUYER","정현호");					// (선택)구매자명
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_BUYERID","");						// (선택)구매자 아이디
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_BUYERPHONE","01028622115");			// (선택)고객휴대폰번호
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_BUYEREMAIL","");						// (선택)구매자 이메일
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_PRODUCTINFO","결제테스트");			// (선택)구매내역
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_TAXFREEAMOUNT","0");					// (필수)면세금액(결제금액에 면세대상금액 포함시 사용)☞ 계약 시, “부분면세” 적용여부 확인요망
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_VAT","0");							// (필수)부가세
+	UPlusPGPOS_ClientOCX1.UPaySet("VAN_SFEEAMOUNT","0");					// (필수)봉사료
+	UPlusPGPOS_ClientOCX1.UPaySet("VAN_TRANTYPE","S0");						// (필수)거래구분 S0 : 신용승인요청, K0 : 키인승인요청, E0 : 은련승인요청, P0 : APP카드 승인요청
+	
+
+	// 전송 UPayTX() 함수 (UPlusPGPOS로 UPaySet으로 설정한 값을 전송하는 함수)
+	// 반환 0 : 정상, -9 : 내부 클래스 없음 
+	//     -2 : UPlusPGPOS와 connect 실패
+	//     -3 : UPlusPGPOS에 전송 실패
+	//     -4 : UPlusPGPOS 결과 대기 타임아웃
+	//     -5 : UPlusPGPOS 결과 수신 실패
+	var vTX = UPlusPGPOS_ClientOCX1.UPayTX();
+	trace("vTX=" + vTX);
+	if (vTX <> 0) {
+		if (vTX == -2) {
+			gfn_Alert("LG U+ POS 프로그램과 연결 실패(프로그램 실행 요청)");
+			return false;
+		} else if (vTX == -3) {
+			gfn_Alert("LG U+ POS 프로그램에 전송 실패");
+			return false;
+		} else if (vTX == -4) {
+			gfn_Alert("LG U+ POS 프로그램 결과 대기 타임아웃");
+			return false;
+		} else if (vTX == -5) {
+			gfn_Alert("LG U+ POS 프로그램 결과 수신 실패");
+			return false;
+		} else if (vTX == -9) {
+			gfn_Alert("카드결제에 실패했습니다.");
+			return false;
+		} else {
+			gfn_Alert("카드결제에 실패했습니다.");
+			return false;
+		}
+	}
+/*	
+	var UPayCnt = UPlusPGPOS_ClientOCX1.UPayResNameCount(); // 응답메시지 갯수확인
+	trace("UPayCnt=" + UPayCnt);
+	
+	var vResName = "";
+	var vResponse = "";
+	for(var i=0; i<UPayCnt; i++) {
+		vResName = UPlusPGPOS_ClientOCX1.UPayResName(i);
+		vResponse = UPlusPGPOS_ClientOCX1.UPayResponse(i);
+		trace(i + " => " + vResName + " : " + vResponse);
+	}
+	
+	// UPlusPGPOS_Client 자원반환
+	var vPayFinal = UPlusPGPOS_ClientOCX1.UPayFinal();
+	trace("vPayFinal="+vPayFinal);
+	if (vPayFinal <> 0) {
+		gfn_Alert("카드결제 종료에 실패했습니다.");
+		return false;
+	}
+*/
+}
+
+// ic카드 취소 테스트
+function Button1_OnClick(obj)
+{
+	// 결제모듈 초기화 UPayInit 함수 (UPlusPGPOS_Client 모듈을 사용하기 위한 초기화 함수)
+	// 반환 0 : 정상, -9 : 내부 클래스 생성 오류
+	var vPayInit = UPlusPGPOS_ClientOCX1.UPayInit();
+	trace("vPayInit="+vPayInit);
+	if (vPayInit <> 0) {
+		gfn_Alert("카드결제 초기화에 실패했습니다.");
+		return false;
+	}
+	
+	// 파라미터 세팅 UPaySet 함수 (UPlusPGPOS로 전달할 값을 설정하는 함수)
+	// 반환 0 : 정상, -9 : 내부 클래스 없음
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_TXNAME","CardAuthOfflinePos");		// (필수)업무명
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_REQTYPE","CANCEL");					// (필수)업무요청명
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_AMOUNT","1000");						// (필수)결제금액(,없이 입력)
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_INSTALL","00");						// (필수)할부개월 (2자리) ex) 00:일시불, 03:3개월
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_TID","");							// (필수)LG유플러스 거래번호 (신용승인응답에서 Tran_serial 값)
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_TAXFREEAMOUNT","1000");				// (필수)면세금액(결제금액에 면세대상금액 포함시 사용)☞ 계약 시, “부분면세” 적용여부 확인요망
+	UPlusPGPOS_ClientOCX1.UPaySet("LGD_VAT","0");							// (필수)부가세
+	UPlusPGPOS_ClientOCX1.UPaySet("VAN_SFEEAMOUNT","0");					// (필수)봉사료
+	UPlusPGPOS_ClientOCX1.UPaySet("VAN_TRANTYPE","S1");						// (필수)거래구분 S1 : 신용취소요청, K1 : 키인취소요청, E1 : 은련취소요청, P1 : APP카드 취소요청
+	UPlusPGPOS_ClientOCX1.UPaySet("VAN_CAPDATE","20180517");				// (필수)원거래 승인일(YYYYMMDD)
+	UPlusPGPOS_ClientOCX1.UPaySet("VAN_AUTHNO","");							// (필수)원거래 승인번호
+	
+	
+	// 전송 UPayTX() 함수 (UPlusPGPOS로 UPaySet으로 설정한 값을 전송하는 함수)
+	// 반환 0 : 정상, -9 : 내부 클래스 없음 
+	//     -2 : UPlusPGPOS와 connect 실패
+	//     -3 : UPlusPGPOS에 전송 실패
+	//     -4 : UPlusPGPOS 결과 대기 타임아웃
+	//     -5 : UPlusPGPOS 결과 수신 실패
+	var vTX = UPlusPGPOS_ClientOCX1.UPayTX();
+	trace("vTX=" + vTX);
+	if (vTX <> 0) {
+		gfn_Alert("카드결제에 실패했습니다.");
+		return false;
+	}
+	
+	var UPayCnt = UPlusPGPOS_ClientOCX1.UPayResNameCount(); // 응답메시지 갯수확인
+	trace("UPayCnt=" + UPayCnt);
+	
+	var vResName = "";
+	var vResponse = "";
+	for(var i=0; i<UPayCnt; i++) {
+		vResName = UPlusPGPOS_ClientOCX1.UPayResName(i);
+		vResponse = UPlusPGPOS_ClientOCX1.UPayResponse(i);
+		trace(i + " => " + vResName + " : " + vResponse);
+	}
+	
+	// UPlusPGPOS_Client 자원반환
+	var vPayFinal = UPlusPGPOS_ClientOCX1.UPayFinal();
+	trace("vPayFinal="+vPayFinal);
+	if (vPayFinal <> 0) {
+		gfn_Alert("카드결제 종료에 실패했습니다.");
+		return false;
+	}
+
+	
+	
+	
+}
+]]></Script>
+</Window>

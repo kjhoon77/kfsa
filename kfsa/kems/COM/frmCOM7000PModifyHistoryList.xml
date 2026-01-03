@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="400" Id="frmCOM7000PModifyHistoryList" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="변경이력조회팝업" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oModifyHistory">
+				<Contents>
+					<colinfo id="DTL" size="2038" type="STRING"/>
+					<colinfo id="MHAFTERDATA" size="1000" type="STRING"/>
+					<colinfo id="MHBEFOREDATA" size="1000" type="STRING"/>
+					<colinfo id="MHCOLUMN" size="30" type="STRING"/>
+					<colinfo id="MHGUBUN" size="1" type="STRING"/>
+					<colinfo id="MHGUBUNNM" size="2" type="STRING"/>
+					<colinfo id="MHKEY" size="30" type="STRING"/>
+					<colinfo id="MHMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="MHPROCDATE" size="14" type="STRING"/>
+					<colinfo id="MHPROCIP" size="20" type="STRING"/>
+					<colinfo id="MHPROCSABUN" size="8" type="STRING"/>
+					<colinfo id="MHWORKGUBUN" size="50" type="STRING"/>
+					<colinfo id="PDEPTCD" size="4" type="STRING"/>
+					<colinfo id="PDEPTNM" size="20" type="STRING"/>
+					<colinfo id="PPERSONNM" size="20" type="STRING"/>
+					<colinfo id="PPOSITNNM" size="20" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="705" LineColor="user14" Right="796" TabOrder="61" Top="1" Type="Rectangle" Width="91"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="Button1" ImageID="BTN_MULTI_SORT" Left="723" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="2" Top="32" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oModifyHistory" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="396" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="340" Id="gdModifyHistory" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="796" RowHeight="20" Style="sty_Grid" TabOrder="3" TabStop="true" Top="56" UseDBuff="true" UsePopupMenu="true" UserData="변경이력조회" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="35"/>
+						<col width="50"/>
+						<col width="137"/>
+						<col width="68"/>
+						<col width="60"/>
+						<col width="80"/>
+						<col width="145"/>
+						<col width="145"/>
+						<col width="95"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="구분"/>
+						<cell align="center" col="2" display="text" text="처리일시"/>
+						<cell align="center" col="3" display="text" text="처리지부"/>
+						<cell align="center" col="4" display="text" text="처리자"/>
+						<cell align="center" col="5" display="text" text="변경항목"/>
+						<cell align="center" col="6" display="text" text="변경&#32;전"/>
+						<cell align="center" col="7" display="text" text="변경&#32;후"/>
+						<cell align="center" col="8" display="text" text="처리자IP"/>
+					</head>
+					<body>
+						<cell align="right" col="0" display="number" expr="ln_TotalGridCount&#32;-&#32;CURROW"/>
+						<cell align="center" col="1" colid="MHGUBUNNM" display="text"/>
+						<cell align="center" col="2" colid="MHPROCDATE" display="text" Mask="####-##-##&#32;##:##:##"/>
+						<cell align="center" col="3" colid="PDEPTNM" display="text"/>
+						<cell align="center" col="4" colid="PPERSONNM" display="text"/>
+						<cell align="center" col="5" colid="MHCOLUMN" display="text"/>
+						<cell col="6" colid="MHBEFOREDATA" display="text"/>
+						<cell col="7" colid="MHAFTERDATA" display="text"/>
+						<cell align="center" col="8" colid="MHPROCIP" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM7000PModifyHistoryList.xml
+ * 설명 : 변경이력조회팝업
+ * 작성일 : 2009.09.04
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (IsExistVar("sKey")) {
+        lfn_Search();
+    }
+
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_oModifyHistory.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("com:searchModifyHistory", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oModifyHistory=ds_oModifyHistory"	// outDs
+		,"MHWORKGUBUN=" + quote(sWorkGubun)// args
+            + " MHKEY=" + quote(sKey)
+		,"lfn_AfterSearchModifyHistory"
+		,false
+	);
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+var ln_TotalGridCount = 0;
+function lfn_AfterSearchModifyHistory(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    ln_TotalGridCount = ds_oModifyHistory.GetCount();
+
+    gfn_SearchMessage(gdModifyHistory); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 사용자 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        if (nCell > 0) {
+            gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+        }
+    }
+}
+
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdModifyHistory, 1); // 멀티 정렬을 실행한다.
+}
+]]></Script>
+</Window>

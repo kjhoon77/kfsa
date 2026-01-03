@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="400" Id="frmenv0022PLatestBoard" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="공지사항팝업" Top="8" Ver="1.0" Width="600" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oBoard">
+				<Contents>
+					<colinfo id="AFDIRPATH" size="256" type="STRING"/>
+					<colinfo id="AFFILESIZE" size="22" type="DECIMAL"/>
+					<colinfo id="AFREALNM" size="256" type="STRING"/>
+					<colinfo id="AFSAVENM" size="256" type="STRING"/>
+					<colinfo id="AFSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="BBOARDGUBUN" size="2" type="STRING"/>
+					<colinfo id="BCONTENTS" size="4000" type="STRING"/>
+					<colinfo id="BHIT" size="22" type="DECIMAL"/>
+					<colinfo id="BMODDATE" size="10" type="STRING"/>
+					<colinfo id="BMODSABUN" size="8" type="STRING"/>
+					<colinfo id="BREGDATE" size="10" type="STRING"/>
+					<colinfo id="BREGSABUN" size="20" type="STRING"/>
+					<colinfo id="BSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="BTITLE" size="200" type="STRING"/>
+					<colinfo id="NEW_YN" size="10" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="400" Id="imgMenuSearch" ImageID="IMG_BOARD_BK" Style="sty_Image" TabOrder="1" Transparent="TRUE" Width="600"></Image>
+		<Grid AutoScrollBar="None" BindDataset="ds_oBoard" BkColor2="white" BkSelColor="white" BoldHead="FALSE" Border="Flat" BorderColor="white" Bottom="364" ButtonColor="white" DisableBKColor="white" DisableColor="white" Enable="true" EndLineColor="white" Face3dColor="white" FillAreaType="All" Font="굴림,10" HeadBorder="None" HeadHeight="20" Height="284" Hilight3dColor="white" Id="gdBoard" InputPanel="FALSE" Left="32" LineColor="white" OnCellClick="gdBoard_OnCellDblClick" Right="562" RowHeight="20" SelColor="white" ShadowColor="white" TabOrder="2" TabStop="FALSE" Top="80" UseDBuff="true" UsePopupMenu="true" UseSelColor="FALSE" Visible="true" VLineColor="white" WheelScrollRow="1" Width="530">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="100"/>
+						<col width="386"/>
+						<col width="40"/>
+					</columns>
+					<body>
+						<cell align="center" col="0" colid="BREGDATE" display="text" Mask="####-##-##"/>
+						<cell align="left" col="1" colid="BTITLE" display="text"/>
+						<cell align="center" bkimageid="expr:iif(NEW_YN==&apos;Y&apos;,&#32;&apos;IMG_NEW&apos;,&#32;&apos;&apos;)" col="2" display="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="510" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Image Cursor="HAND" Height="7" Id="imgUpdateMore" ImageID="IMG_MORE" Left="120" LeftMargin="0" OnClick="imgBoardMore_OnClick" Static="FALSE" Style="sty_Image" TabOrder="4" ToolTipText="열려진&#32;모든&#32;화면&#32;닫기" Top="56" Width="31"></Image>
+		<Checkbox FalseValue="N" Font="굴림,9" Height="20" Id="chkDispYn" Left="328" TabOrder="5" Text="오늘&#32;하루동안&#32;최근&#32;공지사항을&#32;열지&#32;않음." Top="377" TrueValue="Y" Width="249"></Checkbox>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmenv0022PLatestBoard.xml
+ * 설명 : 공지사항팝업
+ * 작성일 : 2009.07.17
+ * 작성자 : 김동현
+ */
+
+#include "LIB::env.js"; // 공통 관련
+
+var ls_BoardGubun = "NN";
+var ls_BoardRownum = "14";
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    lfn_search(obj); // 최근 UPDATE 조회
+}
+
+function Form_OnUnloadCompleted(obj) {
+    SetReg("KEMSBoardYn", chkDispYn.Value);
+    SetReg("KEMSBoardDate", left(GetDate(), 8));
+
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_oBoard.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("env:searchBoard", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oBoard=ds_oBoard"	// outDs
+		,"BBOARDGUBUN=" + quote(ls_BoardGubun)
+            + " ROWNUM=" + ls_BoardRownum // args 
+		,"lfn_AfterSearchLatestBoardList"
+		,false
+	);
+}
+
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 최근 UPDATE 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchLatestBoardList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SearchMessage(); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 사용자 이벤트 함수 */
+function gdBoard_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+    var sArg = "sBoardSeq=" + quote(ds_oBoard.GetColumn(nRow, "BSEQ"))
+        + " sFormTitle='공지사항'";
+    return Dialog("env::frmenv0024PBoardContents.xml", sArg, 600, 400, "", -1, -1);
+}
+
+function imgBoardMore_OnClick(obj,nX,nY) {
+    
+    gs_SystemGubun = "env";
+    gs_SystemMenuId = "0000000007";
+    global.mnuLeft.tabMenu.tabpgMenu.Text = "환경설정";
+    var ls_MenuId = "0000000014";
+    var ls_MenuTitle = "공지사항";
+    var ls_MenuUrl = "env::frmenv0020MBoardList.xml";
+    var ls_args = "sBoardGubun=N";
+    
+    global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+	gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId, ls_args);
+	
+	close();
+}
+]]></Script>
+</Window>

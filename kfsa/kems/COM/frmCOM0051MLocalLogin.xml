@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="192" Id="frmCOM0051MLocalLogin" Left="8" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="로그인" Top="8" Ver="1.0" Width="316" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oServiceGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>ORACLE</CD>
+						<DATA>내부</DATA>
+					</record>
+					<record>
+						<CD>MDB</CD>
+						<DATA>외부</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="192" Id="imgImage" ImageID="IMG_LOCALLOGIN_BK" Style="sty_Image" TabOrder="1" Transparent="TRUE" Width="316"></Image>
+		<Image Cursor="HAND" Height="32" Id="imgLogin" ImageID="IMG_LOCALLOGIN" Left="72" LeftMargin="0" OnClick="imgLogin_OnClick" OnKeyDown="imgLogin_OnKeyDown" Static="FALSE" Style="sty_Image" TabOrder="2" Top="140" Width="84"></Image>
+		<Image Cursor="HAND" Height="32" Id="imgCancel" ImageID="IMG_LOCALCANCEL" Left="160" LeftMargin="0" OnClick="imgCancel_OnClick" Static="FALSE" Style="sty_Image" TabOrder="3" Top="140" Width="84"></Image>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edPassword" ImeMode="native" Left="140" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edPassword_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Password="TRUE" Style="sty_Edit" TabOrder="4" Top="95" UserData="S:비밀번호" Width="120"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM0051MLocalLogin.xml
+ * 설명 : 로그인
+ * 작성일 : 2009.11.06
+ * 작성자 : 이규희
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+
+/* 공통 */
+function Form_OnLoadCompleted(obj) {
+    ext_SetTopWindow(true);
+    
+    gs_DataGroupGubun = "MDB"; // DataGroup 구분 
+    
+    edPassword.SetFocus();    
+}
+
+
+function lfn_SearchTopMenu()
+{
+    ldb.Sync = true;
+    transaction("select",
+                "SvcLdb::searchMenu.xml",
+                "",
+                "gds_oTopMenu=output",
+                "",
+                "lfn_AfterSearchTopMenu");
+    ldb.Sync = false;
+}
+
+function lfn_AfterSearchTopMenu(nErrorCode, strErrorMsg) {
+}
+
+
+
+function Form_OnUnloadCompleted(obj) {
+    ext_SetTopWindow(false);
+
+    /*
+     * 로그인 버튼을 클릭하지 않은채 "취소" 버튼을 클릭 시 정상적으로 Login을 하면 해당 화면을 닫고
+     * 아니면 시스템 종료
+     */
+     /*
+    if(ls_LoginStatus == true) {
+        obj.close();
+    } else {
+        obj.exit();
+    }
+    */
+}
+
+/* 사용자 이벤트 함수 */
+function imgCancel_OnClick(obj,nX,nY)
+{
+	exit();
+}
+
+function imgLogin_OnClick(obj,nX,nY)
+{
+    initSession(false);
+
+    if (!gfn_FormValidate(this)) { // Validation Check
+        return false;
+    }
+
+    if (ToUpper(edPassword.Text) == "LOCAL") {
+        lfn_SearchTopMenu();
+        
+        initSession(true);
+        close(); // 로그인한다.
+    } else {
+        gfn_Alert("로그인 암호가 잘못되었습니다.");
+    }
+}
+
+function imgLogin_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+    if (nChar == 13) {
+        imgLogin_OnClick();
+    }
+}
+
+function edPassword_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+    if (nChar == 13) {
+        imgLogin_OnClick();
+    }
+}]]></Script>
+</Window>

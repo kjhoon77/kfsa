@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="690" Id="frmtraining0360MILicManagement" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="lfn_Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="[인터넷]수첩발급신청관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="960" WorkArea="true">
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="866" LineColor="user14" Right="957" TabOrder="61" Top="1" Type="Rectangle" Width="91"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="2" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="300">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="869" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<MSIE AddressBar="false" Bottom="682" Height="650" Id="AxMsie" Left="1" MenuBar="false" RegisterAsDropTarget="false" Right="956" StatusBar="false" Top="32" Width="955"></MSIE>
+	</Form>
+	<Script><![CDATA[/*
+
+ * 프로그램명 : frmtraining0360MILicManagement
+
+ * 설명 : [인터넷]수첩발급신청관리
+
+ * 작성일 : 2016.12.22
+ 
+ * 작성자 : 정현호
+
+ */
+
+
+
+#include "LIB::COMMON.js"; // 공통업무 관련
+
+
+
+/* 공통 필수 시작 */
+
+function Form_OnLoadCompleted(obj) {
+
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+
+
+    // 폼 환경설정
+
+    ls_SystemGubun = gs_SystemGubun;
+
+    ls_SystemMenuId = gs_SystemMenuId;
+
+    var ls_FormId = split(sFormUrl, "::");
+
+    ls_FormId = split(ls_FormId[1], ".");
+
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+
+	//var url = "http://172.19.1.7/GROUPWARE/license/li_connet.php?lic_sabun=" + gds_oUserInfo.GetColumn(0,"PSABUN");
+	var url = "https://intrawork.kfsi.or.kr:444/groupware/issued/QualificationTotalList.do?groupUserId=" + gds_oUserInfo.GetColumn(0,"PSABUN");
+//	var	url = "https://kems.kfsi.or.kr/groupware/issued/QualificationTotalList.do?groupUserId=" + gds_oUserInfo.GetColumn(0,"PSABUN");	// 2021.01.28부터
+	var rtn = AxMsie.Navigate2(url, ,"_self", "", "");
+
+
+/*
+   	_blank
+	Load the link into a new unnamed window.
+	_parent
+	Load the link into the immediate parent of the document the link is in.
+	_self
+	Load the link into the same window the link was clicked in.
+	_top
+	Load the link into the full body of the current window.
+	_new
+*/
+}
+
+
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+
+    // to do
+
+
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+
+}
+
+
+
+function Form_OnSize(obj,nCx,nCy,nState) {
+
+    if (gs_IsResizingForm == "Y") {
+
+
+
+    }
+
+}
+
+
+
+function lfn_Form_OnUnloadCompleted(obj) {
+
+    var ls_FormId = split(sFormUrl, "::");
+
+    ls_FormId = split(ls_FormId[1], ".");
+
+    gfn_DeleteOpenedMenu(ls_FormId[0]);
+
+
+
+    gfn_Form_OnUnloadCompleted(obj);
+
+}
+
+
+
+
+
+/* 공통 필수 종료 */
+
+
+
+function lfn_End(obj)
+{
+	close();
+}
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_5000,dsc_0002]";	// 개인정보접속기록 시스템ID  
+}
+]]></Script>
+</Window>

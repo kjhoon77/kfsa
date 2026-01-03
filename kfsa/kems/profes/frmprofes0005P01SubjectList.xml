@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="488" Id="frmprofes0005P01SubjectList" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="교육과목검색팝업" TooltipFont=",0" Top="8" Ver="1.0" Width="600" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oSubjectList">
+				<Contents></Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="332" LineColor="user14" Right="599" TabOrder="61" Top="1" Type="Rectangle" Width="267"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect" ImageID="BTN_TEXT_COM" Left="335" OnClick="btnSelect_OnClick" Style="sty_Button" TabOrder="2" Text="선택" ToolTipText="선택" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="3" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Visible="FALSE" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="509" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oSubjectList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="480" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="444" Id="gdSubjectList" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnCellDBLClick="gdSubjectList_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="596" RowHeight="20" Style="sty_Grid" TabOrder="4" TabStop="true" Top="36" UseDBuff="true" UsePopupMenu="true" UserData="교육과목목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="592">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="320"/>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="90"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="과목명"/>
+						<cell align="center" col="1" display="text" text="법정교육시간"/>
+						<cell align="center" col="2" display="text" text="실제교육시간"/>
+						<cell align="center" col="3" display="text" text="교육과정구분"/>
+					</head>
+					<body>
+						<cell align="left" col="0" colid="PSTITLE" display="combo"/>
+						<cell align="center" col="1" colid="PSLOWTIME" display="normal" expr="PSLOWTIME+&apos;시간&apos;"/>
+						<cell align="center" col="2" colid="PSEDUTIME" display="text" expr="PSEDUTIME+&apos;시간&apos;"/>
+						<cell align="center" col="3" colid="LEDUGUBUN" display="text" expr="decode(LEDUGUBUN,&#32;&apos;B&apos;,&#32;&apos;실무교육&apos;,&#32;&apos;T&apos;,&#32;&apos;강습교육&apos;)"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_TEXT_COM" Left="422" OnClick="btnCancel_OnClick" Style="sty_Button" TabOrder="6" Text="선택취소" ToolTipText="선택취소" Top="4" Transparent="TRUE" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmprofes0005P01SubjectList.xml
+ * 설명 : 교육과목검색팝업
+ * 작성일 : 2009.11.12
+ * 작성자 : 김은규
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+
+    if (IsExistVar("sLPCMGNO") && IsExistVar("sLPSVERSION")) {
+        lfn_Search();
+    }
+    
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_oSubjectList.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("profes:searchProfes0005SubjectList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oSubjectList=ds_oSubjectList"	// outDs
+		,"PSPCMGNO=" + quote(sLPCMGNO) // 과정관리번호
+		 + " PSVERSION=" + quote(sLPSVERSION)	//과목버전
+		 + " LEDUGUBUN=" + quote(sLEDUGUBUN)	//교육과정구분[B:실무 T:강습]
+		,"lfn_AfterSearchSubjectList"
+		,false
+	);
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchSubjectList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+	if (ds_oSubjectList.GetCount() > 25) {
+	
+		window.Height = 886;
+		gdSubjectList.Height = 812;
+		
+	} else {
+	
+		window.Height = 518;
+		gdSubjectList.Height = 444;
+		
+	}
+
+
+    gfn_SearchMessage(gdSubjectList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 사용자 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+function btnSelect_OnClick(obj)
+{
+    var arrArg = Array(3);
+		arrArg[0] = ds_oSubjectList.GetColumn(ds_oSubjectList.currow, "PSSEQ"); // 교육과정순번
+		arrArg[1] = ds_oSubjectList.GetColumn(ds_oSubjectList.currow, "PSTITLE"); // 과목명
+		arrArg[2] = ds_oSubjectList.GetColumn(ds_oSubjectList.currow, "PSVERSION"); // 과목버전
+		Close(arrArg);
+}
+
+function gdSubjectList_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+    btnSelect_OnClick(obj);
+}
+
+function edTrainingSeatNo_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) {
+        lfn_Search();
+	}
+}
+
+function btnCancel_OnClick(obj)
+{
+	var arrArg = Array(3);
+		arrArg[0] = null; // 교육과정순번
+		arrArg[1] = null; // 과목명
+		arrArg[2] = sLPSVERSION; // 과목버전
+		Close(arrArg);
+}
+]]></Script>
+</Window>

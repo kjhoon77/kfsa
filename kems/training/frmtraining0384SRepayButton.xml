@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="22" Id="frmtraining0384SRepayButton" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="환불신청버튼DIV" Top="8" Ver="1.0" Width="664" WorkArea="true">
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnRepayJubsu" ImageID="BTN_TEXT_07" Style="sty_Button" TabOrder="1" Text="환불접수" Transparent="TRUE" Width="105"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnRepayOk" ImageID="BTN_TEXT_07" Left="108" Style="sty_Button" TabOrder="2" Text="환불완료" Transparent="TRUE" Width="105"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnRepayCancel" ImageID="BTN_TEXT_07" Left="216" Style="sty_Button" TabOrder="3" Text="환불취소" Transparent="TRUE" Width="105"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0384SRepayButton.xml
+ * 설명 : 환불신청버튼DIV
+ * 작성일 : 2009.08.26
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+function Form_OnLoadCompleted(obj) {
+    ms_FormAuth = gfn_GetFormAuth(parent); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else {
+        lfn_SetFormAuth(false); // 읽기 권한
+    }
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    btnRepayJubsu.Enable = bStatus;
+    btnRepayOk.Enable = bStatus;
+    btnRepayCancel.Enable = bStatus;
+}
+]]></Script>
+</Window>

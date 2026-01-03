@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="76" Id="frmCOM3104SSettlementPOSSunap" Left="8" OnActivate="frmCOM3104SSettlementPOSSunap_OnActivate" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="가상계좌납부상세" TooltipFont=",0" Top="8" Ver="1.0" Width="780" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oBank">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oRecieptYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>예</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>아니오</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Align="Center" Height="20" Id="lbRecieptYn" Left="4" Style="sty_Label" TabOrder="2" Text="현금영수증여부" Top="52" VAlign="Middle" Width="100"></Static>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="18" Id="radRecieptYn" INDEX="0" InnerDataset="ds_oRecieptYn" Left="110" OnChanged="radRecieptYn_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="1" Top="53" Value="N" Width="110"></Radio>
+		<Static Align="Center" Height="20" Id="lbEndDate" Left="4" Style="sty_Label" TabOrder="4" Text="입금마감일" Top="28" VAlign="Middle" Width="100"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd&#32;HH:mm:ss" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" Enable="FALSE" HeaderFont="돋음,10,Bold" Height="20" Id="calEndDate" Left="108" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="3" Top="28" WeeksFont="돋음,9" Width="148"></Calendar>
+		<Static Align="Center" Height="20" Id="lbBank" Left="4" Style="sty_Label" TabOrder="6" Text="입금은행" Top="4" UserData="SK" VAlign="Middle" Width="100"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxBank" INDEX="0" InnerDataset="ds_oBank" Left="107" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="5" Top="3" Value="I:입금은행" Width="100"></Combo>
+		<Div BKColor="user0" Height="48" Id="divVirtual" Left="254" OnActivate="frmCOM3103SSettlementPOSSunap_OnActivate" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="7" TabStop="FALSE" Text="Div0" Top="24" Url="COM::frmCOM3103SSettlementPOSSunap.xml" Visible="FALSE" Width="522">
+			<Contents></Contents>
+		</Div>
+		<Static Align="Center" Height="20" Id="lbHpTel" Left="258" Style="sty_Label" TabOrder="9" Text="가상계좌&#32;SMS발송&#32;휴대폰번호" Top="4" VAlign="Middle" Width="182"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edHpTel" ImeMode="native" Left="443" LeftMargin="2" MaxLength="40" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="8" Top="4" UserData="S" Width="104"></Edit>
+		<Static Height="20" Id="lb_WaveText" Left="549" Style="sty_Text" TabOrder="10" Text="(&apos;-&apos;제외)" Top="5" VAlign="Middle" Width="58"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM3104SSettlementPOSSunap.xml
+ * 설명 : 가상계좌납부상세
+ * 작성일 : 2009.09.12
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    
+    calEndDate.Value = gfn_SearchNextBusinessDateTime(left(GetDate(), 8), decode(sProgramId, "22", "E", "T"), sKey1); // 다음 영업일시 조회
+
+    // 공통 코드 조회
+    gfn_SearchCommonCode(ds_oBank, "VIRTBANKCD", "Y"); // 가상계좌은행코드
+
+    edHpTel.Text = ms_HpTel; // 휴대폰
+}
+
+function radRecieptYn_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if (strCode == "Y") {
+        divVirtual.Visible = true;
+    } else {
+        divVirtual.Visible = false;
+    }
+}
+
+function frmCOM3104SSettlementPOSSunap_OnActivate(obj)
+{
+	edHpTel.SetFocus();
+}
+]]></Script>
+</Window>

@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user7" Height="40" Id="frmCOM0060MFrameTop" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="frmCOM0060MFrameTop_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="상단프레임" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1022" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oBoardCnt"></Dataset>
+		</Datasets>
+		<Image Cursor="HAND" Height="36" Id="imgKemsLogo" ImageID="IMG_KEMSCRS_LOGO" OnClick="imgKemsLogo_OnClick" Static="FALSE" Style="sty_Image" TabOrder="1" Width="200"></Image>
+		<Tab Font="굴림,10,Bold" Height="25" Id="tabTopMenu" Left="201" OnChanged="tabTopMenu_OnChanged" SelColor="white" SelectFont="굴림,10,Bold" TabButtonBorder="Flat" TabOrder="3" Top="11" Width="820">
+			<Contents>
+				<TabPage Enable="FALSE" Height="-4" Id="tab1" ImageID="BTN_TAB_BK01" Left="2" TabOrder="9" Text="tab1" Top="27" Width="816"></TabPage>
+			</Contents>
+		</Tab>
+		<Image Cursor="HAND" FillType="STRETCH" Height="34" Id="imgLeftFrameClose" ImageID="IMG_MENU_HIDE" Left="183" LeftMargin="0" OnClick="imgLeftFrameOpenClose_OnClick" OnMouseOut="imgLeftFrameClose_OnMouseOut" OnMouseOver="imgLeftFrameClose_OnMouseOver" Static="FALSE" Style="sty_Image" TabOrder="2" Top="2" Width="16"></Image>
+		<Shape BKColor="blue" Bottom="40" Height="4" Id="shpTopMenuBottom" Left="0" LineColor="blue" Right="1022" TabOrder="4" Top="36" Type="Rectangle" Width="1022"></Shape>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM0010PInfoMessage.xml
+ * 설명 : 정보메세지 팝업
+ * 작성일 : 2009.06.26
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+var ls_TabPageNamePrefix = "tbgTopMenu";
+
+/* 공통 필수 시작 */
+function Form_OnActivate(obj) {
+    gfn_Form_OnActivate(obj);
+    
+    // to do
+}
+
+function Form_OnDeactivate(obj) {
+    // to do
+
+    gfn_Form_OnDeactivate(obj);
+}
+
+
+function lfn_InitOnLoad(obj)
+{
+	lfn_SearchLastestBoardCount(); // 최근공지사항 갯수를 조회한다.
+    lfn_SearchCommonCode(); // 공통코드를 조회한다.
+
+    lfn_loadPrintConfigFile(); // 로컬 프린터 환경을 로딩한다.
+
+    // TopMenu 초기화 부분설정
+    if (gds_oTopMenu.RowCount() == 0) {
+        tabTopMenu.Visible = false;
+    } else {
+        if (gds_oTopMenu.RowCount() > 10) {
+            gfn_Alert("시스템구분이 10개를 초과했습니다. 메뉴관리에서 수정해 주십시오.");
+        }
+        tabTopMenu.DeleteTab(0);
+        for (var i = 0; i < gds_oTopMenu.RowCount(); i++) {
+        
+            tabTopMenu.InsertTab(ls_TabPageNamePrefix + lpad(i, "0", 2) // strID
+                , i // nIdx
+                , "" // strURL
+                , gds_oTopMenu.GetColumn(i, "MMENUNM") // strText
+                , gds_oDesign.GetColumn(gds_oDesign.FindRow("MSYSGUBUN", gds_oTopMenu.GetColumn(i, "MSYSGUBUN")), "TABIMGID")); // strImage
+        }
+    }
+
+    // 화면 로딩을 위한 delay용
+    for (var i = 0; i < 1000; i++) {
+        idle();
+    }
+    global.AppStatus = "Max"; // 화면 최대화
+
+    var ls_BoardYn = GetReg("KEMSBoardYn");
+    var ls_BoardDate = GetReg("KEMSBoardDate");
+    
+	if (gs_isTlogin == "Y") {
+        tabTopMenu_OnChanged(obj,0,0);
+    } else {
+        if (ls_BoardYn == "Y" && ls_BoardDate == left(GetDate(), 8)) {
+            tabTopMenu_OnChanged(tabTopMenu, -1, 0);
+        } else {
+/*
+            if (ds_oBoardCnt.GetColumn(0, "CNT") > 0) { // 최근 공지가 있는 경우만
+                // 환경설정의 최근공지사항(공지사항&UPDATE)을 기본으로 오픈한다.
+                gs_SystemGubun = "env";
+                gs_SystemMenuId = "0000000007";
+                global.mnuLeft.tabMenu.tabpgMenu.Text = "환경설정";
+                var ls_MenuId = "0000000023";
+                var ls_MenuTitle = "UPDATE&MANUAL";
+                var ls_MenuUrl = "env::frmenv0010MLatestUpdateManual.xml";
+            
+                tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", "env");
+                gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId);
+            } else {*/
+                tabTopMenu_OnChanged(obj,0,0);
+//            }
+        }
+    }
+     
+    //if (gds_oUserInfo.GetColumn(0, "PPWDATE") 
+    
+    if (gds_oUserInfo.GetColumn(0, "PPWCHANGE") == "Y") {
+    
+		gfn_Alert("비밀번호를 변경한지 3개월이 지났습니다.\n\n"+
+		          "그룹웨어의 '환경설정☞비밀번호' 메뉴에 가셔서 변경하세요!");
+    
+    }
+}
+
+function lfn_InitBSBOnLoad(obj)
+{
+    lfn_loadPrintConfigFile(); // 로컬 프린터 환경을 로딩한다.
+    tabTopMenu.DeleteTab(0);
+    tabTopMenu.InsertTab(ls_TabPageNamePrefix + lpad(0, "0", 2) // strID
+                , 0 // nIdx
+                , "" // strURL
+                , gds_oTopMenu.GetColumn(0, "MMENUNM") // strText
+                , gds_oDesign.GetColumn(gds_oDesign.FindRow("MSYSGUBUN", gds_oTopMenu.GetColumn(0, "MSYSGUBUN")), "TABIMGID")); // strImage
+    tabTopMenu_OnChanged(obj,0,0);
+    global.AppStatus = "Max"; // 화면 최대화
+    //gds_oCourse.Load("SvcLdb::searchCourse.xml");
+}
+
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj);
+
+    if(gs_IsBSB == "Y")
+    {
+		lfn_InitBSBOnLoad(obj);
+    }else{
+		lfn_InitOnLoad(obj);
+    }
+}
+
+function Form_OnUnloadCompleted(obj) {
+    // to do
+
+    gfn_Form_OnUnloadCompleted(obj);
+}
+
+function Form_OnFocus(obj) {
+    gfn_Form_OnFocus(obj);
+
+    // to do
+}
+
+function Form_OnKillFocus(obj) {
+    // to do
+
+    gfn_Form_OnKillFocus(obj);
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam);
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 공통코드를 조회한다.
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchCommonCode() {
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("com:searchCommonCode", false); // 공통코드
+	tit_addSearchActionInfo("com:searchJibu", false); // 지부
+	tit_addSearchActionInfo("com:searchTrainingCourse", false); // 직능
+	tit_addSearchActionInfo("com:searchPosProgramId", false); // POS단위업무프로그램
+	tit_addSearchActionInfo("com:searchPosJibu", false); // POS지부
+	tit_addSearchActionInfo("com:searchCustomerCourse", false); // 고객 직능
+	tit_addSearchActionInfo("com:searchRegion", false); // 지역
+	tit_addSearchActionInfo("com:searchLicenseCode", false);	//타자격증 코드
+
+	tit_addSearchActionInfo("com:searchFireInfoCode", false);	//지부별  소방서
+	tit_addSearchActionInfo("com:searchFireInfoCenterCode", false);	//소방서별 안전센터
+	
+	tit_addSearchActionInfo("com:searchFireInfoBonbuCode", false);	//지부별  소방본부
+
+	tit_addSearchActionInfo("com:searchPrivacyCourse", false);	// 개인정보동의서 직능코드
+	
+	tit_addSearchActionInfo("com:searchVirtualAccountBankCode", false);	// 가상계좌 은행코드
+	
+	tit_addSearchActionInfo("com:searchAllDept", false);	// 전체부서코드
+	
+	tit_addSearchActionInfo("com:searchKCode", false); // 선해임코드
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"gds_oCommonCode=ds_oCommonCode" // outDs
+		    + " gds_oJibu=ds_oJibu"
+		    + " gds_oCourse=ds_oCourse"
+		    + " gds_oPosProgramId=ds_oPosProgramId"
+		    + " gds_oPosJibu=ds_oPosJibu"
+		    + " gds_oCustomerCourse=ds_oCustomerCourse"
+		    + " gds_oRegion=ds_oRegion"
+		    + " gds_oLicenseCode=ds_oLicenseCode"
+			+ " gds_oFireBonbuCode=ds_oFireBonbuCode"
+			
+			+ " gds_oFireCode=ds_oFireCode"
+			+ " gds_oFireCenterCode=ds_oFireCenterCode"
+			
+			+ " gds_oPrivacyCourse=ds_oPrivacyCourse"
+			
+			+ " gds_oBankCode=ds_oBank"
+			
+			+ " gds_oAllDept=ds_oAllDept"
+			
+			+ " gds_oKCode=ds_oKCode"
+		,""	// args 
+		,""
+		,true
+		,true
+	);
+}
+
+/*
+ * 기능 : 왼쪽메뉴를 조회한다.
+ * parameter : sMenuId - 메뉴ID
+ * Return : 없음
+ */
+function lfn_SearchLeftMenu(sMenuId) {
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("com:searchLeftMenu", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"gds_oLeftMenu=ds_oLeftMenu"	// outDs
+		,"PSABUN=" + quote(gds_oUserInfo.GetColumn(0, "PSABUN"))
+            + " MMENUID=" + quote(sMenuId)
+            + " PDEPTCD=" + quote(gds_oUserInfo.GetColumn(0, "PDEPTCD"))
+            + " ISDEPTAUTH=" + quote(gs_IsDeptAuth)
+        ,""
+		,true
+		,true
+	);
+}
+
+/*
+ * 기능 : 왼쪽메뉴를 조회한다.
+ * parameter : sMenuId - 메뉴ID
+ * Return : 없음
+ */
+function lfn_SearchBSBLeftMenu(sMenuId) {
+
+    ldb.Sync = true;
+    transaction("select",
+                "SvcLdb::searchLeftMenu.xml",
+                "",
+                "gds_oLeftMenu=output",
+                "",
+                "lfn_AfterSearchBSBLeftMenu");
+    ldb.Sync = false;	
+}
+
+function lfn_AfterSearchBSBLeftMenu(nErrorCode, strErrorMsg)
+{
+	// 메뉴 정렬
+	
+}
+
+
+/*
+ * 기능 : 최근 공지사항 갯수를 조회한다.
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchLastestBoardCount() {
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("com:searchLastestBoardCount", false);
+	// 서버 호출
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oBoardCnt=ds_oBoardCnt"	// outDs
+		,""
+		,""
+		,true
+		,true
+	);
+}
+
+/*
+ * 기능 : 로컬환경을 로딩한다.
+ * parameter : 없음
+ * return : 없음
+ */
+function lfn_loadPrintConfigFile() {
+    gs_LocalDefaultPrinter = ext_GetDefaultPrinter();
+
+    var ln_Currow;
+    ln_Currow = gds_oLocalPrinter.AddRow();
+    gds_oLocalPrinter.SetColumn(ln_Currow, "NM", gs_LocalDefaultPrinter);
+    gds_oLocalPrinter.SetColumn(ln_Currow, "PATH", gs_LocalDefaultPrinter);
+
+    var larr_LocalPrinterList = ext_GetPrinterList();
+    for (var i = 0; i < larr_LocalPrinterList.length; i++) {
+        if (larr_LocalPrinterList[i] <> gs_LocalDefaultPrinter) {
+            ln_Currow = gds_oLocalPrinter.AddRow();
+            gds_oLocalPrinter.SetColumn(ln_Currow, "NM", larr_LocalPrinterList[i]);
+            gds_oLocalPrinter.SetColumn(ln_Currow, "PATH", larr_LocalPrinterList[i]);
+        }
+    }
+
+    // 로컬환경을 로딩한다.
+    Create("File", "filePrintConfigFile");
+    filePrintConfigFile.FileName = gs_PrintConfigFileName; // 파일 위치
+
+    if (filePrintConfigFile.IsExistFile()) { // 파일이 있을 경우
+        if (filePrintConfigFile.Open("t+")) { // 파일을 이상없이 열었을 경우(t: text 모드, +: 읽기/쓰기)
+            var ls_TotalString = filePrintConfigFile.Read(); // 전체 파일의 문자열 읽기
+            filePrintConfigFile.Close();
+
+            var larr_TotalString = split(ls_TotalString,"\n","");
+            ln_TotalLine = larr_TotalString.length;
+
+            var larr_Parsing;
+            var ln_CurLine = 0;
+            // 프린터6번까지 설정
+            for (; ln_CurLine < 6; ln_CurLine++) {
+                // 항목 파싱
+                larr_Parsing = split(larr_TotalString[ln_CurLine], "|");
+                gds_ioPrinter.SetColumn(gds_ioPrinter.FindRow("NO", larr_Parsing[0]), "PATH", larr_Parsing[1]);
+                gds_ioPrinter.SetColumn(gds_ioPrinter.FindRow("NO", larr_Parsing[0]), "PORT", larr_Parsing[2]);
+            }
+
+            // 출력환경 설정
+            for (; ln_CurLine < ln_TotalLine; ln_CurLine++) {
+                // 항목 파싱
+                larr_Parsing = split(larr_TotalString[ln_CurLine], "|");
+                gds_ioPrintConfig.SetColumn(gds_ioPrintConfig.FindRow("PCCD", larr_Parsing[0]), "PCLEFTMARGIN", larr_Parsing[1]);
+                gds_ioPrintConfig.SetColumn(gds_ioPrintConfig.FindRow("PCCD", larr_Parsing[0]), "PCTOPMARGIN", larr_Parsing[2]);
+                gds_ioPrintConfig.SetColumn(gds_ioPrintConfig.FindRow("PCCD", larr_Parsing[0]), "PCPRINTERNO", larr_Parsing[3]);
+            }
+        }
+    }
+    Destroy("filePrintConfigFile");
+
+    for (var i = 0; i < gds_ioPrinter.GetCount() - 1; i++) {
+        if (gfn_IsNull(gds_ioPrinter.GetColumn(i, "PATH"))) {
+            gds_ioPrinter.SetColumn(i, "PATH", gs_LocalDefaultPrinter);
+        }
+    }
+    gds_ioPrinter.SetColumn(6, "PATH", gs_LocalDefaultPrinter); // 기본 프린터
+}
+
+/* 사용자 이벤트 함수 */
+function tabTopMenu_OnChanged(obj,nOldIndex,nNewindex)
+{
+    if(gs_IsBSB == "Y")
+    {
+        global.mnuLeft.tabMenu.tabpgMenu.Text = gds_oTopMenu.GetColumn(nNewindex, "MMENUNM");
+        global.mnuLeft.tabMenu.tabpgMenu.ImageID = gds_oDesign.GetColumn(gds_oDesign.FindRow("MSYSGUBUN", gds_oTopMenu.GetColumn(nNewindex, "MSYSGUBUN")), "TABIMGID");
+        global.mnuLeft.tabMenu.TabIndex = 0;
+        //global.mnuLeft.tabMenu.tabpgMenu.tvLeftMenu.Expand = false;
+        global.mnuBottom.imgMenuExpand.ImageID = "IMG_MENU_EXPAND";
+    
+        gs_SystemGubun = gds_oTopMenu.GetColumn(nNewindex, "MSYSGUBUN");
+        gs_SystemMenuId = gds_oTopMenu.GetColumn(nNewindex, "MMENUID");
+        
+        gfn_ChangeLeftMenu(); // 좌측메뉴색상을 변경한다.
+		lfn_SearchBSBLeftMenu();
+    }else{
+    
+		var IPAddr = ext_GetIPAddress();
+		var ls_IPAddr = split(IPAddr[0],".","webstyle");
+
+		if (ls_IPAddr[0]+ls_IPAddr[1]+ls_IPAddr[2] <> "172197") {
+
+			if (gds_oTopMenu.GetColumn(nNewindex, "MMENUNM") == "시스템관리") {
+		
+				gfn_Alert("시스템관리 메뉴는 관리자만 접근 가능합니다.");
+			
+				return false;
+			}
+
+		}
+    
+        global.mnuLeft.tabMenu.tabpgMenu.Text = gds_oTopMenu.GetColumn(nNewindex, "MMENUNM");
+        global.mnuLeft.tabMenu.tabpgMenu.ImageID = gds_oDesign.GetColumn(gds_oDesign.FindRow("MSYSGUBUN", gds_oTopMenu.GetColumn(nNewindex, "MSYSGUBUN")), "TABIMGID");
+        global.mnuLeft.tabMenu.TabIndex = 0;
+        global.mnuLeft.tabMenu.tabpgMenu.tvLeftMenu.Expand = false;
+        global.mnuBottom.imgMenuExpand.ImageID = "IMG_MENU_EXPAND";
+    
+        gs_SystemGubun = gds_oTopMenu.GetColumn(nNewindex, "MSYSGUBUN");
+        gs_SystemMenuId = gds_oTopMenu.GetColumn(nNewindex, "MMENUID");
+    
+        gfn_ChangeLeftMenu(); // 좌측메뉴색상을 변경한다.
+        
+        lfn_SearchLeftMenu(gs_SystemMenuId); // 좌측메뉴를 조회한다.
+    }    
+}
+
+function frmCOM0060MFrameTop_OnSize(obj,nCx,nCy,nState)
+{
+	tabTopMenu.Width = nCx - 200 - 4 - 4;
+	shpTopMenuBottom.Width = nCx;
+}
+
+function imgLeftFrameOpenClose_OnClick(obj,nX,nY)
+{
+	global.mnuLeft.Visible = !global.mnuLeft.Visible; //Left Frame Hide/Open
+	if (global.mnuLeft.Visible) {
+        obj.ImageID = "IMG_MENU_HIDE";
+        obj.Left = 183;
+	} else {
+        obj.ImageID = "IMG_MENU_OPEN";
+        obj.Left = 0;
+	}
+	global.mnuLeft.cbxOpenForm.Index = 0;
+}
+
+function imgKemsLogo_OnClick(obj,nX,nY)
+{
+    gs_SystemGubun = "env";
+    gs_SystemMenuId = "0000000007";
+    global.mnuLeft.tabMenu.tabpgMenu.Text = "환경설정";
+    var ls_MenuId = "0000000023";
+    var ls_MenuTitle = "UPDATE&MANUAL";
+    var ls_MenuUrl = "env::frmenv0010MLatestUpdateManual.xml";
+
+    tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", "env");
+	gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId);
+}
+
+function imgLeftFrameClose_OnMouseOver(obj,nX,nY)
+{
+	if (obj.ImageID == "IMG_MENU_HIDE") {
+        obj.ToolTipText = "메뉴숨기기";
+	} else {
+        obj.ToolTipText = "메뉴보이기";
+	}
+}
+
+function imgLeftFrameClose_OnMouseOut(obj)
+{
+	
+}]]></Script>
+</Window>

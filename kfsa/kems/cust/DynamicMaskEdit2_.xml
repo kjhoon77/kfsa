@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="472" Id="form" Left="8" PidAttrib="7" Title="New&#32;Form" Top="8" Ver="1.0" Width="536" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="Dataset0" OnColumnChanged="Dataset0_OnColumnChanged">
+				<Contents>
+					<colinfo id="column0" size="256" type="STRING"/>
+					<record>
+						<column0>123456789</column0>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Edit CheckLength="Byte" Height="31" Id="Edit0" Left="32" OnChar="Edit0_OnChar" OnCharChanged="edResidentNo2_OnCharChanged" OnKeyDown="edResidentNo2_OnKeyDown" TabOrder="1" Top="40" Width="327"></Edit>
+		<Button Height="58" Id="Button0" Left="32" OnClick="Button0_OnClick" TabOrder="2" Text="Binding" Top="104" Width="288"></Button>
+		<Grid AutoEnter="TRUE" BindDataset="Dataset0" BkColor2="default" BoldHead="true" Bottom="280" Enable="true" EndLineColor="default" Height="90" Id="Grid0" InputPanel="FALSE" Left="36" LineColor="default" Right="414" TabOrder="3" TabStop="true" Top="190" UseDBuff="true" UsePopupMenu="true" UserData="S:주민번호" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="378">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="217"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="column0"/>
+					</head>
+					<body>
+						<cell col="0" colid="column0" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<MaskEdit Height="34" Id="MaskEdit0" Left="40" Mask="######-#######" MaxLength="14" TabOrder="4" Top="319" Type="STRING" Value="MaskEdit0" Width="293"></MaskEdit>
+	</Form>
+	<Script><![CDATA[var fv_strMask = "######-*******";
+var fv_nCaretPos = -1;
+var fv_strOrgVal;
+var fv_strVal;	// hidden 표기되는원래 문자열
+var fv_strBindVal;
+var fv_nKeyVal;
+
+var fv_bLength = false;  // 이건 backspace시 마지막전에 point있을떄 GetCaretPos값 오인식
+var fv_select = array();
+ 
+function Edit0_OnCharChanged(obj,strPreText,strPostText)
+{
+	var tmpstr = "";
+	var tmpOrgstr = "";
+	var tmpBindstr = "";
+	var nSeq = 0;
+	var bFlag = true;
+
+	if ( ( fv_nKeyVal ==  8 ) ||	// backspace
+		 (fv_nKeyVal == 46) )
+	{
+		if(strPostText.length() == 0)
+		{
+			fv_strVal = "";
+		}
+		else
+		{
+			if(strPreText.length() != strPostText.length())
+			{
+			
+				var nPos = obj.GetCaretPos();
+				if(fv_nKeyVal == 46) nPos++;
+				
+				// 제일 마직막이 아니면
+				if(fv_bLength)
+				{
+					nPos--;
+				}
+	
+				//1개 선택
+				if(fv_select[0] == fv_select[1])
+				{
+					fv_strVal[nPos] = " ";
+					fv_strVal = replace(fv_strVal," ","");
+					
+					if ( fv_nKeyVal ==  8 )
+					{
+						obj.SetSel(nPos,nPos);
+					}
+				}
+				else
+				{
+					var nCnt = fv_select[1]-fv_select[0];
+
+					for(var i=fv_select[0];i<(fv_select[0]+nCnt);i++)
+					{
+						fv_strVal[i] = " ";
+					}
+					fv_strVal = replace(fv_strVal," ","");
+					
+					if ( fv_nKeyVal ==  8 )
+					{
+						obj.SetSel(nPos,nPos);
+					}
+				}
+			}
+		}
+	}
+	else
+	{
+		if(fv_select[0] != fv_select[1])
+		{
+			var nCnt = fv_select[1]-fv_select[0];
+			var nPos = obj.GetCaretPos();
+
+			for(var i=fv_select[0];i<(fv_select[0]+nCnt);i++)
+			{
+				fv_strVal[i] = " ";
+			}
+			fv_strVal[fv_select[0]] = mid(strPostText,fv_select[0],1);
+			fv_strVal = replace(fv_strVal," ","");
+
+			if(fv_select[0] != 0)
+			{
+				obj.SetSel(fv_select[0]-1,fv_select[0]-1);
+			}
+			else
+			{
+				obj.SetSel(0,0);
+			}
+		}
+		else
+		{
+			if( ((strPostText.length()-1) > obj.GetCaretPos()) &&
+				(fv_nKeyVal != 8) &&
+				(fv_nKeyVal != 46) )
+			{
+				var svfv_strVal = fv_strVal;
+				var nPos = obj.GetCaretPos();
+				if(nPos == 0)
+				{
+					fv_strVal  = mid(strPostText,0,1);
+					fv_strVal += mid(svfv_strVal,0,svfv_strVal.length());
+				}
+				else
+				{
+					fv_strVal  = left(svfv_strVal,nPos);
+					fv_strVal += mid(strPostText,nPos,1);
+					fv_strVal += mid(svfv_strVal,nPos,svfv_strVal.length());			
+				}
+		
+			}		
+		}
+	}
+
+
+	
+	fn_RemoveMask(obj,strPreText,0,strPostText,null,null);
+
+	if ( fv_nKeyVal ==  8 ) 	// backspace
+	{
+		if(obj.GetCaretPos() < fv_nCaretPos)
+		{
+			fv_nCaretPos--;
+		}
+		bFlag = true;
+	}	
+	else if ( fv_nKeyVal ==  46 ) //del
+	{
+		bFlag = false;
+	}
+	else
+		fv_nCaretPos++;
+	
+	for ( var i = 0 ; i < fv_strMask.length() ; i++ )
+	{
+		 if ( nSeq >= fv_strOrgVal.length )
+		 {
+			break;
+		 } 
+		 switch ( fv_strMask[i] )
+		 {
+			case '#' :
+			case '@' :
+				tmpstr += fv_strOrgVal[nSeq];
+				tmpOrgstr += fv_strOrgVal[nSeq];
+				tmpBindstr += fv_strOrgVal[nSeq];
+				nSeq++;
+				break;
+			case '*' :
+				tmpstr += fv_strMask[i];
+				tmpOrgstr += fv_strOrgVal[nSeq];
+				tmpBindstr += fv_strOrgVal[nSeq];
+				nSeq++;
+				break;
+			default :
+				tmpstr += fv_strMask[i];
+				tmpOrgstr += fv_strMask[i];
+				if ( fv_nCaretPos == ( i + 1) )
+				{
+					if ( bFlag )
+						fv_nCaretPos++;
+				}	
+				break;
+		 }
+		 
+	}
+
+	obj.Text = tmpstr;
+	fv_strVal = tmpOrgstr;
+	fv_strBindVal = tmpBindstr;
+
+	fv_strOrgVal = "";
+	
+	if ( fv_nKeyVal == 8 )
+	{
+		if( (mid(fv_strMask,fv_nCaretPos-1,1) != "@") &&
+			(mid(fv_strMask,fv_nCaretPos-1,1) != "#") &&
+			(mid(fv_strMask,fv_nCaretPos-1,1) != "*") )
+		{
+			fv_nCaretPos--;
+			obj.SetSel(fv_nCaretPos,fv_nCaretPos);
+		}
+		else
+		{
+			obj.SetSel(fv_nCaretPos,fv_nCaretPos);
+		}
+	}
+	else
+	{
+		obj.SetSel(fv_nCaretPos,fv_nCaretPos);
+	}
+	
+	//-------------------------------------
+	// binding 처리시
+	//-------------------------------------
+	fn_BindingSet(obj.Text);
+
+}
+
+function fn_RemoveMask(obj,strPreText,nChar,strPostText,LLParam,HLParam)
+{
+	for(var i=0;i<fv_strVal.length();i++)
+	{
+		strPostText[i] = fv_strVal[i];
+	}
+	
+	//trace("Edit0_OnChar:" + strPostText);
+	fv_nCaretPos = obj.GetCaretPos();
+	fv_strOrgVal = "";
+	var nSeq = 0;
+	
+	for ( var i = 0 ; i < fv_strMask.length() ; i++ )
+	{
+			 switch ( fv_strMask[i] )
+			 {
+				case '#' :
+				case '@' :
+				case '*' :				
+					if ( fv_strMask.Pos(strPostText[nSeq]) > -1 )
+					{
+						nSeq++;
+					}
+					else
+					{
+						fv_strOrgVal += strPostText[nSeq];
+						nSeq++;
+					}
+					break;
+				default :
+					if ( fv_strMask[i] == strPostText[nSeq] )
+					{
+						nSeq++;
+					}
+					else if ( fv_strMask[i] == strPostText[nSeq + 1] )
+					{
+						fv_strOrgVal += strPostText[nSeq];
+						nSeq += 2;
+					}
+					else
+					{
+						fv_strOrgVal += strPostText[nSeq];
+						nSeq++;
+					}
+					break;										
+			 }
+	}
+	//trace("fv_strOrgVal:" + fv_strOrgVal);
+	//trace(strPostText + "///" + fv_strOrgVal + "////" + fv_nCaretPos + "///" + length(strPostText));
+}
+
+
+
+function Edit0_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	fv_select = obj.getsel();
+	if( (nChar == 8) || (nChar == 46) )
+	{
+		if(obj.text.Length() == obj.GetCaretPos())
+		{
+			fv_bLength = false;
+		}
+		else
+		{
+			fv_bLength = true;
+		}
+	}
+	
+	fv_nKeyVal = nChar;
+}
+
+
+
+
+
+function Button0_OnClick(obj)
+{
+	var strValue = dataset0.GetColumn(0,"column0");
+	
+	fv_strOrgVal = "";
+	fv_strVal = "";
+	fv_strBindVal = "";	
+	
+	Edit0.Text = "";
+	Edit0_OnCharChanged(Edit0,strValue,strValue);
+}
+
+function fn_BindingSet(strText)
+{
+	dataset0.fireevent = false;
+	dataset0.SetColumn(0,"column0",fv_strBindVal);
+	dataset0.fireevent = true;
+}
+
+function Dataset0_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	if(strColumnID == "column0")
+	{
+		Edit0_OnCharChanged(Edit0,Edit0.Text,varNewValue);
+	}
+}
+
+function Edit0_OnChar(obj,strPreText,nChar,strPostText,LLParam,HLParam)
+{
+	// # 일때 숫자만 입력되게 처리하는 루틴.
+	if ( fv_strMask[obj.GetCaretPos()] == '#' )
+	{
+		if ( ( nChar >= 48 ) && ( nChar <= 57 ) ) return true;
+		else if ( (nChar == 8) || (nChar == 46) ) return true;
+		else return false;
+	}	
+}
+]]></Script>
+</Window>

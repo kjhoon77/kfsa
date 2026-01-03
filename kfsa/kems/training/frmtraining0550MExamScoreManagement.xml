@@ -1,0 +1,1304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="216" Id="frmtraining0550MExamScoreManagement" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="성적관리" Top="8" Ver="1.0" Width="728" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oPrintGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>10</CD>
+						<DATA>성적일람표(응시번호순)</DATA>
+					</record>
+					<record>
+						<CD>20</CD>
+						<DATA>성적일람표(석차순)</DATA>
+					</record>
+					<record>
+						<CD>30</CD>
+						<DATA>합격자명단</DATA>
+					</record>
+					<record>
+						<CD>40</CD>
+						<DATA>불합격자명단</DATA>
+					</record>
+					<record>
+						<CD>50</CD>
+						<DATA>합격자명단(게시용)</DATA>
+					</record>
+					<record>
+						<CD>60</CD>
+						<DATA>불합격자명단(게시용)</DATA>
+					</record>
+					<record>
+						<CD>80</CD>
+						<DATA>점수대별&#32;인원분포</DATA>
+					</record>
+					<record>
+						<CD>90</CD>
+						<DATA>문항분석</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oExamScoreOrderNo">
+				<Contents>
+					<colinfo id="BIRTHDAY" size="11" summ="default" type="STRING"/>
+					<colinfo id="EJPERSONNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="EOYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="ERAPLEXAMNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="ERPASSYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="ERRANK" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="ERSCORE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="GTTEAMNM" size="70" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSENM" size="30" summ="default" type="STRING"/>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERSCORE2" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERSCOREAVG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ER1CHASU1SUBJECTSCORE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ER1CHASU2SUBJECTSCORE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oExamPassName">
+				<Contents>
+					<colinfo id="BIRTHDAY" size="11" summ="default" type="STRING"/>
+					<colinfo id="EJPERSONNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="EOYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="ERAPLEXAMNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="ERPASSYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="ERRANK" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="ERSCORE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="GTTEAMNM" size="70" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSENM" size="30" summ="default" type="STRING"/>
+					<colinfo id="GTPRTSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERSCORE2" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERSCOREAVG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ER1CHASU1SUBJECTSCORE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ER1CHASU2SUBJECTSCORE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oExamNoPassName">
+				<Contents>
+					<colinfo id="BIRTHDAY" size="11" summ="default" type="STRING"/>
+					<colinfo id="EJPERSONNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="EOYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="ERAPLEXAMNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="ERPASSYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="ERRANK" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="ERSCORE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="GTTEAMNM" size="70" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSENM" size="30" summ="default" type="STRING"/>
+					<colinfo id="GTPRTSEQ" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSearchGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>ORDER</CD>
+						<DATA>회차조회</DATA>
+					</record>
+					<record>
+						<CD>DATE</CD>
+						<DATA>일자조회</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oExamOrderScoreStat">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oExamJumsuPersonDistribution">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oExamQuestionItemAnalysis">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oExamJubsuCnt">
+				<Contents>
+					<colinfo id="JUPSUCNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oExamOrder" OnRowPosChanged="ds_oExamOrder_OnRowPosChanged">
+				<Contents>
+					<colinfo id="EOMGNO" size="30" summ="default" type="STRING"/>
+					<colinfo id="JJIBUNICK" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="EOTCCOURSENM" size="30" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EXAMNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oExamRepeat">
+				<Contents>
+					<colinfo id="SSHEOMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SSHREPEATNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SSHSENDYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="372" LineColor="user14" Right="723" TabOrder="5" Top="1" Type="Rectangle" Width="351"></Shape>
+		<Shape Bottom="208" Height="86" Id="shpGubunBox2" Left="4" LineColor="user15" Right="724" TabOrder="9" Top="122" Type="Rectangle" Width="720"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="6" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="292">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="461" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="2" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="548" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="60" Id="radPrintGubun" INDEX="0" InnerDataset="ds_oPrintGubun" Left="12" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="4" Top="140" Value="10" Width="704"></Radio>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="374" OnClick="lfn_Print" Style="sty_Button" TabOrder="1" ToolTipText="출력" Top="4" Width="85"></Button>
+		<Shape Bottom="108" Height="76" Id="shpGubunBox1" Left="4" LineColor="user15" Right="724" TabOrder="8" Top="32" Type="Rectangle" Width="720"></Shape>
+		<Static Align="Center" Height="20" Id="lbGubun" Left="16" Style="sty_LabelGruopBox" TabOrder="9" Text="구분" Top="112" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbExamNm" Left="8" Style="sty_Label" TabOrder="10" Text="시험명" Top="36" VAlign="Middle" Width="88"></Static>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oExamOrder" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" BorderColor="#aab6c7" Bottom="84" DisableBKColor="white" Enable="true" EndLineColor="white" Face3dColor="white" FillAreaType="All" HeadBorder="None" HeadHeight="20" Height="48" Id="gdExamList" InputPanel="FALSE" Left="100" LineColor="white" MinWidth="100" OnHeadClick="gdExamJubsu_OnHeadClick" Right="720" RowHeight="20" ShadowColor="white" Style="sty_Grid" TabOrder="11" TabStop="true" Top="36" UseDBuff="true" UsePopupMenu="true" UserData="응시자목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="620">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="308"/>
+					</columns>
+					<body>
+						<cell align="left" col="0" colid="EXAMNM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="lbExamRepeat" Left="8" Style="sty_Label" TabOrder="12" Text="평가차수" Top="85" VAlign="Middle" Width="88"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnNext" ImageID="BTN_TEXT_COM" Left="635" OnClick="btnNext_OnClick" Style="sty_Button" TabOrder="13" Text="다음&#32;▶" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Combo Border="Flat" CodeColumn="SSHREPEATNO" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxExamRepeat" INDEX="0" InnerDataset="ds_oExamRepeat" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="14" Top="84" UserData="S" Visible="FALSE" Width="90"></Combo>
+	</Form>
+	<Script><![CDATA[/*
+
+ * 프로그램명 : frmtraining0550MExamScoreManagement.xml
+
+ * 설명 : 성적관리
+
+ * 작성일 : 2009.10.31
+
+ * 작성자 : 이규희
+
+ * 수정자 : 전윤호 (강습직능 영향도 및 SQL분석) 2022/09/29 
+
+ */
+
+
+
+#include "LIB::training.js"; // 공통업무 관련
+
+
+
+/* 공통 필수 시작 */
+
+var flag = "";
+
+function Form_OnLoadCompleted(obj) {
+
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+
+
+    // 폼 환경설정
+
+    ls_SystemGubun = gs_SystemGubun;
+
+    ls_SystemMenuId = gs_SystemMenuId;
+
+    var ls_FormId = split(sFormUrl, "::");
+
+    ls_FormId = split(ls_FormId[1], ".");
+
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+
+        lfn_SetFormAuth(true); // 저장 권한
+
+    } else if (ms_FormAuth == "R") {
+
+        lfn_SetFormAuth(false); // 읽기 권한
+
+    } else {
+
+        gfn_Alert(MSGI00080);
+
+        close();
+
+    }
+
+    
+
+    // 로딩 시 시험명 리스트 출력
+
+    lfn_SearchExamOrderList();   
+
+
+
+}
+
+
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+
+    // to do
+
+
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+
+}
+
+
+
+function Form_OnSize(obj,nCx,nCy,nState)
+
+{
+
+    if (gs_IsResizingForm == "Y") {
+
+
+
+    }
+
+}
+
+
+
+/*
+
+ *  시험명 리스트
+
+ */
+
+function lfn_SearchExamOrderList()
+
+{    
+
+    ldb.Sync = true;
+
+    ds_oExamOrder.ClearData(); // 데이타셋 초기화
+
+    ds_oExamOrder.Load("SvcLdb::searchExamOrderList.xml");
+
+    ldb.Sync = false;
+
+}
+
+
+
+/**
+
+ * 평가차수 가져오기
+
+ */
+
+function lfn_GetRepeatNo() {
+
+    ds_oExamRepeat.ClearData();
+
+    ldb.Sync = true;
+
+    Transaction("SearchRepeatNo"
+
+        , "SvcLdb::searchRepeatNo.xml"
+
+        , ""
+
+        , "ds_oExamRepeat=output"
+
+        , "APEOMGNO=" + quote(ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "EOMGNO"))
+
+        , "fn_callBack");
+
+    ldb.Sync = false;
+
+    
+
+    ds_oExamRepeat.InsertRow(0);
+
+    ds_oExamRepeat.SetColumn(0, "SSHREPEATNO", "0");
+
+    ds_oExamRepeat.SetColumn(0, "DATA", "최종차수");
+
+    cbxExamRepeat.Value = "0";
+
+        
+
+    if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "10"
+
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "50"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "51"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "53") {
+
+        cbxExamRepeat.Visible = false;
+
+        lbExamRepeat.Visible = false;
+
+    } else {
+
+        cbxExamRepeat.Visible = true;
+
+        lbExamRepeat.Visible = true;
+
+    }
+
+
+
+}
+
+
+
+/*
+
+ * 기능 : 성적일람표 출력
+
+ */
+
+function lfn_SearchScoreNo(obj)
+
+{        
+
+    ds_oExamScoreOrderNo.ClearData(); // 데이타셋 초기화
+
+    var repeat = "";
+
+    if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "10"
+
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "50"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "51"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "53") {
+
+        repeat = "1";
+
+    } else {
+
+        repeat = cbxExamRepeat.Value;
+
+    }
+
+    ldb.Sync = true;
+
+	var vSqlxml = "";
+	
+    if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "10"
+
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "24"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "29"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "51") {
+        
+        vSqlxml = "SvcLdb::searchExamScoreOrderNo2.xml";
+                
+	} else {
+	
+		vSqlxml = "SvcLdb::searchExamScoreOrderNo.xml";
+		
+	}
+        
+	transaction("select",
+
+				vSqlxml,
+
+				"",
+
+				"ds_oExamScoreOrderNo=output",
+
+				"EOMGNO='" + ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "EOMGNO") + "'"
+
+				+ " REPEAT='" + repeat + "'",
+
+				"lfn_AfterSearchExamScoreOrderNo");
+
+    ldb.Sync = false;    
+
+}
+
+
+
+/*
+
+ * 기능 : 합격자명단 출력
+
+ */
+
+function lfn_SearchPassName(obj)
+
+{        
+
+    ds_oExamPassName.ClearData(); // 데이타셋 초기화
+
+    var repeat = "";
+
+    if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "10"
+
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "50"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "51"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "53") {
+
+        repeat = "1";
+
+    } else {
+
+        repeat = cbxExamRepeat.Value;
+
+    }
+
+    ldb.Sync = true;
+    
+	var vSqlxml = "";
+    
+    if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "10"
+
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "24"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "29"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "51") {
+        
+		vSqlxml = "SvcLdb::searchExamPassName2.xml";
+		
+	} else {
+	
+		vSqlxml = "SvcLdb::searchExamPassName.xml";
+	
+	}
+
+    transaction("select",
+
+                vSqlxml,
+
+                "",
+
+                "ds_oExamPassName=output",
+
+                "EOMGNO='" + ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "EOMGNO") + "'"
+
+                + " REPEAT='" + repeat + "'",
+
+                "lfn_AfterSearchExamPassName");
+
+    ldb.Sync = false;  
+
+}
+
+
+
+/*
+
+ * 기능 : 불합격자명단 출력
+
+ */
+
+function lfn_SearchNoPassName(obj)
+
+{        
+
+    ds_oExamNoPassName.ClearData(); // 데이타셋 초기화
+
+    var repeat = "";
+
+    if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "10"
+    
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+		
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+		
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "50"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "51"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "53") {
+
+        repeat = "1";
+
+    } else {
+
+        repeat = cbxExamRepeat.Value;
+
+    }
+
+    ldb.Sync = true;
+    
+    var vSqlxml = "";
+    
+    if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "10"
+    
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+		
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+		
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+		
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "24"
+		
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "29"
+
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "51") {
+        
+        vSqlxml = "SvcLdb::searchExamNoPassName2.xml";
+        
+	} else {
+	
+		vSqlxml = "SvcLdb::searchExamNoPassName.xml";
+	
+	}
+
+    transaction("select",
+
+                vSqlxml,
+
+                "",
+
+                "ds_oExamNoPassName=output",
+
+                "EOMGNO='" + ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "EOMGNO") + "'"
+
+                + " REPEAT='" + repeat + "'",
+
+                "lfn_AfterSearchExamNoPassName");
+
+    ldb.Sync = false;
+
+}
+
+
+
+/*
+
+ * 기능 : 점수대별분석 출력
+
+ */
+
+function lfn_SearchJumsuPersonDistribution(obj)
+
+{        
+
+    ds_oExamJumsuPersonDistribution.ClearData(); // 데이타셋 초기화
+
+    var repeat = "";
+
+    if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "10"
+    
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+		
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+		
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "50"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "51"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "53") {
+
+        repeat = "1";
+
+    } else {
+
+        repeat = cbxExamRepeat.Value;
+
+    }
+
+    ldb.Sync = true;
+    
+    var vSqlxml = "";
+    
+    if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "10"
+    
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+		
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+		
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+		
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "24"
+		
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "51") {
+        
+        vSqlxml = "SvcLdb::searchExamJumsuPersonDistribution2.xml";
+        
+    } else if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "29") {
+
+        vSqlxml = "SvcLdb::searchExamJumsuPersonDistribution3.xml";
+        
+	} else {
+	
+		vSqlxml = "SvcLdb::searchExamJumsuPersonDistribution.xml";
+	
+	}
+
+    transaction("select",
+
+                vSqlxml,
+
+                "",
+
+                "ds_oExamJumsuPersonDistribution=output",
+
+                "EOMGNO='" + ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "EOMGNO") + "'"
+
+                + " REPEAT='" + repeat + "'",
+
+                "lfn_AfterSearchJumsuPersonDistribution");
+
+    ldb.Sync = false;
+
+}
+
+
+
+/*
+
+ * 기능 : 문항분석 출력
+
+ */
+
+function lfn_SearchQuestionItemAnalysis(obj)
+
+{        
+
+    ds_oExamQuestionItemAnalysis.ClearData(); // 데이타셋 초기화
+
+    var repeat = "";
+
+    if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "10"
+    
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "20") {
+
+        repeat = "1";
+
+    } else {
+
+        repeat = cbxExamRepeat.Value;
+
+    }
+
+    ldb.Sync = true;
+
+    transaction("select",
+
+                "SvcLdb::searchQuestionItemAnalysis.xml",
+
+                "",
+
+                "ds_oExamQuestionItemAnalysis=output",
+
+                "EOMGNO='" + ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "EOMGNO") + "'"
+
+                + " REPEAT='" + repeat + "'",
+
+                "lfn_AfterSearchQuestionItemAnalysis");
+
+    ldb.Sync = false;
+
+}
+
+/*
+
+ * 기능 : 출력
+
+ */
+
+function lfn_Print(obj)
+
+{
+
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+
+        return false;
+
+    }
+
+    
+
+    switch (radPrintGubun.Value) {
+
+        case "10" : // 성적일람표(응시번호순)
+
+            flag = 1;
+
+            lfn_SearchScoreNo();
+
+            break;
+
+        case "20" : // 성적일람표(석차순)
+
+            flag = 2;
+
+            lfn_SearchScoreNo();
+
+            break;
+
+        case "30" : // 합격자명단
+
+            flag = 3;
+
+            lfn_SearchPassName();
+
+            break;
+
+        case "40" : // 불합격자명단
+
+            flag = 4;
+
+            lfn_SearchNoPassName();
+
+            break;
+
+        case "50" : // 합격자명단(게시판용)
+
+            flag = 5;
+
+            lfn_SearchPassName();
+
+            break;
+
+        case "60" : // 불합격자명단(게시판용)
+
+            flag = 6;
+
+            lfn_SearchNoPassName();
+
+            break;
+
+        case "80" : // 점수대별 인원분포      
+
+            flag = 8;
+
+            lfn_SearchJumsuPersonDistribution();
+
+            break;
+
+        case "90" : // 문항분석        
+
+            flag = 8;
+
+            lfn_SearchQuestionItemAnalysis();
+
+            break;
+
+	}
+
+}
+
+/* 공통 필수 종료 */
+
+
+
+/* 사용자 함수 */
+
+/*
+
+ * 기능 : 조회 후 처리해야 할 내용
+
+ * parameter : nErrorCode - 에러코드
+
+ *             strErrorMsg - 에러메시지
+
+ * Return : 없음
+
+ */
+
+// 성적일람표 조회후
+
+function lfn_AfterSearchExamScoreOrderNo(serviceid,errorcd,errormsg) {
+
+    if ( errorcd < 0 ) {
+
+        gfn_Alert(errormsg);
+
+    }
+
+    
+
+    if (ds_oExamScoreOrderNo.GetCount() < 1) {
+
+        gfn_Alert("출력할 데이터가 없습니다.");
+
+        return false;
+
+    }
+
+	// 최종차수일경우 석차 재계산..
+
+	if (cbxExamRepeat.Value == "0") {
+
+		ds_oExamScoreOrderNo.Sort("ERSCORE:D");    
+
+		for (var j=0; j<ds_oExamScoreOrderNo.GetRowCount(); j++) {
+
+			if (ds_oExamScoreOrderNo.GetColumn(j, "ERSCORE") == ds_oExamScoreOrderNo.GetColumn(j - 1, "ERSCORE")) {
+
+				ds_oExamScoreOrderNo.SetColumn(j, "ERRANK", ds_oExamScoreOrderNo.GetColumn(j - 1, "ERRANK"));
+
+			} else {
+
+				ds_oExamScoreOrderNo.SetColumn(j, "ERRANK", j + 1);
+
+			}
+
+		}    
+
+		ds_oExamScoreOrderNo.UnFilter();
+
+	}
+
+
+    if (flag == 1) {
+    
+		var vReportFile = "";
+		
+		if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "10"
+
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "24") {
+        
+			vReportFile = "frmtraining0660R01ResultTableApplyExamNumber2.rex";
+        
+        } else if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "29") {
+        
+			vReportFile = "frmtraining0660R01ResultTableApplyExamNumber3.rex";
+        
+        } else {
+        
+			vReportFile = "frmtraining0660R01ResultTableApplyExamNumber.rex";
+        
+        }
+
+        // 응시번호순
+
+        ds_oExamScoreOrderNo.Sort("GTPRTSEQ:A,EOEXAMORDER:A,ERAPLEXAMNO:A");        
+
+        gfn_CallReportPopup(vReportFile
+
+                      , "ds_oExamScoreOrderNo"
+
+                      , "TCCOURSECD=" + ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD")
+
+                       + "^REPEAT=" + cbxExamRepeat.Text);
+
+    } else if (flag == 2) {        
+
+		var vReportFile = "";
+		
+		if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "10"
+
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "24") {
+        
+			vReportFile = "frmtraining0660R01ResultTableRank2.rex";
+			
+		} else if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "29") {
+		
+			vReportFile = "frmtraining0660R01ResultTableRank3.rex";
+		
+        } else {
+        
+			vReportFile = "frmtraining0660R01ResultTableRank.rex";
+        
+        }
+
+        // 석차순
+
+        ds_oExamScoreOrderNo.Sort("GTPRTSEQ:A,EOEXAMORDER:A,ERSCORE:D,BIRTHDAY:A");
+
+        gfn_CallReportPopup(vReportFile
+
+                      , "ds_oExamScoreOrderNo"
+
+                      , "TCCOURSECD=" + ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD")
+
+                       + "^REPEAT=" + cbxExamRepeat.Text);
+
+    }
+
+}
+
+
+
+// 합격자명단 조회후
+
+function lfn_AfterSearchExamPassName(serviceid,errorcd,errormsg) {
+
+    if ( errorcd < 0 ) {
+
+        gfn_Alert(errormsg);
+
+    }
+
+
+
+    if (ds_oExamPassName.GetCount() < 1) {
+
+        gfn_Alert("출력할 데이터가 없습니다.");
+
+        return false;
+
+    }
+
+    if (flag == 3) {
+    
+    	var vReportFile = "";
+		
+		if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "10"
+
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "24") {
+        
+			vReportFile = "frmtraining0660R02PasserList2.rex";
+			
+		} else if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "29") {
+		
+			vReportFile = "frmtraining0660R02PasserList3.rex";
+		
+		} else {
+		
+			vReportFile = "frmtraining0660R02PasserList.rex";
+		
+		}
+		
+        // 합격자명단
+        
+        ds_oExamPassName.Sort("GTPRTSEQ:A,EOEXAMORDER:A,EOHJUBSUNO:A");
+
+        gfn_CallReportPopup(vReportFile
+
+                      , "ds_oExamPassName"
+
+                      , "TCCOURSECD=" + ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD")
+
+                       + "^REPEAT=" + cbxExamRepeat.Text);
+
+    } else if (flag == 5) {
+    
+        // 게시판용
+
+        ds_oExamPassName.Sort("GTPRTSEQ:A,EOEXAMORDER:A,EOHJUBSUNO:A");
+
+        gfn_CallReportPopup("frmtraining0660R04PasserListBoard.rex"
+
+                      , "ds_oExamPassName"
+
+                      , "TCCOURSECD=" + ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD")
+
+                       + "^REPEAT=" + cbxExamRepeat.Text);
+
+    }
+
+}
+
+
+
+// 불합격자명단 조회후
+
+function lfn_AfterSearchExamNoPassName(serviceid,errorcd,errormsg) {
+
+    if ( errorcd < 0 ) {
+
+        gfn_Alert(errormsg);
+
+    }
+
+
+
+    if (ds_oExamNoPassName.GetCount() < 1) {
+
+        gfn_Alert("출력할 데이터가 없습니다.");
+
+        return false;
+
+    }
+
+    if (flag == 4) {
+
+    	var vReportFile = "";
+		
+		if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "10"
+
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "24") {
+        
+			vReportFile = "frmtraining0660R03NotPassList2.rex";
+			
+		} else if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "29") {
+
+			vReportFile = "frmtraining0660R03NotPassList3.rex";
+			
+		} else {
+		
+			vReportFile = "frmtraining0660R03NotPassList.rex";
+		
+		}
+
+
+        // 불합격자명단
+
+        ds_oExamNoPassName.Sort("GTPRTSEQ:A,EOEXAMORDER:A,ERAPLEXAMNO:A");
+
+        gfn_CallReportPopup(vReportFile
+
+                      , "ds_oExamNoPassName"
+
+                      , "TCCOURSECD=" + ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD")
+
+                       + "^REPEAT=" + cbxExamRepeat.Text);
+
+    } else if (flag == 6) {
+
+        // 게시판용 ERAPLEXAMNO
+
+        ds_oExamNoPassName.Sort("GTPRTSEQ:A,EOEXAMORDER:A,ERAPLEXAMNO:A");
+
+        gfn_CallReportPopup("frmtraining0660R05NotPassListBoard.rex"
+
+                      , "ds_oExamNoPassName"
+
+                      , "TCCOURSECD=" + ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD")
+
+                       + "^REPEAT=" + cbxExamRepeat.Text);
+
+    }
+
+}
+
+
+
+// 점수대별출력 조회후
+
+function lfn_AfterSearchJumsuPersonDistribution(serviceid,errorcd,errormsg) {
+
+    if ( errorcd < 0 ) {
+
+        gfn_Alert(errormsg);
+
+    }
+
+
+
+    if (ds_oExamJumsuPersonDistribution.GetCount() < 1) {
+
+        gfn_Alert("출력할 데이터가 없습니다.");
+
+        return false;
+
+    }
+
+    // 게시판용 ERAPLEXAMNO
+
+    gfn_CallReportPopup("frmtraining0660R07JumsuPersonDistribution.rex"
+
+                  , "ds_oExamJumsuPersonDistribution"
+
+                  , "TCCOURSECD=" + ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD")
+
+                       + "^REPEAT=" + cbxExamRepeat.Text);
+
+}
+
+
+
+// 문항분석 조회후
+
+function lfn_AfterSearchQuestionItemAnalysis(serviceid,errorcd,errormsg) {
+
+    if ( errorcd < 0 ) {
+
+        gfn_Alert(errormsg);
+
+    }
+
+
+
+    if (ds_oExamQuestionItemAnalysis.GetCount() < 1) {
+
+        gfn_Alert("출력할 데이터가 없습니다.");
+
+        return false;
+
+    }
+
+    // 게시판용 ERAPLEXAMNO
+
+    gfn_CallReportPopup("frmtraining0660R08QuestionItemAnalysis.rex"
+
+                  , "ds_oExamQuestionItemAnalysis"
+
+                  , "TCCOURSECD=" + ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD")
+
+                       + "^REPEAT=" + cbxExamRepeat.Text);
+
+}
+
+/*
+
+ * 기능 : 버튼 활성/비활성시킨다.
+
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+
+ * return : 없음
+
+ */
+
+function lfn_SetFormAuth(bStatus) {
+
+
+
+}
+
+
+
+function ds_oExamOrder_OnRowPosChanged(obj,nOldRow,nRow)
+
+{
+
+	if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "10"
+	
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "50"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "51"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "53") {
+
+        cbxExamRepeat.Value = "1";
+
+        cbxExamRepeat.Visible = false;
+
+        lbExamRepeat.Visible = false;
+
+	} else {
+
+        cbxExamRepeat.Visible = true;
+
+        lbExamRepeat.Visible = true;
+
+        cbxExamRepeat.Value = "1";        
+
+	}
+
+	
+
+	lfn_GetRepeatNo();
+
+}
+
+
+
+function btnNext_OnClick(obj)
+
+{
+
+    gs_SystemGubun = "training";
+
+    gs_SystemMenuId = "0000000003";
+
+    global.mnuLeft.tabMenu.tabpgMenu.Text = "강습관리";
+
+    var ls_MenuId = "0000000088";
+
+    var ls_MenuTitle = "불합격자수료증출력";
+
+    var ls_MenuUrl = "training::frmtraining0620MExamFailPassDiplomaPrint.xml";
+
+
+
+    global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+
+    gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId);
+
+}]]></Script>
+</Window>

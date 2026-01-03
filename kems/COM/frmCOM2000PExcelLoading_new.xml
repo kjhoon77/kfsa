@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="590" Id="RI003P_NEW" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="form_OnLoadCompleted" OnTimer="form_OnTimer" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Title="엑셀파일로딩팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1000" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="DS_EXCELLOAD"></Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_PARENT">
+				<Contents>
+					<colinfo id="Title" size="256" type="STRING"/>
+					<colinfo id="Column" size="256" type="STRING"/>
+					<colinfo id="CellValue" size="256" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="DS_CELL">
+				<Contents>
+					<colinfo id="Column" size="256" type="STRING"/>
+					<colinfo id="CellText" size="256" type="STRING"/>
+					<record>
+						<CellText/>
+						<Column/>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid BkColor2="user2" BkSelColor="user3" BoldHead="FALSE" Border="Flat" Bottom="584" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" HeadBorder="Flat" HeadHeight="20" Height="528" Id="grd_excelLoad" InputPanel="FALSE" Left="271" LineColor="#aab6c7" OnHeadClick="fn_grd_excelLoad_OnHeadClick" Right="995" Style="sty_Grid" TabOrder="1" TabStop="true" Top="56" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="724"></Grid>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" BindDataset="DS_PARENT" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="584" ColSelect="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" HeadBorder="Flat" HeadHeight="22" Height="528" Id="grd_parent" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnDrop="grd_parent_OnDrop" Right="269" RowHeight="23" Style="sty_Grid" TabOrder="2" TabStop="true" Top="56" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="265">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="115"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="Title"/>
+						<cell col="1" display="text" text="Excel&#32;Column"/>
+					</head>
+					<body>
+						<cell col="0" colid="Title" display="text"/>
+						<cell col="1" colid="CellValue" combocol="Column" combodataset="DS_CELL" combodisplayrowcnt="20" combotext="CellText" display="combo"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<FileDialog Bottom="28" Filter="Excel&#32;File(*.xls)|*.xls|" Height="24" Id="FileDlgExcel" Left="4" Right="28" TabOrder="11" Top="4" Width="24"></FileDialog>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnOk" ImageID="BTN_TEXT_COM" Left="824" OnClick="btnOk_OnClick" Style="sty_Button" TabOrder="3" Text="확인" ToolTipText="확인" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="911" OnClick="lfn_End" Style="sty_Button" TabOrder="4" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnDel" ImageID="BTN_TEXT_COM" Left="911" OnClick="btnDel_OnClick" Style="sty_Button" TabOrder="5" Text="삭제" ToolTipText="삭제" Top="28" Transparent="TRUE" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelectFile" ImageID="BTN_TEXT_COM" Left="824" OnClick="btnSelectFile_OnClick" Style="sty_Button" TabOrder="6" Text="파일선택" ToolTipText="파일선택" Top="28" Transparent="TRUE" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM2000PExcelLoading.xml
+ * 설명 : 엑셀파일로딩팝업
+ * 작성일 : 2009.07.27
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통업무 관련
+
+var asGrid;
+var asExcel;
+var anSheet;
+var objOrgGrid;
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    objOrgGrid = object("parent." + asGrid);    
+
+    // Excel Data로 변환할 Grid의 Header와 Column을 가져와서 DataSet을 구성.
+    DS_PARENT.FireEvent = false; // Dataset의 Event를 비활성화 해서 속도 개선...
+    for (var i=0; i<objOrgGrid.GetCellCount('head'); i++) {
+        var nRow = DS_PARENT.AppendRow();
+        DS_PARENT.SetColumn(nRow, "Title", objOrgGrid.GetCellText("head", -1, i));
+        DS_PARENT.SetColumn(nRow, "Column", objOrgGrid.GetCellProp("body", i, "colid"));
+    }
+
+    DS_PARENT.row = DS_PARENT.firstrow; // 첫번째 Row로 보낸다.
+    DS_PARENT.FireEvent = true; // Dataset의 Event를 활성화...
+
+    SetTimer(1000, 500); // 시간차이로 에러가 발생되는 듯 하여 Timer로 Excel Load처리...
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+/*
+ * 기능 : Timer가 설정된 경우 설정된 시간 간격으로 발생하는 Event.
+ * parameter : obj - 이 Event가 발생된 Component
+ *                nEventID - Timer의 Event ID
+ * return value : 없음
+ */
+function Form_OnTimer(obj, nEventID) {
+    obj.KillTimer(nEventID);
+    switch (nEventID) {
+        case 1000: // Form Load  시 Excel Load...
+            lfn_MakeExcel2Dataset(asExcel); // 시간차이로 에러가 발생되는 듯 하여 Timer로 Excel Load처리...
+            break;
+    }
+}
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/*
+ * 기능 : Excel 파일을 Dataset으로 만든다.
+ * parameter : 없음
+ * return value : 없음
+ */
+function lfn_MakeExcel2Dataset(strExcelURL) {
+    ext_ExcelImportByIndex(strExcelURL, anSheet, "DS_EXCELLOAD", 0, 1);    // Ext_API에 포함된 API...
+
+    grd_excelLoad.BindDataset = "";
+    grd_excelLoad.Contents = fn_MakeExcelGridContents(); // Grid Contents를 재구성...
+    DS_EXCELLOAD.AddColumn("chk", "string", 1);
+    grd_excelLoad.BindDataset = "DS_EXCELLOAD";
+
+    if ( DS_EXCELLOAD.GetRowCount() <= 0 ) {
+        gfn_Alert("조회된 내용이 없습니다.");
+    }
+}
+
+/*
+ * 기능 : Excel Header처럼 Index를 문자열로 만든다.
+ * Index를 받아 A,B,C,...,AA,AB,...,YZ,ZA,ZB...로 만든다.
+ * parameter : 없음
+ * return value : 없음
+ */
+function fn_getExcelHeader(nIndex) {
+    var sRet = toNumber(nIndex); // Number Type으로 변환
+    var sTemp = ""; // Z가 넘을때 앞에 붙일 Header
+
+    // Z가 넘으면...
+    if (sRet >= 26) {
+        // A의 Chr는 65이므로 65를 더한다.
+        sTemp = chr(toNumber(truncate(sRet / 26) - 1) + 65);
+        sRet = (sRet % 26);
+    }
+    // A의 Chr는 65이므로 65를 더한다
+    sRet = chr(sRet + 65);
+
+    return (sTemp + sRet);
+}
+
+/*
+ * 기능 : 왼쪽 Grid Contents와 Combo Dataset을 생성한다.
+ * parameter : 없음
+ * return value : 없음
+ */
+function fn_MakeExcelGridContents() {
+    var sContents = '';
+    var sColCont =  '        <col width="30"/>' + '\n'; // Check Box...
+    var sHeadCont = '        <cell col="0" display="checkbox" edit="checkbox"/>' + '\n'; // Check Box...
+    var sBodyCont = '        <cell col="0" colid="chk" display="checkbox" edit="checkbox"/>' + '\n'; // Check Box...
+    var nRow;
+
+    // Grid Combo Dataset
+    DS_CELL.FireEvent = false;
+    DS_CELL.ClearData();
+    DS_CELL.AppendRow(); // Grid Combo Dataset의 빈 Row를 처음에 추가.
+
+    for (var i=0; i<DS_EXCELLOAD.GetColCount(); i++) {
+        var sExcelHead = fn_getExcelHeader(i);
+        var sColID = 'Col' + lpad(i+1,'0',2);
+
+        sColCont += '        <col width="80"/>' + '\n';
+        sHeadCont += '        <cell col="'+(i+1)+'" display="text" text="'+sExcelHead+'"/>' + '\n';
+        sBodyCont += '        <cell col="'+(i+1)+'" colid="'+sColID+'" display="text"/>' + '\n';
+
+        // Grid Combo Dataset
+        nRow = DS_CELL.AppendRow();
+        DS_CELL.SetColumn(nRow, "CellText", sExcelHead);
+        DS_CELL.SetColumn(nRow, "Column", sColID);
+
+        if (DS_PARENT.GetRowCount() >= (i+1)) {
+            DS_PARENT.SetColumn(i, "CellValue", sColID);
+        }
+    }
+
+    DS_CELL.FireEvent = true;
+
+    sContents +='<contents>' + '\n';
+    sContents +='    <columns>' + '\n';
+    sContents += sColCont;
+    sContents +='    </columns>' + '\n';
+    sContents +='    <head>' + '\n';
+    sContents += sHeadCont;
+    sContents +='    </head>' + '\n';
+    sContents +='    <body>' + '\n';
+    sContents += sBodyCont;
+    sContents +='    </body>' + '\n';
+    sContents +='</contents>' + '\n';
+
+    return sContents;
+}
+
+/*
+ * 기능 : Grid의 checkbox를 한꺼번에 check/uncheck하는 기능
+ * parameter : grid - Grid
+ *                ds - Dataset
+ * return value : 없음
+ */
+function lfn_GridCheckAll(objGrid,nHeadCell,nBodyCell,bEvent) {
+    if (gfn_IsNull(objGrid.BindDataset) == true) {
+        return ;
+    }
+
+    var strColID = objGrid.GetCellProp("body", nBodyCell, "Colid");
+
+    if (gfn_IsNull(strColID) == true) {
+        gfn_Alert("Colid is Null");
+        return ;
+    }
+
+    var objDs = object(objGrid.BindDataset);
+
+    // Check Box 전체 선택
+    var nCount = objDs.GetRowCount();
+
+    var strChk = decode(objGrid.GetCellProp("head", nHeadCell, "Text"), "1", "0", "1");
+
+    objGrid.ReDraw = false;
+
+    if (bEvent == true)
+        objDs.FireEvent = false;
+
+    for (var i=0; i<objDs.GetRowCount(); i++) {
+        objDs.SetColumn(i, strColID, strChk);
+    }
+
+    if (bEvent == true) {
+        objDs.FireEvent = true;
+    }
+
+    objGrid.SetCellProp("head", nHeadCell, "Text", strChk);
+
+    objGrid.ReDraw = true;
+}
+
+/*
+ * 기능 : Grid 헤더의 전체 checkbox를 한꺼번에 check/uncheck하는 기능
+ * parameter : obj - 이 Event가 발생된 Component.
+ * return value : 없음
+ */
+function fn_grd_excelLoad_OnHeadClick(obj,nCell,nX,nY) {
+    if (nCell == 0) {
+        if (gfn_IsNull(obj.BindDataset) == true) {
+            return;
+        }
+        lfn_GridCheckAll(obj,0,0);
+    } else {
+        var dsObj = object(obj.BindDataset);
+        // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+        if (dsObj.GetRowCount() > 1) {
+            gfn_GridCellSort(obj, nCell);
+        }
+    }
+}
+
+/*
+ * 기능 : 팝업창을 닫으면서 변환한다.
+ * parameter : 없음
+ * return value : 없음
+ */
+function btnOk_OnClick(obj) {
+    if (DS_EXCELLOAD.GetRowCount() <= 0) {
+        gfn_Alert("변환할 데이타가 없습니다.");
+        return;
+    }
+
+    var objDs = object("parent." + objOrgGrid.BindDataset);
+    objDs.FireEvent = false;
+
+    objDs.ClearData();
+    for (var i=0; i<DS_EXCELLOAD.GetRowCount(); i++) {
+        var nRow = objDs.AppendRow();
+        for (var j=0; j<DS_PARENT.GetRowCount(); j++) {
+            if (gfn_IsNull(DS_PARENT.GetColumn(j, "CellValue")) == false) {
+                objDs.SetColumn(nRow, DS_PARENT.GetColumn(j, "Column"), replace(DS_EXCELLOAD.GetColumn(i, DS_PARENT.GetColumn(j, "CellValue")),"-",""));
+            }
+        }
+    }
+    objDs.row = objDs.firstrow;
+    objDs.FireEvent = true;
+
+    close(true);
+}
+
+/*
+ * 기능 : 그리드에서 선택한 ROW를 삭제한다.
+ * parameter : 없음
+ * return value : 없음
+ */
+function btnDel_OnClick(obj)
+{
+    var arrRow = ext_FindRow("DS_EXCELLOAD", "chk", "1");
+    if (bound(arrRow) <= 0) {
+        gfn_Alert("삭제할 데이타가 없습니다");
+        return;
+    }
+
+    DS_EXCELLOAD.FireEvent = false;
+
+    for (var i = bound(arrRow) - 1; i >= 0; i--) {
+        DS_EXCELLOAD.DeleteRow(arrRow[i]);
+    }
+    DS_EXCELLOAD.FireEvent = true;
+}
+
+/*
+ * 기능 : Excel 파일 찾는다.
+ * parameter : 없음
+ * return value : 없음
+ */
+function btnSelectFile_OnClick(obj)
+{
+    FileDlgExcel.Type = "OPEN";
+    FileDlgExcel.Filter = "Excel File(*.xls)|*.xls|Csv File(*.csv)|*.csv|Text File(*.txt)|*.txt|";
+    FileDlgExcel.FileName = "";
+    if (FileDlgExcel.Open() == false) {
+        return;
+    }
+    var sFileName = FileDlgExcel.FilePath + "\\" + FileDlgExcel.FileName;
+
+    lfn_MakeExcel2Dataset(sFileName);
+}
+]]></Script>
+</Window>

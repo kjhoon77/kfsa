@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="238" Id="frmcust0014POverHistory" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="겸직이력" Top="8" Ver="1.0" Width="724" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oOverBizList">
+				<Contents>
+					<colinfo id="BBIZCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CREGISTERYYMM" size="6" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="FMHADDR" size="201" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="FMBIRTHDAY" size="13" summ="default" type="STRING"/>
+					<colinfo id="GUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="OBSTARTDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="OBENDDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIRTHDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="FMPERSONKEY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oBizGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oOverBizList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="232" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="200" Id="gdOverBiz" InputPanel="FALSE" Left="4" LineColor="default" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="720" RowHeight="20" Style="sty_Grid" TabOrder="1" TabStop="true" Top="32" UseDBuff="true" UsePopupMenu="true" UserData="공통코드목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="716">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="114"/>
+						<col width="120"/>
+						<col width="60"/>
+						<col width="80"/>
+						<col width="57"/>
+						<col width="60"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="250"/>
+						<col width="73"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="겸직그룹"/>
+						<cell align="center" col="2" display="text" text="겸직상태"/>
+						<cell col="3" display="text" text="겸직시작일"/>
+						<cell col="4" display="text" text="겸직종료일"/>
+						<cell col="5" display="text" text="직능"/>
+						<cell col="6" display="text" text="대상물(업체)명"/>
+						<cell col="7" display="text" text="용도"/>
+						<cell col="8" display="text" text="지부"/>
+						<cell col="9" display="text" text="지역"/>
+						<cell col="10" display="text" text="회원구분"/>
+						<cell col="11" display="text" text="성명"/>
+						<cell col="12" display="text" text="생년월일"/>
+						<cell col="13" display="text" text="개인식별번호"/>
+						<cell col="14" display="text" text="주소"/>
+						<cell col="15" display="text" text="등록일자"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="rowcount-row"/>
+						<cell align="center" col="1" colid="CNO" display="text"/>
+						<cell align="center" col="2" colid="GUBUN" display="text"/>
+						<cell align="center" col="3" colid="OBSTARTDATE" display="date"/>
+						<cell align="center" col="4" colid="OBENDDATE" display="date"/>
+						<cell align="left" col="5" colid="CNICKFULLNM" display="text"/>
+						<cell align="left" col="6" colid="BNM" display="text"/>
+						<cell align="left" col="7" colid="BBIZCD" combocol="CD" combodataset="ds_oBizGubun" combotext="DATA" display="combo"/>
+						<cell align="center" col="8" colid="CGTMGNO" combocol="JJIBUCD" combodataset="gds_oJibu" combotext="JJIBUNM" display="combo"/>
+						<cell align="left" col="9" colid="CREGCD" combocol="RCREGCD" combodataset="gds_oRegion" combotext="RCNM" display="combo"/>
+						<cell align="center" col="10" colid="CSTATUSGUBUN" display="text"/>
+						<cell align="center" col="11" colid="FMNM" display="text"/>
+						<cell col="12" colid="BIRTHDAY" display="text"/>
+						<cell col="13" colid="FMPERSONKEY" display="text" Mask="A####-#####"/>
+						<cell align="left" col="14" colid="FMHADDR" display="text"/>
+						<cell align="center" col="15" colid="CREGISTERYYMM" display="text" Mask="####-##"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="629" LineColor="user14" Right="720" TabOrder="3" Top="1" Type="Rectangle" Width="91"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="632" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oOverBizList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="444" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="200" Id="Grid0" InputPanel="FALSE" LineColor="default" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="716" RowHeight="20" Style="sty_Grid" TabOrder="4" TabStop="true" Top="244" UseDBuff="true" UsePopupMenu="true" UserData="공통코드목록" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="716">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="114"/>
+						<col width="120"/>
+						<col width="60"/>
+						<col width="80"/>
+						<col width="100"/>
+						<col width="57"/>
+						<col width="60"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="250"/>
+						<col width="73"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="겸직그룹"/>
+						<cell align="center" col="2" display="text" text="겸직상태"/>
+						<cell col="3" display="text" text="겸직시작일"/>
+						<cell col="4" display="text" text="겸직종료일"/>
+						<cell col="5" display="text" text="대상물(업체)명"/>
+						<cell col="6" display="text" text="용도"/>
+						<cell col="7" display="text" text="지부"/>
+						<cell col="8" display="text" text="지역"/>
+						<cell col="9" display="text" text="직능"/>
+						<cell col="10" display="text" text="회원구분"/>
+						<cell col="11" display="text" text="성명"/>
+						<cell col="12" display="text" text="생년월일"/>
+						<cell col="13" display="text" text="개인식별번호"/>
+						<cell col="14" display="text" text="주소"/>
+						<cell col="15" display="text" text="등록일자"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="rowcount-row"/>
+						<cell align="center" col="1" colid="CNO" display="text"/>
+						<cell align="center" col="2" colid="GUBUN" display="text"/>
+						<cell align="center" col="3" colid="OBSTARTDATE" display="date"/>
+						<cell align="center" col="4" colid="OBENDDATE" display="date"/>
+						<cell align="left" col="5" colid="BNM" display="text"/>
+						<cell align="left" col="6" colid="BBIZCD" combocol="CD" combodataset="ds_oBizGubun" combotext="DATA" display="combo"/>
+						<cell align="center" col="7" colid="CGTMGNO" combocol="JJIBUCD" combodataset="gds_oJibu" combotext="JJIBUNM" display="combo"/>
+						<cell align="left" col="8" colid="CREGCD" combocol="RCREGCD" combodataset="gds_oRegion" combotext="RCNM" display="combo"/>
+						<cell align="left" col="9" colid="CCOURSECD" combocol="COURSECD" combodataset="gds_oCustomerCourse" combotext="CNICKNM" display="combo"/>
+						<cell align="center" col="10" colid="CSTATUSGUBUN" display="text"/>
+						<cell align="center" col="11" colid="FMNM" display="text"/>
+						<cell col="12" colid="BIRTHDAY" display="text"/>
+						<cell col="13" colid="FMPERSONKEY" display="text" Mask="A####-#####"/>
+						<cell align="left" col="14" colid="FMHADDR" display="text"/>
+						<cell align="center" col="15" colid="CREGISTERYYMM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust0014POverHistory.xml
+ * 설명 : 겸직이력
+ * 작성일 : 2009.12.07
+ * 작성자 : 이규희
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+var CMGNO = "";
+var GUBUN = "";
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+        
+    // 공통 코드 조회
+    gfn_SearchCommonCode(ds_oBizGubun, "BIZCD", "Y", "전체");
+    
+    if (IsExistVar("sGubun")) {
+        GUBUN = sGubun;
+    }
+    if (IsExistVar("sCmgno")) {
+        if (gfn_IsNull(sCmgno)) {
+            gfn_Alert("고객정보가 없습니다.");
+            Close();
+        }
+        CMGNO = sCmgno;
+        lfn_Search();
+    }    
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_oOverBizList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cust:searchCust0017OverBizList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oOverBizList=ds_oOverBizList"	// outDs
+		,"OBCMGNO=" + quote(CMGNO)
+		 + " GUBUN=" + quote(GUBUN)
+		,"lfn_AfterSearchAddition"
+		,false
+	);
+}
+
+/* 공통 필수 종료 */
+
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchAddition(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    //trace(ds_oOverBizList.SaveXML());
+
+    gfn_SearchMessage(gdOverBiz); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 이벤트 함수 종료 */
+
+
+/* 사용자 함수 */
+function edBuildingNm_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam) {
+    if (nChar == 13) { // Enter Key
+        lfn_Search();
+    }
+}
+
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+]]></Script>
+</Window>

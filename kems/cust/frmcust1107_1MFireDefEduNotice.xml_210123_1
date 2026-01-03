@@ -1,0 +1,903 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="544" Id="frmcust1107_1MFireDefEduNotice" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="소방안전관리자&#32;교육안내문&#32;발행&#32;팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="656" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioEduCreate">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TIME" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDUNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="TARGETNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDUPERSON" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDUGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ESMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="EPNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ESNOTICE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEduDay1" OnColumnChanged="ds_ioEduDay1_OnColumnChanged">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEduDay2">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEduDay3">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEduDay4"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioMemberGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>회원</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>비회원</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEduNoticeHistoryDay"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEduNoticeHistoryGetSysdate"></Dataset>
+		</Datasets>
+		<Shape Bottom="540" Height="424" Id="Shape0" Left="5" LineColor="user15" Right="648" TabOrder="16" Top="116" Type="Rectangle" Width="643"></Shape>
+		<Shape Bottom="104" Height="64" Id="Shape5" Left="4" LineColor="user15" Right="648" TabOrder="7" Top="40" Type="Rectangle" Width="644"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="1" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="232">
+			<Contents></Contents>
+		</Div>
+		<Shape Bottom="28" Height="27" Id="shpBtnBox" Left="348" LineColor="user14" Right="648" TabOrder="5" Top="1" Type="Rectangle" Width="300"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_TEXT_08" Left="354" OnClick="lfn_EduPrintSave" Style="sty_Button" TabOrder="2" Text="안내문&#32;자료생성" ToolTipText="엑셀로&#32;저장" Top="4" Width="118"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="474" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="3" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="561" OnClick="lfn_End" Style="sty_Button" TabOrder="4" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" BKColor="brown" Height="20" Id="Static6" Left="19" Style="sty_LabelGruopBox" TabOrder="6" Text="자료&#32;생성&#32;결과" Top="32" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" Height="20" Id="Static11" Left="8" Style="sty_Label" TabOrder="8" Text="추출&#32;대상자수" Top="80" VAlign="Middle" Width="84"></Static>
+		<Edit Align="RIGHT" AutoSelect="TRUE" BKColor="user4" Border="Flat" Font="굴림,12,Bold" Height="20" Id="edEduTotalcount_A" ImeMode="native" Left="96" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="9" Top="80" UserData="S" Width="52"></Edit>
+		<Static Align="Center" Height="20" Id="Static27" Left="151" Style="sty_Text" TabOrder="10" Text="명" Top="80" VAlign="Middle" Width="17"></Static>
+		<Static Align="Center" Height="20" Id="Static0" Left="8" Style="sty_Label" TabOrder="11" Text="고객구분" Top="56" VAlign="Middle" Width="84"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" BKColor="user4" Border="Flat" Font="굴림,10" Height="20" Id="edCustGubun" ImeMode="native" Left="96" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="12" Text="전체" Top="56" UserData="S" Width="52"></Edit>
+		<Edit Align="CENTER" AutoSelect="TRUE" BKColor="user4" Border="Flat" Font="굴림,10" Height="20" Id="edCourse" ImeMode="native" Left="259" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="14" Text="소방안전관리자" Top="56" UserData="S" Width="245"></Edit>
+		<Static Align="Center" Height="20" Id="Static1" Left="171" Style="sty_Label" TabOrder="13" Text="교육대상" Top="56" VAlign="Middle" Width="84"></Static>
+		<Static Align="Center" Height="20" Id="Static4" Left="21" Style="sty_LabelGruopBox" TabOrder="15" Text="교육대상자&#32;리스트" Top="107" VAlign="Middle" Width="120"></Static>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_ioEduDay1" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="536" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="384" Id="gdCommonCode" InputPanel="FALSE" Left="11" LineColor="default" OnHeadClick="lfn_SortGridAAA_OnHeadClick" Right="640" RowHeight="20" Style="sty_Grid" TabOrder="17" TabStop="true" Top="152" UseDBuff="true" UsePopupMenu="true" UserData="ㅇ\" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="629">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="31"/>
+						<col width="36"/>
+						<col width="111"/>
+						<col width="152"/>
+						<col width="55"/>
+						<col width="103"/>
+						<col width="118"/>
+						<col width="102"/>
+						<col width="115"/>
+						<col width="76"/>
+					</columns>
+					<head>
+						<cell col="0" display="checkbox"/>
+						<cell col="1" display="text" text="순번"/>
+						<cell col="2" display="text" text="고객번호"/>
+						<cell col="3" display="text" text="대상물명"/>
+						<cell col="4" display="text" text="성명"/>
+						<cell col="5" display="text" text="생년월일"/>
+						<cell col="6" display="text" text="휴대폰번호"/>
+						<cell col="7" display="text" text="지부"/>
+						<cell col="8" display="text" text="직능"/>
+						<cell col="9" display="text" text="회원구분"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SELA" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" colid="sel" display="text" expr="currow&#32;+&#32;1"/>
+						<cell align="center" col="2" colid="ECUSTNO" display="text"/>
+						<cell align="left" col="3" colid="ECUSTBNM" display="text"/>
+						<cell align="center" col="4" colid="ECUSTFMNM" display="text"/>
+						<cell align="center" col="5" colid="BIRTHDAY" display="text"/>
+						<cell align="center" col="6" colid="EFMHHPTEL" display="text"/>
+						<cell align="center" col="7" colid="EJBFULLNNM" display="text"/>
+						<cell align="center" col="8" colid="ECGROUPNM" display="text"/>
+						<cell align="center" col="9" colid="ECSTATUSGUBUN" display="normal" expr="decode(ECSTATUSGUBUN,&apos;0&apos;,&apos;회원&apos;,&apos;1&apos;,&apos;비회원&apos;)"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="lbSmsCnt" Left="11" Style="sty_LabelStat" TabOrder="20" Text="건수" Top="130" VAlign="Middle" Width="40"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medSmsCnt" Left="55" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="19" Top="130" Width="67"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="568" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="18" Top="126" Transparent="TRUE" Width="74"></Button>
+		<Grid BindDataset="ds_ioEduDay1" BkColor2="default" BoldHead="true" Bottom="312" Editable="TRUE" Enable="true" EndLineColor="default" Height="176" Id="Grid0" InputPanel="FALSE" Left="664" LineColor="default" Right="1000" TabOrder="21" TabStop="true" Top="136" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="336">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="44"/>
+						<col width="44"/>
+						<col width="44"/>
+						<col width="59"/>
+						<col width="123"/>
+						<col width="102"/>
+						<col width="125"/>
+						<col width="79"/>
+						<col width="115"/>
+						<col width="76"/>
+						<col width="81"/>
+						<col width="81"/>
+						<col width="76"/>
+						<col width="188"/>
+					</columns>
+					<head>
+						<cell col="0" display="checkbox"/>
+						<cell col="1" display="text" text="순번"/>
+						<cell col="2" display="text" text="년도"/>
+						<cell col="3" display="text" text="성명"/>
+						<cell col="4" display="text" text="생년월일"/>
+						<cell col="5" display="text" text="지부"/>
+						<cell col="6" display="text" text="고객번호"/>
+						<cell col="7" display="text" text="지역"/>
+						<cell col="8" display="text" text="직능"/>
+						<cell col="9" display="text" text="회원구분"/>
+						<cell col="10" display="text" text="교육구분"/>
+						<cell col="11" display="text" text="교육대상"/>
+						<cell col="12" display="text" text="교육일자"/>
+						<cell col="13" display="text" text="업체명"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SELA" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" colid="sel" display="text" expr="currow&#32;+&#32;1"/>
+						<cell align="center" col="2" colid="edCustYear_A" display="text"/>
+						<cell align="center" col="3" colid="ECUSTFMNM" display="text"/>
+						<cell align="center" col="4" colid="BIRTHDAY" display="text"/>
+						<cell align="center" col="5" colid="EJBFULLNNM" display="text"/>
+						<cell align="center" col="6" colid="ECUSTNO33" display="text"/>
+						<cell align="center" col="7" colid="CREGCD" display="text"/>
+						<cell align="center" col="8" colid="ECUSTNM4" display="text"/>
+						<cell align="center" col="9" colid="CSTATUSGUBUN" combocol="CD" combodataset="ds_ioMemberGubun" combotext="DATA" display="combo"/>
+						<cell align="center" col="10" colid="EDUGUBUN" combocol="CD" combodataset="ds_oEduGubun" combotext="DATA" display="combo"/>
+						<cell align="center" col="11" colid="EDUPERSON" combocol="CD" combodataset="ds_oEduStudent" combotext="DATA" display="combo"/>
+						<cell align="center" col="12" colid="EDUDATE" display="text" Mask="####-##-##"/>
+						<cell align="center" col="13" colid="ECUSTBNM4" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid BindDataset="ds_ioEduDay2" BkColor2="default" BoldHead="true" Bottom="518" Enable="true" EndLineColor="default" Height="198" Id="Grid1" InputPanel="FALSE" Left="664" LineColor="default" Right="887" TabOrder="22" TabStop="true" Top="320" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="223">
+			<contents>
+				<columns>
+					<col width="80"/>
+				</columns>
+				<head>
+					<cell col="0" display="text" text="SEL"/>
+				</head>
+				<body>
+					<cell col="0" colid="SEL" display="text"/>
+				</body>
+			</contents>
+		</Grid>
+		<FileDialog Bottom="576" FileName="eduExcelData" Filter="Excel&#32;File(*.xls)|*.xls|All(*.*)|*.*|" Height="24" Id="fdExport" Left="464" Right="488" TabOrder="32" Top="552" Type="Save" Width="24"></FileDialog>
+		<FileDialog Bottom="576" Filter="Excel&#32;File(*.xls)|*.xls|All(*.*)|*.*|" Height="24" Id="fdImport" Left="432" Right="456" TabOrder="33" Top="552" Width="24"></FileDialog>
+		<Grid BindDataset="ds_ioEduDay4" BkColor2="default" BoldHead="true" Bottom="760" Enable="true" EndLineColor="default" Height="56" Id="grdExportold" InputPanel="FALSE" LineColor="default" Right="424" Style="sty_Grid" TabOrder="22" TabStop="true" Top="704" UseDBuff="true" UsePopupMenu="true" UserData="교육안내문자료&#32;생성" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="424">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="88"/>
+						<col width="106"/>
+						<col width="394"/>
+						<col width="123"/>
+						<col width="136"/>
+						<col width="358"/>
+						<col width="145"/>
+						<col width="188"/>
+						<col width="188"/>
+						<col width="118"/>
+						<col width="270"/>
+						<col width="116"/>
+						<col width="95"/>
+						<col width="211"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="지부"/>
+						<cell col="1" display="text" text="발송자우편번호"/>
+						<cell col="2" display="text" text="발송자주소"/>
+						<cell col="3" display="text" text="발송자전화번호"/>
+						<cell col="4" display="text" text="발송자팩스번호"/>
+						<cell col="5" display="text" text="반송처"/>
+						<cell col="6" display="text" text="관리번호"/>
+						<cell col="7" display="text" text="받는주소1"/>
+						<cell col="8" display="text" text="받는주소2"/>
+						<cell col="9" display="text" text="성명"/>
+						<cell col="10" display="text" text="받는사람"/>
+						<cell col="11" display="text" text="직능"/>
+						<cell col="12" display="text" text="우편번호"/>
+						<cell col="13" display="text" text="우편반송바코드"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="EJBFULLNNM" display="text"/>
+						<cell align="center" col="1" colid="EJBZIPCD" display="text"/>
+						<cell align="left" col="2" colid="EJBJADDR" display="text"/>
+						<cell align="left" col="3" colid="EJBTEL" display="text"/>
+						<cell align="left" col="4" colid="EJGFAX" display="text"/>
+						<cell align="left" col="5" colid="EJRTNPLACE" display="text"/>
+						<cell align="center" col="6" colid="ECUSTNO" display="text"/>
+						<cell align="left" col="7" colid="ECUSTADDR1" display="text"/>
+						<cell align="left" col="8" colid="ECUSTADDR2" display="text"/>
+						<cell align="center" col="9" colid="ECUSTFMNM" display="text"/>
+						<cell align="left" col="10" colid="ECUSTBNM" display="text"/>
+						<cell align="center" col="11" colid="ECGROUPNM" display="text"/>
+						<cell align="center" col="12" colid="ECUSTZIPNO" display="text"/>
+						<cell align="center" col="13" colid="ECPOSTBARCODE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button0" ImageID="BTN_TEXT_07" Left="440" OnClick="lfn_EduCustSMSSend" Style="sty_Button" TabOrder="24" Text="문자메시지발송" ToolTipText="엑셀로&#32;저장" Top="124" Width="105"></Button>
+		<Grid BindDataset="ds_ioEduDay4" BkColor2="default" BoldHead="true" Bottom="640" Enable="true" EndLineColor="default" Height="56" Id="grdExport" InputPanel="FALSE" LineColor="default" Right="752" Style="sty_Grid" TabOrder="25" TabStop="true" Top="584" UseDBuff="true" UsePopupMenu="true" UserData="교육안내문자료&#32;생성" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="752">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="88"/>
+						<col width="106"/>
+						<col width="394"/>
+						<col width="123"/>
+						<col width="358"/>
+						<col width="211"/>
+						<col width="145"/>
+						<col width="188"/>
+						<col width="188"/>
+						<col width="245"/>
+						<col width="263"/>
+						<col width="95"/>
+						<col width="131"/>
+						<col width="85"/>
+						<col width="303"/>
+						<col width="168"/>
+						<col width="188"/>
+						<col width="188"/>
+						<col width="94"/>
+						<col width="116"/>
+						<col width="189"/>
+						<col width="181"/>
+						<col width="142"/>
+						<col width="583"/>
+						<col width="188"/>
+						<col width="76"/>
+						<col width="81"/>
+						<col width="81"/>
+						<col width="131"/>
+						<col width="188"/>
+						<col width="76"/>
+						<col width="81"/>
+						<col width="81"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="574"/>
+						<col width="316"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="지부"/>
+						<cell col="1" display="text" text="발송자우편번호"/>
+						<cell col="2" display="text" text="발송자주소"/>
+						<cell col="3" display="text" text="발송자전화번호"/>
+						<cell col="4" display="text" text="반송처"/>
+						<cell col="5" display="text" text="우편반송바코드"/>
+						<cell col="6" display="text" text="관리번호"/>
+						<cell col="7" display="text" text="받는주소1"/>
+						<cell col="8" display="text" text="받는주소2"/>
+						<cell col="9" display="text" text="받는사람"/>
+						<cell col="10" display="text" text="성명"/>
+						<cell col="11" display="text" text="우편번호"/>
+						<cell col="12" display="text" text="교육대상자&#32;정보"/>
+						<cell col="13" display="text" text="성명1"/>
+						<cell col="14" display="text" text="성명2"/>
+						<cell col="15" display="text" text="대상물명"/>
+						<cell col="16" display="text" text="주소1"/>
+						<cell col="17" display="text" text="주소2"/>
+						<cell col="18" display="text" text="선임일자"/>
+						<cell col="19" display="text" text="교육이수기한1"/>
+						<cell col="20" display="text" text="교육이수기한2"/>
+						<cell col="21" display="text" text="준비물"/>
+						<cell col="22" display="text" text="납부회비/교육수수료"/>
+						<cell col="23" display="text" text="안내3"/>
+						<cell col="24" display="text" text="년도1"/>
+						<cell col="25" display="text" text="회비1"/>
+						<cell col="26" display="text" text="년도2"/>
+						<cell col="27" display="text" text="회비2"/>
+						<cell col="28" display="text" text="년도3"/>
+						<cell col="29" display="text" text="회비3"/>
+						<cell col="30" display="text" text="년도4"/>
+						<cell col="31" display="text" text="회비4"/>
+						<cell col="32" display="text" text="회비합계1"/>
+						<cell col="33" display="text" text="국민가상계좌"/>
+						<cell col="34" display="text" text="신한가상계좌"/>
+						<cell col="35" display="text" text="우리가상계좌"/>
+						<cell col="36" display="text" text="농협가상계좌"/>
+						<cell col="37" display="text" text="사전납부안내"/>
+						<cell col="38" display="text" text="교육접수URL"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="EJBFULLNNM" display="text"/>
+						<cell align="center" col="1" colid="EJBZIPCD" display="text"/>
+						<cell align="left" col="2" colid="EJBJADDR" display="text"/>
+						<cell align="left" col="3" colid="EJBTEL" display="text"/>
+						<cell align="left" col="4" colid="EJRTNPLACE" display="text"/>
+						<cell align="center" col="5" colid="ECPOSTBARCODE" display="text"/>
+						<cell align="center" col="6" colid="ECUSTNO" display="text"/>
+						<cell align="left" col="7" colid="ECUSTADDR1" display="text"/>
+						<cell align="left" col="8" colid="ECUSTADDR2" display="text"/>
+						<cell align="left" col="9" colid="ECUSTBNM" display="text"/>
+						<cell align="center" col="10" colid="CUSTNM" display="text"/>
+						<cell align="center" col="11" colid="ECUSTZIPNO" display="text"/>
+						<cell align="left" col="12" colid="ECGROUPNM" display="text"/>
+						<cell align="left" col="13" colid="ECUSTFMNM" display="text"/>
+						<cell align="left" col="14" colid="CUSTNM2" display="text"/>
+						<cell align="left" col="15" colid="ECUSTBNM" display="text"/>
+						<cell align="left" col="16" colid="BADDR1" display="text"/>
+						<cell align="left" col="17" colid="BADDR2" display="text"/>
+						<cell align="left" col="18" colid="STARTDATE" display="text"/>
+						<cell align="left" col="19" colid="EDUEXPIREDATE1" display="text"/>
+						<cell align="left" col="20" colid="EDUEXPIREDATE2" display="text"/>
+						<cell align="left" col="21" colid="PREPARED" display="text"/>
+						<cell align="left" col="22" colid="EFEETITLE" display="text"/>
+						<cell align="left" col="23" colid="ENOTICE" display="text"/>
+						<cell align="left" col="24" colid="EFEEYEAR1" display="text"/>
+						<cell align="left" col="25" colid="EFEE1" display="text"/>
+						<cell align="left" col="26" colid="EFEEYEAR2" display="text"/>
+						<cell align="left" col="27" colid="EFEE2" display="text"/>
+						<cell align="left" col="28" colid="EFEEYEAR3" display="text"/>
+						<cell align="left" col="29" colid="EFEE3" display="text"/>
+						<cell align="left" col="30" colid="EFEEYEAR4" display="text"/>
+						<cell align="left" col="31" colid="EFEE4" display="text"/>
+						<cell align="left" col="32" colid="CTOTALFEE" display="text"/>
+						<cell col="33" colid="EACCOUNT1" display="text"/>
+						<cell col="34" colid="EACCOUNT2" display="text"/>
+						<cell col="35" colid="EACCOUNT3" display="text"/>
+						<cell col="36" colid="EACCOUNT4" display="text"/>
+						<cell col="37" colid="ESUNAPNOTICE" display="text"/>
+						<cell col="38" colid="QRCODEURL" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid BindDataset="ds_ioEduDay4" BkColor2="default" BoldHead="true" Bottom="696" Enable="true" EndLineColor="default" Height="56" Id="old_grdExport" InputPanel="FALSE" LineColor="default" Right="752" Style="sty_Grid" TabOrder="26" TabStop="true" Top="640" UseDBuff="true" UsePopupMenu="true" UserData="교육안내문자료&#32;생성" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="752">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="88"/>
+						<col width="106"/>
+						<col width="394"/>
+						<col width="123"/>
+						<col width="136"/>
+						<col width="358"/>
+						<col width="211"/>
+						<col width="145"/>
+						<col width="188"/>
+						<col width="188"/>
+						<col width="118"/>
+						<col width="270"/>
+						<col width="95"/>
+						<col width="131"/>
+						<col width="1060"/>
+						<col width="188"/>
+						<col width="76"/>
+						<col width="81"/>
+						<col width="81"/>
+						<col width="131"/>
+						<col width="188"/>
+						<col width="76"/>
+						<col width="81"/>
+						<col width="81"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="574"/>
+						<col width="316"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="지부"/>
+						<cell col="1" display="text" text="발송자우편번호"/>
+						<cell col="2" display="text" text="발송자주소"/>
+						<cell col="3" display="text" text="발송자전화번호"/>
+						<cell col="4" display="text" text="발송자팩스번호"/>
+						<cell col="5" display="text" text="반송처"/>
+						<cell col="6" display="text" text="우편반송바코드"/>
+						<cell col="7" display="text" text="관리번호"/>
+						<cell col="8" display="text" text="받는주소1"/>
+						<cell col="9" display="text" text="받는주소2"/>
+						<cell col="10" display="text" text="성명"/>
+						<cell col="11" display="text" text="받는사람"/>
+						<cell col="12" display="text" text="우편번호"/>
+						<cell col="13" display="text" text="납부회비/교육수수료"/>
+						<cell col="14" display="text" text="안내3"/>
+						<cell col="15" display="text" text="년도1"/>
+						<cell col="16" display="text" text="회비1"/>
+						<cell col="17" display="text" text="년도2"/>
+						<cell col="18" display="text" text="회비2"/>
+						<cell col="19" display="text" text="년도3"/>
+						<cell col="20" display="text" text="회비3"/>
+						<cell col="21" display="text" text="년도4"/>
+						<cell col="22" display="text" text="회비4"/>
+						<cell col="23" display="text" text="회비합계1"/>
+						<cell col="24" display="text" text="국민가상계좌"/>
+						<cell col="25" display="text" text="신한가상계좌"/>
+						<cell col="26" display="text" text="우리가상계좌"/>
+						<cell col="27" display="text" text="농협가상계좌"/>
+						<cell col="28" display="text" text="사전납부안내"/>
+						<cell col="29" display="text" text="교육접수URL"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="EJBFULLNNM" display="text"/>
+						<cell align="center" col="1" colid="EJBZIPCD" display="text"/>
+						<cell align="left" col="2" colid="EJBJADDR" display="text"/>
+						<cell align="left" col="3" colid="EJBTEL" display="text"/>
+						<cell align="left" col="4" colid="EJGFAX" display="text"/>
+						<cell align="left" col="5" colid="EJRTNPLACE" display="text"/>
+						<cell align="center" col="6" colid="ECPOSTBARCODE" display="text"/>
+						<cell align="center" col="7" colid="ECUSTNO" display="text"/>
+						<cell align="left" col="8" colid="ECUSTADDR1" display="text"/>
+						<cell align="left" col="9" colid="ECUSTADDR2" display="text"/>
+						<cell align="center" col="10" colid="ECUSTFMNM" display="text"/>
+						<cell align="left" col="11" colid="ECUSTBNM" display="text"/>
+						<cell align="center" col="12" colid="ECUSTZIPNO" display="text"/>
+						<cell align="left" col="13" colid="EFEETITLE" display="text"/>
+						<cell align="left" col="14" colid="ENOTICE" display="text"/>
+						<cell align="left" col="15" colid="EFEEYEAR1" display="text"/>
+						<cell align="left" col="16" colid="EFEE1" display="text"/>
+						<cell align="left" col="17" colid="EFEEYEAR2" display="text"/>
+						<cell align="left" col="18" colid="EFEE2" display="text"/>
+						<cell align="left" col="19" colid="EFEEYEAR3" display="text"/>
+						<cell align="left" col="20" colid="EFEE3" display="text"/>
+						<cell align="left" col="21" colid="EFEEYEAR4" display="text"/>
+						<cell align="left" col="22" colid="EFEE4" display="text"/>
+						<cell align="left" col="23" colid="CTOTALFEE" display="text"/>
+						<cell col="24" colid="EACCOUNT1" display="text"/>
+						<cell col="25" colid="EACCOUNT2" display="text"/>
+						<cell col="26" colid="EACCOUNT3" display="text"/>
+						<cell col="27" colid="EACCOUNT4" display="text"/>
+						<cell col="28" colid="ESUNAPNOTICE" display="text"/>
+						<cell col="29" colid="QRCODEURL" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[
+/*
+ * 프로그램명 : frmcust1107_1MFireDefEduNotice.xml
+ * 설명 : 교육안내문 생성 팝업
+ * 작성일 : 2015.01.05
+ * 작성자 : 정현호
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+var cnt = 0; // 건수 구하기 위한 변수값 
+var Loadflag = "on"; // 처음 로드시 플래그     // 추출대상자 insert 여부
+// var Loadflag_edu = "on";
+var Changeflag = "off"; // 인원 변경 여부
+    
+function Form_OnLoadCompleted(obj)
+{
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+	
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    edCustGubun.Text = sEduCustGubun; //고객구분
+    edCourse.Text = sEduPerson;  // 교육대상
+    edEduTotalcount_A.text = sEduTotalCount;  // 추출대상자수
+
+	ds_ioEduDay1.copy(parent.ds_ioMEduDataDetail);	// 이전화면에서 추출대상 데이터셋 복사
+	
+}
+
+  
+//공통처리
+//===================================================================
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+  //  btnSelect.Enable = bStatus;    
+  //  btnCreateList.Enable = bStatus;
+  //  btnProcElecApv.Enable = bStatus;
+}
+  
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdElecAppr, 0); // 멀티 정렬을 실행한다.
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdElecAppr.Height = nCy - gdElecAppr.Top - 4;
+        gdElecAppr.Width = nCx - gdElecAppr.Left - 4;
+    }
+}
+//====================================================================
+
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AftersearchCust1(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }   
+}
+
+/*
+*  교육안내문 이력 넣기  2) 교육일정 날짜에 따라 안내문 발행인원만 교육일정과 발급 유무를 업데이트 하기
+*/
+function lfn_EduNoticeHistory2()
+{   
+	// trace("교육시간 출력4 =>" + ds_ioEduDay4.GetColumn(0, "TIME" )); 	
+ 	tit_clearActionInfo();
+    tit_AddMultiActionInfo(	
+        "cust:updateCust1107EduDataHistoryDay"	// insert  		
+        , ""	// update  
+        , ""	// delete
+        , ""	// flag column 명
+        , ""	// key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N"	// 실행타입
+    );
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iEduDataHistoryDay=ds_ioEduDay4:U"/// inDs		
+        ,""	// outDs
+        , "DATE=" + quote(ds_ioEduDay4.GetColumn(0, "EDUDATE"))    // 일정 // args 
+        + " rDate=" + quote(left(GetDate(), 8))    // 날짜    //"JIBU_A=" + quote(cbxJibu.value)  
+        + " GET_SYSDATE=" + quote(ds_ioEduNoticeHistoryGetSysdate.GetColumn(0, "CHAR_SYSDATE"))  //args            
+        ,"lfn_AftersearchCust"
+        ,false
+        ,""
+        ,true
+        
+    ); 
+}
+
+/*
+*  교육안내문 추출 총인원 이력 넣기 
+*/
+function lfn_EduNoticeHistory3()
+{
+  
+	// 자료 넣기	
+	tit_clearActionInfo();
+    tit_AddMultiActionInfo(	
+        "cust:insertCust1107EduDataHistory"	// insert  		
+        , ""	// update  
+        , ""	// delete
+        , ""	// flag column 명
+        , ""	// key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N"	// 실행타입
+    );
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iEduDataHistory=ds_ioEduDay1:U"/// inDs		
+        ,""	// outDs
+        , "GET_SYSDATE=" + quote(ds_ioEduNoticeHistoryGetSysdate.GetColumn(0, "CHAR_SYSDATE")) // "JIBU_A=" + quote(cbxJibu.value)  //args            
+        ,"lfn_AftersearchCust"
+        ,false
+        ,""
+        ,true
+        
+    );  
+
+}
+
+
+/*
+*  교육안내문 그룹 id로 발급 유무 초기화함
+*/
+function lfn_EduNoticeHistory6()
+{   
+   // trace("그룹 id =>" + ds_ioEduDay4.GetColumn(0, "CREGCD"));
+    //trace (ds_ioEduDay4.SaveXML());
+	// 자료 넣기	
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("cust:updateCust1107EduDataHistoryGubunDefault", false);
+	// 서버 호출 
+	
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,""	// outDs
+		, "EGROUPID=" + quote(ds_ioEduDay4.GetColumn(0, "SEL"))    // 구분 그룹 // args 
+        + " rDate=" + quote(left(GetDate(), 8))  // args
+		,"lfn_AftersearchCust1"
+		,false
+		,""
+		,true
+	);	
+
+}
+
+/*
+*  sysdate 가져오기
+*/
+function lfn_EduNoticeHistorySysdate()
+{   
+   // trace("그룹 id =>" + ds_ioEduDay4.GetColumn(0, "CREGCD"));
+    //trace (ds_ioEduDay4.SaveXML());
+	// 자료 넣기	
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("cust:selectCust1105EduNoticeHistoryGetSysdate", false);
+	// 서버 호출 
+	
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioEduNoticeHistoryGetSysdate = ds_oEduNoticeHistoryGetSysdate"	// outDs
+		, ""    // 구분 그룹 // args 
+		,"lfn_AftersearchCust"
+		,false
+		,""
+		,true
+	);	
+
+}
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AftersearchCust(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+   // 레포트 호출함    
+   /*  gfn_CallReportPopup("frmCust1100R01EduNotice.rex"
+                ,"ds_ioNotificationTotaling"    // ds
+                ,"JIBU=" + quote(cbxJibu.Value) 
+               + "^YEARDATE=" + quote(edCustYear.Text)                   // 매개변수
+                ,""                  // 수첩여부 
+                ,""                  // 서브레포트 사용여부
+     ); */
+}
+
+/*
+*  그리드 헤더 클릭하기
+*/
+function lfn_SortGridAAA_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+		var lobj_Dataset = object(obj.BindDataset);
+	if (nCell == 0) { // 선택
+        if (obj.GetCellProp("head", nCell, "text") == 1) { // 전체가 이미 선택된 경우
+            obj.SetCellProp("head", nCell, "text", 0);
+            for(i = 0; i < lobj_Dataset.RowCount(); i++) {
+                lobj_Dataset.SetColumn(i, "SELA", "0");
+            }
+        } else { // 전체가 이미 선택되지 않은 경우
+            obj.SetCellProp("head", nCell, "text", 1);
+            for(i = 0; i < lobj_Dataset.RowCount(); i++) {
+                lobj_Dataset.SetColumn(i, "SELA", "1");
+            }
+        }
+	} else { // 헤드 정렬
+        lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex);
+	}
+}
+
+
+/*
+* 교육안내문 저장 
+*/
+function lfn_EduPrintSave(obj)
+{
+	cnt = 0;
+	
+    ds_ioEduDay3.Clear();
+    ds_ioEduDay4.Clear();
+    
+    ds_ioEduDay3.copy(ds_ioEduDay1);  // 세번째 ds
+
+    ds_ioEduDay3.Filter("SELA= '1'");    // 안내문 발급 선택한것만 걸러줌
+
+    ds_ioEduDay4.copyf(ds_ioEduDay3);  // 안내문 발급 선택한것을 복사 담음   
+
+     
+    if(ds_ioEduDay4.count == 0){
+        alert("교육안내문을 생성할 대상자를 조회 및 선택해 주십시오.");
+        return false;
+    } 
+      
+    if (!gfn_Confirm("교육안내문 자료를 생성하면 교육안내문 생성이력이 발생합니다.\n"
+                +"진행중에 창을 닫으시면 안됩니다. 진행하시겠습니까?        ")) { // 
+        return false;
+    }
+   
+	// 개인정보 다운로드 사유 등록
+	var parValue = "sCode=1418";	// COMMON.PERSONALDOWNLOADH
+		parValue += " sRowCnt=" + ds_ioEduDay4.GetRowCount();
+		parValue += " sTitle=" + quote(grdExport.UserData);
+	var ls_IsRemark = Dialog("COM::frmCOM2100PDownloadRemark.xml", parValue, "", "", "", -1, -1);	
+
+	if (ls_IsRemark == "" || ls_IsRemark == null || ls_IsRemark == "FAIL") {
+		return false;
+	}
+   
+    lfn_EduNoticeHistorySysdate();  // SYSDATE를 구함
+      
+    for(i = 0; i < ds_ioEduDay1.RowCount(); i++) {
+        if (ds_ioEduDay1.GetColumn(i, "SELB") == 0) {
+            ds_ioEduDay1.SetColumn(i, "SELB", "1") ;
+        } else {
+            ds_ioEduDay1.SetColumn(i, "SELB", "0");            
+        }
+    }   
+
+	// 교육안내문자료 생성 이력 넣기
+	// 전체 추출대상자 넣기
+    lfn_EduNoticeHistory3();                         
+         
+    for(i = 0; i < ds_ioEduDay4.RowCount(); i++) {   /// 안내문 출력 ds를 이용 안내문 이력에 넣기위한 트랜잭션
+		ds_ioEduDay4.SetColumn(i, "SELB", "5") ;
+    }
+    
+    // 해당 그룹에 대해 발급 유무 초기화 시키기
+    lfn_EduNoticeHistory6();            
+	// 선택한 안내문 발행 인원 이력에 발급 유 업데이트 하기   
+    lfn_EduNoticeHistory2();            
+
+    lfn_ExcelFileSave();
+
+    
+}
+
+/*
+* 엑셀 파일로 바로 저장하기
+*/
+function lfn_ExcelFileSave()
+{
+
+    fdExport.Type = "save";
+    fdExport.Filter = "Excel(.xls)|*.xls|";  //+ ' KFSA\KEMS\data\edu'
+    var result = fdExport.Open("C:\\KFSA\\KEMS\\DATA\\EDU\\");  // C:\KFSA\KEMS\data\edu
+    // var result = fdExport.Open("C:\KFSA\KEMS\data\edu\\");  // C:\KFSA\KEMS\data\edu
+
+    //+ left(GetDate(), 8);
+    if (result) {
+        var ls_FilePath = fdExport.FilePath + '\\' + fdExport.FileName+".xls";        
+        //grdExport.SaveExcelEx(ls_FilePath, "교육안내문_자료",,,,,,false );   
+        //grdExport.SaveExcelEx(ls_FilePath, "교육안내문_자료");   
+        grdExport.SaveExcelEx(ls_FilePath, "교육안내문_자료",,,,,,false);   // async = false (즉 sync)
+        
+    } else {
+        return;
+    }
+
+}
+
+function ds_ioEduDay1_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+    if (ds_ioEduDay1.GetColumn(nRow, "SELA") == 1) {   // 느려서 아래와 같은 로직으로 변경함
+        cnt += 1; // 
+    } else {
+        cnt += -1; // 
+    }
+    
+    medSmsCnt.Value = cnt;    
+    
+}
+
+/*
+* 추출한 교육 통지대상자 문자 메세지 발송 하기 
+*/
+/*
+ * 기능 : 문자메시지발송 팝업을 호출한다.
+ * parameter : sSmsGubun - 업무구분 21 강습
+ *             sRecvTel - 수신자 (전송인원수)
+ *             sRecvNm - 수신자 
+ *             sTomgNo- 회차관리번호 
+ *             sTjmgNo - 접수관리번호
+ *             sTohjubSuNo - 접수번호      
+ * return value : 단일문자메시지발송 정보를 가진 배열 오브젝트
+ */
+function lfn_EduCustSMSSend(obj)
+{    
+    if(gfn_isNull(medSmsCnt.text) )  //선택한것이 있는지 체크 메세지 보임
+    { alert("문자메시지 발송 대상자를 선택해 주십시오.");      
+        return false;
+    }
+	ds_ioEduDay2.Clear();
+	ds_ioEduDay2.copy(ds_ioEduDay1);	// 문자발송용 데이터셋으로 복사    
+	
+    lfn_RemoveNoHandPhone(); // 문자메시지 핸드폰 삭제 하기
+    
+    if (!gfn_Confirm("핸드폰 번호가 없는 인원은 메시지 발송이 되지 않습니다. 진행하시겠습니까? ")) { // 
+        return false;
+    }
+	ds_ioEduDay2.Filter("SELA='1'");
+	var sSMSCNT = ds_ioEduDay2.count;
+
+	var sArg = "sMBCCD=" + quote("306");   
+    sArg += " sBSCNT=" + quote(sSMSCNT);       //수신자 (전송인원수)
+    sArg += " sRow='0'";         //선택 nRow
+    
+    return Dialog("CUST::frmcust1101MCustSMSSend.xml", sArg, 368, 396, "", -1, -1);
+    
+}
+
+/*
+* 핸드폰 없는거 지우기
+*/
+function lfn_RemoveNoHandPhone(obj)
+{
+	for(i = 0; i < ds_ioEduDay2.RowCount(); i++) {
+        if (ds_ioEduDay2.GetColumn(i, "SELA") == 1 && gfn_isNull(ds_ioEduDay2.GetColumn(i, "EFMHHPTEL")) ) {
+            ds_ioEduDay2.SetColumn(i, "SELA", "0");
+            //return false;
+        }
+    }  
+}
+
+/*
+* 필수 화면id 충돌 방지 
+*/
+function Form_OnUnloadCompleted(obj)
+{
+    Close();
+}
+
+/*
+* 필수 화면id 충돌 방지  
+*/
+function lfn_End(obj)
+{
+	Close();
+}
+]]></Script>
+</Window>

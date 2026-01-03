@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="56" Id="frmcust5010" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="소방민원정보시스템&#32;연계정보&#32;조회" Top="8" Ver="1.0" Width="472" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioTrainingOrder" OnRowPosChanged="ds_ioTrainingOrder_OnRowPosChanged">
+				<Contents>
+					<colinfo id="CREATE_DATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="CREATE_ID" size="20" summ="default" type="STRING"/>
+					<colinfo id="EPMGNO" size="22" summ="default" type="INT"/>
+					<colinfo id="MODIFY_DATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="MODIFY_ID" size="20" summ="default" type="STRING"/>
+					<colinfo id="RREGIONCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="TOCOURSEGUBUN" size="30" summ="default" type="STRING"/>
+					<colinfo id="TOENDDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="TOENDTIME" size="6" summ="default" type="STRING"/>
+					<colinfo id="TOEXCEPTDATE" size="1000" summ="default" type="STRING"/>
+					<colinfo id="TOINETJUBSUCNT" size="22" summ="default" type="INT"/>
+					<colinfo id="TOINETJUBSUYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="TOJUBSUMAXCNT" size="22" summ="default" type="INT"/>
+					<colinfo id="TOJUBSUSTATUS" size="1" summ="default" type="STRING"/>
+					<colinfo id="TOLECTURENOTICE" size="1000" summ="default" type="STRING"/>
+					<colinfo id="TOMAILNOTICE" size="1000" summ="default" type="STRING"/>
+					<colinfo id="TOMGJIBUCD" size="30" summ="default" type="STRING"/>
+					<colinfo id="TOMGNO" size="30" summ="default" type="STRING"/>
+					<colinfo id="TOMUNJEGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="TOSEATCNT" size="22" summ="default" type="INT"/>
+					<colinfo id="TOSEATLIMITYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="TOSEATSELECTYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="TOSEXLIMITYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="TOSTARTDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="TOSTARTTIME" size="6" summ="default" type="STRING"/>
+					<colinfo id="TOTRAININGORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="TOYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="1" summ="default" type="STRING"/>
+					<colinfo id="TOEDUCONTENTS" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="EPNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="EPPARKINGINFO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioFireSurvey"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioCommonCode"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioFireSurveyAdministratorInfo"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioFireSurveyRelationInfo"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioFireSurveyLicenseInfo"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioFireSurveyDong"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioFireSurveyFloorStatus"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioDanger"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioDangerTank"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioDangerStatusSuccession"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioFightFireCompany"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioFightFireCompanyPossessionHuman"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioFightFireCompanyFireLicenseInfo"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCprAt">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>법인</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>개인</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>사업자</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioDanMnfctretcInfo">
+				<Contents>
+					<colinfo id="MNFCTRETC_SN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ITL_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="FRST_PRMISN_DE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRMISN_DE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNFCTRETC_SE_CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNFCTRETC_DETAIL_SE_CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="DGST_TMPRSTRE_AT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRMISN_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNTANR_PRMISN_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="FRST_STRWRK_DE" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMPET_DE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAUSE_ABL_SE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAUSE_ABL_DE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRPOS_ABL_RESN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CPR_AT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CPR_AT_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSTLR_CPR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSTLR_JURIRNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIRTHDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSTLR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSTLR_TELNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSTLR_ADRES" size="256" summ="default" type="STRING"/>
+					<colinfo id="CMPFRSTT_CMPN119SC_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="OBJ_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BULDDONG_SN" size="256" summ="default" type="STRING"/>
+					<colinfo id="FLOOR_SN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ITLPC_ADRES" size="256" summ="default" type="STRING"/>
+					<colinfo id="ANTY_MUL_SM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ONSLFFBRD_AT" size="256" summ="default" type="STRING"/>
+					<colinfo id="ARMY_DGST_AT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TRTMNT_SUMRY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REGIST_DE_14" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPDT_DE_14" size="256" summ="default" type="STRING"/>
+					<colinfo id="EQP_STDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="EQP_SUMRY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioDanTankInfo">
+				<Contents>
+					<colinfo id="OKND_CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRDNM_CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRDNM_DETAIL" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPN_QT" size="256" summ="default" type="STRING"/>
+					<colinfo id="MXMM_QT" size="256" summ="default" type="STRING"/>
+					<colinfo id="ANTY_MUL" size="256" summ="default" type="STRING"/>
+					<colinfo id="VHCLE_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="VHCLE_YEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="FOM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CARNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BEGIN_DE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TANK_INSPCT_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="TANK_MXMMCPCTY" size="256" summ="default" type="STRING"/>
+					<colinfo id="TNKROOM_CPCTY" size="256" summ="default" type="STRING"/>
+					<colinfo id="REGIST_DE_14" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPDT_DE_14" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioDanStatusSuccession">
+				<Contents>
+					<colinfo id="FC_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="POSIT_SUCCS_DE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROCESS_DE" size="256" summ="default" type="STRING"/>
+					<colinfo id="BEFINSTLR_CPR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BEFINSTLR_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BEFINSTLR_TELNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="REGIST_DE_14" size="256" summ="default" type="STRING"/>
+					<colinfo id="UPDT_DE_14" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioDanManagerInfo">
+				<Contents>
+					<colinfo id="NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIRTHDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CRQFC_CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CRQFC_CODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="AP_APNTRLSOFC_DE" size="256" summ="default" type="STRING"/>
+					<colinfo id="AP_PROCESS_DE" size="256" summ="default" type="STRING"/>
+					<colinfo id="RL_APNTRLSOFC_DE" size="256" summ="default" type="STRING"/>
+					<colinfo id="RL_PROCESS_DE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioFireSurveySFloorStatus"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioFireSurveyFloorE"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioFireMapping"></Dataset>
+		</Datasets>
+		<Static Align="Center" Height="20" Id="Static1" Left="2" Style="sty_Label" TabOrder="2" Text="해지사유" Top="5" VAlign="Middle" Width="96"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" DisableBKColor="lightskyblue" Height="20" Id="edCancelReason" ImeMode="native" Left="99" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edKeyWord_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="1" Top="5" UserData="S" Width="367"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancelReason" ImageID="BTN_TEXT_06" Left="375" OnClick="btnCancelReason_OnClick" Style="sty_Button" TabOrder="3" Text="확인" ToolTipText="조회" Top="26" Width="93"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust5010.xml
+ * 설명 : 소방민원정보시스템 연계정보 조회
+ * 작성일 : 2009.12.12
+ * 작성자 : 이창희
+ */
+ 
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+function btnCancelReason_OnClick(obj)
+{
+	if (edCancelReason.Text == "" || edCancelReason.Text == null) {
+		alert("연계해지 사유를 입력해 주세요.");
+		return;
+	}
+	Close(edCancelReason.Text);
+}
+function edKeyWord_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam) {
+    if (nChar == 13) { // Enter Key
+        btnCancelReason_OnClick();
+    }
+}
+
+]]></Script>
+</Window>

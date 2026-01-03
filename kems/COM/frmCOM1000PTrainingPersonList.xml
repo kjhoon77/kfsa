@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="336" Id="frmCOM1000PTrainingPersonList" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="고객정보검색팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="592" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oTrainingPerson">
+				<Contents>
+					<colinfo id="IIDIRPATH" size="256" summ="default" type="STRING"/>
+					<colinfo id="IIREALNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPAUTHYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="TPCUSTGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="TPEMAILDOMAIN" size="40" summ="default" type="STRING"/>
+					<colinfo id="TPEMAILID" size="40" summ="default" type="STRING"/>
+					<colinfo id="TPHPTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="TPLASTIMGSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TPMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TPNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="TPRESIDENTNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="TPTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="TPADDR_A" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPZIPCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPADDR2" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECENTLYDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="IIREGDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPADDRGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPRPNUCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPRROADBUILDMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPRROADDETAIL" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPRROADREMAIN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPRSANGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPRMAINBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPRSUBBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPRBUILDNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPRADDRETC" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPRCONVPGM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TPRCONVSTATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="IIIMGBINARY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect" ImageID="BTN_TEXT_COM" Left="408" OnClick="btnSelect_OnClick" Style="sty_Button" TabOrder="5" Text="선택" ToolTipText="선택" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oTrainingPerson" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="324" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="276" Id="gdTrainingPerson" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" OnCellDBLClick="gdTrainingPerson_OnCellDblClick" OnEnterDown="gdTrainingPerson_OnEnterDown" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="588" RowHeight="20" Style="sty_Grid" TabOrder="4" TabStop="true" Top="48" UseDBuff="true" UsePopupMenu="true" UserData="고객정보목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="580">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="61"/>
+						<col width="123"/>
+						<col width="307"/>
+						<col width="89"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="성명"/>
+						<cell align="center" col="1" display="text" text="주민등록번호"/>
+						<cell col="2" display="text" text="주소"/>
+						<cell col="3" display="text" text="최근수정일"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="TPNM" display="text"/>
+						<cell align="center" col="1" colid="TPRESIDENTNO" display="text"/>
+						<cell col="2" colid="TPADDR_A" display="text"/>
+						<cell align="center" col="3" colid="RECENTLYDATE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="321" OnClick="lfn_Search" Style="sty_Button" TabOrder="3" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="495" OnClick="lfn_End" Style="sty_Button" TabOrder="6" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbPersonNm" Left="4" Style="sty_Label" TabOrder="7" Text="성명" Top="4" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edPersonNm" ImeMode="native" Left="96" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edPersonNm_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="1" Top="4" Width="106"></Edit>
+		<Static Align="Center" Height="20" Id="lbResidentNo" Left="4" Style="sty_Label" TabOrder="8" Text="주민번호" Top="28" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="medResidentNo" Left="96" LeftMargin="2" Mask="######-#######" OnChanged="medResidentNo_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medResidentNo_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="2" Top="28" Type="STRING" Width="106"></MaskEdit>
+	</Form>
+	<Script><![CDATA[/*
+ * 고객정보명 : frmCOM1000PTrainingPersonList.xml
+ * 설명 : 고객정보검색팝업
+ * 작성일 : 2009.07.23
+ * 작성자 : 김동현
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+var sharchYN = "Y";  // 검색 조건 변경 여부
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (IsExistVar("sPersonNm")) {
+        edPersonNm.Text = sPersonNm;
+        medResidentNo.Value = sResidentNo;
+        if (gfn_IsNull(sPersonNm) && gfn_IsNull(sResidentNo)) {
+        } else {
+            lfn_search(obj); // 고객정보 조회
+           
+        }
+    }
+    edPersonNm.SetFocus();
+     
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    if (gfn_IsNull(edPersonNm.Text) && gfn_IsNull(medResidentNo.Value)) {
+        gfn_Alert("성명이나 주민등록번호를 입력해 주십시오.");
+        edPersonNm.SetFocus();
+        return false;
+    }
+    
+    btnSelect.Enable = true;
+    var serviceName = "com:searchTrainingPerson";
+    
+    if(sPrgGubun = "22"){//시험
+    
+		serviceName = "com:searchExamPerson";
+    
+    }else{
+		serviceName = "com:searchTrainingPerson";
+    }
+      
+     
+    ds_oTrainingPerson.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo(serviceName, false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oTrainingPerson=ds_oTrainingPerson"	// outDs
+		,"TPNM=" + quote(edPersonNm.Text)
+            + " TPRESIDENTNO=" + quote(replace(medResidentNo.Text,"-",""))// args
+		,"lfn_AfterSearchTrainingPerson"
+		,false
+		,""
+		,true
+	);
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchTrainingPerson(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+/*  // 조회시 한건일 경우 자동으로 화면 닫게 하였지만 주민번호 변경시 문제 발생으로 화면 뜨게 함(20091026)
+    if (ds_oTrainingPerson.GetCount() == 1) {
+        btnSelect_OnClick();
+    }
+ */   
+    if (ds_oTrainingPerson.GetCount() > 0) {
+        gdTrainingPerson.SetFocus();
+    } else {
+        edPersonNm.SetFocus();
+    }
+    sharchYN = "Y"; // 조회 후 선택 가능하도록 플래그 변경함
+    btnSelect.Enable = true;  // 조회 후 선택 가능하게 함
+    
+    gfn_SearchMessage(gdTrainingPerson); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+   
+}
+
+/* 고객 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+function btnSelect_OnClick(obj) {
+    if (ds_oTrainingPerson.GetCount() < 1) {
+        Close();
+    }
+
+    var arrArg = Array(30);
+    arrArg[0] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPNM");
+    arrArg[1] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPRESIDENTNO");
+    arrArg[2] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPMGNO");
+    arrArg[3] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPTEL");
+    arrArg[4] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPHPTEL");
+    arrArg[5] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPEMAILID");
+    arrArg[6] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPEMAILDOMAIN");
+    arrArg[7] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPCUSTGUBUN");
+    arrArg[8] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPLASTIMGSEQ");
+    arrArg[9] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPAUTHYN");
+    arrArg[10] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "IIDIRPATH");
+    arrArg[11] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "IIREALNM");
+    arrArg[12] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPZIPCD");
+    if (ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPADDRGUBUN") == "0") {
+		arrArg[13] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPADDR1");
+		arrArg[14] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPADDR2");
+    } else if (ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPADDRGUBUN") == "1") {
+		arrArg[13] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPROADADDR1");
+		arrArg[14] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPROADADDR2");
+    } else {
+		arrArg[13] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPADDR1");
+		arrArg[14] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPADDR2");
+    }
+    arrArg[15] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPBULDNM");
+    arrArg[16] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "IIREGDATE");
+    arrArg[17] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPADDRGUBUN");
+    arrArg[18] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPRPNUCD");
+    arrArg[19] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPRROADBUILDMGNO");
+    arrArg[20] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPRROADDETAIL");
+    arrArg[21] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPRROADREMAIN");
+    arrArg[22] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPRSANGUBUN");
+    arrArg[23] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPRMAINBUNJI");
+    arrArg[24] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPRSUBBUNJI");
+    arrArg[25] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPRBUILDNM");
+    arrArg[26] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPRADDRETC");
+    arrArg[27] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPRCONVPGM");
+    arrArg[28] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "TPRCONVSTATUS");
+    arrArg[29] = ds_oTrainingPerson.GetColumn(ds_oTrainingPerson.currow, "FULLTPRESIDENTNO");
+    Close(arrArg);
+}
+
+function gdTrainingPerson_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+    if(sharchYN == "N") {
+        alert("조회를 다시 하시고 선택 바랍니다.");
+    } else {
+        btnSelect_OnClick(obj);
+    }
+}
+
+function edPersonNm_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam) {
+    if (nChar == 13) { // Enter Key
+        lfn_Search();
+        medResidentNo.SetFocus();
+    } else {
+        btnSelect.Enable = false;
+        sharchYN = "N"; // 조회 조건 변경시 선택하여 진행 하지 못하도록 함(반드시 재조회 필요)
+    }
+}
+
+function medResidentNo_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam) {
+    if (nChar == 13) { // Enter Key
+        lfn_Search();
+    } else {
+        btnSelect.Enable = false;
+        sharchYN = "N"; // 조회 조건 변경시 선택하여 진행 하지 못하도록 함(반드시 재조회 필요)
+
+	}
+    
+}
+
+function gdTrainingPerson_OnEnterDown(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	btnSelect_OnClick();
+}
+
+function medResidentNo_OnChanged(obj,strText)
+{
+	// 길이가 주민번호와 일치하면 자동 조회 되게 하기 
+	if (length(medResidentNo.Value) == "13") {
+        lfn_Search(); 
+        
+        if(ds_oTrainingPerson.count < 0) {
+            medResidentNo.SetFocus();
+        }
+	 }
+    
+}
+
+
+
+
+]]></Script>
+</Window>

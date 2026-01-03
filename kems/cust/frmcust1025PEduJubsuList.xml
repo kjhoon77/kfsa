@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="400" Id="frmcust1025PEduJubsuList" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="실무교육접수검색팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="750" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oEduJubsu">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPassYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>&#32;</DATA>
+					</record>
+					<record>
+						<CD>Y</CD>
+						<DATA>이수</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>미이수</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="567" LineColor="user14" Right="746" TabOrder="61" Top="1" Type="Rectangle" Width="179"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect" ImageID="BTN_TEXT_COM" Left="571" OnClick="btnSelect_OnClick" Style="sty_Button" TabOrder="2" Text="선택" ToolTipText="선택" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="Button1" ImageID="BTN_MULTI_SORT" Left="669" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="4" Top="32" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="484" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Visible="FALSE" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="658" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="Ds_oEduJubsu" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="396" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="340" Id="gdEduJubsu" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnCellDBLClick="gdEduJubsu_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="746" RowHeight="20" Style="sty_Grid" TabOrder="5" TabStop="true" Top="56" UseDBuff="true" UsePopupMenu="true" UserData="교육접수목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="742">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="38"/>
+						<col width="60"/>
+						<col width="40"/>
+						<col width="120"/>
+						<col width="50"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="98"/>
+						<col width="93"/>
+						<col width="63"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="순번"/>
+						<cell col="1" display="text" text="지부"/>
+						<cell align="center" col="2" display="text" text="년도"/>
+						<cell align="center" col="3" display="text" text="직능"/>
+						<cell align="center" col="4" display="text" text="회차"/>
+						<cell align="center" col="5" display="text" text="접수번호"/>
+						<cell align="center" col="6" display="text" text="성명"/>
+						<cell align="center" col="7" display="text" text="생년월일"/>
+						<cell align="center" col="8" display="text" text="개인식별번호"/>
+						<cell align="center" col="9" display="text" text="이수여부"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow&#32;+&#32;1"/>
+						<cell align="center" col="1" colid="GTDEPTNM" display="text"/>
+						<cell align="center" col="2" colid="ESYEAR" display="combo"/>
+						<cell align="center" col="3" colid="CGROUPNM" display="text"/>
+						<cell align="center" col="4" colid="ESEDUORDER" display="normal"/>
+						<cell align="center" col="5" colid="EJHJUBSUNO" display="text"/>
+						<cell align="center" col="6" colid="EJNM" display="text"/>
+						<cell align="center" col="7" colid="BIRTHDAY" display="text"/>
+						<cell align="center" col="8" colid="EJPERSONKEY" display="text" Mask="A####-#####"/>
+						<cell align="center" col="9" colid="EJISUGUBUN" combocol="CD" combodataset="ds_oPassYn" combotext="DATA" display="combo"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[/*
+ * 교육접수정보명 : frmcust1025PEduJubsuList.xml
+ * 설명 : 실무교육접수검색팝업
+ * 작성일 : 2015.01.19
+ * 작성자 : 정현호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (IsExistVar("sOrderMgno")) {
+        lfn_Search();
+    }
+
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_oEduJubsu.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cust:searchCust1025EduJubsuListPopup", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oEduJubsu=ds_oEduJubsu"	// outDs
+		,"ESMGNO=" + quote(sOrderMgno) // args
+            + " EJHJUBSUNO=" + quote(sJubsuNo)
+            + " sLikeYn=" + quote(sLikeYn)
+		,"lfn_AfterSearchEduJubsuList"
+		,false
+	);
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchEduJubsuList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SearchMessage(gdEduJubsu); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 사용자 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    if (nCell > 0) {
+        var lobj_Dataset = object(obj.BindDataset);
+        // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+        if (lobj_Dataset.GetRowCount() > 1) {
+            gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+        }
+    }
+}
+
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdEduJubsu, 1); // 멀티 정렬을 실행한다.
+}
+
+function btnSelect_OnClick(obj)
+{
+    if (ds_oEduJubsu.GetCount() > 0) {
+        if (!gfn_IsNull(ds_oEduJubsu.GetColumn(ds_oEduJubsu.currow, "EJMGNO"))) {
+            var arrArg = Array(1);
+            arrArg[0] = ds_oEduJubsu.GetColumn(ds_oEduJubsu.currow, "EJMGNO"); // 접수관리번호
+            Close(arrArg);
+        } else {
+            Close();
+        }
+    }
+}
+
+function gdEduJubsu_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+    btnSelect_OnClick(obj);
+}
+
+]]></Script>
+</Window>

@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="456" Id="frmCOM6110MPersonalPrivacyInfo" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Title="개인별&#32;개인정보동의서&#32;등록현황" TooltipFont="Default,0" Top="8" Ver="1.0" Width="624" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oBizGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="GROUPCD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPrivacyCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="COURSECD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPrivacyAgree"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPrivacyAgreeH"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_o16TimeStamp"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iPrivacyAgree">
+				<Contents>
+					<colinfo id="PPNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PPRESIDENTNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PPSTATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEWDATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="PABIZCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PACOURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHPROCSTATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHPROCDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHPROCMETHOD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHMGMTPK1" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHMGMTPK2" size="256" summ="default" type="STRING"/>
+					<colinfo id="RUPATH" size="256" summ="default" type="STRING"/>
+					<colinfo id="RUFILENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RUMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHSEQ" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPrivacyAgreeResult">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iPrivacyAgreeDelete">
+				<Contents>
+					<colinfo id="PPNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PPRESIDENTNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="RUMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oAgreeGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>동의</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>동의&#32;철회</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="91" Height="55" Id="shpGubunBox3" Left="3" LineColor="user15" Right="619" TabOrder="4" Top="36" Type="Rectangle" Width="616"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" Left="3" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="1" TabStop="FALSE" Text="Div0" Top="3" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="285">
+			<Contents></Contents>
+		</Div>
+		<Shape Bottom="32" Height="30" Id="shpBtnBox" Left="352" LineColor="user14" Right="619" TabOrder="3" Top="2" Type="Rectangle" Width="267"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="531" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="5" Width="85"></Button>
+		<Shape Bottom="251" Height="156" Id="Shape0" Left="3" LineColor="user15" Right="619" TabOrder="5" Top="95" Type="Rectangle" Width="616"></Shape>
+		<Static Align="Center" Height="20" Id="lbPersonNm" Left="8" Style="sty_Label" TabOrder="8" Text="성명" Top="41" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edPersonNm" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="6" Top="41" UserData="S:성명" Width="106"></Edit>
+		<Static Align="Center" Height="20" Id="lbResidentNo" Left="8" Style="sty_Label" TabOrder="9" Text="주민번호" Top="66" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Height="20" Id="medResidentNo" Left="100" LeftMargin="2" Mask="######-#######" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medResidentNo_OnKeyDown" OnKillFocus="medResidentNo_OnKillFocus" Style="sty_Maskedit" TabOrder="7" Top="66" Type="STRING" UserData="S:주민번호" Width="106"></MaskEdit>
+		<Shape Bottom="452" Height="198" Id="Shape1" Left="3" LineColor="user15" Right="619" TabOrder="10" Top="254" Type="Rectangle" Width="616"></Shape>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_ioPrivacyAgreeH" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="449" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="145" Id="gdPrivacyAgreeH" InputPanel="FALSE" Left="6" LineColor="default" OnCellClick="gdPrivacyAgreeH_OnCellClick" Right="616" RowHeight="20" Style="sty_Grid" TabOrder="11" TabStop="true" Top="304" UseDBuff="true" UsePopupMenu="true" UserData="동의서등록이력" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="610">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="45"/>
+						<col width="76"/>
+						<col width="82"/>
+						<col width="79"/>
+						<col width="66"/>
+						<col width="135"/>
+						<col width="81"/>
+						<col width="20"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="동의여부"/>
+						<cell align="center" col="2" display="text" text="처리방법"/>
+						<cell align="center" col="3" display="text" text="처리일자"/>
+						<cell align="center" col="4" display="text" text="등록자"/>
+						<cell align="center" col="5" display="text" text="등록일시"/>
+						<cell align="center" col="6" colspan="2" display="text" text="동의서"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="number" expr="CURROW&#32;+&#32;1"/>
+						<cell align="center" col="1" colid="PHPROCSTATUS" display="text"/>
+						<cell align="center" col="2" colid="PHPROCMETHOD" display="text"/>
+						<cell align="center" col="3" colid="PHPROCDATE" display="text" Mask="####-##-##"/>
+						<cell align="center" col="4" colid="PHREGSABUN" display="text"/>
+						<cell align="center" col="5" colid="PHREGDATE" display="normal"/>
+						<cell align="center" col="6" colid="RUMGNO" display="text"/>
+						<cell align="center" bkimageid="IMG_SEARCH" col="7" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Height="20" Id="lbJubsuInfo" Left="7" Style="sty_LabelGruopBox" TabOrder="12" Text="&#32;&#32;&#32;&#32;▶▶&#32;개인정보동의서&#32;등록&#32;이력" Top="257" VAlign="Middle" Width="225"></Static>
+		<Static Height="20" Id="Static0" Left="7" Style="sty_LabelGruopBox" TabOrder="14" Text="&#32;&#32;&#32;▶&#32;업무별&#32;개인정보동의서&#32;등록&#32;현황" Top="99" VAlign="Middle" Width="273"></Static>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_ioPrivacyAgree" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="246" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="125" Id="gdPrivacyAgree" InputPanel="FALSE" Left="6" LineColor="default" OnCellClick="gdPrivacyAgree_OnCellClick" OnCellPosChanged="gdPrivacyAgree_OnCellPosChanged" Right="616" RowHeight="20" Style="sty_Grid" TabOrder="13" TabStop="true" Top="121" UseDBuff="true" UsePopupMenu="true" UserData="동의서등록이력" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="610">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="45"/>
+						<col width="85"/>
+						<col width="202"/>
+						<col width="85"/>
+						<col width="86"/>
+						<col width="63"/>
+						<col width="22"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="업무구분"/>
+						<cell align="center" col="2" display="text" text="직능"/>
+						<cell align="center" col="3" display="text" text="동의여부"/>
+						<cell align="center" col="4" display="text" text="처리일자"/>
+						<cell align="center" col="5" colspan="2" display="text" text="동의서"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="number" expr="CURROW&#32;+&#32;1"/>
+						<cell align="center" col="1" colid="BIZCD" combodisplayrowcnt="0" combotext="DATA" display="normal"/>
+						<cell align="left" col="2" colid="COURSECD" display="normal"/>
+						<cell align="center" col="3" colid="PHPROCSTATUS" display="text"/>
+						<cell align="center" col="4" colid="PHPROCDATE" display="text" Mask="####-##-##"/>
+						<cell align="center" col="5" colid="RUMGNO" display="text"/>
+						<cell align="center" bkimageid="IMG_SEARCH" col="6" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="355" OnClick="lfn_Search" Style="sty_Button" TabOrder="16" ToolTipText="조회" Top="5" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="443" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="15" ToolTipText="입력&#32;초기화" Top="5" Width="85"></Button>
+		<Static Align="Center" Color="brown" Font="굴림,10,Bold" Height="20" Id="lbResidentNoError" Left="210" Style="sty_TextRed" TabOrder="17" Text="오류" Top="68" VAlign="Middle" Visible="FALSE" Width="30"></Static>
+		<Static Align="Center" Height="20" Id="Static1" Left="8" Style="sty_Label" TabOrder="18" Text="업무구분" Top="280" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static2" Left="226" Style="sty_Label" TabOrder="19" Text="직능" Top="280" VAlign="Middle" Width="88"></Static>
+		<Static Border="Flat" Color="user1" Font="굴림,10" Height="20" Id="lbBizGubun" Left="99" Style="sty_TextRed" TabOrder="20" Top="280" VAlign="Middle" Width="115"></Static>
+		<Static Border="Flat" Color="user1" Font="굴림,10" Height="20" Id="lbCourseGubun" Left="317" Style="sty_TextRed" TabOrder="21" Top="280" VAlign="Middle" Width="187"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM6110MPersonalPrivacyInfo.xml
+ * 설명 : 개인별 개인정보동의서 등록현황
+ * 작성일 : 2013.04.29
+ * 작성자 : 정현호
+ */
+
+#include "LIB::training.js"; // 공통업무 관련
+
+var ls_FileUploadFolder = "/PRTDATA/";
+
+var ls_FileUploadPath = "Privacy/" + left(GetDate(), 4); // 개인정보동의서 이미지경로;
+var ls_UploadFileName = ""; //서버에 저장될 파일 명
+
+var ls_RealFilePath = ""; // 등록된 개인정보동의서 이미지경로;
+
+var ls_RealFileName = ""; // 등록된 개인정보동의서 이미지 실제파일명
+var lb_FileUpload = false; // 개인정보동의서 유무
+
+var ls_ResidentNoError = "";	// 주민번호 유효성 여부 0:정상 1:비정상
+
+function Form_OnLoadCompleted(obj)
+{
+	
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.	
+	
+	
+	edPersonNm.SetFocus();
+}
+
+
+
+
+// 자료 조회
+function lfn_search(obj) {
+
+	lfn_ResidentNoCheck();		// 주민번호 유효성 체크
+
+
+	var ls_SearchArg = "PPNM=" + quote(edPersonNm.Text)
+	
+	    + " PPERSONKEY=" + quote(medResidentNo.Value);
+	    
+
+    ds_ioPrivacyAgree.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("com:searchPersonalPrivacyInfo", false);
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,""    // inDs
+        ,"ds_ioPrivacyAgree=ds_oPrivacyAgree"    // outDs
+        ,ls_SearchArg
+        ,"lfn_AfterSearchPersonalPrivacyInfo"
+        ,false
+        ,false
+        ,true
+    );
+
+}
+
+
+function lfn_AfterSearchPersonalPrivacyInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return ;
+    }
+	
+	if (ds_ioPrivacyAgree.RowCount() > 0 ) {	// 기존자료가 있으면
+	
+		lfn_searchHistory();  // 동의서 등록 이력 조회.
+		
+	}
+	
+}
+
+
+
+// 동의서 등록 이력 조회
+function lfn_searchHistory(obj) {
+
+
+	var ls_SearchArg = "PAMGNO=" + quote(ds_ioPrivacyAgree.GetColumn(ds_ioPrivacyAgree.currow, "PAMGNO"));
+	    
+
+    ds_ioPrivacyAgreeH.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("com:searchPersonalPrivacyHistory", false);
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,""    // inDs
+        ,"ds_ioPrivacyAgreeH=ds_oPrivacyAgreeH"    // outDs
+        ,ls_SearchArg
+        ,"lfn_AfterSearchPersonalPrivacyHistory"
+        ,false
+        ,false
+        ,true
+    );
+
+}
+
+
+
+function lfn_AfterSearchPersonalPrivacyHistory(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return ;
+    }
+    
+	if (ds_ioPrivacyAgreeH.RowCount() > 0 ) {	// 기존자료가 있으면
+	
+		lbBizGubun.Text = ds_ioPrivacyAgree.GetColumn(ds_ioPrivacyAgree.currow, "BIZCD");
+		
+		lbCourseGubun.Text = ds_ioPrivacyAgree.GetColumn(ds_ioPrivacyAgree.currow, "COURSECD");
+    
+	}
+    
+}
+
+
+
+// 주민번호 유효성 체크
+function lfn_ResidentNoCheck(obj)
+{
+	var lb_ValidRedidentNoYn = gfn_CheckResidentNo(medResidentNo.Value); // 주민번호체계 검사
+
+    var lb_ValidForeignNoYn = gfn_CheckForeignNo(medResidentNo.Value); // 재외국인 등록번호 검사
+
+    if (!lb_ValidRedidentNoYn && !lb_ValidForeignNoYn) { // 둘다 실패면
+
+		lfn_ResidentNoChange(false);		
+
+    } else {
+
+        lfn_ResidentNoChange(true);
+
+    }
+}
+
+// 주민번호 오류/정상 표시
+function lfn_ResidentNoChange(bStatus) {
+	
+	if(bStatus) {	//정상
+
+		lbResidentNoError.Text = "정상";
+
+		lbResidentNoError.Color = "blue";
+		
+		ls_ResidentNoError = "0";
+
+	} else {	//오류
+
+		lbResidentNoError.Text = "오류";
+
+		lbResidentNoError.Color = "brown";
+		
+		ls_ResidentNoError = "1";
+
+	}
+
+	lbResidentNoError.Visible = true;
+}
+
+// 주민등록번호
+function medResidentNo_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam) {
+	if (nChar == 13) {
+	
+		lfn_search();
+
+	}
+
+}
+
+function medResidentNo_OnKillFocus(obj)
+{
+    if (!gfn_IsNull(edPersonNm.Text) && !gfn_IsNull(medResidentNo.Value)) {
+        
+        lfn_ResidentNoCheck();
+        
+    }
+}
+
+
+// 파일 보기
+function btnFileView_OnClick(obj)
+{
+    gfn_ImageViewPopup(
+        ls_RealFilePath
+        , ls_RealFileName
+        , ls_RealFileName
+    );
+}
+
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam)
+{
+	gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function lfn_End(obj)
+{
+	close(true);
+}
+
+function lfn_Cancel(obj)
+{
+	edPersonNm.Text = "";
+	
+	medResidentNo.Value = "";
+	
+	lbResidentNoError.Text = "";
+	
+	lbBizGubun.Text = "";
+	
+	lbCourseGubun.Text = "";
+	
+	ds_ioPrivacyAgree.ClearData();
+	
+	ds_ioPrivacyAgreeH.ClearData();
+}
+
+// 등록현황 동의서 보기
+function gdPrivacyAgree_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+
+	if (nCell == 6) {	
+		gfn_ImageViewPopup(	
+			ls_FileUploadFolder + ds_ioPrivacyAgree.GetColumn(nRow, "RUPATH")	
+			, ds_ioPrivacyAgree.GetColumn(nRow, "RUFILENM")	
+			, ds_ioPrivacyAgree.GetColumn(nRow, "RUFILENM")	
+		);
+	
+    }
+    
+}
+
+
+// 등록이력 동의서 보기
+function gdPrivacyAgreeH_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+
+	if (nCell == 7) {
+		gfn_ImageViewPopup(	
+			ls_FileUploadFolder + ds_ioPrivacyAgreeH.GetColumn(nRow, "RUPATH")	
+			, ds_ioPrivacyAgreeH.GetColumn(nRow, "RUFILENM")	
+			, ds_ioPrivacyAgreeH.GetColumn(nRow, "RUFILENM")	
+		);
+	
+    }
+}
+
+
+function gdPrivacyAgree_OnCellPosChanged(obj,nRow,nCell,nOldRow,nOldCell,nPivotIndex,nOldPivotIndex)
+{
+	lfn_searchHistory(obj);
+}
+]]></Script>
+</Window>

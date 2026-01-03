@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="output" io="OUTPUT" reserved="NO"></dataset>
+	<dataset id="input" io="INPUT" reserved="NO"></dataset>
+	<member_var>
+		<var id="EPCOURSECD" reserved="NO" type="CHAR"><![CDATA[]]></var>
+		<var id="EPNUMTYPE" reserved="NO" type="CHAR"><![CDATA[]]></var>
+		<var id="EPALPHATYPE" reserved="NO" type="CHAR"><![CDATA[]]></var>
+	</member_var>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_IMP_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[
+function Run()
+{
+	// TODO: Add your source code here
+	var insertQuery = " SELECT CORRECTANSWER.CATCCOURSECD AS EPCOURSECD "
+									+ "   , CORRECTANSWER.CAEPNUMTYPE AS EPNUMTYPE "
+									+ "   , CORRECTANSWER.CAEPALPHATYPE AS EPALPHATYPE "
+									+ "   , CORRECTANSWER.CAITEMNO AS CAITEMNO "
+									+ "   , CORRECTANSWER.CACORRECTCNT AS CACORRECTCNT "
+									+ "   , CORRECTANSWER.CAITEMSCORE AS CAITEMSCORE "
+									+ "   , CORRECTANSWER.CACORRECTANSWER AS CACORRECTANSWER "
+									+ "   , EXAMPAPER.EPQSTITEMCNT AS EPQSTITEMCNT "
+									+ "   , EXAMPAPER.EPTOTALPOINT AS EPTOTALPOINT "
+									+ " FROM CORRECTANSWER "
+									+ "    , EXAMPAPER "
+									+ " WHERE CORRECTANSWER.CATCCOURSECD  = EXAMPAPER.EPTCCOURSECD "
+									+ "   AND CORRECTANSWER.CAEPNUMTYPE    = EXAMPAPER.EPNUMTYPE "
+									+ "   AND CORRECTANSWER.CAEPALPHATYPE = EXAMPAPER.EPALPHATYPE ";
+					if (EPCOURSECD != "")	{
+						insertQuery += " AND CORRECTANSWER.CATCCOURSECD = '" + EPCOURSECD + "'";
+				  } 
+				  if (EPNUMTYPE != "")	{
+						insertQuery += " AND CORRECTANSWER.CAEPNUMTYPE = '" + EPNUMTYPE + "'";
+				  } 
+				  if (EPALPHATYPE != "")	{
+						insertQuery += " AND CORRECTANSWER.CAEPALPHATYPE = '" + EPALPHATYPE + "'";
+				  }
+				  insertQuery += " ORDER BY CINT(CORRECTANSWER.CAITEMNO)";
+			   
+			ExecuteQuery(insertQuery, "output");
+}
+]]></source>
+</class2>

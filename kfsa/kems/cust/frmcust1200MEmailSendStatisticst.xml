@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmcust1200MEmailSendStatisticst" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="[인터넷]메일발송현황" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEmailStat">
+				<Contents>
+					<colinfo id="CNO" size="200" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="40" summ="default" type="STRING"/>
+					<colinfo id="FMHFMMGNO" size="1" summ="default" type="STRING"/>
+					<colinfo id="ESGTMGNO" size="8" summ="default" type="STRING"/>
+					<colinfo id="GTDEPTNM" size="7" summ="default" type="DATE"/>
+					<colinfo id="RCNM" size="1" summ="default" type="STRING"/>
+					<colinfo id="ESYEAR" size="20" summ="default" type="STRING"/>
+					<colinfo id="ESDATE" size="30" summ="default" type="STRING"/>
+					<colinfo id="ESTIME" size="6" summ="default" type="STRING"/>
+					<colinfo id="ESCOUSECD" size="3" summ="default" type="STRING"/>
+					<colinfo id="ESCOURSENM" size="4" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="ESHEMAILADDR" size="13" summ="default" type="STRING"/>
+					<colinfo id="ESHRECEIVEYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ESHSENDYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ESHSENDDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ESHSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ESHMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ECTITLE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPrintList">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPrintDate"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPrintJibu"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oViewMailDetail"></Dataset>
+		</Datasets>
+		<Shape Bottom="108" Height="52" Id="shpGubunBox" Left="4" LineColor="user15" Right="796" TabOrder="22" Top="56" Type="Rectangle" Width="792"></Shape>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="357" LineColor="user14" Right="796" TabOrder="14" Top="1" Type="Rectangle" Width="439"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="15" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="300">
+			<Contents></Contents>
+		</Div>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oEmailStat" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="584" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="448" Id="gdEmailStat" InputPanel="FALSE" Left="4" LineColor="default" OnCellDBLClick="gdEmailStat_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="796" RowHeight="20" Style="sty_Grid" TabOrder="13" TabStop="true" Top="136" UseDBuff="true" UsePopupMenu="true" UserData="메일발송현황" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="default">
+					<columns>
+						<col width="40"/>
+						<col width="47"/>
+						<col width="74"/>
+						<col width="107"/>
+						<col width="60"/>
+						<col width="64"/>
+						<col width="52"/>
+						<col width="103"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="135"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="129"/>
+						<col width="59"/>
+						<col width="209"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="년도"/>
+						<cell col="2" display="text" text="교육일자"/>
+						<cell col="3" display="text" text="교육시간"/>
+						<cell align="center" col="4" display="text" text="지부"/>
+						<cell align="center" col="5" display="text" text="관리번호"/>
+						<cell align="center" col="6" display="text" text="지역"/>
+						<cell align="center" col="7" display="text" text="직능"/>
+						<cell col="8" display="text" text="회원구분"/>
+						<cell col="9" display="text" text="수신자"/>
+						<cell col="10" display="text" text="이메일"/>
+						<cell col="11" display="text" text="수신확인"/>
+						<cell col="12" display="text" text="전송상태"/>
+						<cell col="13" display="text" text="발송시간"/>
+						<cell align="center" col="14" display="text" text="발송자"/>
+						<cell align="center" col="15" display="text" text="메일제목"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow&#32;+&#32;1"/>
+						<cell align="center" col="1" colid="ESYEAR" display="text"/>
+						<cell align="center" col="2" colid="ESDATE" display="text" Mask="####-##-##"/>
+						<cell align="center" col="3" colid="ESTIME" display="text" Mask="##:##~##:##"/>
+						<cell align="center" col="4" colid="GTDEPTNM" display="text"/>
+						<cell align="center" col="5" colid="CNO" display="text"/>
+						<cell align="center" col="6" colid="RCNM" display="text"/>
+						<cell align="center" col="7" colid="ESCOURSENM" display="text"/>
+						<cell align="center" col="8" colid="CSTATUSGUBUN" display="text"/>
+						<cell align="center" col="9" colid="FMNM" display="text"/>
+						<cell align="left" col="10" colid="ESHEMAILADDR" display="text"/>
+						<cell align="center" col="11" colid="ESHRECEIVEYN" display="text"/>
+						<cell align="center" col="12" colid="ESHSENDYN" display="text"/>
+						<cell align="center" col="13" colid="ESHSENDDATE" display="date" Mask="yyyy-MM-dd&#32;HH:mm.ss"/>
+						<cell align="center" col="14" colid="PNM" display="text"/>
+						<cell align="left" col="15" colid="ECTITLE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="722" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="12" Top="112" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="360" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="447" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="2" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="lfn_Excel" Style="sty_Button" TabOrder="3" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="4" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="5" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="316" Style="sty_Label" TabOrder="16" Text="직능" Top="60" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_oCourse" Left="407" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="8" Top="59" UserData="S" Width="225"></Combo>
+		<Static Align="Center" Height="20" Id="lbSendDate" Left="8" Style="sty_Label" TabOrder="18" Text="발송일자" Top="84" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbSmsCnt" Left="4" Style="sty_LabelStat" TabOrder="17" Text="건수" Top="112" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medEmailCnt" Left="96" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="11" Top="112" Width="88"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbYear" Left="184" Style="sty_Label" TabOrder="19" Text="교육년도" Top="60" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edYear" ImeMode="native" Left="276" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="7" Top="60" UserData="I:년도" Width="36"></Edit>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calSendDateEnd" Left="216" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="10" Top="84" WeeksFont="돋음,9" Width="96"></Calendar>
+		<Static Align="Center" Height="20" Id="lbDateWave" Left="201" Style="sty_Text" TabOrder="20" Text="~" Top="84" VAlign="Middle" Width="10"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calSendDateStart" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="9" Top="84" WeeksFont="돋음,9" Width="96"></Calendar>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="21" Text="지부" Top="60" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="6" Top="59" UserData="I" Width="82"></Combo>
+		<Static Align="Center" Height="20" Id="Static0" Left="316" Style="sty_Label" TabOrder="25" Text="교육일자" Top="84" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calEduDateStart" Left="408" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="23" Top="84" WeeksFont="돋음,9" Width="96"></Calendar>
+		<Static Align="Center" Height="20" Id="Static1" Left="509" Style="sty_Text" TabOrder="26" Text="~" Top="84" VAlign="Middle" Width="10"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calEduDateEnd" Left="524" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="24" Top="84" WeeksFont="돋음,9" Width="96"></Calendar>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintJibu" ImageID="BTN_TEXT_10" Left="652" OnClick="btnPrintJibu_OnClick" Style="sty_Button" TabOrder="27" Text="발송현황(지부별)&#32;출력" Top="32" Transparent="TRUE" Width="144"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintDate" ImageID="BTN_TEXT_12" Left="480" OnClick="btnPrintDate_OnClick" Style="sty_Button" TabOrder="28" Text="발송현황(발송일자별)&#32;출력" Top="32" Transparent="TRUE" Width="172"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintList" ImageID="BTN_TEXT_07" Left="373" OnClick="btnPrintList_OnClick" Style="sty_Button" TabOrder="29" Text="발송리스트&#32;출력" Top="32" Transparent="TRUE" Width="105"></Button>
+	</Form>
+	<Script><![CDATA[
+/*
+ * 프로그램명 : frmcust2000MEmailSendStatisticst.xml
+ * 설명 : 메일발송 현황
+ * 작성일 : 2010.01.
+ * 작성자 : 배기원
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+function Form_OnLoadCompleted(obj)
+{
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    edYear.Text = left(GetDate(), 4);  //년도 생성
+    calSendDateStart.value = addDate(left(getDate(), 8), -14);//접수시작일
+    calSendDateEnd.Value = left(GetDate(),8);  //접수종료일
+    calEduDateStart.value = addDate(left(getDate(), 8), -30);  //교육시작일
+    calEduDateEnd.Value = addDate(left(getDate(), 8), +30);    //교육종료일
+
+    gfn_SearchAllJibu(cbxJibu, "Y","전체"); // 지부 코드 조회 
+    gfn_SearchCustomerCourseFullName(ds_oCourse, "0","전체");	// 대표고객직능 조회   
+    cbxCourse.Index = 0;
+}
+ 
+//공통처리
+//===================================================================
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    // btnPrint.Enable = bStatus;    
+
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdEmailStat.Height = nCy - gdEmailStat.Top - 4;
+        gdEmailStat.Width = nCx - gdEmailStat.Left - 4;
+    }
+}
+//====================================================================
+
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+    if (calSendDateStart.Value > calSendDateEnd.Value) {
+        gfn_Alert("시작일자가 종료일자보다 늦습니다.");
+        calSendDateStart.Value = left(GetDate(), 4)+"0101";
+        calSendDateStart.SetFocus();
+        return false;
+    }
+    if (calEduDateStart.Value > calEduDateEnd.Value) {
+        gfn_Alert("시작일자가 종료일자보다 늦습니다.");
+        calEduDateStart.Value = left(GetDate(), 4)+"0101";
+        calEduDateStart.SetFocus();
+        return false;
+    }    
+        ds_oEmailStat.ClearData(); // 데이타셋 초기화        
+        tit_clearActionInfo();
+        tit_AddSearchActionInfo("cust:searchCust2000EmailStart", false);
+
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_oEmailStat=ds_oEmailStat"	// outDs
+            ,"GTMGNO=" + quote(cbxJibu.value)   //-- 지부
+              +" CCOURSECD=" + quote(cbxCourse.value)   //-- 직능              
+              +" SENDDATE1=" + quote(calSendDateStart.Value)// 발송일자1
+              +" SENDDATE2=  " + quote(calSendDateEnd.Value)// 발송일자2 
+              +" EDUDATE1=" + quote(calEduDateStart.Value)  // 교육일자1
+              +" EDUDATE2=  " + quote(calEduDateEnd.Value)  // 교육일자2               
+              +" YEAR=" + quote(edYear.Text)  //년도
+            ,"lfn_AfterSearchEmailStat"
+            ,false
+        );
+}
+
+function lfn_AfterSearchEmailStat(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    gfn_SearchMessage(gdEmailStat);
+    medEmailCnt = ds_oEmailStat.GetRowCount();	//건수
+}
+
+
+/*
+ * 기능 : 발송 리스트 출력
+ * parameter : 없음
+ * return : 없음
+ */
+function btnPrintList_OnClick(obj)
+{
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+    ds_oPrintList.ClearData(); // 데이타셋 초기화       
+    tit_clearActionInfo();
+    tit_addCsvSearchActionInfo("cust:searchCust2000EmailStart", false);
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_oPrintList=ds_oEmailStat"	// outDs
+        ,"GTMGNO=" + quote(cbxJibu.value)   //-- 지부
+          +" CCOURSECD=" + quote(cbxCourse.value)   //-- 직능              
+          +" SENDDATE1=" + quote(calSendDateStart.Value)// 발송일자1
+          +" SENDDATE2=  " + quote(calSendDateEnd.Value)// 발송일자2 
+          +" EDUDATE1=" + quote(calEduDateStart.Value)  // 교육일자1
+          +" EDUDATE2=  " + quote(calEduDateEnd.Value)  // 교육일자2               
+          +" YEAR=" + quote(edYear.Text)  //년도
+        ,"lfn_AfterPrintList"
+        ,false
+    );
+}
+
+/*
+ * 기능 : 발송 리스트 출력 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterPrintList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    if (ds_oPrintList.GetCount() < 1) {
+        gfn_Alert("출력할 데이터가 없습니다.");
+        return false;
+    }else{
+        var param  = "rpStartDate="+quote(calSendDateStart.Value);
+            param += "^rpEndDate="+quote(calSendDateEnd.Value);
+            param += "^Jibu="+quote(cbxJibu.Text);
+        gfn_CallReportPopup("frmCust2000R01EmailSendList.rex", "ds_oPrintList", param);    
+    }
+}
+/*
+ * 기능 : 발송일자별 발송현황 출력
+ * parameter : 없음
+ * return : 없음
+ */
+function btnPrintDate_OnClick(obj)
+{
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+    ds_oPrintDate.ClearData(); // 데이타셋 초기화    
+    tit_clearActionInfo();
+    tit_addCsvSearchActionInfo("cust:searchCust2000PrintDate", false);
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_oPrintDate=ds_oPrintDate"	// outDs
+        ,"GTMGNO=" + quote(cbxJibu.value)   //-- 지부
+          +" CCOURSECD=" + quote(cbxCourse.value)   //-- 직능              
+          +" SENDDATE1=" + quote(calSendDateStart.Value)// 발송일자1
+          +" SENDDATE2=  " + quote(calSendDateEnd.Value)// 발송일자2 
+          +" YEAR=" + quote(edYear.Text)  //년도
+        ,"lfn_AfterPrintDate"
+        ,false
+    );
+}
+
+/*
+ * 기능 : 발송일자별 발송현황 출력 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterPrintDate(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    if (ds_oPrintDate.GetCount() < 1) {
+        gfn_Alert("출력할 데이터가 없습니다.");
+        return false;
+    }else{
+        var param  = "rpStartDate="+quote(calSendDateStart.Value);
+            param += "^rpEndDate="+quote(calSendDateEnd.Value);
+            param += "^Jibu="+quote(cbxJibu.Text);
+        gfn_CallReportPopup("frmCust2000R02EmailSendDate.rex", "ds_oPrintDate", param);
+	}
+}
+
+/*
+ * 기능 : 지부별 발송현황 출력
+ * parameter : 없음
+ * return : 없음
+ */
+function btnPrintJibu_OnClick(obj)
+{
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+    ds_oPrintJibu.ClearData(); // 데이타셋 초기화    
+    tit_clearActionInfo();
+    tit_addCsvSearchActionInfo("cust:searchCust2000PrintJibu", false);
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_oPrintJibu=ds_oPrintJibu"	// outDs
+        ,"GTMGNO=" + quote(cbxJibu.value)   //-- 지부
+          +" CCOURSECD=" + quote(cbxCourse.value)   //-- 직능              
+          +" SENDDATE1=" + quote(calSendDateStart.Value)// 발송일자1
+          +" SENDDATE2=  " + quote(calSendDateEnd.Value)// 발송일자2 
+          +" YEAR=" + quote(edYear.Text)  //년도
+        ,"lfn_AfterPrintJibu"
+        ,false
+    );
+
+}
+
+/*
+ * 기능 : 지부별 발송현황 출력 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterPrintJibu(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    if (ds_oPrintJibu.GetCount() < 1) {
+        gfn_Alert("출력할 데이터가 없습니다.");
+        return false;
+    }else{
+        var param  = "rpStartDate="+quote(calSendDateStart.Value);
+            param += "^rpEndDate="+quote(calSendDateEnd.Value);
+            param += "^Jibu="+quote(cbxJibu.Text);
+        gfn_CallReportPopup("frmCust2000R03EmailSendJibu.rex", "ds_oPrintJibu", param);
+	}
+}
+
+
+
+
+function lfn_Cancel(obj)
+{
+    lfn_CancelL(obj);
+}
+
+function lfn_CancelL(obj)
+{
+    calSendDateStart.value = addDate(left(getDate(), 8), -14);//접수시작일
+    calSendDateEnd.Value = left(GetDate(),8);  //접수종료일
+    calEduDateStart.value = addDate(left(getDate(), 8), -30);  //교육시작일
+    calEduDateEnd.Value = addDate(left(getDate(), 8), +30);    //교육종료일
+    cbxJibu.SetFocus();
+}
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdEmailStat, 0); // 멀티 정렬을 실행한다.
+}
+
+
+
+function gdEmailStat_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	lfn_ViewMailDetail();
+}
+
+
+/*
+ * 기능 : 이메일 내용 상세 보기
+ * parameter : 없음
+ * return : 없음
+ */
+
+function lfn_ViewMailDetail(obj)
+{
+	var sArg = "sMailMgno=" + quote(ds_oEmailStat.GetColumn(ds_oEmailStat.currow, "ESHMGNO"));  //이메일관리번호
+	Dialog("cust::frmcust1201PMailDetailViewerPopup.xml", sArg, 1000, 700, "", -1, -1);	//이메일 상세보기 팝업을 호출한다.
+}
+
+
+
+
+
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_2000,dsc_0021]";	// 개인정보접속기록 시스템ID 
+}
+]]></Script>
+</Window>

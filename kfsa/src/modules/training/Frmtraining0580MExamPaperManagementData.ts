@@ -1,0 +1,178 @@
+// @ts-nocheck
+export const Frmtraining0580MExamPaperManagementData = {};
+
+export interface Ids_ioExamPaper {
+    EPALPHATYPE?: string;
+    EPCOURSECD?: string;
+    EPNUMTYPE?: string;
+    EPQSTITEMCNT?: number;
+    EPTOTALPOINT?: number;
+    EPREMARK?: string;
+    USE_YN?: string;
+    EPCHASUGUBUN?: string;
+    EPSUBJECTGUBUN?: string;
+    SUBJECTGUBUN?: string;
+}
+
+export interface Ids_oAlphaType {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oAlphaType: Ids_oAlphaType[] = [
+    { CD: 'A', DATA: 'A형' },
+    { CD: 'B', DATA: 'B형' },
+    { CD: 'C', DATA: 'C형' },
+    { CD: 'D', DATA: 'D형' },
+];
+
+export interface Ids_oCourse {
+    CD?: string;
+    DATA?: string;
+}
+
+export interface Ids_oNumType {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oNumType: Ids_oNumType[] = [
+    { CD: '', DATA: '전체' },
+    { CD: '01', DATA: '1종' },
+    { CD: '02', DATA: '2종' },
+    { CD: '03', DATA: '3종' },
+    { CD: '04', DATA: '4종' },
+    { CD: '05', DATA: '5종' },
+    { CD: '06', DATA: '6종' },
+    { CD: '07', DATA: '7종' },
+    { CD: '08', DATA: '8종' },
+    { CD: '09', DATA: '9종' },
+    { CD: '10', DATA: '10종' },
+    { CD: '11', DATA: '11종' },
+    { CD: '12', DATA: '12종' },
+    { CD: '13', DATA: '13종' },
+    { CD: '14', DATA: '14종' },
+    { CD: '15', DATA: '15종' },
+    { CD: '16', DATA: '16종' },
+    { CD: '17', DATA: '17종' },
+    { CD: '18', DATA: '18종' },
+    { CD: '19', DATA: '19종' },
+    { CD: '20', DATA: '20종' },
+    { CD: '21', DATA: '21종' },
+    { CD: '22', DATA: '22종' },
+    { CD: '23', DATA: '23종' },
+    { CD: '24', DATA: '24종' },
+    { CD: '25', DATA: '25종' },
+    { CD: '26', DATA: '26종' },
+    { CD: '27', DATA: '27종' },
+    { CD: '28', DATA: '28종' },
+    { CD: '29', DATA: '29종' },
+    { CD: '30', DATA: '30종' },
+    { CD: '31', DATA: '31종' },
+    { CD: '32', DATA: '32종' },
+    { CD: '33', DATA: '33종' },
+    { CD: '34', DATA: '34종' },
+    { CD: '35', DATA: '35종' },
+    { CD: '36', DATA: '36종' },
+    { CD: '37', DATA: '37종' },
+    { CD: '38', DATA: '38종' },
+    { CD: '39', DATA: '39종' },
+    { CD: '40', DATA: '40종' },
+    { CD: '41', DATA: '41종' },
+    { CD: '42', DATA: '42종' },
+    { CD: '43', DATA: '43종' },
+    { CD: '44', DATA: '44종' },
+    { CD: '45', DATA: '45종' },
+    { CD: '46', DATA: '46종' },
+    { CD: '47', DATA: '47종' },
+    { CD: '48', DATA: '48종' },
+    { CD: '49', DATA: '49종' },
+    { CD: '50', DATA: '50종' },
+    { CD: '51', DATA: '51종' },
+    { CD: '52', DATA: '52종' },
+    { CD: '53', DATA: '53종' },
+    { CD: '54', DATA: '54종' },
+    { CD: '55', DATA: '55종' },
+    { CD: '56', DATA: '56종' },
+    { CD: '57', DATA: '57종' },
+    { CD: '58', DATA: '58종' },
+    { CD: '59', DATA: '59종' },
+    { CD: '60', DATA: '60종' },
+    { CD: '61', DATA: '61종' },
+    { CD: '62', DATA: '62종' },
+    { CD: '63', DATA: '63종' },
+    { CD: '64', DATA: '64종' },
+    { CD: '65', DATA: '65종' },
+    { CD: '66', DATA: '66종' },
+    { CD: '67', DATA: '67종' },
+    { CD: '68', DATA: '68종' },
+    { CD: '69', DATA: '69종' },
+    { CD: '70', DATA: '70종' },
+    { CD: '71', DATA: '71종' },
+    { CD: '72', DATA: '72종' },
+    { CD: '73', DATA: '73종' },
+    { CD: '74', DATA: '74종' },
+    { CD: '75', DATA: '75종' },
+    { CD: '76', DATA: '76종' },
+    { CD: '77', DATA: '77종' },
+    { CD: '78', DATA: '78종' },
+    { CD: '79', DATA: '79종' },
+    { CD: '80', DATA: '80종' },
+    { CD: '81', DATA: '81종' },
+    { CD: '82', DATA: '82종' },
+    { CD: '83', DATA: '83종' },
+    { CD: '84', DATA: '84종' },
+    { CD: '85', DATA: '85종' },
+    { CD: '86', DATA: '86종' },
+    { CD: '87', DATA: '87종' },
+    { CD: '88', DATA: '88종' },
+    { CD: '89', DATA: '89종' },
+    { CD: '90', DATA: '90종' },
+    { CD: '91', DATA: '91종' },
+    { CD: '92', DATA: '92종' },
+    { CD: '93', DATA: '93종' },
+    { CD: '94', DATA: '94종' },
+    { CD: '95', DATA: '95종' },
+    { CD: '96', DATA: '96종' },
+    { CD: '97', DATA: '97종' },
+    { CD: '98', DATA: '98종' },
+    { CD: '99', DATA: '99종' },
+    { CD: '100', DATA: '100종' },
+];
+
+export interface Ids_ioExamPaperSearch {
+    EPALPHATYPE?: string;
+    EPCOURSECD?: string;
+    EPNUMTYPE?: string;
+    EPQSTITEMCNT?: number;
+    EPTOTALPOINT?: number;
+    EPREMARK?: string;
+    USE_YN?: string;
+    EPCHASUGUBUN?: string;
+    EPSUBJECTGUBUN?: string;
+    SUBJECTGUBUN?: string;
+}
+
+export interface Ids_oModifyColumn {
+    COLUMNCD?: string;
+    COLUMNNM?: string;
+}
+
+export const ds_ds_oModifyColumn: Ids_oModifyColumn[] = [
+    { COLUMNCD: 'EPQSTITEMCNT', COLUMNNM: '문항수' },
+    { COLUMNCD: 'EPTOTALPOINT', COLUMNNM: '총점' },
+    { COLUMNCD: 'EPREMARK', COLUMNNM: '비고' },
+    { COLUMNCD: 'USE_YN', COLUMNNM: '사용유무' },
+];
+
+export interface Ids_oSubjectGubun {
+    CD?: string;
+    DATA?: string;
+}
+
+export const ds_ds_oSubjectGubun: Ids_oSubjectGubun[] = [
+    { CD: '', DATA: '전체' },
+    { CD: '1', DATA: '1과목' },
+    { CD: '2', DATA: '2과목' },
+    { CD: '3', DATA: '3과목' },
+];

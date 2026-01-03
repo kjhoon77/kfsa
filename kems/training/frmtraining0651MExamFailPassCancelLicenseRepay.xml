@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmtraining0651MExamFailPassCancelLicenseRepay" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="불합격자&#32;수첩비&#32;일괄&#32;환불" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioExamInfo">
+				<Contents>
+					<colinfo id="PASS" size="3" summ="default" type="INT"/>
+					<colinfo id="NOEXAM" size="3" summ="default" type="INT"/>
+					<colinfo id="EOEXAMDATE" size="8" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEjpassLicenseNotYetSunab" OnColumnChanged="ds_ioJubsuList_BeforeAfter_OnColumnChanged"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioWorkGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>선수납</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioReport"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioReport2"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEjpassLicenseAlreadySunab"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEjpassEarlyLicenseAlreadySunab" OnColumnChanged="ds_ioEjpassEarlyLicenseAlreadySunab_OnColumnChanged"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioExamPrint">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioRepayReport">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPrintReceiptMast">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPrintReceiptDtl">
+				<Contents></Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="52" Height="52" Id="shpBtnBox" Left="448" LineColor="user14" Right="799" TabOrder="61" Top="0" Type="Rectangle" Width="351"></Shape>
+		<Shape Bottom="105" Height="51" Id="shpGubunBox" Left="8" LineColor="user15" Right="800" TabOrder="24" Top="54" Type="Rectangle" Width="792"></Shape>
+		<Div BKColor="user0" Font="굴림,8" Height="28" Id="divWorkFormTitle" Left="10" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="15" TabStop="FALSE" Text="Div0" Top="1" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="416">
+			<Contents></Contents>
+		</Div>
+		<Grid AutoEnter="TRUE" BindDataset="ds_ioEjpassEarlyLicenseAlreadySunab" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="586" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="450" Id="gdExamJubsu" InputPanel="FALSE" Left="6" LineColor="default" OnHeadClick="gdTraining_OnHeadClick" Right="798" RowHeight="20" Style="sty_Grid" TabOrder="14" TabStop="true" Top="136" UseDBuff="true" UsePopupMenu="true" UserData="불합격자&#32;선수납비&#32;일괄환불자&#32;목록" UseSelColor="FALSE" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="29"/>
+						<col width="143"/>
+						<col width="68"/>
+						<col width="56"/>
+						<col width="100"/>
+						<col width="87"/>
+						<col width="68"/>
+						<col width="101"/>
+						<col width="63"/>
+						<col width="323"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="checkbox" edit="checkbox"/>
+						<cell col="1" display="text" text="직능명"/>
+						<cell align="center" col="2" display="text" text="접수번호"/>
+						<cell align="center" col="3" display="text" text="성명"/>
+						<cell align="center" col="4" display="text" text="생년월일"/>
+						<cell col="5" display="text" text="선수납"/>
+						<cell col="6" display="text" text="결제여부"/>
+						<cell col="7" display="text" text="결제방법"/>
+						<cell col="8" display="text" text="금액"/>
+						<cell align="center" col="9" display="text" text="주소"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor="expr:fn_bkcolor(currow)" col="0" colid="SEL" display="checkbox" edit="checkbox" text="0"/>
+						<cell align="center" bkcolor="expr:fn_bkcolor(currow)" col="1" colid="TCCOURSENM" display="text"/>
+						<cell align="center" bkcolor="expr:fn_bkcolor(currow)" col="2" colid="EOHJUBSUNO" display="text"/>
+						<cell align="center" bkcolor="expr:fn_bkcolor(currow)" col="3" colid="EJPERSONNM" display="text"/>
+						<cell align="center" bkcolor="expr:fn_bkcolor(currow)" col="4" colid="birthday" display="text"/>
+						<cell align="center" bkcolor="expr:fn_bkcolor(currow)" col="5" colid="EJLICENSEAMTTJMGNO_A" display="text"/>
+						<cell align="center" bkcolor="expr:fn_bkcolor(currow)" col="6" colid="SUNAPGUBUN" color='expr:iif(SUNAPGUBUN==&quot;환불&quot;,&quot;red&quot;,&quot;default&quot;)' display="text"/>
+						<cell align="center" bkcolor="expr:fn_bkcolor(currow)" col="7" colid="CCCDNM" display="text"/>
+						<cell align="center" bkcolor="expr:fn_bkcolor(currow)" col="8" colid="TSLICENSEAMOUNT" display="number"/>
+						<cell align="left" bkcolor="expr:fn_bkcolor(currow)" col="9" colid="ADDR1" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="722" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="13" Top="114" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSave" ImageID="BTN_TEXT_COM" Left="538" OnClick="lfn_Save" Style="sty_Button" TabOrder="2" Text="일괄환불(F4)" ToolTipText="일괄환불" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="712" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="3" ToolTipText="입력&#32;초기화" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="539" OnClick="btnToExcel_OnClick" Style="sty_Button" TabOrder="4" ToolTipText="엑셀로&#32;저장" Top="27" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="626" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="5" ToolTipText="화면&#32;출력" Top="27" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="713" OnClick="lfn_End" Style="sty_Button" TabOrder="6" ToolTipText="닫기" Top="27" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbExamDate" Left="195" Style="sty_LabelStat" TabOrder="17" Text="시험일자" Top="113" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbFailCnt" Left="12" Style="sty_LabelStat" TabOrder="16" Text="결제예정인원" Top="113" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medFailCnt" Left="103" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="11" Top="113" Width="88"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbPassCnt" Left="12" Style="sty_Label" TabOrder="18" Text="처리일자" Top="80" VAlign="Middle" Width="88"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="451" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="3" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="12" Style="sty_Label" TabOrder="22" Text="지부" Top="57" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="103" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="7" Top="56" UserData="I:지부" Width="90"></Combo>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="327" Style="sty_Label" TabOrder="19" Text="직능" Top="57" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_oCourse" Left="418" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="9" Top="57" UserData="S:직능" Width="182"></Combo>
+		<Static Align="Center" Height="20" Id="lbExamYear" Left="195" Style="sty_Label" TabOrder="21" Text="년도" Top="57" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edExamYear" ImeMode="native" Left="287" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" Style="sty_Edit" TabOrder="8" Top="57" UserData="I:년도" Width="36"></Edit>
+		<Static Align="Center" Height="20" Id="lbTrainingOrder" Left="603" Style="sty_Label" TabOrder="20" Text="회차" Top="57" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edExamOrder" ImeMode="native" Left="695" LeftMargin="2" MaxLength="3" Number="TRUE" OnChanged="lfn_SearchTrainingAbsent" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="edExamOrder_OnKillFocus" Style="sty_Edit" TabOrder="10" Top="57" UserData="S:회차" Width="28"></Edit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medExamDate" Left="287" LeftMargin="2" Mask="####-##-##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Time" TabOrder="12" Top="113" Type="STRING" UserData="S" Width="78"></MaskEdit>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Font="굴림,11" Height="20" Id="radWorkGubun" INDEX="0" InnerDataset="ds_ioWorkGubun" Left="580" OnChanged="radWorkGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="25" Top="108" Value="T" Visible="FALSE" Width="125"></Radio>
+		<Static Align="Center" Height="20" Id="Static0" Left="615" Style="sty_Label" TabOrder="26" Text="수납구분" Top="108" VAlign="Middle" Visible="FALSE" Width="88"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" Font="굴림,9" HeaderFont="돋음,10,Bold" Height="20" Id="calLicenseSunabDate" Left="104" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="27" Top="79" WeeksFont="돋음,9" Width="88"></Calendar>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDelete" ImageID="BTN_TEXT_COM" Left="625" OnClick="lfn_Delete" Style="sty_Button" TabOrder="28" Text="환불취소(F5)" ToolTipText="환불취소" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnReportBatch" ImageID="BTN_TEXT_09" Left="665" OnClick="btnReportBatch_OnClick" Style="sty_Button" TabOrder="29" Text="환불신청서일괄출력" Top="80" Transparent="TRUE" Width="134"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintRctTotal" ImageID="BTN_TEXT_09" Left="531" OnClick="btnPrintRctTotal_OnClick" Style="sty_Button" TabOrder="30" Text="영수증&#32;일괄&#32;출력" Top="80" Width="131"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0460MExamPassProcessBeforeOMR.xml
+ * 설명 : 시험합격처리(OMR처리전)
+ * 작성일 : 2009.07.17
+ * 작성자 : 장성호
+ */
+
+#include "LIB::training.js"; // 공통업무 관련
+
+var gubun = "N";
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    //ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    ms_FormAuth = "W";
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    // 공통 코드 조회
+    gfn_SearchTrainingCourse("T", ds_oCourse, "Y", "전체"); // 직능 코드 조회
+    ds_oCourse.Filter("CD=='21'||CD=='22'||CD=='23'");	// 1급 2급 3급 소관만
+    cbxCourse.Value = "22";
+    gfn_SearchJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회
+
+    edExamOrder.SetFocus();
+    radWorkGubun.value ="N";
+    edExamYear.Text = left(GetDate(), 4);
+    calLicenseSunabDate.Value = Today();
+    radWorkGubun.Value = "Y";
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+
+    if (gs_IsResizingForm == "Y") {
+        gdExamJubsu.Height = nCy - gdExamJubsu.Top - 4;
+        gdExamJubsu.Width = nCx - gdExamJubsu.Left - 4;
+    }
+
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+ 
+    ///////////////////// 조회이력 남기기
+    ls_HistoryArg = "지부=" + quote(cbxJibu.value)   //-- 지부
+              +" 년도=" + quote(edExamYear.text)  //-- 년도 
+              +" 직능=" + quote(cbxCourse.value)   //-- 직능              
+              +" 회차=" + quote(edExamOrder.text) // -- 회차             
+              +" 시험전후구분=" + quote(radWorkGubun.value); // -- 접수번호// args 
+          
+        gfn_InsertSearchPrintHistory(
+            "P"
+            , this.ID
+            , global.mnuLeft.cbxOpenForm.Text
+            , ls_HistoryArg
+        ); 
+    /////////////////////  
+    
+    if (radWorkGubun.Value == "N") {       // 일반수납일 경우 조회
+        ds_ioEjpassLicenseAlreadySunab.ClearData(); // 데이타셋 초기화
+        ds_ioEjpassEarlyLicenseAlreadySunab.ClearData(); // 데이타셋 초기화
+        gdExamJubsu.Format = ds_ioEjpassLicenseAlreadySunab;
+        tit_clearActionInfo();
+        tit_addSearchActionInfo("training:searchEjpassLicenseAlreadySunab", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_ioEjpassLicenseAlreadySunab=ds_oEjpassLicenseAlreadySunab"	// outDs
+            ,"EOMGGTMGNO=" + quote(cbxJibu.Value)
+                + " EOYEAR=" + quote(edExamYear.Text)
+                + " EOTCCOURSECD=" + quote(cbxCourse.Value)	// args
+                + " EOEXAMORDER=" + quote(edExamOrder.Text)	// args 
+                + " SUNAB_GUBUN=" + quote(radWorkGubun.value)	// args
+                
+                // args
+            ,"lfn_AfterJubsuList"
+            ,false
+            ,""
+            ,true
+        );
+    } else if (radWorkGubun.Value == "Y"){   // 선수납일때
+        ds_ioEjpassLicenseAlreadySunab.ClearData(); // 데이타셋 초기화
+        ds_ioEjpassEarlyLicenseAlreadySunab.ClearData(); // 데이타셋 초기화
+        gdExamJubsu.Format = ds_ioEjpassEarlyLicenseAlreadySunab; 
+        tit_clearActionInfo();
+        tit_addSearchActionInfo("training:searchEjpassEarlyLicenseAlreadySunab", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_ioEjpassEarlyLicenseAlreadySunab=ds_oEjpassEarlyLicenseAlreadySunab"	// outDs
+            ,"EOMGGTMGNO=" + quote(cbxJibu.Value)
+                + " EOYEAR=" + quote(edExamYear.Text)
+                + " EOTCCOURSECD=" + quote(cbxCourse.Value)	// args
+                + " EOEXAMORDER=" + quote(edExamOrder.Text)	// args 
+                + " SUNAB_GUBUN=" + quote(radWorkGubun.value)	// args
+                
+                // args
+            ,"lfn_AfterJubsuList"
+            ,false
+            ,""
+            ,true
+        );    
+    
+    
+    }
+    
+}
+
+function lfn_AfterJubsuList(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+
+    }
+    medFailCnt.Value = "0";
+   // medFailCnt.Value = ds_ioJubsuList_BeforeAfter.GetCount();    
+    medExamDate.value = ds_ioEjpassEarlyLicenseAlreadySunab.GetColumn(0, "EOEXAMDATE"); 
+    medFailCnt.text = ""; 
+    gfn_SearchMessage(gdExamJubsu); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+
+}
+
+function lfn_Save(obj) {
+
+
+    if(!gfn_CheckChangedGrid(this))  //선택한것이 있는지 체크 메세지 보임
+    { alert("환불 처리 대상자를 선택해 주십시오.");      
+        return false;
+    }        
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+		return false;
+	}
+	
+	var cnt = 0; // 수납자 선택 여부	
+	for(i = 0; i < ds_ioEjpassEarlyLicenseAlreadySunab.RowCount(); i++) {
+        if ((ds_ioEjpassEarlyLicenseAlreadySunab.GetColumn(i, "SUNAPGUBUN") == "수납")
+            && (ds_ioEjpassEarlyLicenseAlreadySunab.GetColumn(i, "SEL") == "1")){
+            cnt += 1; // 시험접수인원 카운트
+        }
+    }
+    
+    if (cnt == 0) {  // 수납인원이 있으면 다시 선택해야함 
+        alert("수납건에 대해서만 결제 취소가 가능합니다..");
+        return false;
+    };  
+    	
+    if(!Confirm("선택한 인원에 대해 수첩비 환불 처리하시겠습니까?(현금으로 환불 처리됨)")){  //선택한것이 있는지 체크 메세지 보임
+        return false;
+    }
+	
+ 
+    var RepayDataset;  // 환불 처리시 데이터 셋
+    
+    // alert(LLCSNO_A);
+   
+   // 일반 수납은 일단 막음
+    if (radWorkGubun.Value == "N") {
+        alert("일반 수납자는 수첩비를 사전에 받지 않기 때문에 환불하지 않습니다.");
+    } else {
+    
+    }
+    
+    if (radWorkGubun.Value == "N") {       // 일반수납일 경우 조회  
+        RepayDataset = "ds_iFailPassLicenseRepay=ds_ioEjpassLicenseAlreadySunab:U";          
+    }else if (radWorkGubun.Value == "Y") {       // 선수납일 경우 조회
+        RepayDataset = "ds_iFailPassLicenseRepay=ds_ioEjpassEarlyLicenseAlreadySunab:U";          
+    }    
+    
+    tit_clearActionInfo();
+    tit_AddMultiActionInfo(
+    
+        "training:insertFailPassLicenseRepay"	// insert  		
+        , ""	// update  
+        , ""	// delete
+        , ""	// flag column 명
+        , ""	// key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N"	// 실행타입
+    );
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,RepayDataset/// inDs   // 일반수납인지 선수납인지에 따라 다름     
+        
+        ,""	// outDs
+        ,"EOMGGTMGNO=" + quote(cbxJibu.Value)
+                + " EOYEAR=" + quote(edExamYear.Text)
+                + " EOTCCOURSECD=" + quote(cbxCourse.Value)	// args
+                + " LTCCOURSECD=" + quote(cbxCourse.Value)	// args
+                + " EOEXAMORDER=" + quote(edExamOrder.Text)	// args 
+                + " PROCDATE_A=" + quote(calLicenseSunabDate.value)	// args
+                   	
+        // args 
+        ,"lfn_AfterSaveJubsuList"
+        ,false
+    );	
+
+}
+
+function lfn_AfterSaveJubsuList(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+
+    } 
+    
+    gfn_SaveMessage(); 
+    lfn_Search();
+    //gfn_Alert ("OMR 처리전 일괄 시험합격 처리가 완료되었습니다.");
+
+}
+
+
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+
+    btnSave.Enable = bStatus; // 저장 버튼
+    gdExamJubsu.Editable = bStatus;
+
+}
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj) {
+
+	gfn_GridMultiSort(gdExamJubsu, 1); // 멀티 정렬을 실행한다.
+
+}
+
+function gdTraining_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	var lobj_Dataset = object(obj.BindDataset);
+	if (nCell == 0) { // 선택
+        if (obj.GetCellProp("head", nCell, "text") == 1) { // 전체가 이미 선택된 경우
+            obj.SetCellProp("head", nCell, "text", 0);
+            for(i = 0; i < lobj_Dataset.RowCount(); i++) {
+                lobj_Dataset.SetColumn(i, "SEL", "0");
+            }
+        } else { // 전체가 이미 선택되지 않은 경우
+            obj.SetCellProp("head", nCell, "text", 1);
+            for(i = 0; i < lobj_Dataset.RowCount(); i++) {
+                lobj_Dataset.SetColumn(i, "SEL", "1");
+            }
+        }
+	} else { // 헤드 정렬
+        lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex);
+	}
+}
+
+function lfn_EnterNextFocus(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) {
+        gfn_ComponentOnKillFocus(obj);
+        obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3));  
+        lfn_Search();
+    }  
+}
+
+function edExamOrder_OnKillFocus(obj) {
+
+    gfn_ComponentOnKillFocus(obj);
+
+    obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3));    
+
+}
+
+
+function lfn_SearchTrainingAbsent(obj,strText)
+{
+	if (gfn_IsNull(cbxJibu.Value)
+            || gfn_IsNull(cbxCourse.Value)
+            || gfn_IsNull(edExamYear.Text)
+            || gfn_IsNull(edExamOrder.Text)) {
+        return false;
+    }
+    edExamOrder.Text = iif(gfn_IsNull(edExamOrder.Text), "", lpad(edExamOrder.Text, "0", 3));    
+    lfn_Search();
+}
+
+function ds_ioEjpassEarlyLicenseAlreadySunab_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+	var cnt = 0; // 결강자수
+	var cnt3 = 0; 
+	for(i = 0; i < ds_ioEjpassEarlyLicenseAlreadySunab.RowCount(); i++) {
+        if (ds_ioEjpassEarlyLicenseAlreadySunab.GetColumn(i, "SEL") == 1) {
+            cnt += 1; // 시험접수인원 카운트
+        }
+        if ((ds_ioEjpassEarlyLicenseAlreadySunab.GetColumn(i, "SUNAPGUBUN") == "환불")             
+           && (ds_ioEjpassEarlyLicenseAlreadySunab.GetColumn(i, "SEL") == "1")
+           && (ds_ioEjpassEarlyLicenseAlreadySunab.GetColumn(i, "CCCD") == "10")){
+            cnt3 += 1; //  카운트
+        }    
+    }
+    medFailCnt.text = cnt;
+   
+    if (cnt3 > 0){
+        
+        btnDelete.Enable = true;  
+                      
+    } else {
+    
+        btnDelete.Enable = false;                
+    
+    }
+}
+
+function radWorkGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+        ds_ioEjpassLicenseAlreadySunab.ClearData(); // 데이타셋 초기화
+        ds_ioEjpassEarlyLicenseAlreadySunab.ClearData(); // 데이타셋 초기화
+}
+
+/*
+* 결재 그리드 배경색을 기본으로 하고 선택한 ROW에 배경색을 지정(셀의 색상속성을 지정위함)
+*/
+function fn_bkcolor(currow)
+{
+    if(ds_ioEjpassEarlyLicenseAlreadySunab.row == currow)
+     {
+        return "#DFCF91";
+      }else
+      {
+        
+        return "default"; 
+      }
+}
+
+/*
+* 선택 인원 환불 취소(자료를 삭제함), 수납 개념으로 이력이 남기는 것이 아니라
+   잘못 환불 처리를 취소 위해 테이블 
+*/
+
+function lfn_Delete(obj)
+{
+	if(!gfn_CheckChangedGrid(this))  //선택한것이 있는지 체크 메세지 보임
+    { alert("결제 처리 대상자를 선택해 주십시오.");      
+        return false;
+    }        
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+		return false;
+	}
+	
+	var cnt = 0; // 수납자 선택 여부	
+	var cnt2 = 0;
+	for(i = 0; i < ds_ioEjpassEarlyLicenseAlreadySunab.RowCount(); i++) {
+        if ((ds_ioEjpassEarlyLicenseAlreadySunab.GetColumn(i, "SUNAPGUBUN") == "환불")
+            && (ds_ioEjpassEarlyLicenseAlreadySunab.GetColumn(i, "SEL") == "1")){
+            cnt += 1; //  카운트
+        }
+        if (ds_ioEjpassEarlyLicenseAlreadySunab.GetColumn(i, "TSPROCAMOUNT_A") <> ds_ioEjpassEarlyLicenseAlreadySunab.GetColumn(i, "TSLICENSEAMOUNT_A")
+           && (ds_ioEjpassEarlyLicenseAlreadySunab.GetColumn(i, "SEL") == "1")){
+            cnt2 += 1; //  카운트
+        }        
+        
+    }
+    
+    if (cnt == 0) {  // 환불인원이 있으면 다시 선택해야함 
+        alert("환불건에 대해서만 결제 취소가 가능합니다..");
+        return false;
+    };  
+
+    if (cnt2 > 0) {  //  
+        alert(" 일괄결제를 통해 수납한 건이 아닙니다. 결제 취소가 불가능합니다.");
+        return false;
+    }; 
+    
+    if(!Confirm("선택한 인원에 대해 수첩비(선수납비) 환불처리를 취소하시겠습니까?(해당 환불내역 완전 삭제됨 주의요망!!)")){  //선택한것이 있는지 체크 메세지 보임
+        return false;
+    }
+
+    tit_clearActionInfo();
+    tit_AddMultiActionInfo(
+    
+        "training:deleteEjpassEarlyLicenseAlreadySunabCancel"	// insert  		
+        , ""	// update  
+        , ""	// delete
+        , ""	// flag column 명
+        , ""	// key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N"	// 실행타입
+    );
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_ideleteEjpassEarlyLicenseAlreadySunabCancel=ds_ioEjpassEarlyLicenseAlreadySunab:U"/// inDs              
+        ,""	// outDs
+        ,"PROCDATE_A=" +  quote(calLicenseSunabDate.Value) // -- 사번 " 
+                   	
+        // args 
+        ,"lfn_AfterSaveJubsuList"
+        ,false
+    );	
+
+}
+
+// 환불신청서 일괄출력
+function btnReportBatch_OnClick(obj)
+{
+    ds_ioRepayReport.ClearData(); // 데이타셋 초기화
+    ds_ioRepayReport.Copy(ds_ioEjpassEarlyLicenseAlreadySunab);
+    
+    for (var i=ds_ioRepayReport.rowcount;i>=0;i--) {
+        if (ds_ioRepayReport.GetColumn(i, "TSLICENSEAMOUNT") > 0) {
+            ds_ioRepayReport.DeleteRow(i);
+        }
+    }
+    
+    if (ds_ioRepayReport.GetCount() < 1) {
+        gfn_Alert("출력할 환불 정보가 없습니다.");
+        return false;
+    }
+    
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("training:searchExamReJubsuRepayPrint2", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioExamPrint=ds_oExamPrint"	// outDs
+		,"EOMGGTMGNO=" + quote(cbxJibu.Value)
+         + " EOYEAR=" + quote(edExamYear.Text)
+         + " EOTCCOURSECD=" + quote(cbxCourse.Value)
+         + " EOEXAMORDER=" + quote(edExamOrder.Text)// args 
+		,""
+		,false 
+		,""
+		,true
+	);
+	gfn_CallReportPopup("frmtraining1060R01LicenseRepayBatch.rex", "ds_ioExamPrint", "");    
+}
+
+
+// 영수증 일괄출력
+function btnPrintRctTotal_OnClick(obj)
+{   
+	ds_ioExamPrint.ClearData();
+	ds_ioExamPrint.Copy(ds_ioEjpassEarlyLicenseAlreadySunab);
+	
+	for (var i=ds_ioExamPrint.rowcount;i>=0;i--) {
+        if (ds_ioExamPrint.GetColumn(i, "TSLICENSEAMOUNT") > 0) {
+            ds_ioExamPrint.DeleteRow(i);
+        }
+    }
+    
+	if (ds_ioExamPrint.GetCount() < 1) {
+        gfn_Alert("출력할 영수증 정보가 없습니다.");
+        return false;
+    }
+    
+    if (!gfn_Confirm("영수증을 일괄출력하시겠습니까?")) {
+        return false;
+	}
+	
+    for (i=0;i<ds_ioExamPrint.GetCount();i++) {
+        // 영수증 출력 이력을 저장한다.
+        gds_oPrintReceiptHistory.ClearData();
+
+        tit_clearActionInfo();
+        tit_addSingleActionInfo("com:insertPosPrintHistory", "", 0, "");
+        // 서버 호출
+        tit_callService(
+            ""
+            ,""
+            ,""    // inDs
+            ,"gds_oPrintReceiptHistory=ds_oPrintHistory"    // outDs
+            ,"POSYEAR=" + quote(ds_ioExamPrint.GetColumn(i, "TSPMYEAR")) // args
+                + " POSMGNO=" + quote(ds_ioExamPrint.GetColumn(i, "TSPMMGNO"))
+            ,""
+            ,false
+            ,false
+            ,true
+        );
+    
+        if (gds_oPrintReceiptHistory.GetColumn(0, "RESULTCODE") <> "OK") {
+            gfn_ErrorMsg(gds_oPrintReceiptHistory.GetColumn(0, "RESULTCODE"), gds_oPrintReceiptHistory.GetColumn(0, "RESULTMSG"));
+            return false;
+        }           
+ 
+        // 영수증 출력 정보를 조회한다.(POSPRINTM, POSPAYMENT) 
+        ds_oPrintReceiptMast.ClearData(); // 데이타셋 초기화
+        ds_oPrintReceiptDtl.ClearData(); // 데이타셋 초기화
+        tit_clearActionInfo();
+        tit_addSearchActionInfo("com:searchPrintReceiptPosMast", false);
+        tit_addSearchActionInfo("com:searchPrintReceiptPosDtl", false);
+        // 서버 호출
+        tit_callService(
+            ""
+            ,""
+            ,""    // inDs
+            ,"ds_oPrintReceiptMast=ds_oPrintReceiptMast" // outDs
+                + " ds_oPrintReceiptDtl=ds_oPrintReceiptDtl"
+            ,"POSYEAR=" + quote(ds_ioExamPrint.GetColumn(i, "TSPMYEAR")) // args
+                + " POSMGNO=" + quote(ds_ioExamPrint.GetColumn(i, "TSPMMGNO"))
+            ,""
+            //,"lfn_AfterPrintReceipt"
+            ,false
+            ,false
+            ,true
+        );     
+        gfn_PrintReport("frmtraining0020R02ReceiptReIssue.rex", "ds_oPrintReceiptMast||ds_oPrintReceiptDtl", "", false, "영수증");
+        //gfn_PrintReport("frmtraining0020R02ReceiptReIssue.rex", "ds_oPrintReceiptMast||ds_oPrintReceiptDtl", "", true);
+    }        
+}
+
+function btnToExcel_OnClick(obj)
+{
+    if (ds_ioEjpassEarlyLicenseAlreadySunab.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return false;
+    }
+	// 개인정보 다운로드 사유 등록
+	var parValue = "sCode=1218";	// COMMON.PERSONALDOWNLOADH
+		parValue += " sRowCnt=" + ds_ioEjpassEarlyLicenseAlreadySunab.GetRowCount();
+		parValue += " sTitle=" + quote(gdExamJubsu.UserData);
+	ls_IsRemark = Dialog("COM::frmCOM2100PDownloadRemark.xml", parValue, "", "", "", -1, -1);	
+
+	if (ls_IsRemark == "" || ls_IsRemark == null || ls_IsRemark == "FAIL") {
+		return false;
+	}
+	lfn_Excel(obj);	
+}
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_4000,dsc_0027]";	// 개인정보접속기록 시스템ID 
+}
+
+]]></Script>
+</Window>

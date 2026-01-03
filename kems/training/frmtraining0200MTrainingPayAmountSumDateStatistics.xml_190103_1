@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmtraining0200MTrainingPayAmountSumDateStatistics" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="강습일자별/월별수수료집계현황" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" GroupKey="TOYEAR" Id="ds_oTrainingPayAmountSumDate">
+				<Contents>
+					<colinfo id="INCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="INOUTCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="JUBSUCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="OUTCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="REPAYAMT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="REPAYCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="SUNABAMT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="SUNABCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TCCOURSENM" size="30" summ="default" type="STRING"/>
+					<colinfo id="TOTALAMT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TSPROCDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="REMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOYEAR" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>M</CD>
+						<DATA>월&#32;단위</DATA>
+					</record>
+					<record>
+						<CD>T</CD>
+						<DATA>기간&#32;단위</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="108" Height="76" Id="shpGubunBox" Left="4" LineColor="user15" Right="796" TabOrder="20" Top="32" Type="Rectangle" Width="792"></Shape>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="269" LineColor="user14" Right="796" TabOrder="19" Top="1" Type="Rectangle" Width="527"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="15" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="268">
+			<Contents></Contents>
+		</Div>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oTrainingPayAmountSumDate" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="584" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="448" Id="gdTrainingJubsu" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="796" RowHeight="20" Style="sty_Grid" TabOrder="14" TabStop="true" Top="136" UseDBuff="true" UsePopupMenu="true" UserData="강습수수료집계현황" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="60"/>
+						<col width="40"/>
+						<col width="50"/>
+						<col width="50"/>
+						<col width="40"/>
+						<col width="60"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="처리일자"/>
+						<cell align="center" col="1" display="text" text="접수인원"/>
+						<cell align="center" col="2" display="text" text="환불"/>
+						<cell align="center" col="3" display="text" text="변경+"/>
+						<cell align="center" col="4" display="text" text="변경-"/>
+						<cell align="center" col="5" display="text" text="입출"/>
+						<cell align="center" col="6" display="text" text="수납인원"/>
+						<cell align="center" col="7" display="text" text="수납금액"/>
+						<cell align="center" col="8" display="text" text="환불금액"/>
+						<cell align="center" col="9" display="text" text="실수납액"/>
+						<cell align="center" col="10" display="text" text="비고"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor='expr:decode(rowlevel,1,&quot;papayawhip&quot;)' col="0" colid="TSPROCDATE" display="date" subsumtext="합&#32;계" suppress="1"/>
+						<cell align="right" bkcolor='expr:decode(rowlevel,1,&quot;papayawhip&quot;)' col="1" colid="JUBSUCNT" display="number" Mask="###,###,##0" subsumexpr="JUBSUCNT.sum"/>
+						<cell align="center" bkcolor='expr:decode(rowlevel,1,&quot;papayawhip&quot;)' col="2" colid="REPAYCNT" display="number" Mask="###,###,##0" subsumexpr="REPAYCNT.sum"/>
+						<cell align="center" bkcolor='expr:decode(rowlevel,1,&quot;papayawhip&quot;)' col="3" colid="INCNT" display="number" Mask="###,###,##0" subsumexpr="INCNT.sum"/>
+						<cell align="center" bkcolor='expr:decode(rowlevel,1,&quot;papayawhip&quot;)' col="4" colid="OUTCNT" display="number" Mask="###,###,##0" subsumexpr="OUTCNT.sum"/>
+						<cell align="center" bkcolor='expr:decode(rowlevel,1,&quot;papayawhip&quot;)' col="5" colid="INOUTCNT" display="number" Mask="###,###,##0" subsumexpr="INOUTCNT.sum"/>
+						<cell align="right" bkcolor='expr:decode(rowlevel,1,&quot;papayawhip&quot;)' col="6" colid="SUNABCNT" display="number" Mask="###,###,##0" subsumexpr="SUNABCNT.sum"/>
+						<cell align="right" bkcolor='expr:decode(rowlevel,1,&quot;papayawhip&quot;)' col="7" colid="SUNABAMT" display="number" Mask="###,###,##0" subsumexpr="SUNABAMT.sum"/>
+						<cell align="right" bkcolor='expr:decode(rowlevel,1,&quot;papayawhip&quot;)' col="8" colid="REPAYAMT" display="number" Mask="###,###,##0" subsumexpr="REPAYAMT.sum"/>
+						<cell align="right" bkcolor='expr:decode(rowlevel,1,&quot;papayawhip&quot;)' col="9" colid="TOTALAMT" display="number" Mask="###,###,##0" subsumexpr="TOTALAMT.sum"/>
+						<cell align="center" bkcolor='expr:decode(rowlevel,1,&quot;papayawhip&quot;)' col="10" colid="REMARK" display="text" subsumtext="&#32;" suppress="1"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="722" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="13" Top="112" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="272" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="446" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="3" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="btnToExcel_OnClick" Style="sty_Button" TabOrder="4" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="5" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="6" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="325" Style="sty_Label" TabOrder="16" Text="직능" Top="36" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_oCourse" Left="416" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="9" Top="35" UserData="S" Width="182"></Combo>
+		<Static Align="Center" Height="20" Id="lbTrainingYear" Left="192" Style="sty_Label" TabOrder="17" Text="년도" Top="36" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edTrainingYear" ImeMode="native" Left="284" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="8" Top="36" UserData="I:년도" Width="36"></Edit>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="7" Top="35" UserData="I" Width="88"></Combo>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="18" Text="지부" Top="36" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="359" OnClick="lfn_Print" Style="sty_Button" TabOrder="2" ToolTipText="출력" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbResdentNoGubun" Left="8" Style="sty_Label" TabOrder="21" Text="출력단위" Top="60" VAlign="Middle" Width="88"></Static>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radGubun" INDEX="0" InnerDataset="ds_oGubun" Left="104" OnChanged="radCourseGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="10" Top="60" Value="M" Width="200"></Radio>
+		<Static Align="Center" Height="20" Id="lbDate" Left="8" Style="sty_Label" TabOrder="22" Text="기간" Top="84" VAlign="Middle" Width="88"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calDateStart" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="11" Top="84" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Static Align="Center" Height="20" Id="lbDateWave1" Left="208" Style="sty_Text" TabOrder="23" Text="~" Top="84" VAlign="Middle" Width="10"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calDateEnd" Left="224" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="12" Top="84" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Calendar Border="Flat" Dateformat="yyyy-MM" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calMonthEnd" Left="224" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="25" Top="84" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Calendar Border="Flat" Dateformat="yyyy-MM" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calMonthStart" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="24" Top="84" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medTotalCnt" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="26" Top="112" UserData="S" Width="88"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbTotalCnt" Left="8" Style="sty_LabelStat" TabOrder="27" Text="조회건수" Top="112" VAlign="Middle" Width="88"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0200MTrainingPayAmountSumDateStatistics.xml
+ * 설명 : 강습일자별/월별수수료집계현황
+ * 작성일 : 2009.09.22
+ * 작성자 : 이규희
+ */
+
+#include "LIB::training.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    // 공통 코드 조회
+    gfn_SearchTrainingCourse("T", ds_oCourse, "Y", "전체"); // 직능 코드 조회
+    cbxCourse.Value = "22";
+    gfn_SearchJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회  
+
+    edTrainingYear.Text = left(GetDate(), 4);
+    
+    calDateStart.Visible = false;
+    calDateEnd.Visible = false;
+    calMonthStart.Value = left(GetDate(), 8);
+    calMonthEnd.Value = left(GetDate(), 8);   
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdTrainingJubsu.Height = nCy - gdTrainingJubsu.Top - 4;
+        gdTrainingJubsu.Width = nCx - gdTrainingJubsu.Left - 4;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+var flag = "";
+function lfn_Search(obj) {
+    if (!gfn_FormValidate(this)) { // 조회 Validation Check
+        return false;
+    }
+    
+    if (radGubun.Value == "M") {
+        flag = 1;
+    } else {
+        flag = 2;
+    }
+    
+    medTotalCnt.Value = "";
+    ds_oTrainingPayAmountSumDate.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("training:searchTrainingPayAmountSumDateStatistics", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oTrainingPayAmountSumDate=ds_oTrainingPayAmountSumDate"	// outDs
+		,"TOMGGTMGNO=" + quote(cbxJibu.Value)
+            + " TOTCCOURSECD=" + quote(cbxCourse.Value)
+            + " TOYEAR=" + quote(edTrainingYear.Text)
+            + " TSPROCGUBUN=" + quote(radGubun.Value)
+            + " TSPROCMONTHSTART=" + quote(left(calMonthStart.Value, 6))
+            + " TSPROCMONTHEND=" + quote(left(calMonthEnd.Value, 6))
+            + " TSPROCDATESTART=" + quote(left(calDateStart.Value, 8))
+            + " TSPROCDATEEND=" + quote(left(calDateEnd.Value, 8))
+             + " COURSEGUBUN=T"// args 
+		,"lfn_AfterSearchTrainingJubsu"
+		,false
+	);
+}
+
+/*
+ * 기능 : 출력
+ */
+function lfn_Print(obj)
+{
+    if (ds_oTrainingPayAmountSumDate.GetCount() < 1) {
+        gfn_Alert("출력할 데이터가 없습니다.");
+        return false;
+    }
+    // to do Validation Check
+    if (flag == 1) {
+        gfn_CallReportPopup("frmtraining0200R02TrainingMonthFeeSumStatistics.rex"
+                          , "ds_oTrainingPayAmountSumDate"
+                          , "TSPROCMONTHSTART=" + left(calMonthStart.Value, 6)
+                            + "^TSPROCMONTHEND=" + left(calMonthEnd.Value, 6)
+                            + "^TCCOURSENM=" + cbxCourse.Text);
+    } else {
+        gfn_CallReportPopup("frmtraining0200R01TrainingDayFeeSumStatistics.rex"
+                          , "ds_oTrainingPayAmountSumDate"
+                          , "TSPROCDATESTART=" + left(calDateStart.Value, 8)
+                            + "^TSPROCDATEEND=" + left(calDateEnd.Value, 8)
+                            + "^TCCOURSENM=" + cbxCourse.Text);
+    }    
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 결강자 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchTrainingJubsu(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    if (ds_oTrainingPayAmountSumDate.rowcount == 0) {
+        medTotalCnt.Value = ds_oTrainingPayAmountSumDate.rowcount;
+    } else {
+        medTotalCnt.Value = ds_oTrainingPayAmountSumDate.rowcount - 1;
+    }    
+    gfn_SearchMessage(gdTrainingJubsu); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveTrainingJubsu(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    lfn_Search(); // 결강자 조회
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+
+}
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdTrainingJubsu, 0); // 멀티 정렬을 실행한다.
+}
+
+/* 회차 포커스 아웃될때 자동 0 입력 */
+function edTrainingOrder_OnKillFocus(obj)
+{
+	gfn_ComponentOnKillFocus(obj);
+
+    if (obj.Text != "") {
+        obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3));
+    }
+}
+
+function radCourseGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if (radGubun.Value == "M") {
+        calDateStart.Visible = false;
+        calDateEnd.Visible = false;
+        calDateStart.Value = "";
+        calDateEnd.Value = "";
+        calMonthStart.Visible = true;
+        calMonthEnd.Visible = true;
+        calMonthStart.Value = left(GetDate(), 8);
+        calMonthEnd.Value = left(GetDate(), 8);
+	} else {
+        calMonthStart.Visible = false;
+        calMonthEnd.Visible = false;
+        calMonthStart.Value = "";
+        calMonthEnd.Value = "";
+        calDateStart.Visible = true;
+        calDateEnd.Visible = true;
+        calDateStart.Value = left(GetDate(), 8);
+        calDateEnd.Value = left(GetDate(), 8);
+	}
+}
+
+function btnToExcel_OnClick(obj) {
+    if (ds_oTrainingPayAmountSumDate.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return false;
+    }
+	lfn_Excel(obj);
+}
+]]></Script>
+</Window>

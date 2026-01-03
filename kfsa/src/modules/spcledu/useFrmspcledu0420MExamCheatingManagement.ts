@@ -1,0 +1,175 @@
+// @ts-nocheck
+import { useState, useEffect } from 'react';
+import type { Ids_ioExamCheat, Ids_oCheatGubun, Ids_oCourse, Ids_oPrintGubun, Ids_oJibu, Ids_oExamOrderMgno, Ids_oExamCheatReport } from './Frmspcledu0420MExamCheatingManagementData';
+
+export const useFrmspcledu0420MExamCheatingManagement = () => {
+    const [ds_ioExamCheat, setds_ioExamCheat] = useState<Ids_ioExamCheat[]>([]);
+    const [ds_oCheatGubun, setds_oCheatGubun] = useState<Ids_oCheatGubun[]>([]);
+    const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
+    const [ds_oPrintGubun, setds_oPrintGubun] = useState<Ids_oPrintGubun[]>([]);
+    const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
+    const [ds_oExamOrderMgno, setds_oExamOrderMgno] = useState<Ids_oExamOrderMgno[]>([]);
+    const [ds_oExamCheatReport, setds_oExamCheatReport] = useState<Ids_oExamCheatReport[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isVisible_shpGubunBox2, setIsVisible_shpGubunBox2] = useState(true);
+    const [isVisible_shpGubunBox1, setIsVisible_shpGubunBox1] = useState(true);
+    const [isVisible_shpGubunBox3, setIsVisible_shpGubunBox3] = useState(true);
+    const [isVisible_shpBtnBox, setIsVisible_shpBtnBox] = useState(true);
+    const [isVisible_divWorkFormTitle, setIsVisible_divWorkFormTitle] = useState(true);
+    const [isVisible_gdExamCheat, setIsVisible_gdExamCheat] = useState(true);
+    const [isVisible_lbRemark, setIsVisible_lbRemark] = useState(true);
+    const [isVisible_btnMutilSort, setIsVisible_btnMutilSort] = useState(true);
+    const [isVisible_lbExamCheat, setIsVisible_lbExamCheat] = useState(true);
+    const [isVisible_edRemark, setIsVisible_edRemark] = useState(true);
+    const [isVisible_btnSearch, setIsVisible_btnSearch] = useState(true);
+    const [isVisible_btnDelete, setIsVisible_btnDelete] = useState(true);
+    const [isVisible_btnSave, setIsVisible_btnSave] = useState(true);
+    const [isVisible_btnCancel, setIsVisible_btnCancel] = useState(true);
+    const [isVisible_btnToExcel, setIsVisible_btnToExcel] = useState(true);
+    const [isVisible_btnPrintScreen, setIsVisible_btnPrintScreen] = useState(true);
+    const [isVisible_btnEnd, setIsVisible_btnEnd] = useState(true);
+    const [isVisible_lbPersonNm, setIsVisible_lbPersonNm] = useState(true);
+    const [isVisible_edPersonNm, setIsVisible_edPersonNm] = useState(true);
+    const [isVisible_lbResidentNo, setIsVisible_lbResidentNo] = useState(true);
+    const [isVisible_medResidentNo, setIsVisible_medResidentNo] = useState(true);
+    const [isVisible_lbCheatDate, setIsVisible_lbCheatDate] = useState(true);
+    const [isVisible_cxbExamCheat, setIsVisible_cxbExamCheat] = useState(true);
+    const [isVisible_calCheatDate, setIsVisible_calCheatDate] = useState(true);
+    const [isVisible_lbPrintGubun, setIsVisible_lbPrintGubun] = useState(true);
+    const [isVisible_radPrintGubun, setIsVisible_radPrintGubun] = useState(true);
+    const [isVisible_btnPrint, setIsVisible_btnPrint] = useState(true);
+    const [isVisible_lbCourse, setIsVisible_lbCourse] = useState(true);
+    const [isVisible_cbxCourse, setIsVisible_cbxCourse] = useState(true);
+    const [isVisible_lbPersonNm2, setIsVisible_lbPersonNm2] = useState(true);
+    const [isVisible_edPersonNm2, setIsVisible_edPersonNm2] = useState(true);
+    const [isVisible_lbResidentNo2, setIsVisible_lbResidentNo2] = useState(true);
+    const [isVisible_medResidentNo2, setIsVisible_medResidentNo2] = useState(true);
+
+    useEffect(() => {
+        setIsLoading(true);
+        setTimeout(() => {
+            setds_ioExamCheat([]);
+            setds_oCheatGubun([]);
+            setds_oCourse([]);
+            setds_oPrintGubun([]);
+            setds_oJibu([]);
+            setds_oExamOrderMgno([]);
+            setds_oExamCheatReport([]);
+            setIsLoading(false);
+        }, 500);
+    }, []);
+
+    const btnMutilSort_OnClick = () => {
+        console.log('btnMutilSort_OnClick clicked');
+    };
+    const lfn_Cancel = () => {
+        console.log('lfn_Cancel clicked');
+    };
+    const lfn_Delete = () => {
+        console.log('lfn_Delete clicked');
+    };
+    const lfn_End = () => {
+        console.log('lfn_End clicked');
+    };
+    const lfn_Excel = () => {
+        console.log('lfn_Excel clicked');
+    };
+    const lfn_Print = () => {
+        console.log('lfn_Print clicked');
+    };
+    const lfn_PrintScreen = () => {
+        console.log('lfn_PrintScreen clicked');
+    };
+    const lfn_Save = () => {
+        console.log('lfn_Save clicked');
+    };
+    const lfn_Search = () => {
+        console.log('lfn_Search clicked');
+    };
+
+    return {
+        isLoading,
+        ds_ioExamCheat,
+        ds_oCheatGubun,
+        ds_oCourse,
+        ds_oPrintGubun,
+        ds_oJibu,
+        ds_oExamOrderMgno,
+        ds_oExamCheatReport,
+        isVisible_shpGubunBox2,
+        setIsVisible_shpGubunBox2,
+        isVisible_shpGubunBox1,
+        setIsVisible_shpGubunBox1,
+        isVisible_shpGubunBox3,
+        setIsVisible_shpGubunBox3,
+        isVisible_shpBtnBox,
+        setIsVisible_shpBtnBox,
+        isVisible_divWorkFormTitle,
+        setIsVisible_divWorkFormTitle,
+        isVisible_gdExamCheat,
+        setIsVisible_gdExamCheat,
+        isVisible_lbRemark,
+        setIsVisible_lbRemark,
+        isVisible_btnMutilSort,
+        setIsVisible_btnMutilSort,
+        isVisible_lbExamCheat,
+        setIsVisible_lbExamCheat,
+        isVisible_edRemark,
+        setIsVisible_edRemark,
+        isVisible_btnSearch,
+        setIsVisible_btnSearch,
+        isVisible_btnDelete,
+        setIsVisible_btnDelete,
+        isVisible_btnSave,
+        setIsVisible_btnSave,
+        isVisible_btnCancel,
+        setIsVisible_btnCancel,
+        isVisible_btnToExcel,
+        setIsVisible_btnToExcel,
+        isVisible_btnPrintScreen,
+        setIsVisible_btnPrintScreen,
+        isVisible_btnEnd,
+        setIsVisible_btnEnd,
+        isVisible_lbPersonNm,
+        setIsVisible_lbPersonNm,
+        isVisible_edPersonNm,
+        setIsVisible_edPersonNm,
+        isVisible_lbResidentNo,
+        setIsVisible_lbResidentNo,
+        isVisible_medResidentNo,
+        setIsVisible_medResidentNo,
+        isVisible_lbCheatDate,
+        setIsVisible_lbCheatDate,
+        isVisible_cxbExamCheat,
+        setIsVisible_cxbExamCheat,
+        isVisible_calCheatDate,
+        setIsVisible_calCheatDate,
+        isVisible_lbPrintGubun,
+        setIsVisible_lbPrintGubun,
+        isVisible_radPrintGubun,
+        setIsVisible_radPrintGubun,
+        isVisible_btnPrint,
+        setIsVisible_btnPrint,
+        isVisible_lbCourse,
+        setIsVisible_lbCourse,
+        isVisible_cbxCourse,
+        setIsVisible_cbxCourse,
+        isVisible_lbPersonNm2,
+        setIsVisible_lbPersonNm2,
+        isVisible_edPersonNm2,
+        setIsVisible_edPersonNm2,
+        isVisible_lbResidentNo2,
+        setIsVisible_lbResidentNo2,
+        isVisible_medResidentNo2,
+        setIsVisible_medResidentNo2,
+        btnMutilSort_OnClick,
+        lfn_Cancel,
+        lfn_Delete,
+        lfn_End,
+        lfn_Excel,
+        lfn_Print,
+        lfn_PrintScreen,
+        lfn_Save,
+        lfn_Search,
+    };
+};

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<svcdesc><![CDATA[좌측메뉴]]></svcdesc>
+	<header><![CDATA[]]></header>
+	<dataset id="output" io="OUTPUT" reserved="NO"></dataset>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_IMP_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[
+function Run()
+{
+	// TODO: Add your source code here
+	var querySQL;
+  var errSl;
+  
+querySQL  = "  SELECT                                ";
+querySQL += "       M.MMENUID AS MMENUID             ";
+querySQL += "     , M.MMENUNM AS MMENUNM             ";
+querySQL += "     , IIF(M.MPARENTMENUID = '0000000071', 2, 1) AS MENULEVEL           ";
+querySQL += "     , M.MREMARK AS MREMARK             ";
+querySQL += "     , M.MURL AS MURL                   ";
+querySQL += "     , M.MURLTYPE AS MURLTYPE           ";
+querySQL += "     , M.MUSEYN AS USE_YN               ";
+querySQL += "     , M.MPARENTMENUID AS MPARENTMENUID ";
+querySQL += "			, M.MORDERSEQ AS MORDERSEQ         "; 
+querySQL += "     , M.MSYSGUBUN AS MSYSGUBUN         ";
+querySQL += "     , 'R' AS MENUAAUTH         				 ";
+querySQL += "    FROM MENU M                         ";
+querySQL += "   WHERE M.MPARENTMENUID <> '0000000001'  ";
+querySQL += "     AND M.MMENUID <> '0000000001'  ";
+querySQL += "   ORDER BY M.MORDERSEQ                   ";
+  
+  errSql = ExecuteQuery(querySQL, "output");
+}
+]]></source>
+</class2>

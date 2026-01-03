@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="600" Id="frmmem0050MFireScholarshipManagement" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="소방안전장학금관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioPrintGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>지부,&#32;직능,&#32;지급일자</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>지급일자,&#32;지부,&#32;직능</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>직능,&#32;지부,&#32;지급일자</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioScholarship" OnRowPosChanged="ds_ioScholarship_OnRowPosChanged">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu2">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse2">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_CmbComder">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_CmbComder2">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oYear">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oYear2">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMember"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iScholarship">
+				<Contents>
+					<colinfo id="FSMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="FSCMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="FSNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FSBIRTHDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="FSPERSONKEY" size="256" summ="default" type="STRING"/>
+					<colinfo id="FSBNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FSYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="FSDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="FSAMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="FSREMARK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="136" Height="88" Id="Shape2" Left="576" LineColor="user15" Right="796" TabOrder="32" Top="48" Type="Rectangle" Width="220"></Shape>
+		<Shape Bottom="136" Height="88" Id="Shape1" Left="4" LineColor="user15" Right="572" TabOrder="28" Top="48" Type="Rectangle" Width="568"></Shape>
+		<Shape Bottom="420" Height="280" Id="Shape0" Left="4" LineColor="user15" Right="796" TabOrder="20" Top="140" Type="Rectangle" Width="792"></Shape>
+		<Shape Bottom="594" Height="144" Id="shpGubunBox3" Left="4" LineColor="user15" Right="796" TabOrder="16" Top="450" Type="Rectangle" Width="792"></Shape>
+		<Grid AutoEnter="TRUE" BindDataset="ds_ioScholarship" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="416" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="248" Id="gdScholarshipList" InputPanel="FALSE" Left="8" LineColor="default" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="792" RowHeight="20" Style="sty_Grid" TabOrder="14" TabStop="true" Top="168" UseDBuff="true" UsePopupMenu="true" UserData="소방안전장학금관리" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="784">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="39"/>
+						<col width="69"/>
+						<col width="74"/>
+						<col width="100"/>
+						<col width="62"/>
+						<col width="85"/>
+						<col width="64"/>
+						<col width="83"/>
+						<col width="90"/>
+						<col width="152"/>
+						<col width="196"/>
+						<col width="81"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="순번"/>
+						<cell col="1" display="text" text="지부"/>
+						<cell col="2" display="text" text="관리번호"/>
+						<cell col="3" display="text" text="직능"/>
+						<cell align="center" col="4" display="text" text="성명"/>
+						<cell align="center" col="5" display="text" text="생년월일"/>
+						<cell align="center" col="6" display="text" text="대상년도"/>
+						<cell align="center" col="7" display="text" text="지급금액"/>
+						<cell align="center" col="8" display="text" text="지급일자"/>
+						<cell align="center" col="9" display="text" text="대상물(업체)명"/>
+						<cell align="center" col="10" display="text" text="비고"/>
+						<cell col="11" display="text" text="등록자"/>
+						<cell col="12" display="text" text="등록일자"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow+1"/>
+						<cell align="center" col="1" colid="CGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="2" colid="CNO" display="text"/>
+						<cell col="3" colid="CGROUPCD" combocol="CD" combodataset="ds_ioCourse" combotext="DATA" display="combo"/>
+						<cell align="center" col="4" colid="FSNM" display="text"/>
+						<cell align="center" col="5" colid="BIRTHDAY" display="text"/>
+						<cell align="center" col="6" colid="FSYEAR" display="text"/>
+						<cell align="right" col="7" colid="FSAMT" display="number" Mask="###,###,##0"/>
+						<cell align="center" col="8" colid="FSDATE" display="date"/>
+						<cell align="left" col="9" colid="FSBNM" display="text"/>
+						<cell align="left" col="10" colid="FSREMARK" display="text"/>
+						<cell align="center" col="11" colid="PNM" display="text"/>
+						<cell align="center" col="12" colid="REGDATE" display="date"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="718" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="13" Top="144" Transparent="TRUE" Width="74"></Button>
+		<Radio Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="68" Id="radPrintGubun" INDEX="0" InnerDataset="ds_ioPrintGubun" Left="580" LeftMargin="8" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="15" Top="64" Value="0" Width="212"></Radio>
+		<Static Align="Center" Height="20" Id="lbPersonNm2" Left="259" Style="sty_Label" TabOrder="17" Text="성명" Top="497" VAlign="Middle" Width="76"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edPersonNm2" ImeMode="native" Left="339" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="6" Top="497" UserData="S:성명" Width="104"></Edit>
+		<Static Align="Center" Height="20" Id="lbResidentNo2" Left="446" Style="sty_Label" TabOrder="18" Text="생년월일" Top="497" VAlign="Middle" Width="76"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="medBirthday2" Left="526" LeftMargin="2" Mask="######" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" Style="sty_Maskedit" TabOrder="7" Top="497" Type="STRING" UserData="S:생년월일" Width="50"></MaskEdit>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="19" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="352">
+			<Contents></Contents>
+		</Div>
+		<Static Align="Center" BKColor="forestgreen" Font="굴림,14,Bold" Height="25" Id="lbRegGubun" Left="20" Style="sty_LabelGruopBox" TabOrder="21" Text="정보&#32;수정" Top="441" VAlign="Middle" Width="100"></Static>
+		<Static Align="Center" Height="20" Id="Static0" Left="152" Style="sty_Label" TabOrder="22" Text="지부" Top="473" VAlign="Middle" Width="76"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu2" INDEX="0" InnerDataset="ds_oJibu2" Left="231" OnChanged="cbxJibu2_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="8" Top="472" UserData="S:지부" Width="106"></Combo>
+		<Static Align="Center" Height="20" Id="Static2" Left="8" Style="sty_Label" TabOrder="23" Text="직능" Top="497" VAlign="Middle" Width="76"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse2" INDEX="0" InnerDataset="ds_ioCourse" Left="87" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="9" Top="496" UserData="S:직능" Width="169"></Combo>
+		<Static Align="Center" Height="20" Id="lbDate" Left="8" Style="sty_Label" TabOrder="24" Text="지급일자" Top="545" VAlign="Middle" Width="76"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calDate2" Left="88" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="12" Top="545" UserData="S:지급일자" WeeksFont="돋음,9" Width="104"></Calendar>
+		<Static Align="Center" Height="20" Id="Static8" Left="8" Style="sty_Label" TabOrder="25" Text="지부" Top="64" VAlign="Middle" Width="76"></Static>
+		<Static Align="Center" Height="20" Id="Static11" Left="8" Style="sty_Label" TabOrder="26" Text="지급일자" Top="112" VAlign="Middle" Width="76"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calStaDate" Left="88" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="4" Top="112" UserData="S" WeeksFont="돋음,9" Width="104"></Calendar>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calEndDate" Left="212" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="5" Top="112" UserData="S" WeeksFont="돋음,9" Width="104"></Calendar>
+		<Static Align="Center" Height="20" Id="Static12" Left="192" Style="sty_Text" TabOrder="27" Text="~" Top="112" VAlign="Middle" Width="20"></Static>
+		<Static Align="Center" Height="20" Id="Static13" Left="20" Style="sty_LabelGruopBox" TabOrder="29" Text="조회&#32;정보" Top="40" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static14" Left="8" Style="sty_Label" TabOrder="30" Text="성명" Top="88" VAlign="Middle" Width="76"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edName" ImeMode="native" Left="88" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="1" Top="88" UserData="S:성명" Width="104"></Edit>
+		<Static Align="Center" Height="20" Id="Static15" Left="196" Style="sty_Label" TabOrder="31" Text="생년월일" Top="88" VAlign="Middle" Width="76"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="medBirthday" Left="276" LeftMargin="2" Mask="######" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="2" Top="88" Type="STRING" UserData="S:생년월일" Width="50"></MaskEdit>
+		<Static Align="Center" Height="20" Id="Static16" Left="592" Style="sty_LabelGruopBox" TabOrder="33" Text="정렬&#32;순서" Top="40" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="88" OnChanged="lfn_Search" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="3" Top="63" UserData="S:지부" Width="105"></Combo>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="357" LineColor="user14" Right="796" TabOrder="41" Top="1" Type="Rectangle" Width="439"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="360" OnClick="lfn_Search" Style="sty_Button" TabOrder="37" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnInput" ImageID="BTN_COM_ADD" Left="621" OnClick="lfn_Input" Style="sty_Button" TabOrder="38" ToolTipText="추가&#32;저장" Top="424" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDelete" ImageID="BTN_COM_DEL" Left="447" OnClick="lfn_Delete" Style="sty_Button" TabOrder="40" ToolTipText="삭제&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSave" ImageID="BTN_COM_SAVE" Left="708" OnClick="lfn_Save" Style="sty_Button" TabOrder="39" ToolTipText="수정&#32;저장" Top="424" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="534" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="34" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="621" OnClick="btnToExcel_OnClick" Style="sty_Button" TabOrder="35" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="36" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbTotalCnt" Left="10" Style="sty_LabelStat" TabOrder="43" Text="총건수" Top="144" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medTotalCnt" Left="102" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="42" Top="144" UserData="S" Width="52"></MaskEdit>
+		<Static Align="Center" Height="20" Id="Static17" Left="340" Style="sty_Label" TabOrder="44" Text="관리번호" Top="473" VAlign="Middle" Width="76"></Static>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Height="20" Id="medCustNo" Left="420" LeftMargin="2" Mask="######" MaxLength="6" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medCustNo_OnKeyDown" OnKillFocus="medCustNo_OnKillFocus" Style="sty_Maskedit" TabOrder="10" Top="473" Type="STRING" UserData="S:관리번호" Width="50"></MaskEdit>
+		<Static Align="Center" Height="20" Id="Static18" Left="8" Style="sty_Label" TabOrder="45" Text="대상물(업체)명" Top="521" VAlign="Middle" Width="96"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edBNM" ImeMode="native" Left="108" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="11" Top="521" UserData="S:대상물명" Width="372"></Edit>
+		<Static Align="Center" Height="20" Id="Static20" Left="8" Style="sty_Label" TabOrder="46" Text="대상년도" Top="473" VAlign="Middle" Width="76"></Static>
+		<Static Align="Center" Height="20" Id="lbTrainingYear" Left="196" Style="sty_Label" TabOrder="47" Text="년도" Top="64" UserData="S" VAlign="Middle" Width="76"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxYear" INDEX="0" InnerDataset="ds_oYear" Left="275" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="48" Top="63" UserData="S:년도" Width="60"></Combo>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCustNo" ImageID="검색" Left="474" OnClick="btnCustNo_OnClick" Style="sty_Button" TabOrder="49" Top="472" Transparent="TRUE" Width="35"></Button>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxYear2" ImeMode="none" INDEX="0" InnerDataset="ds_oYear" Left="87" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="50" Top="472" UserData="S:년도" Width="60"></Combo>
+		<Static BKColor="user3" Border="Flat" Font="굴림,11,Bold" Height="19" Id="lbNewNotice" Left="127" TabOrder="51" Text="신규입력&#32;시&#32;지부+관리번호로&#32;먼저&#32;검색하세요!" Top="450" VAlign="Middle" Width="350"></Static>
+		<Static Align="Center" Height="20" Id="Static1" Left="197" Style="sty_Label" TabOrder="52" Text="지급금액" Top="545" VAlign="Middle" Width="76"></Static>
+		<Static Height="20" Id="Static3" Left="389" TabOrder="53" Text="원" Top="570" VAlign="Middle" Width="23"></Static>
+		<Static Align="Center" Height="20" Id="Static4" Left="8" Style="sty_Label" TabOrder="54" Text="비고" Top="569" VAlign="Middle" Width="76"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edRemark" ImeMode="native" Left="88" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="55" Top="569" UserData="S:비고" Width="488"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edMmgno" ImeMode="native" Left="632" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="56" Top="480" UserData="S:성명" Width="104"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edCmgno" ImeMode="native" Left="632" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="57" Top="504" UserData="S:성명" Width="104"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edPersonkey" ImeMode="native" Left="632" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="58" Top="528" UserData="S:성명" Width="104"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edMgno" ImeMode="native" Left="632" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="59" Top="456" UserData="S:성명" Width="104"></Edit>
+		<Static Height="19" Id="Static5" Left="360" TabOrder="60" Text="원" Top="546" VAlign="Middle" Width="18"></Static>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Height="20" Id="medAmt" Left="277" LeftMargin="2" MaxLength="8" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medCustNo_OnKeyDown" OnKillFocus="medCustNo_OnKillFocus" Style="sty_Maskedit" TabOrder="61" Top="544" UserData="S:지급금액" Width="80"></MaskEdit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmmem0050MFireScholarshipManagement.xml
+ * 설명 : 소방장학금관리
+ * 작성일 : 2018.10.11
+ * 작성자 : 정현호
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+ var ls_IsUpdateYN = false; 
+ var ls_grdFsmgNo;//수정후 해당 로우에 포커스 이동. 
+ 
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    //alert(ms_FormAuth);
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    // 공통 코드 조회
+    gfn_SearchJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회
+    cbxJibu.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD"); 
+    
+    cbxCourse2.Index = 0;
+    gfn_SearchJibu(cbxJibu2, "Y", ""); // 지부코드조회(전체제외)
+    cbxJibu2.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD"); 
+    
+    gfn_SearchCustomerCourseFullName(ds_ioCourse, "0");	// 대표고객직능 조회
+    
+	for (var i=ds_ioCourse.rowcount-1; i>=0; i--) {
+		if (ds_ioCourse.GetColumn(i, "CD") == "20" || ds_ioCourse.GetColumn(i, "CD") >= "80") {
+			ds_ioCourse.DeleteRow(i);
+		}
+	}
+	
+    calStaDate.Value = substr(addDate(GetDate(), -60),0,8);
+    calEndDate.Value = substr(GetDate(),0,8);
+
+	ds_oYear.AddRow();
+	ds_oYear.SetColumn(0, "CD", "");
+	ds_oYear.SetColumn(0, "DATA", "선택");
+	
+	ds_oYear2.AddRow();
+	ds_oYear2.SetColumn(0, "CD", "");
+	ds_oYear2.SetColumn(0, "DATA", "선택");
+
+	
+    for (var i = 1; i < 20; i++) {
+		ds_oYear.AddRow();
+		ds_oYear.SetColumn(i, "CD", toNumber(left(getDate(),4))-i+1);
+		ds_oYear.SetColumn(i, "DATA", toNumber(left(getDate(),4))-i+1);
+		
+		ds_oYear2.AddRow();
+		ds_oYear2.SetColumn(i, "CD", toNumber(left(getDate(),4))-i+1);
+		ds_oYear2.SetColumn(i, "DATA", toNumber(left(getDate(),4))-i+1);
+    }
+
+	cbxYear.Value = substr(GetDate(),0,4);
+    cbxJibu.SetFocus();
+    
+    cbxCourse2.Enable = false;
+    edPersonNm2.Enable = false;
+    medBirthday2.Enable = false;
+    edBNM.Enable = false;
+    
+    // 시스템관리자만 관리번호, PERSONKEY 보이도록 설정
+	if (gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "SM") {
+		edMgno.Visible = true;
+		edMmgno.Visible = true;
+		edCmgno.Visible = true;
+		edPersonkey.Visible = true;
+	} else {
+		edMgno.Visible = false;
+		edMmgno.Visible = false;
+		edCmgno.Visible = false;
+		edPersonkey.Visible = false;
+	}
+    
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdScholarshipList.Height = nCy - gdScholarshipList.Top - 4;
+        gdScholarshipList.Width = nCx - gdScholarshipList.Left - 4;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+  
+    ds_ioScholarship.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("mem:searchMem0050FireScholarship", false);
+	
+	// 서버 호출
+ 	var sParm = "";
+	sParm  =  "Jibu=" + quote(cbxJibu.Value);   
+	sParm += " Year=" + quote(cbxYear.Value);   
+	sParm += " Name=" + quote(edName.Text);   
+	sParm += " Birth="  + quote(medBirthday.Value);   
+	sParm += " StaDt="  + quote(calStaDate.Value);   
+	sParm += " EndDt="  + quote(calEndDate.Value);
+	sParm += " SortGB=" + quote(radPrintGubun.Value);
+	
+	//alert(sParm);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioScholarship=ds_oScholarship"	// outDs
+		, sParm  // args 
+		,"lfn_AfterSearchScholarship"
+		,false
+	);
+}
+
+/*
+ * 기능 : 추가
+ */
+function lfn_Input(obj) {
+	if (!gfn_Confirm("신규 내용을 등록 하시겠습니까?\n입력완료 후 저장 버튼을 누르세요.")) {
+        return false;
+	}
+
+    lbRegGubun.Text = "신규 등록";
+    lbRegGubun.BkColor = "brown";
+    
+	mb_IsNewData = true; // 저장버튼이 클릭 설정
+	lbNewNotice.Visible = true;
+	
+    // 기본값 설정    
+    cbxYear2.Value = left(getDate(),4);
+    cbxJibu2.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD"); 
+    medCustNo.Value = "";
+    cbxCourse2.Index = 0;
+    edPersonNm2.Text = "";
+    medBirthday2.Value = "";
+    edBNM.Text = "";
+    calDate2.Value = substr(GetDate(),0,8);
+    medAmt.Text = "";
+    edRemark.Text = "";
+    edMgno.Text = "";
+    edMmgno.Text = "";
+    edCmgno.Text = "";
+    edPersonkey.Text = "";
+    
+  
+    cbxCourse2.Enable = false;
+    edPersonNm2.Enable = false;
+    medBirthday2.Enable = false;
+    edBNM.Enable = false;
+    
+    medCustNo.SetFocus();
+}
+
+/*
+ * 기능 : 삭제
+ */ 
+function lfn_Delete(obj) {
+    if (ds_ioScholarship.currow < 0) {
+        gfn_Alert(MSGI00030); // 삭제할 레코드가 없습니다.
+        return false;
+    }
+
+    var message = "";
+    message  = "     ----------------------\n";
+    message += "          자료삭제 확인    \n";
+    message += "     ----------------------\n\n";
+    message += "=============================================\n";
+    message += "□ 성    명: '"+edPersonNm2.text+"'   \n";
+    message += "□ 지    부: '"+cbxJibu2.Text+"'        \n";
+    message += "=============================================\n\n\n";
+    message += "다음과 같이 자료를 삭제하시겠습니까?";
+        
+    if(!confirm(message)) {   
+        return false;
+    }
+        
+//	if (!gfn_Confirm(MSGW00030)) { // 정말로 삭제 하시겠습니까?
+ //       return false;
+//	}	
+	
+	//lfn_SaveModifyHistory("D"); // 변경이력을 저장한다.
+
+    ds_ioScholarship.DeleteRow(ds_ioScholarship.currow); // 선택된 ROW를 삭제한다.
+
+    //gfn_FormInit(this); // 입력란 초기화    
+
+	tit_clearActionInfo();
+	tit_addSaveActionInfo(
+		""	// insert
+		, ""	// update
+		, "mem:deleteMem0050FireScholarship"	// delete
+		, ""	// flag column 명
+		, ""	// key sql id
+		, 0	// key 증가 값
+		, "" 
+		, 0 
+		, "N"	// 실행타입
+	);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,"ds_iScholarship=ds_ioScholarship:U"	// inDs
+		,""	// outDs
+		,""	// args 
+		,"lfn_AfterSaveScholarship"
+		,false
+	);
+}
+
+/*
+ * 기능 : 저장
+ */
+function lfn_Save(obj) {
+    //if (!fn_FormValidate(this)) { // 입력 Validation Check
+     //   return false;
+    //}
+
+    //cbxJibu.Value   =  cbxJibu2.Value;
+
+    if (mb_IsNewData) { // 신규 저장
+        // 키 중복 체크
+        var message = "";
+        message  = "     ----------------------\n";
+        message += "          자료저장 확인    \n";
+        message += "     ----------------------\n\n";
+        message += "=============================================\n";
+        message += "□ 성    명: '"+edPersonNm2.text+"'   \n";
+        message += "□ 지    부: '"+cbxJibu2.Text+"'        \n";
+        message += "=============================================\n\n\n";
+        message += "위와 같이 자료를 저장하시겠습니까?";
+        
+        if(!confirm(message)) {   
+          return false;
+        }
+        
+        ds_iScholarship.ClearData();
+        // 입력된 값을 그리드로 복사한다.
+        ds_iScholarship.AddRow();
+
+		ds_iScholarship.SetColumn(0, "FSMMGNO"     , edMmgno.Text      );//회원정보관리번호
+		ds_iScholarship.SetColumn(0, "FSCMGNO"     , edCmgno.Text      );//고객관리바코드
+		ds_iScholarship.SetColumn(0, "FSNM"        , edPersonNm2.Text  );//성명
+		ds_iScholarship.SetColumn(0, "FSBIRTHDAY"  , medBirthday2.Value);//생년월일
+		ds_iScholarship.SetColumn(0, "FSPERSONKEY" , edPersonkey.Text  );//개인식별번호
+		ds_iScholarship.SetColumn(0, "FSBNM"       , edBNM.Text        );//대상물(업체)명
+		ds_iScholarship.SetColumn(0, "FSYEAR"      , cbxYear2.Value    );//대상년도
+		ds_iScholarship.SetColumn(0, "FSDATE"      , calDate2.Value    );//지급일자
+		ds_iScholarship.SetColumn(0, "FSAMT"       , medAmt.Value      );//지급금액
+		ds_iScholarship.SetColumn(0, "FSREMARK"    , edRemark.Text     );//비고
+        
+		tit_clearActionInfo();		tit_addSingleActionInfo("mem:insertMem0050Scholarship", "", 0, "");
+		// 서버 호출 
+		tit_callService(
+			""
+			,""
+			,"ds_iScholarship=ds_iScholarship"	// inDs
+			,""	// outDs
+			,""	// args 
+			,"lfn_AfterSaveScholarship"
+			,false
+			,false
+			,true
+		);
+			
+        
+    } else { // 수정 저장
+        if (!gfn_Confirm(MSGW00040)) { // 정말로 수정 저장 하시겠습니까?
+            return false;
+        }
+        ls_IsUpdateYN = true;
+        ls_grdFsmgNo  = ds_ioScholarship.GetColumn(ds_ioScholarship.currow, "FSMGNO");//처리 후 해당 로우에 포커스가 가게한다.2
+
+
+        // 입력된 값을 그리드로 복사한다.
+        ds_ioScholarship.SetColumn(ds_ioScholarship.currow, "FSMGNO"      , edMgno.Text       );//소방안전장학금관리번호
+		ds_ioScholarship.SetColumn(ds_ioScholarship.currow, "FSMMGNO"     , edMmgno.Text      );//회원정보관리번호
+		ds_ioScholarship.SetColumn(ds_ioScholarship.currow, "FSCMGNO"     , edCmgno.Text      );//고객관리바코드
+		ds_ioScholarship.SetColumn(ds_ioScholarship.currow, "FSNM"        , edPersonNm2.Text  );//성명
+		ds_ioScholarship.SetColumn(ds_ioScholarship.currow, "FSBIRTHDAY"  , medBirthday2.Value);//생년월일
+		ds_ioScholarship.SetColumn(ds_ioScholarship.currow, "FSPERSONKEY" , edPersonkey.Text  );//개인식별번호
+		ds_ioScholarship.SetColumn(ds_ioScholarship.currow, "FSBNM"       , edBNM.Text        );//대상물(업체)명
+		ds_ioScholarship.SetColumn(ds_ioScholarship.currow, "FSYEAR"   	  , cbxYear2.Value    );//대상년도
+		ds_ioScholarship.SetColumn(ds_ioScholarship.currow, "FSDATE"      , calDate2.Value    );//지급일자
+		ds_ioScholarship.SetColumn(ds_ioScholarship.currow, "FSAMT"       , medAmt.Value      );//지급금액
+		ds_ioScholarship.SetColumn(ds_ioScholarship.currow, "FSREMARK"    , edRemark.Text     );//비고
+
+		tit_clearActionInfo();
+		tit_addSingleActionInfo("mem:updateMem0050Scholarship", "", 0, "");
+		// 서버 호출 
+		tit_callService(
+			""
+			,""
+			,"ds_iScholarship=ds_ioScholarship:U"	// inDs
+			,""	// outDs
+			,""	// args 
+			,"lfn_AfterSaveScholarship"
+			,false
+			,false
+			,true
+		);
+		
+    }
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 교육일정관리 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchScholarship(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+ 
+    if (ls_IsUpdateYN){ //수정일 경우 수정된 로우에 포커스가 있게 한다. 
+        ds_ioScholarship.rowposition = ds_ioScholarship.FindRow("FSMGNO", ls_grdFsmgNo);
+    } 
+    ls_IsUpdateYN = false; 
+
+    //medTotalCnt.Value = ds_ioScholarship.rowcount;
+    gfn_SearchMessage(gdScholarshipList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+    
+    medTotalCnt.Text = ds_ioScholarship.rowcount;
+    if (ds_ioScholarship.rowcount == 0) {
+        //lfn_Cancel(); // 값 초기화
+        //lfn_Input();
+        //calStaDate.Value = substr(addDate(GetDate(), -60 ),0,8);
+        //calEndDate.Value = substr(GetDate(),0,8);       
+    }    
+    
+}
+
+/*------------------------------------------------------------
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ *-------------------------------------------------------------*/
+function lfn_AfterSaveScholarship(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    lbRegGubun.Text = "정보 수정";
+    lbRegGubun.BkColor = "forestgreen";
+    lbNewNotice.Visible = false;
+    lfn_Search(); // 교육일정관리 조회
+}
+
+/*-----------------------------------------------------------------
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ *----------------------------------------------------------------*/
+function lfn_SetFormAuth(bStatus) {
+    btnInput.Enable = bStatus; // 추가 버튼
+    btnDelete.Enable = bStatus; // 삭제 버튼
+    btnSave.Enable = bStatus; // 수정&저장 버튼
+}
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj) {
+	gfn_GridMultiSort(gdScholarshipList, 0); // 멀티 정렬을 실행한다.
+}
+
+function ds_ioScholarship_OnRowPosChanged(obj,nOldRow,nRow) {
+    // 그리드의 값을 입력란에 복사한다. 추가상태인 경우 복사 후 저장을 하기 위해 제외한다.
+    if (obj.GetRowType(nRow) <> "insert" && nRow <> -1) {
+				
+		cbxJibu2.Value      = obj.GetColumn(nRow, "CGTMGNO"     );//지부
+		medCustNo.Value     = obj.GetColumn(nRow, "CNO"         );//관리번호
+		cbxYear2.Text       = obj.GetColumn(nRow, "FSYEAR"      );//대상년도
+		cbxCourse2.Value    = obj.GetColumn(nRow, "CGROUPCD"    );//직능
+		edPersonNm2.Text    = obj.GetColumn(nRow, "FSNM"        );//성명
+		medBirthday2.Value  = obj.GetColumn(nRow, "FSBIRTHDAY"  );//생년월일
+		edBNM.Text          = obj.GetColumn(nRow, "FSBNM"       );//대상물(업체)명
+		calDate2.Value   	= obj.GetColumn(nRow, "FSDATE"      );//지급일자
+		medAmt.Value   	    = obj.GetColumn(nRow, "FSAMT"       );//지급금액
+		edRemark.Text       = obj.GetColumn(nRow, "FSREMARK"    );//비고
+		
+		edMgno.Text         = obj.GetColumn(nRow, "FSMGNO"     );//소방안전장학금관리번호
+		edMmgno.Text        = obj.GetColumn(nRow, "FSMMGNO"    );//회원정보관리번호
+		edCmgno.Text        = obj.GetColumn(nRow, "FSCMGNO"    );//고객관리바코드
+		edPersonkey.Text    = obj.GetColumn(nRow, "FSPERSONKEY");//개인식별번호
+
+        lbRegGubun.Text = "정보 수정";    
+        lbRegGubun.BkColor = "forestgreen";
+        lbNewNotice.Visible = false;
+        gfn_MakeKeyMark(this); // 키값 수정 금지 설정
+	}
+	mb_IsNewData = false; // 저장버튼이 클릭 초기화
+}
+
+function gdScholarshipList_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+	ds_ioScholarship_OnRowPosChanged(ds_ioScholarship,nRow,nRow);
+}
+
+function edEduPlace_OnFocus(obj) {
+    btnSearchEduPlace.SetFocus();
+}
+
+function btnPrintScreen_OnClick(obj)
+{
+	printscreen();
+}
+
+
+
+function btnToExcel_OnClick(obj)
+{
+	gdScholarshipList.ExportExcel("소방안전장학금관리");
+}
+
+
+
+function medCustNo_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == "13") {
+		btnCustNo_OnClick();
+	}
+}
+
+function medCustNo_OnKillFocus(obj)
+{
+	obj.Value = iif(gfn_IsNull(obj.Value), "", lpad(obj.Value, "0", 6));
+}
+
+
+// 회원정보 가져오기
+function btnCustNo_OnClick(obj)
+{
+	if (gfn_isNull(cbxJibu2.Text) || gfn_isNull(medCustNo.Value)) {
+	
+		gfn_Alert("지부와 관리번호를 입력 후 조회하세요!");
+		
+		return false;
+	
+	
+	}
+	
+	medCustNo.Value = iif(gfn_IsNull(medCustNo.Value), "", lpad(medCustNo.Value, "0", 6));
+	
+    ds_oMember.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("mem:searchMem0050OMember", false);
+	
+	// 서버 호출
+ 	var sParm = "";
+	sParm  = "GTMGNO=" + quote(cbxJibu2.Value);   
+	sParm += " CNO="  + quote(medCustNo.Value);   
+	
+	//alert(sParm);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oMember=ds_oMember"	// outDs
+		, sParm  // args 
+		,"lfn_AfterSearchMember"
+		,false
+		,false
+		,true
+	);
+	
+}
+
+function lfn_AfterSearchMember(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    if (ds_oMember.GetRowCount() == 0) {
+		gfn_Alert("검색된 자료가 없습니다.");
+		return false;
+    
+    }
+    cbxCourse2.Value = ds_oMember.GetColumn(0, "CGROUPCD");
+    edPersonNm2.Text = ds_oMember.GetColumn(0, "MNAME");
+    medBirthday2.Value = ds_oMember.GetColumn(0, "BIRTHDAY");
+    edBNM.Text = ds_oMember.GetColumn(0, "MBNM");
+    edMmgno.Text = ds_oMember.GetColumn(0, "MMGNO");
+    edCmgno.Text = ds_oMember.GetColumn(0, "CMGNO");
+    edPersonkey.Text = ds_oMember.GetColumn(0, "MPERSONKEY");
+    medAmt.Text = "1000000";
+/*
+	cbxCourse2.Enable = true;
+    edPersonNm2.Enable = true;
+    medBirthday2.Enable = true;
+    edBNM.Enable = true;
+*/
+}
+
+
+
+function cbxJibu2_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	medCustNo.SetFocus();
+}
+]]></Script>
+</Window>

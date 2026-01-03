@@ -1,0 +1,950 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="586" Id="frmcust0040MAgentManagement" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="업무대행업체&#32;정보관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>업체명</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>주소</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>대표자</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>전화번호</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oAgentList" OnRowPosChanged="ds_oAgentList_OnRowPosChanged">
+				<Contents>
+					<colinfo id="AGMGNO" size="22" summ="default" type="STRING"/>
+					<colinfo id="AGNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="AGOWNER" size="20" summ="default" type="STRING"/>
+					<colinfo id="AGCONO" size="13" summ="default" type="STRING"/>
+					<colinfo id="AGTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="AGFAX" size="16" summ="default" type="STRING"/>
+					<colinfo id="AGZIPCD" size="6" summ="default" type="STRING"/>
+					<colinfo id="AGADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="AGADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="AGREMARK" size="100" summ="default" type="STRING"/>
+					<colinfo id="AGREGDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="AGREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="AGMODDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="AGMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="AGADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="AGADDRGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ARPNUCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ARROADBUILDMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ARROADDETAIL" size="256" summ="default" type="STRING"/>
+					<colinfo id="ARROADREMAIN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ARSANGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ARMAINBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="ARSUBBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="ARBUILDNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ARADDRETC" size="256" summ="default" type="STRING"/>
+					<colinfo id="ARCONVPGM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ARCONVSTATUS" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oModifyColumn">
+				<Contents>
+					<colinfo id="COLUMNCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="COLUMNNM" size="256" summ="default" type="STRING"/>
+					<record>
+						<COLUMNCD>AGNM</COLUMNCD>
+						<COLUMNNM>업무대행업체관리번호</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>AGOWNER</COLUMNCD>
+						<COLUMNNM>대표자</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>AGCONO</COLUMNCD>
+						<COLUMNNM>사업자등록번호</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>AGTEL</COLUMNCD>
+						<COLUMNNM>전화번호</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>AGFAX</COLUMNCD>
+						<COLUMNNM>팩스번호</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>AGZIPCD</COLUMNCD>
+						<COLUMNNM>우편번호</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>AGADDR1</COLUMNCD>
+						<COLUMNNM>주소1</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>AGADDR2</COLUMNCD>
+						<COLUMNNM>주소2</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>AGREMARK</COLUMNCD>
+						<COLUMNNM>비고</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>AGREGDATE</COLUMNCD>
+						<COLUMNNM>등록일</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>AGREGSABUN</COLUMNCD>
+						<COLUMNNM>등록자사번</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>AGMODDATE</COLUMNCD>
+						<COLUMNNM>변경일</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>AGMODSABUN</COLUMNCD>
+						<COLUMNNM>변경자사번</COLUMNNM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oAddr">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>지번주소</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>도로명주소</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="416" Height="292" Id="Shape2" Left="4" LineColor="user15" Right="796" TabOrder="30" Top="124" Type="Rectangle" Width="792"></Shape>
+		<Shape Bottom="580" Height="152" Id="Shape1" Left="4" LineColor="user15" Right="796" TabOrder="25" Top="428" Type="Rectangle" Width="792"></Shape>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oAgentList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="412" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="260" Id="gdAgentList" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" OnCellClick="gdAgentList_OnCellClick" OnCellDBLClick="gdAgentList_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="792" RowHeight="20" Style="sty_Grid" TabOrder="12" TabStop="true" Top="152" UseDBuff="true" UsePopupMenu="true" UserData="업무대행업체정보" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="784">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="213"/>
+						<col width="87"/>
+						<col width="251"/>
+						<col width="95"/>
+						<col width="95"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="업체명"/>
+						<cell col="2" display="text" text="대표자"/>
+						<cell col="3" display="text" text="주소"/>
+						<cell col="4" display="text" text="전화번호"/>
+						<cell align="center" col="5" display="text" text="팩스"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="number" expr="row+1"/>
+						<cell align="left" col="1" colid="AGNM" display="text"/>
+						<cell align="center" col="2" colid="AGOWNER" display="text"/>
+						<cell align="left" col="3" colid="AGADDR" display="text"/>
+						<cell align="center" col="4" colid="AGTEL" display="text"/>
+						<cell align="center" col="5" colid="AGFAX" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="120" Height="64" Id="Shape0" Left="4" LineColor="user15" Right="796" TabOrder="23" Top="56" Type="Rectangle" Width="792"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="Button1" ImageID="BTN_MULTI_SORT" Left="720" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="11" Top="128" Transparent="TRUE" Width="74"></Button>
+		<Static Align="Center" Height="20" Id="lbTel" Left="8" Style="sty_Label" TabOrder="24" Text="전화번호" Top="508" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edTel" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="16" Top="508" UserData="S:전화번호" Width="148"></Edit>
+		<Static Align="Center" Height="20" Id="lbAgnm" Left="8" Style="sty_Label" TabOrder="26" Text="업체명" Top="460" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edAgnm" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="13" Top="460" UserData="S:업체명" Width="556"></Edit>
+		<Static Align="Center" Height="20" Id="lbFax" Left="252" Style="sty_Label" TabOrder="27" Text="팩스번호" Top="508" VAlign="Middle" Width="100"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edFax" ImeMode="native" Left="356" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="17" Top="508" UserData="S" Width="148"></Edit>
+		<Static Align="Center" Height="20" Id="lbAgowner" Left="8" Style="sty_Label" TabOrder="28" Text="대표자" Top="484" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edOwner" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="14" Top="484" UserData="S:대표자" Width="148"></Edit>
+		<Static Align="Center" Height="20" Id="lbAddr" Left="8" Style="sty_Label" TabOrder="29" Text="주소" Top="532" VAlign="Middle" Width="88"></Static>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="31" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="348">
+			<Contents></Contents>
+		</Div>
+		<Static Align="Center" Height="20" Id="Static19" Left="20" Style="sty_LabelGruopBox" TabOrder="32" Text="업체&#32;등록&#32;및&#32;변경" Top="420" VAlign="Middle" Width="120"></Static>
+		<Static Align="Center" Height="20" Id="Static5" Left="20" Style="sty_LabelGruopBox" TabOrder="33" Text="조회조건" Top="48" VAlign="Middle" Width="120"></Static>
+		<Static Align="Center" Height="20" Id="lbTotalCnt" Left="8" Style="sty_LabelStat" TabOrder="35" Text="총건수" Top="128" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medTotalCnt" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="34" Top="128" UserData="S" Width="64"></MaskEdit>
+		<Shape Bottom="53" Height="52" Id="shpBtnBox" Left="444" LineColor="user14" Right="796" TabOrder="36" Top="1" Type="Rectangle" Width="352"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="447" OnClick="lfn_Search" Style="sty_Button" TabOrder="5" ToolTipText="조회" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnInput" ImageID="BTN_COM_ADD" Left="534" OnClick="lfn_Input" Style="sty_Button" TabOrder="6" ToolTipText="추가&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDelete" ImageID="BTN_COM_DEL" Left="708" OnClick="lfn_Delete" Style="sty_Button" TabOrder="8" ToolTipText="삭제&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSave" ImageID="BTN_COM_SAVE" Left="621" OnClick="lfn_Save" Style="sty_Button" TabOrder="7" ToolTipText="수정&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="447" OnClick="btnCancel_OnClick" Style="sty_Button" TabOrder="1" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="lfn_Excel" Style="sty_Button" TabOrder="2" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="3" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="4" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbSearchGubun" Left="12" Style="sty_Label" TabOrder="37" Text="검색조건" Top="72" UserData="S" VAlign="Middle" Width="72"></Static>
+		<Static Align="Center" Height="20" Id="lbKeyWord" Left="12" Style="sty_Label" TabOrder="38" Text="검색어" Top="96" UserData="S" VAlign="Middle" Width="72"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edKeyWord" ImeMode="native" Left="88" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edKeyWord_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="10" Top="96" UserData="S" Width="316"></Edit>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radAgent" INDEX="0" InnerDataset="ds_ioGubun" Left="88" OnChanged="radAgent_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="1" Style="sty_Radio" TabOrder="9" Top="72" Value="1" Width="316"></Radio>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edAddr1" ImeMode="native" Left="180" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edAddr1_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="18" Top="532" UserData="S" Width="272"></Edit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BKColor="user4" Border="Flat" Height="20" Id="medZipCode" Left="100" LeftMargin="2" Mask="######" OnFocus="medZipCode_OnFocus" OnKeyDown="gfn_EnterNextFocus" Readonly="TRUE" Style="sty_ZipCodeReadOnly" TabOrder="21" Top="532" Type="STRING" UserData="S" Width="50"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearchZipCode" ImageID="BTN_SEARCH" Left="157" OnClick="btnSearchZipCode_OnClick" OnKeyDown="btnSearchZipCode_OnKeyDown" Style="sty_Button" TabOrder="22" Top="532" Transparent="TRUE" Width="22"></Button>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edAddr2" ImeMode="native" Left="456" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="19" Top="532" UserData="S" Width="336"></Edit>
+		<Static Align="Center" Height="20" Id="lbCono" Left="252" Style="sty_Label" TabOrder="39" Text="사업자등록번호" Top="484" VAlign="Middle" Width="100"></Static>
+		<Static Align="Center" Height="20" Id="lbRemark" Left="8" Style="sty_Label" TabOrder="40" Text="비고" Top="556" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edRemark" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="20" Top="556" UserData="S" Width="692"></Edit>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Column="BCONO" Height="20" Id="medCono" Left="356" LeftMargin="2" Mask="###-##-#####" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="div2_medCompanyNo_OnKillFocus" Style="sty_Maskedit" TabOrder="15" Top="484" Type="STRING" UserData="S" Width="93"></MaskEdit>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxAddrGubun" ImeMode="none" INDEX="0" InnerDataset="ds_oAddr" Left="705" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="41" Top="531" UserData="S" Visible="FALSE" Width="89"></Combo>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust0040MAgentManagement.xml
+ * 설명 : 업무대행업체정보관리
+ * 작성일 : 2009.12.09
+ * 작성자 : 이규희
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+var mb_IsNewData = true; // 저장버튼이 클릭되었는지 여부
+
+var arrRoadAddrArg = Array(10);	// 도로명주소 관련
+/*  0 ARPNUCD,
+    1 AROADBUILDMGNO, 
+    2 ARROADDETAIL, 
+    3 ARROADREMAIN, 
+    4 ARSANGUBUN, 
+    5 ARMAINBUNJI, 
+    6 ARSUBBUNJI, 
+    7 ARBUILDNM, 
+    8 ARADDRETC, 
+    9 ARCONVPGM, 
+    10 ARCONVSTATUS*/
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    // 공통 코드 조회    
+    if (IsExistVar("sIsPopup")) {   // sKeyword , sGubun 인자값
+        IsPopup = sIsPopup;
+    }
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdAgentList.Width = nCx - gdAgentList.Left - 8;
+        Shape2.Width = nCx - Shape2.Left - 4;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    
+    ds_oAgentList.ClearData(); // 데이타셋 초기화
+    
+    // 조회이력을 저장한다.  
+    ls_HistoryArg = "검색조건=" + quote(radAgent.Text)
+                + ",검색어=" + quote(edKeyWord.Text);
+    gfn_InsertSearchPrintHistory(
+        "S"
+        , this.ID
+        , global.mnuLeft.cbxOpenForm.Text
+        , ls_HistoryArg
+    );
+    
+    medTotalCnt.Value = "";
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cust:searchCust0040AgentList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oAgentList=ds_oAgentList"	// outDs
+		,"GUBUN=" + quote(radAgent.Value)
+            + " KEYWORD=" + quote(edKeyWord.Text)	// args 
+		,"lfn_AfterSearchAgentList"
+		,false
+	);
+}
+
+/*
+ * 기능 : 추가
+ */
+function lfn_Input(obj) {
+	if (!gfn_Confirm(MSGI00070)) { // 신규 추가 하시겠습니까?\n입력완료 후 저장 버튼을 누르세요.
+        return false;
+	}
+
+	mb_IsNewData = true; // 저장버튼이 클릭 설정
+    //lfn_Cancel(); // 값 초기화
+
+    // 기본값 설정
+    edAgnm.Text = "";
+    edOwner.Text = "";
+    medCono.Value = "";
+    edTel.Text = "";
+    edFax.Text = "";
+    medZipCode.Value = "";
+    edAddr1.Text = "";
+    edAddr2.Text = "";
+    edRemark.Text = "";
+    cbxAddrGubun.Value = 0;
+
+    // 도로명주소 정보 초기화
+    for (var i=0; i<=10; i++) {
+		arrRoadAddrArg[i] = "";
+	}
+
+    edAgnm.SetFocus();
+}
+
+/*
+ * 기능 : 삭제
+ */
+function lfn_Delete(obj) {
+    if (ds_oAgentList.currow < 0) {
+        gfn_Alert(MSGI00030); // 삭제할 레코드가 없습니다.
+        return false;
+    }
+    
+	if (!gfn_Confirm(MSGW00030)) { // 정말로 삭제 하시겠습니까?
+        return false;
+	}
+	
+	lfn_SaveModifyHistory("D"); // 변경이력을 저장한다.
+
+    ds_oAgentList.DeleteRow(ds_oAgentList.currow); // 선택된 ROW를 삭제한다.
+
+    gfn_FormInit(this); // 입력란 초기화
+
+	tit_clearActionInfo();
+	tit_addSaveActionInfo(
+		""	// insert
+		, ""	// update
+		, "cust:deleteCust0040AgentInfo"	// delete
+		, ""	// flag column 명
+		, ""	// key sql id
+		, 0	// key 증가 값
+		, "" 
+		, 0 
+		, "N"	// 실행타입
+	);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,"ds_iAgentList=ds_oAgentList:U"	// inDs
+		,""	// outDs
+		,""	// args 
+		,"lfn_AfterSaveAgentInfo"
+		,false
+	);
+}
+
+/*
+ * 기능 : 저장
+ */
+function lfn_Save(obj) {
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+
+    if (mb_IsNewData) { // 신규 저장
+        // 키 중복 체크
+    
+        if (!gfn_Confirm(MSGW00020)) { // 정말로 추가 저장 하시겠습니까?
+            return false;
+        }
+        
+        // 입력된 값을 그리드로 복사한다.
+        ds_oAgentList.InsertRow(0);
+        ds_oAgentList.SetColumn(0, "AGNM", edAgnm.Text);
+        ds_oAgentList.SetColumn(0, "AGOWNER", edOwner.Text);              
+        ds_oAgentList.SetColumn(0, "AGCONO", medCono.Value);             
+        ds_oAgentList.SetColumn(0, "AGTEL", edTel.Text);                  
+        ds_oAgentList.SetColumn(0, "AGFAX", edFax.Text);      
+        ds_oAgentList.SetColumn(0, "AGZIPCD", medZipCode.Value);       
+        ds_oAgentList.SetColumn(0, "AGADDR1", edAddr1.Text);                        
+        ds_oAgentList.SetColumn(0, "AGADDR2", edAddr2.Text);            
+        ds_oAgentList.SetColumn(0, "AGREMARK", edRemark.Text);
+        ds_oAgentList.SetColumn(0, "AGADDRGUBUN", cbxAddrGubun.Value);
+        ds_oAgentList.SetColumn(0, "ARPNUCD", arrRoadAddrArg[0]);
+        ds_oAgentList.SetColumn(0, "ARROADBUILDMGNO", arrRoadAddrArg[1]);
+        ds_oAgentList.SetColumn(0, "ARROADDETAIL", arrRoadAddrArg[2]);
+        ds_oAgentList.SetColumn(0, "ARROADREMAIN", arrRoadAddrArg[3]);
+        ds_oAgentList.SetColumn(0, "ARSANGUBUN", arrRoadAddrArg[4]);
+        ds_oAgentList.SetColumn(0, "ARMAINBUNJI", arrRoadAddrArg[5]);
+        ds_oAgentList.SetColumn(0, "ARSUBBUNJI", arrRoadAddrArg[6]);
+        ds_oAgentList.SetColumn(0, "ARBUILDNM", arrRoadAddrArg[7]);
+        ds_oAgentList.SetColumn(0, "ARADDRETC", arrRoadAddrArg[8]);
+        if (!gfn_IsNull(arrRoadAddrArg[1])) {
+			ds_oAgentList.SetColumn(0, "ARCONVPGM", "1");
+			ds_oAgentList.SetColumn(0, "ARCONVSTATUS", "01");
+		} else {
+			ds_oAgentList.SetColumn(0, "ARCONVPGM", "0");
+			ds_oAgentList.SetColumn(0, "ARCONVSTATUS", "00");
+		}
+        
+        lfn_SaveModifyHistory("I"); // 변경이력을 저장한다.
+    } else { // 수정 저장
+        if (!gfn_Confirm(MSGW00040)) { // 정말로 수정 저장 하시겠습니까?
+            return false;
+        }
+
+        // 입력된 값을 그리드로 복사한다.
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "AGNM", edAgnm.Text);
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "AGOWNER", edOwner.Text);              
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "AGCONO", medCono.Value);             
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "AGTEL", edTel.Text);                  
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "AGFAX", edFax.Text);      
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "AGZIPCD", medZipCode.Value);       
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "AGADDR1", edAddr1.Text);                        
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "AGADDR2", edAddr2.Text);            
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "AGREMARK", edRemark.Text);
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "AGADDRGUBUN", cbxAddrGubun.Value);
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "ARPNUCD", arrRoadAddrArg[0]);
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "ARROADBUILDMGNO", arrRoadAddrArg[1]);
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "ARROADDETAIL", arrRoadAddrArg[2]);
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "ARROADREMAIN", arrRoadAddrArg[3]);
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "ARSANGUBUN", arrRoadAddrArg[4]);
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "ARMAINBUNJI", arrRoadAddrArg[5]);
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "ARSUBBUNJI", arrRoadAddrArg[6]);
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "ARBUILDNM", arrRoadAddrArg[7]);
+        ds_oAgentList.SetColumn(ds_oAgentList.currow, "ARADDRETC", arrRoadAddrArg[8]);
+        if (!gfn_IsNull(arrRoadAddrArg[1])) {
+			ds_oAgentList.SetColumn(ds_oAgentList.currow, "ARCONVPGM", "1");
+			ds_oAgentList.SetColumn(ds_oAgentList.currow, "ARCONVSTATUS", "01");
+		} else {
+			ds_oAgentList.SetColumn(ds_oAgentList.currow, "ARCONVPGM", "0");
+			ds_oAgentList.SetColumn(ds_oAgentList.currow, "ARCONVSTATUS", "00");
+		}
+                
+        lfn_SaveModifyHistory("U"); // 변경이력을 저장한다.
+        
+    }
+
+    gfn_FormInit(this); // 입력란 초기화
+
+    tit_clearActionInfo();
+    tit_addSaveActionInfo(
+        "cust:insertCust0040AgentInfo"	// insert
+        , "cust:updateCust0040AgentInfo"	// update
+        , ""	// delete
+        , ""	// flag column 명
+        , ""	// key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N"	// 실행타입
+    );
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iAgentList=ds_oAgentList:U"	// inDs
+        ,""	// outDs
+        ,""	// args 
+        ,"lfn_AfterSaveAgentInfo"
+        ,false
+    );
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 교육일정관리 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchAgentList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    //trace(ds_oAgentList.SaveXML());
+    
+    medTotalCnt.Value = ds_oAgentList.rowcount;
+    gfn_SearchMessage(gdAgentList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveAgentInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    lfn_Search(); // 교육일정관리 조회
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    btnToExcel.Enable = bStatus; // 엑셀 버튼
+    btnInput.Enable = bStatus; // 추가 버튼
+    btnDelete.Enable = bStatus; // 삭제 버튼
+    btnSave.Enable = bStatus; // 수정&저장 버튼
+}
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdAgentList, 0); // 멀티 정렬을 실행한다.
+}
+
+function ds_oAgentList_OnRowPosChanged(obj,nOldRow,nRow)
+{
+    // 그리드의 값을 입력란에 복사한다. 추가상태인 경우 복사 후 저장을 하기 위해 제외한다.
+    if (obj.GetRowType(nRow) <> "insert" && nRow <> -1) {
+        edAgnm.Text = obj.GetColumn(nRow, "AGNM");
+        edOwner.Text = obj.GetColumn(nRow, "AGOWNER");
+        medCono.Value = obj.GetColumn(nRow, "AGCONO");
+        edTel.Text = obj.GetColumn(nRow, "AGTEL");
+        edFax.Text = obj.GetColumn(nRow, "AGFAX");        
+        medZipCode.Value = obj.GetColumn(nRow, "AGZIPCD");
+        edAddr1.Text = obj.GetColumn(nRow, "AGADDR1");
+        edAddr2.Text = obj.GetColumn(nRow, "AGADDR2");
+        edRemark.Text = obj.GetColumn(nRow, "AGREMARK");
+        cbxAddrGubun.Value = obj.GetColumn(nRow, "AGADDRGUBUN");
+        arrRoadAddrArg[0] = obj.GetColumn(nRow, "ARPNUCD");
+        arrRoadAddrArg[1] = obj.GetColumn(nRow, "ARROADBUILDMGNO");
+        arrRoadAddrArg[2] = obj.GetColumn(nRow, "ARROADDETAIL");
+        arrRoadAddrArg[3] = obj.GetColumn(nRow, "ARROADREMAIN");
+        arrRoadAddrArg[4] = obj.GetColumn(nRow, "ARSANGUBUN");
+        arrRoadAddrArg[5] = obj.GetColumn(nRow, "ARMAINBUNJI");
+        arrRoadAddrArg[6] = obj.GetColumn(nRow, "ARSUBBUNJI");
+        arrRoadAddrArg[7] = obj.GetColumn(nRow, "ARBUILDNM");
+        arrRoadAddrArg[8] = obj.GetColumn(nRow, "ARADDRETC");
+        arrRoadAddrArg[9] = obj.GetColumn(nRow, "ARCONVPGM");
+        arrRoadAddrArg[10] = obj.GetColumn(nRow, "ARCONVSTATUS");
+	}
+	mb_IsNewData = false; // 저장버튼이 클릭 초기화
+}
+
+function gdAgentList_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	ds_oAgentList_OnRowPosChanged(ds_oAgentList,nRow,nRow);
+}
+
+function btnToExcel_OnClick(obj) {
+    if (ds_oAgentList.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return false;
+    }
+	lfn_Excel(obj);
+}
+
+/*
+ * 기능 : 업무 변경이력을 저장한다.
+ * parameter : sGubun - 변경구분. 예) I, U, D
+ * return : 없음
+ */
+function lfn_SaveModifyHistory(sGubun) {
+    if (sGubun = "I") { // 신규
+        gds_iModifyHistory.InsertRow(0);
+        gds_iModifyHistory.SetColumn(0, "MHWORKGUBUN", "업무대행업체"); // 업무구분
+        gds_iModifyHistory.SetColumn(0, "MHGUBUN", sGubun); // 변경구분
+        gds_iModifyHistory.SetColumn(0, "MHKEY", ""); // KEY값
+        gds_iModifyHistory.SetColumn(0, "MHCOLUMN", ""); // 변경 컬럼명
+        gds_iModifyHistory.SetColumn(0, "MHBEFOREDATA", ""); // 변경 전 값
+        gds_iModifyHistory.SetColumn(0, "MHAFTERDATA", ""); // 변경 후 값
+    } else if (sGubun = "D") { // 삭제
+        gds_iModifyHistory.InsertRow(0);
+        gds_iModifyHistory.SetColumn(0, "MHWORKGUBUN", "업무대행업체"); // 업무구분
+        gds_iModifyHistory.SetColumn(0, "MHGUBUN", sGubun); // 변경구분
+        gds_iModifyHistory.SetColumn(0, "MHKEY", ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGMGNO")); // KEY값
+        gds_iModifyHistory.SetColumn(0, "MHCOLUMN", ""); // 변경 컬럼명
+        gds_iModifyHistory.SetColumn(0, "MHBEFOREDATA", ""); // 변경 전 값
+        gds_iModifyHistory.SetColumn(0, "MHAFTERDATA", ""); // 변경 후 값
+    } else if (sGubun = "U") { // 수정
+        var ln_TotalCount = ds_oModifyColumn.GetCount();
+        var ls_ColumnCd = "";
+        var ls_ColumnNm = "";
+        for (var i = 0; i < ln_TotalCount; i++) {
+            ls_ColumnCd = ds_oModifyColumn.GetColumn(i, "COLUMNCD");
+            ls_ColumnNm = ds_oModifyColumn.GetColumn(i, "COLUMNNM");
+            if (ds_oAgentList.GetOrgBuffColumn(0, ls_ColumnCd) <> ds_oAgentList.GetColumn(ds_oAgentList.currow, ls_ColumnCd)) {
+                gds_iModifyHistory.InsertRow(0);
+                gds_iModifyHistory.SetColumn(0, "MHWORKGUBUN", "업무대행업체"); // 업무구분
+                gds_iModifyHistory.SetColumn(0, "MHGUBUN", sGubun); // 변경구분
+                gds_iModifyHistory.SetColumn(0, "MHKEY", ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGMGNO")); // KEY값
+                gds_iModifyHistory.SetColumn(0, "MHCOLUMN", ls_ColumnNm); // 변경 컬럼명
+                gds_iModifyHistory.SetColumn(0, "MHBEFOREDATA", ds_oAgentList.GetOrgBuffColumn(0, ls_ColumnCd)); // 변경 전 값
+                gds_iModifyHistory.SetColumn(0, "MHAFTERDATA", ds_oAgentList.GetColumn(ds_oAgentList.currow, ls_ColumnCd)); // 변경 후 값
+            }
+        }
+    }
+
+    gfn_InsertModifyHistory(); // 업무 변경이력을 저장한다.
+}
+
+// 우편번호
+function medZipCode_OnFocus(obj)
+{
+    btnSearchZipCode.SetFocus();
+}
+
+// 우편번호
+function btnSearchZipCode_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if(nChar == 13) {	// Enter key
+		btnSearchZipCode_OnClick();
+	} else {
+		gfn_ComponentOnKillFocus(obj);
+	}
+}
+
+// 우편번호
+function btnSearchZipCode_OnClick(obj)
+{
+	var sAddrGubun = 0;
+	
+	if (cbxAddrGubun.Index == 0) {	// 구주소
+		sAddrGubun = 0;
+	} else {
+		sAddrGubun = 1;
+	}
+    
+	// 지번주소/도로명주소 조회 팝업
+	var arrAddrInfo = gfn_PostRoadListPopup(gds_oUserInfo.GetColumn(0,"PDEPTCD")		// 지부코드
+											, sAddrGubun		// 구새주소 구분[0:구주소, 1:새주소]
+											, medZipCode.Value	// 구:지번 우편번호
+											, edAddr1.Text		// 구:지번주소1
+											, edAddr2.Text		// 구:지번주소2
+											, ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARSANGUBUN")	// 구:산여부
+											, ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARMAINBUNJI")	// 구:주번지
+											, ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARSUBBUNJI")	// 구:부번지
+											, ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARBUILDNM")	// 구:아파트,건물명
+											, ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARADDRETC")	// 구:상세주소
+											, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGZIPCD"))	// 새1:도로명 우편번호
+											, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDR1"))		// 새1:도로명주소11
+											, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDR1"))		// 새1:도로명주소12
+											, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARROADBUILDMGNO"))	// 새1:건물관리번호1
+											, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARROADDETAIL"))	// 새1:상세주소1
+											, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARROADREMAIN"))		// 새1:부가주소1
+											, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGZIPCD"))	// 새2:도로명 우편번호
+											, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDR1"))		// 새2:도로명주소21
+											, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDR1"))		// 새2:도로명주소22
+											, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARROADBUILDMGNO"))	// 새2:건물관리번호2
+											, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARROADDETAIL"))	// 새2:상세주소2
+											, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARROADREMAIN"))	// 새2:부가주소2
+											); 
+    if (length(arrAddrInfo) > 0) {
+		if (arrAddrInfo[0] == 0) {
+			
+			/* 지번주소 조회 Tab */
+			// 구주소
+			cbxAddrGubun.Value = 0;
+			
+			medZipCode.Value = arrAddrInfo[1];	
+			edAddr1.Text = arrAddrInfo[2];	
+			edAddr2.Text = arrAddrInfo[3];
+			
+			if (arrAddrInfo[11] <> "") {
+				
+				// 새주소
+				cbxAddrGubun.Value = 1;
+				
+				medZipCode.Value = arrAddrInfo[10];
+				
+				edAddr1.Text = arrAddrInfo[11];
+				
+				edAddr2.Text = arrAddrInfo[12];
+							}
+		 
+			arrRoadAddrArg[0] = arrAddrInfo[9];		// PNU 코드
+			
+			arrRoadAddrArg[1] = arrAddrInfo[13];	// 건물관리번호
+			
+			arrRoadAddrArg[2] = arrAddrInfo[14];		// 상세주소
+			
+			arrRoadAddrArg[3] = arrAddrInfo[15];		// 부가주소
+				   
+			arrRoadAddrArg[4] = arrAddrInfo[4];		// 산번지 여부
+			
+			arrRoadAddrArg[5] = arrAddrInfo[5];		// 주번지
+			
+			arrRoadAddrArg[6] = arrAddrInfo[6];		// 부번지
+			
+			arrRoadAddrArg[7] = arrAddrInfo[7];		// 건물명
+			
+			arrRoadAddrArg[8] = arrAddrInfo[8];		// 기타주소
+			
+			if (!gfn_IsNull(arrAddrInfo[11])) {	// 도로명주소1
+			
+				arrRoadAddrArg[9] = "1";	// ARCONVPGM
+				
+				arrRoadAddrArg[10] = "01";	// ARCONVSTATUS
+			
+			} else {
+			
+				arrRoadAddrArg[9] = "0";
+				
+				arrRoadAddrArg[10] = "00";
+				
+			}
+			
+		} else {
+		
+			/* 도로명주소 조회 Tab */
+			
+			cbxAddrGubun.Value = 1;
+		
+			medZipCode.Value = arrAddrInfo[10];	// 우편번호	
+			edAddr1.Text = arrAddrInfo[11];		// 도로명주소1	
+			edAddr2.Text = arrAddrInfo[12];		// 도로명주소2
+			
+			arrRoadAddrArg[4] = arrAddrInfo[4];		// 산여부
+			
+			arrRoadAddrArg[5] = arrAddrInfo[5];		// 주번지
+			
+			arrRoadAddrArg[6] = arrAddrInfo[6];		// 부번지
+			
+			arrRoadAddrArg[0] = arrAddrInfo[9];		// PNU 코드
+			
+			arrRoadAddrArg[1] = arrAddrInfo[13];	// 건물관리번호
+			
+			arrRoadAddrArg[2] = arrAddrInfo[14];		// 상세주소
+			
+			arrRoadAddrArg[3] = arrAddrInfo[15];		// 부가주소
+	
+			if (!gfn_IsNull(arrAddrInfo[11])) {	// 도로명주소1
+			
+				arrRoadAddrArg[9] = "1";	// ARCONVPGM
+				
+				arrRoadAddrArg[10] = "01";	// ARCONVSTATUS
+			
+			} else {
+			
+				arrRoadAddrArg[9] = "0";
+				
+				arrRoadAddrArg[10] = "00";
+				
+			}
+	
+		}
+
+    }
+    
+}
+
+function edKeyWord_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar == 13) {	// Enter key
+		lfn_Search();
+	}
+}
+
+// 초기화
+function btnCancel_OnClick(obj)
+{
+	ds_oAgentList.Clear();
+	radAgent.Value = "1";
+	lfn_Cancel(obj);
+	edKeyWord.SetFocus();
+}
+
+function gdAgentList_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if (IsExistVar("sIsPopup")) {   // sKeyword , sGubun 인자값
+        var arrArg = Array(2);
+        arrArg[0] = ds_oAgentList.GetColumn(ds_oAgentList.currow,  "AGMGNO");		        // 구분
+        arrArg[1] = ds_oAgentList.GetColumn(ds_oAgentList.currow,  "AGNM");		        // 대상물관리번호 
+        
+        Close(arrArg);
+    }
+}
+
+function radAgent_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	edKeyWord.Text = "";
+	edKeyWord.SetFocus();
+}
+// 주소1
+function edAddr1_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) {
+	
+        btnSearchZipCode.SetFocus();
+        
+		var sAddrGubun = 0;
+		
+		if (cbxAddrGubun.Index == 0) {	// 구주소
+			sAddrGubun = 0;
+		} else {
+			sAddrGubun = 1;
+		}
+		
+		// 지번주소/도로명주소 조회 팝업
+		var arrAddrInfo = gfn_PostRoadListPopup(gds_oUserInfo.GetColumn(0,"PDEPTCD")		// 지부코드
+												, sAddrGubun		// 구새주소 구분[0:구주소, 1:새주소]
+												, medZipCode.Value	// 구:지번 우편번호
+												, edAddr1.Text		// 구:지번주소1
+												, edAddr2.Text		// 구:지번주소2
+												, ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARSANGUBUN")	// 구:산여부
+												, ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARMAINBUNJI")	// 구:주번지
+												, ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARSUBBUNJI")	// 구:부번지
+												, ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARBUILDNM")	// 구:아파트,건물명
+												, ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARADDRETC")	// 구:상세주소
+												, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGZIPCD"))	// 새1:도로명 우편번호
+												, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDR1"))		// 새1:도로명주소11
+												, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDR1"))		// 새1:도로명주소12
+												, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARROADBUILDMGNO"))	// 새1:건물관리번호1
+												, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARROADDETAIL"))	// 새1:상세주소1
+												, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARROADREMAIN"))		// 새1:부가주소1
+												, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGZIPCD"))	// 새2:도로명 우편번호
+												, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDR1"))		// 새2:도로명주소21
+												, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDR1"))		// 새2:도로명주소22
+												, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARROADBUILDMGNO"))	// 새2:건물관리번호2
+												, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARROADDETAIL"))	// 새2:상세주소2
+												, iif(ds_oAgentList.GetColumn(ds_oAgentList.currow, "AGADDRGUBUN")=="0", "", ds_oAgentList.GetColumn(ds_oAgentList.currow, "ARROADREMAIN"))	// 새2:부가주소2
+												); 	
+		if (length(arrAddrInfo) > 0) {	
+			if (arrAddrInfo[0] == 0) {
+				
+				/* 지번주소 조회 Tab */
+				// 구주소
+				cbxAddrGubun.Value = 0;
+				
+				medZipCode.Value = arrAddrInfo[1];		
+				edAddr1.Text = arrAddrInfo[2];		
+				edAddr2.Text = arrAddrInfo[3];
+				
+				if (arrAddrInfo[11] <> "") {
+					
+					// 새주소
+					cbxAddrGubun.Value = 1;
+					
+					medZipCode.Value = arrAddrInfo[10];
+					
+					edAddr1.Text = arrAddrInfo[11];
+					
+					edAddr2.Text = arrAddrInfo[12];
+									}
+			 
+				arrRoadAddrArg[0] = arrAddrInfo[9];		// PNU 코드
+				
+				arrRoadAddrArg[1] = arrAddrInfo[13];	// 건물관리번호
+				
+				arrRoadAddrArg[2] = arrAddrInfo[14];		// 상세주소
+				
+				arrRoadAddrArg[3] = arrAddrInfo[15];		// 부가주소
+					   
+				arrRoadAddrArg[4] = arrAddrInfo[4];		// 산번지 여부
+				
+				arrRoadAddrArg[5] = arrAddrInfo[5];		// 주번지
+				
+				arrRoadAddrArg[6] = arrAddrInfo[6];		// 부번지
+				
+				arrRoadAddrArg[7] = arrAddrInfo[7];		// 건물명
+				
+				arrRoadAddrArg[8] = arrAddrInfo[8];		// 기타주소
+				
+				if (!gfn_IsNull(arrAddrInfo[11])) {	// 도로명주소1
+				
+					arrRoadAddrArg[9] = "1";	// ARCONVPGM
+					
+					arrRoadAddrArg[10] = "01";	// ARCONVSTATUS
+				
+				} else {
+				
+					arrRoadAddrArg[9] = "0";
+					
+					arrRoadAddrArg[10] = "00";
+					
+				}
+				
+			} else {
+			
+				/* 도로명주소 조회 Tab */
+				
+				cbxAddrGubun.Value = 1;
+			
+				medZipCode.Value = arrAddrInfo[10];	// 우편번호		
+				edAddr1.Text = arrAddrInfo[11];		// 도로명주소1		
+				edAddr2.Text = arrAddrInfo[12];		// 도로명주소2
+				
+				arrRoadAddrArg[4] = arrAddrInfo[4];		// 산여부
+				
+				arrRoadAddrArg[5] = arrAddrInfo[5];		// 주번지
+				
+				arrRoadAddrArg[6] = arrAddrInfo[6];		// 부번지
+				
+				arrRoadAddrArg[0] = arrAddrInfo[9];		// PNU 코드
+				
+				arrRoadAddrArg[1] = arrAddrInfo[13];	// 건물관리번호
+				
+				arrRoadAddrArg[2] = arrAddrInfo[14];		// 상세주소
+				
+				arrRoadAddrArg[3] = arrAddrInfo[15];		// 부가주소
+		
+				if (!gfn_IsNull(arrAddrInfo[11])) {	// 도로명주소1
+				
+					arrRoadAddrArg[9] = "1";	// ARCONVPGM
+					
+					arrRoadAddrArg[10] = "01";	// ARCONVSTATUS
+				
+				} else {
+				
+					arrRoadAddrArg[9] = "0";
+					
+					arrRoadAddrArg[10] = "00";
+					
+				}
+		
+			}
+	
+        } else {
+        
+            edAddr1.SetFocus();
+            
+        }
+    }
+}
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_1000,dsc_0005]";	// 개인정보접속기록 시스템ID 
+}
+]]></Script>
+</Window>

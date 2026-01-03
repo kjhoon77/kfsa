@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="208" Id="frmCOM0050MLogin" Left="8" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="로그인" Top="8" Ver="1.0" Width="602" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oServiceGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>ORACLE</CD>
+						<DATA>내부</DATA>
+					</record>
+					<record>
+						<CD>MDB</CD>
+						<DATA>외부</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="224" Id="Image0" ImageID="nologin" Style="sty_Image" TabOrder="2" Transparent="TRUE" Width="600"></Image>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radServiceGubun" INDEX="0" InnerDataset="ds_oServiceGubun" OnChanged="radServiceGubun_OnChanged" Style="sty_Radio" TabOrder="1" Top="40" Value="ORACLE" Visible="FALSE" Width="120"></Radio>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edSabun" ImeMode="native" Left="8" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edUserId_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="3" Top="176" UserData="S:사용자" Visible="FALSE" Width="120"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM0050MLogin.xml
+ * 설명 : 로그인
+ * 작성일 : 2009.06.25
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+var ls_LoginStatus = false; // Login Pass Status 로그인여부
+var ln_LoginFailCnt = 0; // Login 실패 회수
+
+
+/* 공통 */
+function Form_OnLoadCompleted(obj) {
+
+	edSabun.value = GetReg("GlobalVal");
+	
+	if(edSabun.value == '' || edSabun.value == null){
+		alert("해당 경로는 올바르지 않습니다.\n\n'회원종합관리시스템'에서 \"강습관리\"를 실행하세요. ");
+		exit();
+	}
+
+    ext_SetTopWindow(true);
+
+    tit_createActionInfo(); // X-Framework용
+
+    // Simulator구동시(개발) localhost, 서버로 접속시 "N"로 세팅
+    if (IsSimulator()) {
+        gs_IsLocal = "Y";
+        global.window.title = "[로컬]" + global.window.title;
+    } else {
+        gs_IsLocal = "N";
+    }
+
+    gs_DataGroupGubun = "ORACLE"; // DataGroup 구분
+
+    ext_RegSetValue("HKEY_LOCAL_MACHINE", "SOFTWARE\\Microsoft\\Internet\ Explorer\\Main\\FeatureControl\\FEATURE_WEBOC_MOVESIZECHILD", "MiPlatform320.exe", 1);
+    ext_RegSetValue("HKEY_LOCAL_MACHINE", "SOFTWARE\\Microsoft\\Internet\ Explorer\\Main\\FeatureControl\\FEATURE_WEBOC_MOVESIZECHILD", "MiSimulator320.exe", 1);
+    ext_RegSetValue("HKEY_CURRENT_USER", "SOFTWARE\\Microsoft\\Internet\ Explorer\\Main", "Disable Script Debugger", "yes");
+
+	imgLogin_OnClick();
+}
+
+
+function Form_OnUnloadCompleted(obj) {
+    ext_SetTopWindow(false);
+
+    /*
+     * 로그인 버튼을 클릭하지 않은채 "취소" 버튼을 클릭 시 정상적으로 Login을 하면 해당 화면을 닫고
+     * 아니면 시스템 종료
+     */
+    if(ls_LoginStatus == true) {
+        obj.close();
+    } else {
+        obj.exit();
+    }
+}
+
+
+// 로그인
+function imgLogin_OnClick(obj,nX,nY)
+{
+    initSession(false);
+
+    if (!gfn_FormValidate(this)) { // Validation Check
+        return false;
+    }
+
+    SetReg("KEMSUserId", '');
+    
+    if (ls_IsCheckedSameUserId) {
+        lfn_SearchUserLogIn(); // 로그인한다.
+    } else {
+        lfn_CheckSameUserId(); // 같은 User ID(동명이인)을 검사한다.
+    }
+} 
+    
+    
+/*
+ * 기능 : 로그인을 한다.
+ * parameter : 없음
+ * Return : 없음
+ */
+var ls_IsCheckedSameUserId = false;
+function lfn_CheckSameUserId() {
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("com:searchUserLogIn2", false);
+	// 서버 호출
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"gds_oSameUserInfo=ds_oUserInfo"	// outDs
+		,"PSABUN=" + quote(edSabun.value)
+		,"lfn_AfterCheckSameUserId"
+		,false
+		,true
+		//,true
+	);
+}
+
+
+
+
+/*
+ * 기능 : 동명이인 검사 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterCheckSameUserId(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) {
+        initSession(true);
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        initSession(false);
+        return;
+    }
+
+    ls_IsCheckedSameUserId = true;
+
+    if (gds_oSameUserInfo.GetRowCount() == 1) {
+        if (gds_oSameUserInfo.GetColumn(0, "NOAUTH") == "NOAUTH") {
+            gfn_Alert("교육종합관리시스템을 사용할 권한이 없습니다. 관리자에게 문의하십시오.");
+            exit();
+        } else {
+            lfn_SearchUserLogIn();
+        }
+    } else {
+        gfn_Alert("등록된 사용자가 아닙니다.");
+        exit();
+    }
+}
+
+
+    
+function lfn_SearchUserLogIn() {
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("com:searchUserLogIn2", false);
+	// 서버 호출
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"gds_oUserInfo=ds_oUserInfo"	// outDs
+		,"PSABUN=" + quote(edSabun.value)
+		,"lfn_AfterSearchUserLogIn"
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 로그인 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchUserLogIn(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) {
+        initSession(true);
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        initSession(false);
+        return;
+    }
+
+    if (gds_oUserInfo.GetRowCount() == 1) {
+        if (gds_oSameUserInfo.GetColumn(0, "NOAUTH") == "NOAUTH") {
+            gfn_Alert("교육종합관리시스템을 사용할 권한이 없습니다. 관리자에게 문의하십시오.");
+            exit();
+        } else {
+            lfn_SearchTopMenu();
+        }
+    } 
+}    
+    
+/* 사용자 함수 */
+/*
+ * 기능 : 상단메뉴를 조회한다.
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchTopMenu() {
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("com:searchTopMenu", false);
+	// 서버 호출
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"gds_oTopMenu=ds_oTopMenu"	// outDs
+		,"PSABUN=" + quote(edSabun.Text)
+            + " PDEPTCD=" + quote(gds_oUserInfo.GetColumn(0, "PDEPTCD"))
+            + " ISDEPTAUTH=" + quote(gs_IsDeptAuth)
+		,"lfn_AfterSearchTopMenu"
+		,true
+		,true
+	);
+}
+
+/*
+ * 기능 : 상단메뉴 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchTopMenu(nErrorCode, strErrorMsg) {
+
+	setReg("GlobalVal","");
+
+    if (length(gs_IsDeptAuth) > 0) {
+        if (gds_oTopMenu.GetCount() > 0) {
+            initSession(true);
+            ls_LoginStatus = true;
+            close();
+        } else {
+            gs_IsDeptAuth = "Y"; // 부서권한
+
+            // 기존 사번의 권한 전체 삭제
+            tit_addSingleActionInfo("com:deleteUserAuth", "", 0, "");
+            // 서버 호출 
+            tit_callService(
+                ""
+                ,""
+                ,""	// inDs
+                ,""	// outDs
+                ,""	// args 
+                ,""
+                ,false
+                ,true
+                ,true
+            );
+
+            lfn_SearchTopMenu();
+        }
+    } else {
+        initSession(true);
+        ls_LoginStatus = true;
+        close();
+    }
+}    
+    
+  
+function radServiceGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+    gs_DataGroupGubun = strCode; // DataGroup 구분
+}
+    
+
+]]></Script>
+</Window>

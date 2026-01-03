@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="700" Id="frmCOM9030MOrderFormUploadStatics" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="(회차별)개인정보&#32;민원서식&#32;첨부파일" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Shape Bottom="28" Height="28" Id="shpBtnBox" Left="705" LineColor="user14" Right="796" TabOrder="2" Top="0" Type="Rectangle" Width="91"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="3" Width="85"></Button>
+		<Shape Bottom="114" Height="66" Id="Shape0" Left="2" LineColor="user15" Right="793" TabOrder="6" Top="48" Type="Rectangle" Width="791"></Shape>
+		<Static Align="Center" Height="20" Id="lbYear" Left="263" Style="sty_Label" TabOrder="5" Text="직능" Top="60" VAlign="Middle" Width="84"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edRegdate" ImeMode="native" Left="109" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="4" Top="84" Width="150"></Edit>
+		<Static Align="Center" Height="20" Id="Static2" Left="13" Style="sty_LabelGruopBox" TabOrder="7" Text="등록현황" Top="36" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="5" Style="sty_Label" TabOrder="8" Text="민원서식" Top="60" VAlign="Middle" Width="100"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edCbxorder" ImeMode="native" Left="109" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="3" Top="60" Width="150"></Edit>
+		<Static Align="Center" Height="20" Id="lbEmail" Left="525" Style="sty_Label" TabOrder="9" Text="첨부파일" Top="84" VAlign="Middle" Width="84"></Static>
+		<Static Align="Center" Height="20" Id="lbEducationTerm" Left="263" Style="sty_Label" TabOrder="10" Text="수정기한" Top="84" VAlign="Middle" Width="84"></Static>
+		<Static Align="Center" Height="20" Id="lbOrderNo" Left="5" Style="sty_Label" TabOrder="11" Text="등록일자" Top="84" VAlign="Middle" Width="100"></Static>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="525" Style="sty_Label" TabOrder="12" Text="회차" Top="60" VAlign="Middle" Width="84"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="meFrokdate" Left="351" LeftMargin="2" Mask="####-##-##&#32;~&#32;####-##-##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Time" TabOrder="13" Top="84" Type="STRING" Width="170"></MaskEdit>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edOrderNo" ImeMode="native" Left="612" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="14" Top="60" Width="150"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edCbxCourse" ImeMode="native" Left="351" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="15" Top="60" Width="170"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edFpfilenm" ImeMode="native" Left="612" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="16" Top="84" Width="150"></Edit>
+		<Image Height="10" Id="imgImage" ImageID="IMG_BULLET" Left="8" Style="sty_Image" TabOrder="18" Top="9" Transparent="TRUE" Width="12"></Image>
+		<Static Font="굴림,12,Bold" Height="20" Id="lbWorkFormTitle" Left="28" TabOrder="17" Text="(회차별)개인정보&#32;민원서식&#32;첨부파일" Top="4" VAlign="Middle" Width="300"></Static>
+		<Shape Bottom="694" Height="558" Id="Shape1" Left="2" LineColor="user15" Right="793" TabOrder="19" Top="136" Type="Rectangle" Width="791"></Shape>
+		<Static Align="Center" Height="20" Id="Static0" Left="13" Style="sty_LabelGruopBox" TabOrder="20" Text="스캔파일" Top="124" VAlign="Middle" Width="96"></Static>
+		<MSIE Bottom="688" Height="540" Id="MSIE0" Left="5" Right="787" Top="148" Width="782"></MSIE>
+	</Form>
+	<Script><![CDATA[/*
+ * 강습접수정보명 : frmtraining0090PInternetJubsuStatistics.xml
+ * 설명 : [인터넷]강습접수상세내역팝업
+ * 작성일 : 2009.09.13
+ * 작성자 : 김동현
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+    // 스캔파일
+    if (IsExistVar("FPPATH")) {
+		// 민원서식
+		edCbxorder.Text = cbxOrder;
+		
+		// 직능
+		edCbxCourse.Text = cbxCourse;
+		
+		// 회차
+		edOrderNo.Text = ORDERNO;
+		
+		// 등록일자
+		edRegdate.Text = REGDATE;
+		
+		// 수정기한
+		meFrokdate.Text = FROKDATE;
+		
+		// 첨부파일
+		edFpfilenm.Text = FPFILENM;
+		
+		var pageUrl = FPPATH;
+		//MSIE0.Document.body.innerHTML = '<body style="background-color: rgb(38,38,38); height: 100%; width: 100%; overflow: hidden; margin: 0"><embed width="100%" height="100%" name="plugin" id="plugin" src="' + pageUrl + '" type="application/pdf" internalinstanceid="3"></body>';
+		MSIE0.Navigate2(pageUrl, ,"_self", "", "");
+    }
+
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+    }
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+]]></Script>
+</Window>

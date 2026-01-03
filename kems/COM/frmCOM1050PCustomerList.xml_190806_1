@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="336" Id="frmCOM1050PCustomerList" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="실무교육고객정보검색팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="700" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oCustomer">
+				<Contents></Contents>
+			</Dataset>
+		</Datasets>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect" ImageID="BTN_TEXT_COM" Left="522" OnClick="btnSelect_OnClick" Style="sty_Button" TabOrder="2" Text="선택" ToolTipText="선택" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oCustomer" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="328" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="296" Id="gdCustomer" InputPanel="FALSE" Left="4" LineColor="default" OnCellDBLClick="gdCustomer_OnCellDblClick" OnEnterDown="gdCustomer_OnEnterDown" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="696" RowHeight="20" Style="sty_Grid" TabOrder="1" TabStop="true" Top="32" UseDBuff="true" UsePopupMenu="true" UserData="고객정보목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="692">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="61"/>
+						<col width="61"/>
+						<col width="138"/>
+						<col width="139"/>
+						<col width="61"/>
+						<col width="89"/>
+						<col width="307"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="관리번호"/>
+						<cell align="center" col="2" display="text" text="직능"/>
+						<cell align="center" col="3" display="text" text="대상물(업체)명"/>
+						<cell align="center" col="4" display="text" text="성명"/>
+						<cell align="center" col="5" display="text" text="생년월일"/>
+						<cell col="6" display="text" text="주소"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="GTDEPTNM" display="text"/>
+						<cell align="center" col="1" colid="CNO" display="text"/>
+						<cell align="center" col="2" colid="CNM" display="text"/>
+						<cell align="left" col="3" colid="BNM" display="text"/>
+						<cell align="center" col="4" colid="FMNM" display="text"/>
+						<cell align="center" col="5" colid="BIRTHDAY" display="text"/>
+						<cell col="6" colid="ADDR" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="609" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="4" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 고객정보명 : frmCOM1050PCustomerList.xml
+ * 설명 : 실무교육고객정보검색팝업
+ * 작성일 : 2015.01.21
+ * 작성자 : 정현호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (IsExistVar("sGubun")) {
+
+        lfn_search(obj); // 고객정보 조회
+
+    }
+    btnSelect.SetFocus();
+     
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close("END");
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    
+var Args = "";
+
+    btnSelect.Enable = true;
+
+    var serviceName = "com:searchCustomerInfo";
+     
+    ds_oCustomer.ClearData(); // 데이타셋 초기화
+    
+    // sGubun  1:지부+고객번호, 2:관리바코드 3:대상물명 4:선임자명
+    if (sGubun == "1") { Args = "COURSE=" + quote(sCourse) + " GTMGNO=" + quote(sValue1) + " CNO=" + quote(sValue2); }
+    else if (sGubun == "2") { Args = "COURSE=" + quote(sCourse) + " CMGNO=" + quote(sValue1); }
+    else if (sGubun == "3") { Args = "COURSE=" + quote(sCourse) + " BNM=" + quote(sValue1); }
+    else if (sGubun == "4") { Args = "COURSE=" + quote(sCourse) + " FMNM=" + quote(sValue1); }
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo(serviceName, false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oCustomer=ds_oCustomer"	// outDs
+		, Args // args
+		,"lfn_AfterSearchCustomerInfo"
+		,false
+		,""
+		,true
+	);
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close("END");
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchCustomerInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    if (ds_oCustomer.GetCount() < 1) {
+    
+		btnSelect.Enable = false;  // 조회 후 선택 가능하게 함
+		gfn_SearchMessage(gdCustomer); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+		
+    } else if (ds_oCustomer.GetCount() = 1) {
+        
+        btnSelect_OnClick();
+        
+    } else if (ds_oCustomer.GetCount() > 1) {
+    
+        gdCustomer.SetFocus();
+        
+		btnSelect.Enable = true;  // 조회 후 선택 가능하게 함
+		
+		gfn_SearchMessage(gdCustomer); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+    }
+
+   
+}
+
+/* 고객 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+function btnSelect_OnClick(obj) {
+
+    var arrArg = Array(41);
+    arrArg[0] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "CGTMGNO");
+    arrArg[1] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "CNO");
+    arrArg[2] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "CMGNO");
+    arrArg[3] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "CCOURSECD");
+    arrArg[4] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "CSTATUSGUBUN");
+    arrArg[5] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "BNM");
+    arrArg[6] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "BADDRGUBUN");
+    arrArg[7] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "BZIPCD");
+    arrArg[8] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "ADDR1");
+    arrArg[9] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "ADDR2");
+    arrArg[10] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "FMNM");
+    arrArg[11] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "FMBIRTHDAY");
+    arrArg[12] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "FMPERSONKEY");
+   	arrArg[13] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "FMMGNO");
+	arrArg[14] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "FMHTEL");
+	arrArg[15] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "FMHHPTEL");
+    arrArg[16] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "FMHEMAILID");
+    arrArg[17] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "FMHEMAILDOMAIN");
+    arrArg[18] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "FMHSTARTDATE");
+    arrArg[19] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "BRPNUCD");
+    arrArg[20] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "BRROADBUILDMGNO");
+    arrArg[21] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "BRROADDETAIL");
+    arrArg[22] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "BRROADREMAIN");
+    arrArg[23] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "BRSANGUBUN");
+    arrArg[24] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "BRMAINBUNJI");
+	arrArg[25] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "BRSUBBUNJI");
+	arrArg[26] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "BRBUILDNM");
+    arrArg[27] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "BRADDRETC");
+    arrArg[28] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "BRCONVSTATUS");
+    arrArg[29] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "TRINSTLRPNUCD");
+    arrArg[30] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "TRINSTLRROADBUILDMGNO");
+    arrArg[31] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "TRINSTLRROADDETAIL");
+    arrArg[32] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "TRINSTLRROADREMAIN");
+    arrArg[33] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "TRINSTLRSANGUBUN");
+    arrArg[34] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "TRINSTLRMAINBUNJI");
+	arrArg[35] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "TRINSTLRSUBBUNJI");
+	arrArg[36] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "TRINSTLRBUILDNM");
+    arrArg[37] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "TRINSTLRADDRETC");
+    arrArg[38] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "TRCONVINSTLRSTATUS");
+    arrArg[39] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "BRCONVPGM");
+//    arrArg[40] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "FULLFMRESIDENTNO");
+    arrArg[41] = ds_oCustomer.GetColumn(ds_oCustomer.currow, "CEDUEXPIREDATE");
+
+
+    Close(arrArg);
+}
+
+function gdCustomer_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+
+    btnSelect_OnClick(obj);
+
+}
+
+
+function gdCustomer_OnEnterDown(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	btnSelect_OnClick();
+}
+
+
+
+
+
+]]></Script>
+</Window>

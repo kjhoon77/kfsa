@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="123" Id="frmCOM3002PPOSProgressBar" Left="8" OnLoadCompleted="Form_OnLoadCompleted" OnTimer="lfn_ProgressBar_OnTimer" PidAttrib="7" Style="sty_Form" Title="가상계좌(세틀뱅크)&#32;할당처리진행팝업" TooltipFont=",0" Top="8" Ver="1.0" Width="300" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosOutput">
+				<Contents>
+					<colinfo id="MI_PMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_PMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_PRMGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_RESPCODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_CASHRECEIPTNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_RESPMSG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_OID" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_TID" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_AMOUNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_ACCOUNTNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_FINANCECODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_CASFLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_FINANCENAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_RSCODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_RSMSG" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Image Height="93" Id="imgProgress" ImageID="IMAGE::IMG_PROGRESS.gif" TabOrder="1" Width="300"></Image>
+		<Image Height="32" Id="imgProgressBottom" ImageID="IMAGE::IMG_PROGRESS_BOTTOM.gif" TabOrder="3" Top="92" Width="300"></Image>
+		<Static Align="Center" Color="black" Height="19" Id="lbPassed" Left="72" TabOrder="2" Top="99" Width="161"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM3002PPOSProgressBar.xml
+ * 설명 : 가상계좌 할당처리진행팝업
+ * 작성일 : 2013.08.07
+ * 작성자 : 정현호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+var start_time = Time();
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj);
+
+    lb_ShowProgressBar = true;
+
+    // Timer Setting
+    SetTimer(1, 100);
+
+    parent.divPos.ds_ioPosOutput.ClearData();
+    var lb_RetPosProgressBar = parent.divSETTLEBANKPos.lfn_POS(); // POS 호출
+
+    if (lb_RetPosProgressBar == "OK") {
+        lb_ShowProgressBar = false;
+    } else {
+        Close("FAIL");
+    }
+
+    //Show Status가 False
+    if (lb_ShowProgressBar == false) {
+        Close("OK");
+    }
+}
+
+function Form_OnUnloadCompleted(obj) {
+    KillTimer(1); // Form Unload 시 Timer Kill
+
+    gfn_Form_OnUnloadCompleted(obj);
+}
+/* 공통 필수 종료 */
+
+function lfn_ProgressBar_OnTimer(obj,nEventID)
+{
+    var ln_PassedTime = (Time() - start_time);
+    lbPassed.text = ln_PassedTime + " 초 경과";
+
+    if (ln_PassedTime > 10) { // 10초 경과 후 실패로 종료
+        Close("TIMEOUT");
+    }
+
+    //Show Status가 False
+    if (lb_ShowProgressBar == false) {
+        Close("OK");
+    }
+}
+]]></Script>
+</Window>

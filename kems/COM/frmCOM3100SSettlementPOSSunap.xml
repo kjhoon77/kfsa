@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="156" Id="frmCOM3100SSettlementPOSSunap" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="결제(수납)DIV" TooltipFont="Default,0" Top="8" Ver="1.0" Width="792" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oBankSunapGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>방문(직납)</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>방문(은납)</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSunapGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>현금</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>카드</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>현금영수증</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>가상계좌(LG&#32;U+)</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oRepaySunapGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>현금</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>카드</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>현금영수증</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="152" Height="144" Id="shpGubunBox5" Left="0" LineColor="user15" Right="792" TabOrder="5" Top="8" Type="Rectangle" Width="792"></Shape>
+		<Static Align="Center" Height="20" Id="lbBankSunapGubun" Left="4" Style="sty_Label" TabOrder="4" Text="수납방법" Top="24" VAlign="Middle" Width="100"></Static>
+		<Static Align="Center" Height="20" Id="lbSunapGubun" Left="4" Style="sty_Label" TabOrder="6" Text="납부방법" Top="48" VAlign="Middle" Width="100"></Static>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="18" Id="radSunapGubun" INDEX="0" InnerDataset="ds_oSunapGubun" Left="110" OnChanged="radSunapGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="2" Top="49" Value="0" Width="500"></Radio>
+		<Static Align="Center" Height="20" Id="lbSunab" Left="12" Style="sty_LabelGruopBox" TabOrder="7" Text="결제&#32;(수납)" VAlign="Middle" Width="100"></Static>
+		<Div BKColor="user0" Border="Flat" BorderColor="#aab6c7" Height="76" Id="divSunabDtl" Left="4" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="3" TabStop="FALSE" Text="Div0" Top="72" Width="784">
+			<Contents></Contents>
+		</Div>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radBankSunapGubun" INDEX="0" InnerDataset="ds_oBankSunapGubun" Left="110" OnChanged="radBankSunapGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="1" Top="25" Value="0" Width="208"></Radio>
+		<Static Align="Center" Height="20" Id="lbSunapAmount" Left="600" Style="sty_Label" TabOrder="8" Text="수납금액" Top="24" VAlign="Middle" Visible="FALSE" Width="88"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM3100SSettlementPOSSunap.xml
+ * 설명 : 결제(수납)DIV
+ * 작성일 : 2009.08.26
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+function Form_OnLoadCompleted(obj) {
+
+	// LG U+ 가상계좌 폐지, 세틀뱅크 가상계좌 사용
+	if (left(getDate(), 8) >= "20130820") {
+		ds_oSunapGubun.DeleteRow(3);
+		
+		ds_oSunapGubun.InsertRow(3);
+		ds_oSunapGubun.SetColumn(3, "CD", "4");
+		ds_oSunapGubun.SetColumn(3, "DATA", "가상계좌");
+	}
+	
+}
+
+function radSunapGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if (strCode == "0") { // 현금
+        divSunabDtl.Url = "";//COM::frmCOM3101SSettlementPOSSunap.xml";
+        radBankSunapGubun.Enable = true;
+        parent.radRecieptYn.Enable = true;
+	} else if (strCode == "1") { // 카드
+        divSunabDtl.Url = "COM::frmCOM3102SSettlementPOSSunap.xml";
+        radBankSunapGubun.Value = "0";
+        radBankSunapGubun.Enable = false;
+        parent.radRecieptYn.Enable = true;
+	} else if (strCode == "2") { // 현금영수증
+        divSunabDtl.Url = "COM::frmCOM3103SSettlementPOSSunap.xml";
+        radBankSunapGubun.Enable = true;
+        parent.radRecieptYn.Enable = true;
+	} else if (strCode == "3") { // 가상계좌(LG U+)
+        divSunabDtl.Url = "COM::frmCOM3104SSettlementPOSSunap.xml";
+        radBankSunapGubun.Enable = false;
+        parent.radRecieptYn.Enable = false;
+        parent.radRecieptYn.Value = "N";
+	} else if (strCode == "4") { // 가상계좌(신규 세틀뱅크)
+        divSunabDtl.Url = "COM::frmCOM3105SSettlementPOSSunap.xml";
+        radBankSunapGubun.Enable = false;
+        parent.radRecieptYn.Enable = false;
+        parent.radRecieptYn.Value = "N";
+	}
+}
+
+// 수납방법
+function radBankSunapGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if (strCode == "0") {
+		radSunapGubun.Enable = true;
+	} else if (strCode == "4") {
+		radSunapGubun.Value = 0;
+		radSunapGubun.Enable = false;
+	}	
+}
+]]></Script>
+</Window>

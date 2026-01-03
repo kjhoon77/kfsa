@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="22" Id="frmtraining0280S06PassDiplomaPrint" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="수료현황(수료증및참가증출력)" Top="8" Ver="1.0" Width="336" WorkArea="true">
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edTrainingPnm" ImeMode="native" LeftMargin="2" MaxLength="8" OnFocus="gfn_ComponentOnFocus" OnKeyDown="lfn_EnterNextFocus" OnKillFocus="lfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="1" Width="100"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0280S01PassDiplomaPrint.xml
+ * 설명 : 수료현황(수료증및참가증출력)
+ * 작성일 : 2009.12.02
+ * 작성자 : 이창희
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+function Form_OnLoadCompleted(obj) {
+    edTrainingPnm.SetFocus();
+}
+
+function lfn_ComponentOnKillFocus(obj)
+{
+	gfn_ComponentOnKillFocus(obj);
+}
+
+function lfn_SearchTrainingAbsent() {    
+    if (gfn_IsNull(cbxJibu.Value)
+            || gfn_IsNull(cbxCourse.Value)
+            || gfn_IsNull(edTrainingYear.Text)
+            || gfn_IsNull(edTrainingOrder.Text)) {
+        return false;
+    }
+    edTrainingOrder.Text = iif(gfn_IsNull(edTrainingOrder.Text), "", lpad(edTrainingOrder.Text, "0", 3));    
+    
+}
+
+
+    
+
+
+function lfn_EnterNextFocus(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+    if (nChar == 13) { // Enter Key       
+        lfn_Search();
+    }
+}
+]]></Script>
+</Window>

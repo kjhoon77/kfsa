@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="200" Id="frmCOM0010PInfoMessage" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="정보메세지팝업" Top="8" Ver="1.0" Width="400" WorkArea="true">
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnOK" ImageID="BTN_TEXT_04" Left="167" OnClick="btnOK_OnClick" Style="sty_Button" TabOrder="1" Text="확인" Top="172" Transparent="TRUE" Width="66"></Button>
+		<TextArea BKColor="user4" Border="Flat" Height="121" Id="taInfo" Left="8" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_TextArea" TabOrder="2" Top="44" VScroll="TRUE" Width="384"></TextArea>
+		<Image Height="32" Id="imgInfo" ImageID="IMG_INFO" Left="12" Style="sty_Image" TabOrder="3" Top="8" Transparent="TRUE" Width="32"></Image>
+		<Static Align="Center" Height="20" Id="lbInfo" Left="48" Style="sty_Label" TabOrder="4" Text="INFOMATION" Top="14" VAlign="Middle" Width="88"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM0010PInfoMessage.xml
+ * 설명 : 정보메세지팝업
+ * 작성일 : 2009.06.23
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj);
+
+    if (IsExistVar("sMsg")) {
+        taInfo.Text = sMsg;
+    }
+}
+
+function Form_OnUnloadCompleted(obj) {
+    // to do
+
+    gfn_Form_OnUnloadCompleted(obj);
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam);
+}
+/* 공통 필수 종료 */
+
+function btnOK_OnClick(obj) {
+    Close();
+}
+]]></Script>
+</Window>

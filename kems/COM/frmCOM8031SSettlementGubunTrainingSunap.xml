@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Face3dColor="user0" Height="20" Id="frmCOM8031SSettlementGubunTrainingSunap" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="결제구분강습수납" Top="8" Ver="1.0" Width="464" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oProcGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>01</CD>
+						<DATA>강습수수료&#32;수납</DATA>
+					</record>
+					<record>
+						<CD>02</CD>
+						<DATA>강습수수료&#32;+&#32;수첩교부수수료</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radProcGubun" INDEX="0" InnerDataset="ds_oProcGubun" OnChanged="radProcGubun_OnChanged" Style="sty_Radio" TabOrder="1" Value="01" Width="300"></Radio>
+		<Button Appearance="FLAT" BKColor="user0" BorderColor="white" Color="user0" DisableBKColor="white" DisableColor="white" Height="45" Id="edTrainingDateGubun" Left="144" ShadowColor="user0" TabOrder="2" Top="-2" Width="560"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM8031SSettlementGubunTrainingSunap.xml
+ * 설명 : 결제구분강습수납
+ * 작성일 : 2009.09.11
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+function Form_OnLoadCompleted(obj) {
+    
+    if(
+      ((parent.ds_ioTrainingStartEndDate.GetColumn(0, "EARLYSUNAPDATE") >= 0 )
+      &&(parent.ds_ioTrainingStartEndDate.GetColumn(0, "TOTCCOURSECD") == "21" ))
+      ||((parent.ds_ioTrainingStartEndDate.GetColumn(0, "EARLYSUNAPDATE") >= 0 )
+      &&(parent.ds_ioTrainingStartEndDate.GetColumn(0, "TOTCCOURSECD") == "22" ))
+      ||((parent.ds_ioTrainingStartEndDate.GetColumn(0, "EARLYSUNAPDATE") >= 0 )
+      &&(parent.ds_ioTrainingStartEndDate.GetColumn(0, "TOTCCOURSECD") == "23" ))
+      )
+      {        
+        edTrainingDateGubun.Visible = false; // 강습 회차 시작일이 20100101 이전이면 선수납 안되게 함)            
+    } else {
+        edTrainingDateGubun.Visible = true;
+    }
+         //    ||((parent.ds_ioTrainingStartEndDate.GetColumn(0, "EARLYSUNAPDATE") >= 0 )
+    //  &&(parent.ds_ioTrainingStartEndDate.GetColumn(0, "TOTCCOURSECD") == 22 )) 
+    radProcGubun_OnChanged();
+                             
+}
+
+function radProcGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+    switch (radProcGubun.Value) { // 단위업무프로그램
+        case "01" : // 강습
+            parent.cbxSunapingAmount.visible = true;        // 강습 true
+            parent.cbxEarlySunapingAmount.visible = false;  // 강습+수첩 false
+            parent.cbxSunapingAmount.Value = parent.ms_SunapingAmount;                 
+            parent.edProcAmount.Text = " 강습" + NumFormat(toNumber(parent.ms_SunapingAmount)) + "원";  
+            
+            parent.lbTrainingAndLicenseCostInfo.visible = false; // 선수납 상세 정보를 보이지 않음
+            
+            break;            
+            
+        case "02" : // 강습 + 수첩             
+            parent.cbxSunapingAmount.visible = false;     // 강습 false
+            parent.cbxEarlySunapingAmount.visible = true; // 강습+수첩 true
+       //   parent.cbxEarlySunapingAmount.Value = parent.ms_SunapingAmount ;   // 이건 뭐지(기존과 동일하게 해 놓음)
+       //   parent.cbxSunapingAmount.Value = parent.ms_SunapingAmount; 
+
+            parent.edProcAmount.Text = " 강습+수첩" + NumFormat(toNumber(parent.ms_SunapingAmount)) + "원"; // 이건 뭐지
+           
+           //    trace(parent.cbxEarlySunapingAmount.Value); 
+            parent.cbxEarlySunapingAmount.Index = 0;
+            parent.lbTrainingAndLicenseCostInfo.Left = "280"; //수납시 선수납 상세 위치 지정함
+            parent.lbTrainingAndLicenseCostInfo.Top = "125";   //수납시 선수납 상세 위치 지정함
+            parent.lbTrainingAndLicenseCostInfo.text = "(강습수수료 : " + NumFormat(parent.ds_oTrainingEarlySunapFee.GetColumn(parent.ds_oTrainingEarlySunapFee.currow, "TRAININGSUNAP") )
+                                                     + "원 + 수첩교부수수료 : " + NumFormat(parent.ds_oTrainingEarlySunapFee.GetColumn(parent.ds_oTrainingEarlySunapFee.currow, "LICENSESUNAP")) + "원)";
+            
+            parent.lbTrainingAndLicenseCostInfo.visible = true; // 선수납 상세 정보를 보임 
+            break; 
+        
+        case "03" : // 강습 + 시험             
+            parent.cbxSunapingAmount.visible = false;     // 강습 false
+            parent.cbxEarlySunapingAmount.visible = true; // 강습+시험 true
+       //   parent.cbxEarlySunapingAmount.Value = parent.ms_SunapingAmount ;   // 이건 뭐지(기존과 동일하게 해 놓음)
+       //   parent.cbxSunapingAmount.Value = parent.ms_SunapingAmount; 
+
+            parent.edProcAmount.Text = " 강습+시험" + NumFormat(toNumber(parent.ms_SunapingAmount)) + "원"; // 이건 뭐지
+           
+           //    trace(parent.cbxEarlySunapingAmount.Value); 
+            parent.cbxEarlySunapingAmount.Index = 0;
+            parent.lbTrainingAndLicenseCostInfo.Left = "280"; //수납시 선수납 상세 위치 지정함
+            parent.lbTrainingAndLicenseCostInfo.Top = "125";   //수납시 선수납 상세 위치 지정함
+            parent.lbTrainingAndLicenseCostInfo.text = "(강습수수료 : " + NumFormat(parent.ds_oTrainingEarlySunapFee.GetColumn(parent.ds_oTrainingEarlySunapFee.currow, "TRAININGSUNAP") )
+                                                     + "원 + 시험응시수수료 : " + NumFormat(parent.ds_oTrainingEarlySunapFee.GetColumn(parent.ds_oTrainingEarlySunapFee.currow, "LICENSESUNAP")) + "원)";
+            
+            parent.lbTrainingAndLicenseCostInfo.visible = true; // 선수납 상세 정보를 보임 
+            break;         
+    }
+}
+
+]]></Script>
+</Window>

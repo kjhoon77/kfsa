@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="76" Id="frmCOM3102SSettlementPOSSunap" Left="8" OnActivate="frmCOM3102SSettlementPOSSunap_OnActivate" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="카드납부상세" Top="8" Ver="1.0" Width="780" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oInstallment">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>00</CD>
+						<DATA>일시불</DATA>
+					</record>
+					<record>
+						<CD>01</CD>
+						<DATA>1개월</DATA>
+					</record>
+					<record>
+						<CD>02</CD>
+						<DATA>2개월</DATA>
+					</record>
+					<record>
+						<CD>03</CD>
+						<DATA>3개월</DATA>
+					</record>
+					<record>
+						<CD>04</CD>
+						<DATA>4개월</DATA>
+					</record>
+					<record>
+						<CD>05</CD>
+						<DATA>5개월</DATA>
+					</record>
+					<record>
+						<CD>06</CD>
+						<DATA>6개월</DATA>
+					</record>
+					<record>
+						<CD>07</CD>
+						<DATA>7개월</DATA>
+					</record>
+					<record>
+						<CD>08</CD>
+						<DATA>8개월</DATA>
+					</record>
+					<record>
+						<CD>09</CD>
+						<DATA>9개월</DATA>
+					</record>
+					<record>
+						<CD>10</CD>
+						<DATA>10개월</DATA>
+					</record>
+					<record>
+						<CD>11</CD>
+						<DATA>11개월</DATA>
+					</record>
+					<record>
+						<CD>12</CD>
+						<DATA>12개월</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Month">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>01</CD>
+						<DATA>1개월</DATA>
+					</record>
+					<record>
+						<CD>02</CD>
+						<DATA>2개월</DATA>
+					</record>
+					<record>
+						<CD>03</CD>
+						<DATA>3개월</DATA>
+					</record>
+					<record>
+						<CD>04</CD>
+						<DATA>4개월</DATA>
+					</record>
+					<record>
+						<CD>05</CD>
+						<DATA>5개월</DATA>
+					</record>
+					<record>
+						<CD>06</CD>
+						<DATA>6개월</DATA>
+					</record>
+					<record>
+						<CD>07</CD>
+						<DATA>7개월</DATA>
+					</record>
+					<record>
+						<CD>08</CD>
+						<DATA>8개월</DATA>
+					</record>
+					<record>
+						<CD>09</CD>
+						<DATA>9개월</DATA>
+					</record>
+					<record>
+						<CD>10</CD>
+						<DATA>10개월</DATA>
+					</record>
+					<record>
+						<CD>11</CD>
+						<DATA>11개월</DATA>
+					</record>
+					<record>
+						<CD>12</CD>
+						<DATA>12개월</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Year">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Align="Center" Height="20" Id="lbCardNo" Left="4" Style="sty_Label" TabOrder="3" Text="신용카드번호" Top="4" VAlign="Middle" Width="100"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edCardNo" ImeMode="native" Left="108" LeftMargin="2" MaxLength="40" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="1" Top="4" UserData="S:신용카드번호" Width="276"></Edit>
+		<Static Align="Center" Height="20" Id="lbInstallment" Left="4" Style="sty_Label" TabOrder="4" Text="할부개월수" Top="28" VAlign="Middle" Width="100"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxInstallment" INDEX="0" InnerDataset="ds_oInstallment" Left="107" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="2" Top="27" UserData="I:할부개월수" Width="65"></Combo>
+		<Static Height="20" Id="lbText3" Left="176" Style="sty_Text" TabOrder="5" Text="(5만원이상&#32;가능,&#32;법인카드&#32;불가)" Top="28" VAlign="Middle" Width="296"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnInitInput" ImageID="BTN_TEXT_COM" Left="388" OnClick="btnInitInput_OnClick" Style="sty_Button" TabOrder="6" Text="초기화" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btn_AutoYn" ImageID="BTN_TEXT_COM" Left="480" OnClick="btn_AutoYn_OnClick" Style="sty_Button" TabOrder="7" Text="수동입력" Top="3" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbValidTerm" Left="4" Style="sty_Label" TabOrder="9" Text="유효기간" Top="52" VAlign="Middle" Visible="FALSE" Width="100"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="CD" Editable="TRUE" Height="20" Id="cbxValidTermMonth" ImeMode="none" INDEX="0" InnerDataset="ds_Month" Left="107" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="8" Top="51" UserData="I:유효기간월" Value="01" Visible="FALSE" Width="65"></Combo>
+		<Static Height="20" Id="lbValidTermMonth" Left="176" Style="sty_Text" TabOrder="10" Text="월" Top="52" VAlign="Middle" Visible="FALSE" Width="28"></Static>
+		<Static Height="20" Id="lbValidTermYear" Left="272" Style="sty_Text" TabOrder="12" Text="년" Top="52" VAlign="Middle" Visible="FALSE" Width="28"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxValidTermYear" ImeMode="none" INDEX="0" InnerDataset="ds_Year" Left="203" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="11" Top="51" UserData="I:유효기간년" Visible="FALSE" Width="65"></Combo>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM3102SSettlementPOSSunap.xml
+ * 설명 : 카드납부상세
+ * 작성일 : 2009.08.25
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+var lb_AutoYn = true;
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    var ln_Year = toNumber(left(GetDate(), 4));
+    var ln_Row = -1;
+    for (var i = 0; i < 10; i++) { // 10년치 유효년도 생성한다.
+        ln_Row = ds_Year.AddRow();
+        ds_Year.SetColumn(ln_Row, "CD", right(toString(ln_Year + i), 2));
+        ds_Year.SetColumn(ln_Row, "DATA", ln_Year + i);
+    }
+    edCardNo.SetFocus();
+}
+
+function btnInitInput_OnClick(obj)
+{
+	edCardNo.Text = "";
+	edCardNo.SetFocus();
+}
+
+function frmCOM3102SSettlementPOSSunap_OnActivate(obj)
+{
+	edCardNo.SetFocus();
+}
+
+function btn_AutoYn_OnClick(obj)
+{
+	if (lb_AutoYn) { // 현재 자동입력인 경우
+        btn_AutoYn.Text = "자동입력";
+        cbxValidTermYear.Value = substr(GetDate(), 2, 2);
+        edCardNo.Number = true;
+    } else { // 현재 수동입력인 경우
+        btn_AutoYn.Text = "수동입력";
+        edCardNo.Number = false;
+    }
+    edCardNo.Text = "";
+    lbValidTerm.Visible = lb_AutoYn;
+    cbxValidTermMonth.Visible = lb_AutoYn;
+    lbValidTermMonth.Visible = lb_AutoYn;
+    cbxValidTermYear.Visible = lb_AutoYn;
+    lbValidTermYear.Visible = lb_AutoYn;
+    lb_AutoYn = !lb_AutoYn;
+    edCardNo.SetFocus();
+}
+]]></Script>
+</Window>

@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="input" io="INPUT" reserved="NO"></dataset>
+	<dataset id="output" io="INPUT" reserved="NO"></dataset>
+	<dataset id="in_ExamOrder" io="INPUT" reserved="NO"></dataset>
+	<dataset id="in_ExamRoom" io="INPUT" reserved="NO"></dataset>
+	<dataset id="in_SupervisorAssignment" io="INPUT" reserved="NO"></dataset>
+	<dataset id="in_CorrectAnswer" io="INPUT" reserved="NO"></dataset>
+	<dataset id="in_ExamOrderH" io="INPUT" reserved="NO"></dataset>
+	<dataset id="in_ExamJubsu" io="INPUT" reserved="NO"></dataset>
+	<dataset id="in_AnswerAnalysis" io="INPUT" reserved="NO"></dataset>
+	<dataset id="in_person" io="INPUT" reserved="NO"></dataset>
+	<dataset id="in_menu" io="INPUT" reserved="NO"></dataset>
+	<dataset id="in_ExamPaper" io="INPUT" reserved="NO"></dataset>
+	<dataset id="in_TrainingPerson" io="INPUT" reserved="NO"></dataset>
+	<dataset id="in_Jibu" io="INPUT" reserved="NO"></dataset>
+	<dataset id="in_TrainingCourse" io="INPUT" reserved="NO"></dataset>
+	<dataset id="in_CommonCode" io="INPUT" reserved="NO"></dataset>
+	<dataset id="in_Diploma" io="INPUT" reserved="NO"></dataset>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_IMP_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[function Run()
+{
+  /**	
+    1.시험회차     : in_ExamOrder
+    2.시험장관리   : in_ExamRoom
+    3.감독관배정   : in_SupervisorAssignment(삭제)
+    4.정답지       : in_CorrectAnswer
+    5.문항분석     : in_AnswerAnalysis(삭제)
+    6.시험회차변경 : in_ExamOrderH
+    7.시험접수     : in_ExamJubsu		
+    8.사용자       : in_person(삭제)
+    9.메뉴         : in_menu
+    10.시험지			 : in_ExamPaper
+    11.강습자			 : in_TrainingPerson
+    12.지부				 : in_Jibu
+    13.직능				 : in_TrainingCourse
+    14.공통코드		 : in_CommonCode
+    15.수료		 		 : in_Diploma
+	**/
+	deleteTable();
+	// 1.시험회차
+	var delQuery = "DELETE FROM EXAMORDER ";
+	ExecuteSql(delQuery);	
+	
+  //trace("EXAMORDER = " + delQuery);  
+  //trace("in_ExamOrder.getRowCount() = " + in_ExamOrder.getRowCount());   	   	
+	
+  for(var i=0; i < in_ExamOrder.getRowCount() ; i++)
+  {
+			var insertQuery = "INSERT INTO EXAMORDER  "
+	               + " ( "
+                 + " EOMGNO, EOMGGTMGNO, EOYEAR, EOTCCOURSECD, EOEXAMORDERGUBUN, "
+                 + " EOEXAMORDER, EOEXAMDATE, EOSTARTTIME, EOENDTIME, EOEPMGNO, "
+                 + " EOSEATCNT, EOINETJUBSUYN, EOJUBSUCNT, EOINETJUBSUCNT, EOJUBSUSTATUS, "
+                 + " EOUSEYN, EOREGDATE, EOREGSABUN, EOMODDATE, EOMODSABUN "	               	               	              
+	               + " )	VALUES ( "
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOMGNO") +"',"
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOMGGTMGNO") +"',"
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOYEAR") +"', "
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOTCCOURSECD") +"',"
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOEXAMORDERGUBUN") +"',"	               
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOEXAMORDER") +"',"
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOEXAMDATE") +"',"
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOSTARTTIME") +"',"
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOENDTIME") +"',"
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOEPMGNO") +"',"		                              	              
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOSEATCNT") +"',"
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOINETJUBSUYN") +"',"
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOJUBSUMAXCNT") +"',"
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOINETJUBSUCNT") +"',"
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOJUBSUSTATUS") +"',"	   
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOUSEYN") +"',"
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOREGDATE") +"',"
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOREGSABUN") +"',"
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOMODDATE") +"',"
+	               + "'" + dsGetColumn(in_ExamOrder,i,"EOMODSABUN") +"'"                 
+	               + " );";     	                       	                                      	                       	                    
+      //trace("insertQuery = " + insertQuery);   
+
+			var error = ExecuteSql(insertQuery);         	                               
+			//trace(error+ " = " + insertQuery);
+	}
+	
+	// 2.시험장관리
+	delQuery = "DELETE FROM EXAMROOM ";
+	ExecuteSql(delQuery);		
+	
+	//trace("EXAMROOM = " + delQuery);  
+  //trace("in_ExamRoom.getRowCount() = " + in_ExamRoom.getRowCount());   	
+  
+  for(var i=0; i < in_ExamRoom.getRowCount() ; i++)
+  {
+			var insertQuery = "INSERT INTO EXAMROOM  "  
+  	               + " ( "
+  	               + " EREOMGNO, EREXAMROOM, ERNUMTYPE, ERUSEYN, "
+  	               + " ERREGDATE, ERREGSABUN, ERMODDATE, ERMODSABUN, "
+  	               + " ERCHASUGUBUN "
+	               + " )	VALUES ( " 
+	               + "'" + dsGetColumn(in_ExamRoom,i,"EREOMGNO") +"',"	               
+	               + "'" + dsGetColumn(in_ExamRoom,i,"EREXAMROOM") +"',"
+	               + "'" + dsGetColumn(in_ExamRoom,i,"ERNUMTYPE") +"',"
+	               + "'" + dsGetColumn(in_ExamRoom,i,"ERUSEYN") +"',"
+	               + "'" + dsGetColumn(in_ExamRoom,i,"ERREGDATE") +"',"
+	               + "'" + dsGetColumn(in_ExamRoom,i,"ERREGSABUN") +"',"		                              	              
+	               + "'" + dsGetColumn(in_ExamRoom,i,"ERMODDATE") +"',"
+	               + "'" + dsGetColumn(in_ExamRoom,i,"ERMODSABUN") +"',"
+	               + "'" + dsGetColumn(in_ExamRoom,i,"ERCHASUGUBUN") +"'"
+	               + " );";   	  	                              
+      //trace("insertQuery = " + insertQuery); 
+      
+			var error = ExecuteSql(insertQuery);         	                               
+			//trace(error+ " = " + insertQuery);         	                               
+  }
+	
+/*
+	// 3.감독관배정
+	delQuery = "DELETE FROM SUPERVISORASSIGNMENT ";
+	ExecuteSql(delQuery);		
+	
+	trace("SUPERVISORASSIGNMENT = " + delQuery);  
+  trace("in_SupervisorAssignment.getRowCount() = " + in_SupervisorAssignment.getRowCount());   	
+  
+  for(var i=0; i < in_SupervisorAssignment.getRowCount() ; i++)
+  {
+			var insertQuery = "INSERT INTO SUPERVISORASSIGNMENT "  
+  	               + " ( "
+  	               + " SAEREOMGNO, SAEREXAMROOM, SASIMGNO, SAGUBUN, "
+  	               + " SAREGDATE, SAREGSABUN, SAMODDATE, SAMODSABUN "
+	               + " )	VALUES ( " 
+	               + "'" + dsGetColumn(in_SupervisorAssignment,i,"SAEREOMGNO") +"',"	               
+	               + "'" + dsGetColumn(in_SupervisorAssignment,i,"SAEREXAMROOM") +"',"
+	               + "'" + dsGetColumn(in_SupervisorAssignment,i,"SASIMGNO") +"',"
+	               + "'" + dsGetColumn(in_SupervisorAssignment,i,"SAGUBUN") +"',"
+	               + "'" + dsGetColumn(in_SupervisorAssignment,i,"SAREGDATE") +"',"
+	               + "'" + dsGetColumn(in_SupervisorAssignment,i,"SAREGSABUN") +"',"		                              	              
+	               + "'" + dsGetColumn(in_SupervisorAssignment,i,"SAMODDATE") +"',"
+	               + "'" + dsGetColumn(in_SupervisorAssignment,i,"SAMODSABUN") +"'"	                  
+	               + " )";   	  	                              
+      trace("insertQuery = " + insertQuery); 
+      
+			ExecuteSql(insertQuery);         	                               
+  }	
+*/
+
+	// 4.정답지
+	delQuery = "DELETE FROM CORRECTANSWER ";
+	ExecuteSql(delQuery);		
+
+	//trace("CORRECTANSWER = " + delQuery);  
+  //trace("in_CorrectAnswer.getRowCount() = " + in_CorrectAnswer.getRowCount());   	
+  
+  for(var i=0; i < in_CorrectAnswer.getRowCount(); i++)
+  {
+			var insertQuery = "INSERT INTO CORRECTANSWER  "  
+  	               + " ( "
+  	               + " CATCCOURSECD, CAEPNUMTYPE, CAEPALPHATYPE, CAITEMNO, "
+  	               + " CACORRECTCNT, CAITEMSCORE, CACORRECTANSWER, CAREGDATE, "
+                   + " CAREGSABUN, CAMODDATE, CAMODSABUN, "
+                   + " CACHASUGUBUN, CASUBJECTGUBUN "
+	               + " )	VALUES ( " 
+	               + "'" + dsGetColumn(in_CorrectAnswer,i,"CATCCOURSECD") +"',"	               
+	               + "'" + dsGetColumn(in_CorrectAnswer,i,"CAEPNUMTYPE") +"',"
+	               + "'" + dsGetColumn(in_CorrectAnswer,i,"CAEPALPHATYPE") +"',"
+	               + "'" + dsGetColumn(in_CorrectAnswer,i,"CAITEMNO") +"',"	               
+	               + "'" + dsGetColumn(in_CorrectAnswer,i,"CACORRECTCNT") +"',"
+	               + "'" + dsGetColumn(in_CorrectAnswer,i,"CAITEMSCORE") +"',"		                              	              
+	               + "'" + dsGetColumn(in_CorrectAnswer,i,"CACORRECTANSWER") +"',"	               	               
+	               + "'" + dsGetColumn(in_CorrectAnswer,i,"CAREGDATE") +"',"	               
+	               + "'" + dsGetColumn(in_CorrectAnswer,i,"CAREGSABUN") +"',"		                              	              
+	               + "'" + dsGetColumn(in_CorrectAnswer,i,"CAMODDATE") +"',"
+	               + "'" + dsGetColumn(in_CorrectAnswer,i,"CAMODSABUN") +"',"
+	               + "'" + dsGetColumn(in_CorrectAnswer,i,"CACHASUGUBUN") +"',"
+	               + "'" + dsGetColumn(in_CorrectAnswer,i,"CASUBJECTGUBUN") +"'"
+	               + " );";   	  	                              
+      //trace("insertQuery = " + insertQuery); 
+      
+			var error = ExecuteSql(insertQuery);         	                               
+			//trace(error+ " = " + insertQuery);         	                               
+  }		
+
+/*
+	// 5.문항분석
+	delQuery = "DELETE FROM ANSWERANALYSIS ";
+	ExecuteSql(delQuery);		
+
+	trace("ANSWERANALYSIS = " + delQuery);  
+  trace("in_AnswerAnalysis.getRowCount() = " + in_AnswerAnalysis.getRowCount());   	
+  
+  for(var i=0; i < in_AnswerAnalysis.getRowCount(); i++)  
+  {
+			var insertQuery = "INSERT INTO ANSWERANALYSIS "  
+  	               + " ( "
+  	               + " AATCCOURSECD, AACAEPNUMTYPE, AACAEPALPHATYPE, AACAITEMNO, "
+  	               + " AAEOMGNO, AACORRECTCNT, AAMARKINGCNT, AACORRECTPERCENT, "
+  	               + " AA1CNT, AA2CNT, AA3CNT, AA4CNT, "  	
+  	               + " AAEMPTYCNT, AADOUBLECNT, AAREGDATE, AAREGSABUN, "    	                              
+                   + " AAMODDATE, AAMODSABUN "  	               
+	               + " )	VALUES ( " 
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AATCCOURSECD") +"',"	               
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AACAEPNUMTYPE") +"',"
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AACAEPALPHATYPE") +"',"
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AACAITEMNO") +"',"		                              
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AAEOMGNO") +"',"
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AACORRECTCNT") +"',"		                              	              
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AAMARKINGCNT") +"',"	               	               
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AACORRECTPERCENT") +"',"	   	               
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AA1CNT") +"',"	               
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AA2CNT") +"',"
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AA3CNT") +"',"
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AA4CNT") +"',"		                              
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AAEMPTYCNT") +"',"
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AADOUBLECNT") +"',"		                              	              
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AAREGDATE") +"',"	               	               
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AAREGSABUN") +"',"	   	               	                           
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AAMODDATE") +"',"		                              	              
+	               + "'" + dsGetColumn(in_AnswerAnalysis,i,"AAMODSABUN") +"'"	                  
+	               + " )";   	  	                              
+      trace("insertQuery = " + insertQuery); 
+      
+			ExecuteSql(insertQuery);         	                               
+  }			
+  */
+
+	// 6.시험회차변경
+	delQuery = "DELETE FROM EXAMORDERH ";
+	ExecuteSql(delQuery);		
+
+	//trace("EXAMORDERH = " + delQuery);  
+  //trace("in_ExamOrderH.getRowCount() = " + in_ExamOrderH.getRowCount());   	
+
+  for(var i=0; i < in_ExamOrderH.getRowCount() ; i++)
+  {
+			var insertQuery = "INSERT INTO EXAMORDERH "  
+  	               + " ( "
+  	               + " EOHEJMGNO, EOHSEQ, EOHEOMGNO, EOHPROCGTMGNO, "
+  	               + " EOHJUBSUNO, EOHEXAMSEATNO, EOHPSABUN, EOHPROCDATE, "
+  	               + " EOHLASTGUBUN, EOHAFTEREOMGNO, EOHAFTERJUBSUNO, EOHJUBSUGUBUN, "  	               
+                   + " EOHREGDATE, EOHREGSABUN, EOHMODDATE, EOHMODSABUN "  	               
+	               + " )	VALUES ( " 
+	               + "'" + dsGetColumn(in_ExamOrderH,i,"EOHEJMGNO") +"',"	               
+	               + "'" + dsGetColumn(in_ExamOrderH,i,"EOHSEQ") +"',"
+	               + "'" + dsGetColumn(in_ExamOrderH,i,"EOHEOMGNO") +"',"
+	               + "'" + dsGetColumn(in_ExamOrderH,i,"EOHPROCGTMGNO") +"',"	               	               
+	               + "'" + dsGetColumn(in_ExamOrderH,i,"EOHJUBSUNO") +"',"
+	               + "'" + dsGetColumn(in_ExamOrderH,i,"EOHEXAMSEATNO") +"',"		                              	              
+	               + "'" + dsGetColumn(in_ExamOrderH,i,"EOHPSABUN") +"',"	               	               
+	               + "'" + dsGetColumn(in_ExamOrderH,i,"EOHPROCDATE") +"',"	 	                             
+	               + "'" + dsGetColumn(in_ExamOrderH,i,"EOHLASTGUBUN") +"',"
+	               + "'" + dsGetColumn(in_ExamOrderH,i,"EOHAFTEREOMGNO") +"',"		                              	              
+	               + "'" + dsGetColumn(in_ExamOrderH,i,"EOHAFTERJUBSUNO") +"',"	               	               
+	               + "'" + dsGetColumn(in_ExamOrderH,i,"EOHJUBSUGUBUN") +"',"	     	                             	               
+	               + "'" + dsGetColumn(in_ExamOrderH,i,"EOHREGDATE") +"',"		                              	              
+	               + "'" + dsGetColumn(in_ExamOrderH,i,"EOHREGSABUN") +"',"
+	               + "'" + dsGetColumn(in_ExamOrderH,i,"EOHMODDATE") +"',"	               
+	               + "'" + dsGetColumn(in_ExamOrderH,i,"EOHMODSABUN") +"'"	                  
+	               + " );";   	  	                              
+      //trace("insertQuery = " + insertQuery); 
+      
+			var error = ExecuteSql(insertQuery);         	                               
+			//trace(error+ " = " + insertQuery);         	                               
+  }			
+
+
+	// 7.시험접수
+	delQuery = "DELETE FROM EXAMJUBSU ";
+	ExecuteSql(delQuery);		
+
+	//trace("EXAMORDERH = " + delQuery);  
+  //trace("in_ExamJubsu.getRowCount() = " + in_ExamJubsu.getRowCount());   	
+  
+  for(var i=0; i < in_ExamJubsu.getRowCount() ; i++)
+  {
+			var insertQuery = "INSERT INTO EXAMJUBSU  "  
+  	               + " ( "
+	  	             + " EJMGNO, EJTPMGNO, EJTJMGNO, "
+  	               + " EJPERSONNM, EJRESIDENTNO, EJLASTSUNAPGUBUN, EJZZIPCD, "
+  	               + " EJADDR1, EJADDR2, EJSIDO, EJKU, "  	  	                 	                 
+  	               + " EJROADNM, EJDONG, EJBUNJI, EJBULDNM, "  	                 	               
+  	               + " EJBULDADDR, EJEXPYN, EJPASSYN, EJCANCELREASON, "  	               
+  	               + " EJCANCELPSABUN, EJLASTEOHSEQ, EJLASTEJHSEQ, EJLASTESSEQ, "  	  	                            	               
+                   + " EJLASTERSEQ, EJREGDATE, EJREGSABUN, EJMODDATE, EJMODSABUN, EJIIIMGSEQ, "
+                   + " EJCHASUGUBUN "
+	               + " )	VALUES ( " 
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJMGNO") +"',"
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJTPMGNO") +"',"
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJTJMGNO") +"',"
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJPERSONNM") +"',"
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJRESIDENTNO") +"',"		                              	              
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJLASTSUNAPGUBUN") +"',"	               	               
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJZZIPCD") +"',"	 	                             	               
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJADDR1") +"',"
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJADDR2") +"',"		                              	              
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJSIDO") +"',"	               	               
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJKU") +"',"	 
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJROADNM") +"',"	               
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJDONG,") +"',"
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJBUNJI") +"',"
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJBULDNM") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJROADNM") +"',"
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJDONG") +"',"		                              	              
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJBUNJI") +"',"	               	               
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJBULDNM") +"',"	 	                             	               
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJCANCELPSABUN") +"',"
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJLASTEOHSEQ") +"',"		                              	              
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJLASTEJHSEQ") +"',"	               	               
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJLASTESSEQ") +"',"	   	                   	                             	               	               
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJLASTERSEQ") +"',"		                              	              
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJREGDATE") +"',"
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJREGSABUN") +"',"	   
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJMODDATE") +"',"	  	                           
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJMODSABUN") +"'," 	
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJIIIMGSEQ") +"',"
+	               + "'" + dsGetColumn(in_ExamJubsu,i,"EJCHASUGUBUN") +"'"
+	               + " );";   	  	                              
+      //trace("insertQuery = " + insertQuery); 
+      
+			ExecuteSql(insertQuery);       	                               
+  }				
+
+/*
+	// 8.사용자
+	delQuery = "DELETE FROM PERSON ";
+	ExecuteSql(delQuery);		
+
+	trace("PERSON = " + delQuery);  
+  trace("in_person.getRowCount() = " + in_person.getRowCount());   	
+  
+  for(var i=0; i < in_person.getRowCount() ; i++)
+  {
+			var insertQuery = "INSERT INTO PERSON "  
+  	               + " ( "
+  	               + " PSABUN, PGTMGNO, PNM, PPW, "
+                   + " PPOSITNNM, PUSEYN "  	               
+	               + " )	VALUES ( " 
+	               + "'" + dsGetColumn(in_person,i,"PSABUN") +"',"	               
+	               + "'" + dsGetColumn(in_person,i,"PGTMGNO") +"',"
+	               + "'" + dsGetColumn(in_person,i,"PNM") +"',"             	              
+	               + "'" + dsGetColumn(in_person,i,"PPW") +"',"	               	               
+	               + "'" + dsGetColumn(in_person,i,"PPOSITNNM") +"',"	
+	               + "'" + dsGetColumn(in_person,i,"PUSEYN") +"'"	                  
+	               + " )";   	  	                              
+      trace("insertQuery = " + insertQuery); 
+      
+			ExecuteSql(insertQuery);         	                               
+  }				
+
+*/
+	// 9.메뉴
+	delQuery = "DELETE FROM MENU ";
+	ExecuteSql(delQuery);		
+
+	//trace("MENU = " + delQuery);  
+  //trace("in_menu.getRowCount() = " + in_menu.getRowCount());   	
+  
+  for(var i=0; i < in_menu.getRowCount() ; i++)
+  {
+			var insertQuery = "INSERT INTO MENU  "  
+  	               + " ( "
+  	               + " MMENUID, MMENUNM, MURL, MURLTYPE, "
+  	               + " MPARENTMENUID, MSYSGUBUN, MORDERSEQ, MREMARK, " 
+  	               + " MUSEYN, MREGDATE, MREGSABUN, MMODDATE, MMODSABUN "  	   	                	                             
+	               + " )	VALUES ( " 
+	               + "'" + dsGetColumn(in_menu,i,"MMENUID") +"',"	               
+	               + "'" + dsGetColumn(in_menu,i,"MMENUNM") +"',"
+	               + "'" + dsGetColumn(in_menu,i,"MURL") +"',"             	              
+	               + "'" + dsGetColumn(in_menu,i,"MURLTYPE") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_menu,i,"MPARENTMENUID") +"',"	
+	               + "'" + dsGetColumn(in_menu,i,"MSYSGUBUN") +"',"
+	               + "'" + dsGetColumn(in_menu,i,"MORDERSEQ") +"',"             	              
+	               + "'" + dsGetColumn(in_menu,i,"MREMARK") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_menu,i,"MUSEYN") +"',"	
+	               + "'" + dsGetColumn(in_menu,i,"MREGDATE") +"',"             	              
+	               + "'" + dsGetColumn(in_menu,i,"MREGSABUN") +"',"	               	               
+	               + "'" + dsGetColumn(in_menu,i,"MMODDATE") +"',"			               	               	               
+	               + "'" + dsGetColumn(in_menu,i,"MMODSABUN") +"'"	                  
+	               + " )";   	  	                              
+      //trace("insertQuery = " + insertQuery); 
+      
+			ExecuteSql(insertQuery);         	                               
+  }		
+
+  // 10.시험지
+	delQuery = "DELETE FROM EXAMPAPER ";
+	ExecuteSql(delQuery);		
+
+	//trace("EXAMPAPER = " + delQuery);  
+  //trace("in_ExamPaper.getRowCount() = " + in_ExamPaper.getRowCount());   	
+  
+  for(var i=0; i < in_ExamPaper.getRowCount() ; i++)
+  {
+			var insertQuery = "INSERT INTO EXAMPAPER  "  
+  	               + " ( "
+  	               + " EPTCCOURSECD, EPNUMTYPE, EPALPHATYPE, EPQSTITEMCNT, "
+  	               + " EPTOTALPOINT, EPREMARK, EPUSEYN, EPREGDATE, EPREGSABUN, "
+  	               + " EPMODDATE, EPMODSABUN, EPCHASUGUBUN, EPSUBJECTGUBUN "   	                	                             
+	               + " )	VALUES ( " 
+	               + "'" + dsGetColumn(in_ExamPaper,i,"EPTCCOURSECD") +"',"	               
+	               + "'" + dsGetColumn(in_ExamPaper,i,"EPNUMTYPE") +"',"
+	               + "'" + dsGetColumn(in_ExamPaper,i,"EPALPHATYPE") +"',"             	              
+	               + "'" + dsGetColumn(in_ExamPaper,i,"EPQSTITEMCNT") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_ExamPaper,i,"EPTOTALPOINT") +"',"	
+	               + "'" + dsGetColumn(in_ExamPaper,i,"EPREMARK") +"',"
+	               + "'" + dsGetColumn(in_ExamPaper,i,"EPUSEYN") +"',"             	              
+	               + "'" + dsGetColumn(in_ExamPaper,i,"EPREGDATE") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_ExamPaper,i,"EPREGSABUN") +"',"	
+	               + "'" + dsGetColumn(in_ExamPaper,i,"EPMODDATE") +"',"             	              
+	               + "'" + dsGetColumn(in_ExamPaper,i,"EPMODSABUN") +"',"
+	               + "'" + dsGetColumn(in_ExamPaper,i,"EPCHASUGUBUN") +"',"
+	               + "'" + dsGetColumn(in_ExamPaper,i,"EPSUBJECTGUBUN") +"'"
+	               + " );";   	  	                              
+      //trace("insertQuery = " + insertQuery); 
+      
+			var error = ExecuteSql(insertQuery);         	                               
+			//trace(error+ " = " + insertQuery);
+  }
+  
+  // 11.강습자
+	delQuery = "DELETE FROM TRAININGPERSON ";
+	ExecuteSql(delQuery);		
+
+	//trace("EXAMPAPER = " + delQuery);  
+  //trace("in_TrainingPerson.getRowCount() = " + in_TrainingPerson.getRowCount());   	
+  
+  for(var i=0; i < in_TrainingPerson.getRowCount() ; i++)
+  {
+			var insertQuery = "INSERT INTO TRAININGPERSON  "  
+  	               + " ( "
+  	               + " TPMGNO, TPNM, TPRESIDENTNO, TPTEL, TPHPTEL, "
+  	               + " TPEMAILID, TPEMAILDOMAIN, TPAUTHYN, TPCUSTGUBUN, "
+  	               + " TPLASTIMGSEQ, TPREGDATE, TPREGSABUN, TPMODDATE, TPMODSABUN "   	                	                             
+	               + " )	VALUES ( " 
+	               + "'" + dsGetColumn(in_TrainingPerson,i,"TPMGNO") +"',"	               
+	               + "'" + dsGetColumn(in_TrainingPerson,i,"TPNM") +"',"
+	               + "'" + dsGetColumn(in_TrainingPerson,i,"TPRESIDENTNO") +"',"             	              
+	               + "'" + dsGetColumn(in_TrainingPerson,i,"TPTEL") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_TrainingPerson,i,"TPHPTEL") +"',"	
+	               + "'" + dsGetColumn(in_TrainingPerson,i,"TPEMAILID") +"',"
+	               + "'" + dsGetColumn(in_TrainingPerson,i,"TPEMAILDOMAIN") +"',"             	              
+	               + "'" + dsGetColumn(in_TrainingPerson,i,"TPAUTHYN") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_TrainingPerson,i,"TPCUSTGUBUN") +"',"	
+	               + "'" + dsGetColumn(in_TrainingPerson,i,"TPLASTIMGSEQ") +"',"    
+	               + "'" + dsGetColumn(in_TrainingPerson,i,"TPREGDATE") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_TrainingPerson,i,"TPREGSABUN") +"',"	
+	               + "'" + dsGetColumn(in_TrainingPerson,i,"TPMODDATE") +"'," 
+	               + "'" + dsGetColumn(in_TrainingPerson,i,"TPMODSABUN") +"'"                
+	               + " );";   	  	                              
+      //trace("insertQuery = " + insertQuery); 
+      
+			var error = ExecuteSql(insertQuery);         	                               
+			//trace(error+ " = " + insertQuery);
+  }
+  
+  // 12.지부
+	delQuery = "DELETE FROM G_TEAMCODE ";
+	ExecuteSql(delQuery);		
+
+	//trace("EXAMPAPER = " + delQuery);  
+  //trace("in_TrainingPerson.getRowCount() = " + in_TrainingPerson.getRowCount());   	
+  
+  for(var i=0; i < in_Jibu.getRowCount() ; i++)
+  {
+			var insertQuery = "INSERT INTO G_TEAMCODE  "  
+  	               + " ( "
+  	               + " GTYEAR, GTMGNO, GTGUBUNCD, GTDEPTCD, GTTEAMCD, "
+  	               + " GTDEPTNM, GTTEAMNM, GTPRTSEQ, GTKID, GTTELEPHONENUMBER, "
+  	               + " GTFAX, GTZIPCODE, GTADDR, GTBANKNM, GTACCOUNT, "
+  	               + " GTOWNER, ACCNTJIBU, KFSACHPT "   	                	                             
+	               + " )	VALUES ( " 
+	               + "'" + dsGetColumn(in_Jibu,i,"GTYEAR") +"',"	               
+	               + "'" + dsGetColumn(in_Jibu,i,"GTMGNO") +"',"
+	               + "'" + dsGetColumn(in_Jibu,i,"GTGUBUNCD") +"',"             	              
+	               + "'" + dsGetColumn(in_Jibu,i,"GTDEPTCD") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_Jibu,i,"GTTEAMCD") +"',"	
+	               + "'" + dsGetColumn(in_Jibu,i,"GTDEPTNM") +"',"
+	               + "'" + dsGetColumn(in_Jibu,i,"GTTEAMNM") +"',"             	              
+	               + "'" + dsGetColumn(in_Jibu,i,"GTPRTSEQ") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_Jibu,i,"GTKID") +"',"	
+	               + "'" + dsGetColumn(in_Jibu,i,"GTTELEPHONENUMBER") +"',"    
+	               + "'" + dsGetColumn(in_Jibu,i,"GTFAX") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_Jibu,i,"GTZIPCODE") +"',"	
+	               + "'" + dsGetColumn(in_Jibu,i,"GTADDR") +"'," 
+	               + "'" + dsGetColumn(in_Jibu,i,"GTBANKNM") +"'," 
+	               + "'" + dsGetColumn(in_Jibu,i,"GTACCOUNT") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_Jibu,i,"GTOWNER") +"',"	
+	               + "'" + dsGetColumn(in_Jibu,i,"ACCNTJIBU") +"'," 
+	               + "'" + dsGetColumn(in_Jibu,i,"KFSACHPT") +"'"
+	               + " );";   	  	                              
+      //trace("insertQuery = " + insertQuery); 
+      
+			var error = ExecuteSql(insertQuery);         	                               
+			//trace(error+ " = " + insertQuery);
+  }
+  
+  // 13.직능
+	delQuery = "DELETE FROM TRAININGCOURSE ";
+	ExecuteSql(delQuery);		
+
+	//trace("EXAMPAPER = " + delQuery);  
+  //trace("in_TrainingPerson.getRowCount() = " + in_TrainingPerson.getRowCount());   	
+  
+  for(var i=0; i < in_TrainingCourse.getRowCount() ; i++)
+  {
+			var insertQuery = "INSERT INTO TRAININGCOURSE  "  
+  	               + " ( "
+  	               + " TCCOURSECD, TCMUNJEGUBUN, TCSEARCHGUBUN, TCCOURSENM, "
+  	               + " TCCOURSENICK,TCCOURSEGUBUN, TCREQUIREDDOCS, TCORDERSEQ, "
+  	               + " TCUSEYN, TCREGDATE, TCREGSABUN, TCMODDATE, TCMODSABUN, TCTERMTIME "   	                	                             
+	               + " )	VALUES ( " 
+	               + "'" + dsGetColumn(in_TrainingCourse,i,"TCCOURSECD") +"',"	               
+	               + "'" + dsGetColumn(in_TrainingCourse,i,"TCMUNJEGUBUN") +"',"
+	               + "'" + dsGetColumn(in_TrainingCourse,i,"TCSEARCHGUBUN") +"',"             	              
+	               + "'" + dsGetColumn(in_TrainingCourse,i,"TCCOURSENM") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_TrainingCourse,i,"TCCOURSENICK") +"',"	
+	               + "'" + dsGetColumn(in_TrainingCourse,i,"TCCOURSEGUBUN") +"',"
+	               + "'" + dsGetColumn(in_TrainingCourse,i,"TCREQUIREDDOCS") +"',"             	              
+	               + "'" + dsGetColumn(in_TrainingCourse,i,"TCORDERSEQ") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_TrainingCourse,i,"TCUSEYN") +"',"	
+	               + "'" + dsGetColumn(in_TrainingCourse,i,"TCREGDATE") +"',"    
+	               + "'" + dsGetColumn(in_TrainingCourse,i,"TCREGSABUN") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_TrainingCourse,i,"TCMODDATE") +"',"	
+	               + "'" + dsGetColumn(in_TrainingCourse,i,"TCMODSABUN") +"',"
+	               + "'" + dsGetColumn(in_TrainingCourse,i,"TCTERMTIME") +"'"
+	               + " );";   	  	                              
+      //trace("insertQuery = " + insertQuery); 
+      
+			var error = ExecuteSql(insertQuery);         	                               
+			//trace(error+ " = " + insertQuery);
+  }
+  
+  // 14.공통코드
+	delQuery = "DELETE FROM COMMONCODE ";
+	ExecuteSql(delQuery);		
+
+	//trace("EXAMPAPER = " + delQuery);  
+  //trace("in_TrainingPerson.getRowCount() = " + in_TrainingPerson.getRowCount());   	
+  
+  for(var i=0; i < in_CommonCode.getRowCount() ; i++)
+  {
+			var insertQuery = "INSERT INTO COMMONCODE  "  
+  	               + " ( "
+  	               + " CCGROUPCD, CCCD, CCCDNM, CCORDERSEQ, CCREMARK, "
+  	               + " CCUSEYN, CCREGDATE, CCREGSABUN, CCMODDATE, CCMODSABUN "   	                	                             
+	               + " )	VALUES ( " 
+	               + "'" + dsGetColumn(in_CommonCode,i,"CCGROUPCD") +"',"	               
+	               + "'" + dsGetColumn(in_CommonCode,i,"CCCD") +"',"
+	               + "'" + dsGetColumn(in_CommonCode,i,"CCCDNM") +"',"             	              
+	               + "'" + dsGetColumn(in_CommonCode,i,"CCORDERSEQ") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_CommonCode,i,"CCREMARK") +"',"	
+	               + "'" + dsGetColumn(in_CommonCode,i,"CCUSEYN") +"',"
+	               + "'" + dsGetColumn(in_CommonCode,i,"CCREGDATE") +"',"             	              
+	               + "'" + dsGetColumn(in_CommonCode,i,"CCREGSABUN") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_CommonCode,i,"CCMODDATE") +"',"	
+	               + "'" + dsGetColumn(in_CommonCode,i,"CCMODSABUN") +"'"
+	               + " );";   	  	                              
+      //trace("insertQuery = " + insertQuery); 
+      
+			var error = ExecuteSql(insertQuery);         	                               
+			//trace(error+ " = " + insertQuery);
+  }
+  
+  // 15.수료
+	delQuery = "DELETE FROM TRAININGPASS ";
+	ExecuteSql(delQuery);		
+
+	//trace("TRAININGPASS = " + delQuery);  
+  //trace("in_Diploma.getRowCount() = " + in_Diploma.getRowCount());   	
+  
+  for(var i=0; i < in_Diploma.getRowCount() ; i++)
+  {
+			var insertQuery = "INSERT INTO TRAININGPASS  "  
+  	               + " ( "
+  	               + " TPTJMGNO, TPPASSNO, TPPASSDATE, TPMGGTMGNO, TPCANCELDATE, TPCANCELREASON, "
+  	               + " TPCANCELPSABUN, TPDPLMCNT, TPPRIZEGUBUN, TPREGDATE, TPREGSABUN, "
+  	               + " TPMODDATE, TPMODSABUN, TPSTARTDATE, TPENDDATE "   	                	                             
+	               + " )	VALUES ( " 
+	               + "'" + dsGetColumn(in_Diploma,i,"TPTJMGNO") +"',"	               
+	               + "'" + dsGetColumn(in_Diploma,i,"TPPASSNO") +"',"
+	               + "'" + dsGetColumn(in_Diploma,i,"TPPASSDATE") +"',"             	              
+	               + "'" + dsGetColumn(in_Diploma,i,"TPMGGTMGNO") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_Diploma,i,"TPCANCELDATE") +"',"	
+	               + "'" + dsGetColumn(in_Diploma,i,"TPCANCELREASON") +"',"
+	               + "'" + dsGetColumn(in_Diploma,i,"TPCANCELPSABUN") +"',"             	              
+	               + "'" + dsGetColumn(in_Diploma,i,"TPDPLMCNT") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_Diploma,i,"TPPRIZEGUBUN") +"',"	
+	               + "'" + dsGetColumn(in_Diploma,i,"TPREGDATE") +"',"	               	               	               
+	               + "'" + dsGetColumn(in_Diploma,i,"TPREGSABUN") +"',"	
+	               + "'" + dsGetColumn(in_Diploma,i,"TPMODDATE") +"',"
+	               + "'" + dsGetColumn(in_Diploma,i,"TPMODSABUN") +"',"
+	               + "'" + dsGetColumn(in_Diploma,i,"TPSTARTDATE") +"',"
+	               + "'" + dsGetColumn(in_Diploma,i,"TPENDDATE") +"'"
+	               + " );";   	  	                              
+      //trace("insertQuery = " + insertQuery); 
+      
+			var error = ExecuteSql(insertQuery);         	                               
+			//trace(error+ " = " + insertQuery);
+  }
+}
+
+function dsGetColumn(ds,row,colid)
+{
+	return ds.getcolumn(row,colid);
+}
+
+function deleteTable()
+{
+	var delQuery = "DELETE FROM EXAMRESULT ";
+	ExecuteSql(delQuery);	
+	delQuery = "DELETE FROM ANSWERPAPER ";
+	ExecuteSql(delQuery);	
+	delQuery = "DELETE FROM ANSWERANALYSIS ";
+	ExecuteSql(delQuery);	
+	delQuery = "DELETE FROM ANSWERPAPERRESULT ";
+	ExecuteSql(delQuery);	
+	delQuery = "DELETE FROM SERVERSENDH ";
+	ExecuteSql(delQuery);	
+}
+
+
+]]></source>
+</class2>

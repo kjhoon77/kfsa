@@ -1,0 +1,1296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="496" Id="frmcust1142MProcEduReport" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="교육실시지부별&#32;교육이수&#32;실적" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="592" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioChoiceYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>선택</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioMemberGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>0</CD>
+						<DATA>회원</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>비회원</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioCourseYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>선택&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>다중선택</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioReport">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>교육실시지부&#32;일자별&#32;이수&#32;리스트(고객번호)</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>교육실시지부&#32;일자별&#32;이수&#32;리스트(교육이수자)</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>교육실시지부&#32;일자별&#32;이수&#32;현황(고객번호)</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>교육실시지부&#32;일자별&#32;이수&#32;현황(교육이수자)</DATA>
+					</record>
+					<record>
+						<CD>5</CD>
+						<DATA>전지부&#32;교육실시지부별&#32;이수&#32;현황(고객번호)</DATA>
+					</record>
+					<record>
+						<CD>6</CD>
+						<DATA>전지부&#32;교육실시지부별&#32;이수&#32;현황(교육이수자)</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEduGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>실무교육</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>제연설비&#32;설치대상</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SearchJogeon">
+				<Contents>
+					<column id="Const0" type="STRING"></column>
+					<column id="Const1" type="STRING"></column>
+					<column id="Const2" type="STRING"></column>
+					<column id="Const3" type="STRING"></column>
+					<colinfo id="REPORT_GUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPORT_GUBUN_GROUP" size="256" summ="default" type="STRING"/>
+					<colinfo id="YEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="JIBU" size="256" summ="default" type="STRING"/>
+					<colinfo id="MEMBER_GUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="COURSE_GUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="COURSE" size="256" summ="default" type="STRING"/>
+					<colinfo id="COURSE1_6IN" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDUYMD_GUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDU_YMD_FR" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDU_YMD_TO" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDU_GUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRINT_GUBUN1" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRINT_GUBUN2" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDUYMDFR" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDUYMDTO" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDUGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDU_ORDER" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDU_ORDERGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MINAPGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUCCESSIONGUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_EduList">
+				<Contents>
+					<colinfo id="GTTEAMNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="EPPERSONNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIRTHDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PASSDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MINAPAMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TAJIBU" size="256" summ="default" type="STRING"/>
+					<colinfo id="CYBERPASSDATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPrintGubun1">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>직능별</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>일자별</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPrintGubun2">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>대표직능</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>세부직능</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_EduStatistics">
+				<Contents>
+					<colinfo id="RCGTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RCREGCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RCNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RCORDERNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RCUSEGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTTEAMNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTPRTSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="CGROUPCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CGROUPNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="EPPASSDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_DayEduStatistics">
+				<Contents>
+					<colinfo id="GTPRTSEQ" size="2" summ="default" type="STRING"/>
+					<colinfo id="GTTEAMNM" size="70" summ="default" type="STRING"/>
+					<colinfo id="CGROUPCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CGROUPNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="PASSDATE" size="10" summ="default" type="STRING"/>
+					<colinfo id="NM1" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM2" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM3" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM4" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM5" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM6" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM7" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM8" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM9" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM10" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM11" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM12" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM13" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM14" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM15" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM16" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM17" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM18" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM19" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM20" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM21" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM22" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM23" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM24" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM25" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM26" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM27" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM28" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM29" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM30" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM31" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM32" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM33" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM34" size="50" summ="default" type="STRING"/>
+					<colinfo id="NM35" size="50" summ="default" type="STRING"/>
+					<colinfo id="CNT1" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT2" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT3" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT4" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT5" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT6" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT7" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT8" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT9" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT10" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT11" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT12" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT13" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT14" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT15" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT16" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT17" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT18" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT19" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT20" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT21" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT22" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT23" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT24" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT25" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT26" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT27" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT28" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT29" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT30" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT31" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT32" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT33" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT34" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNT35" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CNTSUM" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="NM36" size="50" summ="default" type="STRING"/>
+					<colinfo id="CNT36" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMinap">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>미납자</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSuccessionGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>5</CD>
+						<DATA>선임자교육+이수후퇴직+사이버</DATA>
+					</record>
+					<record>
+						<CD>0</CD>
+						<DATA>선임자교육</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>이수후퇴직</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>교육승계</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>사이버</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioProcJibuGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체(타지부포함)</DATA>
+					</record>
+					<record>
+						<CD>0</CD>
+						<DATA>우리지부만</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>타지부만</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEduCyberGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>실무(소집)교육</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>사이버교육</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>소집+사이버교육</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_EduAllJibuList"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioBook"></Dataset>
+		</Datasets>
+		<Shape Bottom="488" Height="284" Id="Shape0" Left="4" LineColor="user15" Right="584" TabOrder="35" Top="204" Type="Rectangle" Width="580"></Shape>
+		<Shape Bottom="191" Height="135" Id="Shape2" Left="4" LineColor="user15" Right="584" TabOrder="33" Top="56" Type="Rectangle" Width="580"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="23" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="316">
+			<Contents></Contents>
+		</Div>
+		<Static Align="Center" Height="20" Id="Static1" Left="20" Style="sty_LabelGruopBox" TabOrder="24" Text="조회&#32;조건" Top="196" VAlign="Middle" Width="112"></Static>
+		<Static Align="Center" Height="20" Id="lbBusinessType" Left="8" Style="sty_Label" TabOrder="25" Text="교육대상" Top="390" VAlign="Middle" Width="80"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radEduGubun" INDEX="0" InnerDataset="ds_oEduGubun" Left="91" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="20" Top="390" Value="0" Width="236"></Radio>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="radCourse" INDEX="0" InnerDataset="ds_ioCourseYn" Left="91" LeftMargin="4" OnChanged="radCourse_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="9" Top="268" UserData="S" Width="364"></Radio>
+		<Static Align="Center" Height="20" Id="Static2" Left="8" Style="sty_Label" TabOrder="26" Text="대상년도" Top="220" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Height="20" Id="Static3" Left="159" Style="sty_Label" TabOrder="27" Text="지부" Top="220" VAlign="Middle" Width="60"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_ioJibu" Left="222" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="7" Top="219" UserData="I" Width="104"></Combo>
+		<Static Align="Center" Height="20" Id="Static6" Left="8" Style="sty_Label" TabOrder="28" Text="고객구분" Top="244" VAlign="Middle" Width="80"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="radMemberGubun" INDEX="0" InnerDataset="ds_ioMemberGubun" Left="91" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="8" Top="244" UserData="S" Width="232"></Radio>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="8" Style="sty_Label" TabOrder="29" Text="직능" Top="268" VAlign="Middle" Width="80"></Static>
+		<Combo BindDataset="ds_ioCourse" Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_ioCourse" Left="227" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="10" Top="267" UserData="S" Width="135"></Combo>
+		<Combo BindDataset="ds_ioCourse" Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse2" INDEX="0" InnerDataset="ds_ioCourse" Left="226" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="12" Top="291" UserData="S" Width="135"></Combo>
+		<Combo BindDataset="ds_ioCourse" Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse3" INDEX="0" InnerDataset="ds_ioCourse" Left="362" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="13" Top="291" UserData="S" Width="135"></Combo>
+		<Combo BindDataset="ds_ioCourse" Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse4" INDEX="0" InnerDataset="ds_ioCourse" Left="90" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="14" Top="315" UserData="S" Width="135"></Combo>
+		<Combo BindDataset="ds_ioCourse" Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse5" INDEX="0" InnerDataset="ds_ioCourse" Left="226" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="15" Top="315" UserData="S" Width="135"></Combo>
+		<Combo BindDataset="ds_ioCourse" Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse6" INDEX="0" InnerDataset="ds_ioCourse" Left="362" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="16" Top="315" UserData="S" Width="135"></Combo>
+		<Static Align="Center" Height="20" Id="Static11" Left="8" Style="sty_Label" TabOrder="30" Text="교육일자" Top="342" VAlign="Middle" Width="80"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radEduOrderGubun" INDEX="0" InnerDataset="ds_ioChoiceYn" Left="91" LeftMargin="4" OnClick="radEduOrderGubun_OnClick" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="17" Top="366" Width="108"></Radio>
+		<Static Align="Center" Height="20" Id="Static13" Left="307" Style="sty_Text" TabOrder="31" Text="~" Top="342" VAlign="Middle" Width="20"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" Enable="FALSE" HeaderFont="돋음,10,Bold" Height="20" Id="calEduYmdFr" Left="211" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="18" Top="342" WeeksFont="돋음,9" Width="100"></Calendar>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" Enable="FALSE" HeaderFont="돋음,10,Bold" Height="20" Id="calEduYmdTo" Left="323" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="19" Top="342" WeeksFont="돋음,9" Width="100"></Calendar>
+		<Combo BindDataset="ds_ioCourse" Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCourse1" INDEX="0" InnerDataset="ds_ioCourse" Left="90" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="11" Top="292" UserData="S" Width="135"></Combo>
+		<Shape Bottom="53" Height="52" Id="shpBtnBox" Left="323" LineColor="user14" Right="589" TabOrder="32" Top="1" Type="Rectangle" Width="266"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="501" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="327" OnClick="lfn_Print" Style="sty_Button" TabOrder="3" ToolTipText="출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="327" OnClick="lfn_Excel2" Style="sty_Button" TabOrder="4" ToolTipText="엑셀로&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="414" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="1" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="Static0" Left="20" Style="sty_LabelGruopBox" TabOrder="34" Text="출력물" Top="48" VAlign="Middle" Width="112"></Static>
+		<Radio Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="115" Id="radReport" INDEX="0" InnerDataset="ds_ioReport" Left="8" LeftMargin="8" OnChanged="radReport_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="8" Style="sty_Radio" TabOrder="5" Top="72" Value="1" Width="568"></Radio>
+		<Shape Bottom="584" Height="40" Id="Shape1" Left="4" LineColor="user15" Right="244" TabOrder="36" Top="544" Type="Rectangle" Visible="FALSE" Width="240"></Shape>
+		<Static Align="Center" Height="20" Id="Static4" Left="20" Style="sty_LabelGruopBox" TabOrder="37" Text="출력구분" Top="536" VAlign="Middle" Visible="FALSE" Width="112"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radPrintGubun1" INDEX="0" InnerDataset="ds_ioPrintGubun1" Left="8" LeftMargin="30" OnKeyDown="gfn_EnterNextFocus" RightMargin="30" Style="sty_Radio" TabOrder="21" Top="560" Value="1" Visible="FALSE" Width="232"></Radio>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edYear" ImeMode="native" Left="91" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="6" Top="220" Width="64"></Edit>
+		<Shape Bottom="584" Height="40" Id="Shape3" Left="248" LineColor="user15" Right="496" TabOrder="38" Top="544" Type="Rectangle" Visible="FALSE" Width="248"></Shape>
+		<Static Align="Center" Height="20" Id="Static5" Left="264" Style="sty_LabelGruopBox" TabOrder="39" Text="직능구분" Top="536" VAlign="Middle" Visible="FALSE" Width="112"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radPrintGubun2" INDEX="0" InnerDataset="ds_ioPrintGubun2" Left="252" LeftMargin="30" OnKeyDown="gfn_EnterNextFocus" RightMargin="30" Style="sty_Radio" TabOrder="22" Top="560" Value="1" Visible="FALSE" Width="240"></Radio>
+		<Grid AutoEnter="TRUE" BindDataset="ds_EduList" BkColor2="default" BoldHead="true" Bottom="668" Editable="TRUE" Enable="true" EndLineColor="default" Height="68" Id="gdList" InputPanel="FALSE" Left="8" LineColor="default" Right="336" TabOrder="40" TabStop="true" Top="600" UseDBuff="true" UsePopupMenu="true" UserData="일자별교육이수리스트" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="328">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="50"/>
+						<col width="67"/>
+						<col width="67"/>
+						<col width="78"/>
+						<col width="67"/>
+						<col width="61"/>
+						<col width="100"/>
+						<col width="321"/>
+						<col width="183"/>
+						<col width="125"/>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="90"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="순번"/>
+						<cell col="1" display="text" text="소속지부"/>
+						<cell col="2" display="text" text="지역"/>
+						<cell col="3" display="text" text="직능"/>
+						<cell col="4" display="text" text="관리번호"/>
+						<cell col="5" display="text" text="성명"/>
+						<cell col="6" display="text" text="생년월일"/>
+						<cell col="8" display="text" text="근무처"/>
+						<cell col="12" display="text" text="미납액"/>
+						<cell col="7" display="text" text="주소"/>
+						<cell col="9" display="text" text="종전교육유효기간"/>
+						<cell col="10" display="text" text="교육일자"/>
+						<cell col="11" display="text" text="교육유효기간"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="MEMBER_GUBUN_NM" display="text" expr="ROW+1" SuppressAlign="Last"/>
+						<cell align="center" col="1" colid="GTDEPTNM" display="text"/>
+						<cell align="left" col="2" colid="RCNM" display="text" edit="normal"/>
+						<cell align="left" col="3" colid="CNICKNM" display="text" edit="normal"/>
+						<cell align="left" col="4" colid="CNO" display="text" edit="normal"/>
+						<cell align="center" col="5" colid="EPPERSONNM" display="text"/>
+						<cell align="center" col="6" colid="BIRTHDAY" display="text"/>
+						<cell align="left" col="7" colid="ADDR" display="text"/>
+						<cell align="left" col="8" colid="BNM" display="text"/>
+						<cell align="center" col="9" colid="EPOLDEDUEXPIREDATE" display="text"/>
+						<cell align="center" col="10" colid="PASSDATE" display="text"/>
+						<cell align="center" col="11" colid="CEDUEXPIREDATE" display="text"/>
+						<cell align="right" col="12" colid="MINAPAMT" display="number"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="Static7" Left="8" Style="sty_Label" TabOrder="41" Text="회차" Top="366" VAlign="Middle" Width="80"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radEduYmdGubun" INDEX="0" InnerDataset="ds_ioChoiceYn" Left="91" LeftMargin="4" OnChanged="radEduYmd_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="42" Top="342" Value="1" Width="108"></Radio>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edEduOrder" ImeMode="native" Left="211" LeftMargin="2" MaxLength="3" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="43" Top="366" Width="48"></Edit>
+		<Static Align="Center" Height="20" Id="Static8" Left="8" Style="sty_Label" TabOrder="45" Text="미납여부" Top="462" VAlign="Middle" Width="80"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radMinap" INDEX="0" InnerDataset="ds_oMinap" Left="91" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="44" Top="462" Width="168"></Radio>
+		<Grid BindDataset="ds_DayEduStatistics" BkColor2="default" BoldHead="true" Bottom="748" Enable="true" EndLineColor="default" Height="76" Id="gdList2" InputPanel="FALSE" Left="6" LineColor="default" Right="515" TabOrder="46" TabStop="true" Top="672" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="509">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="87"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" suppress="1" text="소속지부"/>
+						<cell col="1" display="text" suppress="1" text="직능"/>
+						<cell col="2" display="text" text="일자&#32;/&#32;지역"/>
+						<cell col="3" display="text" text="합계"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="text"/>
+						<cell col="6" display="text"/>
+						<cell col="7" display="text"/>
+						<cell col="8" display="text" text="5"/>
+						<cell col="9" display="text"/>
+						<cell col="10" display="text"/>
+						<cell col="11" display="text"/>
+						<cell col="12" display="text"/>
+						<cell col="13" display="text"/>
+						<cell col="14" display="text"/>
+						<cell col="15" display="text"/>
+						<cell col="16" display="text"/>
+						<cell col="17" display="text"/>
+						<cell col="18" display="text"/>
+						<cell col="19" display="text"/>
+						<cell col="20" display="text"/>
+						<cell col="21" display="text"/>
+						<cell col="22" display="text"/>
+						<cell col="23" display="text"/>
+						<cell col="24" display="text"/>
+						<cell col="25" display="text"/>
+						<cell col="26" display="text"/>
+						<cell col="27" display="text"/>
+						<cell col="28" display="text"/>
+						<cell col="29" display="text"/>
+						<cell col="30" display="text"/>
+						<cell col="31" display="text"/>
+						<cell col="32" display="text"/>
+						<cell col="33" display="text"/>
+						<cell col="34" display="text"/>
+						<cell col="35" display="text"/>
+						<cell col="36" display="text"/>
+						<cell col="37" display="text"/>
+						<cell col="38" display="text"/>
+						<cell col="39" display="text"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="GTTEAMNM" display="text" suppress="1"/>
+						<cell align="center" col="1" colid="CGROUPNM" display="text" suppress="1"/>
+						<cell align="center" col="2" colid="PASSDATE" display="text"/>
+						<cell align="center" col="3" colid="CNTSUM" display="number"/>
+						<cell align="center" col="4" colid="CNT1" display="number"/>
+						<cell align="center" col="5" colid="CNT2" display="number"/>
+						<cell align="center" col="6" colid="CNT3" display="number"/>
+						<cell align="center" col="7" colid="CNT4" display="number"/>
+						<cell align="center" col="8" colid="CNT5" display="number"/>
+						<cell align="center" col="9" colid="CNT6" display="number"/>
+						<cell align="center" col="10" colid="CNT7" display="number"/>
+						<cell align="center" col="11" colid="CNT8" display="number"/>
+						<cell align="center" col="12" colid="CNT9" display="number"/>
+						<cell align="center" col="13" colid="CNT10" display="number"/>
+						<cell align="center" col="14" colid="CNT11" display="number"/>
+						<cell align="center" col="15" colid="CNT12" display="number"/>
+						<cell align="center" col="16" colid="CNT13" display="number"/>
+						<cell align="center" col="17" colid="CNT14" display="number"/>
+						<cell align="center" col="18" colid="CNT15" display="number"/>
+						<cell align="center" col="19" colid="CNT16" display="number"/>
+						<cell align="center" col="20" colid="CNT17" display="number"/>
+						<cell align="center" col="21" colid="CNT18" display="number"/>
+						<cell align="center" col="22" colid="CNT19" display="number"/>
+						<cell align="center" col="23" colid="CNT20" display="number"/>
+						<cell align="center" col="24" colid="CNT21" display="number"/>
+						<cell align="center" col="25" colid="CNT22" display="number"/>
+						<cell align="center" col="26" colid="CNT23" display="number"/>
+						<cell align="center" col="27" colid="CNT24" display="number"/>
+						<cell align="center" col="28" colid="CNT25" display="number"/>
+						<cell align="center" col="29" colid="CNT26" display="number"/>
+						<cell align="center" col="30" colid="CNT27" display="number"/>
+						<cell align="center" col="31" colid="CNT28" display="number"/>
+						<cell align="center" col="32" colid="CNT29" display="number"/>
+						<cell align="center" col="33" colid="CNT30" display="number"/>
+						<cell align="center" col="34" colid="CNT31" display="number"/>
+						<cell align="center" col="35" colid="CNT32" display="number"/>
+						<cell align="center" col="36" colid="CNT33" display="number"/>
+						<cell align="center" col="37" colid="CNT34" display="number"/>
+						<cell align="center" col="38" colid="CNT35" display="number"/>
+						<cell align="center" col="39" colid="CNT36" display="number"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="Static9" Left="8" Style="sty_Label" TabOrder="48" Text="교육이수구분" Top="414" VAlign="Middle" Width="80"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="42" Id="radSuccessionGubun" INDEX="1" InnerDataset="ds_ioSuccessionGubun" Left="91" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="47" Top="414" Value="0" Width="469"></Radio>
+		<Grid AutoEnter="TRUE" BindDataset="ds_EduAllJibuList" BkColor2="default" BoldHead="true" Bottom="824" Editable="TRUE" Enable="true" EndLineColor="default" Height="69" Id="gdList3" InputPanel="FALSE" Left="5" LineColor="default" Right="512" TabOrder="49" TabStop="true" Top="755" UseDBuff="true" UsePopupMenu="true" UserData="일자별교육이수리스트" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="507">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="84"/>
+						<col width="85"/>
+						<col width="115"/>
+						<col width="135"/>
+						<col width="116"/>
+						<col width="80"/>
+						<col width="91"/>
+						<col width="114"/>
+						<col width="112"/>
+						<col width="115"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="지부"/>
+						<cell col="1" display="text" text="계"/>
+						<cell col="2" display="text" text="소방안전관리자"/>
+						<cell col="3" display="text" text="소방안전관리보조자"/>
+						<cell col="4" display="text" text="위험물안전관리자"/>
+						<cell col="6" display="text" text="위험물운송자"/>
+						<cell col="8" display="text" text="교육희망자_위관"/>
+						<cell col="5" display="text" text="소방기술자"/>
+						<cell col="7" display="text" text="교육희망자_소관"/>
+						<cell col="9" display="text" text="교육희망자_소기"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="GTTEAMNM" display="text"/>
+						<cell align="right" col="1" colid="TOTCNT" display="text" edit="normal"/>
+						<cell align="right" col="2" colid="S10CNT" display="text"/>
+						<cell align="right" col="3" colid="S20CNT" display="text"/>
+						<cell align="right" col="4" colid="D30CNT" display="text"/>
+						<cell align="right" col="5" colid="K50CNT" display="text"/>
+						<cell align="right" col="6" colid="W80CNT" display="text"/>
+						<cell align="right" col="7" colid="S91CNT" display="text"/>
+						<cell align="right" col="8" colid="D92CNT" display="number"/>
+						<cell align="right" col="9" colid="K93CNT" display="number"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_ioBook" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="920" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="88" Id="gdBookSend" InputPanel="FALSE" Left="4" LineColor="default" OnHeadClick="gdTrainingJubsu_OnHeadClick" Right="796" RowHeight="20" Style="sty_Grid" TabOrder="50" TabStop="true" Top="832" UseDBuff="true" UsePopupMenu="true" UserData="교재수령지" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="35"/>
+						<col width="100"/>
+						<col width="152"/>
+						<col width="90"/>
+						<col width="159"/>
+						<col width="74"/>
+						<col width="113"/>
+						<col width="268"/>
+						<col width="268"/>
+						<col width="100"/>
+						<col width="113"/>
+						<col width="268"/>
+						<col width="268"/>
+						<col width="150"/>
+						<col width="214"/>
+						<col width="47"/>
+						<col width="225"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell col="1" display="text" text="지부"/>
+						<cell align="center" col="2" display="text" text="교육과정"/>
+						<cell col="3" display="text" text="교육이수일자"/>
+						<cell align="center" col="4" display="text" text="고객관리번호"/>
+						<cell align="center" col="5" display="text" text="성명"/>
+						<cell align="center" col="6" display="text" text="수신자&#32;우편번호"/>
+						<cell align="center" col="7" display="text" text="수신자&#32;주소1"/>
+						<cell align="center" col="8" display="text" text="수신자&#32;주소2"/>
+						<cell align="center" col="9" display="text" text="수신자&#32;휴대폰"/>
+						<cell align="center" col="10" display="text" text="발신자&#32;우편번호"/>
+						<cell align="center" col="11" display="text" text="발신자&#32;주소1"/>
+						<cell align="center" col="12" display="text" text="발신자&#32;주소2"/>
+						<cell align="center" col="13" display="text" text="발신자&#32;전화번호"/>
+						<cell col="14" display="text" text="내용물"/>
+						<cell align="center" col="15" display="text" text="수량"/>
+						<cell align="center" col="16" display="text" text="우편반송바코드"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="normal" expr="row+1"/>
+						<cell align="center" col="1" colid="SOSOKTEAMNM" display="normal"/>
+						<cell align="center" col="2" colid="CGROUPNM" display="normal"/>
+						<cell align="center" col="3" colid="PASSDATE" display="normal"/>
+						<cell align="center" col="4" colid="SOSOKMGNO" display="text"/>
+						<cell align="center" col="5" colid="EPPERSONNM" display="text"/>
+						<cell align="center" col="6" colid="CEDUPOSTZIPCD" display="text" Mask="######"/>
+						<cell align="left" col="7" colid="BOOKADDR1" display="text"/>
+						<cell align="left" col="8" colid="BOOKADDR2" display="text"/>
+						<cell align="center" col="9" colid="HPTEL" display="text"/>
+						<cell align="center" col="10" colid="GTZIPCODE" display="text" Mask="######"/>
+						<cell align="left" col="11" colid="GTADDR1" display="text"/>
+						<cell align="left" col="12" colid="GTADDR2" display="text"/>
+						<cell align="center" col="13" colid="GTTELEPHONENUMBER" display="text"/>
+						<cell align="center" col="14" colid="COURSEBOOK" display="text"/>
+						<cell align="center" col="15" colid="SENDCOUNT" display="text"/>
+						<cell align="center" col="16" colid="BARCODE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintBookAddr" ImageID="BTN_TEXT_12" Left="414" OnClick="btnPrintBookAddr_OnClick" Style="sty_Button" TabOrder="51" Text="교재수령지&#32;엑셀&#32;출력" ToolTipText="교재수령지&#32;출력" Top="28" Width="170"></Button>
+	</Form>
+	<Script><![CDATA[#include "LIB::cust.js"; // 공통업무 관련
+
+function Form_OnLoadCompleted(obj)
+{
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+	
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+	gfn_SearchAllJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회
+	
+	gfn_SearchCustomerEduCourseFullName(ds_ioCourse, "0", "선택");	// 대표고객직능 조회
+	
+	radCourse.Value = "";
+	//gfn_SearchCustomerDetailCourse("대표직능", ds_oDetailCourse, "Y", ""); // 세부고객직능 조회
+	
+	edYear.Text = substr(getDate(),0,4);
+	
+	radReport_OnChanged();
+	radCourse_OnChanged();
+	radEduYmd_OnChanged();
+	
+	radSuccessionGubun.Index = 0;
+}
+
+function lfn_SetFormAuth(bStatus) {
+
+}
+
+
+function lfn_Search(obj) {
+	
+	ds_EduList.ClearData(); // 데이타셋 초기화
+	ds_DayEduStatistics.ClearData(); // 데이타셋 초기화
+	ds_EduAllJibuList.ClearData(); // 데이타셋 초기화
+	
+	tit_clearActionInfo(this);
+	
+	//TAB_Training.TabIndex = 1; //조회버튼 선택시  나오게 한다.
+	if(radReport.Value == "1" || radReport.Value == "2"){ 		tit_addCsvSearchActionInfo("cust:searchCust1142ProcEduList", false);
+	} else if(radReport.Value == "3" || radReport.Value == "4"){ 
+		tit_addCsvSearchActionInfo("cust:searchCust1142ProcEduStatistics", false);
+	} else if(radReport.Value == "5" || radReport.Value == "6"){
+		tit_addCsvSearchActionInfo("cust:searchCust1142AllJibuProcEduStatistics", false);
+	}
+	ds_SearchJogeon.DeleteAll();		ds_SearchJogeon.AddRow();
+	ds_SearchJogeon.setColumn(0, "REPORT_GUBUN", radReport.Value);	
+	if(radReport.Value == "2" || radReport.Value == "4")
+		ds_SearchJogeon.setColumn(0, "REPORT_GUBUN_GROUP", "2");	
+	else
+		ds_SearchJogeon.setColumn(0, "REPORT_GUBUN_GROUP", "1");	
+	
+	ds_SearchJogeon.setColumn(0, "YEAR", edYear.Value);	
+	ds_SearchJogeon.setColumn(0, "JIBU", cbxJibu.Value);	
+	ds_SearchJogeon.setColumn(0, "MEMBER_GUBUN", radMemberGubun.Value);	
+	ds_SearchJogeon.setColumn(0, "COURSE_GUBUN", radCourse.Value);	
+	ds_SearchJogeon.setColumn(0, "COURSE", cbxCourse.Value);	
+	
+	var Course = "";
+	
+	if(cbxCourse1.Value != "")
+		Course += "'" + cbxCourse1.Value + "'" + ",";
+	if(cbxCourse2.Value != "")
+		Course += "'" + cbxCourse2.Value + "'" + ",";	
+    if(cbxCourse3.Value != "")
+		Course += "'" + cbxCourse3.Value + "'" + ",";	
+	if(cbxCourse4.Value != "")
+		Course += "'" + cbxCourse4.Value + "'" + ",";	
+	if(cbxCourse5.Value != "")
+		Course += "'" + cbxCourse5.Value + "'" + ",";	
+	if(cbxCourse6.Value != "")
+		Course += "'" + cbxCourse6.Value + "'" + ",";	
+	 	
+	ds_SearchJogeon.setColumn(0, "COURSE1_6IN", left(Course, length(Course)-1));	
+	ds_SearchJogeon.setColumn(0, "EDUYMD_GUBUN", radEduYmdGubun.Value);	
+	ds_SearchJogeon.setColumn(0, "EDU_YMD_FR", calEduYmdFr.Value);	
+	ds_SearchJogeon.setColumn(0, "EDU_YMD_TO", calEduYmdTo.Value);	
+	ds_SearchJogeon.setColumn(0, "EDU_GUBUN", radEduGubun.Value);		
+	
+	if (edYear.Text >= 2010) {
+		ds_SearchJogeon.setColumn(0, "EDU_ORDERGUBUN", radEduOrderGubun.Value); // 교육횟차 구분
+		ds_SearchJogeon.setColumn(0, "EDU_ORDER", edEduOrder.Text);  			// 교육횟차
+	} 
+	
+	ds_SearchJogeon.setColumn(0, "PRINT_GUBUN1", radPrintGubun1.Value);	
+	ds_SearchJogeon.setColumn(0, "PRINT_GUBUN2", radPrintGubun2.Value);	
+	ds_SearchJogeon.setColumn(0, "MINAPGUBUN", radMinap.Value);
+	ds_SearchJogeon.setColumn(0, "SUCCESSIONGUBUN", radSuccessionGubun.Value);		
+
+
+    if(radReport.Value == "1" || radReport.Value == "2"){              
+		tit_callService(  
+						 ""
+					   , ""   
+					   , "ds_iEduList=ds_SearchJogeon"//inDs 
+					   , "ds_EduList=ds_oEduList" //outDs
+					   , ""
+					   , "afterSearch"  //callBack
+					   , false
+					   ,false
+					   ,true
+					   ); 
+	} else if(radReport.Value == "3" || radReport.Value == "4"){ 
+		tit_callService(  
+						 ""
+					   , ""   
+					   , "ds_iEduStatistics=ds_SearchJogeon"//inDs 
+					   , "ds_DayEduStatistics=ds_oEduStatistics" //outDs
+					   , ""
+					   , "afterSearch"  //callBack
+					   , false
+					   ,false
+					   ,true
+					   ); 
+	} else if(radReport.Value == "5" || radReport.Value == "6"){ 
+		tit_callService(  
+						 ""
+					   , ""   
+					   , "ds_iEduStatistics=ds_SearchJogeon"//inDs 
+					   , "ds_EduAllJibuList=ds_oEduStatistics" //outDs
+					   , ""
+					   , "afterSearch"  //callBack
+					   , false
+					   ,false
+					   ,true
+					   ); 
+	} 
+}
+
+// 조회 후 callback function afterSearch(errCode, errMsg){
+
+	if(errCode != 0 ){
+		alert("오류가 발생했습니다.");
+	}
+	else{
+		if(radReport.Value == "1" || radReport.Value == "2"){      	
+			if(ds_EduList.rowcount > 0){	
+			}
+			else{
+			}
+		} else if(radReport.Value == "3" || radReport.Value == "4"){
+			if(ds_DayEduStatistics.rowcount > 0){	
+			}
+			else{
+			}
+		} else { 
+			if(ds_EduAllJibuList.rowcount > 0){
+			}
+			else{
+			}
+		}
+	}
+	//trace(ds_DayEduStatistics.SaveXML());}
+
+
+function lfn_Print(obj)
+{
+
+    if (!gfn_Confirm("출력 하시겠습니까?\n\n"
+                     + "시간이 오래걸릴 수 있습니다.")) { // 입력 Validation Check
+        return false;
+    }
+
+	if(radReport.Value == "1" || radReport.Value == "2"){   	
+		
+		lfn_Search();
+				
+		if(ds_EduList.rowcount == 0){
+			alert("데이터가 없습니다.");
+			return;
+		}
+		
+		gfn_CallReportPopup("frmCust1142R01ProcEduReport.rex"
+						  , "ds_EduList"
+						  , "EDU_YMD_FR=" + calEduYmdFr.Value + "^EDU_YMD_TO=" + calEduYmdTo.Value + "^TITLE=" + radReport.Text
+						  , true);
+							  
+	} else if(radReport.Value == "3" || radReport.Value == "4"){ 
+
+		lfn_Search();
+		
+		if(ds_DayEduStatistics.rowcount == 0){
+			alert("데이터가 없습니다.");
+			return;
+		}
+		vReportTitle = "일별";
+	
+		if(cbxJibu.Value == "1011" || cbxJibu.Value == "1151") {
+			gfn_CallReportPopup("frmCust1142R01ProcEduStatisticsCourse_Seoul.rex"
+							  , "ds_DayEduStatistics"
+							  , "PRINT_GUBUN=" + radReport.Value + "^TITLE=" + radReport.Text
+							  , true);		
+		
+		} else {		
+			gfn_CallReportPopup("frmCust1142R01ProcEduStatisticsCourse.rex"
+							  , "ds_DayEduStatistics"
+							  , "PRINT_GUBUN=" + radReport.Value + "^TITLE=" + radReport.Text
+							  , true);
+		}
+	} else if(radReport.Value == "5" || radReport.Value == "6") {
+	
+		lfn_Search();
+				
+		if(ds_EduAllJibuList.rowcount == 0){
+			alert("데이터가 없습니다.");
+			return;
+		}
+		
+		gfn_CallReportPopup("frmCust1142R01ProcAllJibuEduReport.rex"
+						  , "ds_EduAllJibuList"
+						  , "EDU_YMD_FR=" + calEduYmdFr.Value + "^EDU_YMD_TO=" + calEduYmdTo.Value + "^TITLE=" + radReport.Text
+						  , true);	
+	
+	
+	}
+                      
+}
+//======================================================================================================
+//엑샐인쇄 시작----------------------------------------------------------------------------------------
+function lfn_Excel2(obj)
+{
+	if(radReport.Value == "1" || radReport.Value == "2"){
+		lfn_Search();
+		
+		if(ds_EduList.rowcount == 0){
+			alert("데이터가 없습니다.");
+			return;
+		}
+		
+		// 개인정보 다운로드 사유 등록
+		var parValue = "sCode=1423";	// COMMON.PERSONALDOWNLOADH
+			parValue += " sRowCnt=" + ds_EduList.GetRowCount();
+			parValue += " sTitle=" + quote(gdList.UserData);
+		var ls_IsRemark = Dialog("COM::frmCOM2100PDownloadRemark.xml", parValue, "", "", "", -1, -1);	
+	
+		if (ls_IsRemark == "" || ls_IsRemark == null || ls_IsRemark == "FAIL") {
+			return false;
+		}
+		
+		gdList.ExportExcelEx(radReport.Text);
+
+	} else if(radReport.Value == "3" || radReport.Value == "4"){
+		lfn_Search();
+		
+		if (ds_DayEduStatistics.rowcount == 0) {
+			alert("데이타가 없습니다.");
+			return;
+		}
+		
+		// 불러온 데이타 정보를 그리드에 셋팅 
+		var NM = "";
+		var CNT = "";
+		var SUM = 0;
+		for(var i = 1; i < 37; i++) {
+			NM = "NM"+i;			
+			NM = ds_DayEduStatistics.GetColumn(0,NM);
+			gdList2.SetCellProp("head", i+3, "text", NM);
+			gdList2.SetCellProp("head", i+3, "text", "지역"+i);
+			//if (NM == "" || NM == null) {
+			//	gdList2.SetColProp(i+2,"Width",0);
+			//} else {
+				gdList2.SetColProp(i+2,"Width",80);
+			//}
+		}
+		
+		// 합계구하는 식
+		for(i = 0; i < ds_DayEduStatistics.count(); i++) {
+			SUM = 0;
+			for (var j = 1; j < 37; j++) {				
+				CNT = "CNT"+j;
+				SUM = parseInt(SUM) + parseInt(ds_DayEduStatistics.GetColumn(i,CNT));
+			}
+			ds_DayEduStatistics.SetColumn(i,"CNTSUM",SUM);
+		}		
+		
+		gdList2.ExportExcelEx(radReport.Text);		
+	} else {
+		lfn_Search();
+		
+		if(ds_EduAllJibuList.rowcount == 0){
+			alert("데이터가 없습니다.");
+			return;
+		}
+		
+		gdList3.ExportExcelEx(radReport.Text);
+	}
+}
+
+//엑셀 함수 입니다. (위에 제목을 넣기 위함)
+function setExcelGridHeader(grdObj,strText){
+	create("grid","grdExcel",'BindDataSet="' + grdObj.BindDataset +'"');
+	grdExcel.contents = grdObj.Contents;	
+	var headCnt = getHeadCount(grdExcel);
+	var totCol  = grdExcel.GetColCount();
+	var irow;
+	for(var i = 0 ; i < headCnt ; i++ )	{
+		irow = toInteger(grdExcel.GetCellProp("head",i,"row"));
+		grdExcel.SetCellProp("head",i,"row",irow+1);
+	}
+	var str_temp = grdExcel.GetCurContents();
+	var str_Head = '<cell align="left" col="0" colspan="' + totCol + '" display="text" text="' + strText + '"/>';	
+	str_temp = replace(str_temp, '</head>',str_Head +'</head>');
+	grdExcel.contents = str_temp;
+	grdExcel.ExportExcelEx("sheet1","A1",false,true,true);
+	Destroy(grdExcel);
+}
+//엑셀 함수 입니다. (위에 제목을 넣기 위함)
+function getHeadCount(grdObj){
+	var strConts = grdObj.Contents;	
+	var iPos = pos(strConts,"<head>");
+	var strHead = Mid(strConts,iPos);
+	iPos = pos(strHead,"</head>");
+	strHead = Mid(strHead,0,iPos+7);
+	var spObj = split(strHead,chr(10),"webstyle");
+	return spObj.length()-2;
+}
+//엑셀인쇄 끝-----------------------------------------------------------------------------------
+//======================================================================================================
+
+
+//직능
+function radCourse_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if (strCode == 1) {          //선택
+        cbxCourse.SetFocus();
+        cbxCourse.Enable = true;
+        cbxCourse1.Enable = false;
+        cbxCourse2.Enable = false;
+        cbxCourse3.Enable = false;
+        cbxCourse4.Enable = false;
+        cbxCourse5.Enable = false;
+        cbxCourse6.Enable = false;        
+        cbxCourse.index=0;
+        cbxCourse1.index=0;
+        cbxCourse2.index=0;
+        cbxCourse3.index=0;
+        cbxCourse4.index=0;
+        cbxCourse5.index=0;
+        cbxCourse6.index=0;
+	} else if(strCode == 2){     //다중선택
+        cbxCourse1.SetFocus();
+        cbxCourse.Enable = false;
+        cbxCourse1.Enable = true;
+        cbxCourse2.Enable = true;
+        cbxCourse3.Enable = true;
+        cbxCourse4.Enable = true;
+        cbxCourse5.Enable = true;
+        cbxCourse6.Enable = true;        
+        cbxCourse.index=0;
+        cbxCourse1.index=0;
+        cbxCourse2.index=0;
+        cbxCourse3.index=0;
+        cbxCourse4.index=0;
+        cbxCourse5.index=0;
+        cbxCourse6.index=0;
+	} else {                    //전체
+        cbxCourse.Enable = false;
+        cbxCourse1.Enable = false;
+        cbxCourse2.Enable = false;
+        cbxCourse3.Enable = false;
+        cbxCourse4.Enable = false;
+        cbxCourse5.Enable = false;
+        cbxCourse6.Enable = false;
+        cbxCourse.index=0;
+        cbxCourse1.index=0;
+        cbxCourse2.index=0;
+        cbxCourse3.index=0;
+        cbxCourse4.index=0;
+        cbxCourse5.index=0;
+        cbxCourse6.index=0;
+	}
+} 
+
+function lfn_Cancel(obj)
+{
+	radReport.Value = "1";
+	radEduGubun.Value = "0";
+	radPrintGubun1.Value = "1";
+	radPrintGubun2.Value = "1";
+	radEduYmdGubun.Value = "1";
+	
+	edYear.Text = substr(getDate(),0,4);
+	
+	radReport_OnChanged();
+	radCourse_OnChanged();
+	radEduYmd_OnChanged();
+}
+
+
+function radEduYmd_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(radEduYmdGubun.Value == ""){
+		calEduYmdFr.Enable = false;
+		calEduYmdTo.Enable = false;
+		calEduYmdFr.Value = "";
+		calEduYmdTo.Value = "";
+	}
+	else{
+		calEduYmdFr.Enable = true;
+		calEduYmdTo.Enable = true;
+		calEduYmdFr.Value = substr(getDate(),0,4)+"0101";
+		calEduYmdTo.Value = substr(getDate(),0,8);
+	}
+}
+
+function radReport_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(radReport.Value == "1" || radReport.Value == "2"){
+		radPrintGubun1.Enable = false;
+		radPrintGubun2.Enable = false;
+	}
+	else{
+		radPrintGubun1.Enable = true;
+		radPrintGubun2.Enable = true;
+	}
+	
+	if (radReport.Value == "5" || radReport.Value == "6") {
+		cbxJibu.Index = 0;
+		radCourse.Index = 0;
+	} else {
+		if (gfn_IsNull(gds_oUserInfo.GetColumn(0, "ADMINGUBUN")) || gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "DM") {
+			cbxJibu.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+		} else {
+			cbxJibu.Index = 1;
+		}
+	}
+}
+
+// 회차 변경시 체크 (단. 2010년 이전년도는 입력 불가 
+function radEduOrderGubun_OnClick(obj)
+{
+	if (edYear.Text >= "2010") {
+		if(radEduOrderGubun.Value == "1"){
+			edEduOrder.Enable = true;
+		} else {
+			edEduOrder.Enable = false;
+		}
+	} else {
+		alert("회차조회는 2010년 이후만 가능합니다.");
+		edEduOrder.Enable = false;
+	}
+}
+function lfn_End(obj)
+{
+	ds_DayEduStatistics.Reset();
+}
+
+// 교재수령지 엑셀출력
+function btnPrintBookAddr_OnClick(obj)
+{
+
+    if (!Confirm("교재수령지를 출력하시겠습니까?\n\n")) { //  출력전 확인 메시지
+        return false;
+	}
+	
+	ds_ioBook.ClearData(); // 데이타셋 초기화
+	
+	tit_clearActionInfo(this);
+	
+	//TAB_Training.TabIndex = 1; //조회버튼 선택시  나오게 한다.
+	if (radReport.Value == "2") { 		tit_addCsvSearchActionInfo("cust:searchCust1142BookAddrList", false);
+	} else { 
+        gfn_Alert("교재수령지 엑셀출력은 [교육실시지부 일자별 이수 리스트(교육이수자)] 선택 시에만 출력됩니다.");        return false;
+	}
+	ds_SearchJogeon.DeleteAll();		ds_SearchJogeon.AddRow();
+	ds_SearchJogeon.setColumn(0, "REPORT_GUBUN", radReport.Value);	
+	if(radReport.Value == "2" || radReport.Value == "4")
+		ds_SearchJogeon.setColumn(0, "REPORT_GUBUN_GROUP", "2");	
+	else
+		ds_SearchJogeon.setColumn(0, "REPORT_GUBUN_GROUP", "1");	
+	
+	ds_SearchJogeon.setColumn(0, "YEAR", edYear.Value);	
+	ds_SearchJogeon.setColumn(0, "JIBU", cbxJibu.Value);	
+	ds_SearchJogeon.setColumn(0, "MEMBER_GUBUN", radMemberGubun.Value);	
+	ds_SearchJogeon.setColumn(0, "COURSE_GUBUN", radCourse.Value);	
+	ds_SearchJogeon.setColumn(0, "COURSE", cbxCourse.Value);	
+	
+	var Course = "";
+	
+	if(cbxCourse1.Value != "")
+		Course += "'" + cbxCourse1.Value + "'" + ",";
+	if(cbxCourse2.Value != "")
+		Course += "'" + cbxCourse2.Value + "'" + ",";	
+    if(cbxCourse3.Value != "")
+		Course += "'" + cbxCourse3.Value + "'" + ",";	
+	if(cbxCourse4.Value != "")
+		Course += "'" + cbxCourse4.Value + "'" + ",";	
+	if(cbxCourse5.Value != "")
+		Course += "'" + cbxCourse5.Value + "'" + ",";	
+	if(cbxCourse6.Value != "")
+		Course += "'" + cbxCourse6.Value + "'" + ",";	
+	 	
+	ds_SearchJogeon.setColumn(0, "COURSE1_6IN", left(Course, length(Course)-1));	
+	ds_SearchJogeon.setColumn(0, "EDUYMD_GUBUN", radEduYmdGubun.Value);	
+	ds_SearchJogeon.setColumn(0, "EDU_YMD_FR", calEduYmdFr.Value);	
+	ds_SearchJogeon.setColumn(0, "EDU_YMD_TO", calEduYmdTo.Value);	
+	ds_SearchJogeon.setColumn(0, "EDU_GUBUN", radEduGubun.Value);		
+	
+	if (edYear.Text >= 2010) {
+		ds_SearchJogeon.setColumn(0, "EDU_ORDERGUBUN", radEduOrderGubun.Value); // 교육횟차 구분
+		ds_SearchJogeon.setColumn(0, "EDU_ORDER", edEduOrder.Text);  			// 교육횟차
+	} 
+	
+	ds_SearchJogeon.setColumn(0, "PRINT_GUBUN1", radPrintGubun1.Value);	
+	ds_SearchJogeon.setColumn(0, "PRINT_GUBUN2", radPrintGubun2.Value);	
+	ds_SearchJogeon.setColumn(0, "MINAPGUBUN", radMinap.Value);
+	ds_SearchJogeon.setColumn(0, "SUCCESSIONGUBUN", radSuccessionGubun.Value);		
+
+
+    if (radReport.Value == "2") {
+		tit_callService(  
+						 ""
+					   , ""   
+					   , "ds_iEduList=ds_SearchJogeon"//inDs 
+					   , "ds_ioBook=ds_oEduList" //outDs
+					   , ""
+					   , ""  //callBack
+					   , false
+					   ,false
+					   ,true
+					   ); 
+	}
+	
+    if (ds_ioBook.RowCount() < 1) {
+        gfn_Alert("출력할 데이터가 없습니다.");
+        return false;
+    }
+    
+//    gdBookSend.BindDataset = "ds_ioBookFilter";
+
+    lfn_GridToExcel(gdBookSend);
+    //gdBookSend.ExportExcelEx("교재수령지 출력");
+    
+/*
+    // 교재수령지 출력 여부 업데이트
+    tit_clearActionInfo();
+    
+    tit_addMultiActionInfo("cust:updateCust1026BookPrintYN", "", 0, "", "N");
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iBookPrint=ds_ioBookFilter"/// inDs		
+        ,""	// outDs
+        ,"" // args 
+        ,""
+        ,false
+    );
+*/    
+}
+
+function lfn_GridToExcel(objGrid) {
+	ext_OleServerBusyTimeOut(true,5000,false,false);	// 엑셀 변환 시 오류 발생하여 추가(2019.02.01)
+    var mobj_Component = null;
+    var marr_Grid = Array();
+
+    var mobj_Export;
+    mobj_Export = CreateExportObject();
+    mobj_Export.ExportType = "Excel";
+    mobj_Export.ExportFileName = "교재수령지_"+substr(getDate(),0,8)+".xls";
+    mobj_Export.ActiveSheetName = objGrid.UserData;
+    mobj_Export.MakeEmptyFileWhenNotExist = false;
+
+    mobj_Export.AddExportGrid(objGrid.UserData + "!" + "A1", objGrid, true, false);
+
+
+    mobj_Export.Export();
+    mobj_Export.Close();
+    mobj_Export = null;
+    //ext_OleServerBusyTimeOut(false);	// 엑셀 변환 시 오류 발생하여 추가(2019.02.01) // 실행시 마이플랫폼 종료 되서 주석처리함(2019.02.01) 
+}
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_2000,dsc_0016]";	// 개인정보접속기록 시스템ID 
+}
+
+]]></Script>
+</Window>

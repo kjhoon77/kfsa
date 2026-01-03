@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="400" Id="frmcust0013PCustomerHistory" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="고객정보변경이력" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oModifyHistory">
+				<Contents>
+					<colinfo id="DTL" size="2038" type="STRING"/>
+					<colinfo id="MHAFTERDATA" size="1000" type="STRING"/>
+					<colinfo id="MHBEFOREDATA" size="1000" type="STRING"/>
+					<colinfo id="MHCOLUMN" size="30" type="STRING"/>
+					<colinfo id="MHGUBUN" size="1" type="STRING"/>
+					<colinfo id="MHGUBUNNM" size="2" type="STRING"/>
+					<colinfo id="MHKEY" size="30" type="STRING"/>
+					<colinfo id="MHMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="MHPROCDATE" size="14" type="STRING"/>
+					<colinfo id="MHPROCIP" size="20" type="STRING"/>
+					<colinfo id="MHPROCSABUN" size="8" type="STRING"/>
+					<colinfo id="MHWORKGUBUN" size="50" type="STRING"/>
+					<colinfo id="PDEPTCD" size="4" type="STRING"/>
+					<colinfo id="PDEPTNM" size="20" type="STRING"/>
+					<colinfo id="PPERSONNM" size="20" type="STRING"/>
+					<colinfo id="PPOSITNNM" size="20" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oManagerList">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oChangeHistory">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMemberH">
+				<Contents></Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="705" LineColor="user14" Right="796" TabOrder="61" Top="1" Type="Rectangle" Width="91"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Tab BKColor="user7" BKSelColor="user35" Border="Flat" BorderColor="user4" EditColor="user0" Height="384" Id="tabTab1" TabOrder="3" Top="12" Width="796">
+			<Contents>
+				<TabPage BorderColor="black" Height="360" Id="tabpgTab1Page1" Left="2" TabOrder="44" Text="&#32;&#32;선임이력&#32;&#32;" Top="22" Width="792">
+					<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oManagerList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="362" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="364" Id="gdManagerList" InputPanel="FALSE" Left="-2" LineColor="default" MinWidth="100" Right="794" RowHeight="20" Style="sty_Grid" TabOrder="1" TabStop="true" Top="-2" UseDBuff="true" UsePopupMenu="true" UserData="공통코드목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="796">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="40"/>
+									<col width="60"/>
+									<col width="60"/>
+									<col width="98"/>
+									<col width="94"/>
+									<col width="110"/>
+									<col width="220"/>
+									<col width="90"/>
+									<col width="90"/>
+								</columns>
+								<head>
+									<cell align="center" col="0" display="text" text="순번"/>
+									<cell col="1" display="text" text="선임상태"/>
+									<cell align="center" col="2" display="text" text="성명"/>
+									<cell col="3" display="text" text="생년월일"/>
+									<cell col="4" display="text" text="개인식별번호"/>
+									<cell col="5" display="text" text="전화번호"/>
+									<cell col="6" display="text" text="주소"/>
+									<cell col="7" display="text" text="선임일자"/>
+									<cell col="8" display="text" text="해임일자"/>
+								</head>
+								<body>
+									<cell align="center" col="0" display="number" expr="rowcount&#32;-&#32;row"/>
+									<cell align="center" col="1" colid="FMHENDGUBUN" display="text"/>
+									<cell align="center" col="2" colid="FMNM" display="text"/>
+									<cell align="center" col="3" colid="BIRTHDAY" display="text"/>
+									<cell align="center" col="4" colid="FMPERSONKEY" display="text" Mask="A####-#####"/>
+									<cell align="center" col="5" colid="FMHTEL" display="text"/>
+									<cell align="left" col="6" colid="FMHADDR" display="text"/>
+									<cell align="center" col="7" colid="FMHSTARTDATE" display="date"/>
+									<cell align="center" col="8" colid="ENDSYSDATE" display="date"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="360" Id="tabpgTab1Page2" Left="2" TabOrder="44" Text="&#32;&#32;고객상태변경이력&#32;&#32;" Top="22" Width="792">
+					<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oChangeHistory" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="362" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="364" Id="gdChangeHistory" InputPanel="FALSE" Left="-1" LineColor="default" MinWidth="100" Right="795" RowHeight="20" Style="sty_Grid" TabOrder="1" TabStop="true" Top="-2" UseDBuff="true" UsePopupMenu="true" UserData="변경이력조회" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="796">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="35"/>
+									<col width="110"/>
+									<col width="70"/>
+									<col width="160"/>
+									<col width="120"/>
+									<col width="120"/>
+								</columns>
+								<head>
+									<cell align="center" col="0" display="text" text="순번"/>
+									<cell align="center" col="1" display="text" text="처리일자"/>
+									<cell align="center" col="2" display="text" text="처리자"/>
+									<cell align="center" col="3" display="text" text="변경항목"/>
+									<cell align="center" col="4" display="text" text="변경&#32;전"/>
+									<cell align="center" col="5" display="text" text="변경&#32;후"/>
+								</head>
+								<body>
+									<cell align="center" col="0" display="number" expr="rowcount-row"/>
+									<cell align="center" col="1" colid="CCPROCDATE" display="date"/>
+									<cell align="center" col="2" colid="PNM" display="text"/>
+									<cell align="left" col="3" colid="CCCDNM" display="text"/>
+									<cell align="center" col="4" colid="CCOLDVAL" display="text"/>
+									<cell align="center" col="5" colid="CCNEWVAL" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="360" Id="tabpgTab1Page3" Left="2" TabOrder="6" Text="&#32;&#32;변경이력&#32;&#32;" Top="22" Width="792">
+					<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oModifyHistory" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="362" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="364" Id="gdModifyHistory" InputPanel="FALSE" Left="-2" LineColor="default" Right="794" RowHeight="20" Style="sty_Grid" TabOrder="1" TabStop="true" Top="-2" UseDBuff="true" UsePopupMenu="true" UserData="변경이력조회" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="796">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="35"/>
+									<col width="40"/>
+									<col width="137"/>
+									<col width="60"/>
+									<col width="50"/>
+									<col width="90"/>
+									<col width="80"/>
+									<col width="145"/>
+									<col width="145"/>
+									<col width="95"/>
+								</columns>
+								<head>
+									<cell align="center" col="0" display="text" text="순번"/>
+									<cell align="center" col="1" display="text" text="구분"/>
+									<cell align="center" col="2" display="text" text="처리일시"/>
+									<cell align="center" col="3" display="text" text="처리지부"/>
+									<cell align="center" col="4" display="text" text="처리자"/>
+									<cell col="5" display="text" text="변경대상"/>
+									<cell align="center" col="6" display="text" text="변경항목"/>
+									<cell align="center" col="7" display="text" text="변경&#32;전"/>
+									<cell align="center" col="8" display="text" text="변경&#32;후"/>
+									<cell align="center" col="9" display="text" text="처리자IP"/>
+								</head>
+								<body>
+									<cell align="center" col="0" display="number" expr="ln_TotalGridCount&#32;-&#32;CURROW"/>
+									<cell align="center" col="1" colid="MHGUBUNNM" display="text"/>
+									<cell align="center" col="2" colid="MHPROCDATE" display="text" Mask="####-##-##&#32;##:##:##"/>
+									<cell align="center" col="3" colid="PDEPTNM" display="text"/>
+									<cell align="center" col="4" colid="PPERSONNM" display="text"/>
+									<cell align="center" col="5" colid="MHWORKGUBUN" display="text"/>
+									<cell align="left" col="6" colid="MHCOLUMN" display="text"/>
+									<cell col="7" colid="MHBEFOREDATA" display="text"/>
+									<cell col="8" colid="MHAFTERDATA" display="text"/>
+									<cell align="center" col="9" colid="MHPROCIP" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+				<TabPage BorderColor="black" Height="360" Id="tab4" Left="2" TabOrder="3" Text="&#32;&#32;선임자&#32;회원가입동의이력&#32;&#32;" Top="22" Width="792">
+					<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oMemberH" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="362" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="364" Id="gdMemberH" InputPanel="FALSE" Left="-2" LineColor="default" Right="794" RowHeight="20" Style="sty_Grid" TabOrder="1" TabStop="true" Top="-2" UseDBuff="true" UsePopupMenu="true" UserData="변경이력조회" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="796">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="47"/>
+									<col width="145"/>
+									<col width="163"/>
+									<col width="120"/>
+									<col width="127"/>
+									<col width="165"/>
+								</columns>
+								<head>
+									<cell align="center" col="0" display="text" text="순번"/>
+									<cell align="center" col="1" display="text" text="처리일시"/>
+									<cell col="2" display="text" text="회원가입동의여부"/>
+									<cell align="center" col="3" display="text" text="등록프로그램"/>
+									<cell align="center" col="4" display="text" text="고객관리번호"/>
+									<cell align="center" col="5" display="text" text="직능"/>
+								</head>
+								<body>
+									<cell align="center" col="0" display="number" expr="rowcount&#32;-&#32;row"/>
+									<cell align="center" col="1" colid="MHREGDATE" display="text" Mask="####-##-##&#32;##:##:##"/>
+									<cell align="center" col="2" colid="MHMEMCHK" display="text"/>
+									<cell align="center" col="3" colid="MHREGCD" display="text"/>
+									<cell align="center" col="4" colid="MEMNO" display="text"/>
+									<cell align="center" col="5" colid="MHMEMGUBUN" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+				</TabPage>
+			</Contents>
+		</Tab>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust0013PCustomerHistory.xml
+ * 설명 : 고객정보변경이력조회
+ * 작성일 : 2009.12.08
+ * 작성자 : 이규희
+ */
+
+#include "LIB::cust.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (IsExistVar("sCmgno")) {
+        lfn_Search();
+    }
+
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_oModifyHistory.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cust:searchCust0013Managerh", false);
+	tit_addSearchActionInfo("cust:searchCust0013ChangeHistory", false);
+	tit_addSearchActionInfo("cust:searchCust0013ModifyHistory", false);
+	tit_addSearchActionInfo("cust:searchCust0013MemberH", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oManagerList=ds_oManagerList ds_oChangeHistory=ds_oChangeHistory ds_oModifyHistory=ds_oModifyHistory ds_oMemberH=ds_oMemberH"	// outDs
+		//,"CMHWORKGUBUN=" + quote(sWorkGubun)// args
+        ,"CMGNO=" + quote(sCmgno)
+         + " CGTMGNO=" + quote(parent.cbxJibu.Value)
+         + " SPERSONKEY=" + quote(sPersonkey)
+		,"lfn_AfterSearchModifyHistory"
+		,false
+	);
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+var ln_TotalGridCount = 0;
+function lfn_AfterSearchModifyHistory(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    ln_TotalGridCount = ds_oModifyHistory.GetCount();
+
+    //gfn_SearchMessage(gdModifyHistory); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 사용자 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        if (nCell > 0) {
+            gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+        }
+    }
+}
+]]></Script>
+</Window>

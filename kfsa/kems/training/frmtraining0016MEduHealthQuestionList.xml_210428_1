@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmtraining0016MEduHealthQuestionList" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="건강상태&#32;문진표&#32;등록현황" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1000" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA2" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oHealthQuestion">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSearchGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>ORDER</CD>
+						<DATA>회차조회</DATA>
+					</record>
+					<record>
+						<CD>DATE</CD>
+						<DATA>일자조회</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oBizGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>강습교육</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>시험</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>실무교육</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="132" Height="100" Id="shpGubunBox" Left="4" LineColor="user15" Right="994" TabOrder="23" Top="32" Type="Rectangle" Width="990"></Shape>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="550" LineColor="user14" Right="994" TabOrder="61" Top="1" Type="Rectangle" Width="444"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="15" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="268">
+			<Contents></Contents>
+		</Div>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oHealthQuestion" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="584" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="424" Id="gdHealth" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="994" RowHeight="20" Style="sty_Grid" TabOrder="14" TabStop="true" Top="160" UseDBuff="true" UsePopupMenu="true" UserData="건강상태&#32;문진표&#32;등록현황" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="990">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="54"/>
+						<col width="131"/>
+						<col width="39"/>
+						<col width="39"/>
+						<col width="39"/>
+						<col width="72"/>
+						<col width="97"/>
+						<col width="130"/>
+						<col width="60"/>
+						<col width="48"/>
+						<col width="50"/>
+						<col width="50"/>
+						<col width="50"/>
+						<col width="50"/>
+						<col width="131"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" rowspan="2" text="지부"/>
+						<cell align="center" col="1" display="text" rowspan="2" text="직능"/>
+						<cell align="center" col="2" display="text" rowspan="2" text="년도"/>
+						<cell align="center" col="3" display="text" rowspan="2" text="회차"/>
+						<cell align="center" col="4" display="text" rowspan="2" text="접수&#10;번호"/>
+						<cell col="5" display="text" rowspan="2" text="성명"/>
+						<cell col="6" display="text" rowspan="2" text="생년월일"/>
+						<cell align="center" col="7" display="text" rowspan="2" text="교육일자"/>
+						<cell align="center" col="8" display="text" rowspan="2" text="참석가능"/>
+						<cell align="center" col="9" display="text" rowspan="2" text="질의1"/>
+						<cell align="center" col="10" display="text" rowspan="2" text="질의2"/>
+						<cell col="11" display="text" rowspan="2" text="질의3"/>
+						<cell col="12" display="text" rowspan="2" text="질의4"/>
+						<cell col="13" display="text" rowspan="2" text="질의5"/>
+						<cell align="center" col="14" display="text" rowspan="2" text="등록일시"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="GTDEPTNM" display="text"/>
+						<cell align="center" col="1" colid="COURSENM" display="text"/>
+						<cell align="center" col="2" colid="YEAR" display="text"/>
+						<cell align="center" col="3" colid="EDUORDER" display="text"/>
+						<cell align="center" col="4" colid="JUBSUNO" display="text"/>
+						<cell align="center" col="5" colid="NM" display="text"/>
+						<cell align="center" col="6" colid="BIRTHDAY" display="text"/>
+						<cell align="center" col="7" colid="EDUDATE" display="text"/>
+						<cell align="center" col="8" colid="HQATTEND" display="text" expr="iif(HQATTEND==NULL,&#32;&apos;미등록&apos;,&#32;HQATTEND)"/>
+						<cell align="center" col="9" colid="HQQ1" display="text" font="expr:iif(HQQ1==&apos;N&apos;,&#32;&apos;굴림,&#32;10&apos;,&#32;&apos;굴림,&#32;9&apos;)"/>
+						<cell align="center" col="10" colid="HQQ2" display="text" font="expr:iif(HQQ2==&apos;N&apos;,&#32;&apos;굴림,&#32;10&apos;,&#32;&apos;굴림,&#32;8&apos;)"/>
+						<cell align="center" col="11" colid="HQQ3" display="text" font="expr:iif(HQQ3==&apos;N&apos;,&#32;&apos;굴림,&#32;10&apos;,&#32;&apos;굴림,&#32;8&apos;)"/>
+						<cell align="center" col="12" colid="HQQ4" display="text" font="expr:iif(HQQ4==&apos;N&apos;,&#32;&apos;굴림,&#32;10&apos;,&#32;&apos;굴림,&#32;8&apos;)"/>
+						<cell align="center" col="13" colid="HQQ5" display="text" font="expr:iif(HQQ5==&apos;N&apos;,&#32;&apos;굴림,&#32;10&apos;,&#32;&apos;굴림,&#32;8&apos;)"/>
+						<cell align="center" col="14" colid="REGDATE" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="920" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="13" Top="136" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="559" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="646" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="2" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="733" OnClick="btnToExcel_OnClick" Style="sty_Button" TabOrder="3" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="820" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="4" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="907" OnClick="lfn_End" Style="sty_Button" TabOrder="5" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edOrderStart" ImeMode="native" Left="176" LeftMargin="2" MaxLength="3" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="edOrder_OnKillFocus" Style="sty_Edit" TabOrder="10" Top="84" UserData="S" Width="28"></Edit>
+		<Static Align="Center" Height="20" Id="lbOrder" Left="84" Style="sty_Label" TabOrder="17" Text="회차" Top="84" UserData="S" VAlign="Middle" Width="90"></Static>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="404" Style="sty_Label" TabOrder="16" Text="직능" Top="60" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_oCourse" Left="495" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="8" Top="59" UserData="S:직능" Width="182"></Combo>
+		<Static Align="Center" Height="20" Id="lbYear" Left="269" Style="sty_Label" TabOrder="18" Text="년도" Top="60" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edYear" ImeMode="native" Left="361" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="7" Top="60" UserData="I:년도" Width="36"></Edit>
+		<Static Align="Center" Height="20" Id="lbNumberWave" Left="208" Style="sty_Text" TabOrder="19" Text="~" Top="84" VAlign="Middle" Width="10"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edOrderEnd" ImeMode="native" Left="224" LeftMargin="2" MaxLength="3" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edOrderEnd_EnterSearch" OnKillFocus="edOrder_OnKillFocus" Style="sty_Edit" TabOrder="11" Top="84" UserData="S" Width="28"></Edit>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="175" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="6" Top="59" UserData="I" Width="88"></Combo>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="84" Style="sty_Label" TabOrder="20" Text="지부" Top="60" UserData="S" VAlign="Middle" Width="90"></Static>
+		<Static Align="Center" Height="20" Id="lbEduDate" Left="84" Style="sty_Label" TabOrder="21" Text="교육시작일자" Top="108" UserData="S" VAlign="Middle" Width="90"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" Enable="FALSE" HeaderFont="돋음,10,Bold" Height="20" Id="calDateStart" Left="176" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="12" Top="108" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Radio Border="None" CodeColumn="CD" DataColumn="DATA" Height="40" Id="radSearchGubun" INDEX="0" InnerDataset="ds_oSearchGubun" Left="8" OnChanged="radSearchGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="9" Top="88" Value="ORDER" Width="76"></Radio>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medTotalCnt" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="24" Top="136" UserData="S" Width="88"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbTotalCnt" Left="8" Style="sty_LabelStat" TabOrder="25" Text="조회건수" Top="136" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbBizGubun" Left="84" Style="sty_Label" TabOrder="26" Text="업무구분" Top="36" UserData="S" VAlign="Middle" Width="90"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radBizGubun" INDEX="0" InnerDataset="ds_oBizGubun" Left="176" LeftMargin="2" OnChanged="radBizGubun_OnChanged" RightMargin="2" Style="sty_Radio" TabOrder="27" Top="36" Value="S" Width="384"></Radio>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0016MEduHealthQuestionList.xml
+ * 설명 : 건강상태 문진표 등록현황
+ * 작성일 : 2020.06.10
+ * 작성자 : 정현호
+ */
+
+#include "LIB::training.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    // 공통 코드 조회
+    
+    gfn_SearchTrainingCourse("E", ds_oCourse, "Y", ""); // 직능 코드 조회
+    cbxCourse.Value = "22";
+    gfn_SearchJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회   
+    radBizGubun.Value = "0";
+    edYear.Text = left(GetDate(), 4);
+    edOrderStart.Text = "001";
+    edOrderEnd.Text = "100";
+    edOrderStart.SetFocus();
+    
+    	// 콜센터 직원용 이면
+	if (gs_IsCallCenter == "Y") {
+		// 콜센터 Call ID 가져오기(Unique ID)
+		global.mnuLeft.lfn_CallUIDImport();
+	}
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdHealth.Height = nCy - gdHealth.Top - 4;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+
+    ds_oHealthQuestion.ClearData(); // 데이타셋 초기화
+    
+    // 조회이력을 저장한다.  
+    ls_HistoryArg = "지부=" + quote(cbxJibu.Text)
+                + ",년도=" + quote(edYear.Text)
+                + ",직능=" + quote(cbxCourse.Text)
+                + ",회차시작=" + quote(edOrderStart.Text)
+                + ",회차종료=" + quote(edOrderEnd.Text)
+                + ",교육(시험)일자=" + quote(calDateStart.Value);
+    gfn_InsertSearchPrintHistory(
+        "S"
+        , this.ID
+        , global.mnuLeft.cbxOpenForm.Text
+        , ls_HistoryArg
+    );
+	// 콜센터 직원용 이면
+	if (gs_IsCallCenter == "Y") {
+		// 콜센터 직원 조회이력 저장
+		gfn_InsertCallCenterSearchPrintHistory(
+		
+				"S"
+				
+				, gs_CallCenterUID	
+				, gds_OpenedForm.GetColumn(gds_OpenedForm.FindRow("MURL",this.ID),"MMENUID")
+
+				, this.ID	
+				, global.mnuLeft.cbxOpenForm.Text	
+				, ls_HistoryArg
+				
+			);
+	}
+    medTotalCnt.Value = "";
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("training:searchTraining0016HealthQuestionList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oHealthQuestion=ds_oHealthQuestion"	// outDs
+		,"BIZGUBUN=" + quote(radBizGubun.Value)
+		
+			+ " GTMGNO=" + quote(cbxJibu.Value)
+            + " YEAR=" + quote(edYear.Text)
+            + " COURSECD=" + quote(cbxCourse.Value)
+            + " ORDERSTART=" + quote(edOrderStart.Text)
+            + " ORDEREND=" + quote(edOrderEnd.Text)
+            + " EDUDATE=" + quote(left(calDateStart.Value, 8))
+		,"lfn_AfterSearch"
+		,false
+	);
+}
+
+/*
+ * 기능 : 출력
+ */
+function lfn_Print(obj)
+{
+    // 출력이력을 저장한다.  
+    ls_HistoryArg = "지부=" + quote(cbxJibu.Text)
+                + ",년도=" + quote(edYear.Text)
+                + ",직능=" + quote(cbxCourse.Text)
+                + ",회차시작=" + quote(edOrderStart.Text)
+                + ",회차종료=" + quote(edOrderEnd.Text)
+                + ",교육(시험)일자=" + quote(calDateStart.Value);
+    gfn_InsertSearchPrintHistory(
+        "P"
+        , this.ID
+        , global.mnuLeft.cbxOpenForm.Text
+        , ls_HistoryArg
+    );
+    
+    
+    //gfn_CallReportPopup("frmtraining0030R01ExamJubsuList.rex", "ds_oExamJubsu", "");
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 결강자 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    medTotalCnt.Value = ds_oHealthQuestion.rowcount;
+    gfn_SearchMessage(gdHealth); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+
+
+
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+
+}
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdHealth, 0); // 멀티 정렬을 실행한다.
+}
+
+function radSearchGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if (strCode == "ORDER") {
+        edOrderStart.Enable = true;
+        edOrderEnd.Enable = true;
+        edOrderStart.Text = "001";
+        edOrderEnd.Text = "100";
+        calDateStart.Value = "";
+        calDateStart.Enable = false;
+        edOrderStart.UserData = "S:시작회차";
+        edOrderEnd.UserData = "S:종료회차";
+        calDateStart.UserData = "";
+
+	} else {
+        edOrderStart.Value = "";
+        edOrderEnd.Value = "";
+        edOrderStart.Enable = false;
+        edOrderEnd.Enable = false;
+        calDateStart.Enable = true;
+        calDateStart.Value = left(GetDate(), 8);
+        calDateStart.UserData = "S:시작일자";
+        edOrderStart.UserData = "";
+        edOrderEnd.UserData = "";
+	}
+}
+
+function edOrder_OnKillFocus(obj) {
+	gfn_ComponentOnKillFocus(obj);
+
+    obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3));
+}
+
+function edOrderEnd_EnterSearch(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) { // Enter Key
+        edOrderEnd.Text = iif(gfn_IsNull(edOrderEnd.Text), "", lpad(edOrderEnd.Text, "0", 3));
+        lfn_Search();
+    }
+}
+
+function btnToExcel_OnClick(obj) {
+    if (ds_oHealthQuestion.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return false;
+    }
+	// 개인정보 다운로드 사유 등록
+	var parValue = "sCode=1118";	// COMMON.PERSONALDOWNLOADH
+		parValue += " sRowCnt=" + ds_oHealthQuestion.GetRowCount();
+		parValue += " sTitle=" + quote(gdHealth.UserData);
+	var ls_IsRemark = Dialog("COM::frmCOM2100PDownloadRemark.xml", parValue, "", "", "", -1, -1);	
+
+	if (ls_IsRemark == "" || ls_IsRemark == null || ls_IsRemark == "FAIL") {
+		return false;
+	}
+	lfn_Excel(obj);
+
+}
+
+//	업무구분 변경
+function radBizGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	ds_oHealthQuestion.ClearData();
+	if (strCode == "0") {	// 강습교육
+		gfn_SearchTrainingCourse("T", ds_oCourse, "Y", ""); // 직능 코드 조회		cbxCourse.Value = "22";
+		lbEduDate.Text = "교육시작일자";
+		gdHealth.SetCellProp("head", 7, "text", "교육기간");
+	
+	} else if (strCode == "1") { // 시험
+		gfn_SearchTrainingCourse("E", ds_oCourse, "Y", ""); // 직능 코드 조회		cbxCourse.Value = "22";
+		lbEduDate.Text = "시험일자";
+		gdHealth.SetCellProp("head", 7, "text", "시험일자");
+	
+	} else if (strCode == "2") { // 실무교육
+
+		gfn_SearchCustomerEduCourseFullName(ds_oCourse, "0", "");	// 대표고객직능 조회
+		cbxCourse.Value = "10";
+		lbEduDate.Text = "교육일자";
+		gdHealth.SetCellProp("head", 7, "text", "교육일자");
+	
+	}
+	
+}
+
+
+]]></Script>
+</Window>

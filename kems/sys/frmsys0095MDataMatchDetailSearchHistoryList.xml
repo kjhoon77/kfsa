@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Font="굴림,12,Bold" Height="590" Id="frmsys0093MDataMatchSearchHistoryList" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="데이터연계&#32;상세조회&#32;이력" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oSearchHistory">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>&#32;전체</DATA>
+					</record>
+					<record>
+						<CD>0</CD>
+						<DATA>소방안전관리자</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>위험물안전관리자</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>위험물운송자</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>소방기술자</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioUserList">
+				<Contents>
+					<colinfo id="SHGUBUN" size="1" type="STRING"/>
+					<colinfo id="SHMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="SHPROCDATE" size="7" type="DATE"/>
+					<colinfo id="SHPROCIP" size="20" type="STRING"/>
+					<colinfo id="SHPROCSABUN" size="8" type="STRING"/>
+					<colinfo id="SHWHERE" size="1000" type="STRING"/>
+					<colinfo id="SHWORKGUBUN" size="100" type="STRING"/>
+					<colinfo id="SHWORKGUBUNNM" size="50" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioDeptList">
+				<Contents>
+					<colinfo id="SHGUBUN" size="1" type="STRING"/>
+					<colinfo id="SHMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="SHPROCDATE" size="7" type="DATE"/>
+					<colinfo id="SHPROCIP" size="20" type="STRING"/>
+					<colinfo id="SHPROCSABUN" size="8" type="STRING"/>
+					<colinfo id="SHWHERE" size="1000" type="STRING"/>
+					<colinfo id="SHWORKGUBUN" size="100" type="STRING"/>
+					<colinfo id="SHWORKGUBUNNM" size="50" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMenu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>0000000371</CD>
+						<DATA>소방민원정보시스템</DATA>
+					</record>
+					<record>
+						<CD>0000000383</CD>
+						<DATA>청정보상세&#32;팝업</DATA>
+					</record>
+					<record>
+						<CD>0000000362</CD>
+						<DATA>일치화관리(소방안전관리)</DATA>
+					</record>
+					<record>
+						<CD>0000000369</CD>
+						<DATA>일치화관리(위험물)</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="356" LineColor="user14" Right="796" TabOrder="61" Top="1" Type="Rectangle" Width="440"></Shape>
+		<Shape Bottom="132" Height="100" Id="shpGubunBox" Left="0" LineColor="user15" Right="792" TabOrder="14" Top="32" Type="Rectangle" Width="792"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="359" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="446" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="2" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="lfn_Excel" Style="sty_Button" TabOrder="3" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="4" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="5" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Grid AutoEnter="TRUE" BindDataset="ds_oSearchHistory" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="584" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="424" Id="gdSearchHistory" InputPanel="FALSE" Left="4" LineColor="default" OnCellDBLClick="gdSearchHistory_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="796" RowHeight="20" Style="sty_Grid" TabOrder="11" TabStop="true" Top="160" UseDBuff="true" UsePopupMenu="true" UserData="사용자정보목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="137"/>
+						<col width="107"/>
+						<col width="201"/>
+						<col width="150"/>
+						<col width="77"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="처리일시"/>
+						<cell align="center" col="1" display="text" text="대상구분"/>
+						<cell align="center" col="2" display="text" text="대상물(업체)명"/>
+						<cell align="center" col="3" display="text" text="프로그램명"/>
+						<cell align="center" col="4" display="text" text="사용자"/>
+						<cell align="center" col="5" display="text" text="사용자&#32;IP"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="FDSHPROCDATE" display="text" Mask="####-##-##&#32;##:##:##"/>
+						<cell align="center" col="1" colid="FDSHBIZGUBUNNM" display="combo"/>
+						<cell col="2" colid="FDSHSEARCHNM" display="text"/>
+						<cell col="3" colid="MMENUNICKNM" display="text"/>
+						<cell align="center" col="4" colid="PNM" display="text"/>
+						<cell align="center" col="5" colid="FDSHPROCIP" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="Button1" ImageID="BTN_MULTI_SORT" Left="720" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="10" Top="136" Transparent="TRUE" Width="74"></Button>
+		<Static Align="Center" Height="20" Id="lbUser" Left="8" Style="sty_Label" TabOrder="12" Text="부서" Top="36" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calDateEnd" Left="224" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="8" Top="60" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Static Align="Center" Height="20" Id="lbDateWave1" Left="208" Style="sty_Text" TabOrder="17" Text="~" Top="60" VAlign="Middle" Width="10"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calDateStart" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="7" Top="60" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Static Align="Center" Height="20" Id="lbDate" Left="8" Style="sty_Label" TabOrder="16" Text="처리일자" Top="60" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxGubun" INDEX="0" InnerDataset="ds_oGubun" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="6" Top="83" UserData="S" Width="122"></Combo>
+		<Static Align="Center" Height="20" Id="lbGubun" Left="8" Style="sty_Label" TabOrder="15" Text="대상구분" Top="84" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbWorkGubunNm" Left="8" Style="sty_Label" TabOrder="18" Text="대상물(업체)" Top="108" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edObjNm" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="9" Top="108" UserData="S" Width="372"></Edit>
+		<Static Align="Center" Height="20" Id="Static0" Left="225" Style="sty_Label" TabOrder="19" Text="사용자" Top="36" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="DEPTCD" DataColumn="DEPTNM" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxDeptList" INDEX="0" InnerDataset="ds_ioDeptList" Left="99" OnChanged="cbxDeptList_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="20" Top="35" UserData="S" Width="122"></Combo>
+		<Combo Border="Flat" CodeColumn="PSABUN" DataColumn="NMPOSITION" Editable="TRUE" Height="20" Id="cbxUser" ImeMode="none" INDEX="0" InnerDataset="ds_ioUserList" Left="316" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="21" Top="35" UserData="S" Width="157"></Combo>
+		<Static Align="Center" Height="20" Id="Static1" Left="225" Style="sty_Label" TabOrder="23" Text="수행메뉴" Top="84" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxMenu" INDEX="0" InnerDataset="ds_oMenu" Left="316" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="22" Top="83" UserData="S" Width="156"></Combo>
+		<Static Align="Center" Height="20" Id="lbTotalCnt" Left="3" Style="sty_LabelStat" TabOrder="25" Text="총건수" Top="136" VAlign="Middle" Width="53"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medTotalCnt" Left="58" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="24" Top="136" UserData="S" Width="64"></MaskEdit>
+		<Static Font="굴림,12,Bold" Height="27" Id="lbTitle" Left="2" TabOrder="26" Text="데이터연계&#32;상세조회&#32;이력" Top="3" VAlign="Middle" Width="290"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmsys0093MDataMatchSearchHistoryList.xml;
+ * 설명 : 조회출력이력조회(데이타 연계)
+ * 작성일 : 2010.07.06
+ * 작성자 : 김민호
+ */
+
+#include "LIB::sys.js"; // 공통업무 관련
+
+var objTree; // Tree View
+var MMENUID_LENGTH = 10; // MMENUID 생성시 사용할 자릿수
+var menuId = "";
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    //obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+  
+    ms_FormAuth = gfn_GetFormAuth(this); // 사용자정보을 조회한다.
+    if (ms_FormAuth == "W") { // 사용자정보에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 사용자정보
+    } else {
+        lfn_SetFormAuth(false); // 읽기 사용자정보
+    }
+
+    calDateStart.Value = AddDate(GetDate(), -7);
+    calDateEnd.Value = GetDate();
+   
+    // 사용자정보 조회 
+    lfn_UserSearch(gds_oUserInfo.GetColumn(0, "PDEPTCD"));
+    // 부서정보 조회 
+    lfn_DeptSearch();
+    
+    cbxDeptList.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");    
+    cbxUser.Value = gds_oUserInfo.GetColumn(0, "PSABUN");
+    
+    // 메뉴아이디가 넘어오경우 디폴트 설정 
+    if (menuId != null) {
+		cbxMenu.Value = menuId;
+    }
+    
+    if(gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "SM" || gds_oUserInfo.GetColumn(0, "DEPTADMINGUBUN") == "CM") {
+		cbxDeptList.Enable = true;
+    } else {
+		cbxDeptList.Enable = false;
+    }
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdSearchHistory.Height = nCy - gdSearchHistory.Top - 4;
+        gdSearchHistory.Width = nCx - gdSearchHistory.Left - 4;
+    }
+}
+
+/*
+ * 기능 : 부서정보 조회
+ */
+function lfn_DeptSearch(obj) {
+
+    ds_ioDeptList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("sys:search0093DeptList", false);
+	
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioDeptList=ds_ioDeptList"	// outDs
+		,""
+		,"lfn_AfterDeptSearch"
+		,false
+	);
+}
+
+/*
+ * 기능 : 부서정보 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterDeptSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/*
+ * 기능 : 사용자정보 조회
+ */
+function lfn_UserSearch(DEPT) {
+
+    ds_ioUserList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("sys:search0093UserList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioUserList=ds_ioUserList"	// outDs
+		,"DEPT=" + DEPT
+		,"lfn_AfterUserSearch"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 사용자정보 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterUserSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }  
+	// 사용자정보 '전체'
+	ds_ioUserList.InsertRow(0);
+	ds_ioUserList.SetColumn(0,"NMPOSITION","전체");
+}
+
+/*
+ * 기능 : 데이터검색이력  조회
+ */
+function lfn_Search(obj) {
+    /*
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+	*/
+    ds_oSearchHistory.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("sys:searchDataMatchDetailSearchHistory", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oSearchHistory=ds_oSearchHistory"	// outDs
+		,"SABUN=" + quote(cbxUser.Value)// args
+			+ " DEPT=" + quote(cbxDeptList.Value)// args
+            + " GUBUN=" + quote(cbxGubun.Value)
+            + " DATESTART=" + quote(left(calDateStart.Value, 8))
+            + " DATEEND=" + quote(left(calDateEnd.Value))
+            + " MENU=" + quote(cbxMenu.Value)
+            + " OBJNM=" + quote(edObjNm.Text)
+		,"lfn_AfterSearchSearchHistory"
+		,false
+	);
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 사용자정보 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchSearchHistory(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+	medTotalCnt.Value = ds_oSearchHistory.GetCount();
+    gfn_SearchMessage(gdSearchHistory); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+
+}
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdSearchHistory, 0); // 멀티 정렬을 실행한다.
+}
+
+function edUser_OnFocus(obj)
+{
+    btnSearchUser.SetFocus();
+}
+
+var ls_AuthDeptCd = "";
+function btnSearchUser_OnClick(obj)
+{
+    var arrUser = gfn_UserListPopup();
+    if (length(arrUser) > 0) {
+        ls_AuthDeptCd = arrUser[0];
+        edDeptName.Text = arrUser[1];
+        edPositn.Text = arrUser[3];
+        edUserId.Text = arrUser[4];
+        edUserName.Text = arrUser[5];
+    }
+}
+
+
+/*
+ * 기능 : 부서변경시 해당 부서인원 조회
+*/
+function cbxDeptList_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	lfn_UserSearch(strCode);
+}
+
+function edObjNm_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) {
+		lfn_Search();
+	}
+}
+
+/*
+ * 기능 : 대상물 정보보기 팝업
+*/
+function gdSearchHistory_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var parValue = "FDSHBIZGUBUN="+quote(ds_oSearchHistory.GetColumn(nRow,"FDSHBIZGUBUN"));
+		parValue += " FDSHSEARCHPK1=" + quote(ds_oSearchHistory.GetColumn(nRow,"FDSHSEARCHPK1"));
+		parValue += " FDSHSEARCHPK2=" + quote(ds_oSearchHistory.GetColumn(nRow,"FDSHSEARCHPK2"));
+		parValue += " FDSHSEARCHPK3=" + quote(ds_oSearchHistory.GetColumn(nRow,"FDSHSEARCHPK3"));
+		parValue += " FDSHSEARCHPK4=" + quote(ds_oSearchHistory.GetColumn(nRow,"FDSHSEARCHPK4"));
+		parValue += " FDSHSEARCHPK5=" + quote(ds_oSearchHistory.GetColumn(nRow,"FDSHSEARCHPK5"));
+		parValue += " FDSHSEARCHPK6=" + quote(ds_oSearchHistory.GetColumn(nRow,"FDSHSEARCHPK6"));
+		
+	var Result = Dialog("sys::frmsys0096PDataMatchDetailSearchHistoryInfo.xml", parValue,"", "", "", -1, -1);
+	
+}
+]]></Script>
+</Window>

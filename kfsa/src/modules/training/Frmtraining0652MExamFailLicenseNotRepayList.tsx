@@ -1,0 +1,100 @@
+// @ts-nocheck
+import React, { useState } from 'react';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
+import DataGridWrapper from '../../components/DataGridWrapper';
+import PageContainer from '../../components/PageContainer';
+import { useFrmtraining0652MExamFailLicenseNotRepayList } from './useFrmtraining0652MExamFailLicenseNotRepayList';
+import * as Frmtraining0652MExamFailLicenseNotRepayListData from './Frmtraining0652MExamFailLicenseNotRepayListData';
+import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
+
+export const Frmtraining0652MExamFailLicenseNotRepayList = () => {
+    const hook = useFrmtraining0652MExamFailLicenseNotRepayList();
+    const columns_gdExamJubsu = [
+        { field: 'id', headerName: '순번', width: 37, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'GTDEPTNM', headerName: '지부', width: 71 },
+        { field: 'TCCOURSENM', headerName: '직능명', width: 130 },
+        { field: 'TOTRAININGORDER', headerName: '회차', width: 49 },
+        { field: 'TOHJUBSUNO', headerName: '접수번호', width: 68 },
+        { field: 'TJPERSONNM', headerName: '성명', width: 56 },
+        { field: 'birthday', headerName: '생년월일', width: 84 },
+        { field: 'TSPROCDATE', headerName: '수납일자', width: 89 },
+        { field: 'TSGUBUNNM', headerName: '결제방법', width: 101 },
+        { field: 'TSLICENSEAMOUNT', headerName: '금액', width: 84 },
+        { field: 'ADDR', headerName: '주소', width: 323 },
+    ];
+    return (
+        <PageContainer>
+
+            <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
+                <Typography variant="h5">기본정보</Typography>
+                <Stack direction="row" spacing={1}>
+                    <Button variant="contained" startIcon={<Print />} onClick={hook.btnPrint_OnClick}>출력</Button>
+<Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Cancel}>입력 초기화</Button>
+<Button variant="contained" startIcon={<Save />} onClick={hook.btnToExcel_OnClick}>엑셀로 저장</Button>
+<Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
+<Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
+<Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
+
+                </Stack>
+            </Stack>
+<Grid container spacing={2}>
+
+                <Grid item xs={12} md={12}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "59px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '181px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>지부</Typography>
+                    <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmtraining0652MExamFailLicenseNotRepayListData.ds_ds_oJibu || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                 </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '128px', height: '22px', display: 'flex', alignItems: 'center', ml: '2px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>년도</Typography>
+                    <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '273px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>직능</Typography>
+                    <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmtraining0652MExamFailLicenseNotRepayListData.ds_ds_oCourse || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                 </Stack></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '216px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>강습회차</Typography>
+                    <FormControl component="fieldset"><RadioGroup row >{ (Frmtraining0652MExamFailLicenseNotRepayListData.ds_ds_ioTrainingOrder || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                 </Stack><Box sx={{ display: hook.isVisible_edOrderStart ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '28px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '42px', height: '22px', display: 'flex', alignItems: 'center', ml: '6px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 10, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
+                    <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '190px', height: '22px', display: 'flex', alignItems: 'center', ml: '20px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>집계일자</Typography>
+                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                 </Stack></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '179px', height: '22px', display: 'flex', alignItems: 'center', ml: '12px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>미환불자 건수</Typography>
+                    <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Box sx={{ display: hook.isVisible_btnMutilSort ? undefined : 'none' }}><Button variant="outlined" onClick={hook.btnMutilSort_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '22px' }}><Sort fontSize="small" /></Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdExamJubsu ? undefined : 'none' }}><Paper sx={{ width: '792px', height: '498px', width: '100%', height: 'auto', minHeight: '498px' }}><DataGridWrapper rows={hook.ds_ioLicenseAlreadySunabNotRepay} columns={columns_gdExamJubsu} /></Paper></Box></Stack>
+
+                    </Paper>
+                </Grid>
+</Grid>
+
+        </PageContainer>
+    );
+};
+export default Frmtraining0652MExamFailLicenseNotRepayList;
+
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          {children}
+        </Box>
+      )}
+    </div>
+  );
+}

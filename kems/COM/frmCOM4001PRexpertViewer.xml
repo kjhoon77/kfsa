@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="700" Id="frmCOM4000PRexpertViewer" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="렉스퍼트뷰어팝업" Top="8" Ver="1.0" Width="1000" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioRexpert">
+				<Contents>
+					<colinfo id="CREATE_DATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="CREATE_GUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CREATE_ID" size="20" summ="default" type="STRING"/>
+					<colinfo id="CREATE_IP" size="18" summ="default" type="STRING"/>
+					<colinfo id="JJIBUCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="MODIFY_DATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="MODIFY_ID" size="20" summ="default" type="STRING"/>
+					<colinfo id="MODIFY_IP" size="39" summ="default" type="STRING"/>
+					<colinfo id="ZBUNJI" size="30" summ="default" type="STRING"/>
+					<colinfo id="SIKUDONG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZHO" size="30" summ="default" type="STRING"/>
+					<colinfo id="ZREGIONCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="ZSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="ZZIPCD" size="6" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Rexpert Bottom="696" FinishPrint="rxpRexpert_FinishPrint" Height="692" Id="rxpRexpert" Left="4" Right="996" ShowParameterDialog="false" Top="4" Width="992"></Rexpert>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="910" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="6" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 강습접수정보명 : frmCOM4000PRexpertViewer.xml
+ * 설명 : 렉스퍼트뷰어팝업
+ * 작성일 : 2009.08.12
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    this.Title = "출력(" + sReportFileName + ")";
+    
+    // 렉스퍼트를 실행한다.
+	var lb_Ret = gfn_OpenSQLReport(sReportFileName,"Ora1","XML",sParams,rxpRexpert,sSubReport,sTopMargin,sLeftMargin);
+	if (!lb_Ret) { // 파일이 없는 경우
+        Close();
+	}
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close(lb_IsPrinted);
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+    }
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close(lb_IsPrinted);
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        rxpRexpert.Height = nCy - rxpRexpert.Top - 4;
+        rxpRexpert.Width = nCx - rxpRexpert.Left - 4;
+        btnEnd.Left = nCx - btnEnd.Width - 6;
+    }
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+
+/* 사용자 이벤트 함수 */
+
+]]></Script>
+</Window>

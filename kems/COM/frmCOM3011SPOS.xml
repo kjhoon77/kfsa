@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="264" Id="frmCOM3011SPOS" Left="8" OnLoadCompleted="Form_OnLoadCompleted" OnTimer="frmCOM3010SPOS_OnTimer" OnUnloadCompleted="frmCOM3010SPOS_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="가상계좌할당(세틀뱅크)DIV" TooltipFont="Default,0" Top="8" Ver="1.0" Width="600" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_ioPosInput">
+				<Contents>
+					<colinfo id="PMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMPCORDERNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PHONE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ORGGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="WORKGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLOSEDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CLOSETIME" size="256" summ="default" type="STRING"/>
+					<colinfo id="OWNERNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROCAMOUNT" size="256" summ="default" type="STRING"/>
+					<record>
+						<CLOSEDATE></CLOSEDATE>
+						<CLOSETIME></CLOSETIME>
+						<GTMGNO></GTMGNO>
+						<ORGGUBUN></ORGGUBUN>
+						<OWNERNM></OWNERNM>
+						<PHONE></PHONE>
+						<PMMGNO>375105</PMMGNO>
+						<PMPCORDERNO>4119045215715124=15022011919676391750</PMPCORDERNO>
+						<PMYEAR>2009</PMYEAR>
+						<PROCAMOUNT></PROCAMOUNT>
+						<WORKGUBUN></WORKGUBUN>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosOutput">
+				<Contents>
+					<colinfo id="RTN_STATUS" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" BindDataset="ds_ioPosInput" BkColor2="default" BoldHead="true" Bottom="81" ColSelect="TRUE" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" Height="56" Id="Grid1" InputPanel="FALSE" Left="6" LineColor="default" Right="596" TabOrder="1" TabStop="true" Top="25" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="590">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="119"/>
+						<col width="57"/>
+						<col width="126"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="PMYEAR"/>
+						<cell col="1" display="text" text="PMMGNO"/>
+						<cell col="2" display="text" text="PMPCORDERNO"/>
+						<cell col="3" display="text" text="STATUS"/>
+						<cell col="4" display="text" text="LGD_CASHRECEIPTYN"/>
+						<cell col="5" display="text" text="CASHFLAG"/>
+					</head>
+					<body>
+						<cell col="0" colid="PMYEAR" display="text" edit="normal"/>
+						<cell col="1" colid="PMMGNO" display="text" edit="normal"/>
+						<cell col="2" colid="PMPCORDERNO" display="text" edit="normal"/>
+						<cell col="3" colid="STATUS" display="text" edit="normal"/>
+						<cell col="4" colid="LGD_CASHRECEIPTYN" display="text" edit="normal"/>
+						<cell col="5" colid="CASHFLAG" display="text" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button Height="21" Id="Button0" Left="490" OnClick="Button0_OnClick" TabOrder="2" Text="결제요청" Top="2" Width="104"></Button>
+		<Static Height="21" Id="Static0" Left="16" TabOrder="3" Text="ds_ioPosInput" VAlign="Middle" Width="104"></Static>
+		<Static Height="21" Id="Static1" Left="13" TabOrder="4" Text="ds_ioPosOutput" Top="84" VAlign="Middle" Width="104"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM3011SPOS.xml
+ * 설명 : 가상계좌할당(세틀뱅크)DIV
+ * 작성일 : 2013.08.07
+ * 작성자 : 정현호
+*/
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+var ls_PosService = "";
+function Form_OnLoadCompleted(obj) {
+    // Local인 경우 Local service 타도록
+    if (gs_IsLocal != "Y") {
+        ls_PosService = "POS";
+    } else {
+        ls_PosService = "DEV_POS";
+    }
+    
+    tit_CreateActionInfo();
+    SetTimer(2, 100);
+}
+
+
+/*
+ * 트랜젝션에 사용되는 데이타셋의 ROW
+ */
+var tRow;
+
+/*
+ * 승인/환불 요청에 사용되는 플래그 변수
+ */
+var ls_Ret = "FAIL";
+var sWorkFlag = 'Y';
+var nPosRow = 0;
+
+/*
+ * 결제 확인 요청에 사용되는 플래그 변수
+ */
+var ls_Ret2 = "FAIL";
+var sWorkFlag2 = "Y";
+var nPosRow2 = 0;
+
+/*
+ * 기능 : 부모창에서 POS 호출시에 사용될 함수
+ */
+ 
+function lfn_POS() {
+	lfn_PosCall();
+    KillTimer(2);
+    return ls_Ret;
+}
+
+/*
+ * 기능 : 입력건수에 따라 트랜잭션을 수행한다.(승인/환불)
+ */
+function lfn_PosCall(obj)
+{	
+	// 서버 호출 
+	ls_Ret = "FAIL";
+	sWorkFlag = 'Y';
+	//ds_ioPosOutput.ClearData();	// 데이타 제거
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("com:executeVirtualAccountAllocation", "", 0, "");
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,"ds_ioPosInput=ds_ioPosInput" // inDs
+        ,"ds_ioPosOutput=ds_ioPosOutput" // outDs
+        ,""    // args
+        ,"lfn_AfterVirtualAccountAllocation"
+        ,false
+        ,false
+        ,true
+    );
+}
+
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterVirtualAccountAllocation(nErrorCode, strErrorMsg) {
+
+	if (nErrorCode < 0) { // 트랜잭션 에러.
+		//gfn_ErrorMsg(nErrorCode, strErrorMsg);
+		sWorkFlag = 'N';
+		ls_Ret = "FAIL";
+		//lfn_ExceptionTransactionPOS(tRow);
+	}
+	else {	// 트랜잭션 성공.
+		if (ds_ioPosOutput.GetColumn(0, "RTN_STATUS") == "true") {
+			sWorkFlag = 'N';
+		}
+		ls_Ret = "OK";
+
+	}
+}
+
+/*
+ * 기능 : Transaction 서비스 에러일 경우 처리 ds_ioPosOutput 처리(값셋팅)
+ * parameter : row - 데이타셋의 로우
+ * Return : 없음
+ */
+function lfn_ExceptionTransactionPOS(row) {
+	
+	trace("====== Exception ======");
+	var nRow = 0;
+	
+	if(ds_ioPosOutput.GetRowCount() == 0) {
+		ds_ioPosOutput.InsertRow(0);
+	}
+	else {
+		nRow = ds_ioPosOutput.AddRow();
+	}
+	
+	ds_ioPosOutput.SetColumn(nRow, "MI_PMYEAR", ds_ioPosInput.GetColumn(row, "PMYEAR"));
+	ds_ioPosOutput.SetColumn(nRow, "MI_PMMGNO", ds_ioPosInput.GetColumn(row, "PMMGNO"));
+	ds_ioPosOutput.SetColumn(nRow, "MI_RSCODE", "3");	//세틀뱅크 실패, MI 실패
+}
+
+function frmCOM3010SPOS_OnTimer(obj,nEventID)
+{
+	idle();
+}
+
+function frmCOM3010SPOS_OnUnloadCompleted(obj)
+{
+	KillTimer(2);
+//	Close("END");
+}
+
+
+function Button0_OnClick(obj)
+{
+	alert("lfn_POS() = "+lfn_POS());
+}
+]]></Script>
+</Window>

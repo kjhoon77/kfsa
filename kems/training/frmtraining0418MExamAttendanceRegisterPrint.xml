@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmtraining0418MExamAttendanceRegisterPrint" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="시험응시명부출력" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioExamJubsuList" OnColumnChanged="ds_ioExamJubsuList_OnColumnChanged">
+				<Contents>
+					<colinfo id="CREATE_ID" size="5" summ="default" type="STRING"/>
+					<colinfo id="EJADDR1" size="28" summ="default" type="STRING"/>
+					<colinfo id="EJHPROCDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EJHSTATUSCD" size="1" summ="default" type="STRING"/>
+					<colinfo id="EJLASTEXAMSEQ" size="2" summ="default" type="STRING"/>
+					<colinfo id="EJMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="EOHEXAMSEATNO" size="2" summ="default" type="STRING"/>
+					<colinfo id="EOHJUBSUNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EOMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EOYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="EOMGGTMGNO" size="2" summ="default" type="STRING"/>
+					<colinfo id="ESFEE" size="5" summ="default" type="STRING"/>
+					<colinfo id="JUBSUADDR" size="19" summ="default" type="STRING"/>
+					<colinfo id="EOTCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="TJBIRTHDAY_SANG" size="6" summ="default" type="STRING"/>
+					<colinfo id="TPMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="TPPERSONNM" size="8" summ="default" type="STRING"/>
+					<colinfo id="sortEOHEXAMSEATNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="sortTPPERSONNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="sortEOHJUBSUNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="EOHPROCDATE_A" size="256" summ="default" type="STRING"/>
+					<colinfo id="EJREJUBSUYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="EJCHASUGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="JUBSUGUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSort">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>EOHJUBSUNO</CD>
+						<DATA>접수번호</DATA>
+					</record>
+					<record>
+						<CD>TPPERSONNM</CD>
+						<DATA>이름</DATA>
+					</record>
+					<record>
+						<CD>EOHEXAMSEATNO</CD>
+						<DATA>좌석번호</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSunab">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>환불</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>수납</DATA>
+					</record>
+					<record>
+						<CD>M</CD>
+						<DATA>미납</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="108" Height="52" Id="shpGubunBox" Left="4" LineColor="user15" Right="796" TabOrder="19" Top="56" Type="Rectangle" Width="792"></Shape>
+		<Shape Bottom="56" Height="55" Id="shpBtnBox" Left="416" LineColor="user14" Right="796" TabOrder="18" Top="1" Type="Rectangle" Width="380"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="13" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="268">
+			<Contents></Contents>
+		</Div>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_ioExamJubsuList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="584" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="448" Id="gdExamJubsu" InputPanel="FALSE" Left="4" LineColor="default" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="796" RowHeight="20" Style="sty_Grid" TabOrder="14" TabStop="true" Top="136" UseDBuff="true" UsePopupMenu="true" UserData="시험응시명부" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="61"/>
+						<col width="125"/>
+						<col width="39"/>
+						<col width="67"/>
+						<col width="60"/>
+						<col width="73"/>
+						<col width="0"/>
+						<col width="94"/>
+						<col width="59"/>
+						<col width="47"/>
+						<col width="67"/>
+						<col width="65"/>
+						<col width="76"/>
+						<col width="81"/>
+						<col width="356"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="직능"/>
+						<cell align="center" col="2" display="text" text="회차"/>
+						<cell align="center" col="3" display="text" text="접수번호"/>
+						<cell align="center" col="4" display="text" text="좌석번호"/>
+						<cell align="center" col="5" display="text" text="성명"/>
+						<cell align="center" col="6" display="text" text="성명(*)"/>
+						<cell align="center" col="7" display="text" text="생년월일"/>
+						<cell col="8" display="text" text="응시자격"/>
+						<cell align="center" col="9" display="text" text="차수"/>
+						<cell align="center" col="10" display="text" text="수수료"/>
+						<cell align="center" col="11" display="text" text="납부여부"/>
+						<cell align="center" col="12" display="text" text="접수일자"/>
+						<cell align="center" col="13" display="text" text="접수자"/>
+						<cell align="center" col="14" display="text" text="주소"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="EOMGGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="1" colid="EOTCCOURSECD" combocol="CD" combodataset="ds_oCourse" combotext="DATA" display="combo"/>
+						<cell align="center" col="2" colid="EOEXAMORDER" display="combo"/>
+						<cell align="center" col="3" colid="EOHJUBSUNO" display="text"/>
+						<cell align="center" col="4" colid="EOHEXAMSEATNO" display="text"/>
+						<cell align="center" col="5" colid="EJPERSONNM" display="text"/>
+						<cell align="center" col="6" colid="EJPERSONNM_STAR" display="text"/>
+						<cell align="center" col="7" colid="EJBIRTHDAY_SANG" display="text"/>
+						<cell align="center" col="8" colid="JUBSUGUBUN" display="text"/>
+						<cell align="center" col="9" colid="EJCHASUGUBUN" display="text"/>
+						<cell align="right" col="10" colid="ESPROCAMOUNT" display="number" Mask="##,###"/>
+						<cell align="center" col="11" colid="EJLASTSUNAPGUBUN" combocol="CD" combodataset="ds_oSunab" combotext="DATA" display="combo"/>
+						<cell align="center" col="12" colid="EOHPROCDATE_A" display="text"/>
+						<cell align="center" col="13" colid="PNM" display="text"/>
+						<cell align="left" col="14" colid="ADDR" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="722" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="12" Top="112" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="424" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="534" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="3" ToolTipText="입력&#32;초기화" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="621" OnClick="lfn_localExcel" Style="sty_Button" TabOrder="4" ToolTipText="엑셀로&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="708" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="5" ToolTipText="화면&#32;출력" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="6" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="325" Style="sty_Label" TabOrder="15" Text="직능" Top="60" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_oCourse" Left="416" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="9" Top="59" UserData="S:직능" Width="182"></Combo>
+		<Static Align="Center" Height="20" Id="lbExamYear" Left="192" Style="sty_Label" TabOrder="16" Text="년도" Top="60" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edExamYear" ImeMode="native" Left="284" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="8" Top="60" UserData="I:년도" Width="36"></Edit>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="7" Top="59" UserData="I" Width="88"></Combo>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="17" Text="지부" Top="60" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="512" OnClick="lfn_Print" Style="sty_Button" TabOrder="2" ToolTipText="출력" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbTrainingOrder" Left="600" Style="sty_Label" TabOrder="20" Text="회차" Top="60" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edExamOrder" ImeMode="native" Left="692" LeftMargin="2" MaxLength="3" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="lfn_EnterNextFocus" Style="sty_Edit" TabOrder="10" Top="60" UserData="S:회차" Width="28"></Edit>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="radSort" INDEX="0" InnerDataset="ds_oSort" Left="104" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="11" Top="84" Width="300"></Radio>
+		<Static Align="Center" Height="20" Id="lbSort" Left="8" Style="sty_Label" TabOrder="21" Text="정렬순서" Top="84" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static0" Left="5" Style="sty_LabelStat" TabOrder="23" Text="시험응시건수" Top="112" VAlign="Middle" Width="90"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medExamList" Left="101" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="22" Top="112" Width="55"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button0" ImageID="BTN_TEXT_07" Left="600" OnClick="lfn_Print2" Style="sty_Button" TabOrder="24" Text="출력(사진無)" ToolTipText="응시원서출력" Top="4" Width="105"></Button>
+	</Form>
+	<Script><![CDATA[/****************************************************************************************
+ * 프로그램명 : frmtraining0418MExamAttendanceRegisterPrint.xml
+ * 설명 : 시험응시명부출력
+ * 작성일 : 2009.08.21
+ * 작성자 : 장성호
+ 
+ * 수정자 : 전윤호 (강습직능 영향도 및 SQL분석) 2022/09/22 
+
+ ****************************************************************************************/
+
+
+#include "LIB::training.js"; // 공통업무 관련
+
+
+/****************************************************************************************
+ 공통 필수 시작 
+ ****************************************************************************************/
+function Form_OnLoadCompleted(obj) {
+
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+		ls_FormId = split(ls_FormId[1], ".");
+		
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } 
+    else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } 
+    else {
+        gfn_Alert(MSGI00080);
+        close();
+    }    
+    // 공통 코드 조회
+
+	// 시험직능(E) / 수첩직능(L) / 강습직능(T)
+    gfn_SearchTrainingCourse("T", ds_oCourse, "Y", "선택"); // 강습직능(T) 코드 조회
+             
+    /*  
+    for(i = 0; i < ds_oCourse.RowCount(); i++) { // 업무대행 감독자, 건설현장 소방안전관리자 직능 제외
+
+        if (ds_oCourse.GetColumn(i, "CD") == "30" ||
+            ds_oCourse.GetColumn(i, "CD") == "31") {
+            
+			ds_oCourse.DeleteRow(i);
+			i = i - 1;
+			}
+	} */
+	
+    cbxCourse.Value = "22";
+
+	gfn_SearchJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회  
+    edExamOrder.SetFocus();    
+    edExamYear.Text = left(GetDate(), 4);
+}
+
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdExamJubsu.Height = nCy - gdExamJubsu.Top - 4;
+        gdExamJubsu.Width = nCx - gdExamJubsu.Left - 4;
+    }
+}
+
+
+/****************************************************************************************
+ * 기능 : 조회
+ ****************************************************************************************/
+function lfn_Search(obj) {       
+        
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+    var sortEOHEXAMSEATNO = "";                  // 정렬 순서를 선택하여 변수에 담아 null인 경우 변수를 null로 만듬
+    var sortTPPERSONNM = "";                     // 쿼리 실행시 null이 아닌 것만 실행
+    var sortEOHJUBSUNO = "";
+    
+    if ( radSort.value =="EOHEXAMSEATNO"){
+        sortEOHEXAMSEATNO = "EOHEXAMSEATNO";       
+        sortTPPERSONNM    = "";
+        sortEOHJUBSUNO    = "";           
+    } 
+    else if( radSort.value == "TPPERSONNM"){
+        sortEOHEXAMSEATNO = ""; 
+        sortTPPERSONNM    = "TPPERSONNM";
+        sortEOHJUBSUNO    = "";                   
+    } 
+    else {
+        sortEOHEXAMSEATNO = "";
+        sortTPPERSONNM    = "";
+        sortEOHJUBSUNO    = "EOHJUBSUNO";               
+    }
+    ///////////////////// 조회이력 남기기
+    ls_HistoryArg = "지부=" + quote(cbxJibu.value)   //-- 지부
+              +" 년도=" + quote(edExamYear.text)  //-- 년도 
+              +" 직능=" + quote(cbxCourse.value)   //-- 직능              
+              +" 회차=" + quote(edExamOrder.text) // -- 회차             
+              +" 정렬순서1=" + quote(sortEOHEXAMSEATNO) // -- 정렬순서
+              +" 정렬순서2=" + quote(sortTPPERSONNM) // -- 정렬순서
+              +" 정렬순서3=" + quote(sortEOHJUBSUNO); // -- 정렬순서    
+      
+        gfn_InsertSearchPrintHistory(
+            "S"
+            , this.ID
+            , global.mnuLeft.cbxOpenForm.Text
+            , ls_HistoryArg
+        ); 
+    /////////////////////  
+        
+    ds_ioExamJubsuList.ClearData(); // 데이타셋 초기화    
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("training:searchExamJubsuList", false);
+	
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioExamJubsuList=ds_oExamJubsuList"	// outDs
+		,"EOMGGTMGNO=" + quote(cbxJibu.value)   //-- 지부
+              +" EOYEAR=" + quote(edExamYear.text)  //-- 년도 
+              +" EOTCCOURSECD=" + quote(cbxCourse.value)   //-- 직능              
+              +" EOEXAMORDER=" + quote(edExamOrder.text) // -- 회차             
+              +" sortEOHEXAMSEATNO=" + quote(sortEOHEXAMSEATNO) // -- 정렬순서
+              +" sortTPPERSONNM=" + quote(sortTPPERSONNM) // -- 정렬순서
+              +" sortEOHJUBSUNO=" + quote(sortEOHJUBSUNO) // -- 정렬순서
+    
+              // args 
+		,"lfn_AfterSearchExamJubsuList"
+		,false
+	);
+}
+
+
+/****************************************************************************************
+ * 기능 : 출력
+ ****************************************************************************************/
+function lfn_Print(obj)  {  
+    // to do Validation Check
+    if(ds_ioExamJubsuList.count() == 0) {
+        alert("출력하실 시험응시 인원이 없습니다. 다시 조회를 바랍니다.");
+        return false;
+    }    
+    if(!Confirm("시험응시명부를 출력하시겠습니까? 응시명부 미리보기를 하실수 있습니다. 출력량이 많을 경우 선택적으로 출력 바랍니다.")){  //
+        return false;
+    }   
+    ///////////////////// 출력이력 남기기
+    ls_HistoryArg = "지부=" + quote(cbxJibu.value)   //-- 지부
+              +" 년도=" + quote(edExamYear.text)  //-- 년도 
+              +" 직능=" + quote(cbxCourse.value)   //-- 직능              
+              +" 회차=" + quote(edExamOrder.text); // -- 회차             
+     
+	gfn_InsertSearchPrintHistory(
+		"P"
+		, this.ID
+		, global.mnuLeft.cbxOpenForm.Text
+		, ls_HistoryArg
+	); 
+    /////////////////////      
+	gfn_CallReportPopup("frmtraining0418R01ExamAttendanceRegister.rex", "ds_ioExamJubsuList"
+                        ,"ImagePath=" + GF_FILE_SERVER_URL + "kems");                        
+	// 이미지 연동 위한 글로벌 변수 인 경로
+	/*
+	"TOMGJIBU=" + quote(cbxJibu.Value)
+	+ " TCCOURSECD=" + quote(cbxCourse.Value)
+	+ " TOYEAR=" + quote(edExamYear.Text)
+	+ " THORDERSEQSTART=" + quote(edExamOrderStart.Text)
+	+ " THORDERSEQEND=" + quote(edExamOrderEnd.Text)
+	+ " TJREPAYYN=" + quote(radRepayYn.Value)
+	+ " TJPASSYN=" + quote(radPassYn.Value));
+	*/
+}
+
+
+/* 공통 필수 종료 */
+/* 사용자 함수 */
+/****************************************************************************************
+ * 기능 : 결강자 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ ****************************************************************************************/
+function lfn_AfterSearchExamJubsuList(nErrorCode, strErrorMsg) {
+    
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    gfn_SearchMessage(gdExamJubsu); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+    medExamList.Value = ds_ioExamJubsuList.count();
+}
+
+
+/****************************************************************************************
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ ****************************************************************************************/
+function lfn_AfterSaveExamJubsuList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    lfn_Search(); // 결강자 조회
+}
+
+
+/****************************************************************************************
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ ****************************************************************************************/
+function lfn_SetFormAuth(bStatus) {
+}
+
+
+/****************************************************************************************
+ 사용자 이벤트 함수 
+ ****************************************************************************************/
+function btnMutilSort_OnClick(obj) {
+	gfn_GridMultiSort(gdExamJubsu, 0); // 멀티 정렬을 실행한다.
+}
+
+
+/****************************************************************************************
+ 회차 포커스 아웃될때 자동 0 입력 
+ ****************************************************************************************/
+function edExamOrder_OnKillFocus(obj) {
+	gfn_ComponentOnKillFocus(obj);
+    if (obj.Text != "") {
+        obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3));
+    }
+}
+
+
+function lfn_ComponentOnKillFocus(obj)  {
+
+	gfn_ComponentOnKillFocus(obj);
+	obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3)); 
+	lfn_Search();
+}
+
+
+function lfn_EnterNextFocus(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam) {
+	if (nChar == 13) {
+        gfn_ComponentOnKillFocus(obj);
+        obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3));  
+        lfn_Search();
+    }  
+}
+
+
+function ds_ioExamJubsuList_OnColumnChanged(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex) {
+
+	var cnt = 0; // 결강자수	
+	for(i = 0; i < ds_ioExamSeatPrint.RowCount(); i++) {
+        if (ds_ioExamSeatPrint.GetColumn(i, "SEL") == 1) {
+            cnt += 1; // 시험접수인원 카운트
+        } 
+    }
+    medExamList.Value = cnt;
+}
+
+
+function lfn_localExcel(obj) {  
+
+    if (ds_ioExamJubsuList.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return false;
+    }
+	// 개인정보 다운로드 사유 등록
+	var parValue = "sCode=1208";	// COMMON.PERSONALDOWNLOADH
+		parValue += " sRowCnt=" + ds_ioExamJubsuList.GetRowCount();
+		parValue += " sTitle=" + quote(gdExamJubsu.UserData);
+	ls_IsRemark = Dialog("COM::frmCOM2100PDownloadRemark.xml", parValue, "", "", "", -1, -1);	
+	if (ls_IsRemark == "" || ls_IsRemark == null || ls_IsRemark == "FAIL") {
+		return false;
+	}
+	lfn_Excel(obj);
+}
+
+
+/****************************************************************************************
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ ****************************************************************************************/
+function lfn_SetFormAuth(bStatus) {
+}
+
+
+function lfn_Print2(obj) { 
+    // to do Validation Check
+    if(ds_ioExamJubsuList.count() == 0) {
+        alert("출력하실 시험응시 인원이 없습니다. 다시 조회를 바랍니다.");
+        return false;
+    }    
+    if(!Confirm("시험응시명부를 출력하시겠습니까? 응시명부 미리보기를 하실수 있습니다. 출력량이 많을 경우 선택적으로 출력 바랍니다.")){  //
+		return false;
+    }   
+    ///////////////////// 출력이력 남기기
+    ls_HistoryArg = "지부=" + quote(cbxJibu.value)   //-- 지부
+              +" 년도=" + quote(edExamYear.text)  //-- 년도 
+              +" 직능=" + quote(cbxCourse.value)   //-- 직능              
+              +" 회차=" + quote(edExamOrder.text); // -- 회차             
+    gfn_InsertSearchPrintHistory(
+		"P"
+		, this.ID
+		, global.mnuLeft.cbxOpenForm.Text
+		, ls_HistoryArg
+	); 
+    /////////////////////      
+    gfn_CallReportPopup("frmtraining0418R02ExamAttendanceRegister.rex", "ds_ioExamJubsuList"
+                        ,"ImagePath=" + GF_FILE_SERVER_URL + "kems");	
+}
+
+
+function Form_OnActivate(obj) {
+	gs_SysID = "[stm_01,bsn_4000,dsc_0009]";	// 개인정보접속기록 시스템ID 
+}
+
+
+]]></Script>
+</Window>

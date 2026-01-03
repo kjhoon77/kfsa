@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="156" Id="frmtraining0361PRepay" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="환불신청" Top="8" Ver="1.0" Width="500" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oBank">
+				<Contents>
+					<colinfo id="CCGROUPCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CCCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CCCDNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MORDERSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CCREMARK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iLicenseReissueH">
+				<Contents>
+					<colinfo id="LRHLRMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LRHSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LRHSTATUS" size="2" summ="default" type="STRING"/>
+					<colinfo id="LRHPAYSTATUS" size="1" summ="default" type="STRING"/>
+					<colinfo id="LRHREGDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="LRHREGSABUN" size="8" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iPosPayAccount">
+				<Contents>
+					<colinfo id="PPAPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="PPAPMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPABANKCD" size="10" summ="default" type="STRING"/>
+					<colinfo id="PPABANKNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="PPACCOUNT" size="30" summ="default" type="STRING"/>
+					<colinfo id="PPAOWNER" size="40" summ="default" type="STRING"/>
+					<colinfo id="PPREASON" size="200" summ="default" type="STRING"/>
+					<colinfo id="PPEXCELYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="PPAPLANAMOUNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPAFINISHAMOUNT" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="152" Height="112" Id="shpGubunBox" Left="4" LineColor="user15" Right="496" TabOrder="4" Top="40" Type="Rectangle" Width="492"></Shape>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="318" LineColor="user14" Right="496" TabOrder="3" Top="1" Type="Rectangle" Width="178"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="408" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edReason" ImeMode="native" Left="100" LeftMargin="2" MaxLength="50" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="2" Top="128" Width="392"></Edit>
+		<Combo Border="Flat" BorderColor="user6" CodeColumn="CCCD" DataColumn="CCCDNM" Editable="TRUE" Height="20" Id="cbxBank" INDEX="0" InnerDataset="ds_oBank" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="5" Top="55" Width="182"></Combo>
+		<Static Align="Center" Height="20" Id="lbReason" Left="8" Style="sty_Label" TabOrder="6" Text="환불사유" Top="128" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbBank" Left="8" Style="sty_Label" TabOrder="7" Text="입금은행" Top="56" UserData="SK" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbRepay" Left="20" Style="sty_LabelGruopBox" TabOrder="8" Text="환불&#32;신청&#32;정보" Top="32" VAlign="Middle" Width="120"></Static>
+		<Static Align="Center" Height="20" Id="lbOwner" Left="8" Style="sty_Label" TabOrder="10" Text="예금주" Top="104" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" BorderColor="user6" Height="20" Id="edOwner" ImeMode="native" Left="100" LeftMargin="2" MaxLength="10" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="9" Top="104" Width="180"></Edit>
+		<Static Align="Center" Height="20" Id="lbAccount" Left="8" Style="sty_Label" TabOrder="12" Text="환불계좌" Top="80" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" BorderColor="user6" Height="20" Id="edAccount" ImeMode="native" Left="100" LeftMargin="2" MaxLength="30" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="11" Top="80" Width="180"></Edit>
+		<Static Color="user1" Height="20" Id="Static2" Left="284" Style="sty_TextBlue" TabOrder="13" Text="&apos;-&apos;제외" Top="80" VAlign="Middle" Width="43"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSave" ImageID="BTN_TEXT_COM" Left="321" OnClick="lfn_Save" Style="sty_Button" TabOrder="14" Text="환불신청" ToolTipText="수첩폐기" Top="4" Width="85"></Button>
+		<Image Height="10" Id="imgImage" ImageID="IMG_BULLET" Left="8" Style="sty_Image" TabOrder="16" Top="9" Transparent="TRUE" Width="12"></Image>
+		<Static Font="굴림,12,Bold" Height="20" Id="lbWorkFormTitle" Left="28" TabOrder="15" Text="환불&#32;신청" Top="4" VAlign="Middle" Width="216"></Static>
+		<Static Align="Center" Height="20" Id="lbAmount" Left="284" Style="sty_LabelStat" TabOrder="18" Text="환불금액" Top="56" VAlign="Middle" Width="72"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medAmount" Left="360" Style="sty_Maskedit" TabOrder="17" Top="56" Width="96"></MaskEdit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0361PRepay.xml
+ * 설명 : 수첩폐기팝업
+ * 작성일 : 2010.02.11
+ * 작성자 : 김동현
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (!IsExistVar("sPmYear") || !IsExistVar("sPmMgno")) {
+        gfn_Alert("입금정보가 없습니다.");
+        Close();
+    }
+    
+    medAmount.Value = (-1) * toNumber(sPmAmt);
+    lfn_Search();
+    
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            Close();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("com:searchCommonCode", false);
+    tit_callService(
+        ""
+        ,""
+        ,""
+        ,"ds_oBank=ds_oCommonCode"
+        ,"SGROUPCD=" + quote("BANKCD")
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+
+    ds_oBank.InsertRow(0);
+    ds_oBank.SetColumn(0, "CCCD", "");
+    ds_oBank.SetColumn(0, "CCCDNM", "선택");
+    cbxBank.Value = "";
+}
+
+/*
+ * 기능 : 저장
+ */
+function lfn_Save(obj) {
+
+    if (gfn_IsNull(cbxBank.Value)) {
+        gfn_Alert("은행을 선택 해주십시오.");
+        return;
+    }
+
+    if (gfn_IsNull(edAccount.Text)) {
+        gfn_Alert("계좌번호를 입력해 주십시오.");
+        return;
+    }
+
+    if (gfn_IsNull(edOwner.Text)) {
+        gfn_Alert("예금주를 입력해 주십시오.");
+        return;
+    }
+
+    if (!gfn_Confirm("환불 신청을 하시겠습니까?")) {
+        return false;
+    }
+
+    ds_iPosPayAccount.ClearData();
+    ds_iPosPayAccount.InsertRow(0);
+    ds_iPosPayAccount.SetColumn(0, "PPAPMYEAR", sPmYear);
+    ds_iPosPayAccount.SetColumn(0, "PPAPMMGNO", sPmMgno);
+    ds_iPosPayAccount.SetColumn(0, "PPABANKCD", cbxBank.Value);
+    ds_iPosPayAccount.SetColumn(0, "PPABANKNM", cbxBank.Text);
+    ds_iPosPayAccount.SetColumn(0, "PPACCOUNT", edAccount.Text);
+    ds_iPosPayAccount.SetColumn(0, "PPAOWNER", edOwner.Text);
+    ds_iPosPayAccount.SetColumn(0, "PPREASON", edReason.Text);
+    ds_iPosPayAccount.SetColumn(0, "PPEXCELYN", "N");
+    ds_iPosPayAccount.SetColumn(0, "PPAPLANAMOUNT", medAmount.Value);
+    ds_iPosPayAccount.SetColumn(0, "PPAFINISHAMOUNT", medAmount.Value);
+
+    ds_iLicenseReissueH.ClearData();
+    ds_iLicenseReissueH.InsertRow(0);
+    ds_iLicenseReissueH.SetColumn(0, "LRHLRMGNO", ds_oList.GetColumn(ds_oList.currow, "LRMGNO"));
+    ds_iLicenseReissueH.SetColumn(0, "LRHSTATUS", "5");
+    ds_iLicenseReissueH.SetColumn(0, "LRHPAYSTATUS", "5");
+
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("training:insertTraining0361PosPayAccount", "", 0, "");
+    tit_addSingleActionInfo("training:insertTraining0360LicenseReissueH", "", 0, "");
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iPosPayAccount=ds_iPosPayAccount"
+            + " ds_iLicenseReissueH=ds_iLicenseReissueH"	// inDs
+        ,""	// outDs
+        ,""	// args 
+        ,"lfn_AfterSave"
+        ,false
+    );
+
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+
+/*
+ * 기능 : Transaction
+ * Return : 없음
+ */
+function lfn_AfterSave(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        //gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        gfn_Alert("서버에 오류가 발생되었습니다. 정보지원과로 문의하시기 바랍니다.");
+        return "Transaction Error!";
+    }
+    
+    btnSave.Enable = false;
+    Parent.lfn_AfterSave(nErrorCode, strErrorMsg);
+    Close();
+}
+]]></Script>
+</Window>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="368" Id="frmcti0010PCallInbound" Left="8" OnLoadCompleted="Form_OnLoadCompleted" OnTimer="Form_OnTimer" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="전화수신" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="352" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosOutput">
+				<Contents>
+					<colinfo id="MI_PMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_PMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_PRMGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_RESPCODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_CASHRECEIPTNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_RESPMSG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_OID" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_TID" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_AMOUNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_ACCOUNTNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_FINANCECODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_CASFLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_FINANCENAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_RSCODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_RSMSG" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Edit Align="CENTER" AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user31" DisableColor="user0" Enable="FALSE" Font="굴림,10,Bold" Height="64" Id="edInfo" ImeMode="native" Left="39" LeftMargin="2" Readonly="TRUE" Style="sty_Edit" TabOrder="1" Text="홍길동&#32;님으로&#32;부터&#32;전화가&#32;왔습니다." Top="80" Width="277"></Edit>
+		<Static Align="Center" Height="20" Id="Static11" Left="40" Style="sty_Label" TabOrder="3" Text="통화구분" Top="184" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Height="20" Id="stMWGUBUN" Left="40" Style="sty_Label" TabOrder="4" Text="고객성향" Top="240" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Height="20" Id="Static9" Left="40" Style="sty_Label" TabOrder="2" Text="전화번호" Top="212" VAlign="Middle" Width="80"></Static>
+		<Edit AutoSelect="TRUE" BKColor="white" Border="None" DisableBKColor="user0" Enable="FALSE" Height="20" Id="call_type" ImeMode="native" Left="129" LeftMargin="2" Readonly="TRUE" Style="sty_Edit" TabOrder="5" Text="외부수신&#32;/&#32;내부발송" Top="186" Width="181"></Edit>
+		<Edit AutoSelect="TRUE" BKColor="white" Border="None" DisableBKColor="user0" Enable="FALSE" Height="20" Id="edMWGUBUN" ImeMode="native" Left="129" LeftMargin="2" Readonly="TRUE" Style="sty_Edit" TabOrder="6" Text="일반&#32;/&#32;주의&#32;/&#32;악성" Top="239" Width="181"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCallReceive" ImageID="BTN_TEXT_06" Left="120" OnClick="btnCallReceive_OnClick" Style="sty_Button" TabOrder="7" Text="전화받기" Top="288" Transparent="TRUE" Width="95"></Button>
+		<Edit AutoSelect="TRUE" BKColor="white" Border="None" DisableBKColor="user0" Enable="FALSE" Height="20" Id="call_dn" ImeMode="native" Left="129" LeftMargin="2" Readonly="TRUE" Style="sty_Edit" TabOrder="8" Text="010-1111-2222" Top="213" Width="181"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcti0010PCallInbound.xml
+ * 설명 : 전화수신
+ * 작성일 : 2023.04
+ * 작성자 : 
+ */
+
+#include "LIB::cti.js";
+
+var start_time = Time();
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) { 
+	parent.AddResult("[F]frmcti0010PCallInbound - 전화수신 팝업오픈 load...");
+		
+	call_type.Text = "";
+    if (IsExistVar("sParam1")) { 
+		if(sParam1 == "1"){
+			call_type.Text = "내부발송";
+		}else{
+			call_type.Text = "외부수신";		
+		}
+    } 
+    call_dn.Text = "";
+    if (IsExistVar("sParam2")) { 
+        call_dn.Text = sParam2;
+    }
+    edMWGUBUN.Text = "";
+    if (IsExistVar("sParam3")) {  
+		if(sParam3 == "1"){
+			edMWGUBUN.Text = "일반";
+		}else if(sParam3 == "2"){
+			edMWGUBUN.Text = "주의";		
+		}else{
+			edMWGUBUN.Text = "악성";	
+		}
+        
+    }
+    if (IsExistVar("sParam4")) {    
+		if (gfn_IsNull(sParam4)) { 
+			edInfo.Text = "전화가 왔습니다." ;
+		}else{
+			edInfo.Text = sParam4 + " 님으로 부터 전화가 왔습니다." ;   
+		} 
+    }else{
+        edInfo.Text = "전화가 왔습니다." ;
+    }
+    
+    if (IsExistVar("sParam5")) {    
+		if (!gfn_IsNull(sParam5)) {  
+			stMWGUBUN.Text = "내선소속";
+			edMWGUBUN.Text = sParam5;
+		} 
+    }
+    
+    parent.sCloseYn = "";
+    SetTimer(3, 1000); // Timer Start
+	parent.AddResult("[F]frmcti0010PCallInbound - 전화수신 팝업오픈 loadCompleted");
+}
+
+function Form_OnTimer(obj,nEventID)
+{	    
+    if( parent.sCloseYn == "Y"){
+		parent.sCloseYn = "";
+		Close();    
+    }
+}
+function Form_OnUnloadCompleted(obj) {   
+	parent.AddResult("[F]frmcti0010PCallInbound - 전화수신 팝업오픈 - UnloadCompleted"); 
+    KillTimer(3); // TimerKill      
+}
+
+
+/*
+* 전화받기 
+*/
+function btnCallReceive_OnClick(obj)
+{    
+    var arrArg = Array(1);
+    arrArg[0] = "Y";
+    Close(arrArg);    
+}]]></Script>
+</Window>

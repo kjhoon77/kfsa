@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="20" Id="frmCOM3033SSettlementGubunLcsSunap" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="결제구분수첩수납" Top="8" Ver="1.0" Width="680" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oProcGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>수납</DATA>
+					</record>
+					<record>
+						<CD>B</CD>
+						<DATA>환불</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radProcGubun" INDEX="0" InnerDataset="ds_oProcGubun" Style="sty_Radio" TabOrder="1" Value="01" Width="144"></Radio>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM3033SSettlementGubunLcsSunap.xml
+ * 설명 : 결제구분수첩수납
+ * 작성일 : 2009.09.13
+ * 작성자 : 김동현
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+function Form_OnLoadCompleted(obj) {
+
+    if (sKey2 = "1") {
+        ds_oProcGubun.SetColumn(0, "DATA", "신규 수납");
+        ds_oProcGubun.SetColumn(1, "DATA", "신규 환불");
+    } else {
+        ds_oProcGubun.SetColumn(0, "DATA", "재발급 수납");
+        ds_oProcGubun.SetColumn(1, "DATA", "재발급 환불");
+    }
+    
+    if( sSunapGubun == "1" ){
+        ds_oProcGubun.Filter("CD=='B'");
+        radProcGubun.Value = "B";
+        parent.medSunapAmount.Value = parent.sRepayAmount;
+    } else {
+        ds_oProcGubun.Filter("CD=='0'");
+        radProcGubun.Value = "0";
+        parent.medSunapAmount.Value = parent.sProcAmount;
+    }
+
+    parent.medTotalSunapFee.Value = parent.sProcAmount;
+    parent.edProcAmount.Text = " 수첩" + NumFormat(toNumber(parent.sProcAmount)) + "원";
+
+}]]></Script>
+</Window>

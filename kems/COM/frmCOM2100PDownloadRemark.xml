@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="128" Id="frmCOM2100PDownloadRemark" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="개인정보&#32;다운로드&#32;사유" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="600" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oDownloadhResult">
+				<Contents></Contents>
+			</Dataset>
+		</Datasets>
+		<Static Align="Center" Height="20" Id="lbTitle" Left="2" Style="sty_Label" TabOrder="2" Text="다운로드&#32;사유" Top="68" VAlign="Middle" Width="118"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" DisableBKColor="user4" Height="20" Id="edRemark" ImeMode="native" Left="122" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edKeyWord_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="1" Top="68" UserData="S" Width="470"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnConfirm" ImageID="BTN_TEXT_06" Left="201" OnClick="btnConfirm_OnClick" Style="sty_Button" TabOrder="3" Text="확인" ToolTipText="확인" Top="100" Width="93"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_TEXT_06" Left="294" OnClick="btnCancel_OnClick" Style="sty_Button" TabOrder="4" Text="취소" ToolTipText="취소" Top="100" Width="93"></Button>
+		<Static Align="Center" Font="HY견고딕,16,Bold,UnderLine" Height="27" Id="lbDownloadRemark" Left="123" TabOrder="5" Text="개인정보&#32;다운로드&#32;사유&#32;등록" Top="4" VAlign="Middle" Width="344"></Static>
+		<Static BKColor="user0" BorderColor="user0" Color="user1" Font="굴림,10,Bold" Height="20" Id="lbFileNM" Left="124" Style="sty_Label" TabOrder="6" Top="45" VAlign="Middle" Width="470"></Static>
+		<Static Align="Center" Height="20" Id="Static0" Left="2" Style="sty_Label" TabOrder="7" Text="파일명(제목)" Top="44" VAlign="Middle" Width="118"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM2100PDownloadRemark.xml
+ * 설명 : 개인정보 다운로드 사유
+ * 작성일 : 2019.09.06
+ * 작성자 : 정현호
+ */
+ 
+
+#include "LIB::COMMON.js"; // 공통업무 관련
+
+/*
+sCode
+sRowCnt
+sTitle
+*/
+var vRESULTCODE = "";
+
+function Form_OnLoadCompleted(obj)
+{
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+	
+	lbFileNM.Text = sTitle;
+}
+
+
+/* 확인 버튼 처리*/
+function btnConfirm_OnClick(obj)
+{
+	// 체크 
+	if (gfn_isNull(edRemark.Text) || edRemark.Text == "") {
+		alert("다운로드 사유를 입력해 주세요");
+		edRemark.SetFocus();
+		return;
+	}
+
+	lfn_Insert_PersonalDownloadH(sCode, sRowCnt, edRemark.Text, gds_oUserInfo.GetColumn(0, "PDEPTCD"));
+
+    Close(vRESULTCODE);
+}
+
+function lfn_Insert_PersonalDownloadH(vCode, vRowCnt, vReason, vGtmgno) {
+
+	var sArg = "PCCD=" + quote(vCode);
+		sArg += " ROWCNT=" + vRowCnt;
+		sArg += " REASON=" + quote(vReason);
+		sArg += " GTMGNO=" + quote(vGtmgno);
+
+	ds_oDownloadhResult.ClearData();
+	
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("com:insertPersonalDownloadH", "", 0, "");
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,""    // inDs
+        ,"ds_oDownloadhResult=ds_oDownloadh"    // outDs
+        ,sArg    // args
+        ,"lfn_AfterInsertDownloadH"
+        ,false
+        ,false
+        ,true
+    );
+    
+}
+
+function lfn_AfterInsertDownloadH(nErrorCode, strErrorMsg) {
+   
+	if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    if (ds_oDownloadhResult.GetColumn(0, "RESULTCODE") == "FAIL") {
+		vRESULTCODE = "FAIL";
+    } else {
+		vRESULTCODE = "OK";
+	}
+    
+}
+
+
+function btnCancel_OnClick(obj)
+{
+	var arrArg = "";
+    
+    Close(arrArg);
+}
+
+function edKeyWord_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+    if (nChar == 13) {
+        btnConfirm_OnClick(obj);
+    }	
+}
+]]></Script>
+</Window>

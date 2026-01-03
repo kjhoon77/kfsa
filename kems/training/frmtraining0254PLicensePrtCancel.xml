@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="142" Id="frmtraining0254PLicensePrtCancel" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="출력이력취소팝업" Top="8" Ver="1.0" Width="500" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_iLicense">
+				<Contents>
+					<colinfo id="LLCSNO" size="19" summ="default" type="STRING"/>
+					<colinfo id="LCANCELREASON" size="100" summ="default" type="STRING"/>
+					<colinfo id="LHSEQ" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="136" Height="104" Id="shpGubunBox" Left="4" LineColor="user15" Right="496" TabOrder="7" Top="32" Type="Rectangle" Width="492"></Shape>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="318" LineColor="user14" Right="496" TabOrder="6" Top="1" Type="Rectangle" Width="178"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="408" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSave" ImageID="BTN_TEXT_COM" Left="321" OnClick="lfn_Save" Style="sty_Button" TabOrder="1" Text="출력취소(F4)" ToolTipText="출력취소" Top="4" Width="85"></Button>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edCanselRemark" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="5" Top="110" UserData="I:폐기사유" Width="392"></Edit>
+		<Static Align="Center" Height="20" Id="lbCansel" Left="8" Style="sty_Label" TabOrder="8" Text="출력취소사유" Top="110" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbLcsNo" Left="8" Style="sty_Label" TabOrder="9" Text="수첩번호" Top="38" UserData="S" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medLcsNo" Left="100" LeftMargin="2" Mask="####-##-##-#-######" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="3" Top="38" Type="STRING" UserData="S" Width="142"></MaskEdit>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edGubun" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="4" Top="62" UserData="S" Width="140"></Edit>
+		<Static Align="Center" Height="20" Id="lbGubun" Left="8" Style="sty_Label" TabOrder="10" Text="발급구분" Top="62" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static0" Left="8" Style="sty_Label" TabOrder="12" Text="출력순번" Top="86" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edPrtSEQ" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="11" Top="86" UserData="S" Width="140"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0254PLicensePrtCancel.xml
+ * 설명 : 출력이력취소팝업
+ * 작성일 : 2016.06.08
+ * 작성자 : 정현호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+var vCancelYn = "";
+// sLPLLCSNO
+// sLPLHSEQ
+// sLPSEQ
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (IsExistVar("sLPLLCSNO")) {
+        lfn_Search(obj);
+    }
+    edCanselRemark.Text = "출력 오류";
+    edCanselRemark.SetFocus();
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close(vCancelYn);
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 115 : // 저장(F4)
+            lfn_Save();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    medLcsNo.Value = sLPLLCSNO;
+    edGubun.Text = iif(sLPLHSEQ==1, "신규발급", "재발급");
+    
+    edPrtSEQ.Text = sLPSEQ;
+}
+
+/*
+ * 기능 : 저장
+ */
+function lfn_Save(obj) {
+
+    if (!gfn_Confirm("출력내역을 취소 하시겠습니까?")) {
+        return false;
+    }
+
+	// 출력내역 취소
+
+	vCancelYn = "Y"; // 출력취소여부 확인 
+	tit_clearActionInfo();
+	tit_addSingleActionInfo("training:updateLicensePrtCancel", "", 0, "");
+	// 서버 호출
+	tit_callService(
+		""
+		,""
+		,""    // inDs
+		,""    // outDs
+		,"LPLLCSNO=" + quote(sLPLLCSNO) // args
+			+ " LPLHSEQ=" + quote(sLPLHSEQ)
+			+ " LPSEQ=" + quote(sLPSEQ)
+			+ " CANCELREASON=" + quote(edCanselRemark.Text)
+		,"lfn_AfterSaveLicensePrtCancel"
+		,false
+		,false
+		,true
+	);
+
+
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close(vCancelYn);
+}
+/* 공통 필수 종료 */
+
+/* 공통 함수 */
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveLicensePrtCancel() {
+
+    Parent.lfn_searchLicensePrtHistory(sLPLLCSNO, sLPLHSEQ);
+    lfn_End();
+}
+
+/* 공통 이벤트 함수 */
+]]></Script>
+</Window>

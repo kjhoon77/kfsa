@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="460" Id="frmprofes0005P03OldLectureList" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="기존강의실적자료" TooltipFont=",0" Top="8" Ver="1.0" Width="700" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oOldLectrue">
+				<Contents>
+					<colinfo id="CLASNM" size="50" type="STRING"/>
+					<colinfo id="EDUDATE" size="39" type="STRING"/>
+					<colinfo id="LEDUGUBUN" size="1" type="STRING"/>
+					<colinfo id="LGTMGNO" size="4" type="STRING"/>
+					<colinfo id="LMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="LSTATUS" size="1" type="STRING"/>
+					<colinfo id="LYEAR" size="4" type="STRING"/>
+					<colinfo id="ORDERNO" size="3" type="STRING"/>
+					<colinfo id="PCTIME" size="22" type="DECIMAL"/>
+					<colinfo id="PNM" size="20" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oStudyCourse">
+				<Contents>
+					<colinfo id="EDUCCOURSECD" size="2" type="STRING"/>
+					<colinfo id="EDUCOURSENM" size="50" type="STRING"/>
+					<colinfo id="EDUDATE" size="39" type="STRING"/>
+					<colinfo id="EDUEND" size="8" type="STRING"/>
+					<colinfo id="EDUGTMGNO" size="4" type="STRING"/>
+					<colinfo id="EDUGUBUN" size="1" type="STRING"/>
+					<colinfo id="EDULMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="EDULOWTIME" size="22" type="DECIMAL"/>
+					<colinfo id="EDUMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="EDUMUNJEGUBUN" size="2" type="STRING"/>
+					<colinfo id="EDUORDER" size="3" type="STRING"/>
+					<colinfo id="EDUPCMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="EDUREGSABUN" size="8" type="STRING"/>
+					<colinfo id="EDUREMARK" size="1000" type="STRING"/>
+					<colinfo id="EDUSTART" size="8" type="STRING"/>
+					<colinfo id="EDUSTATUS" size="4" type="STRING"/>
+					<colinfo id="EDUSTATUSCD" size="1" type="STRING"/>
+					<colinfo id="EDUTEAMNM" size="70" type="STRING"/>
+					<colinfo id="EDUUNIONYN" size="1" type="STRING"/>
+					<colinfo id="EDUWRTTIME" size="22" type="DECIMAL"/>
+					<colinfo id="EDUYEAR" size="4" type="STRING"/>
+					<colinfo id="PSVERSION" size="5" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>B</CD>
+						<DATA>실무교육</DATA>
+					</record>
+					<record>
+						<CD>T</CD>
+						<DATA>강습교육</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oStatus">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>요청</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>수정가능</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>승인</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioLecture">
+				<Contents>
+					<colinfo id="LEDUGUBUN" size="1" type="STRING"/>
+					<colinfo id="LEDUMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="LEDUUNIONYN" size="1" type="STRING"/>
+					<colinfo id="LGTMGNO" size="4" type="STRING"/>
+					<colinfo id="LMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="LPCMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="LPSVERSION" size="5" type="STRING"/>
+					<colinfo id="LREMARK" size="1000" type="STRING"/>
+					<colinfo id="LSERL" size="3" type="STRING"/>
+					<colinfo id="LSTATUS" size="1" type="STRING"/>
+					<colinfo id="LTCCOURSECD" size="2" type="STRING"/>
+					<colinfo id="LTCMUNJEGUBUN" size="2" type="STRING"/>
+					<colinfo id="LYEAR" size="4" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioLectureTime">
+				<Contents>
+					<colinfo id="LTDATESEQ" size="22" type="DECIMAL"/>
+					<colinfo id="LTEDUDATE" size="8" type="STRING"/>
+					<colinfo id="LTEDUDAYS" size="22" type="DECIMAL"/>
+					<colinfo id="LTEDUGUBUN" size="1" type="STRING"/>
+					<colinfo id="LTEDUMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="LTGTMGNO" size="4" type="STRING"/>
+					<colinfo id="LTLMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="LTSCHEDULETYPE" size="22" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioLectureProfessor">
+				<Contents>
+					<colinfo id="LPEDUTIME" size="22" type="DECIMAL"/>
+					<colinfo id="LPPFGUBUN" size="1" type="STRING"/>
+					<colinfo id="LPPFJIKWI" size="2" type="STRING"/>
+					<colinfo id="LPPFNM" size="20" type="STRING"/>
+					<colinfo id="LPPFSABUN" size="8" type="STRING"/>
+					<colinfo id="LPPSSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="LPSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="LPSPEAKERPAY" size="22" type="DECIMAL"/>
+					<colinfo id="LPTSSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="LPTSTYPESEQ" size="22" type="DECIMAL"/>
+					<colinfo id="LPTTDATESEQ" size="22" type="DECIMAL"/>
+					<colinfo id="LPTTLMGNO" size="22" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oLSeq">
+				<Contents>
+					<colinfo id="SEQ" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="456" Height="352" Id="Shape1" Left="4" LineColor="user15" Right="696" TabOrder="4" Top="104" Type="Rectangle" Width="692"></Shape>
+		<Shape Bottom="88" Height="54" Id="shpGubunBox1" Left="4" LineColor="user15" Right="696" TabOrder="2" Top="34" Type="Rectangle" Width="692"></Shape>
+		<Shape Bottom="29" Height="28" Id="Shape0" Left="518" LineColor="user14" Right="696" TabOrder="3" Top="1" Type="Rectangle" Width="178"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="608" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="24" Id="btnSelect" ImageID="BTN_TEXT_COM" Left="521" OnClick="btnSelect_OnClick" Style="sty_Button" TabOrder="5" Text="선택" ToolTipText="선택" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="5" Text="지부" Top="39" VAlign="Middle" Width="68"></Static>
+		<Static Align="Center" Height="20" Id="lbGubun" Left="279" Style="sty_Label" TabOrder="5" Text="교육구분" Top="39" VAlign="Middle" Width="68"></Static>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="431" Style="sty_Label" TabOrder="6" Text="교육과정" Top="39" VAlign="Middle" Width="68"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edJibu" ImeMode="native" Left="79" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edKeyWord_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="9" Top="39" UserData="S" Width="77"></Edit>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edGubun" ImeMode="native" Left="350" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edKeyWord_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="10" Top="39" UserData="S" Width="77"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edCourse" ImeMode="native" Left="502" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edKeyWord_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="11" Top="39" UserData="S" Width="190"></Edit>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oOldLectrue" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="454" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="332" Id="gdOldLecture" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="692" RowHeight="20" Style="sty_Grid" TabOrder="12" TabStop="true" Top="122" UseDBuff="true" UsePopupMenu="true" UserData="공통코드목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="684">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="60"/>
+						<col width="44"/>
+						<col width="70"/>
+						<col width="100"/>
+						<col width="60"/>
+						<col width="170"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="년도"/>
+						<cell align="center" col="2" display="text" text="구분"/>
+						<cell align="center" col="3" display="text" text="교육과정"/>
+						<cell align="center" col="4" display="text" text="교육회차"/>
+						<cell align="center" col="5" display="text" text="교육일자"/>
+						<cell align="center" col="6" display="text" text="상태"/>
+						<cell align="center" col="7" display="text" text="법정시간"/>
+						<cell align="center" col="8" display="text" text="작성자"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="LGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="1" colid="LYEAR" display="text"/>
+						<cell align="center" col="2" colid="LEDUGUBUN" combocol="CD" combodataset="ds_oGubun" combotext="DATA" display="combo"/>
+						<cell align="left" col="3" colid="CLASNM" display="text"/>
+						<cell align="center" col="4" colid="ORDERNO" display="text" expr="iif(length(ORDERNO)&gt;0,&#32;ORDERNO+&apos;회차&apos;,ORDERNO)"/>
+						<cell align="center" col="5" colid="EDUDATE" display="text"/>
+						<cell align="center" col="6" colid="LSTATUS" combocol="CD" combodataset="ds_oStatus" combotext="DATA" display="combo"/>
+						<cell align="center" col="7" colid="PCTIME" display="text" expr="PCTIME+&apos;시간&apos;"/>
+						<cell align="center" col="8" colid="PNM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="lbYear" Left="160" Style="sty_Label" TabOrder="13" Text="년도" Top="39" VAlign="Middle" Width="68"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edYear" ImeMode="native" Left="231" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edKeyWord_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="14" Top="39" UserData="S" Width="45"></Edit>
+		<Static Align="Center" Height="20" Id="lbOrder" Left="8" Style="sty_Label" TabOrder="15" Text="교육회차" Top="63" VAlign="Middle" Width="68"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edOrder" ImeMode="native" Left="79" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edKeyWord_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="16" Top="63" UserData="S" Width="77"></Edit>
+		<Static Align="Center" Height="20" Id="lbDate" Left="160" Style="sty_Label" TabOrder="17" Text="교육일자" Top="63" VAlign="Middle" Width="68"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="21" Id="edDate" ImeMode="native" Left="231" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edKeyWord_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="18" Top="63" UserData="S" Width="196"></Edit>
+		<Static Align="Center" Height="20" Id="lbLowTime" Left="431" Style="sty_Label" TabOrder="19" Text="법정시간" Top="63" VAlign="Middle" Width="68"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edLowTime" ImeMode="native" Left="502" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edKeyWord_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="20" Top="63" UserData="S" Width="77"></Edit>
+		<Static Align="Center" Height="20" Id="lbOldLecture" Left="16" Style="sty_LabelGruopBox" TabOrder="21" Text="기존자료" Top="96" VAlign="Middle" Width="68"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="7" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="22" Top="3" UserData="S" Visible="FALSE" Width="77"></Combo>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmprofes0005P03OldLectureList.xml
+ * 설명 : 기존강의실적자료
+ * 작성일 : 2010.01.07
+ * 작성자 : 김은규
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+    
+    // 공통코드조회
+    gfn_SearchJibu(cbxJibu, "Y"); // 지부 코드 조회
+    
+    if (IsExistVar("sRow")) {
+		ds_oStudyCourse.ClearData();
+		ds_oStudyCourse.InsertRow(0);
+		ds_oStudyCourse.CopyRow(0, "ds_ioStudyCourse", sRow);
+		lfn_SetInitData();
+        lfn_Search();
+    } else {
+        gfn_Alert("강의실적 정보가 없습니다.");
+        Close();
+    }
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 적용될 강의실적 데이타 셋팅
+ */
+function lfn_SetInitData() {
+
+	if(ds_oStudyCourse.GetColumn(0, "EDUGUBUN") == "B") {
+		edGubun.Text = "실무교육";
+	} else {
+		edGubun.Text = "강습교육";
+	}
+	edJibu.Text	= ds_oStudyCourse.GetColumn(0, "EDUTEAMNM");
+	edYear.Text	= ds_oStudyCourse.GetColumn(0, "EDUYEAR");
+	edCourse.Text = ds_oStudyCourse.GetColumn(0, "EDUCOURSENM");
+	edOrder.Text = ds_oStudyCourse.GetColumn(0, "EDUORDER") + " 회차";
+	edDate.Text = ds_oStudyCourse.GetColumn(0, "EDUDATE");
+	edLowTime.Text = ds_oStudyCourse.GetColumn(0, "EDULOWTIME") + " 시간";
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_oOldLectrue.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("profes:searchProfes0005POldLectureList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oOldLectrue=ds_oOldLectrue"	// outDs
+		,"LTCCOURSECD=" + quote(ds_oStudyCourse.GetColumn(0, "EDUCCOURSECD")) 		// 직능
+		 + " LTCMUNJEGUBUN=" + quote(ds_oStudyCourse.GetColumn(0, "EDUMUNJEGUBUN"))	// 면제구분
+		 + " LEDUGUBUN=" + quote(ds_oStudyCourse.GetColumn(0, "EDUGUBUN"))	// 교육구분
+		 + " LGTMGNO=" + quote(ds_oStudyCourse.GetColumn(0, "EDUGTMGNO"))	// 지부
+		 + " EDUMGNO=" + quote(ds_oStudyCourse.GetColumn(0, "EDUMGNO"))	// 교육관리번호
+		,"lfn_AfterSearchOldLectureList"
+		,false
+	);
+}
+
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchOldLectureList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+		gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    gfn_SearchMessage(gdOldLecture); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+
+}
+
+
+// 선택
+function btnSelect_OnClick(obj)
+{
+	if(!gfn_Confirm("기존자료 [교육일자 : "+ds_oOldLectrue.GetColumn(ds_oOldLectrue.currow, "EDUDATE")+"]의 내용대로 반영하시겠습니까?")) {
+		return;
+	}
+	
+	ds_ioLecture.ClearData();
+	ds_ioLectureTime.ClearData();
+	ds_ioLectureProfessor.ClearData();
+	
+	tit_clearActionInfo();
+	tit_addSearchActionInfo("profes:searchProfes0005PLecture", false);
+	tit_addSearchActionInfo("profes:searchProfes0005PLectureTime", false);
+	tit_addSearchActionInfo("profes:searchProfes0005PLectureProfessor", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioLecture=ds_ioLecture ds_ioLectureTime=ds_ioLectureTime ds_ioLectureProfessor=ds_ioLectureProfessor"	// outDs
+		,"LMGNO=" + quote(ds_oOldLectrue.GetColumn(ds_oOldLectrue.currow, "LMGNO"))	// args 
+		,"lfn_AfterSearch"
+		,true
+	);
+}
+
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+		gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    lfn_SetLectureContents();
+}
+
+/*
+ * 기능 : 반영될 강의실적 내용 셋팅하기
+ */
+function lfn_SetLectureContents(obj) {
+	//Lecture Seq
+	ds_oLSeq.ClearData();
+			
+	tit_clearActionInfo();
+	tit_addSearchActionInfo("profes:searchProfes0005LectureSeq", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oLSeq=ds_oLectureSeq"	// outDs
+		,""	// args 
+		,""
+		,true
+		,true
+		,true
+	);
+	
+	//Lecture
+	if(ds_ioLecture.rowcount > 0) {
+		ds_ioLecture.SetColumn(0, "LMGNO", ds_oLSeq.GetColumn(0, "SEQ") );					//강의실적관리번호
+		ds_ioLecture.SetColumn(0, "LEDUMGNO", ds_oStudyCourse.GetColumn(0, "EDUMGNO") );	//교육관리번호
+		
+		ds_ioLecture.SetColumn(0, "LYEAR", ds_oStudyCourse.GetColumn(0, "EDUYEAR") );		//년도
+		ds_ioLecture.SetColumn(0, "LSERL", ds_oStudyCourse.GetColumn(0, "EDUORDER") );		//회차
+		ds_ioLecture.SetColumn(0, "LSTATUS", "1" );			//승인상태
+	}
+	
+	//LectureTime
+	if(ds_ioLectureTime.rowcount > 0) {
+		var sEDUSTART = ParseDateTime(ds_oStudyCourse.GetColumn(0, "EDUSTART"));
+		for(var i=0; i<ds_ioLectureTime.rowcount; i++) {
+			ds_ioLectureTime.SetColumn(i, "LTLMGNO", ds_oLSeq.GetColumn(0, "SEQ") );				//강의실적관리번호
+			ds_ioLectureTime.SetColumn(i, "LTEDUMGNO", ds_oStudyCourse.GetColumn(0, "EDUMGNO") );	//교육관리번호
+			ds_ioLectureTime.SetColumn(i, "LTEDUDATE", AddDate(sEDUSTART,i) );	//강의일자
+		}
+	}
+	
+	//LectureProfessor
+	if(ds_ioLectureProfessor.rowcount > 0) {
+		for(var i=0; i<ds_ioLectureProfessor.rowcount; i++) {
+			ds_ioLectureProfessor.SetColumn(i, "LPTTLMGNO", ds_oLSeq.GetColumn(0, "SEQ") );			//강의실적관리번호
+		}
+	}
+	
+	lfn_InsertLectureInfo();
+}
+
+
+/*
+ * 기능 : 강의실적 반영하기
+ */
+
+function lfn_InsertLectureInfo(obj) {
+
+	var sArg = "";
+	
+	tit_clearActionInfo();
+	if(ds_ioLecture.GetRowCount() > 0) {
+		tit_addSingleActionInfo("profes:insertProfes0005PLecture", "", 0, "");				//Lecture
+		sArg = "ds_ioLecture=ds_ioLecture";
+	} else {
+		gfn_Alert("기존자료의 실적데이타가 존재하지 않습니다.");
+		return;
+	}
+	if(ds_ioLectureTime.GetRowCount() > 0) {
+		tit_addMultiActionInfo("profes:insertProfes0005PLectureTime", "", 0, "", "N");		//LectureTime
+		sArg = " ds_ioLectureTime=ds_ioLectureTime";
+	}
+	if(ds_ioLectureProfessor.GetRowCount() > 0) {
+		tit_addMultiActionInfo("profes:insertProfes0005PLectureProfessor", "", 0, "", "N");	//LectureProfessor
+		sArg = " ds_ioLectureProfessor=ds_ioLectureProfessor";
+	}
+	
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,"ds_ioLecture=ds_ioLecture ds_ioLectureTime=ds_ioLectureTime ds_ioLectureProfessor=ds_ioLectureProfessor"	// inDs
+		,""	// outDs
+		,"SOLDLMGNO=" + quote(ds_oStudyCourse.GetColumn(0, "EDULMGNO"))	// args 
+		,"lfn_AfterInsertLectureInfo"
+		,false
+		,true
+		,true
+	);
+	/*
+	tit_clearActionInfo();
+	tit_addSingleActionInfo("profes:insertProfes0005PLecture", "", 0, "");				//Lecture
+	tit_addMultiActionInfo("profes:insertProfes0005PLectureTime", "", 0, "", "N");		//LectureTime
+	tit_addMultiActionInfo("profes:insertProfes0005PLectureProfessor", "", 0, "", "N");	//LectureProfessor
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,"ds_ioLecture=ds_ioLecture ds_ioLectureTime=ds_ioLectureTime ds_ioLectureProfessor=ds_ioLectureProfessor"	// inDs
+		,""	// outDs
+		,"SOLDLMGNO=" + quote(ds_oStudyCourse.GetColumn(0, "EDULMGNO"))	// args 
+		,"lfn_AfterInsertLectureInfo"
+		,false
+		,true
+		,true
+	);
+	*/
+}
+
+/*
+ * 기능 : 저장 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterInsertLectureInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+		gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    parent.lfn_Search();
+    parent.ds_ioStudyCourse.SelectRow(parent.ds_ioStudyCourse.FindRow("EDULMGNO", ds_oLSeq.GetColumn(0, "SEQ")));
+    var ls_msg = MSGI00020;
+    ls_msg += "\n\n기존 강의자료를 적용한 후에는 시간대별 중복된 교수를 체크 할 수 없습니다.";
+    ls_msg += "\n\n반드시 [교수중복배정 버튼]을 클릭하여 시간대별 중복된 교수가 있는지 확인하시기 바랍니다.";
+
+    gfn_Alert(ls_msg);
+    Close();
+}]]></Script>
+</Window>

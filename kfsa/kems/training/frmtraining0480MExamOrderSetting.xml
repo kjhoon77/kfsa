@@ -1,0 +1,1368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmtraining0480MExamOrderSetting" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="시험회차선택" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioLocalExamOrder" OnRowPosChanged="ds_ioLocalExamOrder_OnRowPosChanged">
+				<Contents>
+					<colinfo id="EOEXAMDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMORDERGUBUN" size="30" summ="default" type="STRING"/>
+					<colinfo id="EOMGJIBUCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="EOMGNO" size="30" summ="default" type="STRING"/>
+					<colinfo id="EOYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="EREXAMROOM" size="200" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSENM" size="30" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="GTTEAMNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oExamOrder">
+				<Contents>
+					<colinfo id="EOENDTIME" size="4" summ="default" type="STRING"/>
+					<colinfo id="EOEPMGNO" size="22" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMORDERGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="EOINETJUBSUCNT" size="22" summ="default" type="STRING"/>
+					<colinfo id="EOINETJUBSUYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EOJUBSUMAXCNT" size="22" summ="default" type="STRING"/>
+					<colinfo id="EOJUBSUSTATUS" size="2" summ="default" type="STRING"/>
+					<colinfo id="EOMGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EOMGNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="EOMODDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="EOMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOREGDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="EOREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOSEATCNT" size="22" summ="default" type="STRING"/>
+					<colinfo id="EOSTARTTIME" size="4" summ="default" type="STRING"/>
+					<colinfo id="EOTCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="EOUSEYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EOYEAR" size="4" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioExamRoom">
+				<Contents>
+					<colinfo id="EOEXAMDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMORDERGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="EOMGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EOMGNO" size="22" summ="default" type="INT"/>
+					<colinfo id="EOYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="EREXAMROOM" size="30" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSENM" size="30" summ="default" type="STRING"/>
+					<colinfo id="ERCHASUGUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSupervisorAssignment">
+				<Contents>
+					<colinfo id="SAEREOMGNO" size="22" summ="default" type="INT"/>
+					<colinfo id="SAEREXAMROOM" size="30" summ="default" type="STRING"/>
+					<colinfo id="SAGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="SAMODDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="SAMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="SAREGDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="SAREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="SASIMGNO" size="22" summ="default" type="INT"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSupervisorInfo">
+				<Contents>
+					<colinfo id="SIBDAY" size="8" summ="default" type="STRING"/>
+					<colinfo id="SICOMPNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="SIMGNO" size="22" summ="default" type="INT"/>
+					<colinfo id="SINM" size="100" summ="default" type="STRING"/>
+					<colinfo id="SISEXCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="SITEL" size="20" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioCorrectAnswer">
+				<Contents>
+					<colinfo id="CACORRECTANSWER" size="4" summ="default" type="STRING"/>
+					<colinfo id="CACORRECTCNT" size="22" summ="default" type="INT"/>
+					<colinfo id="CAEPALPHATYPE" size="2" summ="default" type="STRING"/>
+					<colinfo id="CAEPNUMTYPE" size="2" summ="default" type="STRING"/>
+					<colinfo id="CAITEMNO" size="22" summ="default" type="INT"/>
+					<colinfo id="CAITEMSCORE" size="22" summ="default" type="INT"/>
+					<colinfo id="CAMODDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="CAMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CAREGDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="CAREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CATCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CACHASUGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CASUBJECTGUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioExamOrderH">
+				<Contents>
+					<colinfo id="EOHAFTEREOMGNO" size="22" summ="default" type="INT"/>
+					<colinfo id="EOHAFTERJUBSUNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="EOHCHANGEDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOHEJMGNO" size="22" summ="default" type="INT"/>
+					<colinfo id="EOHEOMGNO" size="22" summ="default" type="INT"/>
+					<colinfo id="EOHEXAMSEATNO" size="22" summ="default" type="INT"/>
+					<colinfo id="EOHJUBSUGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EOHJUBSUNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="EOHLASTGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EOHMODDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="EOHMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOHPROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EOHPSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOHREGDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="EOHREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOHSEQ" size="22" summ="default" type="INT"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioExamResult">
+				<Contents>
+					<colinfo id="ERAPLEXAMNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="ERCORRECTCNT" size="22" summ="default" type="INT"/>
+					<colinfo id="EREJMGNO" size="22" summ="default" type="INT"/>
+					<colinfo id="ERMODDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="ERMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="ERPASSDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="ERPASSYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="ERRANK" size="22" summ="default" type="INT"/>
+					<colinfo id="ERREGDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="ERREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="ERSCORE" size="22" summ="default" type="INT"/>
+					<colinfo id="ERSEQ" size="22" summ="default" type="INT"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioExamJubsu">
+				<Contents>
+					<colinfo id="EJADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="EJADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="EJBULDADDR" size="100" summ="default" type="STRING"/>
+					<colinfo id="EJBULDNM" size="100" summ="default" type="STRING"/>
+					<colinfo id="EJBUNJI" size="20" summ="default" type="STRING"/>
+					<colinfo id="EJCANCELPSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EJCANCELREASON" size="100" summ="default" type="STRING"/>
+					<colinfo id="EJDONG" size="20" summ="default" type="STRING"/>
+					<colinfo id="EJEXPYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EJKU" size="20" summ="default" type="STRING"/>
+					<colinfo id="EJLASTEJHSEQ" size="22" summ="default" type="INT"/>
+					<colinfo id="EJLASTEOHSEQ" size="22" summ="default" type="INT"/>
+					<colinfo id="EJLASTESSEQ" size="22" summ="default" type="INT"/>
+					<colinfo id="EJLASTSUNAPGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="EJMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EJMODDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="EJMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EJPASSYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EJPERSONNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="EJREGDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="EJREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EJBIRTHDAY" size="13" summ="default" type="STRING"/>
+					<colinfo id="EJROADNM" size="100" summ="default" type="STRING"/>
+					<colinfo id="EJSIDO" size="20" summ="default" type="STRING"/>
+					<colinfo id="EJTPMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EJZZIPCD" size="6" summ="default" type="STRING"/>
+					<colinfo id="EJIIIMGSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="EJTJMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="EJADDRGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="EJJUBSUREASON" size="256" summ="default" type="STRING"/>
+					<colinfo id="EJREJUBSUYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="EJCHASUGUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPerson">
+				<Contents>
+					<colinfo id="PGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="PNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="PPOSITNNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="PPW" size="20" summ="default" type="STRING"/>
+					<colinfo id="PSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="PUSEYN" size="1" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioMenu">
+				<Contents>
+					<colinfo id="MLOCALGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="MMENUID" size="13" summ="default" type="STRING"/>
+					<colinfo id="MMENUNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="MMODDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="MMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="MORDERSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="MPARENTMENUID" size="13" summ="default" type="STRING"/>
+					<colinfo id="MREGDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="MREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="MREMARK" size="1000" summ="default" type="STRING"/>
+					<colinfo id="MSYSGUBUN" size="30" summ="default" type="STRING"/>
+					<colinfo id="MURL" size="100" summ="default" type="STRING"/>
+					<colinfo id="MURLTYPE" size="1" summ="default" type="STRING"/>
+					<colinfo id="MUSEYN" size="1" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioExamOrder">
+				<Contents>
+					<colinfo id="EOENDTIME" size="4" summ="default" type="STRING"/>
+					<colinfo id="EOEPMGNO" size="13" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMORDERGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="EOINETJUBSUCNT" size="4" summ="default" type="STRING"/>
+					<colinfo id="EOINETJUBSUYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EOJUBSUCNT" size="4" summ="default" type="STRING"/>
+					<colinfo id="EOJUBSUSTATUS" size="2" summ="default" type="STRING"/>
+					<colinfo id="EOMGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EOMGNO" size="100" summ="default" type="STRING"/>
+					<colinfo id="EOMODDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOREGDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOSEATCNT" size="4" summ="default" type="STRING"/>
+					<colinfo id="EOSTARTTIME" size="4" summ="default" type="STRING"/>
+					<colinfo id="EOTCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="EOUSEYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EOYEAR" size="4" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioAnswerAnalysis">
+				<Contents>
+					<colinfo id="AA1CNT" size="22" summ="default" type="INT"/>
+					<colinfo id="AA2CNT" size="22" summ="default" type="INT"/>
+					<colinfo id="AA3CNT" size="22" summ="default" type="INT"/>
+					<colinfo id="AA4CNT" size="22" summ="default" type="INT"/>
+					<colinfo id="AACAEPALPHATYPE" size="2" summ="default" type="STRING"/>
+					<colinfo id="AACAEPNUMTYPE" size="2" summ="default" type="STRING"/>
+					<colinfo id="AACAITEMNO" size="22" summ="default" type="INT"/>
+					<colinfo id="AACORRECTCNT" size="22" summ="default" type="INT"/>
+					<colinfo id="AACORRECTPERCENT" size="22" summ="default" type="INT"/>
+					<colinfo id="AADOUBLECNT" size="22" summ="default" type="INT"/>
+					<colinfo id="AAEMPTYCNT" size="22" summ="default" type="INT"/>
+					<colinfo id="AAEOMGNO" size="22" summ="default" type="INT"/>
+					<colinfo id="AAMARKINGCNT" size="22" summ="default" type="INT"/>
+					<colinfo id="AAMODDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="AAMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="AAREGDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="AAREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="AATCCOURSECD" size="2" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioExamOrderOrgin"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_LocalExamOrder" OnRowPosChanged="ds_ioLocalExamOrder_OnRowPosChanged">
+				<Contents>
+					<colinfo id="EOEXAMDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMORDERGUBUN" size="30" summ="default" type="STRING"/>
+					<colinfo id="EOMGGTMGNO" size="2" summ="default" type="STRING"/>
+					<colinfo id="EOMGNO" size="30" summ="default" type="STRING"/>
+					<colinfo id="EOYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="EREXAMROOM" size="200" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSENM" size="30" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="GTTEAMNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioExamPaper">
+				<Contents>
+					<colinfo id="EPTCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="EPNUMTYPE" size="2" summ="default" type="STRING"/>
+					<colinfo id="EPALPHATYPE" size="2" summ="default" type="STRING"/>
+					<colinfo id="EPQSTITEMCNT" size="3" summ="default" type="INT"/>
+					<colinfo id="EPTOTALPOINT" size="3" summ="default" type="INT"/>
+					<colinfo id="EPREMARK" size="100" summ="default" type="STRING"/>
+					<colinfo id="EPUSEYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EPREGDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EPREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EPMODDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EPMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EPCHASUGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="EPSUBJECTGUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioDiploma">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioTrainingPerson">
+				<Contents>
+					<colinfo id="TPAUTHYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="TPCUSTGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="TPEMAILDOMAIN" size="40" summ="default" type="STRING"/>
+					<colinfo id="TPEMAILID" size="40" summ="default" type="STRING"/>
+					<colinfo id="TPHPTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="TPLASTIMGSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TPMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TPMODDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="TPMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="TPNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="TPREGDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="TPREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="TPBIRTHDAY" size="13" summ="default" type="STRING"/>
+					<colinfo id="TPTEL" size="16" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioJibu">
+				<Contents>
+					<colinfo id="ACCNTJIBU" size="5" summ="default" type="STRING"/>
+					<colinfo id="GTACCOUNT" size="20" summ="default" type="STRING"/>
+					<colinfo id="GTADDR" size="150" summ="default" type="STRING"/>
+					<colinfo id="GTBANKNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="GTDEPTCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="GTDEPTNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="GTFAX" size="20" summ="default" type="STRING"/>
+					<colinfo id="GTGUBUNCD" size="1" summ="default" type="STRING"/>
+					<colinfo id="GTKID" size="16" summ="default" type="STRING"/>
+					<colinfo id="GTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="GTOWNER" size="40" summ="default" type="STRING"/>
+					<colinfo id="GTPRTSEQ" size="2" summ="default" type="STRING"/>
+					<colinfo id="GTTEAMCD" size="1" summ="default" type="STRING"/>
+					<colinfo id="GTTEAMNM" size="70" summ="default" type="STRING"/>
+					<colinfo id="GTTELEPHONENUMBER" size="30" summ="default" type="STRING"/>
+					<colinfo id="GTYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="GTZIPCODE" size="12" summ="default" type="STRING"/>
+					<colinfo id="KFSACHPT" size="2" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioTrainingCourse">
+				<Contents>
+					<colinfo id="TCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSEGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSENICK" size="30" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSENM" size="30" summ="default" type="STRING"/>
+					<colinfo id="TCMODDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="TCMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="TCMUNJEGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="TCORDERSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TCREGDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="TCREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="TCREQUIREDDOCS" size="100" summ="default" type="STRING"/>
+					<colinfo id="TCSEARCHGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="TCTERMTIME" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TCUSEYN" size="1" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioCommonCode">
+				<Contents>
+					<colinfo id="CCCD" size="50" summ="default" type="STRING"/>
+					<colinfo id="CCCDNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="CCGROUPCD" size="50" summ="default" type="STRING"/>
+					<colinfo id="CCMODDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="CCMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CCORDERSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CCREGDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="CCREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CCREMARK" size="1000" summ="default" type="STRING"/>
+					<colinfo id="CCUSEYN" size="1" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioCorrectAnswerTmp">
+				<Contents>
+					<colinfo id="CACORRECTANSWER" size="4" summ="default" type="STRING"/>
+					<colinfo id="CACORRECTCNT" size="22" summ="default" type="INT"/>
+					<colinfo id="CAEPALPHATYPE" size="2" summ="default" type="STRING"/>
+					<colinfo id="CAEPNUMTYPE" size="2" summ="default" type="STRING"/>
+					<colinfo id="CAITEMNO" size="22" summ="default" type="INT"/>
+					<colinfo id="CAITEMSCORE" size="22" summ="default" type="INT"/>
+					<colinfo id="CAMODDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="CAMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CAREGDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="CAREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CATCCOURSECD" size="2" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="444" LineColor="user14" Right="796" TabOrder="61" Top="1" Type="Rectangle" Width="352"></Shape>
+		<Shape Bottom="60" Height="28" Id="shpGubunBox" Left="4" LineColor="user15" Right="796" TabOrder="16" Top="32" Type="Rectangle" Width="792"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="8" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="300">
+			<Contents></Contents>
+		</Div>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_LocalExamOrder" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="584" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="232" Id="gdLocalExamOrder" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnCellClick="gdLocalExamOrder_OnCellClick" OnCellDBLClick="gdLocalExamOrder_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="796" RowHeight="20" Style="sty_Grid" TabOrder="7" TabStop="true" Top="352" UseDBuff="true" UsePopupMenu="true" UserData="로컬시험일정목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="120"/>
+						<col width="220"/>
+						<col width="80"/>
+						<col width="70"/>
+						<col width="118"/>
+						<col width="178"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="직능"/>
+						<cell align="center" col="2" display="text" text="년도"/>
+						<cell align="center" col="3" display="text" text="회차"/>
+						<cell align="center" col="4" display="text" text="시험일"/>
+						<cell align="center" col="5" display="text" text="시험장소"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="GTTEAMNM" display="text"/>
+						<cell align="left" col="1" colid="TCCOURSENM" display="text"/>
+						<cell align="center" col="2" colid="EOYEAR" display="text"/>
+						<cell align="center" col="3" colid="EOEXAMORDER" display="text"/>
+						<cell align="center" col="4" colid="EOEXAMDATE" display="text" Mask="####-##-##"/>
+						<cell align="center" col="5" colid="EREXAMROOM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSave" ImageID="BTN_TEXT_COM" Left="711" OnClick="lfn_Save" Style="sty_Button" TabOrder="1" Text="선택저장(F4)" ToolTipText="선택저장" Top="327" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="534" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="2" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="621" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbExamDate" Left="4" Style="sty_LabelGruopBox" TabOrder="9" Text="선택할&#32;시험목록" Top="328" VAlign="Middle" Width="120"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnAdd" ImageID="BTN_TEXT_COM" Left="623" OnClick="btnAdd_OnClick" Style="sty_Button" TabOrder="5" Text="추가&#32;▼" Top="327" Transparent="TRUE" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDel" ImageID="BTN_TEXT_COM" Left="535" OnClick="btnDel_OnClick" Style="sty_Button" TabOrder="6" Text="▲&#32;삭제" Top="327" Transparent="TRUE" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoScrollBar="Vert" AutoSelect="TRUE" BindDataset="ds_ioLocalExamOrder" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="316" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="252" Id="gdExamOrder" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnCellDBLClick="gdExamOrder_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="796" RowHeight="20" Style="sty_Grid" TabOrder="4" TabStop="true" Top="64" UseDBuff="true" UsePopupMenu="true" UserData="서버시험일정목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="120"/>
+						<col width="220"/>
+						<col width="80"/>
+						<col width="70"/>
+						<col width="118"/>
+						<col width="178"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="직능"/>
+						<cell align="center" col="2" display="text" text="년도"/>
+						<cell align="center" col="3" display="text" text="회차"/>
+						<cell align="center" col="4" display="text" text="시험일"/>
+						<cell align="center" col="5" display="text" text="시험장소"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="GTTEAMNM" display="text"/>
+						<cell align="left" col="1" colid="TCCOURSENM" display="text"/>
+						<cell align="center" col="2" colid="EOYEAR" display="text"/>
+						<cell align="center" col="3" colid="EOEXAMORDER" display="text"/>
+						<cell align="center" col="4" colid="EOEXAMDATE" display="text" Mask="####-##-##"/>
+						<cell align="center" col="5" colid="EREXAMROOM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="Static0" Left="216" Style="sty_Label" TabOrder="11" Text="시험시작일자" Top="36" VAlign="Middle" Width="88"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calStartDt" Left="308" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="10" Top="36" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="447" OnClick="lfn_Search" Style="sty_Button" TabOrder="12" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnNext" ImageID="BTN_TEXT_COM" Left="708" OnClick="btnNext_OnClick" Style="sty_Button" TabOrder="13" Text="다음&#32;▶" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Static Height="20" Id="lbTextBlue" Left="128" Style="sty_TextBlue" TabOrder="14" Text="※&#32;추가&#32;후&#32;선택저장&#32;버튼을&#32;클릭하시기&#32;바랍니다." Top="328" VAlign="Middle" Width="408"></Static>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="18" Text="지부" Top="36" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="17" Top="35" Width="88"></Combo>
+		<File Bottom="347" Height="24" Id="filDeleteFile" Left="472" Right="496" TabOrder="18" Top="323" Width="24"></File>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0480MExamOrderSetting.xml
+ * 설명 : 시험회차선택
+ * 작성일 : 2009.09.30
+ * 작성자 : 이규희
+ */
+
+#include "LIB::training.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    
+    if (gs_isBSB == "Y") {
+        gfn_Alert("로컬환경에서는 회차선택이 불가능합니다.");
+        close();
+    }
+
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    ds_LocalExamOrder.ClearData();
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+
+    var ls_FormId = split(sFormUrl, "::");
+
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+//    ms_FormAuth = "W";
+
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+    gfn_SearchJibu(cbxJibu, "Y", "선택"); // 지부 코드 조회
+    calStartDt.Value = GetDate();    
+    lfn_Search(obj);
+//alert(ext_GetFileList("C:\\KFSA\\kems\\training\\local\\kems\\localsvc\\Image","F"));
+//var DirRtn = ext_GetFileList("C:\\KFSA\\kems\\training\\local\\kems\\localsvc","D");
+//alert(indexOf(DirRtn, "Image"));
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+ 
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        //gdLocalExamOrder.Height = nCy - gdLocalExamOrder.Top - 4;
+        //gdExamOrder.Height = nCy - gdExamOrder.Top - 4;
+    }
+}
+
+/*
+ * 기능 : 조회 : 선택할 시험회차 선택 그리드
+ */
+function lfn_Search(obj) {
+
+    ds_ioLocalExamOrder.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchExamOrderLocal", false);
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,"" // inDs
+        ,"ds_ioLocalExamOrder=ds_ioLocalExamOrder"  // outDs
+        ,"EOEXAMDATE=" + quote(left(calStartDt.Value, 8))
+         
+          + " JIBU=" + cbxJibu.Value //args
+        ,"lfn_LocalExamOrderList"
+        ,false
+    );
+
+}
+
+/*
+ * BSB 이용 local db 조회
+ */
+function lfn_LocalExamOrderList()
+{
+    ldb.Sync = true;
+    ds_LocalExamOrder.ClearData(); // 데이타셋 초기화
+    ds_LocalExamOrder.Load("SvcLdb::searchExamOrderLocalList.xml");
+    ldb.Sync = false;
+
+}
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+
+function lfn_AfterSaveLocalExamOrder(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    lfn_Search(); // 공통코드 조회
+}
+ */
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+
+    btnAdd.Enable = bStatus; // 추가 버튼
+    btnDel.Enable = bStatus; // 삭제 버튼
+    btnSave.Enable = bStatus; // 수정&저장 버튼
+
+}
+
+/* 사용자 이벤트 함수 */
+function ds_ioLocalExamOrder_OnRowPosChanged(obj,nOldRow,nRow)
+{
+
+    // 그리드의 값을 입력란에 복사한다. 추가상태인 경우 복사 후 저장을 하기 위해 제외한다.
+    if (obj.GetRowType(nRow) <> "insert" && nRow <> -1) {
+
+        gfn_MakeKeyMark(this); // 키값 수정 금지 설정
+
+    }
+
+    mb_IsNewData = false; // 저장버튼이 클릭 초기화
+
+}
+
+function gdLocalExamOrder_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+
+    var lobj_Dataset = object(obj.BindDataset);
+
+    ds_ioLocalExamOrder_OnRowPosChanged(lobj_Dataset,nRow,nRow);
+
+}
+
+function gdExamOrder_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+
+    btnAdd_OnClick();
+
+}
+
+function gdLocalExamOrder_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+
+    btnDel_OnClick();
+
+}
+
+function btnAdd_OnClick(obj)
+{
+
+    if ( gfn_IsDuplicatedDataset( ds_LocalExamOrder, "EREXAMROOM", ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "EREXAMROOM"))
+        && gfn_IsDuplicatedDataset( ds_LocalExamOrder, "EOMGNO", ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "EOMGNO"))) {
+        gfn_Alert("이미 등록하신 시험회차 입니다.");
+        return false;
+    }
+    
+    if (ds_LocalExamOrder.rowcount > 0) {
+        if (!gfn_IsDuplicatedDataset( ds_LocalExamOrder, "TCCOURSECD", ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "TCCOURSECD"))) {
+            gfn_Alert("직능이 다른 시험회차 입니다.\n동일한 직능을 선택해 주십시오.");
+            return false;
+        }
+    }    
+    
+    if (ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "EREXAMROOM") == ""
+        || gfn_IsNull(ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "EREXAMROOM"))) {
+        gfn_Alert("시험장이 배정되지 않았습니다.");
+        return false;
+    }
+    
+    ds_ioSupervisorAssignment.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchSupervisorAssignmentLocal", false);
+
+    tit_callService(
+        ""
+        ,""
+        ,"" // inDs
+        ,"ds_ioSupervisorAssignment=ds_oSupervisorAssignment"   //  outDs
+        ,"EOMGGTMGNO=" + quote(ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "EOMGGTMGNO"))
+         + " EOYEAR=" + quote(ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "EOYEAR"))
+         + " EOEXAMORDER=" + quote(ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "EOEXAMORDER"))
+         + " EOTCCOURSECD=" + quote(ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "TCCOURSECD"))//args
+        ,""
+        ,false
+        ,""
+        ,true
+    );
+    
+    if (ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "TCCOURSECD") == "21"
+        || ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "TCCOURSECD") == "22") {
+        if (ds_ioSupervisorAssignment.GetRowCount() < 2) {
+            gfn_Alert("감독관이 배정되지 않았습니다.");
+            return false;
+        }
+    }
+    
+    if (ds_ioSupervisorAssignment.GetRowCount() < 1) {
+        gfn_Alert("감독관이 배정되지 않았습니다.");
+        return false;
+    }
+
+    var ln_RowNo = ds_LocalExamOrder.AddRow();
+
+    ds_LocalExamOrder.setColumn(ln_RowNo, "EOMGGTMGNO",       ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "EOMGGTMGNO"));
+    ds_LocalExamOrder.setColumn(ln_RowNo, "TCCOURSENM",       ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "TCCOURSENM"));
+    ds_LocalExamOrder.setColumn(ln_RowNo, "TCCOURSECD",       ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "TCCOURSECD"));
+    ds_LocalExamOrder.setColumn(ln_RowNo, "EOYEAR",           ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "EOYEAR"));
+    ds_LocalExamOrder.setColumn(ln_RowNo, "EOMGNO",           ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "EOMGNO"));
+    ds_LocalExamOrder.setColumn(ln_RowNo, "EOEXAMORDER",      ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "EOEXAMORDER"));
+    ds_LocalExamOrder.setColumn(ln_RowNo, "EOEXAMDATE",       ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "EOEXAMDATE"));
+    ds_LocalExamOrder.setColumn(ln_RowNo, "EREXAMROOM",       ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "EREXAMROOM"));
+    ds_LocalExamOrder.setColumn(ln_RowNo, "GTTEAMNM",       ds_ioLocalExamOrder.GetColumn(ds_ioLocalExamOrder.currow, "GTTEAMNM"));
+
+}
+
+function btnDel_OnClick(obj)
+{
+
+    if (ds_LocalExamOrder.currow < 0) {
+
+        gfn_Alert(MSGI00030); // 삭제할 레코드가 없습니다.
+        return false;
+
+    }
+
+    ds_LocalExamOrder.DeleteRow(ds_LocalExamOrder.currow);
+
+}
+
+/**
+ * 선택할 시험목록을 저장시
+ *
+ *  1.  시험회차 DataSet 저장
+ *  2.  시험회차변경정보 DataSet 저장
+ *  3.  시험접수정보 DataSet 저장
+ *  4.  시험장관리 DataSet 저장
+ *  5.  감독관배정 DataSet 저장(삭제)
+ *  6.  감독관정보 DataSet 저장(삭제)
+ *  7.  정답지정보 DataSet 저장
+ *  8.  사용자정보 DataSet 저장(삭제)
+ *  9.  시험지정보 DataSet 저장
+ *  10. 수료증정보 DataSet 저장(삭제)
+ *  11. 강습자정보 DataSet 저장(삭제)
+ *  12. 메뉴정보 DataSet 저장(삭제)
+ *  13. 지부정보 DataSet 저장(삭제)
+ *  14. 직능정보 DataSet 저장(삭제)
+ *  15. 공통코드정보 DataSet 저장(삭제)
+ *
+ * 테이블들의 내용을 각각 특정 dataset에 저장 후, BSB를 이용해서 Local DB에 담는다
+ * 단 시험회차는 gds
+ * free templete 사용
+ *
+ **/
+function lfn_Save(obj)
+{
+
+    if ( ds_LocalExamOrder.GetTotalRowCount() > 0 ) {
+        if (!gfn_Confirm("회차를 선택하시면 기존의 회차정보는 모두 사라집니다.\n\n회차를 선택저장 하시겠습니까?")) {
+            return;
+        }
+        lfn_AfterSearchExamOrder();
+        
+		// Image 폴더가 있으면 답안이미지파일 삭제
+		DirRtn = ext_GetFileList("C:\\KFSA\\kems\\training\\local\\kems\\localsvc","D");
+		
+		if(indexOf(DirRtn, "Image") >= 0) {
+	
+			// 답안이미지파일 삭제
+			//var fileRtn1 = ext_GetFileList("C:\\KFSA\\kems\\training\\local\\kems\\localsvc\\Image","F");
+			var fileRtn2 = ext_GetFileList("C:\\KFSA\\kems\\training\\local\\kems\\localsvc\\Image\\오류용지","F");
+/*			
+			var i = 0;
+			while (indexOf(fileRtn1, fileRtn1[i]) >= 0) {
+				filDeleteFile.Delete("C:\\KFSA\\kems\\training\\local\\kems\\localsvc\\Image\\"+fileRtn1[i]);
+				i++;
+			}
+*/			
+			var j = 0;
+			while (indexOf(fileRtn2, fileRtn2[j]) >= 0) {
+				filDeleteFile.Delete("C:\\KFSA\\kems\\training\\local\\kems\\localsvc\\Image\\오류용지\\"+fileRtn2[j]);
+				j++;
+			}	
+		
+		}
+        
+        
+    } else {
+        gfn_Alert ("저장할 시험목록이 없습니다.\n상단 목록에서 선택하세요.");
+    }
+
+}
+
+//  1.  시험회차 DataSet 저장
+function lfn_AfterSearchExamOrder() {
+
+    if ( ds_LocalExamOrder.GetRowCount() > 0 ) {
+
+        //선택한 시험회차 갯수 만큼 in 조건을 생성함
+        var ADDQUERY="";
+
+        for ( var i = 0; i < ds_LocalExamOrder.GetRowCount(); i++ ) {
+
+            ADDQUERY += ds_LocalExamOrder.getColumn(i, "EOMGNO") + ",";
+
+        }
+
+        ADDQUERY = left(ADDQUERY, length(ADDQUERY)-1);
+
+        ds_ioExamOrder.ClearData(); // 데이타셋 초기화
+
+        tit_clearActionInfo();
+        tit_addSearchActionInfo("training:searchExamOrderLocal2", false);
+
+        tit_callService(
+            ""
+            ,""
+            ,"" // inDs
+            ,"ds_ioExamOrder=ds_oExamOrder"    // outDs
+            ,"ADDQUERY=" + ADDQUERY //args
+            ,"lfn_AfterSearchExamOrderH"
+            ,false
+        );
+
+    }
+
+}
+
+//  2.  시험회차변경정보 DataSet 저장
+function lfn_AfterSearchExamOrderH() {
+
+    //Trace ( ds_ioExamOrder.SaveXML() );
+
+    //선택한 시험회차 갯수 만큼 in 조건을 생성함
+    var ADDQUERY="";
+
+    for ( var i=0; i < ds_LocalExamOrder.GetRowCount(); i++ ) {
+
+        ADDQUERY += ds_LocalExamOrder.getColumn(i, "EOMGNO") + ",";
+    }
+
+    ADDQUERY = left(ADDQUERY, length(ADDQUERY)-1);
+
+    ds_ioExamOrderH.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchExamOrderHLocal", false);
+
+    tit_callService(
+        ""
+        ,""
+        ,"" // inDs
+        ,"ds_ioExamOrderH=ds_oExamOrderH"  // outDs
+        ,"ADDQUERY=" + ADDQUERY //args
+        ,"lfn_AfterSearchExamJubSu"
+        ,false
+    );
+
+}
+
+//  3.  시험접수정보 DataSet 저장
+function lfn_AfterSearchExamJubSu() {
+
+    //Trace ( ds_ioExamOrderH.SaveXML() );
+
+    //선택한 시험회차 갯수 만큼 in 조건을 생성함
+    var ADDQUERY="";
+
+    for ( var i=0; i < ds_LocalExamOrder.GetRowCount(); i++ ) {
+
+        ADDQUERY += ds_LocalExamOrder.getColumn(i, "EOMGNO") + ",";
+    }
+
+    ADDQUERY = left(ADDQUERY, length(ADDQUERY)-1);
+
+    ds_ioExamJubsu.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchExamJubsuLocal", false);
+
+    tit_callService(
+        ""
+        ,""
+        ,"" // inDs
+        ,"ds_ioExamJubsu=ds_oExamJubsu"    // outDs
+        ," ADDQUERY=" + ADDQUERY   //args
+        ,"lfn_AfterSearchExamRoom"
+        ,false
+    );
+
+}
+
+//  4. 시험장관리 DataSet 저장
+function lfn_AfterSearchExamRoom() {
+
+    //Trace ( ds_ioExamJubsu.SaveXML() );
+
+    //선택한 시험회차 갯수 만큼 in 조건을 생성함
+    var ADDQUERY="";
+
+    for ( var i=0; i < ds_LocalExamOrder.GetRowCount(); i++ ) {
+
+        ADDQUERY += ds_LocalExamOrder.getColumn(i, "EOMGNO") + ",";
+    }
+
+    ADDQUERY = left(ADDQUERY, length(ADDQUERY)-1);
+
+    ds_ioExamRoom.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchExamRoomLocal", false);
+
+    tit_callService(
+        ""
+        ,""
+        ,"" // inDs
+        ,"ds_ioExamRoom=ds_oExamRoom"   // outDs
+        ," ADDQUERY=" + ADDQUERY   //args
+        ,"lfn_AfterSearchAnswerPaper"
+        ,false
+    );
+
+}
+/*
+//  5. 감독관배정 DataSet 저장
+function lfn_AfterSearchSupervisorAssignment() {
+
+    Trace ( ds_ioExamRoom.SaveXML() );
+
+    //선택한 시험회차 갯수 만큼 in 조건을 생성함
+    var ADDQUERY1="";
+    var ADDQUERY2="";
+
+    for ( var i=0; i < ds_ioExamRoom.GetRowCount(); i++ ) {
+
+        ADDQUERY1 += ds_ioExamRoom.getColumn(i, "EREOMGNO") + ",";
+        ADDQUERY2 += ds_ioExamRoom.getColumn(i, "EREXAMROOM") + "','";
+
+    }
+
+    ADDQUERY1 = left(ADDQUERY1, length(ADDQUERY1)-1);
+    ADDQUERY2 = left(ADDQUERY2, length(ADDQUERY2)-3);
+
+    ds_ioSupervisorAssignment.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchSupervisorAssignmentLocal", false);
+
+    tit_callService(
+        ""
+        ,""
+        ,"" // inDs
+        ,"ds_ioSupervisorAssignment=ds_oSupervisorAssignment"  // outDs
+        ," ADDQUERY1=" + ADDQUERY1 +" ADDQUERY2="+ ADDQUERY2 //args
+        ,"lfn_AfterSearchSupervisorInfo"
+        ,false
+    );
+
+}
+
+//  6.  감독관정보 DataSet 저장
+function lfn_AfterSearchSupervisorInfo() {
+
+    Trace ( ds_ioSupervisorAssignment.SaveXML() );
+
+    var ADDQUERY="";
+
+    for ( var i = 0; i < ds_ioSupervisorAssignment.GetRowCount(); i++ ) {
+
+        ADDQUERY += ds_ioSupervisorAssignment.getColumn(i, "SASIMGNO") + "','";
+
+    }
+
+    ADDQUERY = left(ADDQUERY, length(ADDQUERY)-3);
+
+    ds_ioSupervisorInfo.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchSupervisorInfo", false);
+
+    tit_callService(
+        ""
+        ,""
+        ,"" // inDs
+        ,"ds_ioSupervisorInfo=ds_oSupervisorInfo"    // outDs
+        ,"ADDQUERY=" + ADDQUERY//args
+        ,"lfn_AfterSearchAnswerPaper"
+        ,false
+    );
+
+}
+*/
+//  7.  정답지정보 DataSet 저장
+function lfn_AfterSearchAnswerPaper() {
+
+    //Trace ( ds_ioSupervisorInfo.SaveXML() );
+
+    //선택한 시험회차 갯수 만큼 in 조건을 생성함
+    var ADDQUERY="";
+
+    for ( var i=0; i < ds_LocalExamOrder.GetRowCount(); i++ ) {
+
+        ADDQUERY += ds_LocalExamOrder.getColumn(i, "EOMGNO") + ",";
+
+    }
+
+    ADDQUERY = left(ADDQUERY, length(ADDQUERY)-1);
+
+    ds_ioCorrectAnswer.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchCorrectAnswerLocal", false);
+
+    tit_callService(
+        ""
+        ,""
+        ,"" // inDs
+        ,"ds_ioCorrectAnswerTmp=ds_oCorrectAnswer"    // outDs
+        ,"ADDQUERY=" + ADDQUERY //args
+        ,"lfn_AfterSearchExamPaper"
+        ,false
+    );
+
+}
+/*
+//  8.  사용자정보 DataSet 저장
+function lfn_AfterSearchPerson() {
+
+    Trace ( ds_ioCorrectAnswer.SaveXML() );
+
+    ds_ioPerson.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchPersonLocal", false);
+
+    tit_callService(
+        ""
+        ,""
+        ,""                                                 //  inDs
+        ,"ds_ioPerson=ds_oPerson"                           //  outDs
+        ,"PSABUN=" + gds_oUserInfo.GetColumn(0, "PSABUN")   //  Args
+        ,"lfn_AfterSearchExamPaper"                         //  Callback Function
+        ,false
+    );
+
+}
+*/
+//  9.  시험지정보
+function lfn_AfterSearchExamPaper() {
+
+    //Trace ( ds_ioPerson.SaveXML() );
+
+    //선택한 시험회차 갯수 만큼 in 조건을 생성함
+    var ADDQUERY="";
+
+    for ( var i=0; i < ds_LocalExamOrder.GetRowCount(); i++ ) {
+
+        ADDQUERY += ds_LocalExamOrder.getColumn(i, "EOMGNO") + ",";
+
+    }
+
+    ADDQUERY = left(ADDQUERY, length(ADDQUERY)-1);
+
+    ds_ioExamPaper.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchExamPaperLocal", false);
+
+    tit_callService(
+        ""
+        ,""
+        ,""                                 //  inDs
+        ,"ds_ioExamPaper=ds_oExamPaper"     //  outDs
+        ,"ADDQUERY=" + ADDQUERY             //  Args
+        ,"lfn_AfterSearchDiploma"           //  Callback Function
+        ,false
+    );
+}
+
+//  10. 수료증정보
+function lfn_AfterSearchDiploma() {
+
+    //선택한 시험회차 갯수 만큼 in 조건을 생성함
+    var ADDQUERY="";
+    for ( var i=0; i < ds_LocalExamOrder.GetRowCount(); i++ ) {
+        ADDQUERY += ds_LocalExamOrder.getColumn(i, "EOMGNO") + ",";
+    }
+    ADDQUERY = left(ADDQUERY, length(ADDQUERY)-1);
+
+    ds_ioDiploma.ClearData(); // 데이타셋 초기화
+    
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchTrainingPassLocal", false);
+
+    tit_callService(
+        ""
+        ,""
+        ,""                                                 //  inDs
+        ,"ds_ioDiploma=ds_oDiploma"                         //  outDs
+        ,"ADDQUERY=" + ADDQUERY             //  Args
+        ,"lfn_AfterTraingPerson"                           //  Callback Function
+        ,false
+    );
+
+}
+
+//  11. 강습자정보
+function lfn_AfterTraingPerson() {
+
+    //Trace ( ds_oTrainingPerson.SaveXML() );
+
+    //선택한 시험회차 갯수 만큼 in 조건을 생성함
+    var ADDQUERY="";
+
+    for ( var i=0; i < ds_LocalExamOrder.GetRowCount(); i++ ) {
+        ADDQUERY += ds_LocalExamOrder.getColumn(i, "EOMGNO") + ",";
+    }
+    ADDQUERY = left(ADDQUERY, length(ADDQUERY)-1);
+    
+    ds_ioTrainingPerson.ClearData(); // 데이타셋 초기화
+    
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchTrainingPersonLocal", false);
+    tit_callService(
+        ""
+        ,""
+        ,""                                 //  inDs
+        ,"ds_ioTrainingPerson=ds_oTrainingPerson"     //  outDs
+        ,"ADDQUERY=" + ADDQUERY             //  Args
+        ,"lfn_AfterExamMenu"           //  Callback Function
+        ,false
+    );
+}
+
+//  12. 메뉴정보
+function lfn_AfterExamMenu() {   
+    
+    ds_ioMenu.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchExamMenuLocal", false);
+
+    tit_callService(
+        ""
+        ,""
+        ,""                                         //  inDs
+        ,"ds_ioMenu=ds_oMenu"   //  outDs
+        ,""                     //  Args
+        ,"lfn_AfterJibu"                       //  Callback Function
+        ,false
+    );
+}
+
+//  13. 지부정보
+function lfn_AfterJibu() {
+    
+    ds_ioJibu.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchExamJibuLocal", false);
+
+    tit_callService(
+        ""
+        ,""
+        ,""                                         //  inDs
+        ,"ds_ioJibu=ds_oJibu"   //  outDs
+        ,""                     //  Args
+        ,"lfn_AfterTrainingCourse"                       //  Callback Function
+        ,false
+    );
+}
+
+//  14. 직능정보
+function lfn_AfterTrainingCourse() {
+
+    ds_ioTrainingCourse.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchTrainingCourseLocal", false);
+
+    tit_callService(
+        ""
+        ,""
+        ,""                                         //  inDs
+        ,"ds_ioTrainingCourse=ds_oTrainingCourse"   //  outDs
+        ,""                     //  Args
+        ,"lfn_AfterCommonCode"                       //  Callback Function
+        ,false
+    );
+}
+
+//  15. 공통코드정보
+function lfn_AfterCommonCode() {
+
+    //Trace ( ds_ioCorrectAnswer.SaveXML() );
+    
+    ds_ioCommonCode.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchCommonCodeLocal", false);
+
+    tit_callService(
+        ""
+        ,""
+        ,""                                         //  inDs
+        ,"ds_ioCommonCode=ds_oCommonCode"   //  outDs
+        ,""                     //  Args
+        ,"lfn_AfterSearchEnd"                       //  Callback Function
+        ,false
+    );
+}
+
+function lfn_AfterSearchEnd(nErrorCode,strErrorMsg) {
+
+    if ( nErrorCode != 0 ) { // 트랜잭션 에러를 처리한다.
+
+        ds_LocalExamOrder.ApplyChange();
+
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+
+    } else {
+
+        //Trace ( ds_ioDiploma.SaveXML() );
+        EncodeDS(ds_ioCorrectAnswerTmp, "CAITEMNO", "CACORRECTANSWER", ds_ioCorrectAnswer);	//정답 암호화
+        // BSB Local DB( *.mdb 저장 )
+        lfn_LocalSave();
+
+    }
+
+}
+
+// 저장한 DataSet 들을 * mdb(로컬)에 저장 함
+function lfn_LocalSave() {
+/*
+    // 정답 정보 암호화
+    for ( var i = 0; i < ds_ioCorrectAnswer.GetRowCount(); i++ ) {
+
+        ds_ioCorrectAnswer.SetColumn(i, "CACORRECTANSWER", gfn_Encode(ds_ioCorrectAnswer.GetColumn(i, "CACORRECTANSWER")));
+
+    }
+*/
+    var svcURL = "";
+    var inDS = "";
+
+    svcURL = "SvcLdb::ExamOrder_free";
+
+    inDS = "in_ExamOrder=ds_ioExamOrder"                            // 시험회차
+         +  " in_ExamOrderH=ds_ioExamOrderH"                        // 회차변경
+         +  " in_ExamJubsu=ds_ioExamJubsu"                          // 시험접수
+         +  " in_ExamRoom=ds_ioExamRoom"                            // 시험장
+         //+  " in_SupervisorAssignment=ds_ioSupervisorAssignment"  // 감독관배정
+         //+  " in_SupervisorInfo=ds_ioSupervisorInfo"              // 감독관정보
+         +  " in_CorrectAnswer=ds_ioCorrectAnswer"                  // 정답지
+         //+  " in_Person=ds_ioPerson"                              // 사용자
+         +  " in_ExamPaper=ds_ioExamPaper"                          // 시험지
+         +  " in_Diploma=ds_ioDiploma"                            // 수료증
+         +  " in_menu=ds_ioMenu"                                    // 메뉴
+         +  " in_Jibu=ds_ioJibu"                                    // 지부
+         +  " in_TrainingCourse=ds_ioTrainingCourse"                // 직능
+         +  " in_CommonCode=ds_ioCommonCode"                // 공통코드
+         +  " in_TrainingPerson=ds_ioTrainingPerson";               // 강습자
+
+    Transaction ( "saveLocal", svcURL, inDS, "", "", "lfn_callBack" );
+
+}
+
+function lfn_callBack(svcid,strErrCode,strErrMsg)
+{
+
+    if (strErrCode != 0) {
+
+        gfn_ErrorMsg (strErrCode + " : " + strErrMsg);
+        return;
+
+    }
+
+    if ( svcid == "saveLocal" ) {
+
+        gfn_Alert("로컬DB에 자료가 저장되었습니다.");
+
+    }
+
+}
+
+function btnNext_OnClick(obj)
+{
+
+    var ls_MenuId = "0000000078";
+    var ls_MenuTitle = "응시자목록관리";
+    var ls_MenuUrl = "training::frmtraining0490MExamPersonManagement.xml";
+
+    gs_SystemGubun = "training";
+    gs_SystemMenuId = "0000000003";
+    global.mnuLeft.tabMenu.tabpgMenu.Text = "강습관리";
+
+    global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+    gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId);
+
+}
+
+/*
+ *  답지 암호화모듈 추가
+ *
+ */
+
+/*
+ * 기능 : 정답 데이타셋 암호화
+ * parameter : dsIn - 암호화할 데이타셋
+ *             col1 - 문항번호 컬럼
+ *             col2 - 정답 컬럼 (암호화될 컬럼)
+ *	           dsOut - 암호화된 데이타셋
+ */
+function EncodeDS(dsIn, col1, col2, dsOut) {
+	dsOut.Clear();
+	dsOut.Copy(dsIn);
+	
+	//평문 : 번호+ 정답(LPAD -> 0으로 4자리 만들기)
+	//dsOut.GetColumn(i, col1) + Lpad(dsOut.GetColumn(i, col2), "0", 4);
+	
+	for(var i=0; i<dsOut.GetRowCount(); i++) {
+		dsOut.SetColumn(i, col2, EncodeStr(Lpad(dsOut.GetColumn(i, col1), "0", 2) + Lpad(dsOut.GetColumn(i, col2), "0", 4)) );
+//		trace(i + ". "+ dsOut.GetColumn(i, col1) + " => " + dsOut.GetColumn(i, col2));
+	}
+}
+
+/*
+ * 기능 : 정답 데이타셋 복호화
+ * parameter : dsIn - 복호화할 데이타셋
+ *             col1 - 문항번호 컬럼
+ *             col2 - 정답 컬럼 (복호화될 컬럼)
+ *	           dsOut - 복호화된 데이타셋
+ */
+function DecodeDS(dsIn, col1, col2, dsOut) {
+	dsOut.Clear();
+	dsOut.Copy(dsIn);
+	
+	//평문 : 번호+ 정답(LPAD -> 0으로 4자리 만들기)
+	//dsOut.GetColumn(i, col1) + Lpad(dsOut.GetColumn(i, col2), "0", 4);
+	
+	for(var i=0; i<dsOut.GetRowCount(); i++) {
+		if (dsOut.GetColumn(i, col1) < 100) {	// 문항번호가 100번 미만이면
+		
+			dsOut.SetColumn(i, col2, lfn_ReplaceLPAD(substr(DecodeStr(dsOut.GetColumn(i, col2)), 2), 4));
+			
+		} else {	// 문항번호가 100번 이상이면
+		
+			dsOut.SetColumn(i, col2, lfn_ReplaceLPAD(substr(DecodeStr(dsOut.GetColumn(i, col2)), 3), 4));
+		
+		}
+			
+	}
+}
+
+/*
+ * 기능 : Base64 Encoding
+ */
+function EncodeStr(str) {
+	return Ext_Base64Encode(str);
+}
+
+/*
+ * 기능 : Base64 Decoding
+ */
+function DecodeStr(str) {
+	return Ext_Base64Decode(str);
+}
+
+/*
+ * 기능 : Lpad 문자열 되돌리기 (예: '0004' -> '4')
+ */
+function lfn_ReplaceLPAD(str, cnt) {
+	var rtnStr = "";
+	
+	if(length(str) != cnt) {
+		gfn_Alert("Lpad 문자열 변환에 실패하였습니다.");
+		return;
+	}
+	
+	for(var i=0; i<length(str); i++) {
+		if(substr(str, i, 1) != "0") {
+			rtnStr += substr(str, i, 1);
+		}
+	}
+	return rtnStr;
+}
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_4000,dsc_0016]";	// 개인정보접속기록 시스템ID 
+}
+]]></Script>
+</Window>

@@ -1,0 +1,1842 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="720" Id="frmtraining0010MTrainingOrderManagement" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="강습일정관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1000" WorkArea="true">
+		<Datasets>
+			<Dataset CanRowPosChange="ds_ioTrainingOrder_CanRowPosChange" DataSetType="Dataset" Id="ds_ioTrainingOrder" OnRowPosChanged="ds_ioTrainingOrder_OnRowPosChanged">
+				<Contents>
+					<colinfo id="CREATE_DATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="CREATE_ID" size="20" summ="default" type="STRING"/>
+					<colinfo id="EPMGNO" size="22" summ="default" type="INT"/>
+					<colinfo id="MODIFY_DATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="MODIFY_ID" size="20" summ="default" type="STRING"/>
+					<colinfo id="RREGIONCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="TOCOURSEGUBUN" size="30" summ="default" type="STRING"/>
+					<colinfo id="TOENDDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="TOENDTIME" size="6" summ="default" type="STRING"/>
+					<colinfo id="TOEXCEPTDATE" size="1000" summ="default" type="STRING"/>
+					<colinfo id="TOINETJUBSUCNT" size="22" summ="default" type="INT"/>
+					<colinfo id="TOINETJUBSUYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="TOJUBSUMAXCNT" size="22" summ="default" type="INT"/>
+					<colinfo id="TOJUBSUSTATUS" size="1" summ="default" type="STRING"/>
+					<colinfo id="TOLECTURENOTICE" size="1000" summ="default" type="STRING"/>
+					<colinfo id="TOMAILNOTICE" size="1000" summ="default" type="STRING"/>
+					<colinfo id="TOMGJIBUCD" size="30" summ="default" type="STRING"/>
+					<colinfo id="TOMGNO" size="30" summ="default" type="DECIMAL"/>
+					<colinfo id="TOMUNJEGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="TOSEATCNT" size="22" summ="default" type="INT"/>
+					<colinfo id="TOSEATLIMITYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="TOSEATSELECTYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="TOSEXLIMITYN" size="1" summ="default" type="STRING"/>
+					<colinfo id="TOSTARTDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="TOSTARTTIME" size="6" summ="default" type="STRING"/>
+					<colinfo id="TOTRAININGORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="TOYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="1" summ="default" type="STRING"/>
+					<colinfo id="TOEDUCONTENTS" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="EPNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="EPPARKINGINFO" size="256" summ="default" type="STRING"/>
+					<colinfo id="TODAYGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOCYBERSTARTDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOCYBERENDDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOMUNJEGUBUNNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CYBERDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOTFCSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TFCFEE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOREGION" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOAUTOMSGGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOAUTODATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOAWAITERCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOAWAITERREGCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOAWAITERYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOJUBSUSTARTDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TOINJUBSUCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="TODSTARTDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="TODENDDATE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA2" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oUseYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>사용</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>폐기</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourseGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oInternetJubsuStatus">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oTrainingOrderMgno"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oInetJubsuYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>사용</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>미사용</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMunjeGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioExamRoomMinimap"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oModifyColumn">
+				<Contents>
+					<colinfo id="COLUMNCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="COLUMNNM" size="256" summ="default" type="STRING"/>
+					<record>
+						<COLUMNCD>TCCOURSECD</COLUMNCD>
+						<COLUMNNM>직능코드</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOCOURSEGUBUN</COLUMNCD>
+						<COLUMNNM>직능구분</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOENDDATE</COLUMNCD>
+						<COLUMNNM>강습종료일</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOENDTIME</COLUMNCD>
+						<COLUMNNM>강습종료시간</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOEXCEPTDATE</COLUMNCD>
+						<COLUMNNM>교육제외일</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOINETJUBSUCNT</COLUMNCD>
+						<COLUMNNM>인터넷접수좌석수</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOINETJUBSUYN</COLUMNCD>
+						<COLUMNNM>인터넷접수여부</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOJUBSUMAXCNT</COLUMNCD>
+						<COLUMNNM>접수인원수</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOJUBSUSTATUS</COLUMNCD>
+						<COLUMNNM>접수상태</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOMAILNOTICE</COLUMNCD>
+						<COLUMNNM>메일공지사항</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOMGJIBUCD</COLUMNCD>
+						<COLUMNNM>지부코드</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOMUNJEGUBUN</COLUMNCD>
+						<COLUMNNM>면제구분</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOSEATCNT</COLUMNCD>
+						<COLUMNNM>좌석수</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOSEATLIMITYN</COLUMNCD>
+						<COLUMNNM>좌석제한여부</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOSEATSELECTYN</COLUMNCD>
+						<COLUMNNM>좌석선택허용여부</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOSEXLIMITYN</COLUMNCD>
+						<COLUMNNM>성별제한여부</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOSTARTDATE</COLUMNCD>
+						<COLUMNNM>강습시작일</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOSTARTTIME</COLUMNCD>
+						<COLUMNNM>강습시작시간</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOTRAININGORDER</COLUMNCD>
+						<COLUMNNM>회차</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOYEAR</COLUMNCD>
+						<COLUMNNM>강습년도</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>USE_YN</COLUMNCD>
+						<COLUMNNM>사용여부</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOEDUCONTENTS</COLUMNCD>
+						<COLUMNNM>교육내용</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOREMARK</COLUMNCD>
+						<COLUMNNM>추가알림사항</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>EPMGNO</COLUMNCD>
+						<COLUMNNM>교육장관리번호</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOREGION</COLUMNCD>
+						<COLUMNNM>교육지역</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOAUTOMSGGUBUN</COLUMNCD>
+						<COLUMNNM>문자자동발송여부</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOAUTODATE</COLUMNCD>
+						<COLUMNNM>문자자동발송일</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TOJUBSUSTARTDATE</COLUMNCD>
+						<COLUMNNM>접수시작일시</COLUMNNM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioJubsu">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioYN">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>예</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>아니오</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oDayGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>평일&#32;주간</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>평일&#32;야간</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>휴일(주말)</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>격일&#32;과정</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oTrainingFee">
+				<Contents>
+					<column id="CD" type="STRING"></column>
+					<column id="DATA" type="STRING"></column>
+					<column id="GUBUN" type="STRING"></column>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSendYN">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>발송</DATA>
+					</record>
+					<record>
+						<CD>0</CD>
+						<DATA>미발송</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oInetWaitYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>사용</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>미사용</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oAcceptAwaiter"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oModifyTime"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oOnlineGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>N</CD>
+						<DATA>집합교육</DATA>
+					</record>
+					<record>
+						<CD>Y</CD>
+						<DATA>실시간온라인교육</DATA>
+					</record>
+					<record>
+						<CD>X</CD>
+						<DATA>블라인드&#32;접수</DATA>
+					</record>
+					<record>
+						<CD>Z</CD>
+						<DATA>혼용&#32;교육</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oInetJubsuPwuseYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>사용</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>미사용</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="396" Height="364" Id="shpGubunBox" Left="2" LineColor="user15" Right="994" TabOrder="74" Top="32" Type="Rectangle" Width="992"></Shape>
+		<Static Height="20" Id="lbAddLabel" Left="8" Style="sty_TextRed" TabOrder="63" Text="※&#32;교육특이사항과&#32;추가알림사항은&#32;수강증에&#32;출력됩니다.&#32;교육제외일은&#32;인터넷접수시에도&#32;명시됩니다." Top="323" VAlign="Middle" Width="792"></Static>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="291" LineColor="user14" Right="995" TabOrder="71" Top="1" Type="Rectangle" Width="704"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="51" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="180">
+			<Contents></Contents>
+		</Div>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_ioTrainingOrder" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="714" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="290" Id="gdTrainingOrder" InputPanel="FALSE" Left="4" LineColor="default" OnCellClick="gdTrainingOrder_OnCellClick" OnCellDBLClick="gdTrainingOrder_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="994" RowHeight="20" Style="sty_Grid" TabOrder="37" TabStop="true" Top="424" UseDBuff="true" UsePopupMenu="true" UserData="교육일정관리목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="990">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="55"/>
+						<col width="32"/>
+						<col width="35"/>
+						<col width="82"/>
+						<col width="57"/>
+						<col width="38"/>
+						<col width="49"/>
+						<col width="63"/>
+						<col width="36"/>
+						<col width="36"/>
+						<col width="62"/>
+						<col width="60"/>
+						<col width="45"/>
+						<col width="45"/>
+						<col width="45"/>
+						<col width="45"/>
+						<col width="78"/>
+						<col width="78"/>
+						<col width="103"/>
+						<col width="103"/>
+						<col width="103"/>
+						<col width="50"/>
+						<col width="311"/>
+						<col width="62"/>
+						<col width="62"/>
+						<col width="80"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="110"/>
+						<col width="121"/>
+						<col width="60"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" rowspan="2" text="지부"/>
+						<cell col="1" display="text" rowspan="2" text="년도"/>
+						<cell align="center" col="2" display="text" rowspan="2" text="회차"/>
+						<cell col="3" display="text" rowspan="2" text="직능"/>
+						<cell align="center" col="4" display="text" rowspan="2" text="과정"/>
+						<cell align="center" col="5" display="text" rowspan="2" text="상세"/>
+						<cell align="center" col="6" display="text" rowspan="2" text="실시간&#10;온라인"/>
+						<cell align="center" col="7" display="text" rowspan="2" text="교육구분"/>
+						<cell align="center" col="8" display="text" rowspan="2" text="교육&#10;정원"/>
+						<cell col="9" display="text" rowspan="2" text="접수&#10;완료"/>
+						<cell col="10" display="text" rowspan="2" text="내방접수&#10;보장인원"/>
+						<cell col="11" display="text" rowspan="2" text="총접수&#10;가능인원"/>
+						<cell col="12" display="text" rowspan="2" text="ⓘ접수&#10;가능"/>
+						<cell col="13" display="text" rowspan="2" text="ⓘ접수&#10;진행"/>
+						<cell align="center" col="14" display="text" rowspan="2" text="ⓘ대기&#10;정원"/>
+						<cell align="center" col="15" display="text" rowspan="2" text="ⓘ대기&#10;완료"/>
+						<cell col="16" display="text" rowspan="2" text="교육시작일"/>
+						<cell align="center" col="17" display="text" rowspan="2" text="교육종료일"/>
+						<cell align="center" col="18" display="text" rowspan="2" text="사이버교육기간"/>
+						<cell align="center" col="19" display="text" rowspan="2" text="원격교육기간"/>
+						<cell align="center" col="20" display="text" rowspan="2" text="집합교육기간"/>
+						<cell align="center" col="21" display="text" rowspan="2" text="지역"/>
+						<cell align="center" col="22" display="text" rowspan="2" text="교육장소"/>
+						<cell col="23" display="text" rowspan="2" text="시작시간"/>
+						<cell col="24" display="text" rowspan="2" text="종료시간"/>
+						<cell col="25" display="text" rowspan="2" text="인터넷접수"/>
+						<cell col="26" display="text" rowspan="2" text="인터넷좌석선택"/>
+						<cell col="27" display="text" rowspan="2" text="성별제한"/>
+						<cell col="28" display="text" rowspan="2" text="좌석제한"/>
+						<cell col="29" display="text" rowspan="2" text="인터넷접수등록"/>
+						<cell col="30" display="text" rowspan="2" text="안내문자&#32;자동발송"/>
+						<cell col="31" display="text" rowspan="2" text="사용여부"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="TOMGJIBUCD" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="1" colid="TOYEAR" display="text"/>
+						<cell align="center" col="2" colid="TOTRAININGORDER" display="combo"/>
+						<cell align="center" col="3" colid="TCCOURSECD" combocol="CD" combodataset="ds_oCourse" combotext="DATA2" display="combo"/>
+						<cell align="center" col="4" colid="TOCOURSEGUBUN" combocol="CD" combodataset="ds_oCourseGubun" combotext="DATA" display="combo"/>
+						<cell align="center" col="5" colid="TOMUNJEGUBUNNM" display="combo"/>
+						<cell align="center" col="6" colid="TOONLINEGUBUNNM" color="expr:iif(TOONLINEGUBUN==&apos;Y&apos;,&apos;red&apos;,&apos;black&apos;)" display="combo"/>
+						<cell align="center" col="7" colid="TODAYGUBUN" combocol="CD" combodataset="ds_oDayGubun" combotext="DATA" display="combo"/>
+						<cell align="right" col="8" colid="TOSEATCNT" display="number" Mask="###,##0"/>
+						<cell align="right" col="9" colid="TOJUBSUMAXCNT" display="number" Mask="###,##0"/>
+						<cell align="right" col="10" colid="TOINJUBSUCNT" display="number" Mask="###,##0"/>
+						<cell align="right" col="11" colid="JUBSUPOSSIBLECNT" display="number" Mask="###,##0"/>
+						<cell align="right" col="12" colid="TOINETJUBSUCNT" display="number" Mask="###,##0"/>
+						<cell align="right" col="13" colid="TOINETINGCNT" display="number" Mask="###,##0"/>
+						<cell align="right" col="14" colid="TOAWAITERCNT" display="number" Mask="###,##0"/>
+						<cell align="right" col="15" colid="TOAWAITERREGCNT" display="number" Mask="###,##0"/>
+						<cell align="center" col="16" colid="TOSTARTDATE" display="date"/>
+						<cell align="center" col="17" colid="TOENDDATE" display="date"/>
+						<cell align="center" col="18" display="text" expr='iif(TCCOURSECD&#32;==&#32;&quot;20&quot;,CYBERDATE,&quot;&quot;)'/>
+						<cell align="center" col="19" display="text" expr='iif(TCCOURSECD&#32;==&#32;&quot;20&quot;,&quot;&quot;,CYBERDATE)'/>
+						<cell align="center" col="20" colid="TODDATE" display="text"/>
+						<cell align="center" col="21" colid="TOREGION" display="normal"/>
+						<cell align="left" col="22" colid="EPNM" display="text"/>
+						<cell align="center" col="23" colid="TOSTARTTIME" display="text" Mask="##:##"/>
+						<cell align="center" col="24" colid="TOENDTIME" display="text" Mask="##:##"/>
+						<cell align="center" col="25" colid="TOINETJUBSUYN" combocol="CD" combodataset="ds_oInetJubsuYn" combotext="DATA" display="combo"/>
+						<cell align="center" col="26" colid="TOSEATSELECTYN" display="text"/>
+						<cell align="center" col="27" colid="TOSEXLIMITYN" display="text"/>
+						<cell align="center" col="28" colid="TOSEATLIMITYN" display="text"/>
+						<cell align="center" col="29" colid="TOJUBSUSTATUS" combocol="CD" combodataset="ds_oInternetJubsuStatus" combotext="DATA" display="combo"/>
+						<cell align="center" col="30" colid="TOAUTOMSGGUBUN" combocol="CD" combodataset="ds_oSendYN" combotext="DATA" display="combo"/>
+						<cell align="center" col="31" colid="USE_YN" combocol="CD" combodataset="ds_oUseYn" combotext="DATA" display="combo"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="828" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="50" Top="399" Transparent="TRUE" Width="74"></Button>
+		<Static Align="Center" Height="20" Id="lbEduPlace" Left="8" Style="sty_Label" TabOrder="53" Text="교육장소" Top="229" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" BKColor="user4" Border="Flat" Height="20" Id="edEduPlace" ImeMode="native" Left="100" LeftMargin="2" OnFocus="edEduPlace_OnFocus" OnKeyDown="gfn_EnterNextFocus" Readonly="TRUE" Style="sty_EditReadOnly" TabOrder="25" Top="229" UserData="S:교육장소" Width="652"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="297" OnClick="lfn_Search" Style="sty_Button" TabOrder="42" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnInput" ImageID="BTN_COM_ADD" Left="384" OnClick="lfn_Input" Style="sty_Button" TabOrder="43" ToolTipText="추가&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDelete" ImageID="BTN_COM_DEL" Left="558" OnClick="lfn_Delete" Style="sty_Button" TabOrder="45" ToolTipText="삭제&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSave" ImageID="BTN_COM_SAVE" Left="471" OnClick="lfn_Save" Style="sty_Button" TabOrder="44" ToolTipText="수정&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="645" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="38" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="732" OnClick="btnToExcel_OnClick" Style="sty_Button" TabOrder="39" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="819" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="40" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="907" OnClick="lfn_End" Style="sty_Button" TabOrder="41" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="52" Text="지부" Top="37" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="99" OnChanged="lfn_Search" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="1" Top="36" UserData="I:지부" Width="88"></Combo>
+		<Static Align="Center" Height="20" Id="lbCourseGubun" Left="512" Style="sty_Label" TabOrder="54" Text="과정" Top="62" VAlign="Middle" Width="96"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourseGubun" INDEX="0" InnerDataset="ds_oCourseGubun" Left="611" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="5" Top="62" UserData="S:과정" Width="115"></Combo>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="9" Style="sty_Label" TabOrder="55" Text="직능" Top="61" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_oCourse" Left="100" OnChanged="lfn_Search" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="3" Top="60" UserData="I:직능" Width="180"></Combo>
+		<Static Align="Center" Height="20" Id="lbStdYear" Left="192" Style="sty_Label" TabOrder="56" Text="년도" Top="37" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edTrainingYear" ImeMode="native" Left="284" LeftMargin="2" MaxLength="4" Number="TRUE" OnChanged="lfn_Search" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="2" Top="37" UserData="I:년도" Width="36"></Edit>
+		<Static Align="Center" Height="20" Id="lbTrainingOrder" Left="8" Style="sty_Label" TabOrder="57" Text="회차" Top="85" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbEduExceptDate" Left="8" Style="sty_Label" TabOrder="58" Text="교육특이사항" Top="157" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="medSeatCnt" Left="100" MaxLength="3" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="17" Top="181" UserData="S:좌석수" Width="50"></MaskEdit>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edTrainingOrder" ImeMode="native" Left="100" LeftMargin="2" MaxLength="3" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="edTrainingOrder_OnKillFocus" Style="sty_Edit" TabOrder="6" Top="85" UserData="S:회차" Width="28"></Edit>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calEduDateEnd" Left="408" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="lfn_Date_OnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="8" Top="85" UserData="S:교육일자" WeeksFont="돋음,9" Width="98"></Calendar>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="tmEduTimeEnd" Left="676" LeftMargin="2" Mask="##:##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="lfn_time_OnKillFocus" Style="sty_Time" TabOrder="10" Top="86" Type="STRING" UserData="S:교육시간" Width="40"></MaskEdit>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calEduDateStart" Left="284" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="lfn_Date_OnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="7" Top="85" UserData="S:교육일자" WeeksFont="돋음,9" Width="98"></Calendar>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="tmEduTimeStart" Left="612" LeftMargin="2" Mask="##:##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="lfn_time_OnKillFocus" Style="sty_Time" TabOrder="9" Top="86" Type="STRING" UserData="S:교육시간" Width="40"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbSeatCnt" Left="8" Style="sty_Label" TabOrder="59" Text="교육정원" Top="181" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbEduTime" Left="512" Style="sty_Label" TabOrder="60" Text="교육시간" Top="85" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" Height="20" Id="lbEduDate" Left="192" Style="sty_Label" TabOrder="61" Text="교육일자" Top="85" VAlign="Middle" Width="88"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radTrainingOrderUseYn" INDEX="0" InnerDataset="ds_oUseYn" Left="132" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="32" Top="372" Value="Y" Width="101"></Radio>
+		<Static Font="굴림,9" Height="20" Id="lbTrainingOrderUseYnLabel" Left="233" Style="sty_TextBlue" TabOrder="62" Text="(폐기시&#32;업무통계,인터넷접수,교수관리일정&#32;등에서&#32;제외됨)" Top="373" VAlign="Middle" Width="330"></Static>
+		<Static Align="Center" Height="20" Id="lbAddNoticeRemark" Left="8" Style="sty_Label" TabOrder="64" Text="추가알림사항" Top="299" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edAddNoticeRemark" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="28" Top="299" UserData="S" Width="676"></Edit>
+		<Static Align="Center" Height="20" Id="lbParkingNotice" Left="8" Style="sty_Label" TabOrder="65" Text="주차안내" Top="275" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edParkingNotice" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="27" Top="275" UserData="S" Width="676"></Edit>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxInternetJubsuStatus" INDEX="0" InnerDataset="ds_oInternetJubsuStatus" Left="211" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="21" Top="204" UserData="I:인터넷접수등록선택" Width="149"></Combo>
+		<Static Align="Center" Height="20" Id="lbTrainingOrderUseYn" Left="8" Style="sty_Label" TabOrder="66" Text="회차&#32;사용/폐기&#32;여부" Top="372" VAlign="Middle" Width="120"></Static>
+		<Static Align="Center" Height="20" Id="lbJubsuCnt" Left="153" Style="sty_Label" TabOrder="67" Text="접수완료인원" Top="181" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medJubsuCnt" Left="245" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="18" Top="181" UserData="S" Width="50"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbTimeWave" Left="659" Style="sty_Text" TabOrder="68" Text="~" Top="86" VAlign="Middle" Width="10"></Static>
+		<Static Align="Center" Height="20" Id="lbDateWave" Left="390" Style="sty_Text" TabOrder="69" Text="~" Top="85" VAlign="Middle" Width="10"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnMiniMap" ImageID="BTN_TEXT_08" Left="779" OnClick="btnMinimap_OnClick" Style="sty_Button" TabOrder="34" Text="약도보기" Top="228" Transparent="TRUE" Width="118"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEduPlaceLink" ImageID="BTN_TEXT_08" Left="779" OnClick="btnEduPlaceLink_OnClick" Style="sty_Button" TabOrder="35" Text="교육장관리" Top="252" Transparent="TRUE" Width="118"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearchEduPlace" ImageID="BTN_SEARCH" Left="754" OnClick="btnSearchEduPlace_OnClick" Style="sty_Button" TabOrder="47" Top="228" Transparent="TRUE" Width="22"></Button>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edEduExceptDate" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="16" Top="157" UserData="S" Width="796"></Edit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="medIJubsuCnt" Left="422" MaxLength="3" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="medIJubsuCnt_OnKillFocus" Style="sty_Maskedit" TabOrder="19" Top="181" UserData="S" Width="50"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbIJubsuCnt" Left="299" Style="sty_Label" TabOrder="70" Text="인터넷접수가능인원" Top="181" VAlign="Middle" Width="120"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSeat" ImageID="BTN_TEXT_08" Left="779" Style="sty_Button" TabOrder="36" Text="교육장좌석보기" Top="276" Transparent="TRUE" Width="118"></Button>
+		<Checkbox FalseValue="N" Height="20" Id="chkSeatLimitYN" Left="968" OnKeyDown="gfn_EnterNextFocus" Style="sty_Checkbox" TabOrder="46" Text="좌석제한" ToolTipText="지우면&#32;안됨&#32;나중에&#32;소스에서&#32;필요없을&#32;경우&#32;지워야&#32;함" Top="640" TrueValue="Y" Value="FALSE" Visible="FALSE" Width="80"></Checkbox>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edMailNotice" ImeMode="native" Left="1148" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="48" Top="368" UserData="S" Visible="FALSE" Width="660"></Edit>
+		<Static Align="Center" Height="20" Id="lbMailNotice" Left="1024" Style="sty_Label" TabOrder="72" Text="메일공지사항" Top="368" VAlign="Middle" Visible="FALSE" Width="120"></Static>
+		<Static Align="Center" Height="20" Id="lbInetJubsuYn" Left="8" Style="sty_Label" TabOrder="73" Text="인터넷접수" Top="205" VAlign="Middle" Width="88"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radInetJubsuYn" INDEX="0" InnerDataset="ds_oInetJubsuYn" Left="100" OnChanged="radInetJubsuYn_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="20" Top="205" Value="Y" Width="110"></Radio>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxMunjeGubun" INDEX="0" InnerDataset="ds_oMunjeGubun" Left="375" OnChanged="cbxMunjeGubun_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="4" Top="60" UserData="S:구분" Width="132"></Combo>
+		<Static Align="Center" Height="20" Id="lbMunjeGubun" Left="284" Style="sty_Label" TabOrder="75" Text="직능상세구분" Top="61" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbTotalCnt" Left="5" Style="sty_LabelStat" TabOrder="76" Text="조회건수" Top="399" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medTotalCnt" Left="97" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="49" Top="399" UserData="S" Width="88"></MaskEdit>
+		<Static Align="Center" Height="20" Id="Static0" Left="1024" Style="sty_Label" TabOrder="77" Text="인터넷좌석선택" Top="224" VAlign="Middle" Visible="FALSE" Width="93"></Static>
+		<Static Align="Center" Height="20" Id="Static1" Left="1253" Style="sty_Label" TabOrder="78" Text="좌석성별표시" Top="224" VAlign="Middle" Visible="FALSE" Width="88"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="chkISeatSelectYn" INDEX="0" InnerDataset="ds_ioYN" Left="1121" OnChanged="chkISeatSelectYn_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="79" Top="224" Value="Y" Visible="FALSE" Width="120"></Radio>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="chkSexLimitYN" INDEX="0" InnerDataset="ds_ioYN" Left="1345" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="80" Top="224" Value="Y" Visible="FALSE" Width="120"></Radio>
+		<Static Align="Center" Height="20" Id="Static4" Left="8" Style="sty_Label" TabOrder="81" Text="교육일정구분" Top="133" VAlign="Middle" Width="88"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radDayGubun" INDEX="0" InnerDataset="ds_oDayGubun" Left="100" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="15" Top="133" Value="0" Width="377"></Radio>
+		<Static Align="Center" Height="20" Id="lbCyberDate" Left="512" Style="sty_Label" TabOrder="82" Text="사이버교육기간" Top="109" VAlign="Middle" Width="95"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calCyberDateStart" Left="612" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="lfn_Date_OnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="13" Top="109" UserData="S:사이버교육기간" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Static Align="Center" Height="20" Id="Static3" Left="714" Style="sty_Text" TabOrder="83" Text="~" Top="109" VAlign="Middle" Width="10"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calCyberDateEnd" Left="728" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="lfn_Date_OnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="14" Top="109" UserData="S:사이버교육기간" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Static Align="Center" Height="20" Id="Static2" Left="512" Style="sty_Label" TabOrder="84" Text="수수료" Top="39" VAlign="Middle" Width="96"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" DisableBKColor="lightsalmon" Enable="FALSE" Font="굴림,10,Bold" Height="21" Id="cbxFee" INDEX="0" InnerDataset="ds_oTrainingFee" Left="612" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="85" Top="39" Width="114"></Combo>
+		<Static Align="Center" BKColor="crimson" Height="20" Id="Static7" Left="9" Style="sty_Label" TabOrder="86" Text="교육지역" Top="252" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Font="굴림,10,Bold" Height="20" Id="edRegion" ImeMode="native" Left="101" LeftMargin="2" MaxLength="3" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="26" Top="252" UserData="S" Width="48"></Edit>
+		<Static Font="굴림,10" Height="17" Id="Static8" Left="153" TabOrder="87" Text="(3글자까지&#32;입력가능)&#32;☞&#32;인터넷&#32;접수시&#32;지역&#32;표기(예시)=&gt;&#32;3.7~3.11(영등포)" Top="253" VAlign="Middle" Width="500"></Static>
+		<Static Align="Center" BKColor="crimson" Height="20" Id="lbSMS" Left="8" Style="sty_Label" TabOrder="88" Text="안내문자&#32;자동발송" Top="345" VAlign="Middle" Width="110"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="radSMSSendYN" INDEX="1" InnerDataset="ds_oSendYN" Left="122" OnChanged="radSMSSendYN_OnChanged" OnClick="radSMSSendYN_OnClick" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="29" Top="345" Value="Y" Width="141"></Radio>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calSendDate" Left="332" OnChanged="calSendDate_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="30" Top="345" UserData="S:문자발송일자" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Static Align="Center" BKColor="user35" Height="20" Id="lbSendDate" Left="266" Style="sty_Label" TabOrder="89" Text="발송일자" Top="345" VAlign="Middle" Width="64"></Static>
+		<Static Height="12" Id="lbSendTime" Left="436" TabOrder="90" Text="09시&#32;발송" Top="349" Width="59"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSMSView" ImageID="BTN_TEXT_06" Left="500" OnClick="btnSMSView_OnClick" Style="sty_Button" TabOrder="31" Text="문자내용&#32;변경" Top="345" Transparent="TRUE" Width="93"></Button>
+		<Static Height="17" Id="Static9" Left="352" TabOrder="91" Text="※&#32;아래&#32;리스트에서&#32;더블클릭시&#32;접수자&#32;현황을&#32;볼&#32;수&#32;있습니다." Top="403" Width="365"></Static>
+		<Static Align="Center" Height="20" Id="Static5" Left="362" Style="sty_Label" TabOrder="92" Text="인터넷대기정원" Top="205" VAlign="Middle" Width="100"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="medInetWaitSeatCnt" Left="578" MaxLength="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="23" Top="205" UserData="S" Width="40"></MaskEdit>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radInetWaitYn" INDEX="0" InnerDataset="ds_oInetWaitYn" Left="465" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="22" Top="205" Value="Y" Width="110"></Radio>
+		<Static Align="Center" Height="20" Id="Static6" Left="621" Style="sty_Label" TabOrder="93" Text="인터넷대기완료인원" Top="181" VAlign="Middle" Width="124"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medInetWaitRegCnt" Left="746" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="24" Top="181" UserData="S" Width="40"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnAwaiter" ImageID="BTN_TEXT_10" Left="790" OnClick="btnAwaiter_OnClick" Style="sty_Button" TabOrder="33" Text="인터넷접수&#32;대기자보기" ToolTipText="인터넷접수대기자보기" Top="180" Transparent="TRUE" Width="144"></Button>
+		<Static Align="Center" BKColor="user36" BorderColor="user0" Height="20" Id="lbImsiTOMGNO" Left="203" Style="sty_Label" TabOrder="95" Text="TOMGNO" Top="400" VAlign="Middle" Width="60"></Static>
+		<Edit Height="20" Id="edImsiTOMGNO" Left="264" TabOrder="94" Top="400" Width="80"></Edit>
+		<Static Align="Center" BKColor="darkviolet" Height="20" Id="lbJubsuDate" Left="8" Style="sty_Label" TabOrder="96" Text="접수시작일시" Top="109" VAlign="Middle" Width="88"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calJubsuStartDate" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="lfn_Date_OnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="11" Top="109" WeeksFont="돋음,9" Width="98"></Calendar>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="medJubsuStartTime" Left="200" LeftMargin="2" Mask="##:##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="lfn_time_OnKillFocus" Style="sty_Time" TabOrder="12" Top="109" Type="STRING" Width="40"></MaskEdit>
+		<Static Align="Center" BKColor="darkviolet" Height="20" Id="Static10" Left="245" Style="sty_Label" TabOrder="99" Text="접수마감일시" Top="109" VAlign="Middle" Width="88"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calJubsuEndDate" Left="337" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="lfn_Date_OnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="97" Top="109" WeeksFont="돋음,9" Width="98"></Calendar>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="medJubsuEndTime" Left="437" LeftMargin="2" Mask="##:##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="lfn_time_OnKillFocus" Style="sty_Time" TabOrder="98" Top="109" Type="STRING" Width="40"></MaskEdit>
+		<Static Align="Center" BKColor="user6" Height="20" Id="Static11" Left="729" Style="sty_Label" TabOrder="101" Text="실시간&#32;온라인&#32;구분" Top="39" VAlign="Middle" Width="125"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxOnlineGubun" INDEX="0" InnerDataset="ds_oOnlineGubun" Left="856" OnChanged="cbxOnlineGubun_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="100" Top="38" UserData="S:온라인" Width="134"></Combo>
+		<Static Align="Center" BKColor="user6" Height="20" Id="lbOnline1" Left="729" Style="sty_Label" TabOrder="102" Text="ZOOM&#32;회차" Top="63" VAlign="Middle" Width="80"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edOnlineID" ImeMode="english" Left="857" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="103" Top="63" UserData="S" Width="132"></Edit>
+		<Static Align="Center" BKColor="user6" Font="굴림,9" Height="20" Id="lbOnline2" Left="809" Style="sty_Label" TabOrder="104" Text="아이디" Top="63" VAlign="Middle" Width="45"></Static>
+		<Static Align="Center" BKColor="user6" Font="굴림,9" Height="20" Id="lbOnline3" Left="801" Style="sty_Label" TabOrder="105" Text="비밀번호" Top="85" VAlign="Middle" Width="53"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edOnlinePWD" ImeMode="english" Left="857" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="106" Top="87" UserData="S" Width="132"></Edit>
+		<Static Align="Center" Height="20" Id="lbdmDate" Left="512" Style="sty_Label" TabOrder="109" Text="집합교육기간" Top="133" VAlign="Middle" Width="96"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calStartdate" Left="612" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="lfn_Date_OnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="107" Top="133" UserData="S:대면교육기간" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Static Align="Center" Height="20" Id="Static13" Left="714" Style="sty_Text" TabOrder="110" Text="~" Top="133" VAlign="Middle" Width="10"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calEnddate" Left="728" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="lfn_Date_OnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="108" Top="133" UserData="S:대면교육기간" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Static Align="Center" Height="20" Id="Static12" Left="621" Style="sty_Label" TabOrder="111" Text="인터넷접수비밀번호" Top="205" VAlign="Middle" Width="124"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radInetJubsuPwuseYn" INDEX="0" InnerDataset="ds_oInetJubsuPwuseYn" Left="746" OnChanged="radInetJubsuPwuseYn_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="112" Top="205" Value="Y" Width="110"></Radio>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edInetJubsuPwd" ImeMode="english" Left="858" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="113" Top="205" UserData="S" Width="130"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0010MTrainingOrderManagement.xml
+ * 설명 : 강습일정관리관리
+ * 작성일 : 2009.08.20
+ * 작성자 : 이규희
+ */
+#include "LIB::training.js"; // 공통업무 관련
+
+
+var ls_EduPlaceSeq = ""; // 교육장 일련번호
+var ls_SaveFileName = "";
+var ls_RealFileName = "";
+var ls_FilePath = "";
+var ls_USEYN = "";
+
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+ 
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+		ls_FormId = split(ls_FormId[1], ".");
+		
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+    gfn_MakeRequiredInputMark(this); 	 // 필수 입력란을 설정한다.
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } 
+    else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } 
+    else {
+        gfn_AleDrt(MSGI00080);
+        close();
+    }
+    
+    // 공통 코드 조회
+    gfn_SearchCommonCode(ds_oMunjeGubun, "MUNJEGUBUN", "Y", ""); // 인터넷접수상태 조회
+    cbxMunjeGubun.Value = "N";    
+    gfn_SearchTrainingCourse("T", ds_oCourse, "Y"); // 직능 코드 조회
+    
+    //trace ("shjung::: ds_oCourse ::: " + ds_oCourse.SaveXML());
+    cbxCourse.Value = "22";
+    gfn_SearchJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회
+    
+    gfn_SearchCommonCode(ds_oInternetJubsuStatus, "IJUBSUGUBUN", "Y", "선택"); // 인터넷접수상태 조회
+    cbxInternetJubsuStatus = "03"; // 접수예정
+    gfn_SearchCommonCode(ds_oCourseGubun, "COURSEGUBUN", "Y", "");
+    cbxCourseGubun.Value = "3";
+    ds_oTrainingFee.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+
+	tit_addCsvSearchActionInfo("com:searchTrainingFeeCode", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oTrainingFee=ds_oTrainingFee"	// outDs
+		,""	// args 
+		,""
+		,false
+		,false
+		,true
+	);
+	
+	// 해당 직능의 수수료로 설정
+	ds_oTrainingFee.Filter("GUBUN=='"+cbxCourse.Value+cbxMunjeGubun.Value+"'");
+    edTrainingYear.Text = left(GetDate(), 4);
+    
+    // 사이버교육기간    
+    if (cbxMunjeGubun.Value == "C") {	// N:일반, Y:면제, C:혼합(사이버+소집)
+		lbCyberDate.BkColor = "peru";
+		calCyberDateStart.Enable = true;
+		calCyberDateEnd.Enable = true;
+    } 
+    else {
+		lbCyberDate.BkColor = "steelblue";
+		calCyberDateStart.Enable = false;
+		calCyberDateEnd.Enable = false;
+		calCyberDateStart.Value = "";
+		calCyberDateEnd.Value = "";
+    }
+    radSMSSendYN.Value = "0";
+    radSMSSendYN_OnChanged(obj, "0");	
+    edTrainingOrder.SetFocus();
+    lfn_Search();
+    lfn_change(); // 인터넷 좌석선택 여부확인 
+    
+	// 시스템관리자만 TOMGNO 보이도록 설정
+	if (gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "SM") {
+		lbImsiTOMGNO.Visible = true;
+		edImsiTOMGNO.Visible = true;
+		edImsiTOMGNO.Text = "";
+	} 
+	else {
+		lbImsiTOMGNO.Visible = false;
+		edImsiTOMGNO.Visible = false;
+		edImsiTOMGNO.Text = "";
+	} 
+	
+	// 초기 설정은 해당 ID의 지부가 우선 순위로 조회되는데
+	// 이후 다른 지부의 데이터를 확인할 수 있도록 JIBU 콤보박스를 ENABLE = TRUE; 시킨다 
+	// 김동한 23.06.29
+	cbxJibu.Enable = true;
+}
+
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do 
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+ 
+
+function Form_OnSize(obj,nCx,nCy,nState) {
+    if (gs_IsResizingForm == "Y") {
+        gdTrainingOrder.Height = nCy - gdTrainingOrder.Top - 4;
+        gdTrainingOrder.Width = nCx - gdTrainingOrder.Left - 4;
+    }
+}
+
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    
+   if (edTrainingYear.Text == "") { // 입력 Validation Check
+        gfn_Alert("년도를 입력하십시오.");
+        edTrainingYear.SetFocus();
+        return false;
+    }
+    // 조회이력을 저장한다.  
+    ls_HistoryArg = "지부=" + quote(cbxJibu.Text)
+                + ",년도=" + quote(edTrainingYear.Text)
+                + ",직능=" + quote(cbxCourse.Text);
+
+    gfn_InsertSearchPrintHistory(
+        "S"
+        , this.ID
+        , global.mnuLeft.cbxOpenForm.Text
+        , ls_HistoryArg
+    );
+    
+    ls_USEYN = "";
+    medTotalCnt.Value = "";
+    
+    ds_ioTrainingOrder.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();    
+	tit_addCsvSearchActionInfo("training:searchTrainingOrder", false);		
+	// 서버 호출 
+	
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioTrainingOrder=ds_oTrainingOrder"	// outDs
+		,"TOMGJIBU=" + quote(cbxJibu.Value)
+            + " TOYEAR=" + quote(edTrainingYear.Text)
+            + " TCCOURSECD=" + quote(cbxCourse.Value)// args 
+		,"lfn_AfterSearchTrainingOrder"
+		,false
+	);	
+	
+}
+
+
+/*
+ * 기능 : 추가
+ */
+function lfn_Input(obj) {
+    
+    if (!gfn_Confirm("신규 일정을 등록 하시겠습니까?\n입력완료 후 저장 버튼을 누르세요.")) {
+		return false;
+    }
+    mb_IsNewData = true; // 저장버튼이 클릭 설정
+    lfn_Cancel(); // 값 초기화
+    // 기본값 설정    
+    chkSexLimitYN.Value = "N";
+    chkSeatLimitYN.Value = "N";
+    calEduDateStart.Value = GetDate();
+    calEduDateEnd.Value = GetDate();
+    tmEduTimeStart.Value = "0900";
+    tmEduTimeEnd.Value = "1800";
+    var sOldOrder = 0;
+
+    for (var i = 0; i < ds_ioTrainingOrder.GetRowCount(); i++) { 
+		if (sOldOrder < ToInteger(ds_ioTrainingOrder.GetColumn(i, "TOTRAININGORDER"))) {
+			sOldOrder = ToInteger(ds_ioTrainingOrder.GetColumn(i, "TOTRAININGORDER"));
+		} 
+    }    
+    edTrainingOrder.Text = sOldOrder + 1;//회차
+    //edTrainingOrder.Text = ToInteger(ds_ioTrainingOrder.GetColumn(0, "TOTRAININGORDER")) + 1; 
+    edTrainingOrder_OnKillFocus(edTrainingOrder);    
+    cbxMunjeGubun_OnChanged(obj,cbxMunjeGubun.Value);
+    cbxFee.Index = 0;	
+    radSMSSendYN.Value = "0";	// 안내문자 미발송
+    radSMSSendYN_OnChanged(obj, "0");    
+    radInetWaitYn.Value = "Y";
+    edTrainingOrder.SetFocus(); 
+    radInetJubsuPwuseYn.Value = "N";
+    radInetJubsuPwuseYn_OnChanged(obj,radInetJubsuPwuseYn.Value); 
+}
+
+
+/*
+ * 기능 : 삭제
+ */ 
+function lfn_Delete(obj) {
+
+    if (ds_ioTrainingOrder.currow < 0) {
+        gfn_Alert(MSGI00030); // 삭제할 레코드가 없습니다.
+        return false;
+    }
+/*
+    if (ds_ioTrainingOrder.GetColumn(ds_ioTrainingOrder.currow, "TOJUBSUMAXCNT") != 0) {
+        gfn_Alert("삭제가 불가능합니다."); // 삭제할 레코드가 없습니다.
+        return false;
+	}
+*/	
+    var sTOMGNO = ds_ioTrainingOrder.GetColumn(ds_ioTrainingOrder.currow, "TOMGNO");	
+    var sTCCOURSECD = ds_ioTrainingOrder.GetColumn(ds_ioTrainingOrder.currow, "TCCOURSECD");	
+    var sTOMUNJEGUBUN = ds_ioTrainingOrder.GetColumn(ds_ioTrainingOrder.currow, "TOMUNJEGUBUN");
+    ds_ioJubsu.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+    tit_addCsvSearchActionInfo("training:searchTrainingJubsuCnt", false);
+
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioJubsu=ds_oJubsu"	// outDs
+		,"TOMGNO=" + quote(sTOMGNO)// args 
+		,""
+		,false
+		,""
+		,true
+	);
+	
+	if (ds_ioJubsu.GetCount() > 0) {
+        gfn_Alert("접수자가 있어서 삭제가 불가능합니다."); // 삭제할 레코드가 없습니다.
+		return false;
+	}
+	if (!gfn_Confirm(MSGW00030)) { // 정말로 삭제 하시겠습니까?
+	    return false;
+	}	
+	
+    lfn_SaveModifyHistory("D"); // 변경이력을 저장한다.
+    ds_ioTrainingOrder.DeleteRow(ds_ioTrainingOrder.currow); // 선택된 ROW를 삭제한다.
+    gfn_FormInit(this); // 입력란 초기화    
+/*
+    tit_clearActionInfo();
+	tit_addSingleActionInfo("training:deleteTrainingOrder", 0, "");
+	var arg = "TOMGNO=" + quote(sTOMGNO)
+			+ " TCCOURSECD=" + quote(sTCCOURSECD)
+			+ " TOMUNJEGUBUN=" + quote(sTOMUNJEGUBUN); 	// 수납환불구분
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,"" // inDs
+        ,""	// outDs
+        ,arg
+        ,"lfn_AfterSaveTrainingOrder"
+        ,false
+        ,false
+        ,true
+    );	
+*/
+	tit_clearActionInfo();
+	tit_addSaveActionInfo(
+		""	// insert
+		, ""	// update
+		, "training:deleteTrainingOrder"	// delete
+		, ""	// flag column 명
+		, ""	// key sql id
+		, 0	// key 증가 값
+		, "" 
+		, 0 
+		, "N"	// 실행타입
+	);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,"ds_iTrainingOrder=ds_ioTrainingOrder:U"	// inDs
+		,""	// outDs
+		,"" // args
+		,"lfn_AfterSaveTrainingOrder"
+		,false
+	);
+}
+
+
+/*
+ * 기능 : 저장
+ */
+function lfn_Save(obj) {
+
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+   
+	if(gds_oUserInfo.GetColumn(0, "PSABUN") == "20220952" or gds_oUserInfo.GetColumn(0, "PDEPTCD") == "0251")
+	{
+	
+	}
+	else if(cbxjibu.Value <> gds_oUserInfo.GetColumn(0, "PDEPTCD"))
+	{
+		gfn_Alert(" 해당 지부의 소속이 아닙니다. 저장할 수 없습니다.");
+		return; 
+	}
+	
+    if (calEduDateStart.Value > calEduDateEnd.Value) {
+        gfn_Alert("교육종료일이 시작일보다 늦습니다.");
+        calEduDateEnd.SetFocus();
+        return false;
+    }
+       
+    // 안내문자 자동발송
+    if (radSMSSendYN.Value == "1") {    
+    
+		if (gfn_isNull(calSendDate.Value)) {	
+			gfn_Alert("안내문자 자동발송일이 입력되지 않았습니다.");	
+			calSendDate.SetFocus();	
+			return false;	
+		}    		
+		if (!gfn_isNull(calEduDateStart.Value) && (calEduDateStart.Value <= calSendDate.Value)) {	
+			gfn_Alert("안내문자 자동발송일이 교육시작일보다 늦습니다.");	
+			calSendDate.Value = substr(AddDate(calEduDateStart.Value,-2) ,0,8);	
+			calSendDate.SetFocus();	
+			return false;
+		}
+	}
+	
+	// 좌석수와 접수최대인원수 체크(2015년 교육부터 적용)
+	if (edTrainingYear.Text >= "2015") {	
+		if (lfn_JubsuCntCheck(cbxJibu.Value, "0", cbxCourse.Value) == false) {		
+			medSeatCnt.SetFocus();			
+			return false;			
+		}		
+	}
+	
+    if (gfn_isNull(cbxFee.Text)) {    
+        gfn_Alert("수수료가 입력되지 않았습니다.");
+        calEduDateStart.SetFocus();
+        return false;       
+    }
+    
+	// 수수료 오류 방지 위해 수수료 금액 다시 세팅
+	for (var i = 0; i < ds_oTrainingFee.GetRowCount(); i++) {
+	
+		if (left(calEduDateStart.Value,8) >= ds_oTrainingFee.GetColumn(i, "TFCSTARTDATE") &&
+			left(calEduDateStart.Value,8) <= ds_oTrainingFee.GetColumn(i, "TFCENDDATE")) {			
+			cbxFee.Index = i;
+			break;
+		}
+	}	
+	
+	if (!gfn_isNull(calJubsuStartDate.Value) && gfn_isNull(medJubsuStartTime.Value)) {
+		gfn_Alert("접수시작일시의 시간이 입력되지 않았습니다.");
+		medJubsuStartTime.SetFocus();
+		return false;		
+	}
+	
+	if (gfn_isNull(calJubsuStartDate.Value) && !gfn_isNull(medJubsuStartTime.Value)) {	
+		gfn_Alert("접수시작일자가 입력되지 않았습니다.");
+		calJubsuStartDate.SetFocus();
+		return false;
+		
+	}
+	
+	if (!gfn_isNull(calJubsuEndDate.Value) && gfn_isNull(medJubsuEndTime.Value)) {	
+		gfn_Alert("접수마감일시의 시간이 입력되지 않았습니다.");
+		medJubsuEndTime.SetFocus();
+		return false;		
+	}
+	
+	if (gfn_isNull(calJubsuEndDate.Value) && !gfn_isNull(medJubsuEndTime.Value)) {	
+		gfn_Alert("접수마감일자가 입력되지 않았습니다.");
+		calJubsuEndDate.SetFocus();
+		return false;		
+	}
+	
+	if (mb_IsNewData) { // 신규 저장        
+		// 키 중복 체크    
+        if (!gfn_Confirm("신규 일정을 저장하시겠습니까?\n\n" +
+						 " ▶ 일정 : " + left(calEduDateStart.Value,4)+"."+substr(calEduDateStart.Value,4,2)+"."+substr(calEduDateStart.Value,6,2)
+						  + " ~ " + left(calEduDateEnd.Value,4)+"."+substr(calEduDateEnd.Value,4,2)+"."+substr(calEduDateEnd.Value,6,2) + "\n\n" +
+						 " ▶ 회차 : " + edTrainingOrder.Text + "\n\n" +
+						 " ▶ 수수료 : " + cbxFee.Text+"원")) { // 정말로 추가 저장 하시겠습니까?
+            return false;
+        }
+        
+        ds_oTrainingOrderMgno.ClearData(); // 데이타셋 초기화
+        tit_clearActionInfo();
+        tit_addCsvSearchActionInfo("training:searchTrainingOrderMgno", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_oTrainingOrderMgno=ds_oTrainingOrderMgno"	// outDs
+            ,"TOMGJIBUCD=" + quote(cbxJibu.Value)
+                + " TOYEAR=" + quote(edTrainingYear.Text)
+                + " TCCOURSECD=" + quote(cbxCourse.Value + cbxMunjeGubun.Value)
+                + " TOORDER=" + quote(edTrainingOrder.Text)// args 
+            ,""
+            ,false
+            ,""
+            ,true
+        );
+        
+        if (ds_oTrainingOrderMgno.GetCount() >= 1) {
+            gfn_Alert("중복된 회차입니다.");
+            edTrainingOrder.SetFocus();
+            return;
+        }
+            
+        // 입력된 값을 그리드로 복사한다.
+        ds_ioTrainingOrder.InsertRow(0);
+        ds_ioTrainingOrder.SetColumn(0, "TOMGJIBUCD", cbxJibu.Value);
+        ds_ioTrainingOrder.SetColumn(0, "TOYEAR", edTrainingYear.Text);
+        ds_ioTrainingOrder.SetColumn(0, "TCCOURSECD", cbxCourse.Value);
+        ds_ioTrainingOrder.SetColumn(0, "TOMUNJEGUBUN", cbxMunjeGubun.Value);
+        ds_ioTrainingOrder.SetColumn(0, "TOCOURSEGUBUN", cbxCourseGubun.Value);
+        ds_ioTrainingOrder.SetColumn(0, "TOTRAININGORDER", edTrainingOrder.Text);
+        ds_ioTrainingOrder.SetColumn(0, "TOSTARTDATE", left(calEduDateStart.Value, 8));
+        ds_ioTrainingOrder.SetColumn(0, "TOENDDATE", left(calEduDateEnd.Value, 8));
+        ds_ioTrainingOrder.SetColumn(0, "TOSTARTTIME", tmEduTimeStart.Value);
+        ds_ioTrainingOrder.SetColumn(0, "TOENDTIME", tmEduTimeEnd.Value);
+        ds_ioTrainingOrder.SetColumn(0, "TOSEATCNT", medSeatCnt.Value);
+        ds_ioTrainingOrder.SetColumn(0, "TOJUBSUMAXCNT", medJubsuCnt.Value);
+        ds_ioTrainingOrder.SetColumn(0, "TOINETJUBSUCNT", medIJubsuCnt.Value);
+        ds_ioTrainingOrder.SetColumn(0, "TOINETJUBSUYN", radInetJubsuYn.Value);        
+        ds_ioTrainingOrder.SetColumn(0, "TOAWAITERCNT", medInetWaitSeatCnt.Value);        
+        ds_ioTrainingOrder.SetColumn(0, "TOAWAITERREGCNT", medInetWaitRegCnt.Value);        
+        ds_ioTrainingOrder.SetColumn(0, "TOAWAITERYN", radInetWaitYn.Value);
+        ds_ioTrainingOrder.SetColumn(0, "TOSEATSELECTYN", chkISeatSelectYn.Value);
+        ds_ioTrainingOrder.SetColumn(0, "TOSEXLIMITYN", chkSexLimitYN.Value);
+        ds_ioTrainingOrder.SetColumn(0, "TOSEATLIMITYN", chkSeatLimitYN.Value);
+        ds_ioTrainingOrder.SetColumn(0, "EPMGNO", ls_EduPlaceSeq);
+        ds_ioTrainingOrder.SetColumn(0, "TOREMARK", edAddNoticeRemark.Text);
+        ds_ioTrainingOrder.SetColumn(0, "TOEXCEPTDATE", edEduExceptDate.Text);
+        //ds_ioTrainingOrder.SetColumn(0, "TOMAILNOTICE", edMailNotice.Text);	//2016.04.04 제외
+        ds_ioTrainingOrder.SetColumn(0, "TOJUBSUSTATUS", cbxInternetJubsuStatus.Value);
+        ds_ioTrainingOrder.SetColumn(0, "USE_YN", radTrainingOrderUseYn.Value);        
+        ds_ioTrainingOrder.SetColumn(0, "TODAYGUBUN", radDayGubun.Value);        
+        ds_ioTrainingOrder.SetColumn(0, "TOCYBERSTARTDATE", calCyberDateStart.Value);        
+        ds_ioTrainingOrder.SetColumn(0, "TOCYBERENDDATE", calCyberDateEnd.Value);        
+        ds_ioTrainingOrder.SetColumn(0, "TOTFCSEQ", cbxFee.Value);        
+        ds_ioTrainingOrder.SetColumn(0, "TOAUTOMSGGUBUN", radSMSSendYN.Value);        
+        ds_ioTrainingOrder.SetColumn(0, "TOAUTODATE", left(calSendDate.Value, 8));        
+        ds_ioTrainingOrder.SetColumn(0, "TOJUBSUSTARTDATE", left(calJubsuStartDate.Value, 8)+medJubsuStartTime.Value);        
+        ds_ioTrainingOrder.SetColumn(0, "TOJUBSUENDDATE", left(calJubsuEndDate.Value, 8)+medJubsuEndTime.Value);        
+        ds_ioTrainingOrder.SetColumn(0, "TOONLINEGUBUN", cbxOnlineGubun.Value);        
+        ds_ioTrainingOrder.SetColumn(0, "TOONLINEID", edOnlineID.Text);        
+        ds_ioTrainingOrder.SetColumn(0, "TOONLINEPWD", edOnlinePWD.Text);
+        //2023.06.14 대면교육일정 컬럼추가
+        ds_ioTrainingOrder.SetColumn(0, "TODSTARTDATE", left(calStartdate.Value, 8));        
+        ds_ioTrainingOrder.SetColumn(0, "TODENDDATE", left(calEnddate.Value,8));
+        //2023.10.10 인터넷접수비밀번호 추가          
+        ds_ioTrainingOrder.SetColumn(0, "TOINETJUBSUPWUSEYN", radInetJubsuPwuseYn.Value);          
+        ds_ioTrainingOrder.SetColumn(0, "TOINETJUBSUPWD", edInetJubsuPwd.Text);
+       
+        lfn_SaveModifyHistory("I"); // 변경이력을 저장한다.
+    } 
+    else { // 수정 저장
+    
+        ds_oModifyTime.ClearData(); // 데이타셋 초기화
+        tit_clearActionInfo();
+        tit_addCsvSearchActionInfo("training:searchTrainingOrderModifyTime", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_oModifyTime=ds_oModifyTime"	// outDs
+            ,"TOMGNO=" + ds_ioTrainingOrder.GetColumn(ds_ioTrainingOrder.currow, "TOMGNO") // args 
+            ,""
+            ,false
+            ,""
+            ,true
+        );
+        
+        if (ds_oModifyTime.getColumn(0, "MODIFYTIME") == "MODIFYNO") {        
+            gfn_Alert("접수시작일시부터 30분간은 수정하실 수 없습니다.");
+            return false;                
+        }
+    
+		if ((ds_ioTrainingOrder.GetColumn(ds_ioTrainingOrder.currow, "TOSTARTDATE") <= left(getDate(),8)) ||
+		    (ds_ioTrainingOrder.GetColumn(ds_ioTrainingOrder.currow, "TOENDDATE") <= left(getDate(),8))) {
+		    
+			if (ls_USEYN == radTrainingOrderUseYn.Value) {	// 사용여부가 같을 경우		    
+				gfn_Alert("지난 일정은 수정하실 수 없습니다.");
+				return false;				
+			}
+        }
+
+		// 대기자가 있는 경우
+		lfn_searchAcceptAwaiterCnt(ds_ioTrainingOrder.GetColumn(ds_ioTrainingOrder.currow, "TOMGNO"));
+		
+		if (ds_oAcceptAwaiter.GetColumn(0, "AWAITERCNT") > 0 ) {			
+			if (radInetJubsuYn.Value == "N") {			
+				gfn_Alert("대기자가 있는 경우 인터넷접수를 '미사용'으로 변경하실 수 없습니다.");				
+				return false;
+			}			
+		}
+		
+        if (!gfn_Confirm("일정을 수정하시겠습니까?\n\n" +
+						 " ▶ 일정 : " + left(calEduDateStart.Value,4)+"."+substr(calEduDateStart.Value,4,2)+"."+substr(calEduDateStart.Value,6,2)
+						  + " ~ " + left(calEduDateEnd.Value,4)+"."+substr(calEduDateEnd.Value,4,2)+"."+substr(calEduDateEnd.Value,6,2) + "\n\n" +
+						 " ▶ 회차 : " + edTrainingOrder.Text + "\n\n" +
+						 " ▶ 수수료 : " + cbxFee.Text+"원")) { // 정말로 수정 저장 하시겠습니까?
+            return false;
+        }
+        // 입력된 값을 그리드로 복사한다.
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOMGJIBUCD", cbxJibu.Value);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOYEAR", edTrainingYear.Text);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TCCOURSECD", cbxCourse.Value);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOMUNJEGUBUN", cbxMunjeGubun.Value);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOCOURSEGUBUN", cbxCourseGubun.Value);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOTRAININGORDER", edTrainingOrder.Text);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOSTARTDATE", left(calEduDateStart.Value, 8));
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOENDDATE", left(calEduDateEnd.Value, 8));
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOSTARTTIME", tmEduTimeStart.Value);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOENDTIME", tmEduTimeEnd.Value);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOSEATCNT", medSeatCnt.Value);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOJUBSUMAXCNT", medJubsuCnt.Value);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOINETJUBSUCNT", medIJubsuCnt.Value);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOINETJUBSUYN", radInetJubsuYn.Value);        
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOAWAITERCNT", medInetWaitSeatCnt.Value);        
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOAWAITERREGCNT", medInetWaitRegCnt.Value);        
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOAWAITERYN", radInetWaitYn.Value);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOSEATSELECTYN", chkISeatSelectYn.Value);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOSEXLIMITYN", chkSexLimitYN.Value);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOSEATLIMITYN", chkSeatLimitYN.Value);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "EPMGNO", ls_EduPlaceSeq);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOREMARK", edAddNoticeRemark.Text);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOEXCEPTDATE", edEduExceptDate.Text);
+        //ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOMAILNOTICE", edMailNotice.Text); //2016.04.04 제외
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOJUBSUSTATUS", cbxInternetJubsuStatus.Value);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "USE_YN", radTrainingOrderUseYn.Value);
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TODAYGUBUN", radDayGubun.Value);        
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOCYBERSTARTDATE", calCyberDateStart.Value);        
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOCYBERENDDATE", calCyberDateEnd.Value);        
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOTFCSEQ", cbxFee.Value);        
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOREGION", edRegion.Text);        
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOAUTOMSGGUBUN", radSMSSendYN.Value);        
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOAUTODATE", left(calSendDate.Value, 8));        
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOJUBSUSTARTDATE", left(calJubsuStartDate.Value, 8)+medJubsuStartTime.Value);        
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOJUBSUENDDATE", left(calJubsuEndDate.Value, 8)+medJubsuEndTime.Value);        
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOONLINEGUBUN", cbxOnlineGubun.Value);        
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOONLINEID", edOnlineID.Text);        
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOONLINEPWD", edOnlinePWD.Text);  
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TODSTARTDATE", left(calStartDate.Value,8));        
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TODENDDATE", left(calEndDate.Value,8)); 
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOINETJUBSUPWUSEYN", radInetJubsuPwuseYn.Value);          
+        ds_ioTrainingOrder.SetColumn(ds_ioTrainingOrder.currow, "TOINETJUBSUPWD", edInetJubsuPwd.Text);
+        
+        lfn_SaveModifyHistory("U"); // 변경이력을 저장한다.
+    }
+    gfn_FormInit(this); // 입력란 초기화
+    tit_clearActionInfo();
+    tit_addSaveActionInfo(
+        "training:insertTrainingOrder"	// insert
+        , "training:updateTrainingOrder"	// update
+        , ""	// delete
+        , ""	// flag column 명
+        , ""	// key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N"	// 실행타입
+    );  
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iTrainingOrder=ds_ioTrainingOrder:U"	// inDs
+        ,""	// outDs
+        ,""	// args 
+        ,"lfn_AfterSaveTrainingOrder"
+        ,false
+    );
+}
+
+
+/* 공통 필수 종료 */
+/* 사용자 함수 */
+/*
+ * 기능 : 교육일정관리 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchTrainingOrder(nErrorCode, strErrorMsg) {   	
+   	
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }   
+    
+	// 해당 직능의 수수료로 설정
+	ds_oTrainingFee.Filter("GUBUN=='"+cbxCourse.Value+cbxMunjeGubun.Value+"'"); 
+	
+	if (ds_ioTrainingOrder.rowcount > 0) {	
+		gdTrainingOrder_OnCellClick(gdTrainingOrder, 0);		
+	}
+    medTotalCnt.Value = ds_ioTrainingOrder.rowcount;    
+    gfn_SearchMessage(gdTrainingOrder); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+    
+}
+
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveTrainingOrder(nErrorCode, strErrorMsg) {
+    
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }    
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    lfn_Search(); // 교육일정관리 조회
+}
+
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    btnInput.Enable = bStatus; // 추가 버튼
+    btnDelete.Enable = bStatus; // 삭제 버튼
+    btnSave.Enable = bStatus; // 수정&저장 버튼
+}
+
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj) {
+	gfn_GridMultiSort(gdTrainingOrder, 0); // 멀티 정렬을 실행한다.
+}
+
+
+function ds_ioTrainingOrder_OnRowPosChanged(obj,nOldRow,nRow) {
+    // 그리드의 값을 입력란에 복사한다. 추가상태인 경우 복사 후 저장을 하기 위해 제외한다.
+    if (obj.GetRowType(nRow) <> "insert" && nRow <> -1) {
+        cbxJibu.Value = obj.GetColumn(nRow, "TOMGJIBUCD");
+        edTrainingYear.Text = obj.GetColumn(nRow, "TOYEAR");
+        cbxCourse.Value = obj.GetColumn(nRow, "TCCOURSECD");        
+        cbxMunjeGubun.Value = obj.GetColumn(nRow, "TOMUNJEGUBUN");        
+        cbxCourseGubun.Value = obj.GetColumn(nRow, "TOCOURSEGUBUN");
+        edTrainingOrder.Text = obj.GetColumn(nRow, "TOTRAININGORDER");
+        calEduDateStart.Value = obj.GetColumn(nRow, "TOSTARTDATE");
+        calEduDateEnd.Value = obj.GetColumn(nRow, "TOENDDATE");
+        tmEduTimeStart.Value = obj.GetColumn(nRow, "TOSTARTTIME");
+        tmEduTimeEnd.Value = obj.GetColumn(nRow, "TOENDTIME");
+        medSeatCnt.Value = obj.GetColumn(nRow, "TOSEATCNT");
+        medJubsuCnt.Value = obj.GetColumn(nRow, "TOJUBSUMAXCNT");
+        medIJubsuCnt.Value = obj.GetColumn(nRow, "TOINETJUBSUCNT");        
+        radInetJubsuYn.Value = obj.GetColumn(nRow, "TOINETJUBSUYN");        
+        medInetWaitSeatCnt.Value = obj.GetColumn(nRow, "TOAWAITERCNT");        
+        medInetWaitRegCnt.Value = obj.GetColumn(nRow, "TOAWAITERREGCNT");        
+        radInetWaitYn.Value = obj.GetColumn(nRow, "TOAWAITERYN");        
+        chkISeatSelectYn.Value = obj.GetColumn(nRow, "TOSEATSELECTYN");
+        chkSexLimitYN.Value = obj.GetColumn(nRow, "TOSEXLIMITYN");
+        chkSeatLimitYN.Value = obj.GetColumn(nRow, "TOSEATLIMITYN");
+        ls_EduPlaceSeq = obj.GetColumn(nRow, "EPMGNO");
+        edEduPlace.Text = obj.GetColumn(nRow, "EPNM");
+        edParkingNotice.Text = obj.GetColumn(nRow, "EPPARKINGINFO");
+        edAddNoticeRemark.Text = obj.GetColumn(nRow, "TOREMARK");
+        edEduExceptDate.Text = obj.GetColumn(nRow, "TOEXCEPTDATE");
+        //edMailNotice.Text = obj.GetColumn(nRow, "TOMAILNOTICE");	//2016.04.04 제외
+        cbxInternetJubsuStatus.Value = obj.GetColumn(nRow, "TOJUBSUSTATUS");
+        radTrainingOrderUseYn.Value = obj.GetColumn(nRow, "USE_YN");
+        
+        ls_USEYN = obj.GetColumn(nRow, "USE_YN");        
+        radDayGubun.Value = obj.GetColumn(nRow, "TODAYGUBUN");        
+        calCyberDateStart.Value = obj.GetColumn(nRow, "TOCYBERSTARTDATE");        
+        calCyberDateEnd.Value = obj.GetColumn(nRow, "TOCYBERENDDATE");        
+        cbxFee.Value = obj.GetColumn(nRow, "TOTFCSEQ");        
+        edRegion.Text = obj.GetColumn(nRow, "TOREGION");        
+        radSMSSendYN.Value = obj.GetColumn(nRow, "TOAUTOMSGGUBUN");        
+        calSendDate.Value = obj.GetColumn(nRow, "TOAUTODATE");
+        
+        calJubsuStartDate.Value = left(obj.GetColumn(nRow, "TOJUBSUSTARTDATE"), 8);		// 접수시작일자        
+        medJubsuStartTime.Value = substr(obj.GetColumn(nRow, "TOJUBSUSTARTDATE"), 8, 4);	// 접수시작시간       
+        calJubsuEndDate.Value = left(obj.GetColumn(nRow, "TOJUBSUENDDATE"), 8);		// 접수마감일자        
+        medJubsuEndTime.Value = substr(obj.GetColumn(nRow, "TOJUBSUENDDATE"), 8, 4);	// 접수마감시간        
+        cbxOnlineGubun.Value = obj.GetColumn(nRow, "TOONLINEGUBUN");	//실시간 온라인교육 구분        
+        edOnlineID.Text = obj.GetColumn(nRow, "TOONLINEID");	// 실시간 온라인 개설방ID        
+        edOnlinePWD.Text = obj.GetColumn(nRow, "TOONLINEPWD");	// 실시간 온라인 개설방PWD        
+        edImsiTOMGNO.Text = obj.GetColumn(nRow, "TOMGNO");                
+        calStartdate.Value = obj.GetColumn(nRow, "TODSTARTDATE");
+        calEndDate.Value = obj.GetColumn(nRow, "TODENDDATE");             
+             
+        radSMSSendYN_OnChanged(obj,radSMSSendYN.Value);        
+        cbxMunjeGubun_OnChanged(obj,cbxMunjeGubun.Value);        
+        radInetJubsuYn_OnChanged(obj,radInetJubsuYn.Value);         
+		cbxOnlineGubun_OnChanged(obj,cbxOnlineGubun.Value);  // 실시간온라인교육 여부 변경 시
+		
+		// OnChanged 후 초기화되어 다시 셋팅 
+        calCyberDateStart.Value = obj.GetColumn(nRow, "TOCYBERSTARTDATE");        
+        calCyberDateEnd.Value = obj.GetColumn(nRow, "TOCYBERENDDATE"); 
+        calStartdate.Value = obj.GetColumn(nRow, "TODSTARTDATE");
+        calEndDate.Value = obj.GetColumn(nRow, "TODENDDATE");       
+  
+        radInetJubsuPwuseYn.Value = obj.GetColumn(nRow, "TOINETJUBSUPWUSEYN");	// 인터넷접수패스워드사용여부        
+        edInetJubsuPwd.Text = obj.GetColumn(nRow, "TOINETJUBSUPWD");	// 인터넷접수패스워드
+         
+        radInetJubsuPwuseYn_OnChanged(obj,radInetJubsuPwuseYn.Value); 
+             
+		gfn_MakeKeyMark(this); // 키값 수정 금지 설정  
+     } 
+     mb_IsNewData = false; // 저장버튼이 클릭 초기화
+}
+
+
+function gdTrainingOrder_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+	ds_ioTrainingOrder_OnRowPosChanged(ds_ioTrainingOrder,nRow,nRow);
+}
+
+
+function edEduPlace_OnFocus(obj) {
+    btnSearchEduPlace.SetFocus();
+}
+
+
+function btnMiniMap_OnClick(obj)  {
+
+    ds_ioExamRoomMinimap.ClearData(); // 데이타셋 초기화    
+    // 조회이력을 저장한다.  
+    ls_HistoryArg = "교육장관리번호=" + quote(ls_EduPlaceSeq);
+    gfn_InsertSearchPrintHistory(
+        "S"
+        , this.ID
+        , global.mnuLeft.cbxOpenForm.Text
+        , ls_HistoryArg
+    );
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("training:searchExamRoomMinimap", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioExamRoomMinimap=ds_oExamRoomMinimap"	// outDs
+		,"EPMGNO=" + quote(ls_EduPlaceSeq)	// args 
+		,"lfn_AfterSearchExamRoomMinimap"
+		,false
+	);
+}
+
+
+/*
+ * 기능 : 교육일정관리 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchExamRoomMinimap(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    ls_SaveFileName = ds_ioExamRoomMinimap.GetColumn(0, "EPSAVENM");
+    ls_RealFileName = ds_ioExamRoomMinimap.GetColumn(0, "EPREALNM");
+    ls_FilePath = ds_ioExamRoomMinimap.GetColumn(0, "EPDIRPATH");
+        
+    //gfn_SearchMessage(gdExamOrder); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+    gfn_ImageViewPopup(ls_FilePath, ls_RealFileName+".gif", ls_SaveFileName, "MAP");
+}
+
+
+function btnSearchEduPlace_OnClick(obj) {
+    
+    var arrEducationPlace = gfn_EducationPlaceListPopup(); // 교육장소 조회 팝업
+    if (length(arrEducationPlace) > 0) {
+        ls_EduPlaceSeq = arrEducationPlace[0];
+        edEduPlace.Text = arrEducationPlace[1];
+        ls_SaveFileName = arrEducationPlace[2];
+        ls_RealFileName = arrEducationPlace[3];
+        ls_FilePath = arrEducationPlace[4];
+        edParkingNotice.Text = arrEducationPlace[5];
+    }
+}
+
+
+function btnEduPlaceLink_OnClick(obj) {
+
+    var ArrMenuInfo = gfn_SearchMenuInfo("training", "training::frmtraining9000MEducationPlaceManagement.xml");	//메뉴정보조회
+    if(length(ArrMenuInfo) > 0 ) {
+        gs_SystemGubun = arrMenuInfo[7];         //"training";
+        gs_SystemMenuId = arrMenuInfo[5];        //"0000000003";
+        global.mnuLeft.tabMenu.tabpgMenu.Text = arrMenuInfo[6]; //"강습관리";
+        var ls_MenuId = arrMenuInfo[0];          //"0000000098";
+        var ls_MenuTitle = arrMenuInfo[1];       //"교육장관리";
+        var ls_MenuUrl = arrMenuInfo[2];         //"training::frmtraining9000MEducationPlaceManagement.xml";
+        global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+        gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId);
+    } 
+    else {
+		gfn_Alert("해당 메뉴를 찾을 수 없습니다.");
+    }    
+}
+
+
+function edTrainingOrder_OnKillFocus(obj) {
+	gfn_ComponentOnKillFocus(obj);
+	obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3));
+}
+
+
+function btnToExcel_OnClick(obj) {
+    if (ds_ioTrainingOrder.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return false;
+    }
+    lfn_Excel(obj);
+}
+
+
+/*
+ * 기능 : 업무 변경이력을 저장한다.
+ * parameter : sGubun - 변경구분. 예) I, U, D
+ * return : 없음
+ */
+function lfn_SaveModifyHistory(sGubun) {
+
+    if (sGubun = "I") { // 신규
+        gds_iModifyHistory.InsertRow(0);
+        gds_iModifyHistory.SetColumn(0, "MHWORKGUBUN", "강습일정"); // 업무구분
+        gds_iModifyHistory.SetColumn(0, "MHGUBUN", sGubun); // 변경구분
+        gds_iModifyHistory.SetColumn(0, "MHKEY", ""); // KEY값
+        gds_iModifyHistory.SetColumn(0, "MHCOLUMN", ""); // 변경 컬럼명
+        gds_iModifyHistory.SetColumn(0, "MHBEFOREDATA", ""); // 변경 전 값
+        gds_iModifyHistory.SetColumn(0, "MHAFTERDATA", ""); // 변경 후 값
+    } 
+    else if (sGubun = "D") { // 삭제
+        gds_iModifyHistory.InsertRow(0);
+        gds_iModifyHistory.SetColumn(0, "MHWORKGUBUN", "강습일정"); // 업무구분
+        gds_iModifyHistory.SetColumn(0, "MHGUBUN", sGubun); // 변경구분
+        gds_iModifyHistory.SetColumn(0, "MHKEY", ds_ioTrainingOrder.GetColumn(ds_ioTrainingOrder.currow, "TOMGNO")); // KEY값
+        gds_iModifyHistory.SetColumn(0, "MHCOLUMN", ""); // 변경 컬럼명
+        gds_iModifyHistory.SetColumn(0, "MHBEFOREDATA", ""); // 변경 전 값
+        gds_iModifyHistory.SetColumn(0, "MHAFTERDATA", ""); // 변경 후 값
+    } 
+    else if (sGubun = "U") { // 수정
+        var ln_TotalCount = ds_oModifyColumn.GetCount();
+        var ls_ColumnCd = "";
+        var ls_ColumnNm = "";
+        for (var i = 0; i < ln_TotalCount; i++) {
+            ls_ColumnCd = ds_oModifyColumn.GetColumn(i, "COLUMNCD");
+            ls_ColumnNm = ds_oModifyColumn.GetColumn(i, "COLUMNNM");
+            if (ds_ioTrainingOrder.GetOrgBuffColumn(0, ls_ColumnCd) <> ds_ioTrainingOrder.GetColumn(ds_ioTrainingOrder.currow, ls_ColumnCd)) {
+                gds_iModifyHistory.InsertRow(0);
+                gds_iModifyHistory.SetColumn(0, "MHWORKGUBUN", "강습일정"); // 업무구분
+                gds_iModifyHistory.SetColumn(0, "MHGUBUN", sGubun); // 변경구분
+                gds_iModifyHistory.SetColumn(0, "MHKEY", ds_ioTrainingOrder.GetColumn(ds_ioTrainingOrder.currow, "TOMGNO")); // KEY값
+                gds_iModifyHistory.SetColumn(0, "MHCOLUMN", ls_ColumnNm); // 변경 컬럼명
+                gds_iModifyHistory.SetColumn(0, "MHBEFOREDATA", ds_ioTrainingOrder.GetOrgBuffColumn(0, ls_ColumnCd)); // 변경 전 값
+                gds_iModifyHistory.SetColumn(0, "MHAFTERDATA", ds_ioTrainingOrder.GetColumn(ds_ioTrainingOrder.currow, ls_ColumnCd)); // 변경 후 값
+            }
+        }
+    }
+    gfn_InsertModifyHistory(); // 업무 변경이력을 저장한다.
+}
+
+
+/*
+*  인터넷 좌석 선택이 아니오 이면 좌석성별표시를 enable로 함
+*/
+function chkISeatSelectYn_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+
+    if (strCode == 'Y') {
+        chkSexLimitYN.Enable = true;
+    } 
+    else {
+        chkSexLimitYN.Enable = false;
+        chkSexLimitYN.value = 'N';    
+    }
+}
+
+
+/*
+*  인터넷 좌석 선택이 아니오 이면 좌석성별표시를 enable로 함
+*/
+function lfn_change(nRow)
+{
+    if (ds_ioTrainingOrder.GetColumn(nRow, 'TOSEATSELECTYN') == 'Y') {
+        chkSexLimitYN.Enable = true;
+    } 
+    else {
+        chkSexLimitYN.Enable = false;
+        chkSexLimitYN.value = 'N';    
+    }
+}
+
+
+/*
+* 조회 내용 변경시 인터넷좌석선택 변경 
+*/
+function ds_ioTrainingOrder_CanRowPosChange(obj,nOldRow,nRow)
+{
+	lfn_change(nRow);
+}
+
+
+function cbxMunjeGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	//초기화부터 
+	lbCyberDate.BkColor = "steelblue";
+	lbCyberDate.Text = "사이버교육기간";
+	calCyberDateStart.UserData = "S:사이버교육기간";
+	calCyberDateEnd.UserData= "S:사이버교육기간";
+	lbdmDate.BkColor = "steelblue";
+	calCyberDateStart.Enable = false;
+	calCyberDateEnd.Enable = false;
+	calStartdate.Enable = false;
+	calEnddate.Enable = false;
+	calCyberDateStart.Value = "";
+	calCyberDateEnd.Value = "";
+	calStartdate.Value = "";
+	calEnddate.Value = "";
+		
+    // 사이버교육기간
+    if (strCode == "C") {		// N:일반, Y:면제, C:혼합(사이버+소집)
+		lbCyberDate.BkColor = "peru";
+		calCyberDateStart.Enable = true;
+		calCyberDateEnd.Enable = true;				
+    }
+	// 해당 직능의 수수료로 설정
+	ds_oTrainingFee.Filter("GUBUN=='"+cbxCourse.Value+cbxMunjeGubun.Value+"'");	  
+}
+
+
+// 좌석수와 접수 최대인원수 비교
+function lfn_JubsuCntCheck(sJibu, sWorkGubun, sCourse) {
+	var vEduJubsuMaxCnt = 0;
+	
+	vEduJubsuMaxCnt = gfn_SearchEduJubsuMaxCnt(sJibu, sWorkGubun, sCourse);
+	// 23.02 블라인드 일 경우 200명으로 체크 
+	if(cbxOnlineGubun.Value = "X"){ // X : 블라인드접수
+		vEduJubsuMaxCnt = 200;
+	}
+	// 2017년부터 적용(2016.11.25)
+	//if (ds_ioTrainingOrder.GetColumn(ds_ioTrainingOrder.currow, "TOENDDATE") > "20161231") {
+		if (toNumber(medSeatCnt.Value) > toNumber(vEduJubsuMaxCnt)) {
+			gfn_Alert("접수최대인원수를 초과하였습니다.\n\n"
+					  +"최대 "+vEduJubsuMaxCnt+"명까지 접수가능합니다.");
+			return false;	
+		}
+	//}
+	
+}
+
+
+// 강습접수현황 바로가기
+function gdTrainingOrder_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var ArrMenuInfo = gfn_SearchMenuInfo(iif(gs_SystemGubun=="training","training","crs"), "training::frmtraining0030MTrainingJubsuList.xml");	//메뉴정보조회
+	if(length(ArrMenuInfo) > 0 ) {
+		var sArg = "sJibu=" + quote(ds_ioTrainingOrder.GetColumn(nRow, "TOMGJIBUCD"))
+			+ " sYear=" + quote(ds_ioTrainingOrder.GetColumn(nRow, "TOYEAR"))        
+			+ " sCourse=" + quote(ds_ioTrainingOrder.GetColumn(nRow, "TCCOURSECD"))        
+			+ " sOrder=" + quote(ds_ioTrainingOrder.GetColumn(nRow, "TOTRAININGORDER"))        
+			+ " sSunapGubun='NM'";
+		
+		gs_SystemGubun = arrMenuInfo[7];						//"cust";
+		gs_SystemMenuId = arrMenuInfo[5];						//"0000000254";
+		global.mnuLeft.tabMenu.tabpgMenu.Text = arrMenuInfo[6];	//"고객관리";
+		var ls_MenuId = arrMenuInfo[0];							//"0000000273";
+		var ls_MenuTitle = arrMenuInfo[1];						//"고객정보관리";
+		var ls_MenuUrl = arrMenuInfo[2];						//"cust::frmcust0010MCustomerManagement.xml";
+		
+		global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+		gfn_OpenLinkChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId, sArg); 
+	} 
+	else {
+		gfn_Alert("해당 메뉴를 찾을 수 없습니다.");
+	}
+}
+
+
+// 안내문자발송 여부
+function radSMSSendYN_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if (strCode == "0") {	// 미발송
+		radSMSSendYN.BKColor = "white";
+		lbSendDate.Enable = false;
+		calSendDate.Enable = false;
+		//calSendDate.Value = "";
+		lbSendTime.Enable = false;
+	} 
+	else {	// 발송
+		radSMSSendYN.BKColor = "goldenrod";
+		lbSendDate.Enable = true;
+		calSendDate.Enable = true;		
+		lbSendTime.Enable = true;
+	}
+}
+
+
+function radSMSSendYN_OnClick(obj)
+{
+	if (radSMSSendYN.Value == "0") {	// 미발송
+		calSendDate.Value = "";
+	} 
+	else {
+		if (gfn_isNull(ds_ioTrainingOrder.GetColumn(ds_ioTrainingOrder.currow, "TOAUTODATE"))) {
+			calSendDate.Value = substr(AddDate(calEduDateStart.Value,-2) ,0,8);
+		}
+		else {
+			calSendDate.Value = ds_ioTrainingOrder.GetColumn(ds_ioTrainingOrder.currow, "TOAUTODATE");
+		}
+	}
+}
+
+
+function calSendDate_OnChanged(obj,strOldText,strNewText)
+{
+    // 안내문자 자동발송
+    if (radSMSSendYN.Value == "1") {
+    
+		if (!gfn_isNull(calEduDateStart.Value) && (calEduDateStart.Value <= calSendDate.Value)) {	
+			gfn_Alert("안내문자 자동발송일이 교육시작일보다 늦습니다.");	
+			calSendDate.Value = substr(AddDate(calEduDateStart.Value,-2) ,0,8);	
+			calSendDate.SetFocus();	
+			return false;	
+		}
+     }
+}
+
+
+// 문자내용 보기
+function btnSMSView_OnClick(obj)
+{
+	// sWorkGubun
+	// sCourse
+	// sCourseNM
+	// sStartdate
+	// sSEnddate
+	// sStarttime
+	// sSEndtime
+	// sGTMGNO
+	// sGTDEPTNM
+	// sTEL
+	// sPlace
+    
+    var sArg = "sWorkGubun='T'"
+             + " sCourse=" + quote(cbxCourse.Value)
+             + " sCourseNM=" + quote(cbxCourse.Text)
+             + " sStartdate=" + quote(left(calEduDateStart.Value,8))
+             + " sSEnddate=" + quote(left(calEduDateEnd.Value,8))
+             + " sStarttime=" + quote(tmEduTimeStart.Value)
+             + " sSEndtime=" + quote(tmEduTimeEnd.Value)
+             + " sGTMGNO=" + quote(cbxJibu.Value)
+             + " sGTDEPTNM=" + quote(cbxJibu.Text)
+             + " sTEL=" + quote(ds_ioTrainingOrder.GetColumn(0, "GTTELEPHONENUMBER"))
+             + " sPlace=" + quote(edEduPlace.Text);
+	//Dialog("COM::frmCOM1120PSmsContentsView.xml", sArg, -1, -1, "", -1, -1);
+	Dialog("COM::frmCOM1121PSmsContentsUpdate.xml", sArg, -1, -1, "", -1, -1);	
+}
+
+
+function calEduDateStart_OnKillFocus(obj)  {
+	for (var i = 0; i < ds_oTrainingFee.GetRowCount(); i++) {	
+		if (left(calEduDateStart.Value,8) >= ds_oTrainingFee.GetColumn(i, "TFCSTARTDATE") &&
+			left(calEduDateStart.Value,8) <= ds_oTrainingFee.GetColumn(i, "TFCENDDATE")) {
+			
+			cbxFee.Index = i;
+			break;
+		}
+	}
+}
+
+
+function calEduDateEnd_OnKillFocus(obj)  {
+	for (var i = 0; i < ds_oTrainingFee.GetRowCount(); i++) {
+	
+		if (left(calEduDateEnd.Value,8) >= ds_oTrainingFee.GetColumn(i, "TFCSTARTDATE") &&
+			left(calEduDateEnd.Value,8) <= ds_oTrainingFee.GetColumn(i, "TFCENDDATE")) {			
+			cbxFee.Index = i;
+			break;
+		}
+	}	
+}
+
+
+function radInetJubsuYn_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+	if (strCode == "Y") {
+		cbxInternetJubsuStatus.Enable = true;
+	} 
+	else {
+		cbxInternetJubsuStatus.Enable = false;
+	}
+}
+
+
+// 접수대기자 리스트 팝업
+function btnAwaiter_OnClick(obj)  {
+
+    if (gfn_IsNull(ds_ioTrainingOrder.GetColumn(ds_ioTrainingOrder.currow, "TOMGNO"))) {
+        gfn_Alert(MSGI00100); // "강습을 먼저 선택해 주십시오.";
+        edTrainingOrder.SetFocus();
+        return false;
+    }
+    lfn_TrainingAwaiterListPopup(ds_ioTrainingOrder.GetColumn(ds_ioTrainingOrder.currow, "TOMGNO")); // 접수대기자목록 조회 팝업	
+}
+
+
+/*
+ * 기능 : 강습접수대기자목록 팝업을 호출한다.
+ * parameter : sOrderMgno - 회차관리번호
+ * return value : 강습접수대기자목록 정보를 가진 배열 오브젝트
+ */
+function lfn_TrainingAwaiterListPopup(sOrderMgno) {
+    var sArg = "sOrderMgno=" + quote(sOrderMgno);
+    Dialog(iif(gs_IsTlogin == "N", "training", "outerbiz") + "::frmtraining0029PTrainingAwaiterList.xml", sArg, 600, 400, "", -1, -1);
+}
+
+
+function medIJubsuCnt_OnKillFocus(obj)
+{
+	if (mb_IsNewData) { // 신규이면
+		// 대기정원 = 인터넷접수가능인원의 10%로 세팅
+		medInetWaitSeatCnt.Value = round(toNumber(medIJubsuCnt.Value) * 0.1);
+	}
+}
+
+
+function lfn_searchAcceptAwaiterCnt(sOrderMgno) {
+   
+    ds_oAcceptAwaiter.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("training:searchTraining0010AcceptAwaiterCnt", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oAcceptAwaiter=ds_oAcceptAwaiter"	// outDs
+		,"TOMGNO=" + quote(sOrderMgno)	// args 
+		,"lfn_AfterSearchAcceptAwaiterCnt"
+		,false		
+		,false		
+		,true
+	);
+}
+
+
+function lfn_AfterSearchAcceptAwaiterCnt(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+
+function lfn_Date_OnKillFocus(obj)  {
+	if (length(obj.Value) > 0 && length(obj.Value) < 8) {
+			gfn_Alert("날자형식이 맞지 않습니다.");
+			obj.Value = "";
+			obj.SetFocus();	
+	}
+	
+	if (!gfn_isNull(obj.Value)) {
+		if (!gfn_IsDate(obj.Value)) { // 날자형식 체크
+			gfn_Alert("날자형식이 맞지 않습니다.");
+			obj.Value = "";
+			obj.SetFocus();
+		}
+	}	
+}
+
+
+function lfn_time_OnKillFocus(obj)  {
+	if (length(obj.Value) > 0 && length(obj.Value) < 4) {
+		gfn_Alert("시간형식이 맞지 않습니다.");
+		obj.Value = "";
+		obj.SetFocus();	
+	}
+	
+	if (!gfn_isNull(obj.Value)) {
+		if (!gfn_IsTime(obj.Value)) {	// 시간형식 체크
+			gfn_Alert("시간형식이 맞지 않습니다.");
+			obj.Value = "";
+			obj.SetFocus();
+		}
+	}
+}
+
+
+// 실시간온라인교육 여부 변경 시
+function cbxOnlineGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+	
+	//if (strCode == "Y") { // 실시간온라인교육
+	//if (strCode == "Y" || strCode == "X") { // 실시간온라인교육 + & 블라인드 신규추가 ( 기존 실시간 교육과 프로세스를 동일하게 한다 _ 김동한K 2022.09.07 ) 
+	if (strCode == "Y" || strCode == "X"|| strCode == "Z") { //  23.07 혼용도 포함
+		edOnlineID.Enable = true;
+		edOnlinePWD.Enable = true;
+	}
+	else if(strCode == "N" ) { // 소집교육 + " 혼용 " 추가 ( 기존 소집교육과 동일한 프로세스로 적용한다. 김동한K, 2022.09.07 ) --> 23.07 혼용은 따로 
+	//else {	// 소집교육 & 블라인드
+		edOnlineID.Enable = false;
+		edOnlinePWD.Enable = false;
+		edOnlineID.Text = "";
+		edOnlinePWD.Text = "";
+	}	
+	
+	//  23.07 혼용교육이면 사이버교육, 대면교육 입력받게 
+	//초기화부터	
+	lbCyberDate.BkColor = "steelblue";
+	lbCyberDate.Text = "사이버교육기간";
+	calCyberDateStart.UserData = "S:사이버교육기간";
+	calCyberDateEnd.UserData= "S:사이버교육기간";
+	lbdmDate.BkColor = "steelblue";
+	calCyberDateStart.Enable = false;
+	calCyberDateEnd.Enable = false;
+	calStartdate.Enable = false;
+	calEnddate.Enable = false;
+	calCyberDateStart.Value = "";
+	calCyberDateEnd.Value = "";
+	calStartdate.Value = "";
+	calEnddate.Value = "";
+	if (strCode == "Z") { //  23.07 혼용교육이면 사이버교육, 대면교육 입력받게 		
+		lbCyberDate.BkColor = "peru";
+		lbCyberDate.Text = "원격교육기간";
+		calCyberDateStart.UserData = "S:원격교육기간";
+		calCyberDateEnd.UserData= "S:원격교육기간";
+		lbdmDate.BkColor = "peru";
+		calCyberDateStart.Enable = true;
+		calCyberDateEnd.Enable = true;	
+		calStartdate.Enable = true;
+		calEnddate.Enable = true;		
+	}	
+	
+}
+function radInetJubsuPwuseYn_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{	
+	if (strCode == "Y") {
+		edInetJubsuPwd.Enable = true;
+	} 
+	else {
+		edInetJubsuPwd.Enable = false;
+	}
+}
+
+
+function Form_OnActivate(obj)
+{
+	
+}
+]]></Script>
+</Window>

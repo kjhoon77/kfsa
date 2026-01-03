@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="543" Id="form" Left="8" OnLoadCompleted="form_OnLoadCompleted" PidAttrib="7" Title="New&#32;Form" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="LgdacomIn">
+				<Contents>
+					<colinfo id="VAN_TRANTYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_TXNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_REQTYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_PAYTYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_OID" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_AMOUNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_INSTALL" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_NOINT" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_PRIVATENO" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_BUYER" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_BUYERID" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_BUYERPHONE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_BUYEREMAIL" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_PRODUCTINFO" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_TAXFREEAMOUNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_VAT" size="256" summ="default" type="STRING"/>
+					<colinfo id="VAN_SFEEAMOUNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="LgdacomOut"></Dataset>
+		</Datasets>
+		<Button Height="120" Id="Button0" Left="16" OnClick="Button0_OnClick" TabOrder="1" Text="dataset&#32;던지기" Top="24" Width="184"></Button>
+		<MSIE Bottom="396" Height="380" Id="MSIE0" Left="312" Right="764" TitleChange="MSIE0_TitleChange" Top="16" Width="452"></MSIE>
+	</Form>
+	<Script><![CDATA[
+function form_OnLoadCompleted(obj)
+{
+	
+}
+
+function Button0_OnClick(obj)
+{
+	var URL = "https://intrawork.kfsi.or.kr/kems/pos/UPlusPOS_Input.jsp";
+	
+	var LGD_TXNAME = "CardAuthOfflinePos"; // (필수)업무명
+	var LGD_REQTYPE = "APPR";              // (필수)업무요청명
+	var LGD_OID = "2018-052916312752712";   // (필수)주문번호
+	var LGD_AMOUNT = "1000";               // (필수)결제금액(,없이 입력)
+	var LGD_INSTALL = "00";                // (필수)할부개월 (2자리) ex) 00:일시불, 03:3개월
+	var LGD_PRIVATENO = "";                // (선택)구매자 생년월일 6자리 (YYMMDD) or 사업자번호 10자리
+	var LGD_NOINT = "";                    // (선택)신용카드 무이자할부 여부(0: 일반할부, 1: 무이자할부)☞ 계약 시, “대표가맹” 상점에 한함
+	var LGD_BUYER = urlEncodeUtf8("(정현호)");           // (선택)구매자명
+	var LGD_BUYERID = "";                              // (선택)구매자 아이디
+	var LGD_BUYERPHONE = "01028622115";                // (선택)고객휴대폰번호
+	var LGD_BUYEREMAIL = "";                           // (선택)구매자 이메일
+	var LGD_PRODUCTINFO = urlEncodeUtf8("결제테스트"); // (선택)구매내역
+	var LGD_TAXFREEAMOUNT = "0";           // (필수)면세금액(결제금액에 면세대상금액 포함시 사용)☞ 계약 시, “부분면세” 적용여부 확인요망
+	var LGD_VAT = "0";                     // (필수)부가세
+	var VAN_SFEEAMOUNT = "0";              // (필수)봉사료
+	var VAN_TRANTYPE = "S0";               // (필수)거래구분 S0 : 신용승인요청, K0 : 키인승인요청, E0 : 은련승인요청, P0 : APP카드 승인요청
+	
+	var PostData =TextToBin("lgdtxname="+LGD_TXNAME+
+							"&lgdreqtype="+LGD_REQTYPE+
+							"&lgdoid="+LGD_OID+
+							"&lgdamount="+LGD_AMOUNT+
+							"&lgdinstall="+LGD_INSTALL+
+							"&lgdprivateno="+LGD_PRIVATENO+
+							"&lgdnoint="+LGD_NOINT+
+							"&lgdbuyer="+LGD_BUYER+
+							"&lgdbuyerid="+LGD_BUYERID+
+							"&lgdbuyerphone="+LGD_BUYERPHONE+
+							"&lgdbuyeremail="+LGD_BUYEREMAIL+
+							"&lgdproductinfo="+LGD_PRODUCTINFO+
+							"&lgdtaxfreeamount="+LGD_TAXFREEAMOUNT+
+							"&lgdvat="+LGD_VAT+
+							"&vansfeeamount="+VAN_SFEEAMOUNT+
+							"&vantrantype="+VAN_TRANTYPE,
+							"utf-8");
+		trace(PostData);
+	var Headers = "Content-Type: application/x-www-form-urlencoded";
+	
+	MSIE0.Navigate(URL, "", "", PostData, Headers);
+}
+
+var returnmsg;
+function MSIE0_TitleChange(obj,Text)
+{
+	if(returnmsg!=Text){
+		returnmsg = Text;
+		trace(returnmsg);   // returnmsg
+	}
+	
+	if("https://intrawork.kfsi.or.kr/kems/pos/UPlusPOS_Input.jsp" == returnmsg) {
+	} else {
+	
+		var resultarr = returnmsg.split("|");
+		var tmp = "";
+		
+		// dataset 저장변수
+		var rrespcode = "";
+		var rtrancode = "";
+		var rmid = "";
+		var roid = "";
+		var rtamt = "";
+		var rtranserial = "";
+		var rfinancecode = "";
+		var rfinancename = "";
+		var rcardno = "";
+		var rhalbu = "";
+		var rauthno = "";
+		var rstlinst = "";
+		var rreqinst = "";
+		var rmerno = "";
+		var rcardgubun = "";
+		var rgiftchange = "";
+		var rsignpath = "";
+		var rmsg = "";
+		
+		LgdacomOut.ClearData();
+		LgdacomOut.AddRow();
+		
+		for(var i=0;i<resultarr.length;i++) {
+	
+			if(!IndexOf(resultarr[i], "respcode")) {
+				tmp = resultarr[i].split("^");
+				rrespcode = tmp[1];
+				
+				trace("respcode:"+rrespcode);
+				LgdacomOut.SetColumn(0, "respcode", rrespcode);
+			} else if(!IndexOf(resultarr[i], "trancode")) {
+				tmp = resultarr[i].split("^");
+				rtrancode = tmp[1];
+				
+				trace("trancode:"+rtrancode);
+				LgdacomOut.SetColumn(0, "trancode", rtrancode);
+			} else if(!IndexOf(resultarr[i], "mid")) {
+				tmp = resultarr[i].split("^");
+				rmid = tmp[1];
+				
+				trace("mid:"+rmid);
+				LgdacomOut.SetColumn(0, "mid", rmid);
+			} else if(!IndexOf(resultarr[i], "oid")) {
+				tmp = resultarr[i].split("^");
+				roid = tmp[1];
+				
+				trace("oid:"+roid);
+				LgdacomOut.SetColumn(0, "oid", roid);
+			} else if(!IndexOf(resultarr[i], "tamt")) {
+				tmp = resultarr[i].split("^");
+				rtamt = tmp[1];
+				
+				trace("tamt:"+rtamt);
+				LgdacomOut.SetColumn(0, "tamt", rtamt);
+			} else if(!IndexOf(resultarr[i], "transerial")) {
+				tmp = resultarr[i].split("^");
+				rtranserial = tmp[1];
+				
+				trace("transerial:"+rtranserial);
+				LgdacomOut.SetColumn(0, "transerial", rtranserial);
+			} else if(!IndexOf(resultarr[i], "financecode")) {
+				tmp = resultarr[i].split("^");
+				rfinancecode = tmp[1];
+				
+				trace("financecode:"+rfinancecode);
+				LgdacomOut.SetColumn(0, "financecode", rfinancecode);
+			} else if(!IndexOf(resultarr[i], "financename")) {
+				tmp = resultarr[i].split("^");
+				rfinancename = tmp[1];
+				
+				trace("financename:"+rfinancename);
+				LgdacomOut.SetColumn(0, "financename", rfinancename);
+			} else if(!IndexOf(resultarr[i], "cardno")) {
+				tmp = resultarr[i].split("^");
+				rcardno = tmp[1];
+				
+				trace("cardno:"+rcardno);
+				LgdacomOut.SetColumn(0, "cardno", rcardno);
+			} else if(!IndexOf(resultarr[i], "halbu")) {
+				tmp = resultarr[i].split("^");
+				rhalbu = tmp[1];
+				
+				trace("halbu:"+rhalbu);
+				LgdacomOut.SetColumn(0, "halbu", rhalbu);
+			} else if(!IndexOf(resultarr[i], "authno")) {
+				tmp = resultarr[i].split("^");
+				rauthno = tmp[1];
+				
+				trace("authno:"+rauthno);
+				LgdacomOut.SetColumn(0, "authno", rauthno);
+			} else if(!IndexOf(resultarr[i], "stlinst")) {
+				tmp = resultarr[i].split("^");
+				rstlinst = tmp[1];
+				
+				trace("stlinst:"+rstlinst);
+				LgdacomOut.SetColumn(0, "stlinst", rstlinst);
+			} else if(!IndexOf(resultarr[i], "reqinst")) {
+				tmp = resultarr[i].split("^");
+				rreqinst = tmp[1];
+				
+				trace("reqinst:"+rreqinst);
+				LgdacomOut.SetColumn(0, "reqinst", rreqinst);
+			} else if(!IndexOf(resultarr[i], "merno")) {
+				tmp = resultarr[i].split("^");
+				rmerno = tmp[1];
+				
+				trace("merno:"+rmerno);
+				LgdacomOut.SetColumn(0, "merno", rmerno);
+			} else if(!IndexOf(resultarr[i], "cardgubun")) {
+				tmp = resultarr[i].split("^");
+				rcardgubun = tmp[1];
+				
+				trace("cardgubun:"+rcardgubun);
+				LgdacomOut.SetColumn(0, "cardgubun", rcardgubun);
+			} else if(!IndexOf(resultarr[i], "giftchange")) {
+				tmp = resultarr[i].split("^");
+				rgiftchange = tmp[1];
+				
+				trace("giftchange:"+rgiftchange);
+				LgdacomOut.SetColumn(0, "giftchange", rgiftchange);
+			} else if(!IndexOf(resultarr[i], "signpath")) {
+				tmp = resultarr[i].split("^");
+				rmsg = tmp[1];
+				
+				trace("signpath:"+rsignpath);
+				LgdacomOut.SetColumn(0, "signpath", rsignpath);
+			} else if(!IndexOf(resultarr[i], "msg")) {
+				tmp = resultarr[i].split("^");
+				rmsg = tmp[1];
+				
+				trace("msg:"+rmsg);
+				LgdacomOut.SetColumn(0, "msg", rmsg);
+			}
+			
+		}
+		trace(LgdacomOut.SaveXML());
+		
+	}
+}
+
+var unreserved = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_.~";
+var reserved = "!*'();:@&=+$,/?%#[]";
+var allowed = unreserved + reserved;
+var hexchars = "0123456789ABCDEFabcdef";
+var decchars = "ABCDEF";
+
+function convert16To10(str)
+{
+	var sum=0;
+	
+	str = toUpper(str);
+	
+	var s = midb(str,0,1);
+	if ( s >= "A" && s <= "F" )
+	{
+		sum += (10+pos(decchars,s))*16;
+	} else if ( s >= "0" && s <= "9" ){
+		sum += (toNumber(s)*16);
+	}
+
+	s = midb(str,1,1);
+	if ( s >= "A" && s <= "F" )
+	{
+		sum += (10+pos(decchars,s));
+	} else if ( s >= "0" && s <= "9" ){
+		sum += toNumber(s);
+	}
+
+	trace("convert : " + sum);
+	return sum;
+}
+
+function gethex(decimal) 
+{
+  return "%" + charAt(hexchars,ext_getBitCalc(">>",decimal,4)) + 
+               charAt(hexchars,ext_getBitCalc("&",decimal,15));
+}
+
+function getdec(hexencoded) 
+{ 
+   if (length(hexencoded) == 3) 
+   { 
+     if (charAt(hexencoded,0) == "%") { 
+       if (indexOf(hexchars,charAt(hexencoded,1)) != -1 && indexOf(hexchars,charAt(hexencoded,2)) != -1) { 
+         return convert16To10(midb(hexencoded,1,2)); 
+       } 
+     } 
+   } 
+   return 256; 
+}
+
+function urlEncodeUtf8(decoded) 
+{
+  // Some variables:
+	var encoded = "";
+	
+	// ---------------- If UTF-8 character encoding was chosen: ----------------
+	
+	for (var i = 0; i < length(decoded); i++ ) 
+	{
+		var ch = charAt(decoded,i);
+		// Check if character is an unreserved character:
+		if (indexOf(unreserved,ch) != -1) {
+			encoded = encoded + ch;
+		} else {
+
+			// The position in the Unicode table tells us how many bytes are needed.
+			// Note that if we talk about first, second, etc. in the following, we are
+			// counting from left to right:
+			//
+			//   Position in   |  Bytes needed   | Binary representation
+			//  Unicode table  |   for UTF-8     |       of UTF-8
+			// ----------------------------------------------------------
+			//     0 -     127 |    1 byte       | 0XXX.XXXX
+			//   128 -    2047 |    2 bytes      | 110X.XXXX 10XX.XXXX
+			//  2048 -   65535 |    3 bytes      | 1110.XXXX 10XX.XXXX 10XX.XXXX
+			// 65536 - 2097151 |    4 bytes      | 1111.0XXX 10XX.XXXX 10XX.XXXX 10XX.XXXX
+	
+			var charcode = Asc(charAt(decoded,i));
+	
+			// Position 0 - 127 is equal to percent-encoding with an ASCII character encoding:
+			if (charcode < 128) {
+			  encoded = encoded + gethex(charcode);
+			}
+	
+			// Position 128 - 2047: two bytes for UTF-8 character encoding.
+			if (charcode > 127 && charcode < 2048) {
+			  // First UTF byte: Mask the first five bits of charcode with binary 110X.XXXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc(">>",charcode,6),12));
+			  // Second UTF byte: Get last six bits of charcode and mask them with binary 10XX.XXXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc("&",charcode,63),128));
+			}
+	
+			// Position 2048 - 65535: three bytes for UTF-8 character encoding.
+			if (charcode > 2047 && charcode < 65536) {
+			  // First UTF byte: Mask the first four bits of charcode with binary 1110.XXXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc(">>",charcode,12),224));
+			  // Second UTF byte: Get the next six bits of charcode and mask them binary 10XX.XXXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc("&",ext_getBitCalc(">>",charcode,6),63),128));
+			  // Third UTF byte: Get the last six bits of charcode and mask them binary 10XX.XXXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc("&",charcode,63),128));
+			}
+	
+			// Position 65536 - : four bytes for UTF-8 character encoding.
+			if (charcode > 65535) {
+			  // First UTF byte: Mask the first three bits of charcode with binary 1111.0XXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc(">>",charcode,18),240));
+			  // Second UTF byte: Get the next six bits of charcode and mask them binary 10XX.XXXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc("&",ext_getBitCalc(">>",charcode,12),63),128));
+			  // Third UTF byte: Get the last six bits of charcode and mask them binary 10XX.XXXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc("&",ext_getBitCalc(">>",charcode,6),63),128));
+			  // Fourth UTF byte: Get the last six bits of charcode and mask them binary 10XX.XXXX:
+			  encoded = encoded + gethex(ext_getBitCalc("|",ext_getBitCalc("&",charcode,63),128));
+			}
+		}
+
+	}  // end of for ...
+	return encoded;
+}
+
+
+
+function urlDecodeUtf8(encoded)
+{
+	var notallowed = ""; 
+	var illegalencoding = ""; 
+    var decoded,allowed;
+    
+    var byte1, byte2, byte3, byte4; 
+ 
+    var i = 0; 
+    while (i < length(encoded)) { 
+      var ch = charAt(encoded,i); 
+      // Check for percent-encoded string: 
+      if (ch == "%") { 
+ 
+        // Check for legal percent-encoding of first byte: 
+        if (getdec(mid(encoded,i,3)) < 255) { 
+ 
+          // Get the decimal values of all (potential) UTF-bytes: 
+          byte1 = getdec(mid(encoded,i,3)); 
+          byte2 = getdec(mid(encoded,i+3,3)); 
+          byte3 = getdec(mid(encoded,i+6,3)); 
+          byte4 = getdec(mid(encoded,i+9,3)); 
+ 
+          // Check for one byte UTF-8 character encoding: 
+          if (byte1 < 128) { 
+            decoded = decoded + chr(byte1);//String.fromCharCode(byte1); 
+            i = i + 3; 
+          } 
+ 
+          // Check for illegal one byte UTF-8 character encoding: 
+          if (byte1 > 127 && byte1 < 192) { 
+            decoded = decoded + mid(encoded,i,3); 
+            illegalencoding = illegalencoding + mid(encoded,i,3) + " "; 
+            i = i + 3; 
+          } 
+ 
+          // Check for two byte UTF-8 character encoding: 
+          if (byte1 > 191 && byte1 < 224) { 
+            if (byte2 > 127 && byte2 < 192) { 
+              //decoded = decoded + String.fromCharCode(((byte1 & 0x1F) << 6) | (byte2 & 0x3F));               
+              decoded = decoded + chr(ext_getBitCalc("|",ext_getBitCalc("<<",ext_getBitCalc("&",byte1,31),6),ext_getBitCalc("&",byte2,63))); 
+            } else { 
+              decoded = decoded + mid(encoded,i,6); 
+              illegalencoding = illegalencoding + mid(encoded,i,6) + " "; 
+            } 
+            i = i + 6; 
+          } 
+ 
+          // Check for three byte UTF-8 character encoding: 
+          if (byte1 > 223 && byte1 < 240) { 
+            if (byte2 > 127 && byte2 < 192) { 
+              if (byte3 > 127 && byte3 < 192) { 
+                decoded = decoded + chr(ext_getBitCalc("|",ext_getBitCalc("|",ext_getBitCalc("<<",ext_getBitCalc("&",byte1,15),12),ext_getBitCalc("<<",ext_getBitCalc("&",byte2,63),6)),ext_getBitCalc("&",byte3,63))); 
+               // decoded = decoded + String.fromCharCode(((byte1 & 0xF) << 12) | ((byte2 & 0x3F) << 6) | (byte3 & 0x3F)); 
+              } else { 
+                decoded = decoded + mid(encoded,i,9); 
+                illegalencoding = illegalencoding + mid(encoded,i,9) + " "; 
+              } 
+            } else { 
+              decoded = decoded + mid(encoded,i,9); 
+              illegalencoding = illegalencoding + mid(encoded,i,9) + " "; 
+            } 
+            i = i + 9; 
+          } 
+ 
+          // Check for four byte UTF-8 character encoding: 
+          if (byte1 > 239) { 
+            if (byte2 > 127 && byte2 < 192) { 
+              if (byte3 > 127 && byte3 < 192) { 
+                if (byte4 > 127 && byte4 < 192) { 
+                  //decoded = decoded + String.fromCharCode(((byte1 & 0x7) << 18) | ((byte2 & 0x3F) << 12) | ((byte3 & 0x3F) << 6) | (byte4 & 0x3F)); 
+				  decoded = decoded + chr(ext_getBitCalc("|",ext_getBitCalc("|",ext_getBitCalc("|",ext_getBitCalc("<<",ext_getBitCalc("&",byte1,7),18),ext_getBitCalc("<<",ext_getBitCalc("&",byte2,63),12)),ext_getBitCalc("<<",ext_getBitCalc("&",byte3,63),6)),ext_getBitCalc("&",byte4,63))); 
+                } else { 
+                  decoded = decoded + mid(encoded,i,12); 
+                  illegalencoding = illegalencoding + mid(encoded,i,12) + " "; 
+                } 
+              } else { 
+                decoded = decoded + mid(encoded,i,12); 
+                illegalencoding = illegalencoding + mid(encoded,i,12) + " "; 
+              } 
+            } else { 
+              decoded = decoded + mid(encoded,i,12); 
+              illegalencoding = illegalencoding + mid(encoded,i,12) + " "; 
+            } 
+            i = i + 12; 
+          } 
+ 
+        } else {  // the first byte is not legally percent-encoded 
+          decoded = decoded + mid(encoded,i,3); 
+          illegalencoding = illegalencoding + mid(encoded,i,3) + " "; 
+          i = i + 3; 
+        } 
+ 
+      } else {  // the string is not percent encoded 
+        // Check if character is an allowed character: 
+        if (indexOf(allowed,ch) == -1) notallowed = notallowed + ch + " "; 
+        decoded = decoded + ch; 
+        i++; 
+      } 
+    }  // end of while ..
+    return decoded;
+}
+function form_OnUnloadCompleted(obj)
+{
+	//alert(1);
+}
+]]></Script>
+</Window>

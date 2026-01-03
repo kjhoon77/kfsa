@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="564" Id="frmcust1190MEmailSendManagement" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="[인터넷]메일발송" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioInternetCustomerJubsu">
+				<Contents>
+					<colinfo id="SEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="EMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="EMSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="EMEDSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="EMCMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="FMHFMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ESGTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ESGTDEPTNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ESYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="ESDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ESTIME" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDUDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ESCOUSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ESCOURSENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="EMEMAIL" size="256" summ="default" type="STRING"/>
+					<colinfo id="EMBUILDING" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDPROCDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="EMTEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="EMPHONE" size="256" summ="default" type="STRING"/>
+					<colinfo id="EMRESIDENT" size="256" summ="default" type="STRING"/>
+					<colinfo id="EMADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="EPNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="EPFILE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ESPREPARED" size="256" summ="default" type="STRING"/>
+					<colinfo id="ESGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="EMSTATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="EMPAYSTATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="EPPARKINGINFO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEmailSeq">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oStatus1">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>신청(미입금)</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>계좌할당(미입금)</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>계좌취소(미입금)</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>입금완료</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oIsuGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>Y</CD>
+						<DATA>이수&#32;&#32;&#32;&#32;&#32;&#32;</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>미이수</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="112" Height="76" Id="shpGubunBox" Left="4" LineColor="user15" Right="796" TabOrder="25" Top="36" Type="Rectangle" Width="792"></Shape>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="270" LineColor="user14" Right="796" TabOrder="8" Top="1" Type="Rectangle" Width="526"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="9" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="264">
+			<Contents></Contents>
+		</Div>
+		<Grid AutoEnter="TRUE" BindDataset="ds_ioInternetCustomerJubsu" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="560" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="420" Id="gdEmailStat" InputPanel="FALSE" Left="4" LineColor="default" OnHeadClick="gdEmailStat_OnHeadClick" Right="796" RowHeight="20" Style="sty_Grid" TabOrder="7" TabStop="true" Top="140" UseDBuff="true" UsePopupMenu="true" UserData="메일발송목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="default">
+					<columns>
+						<col width="29"/>
+						<col width="47"/>
+						<col width="114"/>
+						<col width="85"/>
+						<col width="80"/>
+						<col width="65"/>
+						<col width="66"/>
+						<col width="160"/>
+						<col width="153"/>
+						<col width="80"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="checkbox" edit="checkbox"/>
+						<cell col="1" display="text" text="년도"/>
+						<cell col="2" display="text" text="직능"/>
+						<cell col="3" display="text" text="교육일자"/>
+						<cell col="4" display="text" text="교육시간"/>
+						<cell col="5" display="text" text="관리번호"/>
+						<cell col="6" display="text" text="성명"/>
+						<cell col="7" display="text" text="이메일"/>
+						<cell col="8" display="text" text="업체명"/>
+						<cell col="9" display="text" text="접수신청일"/>
+						<cell col="10" display="text" text="접수상태"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SEL" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" colid="ESYEAR" display="text"/>
+						<cell align="center" col="2" colid="ESCOURSENM" display="text"/>
+						<cell align="center" col="3" colid="ESDATE" display="text" Mask="####-##-##"/>
+						<cell align="center" col="4" colid="ESTIME" display="text" Mask="##:##~##:##"/>
+						<cell align="center" col="5" colid="CNO" display="text"/>
+						<cell align="center" col="6" colid="FMNM" display="text"/>
+						<cell align="left" col="7" colid="EMEMAIL" display="text"/>
+						<cell align="left" col="8" colid="EMBUILDING" display="text"/>
+						<cell align="center" col="9" colid="EDPROCDATE" display="text" Mask="####-##-##"/>
+						<cell align="center" col="10" colid="EMPAYSTATUS" display="text" expr="lfn_GetStatus(EMPAYSTATUS)"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="720" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="6" Top="116" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="24" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="273" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Width="86"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="447" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="2" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="lfn_Excel" Style="sty_Button" TabOrder="3" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="4" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="5" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="320" Style="sty_Label" TabOrder="15" Text="직능" Top="40" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_oCourse" Left="411" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="11" Top="39" UserData="S" Width="222"></Combo>
+		<Static Align="Center" Height="20" Id="lbJubsuDate" Left="320" Style="sty_Label" TabOrder="16" Text="접수일자" Top="64" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calJubsuDateEnd" Left="536" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="13" Top="64" WeeksFont="돋음,9" Width="96"></Calendar>
+		<Static Align="Center" Height="20" Id="lbDateWave" Left="517" Style="sty_Text" TabOrder="17" Text="~" Top="65" VAlign="Middle" Width="10"></Static>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="18" Text="지부" Top="40" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxJibu" ImeMode="none" INDEX="0" InnerDataset="ds_oJibu" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="10" Top="40" UserData="I" Width="86"></Combo>
+		<Static Align="Center" Height="20" Id="lbWorkGubun" Left="320" Style="sty_Label" TabOrder="19" Text="이수여부" Top="87" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radWorkGubun" INDEX="0" InnerDataset="ds_oIsuGubun" Left="412" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="14" Top="88" UserData="S" Width="236"></Radio>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calJubsuDateStart" Left="412" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="12" Top="64" WeeksFont="돋음,9" Width="96"></Calendar>
+		<Static Align="Center" Height="20" Id="Static0" Left="188" Style="sty_Label" TabOrder="20" Text="교육년도" Top="40" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edYear" ImeMode="native" Left="280" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="21" Top="40" UserData="I:교육년도" Width="36"></Edit>
+		<Static Align="Center" Height="20" Id="Static2" Left="8" Style="sty_Label" TabOrder="22" Text="교육일자" Top="88" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static3" Left="8" Style="sty_Label" TabOrder="24" Text="접수상태" Top="64" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxJubsuStatus" ImeMode="none" INDEX="0" InnerDataset="ds_oStatus1" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="23" Top="64" UserData="S" Width="218"></Combo>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calEduDateStart" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="26" Top="88" WeeksFont="돋음,9" Width="96"></Calendar>
+		<Static Align="Center" Height="20" Id="Static1" Left="203" Style="sty_Text" TabOrder="28" Text="~" Top="89" VAlign="Middle" Width="10"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calEduDateEnd" Left="220" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="27" Top="88" WeeksFont="돋음,9" Width="96"></Calendar>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSend" ImageID="BTN_TEXT_COM" Left="360" OnClick="lfn_Send" Style="sty_Button" TabOrder="29" Text="메일발송" ToolTipText="E-Mail&#32;발송" Top="4" Width="85"></Button>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medEmailCnt" Left="96" Mask="#,###" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="30" Top="116" Width="88"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbEmailCnt" Left="4" Style="sty_LabelStat" TabOrder="31" Text="건수" Top="116" VAlign="Middle" Width="88"></Static>
+		<WebBrowser Height="20" Id="wbSendMail" Left="693" TabOrder="32" Top="114" Visible="FALSE" Width="20"></WebBrowser>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust2090MDailyFeeReport.xml
+ * 설명 : 
+ * 작성일 : 2010.01.
+ * 작성자 : 배기원
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+var md5_check_value = "123aaa_KFSA";
+var MD5;	//MD5 HashValue
+var checkCntFlag1;	//체크된 데이터 갯수
+var checkCntFlag2;	//발송된 데이터 갯수
+
+function Form_OnLoadCompleted(obj)
+{
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    // 공통 코드 조회
+    gfn_SearchAllJibu(cbxJibu, "Y","전체");           // 지부 코드 조회
+    gfn_SearchCustomerEduCourseFullName(ds_oCourse, "0","전체");// 대표고객직능 조회   
+
+    edYear.Text = left(GetDate(), 4);                 //년도
+    calJubsuDateStart.Value = addDate(left(getDate(), 8), -14);//접수시작일
+    calJubsuDateEnd.Value = left(GetDate(),8);  //접수종료일
+    calEduDateStart.Value = addDate(left(getDate(), 8), -30);  //교육시작일
+    calEduDateEnd.Value = addDate(left(getDate(), 8), +30);    //교육종료일
+    cbxCourse.Index = 0;
+}
+/*
+function Form_OnKeyDown(obj,objJubsuerObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objJubsuerObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+*/
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdEmailStat.Height = nCy - gdEmailStat.Top - 4;
+        gdEmailStat.Width = nCx - gdEmailStat.Left - 4;
+    }
+}
+
+function lfn_Cancel(obj)
+{
+    lfn_CancelL(obj);
+}
+
+function lfn_CancelL(obj)
+{
+    calJubsuDateStart.Value = addDate(left(getDate(), 8), -14);//접수시작일
+    calJubsuDateEnd.Value = left(GetDate(),8);  //접수종료일
+    calEduDateStart.Value = addDate(left(getDate(), 8), -30);  //교육시작일
+    calEduDateEnd.Value = addDate(left(getDate(), 8), +30);    //교육종료일
+    cbxJibu.SetFocus();
+}
+
+
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+        ds_ioInternetCustomerJubsu.ClearData(); // 데이타셋 초기화       
+        tit_clearActionInfo();
+        tit_AddSearchActionInfo("cust:searchCust1190InternetCustomerJusu", false);
+
+        // 서버 호출
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_ioInternetCustomerJubsu=ds_oInternetCustomerJubsu"	// outDs
+            ,"GTMGNO=" + quote(cbxJibu.value)   //-- 지부
+              +" CCOURSECD=" + quote(cbxCourse.value)   //-- 직능              
+              +" JUBSUDATE1=" + quote(calJubsuDateStart.Value)// 접수일자1
+              +" JUBSUDATE2=" + quote(calJubsuDateEnd.Value)// 접수일자2 
+              +" EDUDATE1=" + quote(calEduDateStart.Value)  // 교육일자1
+              +" EDUDATE2=" + quote(calEduDateEnd.Value)  // 교육일자2               
+              +" ISU_YN=" + quote(radWorkGubun.Value)     // 이수여부
+              +" JUBSUSTATUS=" + quote(cbxJubsuStatus.value)  // 접수상태
+              +" YEAR=" + quote(edYear.Text)  //년도
+              +" SEL='0'"   // args  체크여부 확인 위함
+            ,"lfn_AfterSearchInternetJubsu"
+            ,false
+        );
+}
+
+
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchInternetJubsu(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+         
+    gfn_SearchMessage(gdEmailStat); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+	medEmailCnt = ds_ioInternetCustomerJubsu.GetRowCount();	//건수
+}
+
+
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdEmailStat, 1); // 멀티 정렬을 실행한다.
+}
+
+
+//그리드 헤드 선택시
+function gdEmailStat_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	var lobj_Dataset = object(obj.BindDataset);
+	if (nCell == 0) { // 선택
+        if (obj.GetCellProp("head", nCell, "text") == 1) { // 전체가 이미 선택된 경우
+            obj.SetCellProp("head", nCell, "text", 0);
+            for(i = 0; i < lobj_Dataset.RowCount(); i++) {
+                lobj_Dataset.SetColumn(i, "SEL", "0");
+            }
+        } else { // 전체가 이미 선택되지 않은 경우
+            obj.SetCellProp("head", nCell, "text", 1);
+            for(i = 0; i < lobj_Dataset.RowCount(); i++) {
+                lobj_Dataset.SetColumn(i, "SEL", "1");
+            }
+        }
+	} else { // 헤드 정렬
+        lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex);
+	}	
+}
+
+/*
+ * 기능 : 메일발송
+ */
+function lfn_Send(obj)
+{
+
+	if (!gfn_Confirm("선택된 접수자에게 인터넷실무교육 안내메일을 발송 하시겠습니까?")) {
+        return false;
+    }
+    
+	var lnFlag = false;	//Condition Check Falg
+	checkCntFlag1 = 0;	//Check Count1 초기화
+	checkCntFlag2 = 0;	//Check Count2 초기화
+	
+    for(var i=0; i<ds_ioInternetCustomerJubsu.GetRowCount(); i++) {
+        if(ds_ioInternetCustomerJubsu.GetColumn(i, "SEL") == 1) checkCntFlag1++;
+    }
+	
+    for(var i=0; i<ds_ioInternetCustomerJubsu.GetRowCount(); i++) {
+        if(ds_ioInternetCustomerJubsu.GetColumn(i, "SEL") == 1) lnFlag = true;
+    }
+	
+	if(lnFlag == false) {	//메일발송할 데이터가 없음
+		gfn_Alert("메일발송 대상을 선택하십시오.");
+		return;
+	}
+	//lfn_CreateWaitMail("",this);	//진행 팝업 Open
+	
+    for(var i=0; i<ds_ioInternetCustomerJubsu.GetRowCount(); i++) {
+        if(ds_ioInternetCustomerJubsu.GetColumn(i, "SEL") == 1) {
+            ds_oEmailSeq.ClearData();
+            tit_clearActionInfo();
+            tit_AddCsvSearchActionInfo("cust:searchEmailSendSeq", false);
+            // 서버 호출 
+            tit_callService(
+                ""
+                ,""
+                ,""	// inDs
+                ,"ds_oEmailSeq=ds_oEmailSeq"	// outDs
+                ,""	// args 
+                ,""
+                ,false
+                ,true
+                ,true
+            );
+            lfn_SendMailContentCustomer(ds_ioInternetCustomerJubsu, i, ds_oEmailSeq.GetColumn(0, "SEQ"));
+        }
+    }
+
+}
+
+
+/*
+ * 기능 : 메일발송
+ */
+
+function lfn_SendMailContentCustomer(ds_source, i, seq) {
+
+	//MAIL PROCESS
+    //"123aaa_KFSA"
+	var plainChkVal = toString(ds_source.GetColumn(i,"EMMGNO"))+toString(ds_source.GetColumn(i,"EMSEQ")) + md5_check_value;	//평문
+	gfn_Cryptograph("Generation", "MD5", plainChkVal, "lfn_AfterCryptograph");	//Get MD5 Hash Value
+
+	var emmgno = ds_source.GetColumn(i,"EMMGNO");
+	var emseq = ds_source.GetColumn(i,"EMSEQ");
+    var coursecd = ds_source.GetColumn(i,"ESCOUSECD");
+    
+	var chkVal = MD5;	//MD5 Hash Value
+	if(chkVal == "FAIL") {
+		gfn_Alert(toName+" 접수자에 대한 MD5 Hash 생성에 실패하였습니다.");
+		return;
+	}
+//var application_print = "tjmgno="+tjmgno+"&chkVal="+chkVal;	 //메일강습일 경우
+//<a href="http://www.kfsi.or.kr/edu/edu_expert/request_print.php?mno={m}&con={d}&seq={s}" target="_new">	mno 값 con 값 seq 값 확인바람
+	var application_print = "emmgno="+emmgno+"&emseq="+emseq+"&coursecd="+coursecd+"&chkVal="+chkVal;
+
+	//메일 내용 변수
+	var HTTP_HOST = "www.kfsi.or.kr";	//소방안전원HOST
+	var HTTP_SUB = "edu/edu_expert";	//SUB FOLDER
+	var FMNM = ds_source.GetColumn(i, "FMNM");	//성명
+	var EDPROCDATE = left(ds_source.GetColumn(i, "EDPROCDATE"),4)+"년 "+substr(ds_source.GetColumn(i, "EDPROCDATE"),4,2)+" 월 "+substr(ds_source.GetColumn(i, "EDPROCDATE"),6,2)+"일 ";	//접수일자
+	var EMRESIDENT = ds_source.GetColumn(i, "EMRESIDENT");	//주민번호(앞6자리)
+	var ESCOURSENM = ds_source.GetColumn(i, "ESCOURSENM");	//교육과정
+	var EDUDATE = ds_source.GetColumn(i, "EDUDATE");	    //교육일자
+	var ESGUBUN = ds_source.GetColumn(i, "ESGUBUN");        //교육구분
+	var ESGTDEPTNM = ds_source.GetColumn(i, "ESGTDEPTNM");	//교육지부
+	var EPNM = ds_source.GetColumn(i, "EPNM");	            //교육장소
+	var EPFILE = ds_source.GetColumn(i, "EPFILE");	        //교육장 이미지
+	var ESPREPARED = ds_source.GetColumn(i, "ESPREPARED");  //준비물
+	var EMTEL = ds_source.GetColumn(i, "EMTEL");	        //연락처
+	var EMPHONE = ds_source.GetColumn(i, "EMPHONE");	    //휴대폰
+	var EMEMAIL = ds_source.GetColumn(i, "EMEMAIL");	    //이메일
+	var EMBUILDING = ds_source.GetColumn(i, "EMBUILDING");  //상호명
+	var EMAILSEQ = seq;	//이메일관리번호
+
+	//메일 공통 변수
+	var toEmail = ds_source.GetColumn(i, "EMEMAIL");
+	var toName = ds_source.GetColumn(i, "FMNM");
+	var fromEmail = "helpdesk@kfsi.or.kr";
+	var title = "[한국소방안전원] "+toName+" 회원님의 실무교육접수 안내메일 입니다.";
+		
+	//메일 본문
+    var content = " <html>";
+    content += " <head>";
+    content += " <link href='http://"+HTTP_HOST+"/css/kfsa.css' rel='stylesheet' type='text/css'> " ;
+    content += " <meta http-equiv='Content-Type' content='text/html; charset=euc-kr'> " ;
+    content += " <title>한국소방안전원</title> ";
+    content += " </head> ";
+    content += " <body> ";
+    content += " <DIV CLASS='page'> ";
+    content += " <table width='596' border='0' align='center' cellpadding='0' cellspacing='1' bgcolor='D8D8D8'> ";
+    content += "    <tr><td height='1' bgcolor='D8D8D8'></td></tr> ";
+    content += "    <tr> ";
+    content += "        <td bgcolor='#FFFFFF'> ";
+    content += "        <table width='100%' border='0' cellspacing='0' cellpadding='0'> ";
+    content += "            <tr> ";
+    content += "                <td height='45'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/maillogo.gif' width='173' height='25'></td> ";
+    content += "                <td align='right'>&nbsp;</td> ";
+    content += "            </tr> ";
+    content += "        </table> ";
+    content += "        </td> ";
+    content += "    </tr> ";
+    content += "    <tr> ";
+    content += "        <td height='189' valign='bottom' background='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/maillpic.gif' bgcolor='#FFFFFF'><table width='310' border='0' cellspacing='0' cellpadding='0'>";
+    content += "            <tr> ";
+    content += "                <td width='75'>&nbsp;</td>";
+    content += "                <td width='235' height='60' valign='top'><font style='font-size: 9pt; color: 02FEFB;'><b>"+FMNM+"</b></font>&nbsp;&nbsp;<font style='font-size: 9pt; color:ffffff;'>회원님!<br>";
+    content += "				실무교육 접수결과를 알려드립니다.</font></td> ";
+    content += "            </tr> ";
+    content += "        </table> ";
+    content += "        </td> ";
+    content += "    </tr> ";
+    content += "    <tr> ";
+    content += "        <td align='center' valign='top' bgcolor='#FFFFFF'> ";
+    content += "        <table width='100%'  border='0' cellspacing='0' cellpadding='0'> ";
+    content += "            <tr><td height='2' bgcolor='D8D8D8'></td></tr> ";
+    content += "            <tr> ";
+    content += "                <td height='70' align='center'> ";
+    content += "                <table width='540' border='0' cellspacing='0' cellpadding='0'> ";
+    content += "                    <tr> ";
+    content += "                        <td width='9'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailleft.gif' width='9' height='35'></td>";
+    content += "                        <td width='522' align='center' bgcolor='DCDCDC'><font style='font-size: 9pt;  color: 000000;'>";
+    content += "                            <font style='font-size: 9pt;  color: 0056FF;'><b>"+FMNM+"</b></font> 님께서 지난 ";
+    content += "                            <font style='font-size: 9pt;  color: E67201;'><b>"+EDPROCDATE+"</b></font>에 신청하신 ";
+    content += "                            <font style='font-size: 9pt;  color: 0056FF;'><b>실무교육 접수결과</b></font>를 알려드립니다.</font></td> ";
+    content += "                        <td width='9'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailright.gif' width='9' height='35'></td> ";
+    content += "                    </tr> ";
+    content += "                </table> ";
+    content += "                </td> ";
+    content += "            </tr> ";   
+    content += "            <tr><td height='15'></td></tr>";
+    content += "            <tr>";
+    content += "                <td align='center'><table width='522' border='0' cellspacing='0' cellpadding='0'>" ;
+    content += "                    <tr><td valign='bottom'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailbox1.gif' width='522' height='29'></td></tr>";
+    content += "                    <tr style=padding:10,0> ";
+    content += "                        <td align='center' background='images/mailbox2.gif'><table width='500' border='0' cellspacing='0' cellpadding='0'>";
+    content += "                            <tr> ";
+    content += "                            <td height='22' align='left'><font style='font-size: 9pt; color: 000000;'><font style='font-size: 7pt; color: eb8b01;'>▶</font> <strong>교육과정</strong> : "+ESCOURSENM+"</font></td></tr>";
+    content += "                            <tr><td height='22' align='left'><font style='font-size: 9pt; color: 000000;'><font style='font-size: 7pt; color: eb8b01;'>▶</font> <strong>교육일시</strong> : "+EDUDATE+"</font></td></tr>";
+    content += "                            <tr><td height='22' align='left'><font style='font-size: 9pt; color: 000000;'><font style='font-size: 7pt; color: eb8b01;'>▶</font> <strong>교육구분</strong> : "+ESGUBUN+"</font></td></tr>";
+    content += "                            <tr><td height='22' align='left'><font style='font-size: 9pt; color: 000000;'><font style='font-size: 7pt; color: eb8b01;'>▶</font> <strong>지&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부</strong> : "+ESGTDEPTNM+"</font></td></tr>";
+    content += "                            <tr><td height='22' align='left'><font style='font-size: 9pt; color: 000000;'><font style='font-size: 7pt; color: eb8b01;'>▶</font> <strong>교육장소</strong> : "+EPNM+"</font></td></tr>";
+    content += "                            <tr><td height='22' align='left'><font style='font-size: 9pt; color: 000000;'><font style='font-size: 7pt; color: eb8b01;'>▶</font> <strong>준 비 물</strong> : "+ESPREPARED+"</font></td></tr>";
+    content += "                            <tr> ";
+    content += "                                <td height='35' valign='bottom'>&nbsp; ";
+    content += "                                    <a href=http://"+HTTP_HOST+"/"+HTTP_SUB+"/application_print.php?"+application_print+" target='_new'> ";  
+    content += "                                    <img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/button_application.gif' border='0' align='absmiddle'></a>&nbsp; ";
+    content += "                                    <font style='font-size: 9pt; color: fa0303;'><b>(교육 당일에 실무교육 참가원을 반드시 제출하셔야 합니다.)</b></font>";
+    content += "                                </td> ";
+    content += "                            </tr> ";
+    content += "                            <tr> ";
+    content += "                                <td height='35' align='right' valign='bottom'>&nbsp; ";
+    content += "                                    <a href='http://www.kfsi.or.kr/ass/help/no_webreporting.htm' target='_new'> ";
+    content += "                                        [<font color='blue'>참가원 출력이 안될 경우 클릭</font>]</a> ";
+    content += "                                </td> ";
+    content += "                            </tr> ";
+    content += "                        </table> ";
+    content += "                        </td> ";
+    content += "                    </tr> ";
+    content += "                    <tr><td height='4'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailbox3.gif'></td></tr> ";
+    content += "                </table> ";
+    content += "                </td> ";
+    content += "            </tr> ";
+    content += "            <tr><td height='25' align='center'>&nbsp;</td></tr> ";
+    content += "            <tr> ";
+    content += "                <td align='center'> ";
+    content += "                <table width='522' border='0' cellspacing='0' cellpadding='0'> ";
+    content += "                     <tr><td valign='bottom'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailbox4.gif'></td></tr> ";
+    content += "                     <tr style=padding:10,0> ";
+    content += "                        <td align='center' background='images/mailbox2.gif'> ";
+    content += "                        <table width='499' border='0' cellspacing='0' cellpadding='0'> ";
+    content += "                            <tr> ";
+    content += "                                <td height='22' align='left'><font style='font-size: 9pt;  color: 000000;'><font style='font-size: 7pt;  color: eb8b01;'>▶</font> <strong></strong><strong>성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명 </strong> : "+FMNM+" </font></td> ";
+    content += "                            </tr> ";
+    content += "                            <tr> ";
+    content += "                                <td height='22' align='left'><font style='font-size: 9pt;  color: 000000;'><font style='font-size: 7pt;  color: eb8b01;'>▶</font> <strong></strong><strong>주민번호</strong> : "+EMRESIDENT+" </font></td> ";
+    content += "                            </tr> ";
+    content += "                            <tr> ";
+    content += "                                <td height='22' align='left'><font style='font-size: 9pt;  color: 000000;'><font style='font-size: 7pt;  color: eb8b01;'>▶</font> <strong></strong><strong>연 락 처</strong> : "+EMTEL+" (휴대폰 : "+EMPHONE+")</font></td> ";
+    content += "                            </tr> ";
+    content += "                            <tr> ";
+    content += "                                <td height='22' align='left'><font style='font-size: 9pt;  color: 000000;'><font style='font-size: 7pt;  color: eb8b01;'>▶</font> <strong></strong><strong>이메일</strong> : "+EMEMAIL+" </font></td> ";
+    content += "                            </tr> ";
+    content += "                            <tr> ";
+    content += "                                <td height='22' align='left'><font style='font-size: 9pt;  color: 000000;'><font style='font-size: 7pt;  color: eb8b01;'>▶</font> <strong></strong><strong>상호명</strong>: "+EMBUILDING+" </font></td> ";
+    content += "                            </tr> ";
+    content += "                        </table> ";
+    content += "                        </td> ";
+    content += "                    </tr> ";
+    content += "                    <tr><td height='4'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailbox3.gif'></td></tr> ";
+    content += "                </table> ";
+    content += "                </td> ";
+    content += "            </tr> ";
+    content += "            <tr><td height='25' align='center'>&nbsp;</td></tr> ";
+    content += "            <tr> ";
+    content += "                <td align='center'> ";
+    content += "                <table width='592' border='0' cellspacing='0' cellpadding='0'> ";
+    content += "                    <tr><td height='25' valign='bottom' align='left'><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/mailattention.gif' width='153' height='21'></td></tr> ";
+    content += "                    <tr style=padding:10,0> ";
+    content += "                        <td align='center' bgcolor='F2F3F3'> ";
+    content += "                        <table width='575' border='0' cellpadding='0' cellspacing='0' bgcolor='#FFFFFF'> ";
+    content += "                            <tr> ";
+    content += "                                <td height='22' align='left'><font style='font-size: 9pt;  color: 000000;'> &nbsp;○ 대리참석은 불가하오니, 반드시 선임하신 분이 교육에 참석하셔야 합니다.</font></td> ";
+    content += "                            </tr> ";
+    content += "                            <tr> ";
+    content += "                                <td height='22' align='left'><font style='font-size: 9pt;  color: 000000;'>&nbsp;○ 주차장이 협소하오니 대중교통을 이용해 주십시요. ";    
+    content += "                            </font></td> ";
+    content += "                            </tr> ";
+    content += "                        </table> ";
+    content += "                        </td> ";
+    content += "                    </tr> ";
+    content += "                </table> ";
+    content += "                 </td> ";
+    content += "            </tr> ";
+    content += "            <tr><td height='100' align='right' style=padding-right:30><img src='http://"+HTTP_HOST+"/"+HTTP_SUB+"/images/stamp.gif' height='76'></td></tr> ";
+    content += "            <tr><td height='30' align='center' bgcolor='D8D8D8'><font style='font-size: 9pt;  color: 000000;'>Copyrightⓒ2001 Korea Fire Safety Association, All Rights Reserved. </font></td></tr> ";
+    content += "         </table> ";
+    content += "         </td> ";
+    content += "     </tr> ";
+    content += " </table> ";
+    content += " </DIV> ";
+    content += " <DIV CLASS='page'><BR><BR> ";
+    content += " <table width='596' border='0' align='center' cellpadding='0' cellspacing='0'> ";
+    content += " <tr><td height='30' valign='bottom'><span class='orange_7'>▶</span> <strong>교육장 약도 </strong></td></tr> ";
+    content += " <tr><td align='center'><img src='http://www.kfsi.or.kr"+EPFILE+"'></td></tr> ";
+    content += " </table> ";
+    content += " </DIV> ";
+
+    content += " <img src='http://www.kfsi.or.kr/check/emailcheck.php?mgno="+EMAILSEQ+"' width=1 height=1>";	//수신확인
+
+    content += " </body> ";
+    content += " </html> ";
+
+    var contents = UrlEncode(content);
+
+	wbSendMail.PageUrl = "http://119.68.48.79/nara/servlet/simple.SimpleMailSendServ";
+	wbSendMail.PostData = "ToEmail="+toEmail+"&ToName="+toName+"&FromEmail="+fromEmail+"&MailTitle="+title+"&MailContent="+contents;
+	wbSendMail.Run();
+	
+	lfn_SendMailLog(ds_source, i, title, content, EMAILSEQ);
+}
+
+
+/*
+ * 기능 : 메일 발송 이력
+ */
+function lfn_SendMailLog(ds_source, i, title, content, EMAILSEQ) {
+        var lsGubun = ds_source.GetColumn(i,"EMMGNO")+","+ds_source.GetColumn(i,"EMSEQ")+","+ds_source.GetColumn(i,"EMEDSEQ");
+        tit_clearActionInfo();
+        tit_addSingleActionInfo("cust:insertEmailContents", "", 0, "");
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,""	// outDs 
+            , "ESHGTMGNO=" + quote(gds_oUserInfo.GetColumn(0,"PDEPTCD"))	//-- 발송지부
+              +" ESHSABUN=" + quote(gds_oUserInfo.GetColumn(0,"PSABUN"))	//-- 사번
+              +" ESHEMAILADDR=" + quote(ds_source.GetColumn(i,"EMEMAIL"))   //-- 이메일주소
+              +" ESHSENDYN=" + quote("Y") // -- 발송여부
+              +" ESHRECEIVEYN=" + quote("N") // -- 수신상태
+              +" ESHBIZGUBUN=" + quote("B") // -- 업무구분
+              +" ESHBIZMGNO=" + quote(lsGubun) // -- 업무참조
+              +" ECTITLE=" + quote(title) // -- 제목
+              +" ECCONTENTS=" + quote(content) // -- 내용
+              +" ESHMGNO=" + quote(EMAILSEQ)	//-- 이메일관리번호
+            ,"lfn_AfterSaveSendMailLog"
+            ,false
+            ,true
+        );
+}
+        
+/*
+ * 기능 : 메일 발송 이력 저장 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveSendMailLog(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    if(checkCntFlag1 == ++checkCntFlag2) {
+		//lfn_DestroyWaitMail();	//진행 팝업 Close
+		gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    }
+}
+        
+
+/*
+ * 기능 : gfn_Cryptograph 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ *	           cRtnVal - 리턴값(암호문)
+ * Return : 성공:"OK", 실패:"FAIL"
+ */
+function lfn_AfterCryptograph(strSvcID, nErrorCode, strErrorMsg) {
+    if (strSvcID <> "Cryptograph") {
+        return "FAIL";
+    }
+
+    if (nErrorCode < 0) { // 트랜잭션 에러.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return "FAIL";
+    }
+
+    MD5 = cRtnVal; // POS 조회결과 코드값
+}
+
+/****************************************************************
+* 처리 중 입니다 메시지 보여주기
+* 내부적으로 Division 을 생성하여 해당 정보를 보여준다.
+* @param strMsg 보여줄 메시지
+* @param topObj 위치할 최상위 객체
+* @param errMsg  에러 메시지
+* @return 없음
+******************************************************************/
+var _f_cnt_mail = 0;
+function lfn_CreateWaitMail(strMsg, topObj) {
+    _f_cnt_mail++;
+
+    if ( tit_findObj("_Div_wait_mail", this) == false ) {
+        var w = 300;
+        var h = 124;
+        var nLeft = (this.width /2) - (w/2);
+        var nTop = (this.Height /2) - h + 20;
+        // 생성하기
+        Create("Div", "_Div_wait_mail", "left='" + nLeft + "' border='none' top='"
+            + nTop + "' width='" + w + "' height='" + h + "' url='COM::frmCOM0031PProgressBar.xml' syncContents='true'");
+    } else {
+        _Div_wait_mail.visible = true;
+    }
+}
+
+/*****************************************************************
+* 처리 중 입니다 메시지 창 삭제하기
+* @return 없음
+******************************************************************/
+function lfn_DestroyWaitMail(){
+    if ( tit_findObj("_Div_wait_mail", this) ) { //find("_Div_wait") != null ) {
+        _f_cnt_mail--;
+        if ( _f_cnt <= 0 ) {
+            SetWaitCursor(false);
+            ReleaseCapture();
+            _Div_wait_mail.visible = false;
+        }
+    } else {
+        SetWaitCursor(false);
+        ReleaseCapture();
+    }
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    btnSend.Enable = bStatus; // 메일발송 버튼
+}
+
+
+/**
+ * 상태
+ */
+function lfn_GetStatus(nCode) {
+    switch (nCode) {
+        case "1": return "교육신청";
+        case "2": return "계좌할당";
+        case "3": return "계좌취소";
+        case "4": return "입금완료";
+        case "5": return "환불신청";
+        case "6": return "환불접수";
+        case "7": return "환불완료";
+        case "8": return "환불취소";
+        default : return nCode;
+    }
+}]]></Script>
+</Window>

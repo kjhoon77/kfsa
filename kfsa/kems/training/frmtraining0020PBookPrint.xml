@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="312" Id="frmtraining0020PBookPrint" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="교재수령지정보" Top="8" Ver="1.0" Width="520" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oHist">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioBook"></Dataset>
+		</Datasets>
+		<Shape Bottom="160" Height="112" Id="shpGubunBox" Left="12" LineColor="user15" Right="512" TabOrder="5" Top="48" Type="Rectangle" Width="500"></Shape>
+		<Shape Bottom="32" Height="28" Id="Shape0" Left="334" LineColor="user14" Right="512" TabOrder="4" Top="4" Type="Rectangle" Width="178"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="424" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="7" Width="85"></Button>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oHist" Border="Flat" Column="HPTEL" Enable="FALSE" Height="20" Id="edHPTEL" ImeMode="native" Left="108" LeftMargin="2" MaxLength="50" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="3" Top="136" Width="180"></Edit>
+		<Static Align="Center" Height="20" Id="lbReason" Left="16" Style="sty_Label" TabOrder="6" Text="휴대폰번호" Top="136" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbBank" Left="16" Style="sty_Label" TabOrder="7" Text="출력여부" Top="64" UserData="SK" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbRepay" Left="28" Style="sty_LabelGruopBox" TabOrder="8" Text="교재수령지&#32;출력&#32;정보" Top="40" VAlign="Middle" Width="152"></Static>
+		<Static Align="Center" Height="20" Id="lbOwner" Left="16" Style="sty_Label" TabOrder="10" Text="성명" Top="112" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oHist" Border="Flat" Column="PERSONNM" Enable="FALSE" Height="20" Id="edPERSONNM" ImeMode="native" Left="108" LeftMargin="2" MaxLength="10" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="9" Top="112" Width="180"></Edit>
+		<Static Align="Center" Height="20" Id="lbAccount" Left="16" Style="sty_Label" TabOrder="12" Text="등기번호" Top="88" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oHist" Border="Flat" Column="TJBOOKREGNO" Height="20" Id="edBookRegno" ImeMode="native" Left="108" LeftMargin="2" MaxLength="30" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="11" Top="88" Width="180"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSave" ImageID="BTN_TEXT_COM" Left="337" OnClick="lfn_Save" Style="sty_Button" TabOrder="13" Text="저장" ToolTipText="수첩폐기" Top="7" Width="85"></Button>
+		<Image Height="10" Id="imgImage" ImageID="IMG_BULLET" Left="16" Style="sty_Image" TabOrder="15" Top="17" Transparent="TRUE" Width="12"></Image>
+		<Static Font="굴림,12,Bold" Height="20" Id="lbWorkFormTitle" Left="36" TabOrder="14" Text="교재수령지&#32;출력" Top="12" VAlign="Middle" Width="216"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnBookSmsSend" ImageID="BTN_TEXT_08" Left="292" OnClick="btnBookSmsSend_OnClick" Style="sty_Button" TabOrder="16" Text="문자발송" Top="134" Transparent="TRUE" Width="118"></Button>
+		<Static Align="Center" Height="20" Id="lbJubsuHist" Left="12" Style="sty_LabelGruopBox" TabOrder="18" Text="개인접수회차이력" Top="166" VAlign="Middle" Width="120"></Static>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oHist" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="301" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="108" Id="gdHist" InputPanel="FALSE" Left="14" LineColor="default" Right="514" RowHeight="20" Style="sty_Grid" TabOrder="17" TabStop="true" Top="193" UseDBuff="true" UsePopupMenu="true" UserData="회차변경정보" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="500">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="35"/>
+						<col width="70"/>
+						<col width="50"/>
+						<col width="60"/>
+						<col width="70"/>
+						<col width="50"/>
+						<col width="60"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" rowspan="2" SuppressAlign="Middle" text="순번">
+							<cell col="0" display="text" rowspan="2" text="순번"/>
+						</cell>
+						<cell col="1" display="text" rowspan="2" SuppressAlign="Middle" text="지부">
+							<cell col="0" display="text" rowspan="2" text="지부"/>
+						</cell>
+						<cell col="2" display="text" rowspan="2" SuppressAlign="Middle" text="회차">
+							<cell col="0" display="text" rowspan="2" text="회차"/>
+						</cell>
+						<cell col="3" display="text" rowspan="2" SuppressAlign="Middle" text="접수번호">
+							<cell col="0" display="text" rowspan="2" text="접수번호"/>
+						</cell>
+						<cell col="4" colspan="3" display="text" text="변경&#32;후">
+							<cell col="0" colspan="3" display="text" text="변경&#32;후"/>
+						</cell>
+						<cell col="7" display="text" rowspan="2" SuppressAlign="Middle" text="등기번호"/>
+						<cell align="center" col="4" display="text" row="1" text="지부"/>
+						<cell align="center" col="5" display="text" row="1" text="회차"/>
+						<cell align="center" col="6" display="text" row="1" text="접수번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="number" expr="ln_TotalGridOrderCount&#32;-&#32;CURROW"/>
+						<cell align="center" col="1" colid="BEFORJIBU" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="2" colid="BEFORORDER" display="text"/>
+						<cell align="center" col="3" colid="BEFORJUBSUNO" display="text"/>
+						<cell align="center" col="4" colid="AFTERJIBU" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="5" colid="AFTERORDER" display="text"/>
+						<cell align="center" col="6" colid="AFTERJUBSUNO" display="text"/>
+						<cell align="center" col="7" colid="TJBOOKREGNOVIEW" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Edit AutoSelect="TRUE" BindDataset="ds_oHist" Border="Flat" Column="TJBOOKPRINTTOMGNO" Enable="FALSE" Height="20" Id="edTJBOOKPRINTTOMGNO" ImeMode="native" Left="108" LeftMargin="2" MaxLength="10" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="18" Top="64" Width="180"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 교육접수정보명 : frmtraining0020PBookPrint.xml
+ * 설명 : 교재수령지정보 팝업
+ * 작성일 : 2023.09
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    if (IsExistVar("sTJMGNO")) {
+        lfn_Search();
+    }
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+
+    ds_oHist.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("training:searchTraining0020PBookPrintList", false);
+    // 서버 호출
+    tit_callService(
+        ""
+        , ""
+        , "" // inDs
+        , "ds_oHist=ds_oHist" // outDs
+        , "TJMGNO=" + quote(sTJMGNO) // args
+        , "lfn_AfterSearch"
+        ,false
+        ,false
+        ,true
+    );
+}
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    //trace(ds_oHist.SaveXML());
+    gfn_SearchMessage(gdHist); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+
+function lfn_Save(obj)
+{
+
+	if(!gfn_Confirm("입력한 등기번호를 저장하시겠습니까?")){
+		return false;
+	}
+	
+	if (gfn_IsNull(edBookRegno.Text)) {
+		gfn_Alert("등기번호를 입력하세요.");	
+		return false;
+	}
+	
+    tit_clearActionInfo();
+	tit_addSingleActionInfo("training:updateTraining0020PBookPrint", "", 0, ""); 
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,""	// outDs
+		,"TJMGNO=" + quote(sTJMGNO)
+            + " TJBOOKREGNO=" + quote(edBookRegno.Text) // args 
+		,"lfn_AfterUpdateTrainingBook"
+		,false
+	);
+	
+}
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용 
+ * Return : 없음
+ */
+function lfn_AfterUpdateTrainingBook(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }   
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.       
+}
+
+/*
+ 기능 : SMS 발송 
+*/
+function btnBookSmsSend_OnClick(obj)
+{
+	if (gfn_IsNull(edPERSONNM.Text) || gfn_IsNull(edHPTEL.Text) ) {
+        gfn_Alert("발송할 성명, 휴대폰번호가 존재하지 않습니다.");
+        return false;
+    }
+    
+	var vMRECVNM = edPERSONNM.Text;
+	var vTCCOURSENM = parent.ds_ioTrainingJubsu.GetColumn(0,"COURSENM");
+	var vTJDATE = substr(parent.ds_oTrainingOrderMgno.GetColumn(0, "TOSTARTDATE"),0,4)+ "." + 
+				  substr(parent.ds_oTrainingOrderMgno.GetColumn(0, "TOSTARTDATE"),4,2)+ "." + 
+				  substr(parent.ds_oTrainingOrderMgno.GetColumn(0, "TOSTARTDATE"),6,2)+ "~" + 
+				  substr(parent.ds_oTrainingOrderMgno.GetColumn(0, "TOENDDATE"),0,4)+ "." + 
+				  substr(parent.ds_oTrainingOrderMgno.GetColumn(0, "TOENDDATE"),4,2)+ "." + 
+				  substr(parent.ds_oTrainingOrderMgno.GetColumn(0, "TOENDDATE"),6,2)+ " (" + 
+				  substr(parent.ds_oTrainingOrderMgno.GetColumn(0, "TOSTARTTIME"),0,2)+ ":" + 
+				  substr(parent.ds_oTrainingOrderMgno.GetColumn(0, "TOSTARTTIME"),2,2)+ "~" + 
+				  substr(parent.ds_oTrainingOrderMgno.GetColumn(0, "TOENDTIME"),0,2)+ ":" + 
+				  substr(parent.ds_oTrainingOrderMgno.GetColumn(0, "TOENDTIME"),2,2)+ ") " ;				                              
+	var vTJJIBUNM = parent.ds_ioTrainingJubsu.GetColumn(0,"MGJIBUNM") +
+					"(" + gds_oUserInfo.GetColumn(0, "TEL") + ")" ;
+	var vTJBOOKREGNO = edBookRegno.Text ;
+	 
+	if (gfn_IsNull(vTJBOOKREGNO)) {
+        gfn_Alert("등기번호가 존재하지 않습니다.");
+        return false;
+    }
+    
+	var vMsg = "[한국소방안전원] 온라인 강습교재 발송 안내\n"+
+			   "\n"+
+			   "● 안내사항\n"+
+			   " - 한국소방안전원 온라인 강습교육 교재를 발송하였습니다.\n"+
+			   " - 교육 전일(휴일 제외)까지 교재가 도착하지 않은 경우에 교육신청 지부로 연락바랍니다.\n"+
+			   "\n"+
+			   "● 수 강 자 : " + vMRECVNM+"\n"+
+			   "● 교육과정 : " + vTCCOURSENM+"\n"+
+			   "● 교육일자 : " + vTJDATE+"\n"+
+			   "● 교육지부 : " + vTJJIBUNM+"\n"+
+			   "\n"+
+			   "● 등기번호 : " + vTJBOOKREGNO ;
+					   
+	// gfn_KTSendOneSmsPopup(sMBCCD, sMPK1, sMPK2, sMPK3, sMBSMGNO, sMRECVNM, sMRECVTEL, sMTITLE, sMMSG);
+    var arrSms = gfn_KTSendOneSmsPopup("131"
+                    , parent.ds_ioTrainingJubsu.GetColumn(0, "TOMGNO")
+                    , parent.ds_ioTrainingJubsu.GetColumn(0, "TJMGNO")
+                    , parent.ds_ioTrainingJubsu.GetColumn(0, "JUBSUNO")
+                    , ""                    
+                    , edPERSONNM.Text                    
+                    , edHPTEL.Text                    
+                    , "[한국소방안전원]"
+                    , vMsg // ds_oSmsData.GetColumn(0, "O_MSG")
+                ); // 단일문자메시지발송 팝업
+
+}
+]]></Script>
+</Window>

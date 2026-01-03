@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="650" Id="frmCOM1220POMRImageView2" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="이미지보기팝업" Top="8" Ver="1.0" Width="1050" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oEducationPlace">
+				<Contents>
+					<colinfo id="CREATE_DATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="CREATE_ID" size="20" summ="default" type="STRING"/>
+					<colinfo id="JJIBUCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="MODIFY_DATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="MODIFY_ID" size="20" summ="default" type="STRING"/>
+					<colinfo id="ZBUNJI" size="30" summ="default" type="STRING"/>
+					<colinfo id="SIKUDONG" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZHO" size="30" summ="default" type="STRING"/>
+					<colinfo id="ZREGIONCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="ZSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="ZZIPCD" size="6" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="948" LineColor="user14" Right="1042" TabOrder="61" Top="1" Type="Rectangle" Width="94"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="953" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<HttpFile Height="24" Id="hfAttachFile" Left="920" Top="2" Width="24"></HttpFile>
+		<FileDialog Bottom="26" Filter="Image(*.bmp;*.jpg;*.gif)|*.bmp;*.jpg;*.gif|BMP(*.bmp)|*.bmp|JPG(*.jpg)|*.jpg|GIF(*.gif)|*.gif|" Height="24" Id="fdAttachFile" Left="892" Right="916" TabOrder="4" Top="2" Width="24"></FileDialog>
+		<Tab Height="623" Id="OMRTab" Left="6" TabOrder="3" Top="17" Width="1034">
+			<Contents>
+				<TabPage Font="굴림,10,Bold" Height="594" Id="tab1" ImageID="BTN_TAB_BK06" Left="2" TabOrder="8" Text="1과목" Top="27" Width="1030">
+					<MSIE Bottom="588" Height="583" Id="MSIE0" Left="5" NavigateComplete2="AutoLoad1" Right="1024" Top="5" Width="1019"></MSIE>
+				</TabPage>
+				<TabPage Font="굴림,10,Bold" Height="594" Id="tab2" ImageID="BTN_TAB_BK06" Left="2" TabOrder="8" Text="2과목" Top="27" Width="1030">
+					<MSIE Bottom="588" Height="579" Id="MSIE1" Left="6" NavigateComplete2="AutoLoad2" Right="1024" Top="9" Width="1018"></MSIE>
+				</TabPage>
+			</Contents>
+		</Tab>
+	</Form>
+	<Script><![CDATA[/*
+ * 교육장약도명 : frmCOM1200PImageView.xml
+ * 설명 : 이미지보기팝업
+ * 작성일 : 2009.07.17
+ * 작성자 : 김동현
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+var sp_RealFileName = "";
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    sp_RealFileName = split(sRealFileName, "|", "webstyle");
+    OMRTab.TabIndex = 0;
+    OMRTab.tab1.MSIE0.Navigate2("about:blank", ,"_self", "", "");  //반드시 필요
+    OMRTab.tab2.MSIE1.Navigate2("about:blank", ,"_self", "", "");  //반드시 필요
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+    }
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 사용자 이벤트 함수 */
+function imgImage_OnLoadCompleted(obj) {
+    
+}
+
+function AutoLoad1(obj)
+{
+	if (IsExistVar("sRealFileName")) {
+        if (gfn_IsNull(sp_RealFileName[0])) {
+            OMRTab.tab1.MSIE0.Document.body.innerHTML = '<label>등록된 이미지가 없습니다.</label>';
+        } else {
+			var strUrl = GF_FILE_SERVER_URL + "kems" + sFilePath + sp_RealFileName[0];
+			OMRTab.tab1.MSIE0.Document.body.innerHTML = '<img style="FILTER: progid:DXImageTransform.Microsoft.BasicImage(rotation=3)" src="' + strUrl + '" width=500 height=950 style="FILTER: progid:DXImageTransform.Microsoft.BasicImage(rotation=2)">';
+        }
+    }
+}
+
+function AutoLoad2(obj)
+{
+	if (IsExistVar("sRealFileName")) {
+        if (gfn_IsNull(sp_RealFileName[1])) {
+            OMRTab.tab2.MSIE1.Document.body.innerHTML = '<label>등록된 이미지가 없습니다.</label>';
+        } else {
+			var strUrl = GF_FILE_SERVER_URL + "kems" + sFilePath + sp_RealFileName[1];
+			OMRTab.tab2.MSIE1.Document.body.innerHTML = '<img style="FILTER: progid:DXImageTransform.Microsoft.BasicImage(rotation=3)" src="' + strUrl + '" width=500 height=950 style="FILTER: progid:DXImageTransform.Microsoft.BasicImage(rotation=2)">';
+        }
+    }	
+}
+]]></Script>
+</Window>

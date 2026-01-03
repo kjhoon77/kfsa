@@ -1,0 +1,759 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="296"
+		Id="frmCOM1010PTrainingPersonModify" Left="8"
+		OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted"
+		OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7"
+		Style="sty_Form" Title="접수자정보변경팝업" ToolTipFont="Default,0" Top="8"
+		Ver="1.0" Visible="FALSE" Width="492" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioTrainingPerson">
+				<Contents>
+					<colinfo id="TPMGNO" size="22" summ="default"
+						type="DECIMAL" />
+					<colinfo id="TPNM" size="20" summ="default"
+						type="STRING" />
+					<colinfo id="KEY" size="256" summ="default"
+						type="STRING" />
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ModifyGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default"
+						type="STRING" />
+					<colinfo id="DATA" size="256" summ="default"
+						type="STRING" />
+					<record>
+						<CD>01</CD>
+						<DATA>이름/주민번호&#32;변경</DATA>
+					</record>
+					<record>
+						<CD>02</CD>
+						<DATA>접수&#32;대상자&#32;변경</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oModifyColumn">
+				<Contents>
+					<colinfo id="COLUMNCD" size="256" summ="default"
+						type="STRING" />
+					<colinfo id="COLUMNNM" size="256" summ="default"
+						type="STRING" />
+					<record>
+						<COLUMNCD>TPNM</COLUMNCD>
+						<COLUMNNM>성명</COLUMNNM>
+					</record>
+					<record>
+						<COLUMNCD>TPBIRTHDAY</COLUMNCD>
+						<COLUMNNM>생년월일</COLUMNNM>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="397"
+			LineColor="user14" Right="488" TabOrder="20" Top="1" Type="Rectangle"
+			Width="91">
+		</Shape>
+		<Shape Bottom="88" Height="56" Id="Shape1" Left="2"
+			LineColor="user15" Right="488" TabOrder="15" Top="32"
+			Type="Rectangle" Width="486">
+		</Shape>
+		<Static Color="user6" Height="24" Id="lbText02" Left="96"
+			Style="sty_TextBlue" TabOrder="19"
+			Text="접수자를&#32;잘못&#32;접수한&#32;경우&#32;접수대상자를&#32;변경합니다.&#13;&#10;접수자가&#32;타인으로&#32;변경되오니&#32;신중히&#32;변경하시기&#32;바랍니다."
+			Top="60" VAlign="Middle" Visible="FALSE" Width="356">
+		</Static>
+		<Shape Bottom="248" Height="76" Id="Shape0" Left="2"
+			LineColor="user15" Right="392" TabOrder="12" Top="172"
+			Type="Rectangle" Width="390">
+		</Shape>
+		<Shape Bottom="168" Height="76" Id="shpGubunBox3" Left="2"
+			LineColor="user15" Right="392" TabOrder="10" Top="92"
+			Type="Rectangle" Width="390">
+		</Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd"
+			ImageID="BTN_COM_END" Left="400" OnClick="lfn_End" Style="sty_Button"
+			TabOrder="5" ToolTipText="닫기" Top="4" Width="85">
+		</Button>
+		<Static Align="Center" Height="20" Id="lbPersonNm1" Left="46"
+			Style="sty_Label" TabOrder="6" Text="성명" Top="96" VAlign="Middle"
+			Width="88">
+		</Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20"
+			Id="edPersonNm1" ImeMode="native" Left="138" LeftMargin="2"
+			OnFocus="gfn_ComponentOnFocus" OnKeyDown="edPersonNm_OnKeyDown"
+			OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="24"
+			Top="96" Width="106">
+		</Edit>
+		<Static Align="Center" Height="20" Id="lbResidentNo1" Left="46"
+			Style="sty_Label" TabOrder="7" Text="생년월일" Top="120" VAlign="Middle"
+			Width="88">
+		</Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat"
+			Enable="FALSE" Height="20" Id="medBirthday" Left="138" LeftMargin="2"
+			Mask="######" OnFocus="gfn_ComponentOnFocus"
+			OnKeyDown="medResidentNo_OnKeyDown"
+			OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit"
+			TabOrder="23" Top="120" Type="STRING" Width="50">
+		</MaskEdit>
+		<Static Align="Center" Height="20" Id="lbPersonNm2" Left="46"
+			Style="sty_Label" TabOrder="9" Text="성명" Top="176" VAlign="Middle"
+			Width="88">
+		</Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20"
+			Id="edPersonNm2" ImeMode="native" Left="138" LeftMargin="2"
+			OnCharChanged="edPersonNm2_OnCharChanged"
+			OnKeyDown="edPersonNm2_OnKeyDown" Style="sty_Edit" TabOrder="1"
+			Top="176" Width="106">
+		</Edit>
+		<Static Align="Center" Height="20" Id="lbResidentNo2" Left="46"
+			Style="sty_Label" TabOrder="8" Text="주민등록번호" Top="200"
+			VAlign="Middle" Width="88">
+		</Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat"
+			Height="20" Id="medResidentNo2" Left="138" LeftMargin="2"
+			Mask="######-#######" OnChanged="medResidentNo2_OnChanged"
+			OnCharChanged="medResidentNo2_OnCharChanged"
+			OnKeyDown="medResidentNo2_OnKeyDown"
+			OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit"
+			TabOrder="2" Top="200" Type="STRING" Width="106">
+		</MaskEdit>
+		<Static Align="Center" Height="64" Id="lbPersonInfo" Left="6"
+			Style="sty_LabelGruopBox" TabOrder="11" Text="기존&#13;&#10;정보"
+			Top="96" VAlign="Middle" Width="36" WordWrap="TRUE">
+		</Static>
+		<Static Align="Center" Height="64" Id="Static0" Left="6"
+			Style="sty_LabelGruopBox" TabOrder="13" Text="변경&#13;&#10;정보"
+			Top="176" VAlign="Middle" Width="36" WordWrap="TRUE">
+		</Static>
+		<Div BKColor="user0" Height="24" Id="divWorkFormTitle" Left="4"
+			OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="14"
+			TabStop="FALSE" Text="Div0" Top="4"
+			Url="COM::frmCOM0100SWorkFormTitle.xml" Width="228">
+			<Contents></Contents>
+		</Div>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="3"
+			DataColumn="DATA" Height="20" Id="radModifyGubun" INDEX="0"
+			InnerDataset="ds_ModifyGubun" Left="138"
+			OnChanged="radModifyGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus"
+			Style="sty_Radio" TabOrder="4" Top="35" UserData="S" Width="342">
+		</Radio>
+		<Static Align="Center" Height="48" Id="Static1" Left="6"
+			Style="sty_LabelGruopBox" TabOrder="16" Text="변경&#13;&#10;정보"
+			Top="36" VAlign="Middle" Width="36" WordWrap="TRUE">
+		</Static>
+		<Static Align="Center" Height="20" Id="Static2" Left="46"
+			Style="sty_Label" TabOrder="17" Text="변경정보" Top="36" VAlign="Middle"
+			Width="88">
+		</Static>
+		<Static Color="user6" Height="28" Id="lbText01" Left="96"
+			Style="sty_TextBlue" TabOrder="18"
+			Text="동일인에&#32;대한&#32;이름&#32;또는&#32;주민번호를&#32;변경합니다.&#13;&#10;기존&#32;정보가&#32;변경되오니&#32;신중히&#32;변경하시기&#32;바랍니다."
+			Top="56" VAlign="Middle" Width="320">
+		</Static>
+		<Button ButtonStyle="TRUE" Column="&#32;" Cursor="HAND"
+			Height="22" Id="btnAuthResidentNo" ImageID="BTN_TEXT_06" Left="246"
+			OnClick="btnAuthResidentNo_OnClick" Style="sty_Button" TabOrder="3"
+			Text="실명인증" Top="199" Transparent="TRUE" Width="93">
+		</Button>
+		<Edit Height="22" Id="EdTpmgno" Left="325" TabOrder="21"
+			Text="Edit0" Visible="FALSE" Width="70">
+		</Edit>
+		<Static Height="16" Id="lbTpmgno" Left="264" TabOrder="22"
+			Text="TPMGNO" Top="5" Visible="FALSE" Width="64">
+		</Static>
+		<Static BKColor="blanchedalmond" Border="Sunken"
+			Font="굴림,10,Bold" Height="39" Id="Static4" Left="3" TabOrder="25"
+			Text='※&#32;수납&#32;후&#32;성명이&#32;변경될&#32;경우&#32;&quot;영수증의&#32;수강자명&quot;,&#32;&quot;계산서&#32;발급&quot;&#32;과&#32;연동&#13;&#10;&#32;&#32;&#32;&#32;되지&#32;않습니다.&#32;연동을&#32;원할&#32;경우&#32;정보지원과로&#32;연락하여&#32;조치&#32;바랍니다.'
+			Top="252" VAlign="Middle" Width="485">
+		</Static>
+		<Static Align="Center" Height="20" Id="lbPersonKey" Left="46"
+			Style="sty_Label" TabOrder="26" Text="개인식별번호" Top="144"
+			VAlign="Middle" Width="88">
+		</Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat"
+			Enable="FALSE" Height="20" Id="medPersonKey" Left="138"
+			LeftMargin="2" Mask="A####-#####" OnFocus="gfn_ComponentOnFocus"
+			OnKeyDown="medResidentNo_OnKeyDown"
+			OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit"
+			TabOrder="27" Top="144" Type="STRING" Width="86">
+		</MaskEdit>
+		<Static Align="Center" Height="20" Id="lbHpTel" Left="46"
+			Style="sty_Label" TabOrder="29" Text="휴대폰" Top="224" VAlign="Middle"
+			Width="88">
+		</Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edHpTel"
+			ImeMode="native" Left="138" LeftMargin="2" Number="TRUE"
+			OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus"
+			OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="28"
+			Top="224" UserData="S" Width="104">
+		</Edit>
+		<Button BKColor="user17" ButtonStyle="TRUE" Cursor="HAND"
+			Enable="FALSE" Font="굴림,10,Bold" Height="156" Id="btnSave" Left="396"
+			OnClick="lfn_Save" Style="sty_Button" TabOrder="30"
+			Text="변&#32;&#32;&#32;경" Top="92" Width="92">
+		</Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 고객정보명 : frmCOM1010PTrainingPersonModify.xml
+ * 설명 : 접수자정보변경팝업
+ * 작성일 : 2009.11.03
+ * 작성자 : 이창희
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* input parameter
+sTpMgno
+sJubsuCount
+sJopGubun
+sMgno (TJMGNO, EJMGNO, LLCSNO)
+*/
+
+
+var li_TpMgno = ""; // 강습자관리번호
+var li_TpPersonKey = ""; // 개인식별번호
+var	ls_DI = ""; // DI
+var	ls_CI = ""; // CI
+var	ls_CIVER = ""; // CI버전
+
+var ls_IsNiceCheckOk = "N"; // 실명인증 체크
+var jubsuYN = ""; // 접수대상자 유효 여부
+var arrArg = array(3);         // TRAININGPERSON 변경 후 재 조회하여 값을 담음
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+    
+    EdTpmgno.Text = sTpMgno; // 화면에 강습자관리번호를 표시
+    // 시스템관리자만 tpmgno가 보이도록 설정
+	if (gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "SM") {
+		lbTpmgno.Visible = true;
+		EdTpmgno.Visible = true;
+	}
+/*
+    if(sJopGubun == "L") {
+        btnSave.Enable = true;
+    }
+*/   
+    if (sJubsuCount > 1 ) {    
+        radModifyGubun.Value = "02"; // 구분을 일단 02로 함
+    } else {
+        radModifyGubun.Value = "01"; // 구분을 일단 01로 함
+    }
+    
+    // 수첩발급정보관리 이면 
+    if (parent.ID = "frmtraining0250MLicenseIssueManagement") {
+		radModifyGubun.Value = "01"; // 구분을 01로 함
+		radModifyGubun.Enable = false; // 구분을 01로 함
+    
+    }
+    
+    if (radModifyGubun.Value == "01") { // 이름 주민번호 정보 변경
+        lbText01.Visible = true;
+        lbText02.Visible = false;
+	} else { // 접수자 변경
+        lbText01.Visible = false;
+        lbText02.Visible = true;
+	}
+    
+    //if (IsExistVar("sTpMgno")) {  //강습자관리번호
+    if (!gfn_isNull(sTpMgno)) {  //강습자관리번호
+        lfn_Search();  // 있을 경우 조회를 함
+    } else {
+        gfn_Alert("접수자변경을 위한 강습접수 정보가 없습니다.\n\n"
+                + "         접수자 정보를 입력해 주십시오.");
+        close(arrArg);
+    }
+    edPersonNm2.SetFocus();
+}
+
+function Form_OnUnloadCompleted(obj) {
+    close(arrArg);
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+
+    lfn_TrainingPersonCheck("MGNO"); // 강습자 조회
+    edPersonNm1.Text = ds_ioTrainingPerson.GetColumn(0, "TPNM");
+    medBirthday.Value = ds_ioTrainingPerson.GetColumn(0, "TPBIRTHDAY");
+    medPersonKey.Value = ds_ioTrainingPerson.GetColumn(0, "TPPERSONKEY");
+    
+    edPersonNm2.Text = ds_ioTrainingPerson.GetColumn(0, "TPNM");
+    medResidentNo2.Value = ds_ioTrainingPerson.GetColumn(0, "TPBIRTHDAY");
+    edHpTel.Text = ds_ioTrainingPerson.GetColumn(0, "TPHPTEL");
+}
+
+
+/*
+ * 기능 : 변경저장
+ */
+function lfn_Save(obj) {
+
+    if (gfn_IsNull(edPersonNm2.Text) && gfn_IsNull(medResidentNo2.Value)) {
+        gfn_Alert("변경될 성명과 주민등록번호를 입력해 주십시오.");
+        edPersonNm2.SetFocus();
+        return false;
+    }
+    
+    if (gfn_IsNull(edHpTel.Text)) {
+        gfn_Alert("휴대폰번호를 입력해 주십시오.");
+        edHpTel.SetFocus();
+        return false;
+    }
+    
+    if(sJopGubun == "L") {
+        
+    } else {
+        if (edPersonNm1.Text == edPersonNm2.Text && medBirthday.Value == left(medResidentNo2.Value,6)) {
+            gfn_Alert("변경 전 정보와 변경 후 정보가 같습니다.");
+            edPersonNm2.SetFocus();
+            return false;
+        }      
+    }
+ 
+	if (ls_IsNiceCheckOk == "N" && length(medResidentNo2.Value) == 13) {
+		if (!gfn_Confirm("실명인증이 되지 않았습니다. 실명인증 후 변경하시겠습니까?")) {
+			return false;
+		} else {
+			btnAuthResidentNo_OnClick(obj);
+		}
+	}
+
+    lfn_TrainingPersonCheck("INFO");
+    // TRAININGPERSON 변경 예정 값으로 TRAININGPERSON 먼저 조회하여 중복여부를 체크함
+
+    if(radModifyGubun.Value == "01"){
+        if (!gfn_IsNull(li_TpMgno)) {
+            /*
+            alert("변경을 위한 사용자 정보는 이미 있습니다.\n" 
+                + "접수 대상자 변경을 통해 변경하십시오. "); 
+            */    
+            radModifyGubun.Value = "02"; 
+            jubsuYN = "Y";   // 이름/주민번호 변경 시 이미 있는 사람일 경우 그냥 닫힘을 방지
+            
+            ///////////////////    다시 변경을 호출함 
+            lfn_Save();
+            ///////////////////     
+            return false;
+        }
+         
+        lfn_TrainingpersonModify();   //강습자 정보 변경 함수 호출  update함
+           // return;
+        
+        
+    } else if(radModifyGubun.Value == "02") {
+        if (!gfn_IsNull(li_TpMgno)) {  
+ 
+            jubsuYN = "Y";
+            
+            var msg = "";             
+               
+                msg += "개인정보가 아래와 같이 변경 됩니다.\n\n";
+                msg += "변경내용 :  변경전  ->  변경후 \n\n";
+                msg += "성      명 :  " + edPersonNm1.Text + "  ->  " + edPersonNm2.Text + "\n\n";
+                msg += "주민번호 :  " + medBirthday.Text + "  ->  " + medResidentNo2.Text + "\n\n";
+                msg += "강습자관리번호 :  " + sTpMgno + "  ->  " + li_TpMgno + "\n\n";
+                        // arg 받아온 강습자관리번호                변경할 강습자관리번호            
+               
+            msg += "\n변경된 내용으로 강습자 정보를 수정 하시겠습니까?";
+                        
+            if (!gfn_Confirm(msg)) {
+                return false;
+            }
+            
+            jubsuYN = "N";
+            
+            lfn_ImageInfoUpdate();
+                
+       } else { 
+          /////////////// insert 함
+                var msg = "";
+                              
+                    msg += "개인정보가 아래와 같이 변경 됩니다.\n\n";
+                    msg += "변경내용 :  변경전  ->  변경후 \n\n";
+                    msg += "성      명 :  " + edPersonNm1.Text + "  ->  " + edPersonNm2.Text + "\n\n";
+                    msg += "주민번호 :  " + medBirthday.Text + "  ->  " + medResidentNo2.Text + "\n\n";
+                    msg += "강습자관리번호 :  " + sTpMgno + "  ->  " + "새로운 사용자 강습관리번호" + "\n\n";
+                            // arg 받아온 강습자관리번호                변경할 강습자관리번호            
+          
+                msg += "\n변경된 내용으로 강습자 정보를 수정 하시겠습니까?";
+                            
+                if (!gfn_Confirm(msg)) {
+                    return false;
+                }           
+            lfn_TrainingInsert();
+       }    
+   }     
+    
+    lfn_TrainingPersonCheck("INFO"); // TRAININGPERSON 변경 후 재 조회
+        
+    arrArg[0] = ds_ioTrainingPerson.GetColumn(0, "TPNM");
+    arrArg[1] = ds_ioTrainingPerson.GetColumn(0, "BIRTHDAY7");
+    arrArg[2] = ds_ioTrainingPerson.GetColumn(0, "TPMGNO");
+    arrArg[3] = ds_ioTrainingPerson.GetColumn(0, "TPAUTHYN");
+    arrArg[4] = ds_ioTrainingPerson.GetColumn(0, "TPPERSONKEY");
+    
+    
+    if (jubsuYN = "Y") {
+    //    jubsuYN = "N";
+        
+    } else {
+        Close(arrArg);    
+    }
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close(arrArg);
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+
+function radModifyGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+	if (radModifyGubun.Value == "01") { // 이름 주민번호 정보 변경
+        lbText01.Visible = true;
+        lbText02.Visible = false;
+	} else { // 접수자 변경
+        lbText01.Visible = false;
+        lbText02.Visible = true;
+	}
+}
+
+/*
+ 트랜잭션 에러 처리
+*/
+function lfn_Aftersearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }   
+ 
+	
+}
+/**
+ * 강습자 검색
+ */
+function lfn_TrainingPersonCheck(gubun){
+
+    var sArg = "";
+    //alert(ls_DI);
+    if (gubun == "MGNO") {   // 강습자 조회
+        sArg = "TPMGNO=" + quote(sTpMgno);   // 강습자관리번호를 arg로 넘김
+    } else {
+        sArg = "TPNM=" + quote(edPersonNm2.Text)
+            + " BIRTHDAY=" + quote(substr(medResidentNo2.Value,0,6))
+            + " HP=" + quote(edHpTel.Text)
+            + " DI=" + quote(ls_DI);
+    }
+    
+    ds_ioTrainingPerson.ClearData();
+    tit_clearActionInfo(); //사람이 이미 있는지 검색한다.
+    tit_addCsvSearchActionInfo("com:searchTrainingPerson", false);
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_ioTrainingPerson=ds_oTrainingPerson"	// outDs
+        ,sArg // args
+        ,""
+        ,false
+        ,""
+        ,true
+    );
+    
+    if (ds_ioTrainingPerson.GetRowCount() == 1) {
+        li_TpMgno = ds_ioTrainingPerson.GetColumn(0, "TPMGNO");
+        li_TpPersonKey = ds_ioTrainingPerson.GetColumn(0, "TPPERSONKEY");
+    } else {
+        li_TpMgno = "";
+        li_TpPersonKey = "";
+    }
+}
+
+/**
+ * 강습자 정보 변경
+ */
+function lfn_TrainingpersonModify(){
+    
+    if (radModifyGubun.Value == "01") {  // 이름 주민 번호 변경
+        var msg = "";
+    
+      //  if (ls_IsNiceCheckOk == "Y") {  // 실명인증 관련
+    
+            msg += "개인정보가 아래와 같이 변경 됩니다.\n\n";
+            msg += "변경내용 :  변경전  ->  변경후 \n\n";
+            msg += "성      명 :  " + edPersonNm1.Text + "  ->  " + edPersonNm2.Text + "\n\n";
+            msg += "주민번호 :  " + medBirthday.Text + "  ->  " + medResidentNo2.Text + "\n\n";
+            msg += "강습자관리번호 :  " + sTpMgno + "  ->  " + sTpMgno + "\n\n";
+        
+      //  }
+        
+        msg += "\n변경된 내용으로 강습자 정보를 수정 하시겠습니까?";
+        
+        if (!gfn_Confirm(msg)) {
+            return false;
+        }
+        
+        ds_ioTrainingPerson.ClearData();
+        ds_ioTrainingPerson.InsertRow(0);
+        
+        ds_ioTrainingPerson.SetColumn(0, "TPMGNO", sTpMgno);   // arg로 넘겨온 강습자관리번호
+        
+        ds_ioTrainingPerson.SetColumn(0, "TPNM", edPersonNm2.Text);   // 바꿀 성명
+		ds_ioTrainingPerson.SetColumn(0, "TPBIRTHDAY", substr(medResidentNo2.Value,0,6));  // 바꿀 생년월일
+		ds_ioTrainingPerson.SetColumn(0, "BIRTHDAY7", substr(medResidentNo2.Value,0,7));  // 바꿀 생년월일7
+		ds_ioTrainingPerson.SetColumn(0, "TPHPTEL", edHpTel.Text);  // 바꿀 휴대폰번호
+  
+    }  
+
+
+	lfn_SaveModifyHistory("U"); // 변경이력을 저장한다.
+	
+	tit_clearActionInfo();
+	tit_addSingleActionInfo("com:updateTrainingPerson", "", 0, "");
+
+	// 서버 호출
+	tit_callService(
+		""
+		,""
+		,"ds_iTrainingPerson=ds_ioTrainingPerson:U" // inDs
+		,""	// outDs
+		,"TPAUTHYN_A =" + quote(ls_IsNiceCheckOk)
+			+ " DI=" + quote(ls_DI)           // DI값
+			+ " CI=" + quote(ls_CI)           // CI값
+			+ " CIVER=" + quote(ls_CIVER)     // CI버전
+			+ " PERSONKEY=" + quote(medPersonKey.Value) // 개인식별번호  // args
+		,"lfn_Aftersearch"
+		,false
+		,""
+		,true
+	);
+	 
+	return true; 
+ }
+
+/**
+ * 실명인증
+ */
+function btnAuthResidentNo_OnClick(obj) {
+
+    if (gfn_IsNull(edPersonNm2.Text) || gfn_IsNull(medResidentNo2.Value)) {
+        gfn_Alert("성명과 주민번호를 입력해 주십시오.");
+        return false;
+    }
+   
+    if (length(medResidentNo2.Value) < 13) {
+        gfn_Alert("주민번호 자리수가 맞지 않습니다.");
+        return false;
+    }
+/*
+    if (gfn_IsNull(ds_oTrainingPearson.getcolumn(0, "TPMGNO"))) {
+        lfn_SearchTrainingPearsonMgno(); // 강습자정보를 조회한다.
+    }*/
+	Https.Sync = true;  
+	gfn_CheckSCI(edPersonNm2.Text, medResidentNo2.Value); // 실명인증
+	//alert(gds_ioSciCheck.GetColumn(0, "STRRESULT"));
+	Https.Sync = false; 
+
+	// 실명인증 값이 true이면 인증 값을 Y 로 함
+	if (gds_ioSciCheck.GetColumn(0, "STRRESULT") == "1") {
+		ls_IsNiceCheckOk = "Y";
+	} else {
+		ls_IsNiceCheckOk = "N";
+	}
+	ls_DI = gds_ioSciCheck.GetColumn(0, "STRDUP");
+	ls_CI = gds_ioSciCheck.GetColumn(0, "STRCI");
+	ls_CIVER = gds_ioSciCheck.GetColumn(0, "STRVER");
+	
+    lfn_ResidentCheck();
+}
+
+/**
+ * 실명인증 체크
+ */
+function lfn_ResidentCheck() {
+
+	if (ls_IsNiceCheckOk == "Y") {
+        btnAuthResidentNo.Text = "실명인증완료";
+        btnAuthResidentNo.Enable = false;
+        btnSave.Enable = true;
+    } else {
+    
+    }
+    
+}
+
+/**
+ * 강습, 시험, 수첩 정보  traingperson에 추가 함
+ */
+function lfn_TrainingInsert() {
+
+	ds_ioTrainingPerson.ClearData();
+	ds_ioTrainingPerson.InsertRow(0);
+	ds_ioTrainingPerson.SetColumn(0, "TPMGNO", "");   // arg로 넘겨온 강습자관리번호
+	ds_ioTrainingPerson.SetColumn(0, "TPNM", edPersonNm2.Text);   // 바꿀 성명   
+	ds_ioTrainingPerson.SetColumn(0, "TPBIRTHDAY", substr(medResidentNo2.Value,0,6));  // 바꿀 생년월일
+	ds_ioTrainingPerson.SetColumn(0, "BIRTHDAY7", substr(medResidentNo2.Value,0,7));  // 바꿀 생년월일7
+	ds_ioTrainingPerson.SetColumn(0, "TPHPTEL", edHpTel.Text);  // 바꿀 휴대폰번호
+      
+    ds_ioTrainingPerson.SetColumn(0, "key", "kems");   
+
+    lfn_SaveModifyHistory("U");
+    
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("com:insertTrainingPerson", "", 0, "");
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iTrainingPerson=ds_ioTrainingPerson:U"    // in     Ds  ds를 in한 후 
+        ,""//"ds_ioTrainingPerson=ds_oTrainingPerson"    // outDs    다시 ds를 out 함
+        ,"TPNM_A=" + quote(edPersonNm2.Text) // -- 성명 " 
+          + " TPAUTHYN_A=" + quote(ls_IsNiceCheckOk)		// 실명인증 여부
+          + " DI=" + quote(ls_DI)           // DI값
+          + " CI=" + quote(ls_CI)           // CI값
+          + " CIVER=" + quote(ls_CIVER)     // CI버전       // args
+        ,"lfn_Aftersearch"
+        ,false
+        ,false
+        ,true
+    );
+
+}
+
+function edPersonNm2_OnCharChanged(obj,strPreText,strPostText)
+{
+	ls_IsNiceCheckOk = "N" ;   // 실명 인증 유효를 해제
+    btnAuthResidentNo.Enable = true;    // 실명인증 버튼을 활성화함  
+    btnSave.Enable = true;   
+}
+
+function edPersonNm2_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+    if (nChar == 13) { // Enter key
+        medResidentNo2.SetFocus();        
+	}	
+}
+
+function medResidentNo2_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == 13) { // Enter key
+        btnAuthResidentNo_OnClick();       
+	}	
+}
+
+function medResidentNo2_OnChanged(obj,strText)
+{
+		// 길이가 주민번호와 일치하면 자동 실명인증 되게 하기 
+	if (length(medResidentNo2.Value) == "13") {
+		//btnAuthResidentNo_OnClick();
+		//medResidentNo2.SetFocus();
+	}
+	//ls_IsNiceCheckOk = "N" ;   // 실명 인증 유효를 해제
+    //btnAuthResidentNo.Enable = true;    // 실명인증 버튼을 활성화함  
+    btnSave.Enable = true;  
+}
+
+
+
+function medResidentNo2_OnCharChanged(obj,strPreText,strPostText)
+{
+	ls_IsNiceCheckOk = "N" ;   // 실명 인증 유효를 해제
+    btnAuthResidentNo.Enable = true;    // 실명인증 버튼을 활성화함  
+    btnSave.Enable = true; 
+}
+
+
+function lfn_ImageInfoUpdate() {
+
+		lfn_SaveModifyHistory("U");
+		
+        tit_clearActionInfo();
+        tit_addSingleActionInfo("com:updateImageInfoTrainingPerson", "", 0, "");
+    
+        // 서버 호출
+        tit_callService(
+            ""
+            ,""
+            ,"ds_iImageinfo=ds_ioTrainingPerson:A" // inDs
+            ,""	// outDs
+            ,"TPMGNO_BEFORE=" + quote(sTpMgno)
+                + " TPMGNO_AFTER=" + quote(li_TpMgno)
+            ,""
+            ,false
+            ,""
+            ,true
+        );
+
+}
+
+/*
+ * 기능 : 업무 변경이력을 저장한다.
+ * parameter : sGubun - 변경구분. 예) I, U, D
+ * return : 없음
+ */
+function lfn_SaveModifyHistory(sGubun) {
+	if (sGubun = "U") { // 수정		
+		gds_iModifyHistory.ClearData();
+		
+        var ln_TotalCount = ds_oModifyColumn.GetCount();
+        var ls_ColumnCd = "";
+        var ls_ColumnNm = "";
+        for (var i = 0; i < ln_TotalCount; i++) {
+            ls_ColumnCd = ds_oModifyColumn.GetColumn(i, "COLUMNCD");
+			ls_ColumnNm = ds_oModifyColumn.GetColumn(i, "COLUMNNM");
+			if (ls_ColumnCd == "TPNM") {
+
+				if (edPersonNm1.Text <> ds_ioTrainingPerson.GetColumn(0, ls_ColumnCd)
+                        && (!gfn_IsNull(edPersonNm1.Text) || !gfn_IsNull(ds_ioTrainingPerson.GetColumn(0, ls_ColumnCd)))
+                    ) {
+					gds_iModifyHistory.InsertRow(0);	
+					gds_iModifyHistory.SetColumn(0, "MHWORKGUBUN", "접수자변경"); // 업무구분	
+					gds_iModifyHistory.SetColumn(0, "MHGUBUN", sGubun); // 변경구분	
+					gds_iModifyHistory.SetColumn(0, "MHKEY", sMgno); // KEY값	
+					gds_iModifyHistory.SetColumn(0, "MHCOLUMN", ls_ColumnNm); // 변경 컬럼명
+                					gds_iModifyHistory.SetColumn(0, "MHBEFOREDATA", edPersonNm1.Text); // 변경 전 값
+					
+					gds_iModifyHistory.SetColumn(0, "MHAFTERDATA", ds_ioTrainingPerson.GetColumn(0, ls_ColumnCd)); // 변경 후 값
+					
+				}			
+			} else if (ls_ColumnCd == "TPBIRTHDAY") {
+
+				if (medBirthday.Value <> ds_ioTrainingPerson.GetColumn(0, ls_ColumnCd)
+                        && (!gfn_IsNull(medBirthday.Value) || !gfn_IsNull(ds_ioTrainingPerson.GetColumn(0, ls_ColumnCd)))
+                    ) {
+				
+					gds_iModifyHistory.InsertRow(0);	
+					gds_iModifyHistory.SetColumn(0, "MHWORKGUBUN", "접수자변경"); // 업무구분	
+					gds_iModifyHistory.SetColumn(0, "MHGUBUN", sGubun); // 변경구분	
+					gds_iModifyHistory.SetColumn(0, "MHKEY", sMgno); // KEY값	
+					gds_iModifyHistory.SetColumn(0, "MHCOLUMN", ls_ColumnNm); // 변경 컬럼명
+					
+					gds_iModifyHistory.SetColumn(0, "MHBEFOREDATA", substr(medBirthday.Value,0,7)); // 변경 전 값
+					
+					gds_iModifyHistory.SetColumn(0, "MHAFTERDATA", substr(ds_ioTrainingPerson.GetColumn(0, ls_ColumnCd),0,7)); // 변경 후 값
+				
+				}
+            }
+        }
+    }
+    gfn_InsertModifyHistory(); // 업무 변경이력을 저장한다.
+}]]></Script>
+</Window>

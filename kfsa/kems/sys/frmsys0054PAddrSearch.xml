@@ -1,0 +1,1259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="656" Id="frmsys0054PAddrSearch" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="주소정보검색팝업" TooltipFont="Default,0" Top="8" Ver="1.0" Width="704" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oPostCode">
+				<Contents>
+					<colinfo id="PMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PPOSTCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="PSIDO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PKU" size="256" summ="default" type="STRING"/>
+					<colinfo id="PDONG" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRI" size="256" summ="default" type="STRING"/>
+					<colinfo id="PDOSEO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PSAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PSTARTBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="PENDBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="PBUILDNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PFULLADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PADDR1" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSido">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="JIBUCD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oDong">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oRoad">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iSearch">
+				<Contents>
+					<colinfo id="ADDRGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SIDO" size="256" summ="default" type="STRING"/>
+					<colinfo id="DONG" size="256" summ="default" type="STRING"/>
+					<colinfo id="MNTNGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MAINBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUBBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="BUILDMAINNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="BUILDSUBNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="BUILDMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="BUILDNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZIPCD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oRoadAddr" OnRowPosChanged="ds_oRoadAddr_OnRowPosChanged">
+				<Contents>
+					<colinfo id="RMBUILDMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMLAWCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMKUNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMLAWDONGNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMLAWRINM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMMNTNGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMMAINBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMSUBBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMROADNMCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMROADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMUNDERGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMBUILDMAINNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMBUILDSUBNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMBUILDNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMDETAILBUILDNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMDONGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMDONGNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMZIPCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMZIPNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMLARGEDELIVERY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMSIDONM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMADDR2" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMBUILDNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMDONGRI" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oRoadList" OnRowPosChanged="ds_oRoadList_OnRowPosChanged">
+				<Contents>
+					<colinfo id="RMBUILDMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMLAWCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMKUNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMLAWDONGNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMLAWRINM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMMNTNGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMMAINBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMSUBBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMROADNMCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMROADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMUNDERGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMBUILDMAINNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMBUILDSUBNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMBUILDNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMDETAILBUILDNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMDONGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMDONGNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMZIPCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMZIPNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMLARGEDELIVERY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMSIDONM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMADDR2" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMBUILDNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMSIDOKUDONG" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iPostAddrDivide">
+				<Contents>
+					<colinfo id="ADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR2" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZIPCD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPostAddrDivide"></Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="311" LineColor="user14" Right="698" TabOrder="61" Top="1" Type="Rectangle" Width="387"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="610" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Tab Font="굴림,10,Bold" Height="617" Id="TabAddr" Left="4" OnChanged="TabAddr_OnChanged" Style="sty_Button" TabOrder="3" Top="31" Width="696">
+			<Contents>
+				<TabPage BorderColor="black" Font="굴림,10,Bold" Height="588" Id="tabRoad" ImageID="BTN_TAB_BK11" Left="2" TabOrder="38" Text="도로명주소&#32;조회" Top="27" Width="692">
+					<Shape Bottom="489" Height="475" Id="Shape3" Left="2" LineColor="user15" Right="690" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="15" Top="14" Type="RoundRect" Width="688"></Shape>
+					<Shape Bottom="582" Height="72" Id="Shape0" Left="2" LineColor="user6" Right="690" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="16" Top="510" Type="RoundRect" Width="688"></Shape>
+					<Static Align="Center" Height="20" Id="lbSido" Left="7" Style="sty_Label" TabOrder="17" Text="지역" Top="27" VAlign="Middle" Width="60"></Static>
+					<Combo Border="Flat" CodeColumn="DATA" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxSido2" INDEX="0" InnerDataset="ds_oSido" Left="70" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="1" Top="26" UserData="I:지부" Value="B" Width="112"></Combo>
+					<Static Align="Center" Height="20" Id="Static0" Left="195" Style="sty_Label" TabOrder="18" Text="도로명" Top="27" VAlign="Middle" Width="60"></Static>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnRoadSearch2" ImageID="BTN_TEXT_08" Left="543" OnClick="TabAddr_tabRoad_btnRoadSearch2_OnClick" Style="sty_Button" TabOrder="5" Text="도로명&#32;주소&#32;조회" ToolTipText="선택" Top="26" Transparent="TRUE" Width="122"></Button>
+					<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oRoadList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="430" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="378" Id="gdRoad2" InputPanel="FALSE" Left="9" LineColor="default" OnHeadClick="lfn_SortGrid_OnHeadClick" OnKeyDown="TabAddr_tabRoad_gdRoad2_OnKeyDown" Right="685" RowHeight="20" Style="sty_Grid" TabOrder="6" TabStop="true" Top="52" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="676">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="60"/>
+									<col width="196"/>
+									<col width="102"/>
+									<col width="74"/>
+									<col width="169"/>
+									<col width="103"/>
+									<col width="118"/>
+								</columns>
+								<head>
+									<cell align="center" col="0" display="text" text="우편번호"/>
+									<cell align="center" col="1" display="text" text="시도&#32;/&#32;시군구&#32;/&#32;읍면동"/>
+									<cell align="center" col="2" display="text" text="도로명"/>
+									<cell col="3" display="text" text="건물번호"/>
+									<cell col="4" display="text" text="건물명"/>
+									<cell col="5" display="text" text="번지(지번주소)"/>
+									<cell col="6" display="text" text="다량배달처"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="RMZIPCD" display="text" Mask="###-###"/>
+									<cell align="left" col="1" colid="RMSIDOKUDONG" display="text"/>
+									<cell align="left" col="2" colid="RMROADNM" display="text"/>
+									<cell col="3" colid="RMBUILDNO" display="text"/>
+									<cell col="4" colid="RMBUILDNM" display="text"/>
+									<cell col="5" colid="RMBUNJI" display="text"/>
+									<cell col="6" colid="RMLARGEDELIVERY" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+					<Static Align="Center" Height="20" Id="lbOldAddr" Left="10" Style="sty_Label" TabOrder="19" Text="상세주소" Top="434" VAlign="Middle" Width="60"></Static>
+					<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edRoadDetailAddr2" ImeMode="native" Left="74" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="7" Top="435" UserData="S" Width="360"></Edit>
+					<Static Align="Center" Height="20" Id="Static1" Left="10" Style="sty_Label" TabOrder="20" Text="부가주소" Top="461" VAlign="Middle" Width="60"></Static>
+					<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edRoadEtcAddr2" ImeMode="native" Left="74" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="TabAddr_tabRoad_edRoadEtcAddr2_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="8" Top="462" UserData="S" Width="360"></Edit>
+					<Static Font="굴림,8,Bold" Height="17" Id="Static5" Left="439" TabOrder="21" Text="[동/호수,&#32;층&#32;등]" Top="439" Width="170"></Static>
+					<Static Font="굴림,8,Bold" Height="17" Id="Static2" Left="439" TabOrder="22" Text="[건물/아파트&#32;등]" Top="466" Width="140"></Static>
+					<Static Align="Center" Height="20" Id="lbBuildingInfo" Left="10" Style="sty_LabelGruopBox" TabOrder="23" Text="적용&#32;주소" Top="497" VAlign="Middle" Width="96"></Static>
+					<Edit AutoSelect="TRUE" BKColor="lightgoldenrodyellow" Border="Flat" Height="20" Id="edRoadApplyAddr21" ImeMode="native" Left="94" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="12" Top="527" UserData="S" Width="480"></Edit>
+					<Edit AutoSelect="TRUE" BKColor="lightgoldenrodyellow" Border="Flat" Height="20" Id="edRoadApplyAddr22" ImeMode="native" Left="94" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="13" Top="553" UserData="S" Width="480"></Edit>
+					<Static Align="Center" Height="20" Id="Static3" Left="6" Style="sty_LabelGruopBox" TabOrder="24" Text="도로명&#32;주소" Top="3" VAlign="Middle" Width="96"></Static>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnRoadApply" ImageID="BTN_TEXT_05" Left="607" OnClick="TabAddr_tabRoad_btnRoadApply_OnClick" Style="sty_Button" TabOrder="9" Text="적용" ToolTipText="선택" Top="435" Transparent="TRUE" Width="80"></Button>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnRoadApplyCancel" ImageID="BTN_TEXT_05" Left="607" OnClick="TabAddr_tabRoad_btnRoadApplyCancel_OnClick" Style="sty_Button" TabOrder="10" Text="적용&#32;취소" ToolTipText="선택" Top="461" Transparent="TRUE" Width="80"></Button>
+					<Static Align="Center" BKColor="user36" Height="20" Id="Static11" Left="9" Style="sty_Label" TabOrder="25" Text="적용&#32;주소" Top="527" VAlign="Middle" Width="80"></Static>
+					<Shape Bottom="547" Height="17" Id="Shape6" Left="575" Right="589" TabOrder="26" Top="530" Width="14"></Shape>
+					<Shape Bottom="570" Height="17" Id="Shape7" Left="575" Right="589" TabOrder="27" Top="553" Width="14"></Shape>
+					<Shape Bottom="562" Height="24" Id="Shape5" Left="582" LineKind="Vertical" Right="598" TabOrder="28" Top="538" Width="16"></Shape>
+					<Checkbox Font="굴림,10,Bold,UnderLine" Height="20" Id="chkRoadInput" Left="595" OnClick="TabAddr_tabRoad_chkRoadInput_OnClick" TabOrder="14" Text="직접입력" Top="541" UserData="S" Value="FALSE" Width="85"></Checkbox>
+					<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edRoad" ImeMode="native" Left="259" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="TabAddr_tabRoad_edRoad_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="2" Top="27" UserData="S" Width="120"></Edit>
+					<Static Align="Center" Height="20" Id="Static4" Left="392" Style="sty_Label" TabOrder="29" Text="건물번호" Top="27" VAlign="Middle" Width="60"></Static>
+					<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edRoadBuildMainNo" ImeMode="native" Left="456" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="3" Top="27" UserData="S" Width="32"></Edit>
+					<Static Height="20" Id="Static6" Left="490" TabOrder="30" Text="-" Top="30" Width="8"></Static>
+					<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edRoadBuildSubNo" ImeMode="native" Left="500" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="TabAddr_tabRoad_edRoadBuildSubNo_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="4" Top="27" UserData="S" Width="32"></Edit>
+					<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BKColor="user4" Border="Flat" Height="20" Id="medPostCode2" Left="33" LeftMargin="2" Mask="###-###" OnFocus="medOldZipCode_OnFocus" OnKeyDown="gfn_EnterNextFocus" Readonly="TRUE" Style="sty_ZipCodeReadOnly" TabOrder="11" Top="553" Type="STRING" UserData="I:새주소우편번호" Width="56"></MaskEdit>
+				</TabPage>
+				<TabPage BorderColor="black" Height="588" Id="tabPost" ImageID="BTN_TAB_BK11" Left="2" TabOrder="3" Text="지번→도로명&#32;조회" Top="27" Width="692">
+					<Shape Bottom="300" Height="286" Id="Shape3" Left="2" LineColor="user15" Right="690" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="33" Top="14" Type="RoundRect" Width="688"></Shape>
+					<Static Align="Center" Height="20" Id="lbSido" Left="8" Style="sty_Label" TabOrder="1" Text="지역" Top="25" VAlign="Middle" Width="60"></Static>
+					<Combo Border="Flat" CodeColumn="daTA" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxSido" INDEX="0" InnerDataset="ds_oSido" Left="71" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="2" Top="24" UserData="I:지부" Value="B" Width="112"></Combo>
+					<Static Align="Center" Height="20" Id="lbKu" Left="190" Style="sty_Label" TabOrder="3" Text="동명" Top="25" VAlign="Middle" Width="60"></Static>
+					<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oPostCode" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="190" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="142" Id="gdPost" InputPanel="FALSE" Left="8" LineColor="default" OnHeadClick="lfn_SortGrid_OnHeadClick" OnKeyDown="TabAddr_tabPost_gdPost_OnKeyDown" Right="686" RowHeight="20" Style="sty_Grid" TabOrder="32" TabStop="true" Top="48" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="678">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="97"/>
+									<col width="555"/>
+								</columns>
+								<head>
+									<cell align="center" col="0" display="text" text="우편번호"/>
+									<cell align="center" col="1" display="text" text="지번주소"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="PPOSTCD" display="text" Mask="###-###"/>
+									<cell align="left" col="1" colid="PFULLADDR" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+					<Static Align="Center" Height="20" Id="lbOldAddr" Left="10" Style="sty_Label" TabOrder="6" Text="주소1" Top="192" VAlign="Middle" Width="60"></Static>
+					<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edDong" ImeMode="native" Left="254" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="TabAddr_tabPost_edDong_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="4" Top="25" UserData="S" Width="120"></Edit>
+					<Static Align="Center" Height="20" Id="Static0" Left="10" Style="sty_Label" TabOrder="8" Text="주소2" Top="217" VAlign="Middle" Width="60"></Static>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oPostCode" Border="Flat" Column="PADDR1" Height="20" Id="edPostAddr1" ImeMode="native" Left="74" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="7" Top="193" UserData="S" Width="498"></Edit>
+					<Checkbox BindDataset="ds_oPostCode" Column="PSAN" Height="21" Id="ChkPostMountain" Left="74" TabOrder="9" Text="산" Top="216" UserData="S" Value="FALSE" Width="32"></Checkbox>
+					<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edPostMainBunji" ImeMode="native" Left="109" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="10" Top="217" UserData="S" Width="32"></Edit>
+					<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edPostSubBunji" ImeMode="native" Left="153" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="11" Top="217" UserData="S" Width="32"></Edit>
+					<Static Height="20" Id="Static1" Left="143" TabOrder="34" Text="-" Top="220" Width="8"></Static>
+					<Static Align="Center" Height="20" Id="Static2" Left="190" Style="sty_Label" TabOrder="12" Text="건물명" Top="217" VAlign="Middle" Width="60"></Static>
+					<Edit AutoSelect="TRUE" BindDataset="ds_oPostCode" Border="Flat" Column="PBUILDNM" Height="20" Id="edPostBuildNM" ImeMode="native" Left="253" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="13" Top="216" UserData="S" Width="157"></Edit>
+					<Static Align="Center" Height="20" Id="Static3" Left="415" Style="sty_Label" TabOrder="14" Text="상세주소" Top="217" VAlign="Middle" Width="60"></Static>
+					<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edPostDetailAddr" ImeMode="native" Left="478" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="TabAddr_tabPost_edPostDetailAddr_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="15" Top="216" UserData="S" Width="128"></Edit>
+					<Static Font="굴림,8,Bold" Height="13" Id="Static4" Left="266" TabOrder="35" Text="(아파트,&#32;건물명&#32;등)" Top="239" Width="140"></Static>
+					<Static Font="굴림,8,Bold" Height="13" Id="Static5" Left="470" TabOrder="36" Text="(동/호수,&#32;블럭,&#32;통/반&#32;등)" Top="239" Width="150"></Static>
+					<Shape Bottom="582" Height="252" Id="Shape0" Left="2" LineColor="user15" Right="690" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="37" Top="330" Type="RoundRect" Width="688"></Shape>
+					<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oRoadAddr" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="482" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="142" Id="gdRoad1" InputPanel="FALSE" Left="8" LineColor="default" OnCellPosChanged="TabAddr_tabPost_gdRoad1_OnCellPosChanged" OnHeadClick="lfn_SortGrid_OnHeadClick" OnKeyDown="TabAddr_tabPost_gdRoad1_OnKeyDown" Right="686" RowHeight="20" Style="sty_Grid" TabOrder="31" TabStop="true" Top="340" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="678">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="60"/>
+									<col width="143"/>
+									<col width="112"/>
+									<col width="80"/>
+									<col width="176"/>
+									<col width="103"/>
+									<col width="85"/>
+								</columns>
+								<head>
+									<cell align="center" col="0" display="text" text="우편번호"/>
+									<cell align="center" col="1" display="text" text="읍면동/리&#32;(법정동)"/>
+									<cell align="center" col="2" display="text" text="도로명"/>
+									<cell col="3" display="text" text="건물번호"/>
+									<cell col="4" display="text" text="건물명"/>
+									<cell col="5" display="text" text="번지(지번주소)"/>
+									<cell col="6" display="text" text="다량배달처"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="RMZIPCD" display="text" Mask="###-###"/>
+									<cell align="left" col="1" colid="RMDONGRI" display="text"/>
+									<cell align="left" col="2" colid="RMROADNM" display="text"/>
+									<cell col="3" colid="RMBUILDNO" display="text"/>
+									<cell col="4" colid="RMBUILDNM" display="text"/>
+									<cell col="5" colid="RMBUNJI" display="text"/>
+									<cell col="6" colid="RMLARGEDELIVERY" display="text"/>
+								</body>
+							</format>
+						</contents>
+					</Grid>
+					<Static Align="Center" Height="20" Id="Static6" Left="10" Style="sty_Label" TabOrder="38" Text="상세주소" Top="486" VAlign="Middle" Width="60"></Static>
+					<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edRoadDetailAddr1" ImeMode="native" Left="74" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="23" Top="486" UserData="S" Width="360"></Edit>
+					<Static Align="Center" Height="20" Id="Static7" Left="10" Style="sty_Label" TabOrder="39" Text="부가주소" Top="510" VAlign="Middle" Width="60"></Static>
+					<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edRoadEtcAddr1" ImeMode="native" Left="74" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="TabAddr_tabPost_edRoadEtcAddr1_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="24" Top="511" UserData="S" Width="360"></Edit>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnRoadApply" ImageID="BTN_TEXT_05" Left="607" OnClick="TabAddr_tabPost_btnRoadApply_OnClick" Style="sty_Button" TabOrder="25" Text="적용" ToolTipText="선택" Top="486" Transparent="TRUE" Width="80"></Button>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPostCodeSearch" ImageID="BTN_TEXT_08" Left="380" OnClick="btnPostCodeSearch_OnClick" Style="sty_Button" TabOrder="5" Text="지번주소&#32;검색" ToolTipText="선택" Top="24" Transparent="TRUE" Width="122"></Button>
+					<Static Align="Center" Font="휴먼엑스포,10,Bold" Height="20" Id="lbBuildingInfo" Left="10" Style="sty_LabelGruopBox" TabOrder="40" Text="지번주소" Top="2" VAlign="Middle" Width="96"></Static>
+					<Static Align="Center" BKColor="brown" Font="휴먼엑스포,14,Bold" Height="26" Id="Static8" Left="10" Style="sty_LabelGruopBox" TabOrder="41" Text="도로명&#32;주소" Top="310" VAlign="Middle" Width="120"></Static>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPostApply" ImageID="BTN_TEXT_05" Left="608" OnClick="TabAddr_tabPost_btnPostApply_OnClick" Style="sty_Button" TabOrder="16" Text="적용" ToolTipText="선택" Top="192" Transparent="TRUE" Width="80"></Button>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Font="굴림,11,Bold" Height="22" Id="btnRoadSearch" ImageID="BTN_TEXT_14" Left="249" OnClick="TabAddr_tabPost_btnRoadSearch_OnClick" Style="sty_Button" TabOrder="22" Text="▼▼&#32;도로명주소&#32;검색&#32;▼▼" ToolTipText="선택" Top="304" Transparent="TRUE" Width="196"></Button>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnRoadApplyCancel" ImageID="BTN_TEXT_05" Left="607" OnClick="TabAddr_tabPost_btnRoadApplyCancel_OnClick" Style="sty_Button" TabOrder="26" Text="적용&#32;취소" ToolTipText="선택" Top="510" Transparent="TRUE" Width="80"></Button>
+					<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPostApplyCancel" ImageID="BTN_TEXT_05" Left="608" OnClick="TabAddr_tabPost_btnPostApplyCancel_OnClick" Style="sty_Button" TabOrder="17" Text="적용취소" ToolTipText="선택" Top="216" Transparent="TRUE" Width="80"></Button>
+					<Shape Bottom="298" Height="47" Id="Shape8" Left="6" LineColor="user6" LineKind="RDiagonal" Right="686" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="50" Top="251" Type="RoundRect" Width="680"></Shape>
+					<Static Align="Center" BKColor="user36" Height="20" Id="Static9" Left="10" Style="sty_Label" TabOrder="42" Text="적용&#32;주소" Top="254" VAlign="Middle" Width="80"></Static>
+					<Edit AutoSelect="TRUE" BKColor="lightgoldenrodyellow" Border="Flat" Height="20" Id="edPostApplyAddr1" ImeMode="native" Left="93" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="19" Top="254" UserData="S" Width="480"></Edit>
+					<Edit AutoSelect="TRUE" BKColor="lightgoldenrodyellow" Border="Flat" Height="20" Id="edPostApplyAddr2" ImeMode="native" Left="93" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="20" Top="275" UserData="S" Width="480"></Edit>
+					<Checkbox Font="굴림,10,Bold,UnderLine" Height="21" Id="chkPostInput" Left="590" OnClick="TabAddr_tabPost_chkPostInput_OnClick" TabOrder="21" Text="직접입력" Top="265" UserData="S" Value="FALSE" Width="80"></Checkbox>
+					<Shape Bottom="271" Height="17" Id="Shape1" Left="573" Right="583" TabOrder="44" Top="254" Width="10"></Shape>
+					<Shape Bottom="294" Height="17" Id="Shape2" Left="573" Right="583" TabOrder="45" Top="277" Width="10"></Shape>
+					<Shape Bottom="286" Height="24" Id="Shape4" Left="575" LineKind="Vertical" Right="591" TabOrder="46" Top="262" Width="16"></Shape>
+					<Shape Bottom="580" Height="47" Id="Shape9" Left="6" LineColor="user6" LineKind="RDiagonal" Right="686" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="51" Top="533" Type="RoundRect" Width="680"></Shape>
+					<Static Align="Center" BKColor="user36" Height="20" Id="Static11" Left="10" Style="sty_Label" TabOrder="43" Text="적용&#32;주소" Top="536" VAlign="Middle" Width="80"></Static>
+					<Edit AutoSelect="TRUE" BKColor="lightgoldenrodyellow" Border="Flat" Height="20" Id="edRoadApplyAddr11" ImeMode="native" Left="93" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="28" Top="536" UserData="S" Width="480"></Edit>
+					<Edit AutoSelect="TRUE" BKColor="lightgoldenrodyellow" Border="Flat" Height="20" Id="edRoadApplyAddr12" ImeMode="native" Left="93" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="29" Top="557" UserData="S" Width="480"></Edit>
+					<Checkbox Font="굴림,10,Bold,UnderLine" Height="21" Id="chkRoadInput" Left="589" OnClick="TabAddr_tabPost_chkRoadInput_OnClick" TabOrder="30" Text="직접입력" Top="548" UserData="S" Value="FALSE" Width="80"></Checkbox>
+					<Shape Bottom="570" Height="24" Id="Shape5" Left="576" LineKind="Vertical" Right="592" TabOrder="49" Top="546" Width="16"></Shape>
+					<Shape Bottom="555" Height="17" Id="Shape6" Left="573" Right="583" TabOrder="47" Top="538" Width="10"></Shape>
+					<Shape Bottom="578" Height="17" Id="Shape7" Left="573" Right="583" TabOrder="48" Top="561" Width="10"></Shape>
+					<Static Font="굴림,8,Bold" Height="17" Id="Static13" Left="438" TabOrder="52" Text="[동/호수,&#32;층&#32;등]" Top="490" Width="170"></Static>
+					<Static Font="굴림,8,Bold" Height="17" Id="Static14" Left="438" TabOrder="53" Text="[건물/아파트&#32;등]" Top="517" Width="140"></Static>
+					<Static Color="user10" Font="굴림,8,Bold,UnderLine" Height="16" Id="Static15" Left="452" TabOrder="54" Text="※&#32;입력한&#32;지번주소로&#32;도로명주소&#32;검색" Top="310" Width="219"></Static>
+					<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BKColor="user4" Border="Flat" Height="20" Id="medPostCode11" Left="34" LeftMargin="2" Mask="###-###" OnFocus="medOldZipCode_OnFocus" OnKeyDown="gfn_EnterNextFocus" Readonly="TRUE" Style="sty_ZipCodeReadOnly" TabOrder="18" Top="275" Type="STRING" UserData="I:구주소우편번호" Width="56"></MaskEdit>
+					<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BKColor="user4" Border="Flat" Height="20" Id="medPostCode12" Left="34" LeftMargin="2" Mask="###-###" OnFocus="medOldZipCode_OnFocus" OnKeyDown="gfn_EnterNextFocus" Readonly="TRUE" Style="sty_ZipCodeReadOnly" TabOrder="27" Top="557" Type="STRING" UserData="I:새주소우편번호" Width="56"></MaskEdit>
+				</TabPage>
+			</Contents>
+		</Tab>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSave" ImageID="BTN_TEXT_08" Left="314" OnClick="btnSave_OnClick" Style="sty_Button" TabOrder="4" Text="적용주소&#32;반영(F4)" ToolTipText="선택" Top="4" Transparent="TRUE" Width="122"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="434" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="5" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="522" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="6" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 우편번호정보명 : frmsys0054PAddrSearch.xml
+ * 설명 : 주소정보검색팝업
+ * 작성일 : 2011.11.01
+ * 작성자 : 정현호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+//var sAddrGubun = "0"; // 임시
+var sTabPost_BuildMgno = "";
+var sTabRoad_BuildMgno = "";
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    
+    gfn_Form_OnLoadCompletedCheck(obj); //공통 폼 로딩 이벤트 처리(공통코드 조회되었는지 확인)
+    
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+
+	ds_oSido.Copy("gds_oFireBonbuCode");	// 시도코드 로딩
+	ds_oSido.InsertRow(0);
+	ds_oSido.SetColumn(0, "CD", "");
+	ds_oSido.SetColumn(0, "DATA", "선택");	
+    ds_oSido.row = 0;
+    
+    // 2014.05.13 추가 : 주소검색시는 경기2본부 제외
+	for(var i=0; i<ds_oSido.GetRowCount(); i++) {
+		if (ds_oSido.GetColumn(i-1, "DATA") == "경기2") {
+			ds_oSido.DeleteRow(i-1);
+			break;
+		}
+	}
+        
+    //trace(ds_oSido.SaveXML());
+    
+    
+    //alert(sBonbu);
+    // 시도코드 로그인 시도로 세팅
+	if (sJibu == "1141") {
+		TabAddr.tabPost.cbxSido.Index = 9;	// 경기
+		TabAddr.tabRoad.cbxSido2.Index = 9;	// 경기	
+	} else if (sJibu == "1031" || sJibu == "1051" || sJibu == "1061") {	// 대구경북, 광주전남, 대전충남
+		if (!gfn_IsNull(sBonbu)) {	// 소방본부코드 파라미터가 넘어왔으면 소방본부코드로 시도 세팅
+			for(var i=0; i<ds_oSido.GetRowCount(); i++) {
+				if (ds_oSido.GetColumn(i-1, "CD") == sBonbu) {
+					break;
+				}
+				TabAddr.tabPost.cbxSido.Index = i;
+				TabAddr.tabRoad.cbxSido2.Index = i;
+			}
+		} else {					// 소방본부코드가 없으면
+			for(var i=0; i<ds_oSido.GetRowCount(); i++) {
+				if (ds_oSido.GetColumn(i-1, "JIBUCD") == sJibu) {
+					break;
+				}
+				TabAddr.tabPost.cbxSido.Index = i;
+				TabAddr.tabRoad.cbxSido2.Index = i;
+			}
+		}
+		
+	} else {
+		for(var i=0; i<ds_oSido.GetRowCount(); i++) {
+			if (ds_oSido.GetColumn(i-1, "JIBUCD") == sJibu) {
+				break;
+			}
+			TabAddr.tabPost.cbxSido.Index = i;
+			TabAddr.tabRoad.cbxSido2.Index = i;
+		}
+	}
+    
+    if (sAddrGubun == "0") {	// 구주소 선택하여 폼 로딩
+   		TabAddr.TabIndex = 1;    // 지번주소 default
+		TabAddr.tabPost.cbxSido.SetFocus();
+		ds_oPostCode.ClearData();
+		ds_oRoadAddr.ClearData();
+		ds_oPostCode.InsertRow(0);
+		if (sPostAddr1 <> "") {
+		
+			ds_oPostCode.SetColumn(0, "PPOSTCD", sPostCD11);
+			ds_oPostCode.SetColumn(0, "PFULLADDR", sPostAddr1);
+			ds_oPostCode.SetColumn(0, "PADDR1", sPostAddr1);
+			ds_oPostCode.SetColumn(0, "PSAN", sPostMountain);
+			ds_oPostCode.SetColumn(0, "PBUILDNM", sPostBuildNM);
+			TabAddr.tabPost.medPostCode11.Text = sPostCD11;
+			TabAddr.tabPost.edPostApplyAddr1.Text = sPostAddr1;
+			TabAddr.tabPost.edPostApplyAddr2.Text = sPostAddr2;
+			TabAddr.tabPost.edPostMainBunji.Text = sPostMainBunji;
+			TabAddr.tabPost.edPostSubBunji.Text = sPostSubBunji;
+			TabAddr.tabPost.edPostDetailAddr.Text = sPostDetailAddr;
+			TabAddr.tabPost.medPostCode12.Text = sPostCD12;
+			TabAddr.tabPost.edRoadApplyAddr11.Text = sRoadAddr11;
+			TabAddr.tabPost.edRoadApplyAddr12.Text = sRoadAddr12;
+			sTabPost_BuildMgno = sRoadBuildMGNO1;		//건물관리번호
+			TabAddr.tabPost.edRoadDetailAddr1.Text = sRoadDetailAddr1;
+			TabAddr.tabPost.edRoadEtcAddr1.Text = sRoadEtcAddr1;
+
+			ds_iPostAddrDivide.ClearData();
+			ds_iPostAddrDivide.InsertRow(0);
+			ds_iPostAddrDivide.SetColumn(0, "ADDR1", sPostAddr1);
+			ds_iPostAddrDivide.SetColumn(0, "ADDR2", sPostAddr2);
+			ds_iPostAddrDivide.SetColumn(0, "ZIPCD", sPostCD11);
+			tit_clearActionInfo();
+			tit_addSearchActionInfo("sys:searchPostAddrDivide", false);
+			// 서버 호출 
+			tit_callService(
+				""
+				,""
+				,"ds_iPostAddrDivide=ds_iPostAddrDivide"	// inDs
+				,"ds_oPostAddrDivide=ds_oPostAddrDivide"	// outDs
+				,"" 	// args 
+				,""
+				,false
+				,false
+				,true
+			);
+			TabAddr.tabPost.edDong.Text = ds_oPostAddrDivide.GetColumn(0, "ODONG");
+			TabAddr.tabPost.ChkPostMountain.Value = iif(ds_oPostAddrDivide.GetColumn(0, "OSAN")="산","1","0");
+			TabAddr.tabPost.edPostMainBunji.Text = ds_oPostAddrDivide.GetColumn(0, "OMAINBUNJI");
+			TabAddr.tabPost.edPostSubBunji.Text = ds_oPostAddrDivide.GetColumn(0, "OSUBBUNJI");		
+
+
+			if (sRoadBuildMGNO1 <> "") {
+				ds_iSearch.ClearData();
+				ds_iSearch.InsertRow(0);
+				ds_iSearch.SetColumn(0, "BUILDMGNO", sRoadBuildMGNO1);
+				//ds_iSearch.SetColumn(0, "SIDO", TabAddr.tabPost.cbxSido.Value);
+				tit_clearActionInfo();
+				tit_addSearchActionInfo("sys:searchFromPostToRoadList", false);
+				// 서버 호출 
+				tit_callService(
+					""
+					,""
+					,"ds_iSearch=ds_iSearch"	// inDs
+					,"ds_oRoadAddr=ds_oRoadAddr"	// outDs
+					,"" 	// args 
+					,"lfn_AfterPostCodeSearch"
+					,false
+					,false
+					,true
+				);
+			}	
+
+		} else {
+			lfn_Cancel(obj);
+		}
+	} else {					// 새주소 선택하여 폼 로딩
+   		TabAddr.TabIndex = 0;    // 도로명주소 default	
+		TabAddr.tabRoad.cbxSido2.SetFocus();
+		ds_oRoadAddr.ClearData();
+		ds_oRoadAddr.InsertRow(0);
+
+		if (sRoadAddr21 <> "") {
+			ds_oRoadAddr.SetColumn(0, "RMZIPCD", sPostCD2);	// ds_oRoadAddr 우편번호
+			TabAddr.tabRoad.medPostCode2.Text = sPostCD2;
+			TabAddr.tabRoad.edRoadApplyAddr21.Text = sRoadAddr21;
+			TabAddr.tabRoad.edRoadApplyAddr22.Text = sRoadAddr22;
+			sTabRoad_BuildMgno = sRoadBuildMGNO2;		//건물관리번호
+			TabAddr.tabRoad.edRoadDetailAddr2.Text = sRoadDetailAddr2;
+			TabAddr.tabRoad.edRoadEtcAddr2.Text = sRoadEtcAddr2;
+
+			if (sRoadBuildMGNO2 <> "") {
+				ds_iSearch.ClearData();
+				ds_iSearch.InsertRow(0);
+				ds_iSearch.SetColumn(0, "BUILDMGNO", sRoadBuildMGNO2);
+				//ds_iSearch.SetColumn(0, "SIDO", TabAddr.tabRoad.cbxSido2.Value);
+				tit_clearActionInfo();
+				tit_addSearchActionInfo("sys:searchRoadList", false);
+				// 서버 호출 
+				tit_callService(
+					""
+					,""
+					,"ds_iSearch=ds_iSearch"	// inDs
+					,"ds_oRoadList=ds_oRoadList"	// outDs
+					,"" 	// args 
+					,"lfn_AfterRoadSearch"
+					,false
+					,false
+					,true
+				);
+			}	
+			
+		} else {
+			lfn_Cancel(obj);
+		}
+	}
+     
+
+
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 115 : // 저장(F4)
+			btnSave_OnClick(obj);
+            break;
+        case 121 : // 초기화(F10)
+			lfn_Cancel(obj);
+            break;
+        case 123 : // 화면출력(F12)
+			PrintScreen(true);
+            break;
+    }
+}
+
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+
+
+/* * 기능 : 초기화(F10) */
+function lfn_Cancel(obj) {	gfn_FormInit(this.TabAddr.tabRoad);
+	
+	gfn_FormInit(this.TabAddr.tabPost);
+	
+	lfn_ClearData();
+}
+
+/* * 기능 : 초기화 (모든 데이터셋) */function lfn_ClearData() {
+
+	ds_oPostCode.ClearData();	// 지번주소 조회 : 지번 우편번호정보 초기화
+	
+	ds_oRoadAddr.ClearData();	// 지번주소 조회 : 도로명 주소 정보 초기화
+	
+	ds_oRoadList.ClearData();	// 도로명주소 조회 : 도로명 주소 정보 초기화
+
+}
+
+
+
+
+/* 공통 필수 종료 */
+
+/* 우편번호 함수 */
+
+function lfn_PostCodeSearch(obj)
+{
+    ds_iSearch.ClearData();
+    ds_iSearch.InsertRow(0);
+	ds_iSearch.SetColumn(0, "SIDO", TabAddr.tabPost.cbxSido.Value);
+	ds_iSearch.SetColumn(0, "DONG", TabAddr.tabPost.edDong.Text);
+		
+	if (TabAddr.tabPost.cbxSido.index == 0) {
+        gfn_Alert("지역을 선택해주세요!");
+        return false;
+    } else if (TabAddr.tabPost.edDong.Text == "") {
+        gfn_Alert("동명을 입력해주세요!");
+        TabAddr.tabPost.edDong.SetFocus();
+        return false;
+	} else {
+        tit_clearActionInfo();
+        tit_addSearchActionInfo("sys:searchPostCode", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,"ds_iSearch=ds_iSearch"	// inDs
+            ,"ds_oPostCode=ds_oPostCode"	// outDs
+            ,"" 	// args 
+            ,"lfn_AfterPostCodeSearch"
+            ,false
+            ,false
+            ,true
+        );
+	}
+    
+}
+
+
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterPostCodeSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    if (ds_oPostCode.GetCount() > 0) {
+        TabAddr.tabPost.gdPost.SetFocus();
+    }
+
+    gfn_SearchMessage(TabAddr.tabPost.gdPost); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 우편번호 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+/* 지번주소 검색*/
+function btnPostCodeSearch_OnClick(obj)
+{
+	lfn_PostCodeSearch(obj);
+}
+
+function TabAddr_tabPost_edDong_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) { // Enter key
+        TabAddr.tabPost.btnPostCodeSearch.SetFocus();
+        lfn_PostCodeSearch(obj);
+	}
+}
+
+/* 지번주소 적용 */
+function TabAddr_tabPost_btnPostApply_OnClick(obj)
+{
+
+	/* 우편번호 */ 
+	TabAddr.tabPost.medPostCode11.Text = ds_oPostCode.GetColumn(ds_oPostCode.currow, "PPOSTCD");
+
+	/* 주소1 */
+	TabAddr.tabPost.edPostApplyAddr1.Text = TabAddr.tabPost.edPostAddr1.Text;
+	
+	var vAddr2 = ""; // 주소2
+	
+	/* 산 */
+	var vMountain = "";
+	if (TabAddr.tabPost.ChkPostMountain.Value == "1") vMountain = "산 ";
+	else vMountain = "";
+	
+	vAddr2 = vMountain;
+	
+	/* 주번지 */
+	vPostMainBunji = "";
+	if (TabAddr.tabPost.edPostMainBunji.Text == "") vPostMainBunji = "";
+	else vPostMainBunji = TabAddr.tabPost.edPostMainBunji.Text;
+	vAddr2 += vPostMainBunji;
+	
+	/* 부번지 */
+	vPostSubBunji = "";
+	if (TabAddr.tabPost.edPostSubBunji.Text == "" or TabAddr.tabPost.edPostSubBunji.Text == "0") vPostSubBunji = "";
+	else vPostSubBunji = "-" + TabAddr.tabPost.edPostSubBunji.Text;
+	vAddr2 += vPostSubBunji;
+	
+	/* 건물명,아파트*/
+	vPostBuildNM = "";
+	if (TabAddr.tabPost.edPostBuildNM.Text == "") vPostBuildNM = "";
+	else vPostBuildNM = TabAddr.tabPost.edPostBuildNM.Text;
+	
+	if (vAddr2 == "") {
+		vAddr2 += vPostBuildNM;
+	} else {
+		if (vPostBuildNM <> "") vAddr2 += " " + vPostBuildNM;
+	}
+	
+	/* 상세주소*/
+	vPostDetailAddr = "";
+	if (TabAddr.tabPost.edPostDetailAddr.Text == "") vPostDetailAddr = "";
+	else vPostDetailAddr = TabAddr.tabPost.edPostDetailAddr.Text;
+		
+	if (vAddr2 == "") {
+		vAddr2 += vPostDetailAddr;
+	} else {
+		if (vPostDetailAddr <> "") vAddr2 += " " + vPostDetailAddr;
+	}
+	
+	/* 주소2 */
+	TabAddr.tabPost.edPostApplyAddr2.Text = vAddr2;
+	
+	// 지번주소 => 도로명주소 검색
+	TabAddr_tabPost_btnRoadSearch_OnClick(obj);
+}
+
+/* 지번주소 적용취소 */
+function TabAddr_tabPost_btnPostApplyCancel_OnClick(obj)
+{
+
+	TabAddr.tabPost.medPostCode11.Text = "";
+	TabAddr.tabPost.edPostApplyAddr1.Text = "";
+	TabAddr.tabPost.edPostApplyAddr2.Text = "";
+	
+}
+
+/* 지번주소 적용주소 직접입력*/
+function TabAddr_tabPost_chkPostInput_OnClick(obj,strValue)
+{
+	if (TabAddr.tabPost.chkPostInput.Value = "1") {
+		TabAddr.tabPost.medPostCode11.Readonly = false;
+		TabAddr.tabPost.edPostApplyAddr1.Readonly = false;
+		TabAddr.tabPost.edPostApplyAddr2.Readonly = false;
+	} else {
+		TabAddr.tabPost.medPostCode11.Readonly = true;
+		TabAddr.tabPost.edPostApplyAddr1.Readonly = true;
+		TabAddr.tabPost.edPostApplyAddr2.Readonly = true;
+	}
+}
+
+/* 지번주소 조회 : 부가주소에서 엔터키 입력시 지번주소 적용*/
+function TabAddr_tabPost_edPostDetailAddr_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) { // Enter key        TabAddr.tabPost.btnPostApply.SetFocus();
+        TabAddr_tabPost_btnPostApply_OnClick(obj);	}	
+}
+
+/* 지번주소 조회 : 도로명주소 적용 */
+function TabAddr_tabPost_btnRoadApply_OnClick(obj)
+{
+
+	/* 우편번호 */ 
+	TabAddr.tabPost.medPostCode12.Text = ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow, "RMZIPCD");
+	
+	/* 주소1 */
+	TabAddr.tabPost.edRoadApplyAddr11.Text = ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMADDR1");
+	
+	var vRoadDetailAddr1 = "";
+	if (TabAddr.tabPost.edRoadDetailAddr1.Text == "") vRoadDetailAddr1 = "";
+	else vRoadDetailAddr1 = TabAddr.tabPost.edRoadDetailAddr1.Text;
+	
+	var vRoadEtcAddr1 = "";
+/*	if (TabAddr.tabPost.edRoadEtcAddr1.Text == "") {
+		vRoadEtcAddr1 = ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMADDR2");
+	} else {
+		vRoadEtcAddr1 = substr(ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMADDR2"), 0, length(ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMADDR2"))-1)
+	                    + ", "+TabAddr.tabPost.edRoadEtcAddr1.Text + ")";
+	}
+*/	
+	if (gfn_IsNull(ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMLAWRINM"))) {	// 리가 없으면
+		if (TabAddr.tabPost.edRoadEtcAddr1.Text <> "") {	// 부가주소를 입력했으면
+			vRoadEtcAddr1 = "(" + ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMLAWDONGNM")
+			                    + " " + ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMMAINBUNJI")
+			                    + iif(ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMSUBBUNJI")=="0","", 
+			                          "-" + ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMSUBBUNJI"))
+			                + ", " + TabAddr.tabPost.edRoadEtcAddr1.Text + ")";
+		} else {	// 부가주소를 입력하지 않았으면
+			vRoadEtcAddr1 = "(" + ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMLAWDONGNM") 
+							    + " " + ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMMAINBUNJI")
+							    + iif(ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMSUBBUNJI")=="0","", 
+								      "-" + ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMSUBBUNJI")) + ")";
+		}
+	
+	} else {	// 리가 있으면
+		if (TabAddr.tabPost.edRoadEtcAddr1.Text <> "") {	// 부가주소를 입력했으면
+			vRoadEtcAddr1 = "(" + ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMLAWRINM")
+			                    + " " + ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMMAINBUNJI")
+			                    + iif(ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMSUBBUNJI")=="0","", 
+			                          "-" + ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMSUBBUNJI"))
+			                 + ", " + TabAddr.tabPost.edRoadEtcAddr1.Text + ")";
+		} else {	// 부가주소를 입력하지 않았으면	
+			vRoadEtcAddr1 = "(" + ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMLAWRINM")
+								+ " " + ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMMAINBUNJI")
+			                    + iif(ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMSUBBUNJI")=="0","", 
+			                          "-" + ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMSUBBUNJI")) + ")";
+		}
+	}
+	
+
+	/* 주소2 */
+	if (vRoadDetailAddr1 == "") {
+		TabAddr.tabPost.edRoadApplyAddr12.Text = vRoadDetailAddr1 + vRoadEtcAddr1;
+	} else {
+		TabAddr.tabPost.edRoadApplyAddr12.Text = vRoadDetailAddr1 + iif(gfn_IsNull(vRoadEtcAddr1),"", " " + vRoadEtcAddr1);
+	}
+
+}
+
+/* 지번주소 조회 : 도로명주소 적용취소 */
+function TabAddr_tabPost_btnRoadApplyCancel_OnClick(obj)
+{
+	TabAddr.tabPost.medPostCode12.Text = "";
+	TabAddr.tabPost.edRoadApplyAddr11.Text = "";
+	TabAddr.tabPost.edRoadApplyAddr12.Text = "";
+}
+
+/* 지번주소 조회 : 도로명주소 적용주소 직접입력*/
+function TabAddr_tabPost_chkRoadInput_OnClick(obj,strValue)
+{
+	if (TabAddr.tabPost.chkRoadInput.Value = "1") {
+		TabAddr.tabPost.medPostCode12.Readonly = false;
+		TabAddr.tabPost.edRoadApplyAddr11.Readonly = false;
+		TabAddr.tabPost.edRoadApplyAddr12.Readonly = false;
+	} else {
+		TabAddr.tabPost.medPostCode12.Readonly = true;
+		TabAddr.tabPost.edRoadApplyAddr11.Readonly = true;
+		TabAddr.tabPost.edRoadApplyAddr12.Readonly = true;
+	}	
+}
+
+/* 지번주소 조회 : 부가주소에서 엔터키 입력시 도로명주소 적용*/
+function TabAddr_tabPost_edRoadEtcAddr1_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) { // Enter key        TabAddr.tabPost.btnRoadApply.SetFocus();
+        TabAddr_tabPost_btnRoadApply_OnClick(obj);	}	
+}
+
+
+// 도로명주소 조회 : 도로명주소 조회 버튼 클릭
+function TabAddr_tabRoad_btnRoadSearch2_OnClick(obj)
+{
+	lfn_RoadSearch(obj);
+}
+// 도로명주소 조회 : 도로명주소 조회
+function lfn_RoadSearch(obj)
+{
+    ds_iSearch.ClearData();
+    ds_iSearch.InsertRow(0);
+	ds_iSearch.SetColumn(0, "SIDO", TabAddr.tabRoad.cbxSido2.Value);
+	ds_iSearch.SetColumn(0, "ROADNM", TabAddr.tabRoad.edRoad.Text);
+	ds_iSearch.SetColumn(0, "BUILDMAINNO", TabAddr.tabRoad.edRoadBuildMainNo.Text);
+	ds_iSearch.SetColumn(0, "BUILDSUBNO", TabAddr.tabRoad.edRoadBuildSubNo.Text);
+		
+	if (TabAddr.tabRoad.cbxSido2.index == 0) {
+        gfn_Alert("지역을 선택해주세요!");
+        return false;
+    } else if (TabAddr.tabRoad.edRoad.Text == "") {
+        gfn_Alert("도로명을 입력해주세요!");
+        TabAddr.tabRoad.edRoad.SetFocus();
+        return false;
+	} else {
+        tit_clearActionInfo();
+        tit_addCsvSearchActionInfo("sys:searchRoadList", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,"ds_iSearch=ds_iSearch"	// inDs
+            ,"ds_oRoadList=ds_oRoadList"	// outDs
+            ,"" 	// args 
+            ,"lfn_AfterRoadSearch"
+            ,false
+            ,false
+            ,true
+        );
+	}	
+}
+
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterRoadSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    if (ds_oRoadList.GetCount() > 0) {
+        TabAddr.tabRoad.gdRoad2.SetFocus();
+        
+		if ((ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMBUILDNM") = "주택") or
+			(ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMBUILDNM") = "단독주택") or
+			(ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMBUILDNM") = "창고") or
+			(ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMBUILDNM") = "축사")) {
+			TabAddr.tabRoad.edRoadDetailAddr2.Text = "";
+		} else {
+			TabAddr.tabRoad.edRoadEtcAddr2.Text = ds_oRoadList.GetColumn(ds_oRoadList.currow, "RMBUILDNM");
+		}
+    }
+
+    gfn_SearchMessage(TabAddr.tabRoad.gdRoad2); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+function TabAddr_tabRoad_edRoad_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) { // Enter key
+        lfn_RoadSearch(obj);
+        
+        if (TabAddr.tabRoad.edRoad.Text <> "") {
+			
+			TabAddr.tabRoad.edRoadBuildMainNo.SetFocus();
+		
+		}
+	}
+	
+}
+
+function TabAddr_tabRoad_edRoadBuildSubNo_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) { // Enter key
+        TabAddr.tabRoad.btnRoadSearch2.SetFocus();
+
+        lfn_RoadSearch(obj);
+	}	
+}
+
+/* 도로명주소 조회 : 도로명주소 적용 */ 
+function TabAddr_tabRoad_btnRoadApply_OnClick(obj)
+{
+	/* 우편번호 */ 
+	TabAddr.tabRoad.medPostCode2.Text = ds_oRoadList.GetColumn(ds_oRoadList.currow, "RMZIPCD");
+
+	/* 주소1 */
+	TabAddr.tabRoad.edRoadApplyAddr21.Text = ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMADDR1");
+	
+	var vRoadDetailAddr2 = "";
+	if (TabAddr.tabRoad.edRoadDetailAddr2.Text == "") vRoadDetailAddr2 = "";
+	else vRoadDetailAddr2 = TabAddr.tabRoad.edRoadDetailAddr2.Text;
+	
+	var vRoadEtcAddr2 = "";
+/*	if (TabAddr.tabRoad.edRoadEtcAddr2.Text == "") {
+		vRoadEtcAddr2 = ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMADDR2");
+	} else {
+		vRoadEtcAddr2 = substr(ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMADDR2"), 0, length(ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMADDR2"))-1)
+	                    + ", "+TabAddr.tabRoad.edRoadEtcAddr2.Text + ")";
+	}
+*/	
+	if (gfn_IsNull(ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMLAWRINM"))) {	// 리가 없으면
+		if (TabAddr.tabRoad.edRoadEtcAddr2.Text <> "") {	// 부가주소를 입력했으면
+			//vRoadEtcAddr2 = "(" + ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMLAWDONGNM")
+			//                + ", " + TabAddr.tabRoad.edRoadEtcAddr2.Text + ")";
+			vRoadEtcAddr2 = "(" + ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMLAWDONGNM")
+			                    + " " + ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMMAINBUNJI")
+			                    + iif(ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMSUBBUNJI")=="0","", 
+			                          "-" + ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMSUBBUNJI"))			                    
+			                + ", " + TabAddr.tabRoad.edRoadEtcAddr2.Text + ")";
+			                
+		} else {	// 부가주소를 입력하지 않았으면
+			//vRoadEtcAddr2 = "(" + ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMLAWDONGNM") + ")";
+			vRoadEtcAddr2 = "(" + ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMLAWDONGNM")
+							    + " " + ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMMAINBUNJI")
+							    + iif(ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMSUBBUNJI")=="0","", 
+								      "-" + ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMSUBBUNJI")) + ")";
+		}
+	
+	} else {	// 리가 있으면
+		if (TabAddr.tabRoad.edRoadEtcAddr2.Text <> "") {	// 부가주소를 입력했으면
+			//vRoadEtcAddr2 = "(" + TabAddr.tabRoad.edRoadEtcAddr2.Text + ")";
+			vRoadEtcAddr2 = "(" + ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMLAWRINM")
+			                    + " " + ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMMAINBUNJI")
+			                    + iif(ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMSUBBUNJI")=="0","", 
+			                          "-" + ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMSUBBUNJI"))
+			                 + ", " + TabAddr.tabRoad.edRoadEtcAddr2.Text + ")";
+		} else {	// 부가주소를 입력하지 않았으면	
+			//vRoadEtcAddr2 = "(" + ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMLAWRINM") + ")";
+			vRoadEtcAddr2 = "(" + ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMLAWRINM")
+								+ " " + ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMMAINBUNJI")
+			                    + iif(ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMSUBBUNJI")=="0","", 
+			                          "-" + ds_oRoadList.GetColumn(ds_oRoadList.currow,"RMSUBBUNJI")) + ")";
+
+		}
+	}
+	
+	/* 주소2 */
+	if (vRoadDetailAddr2 == "") {
+		TabAddr.tabRoad.edRoadApplyAddr22.Text = vRoadDetailAddr2 + vRoadEtcAddr2;
+	} else {
+		TabAddr.tabRoad.edRoadApplyAddr22.Text = vRoadDetailAddr2 + iif(gfn_IsNull(vRoadEtcAddr2),"", " " + vRoadEtcAddr2);
+	}
+}
+
+/* 도로명주소 조회 : 도로명주소 적용취소 */
+function TabAddr_tabRoad_btnRoadApplyCancel_OnClick(obj)
+{
+	TabAddr.tabRoad.medPostCode2.Text = "";
+	TabAddr.tabRoad.edRoadApplyAddr21.Text = "";
+	TabAddr.tabRoad.edRoadApplyAddr22.Text = "";	
+}
+
+/* 도로명주소 조회 : 도로명주소 적용주소 직접입력*/
+function TabAddr_tabRoad_chkRoadInput_OnClick(obj,strValue)
+{
+	if (TabAddr.tabRoad.chkRoadInput.Value = "1") {
+		TabAddr.tabRoad.medPostCode2.Readonly = false;
+		TabAddr.tabRoad.edRoadApplyAddr21.Readonly = false;
+		TabAddr.tabRoad.edRoadApplyAddr22.Readonly = false;
+	} else {
+		TabAddr.tabRoad.medPostCode2.Readonly = true;
+		TabAddr.tabRoad.edRoadApplyAddr21.Readonly = true;
+		TabAddr.tabRoad.edRoadApplyAddr22.Readonly = true;
+	}
+}
+
+/* 도로명 주소 조회 : 부가주소에서 엔터키 입력시 적용버튼 클릭*/
+function TabAddr_tabRoad_edRoadEtcAddr2_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) { // Enter key        TabAddr.tabRoad.btnRoadApply.SetFocus();
+        TabAddr_tabRoad_btnRoadApply_OnClick(obj);	}	
+}
+
+
+
+/* 적용주소 반영 */
+function btnSave_OnClick(obj)
+{
+	// 지번주소 조회 : 지번주소 and 도로명주소
+	if (TabAddr.TabIndex == 1) {
+	
+		if (TabAddr.tabPost.edPostApplyAddr1.Text == "") {
+
+//			gfn_Alert("적용주소가 입력되지 않았습니다.\n\n적용버튼을 눌러 적용주소를 입력해 주세요!");
+			
+			if(gfn_Confirm("적용주소가 입력되지 않았습니다.\n\n그래도 반영하시겠습니까?")) {
+			
+				//
+
+			} else {
+				return false;
+			}
+
+		}
+
+		var arrArg = Array(16);	
+		// 지번주소
+		
+		arrArg[0] = 0;
+	
+		arrArg[1] = TabAddr.tabPost.medPostCode11.Value;	// 지번우편번호	
+		arrArg[2] = TabAddr.tabPost.edPostApplyAddr1.Text;	// 지번 적용주소1	
+		arrArg[3] = TabAddr.tabPost.edPostApplyAddr2.Text;	// 지번 적용주소2
+		
+		arrArg[4] = TabAddr.tabPost.ChkPostMountain.Value;	// 산여부
+		
+		arrArg[5] = TabAddr.tabPost.edPostMainBunji.Text;	// 주번지
+		
+		arrArg[6] = TabAddr.tabPost.edPostSubBunji.Text;	// 부번지
+		
+		arrArg[7] = TabAddr.tabPost.edPostBuildNM.Text;		// 건물명
+		
+		arrArg[8] = TabAddr.tabPost.edPostDetailAddr.Text;	// 상세주소	
+		arrArg[9] = "";	// PNU 코드
+		
+		// 도로명주소
+		
+		arrArg[10] =  TabAddr.tabPost.medPostCode12.Value;	// 도로명 우편번호	
+		
+		arrArg[11] = TabAddr.tabPost.edRoadApplyAddr11.Text;	// 도로명 적용주소1
+		
+		arrArg[12] = TabAddr.tabPost.edRoadApplyAddr12.Text;	// 도로명 적용주소2
+		
+		arrArg[13] = ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow, "RMBUILDMGNO");// 건물관리번호
+		
+		arrArg[14] = TabAddr.tabPost.edRoadDetailAddr1.Text;	// 상세주소
+		
+		arrArg[15] = TabAddr.tabPost.edRoadEtcAddr1.Text;		// 부가주소
+
+		Close(arrArg);
+
+	} else {	// 도로명주소 조회 : 도로명주소
+	
+		if (TabAddr.tabRoad.edRoadApplyAddr21.Text == "") {
+
+//			gfn_Alert("적용주소가 입력되지 않았습니다.\n\n적용버튼을 눌러 적용주소를 입력해 주세요!");
+
+			if(gfn_Confirm("적용주소가 입력되지 않았습니다.\n\n그래도 반영하시겠습니까?")) {
+			
+				//
+
+			} else {
+				return false;
+			}
+
+		}	
+
+		var arrArg = Array(16);
+		
+		arrArg[0] = 1;	
+			
+		arrArg[4] = ds_oRoadList.GetColumn(ds_oRoadList.currow, "RMMNTNGUBUN");	// 산여부
+		
+		arrArg[5] = ds_oRoadList.GetColumn(ds_oRoadList.currow, "RMMAINBUNJI");	// 주번지
+		
+		arrArg[6] = ds_oRoadList.GetColumn(ds_oRoadList.currow, "RMSUBBUNJI");	// 부번지
+		
+		arrArg[9] = "";	// PNU 코드
+		
+		arrArg[10] = TabAddr.tabRoad.medPostCode2.Value;	// 도로명 우편번호	
+	
+		arrArg[11] = TabAddr.tabRoad.edRoadApplyAddr21.Text;	// 도로명 적용주소1
+		
+		arrArg[12] = TabAddr.tabRoad.edRoadApplyAddr22.Text;	// 도로명 적용주소2
+		
+		arrArg[13] = ds_oRoadList.GetColumn(ds_oRoadList.currow, "RMBUILDMGNO");// 건물관리번호
+		
+		arrArg[14] = TabAddr.tabRoad.edRoadDetailAddr2.Text;		// 상세주소
+		
+		arrArg[15] = TabAddr.tabRoad.edRoadEtcAddr2.Text;		// 부가주소	
+		
+		Close(arrArg);
+
+	}
+
+}
+
+
+/* 지번주소 조회 : 도로명주소 검색 */
+function TabAddr_tabPost_btnRoadSearch_OnClick(obj)
+{
+    
+    ds_iSearch.ClearData();
+    ds_iSearch.InsertRow(0);
+	
+	if (gfn_IsNull(ds_oPostCode.GetColumn(ds_oPostCode.currow, "PSIDO"))) {
+		ds_iSearch.SetColumn(0, "SIDO", TabAddr.tabPost.cbxSido.Value);
+	} else {
+		ds_iSearch.SetColumn(0, "SIDO", ds_oPostCode.GetColumn(ds_oPostCode.currow, "PSIDO")); //TabAddr.tabPost.cbxSido.Value);
+	}
+	
+	if (gfn_IsNull(ds_oPostCode.GetColumn(ds_oPostCode.currow, "PDONG"))) {
+		ds_iSearch.SetColumn(0, "DONG", TabAddr.tabPost.edDong.Text);
+	} else {
+		ds_iSearch.SetColumn(0, "DONG", ds_oPostCode.GetColumn(ds_oPostCode.currow, "PDONG"));
+	}
+	ds_iSearch.SetColumn(0, "MNTNGUBUN", TabAddr.tabPost.ChkPostMountain.Value);
+	ds_iSearch.SetColumn(0, "MAINBUNJI", TabAddr.tabPost.edPostMainBunji.Text);
+	ds_iSearch.SetColumn(0, "SUBBUNJI", TabAddr.tabPost.edPostSubBunji.Text);
+	ds_iSearch.SetColumn(0, "ZIPCD", TabAddr.tabPost.medPostCode11.Value);
+	
+	if (TabAddr.tabPost.edPostMainBunji.Text == "" && TabAddr.tabPost.edPostSubBunji.Text == ""
+	   && TabAddr.tabPost.edPostBuildNM.Text <> "")
+		ds_iSearch.SetColumn(0, "BUILDNM", TabAddr.tabPost.edPostBuildNM.Text);
+	
+	
+	if (TabAddr.tabPost.cbxSido.index == 0 && gfn_IsNull(ds_oPostCode.GetColumn(ds_oPostCode.currow, "PSIDO"))) {
+        gfn_Alert("지역을 선택해주세요!");
+        return false;
+    }
+    if (gfn_IsNull(TabAddr.tabPost.edDong.Text) && gfn_IsNull(ds_oPostCode.GetColumn(ds_oPostCode.currow, "PDONG"))) {
+        gfn_Alert("동명을 입력해주세요!");
+        TabAddr.tabPost.edDong.SetFocus();
+        return false;
+	}
+
+	tit_clearActionInfo();
+	tit_addSearchActionInfo("sys:searchFromPostToRoadList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,"ds_iSearch=ds_iSearch"	// inDs
+		,"ds_oRoadAddr=ds_oRoadAddr"	// outDs
+		,"" 	// args 
+		,"lfn_AfterPostRoadSearch"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterPostRoadSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    if (ds_oRoadAddr.GetCount() > 0) {
+    
+		if ((ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow ,"RMBUILDNM") = "주택") or
+			(ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMBUILDNM") = "단독주택") or
+			(ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMBUILDNM") = "창고") or
+			(ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow,"RMBUILDNM") = "축사")) {
+			TabAddr.tabPost.edRoadDetailAddr1.Text = "";
+		} else {
+			//TabAddr.tabPost.edRoadDetailAddr1.Text = ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow, "RMBUILDNM")
+			//										 + iif(gfn_IsNull(ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow, "RMBUILDNM")),"",iif(gfn_IsNull(TabAddr.tabPost.edPostDetailAddr.Text),""," "))
+			//										 + TabAddr.tabPost.edPostDetailAddr.Text;
+			TabAddr.tabPost.edRoadDetailAddr1.Text = TabAddr.tabPost.edPostDetailAddr.Text;
+			TabAddr.tabPost.edRoadEtcAddr1.Text = ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow, "RMBUILDNM");
+		}    
+        TabAddr.tabPost.gdRoad1.SetFocus();
+    }
+
+    gfn_SearchMessage(TabAddr.tabPost.gdRoad1); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 탭 변경시*/
+function TabAddr_OnChanged(obj,nOldIndex,nNewindex)
+{
+	lfn_Cancel(obj);
+		
+}
+
+function TabAddr_tabPost_gdRoad1_OnCellPosChanged(obj,nRow,nCell,nOldRow,nOldCell,nPivotIndex,nOldPivotIndex)
+{
+
+}
+
+function ds_oRoadAddr_OnRowPosChanged(obj,nOldRow,nRow)
+{
+ 	if ((ds_oRoadAddr.GetColumn(nRow,"RMBUILDNM") = "주택") or
+		(ds_oRoadAddr.GetColumn(nRow,"RMBUILDNM") = "단독주택") or
+		(ds_oRoadAddr.GetColumn(nRow,"RMBUILDNM") = "창고") or
+		(ds_oRoadAddr.GetColumn(nRow,"RMBUILDNM") = "축사")) {
+		TabAddr.tabPost.edRoadDetailAddr1.Text = "";
+	} else {
+		//TabAddr.tabPost.edRoadDetailAddr1.Text = ds_oRoadAddr.GetColumn(nRow, "RMBUILDNM")
+		//                                         + iif(gfn_IsNull(ds_oRoadAddr.GetColumn(nRow, "RMBUILDNM")),"",iif(gfn_IsNull(TabAddr.tabPost.edPostDetailAddr.Text),""," "))
+		//                                         + TabAddr.tabPost.edPostDetailAddr.Text;
+		TabAddr.tabPost.edRoadDetailAddr1.Text = TabAddr.tabPost.edPostDetailAddr.Text;
+		TabAddr.tabPost.edRoadEtcAddr1.Text = ds_oRoadAddr.GetColumn(ds_oRoadAddr.currow, "RMBUILDNM");
+	}
+}
+
+function ds_oRoadList_OnRowPosChanged(obj,nOldRow,nRow)
+{
+ 	if ((ds_oRoadList.GetColumn(nRow,"RMBUILDNM") = "주택") or
+		(ds_oRoadList.GetColumn(nRow,"RMBUILDNM") = "단독주택") or
+		(ds_oRoadList.GetColumn(nRow,"RMBUILDNM") = "창고") or
+		(ds_oRoadList.GetColumn(nRow,"RMBUILDNM") = "축사")) {
+		TabAddr.tabRoad.edRoadDetailAddr2.Text = "";
+	} else {
+		TabAddr.tabRoad.edRoadEtcAddr2.Text = ds_oRoadList.GetColumn(nRow, "RMBUILDNM");
+	}	
+}
+
+
+
+function TabAddr_tabRoad_gdRoad2_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == 13) {
+	
+		TabAddr.tabRoad.edRoadDetailAddr2.SetFocus();
+		
+	}
+	
+}
+
+function TabAddr_tabPost_gdPost_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == 13) {
+	
+		TabAddr.tabPost.edPostMainBunji.SetFocus();
+		
+	}	
+}
+
+
+
+function TabAddr_tabPost_gdRoad1_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == 13) {
+	
+		TabAddr.tabPost.edRoadDetailAddr1.SetFocus();
+		
+	}		
+}
+]]></Script>
+</Window>

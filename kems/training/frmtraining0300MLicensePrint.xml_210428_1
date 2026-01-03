@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="600" Id="frmtraining0300MLicensePrint" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="수첩일괄출력" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="900" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPassGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oLicenseReport">
+				<Contents>
+					<colinfo id="BIRTHDAY" size="10" summ="default" type="STRING"/>
+					<colinfo id="IIFILENM" size="513" summ="default" type="STRING"/>
+					<colinfo id="LADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="LADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="LBARCODE" size="12" summ="default" type="STRING"/>
+					<colinfo id="LHPRTDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="LISSUEDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="LISSUEGUBUNNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="LLCSNO" size="19" summ="default" type="STRING"/>
+					<colinfo id="LPERSONNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="LTCCOURSECD" size="30" summ="default" type="STRING"/>
+					<colinfo id="LLASTHISTORYSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="SEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="LHPROCGTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="YEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="JUBSUNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ONLINESURYOYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRINTYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="IJUBSU" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oLicenseCnt">
+				<Contents>
+					<colinfo id="LLCSNO" size="19" summ="default" type="STRING"/>
+					<colinfo id="MINNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="MAXNO" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iLicenseImage">
+				<Contents>
+					<colinfo id="LILLCSNO" size="19" summ="default" type="STRING"/>
+					<colinfo id="LISEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="LIDIRPATH" size="256" summ="default" type="STRING"/>
+					<colinfo id="LIREALNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iLicensePrtHistory">
+				<Contents>
+					<colinfo id="LPLLCSNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="LPLHSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="ILMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPrintGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>전체&#32;출력(소집+온라인)</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>소집교육&#32;수료자만&#32;출력</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>온라인교육&#32;수료자만&#32;출력</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioReport"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioReportFilter"></Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="280" LineColor="user14" Right="894" TabOrder="61" Top="1" Type="Rectangle" Width="614"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="12" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="228">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="632" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="1" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="719" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="2" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="806" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="321" Style="sty_Label" TabOrder="13" Text="직능" Top="38" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_oCourse" Left="412" OnChanged="cbxCourse_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="7" Top="37" UserData="S:직능" Width="182"></Combo>
+		<Static Align="Center" Height="20" Id="lbYear" Left="188" Style="sty_Label" TabOrder="14" Text="년도" Top="38" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edYear" ImeMode="native" Left="279" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="edYear_OnKillFocus" Style="sty_Edit" TabOrder="6" Top="38" UserData="I:년도" Width="36"></Edit>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="4" Style="sty_Label" TabOrder="15" Text="지부" Top="38" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="95" OnChanged="cbxPassGubun_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="5" Top="37" UserData="I:지부" Width="88"></Combo>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calPassDate" Left="376" OnChanged="cbxPassGubun_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="9" Top="64" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Static Align="Center" Height="20" Id="lbPassGubun" Left="4" Style="sty_Label" TabOrder="16" Text="취득구분" Top="62" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbLcsNo" Left="4" Style="sty_Label" TabOrder="17" Text="수첩일련번호" Top="86" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edLcsNoStart" ImeMode="native" Left="96" LeftMargin="2" MaxLength="6" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="edLcsNoStart_OnKillFocus" Style="sty_Edit" TabOrder="10" Top="86" UserData="S" Width="60"></Edit>
+		<Static Align="Center" Height="20" Id="lbNumberWave" Left="161" Style="sty_Text" TabOrder="18" Text="~" Top="86" VAlign="Middle" Width="10"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edLcsNoEnd" ImeMode="native" Left="176" LeftMargin="2" MaxLength="6" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="edLcsNoEnd_OnKillFocus" Style="sty_Edit" TabOrder="11" Top="86" UserData="S" Width="60"></Edit>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxPassGubun" INDEX="0" InnerDataset="ds_oPassGubun" Left="95" OnChanged="cbxPassGubun_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="8" Top="61" UserData="S:취득구분" Width="182"></Combo>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnPrint4700" Left="372" OnClick="lfn_Print4700" Style="sty_Button" TabOrder="4" Text="출력(HP&#32;4700DN)" ToolTipText="출력" Top="4" Width="128"></Button>
+		<Static Align="Center" Height="20" Id="lbDate" Left="283" Style="sty_Label" TabOrder="20" Text="발급일" Top="62" VAlign="Middle" Width="88"></Static>
+		<HttpFile Height="24" Id="hfImageFile" Left="240" Top="4" Width="24"></HttpFile>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnPrint65050" Left="502" OnClick="lfn_Print4700" Style="sty_Button" TabOrder="21" Text="출력(HP&#32;E65050)" ToolTipText="출력" Top="4" Width="128"></Button>
+		<Static Align="Center" Height="20" Id="Static0" Left="4" Style="sty_LabelStat" TabOrder="23" Text="조회건수" Top="135" VAlign="Middle" Width="90"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medSearchCnt" Left="98" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="22" Top="135" Width="55"></MaskEdit>
+		<Static Align="Center" Height="20" Id="Static1" Left="4" Style="sty_Label" TabOrder="24" Text="온라인교육여부" Top="110" VAlign="Middle" Width="88"></Static>
+		<Radio CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Font="굴림,10,Bold" Height="22" Id="radPrintGubun" INDEX="0" InnerDataset="ds_oPrintGubun" Left="96" TabOrder="25" Top="111" Value="I" Width="632"></Radio>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="285" OnClick="lfn_Search" Style="sty_Button" TabOrder="26" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oLicenseReport" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="592" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="432" Id="gdLicensePrint" InputPanel="FALSE" Left="3" LineColor="default" OnCellClick="gdLicensePrint_OnCellClick" OnHeadClick="gdLicensePrint_OnHeadClick" Right="896" RowHeight="20" Style="sty_Grid" TabOrder="27" TabStop="true" Top="160" UseDBuff="true" UsePopupMenu="true" UserData="수첩일괄출력자&#32;조회" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="893">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="29"/>
+						<col width="60"/>
+						<col width="44"/>
+						<col width="142"/>
+						<col width="71"/>
+						<col width="143"/>
+						<col width="64"/>
+						<col width="80"/>
+						<col width="76"/>
+						<col width="101"/>
+						<col width="61"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" display="text" text="지부"/>
+						<cell align="center" col="2" display="text" text="년도"/>
+						<cell align="center" col="3" display="text" text="직능"/>
+						<cell align="center" col="4" display="text" text="접수번호"/>
+						<cell align="center" col="5" display="text" text="수첩번호"/>
+						<cell align="center" col="6" display="text" text="성명"/>
+						<cell align="center" col="7" display="text" text="생년월일"/>
+						<cell align="center" col="8" display="text" text="온라인교육"/>
+						<cell col="9" display="text" text="인터넷신청여부"/>
+						<cell col="10" display="text" text="출력여부"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SEL" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" colid="LHPROCGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="2" colid="YEAR" display="combo"/>
+						<cell align="center" col="3" colid="LTCCOURSECD" combocol="CD" combodataset="ds_oCourse" combotext="DATA" display="combo"/>
+						<cell align="center" col="4" colid="JUBSUNO" display="text"/>
+						<cell align="center" col="5" colid="LLCSNO" display="combo"/>
+						<cell align="center" col="6" colid="LPERSONNM" display="text"/>
+						<cell align="center" col="7" colid="BIRTHDAY" display="text"/>
+						<cell align="center" col="8" colid="ONLINESURYOYN" display="text"/>
+						<cell align="center" col="9" colid="IJUBSU" display="text" expr="iif(IJUBSU&#32;==&#32;&apos;N&apos;,&#32;&apos;N&apos;,&apos;출력가능&apos;)"/>
+						<cell align="center" col="10" colid="PRINTYN" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="Static2" Left="188" Style="sty_LabelStat" TabOrder="29" Text="선택건수" Top="135" VAlign="Middle" Width="90"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medCheckCnt" Left="282" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="28" Top="135" Width="55"></MaskEdit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0300MLicensePrint.xml
+ * 설명 : 수첩일괄출력
+ * 작성일 : 2009.09.20
+ * 작성자 : 김동현
+ */
+
+#include "LIB::training.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    // 공통 코드 조회
+    gfn_SearchTrainingCourse("T", ds_oCourse, "Y", "선택"); // 직능 코드 조회
+    
+    ds_oCourse.DeleteRow(8);
+    
+    cbxCourse.Value = "22";
+    
+    gfn_SearchJibu(cbxJibu, "Y", "선택"); // 지부 코드 조회
+    gfn_SearchCommonCode(ds_oPassGubun, "PASSGUBUN", "Y", "선택"); // 취득구분 코드 조회
+    
+	ds_oPassGubun.Filter("CD=='2'");		// 시험	
+    cbxPassGubun.Value = "2";
+
+    edYear.Text = left(getDate(), 4);
+    calPassDate.Value = left(getDate(), 8);
+    
+    radPrintGubun.Value = "0";	// 0:전체, 1:온라인수료 제외, 2:온라인만
+    
+    medSearchCnt.Value = "";	// 조회건수
+    
+    medCheckCnt.Value = "";		// 선택건수
+    
+
+}
+
+function Form_OnKeyDown(obj,objAttendanceerObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objAttendanceerObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState) {
+
+    if (gs_IsResizingForm == "Y") {
+
+    }
+}
+
+
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj)
+{
+    ds_oLicenseReport.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+    tit_addCsvSearchActionInfo("training:searchLicenseReport", false);
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_oLicenseReport=ds_oLicenseReport"	// outDs
+        ,"LLCSNOSTART=" + quote(edYear + "-" + substr(cbxJibu.Value,1,2) + "-" + cbxCourse.Value + "-" + cbxPassGubun.Value + "-" + edLcsNoStart.Text)
+            + " LLCSNOEND=" + quote(edYear + "-" + substr(cbxJibu.Value,1,2) + "-" + cbxCourse.Value + "-" + cbxPassGubun.Value + "-" + edLcsNoEnd.Text)
+            
+            + " PASSGUBUN=" + quote(cbxPassGubun.Value)	// 취득구분
+            
+            + " PRINTGUBUN=" + quote(radPrintGubun.Value)	// 출력구분
+        ,""
+        ,false
+        ,""
+        ,true
+    );
+    
+    medSearchCnt.Value = ds_oLicenseReport.GetRowCount();
+    
+    medCheckCnt.Value = "";
+    	
+}
+
+
+
+
+/*
+ * 기능 : 출력
+ */
+function lfn_Print4700(obj) {
+	var ls_PrintGubun = ""; // 프린터 구분(1:HP 4700DN, 2: HP 65050)
+    
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+
+	// 프린터구분 출력
+	if (obj.ID == "btnPrint4700") {
+	
+		ls_PrintGubun = "1";
+		
+	} else if (obj.ID == "btnPrint65050") {
+	
+		ls_PrintGubun = "2";
+		
+	}
+	
+    if (ds_oLicenseReport.RowCount() < 1) {
+        gfn_Alert("출력할 데이터가 없습니다.");
+        return false;
+    }
+   
+    if(!gfn_CheckChangedGrid(this))  //선택한것이 있는지 체크 메세지 보임
+    { alert("출력할 인원을 선택해 주십시오.");      
+        return false;
+    }
+
+    if (edLcsNoStart.Text == "000000"
+        || edLcsNoEnd.Text == "000000"
+        || length(edLcsNoStart.Text) < 1
+        || length(edLcsNoEnd.Text) < 1) { // 입력 Validation Check
+        gfn_Alert("출력할 수첩이 없습니다.");
+        return false;
+    }
+	// HP 4700DN 용 출력	if (ls_PrintGubun == "1") {
+		if (!gfn_Confirm("수첩을 일괄출력 하시겠습니까?\n\n"+
+						 "  * HP 4700DN 프린터 출력전용\n"+
+						 "  * 환경설정의 출력환경설정도 프린터를 HP 4700DN으로 설정 후 출력")) { // 입력 Validation Check	
+			return false;	
+		}
+	}
+    
+    // HP E65050 용 출력
+	if (ls_PrintGubun == "2") {
+		if (!gfn_Confirm("수첩을 일괄출력 하시겠습니까?\n\n"+
+						 "  * HP E65050 프린터 출력전용\n"+
+						 "  * 환경설정의 출력환경설정도 프린터를 HP E65050으로 설정 후 출력")) { // 입력 Validation Check	
+			return false;	
+		}	}
+
+    var ls_LicenseImageDir = "/PRTDATA/" + left(getDate(),4) + "/" + SubStr(getDate(),4,2);
+
+    var ls_RexFile = "";
+    switch (cbxCourse.Value) {
+    	// 출력물보안 미적용 리포트
+    case 10: case 20: case 21: case 22: case 23:		// 공공,특급,1급,2급,3급 소방안전관리자
+		if (ls_PrintGubun == "1") {
+			ls_RexFile = "frmtraining0250R01License4700.rex";		// HP 4700DN 용 출력
+		} else if (ls_PrintGubun == "2") {
+			ls_RexFile = "frmtraining0250R01License65050.rex";		// HP E65050 용 출력
+		}
+        break;
+        
+    case 24:	// 위험물안전관리자
+		if (ls_PrintGubun == "1") {
+			ls_RexFile = "frmtraining0250R02License4700.rex";		// HP 4700DN 용 출력		} else if (ls_PrintGubun == "2") {
+			ls_RexFile = "frmtraining0250R02License65050.rex";		// HP E65050 용 출력
+		}
+		
+        break;
+        
+    case 28:			// 위험물운송자
+		if (ls_PrintGubun == "1") {
+			ls_RexFile = "frmtraining0250R03License4700.rex";		// HP 4700DN 용 출력
+		} else if (ls_PrintGubun == "2") {
+			ls_RexFile = "frmtraining0250R03License65050.rex";		// HP E65050 용 출력		}
+		
+        break;
+
+    case 50:			// 생활안전강사
+        ls_RexFile = "frmtraining0250R04License.rex";
+        break;
+
+    case 51:			// 심폐소생술과정
+        ls_RexFile = "frmtraining0250R05License.rex";
+        break;
+        
+    case 52:			// 교관양성과정
+        ls_RexFile = "frmtraining0250R06License.rex";
+        break;
+        
+    }
+    
+    ds_ioReport.copy(ds_oLicenseReport);  // 1) 원본 복사           
+    ds_ioReport.Filter("SEL = '1'"); // 2) 복사 후 필터함 
+    
+    ds_ioReportFilter.copyf(ds_ioReport);  // 3) 필터한 값을 실제 사용 위해 다른 곳에 복사     
+    ds_ioReport.ClearData(); // 4) 데이타셋 초기화  레포트 출력위해 필터된 2)번의 데이터셋을 초기화함  
+
+    gfn_PrintReport(ls_RexFile
+        , "ds_ioReportFilter"
+        , "rpDirpath=" + GF_FILE_SERVER_URL + "kems"
+        , ""
+        , "수첩"
+        , true
+    );
+
+
+   // 수첩출력 이력을 저장한다.
+   
+    ds_iLicensePrtHistory.ClearData();
+    var i;
+    for (i=0; i<ds_ioReportFilter.GetRowCount(); i++) {
+        ds_iLicensePrtHistory.InsertRow(0);
+        ds_iLicensePrtHistory.SetColumn(0, "LPLLCSNO", ds_ioReportFilter.getColumn(i, "LLCSNO"));
+        ds_iLicensePrtHistory.SetColumn(0, "LPLHSEQ", ds_ioReportFilter.GetColumn(i, "LLASTHISTORYSEQ"));
+        
+        ds_iLicensePrtHistory.SetColumn(0, "ILMGNO", iif(ds_ioReportFilter.GetColumn(i, "IJUBSU") == "N", "", ds_ioReportFilter.GetColumn(i, "IJUBSU")));
+    }
+    
+    trace(ds_iLicensePrtHistory.savexml());
+   
+
+    tit_clearActionInfo();
+    
+    tit_addMultiActionInfo("training:insertLicensePrtHistoryMulti", "", 0, "", "N");
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iLicensePrtHistory=ds_iLicensePrtHistory:U"    // inDs
+        ,""    // outDs
+        ,"" // args
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+    
+/*  수첩이미지정보 저장안함 2013.03.25
+
+    //수첩정보
+    ds_iLicenseImage.ClearData();
+
+    var i;
+    for (i=0; i<ds_oLicenseReport.GetRowCount(); i++) {
+        ds_iLicenseImage.InsertRow(0);
+        ds_iLicenseImage.SetColumn(0, "LILLCSNO", ds_oLicenseReport.getColumn(i, "LLCSNO"));
+        ds_iLicenseImage.SetColumn(0, "LISEQ", ds_oLicenseReport.GetColumn(i, "LLASTHISTORYSEQ"));
+        ds_iLicenseImage.SetColumn(0, "LIREALNM", ds_oLicenseReport.getColumn(i, "LLCSNO")
+            + "_" + ds_oLicenseReport.GetColumn(i, "LLASTHISTORYSEQ") + ".jpg");
+        ds_iLicenseImage.SetColumn(0, "LIDIRPATH", ls_LicenseImageDir);
+    }
+
+    tit_clearActionInfo();
+    tit_addMultiActionInfo("training:insertLicenseImage", "", 0, "", "N");
+
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iLicenseImage=ds_iLicenseImage:U" // inDs
+        ,""	// outDs
+        ,""	// args
+        ,""
+        ,false
+    );
+
+    for (i=1; i<=ds_oLicenseReport.GetRowCount(); i++) {
+        tit_FileWrite(
+            hfImageFile
+            , ls_LicenseImageDir
+            , "C:\\"
+            , "LCS" + i + ".jpg"
+            , ds_iLicenseImage.GetColumn(ds_oLicenseReport.GetRowCount()-i, "LIREALNM")
+            , "U"
+        );
+        hfImageFile.CloseFile();
+        
+    }
+    
+    ExecProc("cmd", ' /c "del ' + replace("C:\\LCS*.jpg",'\\\\','\\') + '" ');
+*/
+    var ls_HistoryArg;
+    ls_HistoryArg = "지부=" + cbxJibu.Text
+        + ",년도=" + edYear.Text
+        + ",직능=" + cbxCourse.Text
+        + ",취득구분=" + cbxPassGubun.Text
+        + ",발급일자=" + calPassDate.Text;
+    // 조회이력을 저장한다.
+    gfn_InsertSearchPrintHistory(
+        "R"
+        , this.ID
+        , global.mnuLeft.cbxOpenForm.Text
+        , ls_HistoryArg
+    );
+
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    btnPrint4700.Enable = true;
+    btnPrint65050.Enable = true;
+}
+
+/* 사용자 이벤트 함수 */
+function cbxPassGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+
+    ds_oLicenseCnt.ClearData();
+    
+    tit_clearActionInfo();
+    tit_addCsvSearchActionInfo("training:searchLicenseCnt", false);
+    
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_oLicenseCnt=ds_oLicenseCnt"	// outDs
+        ,"LLCSNO=" + quote(edYear + "-" + substr(cbxJibu.Value,1,2) + "-" + cbxCourse.Value + "-" + cbxPassGubun.Value)
+            + " LISSUEDATE=" + quote(calPassDate.Value) // args 
+        ,""
+        ,false
+        ,""
+        ,true
+    );
+    
+    edLcsNoStart.Text = ds_oLicenseCnt.GetColumn(0, "MINNO");
+    edLcsNoEnd.Text = ds_oLicenseCnt.GetColumn(0, "MAXNO");
+	ds_oLicenseReport.ClearData();
+}
+
+/**
+ * 직능 변경
+ */
+function cbxCourse_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+	if (cbxCourse.Value == "20") {
+	
+        ds_oPassGubun.Filter("CD=='1'");		// 수료
+	
+	} else if (cbxCourse.Value == "10") {		
+	
+        ds_oPassGubun.Filter("CD=='2'");		// 시험	
+	
+	} else if (cbxCourse.Value == "21") {
+	
+        ds_oPassGubun.Filter("CD=='2'");		// 시험	
+	
+	} else if (cbxCourse.Value == "22") {
+	
+        ds_oPassGubun.Filter("CD=='2'");		// 시험	
+        
+	} else if (cbxCourse.Value == "23") {
+	
+        ds_oPassGubun.Filter("CD=='2'");		// 시험	
+	
+	} else if (cbxCourse.Value == "24") {
+	
+        ds_oPassGubun.Filter("CD=='1'");		// 수료
+	
+	} else if (cbxCourse.Value == "28") {
+        //ds_oPassGubun.Filter("CD=='1'||CD=='6'");
+        ds_oPassGubun.Filter("CD=='1'");		// 수료
+	} else if (cbxCourse.Value == "50") {
+        ds_oPassGubun.Filter("CD=='2'");		// 시험	
+	} else if (cbxCourse.Value == "51") {
+        ds_oPassGubun.Filter("CD=='2'");		// 시험	
+	} else if (cbxCourse.Value == "52") {
+	
+        ds_oPassGubun.Filter("CD=='1'");		// 수료
+
+	} else {
+        ds_oPassGubun.UnFilter();
+	}
+	cbxPassGubun_OnChanged();
+}
+
+/**
+ * 연번 자리수 맞추기
+ */
+function edLcsNoStart_OnKillFocus(obj) {
+
+    var i;
+    
+    for (i=length(edLcsNoStart.Text); i<6; i++) {
+        edLcsNoStart.Text = "0" + edLcsNoStart.Text;
+    }
+    
+	gfn_ComponentOnKillFocus(obj);
+}
+
+function edLcsNoEnd_OnKillFocus(obj) {
+    var i;
+    
+    for (i=length(edLcsNoEnd.Text); i<6; i++) {
+        edLcsNoEnd.Text = "0" + edLcsNoEnd.Text;
+    }
+    
+	gfn_ComponentOnKillFocus(obj);
+}
+
+function edYear_OnKillFocus(obj) {
+    cbxPassGubun_OnChanged();
+	gfn_ComponentOnKillFocus(obj);
+}
+
+function gdLicensePrint_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	var lobj_Dataset = object(obj.BindDataset);
+	if (nCell == 0) { // 선택
+        if (obj.GetCellProp("head", nCell, "text") == 1) { // 전체가 이미 선택된 경우
+            obj.SetCellProp("head", nCell, "text", 0);
+            for(i = 0; i < lobj_Dataset.RowCount(); i++) {
+                lobj_Dataset.SetColumn(i, "SEL", "0");
+                
+                medCheckCnt.Value = 0;
+            }
+        } else { // 전체가 이미 선택되지 않은 경우
+            obj.SetCellProp("head", nCell, "text", 1);
+            for(i = 0; i < lobj_Dataset.RowCount(); i++) {
+                lobj_Dataset.SetColumn(i, "SEL", "1");
+                
+                medCheckCnt.Value = lobj_Dataset.RowCount();
+            }
+        }
+	} else { // 헤드 정렬
+        lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex);
+	}
+}
+
+
+function gdLicensePrint_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+
+	var lobj_Dataset = object(obj.BindDataset);
+	
+	if (nCell == 0) { // 선택
+	
+		if (lobj_Dataset.GetColumn(nRow, "SEL") == "0") {
+		
+			medCheckCnt.Value = toNumber(iif(gfn_isNull(medCheckCnt.Value),0,medCheckCnt.Value)) + 1;
+		
+		} else {
+		
+			medCheckCnt.Value = toNumber(iif(gfn_isNull(medCheckCnt.Value),0,medCheckCnt.Value)) - 1;
+		
+		}
+	
+	}
+}
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_5000,dsc_0003]";	// 개인정보접속기록 시스템ID  
+}
+
+
+]]></Script>
+</Window>

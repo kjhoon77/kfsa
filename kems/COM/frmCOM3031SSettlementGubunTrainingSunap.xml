@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="20" Id="frmCOM3031SSettlementGubunTrainingSunap" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="결제구분강습수납" Top="8" Ver="1.0" Width="680" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oProcGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>01</CD>
+						<DATA>강습&#32;수납</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radProcGubun" INDEX="0" InnerDataset="ds_oProcGubun" OnChanged="radProcGubun_OnChanged" Style="sty_Radio" TabOrder="1" Value="01" Width="680"></Radio>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM3031SSettlementGubunTrainingSunap.xml
+ * 설명 : 결제구분강습수납
+ * 작성일 : 2009.09.11
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+function Form_OnLoadCompleted(obj) {
+    radProcGubun_OnChanged();
+}
+
+function radProcGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+    switch (radProcGubun.Value) { // 단위업무프로그램
+        case "01" : // 강습
+            parent.medSunapAmount.Value = parent.sProcAmount;
+            parent.medTotalSunapFee.Value = parent.sProcAmount;
+            parent.edProcAmount.Text = " 강습" + NumFormat(toNumber(parent.sProcAmount)) + "원";
+            break;
+        case "02" : // 강습+시험
+            parent.medSunapAmount.Value = toNumber(parent.sProcAmount) + 10000;
+            parent.medTotalSunapFee.Value = toNumber(parent.sProcAmount) + 10000;
+            parent.edProcAmount.Text = " 강습" + NumFormat(toNumber(parent.sProcAmount)) + "원 + 시험 10,000원";
+            break;
+    }
+}
+]]></Script>
+</Window>

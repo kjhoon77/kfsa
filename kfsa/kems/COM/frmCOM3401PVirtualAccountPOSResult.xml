@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="224" Id="frmCOM3401PVirtualAccountPOSResult" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="가상계좌정보팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="400" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Editable="True" Id="ds_ioPosInput">
+				<Contents>
+					<colinfo id="PMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMPIID" size="256" summ="default" type="STRING"/>
+					<colinfo id="PCTRANSACTION" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosOutputJVM">
+				<Contents>
+					<colinfo id="MI_PMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_PMMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_PRMGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_RESPCODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_CASHRECEIPTNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_RESPMSG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_OID" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_TID" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_AMOUNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_ACCOUNTNUM" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_FINANCECODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_CASFLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_FINANCENAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_RSCODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="MI_RSMSG" size="256" summ="default" type="STRING"/>
+					<colinfo id="LGD_TAXFREEAMOUNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="28" Height="28" Id="shpBtnBox" Left="128" LineColor="user14" Right="397" TabOrder="19" Top="0" Type="Rectangle" Width="269"></Shape>
+		<Shape Bottom="221" Height="192" Id="shpGubunBox4" Left="4" LineColor="user15" Right="396" TabOrder="13" Top="29" Type="Rectangle" Width="392"></Shape>
+		<Static Align="Center" Height="20" Id="lbProcGubun" Left="12" Style="sty_Label" TabOrder="7" Text="입???여부" Top="72" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbBankCd" Left="12" Style="sty_Label" TabOrder="8" Text="은행코드" Top="120" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edBankCd" ImeMode="native" Left="104" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="4" Top="120" UserData="S" Width="72"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edProcGubun" ImeMode="native" Left="104" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="2" Top="72" UserData="S" Width="72"></Edit>
+		<Static Align="Center" Height="20" Id="lbAmount" Left="12" Style="sty_Label" TabOrder="9" Text="입금액" Top="168" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbBankNm" Left="12" Style="sty_Label" TabOrder="10" Text="은행명" Top="144" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edBankNm" ImeMode="native" Left="104" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="5" Top="144" UserData="S" Width="168"></Edit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medAmount" Left="104" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="6" Top="168" UserData="S" Width="72"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbAccountNo" Left="12" Style="sty_Label" TabOrder="11" Text="계좌번호" Top="96" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edAccountNo" ImeMode="native" Left="104" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="3" Top="96" UserData="S" Width="284"></Edit>
+		<Static Align="Center" Height="20" Id="lbCloseDate" Left="12" Style="sty_Label" TabOrder="12" Text="유효기간" Top="48" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbRepay" Left="13" Style="sty_LabelGruopBox" TabOrder="14" Text="가상계좌정보" Top="20" VAlign="Middle" Width="96"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="310" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="3" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbProcDate" Left="12" Style="sty_Label" TabOrder="15" Text="처리일자" Top="192" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medProcDate" Left="104" Mask="####.##.##&#32;##:##:##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="16" Top="192" Type="STRING" UserData="S" Width="168"></MaskEdit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medCloseDate" Left="104" Mask="####.##.##&#32;##:##:##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="17" Top="48" Type="STRING" UserData="S" Width="168"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDelete" ImageID="BTN_COM_DEL" Left="223" OnClick="lfn_Delete" Style="sty_Button" TabOrder="18" ToolTipText="삭제&#32;저장" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="136" OnClick="btnPrint_OnClick" Style="sty_Button" TabOrder="20" ToolTipText="출력" Top="3" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM3401PVirtualAccountPOSResult.xml
+ * 설명 : 가상계좌정보팝업
+ * 작성일 : 2009.09.18
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    medCloseDate.Text = sVirtCloseDate;
+    edProcGubun.Text = sVirtStat;
+    edAccountNo.Text = sVirtAccountNo;
+    edBankCd.Text = sVirtBankCd;
+    edBankNm.Text = sVirtBankNm;
+    medAmount.Text = sVirtInputAmount;
+    medProcDate.Text = sVirtBankDate;
+    
+    if (sVirtStat <> "입금") {  // 입금 상태가 아닐 경???만 삭제가 가능하도록 함. 입금여부(R-계좌 할당,I-입금,C-취소)
+        btnDelete.Enable = true;
+    } else {
+        btnDelete.Enable = false;    
+    }
+    
+    if ((sGubun == "21" || sGubun == "22") && (sVirtStat <> "입금")) {
+        btnPrint.Enable = true;
+    } else {
+        btnPrint.Enable = false;
+    }
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close("OK");
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+    }
+}
+
+/*
+ * 기?? : 종료
+ */
+function lfn_End(obj) {
+    Close("OK");
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+
+/* 사???자 이벤트 함수 */
+
+/*
+ * 기능 : 삭제
+ */
+
+/*
+ * 기능 : 강습결재의 가상계좌 삭제
+ */
+ 
+function lfn_TrainingDelete() {
+
+    if (!gfn_confirm("가상계좌를 삭제 하시겠습니까?")) {
+        return;
+    }
+
+    if (sPMORGGUBUN == "1") {	// LG U+ 가상계좌이면
+    
+		Http.Sync = true;
+		ds_ioPosOutputJVM.ClearData();	//가???지 데이타 제거
+	
+		var params = "ROW='0'";
+		params += " PMREGSABUN="+gds_oUserInfo.GetColumn(0,"PSABUN");
+	
+		ds_ioPosInput.ClearData();
+		ds_ioPosInput.InsertRow(0);
+	
+		ds_ioPosInput.SetColumn(0, "PMYEAR", parent.ds_oPosResult.getColumn(0, "PMYEAR"));
+		ds_ioPosInput.SetColumn(0, "PMMGNO", parent.ds_oPosResult.getColumn(0, "PMMGNO"));
+		ds_ioPosInput.SetColumn(0, "PMPIID", sPMPIID);
+		ds_ioPosInput.SetColumn(0, "PCTRANSACTION", sPCTRANSACTION);
+			
+		Transaction("PosRun", "http://172.19.1.17:7001/kems/pos/ServiceBiz/PosReqCyberAccountCancel.jsp", "ioPosInput=ds_ioPosInput", "ds_ioPosOutputJVM=ioPosOutput", params, "");
+		Http.Sync = false;
+	}
+
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("com:deleteCom3401TrainingVirtualAccount", "", 0, "");
+    tit_callService(
+        ""
+        ,""
+        ,""//"ds_iVirtualAccount=ds_ioVirtualInfo" // inDs
+        ,""	// outDs
+        , "PCPMYEAR= " + quote(parent.ds_oPosResult.getColumn(0, "PMYEAR")) // 영수증 관리 년도
+        + " PCPMMGNO= " + quote(parent.ds_oPosResult.getColumn(0, "PMMGNO")) // 영수증 번호"" //args
+        ,"lfn_AfterDelete"
+        ,false
+    );
+
+//        , "PCPMYEAR= " + quote(parent.ds_oPosResult.PMYEAR) // 영수증 관리 년도
+//        + " PCPMMGNO= " + quote(parent.ds_oPosResult.PMMGNO) // 영수증 번호"" //args
+
+}
+
+
+/**
+ * ???타 TRANSACTION 처리 후
+ */
+function lfn_AfterDelete(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜??션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return "Transaction Error!";
+    }
+    
+    gfn_Alert("가상계좌 삭제가 완료 되었습니다.");
+    
+    var arrArg = Array();
+    arrArg[0] = "1"; // 가상계좌를 삭제 하였기에 다시 조회를 하도록 함(값넘김)
+        
+    Close(arrArg);    
+    //Close("OK");
+}
+
+
+/*
+ * 기능 : 시험 결재의 강사계좌 삭제
+ */
+function lfn_ExamDelete() {
+
+    if (!gfn_confirm("가상계좌를 삭제 하시겠습니까?")) {
+        return;
+    }
+
+    if (sPMORGGUBUN == "1") {	// LG U+ 가상계좌이면
+		
+		Http.Sync = true;
+		ds_ioPosOutputJVM.ClearData();	//가비지 데이타 제거
+	
+		var params = "ROW='0'";
+		params += " PMREGSABUN="+gds_oUserInfo.GetColumn(0,"PSABUN");
+	
+		ds_ioPosInput.ClearData();
+		ds_ioPosInput.InsertRow(0);
+	
+		ds_ioPosInput.SetColumn(0, "PMYEAR", parent.ds_oPosResult.getColumn(0, "PMYEAR"));
+		ds_ioPosInput.SetColumn(0, "PMMGNO", parent.ds_oPosResult.getColumn(0, "PMMGNO"));
+		ds_ioPosInput.SetColumn(0, "PMPIID", sPMPIID);
+		ds_ioPosInput.SetColumn(0, "PCTRANSACTION", sPCTRANSACTION);
+			
+		Transaction("PosRun", "http://172.19.1.17:7001/kems/pos/ServiceBiz/PosReqCyberAccountCancel.jsp", "ioPosInput=ds_ioPosInput", "ds_ioPosOutputJVM=ioPosOutput", params, "");
+		Http.Sync = false;
+	}
+
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("com:deleteCom3401ExamVirtualAccount", "", 0, "");
+    tit_callService(
+        ""
+        ,""
+        ,""//"ds_iVirtualAccount=ds_ioVirtualInfo" // inDs
+        ,""	// outDs
+        , "PCPMYEAR= " + quote(parent.ds_oPosResult.getColumn(0, "PMYEAR")) // 영수증 관리 년도
+        + " PCPMMGNO= " + quote(parent.ds_oPosResult.getColumn(0, "PMMGNO")) // 영수증 번호"" //args
+        ,"lfn_AfterDelete"
+        ,false
+    );
+
+}
+
+/*
+* 업무에 따라 삭제 함수가 다름
+*/
+function lfn_Delete(obj)
+{
+	if (sGubun == "21") {         //  강습 
+        lfn_TrainingDelete();     // 강습 가상계좌 삭제
+	}
+	else if (sGubun == "22") {    //  시험
+        lfn_ExamDelete();	      // 시험 가상계좌 삭제 
+	}
+}
+
+
+
+
+
+
+
+function btnPrint_OnClick(obj)
+{
+	var sArg = "";
+	
+	if (sGubun == "21") {
+	
+		//sArg = "sURL="+"http://www.kfsi.or.kr/edu/e_training/request_cas_print.php?tpmgno="+sTpmgno+"&tjmgno="+sTjmgno;
+		sArg = "sURL=http://www.kfsi.or.kr/user/training/popup/TrainingCasPrint.do?tpmgno="+sTpmgno+"&tjmgno="+sTjmgno;
+				   
+	} else if (sGubun == "22") {
+	
+		//sArg = "sURL="+"http://www.kfsi.or.kr/edu/e_exam/request_cas_print.php?tpmgno="+sTpmgno+"&ejmgno="+sEjmgno;
+		sArg = "sURL=http://www.kfsi.or.kr/user/exam/popup/ExamSettlePrint.do?tpmgno="+sTpmgno+"&ejmgno="+sEjmgno;
+	}
+
+	Dialog("COM::frmCOM1500PWebBrowserView.xml", sArg, 700, 500, "", -1, -1);	
+}
+]]></Script>
+</Window>

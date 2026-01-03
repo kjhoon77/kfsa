@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="input" io="INPUT" reserved="NO"></dataset>
+	<dataset id="output" io="OUTPUT" reserved="NO"></dataset>
+	<member_var>
+		<var id="EPCOURSECD" reserved="NO" type="CHAR"><![CDATA[]]></var>
+	</member_var>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_IMP_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[
+function Run()
+{
+	// TODO: Add your source code here	
+
+		var insertQuery = " SELECT EXAMPAPER.EPTCCOURSECD AS EPCOURSECD "
+													+ "	 , TRAININGCOURSE.TCCOURSENM AS TCCOURSENM "
+													+ "	 , EXAMPAPER.EPNUMTYPE AS EPNUMTYPE "
+													+ "	 , EXAMPAPER.EPALPHATYPE AS EPALPHATYPE "   
+													+ "	 , EXAMPAPER.EPCHASUGUBUN AS EPCHASUGUBUN "
+													+ "	 , EXAMPAPER.EPSUBJECTGUBUN AS EPSUBJECTGUBUN "
+													+ "	 , ( SELECT IIF(COUNT(*)=0, 'N', 'Y')  "
+													+ "			 FROM CORRECTANSWER "
+													+ "		   WHERE CORRECTANSWER.CATCCOURSECD = EXAMPAPER.EPTCCOURSECD "       
+													+ "		     AND CORRECTANSWER.CAEPNUMTYPE = EXAMPAPER.EPNUMTYPE "
+													+ "		     AND CORRECTANSWER.CAEPALPHATYPE = EXAMPAPER.EPALPHATYPE "
+													+ "		     AND CORRECTANSWER.CASUBJECTGUBUN = EXAMPAPER.EPSUBJECTGUBUN "
+													+ "	   ) AS WRITEYN "
+										+ "	 FROM EXAMPAPER "
+										+ "		  , TRAININGCOURSE "
+										+ "	 WHERE EXAMPAPER.EPUSEYN = 'Y' "
+										+ "		 AND EXAMPAPER.EPTCCOURSECD = TRAININGCOURSE.TCCOURSECD "   
+										+ "		 AND TRAININGCOURSE.TCSEARCHGUBUN = 'E' ";
+										if (EPCOURSECD != "")	{
+										  insertQuery += " AND EXAMPAPER.EPTCCOURSECD = :EPCOURSECD";
+										  }
+										insertQuery += "	 ORDER BY TRAININGCOURSE.TCCOURSENM, EXAMPAPER.EPNUMTYPE, EXAMPAPER.EPALPHATYPE";                 
+			   
+			ExecuteQuery(insertQuery, "output");
+	}
+}
+]]></source>
+</class2>

@@ -1,0 +1,1457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="590" Id="frmcust1021MEduScheduleStat" Left="8" OnDeactivate="Form_OnDeactivate" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="교육일정" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1000" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oEduScheduleList">
+				<Contents>
+					<colinfo id="GTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="COURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="STARTTIME" size="4" summ="default" type="STRING"/>
+					<colinfo id="ENDTIME" size="4" summ="default" type="STRING"/>
+					<colinfo id="STARTDATE" size="4" summ="default" type="STRING"/>
+					<colinfo id="ENDDATE" size="4" summ="default" type="STRING"/>
+					<colinfo id="DAYGUBUN" size="1" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEduScheduleListTmp">
+				<Contents>
+					<colinfo id="TOMGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="TOTCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="COL1" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL2" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL3" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL4" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL5" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL6" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL7" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL8" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL9" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL10" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL11" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL12" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL13" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL14" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL15" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL16" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL17" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL18" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL19" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL20" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL21" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL22" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL23" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL24" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL25" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL26" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL27" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL28" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL29" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL30" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL31" size="1" summ="default" type="STRING"/>
+					<colinfo id="C1" size="1" summ="default" type="STRING"/>
+					<colinfo id="C2" size="1" summ="default" type="STRING"/>
+					<colinfo id="C3" size="1" summ="default" type="STRING"/>
+					<colinfo id="C4" size="1" summ="default" type="STRING"/>
+					<colinfo id="C5" size="1" summ="default" type="STRING"/>
+					<colinfo id="C6" size="1" summ="default" type="STRING"/>
+					<colinfo id="C7" size="1" summ="default" type="STRING"/>
+					<colinfo id="C8" size="1" summ="default" type="STRING"/>
+					<colinfo id="C9" size="1" summ="default" type="STRING"/>
+					<colinfo id="C10" size="1" summ="default" type="STRING"/>
+					<colinfo id="C11" size="1" summ="default" type="STRING"/>
+					<colinfo id="C12" size="1" summ="default" type="STRING"/>
+					<colinfo id="C13" size="1" summ="default" type="STRING"/>
+					<colinfo id="C14" size="1" summ="default" type="STRING"/>
+					<colinfo id="C15" size="1" summ="default" type="STRING"/>
+					<colinfo id="C16" size="1" summ="default" type="STRING"/>
+					<colinfo id="C17" size="1" summ="default" type="STRING"/>
+					<colinfo id="C18" size="1" summ="default" type="STRING"/>
+					<colinfo id="C19" size="1" summ="default" type="STRING"/>
+					<colinfo id="C20" size="1" summ="default" type="STRING"/>
+					<colinfo id="C21" size="1" summ="default" type="STRING"/>
+					<colinfo id="C22" size="1" summ="default" type="STRING"/>
+					<colinfo id="C23" size="1" summ="default" type="STRING"/>
+					<colinfo id="C24" size="1" summ="default" type="STRING"/>
+					<colinfo id="C25" size="1" summ="default" type="STRING"/>
+					<colinfo id="C26" size="1" summ="default" type="STRING"/>
+					<colinfo id="C27" size="1" summ="default" type="STRING"/>
+					<colinfo id="C28" size="1" summ="default" type="STRING"/>
+					<colinfo id="C29" size="1" summ="default" type="STRING"/>
+					<colinfo id="C30" size="1" summ="default" type="STRING"/>
+					<colinfo id="C31" size="1" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oTitle">
+				<Contents>
+					<colinfo id="TOMGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="TOTCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="COL1" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL2" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL3" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL4" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL5" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL6" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL7" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL8" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL9" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL10" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL11" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL12" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL13" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL14" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL15" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL16" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL17" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL18" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL19" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL20" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL21" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL22" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL23" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL24" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL25" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL26" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL27" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL28" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL29" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL30" size="1" summ="default" type="STRING"/>
+					<colinfo id="COL31" size="1" summ="default" type="STRING"/>
+					<colinfo id="C1" size="1" summ="default" type="STRING"/>
+					<colinfo id="C2" size="1" summ="default" type="STRING"/>
+					<colinfo id="C3" size="1" summ="default" type="STRING"/>
+					<colinfo id="C4" size="1" summ="default" type="STRING"/>
+					<colinfo id="C5" size="1" summ="default" type="STRING"/>
+					<colinfo id="C6" size="1" summ="default" type="STRING"/>
+					<colinfo id="C7" size="1" summ="default" type="STRING"/>
+					<colinfo id="C8" size="1" summ="default" type="STRING"/>
+					<colinfo id="C9" size="1" summ="default" type="STRING"/>
+					<colinfo id="C10" size="1" summ="default" type="STRING"/>
+					<colinfo id="C11" size="1" summ="default" type="STRING"/>
+					<colinfo id="C12" size="1" summ="default" type="STRING"/>
+					<colinfo id="C13" size="1" summ="default" type="STRING"/>
+					<colinfo id="C14" size="1" summ="default" type="STRING"/>
+					<colinfo id="C15" size="1" summ="default" type="STRING"/>
+					<colinfo id="C16" size="1" summ="default" type="STRING"/>
+					<colinfo id="C17" size="1" summ="default" type="STRING"/>
+					<colinfo id="C18" size="1" summ="default" type="STRING"/>
+					<colinfo id="C19" size="1" summ="default" type="STRING"/>
+					<colinfo id="C20" size="1" summ="default" type="STRING"/>
+					<colinfo id="C21" size="1" summ="default" type="STRING"/>
+					<colinfo id="C22" size="1" summ="default" type="STRING"/>
+					<colinfo id="C23" size="1" summ="default" type="STRING"/>
+					<colinfo id="C24" size="1" summ="default" type="STRING"/>
+					<colinfo id="C25" size="1" summ="default" type="STRING"/>
+					<colinfo id="C26" size="1" summ="default" type="STRING"/>
+					<colinfo id="C27" size="1" summ="default" type="STRING"/>
+					<colinfo id="C28" size="1" summ="default" type="STRING"/>
+					<colinfo id="C29" size="1" summ="default" type="STRING"/>
+					<colinfo id="C30" size="1" summ="default" type="STRING"/>
+					<colinfo id="C31" size="1" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEduGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>강습</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>실무</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="113" Height="50" Id="shpSearchBox" Left="4" LineColor="user30" Right="995" TabOrder="40" Top="63" Type="Rectangle" Width="991"></Shape>
+		<Calendar Dateformat="yyyy-MM" Height="22" Id="calEduDate" Left="80" SaturdayTextColor="blue" SundayTextColor="red" TabOrder="1" Top="40" Width="80"></Calendar>
+		<Shape Bottom="28" Height="27" Id="shpBtnBox" Left="644" LineColor="user14" Right="996" TabOrder="6" Top="1" Type="Rectangle" Width="352"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="647" OnClick="lfn_Search" Style="sty_Button" TabOrder="5" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="734" OnClick="lfn_Excel2" Style="sty_Button" TabOrder="2" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="821" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="3" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="908" OnClick="lfn_End" Style="sty_Button" TabOrder="4" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" Left="4" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="7" TabStop="FALSE" Text="Div0" Top="4" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="348">
+			<Contents></Contents>
+		</Div>
+		<Static Align="Center" Height="20" Id="lbSearchGubun" Left="4" Style="sty_Label" TabOrder="8" Text="검색년월" Top="40" UserData="S" VAlign="Middle" Width="72"></Static>
+		<Static Align="Center" Font="굴림,10,Bold" Height="20" Id="lbResidentNoError" Left="4" Style="sty_Text" TabOrder="9" Text="강습&#32;:&#32;" Top="66" VAlign="Middle" Width="52"></Static>
+		<Static Align="Center" Font="굴림,10,Bold" Height="20" Id="Static0" Left="4" Style="sty_Text" TabOrder="10" Text="실무&#32;:&#32;" Top="90" VAlign="Middle" Width="52"></Static>
+		<Shape BKColor="green" Bottom="86" Height="20" Id="shpBox1" Left="52" Right="72" TabOrder="11" Top="66" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static1" Left="70" Style="sty_Text" TabOrder="12" Text="공공" Top="66" VAlign="Middle" Width="36"></Static>
+		<Shape BKColor="lawngreen" Bottom="86" Height="20" Id="Shape0" Left="112" Right="132" TabOrder="13" Top="66" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static2" Left="130" Style="sty_Text" TabOrder="14" Text="특급" Top="66" VAlign="Middle" Width="36"></Static>
+		<Shape BKColor="mediumblue" Bottom="86" Height="20" Id="Shape1" Left="172" Right="192" TabOrder="15" Top="66" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static3" Left="190" Style="sty_Text" TabOrder="16" Text="1급" Top="66" VAlign="Middle" Width="36"></Static>
+		<Static Align="Center" Height="20" Id="Static4" Left="250" Style="sty_Text" TabOrder="18" Text="2급" Top="66" VAlign="Middle" Width="36"></Static>
+		<Shape BKColor="user14" Bottom="86" Height="20" Id="Shape2" Left="232" Right="252" TabOrder="17" Top="66" Type="Rectangle" Width="20"></Shape>
+		<Shape BKColor="red" Bottom="86" Height="20" Id="Shape3" Left="349" Right="369" TabOrder="19" Top="66" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static5" Left="367" Style="sty_Text" TabOrder="20" Text="위안" Top="66" VAlign="Middle" Width="36"></Static>
+		<Shape BKColor="user37" Bottom="86" Height="20" Id="Shape4" Left="408" Right="428" TabOrder="21" Top="66" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static6" Left="426" Style="sty_Text" TabOrder="22" Text="운송" Top="66" VAlign="Middle" Width="36"></Static>
+		<Shape BKColor="violet" Bottom="110" Height="20" Id="Shape5" Left="172" Right="192" TabOrder="23" Top="90" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static7" Left="190" Style="sty_Text" TabOrder="24" Text="소기" Top="90" VAlign="Middle" Width="36"></Static>
+		<Shape BKColor="yellow" Bottom="110" Height="20" Id="Shape6" Left="112" Right="132" TabOrder="25" Top="90" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static8" Left="130" Style="sty_Text" TabOrder="26" Text="위안" Top="90" VAlign="Middle" Width="36"></Static>
+		<Shape BKColor="blueviolet" Bottom="110" Height="20" Id="Shape7" Left="52" Right="72" TabOrder="27" Top="90" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static9" Left="69" Style="sty_Text" TabOrder="28" Text="소관" Top="90" VAlign="Middle" Width="36"></Static>
+		<Static Align="Center" Height="20" Id="Static10" Left="250" Style="sty_Text" TabOrder="30" Text="운송" Top="90" VAlign="Middle" Width="36"></Static>
+		<Shape BKColor="darkgray" Bottom="110" Height="20" Id="Shape8" Left="232" Right="252" TabOrder="29" Top="90" Type="Rectangle" Width="20"></Shape>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="31" Top="592" UserData="I" Visible="FALSE" Width="88"></Combo>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oEduScheduleListTmp" BkColor2="default" BkSelColor="white" BoldHead="true" Border="Flat" Bottom="584" ColSelect="TRUE" Enable="true" EndLineColor="default" Height="468" Id="gdEduSchedule" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnCellClick="gdEduSchedule_OnCellClick" Right="996" RowHeight="15" Style="sty_Grid" TabOrder="32" TabStop="true" Top="116" UseDBuff="true" UsePopupMenu="true" UserData="교육일정" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="992">
+			<contents>
+				<format id="Default2">
+					<columns>
+						<col width="55"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" rowspan="2" text="구분" Valign="Center"/>
+						<cell col="1" display="text"/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="text"/>
+						<cell col="6" display="text"/>
+						<cell col="7" display="text"/>
+						<cell col="8" display="text"/>
+						<cell col="9" display="text"/>
+						<cell col="10" display="text"/>
+						<cell col="11" display="text"/>
+						<cell col="12" display="text"/>
+						<cell col="13" display="text"/>
+						<cell col="14" display="text"/>
+						<cell col="15" display="text"/>
+						<cell col="16" display="text"/>
+						<cell col="17" display="text"/>
+						<cell col="18" display="text"/>
+						<cell col="19" display="text"/>
+						<cell col="20" display="text"/>
+						<cell col="21" display="text"/>
+						<cell col="22" display="text"/>
+						<cell col="23" display="text"/>
+						<cell col="24" display="text"/>
+						<cell col="25" display="text"/>
+						<cell col="26" display="text"/>
+						<cell col="27" display="text"/>
+						<cell col="28" display="text"/>
+						<cell col="29" display="text"/>
+						<cell col="30" display="text"/>
+						<cell col="1" display="text" row="1"/>
+						<cell col="2" display="text" row="1"/>
+						<cell col="3" display="text" row="1"/>
+						<cell col="4" display="text" row="1"/>
+						<cell col="5" display="text" row="1"/>
+						<cell col="6" display="text" row="1"/>
+						<cell col="7" display="text" row="1"/>
+						<cell col="8" display="text" row="1"/>
+						<cell col="9" display="text" row="1"/>
+						<cell col="10" display="text" row="1"/>
+						<cell col="11" display="text" row="1"/>
+						<cell col="12" display="text" row="1"/>
+						<cell col="13" display="text" row="1"/>
+						<cell col="14" display="text" row="1"/>
+						<cell col="15" display="text" row="1"/>
+						<cell col="16" display="text" row="1"/>
+						<cell col="17" display="text" row="1"/>
+						<cell col="18" display="text" row="1"/>
+						<cell col="19" display="text" row="1"/>
+						<cell col="20" display="text" row="1"/>
+						<cell col="21" display="text" row="1"/>
+						<cell col="22" display="text" row="1"/>
+						<cell col="23" display="text" row="1"/>
+						<cell col="24" display="text" row="1"/>
+						<cell col="25" display="text" row="1"/>
+						<cell col="26" display="text" row="1"/>
+						<cell col="27" display="text" row="1"/>
+						<cell col="28" display="text" row="1"/>
+						<cell col="29" display="text" row="1"/>
+						<cell col="30" display="text" row="1"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="TOMGGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo" suppress="1" SuppressAlign="Middle"/>
+						<cell align="center" bkcolor="expr:DECODE(COL1,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="1" color="expr:DECODE(COL1,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C1&#32;&gt;&#32;0,&#32;C1)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL2,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="2" color="expr:DECODE(COL2,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C2&#32;&gt;&#32;0,&#32;C2)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL3,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="3" color="expr:DECODE(COL3,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C3&#32;&gt;&#32;0,&#32;C3)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL4,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="4" color="expr:DECODE(COL4,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C4&#32;&gt;&#32;0,&#32;C4)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL5,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="5" color="expr:DECODE(COL5,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C5&#32;&gt;&#32;0,&#32;C5)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL6,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="6" color="expr:DECODE(COL6,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C6&#32;&gt;&#32;0,&#32;C6)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL7,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="7" color="expr:DECODE(COL7,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C7&#32;&gt;&#32;0,&#32;C7)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL8,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="8" color="expr:DECODE(COL8,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C8&#32;&gt;&#32;0,&#32;C8)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL9,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="9" color="expr:DECODE(COL9,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C9&#32;&gt;&#32;0,&#32;C9)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL10,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="10" color="expr:DECODE(COL10,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C10&#32;&gt;&#32;0,&#32;C10)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL11,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="11" color="expr:DECODE(COL11,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C11&#32;&gt;&#32;0,&#32;C11)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL12,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="12" color="expr:DECODE(COL12,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C12&#32;&gt;&#32;0,&#32;C12)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL13,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="13" color="expr:DECODE(COL13,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C13&#32;&gt;&#32;0,&#32;C13)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL14,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="14" color="expr:DECODE(COL14,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C14&#32;&gt;&#32;0,&#32;C14)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL15,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="15" color="expr:DECODE(COL15,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C15&#32;&gt;&#32;0,&#32;C15)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL16,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="16" color="expr:DECODE(COL16,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C16&#32;&gt;&#32;0,&#32;C16)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL17,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="17" color="expr:DECODE(COL17,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C17&#32;&gt;&#32;0,&#32;C17)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL18,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="18" color="expr:DECODE(COL18,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C18&#32;&gt;&#32;0,&#32;C18)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL19,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="19" color="expr:DECODE(COL19,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C19&#32;&gt;&#32;0,&#32;C19)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL20,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="20" color="expr:DECODE(COL20,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C20&#32;&gt;&#32;0,&#32;C20)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL21,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="21" color="expr:DECODE(COL21,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C21&#32;&gt;&#32;0,&#32;C21)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL22,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="22" color="expr:DECODE(COL22,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C22&#32;&gt;&#32;0,&#32;C22)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL23,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="23" color="expr:DECODE(COL23,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C23&#32;&gt;&#32;0,&#32;C23)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL24,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="24" color="expr:DECODE(COL24,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C24&#32;&gt;&#32;0,&#32;C24)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL25,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="25" color="expr:DECODE(COL25,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C25&#32;&gt;&#32;0,&#32;C25)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL26,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="26" color="expr:DECODE(COL26,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C26&#32;&gt;&#32;0,&#32;C26)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL27,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="27" color="expr:DECODE(COL27,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C27&#32;&gt;&#32;0,&#32;C27)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL28,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="28" color="expr:DECODE(COL28,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C28&#32;&gt;&#32;0,&#32;C28)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL29,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="29" color="expr:DECODE(COL29,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C29&#32;&gt;&#32;0,&#32;C29)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL30,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="30" color="expr:DECODE(COL30,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C30&#32;&gt;&#32;0,&#32;C30)"/>
+					</body>
+				</format>
+				<format id="Default">
+					<columns>
+						<col width="55"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" rowspan="2" text="구분" Valign="Center"/>
+						<cell col="1" display="text"/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="text"/>
+						<cell col="6" display="text"/>
+						<cell col="7" display="text"/>
+						<cell col="8" display="text"/>
+						<cell col="9" display="text"/>
+						<cell col="10" display="text"/>
+						<cell col="11" display="text"/>
+						<cell col="12" display="text"/>
+						<cell col="13" display="text"/>
+						<cell col="14" display="text"/>
+						<cell col="15" display="text"/>
+						<cell col="16" display="text"/>
+						<cell col="17" display="text"/>
+						<cell col="18" display="text"/>
+						<cell col="19" display="text"/>
+						<cell col="20" display="text"/>
+						<cell col="21" display="text"/>
+						<cell col="22" display="text"/>
+						<cell col="23" display="text"/>
+						<cell col="24" display="text"/>
+						<cell col="25" display="text"/>
+						<cell col="26" display="text"/>
+						<cell col="27" display="text"/>
+						<cell col="28" display="text"/>
+						<cell col="1" display="text" row="1"/>
+						<cell col="2" display="text" row="1"/>
+						<cell col="3" display="text" row="1"/>
+						<cell col="4" display="text" row="1"/>
+						<cell col="5" display="text" row="1"/>
+						<cell col="6" display="text" row="1"/>
+						<cell col="7" display="text" row="1"/>
+						<cell col="8" display="text" row="1"/>
+						<cell col="9" display="text" row="1"/>
+						<cell col="10" display="text" row="1"/>
+						<cell col="11" display="text" row="1"/>
+						<cell col="12" display="text" row="1"/>
+						<cell col="13" display="text" row="1"/>
+						<cell col="14" display="text" row="1"/>
+						<cell col="15" display="text" row="1"/>
+						<cell col="16" display="text" row="1"/>
+						<cell col="17" display="text" row="1"/>
+						<cell col="18" display="text" row="1"/>
+						<cell col="19" display="text" row="1"/>
+						<cell col="20" display="text" row="1"/>
+						<cell col="21" display="text" row="1"/>
+						<cell col="22" display="text" row="1"/>
+						<cell col="23" display="text" row="1"/>
+						<cell col="24" display="text" row="1"/>
+						<cell col="25" display="text" row="1"/>
+						<cell col="26" display="text" row="1"/>
+						<cell col="27" display="text" row="1"/>
+						<cell col="28" display="text" row="1"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="TOMGGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo" suppress="1" SuppressAlign="Middle"/>
+						<cell align="center" bkcolor="expr:DECODE(COL1,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="1" color="expr:DECODE(COL1,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C1&#32;&gt;&#32;0,&#32;C1)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL2,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="2" color="expr:DECODE(COL2,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C2&#32;&gt;&#32;0,&#32;C2)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL3,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="3" color="expr:DECODE(COL3,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C3&#32;&gt;&#32;0,&#32;C3)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL4,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="4" color="expr:DECODE(COL4,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C4&#32;&gt;&#32;0,&#32;C4)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL5,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="5" color="expr:DECODE(COL5,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C5&#32;&gt;&#32;0,&#32;C5)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL6,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="6" color="expr:DECODE(COL6,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C6&#32;&gt;&#32;0,&#32;C6)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL7,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="7" color="expr:DECODE(COL7,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C7&#32;&gt;&#32;0,&#32;C7)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL8,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="8" color="expr:DECODE(COL8,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C8&#32;&gt;&#32;0,&#32;C8)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL9,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="9" color="expr:DECODE(COL9,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C9&#32;&gt;&#32;0,&#32;C9)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL10,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="10" color="expr:DECODE(COL10,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C10&#32;&gt;&#32;0,&#32;C10)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL11,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="11" color="expr:DECODE(COL11,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C11&#32;&gt;&#32;0,&#32;C11)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL12,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="12" color="expr:DECODE(COL12,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C12&#32;&gt;&#32;0,&#32;C12)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL13,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="13" color="expr:DECODE(COL13,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C13&#32;&gt;&#32;0,&#32;C13)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL14,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="14" color="expr:DECODE(COL14,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C14&#32;&gt;&#32;0,&#32;C14)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL15,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="15" color="expr:DECODE(COL15,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C15&#32;&gt;&#32;0,&#32;C15)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL16,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="16" color="expr:DECODE(COL16,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C16&#32;&gt;&#32;0,&#32;C16)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL17,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="17" color="expr:DECODE(COL17,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C17&#32;&gt;&#32;0,&#32;C17)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL18,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="18" color="expr:DECODE(COL18,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C18&#32;&gt;&#32;0,&#32;C18)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL19,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="19" color="expr:DECODE(COL19,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C19&#32;&gt;&#32;0,&#32;C19)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL20,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="20" color="expr:DECODE(COL20,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C20&#32;&gt;&#32;0,&#32;C20)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL21,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="21" color="expr:DECODE(COL21,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C21&#32;&gt;&#32;0,&#32;C21)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL22,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="22" color="expr:DECODE(COL22,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C22&#32;&gt;&#32;0,&#32;C22)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL23,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="23" color="expr:DECODE(COL23,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C23&#32;&gt;&#32;0,&#32;C23)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL24,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="24" color="expr:DECODE(COL24,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C24&#32;&gt;&#32;0,&#32;C24)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL25,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="25" color="expr:DECODE(COL25,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C25&#32;&gt;&#32;0,&#32;C25)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL26,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="26" color="expr:DECODE(COL26,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C26&#32;&gt;&#32;0,&#32;C26)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL27,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="27" color="expr:DECODE(COL27,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C27&#32;&gt;&#32;0,&#32;C27)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL28,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="28" color="expr:DECODE(COL28,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C28&#32;&gt;&#32;0,&#32;C28)"/>
+					</body>
+				</format>
+				<format id="Default1">
+					<columns>
+						<col width="55"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" rowspan="2" text="구분" Valign="Center"/>
+						<cell col="1" display="text"/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="text"/>
+						<cell col="6" display="text"/>
+						<cell col="7" display="text"/>
+						<cell col="8" display="text"/>
+						<cell col="9" display="text"/>
+						<cell col="10" display="text"/>
+						<cell col="11" display="text"/>
+						<cell col="12" display="text"/>
+						<cell col="13" display="text"/>
+						<cell col="14" display="text"/>
+						<cell col="15" display="text"/>
+						<cell col="16" display="text"/>
+						<cell col="17" display="text"/>
+						<cell col="18" display="text"/>
+						<cell col="19" display="text"/>
+						<cell col="20" display="text"/>
+						<cell col="21" display="text"/>
+						<cell col="22" display="text"/>
+						<cell col="23" display="text"/>
+						<cell col="24" display="text"/>
+						<cell col="25" display="text"/>
+						<cell col="26" display="text"/>
+						<cell col="27" display="text"/>
+						<cell col="28" display="text"/>
+						<cell col="29" display="text"/>
+						<cell col="1" display="text" row="1"/>
+						<cell col="2" display="text" row="1"/>
+						<cell col="3" display="text" row="1"/>
+						<cell col="4" display="text" row="1"/>
+						<cell col="5" display="text" row="1"/>
+						<cell col="6" display="text" row="1"/>
+						<cell col="7" display="text" row="1"/>
+						<cell col="8" display="text" row="1"/>
+						<cell col="9" display="text" row="1"/>
+						<cell col="10" display="text" row="1"/>
+						<cell col="11" display="text" row="1"/>
+						<cell col="12" display="text" row="1"/>
+						<cell col="13" display="text" row="1"/>
+						<cell col="14" display="text" row="1"/>
+						<cell col="15" display="text" row="1"/>
+						<cell col="16" display="text" row="1"/>
+						<cell col="17" display="text" row="1"/>
+						<cell col="18" display="text" row="1"/>
+						<cell col="19" display="text" row="1"/>
+						<cell col="20" display="text" row="1"/>
+						<cell col="21" display="text" row="1"/>
+						<cell col="22" display="text" row="1"/>
+						<cell col="23" display="text" row="1"/>
+						<cell col="24" display="text" row="1"/>
+						<cell col="25" display="text" row="1"/>
+						<cell col="26" display="text" row="1"/>
+						<cell col="27" display="text" row="1"/>
+						<cell col="28" display="text" row="1"/>
+						<cell col="29" display="text" row="1"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="TOMGGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo" suppress="1" SuppressAlign="Middle"/>
+						<cell align="center" bkcolor="expr:DECODE(COL1,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="1" color="expr:DECODE(COL1,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C1&#32;&gt;&#32;0,&#32;C1)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL2,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="2" color="expr:DECODE(COL2,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C2&#32;&gt;&#32;0,&#32;C2)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL3,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="3" color="expr:DECODE(COL3,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C3&#32;&gt;&#32;0,&#32;C3)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL4,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="4" color="expr:DECODE(COL4,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C4&#32;&gt;&#32;0,&#32;C4)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL5,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="5" color="expr:DECODE(COL5,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C5&#32;&gt;&#32;0,&#32;C5)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL6,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="6" color="expr:DECODE(COL6,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C6&#32;&gt;&#32;0,&#32;C6)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL7,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="7" color="expr:DECODE(COL7,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C7&#32;&gt;&#32;0,&#32;C7)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL8,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="8" color="expr:DECODE(COL8,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C8&#32;&gt;&#32;0,&#32;C8)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL9,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="9" color="expr:DECODE(COL9,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C9&#32;&gt;&#32;0,&#32;C9)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL10,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="10" color="expr:DECODE(COL10,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C10&#32;&gt;&#32;0,&#32;C10)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL11,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="11" color="expr:DECODE(COL11,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C11&#32;&gt;&#32;0,&#32;C11)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL12,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="12" color="expr:DECODE(COL12,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C12&#32;&gt;&#32;0,&#32;C12)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL13,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="13" color="expr:DECODE(COL13,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C13&#32;&gt;&#32;0,&#32;C13)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL14,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="14" color="expr:DECODE(COL14,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C14&#32;&gt;&#32;0,&#32;C14)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL15,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="15" color="expr:DECODE(COL15,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C15&#32;&gt;&#32;0,&#32;C15)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL16,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="16" color="expr:DECODE(COL16,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C16&#32;&gt;&#32;0,&#32;C16)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL17,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="17" color="expr:DECODE(COL17,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C17&#32;&gt;&#32;0,&#32;C17)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL18,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="18" color="expr:DECODE(COL18,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C18&#32;&gt;&#32;0,&#32;C18)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL19,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="19" color="expr:DECODE(COL19,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C19&#32;&gt;&#32;0,&#32;C19)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL20,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="20" color="expr:DECODE(COL20,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C20&#32;&gt;&#32;0,&#32;C20)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL21,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="21" color="expr:DECODE(COL21,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C21&#32;&gt;&#32;0,&#32;C21)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL22,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="22" color="expr:DECODE(COL22,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C22&#32;&gt;&#32;0,&#32;C22)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL23,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="23" color="expr:DECODE(COL23,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C23&#32;&gt;&#32;0,&#32;C23)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL24,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="24" color="expr:DECODE(COL24,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C24&#32;&gt;&#32;0,&#32;C24)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL25,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="25" color="expr:DECODE(COL25,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C25&#32;&gt;&#32;0,&#32;C25)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL26,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="26" color="expr:DECODE(COL26,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C26&#32;&gt;&#32;0,&#32;C26)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL27,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="27" color="expr:DECODE(COL27,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C27&#32;&gt;&#32;0,&#32;C27)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL28,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="28" color="expr:DECODE(COL28,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C28&#32;&gt;&#32;0,&#32;C28)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL29,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="29" color="expr:DECODE(COL29,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C29&#32;&gt;&#32;0,&#32;C29)"/>
+					</body>
+				</format>
+				<format id="Default3">
+					<columns>
+						<col width="55"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" rowspan="2" text="구분" Valign="Center"/>
+						<cell col="1" display="text"/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="text"/>
+						<cell col="6" display="text"/>
+						<cell col="7" display="text"/>
+						<cell col="8" display="text"/>
+						<cell col="9" display="text"/>
+						<cell col="10" display="text"/>
+						<cell col="11" display="text"/>
+						<cell col="12" display="text"/>
+						<cell col="13" display="text"/>
+						<cell col="14" display="text"/>
+						<cell col="15" display="text"/>
+						<cell col="16" display="text"/>
+						<cell col="17" display="text"/>
+						<cell col="18" display="text"/>
+						<cell col="19" display="text"/>
+						<cell col="20" display="text"/>
+						<cell col="21" display="text"/>
+						<cell col="22" display="text"/>
+						<cell col="23" display="text"/>
+						<cell col="24" display="text"/>
+						<cell col="25" display="text"/>
+						<cell col="26" display="text"/>
+						<cell col="27" display="text"/>
+						<cell col="28" display="text"/>
+						<cell col="29" display="text"/>
+						<cell col="30" display="text"/>
+						<cell col="31" display="text"/>
+						<cell col="1" display="text" row="1"/>
+						<cell col="2" display="text" row="1"/>
+						<cell col="3" display="text" row="1"/>
+						<cell col="4" display="text" row="1"/>
+						<cell col="5" display="text" row="1"/>
+						<cell col="6" display="text" row="1"/>
+						<cell col="7" display="text" row="1"/>
+						<cell col="8" display="text" row="1"/>
+						<cell col="9" display="text" row="1"/>
+						<cell col="10" display="text" row="1"/>
+						<cell col="11" display="text" row="1"/>
+						<cell col="12" display="text" row="1"/>
+						<cell col="13" display="text" row="1"/>
+						<cell col="14" display="text" row="1"/>
+						<cell col="15" display="text" row="1"/>
+						<cell col="16" display="text" row="1"/>
+						<cell col="17" display="text" row="1"/>
+						<cell col="18" display="text" row="1"/>
+						<cell col="19" display="text" row="1"/>
+						<cell col="20" display="text" row="1"/>
+						<cell col="21" display="text" row="1"/>
+						<cell col="22" display="text" row="1"/>
+						<cell col="23" display="text" row="1"/>
+						<cell col="24" display="text" row="1"/>
+						<cell col="25" display="text" row="1"/>
+						<cell col="26" display="text" row="1"/>
+						<cell col="27" display="text" row="1"/>
+						<cell col="28" display="text" row="1"/>
+						<cell col="29" display="text" row="1"/>
+						<cell col="30" display="text" row="1"/>
+						<cell col="31" display="text" row="1"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="TOMGGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo" suppress="1" SuppressAlign="Middle"/>
+						<cell align="center" bkcolor="expr:DECODE(COL1,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="1" color="expr:DECODE(COL1,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C1&#32;&gt;&#32;0,&#32;C1)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL2,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="2" color="expr:DECODE(COL2,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C2&#32;&gt;&#32;0,&#32;C2)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL3,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="3" color="expr:DECODE(COL3,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C3&#32;&gt;&#32;0,&#32;C3)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL4,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="4" color="expr:DECODE(COL4,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C4&#32;&gt;&#32;0,&#32;C4)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL5,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="5" color="expr:DECODE(COL5,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C5&#32;&gt;&#32;0,&#32;C5)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL6,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="6" color="expr:DECODE(COL6,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C6&#32;&gt;&#32;0,&#32;C6)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL7,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="7" color="expr:DECODE(COL7,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C7&#32;&gt;&#32;0,&#32;C7)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL8,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="8" color="expr:DECODE(COL8,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C8&#32;&gt;&#32;0,&#32;C8)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL9,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="9" color="expr:DECODE(COL9,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C9&#32;&gt;&#32;0,&#32;C9)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL10,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="10" color="expr:DECODE(COL10,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C10&#32;&gt;&#32;0,&#32;C10)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL11,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="11" color="expr:DECODE(COL11,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C11&#32;&gt;&#32;0,&#32;C11)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL12,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="12" color="expr:DECODE(COL12,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C12&#32;&gt;&#32;0,&#32;C12)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL13,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="13" color="expr:DECODE(COL13,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C13&#32;&gt;&#32;0,&#32;C13)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL14,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="14" color="expr:DECODE(COL14,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C14&#32;&gt;&#32;0,&#32;C14)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL15,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="15" color="expr:DECODE(COL15,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C15&#32;&gt;&#32;0,&#32;C15)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL16,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="16" color="expr:DECODE(COL16,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C16&#32;&gt;&#32;0,&#32;C16)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL17,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="17" color="expr:DECODE(COL17,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C17&#32;&gt;&#32;0,&#32;C17)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL18,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="18" color="expr:DECODE(COL18,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C18&#32;&gt;&#32;0,&#32;C18)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL19,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="19" color="expr:DECODE(COL19,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C19&#32;&gt;&#32;0,&#32;C19)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL20,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="20" color="expr:DECODE(COL20,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C20&#32;&gt;&#32;0,&#32;C20)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL21,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="21" color="expr:DECODE(COL21,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C21&#32;&gt;&#32;0,&#32;C21)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL22,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="22" color="expr:DECODE(COL22,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C22&#32;&gt;&#32;0,&#32;C22)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL23,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="23" color="expr:DECODE(COL23,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C23&#32;&gt;&#32;0,&#32;C23)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL24,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="24" color="expr:DECODE(COL24,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C24&#32;&gt;&#32;0,&#32;C24)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL25,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="25" color="expr:DECODE(COL25,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C25&#32;&gt;&#32;0,&#32;C25)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL26,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="26" color="expr:DECODE(COL26,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C26&#32;&gt;&#32;0,&#32;C26)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL27,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="27" color="expr:DECODE(COL27,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C27&#32;&gt;&#32;0,&#32;C27)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL28,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="28" color="expr:DECODE(COL28,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C28&#32;&gt;&#32;0,&#32;C28)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL29,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="29" color="expr:DECODE(COL29,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C29&#32;&gt;&#32;0,&#32;C29)"/>
+						<cell align="center" bkcolor="expr:DECODE(COL30,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="30" color="expr:DECODE(COL30,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C30&#32;&gt;&#32;0,&#32;C30)"/>
+						<cell bkcolor="expr:DECODE(COL31,&#32;&apos;A&apos;,&#32;&#32;&apos;green&apos;,&#32;&apos;B&apos;,&#32;&apos;#7CFC00&apos;,&#32;&apos;C&apos;,&#32;&apos;#0000FF&apos;,&#32;&apos;D&apos;,&#32;&apos;#86a5ff&apos;,&#32;&apos;E&apos;,&#32;&apos;red&apos;,&#32;&apos;F&apos;,&#32;&apos;#FF8C00&apos;,&#32;&apos;G&apos;,&#32;&apos;#FFDAB9&apos;,&#32;&apos;H&apos;,&#32;&apos;#CCA63D&apos;,&#32;&apos;I&apos;,&#32;&apos;#87CEEB&apos;,&#32;&apos;J&apos;,&#32;&apos;teal&apos;,&#32;&apos;K&apos;,&apos;tomato&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;M&apos;,&apos;gold&apos;,&#32;&apos;L&apos;,&#32;&apos;#FF00FF&apos;,&#32;&apos;1&apos;,&#32;&apos;#9400D3&apos;,&#32;&apos;2&apos;,&#32;&apos;yellow&apos;,&#32;&apos;3&apos;,&#32;&apos;#EE82EE&apos;,&#32;&apos;4&apos;,&#32;&apos;#a9a9a9&apos;,&#32;&apos;5&apos;,&#32;&apos;#20B2AA&apos;,&#32;&apos;;white&apos;)" col="31" color="expr:DECODE(COL31,&#32;&apos;1&apos;,&#32;&apos;white&apos;,&#32;&apos;black&apos;)" display="text" expr="iif(C31&#32;&gt;&#32;0,&#32;C31)"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oTitle" BkColor2="default" BkSelColor="white" BoldHead="true" Border="Flat" Bottom="648" ColSelect="TRUE" Enable="true" EndLineColor="default" Height="32" Id="gdTitle" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnCellClick="gdEduSchedule_OnCellClick" Right="88" RowHeight="15" Style="sty_Grid" TabOrder="33" TabStop="true" Top="616" UseDBuff="true" UsePopupMenu="true" UserData="교육일정" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="84">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="55"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+					</columns>
+					<body>
+						<cell align="center" col="0" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo" suppress="1" SuppressAlign="Middle"/>
+						<cell col="1" display="text"/>
+						<cell col="2" display="text"/>
+						<cell col="3" display="text"/>
+						<cell col="4" display="text"/>
+						<cell col="5" display="text"/>
+						<cell col="6" display="text"/>
+						<cell col="7" display="text"/>
+						<cell col="8" display="text"/>
+						<cell col="9" display="text"/>
+						<cell col="10" display="text"/>
+						<cell align="center" col="11" colid="COL14" colspan="2" display="null" font="굴림,24,Bold"/>
+						<cell align="center" col="13" colspan="6" display="text" font="굴림,24,Bold" text="월&#32;&#32;&#32;교&#32;육&#32;일&#32;정"/>
+						<cell col="19" display="text"/>
+						<cell col="20" display="text"/>
+						<cell col="21" display="text"/>
+						<cell col="22" display="text"/>
+						<cell col="23" display="text"/>
+						<cell col="24" display="text"/>
+						<cell col="25" display="text"/>
+						<cell col="26" display="text"/>
+						<cell col="27" display="text"/>
+						<cell col="28" display="text"/>
+						<cell col="29" display="text"/>
+						<cell col="30" display="text"/>
+						<cell col="31" display="text"/>
+						<cell col="0" display="text" row="1"/>
+						<cell col="1" display="text" row="1"/>
+						<cell col="2" display="text" row="1"/>
+						<cell col="3" display="text" row="1"/>
+						<cell col="4" display="text" row="1"/>
+						<cell col="5" display="text" row="1"/>
+						<cell col="6" display="text" row="1"/>
+						<cell col="7" display="text" row="1"/>
+						<cell col="8" display="text" row="1"/>
+						<cell col="9" display="text" row="1"/>
+						<cell col="10" display="text" row="1"/>
+						<cell col="11" display="null" row="1"/>
+						<cell col="12" display="text" row="1"/>
+						<cell col="13" display="text" row="1"/>
+						<cell col="14" display="text" row="1"/>
+						<cell col="15" display="text" row="1"/>
+						<cell col="16" display="text" row="1"/>
+						<cell col="17" display="text" row="1"/>
+						<cell col="18" display="text" row="1"/>
+						<cell col="19" display="text" row="1"/>
+						<cell col="20" display="text" row="1"/>
+						<cell col="21" display="text" row="1"/>
+						<cell col="22" display="text" row="1"/>
+						<cell col="23" display="text" row="1"/>
+						<cell col="24" display="text" row="1"/>
+						<cell col="25" display="text" row="1"/>
+						<cell col="26" display="text" row="1"/>
+						<cell col="27" display="text" row="1"/>
+						<cell col="28" display="text" row="1"/>
+						<cell col="29" display="text" row="1"/>
+						<cell col="30" display="text" row="1"/>
+						<cell col="31" display="text" row="1"/>
+						<cell align="center" col="0" display="text" row="2" text="강습&#32;:"/>
+						<cell align="center" bkcolor="green" col="1" display="text" row="2"/>
+						<cell align="center" col="2" display="text" row="2" text="공공"/>
+						<cell align="center" bkcolor="chartreuse" col="3" display="text" row="2"/>
+						<cell align="center" col="4" display="text" row="2" text="특급"/>
+						<cell align="center" bkcolor="blue" col="5" display="text" row="2"/>
+						<cell align="center" col="6" display="text" row="2" text="1급"/>
+						<cell align="center" bkcolor="#86a5ff" col="7" display="text" row="2"/>
+						<cell align="center" col="8" display="text" row="2" text="2급"/>
+						<cell align="center" bkcolor="maroon" col="9" display="text" row="2"/>
+						<cell align="center" col="10" display="text" row="2" text="3급"/>
+						<cell align="center" bkcolor="red" col="11" display="text" row="2"/>
+						<cell align="center" col="12" display="text" row="2" text="위안"/>
+						<cell col="1" display="text" row="4"/>
+						<cell col="2" display="text" row="4"/>
+						<cell col="3" display="text" row="4"/>
+						<cell col="4" display="text" row="4"/>
+						<cell col="5" display="text" row="4"/>
+						<cell col="6" display="text" row="4"/>
+						<cell col="7" display="text" row="4"/>
+						<cell col="8" display="text" row="4"/>
+						<cell col="9" display="text" row="4"/>
+						<cell col="10" display="text" row="4"/>
+						<cell col="11" display="text" row="4"/>
+						<cell col="12" display="text" row="4"/>
+						<cell bkcolor="user37" col="13" display="text" row="2"/>
+						<cell col="14" display="text" row="2" text="운송"/>
+						<cell bkcolor="fuchia" col="15" display="text" row="2"/>
+						<cell col="16" display="text" row="2" text="운반"/>
+						<cell bkcolor="wheat" col="17" display="text" row="2"/>
+						<cell col="18" display="text" row="2" text="통합"/>
+						<cell bkcolor="user38" col="19" display="text" row="2"/>
+						<cell col="20" display="text" row="2" text="생활"/>
+						<cell bkcolor="lightskyblue" col="21" display="text" row="2"/>
+						<cell col="22" display="text" row="2" text="심폐"/>
+						<cell bkcolor="royalblue" col="23" display="text" row="2"/>
+						<cell col="24" display="text" row="2" text="교관"/>
+						<cell col="25" display="text" row="2"/>
+						<cell col="26" display="text" row="2"/>
+						<cell col="27" display="text" row="2"/>
+						<cell col="28" display="text" row="2"/>
+						<cell col="29" display="text" row="2"/>
+						<cell col="30" display="text" row="2"/>
+						<cell col="31" display="text" row="2"/>
+						<cell align="center" col="0" display="text" row="3" text="실무&#32;:"/>
+						<cell align="center" bkcolor="blueviolet" col="1" display="text" row="3"/>
+						<cell align="center" col="2" display="text" row="3" text="소관"/>
+						<cell align="center" bkcolor="yellow" col="3" display="text" row="3"/>
+						<cell align="center" col="4" display="text" row="3" text="위안"/>
+						<cell align="center" bkcolor="violet" col="5" display="text" row="3"/>
+						<cell align="center" col="6" display="text" row="3" text="소기"/>
+						<cell align="center" bkcolor="darkgray" col="7" display="text" row="3"/>
+						<cell align="center" col="8" display="text" row="3" text="운송"/>
+						<cell align="center" bkcolor="user35" col="9" display="text" row="3"/>
+						<cell align="center" col="10" colspan="2" display="text" row="3" text="소관보조"/>
+						<cell align="center" col="12" display="text" row="3"/>
+						<cell col="13" display="text" row="3"/>
+						<cell col="14" display="text" row="3"/>
+						<cell col="15" display="text" row="3"/>
+						<cell col="16" display="text" row="3"/>
+						<cell col="17" display="text" row="3"/>
+						<cell col="18" display="text" row="3"/>
+						<cell col="19" display="text" row="3"/>
+						<cell col="20" display="text" row="3"/>
+						<cell col="21" display="text" row="3"/>
+						<cell col="22" display="text" row="3"/>
+						<cell col="23" display="text" row="3"/>
+						<cell col="24" display="text" row="3"/>
+						<cell col="25" display="text" row="3"/>
+						<cell col="26" display="text" row="3"/>
+						<cell col="27" display="text" row="3"/>
+						<cell col="28" display="text" row="3"/>
+						<cell col="29" display="text" row="3"/>
+						<cell col="30" display="text" row="3"/>
+						<cell col="31" display="text" row="3"/>
+						<cell col="0" display="null" row="4"/>
+						<cell col="13" display="text" row="4"/>
+						<cell col="14" display="text" row="4"/>
+						<cell col="15" display="text" row="4"/>
+						<cell col="16" display="text" row="4"/>
+						<cell col="17" display="text" row="4"/>
+						<cell col="18" display="text" row="4"/>
+						<cell col="19" display="text" row="4"/>
+						<cell col="20" display="text" row="4"/>
+						<cell col="21" display="text" row="4"/>
+						<cell col="22" display="text" row="4"/>
+						<cell col="23" display="text" row="4"/>
+						<cell col="24" display="text" row="4"/>
+						<cell col="25" display="text" row="4"/>
+						<cell col="26" display="text" row="4"/>
+						<cell col="27" display="text" row="4"/>
+						<cell col="28" display="text" row="4"/>
+						<cell col="29" display="text" row="4"/>
+						<cell col="30" display="text" row="4"/>
+						<cell col="31" display="text" row="4"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="lbEduGubun" Left="168" Style="sty_Label" TabOrder="35" Text="교육구분" Top="40" VAlign="Middle" Width="88"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="5" DataColumn="DATA" Height="20" Id="radEduGubun" INDEX="0" InnerDataset="ds_oEduGubun" Left="260" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="34" Top="40" Width="276"></Radio>
+		<Shape BKColor="wheat" Bottom="86" Height="20" Id="Shape9" Left="519" Right="539" TabOrder="36" Top="66" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static11" Left="537" Style="sty_Text" TabOrder="37" Text="통합" Top="66" VAlign="Middle" Width="36"></Static>
+		<Shape BKColor="lightseagreen" Bottom="110" Height="20" Id="Shape10" Left="296" Right="316" TabOrder="38" Top="90" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static12" Left="316" Style="sty_Text" TabOrder="39" Text="소관보조" Top="90" VAlign="Middle" Width="56"></Static>
+		<Shape BKColor="user38" Bottom="86" Height="20" Id="Shape11" Left="581" Right="601" TabOrder="41" Top="66" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static13" Left="597" Style="sty_Text" TabOrder="42" Text="생활" Top="66" VAlign="Middle" Width="36"></Static>
+		<Shape BKColor="lightskyblue" Bottom="86" Height="20" Id="Shape12" Left="634" Right="654" TabOrder="43" Top="66" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static14" Left="650" Style="sty_Text" TabOrder="44" Text="심폐" Top="66" VAlign="Middle" Width="36"></Static>
+		<Shape BKColor="saddlebrown" Bottom="86" Height="20" Id="Shape13" Left="296" Right="316" TabOrder="45" Top="66" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static15" Left="312" Style="sty_Text" TabOrder="46" Text="3급" Top="66" VAlign="Middle" Width="36"></Static>
+		<Shape BKColor="fuchia" Bottom="86" Height="20" Id="Shape14" Left="462" Right="482" TabOrder="47" Top="66" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static16" Left="480" Style="sty_Text" TabOrder="48" Text="운반" Top="66" VAlign="Middle" Width="36"></Static>
+		<Shape BKColor="royalblue" Bottom="86" Height="20" Id="Shape15" Left="687" Right="707" TabOrder="49" Top="66" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static17" Left="703" Style="sty_Text" TabOrder="50" Text="교관" Top="68" VAlign="Middle" Width="36"></Static>
+		<Shape BKColor="teal" Bottom="86" Height="20" Id="Shape16" Left="825" Right="845" TabOrder="51" Top="66" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static18" Left="845" Style="sty_Text" TabOrder="52" Text="건설현장" Top="68" VAlign="Middle" Width="64"></Static>
+		<Shape BKColor="tomato" Bottom="86" Height="20" Id="Shape17" Left="908" Right="928" TabOrder="53" Top="66" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static19" Left="924" Style="sty_Text" TabOrder="54" Text="업무대행" Top="68" VAlign="Middle" Width="64"></Static>
+		<Shape BKColor="gold" Bottom="86" Height="20" Id="Shape18" Left="741" Right="761" TabOrder="55" Top="66" Type="Rectangle" Width="20"></Shape>
+		<Static Align="Center" Height="20" Id="Static20" Left="760" Style="sty_Text" TabOrder="56" Text="심폐전문" Top="67" VAlign="Middle" Width="60"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust1021MEduScheduleStat.xml
+ * 설명 : 교육일정
+ * 작성일 : 2010.02.05
+ * 작성자 : 이규희
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+var tDay = "";
+// Form Load시
+function Form_OnLoadCompleted(obj)
+{
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+		ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } 
+    else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } 
+    else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+    // 공통 코드 조회    
+    gfn_SearchJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회    
+	calEduDate.Value = GetDate();
+	
+	// 콜센터 직원용 이면
+	if (gs_IsCallCenter == "Y") {
+		// 콜센터 Call ID 가져오기(Unique ID)
+		global.mnuLeft.lfn_CallUIDImport();
+	}
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdEduSchedule.Height = nCy - gdEduSchedule.Top - 4;
+        gdEduSchedule.Width = nCx - gdEduSchedule.Left - 4;
+    }
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    //btnToExcel.Enable = bStatus; // 엑셀 버튼    
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    var sDate = left(calEduDate.Value, 6);
+	gdEduSchedule.Redraw = false;
+	lfn_gdEduScheduleReset(sDate);
+	gdEduSchedule.Redraw = true;
+    
+    ds_oEduScheduleList.ClearData(); // 데이타셋 초기화
+
+
+	// 콜센터 직원용 이면
+	if (gs_IsCallCenter == "Y") {
+		// 조회이력을 저장한다.  		ls_HistoryArg = "검색년월=" + calEduDate.Text					+ ",교육구분=" + radEduGubun.Text;
+                
+		// 콜센터 직원 조회이력 저장
+		gfn_InsertCallCenterSearchPrintHistory(
+				"S"
+				, gs_CallCenterUID				, gds_OpenedForm.GetColumn(gds_OpenedForm.FindRow("MURL",this.ID),"MMENUID")
+				, this.ID				, global.mnuLeft.cbxOpenForm.Text				, ls_HistoryArg
+			);
+	}
+
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cust:searchCust1021EduSchedule", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oEduScheduleList=ds_oEduScheduleList"	// outDs
+		,"EDUDATE=" + quote(left(calEduDate.Value, 6))
+		 + " LASTDATE=" + quote(tDay)    // args 
+		 + " EDUGUBUN=" + quote(radEduGubun.Value)    // args 
+		,"lfn_AfterSearchEduSchedule"
+		,false
+	);
+}
+
+/*
+ * 기능 : 교육일정 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchEduSchedule(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    //trace(ds_oEduScheduleList.SaveXML());
+    gdEduSchedule.Redraw = false;
+    lfn_BindDataset();
+    gdEduSchedule.Redraw = true;
+    //gfn_SearchMessage(gdEduSchedule); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+function lfn_gdEduScheduleReset(str_yyyymm)
+{
+     
+    tDay = GetLastDay(str_yyyymm);
+    
+    if (tDay == 28) {
+        gdEduSchedule.Format = "default3";
+        gdEduSchedule.Format = "default";
+    } else if (tDay == 29) {
+        gdEduSchedule.Format = "default";
+        gdEduSchedule.Format = "default1";
+    } else if (tDay == 30) {
+        gdEduSchedule.Format = "default";
+        gdEduSchedule.Format = "default2";
+    } else if (tDay == 31) {
+        gdEduSchedule.Format = "default";
+        gdEduSchedule.Format = "default3";
+    }    
+    
+    for (i=0; i < tDay; i++)
+    { 
+        gdEduSchedule.SetCellProp("head", i+1, "text", i+1);
+        
+        var nDay = getDay(str_yyyymm+lpad(i+1, 0, 2)); // 입력받은 날짜의 요일가져오는 함수
+        var strDay = decode( nDay, 0, "일", 1, "월", 2, "화", 3, "수", 4, "목", 5, "금", 6, "토" ); 
+        
+        if (tDay == 28) {
+            gdEduSchedule.SetCellProp("head", i+29, "text", strDay);
+        } else if (tDay == 29) {
+            gdEduSchedule.SetCellProp("head", i+30, "text", strDay);
+        } else if (tDay == 30) {
+            gdEduSchedule.SetCellProp("head", i+31, "text", strDay);
+        } else if (tDay == 31) {
+            gdEduSchedule.SetCellProp("head", i+32, "text", strDay);
+        }        
+        
+        // 휴일 붉은색처리
+        if (IsHoliday(str_yyyymm+lpad(i+1, 0, 2)) == "1") {
+            gdEduSchedule.SetCellProp("head", i+1, "color", "red");
+            if (tDay == 28) {
+                gdEduSchedule.SetCellProp("head", i+29, "color", "red");
+            } else if (tDay == 29) {
+                gdEduSchedule.SetCellProp("head", i+30, "color", "red");
+            } else if (tDay == 30) {
+                gdEduSchedule.SetCellProp("head", i+31, "color", "red");
+            } else if (tDay == 31) {
+                gdEduSchedule.SetCellProp("head", i+32, "color", "red");
+            }
+        }
+        
+        // 토요일 파랑색 처리
+        if (IsHoliday(str_yyyymm+lpad(i+1, 0, 2)) == "2") {
+            gdEduSchedule.SetCellProp("head", i+1, "color", "blue");
+            if (tDay == 28) {
+                gdEduSchedule.SetCellProp("head", i+29, "color", "blue");
+            } else if (tDay == 29) {
+                gdEduSchedule.SetCellProp("head", i+30, "color", "blue");
+            } else if (tDay == 30) {
+                gdEduSchedule.SetCellProp("head", i+31, "color", "blue");
+            } else if (tDay == 31) {
+                gdEduSchedule.SetCellProp("head", i+32, "color", "blue");
+            }
+        }
+    }
+}
+
+//  - 휴일 : 휴일 글자
+//  - 비휴일 : ""
+function IsHoliday(yyyymmdd)
+{
+    var mmdd;
+    var lunar;
+    ////// 양력 체크
+    mmdd = substr(yyyymmdd, 4, 4);
+    // 신정 Check
+    if( mmdd == "0101" )
+        return "1";
+    // 삼일절
+    if( mmdd == "0301" )
+        return "1";
+    // 어린이날
+    if( mmdd == "0505" )
+        return "1";
+    // 현충일
+    if( mmdd == "0606" )
+        return "1";
+    // 제헌절
+    //if( mmdd == "0717" )
+    //    return "1";
+    // 광복절
+    if( mmdd == "0815" )
+        return "1";
+    // 개천절
+    if( mmdd == "1003" )
+        return "1";
+    // 한글날
+    if( mmdd == "1009" )
+        return "1";
+    // 성탄절
+    if( mmdd == "1225" )
+        return "1";
+		
+    /////// 음력 체크
+    lunar = Solar2Lunar( yyyymmdd );
+    mmdd = substr(lunar, 4, 4);
+    
+    // 구정	
+    if( mmdd == "1231" || mmdd == "0101" || mmdd == "0102" )
+        return "1";
+    // 초파일
+    if( mmdd == "0408" )
+        return "1";
+    // 추석
+    if( mmdd == "0814" || mmdd == "0815" || mmdd == "0816" )
+        return "1";
+    
+    // 일요일 Check
+    if( GetDay(yyyymmdd) == 0)
+        return "1";
+        
+    // 토요일 Check
+    if(GetDay(yyyymmdd) == 6)
+        return "2";
+          
+    return "";
+}
+
+/***************************************************************
+ * 설명 : 해당월의 맨마지막 날짜를 찾는 함수
+ * arg :
+			str_yyyymm
+ * return : 
+			성공 = 맨 마지막 날짜
+			실패 = -1
+****************************************************************/
+function GetLastDay(str_yyyymm)
+{
+	var   int_year, int_month;
+	var		len;
+	var		yy, mm, last_day, dd;
+	var		c;
+
+	int_year = ToInteger(substr(str_yyyymm, 0, 4));
+	int_month = ToInteger(substr(str_yyyymm, 4, 2));
+	if( int_month < 1 || int_month > 12 )
+	{
+		return -1;
+	}
+	if ( int_month == 2 )
+	{
+		if ( (int_year%4) == 0 && (int_year%100) != 0 || (int_year%400) == 0 )
+		{
+			last_day = 29;
+		}
+		else
+		{
+			last_day = 28;
+		}
+	}
+	else if ( int_month == 4 || int_month == 6 || int_month == 9 || int_month == 11 )
+	{
+		last_day = 30;
+	}
+	else
+	{
+		last_day = 31;
+	}
+
+	return last_day;
+}
+
+function gdEduSchedule_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	gdEduSchedule.SetCellPos(gdEduSchedule.GetCellCount("Head"));
+}
+
+// 그리드 세팅
+function lfn_BindDataset()
+{
+    ds_oEduScheduleListTmp.ClearData();
+    /*
+    for (i=0;i<70;i++) {
+        ds_oEduScheduleListTmp.AddRow();
+        if (0 <= i && i <= 4) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1011");
+        }
+        if (5 <= i && i <= 9) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1021");
+        }
+        if (10 <= i && i <= 14) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1031");
+        }
+        if (15 <= i && i <= 19) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1041");
+        }
+        if (20 <= i && i <= 24) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1051");
+        }
+        if (25 <= i && i <= 29) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1061");
+        }
+        if (30 <= i && i <= 34) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1131");
+        }
+        if (35 <= i && i <= 39) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1081");
+        }
+        if (40 <= i && i <= 44) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1141");
+        }
+        if (45 <= i && i <= 49) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1091");
+        }
+        if (50 <= i && i <= 54) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1101");
+        }
+        if (55 <= i && i <= 59) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1111");
+        }
+        if (60 <= i && i <= 64) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1071");
+        }
+        if (65 <= i && i <= 69) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1121");
+        }
+    }
+    */
+    
+    for (i=0;i<60;i++) {
+        ds_oEduScheduleListTmp.AddRow();
+        if (0 <= i && i <= 3) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1011");
+        }
+        if (4 <= i && i <= 7) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1151");
+        }
+        if (8 <= i && i <= 11) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1021");
+        }
+        if (12 <= i && i <= 15) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1031");
+        }
+        if (16 <= i && i <= 19) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1041");
+        }
+        if (20 <= i && i <= 23) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1051");
+        }
+        if (24 <= i && i <= 27) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1061");
+        }
+        if (28 <= i && i <= 31) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1131");
+        }
+        if (32 <= i && i <= 35) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1081");
+        }
+        if (36 <= i && i <= 39) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1141");
+        }
+        if (40 <= i && i <= 43) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1091");
+        }
+        if (44 <= i && i <= 47) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1101");
+        }
+        if (48 <= i && i <= 51) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1111");
+        }
+        if (52 <= i && i <= 55) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1071");
+        }
+        if (56 <= i && i <= 59) {
+            ds_oEduScheduleListTmp.SetColumn(i, "TOMGGTMGNO", "1121");
+        }
+    }
+    
+    
+    var sVar = 0;
+    var sStat = false;
+    for (i=0;i<ds_oEduScheduleList.GetCount();i++) {  // ds_oEduScheduleList.GetCount()
+        for (j=0;j<ds_oEduScheduleListTmp.GetCount();j++) {
+            if (ds_oEduScheduleList.GetColumn(i, "GTMGNO") == ds_oEduScheduleListTmp.GetColumn(j, "TOMGGTMGNO")) {  // 지부로우 체크                
+                if (SubStr(calEduDate.Value, 4, 2) == left(ds_oEduScheduleList.GetColumn(i, "STARTDATE"), 2)) {     // 시작일이 해당월부터인지 체크
+                    if (SubStr(calEduDate.Value, 4, 2) == left(ds_oEduScheduleList.GetColumn(i, "ENDDATE"), 2)) {     // 종료일이 해당월인지 체크
+                        for (k=ToNumber(Right(ds_oEduScheduleList.GetColumn(i, "STARTDATE"), 2)); k <= ToNumber(Right(ds_oEduScheduleList.GetColumn(i, "ENDDATE"), 2)); k++) {                        
+                            if (gfn_IsNull(ds_oEduScheduleListTmp.GetColumn(j, "COL"+k))) {   // 삽입할 컬럼이 비어있는 상태인지 체크
+								if (ds_oEduScheduleList.GetColumn(i, "DAYGUBUN") == "2") {  // 주말교육일 경우 평일에 색상안넣기
+									var nDay = getDay(left(calEduDate.Value, 6)+lpad(k, 0, 2)); // 입력받은 날짜의 요일가져오는 함수
+									if ((nDay >= "1") && (nDay <= "5")) {  // 1~5이면 평일
+										ds_oEduScheduleListTmp.SetColumn(j, "COL"+k, "");
+										ds_oEduScheduleListTmp.SetColumn(j, "C"+k, "");
+										sVar = k;
+										sStat = true;																		
+									} else { //0:일요일, 6:토요일
+										ds_oEduScheduleListTmp.SetColumn(j, "COL"+k, ds_oEduScheduleList.GetColumn(i, "COURSECD"));
+										ds_oEduScheduleListTmp.SetColumn(j, "C"+k, ds_oEduScheduleList.GetColumn(i, "STARTTIME"));
+										sVar = k;
+										sStat = true;									
+									}
+								} else if (ds_oEduScheduleList.GetColumn(i, "DAYGUBUN") <= "1") { // 평일교육이면 색상넣기
+									ds_oEduScheduleListTmp.SetColumn(j, "COL"+k, ds_oEduScheduleList.GetColumn(i, "COURSECD"));
+									ds_oEduScheduleListTmp.SetColumn(j, "C"+k, ds_oEduScheduleList.GetColumn(i, "STARTTIME"));
+									sVar = k;
+									sStat = true;
+								}
+                            } else {
+                                for (l=ToNumber(Right(ds_oEduScheduleList.GetColumn(i, "STARTDATE"), 2));l<k;l++) {
+                                    ds_oEduScheduleListTmp.SetColumn(j, "COL"+l, "");
+                                    ds_oEduScheduleListTmp.SetColumn(j, "C"+l, "");
+                                }
+                                sStat = false;
+                                break;
+                            }
+                        }
+                        if (sStat) {
+                            if (sVar == ToNumber(Right(ds_oEduScheduleList.GetColumn(i, "ENDDATE"), 2))) {
+                                break;
+                            }
+                        }
+                    } else {
+                        for (k=ToNumber(Right(ds_oEduScheduleList.GetColumn(i, "STARTDATE"), 2)); k <= tDay; k++) {                        
+                            if (gfn_IsNull(ds_oEduScheduleListTmp.GetColumn(j, "COL"+k))) {   // 삽입할 컬럼이 비어있는 상태인지 체크
+								if (ds_oEduScheduleList.GetColumn(i, "DAYGUBUN") == "2") {  // 주말교육일 경우 평일에 색상안넣기
+									var nDay = getDay(left(calEduDate.Value, 6)+lpad(k, 0, 2)); // 입력받은 날짜의 요일가져오는 함수
+									if ((nDay == "0") || (nDay == "6")) {  // 0:일요일, 6:토요일                            
+										ds_oEduScheduleListTmp.SetColumn(j, "COL"+k, ds_oEduScheduleList.GetColumn(i, "COURSECD"));
+										sVar = k;
+									}
+								} else if (ds_oEduScheduleList.GetColumn(i, "DAYGUBUN") <= "1") { // 평일교육이면 색상넣기
+									ds_oEduScheduleListTmp.SetColumn(j, "COL"+k, ds_oEduScheduleList.GetColumn(i, "COURSECD"));
+									sVar = k;
+								}
+                            } else {
+                                break;
+                            }
+                        }
+                        if (sVar == tDay) {
+                            break;
+                        }
+                    }
+                } else {
+                    for (k=1; k <= ToNumber(Right(ds_oEduScheduleList.GetColumn(i, "ENDDATE"), 2)); k++) {                        
+                        if (gfn_IsNull(ds_oEduScheduleListTmp.GetColumn(j, "COL"+k))) {   // 삽입할 컬럼이 비어있는 상태인지 체크
+							if (ds_oEduScheduleList.GetColumn(i, "DAYGUBUN") == "2") {  // 주말교육일 경우 평일에 색상안넣기
+								var nDay = getDay(left(calEduDate.Value, 6)+lpad(k, 0, 2)); // 입력받은 날짜의 요일가져오는 함수
+								if ((nDay == "0") || (nDay == "6")) {  // 0:일요일, 6:토요일                            
+									ds_oEduScheduleListTmp.SetColumn(j, "COL"+k, ds_oEduScheduleList.GetColumn(i, "COURSECD"));
+									sVar = k;
+								}
+							} else if (ds_oEduScheduleList.GetColumn(i, "DAYGUBUN") <= "1") { // 평일교육이면 색상넣기
+								ds_oEduScheduleListTmp.SetColumn(j, "COL"+k, ds_oEduScheduleList.GetColumn(i, "COURSECD"));
+								sVar = k;
+							}
+                        } else {
+                            break;
+                        }
+                    }
+                    if (sVar == ToNumber(Right(ds_oEduScheduleList.GetColumn(i, "ENDDATE"), 2))) {
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
+
+function lfn_Excel2(obj)
+{
+    ds_oTitle.InsertRow(0);
+    ds_oTitle.SetColumn(0, "COL14", right(calEduDate.Text, 2));
+	var ExportObject1;
+	ExportObject1 = CreateExportObject();
+	ExportObject1.ExportType		= "Excel";
+	ExportObject1.ExportFileName	=  this + ".xls";
+	ExportObject1.ActiveSheetName   = "교육일정";
+	ExportObject1.MakeEmptyFileWhenNotExist = false;			
+	ExportObject1.AddExportGrid("교육일정" + "!" + "A1", gdTitle, false, false);
+	ExportObject1.AddExportGrid("교육일정" + "!" + "A6", gdEduSchedule, true, false);
+	ExportObject1.Export();
+	ExportObject1.Close();
+	ExportObject1 = null;
+}
+
+
+]]></Script>
+</Window>

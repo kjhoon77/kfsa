@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="180" Id="frmcust1050MEduAttendanceRegisterPrint" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="실무교육출석부출력" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="500" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oSort">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>ORGJUPSU</CD>
+						<DATA>접수번호</DATA>
+					</record>
+					<record>
+						<CD>NAME</CD>
+						<DATA>이름</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEduAttendence">
+				<Contents>
+					<colinfo id="EDUCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="EPNM" size="100" summ="default" type="STRING"/>
+					<colinfo id="INCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="INOUTCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="JUPSUCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="KULGANGCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="OUTCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PASSCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="REPAYCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TCCOURSENM" size="40" summ="default" type="STRING"/>
+					<colinfo id="TOENDDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="TOSTARTDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="TOEDUORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="COURSENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CYBERGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ESCYBERGUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEduAttendencePoto">
+				<Contents>
+					<colinfo id="ACTION" size="513" summ="default" type="STRING"/>
+					<colinfo id="GTTEAMNM" size="70" summ="default" type="STRING"/>
+					<colinfo id="ORGJUPSU" size="10" summ="default" type="STRING"/>
+					<colinfo id="SEATNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TCCOURSENM" size="30" summ="default" type="STRING"/>
+					<colinfo id="TJPERSONNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="TOENDDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="TOSTARTDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="TOEDUORDER" size="3" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="179" Height="180" Id="shpFormBox" Left="-1" LineColor="user16" Right="500" TabOrder="17" Top="-1" Type="Rectangle" Width="501"></Shape>
+		<Shape Bottom="53" Height="52" Id="shpBtnBox" Left="232" LineColor="user14" Right="496" TabOrder="61" Top="1" Type="Rectangle" Width="264"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="10" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="200">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="234" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="1" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="321" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="2" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="408" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbSort" Left="4" Style="sty_Label" TabOrder="11" Text="정렬순서" Top="152" VAlign="Middle" Width="88"></Static>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radSort" INDEX="0" InnerDataset="ds_oSort" Left="104" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="9" Top="152" Value="SEATNO" Width="196"></Radio>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="408" OnClick="lfn_Search" Style="sty_Button" TabOrder="4" ToolTipText="출력" Top="28" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbEduOrder" Left="4" Style="sty_Label" TabOrder="13" Text="회차" Top="128" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="4" Style="sty_Label" TabOrder="12" Text="직능" Top="104" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_oCourse" Left="95" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="7" Top="103" UserData="S:직능" Width="182"></Combo>
+		<Static Align="Center" Height="20" Id="lbYear" Left="4" Style="sty_Label" TabOrder="14" Text="년도" Top="80" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edEduYear" ImeMode="native" Left="96" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="6" Top="80" UserData="I:년도" Width="36"></Edit>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="4" Style="sty_Label" TabOrder="15" Text="지부" Top="56" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="95" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="5" Top="54" UserData="I" Width="88"></Combo>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edEduOrder" ImeMode="native" Left="96" LeftMargin="2" MaxLength="3" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="edEduOrder_OnKillFocus" Style="sty_Edit" TabOrder="8" Top="128" UserData="S:회차" Width="28"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust1050MEduAttendanceRegisterPrint.xml
+ * 설명 : 실무교육출석부출력
+ * 작성일 : 2015.08.13
+ * 작성자 : 정현호
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    tit_createActionInfo(); // X-Framework용
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    // 공통 코드 조회
+    gfn_SearchAllJibu(cbxJibu, "Y", "선택"); // 지부 코드 조회
+    gfn_SearchCustomerCourseFullName(ds_oCourse, "0");				// 대표고객직능 조회
+    // 교육접수가능 직능만 남김
+    for (var i = 0; i <= ds_oCourse.GetRowCount(); i++) {
+    
+		if ((ds_oCourse.GetColumn(i, "CD") == "60") 
+		
+		|| (ds_oCourse.GetColumn(i, "CD") == "70")
+		
+		|| (ds_oCourse.GetColumn(i, "CD") == "90")) {
+		
+			ds_oCourse.DeleteRow(i);
+			
+			i = i - 1;
+		}
+    }
+
+    cbxCourse.Value = "10";
+    edEduYear.Text = left(GetDate(), 4);
+    edEduOrder.Text = "001";
+    
+    radSort.Index = 0;
+    
+    edEduOrder.SetFocus();
+}
+
+function Form_OnKeyDown(obj,objAttendanceerObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objAttendanceerObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+
+    }
+}
+
+function lfn_Search(obj)
+{
+    if (!gfn_FormValidate(this)) { // 조회 Validation Check
+        return false;
+    }
+    
+    // 조회이력을 저장한다.  
+    ls_HistoryArg = "지부=" + quote(cbxJibu.Text)
+                + ",직능=" + quote(cbxCourse.Text)
+                + ",년도=" + quote(edEduYear.Text)
+                + ",회차=" + quote(edEduOrder.Text)
+                + ",정렬방법=" + quote(radSort.Text);
+    gfn_InsertSearchPrintHistory(
+        "S"
+        , this.ID
+        , global.mnuLeft.cbxOpenForm.Text
+        , ls_HistoryArg
+    );
+    
+    // 강습교육출석부
+    ds_oEduAttendence.ClearData(); // 데이타셋 초기화
+    ds_oEduAttendencePoto.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cust:searchCust1050EduAttendence", false);
+	tit_addCsvSearchActionInfo("cust:searchCust1050EduAttendenceList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oEduAttendence=ds_oEduAttendence ds_oEduAttendencePoto=ds_oEduAttendenceList"	// outDs
+		,"GTMGNO=" + quote(cbxJibu.Value)
+            + " COURSE=" + quote(cbxCourse.Value)
+            + " ESYEAR=" + quote(edEduYear.Text)
+            + " EDUORDER=" + quote(edEduOrder.Text)
+            + " SORT=" + quote(radSort.Value)// args 
+		,"lfn_AfterSearchEduAttendence"
+		,false
+	);	
+}
+
+/*
+ * 기능 : 출석부출력
+ */
+function lfn_Print(obj)
+{    
+    if (ds_oEduAttendencePoto.RowCount() < 1) {
+        gfn_Alert("출력할 데이터가 없습니다.");
+        return false;
+    }
+    // 출력이력을 저장한다.  
+    ls_HistoryArg = "지부=" + quote(cbxJibu.Text)
+                + ",직능=" + quote(cbxCourse.Text)
+                + ",년도=" + quote(edEduYear.Text)
+                + ",회차=" + quote(edEduOrder.Text)
+                + ",정렬방법=" + quote(radSort.Text);
+    gfn_InsertSearchPrintHistory(
+        "P"
+        , this.ID
+        , "출석부출력"
+        , ls_HistoryArg
+    );
+    
+    var PrtTime = "";	
+	// 12시 이전에는 발급일자만 출력
+	// 12시 이후에는 발급일자+ 시간까지 출력
+	
+	if (substr(GetDate(), 8,4) > '1200') {
+	
+		PrtTime = left(GetDate(), 4)+"-"+substr(GetDate(), 4,2)+"-"+substr(GetDate(), 6,2)+" "+
+					  substr(GetDate(), 8,2)+":"+substr(GetDate(), 10,2);
+	
+	} else {
+	
+		PrtTime = left(GetDate(), 4)+"-"+substr(GetDate(), 4,2)+"-"+substr(GetDate(), 6,2);
+		
+	}
+	
+	var sReportName = "";
+	
+	sReportName = "frmCust1050R01EduAttendanceRegister.rex";
+	
+	
+    gfn_CallReportPopup(sReportName
+                      , "ds_oEduAttendencePoto||ds_oEduAttendence"//||ds_oEduAttendencePoto
+                      , "rpDirpath=" + GF_FILE_SERVER_URL + "kems"
+                        
+                        + "^PrtTime=" + PrtTime);
+}
+
+
+
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 결강자 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchEduAttendence(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    lfn_Print(); // 출석부 프린트함수 호출
+}
+
+function lfn_AfterSearchEduAttendenceJechul(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    lfn_PrintJechul(); // 노동부 제출용 출석부 프린트함수 호출
+}
+
+/* 사용자 함수 */
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+
+}
+
+/* 회차 포커스 아웃될때 자동 0 입력 */
+function edEduOrder_OnKillFocus(obj) {
+	gfn_ComponentOnKillFocus(obj);
+    
+    obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3));    
+}
+
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_2000,dsc_0005]";	// 개인정보접속기록 시스템ID 
+}
+]]></Script>
+</Window>

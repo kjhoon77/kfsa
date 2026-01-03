@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="496" Id="frmcust2017PSearchbuilding" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="대상물&#32;검색" Top="8" Ver="1.0" Width="696" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oCustList" OnRowPosChanged="ds_oCustList_OnRowPosChanged">
+				<Contents>
+					<colinfo id="SEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="201" summ="default" type="STRING"/>
+					<colinfo id="BBIZCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="BMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="BTEL" size="13" summ="default" type="STRING"/>
+					<colinfo id="DPERMISSIONNO" size="20" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oManagerList">
+				<Contents>
+					<colinfo id="BADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="BADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="BTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="BZIPCD" size="6" summ="default" type="STRING"/>
+					<colinfo id="CCOCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFIREMGNO" size="20" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="COVERCMGNO" size="2" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EPPASSDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="FMHSTARTDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="FMPERSONKEY" size="13" summ="default" type="STRING"/>
+					<colinfo id="OLHNM" size="200" summ="default" type="STRING"/>
+					<colinfo id="SEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="FMBIRTHDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIRTHDAY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCustomerStatus">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>회원</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>비회원</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oBizGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oManagerListCopy"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oManagerListCopy1"></Dataset>
+		</Datasets>
+		<Shape Bottom="60" Height="28" Id="Shape1" Left="4" LineColor="user15" Right="692" TabOrder="17" Top="32" Type="Rectangle" Width="688"></Shape>
+		<Shape Bottom="296" Height="224" Id="Shape0" Left="4" LineColor="user15" Right="692" TabOrder="14" Top="72" Type="Rectangle" Width="688"></Shape>
+		<Shape Bottom="492" Height="184" Id="Shape2" Left="4" LineColor="user15" Right="692" TabOrder="11" Top="308" Type="Rectangle" Width="688"></Shape>
+		<Static Align="Center" Height="20" Id="Static0" Left="20" Style="sty_LabelGruopBox" TabOrder="12" Text="고&#32;객&#32;정&#32;보" Top="300" VAlign="Middle" Width="112"></Static>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oManagerList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="488" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="156" Id="gdManagerList" InputPanel="FALSE" Left="8" LineColor="default" OnHeadClick="gdManagerList_OnHeadClick" Right="688" RowHeight="20" Style="sty_Grid" TabOrder="5" TabStop="true" Top="332" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="680">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="28"/>
+						<col width="40"/>
+						<col width="70"/>
+						<col width="67"/>
+						<col width="20"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="80"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="96"/>
+						<col width="96"/>
+						<col width="80"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="65"/>
+						<col width="0"/>
+						<col width="88"/>
+					</columns>
+					<head>
+						<cell col="0" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" display="text" text="순번"/>
+						<cell col="2" display="text" text="지부"/>
+						<cell align="center" col="3" display="text" text="관리번호"/>
+						<cell col="4" colspan="2" display="text" text="상태"/>
+						<cell col="6" display="text" text="지역"/>
+						<cell col="7" display="text" text="직능"/>
+						<cell col="8" display="text" text="회원구분"/>
+						<cell align="center" col="9" display="text" text="성명"/>
+						<cell col="10" display="text" text="생년월일"/>
+						<cell col="11" display="text" text="개인식별번호"/>
+						<cell col="12" display="text" text="선임일자"/>
+						<cell col="13" display="text" text="교육일자"/>
+						<cell col="14" display="text" text="미납회비"/>
+						<cell col="15" display="text" text="겸직구분"/>
+						<cell col="16" display="text" text="자격구분"/>
+						<cell col="17" display="text" text="소방관리번호"/>
+					</head>
+					<body>
+						<cell col="0" colid="SEL" display="expr:iif(SEL&#32;==&#32;&apos;X&apos;,&#32;&apos;null&apos;,&#32;&apos;checkbox&apos;)" edit="expr:iif(SEL&#32;==&#32;&apos;X&apos;,&#32;&apos;none&apos;,&#32;&apos;checkbox&apos;)"/>
+						<cell align="center" col="1" display="number" expr="row+1"/>
+						<cell align="center" col="2" colid="CGTMGNO" combocol="JJIBUCD" combodataset="gds_oJibu" combotext="JJIBUNM" display="combo"/>
+						<cell align="center" col="3" colid="CNO" display="text"/>
+						<cell align="center" col="4" colid="GUBUN" color="expr:iif(CDELGUBUN&lt;&gt;0,&apos;user6&apos;)" display="text"/>
+						<cell align="center" col="5" colid="CDELGUBUN" display="text"/>
+						<cell align="center" col="6" colid="RCNM" display="combo"/>
+						<cell align="left" col="7" colid="CCOURSECD" combocol="COURSECD" combodataset="gds_oCustomerCourse" combotext="CNICKNM" display="combo"/>
+						<cell align="center" col="8" colid="CSTATUSGUBUN" display="text"/>
+						<cell align="center" col="9" colid="FMNM" display="text"/>
+						<cell align="center" col="10" colid="BIRTHDAY" display="text"/>
+						<cell align="center" col="11" colid="FMPERSONKEY" display="text" Mask="A####-#####"/>
+						<cell align="center" col="12" colid="FMHSTARTDATE" display="date"/>
+						<cell align="center" col="13" colid="EPPASSDATE" display="date"/>
+						<cell align="right" col="14" colid="MINAP" display="text"/>
+						<cell align="center" col="15" colid="COVERCMGNO" display="text"/>
+						<cell align="center" col="16" colid="OLHNM" display="text"/>
+						<cell align="center" col="17" colid="CFIREMGNO" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="Static1" Left="20" Style="sty_LabelGruopBox" TabOrder="13" Text="대상물(업체)정보" Top="64" VAlign="Middle" Width="112"></Static>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oCustList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="292" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="180" Id="gdBuidingList" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" OnHeadClick="lfn_SortGrid_OnHeadClick" OnKeyDown="gdBuidingList_OnKeyDown" Right="688" RowHeight="20" Style="sty_Grid" TabOrder="4" TabStop="true" Top="112" UseDBuff="true" UsePopupMenu="true" UserData="대상물(업체)정보" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="680">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="152"/>
+						<col width="120"/>
+						<col width="240"/>
+						<col width="90"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="대상물(업체)명"/>
+						<cell align="center" col="2" display="text" text="용도"/>
+						<cell col="3" display="text" text="주소"/>
+						<cell col="4" display="text" text="전화번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="number" expr="row+1"/>
+						<cell align="left" col="1" colid="BNM" display="text"/>
+						<cell align="left" col="2" colid="BBIZCD" combocol="CD" combodataset="ds_oBizGubun" combotext="DATA" display="combo"/>
+						<cell align="left" col="3" colid="ADDR" display="text"/>
+						<cell align="left" col="4" colid="BTEL" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="252" LineColor="user14" Right="692" TabOrder="15" Top="1" Type="Rectangle" Width="440"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="603" OnClick="lfn_End" Style="sty_Button" TabOrder="10" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="603" OnClick="lfn_Search" Style="sty_Button" TabOrder="2" ToolTipText="조회" Top="35" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbSearch" Left="8" Style="sty_Label" TabOrder="16" Text="대상물(업체)명" Top="36" VAlign="Middle" Width="132"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Column="ADDR1" Height="20" Id="edKeyWord" ImeMode="native" Left="144" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edBuildingNm_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="1" Top="36" UserData="S" Width="456"></Edit>
+		<Static Color="user10" Height="20" Id="Static7" Left="140" TabOrder="18" Top="313" Width="408"></Static>
+		<Static Align="Center" Height="20" Id="lbTotalCnt" Left="8" Style="sty_LabelStat" TabOrder="20" Text="총건수" Top="88" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medTotalCnt" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="19" Top="88" UserData="S" Width="64"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="614" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="3" Top="88" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="342" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="7" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="516" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="9" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="429" OnClick="lfn_Excel" Style="sty_Button" TabOrder="8" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect" ImageID="BTN_TEXT_COM" Left="255" OnClick="btnSelect_OnClick" Style="sty_Button" TabOrder="6" Text="선택" ToolTipText="선택" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radCustomerGubun" INDEX="0" InnerDataset="ds_oCustomerStatus" Left="522" LeftMargin="12" OnChanged="radCustomerGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="12" Style="sty_Radio" TabOrder="21" Top="310" Value="0" Width="166"></Radio>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust2017PSearchbuilding.xml
+ * 설명 : 대상물 검색 팝업
+ * 작성일 : 2010. 02. 10
+ * 작성자 : 배기원
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+    // 콜센터 직원 사용 이면
+	if (gs_IsCallCenter == "Y") {
+		btnToExcel.Enable = false; // 엑셀출력 버튼
+		btnPrintScreen.Enable = false; // 화면출력 버튼
+	}
+    
+    // 공통 코드 조회
+    gfn_SearchCommonCode(ds_oBizGubun, "BIZCD", "Y", "전체"); 
+    
+    radCustomerGubun.Value = 0; //회원 비회원 체크
+    
+    if (IsExistVar("sBuildingNm")) {
+        edKeyWord.Text = sBuildingNm;
+        lfn_Search();
+    }
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    medTotalCnt.Value = "";
+    ds_oCustList.ClearData(); // 데이타셋 초기화
+    ds_oManagerList.ClearData();
+    ds_oManagerListCopy1.ClearData();// 체크 한 로우값만 모아둔 데이터셋 초기화
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cust:searchCust0011BuildingList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oCustList=ds_oCustList"	// outDs
+		,"GUBUN=1"
+            + " KEYWORD=" + quote(edKeyWord.Text)
+            + " CGTMGNO=" + quote(sGtmgno)
+		,"lfn_AfterSearchbuilding"
+		,false
+	);
+}
+
+
+/* 공통 필수 종료 */
+
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchbuilding(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    //trace(ds_oCustList.SaveXML());
+    medTotalCnt.Value = ds_oCustList.GetCount();
+    gfn_SearchMessage(gdBuidingList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+
+function ds_oCustList_OnRowPosChanged(obj,nOldRow,nRow)
+{
+    Static7.Text = "("+ds_oCustList.GetColumn(nRow, "BNM")+")";
+    if (ds_oCustList.GetCount() == 0) {
+        return;
+    }
+	ds_oManagerList.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cust:searchCust2017ManagerList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oManagerList=ds_oManagerList"	// outDs
+		,"BMGNO=" + quote(ds_oCustList.GetColumn(nRow, "BMGNO"))
+		 + " CUSTOMERGUBUN=" + quote(radCustomerGubun.Value)
+		,"lfn_AfterSearchManager"
+		,false
+	);
+}
+
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchManager(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    //trace(ds_oManagerList.SaveXML());
+    gfn_SearchMessage(gdManagerList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+function gdBuidingList_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == 13) { // Enter Key
+//        btnSelect_OnClick(obj);
+    }
+}
+
+/**
+ * 멀티 정렬
+ */
+function btnMutilSort_OnClick(obj) {
+	gfn_GridMultiSort(gdBuidingList, 1);
+}
+
+function gdManagerList_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+	var lobj_Dataset = object(obj.BindDataset);
+	if (nCell == 0) { // 선택
+        if (obj.GetCellProp("head", nCell, "text") == 1) { // 전체가 이미 선택된 경우
+            obj.SetCellProp("head", nCell, "text", 0);
+            for(i = 0; i < lobj_Dataset.RowCount(); i++) {
+                if (lobj_Dataset.GetColumn(i, "SEL") != "X") {
+                    lobj_Dataset.SetColumn(i, "SEL", "0");
+                }
+            }
+        } else { // 전체가 이미 선택되지 않은 경우
+            obj.SetCellProp("head", nCell, "text", 1);
+            for(i = 0; i < lobj_Dataset.RowCount(); i++) {
+                if (lobj_Dataset.GetColumn(i, "SEL") != "X") {
+                    lobj_Dataset.SetColumn(i, "SEL", "1");
+                }
+            }
+        }
+	} else { // 헤드 정렬
+        lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex);
+	}
+}
+
+/* 사용자 함수 */
+function btnSelect_OnClick(obj) {
+
+    ds_oManagerListCopy.Copy(ds_oManagerList);
+    ds_oManagerListCopy.Filter("SEL = '1'");
+    ds_oManagerListCopy1.copyf(ds_oManagerListCopy);
+
+    var arrArg = Array();
+    for(i=0; i < ds_oManagerListCopy1.RowCount(); i++)
+    {
+        arrArg[i] = ds_oManagerListCopy1.GetColumn(i, "CMGNO");
+    }
+
+    if (ds_oManagerListCopy1.RowCount() < 1 ) {
+        gfn_Alert("선택된 정보가 없습니다.");
+        return;
+    }
+//    trace(arrArg);
+    Close(arrArg);    
+}
+
+function edBuildingNm_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) { // Enter Key
+        lfn_Search();
+    }	
+}
+
+
+function radCustomerGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	ds_oManagerList.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cust:searchCust2017ManagerList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oManagerList=ds_oManagerList"	// outDs
+		,"BMGNO=" + quote(ds_oCustList.GetColumn(ds_oCustList.currow, "BMGNO"))
+		 + " CUSTOMERGUBUN=" + quote(strCode)
+		,"lfn_AfterSearchManager"
+		,false
+	);
+}
+]]></Script>
+</Window>

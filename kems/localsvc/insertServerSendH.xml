@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="ouput" io="OUTPUT" reserved="NO"></dataset>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[function Run() {
+
+	var errSql;
+	var selectQuery;
+	var deleteQuery;
+	var insertQuery;
+
+	selectQuery = "SELECT APEOMGNO AS SSHEOMGNO"
+		+ "	, APREPEATNO AS SSHREPEATNO"
+		+ " FROM ANSWERPAPER"
+		+ " GROUP BY APEOMGNO, APREPEATNO"
+		+ " ORDER BY APEOMGNO, APREPEATNO";
+	errSql = ExecuteQuery(selectQuery, "output");
+
+	deleteQuery = "DELETE FROM SERVERSENDH";
+	errSql = ExecuteSql(deleteQuery);
+
+	for (var i=0; i<output.getRowCount(); i++) {
+	
+		insertQuery = "INSERT INTO SERVERSENDH("
+			+ " SSHEOMGNO, SSHREPEATNO, SSHSENDYN "
+			+ " ) VALUES ( "
+			+ " '" + dsGetColumn(output, i, "SSHEOMGNO") + "'"
+			+ ", '" + dsGetColumn(output, i, "SSHREPEATNO") + "'"
+			+ ", 'N')";
+		errSql = ExecuteSql(insertQuery);
+
+	}
+	
+}
+
+function dsGetColumn(ds, row, colid) {
+	return ds.getcolumn(row, colid);
+}
+]]></source>
+</class2>

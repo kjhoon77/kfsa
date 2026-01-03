@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="22" Id="frmtraining0345SLicenseIssueStatistics" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="전자교부대장/전자재교부대장" TooltipFont="Default,0" Top="8" Ver="1.0" Width="504" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oYear">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="4" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="1" Top="-1" UserData="I" Width="88"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_oCourse" Left="170" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="2" Top="-1" UserData="S:직능" Width="182"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Font="굴림,10" Height="20" Id="cbxYear" INDEX="0" InnerDataset="ds_oYear" Left="97" OnChanged="cbxYear_OnChanged" ResetIndex="FIRST" Style="sty_Combo" TabOrder="3" Top="-1" Width="68"></Combo>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edTrainingOrder" ImeMode="native" Left="356" LeftMargin="2" MaxLength="3" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKillFocus="edTrainingOrder_OnKillFocus" Style="sty_Edit" TabOrder="4" UserData="S:회차" Width="36"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0345SLicenseIssueStatistics.xml
+ * 설명 : 수첩전자교부대장
+ * 작성일 : 2011.02.10
+ * 작성자 : 정현호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+function Form_OnLoadCompleted(obj) {
+    gfn_SearchJibu(cbxJibu, "Y", ""); // 지부 코드 조회   
+    gfn_SearchTrainingCourse("L", ds_oCourse, "Y",""); // 직능 코드 조회
+    
+	// 방관 1,2급만 세팅
+	for(var i=ds_oCourse.GetRowCount()-1; i>-1; i--) {
+		if ((ds_oCourse.GetColumn(i, "CD") == "20") ||
+		    (ds_oCourse.GetColumn(i, "CD") == "24") ||
+		    (ds_oCourse.GetColumn(i, "CD") == "28") ||
+		    (ds_oCourse.GetColumn(i, "CD") == "29"))
+		ds_oCourse.DeleteRow(i);
+	}    
+    
+    cbxCourse.Value = "22";
+    
+    // 년도정보 (현재년도-5부터 현재년도+1까지)
+    for(var i=0; i<7; i++) {
+		ds_oYear.InsertRow(i);
+		ds_oYear.SetColumn(i, "CD", parseInt(left(GetDate(), 4))-5+i);
+		ds_oYear.SetColumn(i, "DATA", parseInt(left(GetDate(), 4))-5+i);
+	}
+	cbxYear.Index = 5;
+	edTrainingOrder.Text = "001";
+}
+
+function edTrainingOrder_OnKillFocus(obj)
+{
+	obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3));
+}
+]]></Script>
+</Window>

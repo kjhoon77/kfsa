@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="88" HilightColor="user0" Id="frmprofes0001S09ProfMgmt" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="교안실적" Top="8" Ver="1.0" Width="782" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioProfTeachingPlan">
+				<Contents>
+					<colinfo id="CNT" size="22" type="DECIMAL"/>
+					<colinfo id="TPYEAR" size="4" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioProfTeachingPlanCnt">
+				<Contents>
+					<colinfo id="YEAR1" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="YEAR2" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="YEAR3" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="YEAR4" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="YEAR5" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="YEAR6" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="YEAR7" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="YEAR8" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="YEAR9" size="22" summ="default" type="DECIMAL"/>
+					<record>
+						<YEAR1>0</YEAR1>
+						<YEAR2>0</YEAR2>
+						<YEAR3>0</YEAR3>
+						<YEAR4>0</YEAR4>
+						<YEAR5>0</YEAR5>
+						<YEAR6>0</YEAR6>
+						<YEAR7>0</YEAR7>
+						<YEAR8>0</YEAR8>
+						<YEAR9>0</YEAR9>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="84" Height="80" Id="shpGubunBox1" Left="4" LineColor="user15" Right="776" TabOrder="3" Top="4" Type="Rectangle" Width="772"></Shape>
+		<Static Align="Center" Height="20" Id="Static8" Left="-144" Style="sty_LabelGruopBox" TabOrder="4" Text="안전원&#32;교수&#32;관리" Top="63" VAlign="Middle" Width="120"></Static>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_ioProfTeachingPlanCnt" BkColor2="user0" BoldHead="true" Border="Flat" Bottom="80" ColSizing="TRUE" DisableColor="user0" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="44" Id="gdProfTeachingPlan" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" OnHeadClick="gdProfTeachingPlan_OnHeadClick" Right="772" RowHeight="20" Style="sty_Grid" TabOrder="1" TabStop="true" Top="36" UseDBuff="true" UsePopupMenu="true" UserData="교안등록목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="764">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="연도"/>
+						<cell align="center" col="1" display="text" expr="Mid(getDate(),0,4)"/>
+						<cell align="center" col="2" display="text" expr="ParseInt(Mid(getDate(),0,4))-1"/>
+						<cell align="center" col="3" display="text" expr="ParseInt(Mid(getDate(),0,4))-2"/>
+						<cell align="center" col="4" display="text" expr="ParseInt(Mid(getDate(),0,4))-3"/>
+						<cell align="center" col="5" display="text" expr="ParseInt(Mid(getDate(),0,4))-4"/>
+						<cell align="center" col="6" display="text" expr="ParseInt(Mid(getDate(),0,4))-5"/>
+						<cell align="center" col="7" display="text" expr="ParseInt(Mid(getDate(),0,4))-6"/>
+						<cell align="center" col="8" display="text" expr="ParseInt(Mid(getDate(),0,4))-7"/>
+					</head>
+					<body>
+						<cell align="center" celltype="head" col="0" display="text" edit="normal" font="굴림,10,Bold" text="건수"/>
+						<cell align="right" col="1" colid="YEAR1" display="number"/>
+						<cell align="right" col="2" colid="YEAR2" display="number"/>
+						<cell align="right" col="3" colid="YEAR3" display="number"/>
+						<cell align="right" col="4" colid="YEAR5" display="number"/>
+						<cell align="right" col="5" colid="YEAR5" display="number"/>
+						<cell align="right" col="6" colid="YEAR6" display="number"/>
+						<cell align="right" col="7" colid="YEAR7" display="number"/>
+						<cell align="right" col="8" colid="YEAR8" display="number"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Height="16" Id="lbText" Left="12" Style="sty_Text" TabOrder="2" Text="■&#32;교안실적" Top="12" VAlign="Middle" Width="600"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmPFM0001S09ProfMgmt.xml
+ * 설명 : 교안등록
+ * 작성일 : 2009.11.11
+ * 작성자 : 김종복
+ */
+
+#include "LIB::profes.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    tit_createActionInfo(); // X-Framework용    
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+    
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+}
+
+/*
+ * 기능 : 그리드 정렬
+ */
+function gdProfTeachingPlan_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+	var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1 && nCell > 0) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    gdProfTeachingPlan.Editable = bStatus;
+}
+
+/*
+ * 기능 : 교안등록 조회
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchProfTeachingPlan(obj) {
+	gdProfTeachingPlan.Redraw = false;
+	
+	ds_ioProfTeachingPlan.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("profes:searchProfes0001ProfTeachingPlan", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioProfTeachingPlan=ds_oProfData" // outDs
+		,"INSACODE=" + quote(ds_ioProfUser.getColumn(ds_ioProfUser.row, "INSACODE")) //-- 사번 // args 
+		,"lfn_AfterSearchProfTeachingPlan"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 교안등록 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchProfTeachingPlan(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    // 데이타셋 초기화
+    ds_ioProfTeachingPlanCnt.SetColumn(0, "YEAR1", 0); // 현재년도
+    ds_ioProfTeachingPlanCnt.SetColumn(0, "YEAR2", 0); // 현재년도-1
+    ds_ioProfTeachingPlanCnt.SetColumn(0, "YEAR3", 0); // 현재년도-2
+    ds_ioProfTeachingPlanCnt.SetColumn(0, "YEAR4", 0); // 현재년도-3
+    ds_ioProfTeachingPlanCnt.SetColumn(0, "YEAR5", 0); // 현재년도-4
+    ds_ioProfTeachingPlanCnt.SetColumn(0, "YEAR6", 0); // 현재년도-5
+    ds_ioProfTeachingPlanCnt.SetColumn(0, "YEAR7", 0); // 현재년도-6
+    ds_ioProfTeachingPlanCnt.SetColumn(0, "YEAR8", 0); // 현재년도-7
+    
+    for (var i=0; i<ds_ioProfTeachingPlan.GetRowCount(); i++) {
+		if (ds_ioProfTeachingPlan.GetColumn(i, "TPYEAR") == Mid(getDate(), 0, 4)) { // 현재년도
+			ds_ioProfTeachingPlanCnt.SetColumn(0, "YEAR1", ds_ioProfTeachingPlan.GetColumn(i, "CNT"));
+		} else if (ds_ioProfTeachingPlan.GetColumn(i, "TPYEAR") == ToString(ParseInt(Mid(getDate(), 0, 4)) - 1)) { // 현재년도-1
+			ds_ioProfTeachingPlanCnt.SetColumn(0, "YEAR2", ds_ioProfTeachingPlan.GetColumn(i, "CNT"));
+		} else if (ds_ioProfTeachingPlan.GetColumn(i, "TPYEAR") == ToString(ParseInt(Mid(getDate(), 0, 4)) - 2)) { // 현재년도-2
+			ds_ioProfTeachingPlanCnt.SetColumn(0, "YEAR3", ds_ioProfTeachingPlan.GetColumn(i, "CNT"));
+		} else if (ds_ioProfTeachingPlan.GetColumn(i, "TPYEAR") == ToString(ParseInt(Mid(getDate(), 0, 4)) - 3)) { // 현재년도-3
+			ds_ioProfTeachingPlanCnt.SetColumn(0, "YEAR4", ds_ioProfTeachingPlan.GetColumn(i, "CNT"));
+		} else if (ds_ioProfTeachingPlan.GetColumn(i, "TPYEAR") == ToString(ParseInt(Mid(getDate(), 0, 4)) - 4)) { // 현재년도-4
+			ds_ioProfTeachingPlanCnt.SetColumn(0, "YEAR5", ds_ioProfTeachingPlan.GetColumn(i, "CNT"));
+		} else if (ds_ioProfTeachingPlan.GetColumn(i, "TPYEAR") == ToString(ParseInt(Mid(getDate(), 0, 4)) - 5)) { // 현재년도-5
+			ds_ioProfTeachingPlanCnt.SetColumn(0, "YEAR6", ds_ioProfTeachingPlan.GetColumn(i, "CNT"));
+		} else if (ds_ioProfTeachingPlan.GetColumn(i, "TPYEAR") == ToString(ParseInt(Mid(getDate(), 0, 4)) - 6)) { // 현재년도-6
+			ds_ioProfTeachingPlanCnt.SetColumn(0, "YEAR7", ds_ioProfTeachingPlan.GetColumn(i, "CNT"));
+		} else if (ds_ioProfTeachingPlan.GetColumn(i, "TPYEAR") == ToString(ParseInt(Mid(getDate(), 0, 4)) - 7)) { // 현재년도-7
+			ds_ioProfTeachingPlanCnt.SetColumn(0, "YEAR8", ds_ioProfTeachingPlan.GetColumn(i, "CNT"));
+		}
+	}
+    
+    // gfn_SearchMessage(gdProfTeachingPlan); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+    gdProfTeachingPlan.Redraw = true;
+}]]></Script>
+</Window>

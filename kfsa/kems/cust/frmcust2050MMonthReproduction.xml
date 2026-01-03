@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="176" Id="frmcust2050MMonthReproduction" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="회비/교육비&#32;월보&#32;재산출" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="456" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_iCusFeeChk">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iReprodection">
+				<Contents>
+					<colinfo id="STARTDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROCDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCusFeeChk">
+				<Contents>
+					<colinfo id="CFCCHKGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFCCLOSEGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFCYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFCMONTH" size="2" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="60" Height="28" Id="Shape0" Left="4" LineColor="user15" Right="452" TabOrder="9" Top="32" Type="Rectangle" Width="448"></Shape>
+		<Shape Bottom="172" Height="108" Id="Shape2" Left="4" LineColor="user15" Right="452" TabOrder="7" Top="64" Type="Rectangle" Width="448"></Shape>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="361" LineColor="user14" Right="452" TabOrder="6" Top="1" Type="Rectangle" Width="91"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="5" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="356">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="364" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="Static1" Left="164" Style="sty_Label" TabOrder="8" Text="해당년월" Top="36" VAlign="Middle" Width="68"></Static>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Height="20" Id="medProcDate" Left="236" LeftMargin="2" Mask="####년##월" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="3" Top="36" Type="STRING" UserData="S" Width="76"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnProc" ImageID="BTN_TEXT_COM" Left="316" OnClick="lfn_Save" Style="sty_Button" TabOrder="4" Text="재산출" Top="35" Width="85"></Button>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="79" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="2" Top="35" UserData="S" Width="82"></Combo>
+		<Static Align="Center" Height="20" Id="Static0" Left="8" Style="sty_Label" TabOrder="10" Text="지부" Top="36" VAlign="Middle" Width="68"></Static>
+		<Static Height="92" Id="Static2" Left="12" Style="sty_TextBlue" TabOrder="11" Text='본&#32;프로그램을&#32;실행하면&#32;그룹웨어&#32;[업무통계]&#32;-&#32;&quot;회비/실무교육비현황]의&#13;&#10;&#13;&#10;해당월&#32;마지막&#32;날의&#32;자료를&#32;재&#32;산출합니다.&#13;&#10;&#13;&#10;재&#32;산출&#32;후&#32;그룹웨어&#32;업무통계의&#32;해당월의&#32;마지막날&#32;자료를&#32;출력하여&#13;&#10;&#13;&#10;월보로&#32;사용하시기&#32;바랍니다.' Top="72" VAlign="Middle" Width="436"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust2050MMonthReproduction.xml
+ * 설명 : 회비/교육비 월보 재산출
+ * 작성일 : 2009.12.28
+ * 작성자 : 김동현
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    gfn_SearchJibu(cbxJibu, "Y", "선택"); // 지부 코드 조회
+    medProcDate.Value = left(getDate(), 6);
+    cbxJibu.SetFocus();
+
+}
+
+/**
+ * 폼 사이즈
+ */
+function Form_OnSize(obj,nCx,nCy,nState) {
+}
+
+/**
+ * 버튼 실행 권한
+ */
+function lfn_SetFormAuth(bStatus) {
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 기본 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+function lfn_Save(obj) {
+
+    if (gfn_IsNull(cbxJibu.Value)) {
+        gfn_Alert("지부를 선택해 주십시오.");
+        return;
+    }
+
+    var sProcYear = left(medProcDate.Value, 4);
+    var sProcMonth = right(medProcDate.Value, 2);
+
+    ds_oCusFeeChk.ClearData();
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("cust:searchCust2060CusFeeChk", false);
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_oCusFeeChk=ds_oCusFeeChk"	// outDs
+        ,"CFCGTMGNO=" + quote(cbxJibu.Value)
+            + " CFCYEAR=" + quote(sProcYear)
+            + " CFCMONTH=" + quote(sProcMonth)	// args
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+
+    if (ds_oCusFeeChk.GetRowCount() > 0 && ds_oCusFeeChk.GetColumn(0, "CFCCLOSEGUBUN") == "마감") { //마감일 경우
+        gfn_Alert(sProcYear + "년 " + sProcMonth + "월 " + "월보는 이미 마감되었습니다.");
+        return false;
+    }
+
+    if (!gfn_Confirm("월보를 재산출 하시겠습니까?")) {
+        return;
+    }
+
+    sProcMonth++;
+    if (sProcMonth > 12) {
+        sProcMonth = 1;
+        sProcYear++;
+    }
+    
+    var sPorcDate = addDate(sProcYear + lpad(sProcMonth, "0", 2) + "01", -1);
+
+    ds_iReprodection.ClearData();
+    ds_iReprodection.InsertRow(0);
+    ds_iReprodection.SetColumn(0, "STARTDATE", left(medProcDate.Value, 4) + "0101");
+    ds_iReprodection.SetColumn(0, "PROCDATE", sPorcDate);
+    ds_iReprodection.SetColumn(0, "GTMGNO", cbxJibu.Value);
+
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("cust:searchCust2050Reprodection", "", 0, "");
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iReprodection=ds_iReprodection" // inDs
+        ,""	// outDs
+        ,""	// args 
+        ,"lfn_AfterSave"
+        ,false
+        ,false
+        ,true
+    );
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 이벤트
+/////////////////////////////////////////////////////////////////////////////////
+
+function medProcDate_OnCharChanged(obj,strPreText,strPostText) {
+	if (right(medProcDate.Value, 2) < "01") {
+        medProcDate.Value = left(medProcDate.Value, 4) + "01";
+	} else if (right(medProcDate.Value, 2) > "12") {
+        medProcDate.Value = left(medProcDate.Value, 4) + "12";
+	}
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 공통
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 저장 후 처리
+ */
+function lfn_AfterSave(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        gfn_Alert("오류가 발생되었습니다. 정보지원과에 문의 하시기 바랍니다.");
+        return "Transaction Error!";
+    }
+    
+    gfn_Alert("월보를 재산출이 완료되었습니다.");
+}
+
+]]></Script>
+</Window>

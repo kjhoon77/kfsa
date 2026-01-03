@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="184" Id="frmprofes0001S03ProfMgmt" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="학술&#32;및&#32;세미나발표" Top="8" Ver="1.0" Width="782" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioProfSeminar">
+				<Contents>
+					<colinfo id="INSACODE" size="8" type="STRING"/>
+					<colinfo id="PSCONTENT" size="500" type="STRING"/>
+					<colinfo id="PSINDATE" size="8" type="STRING"/>
+					<colinfo id="PSOFFICE" size="200" type="STRING"/>
+					<colinfo id="PSSEQ" size="22" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oProfSeminarSingle">
+				<Contents>
+					<colinfo id="INSACODE" size="8" type="STRING"/>
+					<colinfo id="PSCONTENT" size="500" type="STRING"/>
+					<colinfo id="PSINDATE" size="8" type="STRING"/>
+					<colinfo id="PSOFFICE" size="200" type="STRING"/>
+					<colinfo id="PSSEQ" size="22" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="180" Height="176" Id="shpGubunBox1" Left="4" LineColor="user15" Right="776" TabOrder="5" Top="4" Type="Rectangle" Width="772"></Shape>
+		<Static Align="Center" Height="20" Id="Static8" Left="-144" Style="sty_LabelGruopBox" TabOrder="6" Text="안전원&#32;교수&#32;관리" Top="63" VAlign="Middle" Width="120"></Static>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_ioProfSeminar" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="178" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="142" Id="gdProfSeminar" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" OnHeadClick="gdProfSeminar_OnHeadClick" Right="772" RowHeight="20" Style="sty_Grid" TabOrder="3" TabStop="true" Top="36" UseDBuff="true" UsePopupMenu="true" UserData="학술&#32;및&#32;세미나발표목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="764">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="30"/>
+						<col width="80"/>
+						<col width="300"/>
+						<col width="300"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="발표일자"/>
+						<cell align="center" col="2" display="text" text="발표내용"/>
+						<cell align="center" col="3" display="text" text="개최기관"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow+1"/>
+						<cell align="center" col="1" colid="PSINDATE" display="date" edit="date"/>
+						<cell align="left" col="2" colid="PSCONTENT" display="text" edit="normal"/>
+						<cell align="left" col="3" colid="PSOFFICE" display="text" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Height="16" Id="lbText" Left="12" Style="sty_Text" TabOrder="4" Text="■&#32;학술&#32;및&#32;세미나&#32;발표(발표일자는&#32;&apos;-&apos;&#32;제외한&#32;8자리&#32;숫자로&#32;입력" Top="12" VAlign="Middle" Width="400"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnAdd" ImageID="BTN_TEXT_03" Left="666" OnClick="btnAdd_OnClick" Style="sty_Button" TabOrder="1" Text="행&#32;추가" Top="10" Transparent="TRUE" Width="52"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnDel" ImageID="BTN_TEXT_03" Left="720" OnClick="btnDel_OnClick" Style="sty_Button" TabOrder="2" Text="행&#32;삭제" ToolTipText="행&#32;삭제&#32;후&#32;저장버튼을&#32;눌러&#32;저장하세요." Top="10" Transparent="TRUE" Width="52"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmPFM0001S03ProfMgmt.xml
+ * 설명 : 학술 및 세미나발표
+ * 작성일 : 2009.11.07
+ * 작성자 : 김종복
+ */
+
+#include "LIB::profes.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    tit_createActionInfo(); // X-Framework용    
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+    
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }    
+}
+
+/*
+ * 기능 : 학술 및 세미나발표 조회
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SearchProfSeminar(obj) {
+	gdProfSeminar.Redraw = false;
+	
+	ds_ioProfSeminar.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("profes:searchProfes0001ProfSeminar", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioProfSeminar=ds_oProfData" // outDs
+		,"INSACODE=" + quote(ds_ioProfUser.getColumn(ds_ioProfUser.row, "INSACODE")) //-- 사번 // args 
+		,"lfn_AfterSearchProfSeminar"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 학술 및 세미나발표 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchProfSeminar(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    gfn_SearchMessage(gdProfSeminar); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+    gdProfSeminar.Redraw = true;
+}
+
+/*
+ * 기능 : 행추가
+ */
+function btnAdd_OnClick(obj) {
+	ds_ioProfSeminar.AddRow(); // Dataset에 빈 Record한줄 추가
+	ds_ioProfSeminar.SetColumn(ds_ioProfSeminar.row, "INSACODE", ds_ioProfUser.GetColumn(ds_ioProfUser.row, "INSACODE"));
+}
+
+/*
+ * 기능 : 행삭제
+ */
+function btnDel_OnClick(obj) {
+	ds_ioProfSeminar.DeleteRow(ds_ioProfSeminar.row); // Dataset에 한줄 삭제
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    gdProfSeminar.Editable = bStatus;
+}
+
+/*
+ * 기능 : 그리드 정렬
+ */
+function gdProfSeminar_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+	var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1 && nCell > 0) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+/*
+ * 기능 : 학술 및 세미나발표 저장
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_SaveProfSeminar(obj) {
+	// if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        // return false;
+    // }
+	
+	for (var j=0; j<ds_ioProfSeminar.GetRowCount(); j++) {
+		if (ds_ioProfSeminar.GetRowType(j) == "insert") {
+			ds_oProfSeminarSingle.AddRow();
+			ds_oProfSeminarSingle.CopyRow(ds_oProfSeminarSingle.row, ds_ioProfSeminar, j);
+			lfn_InsProfSeminar(); // 학술 및 세미나 발표 입력
+			ds_oProfSeminarSingle.ClearData();
+		}
+    }
+    
+	tit_clearActionInfo();
+    tit_AddSaveActionInfo(	
+        "" // insert  		
+        , "profes:updateProfes0001ProfSeminar" // update  
+        , "profes:deleteProfes0001ProfSeminar" // delete
+        , "" // flag column 명
+        , "" // key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N" // 실행타입
+    );
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iProfData=ds_ioProfSeminar:U" // inDs		
+        ,""	// outDs
+        ,"PSABUN=" + gds_oUserInfo.GetColumn(0, "PSABUN") //-- 작성자사번 // args 
+        ,"lfn_AfterSaveProfSeminar"
+        ,false
+        ,false
+		,true
+    );
+}
+
+/*
+ * 기능 : 학술 및 세미나발표 저장 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveProfSeminar(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/*
+ * 기능 : 학술 및 세미나발표 입력
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_InsProfSeminar(obj) {
+	tit_clearActionInfo();
+	tit_AddSingleActionInfo("profes:insertProfes0001ProfSeminar", "", 0, "", "N");
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,"ds_iProfData=ds_oProfSeminarSingle:A" // inDs		
+		,""	// outDs
+		,"PSABUN=" + gds_oUserInfo.GetColumn(0, "PSABUN") //-- 작성자사번 // args 
+		,"lfn_AfterInsProfSeminar"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 학술 및 세미나발표 입력 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterInsProfSeminar(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/*
+ * 기능 : 학술 및 세미나발표 삭제
+ * parameter : 없음
+ * Return : 없음
+ */
+function lfn_DelProfSeminar(obj) {
+	tit_clearActionInfo();
+	tit_AddMultiActionInfo("profes:deleteProfes0001ProfSeminar", "", 0, "", "N");
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iProfData=ds_ioProfSeminar:A" // inDs		
+        ,""	// outDs
+        ,"PSABUN=" + gds_oUserInfo.GetColumn(0, "PSABUN") //-- 작성자사번 // args 
+        ,"lfn_AfterDelProfSeminar"
+        ,false
+        ,false
+		,true
+    );
+}
+
+/*
+ * 기능 : 학술 및 세미나발표 삭제 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterDelProfSeminar(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}]]></Script>
+</Window>

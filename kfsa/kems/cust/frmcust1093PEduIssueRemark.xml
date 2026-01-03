@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="88" Id="frmcust1093PEduIssueRemark" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="교육이수사유" TooltipFont="Default,0" Top="8" Ver="1.0" Width="544" WorkArea="true">
+		<Static Align="Center" Height="20" Id="lbTitle" Left="2" Style="sty_Label" TabOrder="2" Text="교육이수&#32;사유" Top="4" VAlign="Middle" Width="100"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" DisableBKColor="user4" Height="20" Id="edRemark" ImeMode="native" Left="104" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edKeyWord_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="1" Top="4" UserData="S" Width="434"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnConfirm" ImageID="BTN_TEXT_06" Left="185" OnClick="btnConfirm_OnClick" Style="sty_Button" TabOrder="3" Text="확인" ToolTipText="조회" Top="60" Width="93"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_TEXT_06" Left="278" OnClick="btnCancel_OnClick" Style="sty_Button" TabOrder="4" Text="취소" ToolTipText="조회" Top="60" Width="93"></Button>
+		<Static Align="Center" BKColor="user0" BorderColor="user0" Color="user1" Font="굴림,12,Bold" Height="20" Id="lbMeg" Left="10" Style="sty_Label" TabOrder="5" Text="교육이수&#32;사유" Top="30" VAlign="Middle" Width="526"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust1093PEduIssueRemark.xml
+ * 설명 : 실무교육이수 사유 입력
+ * 작성일 : 2014.12.03
+ * 작성자 : 정현호
+ */
+ 
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+
+function Form_OnLoadCompleted(obj)
+{
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+	
+	lbMeg.Text = sMeg;
+	
+}
+
+
+/* 확인 버튼 처리*/
+function btnConfirm_OnClick(obj)
+{
+	// 체크 
+	if (edRemark.Text == null || edRemark.Text == "") {
+		alert("교육이수 사유를 입력 해주세요!");
+		edRemark.SetFocus();
+		return;
+	}
+
+	var arrArg = edRemark.Text;
+    
+    Close(arrArg);
+}
+
+
+function btnCancel_OnClick(obj)
+{
+	var arrArg = "";
+    
+    Close(arrArg);
+}
+
+function edKeyWord_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+    if (nChar == 13) {
+        btnConfirm_OnClick(obj);
+    }	
+}
+]]></Script>
+</Window>

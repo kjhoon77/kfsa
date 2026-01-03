@@ -1,0 +1,3981 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="880" Id="frmcti0010MBoardMain" Left="8" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnTimer="Form_OnTimer" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="민원상담접수" Top="8" Ver="1.0" Width="1824" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_AgentState">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>NULL</DATA>
+					</record>
+					<record>
+						<CD>10</CD>
+						<DATA>Logout</DATA>
+					</record>
+					<record>
+						<CD>20</CD>
+						<DATA>Login</DATA>
+					</record>
+					<record>
+						<CD>30</CD>
+						<DATA>Not&#32;Ready</DATA>
+					</record>
+					<record>
+						<CD>40</CD>
+						<DATA>Ready</DATA>
+					</record>
+					<record>
+						<CD>41</CD>
+						<DATA>INBOUND&#32;Ready</DATA>
+					</record>
+					<record>
+						<CD>42</CD>
+						<DATA>OUTBOUND&#32;Ready</DATA>
+					</record>
+					<record>
+						<CD>50</CD>
+						<DATA>Busy</DATA>
+					</record>
+					<record>
+						<CD>60</CD>
+						<DATA>AftWork</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Statesubcode">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_CtiInfo"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_CtiAgentList">
+				<Contents>
+					<colinfo id="ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="AGENT" size="256" summ="default" type="STRING"/>
+					<colinfo id="DN" size="256" summ="default" type="STRING"/>
+					<colinfo id="AgentName" size="256" summ="default" type="STRING"/>
+					<colinfo id="AgentState" size="256" summ="default" type="STRING"/>
+					<colinfo id="AgentStateSub" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMinwonList">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iCallKeyIn">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCallKeyIn"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oUserDNInfo">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oResult">
+				<Contents>
+					<colinfo id="ASSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ASSTATCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="ASSUBCD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_FileList">
+				<Contents></Contents>
+			</Dataset>
+		</Datasets>
+		<Div Height="770" Id="divJubsu" Left="14" TabOrder="1" Text="Div0" Top="98" Url="cti::frmcti0010SMinwonCallJubsu.xml" Width="100">
+			<Contents></Contents>
+		</Div>
+		<Div Border="Flat" BorderColor="user6" Height="600" Id="DivTest" Left="1680" TabOrder="2" Text="Div0" Top="231" Visible="FALSE" Width="352">
+			<Contents>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnGsXml" ImageID="BTN_TEXT_06" Left="8" OnClick="DivTest_btnGsXml_OnClick" Style="sty_Button" TabOrder="1" Text="gs" Top="32" Transparent="TRUE" Width="95"></Button>
+				<TextArea Height="491" Id="txtArea" Left="5" TabOrder="2" Top="94" VScroll="TRUE" Width="329"></TextArea>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnDsXml" ImageID="BTN_TEXT_06" Left="8" OnClick="DivTest_btnDsXml_OnClick" Style="sty_Button" TabOrder="3" Text="dsXml" Top="56" Transparent="TRUE" Width="95"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnGdsXml" ImageID="BTN_TEXT_06" Left="8" OnClick="DivTest_btnGdsXml_OnClick" Style="sty_Button" TabOrder="4" Text="gdsXml" Top="8" Transparent="TRUE" Width="95"></Button>
+				<Button Height="21" Id="btntxtResponse" Left="291" OnClick="DivTest_btntxtResponse_OnClick" TabOrder="5" Text="clear" Top="69" Width="40"></Button>
+				<Button Height="21" Id="Button0" Left="126" OnClick="DivTest_Button0_OnClick" TabOrder="6" Text="getDate" Top="10" Width="104"></Button>
+			</Contents>
+		</Div>
+		<Div Border="Flat" Height="752" Id="divApi" Left="144" TabOrder="3" Text="Div0" Top="128" Visible="FALSE" Width="1512">
+			<Contents>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnAgentLogin" ImageID="BTN_TEXT_06" Left="280" OnClick="fnApiAgentLogin" Style="sty_Button" TabOrder="21" Text="AgentLogin" Top="140" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnMonitorStart" ImageID="BTN_TEXT_06" Left="280" OnClick="fnApiMonitorStart" Style="sty_Button" TabOrder="20" Text="Monitor&#32;Start" Top="70" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnOpenServer" ImageID="BTN_TEXT_06" Left="280" OnClick="fnApiOpenServer" Style="sty_Button" TabOrder="19" Text="OpenServer" Top="46" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtGConnID" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="18" Top="324" Width="101"></Edit>
+				<Static BKColor="user36" Height="20" Id="Static57" Left="15" Style="sty_Label" TabOrder="17" Text="txtGConnID" Top="324" VAlign="Middle" Width="160"></Static>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtDestDN" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="16" Top="397" Width="101"></Edit>
+				<Static Height="20" Id="Static55" Left="15" Style="sty_Label" TabOrder="15" Text="txtDestDN&#32;-&#32;상대방의&#32;DN" Top="397" VAlign="Middle" Width="160"></Static>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtGThisDN" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="14" Top="116" Width="101"></Edit>
+				<Static BKColor="user36" Height="20" Id="Static19" Left="16" Style="sty_Label" TabOrder="13" Text="txtGThisDN" Top="116" VAlign="Middle" Width="160"></Static>
+				<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbStatesubcode" ImeMode="none" INDEX="0" InnerDataset="ds_Statesubcode" Left="177" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="11" Top="214" UserData="I:관서" Width="101"></Combo>
+				<Static Height="20" Id="Static35" Left="15" Style="sty_Label" TabOrder="12" Text="상태&#32;부가&#32;정보" Top="216" VAlign="Middle" Width="160"></Static>
+				<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbAgentState" ImeMode="none" INDEX="0" InnerDataset="ds_AgentState" Left="177" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="9" Top="162" UserData="I:관서" Width="101"></Combo>
+				<Static Height="20" Id="Static28" Left="15" Style="sty_Label" TabOrder="10" Text="Agent&#32;상태" Top="164" VAlign="Middle" Width="160"></Static>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtAgentID" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="8" Top="140" Width="101"></Edit>
+				<Static Height="20" Id="Static24" Left="15" Style="sty_Label" TabOrder="7" Text="Agent의&#32;ID" Top="140" VAlign="Middle" Width="160"></Static>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtGExHandle" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="6" Top="68" Width="101"></Edit>
+				<Static BKColor="user36" Height="20" Id="Static36" Left="15" Style="sty_Label" TabOrder="5" Text="txtGExHandle" Top="68" VAlign="Middle" Width="160"></Static>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtHandle" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="4" Top="44" Width="101"></Edit>
+				<Static BKColor="user36" Height="20" Id="Static1" Left="15" Style="sty_Label" TabOrder="3" Text="txtHandle" Top="44" VAlign="Middle" Width="160"></Static>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtDN" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="2" Top="92" Width="101"></Edit>
+				<Static Height="20" Id="Static20" Left="15" Style="sty_Label" TabOrder="1" Text="txtDN&#32;-&#32;대상&#32;DN" Top="92" VAlign="Middle" Width="160"></Static>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnMakeCall" ImageID="BTN_TEXT_06" Left="280" OnClick="fnApiMakeCall" Style="sty_Button" TabOrder="22" Text="Make&#32;Call" Top="397" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnClearCall" ImageID="BTN_TEXT_06" Left="280" OnClick="fnApiClearCall" Style="sty_Button" TabOrder="23" Text="Clear&#32;Call" Top="373" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnAnswerCall" ImageID="BTN_TEXT_06" Left="280" OnClick="fnApiAnswerCall" Style="sty_Button" TabOrder="24" Text="Answer&#32;Call" Top="349" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Static BKColor="user36" Height="20" Id="stTxtResponse" Left="511" Style="sty_Label" TabOrder="26" Text="txtResponse" Top="11" VAlign="Middle" Width="120"></Static>
+				<Button Height="21" Id="btntxtResponse" Left="635" OnClick="fnCleartxtResponse" TabOrder="27" Text="clear" Top="11" Width="40"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnGetAgentList" ImageID="BTN_TEXT_06" Left="510" OnClick="fnApiGetAgentList" Style="sty_Button" TabOrder="28" Text="Agent&#32;List&#32;가져오기" Top="710" Transparent="TRUE" Visible="FALSE" Width="135"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnAgentReport" ImageID="BTN_TEXT_06" Left="654" OnClick="fnApiAgentReport" Style="sty_Button" TabOrder="29" Text="ICAgentReport" Top="710" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnGetStateSubcode" ImageID="BTN_TEXT_06" Left="280" OnClick="fnApiGetStateSubcode" Style="sty_Button" TabOrder="30" Text="Get&#32;State&#32;Subcode" Top="212" Transparent="TRUE" Visible="FALSE" Width="119"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSetAgentState" ImageID="BTN_TEXT_06" Left="279" OnClick="fnApiSetAgentState" Style="sty_Button" TabOrder="31" Text="SetAgentState" Top="163" Transparent="TRUE" Visible="FALSE" Width="111"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnGetAgentState" ImageID="BTN_TEXT_06" Left="279" OnClick="fnApiGetAgentState" Style="sty_Button" TabOrder="32" Text="Get&#32;Agent&#32;State" Top="187" Transparent="TRUE" Visible="FALSE" Width="111"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnHoldCall" ImageID="BTN_TEXT_06" Left="280" OnClick="fnApiHoldCall" Style="sty_Button" TabOrder="33" Text="Hold&#32;Call" Top="430" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnRetrieveCall" ImageID="BTN_TEXT_06" Left="280" OnClick="fnApiRetrieveCall" Style="sty_Button" TabOrder="34" Text="Retrieve&#32;Call" Top="454" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnTransferCall" ImageID="BTN_TEXT_06" Left="280" OnClick="fnApiSinglestepTransfer" Style="sty_Button" TabOrder="35" Text="Singlestep&#32;Transfer" Top="478" Transparent="TRUE" Visible="FALSE" Width="143"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnMuteTransfer" ImageID="BTN_TEXT_06" Left="280" OnClick="fnApiMuteTransfer" Style="sty_Button" TabOrder="36" Text="Mute&#32;Transfer" Top="502" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtCallDn" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="37" Top="348" Width="101"></Edit>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSetAfterCallState" ImageID="BTN_TEXT_06" Left="278" OnClick="fnApiSetAfterCallState" Style="sty_Button" TabOrder="38" Text="SetAfterCallState" Top="239" Transparent="TRUE" Visible="FALSE" Width="111"></Button>
+				<Static Height="20" Id="Static2" Left="15" Style="sty_Label" TabOrder="40" Text="Agent&#32;상태(통화후)" Top="239" VAlign="Middle" Width="160"></Static>
+				<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbAgentStateAfter" ImeMode="none" INDEX="0" InnerDataset="ds_AgentState" Left="177" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="39" Top="237" UserData="I:관서" Width="101"></Combo>
+				<Static BKColor="user36" Height="20" Id="Static3" Left="15" Style="sty_Label" TabOrder="41" Text="txtCallDn&#32;-&#32;수신&#32;전화번호" Top="348" VAlign="Middle" Width="160"></Static>
+				<Static BKColor="user36" Height="20" Id="Static0" Left="15" Style="sty_Label" TabOrder="42" Text="txtCallType&#32;-&#32;수신&#32;통화구분" Top="372" VAlign="Middle" Width="160"></Static>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtCallType" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="43" Top="372" Width="101"></Edit>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnAgentSubscribe" ImageID="BTN_TEXT_06" Left="280" OnClick="fnApiAgentSubscribe" Style="sty_Button" TabOrder="44" Text="ICAgentSubscribe" Top="652" Transparent="TRUE" Visible="FALSE" Width="127"></Button>
+				<Static BKColor="user36" Height="20" Id="Static4" Left="15" Style="sty_Label" TabOrder="45" Text="Subscribe&#32;ID" Top="652" VAlign="Middle" Width="160"></Static>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtSubscribeID" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="46" Top="652" Width="101"></Edit>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCloseSubscribe" ImageID="BTN_TEXT_06" Left="280" OnClick="fnApiCloseSubscribe" Style="sty_Button" TabOrder="47" Text="ICCloseSubscribe" Top="676" Transparent="TRUE" Visible="FALSE" Width="127"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnQueueSubscribe" ImageID="BTN_TEXT_06" Left="278" OnClick="fnApiQueueSubscribe" Style="sty_Button" TabOrder="48" Text="ICQueueSubscribe" Top="702" Transparent="TRUE" Visible="FALSE" Width="127"></Button>
+				<Static BKColor="user36" Height="20" Id="Static5" Left="15" Style="sty_Label" TabOrder="49" Text="Subscribe&#32;ID(Queue)" Top="702" VAlign="Middle" Width="160"></Static>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtQueueSubscribeID" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="50" Top="702" Width="101"></Edit>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCloseQueueSubscribe" ImageID="BTN_TEXT_06" Left="280" OnClick="fnApiQueueCloseSubscribe" Style="sty_Button" TabOrder="51" Text="ICCloseSubscribe" Top="724" Transparent="TRUE" Visible="FALSE" Width="127"></Button>
+				<Static BKColor="user36" Height="20" Id="Static6" Left="15" Style="sty_Label" TabOrder="52" Text="txtGConnID2" Top="500" VAlign="Middle" Width="160"></Static>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtGConnID2" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="53" Top="500" Width="101"></Edit>
+				<Static Height="20" Id="Static8" Left="15" Style="sty_Label" TabOrder="54" Text="(1:&#32;즉시,&#32;2:&#32;3자후)&#32;" Top="479" VAlign="Middle" Width="160"></Static>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtTransferGubun" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="55" Text="1" Top="479" Width="101"></Edit>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button0" ImageID="BTN_TEXT_06" Left="392" OnClick="api_Ringing" Style="sty_Button" TabOrder="56" Text="Ringing" Top="252" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button1" ImageID="BTN_TEXT_06" Left="392" OnClick="api_Initiated" Style="sty_Button" TabOrder="57" Text="Initiated" Top="276" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button2" ImageID="BTN_TEXT_06" Left="392" OnClick="api_Established" Style="sty_Button" TabOrder="58" Text="Established" Top="324" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button3" ImageID="BTN_TEXT_06" Left="392" OnClick="api_Released" Style="sty_Button" TabOrder="59" Text="Released" Top="348" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtChkAgentState" ImeMode="native" Left="176" LeftMargin="2" Style="sty_Edit" TabOrder="60" Top="629" Width="101"></Edit>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button4" ImageID="BTN_TEXT_06" Left="278" OnClick="fnApiChkGetAgentState" Style="sty_Button" TabOrder="61" Text="Get&#32;Agent&#32;State" Top="607" Transparent="TRUE" Visible="FALSE" Width="111"></Button>
+				<Static Height="20" Id="Static7" Left="14" Style="sty_Label" TabOrder="62" Text="체크&#32;Agent의&#32;ID" Top="607" VAlign="Middle" Width="160"></Static>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtChkAgentID" ImeMode="native" Left="176" LeftMargin="2" Style="sty_Edit" TabOrder="63" Top="607" Width="101"></Edit>
+				<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button5" ImageID="BTN_TEXT_06" Left="280" OnClick="fnApiSinglestepConference" Style="sty_Button" TabOrder="64" Text="Singlestep&#32;Conference" Top="526" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Static BKColor="user36" Height="20" Id="Static9" Left="15" Style="sty_Label" TabOrder="65" Text="txtExHandle" Top="521" VAlign="Middle" Width="160"></Static>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtExHandle" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="66" Top="521" Width="101"></Edit>
+				<Button Align="Left" ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button7" ImageID="BTN_TEXT_06" Left="384" OnClick="fnApiGetValue" Style="sty_Button" TabOrder="67" Text="fnApiGetValue" Top="502" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button8" ImageID="BTN_TEXT_06" Left="392" OnClick="api_Dialing" Style="sty_Button" TabOrder="68" Text="Dialing" Top="300" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button9" ImageID="BTN_TEXT_06" Left="392" OnClick="api_PartyChanged" Style="sty_Button" TabOrder="69" Text="PartyChanged" Top="380" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtExKey" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="70" Top="543" Width="101"></Edit>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtExValue" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="71" Top="565" Width="101"></Edit>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtFieldValue" ImeMode="native" Left="176" LeftMargin="2" Style="sty_Edit" TabOrder="72" Top="586" Width="101"></Edit>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button10" ImageID="BTN_TEXT_06" Left="392" OnClick="api_PartyAdded" Style="sty_Button" TabOrder="73" Text="PartyAdded" Top="404" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button11" ImageID="BTN_TEXT_06" Left="392" OnClick="api_PartyDeleted" Style="sty_Button" TabOrder="74" Text="PartyDeleted" Top="428" Transparent="TRUE" Visible="FALSE" Width="95"></Button>
+				<Static BKColor="user36" Height="20" Id="Static10" Left="15" Style="sty_Label" TabOrder="75" Text="txtExKey" Top="543" VAlign="Middle" Width="160"></Static>
+				<Static BKColor="user36" Height="20" Id="Static11" Left="15" Style="sty_Label" TabOrder="76" Text="txtExValue" Top="565" VAlign="Middle" Width="160"></Static>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtDestDNPre" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="77" Top="421" Width="101"></Edit>
+				<Static Height="20" Id="Static12" Left="15" Style="sty_Label" TabOrder="78" Text="txtDestDNPre" Top="421" VAlign="Middle" Width="160"></Static>
+				<Grid AutoEnter="TRUE" BindDataset="gds_CtiInfo" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="737" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="51" Id="gdList" InputPanel="FALSE" Left="510" LineColor="default" Right="1438" RowHeight="20" Style="sty_Grid" TabOrder="79" TabStop="true" Top="686" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="928">
+					<contents>
+						<format id="Default">
+							<columns>
+								<col width="74"/>
+								<col width="87"/>
+								<col width="30"/>
+								<col width="78"/>
+								<col width="30"/>
+								<col width="76"/>
+								<col width="65"/>
+								<col width="81"/>
+								<col width="117"/>
+								<col width="72"/>
+								<col width="83"/>
+								<col width="57"/>
+								<col width="69"/>
+							</columns>
+							<head>
+								<cell bkcolor="user7" col="0" display="text" text="DN"/>
+								<cell bkcolor="user7" col="1" display="text" text="AgentID"/>
+								<cell col="2" colspan="2" display="text" text="로그인후상태"/>
+								<cell col="4" colspan="2" display="text" text="통화후상태"/>
+								<cell col="6" display="text" text="Queue"/>
+								<cell bkcolor="user7" col="7" display="text" text="UEIDestDn"/>
+								<cell bkcolor="user7" col="8" display="text" text="본부(0),지부(1)"/>
+								<cell col="9" display="text" text="지부코드"/>
+								<cell col="10" display="text" text="지부명"/>
+								<cell col="11" display="text" text="콜센타"/>
+								<cell col="12" display="text" text="저장권한"/>
+							</head>
+							<body>
+								<cell align="center" col="0" colid="DN" display="text"/>
+								<cell align="center" col="1" colid="AgentID" display="text"/>
+								<cell col="2" colid="AgentState" display="text"/>
+								<cell col="3" colid="AgentState" combocol="CD" combodataset="ds_AgentState" combotext="DATA" display="combo"/>
+								<cell col="4" colid="AgentStateAfter" display="text"/>
+								<cell col="5" colid="AgentStateAfter" combocol="CD" combodataset="ds_AgentState" combotext="DATA" display="combo"/>
+								<cell col="6" colid="Queue" display="text"/>
+								<cell align="left" col="7" colid="UEIDestDn" display="text"/>
+								<cell align="left" col="8" colid="GTGUBUNCD" display="text"/>
+								<cell col="9" colid="GTMGNO" display="text"/>
+								<cell col="10" colid="GTDEPTNM" display="text"/>
+								<cell col="11" colid="IPCALLYN" display="text"/>
+								<cell col="12" colid="IPSAVEYN" display="text"/>
+							</body>
+						</format>
+					</contents>
+				</Grid>
+				<Button Font="휴먼엑스포,7,Bold" Height="22" Id="btnKeyinHP" Left="382" OnClick="btnKeyinHP_OnClick" TabOrder="80" Text="KEY&#10;IN" Top="526" Visible="FALSE" Width="26"></Button>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="edKeyInValue" ImeMode="native" Left="384" LeftMargin="2" Style="sty_Edit" TabOrder="81" Top="551" Visible="FALSE" Width="101"></Edit>
+				<Static Height="20" Id="Static13" Left="15" Style="sty_Label" TabOrder="82" Text="txtLastDn" Top="445" VAlign="Middle" Width="160"></Static>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="txtLastDn" ImeMode="native" Left="177" LeftMargin="2" Style="sty_Edit" TabOrder="83" Top="445" Width="101"></Edit>
+				<Button Height="21" Id="Button6" Left="393" OnClick="divApi_Button6_OnClick" TabOrder="84" Text="사용자변경" Top="45" Visible="FALSE" Width="104"></Button>
+				<Static Height="13" Id="Static14" Left="393" TabOrder="85" Text="txtDN,&#32;txtAgentID" Top="73" Visible="FALSE" Width="104"></Static>
+				<Button Height="21" Id="Button12" Left="383" OnClick="divApi_Button12_OnClick" TabOrder="86" Text="Queue변경" Top="700" Visible="FALSE" Width="104"></Button>
+				<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Height="20" Id="edQueue" ImeMode="native" Left="384" LeftMargin="2" Style="sty_Edit" TabOrder="87" Top="723" Visible="FALSE" Width="101"></Edit>
+				<TextArea Height="648" Id="txtResponse" Left="508" TabOrder="25" Top="38" VScroll="TRUE" Width="936"></TextArea>
+			</Contents>
+		</Div>
+		<Image Cursor="HAND" Height="36" Id="imgKemsLogo" ImageID="IMG_KFSI_LOGO" Left="3" OnClick="imgKemsLogo_OnClick" Static="FALSE" Style="sty_Image" TabOrder="4" Top="9" Width="88"></Image>
+		<Edit Align="CENTER" AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user14" DisableColor="user0" Enable="FALSE" Font="굴림,10,Bold" Height="28" Id="edCallStateTxt" ImeMode="native" Left="98" LeftMargin="2" Readonly="TRUE" Style="sty_Edit" TabOrder="5" Top="8" Width="157"></Edit>
+		<Edit AutoSelect="TRUE" BKColor="white" Border="None" DisableBKColor="user0" Enable="FALSE" Font="굴림,9" Height="20" Id="edStateTime" ImeMode="native" Left="265" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="6" Text="00:00:00" Top="12" Width="50"></Edit>
+		<Static Align="Center" BKColor="user39" Height="28" Id="Static14" Left="327" Style="sty_LabelGruopBox" TabOrder="7" Text="당일누계" Top="8" VAlign="Middle" Width="61"></Static>
+		<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Enable="FALSE" Font="굴림,9" Height="28" Id="edAgentSubscribe" ImeMode="native" Left="389" LeftMargin="2" Readonly="TRUE" Style="sty_Edit" TabOrder="8" Text="&#32;통화&#32;00:00:00&#32;대기&#32;00:00:00&#32;후처리&#32;00:00:00&#32;자리비움&#32;00:00:00&#32;외부수신&#32;00건&#32;내부수신&#32;00건" Top="8" Width="566"></Edit>
+		<Static Align="Center" BKColor="user39" Height="28" Id="Static15" Left="964" Style="sty_LabelGruopBox" TabOrder="9" Text="대기현황" Top="8" VAlign="Middle" Width="61"></Static>
+		<Edit AutoSelect="TRUE" BKColor="white" Border="Flat" DisableBKColor="user0" Enable="FALSE" Font="굴림,9" Height="28" Id="edTenantSubscribe" ImeMode="native" Left="1026" LeftMargin="2" Readonly="TRUE" Style="sty_Edit" TabOrder="10" Text="&#32;민원이&#32;0건&#32;&#32;상담원&#32;0건" Top="8" Width="148"></Edit>
+		<Shape Bottom="73" Height="28" Id="Shape5" Left="101" LineColor="user14" Right="338" TabOrder="14" Top="45" Type="Rectangle" Width="237"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCallReady" ImageID="BTN_TEXT_04" Left="104" OnClick="fnClickBtn" Style="sty_Button" TabOrder="11" Text="수신대기" Top="48" Transparent="TRUE" Width="68"></Button>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxStop" ImeMode="none" INDEX="0" InnerDataset="ds_Statesubcode" Left="176" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="12" Top="48" UserData="I:관서" Width="90"></Combo>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCallStop" ImageID="BTN_TEXT_04" Left="267" OnClick="fnClickBtn" Style="sty_Button" TabOrder="13" Text="자리비움" Top="48" Transparent="TRUE" Width="68"></Button>
+		<Shape Bottom="73" Height="28" Id="Shape1" Left="944" LineColor="user14" Right="1224" TabOrder="29" Top="45" Type="Rectangle" Width="280"></Shape>
+		<Shape Bottom="73" Height="28" Id="Shape0" Left="716" LineColor="user14" Right="922" TabOrder="26" Top="45" Type="Rectangle" Width="206"></Shape>
+		<Shape Bottom="73" Height="28" Id="Shape3" Left="348" LineColor="user14" Right="490" TabOrder="19" Top="45" Type="Rectangle" Width="142"></Shape>
+		<Shape Bottom="73" Height="28" Id="Shape4" Left="490" LineColor="user14" Right="630" TabOrder="20" Top="45" Type="Rectangle" Width="140"></Shape>
+		<Shape Bottom="73" Height="28" Id="Shape6" Left="635" LineColor="user14" Right="707" TabOrder="21" Top="45" Type="Rectangle" Width="72"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCallHold" ImageID="BTN_TEXT_04" Left="351" OnClick="fnApiHoldCall" Style="sty_Button" TabOrder="15" Text="보류" Top="48" Transparent="TRUE" Width="68"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCallHoldCancel" ImageID="BTN_TEXT_04" Left="420" OnClick="fnApiRetrieveCall" Style="sty_Button" TabOrder="16" Text="보류해제" Top="48" Transparent="TRUE" Width="68"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCallTransfer" ImageID="BTN_TEXT_04" Left="493" OnClick="fnClickBtn" Style="sty_Button" TabOrder="17" Text="호전환" Top="48" Transparent="TRUE" Width="68"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCallHangup" ImageID="BTN_TEXT_04" Left="638" OnClick="fnApiClearCall" Style="sty_Button" TabOrder="18" Text="끊기" Top="48" Transparent="TRUE" Width="68"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnExtension51" ImageID="BTN_TEXT_04" Left="719" OnClick="fnClickBtn" Style="sty_Button" TabOrder="22" Text="비속어" Top="48" Transparent="TRUE" Width="68"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnExtension52" ImageID="BTN_TEXT_04" Left="786" OnClick="fnClickBtn" Style="sty_Button" TabOrder="23" Text="성희롱" Top="48" Transparent="TRUE" Width="68"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnExtension53" ImageID="BTN_TEXT_04" Left="853" OnClick="fnClickBtn" Style="sty_Button" TabOrder="24" Text="상담불가" Top="48" Transparent="TRUE" Width="68"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnExtension61" ImageID="BTN_TEXT_04" Left="1005" OnClick="fnClickBtn" Style="sty_Button" TabOrder="25" Text="주민번호" Top="48" Transparent="TRUE" Width="68"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnExtension62" ImageID="BTN_TEXT_04" Left="1073" OnClick="fnClickBtn" Style="sty_Button" TabOrder="27" Text="전화번호" Top="48" Transparent="TRUE" Width="68"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnExtension63" ImageID="BTN_TEXT_05" Left="1141" OnClick="fnClickBtn" Style="sty_Button" TabOrder="28" Text="사업자번호" Top="48" Transparent="TRUE" Width="80"></Button>
+		<Static Align="Center" BKColor="user14" Height="24" Id="Static19" Left="946" Style="sty_Label" TabOrder="30" Text="KEY-IN" Top="47" VAlign="Middle" Width="56"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCallInTransfer" ImageID="BTN_TEXT_04" Left="561" OnClick="fnClickBtn" Style="sty_Button" TabOrder="31" Text="내선전환" Top="48" Transparent="TRUE" Width="68"></Button>
+		<Edit Align="CENTER" AutoSelect="TRUE" BKColor="white" Border="None" DisableBKColor="user0" Enable="FALSE" Font="굴림,9" Height="20" Id="edVersion" ImeMode="native" Left="9" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="33" Text="ver" Top="49" Width="85"></Edit>
+		<ICAPI5 Activetimeout="api_Activetimeout" AgentBusy="api_AgentBusy" AgentLogin="api_AgentLogin" AgentReady="api_AgentReady" AgentSScribePush="api_AgentSScribePush" Banishment="api_Banishment" Bottom="77" DeviceBackInService="api_DeviceBackInService" DeviceOutOfService="api_DeviceOutOfService" Dialing="api_Dialing" Diverted="api_Diverted" Established="api_Established" HeartbeatTimeout="api_HeartbeatTimeout" Height="32" Held="api_Held" Id="api" Initiated="api_Initiated" Left="-1" PartyAdded="api_PartyAdded" PartyChanged="api_PartyChanged" PartyDeleted="api_PartyDeleted" QueueSScribePush="api_QueueSScribePush" Registered="api_Registered" Released="api_Released" ResponseAgentLogin="api_ResponseAgentLogin" ResponseAgentReport="api_ResponseAgentReport" ResponseAgentRptSubScribe="api_ResponseAgentRptSubScribe" ResponseAnswerCall="api_ResponseAnswerCall" ResponseGetAgentList="api_ResponseGetAgentList" ResponseGetAgentState="api_ResponseGetAgentState" ResponseGetStateSubcode="api_ResponseGetStateSubcode" ResponseHoldCall="api_ResponseHoldCall" ResponseMakeCall="api_ResponseMakeCall" ResponseMuteTransfer="api_ResponseMuteTransfer" ResponseQueueRptSubScribe="api_ResponseQueueRptSubScribe" ResponseRegisterAddress="api_ResponseRegisterAddress" ResponseRetrieveCall="api_ResponseRetrieveCall" ResponseSetAFTCallState="api_ResponseSetAFTCallState" ResponseSetAgentState="api_ResponseSetAgentState" ResponseSinglestepConference="api_ResponseSinglestepConference" ResponseSinglestepTransfer="api_ResponseSinglestepTransfer" Right="31" Ringing="api_Ringing" Top="45" Visible="FALSE" Width="32"></ICAPI5>
+		<Static Height="20" Id="lbLoginTime" Left="1360" Style="sty_Text" TabOrder="34" Text="2009-09-09&#32;23:59:59" Top="8" VAlign="Middle" Visible="FALSE" Width="128"></Static>
+		<Button BKColor="user0" Height="21" Id="btnAPI" Left="1238" OnClick="fnDivCtiVisible" TabOrder="35" Text="API" Top="10" Visible="FALSE" Width="40"></Button>
+		<Button BKColor="user0" Height="21" Id="btnTest" Left="1282" OnClick="fnDivTestVisible" TabOrder="36" Text="TEST" Top="10" Visible="FALSE" Width="40"></Button>
+		<Image Border="Raised" Color="user0" Cursor="HAND" Height="24" Id="imgCtiLogin" ImageID="IMG_LEFT_TITLE_BK01" Left="1239" OnClick="imgCtiLogin_OnClick" Static="FALSE" Style="sty_Image" TabOrder="37" Text="Agent&#32;로그인" Top="32" Visible="FALSE" Width="128"></Image>
+		<File Bottom="104" Height="24" Id="fileSaveFile" Right="24" TabOrder="37" Top="80" Width="24"></File>
+		<FileDialog Bottom="104" FilePath="C:\" Height="24" Id="fileDialogFile" Left="32" Right="56" TabOrder="37" Top="80" Type="Dir" Width="24"></FileDialog>
+		<Image Border="Raised" Color="user0" Cursor="HAND" FillType="STRETCH" Font="굴림,10,Bold" Height="48" Id="imgCallInbound" ImageID="IMG_LEFT_TITLE_BK08" Left="942" OnClick="imgCallInbound_OnClick" Static="FALSE" Style="sty_Image" TabOrder="38" Text="전화받기" Top="75" Visible="FALSE" Width="280"></Image>
+		<Static Color="user6" Font="굴림,9,Bold" Height="16" Id="lbInfomsg" Left="489" Style="sty_TextBlue" TabOrder="39" Text="※&#32;전화수신&#32;알림창&#32;오류발생시&#32;해당&#32;버튼을&#32;눌러&#32;전화를&#32;받으시면&#32;됩니다." Top="82" VAlign="Middle" Visible="FALSE" Width="444"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcti0010MBoardMain.xml
+ * 설명 : 민원상담접수
+ * 작성일 : 2023.04
+ * 작성자 :  
+ */
+
+#include "LIB::cti.js"; // 공통업무 관련
+
+var sChg = ""; // div 영역 보이기,숨기기
+var sChg2 = ""; // div 영역 보이기,숨기기 
+var g_IsOCXAppDeleteEventExtension = false;
+var sCloseYn = ""; // 수신팝업 닫기 용도로 사용 
+var sCloseYnInfo = ""; // 알림창 닫기 용도로 사용 
+var sCloseYnTran = ""; // 호전환 닫기 용도로 사용 
+var sConn2Yn = ""; // 3자통화시 C2와 연결여부 
+var sCallDn2Yn = ""; // 3자통화로 통화여부 
+var sChgStartTime = ""; // 상태 시작 시간 
+var sCallStatChkYn = "";// 현재 콜상태 확인 여부 
+var sDivertedYn = ""; // diverted 이벤트 호출여부  
+var sFileName = ""; // 로그 파일 이름 
+var sFileUploadPath = "/CALLDATA";// 로그 파일 
+var sFilePath = "C:\\KFSA\\KEMS\\DATA\\CTI";// 로그 파일 
+	
+// div 영역  
+var txtDN ;
+var vTxtTenant ;
+var vTxtQueueID;
+var txtAgentID ;
+var cbAgentState;
+var vPasswdType ;
+var vTxtMediaSet ;	
+var cbStatesubcode ;
+var cbAgentStateAfter;
+var txtHandle;
+var txtGExHandle;
+var txtGThisDN;
+var txtDestDN; 
+var txtGConnID;
+var txtGConnID2;	
+var txtResponse;
+var txtCallDn;
+var txtCallType;
+var txtSubscribeID;
+var txtQueueSubscribeID;
+var txtTransferGubun;
+var txtChkAgentID;
+var txtChkAgentState;
+var txtExHandle;
+var txtExKey;
+var txtExValue;
+var txtFieldValue;
+var txtDestDNPre;
+var txtLastDn;
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+    
+    divJubsu.Left = 20;
+    //divJubsu.top = 90;
+    //divJubsu.Height = 770;
+    divJubsu.Width = 1240;
+    
+    divApi.Visible = false;    
+    divApi.Left = 10; 
+    divApi.Width = 1220;
+    /*
+    divApi.txtResponse.Left = 10;
+    divApi.txtResponse.Width = divApi.Width -50 ;
+	divApi.stTxtResponse.Left = 10  ;
+	divApi.btntxtResponse.Left = 10 + divApi.stTxtResponse.Width;
+	divApi.gdList.Left = 10;
+	*/	    
+    
+    divApi.txtResponse.Left =300;
+    divApi.txtResponse.Width = divApi.Width -50 ;
+	divApi.stTxtResponse.Left = 300  ;
+	divApi.btntxtResponse.Left = 300 + divApi.stTxtResponse.Width;
+	divApi.gdList.Left = 300;
+    divTest.Visible = false;  
+    divTest.Left = 1268;
+    
+    //로그파일명, 경로설정 
+    sFileName = toString(getdate(), "@@@@@@@@@@@@") +"_"+gds_CtiInfo.GetColumn(0,"AgentID")+"_"+gds_CtiInfo.GetColumn(0,"DN")+"_Log.txt";
+    fileSaveFile.MakeDir(sFilePath);
+	
+    SetTimer(2, 1000); // Timer Start
+    
+    ctiInit();  //CTI 준비 
+	 
+}
+ 
+function Form_OnUnloadCompleted(obj)
+{
+    trace("Form_OnUnloadCompleted");    
+	// 콜센타 - 자리비움의 상세 별 시간관리 필요 
+	lfnAgentStat("","");
+			
+	fnApiCloseSubscribe();
+	fnApiQueueCloseSubscribe();
+    fnApiAgentLogout(); 
+    fnApiMonitorStop();
+    fnApiCloseServer();
+    
+	//fnTextUpload(); // 로그 파일 서버에 올리기 
+	fnLogDel(); // 로그 파일 삭제 
+	
+    KillTimer(2); // TimerKill 
+    gfn_Form_OnUnloadCompleted(obj);	
+}
+
+function Form_OnTimer(obj,nEventID)
+{	
+    lbLoginTime.Text = toString(getdate(), "@@@@-@@-@@ @@:@@:@@"); // 현재 시간 Display
+    
+    if (!gfn_IsNull(sChgStartTime)) {		
+		
+		var vSdate = sChgStartTime;
+		var vEdate = Time();
+		var vCal = toNumber(vEdate) - toNumber(vSdate) ; 	
+		edStateTime.Text = lfn_calcMinute(vCal) ;
+		 
+		//콜센타 제외 , 		
+		if(gs_IsCallCenter <> "Y"){ // 직원 이면
+		 
+			//후처리일때 1분 경과 하면 수신대기로 변경 
+			if(GetAgentState() == "60"){			
+				if(toNumber(vCal) >= 60){
+					AddResult("[F]후처리 후 수신대기 변경 60 --> fnApiSetAgentState(40)");
+					fnApiSetAgentState("40"); // 40 수신대기 			
+				}				
+			}			
+		}
+			
+		// diverted 이벤트 후 일정시간 이후 수신대기로 전환					
+		if(sDivertedYn == "Y"){
+			if(gs_IsCallCenter <> "Y"){ // 직원 이면
+				var vDivSecond = floor((vCal / 1 ) % 10); // 10초 마다 		
+				if(toNumber(vDivSecond) < 1){	
+					sDivertedYn = "" ;   // 초기화 
+					AddResult("[F]diverted 후 수신대기 변경 --> fnApiSetAgentState(40)");
+					fnApiSetAgentState("40"); // 40 수신대기		
+				}		
+			}else{
+				// 콜센타는 제외
+				sDivertedYn = "" ;   // 초기화 				
+			}
+			
+		}else{
+			// 5분마다 현재 상태 체크 
+			//화면의 현재상태와 cti 상태 다르면 체크해서 현재상태로 전환 	
+			if(GetAgentState() == "30" || GetAgentState() == "40" || GetAgentState() == "60" ){	
+				var vStatSecond = floor((vCal / 1 ) % 300); // 300초 마다 
+				if(toNumber(vStatSecond) < 1){	
+					sCallStatChkYn = "Y"; // 현재 콜 상태 확인용도 	
+					fnApiGetAgentState(); // 현재 콜 상태 가져오기   
+				}
+			}
+		}
+			
+		// 통화중 상태이면 팝업 닫기 (당겨받기 시 호출순서에 따라 팝업이 닫히지 않은 상황 발생으로 강제 닫기) 
+		if(GetAgentState() == "50" && sCloseYn <> "Y"){
+			sCloseYn = "Y"; // 열려있는 팝업(전화수신) 있으면 닫기  
+		}
+	
+    }
+}
+
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+/* 공통 필수 시작 */
+
+
+
+
+/*
+* cti 초기 화
+*/ 
+function ctiInit()
+{      
+    if(gds_CtiInfo.GetRowCount() < 1) {        
+		gfn_Alert("CTI 로그인 정보가 없습니다. 다시 로그인 바랍니다.");
+		//gfn_Logout();
+    } 
+		
+	
+	txtDN = divApi.txtDN;
+	txtAgentID = divApi.txtAgentID;
+	cbAgentState = divApi.cbAgentState;
+	cbStatesubcode = divApi.cbStatesubcode;
+	cbAgentStateAfter = divApi.cbAgentStateAfter;
+	txtHandle = divApi.txtHandle;
+	txtGExHandle = divApi.txtGExHandle;
+	txtGThisDN = divApi.txtGThisDN;
+	txtDestDN = divApi.txtDestDN;
+	txtGConnID = divApi.txtGConnID;
+	txtGConnID2 = divApi.txtGConnID2;
+	txtResponse = divApi.txtResponse;
+	txtCallDn = divApi.txtCallDn;
+	txtCallType = divApi.txtCallType;
+	txtSubscribeID = divApi.txtSubscribeID;
+	txtQueueSubscribeID = divApi.txtQueueSubscribeID;
+	txtTransferGubun = divApi.txtTransferGubun;
+	txtChkAgentID = divApi.txtChkAgentID;
+	txtChkAgentState = divApi.txtChkAgentState;
+	txtExHandle = divApi.txtExHandle;
+	txtExKey = divApi.txtExKey;
+	txtExValue = divApi.txtExValue;
+	txtFieldValue = divApi.txtFieldValue;
+	txtDestDNPre = divApi.txtDestDNPre;
+	txtLastDn = divApi.txtLastDn;
+
+    // 로그인한 CTI 정보로 set  
+    //edVersion.Text = "ver:" + lfn_ctiRefCheck(api);
+    edVersion.Text = "DN : " + gds_CtiInfo.GetColumn(0,"DN");
+	txtDN.Text = gds_CtiInfo.GetColumn(0,"DN");
+	vTxtTenant = gds_CtiInfo.GetColumn(0,"Tenant");
+	txtAgentID.Text = gds_CtiInfo.GetColumn(0,"AgentID");
+	cbAgentState.Value = gds_CtiInfo.GetColumn(0,"AgentState");	
+	cbAgentStateAfter.Value = gds_CtiInfo.GetColumn(0,"AgentStateAfter");	
+	vPasswdType = gds_CtiInfo.GetColumn(0,"PasswdType");
+	vTxtMediaSet = gds_CtiInfo.GetColumn(0,"MediaSet");
+	vTxtQueueID = gds_CtiInfo.GetColumn(0,"Queue");
+	    
+    // 버튼 초기 화  
+	btnCallReady.Enable = false;
+	btnCallStop.Enable = false;
+	btnCallHold.Enable = false;
+	btnCallHoldCancel.Enable = false;
+	btnCallTransfer.Enable = false;
+	btnCallHangup.Enable = false;
+	btnExtension51.Enable = false;
+	btnExtension52.Enable = false;
+	btnExtension53.Enable = false;
+	btnExtension61.Enable = false;
+	btnExtension62.Enable = false;
+	btnExtension63.Enable = false;
+	divJubsu.Enable = true;
+			
+	// 화면 로딩을 위한 delay용	
+	for (var i = 0; i < 50000; i++) {	
+		idle();	
+	}	
+	
+	
+	
+    //1 : CTI 서버 시작 
+    fnApiOpenServer();
+    
+}
+
+/* obj항목 초기화 
+  수신대기 시 
+  후처리 시 
+  
+*/
+function fnObjInit(){  
+
+	// obj항목 초기화 
+	txtGConnID.Text = "";
+	txtCallDn.Text = "";
+	txtCallType.Text = "";			
+	txtGConnID2.Text = "";
+	txtTransferGubun.Text = "1";
+	sCallDn2Yn = ""; 			
+	txtDestDN.Text = "";    
+	txtDestDNPre.Text = "";  
+	txtLastDn.Text = "";			
+	txtExKey.Text = "";
+	txtExValue.Text = "";
+	txtFieldValue.Text = "";	 
+	txtExHandle.Text = "";
+}
+
+
+/***********************************************************************************
+ 사용자 기능 버튼 클릭 시 
+***********************************************************************************/ 
+function fnClickBtn(obj) {
+	var parValue ;
+	var arrRtn ;
+	switch(obj.id){	
+		//수신대기		case "btnCallReady" :  
+		
+			AddResult("[F]수신대기버튼 클릭 fnApiSetAgentState(40)");
+			fnApiSetAgentState("40"); // 40 수신대기 
+			
+			fnObjInit(); //obj항목 초기화 
+			
+			// 민원상담 접수 화면 초기화 
+			divJubsu.fn_init();
+			
+			break;
+			
+		// 자리비움 
+		case "btnCallStop" : 
+			
+			if (gfn_IsNull(cbxStop.Value)) {
+				gfn_Alert("자리비움 상태를 선택해주세요.");
+				cbxStop.SetFocus();
+				return false;
+			}
+			AddResult("[F]자리비움 버튼 클릭 fnApiSetAgentState(30)");
+			fnApiSetAgentState("30"); // 30 자리비움 
+			
+			// 민원상담 접수 화면 초기화 
+			divJubsu.fn_init();
+			break;
+		
+		// 호전환 검색 버튼 
+		case "btnCallTransfer" : 
+					 
+			parValue = " sParam0="+ "C";
+			parValue += " sParam1="+ "";
+		
+			arrRtn = Dialog("cti::frmcti0010PCallTransfer.xml", parValue, 0, 0, "", -1, -1);
+			
+			if (length(arrRtn) > 0 && arrRtn[0] == "Y") {
+				// 호전환 전 저장 먼저 				
+				divJubsu.tab.tabJubsu.edCICALLGUBUN.Text = "O"; //호전환구분(I:inbound, O:outbound)
+				divJubsu.tab.tabJubsu.edCICALLDN.Text = arrRtn[1]; // 호전환DN
+				divJubsu.lfn_Save();
+				
+				//호전환 즉시전달 이면 
+				if(txtTransferGubun.Text == "1"){
+					txtDestDN.Text = arrRtn[1];
+					fnApiSinglestepTransfer(); 
+				}
+				//3자통화 후 전달이면 
+				if(txtTransferGubun.Text == "2"){
+					// 호드 해제 하는건가 ??? jjh 
+					fnApiMuteTransfer();
+				} 
+	
+			}	
+			break; 
+			
+		// 내선전환 
+		case "btnCallInTransfer" : 
+		
+			parValue = " sParam0="+ "I";
+			parValue += " sParam1="+ "";
+			
+			arrRtn = Dialog("cti::frmcti0010PCallTransfer.xml", parValue, 0, 0, "", -1, -1);
+			 
+			if (length(arrRtn) > 0 && arrRtn[0] == "Y") {				
+				txtDestDN.Text = arrRtn[1]; 
+				fnApiMakeCall();
+			}	
+			break; 
+			
+		// 비속어 
+		case "btnExtension51" : 
+			 
+			txtExKey.Text = "UEI05";
+			txtExValue.Text = "1";
+			fnApiExtension05();
+			break;
+		// 성희롱 
+		case "btnExtension52" : 
+		
+			txtExKey.Text = "UEI05";
+			txtExValue.Text = "2";
+			fnApiExtension05();
+			break;
+		// 상담불가  
+		case "btnExtension53" : 
+		
+			txtExKey.Text = "UEI05";
+			txtExValue.Text = "3";
+			fnApiExtension05();
+			break;
+		// 주민번호  
+		case "btnExtension61" : 
+			txtExKey.Text = "UEI06";
+			txtExValue.Text = "1";
+			fnApiExtension06();
+			break;
+			
+		// 전화번호
+		case "btnExtension62" : 
+			txtExKey.Text = "UEI06";
+			txtExValue.Text = "2";
+			fnApiExtension06();
+			break;
+		
+		// 사업자번호 호
+		case "btnExtension63" : 
+			txtExKey.Text = "UEI06";
+			txtExValue.Text = "3";
+			fnApiExtension06();
+			break;
+		default :	 
+			break;
+	}
+}
+
+
+/*
+cti 로그인 / 로그아웃 
+*/
+
+function imgCtiLogin_OnClick(obj,nX,nY)
+{  
+	if(imgCtiLogin.Text == "Agent 로그인"){
+		// 로그인 처리  
+		if (!gfn_Confirm("Agent 로그인 하시겠습니까?")) {		
+			return false;			
+		}
+		
+		cbAgentState.Value = gds_CtiInfo.GetColumn(0,"AgentState");	
+		fnApiMonitorStart(); // 모니터 시작부터 
+						
+	}else{
+		// 로그아웃  처리 
+		if (!gfn_Confirm("Agent 로그아웃 하시겠습니까?")) {		
+			return false;			
+		}
+		
+		// 콜센타 - 자리비움의 상세 별 시간관리 필요 
+		lfnAgentStat("","");
+    
+		fnApiCloseSubscribe();
+		fnApiQueueCloseSubscribe();
+		fnApiAgentLogout(); 
+		fnApiMonitorStop("LOGOUT"); // 모니터 종료까지만 		
+		
+	}
+}
+
+
+
+/************************************************************************************************************************************************/
+// API 
+
+
+
+/***********************************************************************************
+ IC Server에 접속하기 위한 API 
+ -- reponse 없음 
+***********************************************************************************/ 
+function fnApiOpenServer(obj)
+{
+	var vTxtAppName = gds_CtiInfo.GetColumn(0,"AppName");
+	var vTxtAppPW = gds_CtiInfo.GetColumn(0,"AppPW");
+	var vTxtLocalIP = gds_CtiInfo.GetColumn(0,"LocalIP");
+	var vTxtIP = gds_CtiInfo.GetColumn(0,"IP");
+	var vTxtIP2 = gds_CtiInfo.GetColumn(0,"IP2");
+	var vTxtPort = gds_CtiInfo.GetColumn(0,"Port");
+	var vTxtTimeout = gds_CtiInfo.GetColumn(0,"Timeout");
+	var vTxtReconnect = gds_CtiInfo.GetColumn(0,"Reconnect");
+	var vChkAsync = gds_CtiInfo.GetColumn(0,"AsyncMode");
+	var vChkCharSet = gds_CtiInfo.GetColumn(0,"CharSet");
+	
+	/* API의 다른 기능들을 사용하기 위해서는 ICOpenServer 가 먼저 호출 되어야 한다. */
+	var result;
+	var msg;
+	if(vChkAsync == "Y"){		
+		if(vChkCharSet == "Y"){		
+			// Async Mode, vChkCharSet.checked
+			msg = "[C]ICOpenServerExCv";
+			result = api.ICOpenServerExCv(vTxtAppName,
+											vTxtAppPW,
+											vTxtLocalIP, 
+											vTxtIP, 
+											vTxtIP2, 
+											toNumber(vTxtPort), 
+											toNumber(vTxtTimeout), 
+											toNumber(vTxtReconnect), 
+											"EUC-KR");
+		}else{
+			// Async Mode, vChkCharSet.unchecked
+			msg = "[C]ICOpenServerEx";
+			result = api.ICOpenServerEx  (vTxtAppName, 
+											vTxtAppPW, 
+											vTxtLocalIP, 
+											vTxtIP, 
+											vTxtIP2, 
+											toNumber(vTxtPort), 
+											toNumber(vTxtTimeout), 
+											toNumber(vTxtReconnect));	
+		}
+	}else{
+		if(vChkCharSet == "Y"){
+			// Sync Mode, vChkCharSet.checked
+			msg = "[C]ICOpenServerCv";
+			result = api.ICOpenServerCv  (vTxtAppName, 
+											vTxtAppPW, 
+											vTxtLocalIP, 
+											vTxtIP, 
+											vTxtIP2, 
+											toNumber(vTxtPort), 
+											toNumber(vTxtTimeout), 
+											toNumber(vTxtReconnect), 
+											"EUC-KR");
+		}else{
+			// Sync Mode, vChkCharSet.unchecked
+			msg = "[C]ICOpenServer";
+			result = api.ICOpenServer    (vTxtAppName, 
+											vTxtAppPW, 
+											vTxtLocalIP, 
+											vTxtIP, vTxtIP2, 
+											toNumber(vTxtPort), 
+											toNumber(vTxtTimeout), 
+											toNumber(vTxtReconnect));
+		}
+	}
+	
+	if (result > 0) {
+		txtHandle.Text = result.toString();
+		AddResult(msg + " : 성공 : " + result);
+		// (2) OpenServer 성공 후  DN Monitoring 시작
+		fnApiMonitorStart();
+	}
+	else {
+		AddResult(msg + " : " + MakeOpenServerResult(result));
+		
+		gfn_Alert("CTI OpenServer 오류 입니다. 다시 로그인 바랍니다.");
+		//gfn_Logout();	
+	}
+}
+
+
+/***********************************************************************************
+  IC Server 종료 
+ -- reponse 없음 
+***********************************************************************************/  
+function fnApiCloseServer(obj)
+{	
+	var result = api.ICCloseServer(txtHandle.Text);
+	AddResult("[C]ICCloseServer : " + MakeResult(result));
+}
+
+
+/***********************************************************************************
+ DN Monitoring 시작 API
+ -- reponse : api_ResponseRegisterAddress
+ -- event : DN Monitoring 시작 Evnet --> api_Registered
+***********************************************************************************/  
+function fnApiMonitorStart(obj)
+{
+	/* Monitoring 을 해야만 해당 DN의 Event 들(Call Event, Agent State Event등)을 Callback 함수로 전달 받을 수 있다.  */ 
+	var result = api.ICRegisterAddress(txtHandle.Text,  // ICOpenServer 종류시 생성된 Handle 값
+										txtDN.Text, 
+										vTxtTenant, 
+										0); 	
+										
+	AddResult("[C]ICRegisterAddress : " + MakeResult(result)); 
+}
+
+/* DN Monitoring 시작 */
+function api_ResponseRegisterAddress(obj,nHandle,app_id,monitorid,this_dn,tenant_name,result,extension)
+{
+    if(toNumber(result) == 0){
+        AddResult("[R]api_ResponseRegisterAddress - Register 응답 성공");
+    }
+    else{
+        AddResult("[R]api_ResponseRegisterAddress - Register 응답 실패 : " + MakeResult(result));  
+		gfn_Alert("CTI DN MonitorStart 오류 입니다. \r\n" + MakeResult(result));
+		//gfn_Logout();		
+	 
+        return;
+    }
+    
+    fnExtension(extension);	
+}
+
+/*
+* DN을 모니터링  이벤트가 발생하면 Monitoring이 정상적으로 시작된 것으로 간주한다.
+*/
+function api_Registered(obj,nHandle,monitorid,app_id,this_dn,addr_type,reg_mode,date_time,tenant_name,result,extension)
+{
+	var str;
+    
+    AddResult("[E]api_Registered [" + this_dn + "]");
+    
+    str = "Addr Type : " + MakeAddrTypeString(addr_type) + " | Reg Mode : " + MakeRegModeString(reg_mode);
+
+    AddResult("[E]api_Registered : " + str,"A");
+    
+    txtGThisDN.value = this_dn;
+    
+    fnExtension(extension);
+    
+	//  (3) DN Monitoring 성공 후 Agent 로그인 하기
+	fnApiAgentLogin();
+		
+}
+
+/***********************************************************************************
+  DN Monitoring 종료 
+***********************************************************************************/  
+function fnApiMonitorStop(obj)
+{
+	var result = api.ICUnregisterAddress(txtHandle.Text, 
+											txtDN.Text, 
+											vTxtTenant, 
+											0, 
+											0);
+	AddResult("[C]ICUnregisterAddress : " + MakeResult(result));    
+	
+	//--------------------------------------------/	 
+	if(obj = "LOGOUT") {
+		
+		// LOGOUT
+		// 버튼 초기 화  
+		btnCallReady.Enable = false;
+		btnCallStop.Enable = false;
+		btnCallHold.Enable = false;
+		btnCallHoldCancel.Enable = false;
+		btnCallTransfer.Enable = false;
+		btnCallInTransfer.Enable = false;
+		btnCallHangup.Enable = false;
+		btnExtension51.Enable = false;
+		btnExtension52.Enable = false;
+		btnExtension53.Enable = false;
+		btnExtension61.Enable = false;
+		btnExtension62.Enable = false;
+		btnExtension63.Enable = false;
+		
+		//fnApiSetAgentState("10"); // 10 로그아웃 
+		fnCallStateTxt("","10");// 10 로그아웃 
+		
+				
+		edAgentSubscribe.Text = "통화 00:00:00 대기 00:00:00 후처리 00:00:00 자리비움 00:00:00 외부수신 00건 내부수신 00건";
+		edTenantSubscribe.Text = " 민원이 0건  상담원 0건";
+				
+		//edCallStateTxt.Text = "";
+		//edStateTime.Text = "";
+		imgCtiLogin.Text = "Agent 로그인";
+	}
+	//--------------------------------------------/	 
+	
+		
+}
+
+
+/***********************************************************************************
+  Agent 로그인 하기
+ -- reponse : api_ResponseAgentLogin
+ -- event : api_AgentLogin 
+ -- event : api_AgentReady
+***********************************************************************************/   
+function fnApiAgentLogin(obj)
+{	
+	/* 여기서 주의 할 점은 로그인 할 DN에 대해 Monitoring중이어야 한다는 것이다. 
+	   ICRegisterAddress API 를 이용해 해당 DN에 대해 Monitor중이어야 Login Event, 
+	   Agent 의 상태 Event(ready, notready, aftercall) 등의 상태 Event 를 받을 수 있기 때문이다.
+	*/
+	
+	var vTxtAgentPW = gds_CtiInfo.GetColumn(0,"AgentPW");
+	
+	var result = api.ICAgentLogin(txtHandle.Text, // ICOpenServer 종류시 생성된 Handle 값
+									txtDN.Text, 
+									txtAgentID.Text, 
+									vTxtAgentPW,
+									vTxtTenant, 
+									GetAgentState(), 
+									0, 
+									0, 
+									GetnPtype(), 
+									vTxtMediaSet ); 
+									
+	AddResult("[C]ICAgentLogin : " + MakeResult(result));	
+		
+	if (result >= 0) { 
+		// Agent Login 이 성공 한다면 top page 에 있는 This DN에 로그인한 DN을 등록.
+		
+	}else {	
+		gfn_Alert("CTI AgentLogin 오류 입니다. 다시 로그인 바랍니다.");
+		//gfn_Logout();	
+	}
+	// AgentLogin : 로그인 Event --> api_AgentLogin
+	
+}
+
+/* 로그인 Response */
+function api_ResponseAgentLogin(obj,nHandle,app_id,agent_dn,agent_id,tenant_name,agent_state,agent_state_sub,result,media_set)
+{
+    var str;
+    
+    if(toNumber(result) == 0){
+        AddResult("[R]api_ResponseAgentLogin - Agent Login 응답 성공");
+    }
+    else{
+        AddResult("[R]api_ResponseAgentLogin - Agent Login 응답 실패 : " + MakeResult(result));
+		gfn_Alert("CTI AgentLogin 오류 입니다. \r\n" + MakeResult(result));
+        return;
+    }
+    
+    str = "Agent DN : "  + agent_dn + " | Agent ID : " + agent_id + " | Media Set : " + media_set;    
+    AddResult("[R]api_ResponseAgentLogin : " + str);    
+    str = "Tenant Name : " + tenant_name + " | Agent State : " + agent_state + "State Sub : " + agent_state_sub;    
+    AddResult("[R]api_ResponseAgentLogin : " + str);
+
+	
+}
+
+/* 로그인 Event */
+function api_AgentLogin(obj,nHandle,monitorid,agent_dn,agent_id,chat_agent_state,chat_agent_state_sub,vvoice_agent_state,vvoice_agent_state_sub,vchat_agent_state,vchat_agent_state_sub,email_agent_state,email_agent_state_sub,fax_agent_state,fax_agent_state_sub,voip_agent_state,voip_agent_state_sub,mvoip_agent_state,mvoip_agent_state_sub,web_agent_state,web_agent_state_sub,date_time,extension)
+{
+	var str;
+    
+    AddResult("[E]api_AgentLogin");
+    
+    str = "Login ID : " + agent_id + " | Login DN : " + agent_dn 
+        + " | Chat State(subcode) : " + chat_agent_state +"(" + chat_agent_state_sub + ")" 
+        + " | VVoice State(subcode) : " + vvoice_agent_state +"(" + vvoice_agent_state_sub + ")"
+        + " | VChat State(subcode) : " + vchat_agent_state +"(" + vchat_agent_state_sub + ")"
+        + " | Email State(subcode) : " + email_agent_state +"(" + email_agent_state_sub + ")"
+        + " | Fax State(subcode) : " + fax_agent_state +"(" + fax_agent_state_sub + ")"
+        + " | Voip State(subcode) : " + voip_agent_state +"(" + voip_agent_state_sub + ")"
+        + " | MVoipLogin State(subcode) : " + mvoip_agent_state +"(" + mvoip_agent_state_sub + ")"
+        + " | WEB State(subcode) : " + web_agent_state +"(" + web_agent_state_sub + ")";
+
+    AddResult("[E]api_AgentLogin : " + str,"A");
+     
+    fnExtension(extension);
+    
+	// Agent Login 이 성공 한다면 top page 에 있는 This DN에 로그인한 DN을 등록.
+	txtGThisDN.Text = agent_dn;
+	//--------------------------------------------/	 
+	//gfn_Alert("로그인 되었습니다.");
+	// 버튼 활성화 
+	btnCallReady.Enable = true;
+	btnCallStop.Enable = true; 
+	btnCallInTransfer.Enable = true; 
+	// 로그아웃 버튼 처리 
+	imgCtiLogin.Text = "Agent 로그아웃";
+	
+	// (4) Agent 로그인 후  수신대기 상태 설정 
+	//fnApiSetAgentState("40"); // 40 수신대기 ---> Agent login 시 셋팅되어 로그인 할때 지정되도록 함 
+	  
+	// 상담원 상태 확인 
+	fnApiGetAgentState();
+	
+	// (5) 자리비움 상태 코드 설정
+	fnApiGetStateSubcode();
+	
+	// (6) 통화후 상태 설정		    
+	fnApiSetAfterCallState();	
+		    
+	// 접수화면 enable 초기 시 화면 로딩 속도 문제 
+	//divJubsu.Enable = true;
+	
+	// (7) 당일누계자료 구독 
+	fnApiAgentSubscribe();
+	
+	// (8) 당일누계자료 구독 
+	fnApiQueueSubscribe();
+	
+	// (9) AgentDn db 자료 조회 
+	fnSearchUser();
+	//--------------------------------------------/	 
+		
+}
+
+/* 로그인시 설정한 상태로 상태 Event 가 발생 */
+function api_AgentReady(obj,nHandle,monitorid,agent_dn,agent_id,agent_state,agent_state_sub,date_time,extension,media_type)
+{
+	var str;
+    
+    AddResult("[E]api_AgentReady - AgentReady");
+    
+    str = "DN : " + agent_dn + " | ID : " + agent_id + " | 상태 : " + agent_state + " | 상태 부가 코드 : " + agent_state_sub;
+    AddResult("api_AgentReady - str : " + str,"A");
+    
+    fnExtension(extension);	
+}
+
+/***********************************************************************************
+  Agent 로그아웃 
+***********************************************************************************/  
+function fnApiAgentLogout(obj)
+{			
+	var result = api.ICAgentLogout(txtHandle.Text, 
+									txtDN.Text, 
+									txtAgentID.Text, 
+									vTxtTenant, 
+									0);
+	AddResult("[C]ICAgentLogout : " + MakeResult(result)); 
+}
+ 
+
+/***********************************************************************************
+  자리비움 - 상태부가정보 설정하기
+ -- reponse : api_ResponseGetStateSubcode
+***********************************************************************************/    
+function fnApiGetStateSubcode(obj)
+{
+    ds_Statesubcode.ClearData();
+	var result = api.ICGetStateSubcode(txtHandle.Text, 
+										vTxtTenant, 
+										30 // GetAgentState() // 30 // 부가 정보를 가져올 상태 코드
+										);
+	 
+	AddResult("[C]ICGetStateSubcode : " + MakeResult(result));
+	/*	
+	long ICGetStateSubcode(long nHandle, LPCTSTR tenant_name, long agent_state)
+	가져오는 데이터는 ResponseGetStateSubcode 로 전달 된다.	
+	*/	        
+}
+
+/* 상태부가정보 설정하기 */
+function api_ResponseGetStateSubcode(obj,nHandle,app_id,tenant_name,agent_state,result,subcode_count,extension)
+{	
+    var str;
+    
+    if(toNumber(result) == 0){
+        AddResult("[R]ICGetStateSubcode - Get State Subcode 응답 성공");
+    }
+    else{
+        AddResult("[R]ICGetStateSubcode - Get State Subcode 응답 실패 : " + MakeResult(result));
+		gfn_Alert(fnGetErrorMsg("ICGetStateSubcode",result));
+        return;
+    }
+         
+    //GetStateSubCode(tenant_name, agent_state, result, subcode_count, extension);
+	// Extension 활용
+	var i = 0, j = 0;
+	var nRecord = 0, nField = 0;
+	var strKey, strValue;
+	if (extension <= 0) {
+		AddResult("[R]ICGetStateSubcode - 해당 상태에 대한 Sub Code가 없습니다");
+		return;
+	}
+
+	// Record 개수 가져오기
+	nRecord = api.ICEXGetRecordCount(extension);
+
+	// 서브 상태 코드 셋팅 
+	for (i = 0; i < nRecord; i++) {
+
+		nField = api.ICEXGetFieldCount(extension, i);
+		strKey = api.ICEXGetKey(extension, i);
+
+		for (j = 0; j < nField; j++) {
+			strValue = api.ICEXGetFieldValue(extension, i, j);
+		}
+		
+		// 콜센타 이면 
+		if(gs_IsCallCenter == "Y"){
+			if(strKey == '10' || strKey == '11' || strKey = '12' ){
+				var vRow = ds_Statesubcode.InsertRow(ds_Statesubcode.GetCount());
+				ds_Statesubcode.SetColumn(vRow,"CD",strKey);
+				ds_Statesubcode.SetColumn(vRow,"DATA",strValue);
+			}
+		}
+		// 직원 이면 
+		if(gs_IsCallCenter <> "Y"){
+			if(strKey == '20' || strKey == '21' || strKey = '22' ){
+				var vRow = ds_Statesubcode.InsertRow(ds_Statesubcode.GetCount());
+				ds_Statesubcode.SetColumn(vRow,"CD",strKey);
+				ds_Statesubcode.SetColumn(vRow,"DATA",strValue);
+			}
+		}		
+	}
+	
+	// 선택 줄 추가 		  
+	ds_Statesubcode.InsertRow(0);
+	ds_Statesubcode.SetColumn(0,"CD","");
+	ds_Statesubcode.SetColumn(0,"DATA","선택");
+	cbxStop.Index = 0;
+    
+}
+ 
+/***********************************************************************************
+  통화 후 상태 설정하기
+ -- reponse : api_ResponseSetAFTCallState 
+***********************************************************************************/    
+function fnApiSetAfterCallState(obj)
+{
+	/* Agent 가 통화 후에 어떤 상태로 변경 될 것인지를 설정하는 API이다. 
+	   Applicaton에서는 한번만 설정하면 통화 후에 상태가 ICSetAFTCallState에서 설정한 값으로 바뀐다.
+	*/ 	
+	var vAgentState = cbAgentStateAfter.Value;  
+	var result = api.ICSetAFTCallState(txtHandle.Text, // ICOpenServer 종류시 생성된 Handle 값
+										txtAgentID.Text,
+										vTxtTenant, 
+										vAgentState,// 설정할 상태 코드
+										0,
+										""
+										);
+
+	AddResult("[C]ICSetAfterCallState : " + MakeResult(result)); 
+}
+
+/* 통화 후 상태 설정하기 */
+function api_ResponseSetAFTCallState(obj,nHandle,app_id,agent_id,tenant_name,agent_state,agent_state_sub,result,media_set)
+{
+	var str;
+    
+    if(toNumber(result) == 0){
+        AddResult("[R]api_ResponseSetAFTCallState - Set AFT Call State 응답 성공");
+    }
+    else{
+        AddResult("[R]api_ResponseSetAFTCallState - Set AFT Call State 응답 실패 : " + MakeResult(result));
+		gfn_Alert(fnGetErrorMsg("ICSetAFTCallState",result));
+        return;
+    }
+    
+    str = "Agent Id : " + agent_id + " | 상태 : " + MakeAgentStateString(agent_state) + " | Subcode : " + agent_state_sub;
+     
+    AddResult("[R]api_ResponseSetAFTCallState : " + str,"A");
+}
+
+ 
+/***********************************************************************************
+  상담원 상태 설정하기
+ -- reponse : api_ResponseSetAgentState
+***********************************************************************************/   
+function fnApiSetAgentState(obj)
+{
+	// pre check
+	if(txtAgentID.Text == "" || vTxtTenant == ""){
+        gfn_Alert("SetAgentState 정보가 없습니다.");		
+		return ;
+	}
+	
+	cbAgentState.Value = obj;
+	
+	var result = api.ICSetAgentState(txtHandle.Text, // ICOpenServer 종류시 생성된 Handle 값
+										txtAgentID.Text, 
+										vTxtTenant, 
+										GetAgentState(),  // 변경할 상태 코드
+										GetAgentSubcode(), // 변경할 상태 부가 코드
+										txtGExHandle.Text, // Extension 핸들 값
+										"" // 미디어 타입 문자열
+										);
+	AddResult("[C]ICSetAgentState : " + MakeResult(result)); 
+	 
+}
+/*  상담원 상태 설정하기 */
+function api_ResponseSetAgentState(obj,nHandle,app_id,agent_id,tenant_name,agent_state,agent_state_sub,result,media_set)
+{
+    var str;
+    
+    if(toNumber(result) == 0){
+        AddResult("[R]api_ResponseSetAgentState - Set Agent State 응답 성공");  
+    }
+    else{
+        AddResult("[R]api_ResponseSetAgentState - Set Agent State 응답 실패 : " + MakeResult(result));
+		//gfn_Alert(fnGetErrorMsg("ICSetAgentState",result));
+        return;
+    }
+    
+    str = "Tenant Name : " + tenant_name + " | Agent Id : " + agent_id + " | 상태 : " + MakeAgentStateString(agent_state) + " | Subcode : " + agent_state_sub;
+    
+    AddResult("[R]api_ResponseSetAgentState : " + str,"A");
+    
+	//--------------------------------------------/	 	
+    // 콜 상태 변경 후 화면에 표기 
+    // fnCallStateTxt(voip_sub_code,voip_agent_state);
+    fnCallStateTxt(agent_state_sub,agent_state);
+    
+	//--------------------------------------------/	 
+    
+}
+
+
+/***********************************************************************************
+  상담원 상태 가져오기 
+ -- reponse : api_ResponseGetAgentState
+***********************************************************************************/   
+function fnApiGetAgentState(obj)
+{	
+	// pre check
+	if(txtAgentID.Text == "" || vTxtTenant == ""){
+        gfn_Alert("GetAgentState 정보가 없습니다.");		
+		return ;
+	}
+	
+	var result = api.ICGetAgentState(txtHandle.Text, 
+										vTxtTenant, 
+										txtAgentID.Text, 
+										"", //txtPrivateData.value, 
+										txtGExHandle.Text, "");
+
+	AddResult("[C]ICGetAgentState : " + MakeResult(result)); 
+}
+
+// 체크용 따로 구분 ( 호전환시 전환 전 호출 )
+function fnApiChkGetAgentState(obj)
+{	
+	// pre check
+	if(txtChkAgentID.Text == "" || vTxtTenant == ""){
+        gfn_Alert("GetAgentState 정보가 없습니다.");		
+		return ;
+	}
+	
+	var result = api.ICGetAgentState(txtHandle.Text, 
+										vTxtTenant, 
+										txtChkAgentID.Text, 
+										"", //txtPrivateData.value, 
+										txtGExHandle.Text, "");
+
+	AddResult("[C]ICGetAgentState : " + MakeResult(result));
+	//-- > 가져오는 데이터는 ResponseGetAgentState 로 전달 된다. api_ResponseGetAgentState
+}
+
+/* 상담원 상태 가져오기  */
+function api_ResponseGetAgentState(obj,nHandle,app_id,dest_agent_id,tenant_name,private_data,chat_agent_state,chat_sub_code,vvoice_agent_state,vvoice_sub_code,vchat_agent_state,vchat_sub_code,email_agent_state,email_sub_code,fax_agent_state,fax_sub_code,voip_agent_state,voip_sub_code,mvoip_agent_state,mvoip_sub_code,web_agent_state,web_sub_code,result,extension,media_set)
+{
+    var str;
+    
+    if(toNumber(result) == 0){
+        AddResult("[R]api_ResponseGetAgentState - Get Agent State 응답 성공");
+    }
+    else{
+        AddResult("[R]api_ResponseGetAgentState - Get Agent State 응답 실패 : " + MakeResult(result));
+		gfn_Alert(fnGetErrorMsg("ICGetAgentState",result)); 
+		return ;
+    }
+     
+	str = "조회 대상 ID : " + dest_agent_id + " | Tenant Name : " + tenant_name;
+	//AddResult(str);
+	str = "CHAT 상태 : " + MakeAgentStateString(chat_agent_state) + " | Sub Code : " + chat_sub_code + "\n"
+		+ "VVOICE 상태 : " + MakeAgentStateString(vvoice_agent_state) + " | Sub Code : " + vvoice_sub_code + "\n"
+		+ "VCHAT 상태 : " + MakeAgentStateString(vchat_agent_state) + " | Sub Code : " + vchat_sub_code + "\n"
+		+ "EMAIL 상태 : " + MakeAgentStateString(email_agent_state) + " | Sub Code : " + email_sub_code + "\n"
+		+ "FAX 상태 : " + MakeAgentStateString(fax_agent_state) + " | Sub Code : " + fax_sub_code + "\n"
+		+ "VOIP 상태 : " + MakeAgentStateString(voip_agent_state) + " | Sub Code : " + voip_sub_code + "\n"
+		+ "MVOIP 상태 : " + MakeAgentStateString(mvoip_agent_state) + " | Sub Code : " + mvoip_sub_code + "\n"
+		+ "WEB 상태 : " + MakeAgentStateString(web_agent_state) + " | Sub Code : " + web_sub_code + "\n";
+
+	AddResult("[R]api_ResponseGetAgentState : " + str,"A");
+        
+    fnExtension(extension);	
+	
+	//--------------------------------------------/	 
+	// 23,06 divert 이벤트 후 상태가 다른현상이 발생하여 보완 
+	if(sCallStatChkYn == "Y"){// 현재 콜 상태 확인용도 	
+	
+		sCallStatChkYn = ""; //초기화 
+		
+		// 23.06 현재상태와 결과상태가 같으면 pass 
+		if(voip_agent_state == "30" || voip_agent_state == "40" || voip_agent_state == "60"){
+			if(GetAgentState() <> voip_agent_state){
+				// 현재상태로 적용 
+				AddResult("[F]현재 콜 상태 확인 : (" + voip_agent_state + ") --> 40 fnApiSetAgentState(" + GetAgentState()+")");
+				fnApiSetAgentState(GetAgentState());
+				return;
+			}	
+		}			
+	}else{	
+	
+		// 상단에 상담원 상태 셋팅 
+		if(txtAgentID.Text  == dest_agent_id){
+			// 콜 상태 변경 후 화면에 표기 
+			fnCallStateTxt(voip_sub_code,voip_agent_state);
+		}else{
+			// 호전환 시 다시 체크위한 용도 
+			txtChkAgentState.Text = voip_agent_state;
+		}	
+	}
+		
+		
+}
+
+/*
+* 콜 상태 변경 후 화면에 표기 
+*/
+function fnCallStateTxt(voip_sub_code,voip_agent_state){
+
+	AddResult("[F]fnCallStateTxt : " + voip_sub_code + " - " + voip_agent_state );
+	
+	var vData = "";
+	if(voip_sub_code >= 0 && voip_agent_state == "30"){
+		var fRow = ds_Statesubcode.findrow("CD",voip_sub_code);
+		var fData = ds_Statesubcode.GetColumn(fRow,"DATA"); 
+		vData = " - " + fData;
+	}
+	
+	// 현재상태 set 
+	cbAgentState.Value = voip_agent_state ;
+	
+	// 상단에 상담원 상태 셋팅  
+	edCallStateTxt.Text = "" + MakeAgentStateString(voip_agent_state) + vData ;
+	//sChgStartTime = toString(getdate(), "@@@@-@@-@@ @@@@@@");
+	sChgStartTime = Time(); 
+	
+	//DivTest.txtArea.Text += "\r\n sChgStartTime : " +sChgStartTime;
+	//DivTest.txtArea.Text += "\r\n agent_state : " +voip_agent_state + " - " + edCallStateTxt.Text ;
+		
+	// 상태에 따른 색깔 표기 
+	/*
+	User Color 37 주황 
+	User Color 31 초록
+	User Color 14 회색  
+	*/
+	//edCallStateTxt.BKColor = ""; 
+	edCallStateTxt.DisableBkColor = "user14";
+	if(voip_agent_state == "30"){ // 자리비움
+		edCallStateTxt.DisableBkColor = "user31"; 
+	} 
+	if(voip_agent_state == "40"){ // 수신대기 
+		edCallStateTxt.DisableBkColor = "user37"; 
+	} 
+	if(voip_agent_state == "60"){ //후처리 
+		edCallStateTxt.DisableBkColor = "user14"; 
+	}
+	if(voip_agent_state == "0"){ //NULL 
+		edCallStateTxt.DisableBkColor = "user14"; 
+	}
+	if(voip_agent_state == "10"){ //Logout 
+		edCallStateTxt.DisableBkColor = "user14"; 
+	}
+	
+	
+	//자리비움이면 해당버튼 false 
+	btnCallReady.Enable = false;
+	if(voip_agent_state == "30" || voip_agent_state == "60" || voip_agent_state == "20"){  
+		btnCallReady.Enable = true;
+	}
+	
+	// 23.09 후처리 일때 초기화 처리 (비정상종료로 인한 보완)
+	if(voip_agent_state == "60"){		
+		fnObjInit(); //obj항목 초기화 
+	}
+	
+	
+	// 콜센타 - 자리비움의 상세 별 시간관리 필요 
+    lfnAgentStat(voip_agent_state,voip_sub_code);
+}
+
+function lfnAgentStat(voip_agent_state,voip_sub_code){
+
+	if(gs_IsCallCenter == "Y" ){	
+		
+		// 콜센타 - 자리비움의 상세 별 시간관리 필요 
+		var vSubCode = "00";
+		if(voip_agent_state == "30"){
+			vSubCode = voip_sub_code; 
+		} 
+		
+		tit_clearActionInfo();
+		tit_addSingleActionInfo("cti:insertAgentStatInfo", "", 0, "");
+		// 서버 호출
+		tit_callService(
+			""
+			,""
+			,""/// inDs
+			,"ds_oResult=ds_oResult"	// outDs
+			,"ASSABUN=" + quote(gds_oUserInfo.GetColumn(0, "PSABUN"))  
+				+ " ASSTATCD=" + quote(voip_agent_state)     
+				+ " ASSUBCD=" + quote(vSubCode)
+			,""
+			,false
+			,false
+			,true
+		);
+		
+	}
+    
+}
+
+/***********************************************************************************
+  [Event] 모니터링 중인 DN 벨울림 
+***********************************************************************************/    
+function api_Ringing(obj,nHandle,monitorid,call_id,call_type,call_state,media_type,call_characteristic,conn_id,ani_dn,dnis,other_dn,this_dn,this_queue_dn,last_dn,server_name,date_time,result,ucid,hop,extension,node_id)
+{
+	var str;
+    var ex = 0;
+    
+	AddResult("[E]api_Ringing ---- ");  
+	    
+    str = "MonitorID : " + monitorid + " | Call ID : " + call_id + " | Call Type : " + call_type + " | call_state : " + call_state + " | ANI DN : " + GetAniDN(ani_dn, other_dn) + " | ani_dn : " + ani_dn+ " | other_dn : " + other_dn
+        + " | This DN : " + this_dn + " | dnis : " + dnis + " | last_dn : " + last_dn + " | Conn ID : " + conn_id +  " | UCID : " + ucid + " | Hop : " + hop + " | Result : " + MakeResult(result) 
+        + " | Extension : " + extension + " | Node ID : " + node_id;
+    
+    AddResult("[E]api_Ringing : " + str);
+    
+    AddResult("[E]api_Ringing - Extension : " + extension,"A");
+    
+    ex = api.ICEXDupExtension(extension);
+    
+    if(ex <= 0)
+    {
+        AddResult(MakeExtensionResult(ex),"A");
+    }
+     
+    fnExtension(ex);    
+    fnExtension(extension);
+    //-------------  
+    /* 
+    고객번호는 ani_dn 을 먼저 보고 ani_dn 이 없다면 other_dn 이 고객번호가 된다. 
+    즉, Ringing Event 에서 고객번호를 추출할 때 ani_dn을 검사하고 있으면 ani_dn 이 고객번호 ani_dn 이 없으면 other_dn 이 고객번호가 된다
+    */
+    
+    /* call_type
+    (0) Known    : 호전환으로 넘어온 (PartyChanged )
+    (1) Internal : 내선으로 온 번호를 걸때 , 내선으로 온 번호를 받을때 
+    (2) Inbound  : 외부에서 올때 (호전환 포함) 
+    (3) Outbound : 외부로 걸때 <<<<<<<< Ringing 은 해당 없음 
+
+    */
+	
+	//--------------------------------------------/	 
+    txtGConnID.Text = conn_id;
+    //trace("ringing --- ");
+    //trace("ringing ani_dn : " + ani_dn );
+    //trace("ringing other_dn : " + other_dn );
+    //trace("ringing GetAniDN(ani_dn, other_dn) : " + GetAniDN(ani_dn, other_dn) );
+    
+	if(call_type == "1"){
+		//txtCallDn.Text = GetAniDN(ani_dn, other_dn);
+		txtCallDn.Text =  other_dn;
+	}else{
+		txtCallDn.Text = ani_dn; // call_type : 2
+	}
+	txtCallType.Text = call_type;
+	
+	//호전환시 넘겨받은 내선번호  - Redirect, Transfer 등 전환 인 경우 직전 Device 의 DN
+	if(result == "52"){ // 52 "singleStepTransfer"
+		txtLastDn.Text = last_dn;
+	}else{
+		txtLastDn.Text = "";
+	}
+	
+    fnCallInboundPopup();
+	//--------------------------------------------/	 
+	
+}
+
+/* InboundPopup */
+function fnCallInboundPopup(obj){
+
+    // InboundPopup 호출 
+	var parValue = " sParam1="+ quote(txtCallType.Text);
+		parValue += " sParam2="+ quote(txtCallDn.Text);
+		
+	// 내부수신이면 수신번호로 조회 패스 
+	if(txtCallType.Text <> "1"){
+		// 수신,발신 번호로 민원인 조회 
+		fnSearchMinwon(txtCallDn.Text); // 수신번호로 조회 
+		
+		if (ds_oMinwonList.rowcount > 0) {
+			parValue += " sParam3="+ quote(ds_oMinwonList.GetColumn(0, "MWGUBUN"));
+			parValue += " sParam4="+ quote(ds_oMinwonList.GetColumn(0, "MWNM")); 
+		}
+	}else{
+		// 내부수신이면 내선번호로 사용자 조회 
+		//fnSearchUser(txtCallDn.Text); // 수신번호로 조회 		
+		var vRow = ds_oUserDNInfo.FindRow("IPIEXTENSION", txtCallDn.Text); // 수신번호로 조회
+		if( vRow >=0 ){
+			parValue += " sParam5="+ quote(ds_oUserDNInfo.GetColumn(vRow, "DNINFO"));  
+		}
+	}
+	// 내부수신이면 팝업 호출 안함. 
+	
+	// 23.12 팝업호출이 안되는 경우가 있다고 해서 강제 버튼 
+	imgCallInbound.Visible = true;
+	lbInfomsg.visible = true;
+	var arrRtn = Dialog("cti::frmcti0010PCallInbound.xml", parValue,0, 0, "", -1, -1);
+	if (length(arrRtn) > 0) {
+		imgCallInbound.Visible = false;	
+		lbInfomsg.visible = false;
+		fnApiAnswerCall();
+	}
+
+}
+
+/*전화수신 강제 호출 */
+function imgCallInbound_OnClick(obj,nX,nY)
+{
+	
+    AddResult("[F]imgCallInbound_OnClick - 전화수신 강제 호출 ");
+	// 받을수 있는 상태인지 체크
+	
+	// 해당 번호로 받은것처럼 처리 
+	fnApiAnswerCall();
+	
+}
+
+/*
+* 수신, 발신 번호로 민원인 조회 
+*/
+function fnSearchMinwon(obj){
+		
+    AddResult("[F]fnSearchMinwon - obj : " + obj);
+    
+	if (gfn_IsNull(obj)) { 
+		return ;
+	}
+	ds_oMinwonList.ClearData(); // 데이타셋 초기화
+
+	tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cti:searchMinwonMWRECVTEL", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oMinwonList=ds_oMinwonList"	// outDs
+		,"CALLDN=" + quote(obj)
+		,""
+		,false
+		,""
+		,true
+	);		 
+}
+
+/*
+* 수신, 발신 번호로 내선 조회  --> 전체 조회 
+*/
+function fnSearchUser(){
+	
+	ds_oUserDNInfo.ClearData(); // 데이타셋 초기화
+
+	tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cti:searchUserDnInfo", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oUserDNInfo=ds_oUserDNInfo"	// outDs
+		,""
+		,""
+		,false
+		,""
+		,true
+	);		 
+}
+
+/***********************************************************************************
+  전화받기  AnswerCall 
+ -- reponse : api_ResponseAnswerCall
+***********************************************************************************/   
+function fnApiAnswerCall(obj)
+{	
+	// pre check
+	if(txtGThisDN.Text == "" || txtGConnID.Text == ""){
+        gfn_Alert("AnswerCall 정보가 없습니다.");		
+		return ;
+	}
+	
+	AddResult("[C]ICAnswerCall : txtGConnID.Text : " + txtGConnID.Text);
+	var result = api.ICAnswerCall(txtHandle.Text, 
+									txtGThisDN.Text, 
+									txtGConnID.Text, 
+									txtGExHandle.Text, 
+									vTxtMediaSet);
+
+	AddResult("[C]ICAnswerCall : " + MakeResult(result));
+	// --> ICAnswerCall 후 ResponseAnswerCall 발생 
+	// --> 대상 전화를 받으면 Established Event 발생 
+	
+}
+
+/*
+* ICAnswerCall 후 ResponseAnswerCall 발생 
+*/
+function api_ResponseAnswerCall(obj,nHandle,app_id,this_dn,conn_id,result,extension,media_type)
+{
+
+	 var str;
+    
+    if(toNumber(result) == 0){
+        AddResult("[R]api_ResponseAnswerCall - Answer Call 응답 성공");
+    }
+    else{
+        AddResult("[R]api_ResponseAnswerCall - Answer Call 응답 실패 : " + MakeResult(result));
+		//gfn_Alert(fnGetErrorMsg("ICAnswerCall",result));
+        return;
+    }
+    
+    str = "This Dn : " + this_dn + "Media Type : " + media_type + " | Result : " + MakeResult(result);
+    
+    AddResult("[R]api_ResponseAnswerCall str : " + str,"A");
+    
+    fnExtension(extension);
+    	
+}
+
+
+/***********************************************************************************
+  [Event]  
+* 모니터링 중인 DN 호 연결 
+* 대상 전화를 받으면 Established Event 발생 
+***********************************************************************************/   
+function api_Established(obj,nHandle,monitorid,call_id,call_type,call_state,media_type,call_characteristic,conn_id,ani_dn,dnis,other_dn,this_dn,this_queue_dn,last_dn,server_name,date_time,result,ucid,hop,extension,node_id)
+{
+	var str;
+     
+	AddResult("[E]api_Established ---- ");
+	    
+    str = "MonitorID : " + monitorid + " | Call ID : " + call_id + " | Call Type : " + call_type + " | ANI DN : " + GetAniDN(ani_dn, other_dn) 
+        + " | This DN : " + this_dn + " | dnis : " + dnis + " | Conn ID : " + conn_id +  " | UCID : " + ucid + " | Hop : " + hop + " | Result : " + MakeResult(result) 
+        + " | Extension : " + extension + " | Node ID : " + node_id;
+        	
+    AddResult("[E]api_Established - str : " + str);
+    /*
+    AddResult("[E]api_Established - Extension : " + extension );
+    AddResult("[E]api_Established - Extension : " + extension,"A");
+    AddResult("[E]api_Established - ani_dn : " + ani_dn);
+    AddResult("[E]api_Established - other_dn : " + other_dn);
+    AddResult("[E]api_Established - dnis : " + dnis);
+    AddResult("[E]api_Established - GetAniDN(ani_dn, other_dn) : " + GetAniDN(ani_dn, other_dn));
+    */
+    
+    var ex = api.ICEXDupExtension(extension);
+    
+    if(ex <= 0)
+    {
+        AddResult(MakeExtensionResult(ex),"A");
+    }
+     
+    fnExtension(ex);    
+    fnExtension(extension);
+	//--------------------------------------------/	 
+    // 대상 전화를 받으면 Established Event 발생 
+    // 버튼 활성화 
+	btnCallHold.Enable = true;
+	btnCallTransfer.Enable = true;		
+	btnCallHangup.Enable = true;
+	btnExtension51.Enable = true;
+	btnExtension52.Enable = true;
+	btnExtension53.Enable = true;
+	btnExtension61.Enable = true;
+	btnExtension62.Enable = true;
+	btnExtension63.Enable = true;
+	// 버튼 비활성화 
+	btnCallReady.Enable = false;
+	btnCallStop.Enable = false;	
+	btnCallInTransfer.Enable = false;
+	
+	txtCallType.Text = call_type;
+					
+	sCloseYn = "Y"; // 열려있는 팝업(전화수신) 있으면 닫기 
+	imgCallInbound.Visible = false;	
+	lbInfomsg.visible = false;
+	
+	fnApiGetAgentState(); // 현재 콜 상태 가져오기  
+	
+    if(sCallDn2Yn == "Y"){ // 3자통화 연결 사용  
+		sConn2Yn = "Y";	
+		
+		// 23.09 비정상종료 후 오류로 인해 추가 처리 (자릿수 체크 ) 		
+		if(length(dnis) == 4){
+			//23.08 호전환 후 고객통화종료로 호전환연결이 실패 시 호전환내용이 저장 되지 않음 				
+			// 호전환 전 저장 먼저 				
+			divJubsu.tab.tabJubsu.edCICALLGUBUN.Text = "O"; //호전환구분(I:inbound, O:outbound)
+			divJubsu.tab.tabJubsu.edCICALLDN.Text = dnis; // 호전환DN
+		}
+				
+    }else{
+		/* ??? 
+		// 수신의 경우 두개 값이 다름
+		// 발신의 경우만 민원인 재조회 
+		if(GetAniDN(ani_dn, other_dn) = this_dn){
+			// 수신,발신 번호로 민원인 조회 
+			fnSearchMinwon(txtDestDN.Text); // 발신번호로 조회 
+		}*/
+		
+		// ???? 3자통화 주민번호 입력 시 해당 이벤트 발생 됨 - 강제 예외처리 
+		if (gfn_IsNull(txtExHandle.Text)) { 
+			
+			if(call_type == "3"){  // Outbound : 외부로 걸때 
+				txtCallDn.Text = dnis; 
+			}else if(call_type == "2"){ //  Inbound  : 외부 수신 
+				//txtCallDn.Text = dnis ; //외부 착신 번호 (발신번호) 
+				txtCallDn.Text = GetAniDN(ani_dn, other_dn);				
+			}else{
+				txtCallDn.Text = other_dn; // 발신 내선 번호
+			}
+					 
+			// 수신,발신 번호로 민원인 조회  
+			fnSearchMinwon(txtCallDn.Text);
+			// 민원상담 접수 화면 호출 
+			divJubsu.fnInitCall(call_type);
+		}
+    }
+    
+    /* call_type
+    (0) Known    : 호전환으로 넘어온 (PartyChanged )
+    (1) Internal : 내선으로 온 번호를 걸때 , 내선으로 온 번호를 받을때 
+    (2) Inbound  : 외부에서 올때 (호전환 포함) 
+    (3) Outbound : 외부로 걸때 
+
+    */
+    
+	//--------------------------------------------/	 
+	
+
+}
+ 
+/***********************************************************************************
+  [Event]  
+  호 대상이 변경되어 전화를 받았을때 	ICSinglestepTransfer(전화를 건쪽에서 발생하는건데 민원인 역할 -발생안할듯 ), ICMuteTransfer
+  같은 현상 :  대상 전화를 받으면 Established Event 발생 
+***********************************************************************************/   
+function api_PartyChanged(obj,nHandle,monitorid,call_id,call_type,call_state,media_tyoe,call_characteristic,conn_id,prev_conn_id,this_dn,other_dn,third_party_dn,server_name,date_time,result,ucid,hop,extension,node_id)
+{
+	var str;
+    
+    AddResult("[E]api_PartyChanged - PartyChanged");
+    
+    txtGConnID.value = conn_id;
+    //txtGUcid.value = ucid;
+    
+    str = "MonitorID : " + monitorid + " | Call ID : " + call_id + " | Call Type : " + call_type + " | This DN : " + this_dn + " | Other DN : " + other_dn + " | Third Party DN : " + third_party_dn 
+        + " | Conn ID : " + conn_id +  " | Prev Conn ID : " + prev_conn_id + " | UCID : " + ucid + " | Hop : " + hop + " | Result : " + MakeResult(result) 
+        + " | Extension : " + extension + " | Node ID : " + node_id;
+
+    AddResult("[E]api_PartyChanged : " + str);
+    
+    AddResult("[E]api_PartyChanged - Extension : " + extension);
+    
+    ex = api.ICEXDupExtension(extension);
+    
+    if(ex <= 0)
+    {
+        AddResult(MakeExtensionResult(ex));
+    }
+    
+    fnExtension(ex);    
+    fnExtension(extension);
+	
+	//--------------------------------------------/	 
+	
+    txtGConnID.Text = conn_id;
+	txtCallDn.Text = other_dn;
+	txtCallType.Text = call_type;
+
+	if(extension > 0){
+		// 호전환시 넘겨받은 전화번호 get  
+		var vExKey  = "UEI99";			
+		var result = api.ICEXGetFieldValueForKey( extension, // Extension 핸들 값 
+												vExKey, //가져올 Key 
+												0 )  // index 
+												;
+	 
+		AddResult("[C]ICEXGetFieldValueForKey ");
+		
+		txtCallDn.Text = result;
+	}
+	
+	//회의 주체자 DN  
+	if(result == "32"){ // 32 - "transfer";		
+		txtLastDn.Text = third_party_dn;
+	}
+	
+	// 내부수신이면 수신번호로 조회 패스 
+	//if(txtCallType.Text <> "1" || ){
+	if(length(other_dn) <> 4){
+		/* 호전환 시 발신번호가 다름 -- 이건 extenstion으로 처리해야할듯 */
+		fnSearchMinwon(result); // 발신번호로 조회 
+		// 민원상담 접수 화면 호출 
+		divJubsu.fnInitCall(call_type);
+	}
+	
+
+	//--------------------------------------------/	 
+    
+}
+
+
+/***********************************************************************************
+  전화걸기 MakeCal 
+ -- reponse : api_ResponseMakeCall
+***********************************************************************************/   
+function fnApiMakeCall(obj)
+{
+	// pre check
+	if(txtDN.Text == "" || txtDestDN.Text == ""){
+        gfn_Alert("MakeCall 정보가 없습니다.");		
+		return ;
+	}
+	if(sCallDn2Yn == "Y"){ // 3자통화 연결 사용 
+	
+	}else{
+		// 민원상담 접수 화면 초기화 
+		divJubsu.fn_init();
+	}
+			
+    var result = api.ICMakeCall(txtHandle.Text, 
+									txtDN.Text, 
+									txtDestDNPre.Text+txtDestDN.Text, 
+									"", 0, 0, "", "", 0, 0, 0, 0, "", 
+									txtGExHandle.Text, 
+									vTxtMediaSet, 
+									0, // 직전 상담원 연결 여부 (0:미사용, 1:사용)
+									0, // 전담 상담원 연결 여부 (0:미사용, 1:사용)
+									100, 
+									toNumber("0") //HOP
+									);
+     
+	
+	//AddResult("[C]ICMakeCall", MakeResult(result));
+	//Async Mode 라면 패킷을 정상적으로 보내면 RESULT_SUCCESS 을 반환한다. IC Server에 대한 응답은 response_function Callback 을 이용해 확인한다.
+	// --> ICMakeCall 후 ResponseMakeCall 발생 
+	// --> 초기화 event 발생 (Initiated)
+	// --> Dialing Event 발생  <-----> 대상 Ringing Event 발생  
+	
+	
+	//--------------------------------------------/	 
+	txtDestDNPre.Text = ""; // 외부 발신시 앞자리 붙인것 해제	
+	//--------------------------------------------/	  
+	
+	
+}
+
+
+/*
+* ICMakeCall 후 ResponseMakeCall 발생 
+*/
+
+function api_ResponseMakeCall(obj,nHandle,app_id,this_dn,dest_dn,conn_id,ob_calling_dn,skill_level,priority,relation_agent_dn,relation_agent_id,relation_method,route_method,route_skill_id,route_group_id,ucid,result,extension,media_type,usePrevAgent,useDesignatedAgent,relation_timeout,hop)
+{	
+	var str;
+    
+    if(toNumber(result) == 0){
+        AddResult("[R]api_ResponseMakeCall - Make Call 응답 성공");
+    }
+    else{
+        AddResult("[R]api_ResponseMakeCall - Make Call 응답 실패 : " + MakeResult(result));
+		gfn_Alert(fnGetErrorMsg("ICMakeCall",result));
+        return;
+    }
+    
+    str = "This DN : " + this_dn + " | Dest DN : " + dest_dn + " | Outbound Calling DN : " + ob_calling_dn + " | conn_id : " + conn_id + " | Priority : " + priority + " | Relation Agent DN : " + relation_agent_dn + " | Relation Agent ID : " + relation_agent_id + " | Relation Method : " + relation_method + " | Route Method : " + route_method + " | Route Skill ID : " + route_skill_id + " | Route Group ID : " + route_group_id + " | Media Type : " + media_type + " | Prev Agent : " + usePrevAgent + " | Designated Agent : " + useDesignatedAgent + " | relation_timeout : " + relation_timeout + " | hop : " + hop + " | Result : " + MakeResult(result);
+    
+    AddResult("[R]api_ResponseMakeCall - " + str);
+    
+    fnExtension(extension);    
+		
+}
+
+/*
+* ICMakeCall 후 초기화 event   
+*/ 
+function api_Initiated(obj,nHandle,monitorid,call_id,call_state,call_type,media_type,call_characteristic,conn_id,ani_dn,dnis,other_dn,this_dn,this_queue_dn,server_name,date_time,result,ucid,hop,extension,node_id)
+{
+	var str;
+    
+    AddResult("[E]api_Initiated - Initiated");
+    
+    str = "MonitorID : " + monitorid + " | Call ID : " + call_id + " | Call Type : " + call_type +  " | This DN : " + this_dn 
+        + " | Conn ID : " + conn_id +  " | UCID : " + ucid + " | Hop : " + hop + " | Result : " + MakeResult(result) 
+        + " | Extension : " + extension + " | Node ID : " + node_id;
+    
+    AddResult("[E]api_Initiated - " + str);
+    
+    AddResult("[E]api_Initiated - Extension : " + extension,"A");
+    
+    var ex = api.ICEXDupExtension(extension);
+    
+    if(ex <= 0)
+    {
+        AddResult(MakeExtensionResult(ex),"A");
+    }
+     
+    fnExtension(ex);    
+    fnExtension(extension);
+    
+	// 23.08 보완 : api_Dialing 의 적용내용이지만, 이벤트가 호출되지 않는경우가 발생함 . 
+    // 3자통화 연결 사용 위한 보류 후 전화통화 후 연결이면 (호전환 팝업에서 호전환 대상 찾고 클릭 시 C1을 보류하고 C2와 통화연결 ) 
+    if(sCallDn2Yn == "Y"){
+		txtGConnID2.Text = conn_id;
+		
+    }else{
+		txtGConnID.Text = conn_id;	
+		btnCallHangup.Enable = true;
+    }
+    	
+}
+
+ 
+/***********************************************************************************
+  [Event]  ICMakeCall 후 Dialing Event 발생 
+***********************************************************************************/   
+function api_Dialing(obj,nHandle,monitorid,call_id,call_state,call_type,media_type,call_characteristic,conn_id,ani_dn,dnis,other_dn,this_dn,this_queue_dn,server_name,date_time,result,ucid,hop,extension,node_id)
+{
+	var str;
+    
+    AddResult("[E]api_Dialing - Dialing");
+        
+    str = "MonitorID : " + monitorid + " | Call ID : " + call_id + " | Call Type : " + call_type + " | ANI DN : " + GetAniDN(ani_dn, other_dn) 
+        + " | This DN : " + this_dn + " | dnis : " + dnis + " | Conn ID : " + conn_id +  " | UCID : " + ucid + " | Hop : " + hop + " | Result : " + MakeResult(result) 
+        + " | Extension : " + extension + " | Node ID : " + node_id;
+ 
+    AddResult("[E]api_Dialing - " + str,"A");
+    
+    AddResult("[E]api_Dialing - Extension : " + extension,"A");
+    
+    var ex = api.ICEXDupExtension(extension);
+    
+    if(ex <= 0)
+    {
+        AddResult(MakeExtensionResult(ex),"A");
+    }
+     
+    fnExtension(ex);    
+    fnExtension(extension);
+    
+    //3자통화 연결 사용 위한 보류 후 전화통화 후 연결이면 (호전환 팝업에서 호전환 대상 찾고 클릭 시 C1을 보류하고 C2와 통화연결 ) 
+    if(sCallDn2Yn == "Y"){
+		txtGConnID2.Text = conn_id;
+		
+    }else{
+		txtGConnID.Text = conn_id;	
+		btnCallHangup.Enable = true;
+    }
+    	
+}
+
+
+
+
+/***********************************************************************************
+  전화끊기 ClearCall 
+***********************************************************************************/   
+
+function fnApiClearCall(obj)
+{
+	// pre check
+	if(txtGThisDN.Text == "" || txtGConnID.Text == ""){
+		fnApiClearCallCon2();
+	
+        //gfn_Alert("ClearCall 정보가 없습니다.");		
+		return ;
+	}
+    
+	var result = api.ICClearCall(txtHandle.Text, 
+									txtGThisDN.Text, 
+									txtGConnID.Text, 
+									txtGExHandle.Text, 
+									vTxtMediaSet);
+ 
+	AddResult("[C]ICClearCall : " + MakeResult(result));
+	// --> ICClearCall 후 Released event 발생  
+	
+}
+
+function fnApiClearCallCon2(obj)
+{
+	// pre check
+	if(txtGThisDN.Text == "" || txtGConnID2.Text == ""){
+        //gfn_Alert("ClearCall 정보가 없습니다.");		
+		return ;
+	}
+	
+	var result = api.ICClearCall(txtHandle.Text, 
+									txtGThisDN.Text, 
+									txtGConnID2.Text, 
+									txtGExHandle.Text, 
+									vTxtMediaSet);
+ 
+	AddResult("[C]ICClearCall : " + MakeResult(result));
+	// --> ICClearCall 후 Released event 발생  
+	
+}
+
+
+/***********************************************************************************
+  [Event]  모니터링 중인 DN 호 종료
+  전화 끊기 - Released Event 발생
+***********************************************************************************/   
+function api_Released(obj,nHandle,monitorid,call_id,call_state,call_type,media_type,call_characteristic,ani_dn,dnis,conn_id,other_dn,this_dn,this_queue_dn,server_name,date_time,result,ucid,hop,extension,node_id,conn_count)
+{
+	var str;
+    
+    str = "MonitorID : " + monitorid + " | Call ID : " + call_id + " | Call Type : " + call_type + " | ANI DN : " + GetAniDN(ani_dn, other_dn) 
+        + " | This DN : " + this_dn + " | Conn ID : " + conn_id +  " | UCID : " + ucid + " | Hop : " + hop + " | Result : " + MakeResult(result) 
+        + " | Extension : " + extension + " | Node ID : " + node_id + " | Connection Count : " + conn_count+ " | other_dn : " + other_dn;
+
+    AddResult("[E]api_Released - str : " + str); 
+        
+    var ex = api.ICEXDupExtension(extension);
+    
+    if(ex <= 0)
+    {
+        AddResult(MakeExtensionResult(ex),"A");
+    }
+     
+    fnExtension(ex);    
+    fnExtension(extension);
+    
+    //23.08 Released 두번씩 발생 
+    if (gfn_IsNull(conn_id)) { 
+		return ; 
+    }
+	
+	//--------------------------------------------/	 
+    // 전화 끊기 - Released Event 발생  
+    
+	sCloseYn = "Y"; // 열려있는 팝업(전화수신) 있으면 닫기 
+	imgCallInbound.Visible = false;	
+	lbInfomsg.visible = false;
+	sCloseYnInfo = "Y"; // 열려있는 팝업(알림창) 있으면 닫기 
+		
+	str = "sCallDn2Yn : " + sCallDn2Yn + " | conn_id ID : " + conn_id + " | txtGConnID.Text : " + txtGConnID.Text + " | txtGConnID2.Text : " + txtGConnID2.Text ;
+    AddResult("[E]api_Released - str : " + str);  
+    
+    //23.08 수정 
+    if(conn_id == txtGConnID.Text){ // 수신통화연결 해제시 
+		AddResult("[E]api_Released - 수신통화연결 해제 : " +conn_id);  
+    
+		txtGConnID.Text = "";
+		txtCallDn.Text = "";
+		txtCallType.Text = "";	
+		
+    } else { // if(conn_id == txtGConnID2.Text){ //3자통화 연결 해제시   // txtGConnID2.Text 각 셋팅되지 않는 경우가 발생 (이벤트 오류) 
+		AddResult("[E]api_Released - 3자통화 연결 해제 : " +conn_id);  
+		txtGConnID2.Text = "";
+		//호전환 전달변수 초기화,
+		txtTransferGubun.Text = "1";
+		// 호전환 닫으면 변수초기화, 
+		sCallDn2Yn = ""; 	
+		fnApiRetrieveCall();
+    }
+    
+	txtDestDN.Text = "";    
+	txtLastDn.Text = "";	
+    
+    if (gfn_IsNull(txtGConnID.Text)) { 
+		sCloseYnTran = "Y"; // 열려있는 팝업(호전환) 있으면 닫기		
+	}
+     
+    if (!gfn_IsNull(txtExHandle.Text)) {
+		fnApiDeleteRecord();
+		fnApiDeleteExtension(); 
+	}
+	
+    
+    //23.09 수정 
+    if (gfn_IsNull(txtGConnID.Text)) { 
+		//버튼 비활성화 
+		btnCallHold.Enable = false;
+		btnCallHoldCancel.Enable = false;
+		btnCallTransfer.Enable = false;
+		btnCallHangup.Enable = false;
+		btnExtension51.Enable = false;
+		btnExtension52.Enable = false;
+		btnExtension53.Enable = false;
+		btnExtension61.Enable = false;
+		btnExtension62.Enable = false;
+		btnExtension63.Enable = false;
+		
+		//버튼 활성화 
+		btnCallReady.Enable = true;
+		btnCallStop.Enable = true;
+		btnCallInTransfer.Enable = true;
+		 
+		//if(gs_IsLocal =="Y"){
+		
+		//}else{
+			// 민원상담 접수 화면 호출 - 자동저장 
+			divJubsu.lfn_Save();
+		//}
+		fnApiGetAgentState(); // 현재 콜 상태 가져오기 
+		
+	}		
+	//--------------------------------------------/	 
+		    
+}
+
+ 
+ 
+
+/***********************************************************************************
+  전화대기 HoldCall
+ -- reponse : api_ResponseHoldCall
+ -- event : api_Held
+***********************************************************************************/   
+function fnApiHoldCall(obj)
+{		
+	// pre check
+	if(txtGThisDN.Text == "" || txtGConnID.Text == ""){
+        gfn_Alert("HoldCall 정보가 없습니다.");		
+		return ;
+	}
+	var result = api.ICHoldCall(txtHandle.Text, 
+								txtGThisDN.Text, 
+								txtGConnID.Text, 
+								txtGExHandle.Text, 
+								vTxtMediaSet);
+ 
+	AddResult("[C]ICHoldCall : " + MakeResult(result));
+	// --> ICHoldCall 후 api_ResponseHoldCall 발생  
+	
+}
+
+/* 전화대기 api_ResponseHoldCall */
+
+function api_ResponseHoldCall(obj,nHandle,app_id,this_dn,conn_id,result,extension,media_type)
+{
+    var str;
+    
+    if(toNumber(result) == 0){
+        AddResult("[R]ICHoldCall - Hold Call Ex 응답 성공");
+    }
+    else{
+        AddResult("[R]ICHoldCall - Hold Call Ex 응답 실패 : " + MakeResult(result));
+		//gfn_Alert(fnGetErrorMsg("ICHoldCall",result));
+        return;
+    }
+    
+    str = "This DN : " + this_dn + "Media Type : " + media_type + " | Result : " + MakeResult(result);
+    
+    AddResult("[R]api_ResponseHoldCall : " + str,"A");
+    
+    fnExtension(extension);
+    
+	
+}
+
+/*
+* 호 대기 
+*/
+function api_Held(obj,nHandle,monitorid,call_id,call_state,media_type,call_characteristic,conn_id,other_dn,this_dn,server_name,date_time,result,ucid,hop,extension,node_id)
+{ 
+	var str;
+    
+    AddResult("[E]api_Held - Held");
+    
+    str = "Handle : " + nHandle + " | Monitor ID : " + monitorid + " | Call ID : " + call_id + " | Media Type : " + media_type 
+        + " | Conn ID : " + conn_id + " | Other DN : " + other_dn + " | This DN : " + this_dn + " | date_time : " + date_time
+        + " | Result : " + MakeResult(result) + " | Extension : " + extension + " | Node ID : " + node_id;
+    
+    AddResult("[E]api_Held : " + str,"A"); 
+    var ex = api.ICEXDupExtension(extension);
+    
+    if(ex <= 0)
+    {
+        AddResult(MakeExtensionResult(ex),"A");
+    }
+     
+    fnExtension(ex);    
+    fnExtension(extension);
+	
+    //3자통화 연결 사용 위한 보류이면 (호전환 팝업에서 호전환 대상 찾고 클릭 시 C1을 보류하고 C2와 통화연결 ) 
+    if(sCallDn2Yn == "Y"){ 
+		fnApiMakeCall();
+    }else{	
+		
+		//--------------------------------------------/	 
+		// 보류 클릭 후 Response
+		// 버튼 활성 
+		btnCallHoldCancel.Enable = true;
+		// 버튼 비활성 
+		btnCallHold.Enable = false;
+		btnCallHangup.Enable = false;	
+		btnCallTransfer.Enable = false;
+		btnCallHangup.Enable = false;
+		btnExtension51.Enable = false;
+		btnExtension52.Enable = false;
+		btnExtension53.Enable = false;
+		btnExtension61.Enable = false;
+		btnExtension62.Enable = false;
+		btnExtension63.Enable = false;
+	
+		
+		//--------------------------------------------/	 
+	}	
+}
+
+
+/***********************************************************************************
+  전화대기해제 RetrieveCall
+ -- reponse :api_ResponseRetrieveCall
+***********************************************************************************/   
+function fnApiRetrieveCall(obj)
+{
+	// pre check
+	if(txtGThisDN.Text == "" || txtGConnID.Text == ""){
+        //gfn_Alert("RetrieveCall 정보가 없습니다.");		
+		return ;
+	}
+	
+	var result = api.ICRetrieveCall(txtHandle.Text,  
+								txtGThisDN.Text, 
+								txtGConnID.Text, 
+								txtGExHandle.Text, 
+								vTxtMediaSet); 
+	AddResult("[C]ICRetrieveCall : " + MakeResult(result));
+	
+}
+
+/* 전화대기해제 api_ResponseRetrieveCall */
+function api_ResponseRetrieveCall(obj,nHandle,app_id,this_dn,conn_id,result,extension,media_type)
+{
+    var str;
+    
+    if(toNumber(result) == 0){
+        AddResult("[R]ICRetrieveCall - Retrieve Call 응답 성공");
+    }
+    else{
+        AddResult("[R]ICRetrieveCall - Retrieve Call 응답 실패 : " + MakeResult(result));
+		//gfn_Alert(fnGetErrorMsg("ICRetrieveCall",result));
+        return;
+    }
+    
+    str = "DN : " + this_dn + "Media Type : " + media_type + " | Result : " + MakeResult(result);
+    
+    AddResult("[R]ICRetrieveCall : " + str,"A");
+    
+    fnExtension(extension);
+    
+	//--------------------------------------------/	 
+    // 전화대기해제 HoldCall
+    // 버튼 활성
+	btnCallHold.Enable = true;	
+	btnCallHangup.Enable = true;
+	btnCallTransfer.Enable = true;		
+	btnExtension51.Enable = true;
+	btnExtension52.Enable = true;
+	btnExtension53.Enable = true;
+	btnExtension61.Enable = true;
+	btnExtension62.Enable = true;
+	btnExtension63.Enable = true;
+	
+	// 버튼 비활성 
+	btnCallHoldCancel.Enable = false;
+	
+	//--------------------------------------------/	 
+
+	
+}
+
+/***********************************************************************************
+  통화중 즉시전달 - SinglestepTransfer
+  호전환 팝업에서 즉시전달 버튼 클릭 시 호출 됨 
+ -- reponse : api_ResponseSinglestepTransfer
+ -- event : api_PartyChanged ( 전화를 건 모니텅링에 나타남 (민원인 : 발생안함) 
+***********************************************************************************/   
+function fnApiSinglestepTransfer(obj)
+{
+	AddResult("[C]ICSinglestepTransfer " ); 
+	var result = api.ICSinglestepTransfer(txtHandle.Text, 
+											txtDN.Text, // 자신의 DN
+											txtGConnID.Text, // 전환할 호의 Connection ID
+											txtDestDN.Text, // 전환할 대상의 DN
+											"", // callpage.txtOBCallingDN.value, // 회신 번호
+											0, 0, "", "", 0, 0, 0, 0, 
+											txtExHandle.Text,  /// 주의 : extension 생성한 값으로 전달 
+											vTxtMediaSet, 
+											0, // callpage.chkPrevAgent.checked, 
+											0, // callpage.chkDesignatedAgent.checked, 
+											0  // 1000 //Queue 발신일 경우 지정 상담원 연결 타임아웃 시간
+											); 
+        
+}
+
+/* 통화중 즉시전달 api_ResponseSinglestepTransfer */
+function api_ResponseSinglestepTransfer(obj,nHandle,app_id,this_dn,conn_id,dest_dn,ob_calling_dn,skill_level,priority,relation_agent_dn,relation_agent_id,relation_method,route_method,route_skill_id,route_group_id,result,extension,media_type,usePrevAgent,useDesignatedAgent,relation_timeout)
+{	
+	var str;
+    
+    if(toNumber(result) == 0){
+        AddResult("[R]api_ResponseSinglestepTransfer - Single Step Transfer 응답 성공");
+    }
+    else{
+        AddResult("[R]api_ResponseSinglestepTransfer - Single Step Transfer 응답 실패 : " + MakeResult(result));
+		gfn_Alert(fnGetErrorMsg("ICSinglestepTransfer",result)); 
+        return;
+    }
+    
+    str = "This DN : " + this_dn + " | Dest DN : " + dest_dn + " | Outbound Calling DN : " + ob_calling_dn + " | Skill Level : " + skill_level + " | Priority : " + priority + " | Relation Agent DN : " + relation_agent_dn + " | Relation Agent ID : " + relation_agent_id + " | Relation Method : " + relation_method + " | Route Method : " + route_method + " | Route Skill ID : " + route_skill_id + " | Route Group ID : " + route_group_id + " | Media Type : " + media_type + "Prev Agent : " + usePrevAgent + " | Designated Agent : " + useDesignatedAgent + " | relation_timeout : " + relation_timeout + " | Result : " + MakeResult(result);
+    
+    AddResult("[R]api_ResponseSinglestepTransfer : " + str,"A");
+    
+    fnExtension(extension);
+}
+
+
+/***********************************************************************************
+  통화 후 전달  ICMuteTransfer
+  호전환 팝업에서 호전환 통화 후 호전환 전달 시 
+ -- reponse : api_ResponseMuteTransfer
+ -- event : api_PartyChanged 
+***********************************************************************************/   
+function fnApiMuteTransfer(obj)
+{
+
+	/*  호전환 전 extension 생성		 */
+	txtExKey.Text = "UEI99";
+	txtExValue.Text = txtCallDn.Text;
+	fnApiExtension99();
+					
+	AddResult("[C]ICMuteTransfer");	
+					
+	var result = api.ICMuteTransfer(txtHandle.Text, 
+									txtGThisDN.Text, 
+									txtGConnID.Text, // 전환 할 호의 Connection ID
+									txtDestDN.Text, 
+									txtExHandle.Text, 
+									vTxtMediaSet);
+	
+}
+
+/*  통화 후 전달  ICMuteTransfer */
+function api_ResponseMuteTransfer(obj,nHandle,app_id,this_dn,conn_id,dest_dn,result,extension,media_type)
+{
+    var str;
+    
+    if(toNumber(result) == 0){
+        AddResult("[R]api_ResponseMuteTransfer - Mute Transfer 응답 성공");
+    }
+    else{
+        AddResult("[R]api_ResponseMuteTransfer - Mute Transfer 응답 실패 : " + MakeResult(result));
+		gfn_Alert(fnGetErrorMsg("ICMuteTransfer",result));  
+        return;
+    }
+    
+    str = "This DN : " + this_dn + " | Dest DN : " + dest_dn + "Media Type : " + media_type + " | Result : " + MakeResult(result);
+    
+    AddResult("[R]api_ResponseMuteTransfer : " + str,"A");
+    
+    fnExtension(extension);
+	
+}
+
+// 호전환 팝업에서 호전환 통화 후 호전환 전달 시 발신번호 전달을 위한 extension 생성 
+function fnApiExtension99(obj)
+{
+    // 1) Extension을 먼저 생성 (약속된 정보의 extension)
+	fnApiCreateExtension(); 
+}
+
+
+/***********************************************************************************   
+ 주민번호 입력을 받기 위한 3자통화 ICSinglestepConference
+  3자 통화 : Singlestep Conference (key in )
+ 1) Extension을 먼저 생성 (약속된 정보의 extension)
+ 2) Singlestep Conference 호출 후 responseEvent (partDelete?>>>) 에서 
+ 3) Extension key의 value를 읽어 사용  
+***********************************************************************************/  
+
+function fnApiExtension06(obj)
+{
+    // 1) Extension을 먼저 생성 (약속된 정보의 extension)
+	fnApiCreateExtension();
+	// 2) Extension 값 셋팅 
+	// obj - 1:주민번호 
+	//fnAddRecord("UEI06",obj);
+	// 3) Singlestep Conference 호출 후
+	//fnApiSinglestepConference();
+}
+
+/***********************************************************************************   
+  비속어 멘트 후 종료 
+  SinglestepTransfer
+ 1) Extension을 먼저 생성 (약속된 정보의 extension)
+ 2) SinglestepTransfer
+***********************************************************************************/  
+
+function fnApiExtension05(obj)
+{
+    // 1) Extension을 먼저 생성 (약속된 정보의 extension)
+	fnApiCreateExtension();
+	// 2) Extension 값 셋팅 
+	// obj - 1: 비속어, 2:성희롱, 3:상담불가 
+	// fnAddRecord("UEI05",obj); 
+	// 3) fnApiSinglestepTransfer호출 후
+	// fnApiSinglestepTransfer();
+	
+}
+
+
+/***********************************************************************************   
+ ExtensionData Table을 생성 하는 API이다.
+***********************************************************************************/  
+function fnApiCreateExtension(obj)
+{	
+	var result = api.ICEXCreateExtension();
+	
+	if (toNumber(result) < 0) {
+		ResponsePrint("[C]ICEXCreateExtension", result);		
+		return;
+	}	
+	
+	txtExHandle.Text = result.toString();
+	
+	AddResult("[C]ICEXCreateExtension : " + result);
+	//AddExHandle(result); 
+	
+	// 2) Extension 값 셋팅 
+	fnAddRecord(); 
+	
+}
+
+/* extensiong 생성 후 레코드 추가 */
+function fnAddRecord( ) 
+{
+	AddResult("fnAddRecord  ","A");
+	
+	var vExKey = txtExKey.Text ;  // "UEI06"; // 1:주민번호 , 2:전화번호, 3:사업자번호 
+	var vExValue = txtExValue.Text ; // "1"; //1 : 주민번호  
+	
+	var result = api.ICEXAddRecord(txtExHandle.Text, // Extension 핸들 값 
+								vExKey, // Key 값이 될 문자열
+								vExValue); //value 값이 될 문자열
+								
+	AddResult("[C]ICEXAddRecord : " + MakeExtensionResult(result)); 
+	AddResult("[C]ICEXAddRecord- UEIDestDn : " + gds_CtiInfo.GetColumn(0,"UEIDestDn"));	
+	
+	if(txtExKey.Text == "TMP99"){
+	}
+		
+	if(txtExKey.Text == "UEI05"){
+		// 콜센타 : 6000, 본부 : 6001, 지부 : 6002 
+		txtDestDN.Text = gds_CtiInfo.GetColumn(0,"UEIDestDn");
+		// 민원상담에 SET 
+		var vGubun = "";
+		if(txtExValue.Text == "1") vGubun = "비속어";
+		if(txtExValue.Text == "2") vGubun = "성희롱";
+		if(txtExValue.Text == "3") vGubun = "상담불가";
+		
+		divJubsu.tab.tabJubsu.taMWREMARK.Text += toString(getdate(), "@@@@-@@-@@") + " '" + vGubun  + "' 차단 " ;
+		// 3) fnApiSinglestepTransfer호출 후
+		fnApiSinglestepTransfer();
+	}
+	if(txtExKey.Text == "UEI06"){	
+		txtDestDN.Text = gds_CtiInfo.GetColumn(0,"UEIDestDn");
+		// 3) Singlestep Conference 호출 후
+		fnApiSinglestepConference();
+	} 
+} 
+
+/* 레코드 삭제  */
+function fnApiDeleteRecord( ) 
+{
+	AddResult("[C]ICEXDeleteRecord - "+txtExHandle.Text + "---" + txtExKey.Text,"A");
+	
+	var result = api.ICEXDeleteRecord(txtExHandle.Text, 
+										txtExKey.Text);
+	AddResult("[C]ICEXDeleteRecord : "+ result,"A");
+	txtExKey.Text = "";
+	txtExValue.Text = "";
+	txtFieldValue.Text = "";
+} 
+
+/* extensiong 삭제  */
+function fnApiDeleteExtension(obj)
+{	
+	AddResult("[C]ICEXDeleteExtension : " + txtExHandle.Text,"A");
+	var result = api.ICEXDeleteExtension(txtExHandle.Text); 
+
+	AddResult("[C]ICEXDeleteExtension : " + result,"A");   
+	txtExHandle.Text = "";	
+}
+
+
+function fnApiGetKey() {
+	var strKey;
+	var nResult;
+
+	strKey = api.ICEXGetKey(txtExHandle.Text, // Extension 핸들 값 
+							1 //GetKeyPosition() //가져올 Key Position(Num) 
+							); 
+	AddResult("[C]ICEXGetKey : Key - " + strKey); 
+}
+
+
+    
+/***********************************************************************************
+  3자 통화 : Singlestep Conference (key in )
+ 1) Extension을 먼저 생성 (약속된 정보의 extension)
+ 2) Singlestep Conference 호출 후 responseEvent (partDelete?>>>) 에서 
+ 3) Extension key의 value를 읽어 사용  
+ 
+ 
+ -- reponse : api_ResponseSinglestepConference
+ -- event : api_PartyAdded
+ -- event : api_PartyDeleted
+***********************************************************************************/  
+
+function fnApiSinglestepConference(obj)
+{
+	var result = api.ICSinglestepConference(txtHandle.Text, 
+											txtGThisDN.Text, 
+											txtGConnID.Text, // 전환 할 호의 Connection ID
+											txtDestDN.Text, 
+											txtGThisDN.Text, // 발신 Dn, 회신 번호
+											"5", //Party Type 참여 형태 MakePartyTypeString  (4) Mute Mode (5) Mute MOH Mode(요청자는 홀드 음악 재생) 
+											txtExHandle.Text, // Extension 핸들 값 - 보내려는 Extension 데이터의 핸들을 입력한다. 변수를 지정하여 송신한 Extension Handle 값을 전달한다..
+											vTxtMediaSet);
+	
+	AddResult("[C]ICSinglestepConference : " + result);
+	// 비밀번호 받기 등의 기능 이용으로 상담원측은 아무 소리도 들리지 않아야 한다면 PARTY_TYPE_MUTE (4) 를 인자로 넘겨서 사용한다.
+	
+}
+
+/*  3자 통화 : ICSinglestepConference */
+function api_ResponseSinglestepConference(obj,nHandle,app_id,this_dn,conn_id,dest_dn,ob_calling_dn,result,extension,media_type)
+{	
+    var str;
+    
+    if(toNumber(result) == 0){
+        AddResult("[R]api_ResponseSinglestepConference - Single Step Conference 응답 성공");
+    }
+    else{
+        AddResult("[R]api_ResponseSinglestepConference - Single Step Conference 응답 실패 : " + MakeResult(result)); 
+		gfn_Alert(fnGetErrorMsg("ICSinglestepConference",result));  
+        return;
+    }
+    
+    str = "This DN : " + this_dn + "Media Type : " + media_type + " | Result : " + MakeResult(result);
+        
+	AddResult("[R]api_ResponseSinglestepConference : " + str);   
+    fnExtension(extension);
+    
+    //--------------------------------------------/	 
+    // 버튼 실행 후 enable -> disable  
+	btnCallHold.Enable = false;
+	btnCallHoldCancel.Enable = false;
+	btnCallTransfer.Enable = false;
+	btnCallHangup.Enable = false;
+	btnExtension51.Enable = false;
+	btnExtension52.Enable = false;
+	btnExtension53.Enable = false;
+	btnExtension61.Enable = false;
+	btnExtension62.Enable = false;
+	btnExtension63.Enable = false;
+	
+	//--------------------------------------------/	 
+	
+}
+
+ 
+/***********************************************************************************
+  [Event]  ICSinglestepConference 후    
+***********************************************************************************/   
+function api_PartyAdded(obj,nHandle,monitorid,call_id,call_type,call_state,media_type,call_characteristic,conn_id,this_dn,other_dn,third_party_dn,server_name,date_time,result,ucid,hop,extension,node_id)
+{
+	var str;
+    
+    AddResult("[E]api_PartyAdded - PartyAdded");
+    
+    //txtGConnID.value = conn_id;
+    //txtGUcid.value = ucid;
+    
+    str = "MonitorID : " + monitorid + " | Call ID : " + call_id + " | Call Type : " + call_type + " | This DN : " + this_dn + " | Other DN : " + other_dn + " | Third Party DN : " + third_party_dn 
+        + " | Conn ID : " + conn_id +  " | UCID : " + ucid + " | Hop : " + hop + " | Result : " + MakeResult(result) 
+        + " | Extension : " + extension + " | Node ID : " + node_id;
+
+    AddResult("[E]api_PartyAdded str " + str);
+     
+    
+    var ex = api.ICEXDupExtension(extension);
+    
+    if(ex <= 0)
+    {
+        AddResult(MakeExtensionResult(ex));
+    }
+    
+    fnExtension(ex);    
+    fnExtension(extension);	
+    
+	//--------------------------------------------/	 
+	// key-in 입력 받기 시작시 알림창 
+	//--------------------------------------------/	 
+	// 알림창 호출 
+	var parValue = " sMsg="+ quote("주민번호를 입력받고 있습니다.");
+	Dialog("cti::frmcti0010PInfoMessage.xml", parValue , 300, 123, "Autosize=true TitleBar=false", -1, -1); //조회 전에 Progress Bar Windows Open
+	
+}
+ 
+/***********************************************************************************
+  [Event]  호 전달 됨 
+  강제로 not ready 상태로 변경된다고 함 
+  전화 수신을 못받은 경우 해당 이벤트 호출 됨 
+  SinglestepConference 후 상담원과 IVR 연결로 호전환 시    
+***********************************************************************************/   
+function api_Diverted(obj,nHandle,monitorid,call_id,call_type,call_state,media_type,call_characteristic,conn_id,this_dn,this_queue_dn,other_dn,other_queue_dn,server_name,date_time,result,ucid,hop,extension,node_id)
+{
+    var str;
+    
+    AddResult("[E]api_Diverted");
+    
+    str = "MonitorID : " + monitorid + " | Call ID : " + call_id + " | Call Type : " + call_type +  " | This DN : " + this_dn + " | Conn ID : " + conn_id 
+        + " | UCID : " + ucid + " | Hop : " + hop + " | Result : " + MakeResult(result) 
+        + " | Extension : " + extension + " | Node ID : " + node_id;
+ 
+    AddResult("[E]api_Diverted - str " + str); 
+    
+    var ex = api.ICEXDupExtension(extension);
+    
+    if(ex <= 0)
+    {
+        //AddResult(MakeExtensionResult(ex));
+    }
+    
+    fnExtension(ex);    
+    fnExtension(extension);
+    
+    //--------------------------------------------/	 
+	sCloseYn = "Y"; // 열려있는 팝업(전화수신) 있으면 닫기 
+	imgCallInbound.Visible = false;	
+	lbInfomsg.visible = false;
+	
+	/* 23.06 기능 생략 요청으로 부재중이아닌 수신대기 상태로 변경  */
+	if( result = 28 || result = 11 ){ // Result : 28 redirected, 11 callPickup
+		/*
+		// 강제로 not ready 상태로 변경된다고 함.. 
+		// 자리비움으로 변경해줄것 , 현재 상태를 다시 읽어와서 셋 	
+		cbxStop.Value = "30"; // 부재중(30)으로 셋팅 후 
+		fnApiSetAgentState("30"); // 30 자리비움 
+		*/
+		
+		sDivertedYn = "Y" ; // diverted 이벤트 후 일정시간 이후 수신대기로 전환 
+		/*timer 이벤트에서 처리하도록 함 
+		// fnApiSetAgentState("40"); // 40 수신대기		
+		*/
+	}
+    
+     
+	
+    //--------------------------------------------/	 
+	
+	
+}
+ 
+/***********************************************************************************
+  [Event]  ICSinglestepConference 후  IVR <> APP 종료 시 
+extension 값을 여기서 읽도록 
+***********************************************************************************/   
+function api_PartyDeleted(obj,nHandle,monitorid,call_id,call_type,call_state,media_type,call_characteristic,conn_id,this_dn,other_dn,server_name,date_time,result,ucid,hop,extension,node_id)
+{	
+	var str;
+    
+    AddResult("[E]api_PartyDeleted - PartyDeleted");
+    
+    //txtGConnID.value = conn_id;
+    //txtGUcid.value = ucid;
+    
+    str = "MonitorID : " + monitorid + " | Call ID : " + call_id + " | Call Type : " + call_type + " | This DN : " + this_dn + " | Other DN : " + other_dn +  " | Conn ID : " + conn_id 
+        + " | UCID : " + ucid + " | Hop : " + hop + " | Result : " + MakeResult(result) 
+        + " | Extension : " + extension + " | Node ID : " + node_id;
+
+    AddResult("[E]api_PartyDeleted : " + str);
+	 
+    
+    //--------------------------------------------/	 
+    // 버튼 실행 후 enable -> disable 
+	btnCallHold.Enable = true;
+	btnCallTransfer.Enable = true;		
+	btnCallHangup.Enable = true;
+	btnExtension51.Enable = true;
+	btnExtension52.Enable = true;
+	btnExtension53.Enable = true;
+	btnExtension61.Enable = true;
+	btnExtension62.Enable = true;
+	btnExtension63.Enable = true;
+	
+    //--------------------------------------------/	 	
+    
+    //Extension key의 value를 읽어 사용 
+    fnApiGetValue(extension,conn_id);
+    
+	
+    /*
+    var ex = api.ICEXDupExtension(extension);
+    
+    if(ex <= 0)
+    {
+        AddResult(MakeExtensionResult(ex),"A");
+    }
+     
+    fnExtension(ex);    
+    fnExtension(extension);
+    */
+	
+}
+
+function fnApiGetValue(extension, conn_id) {
+
+	// key-in 도중 고객이 끊는 경우 
+    // conn_id 값이 없음, other_dn 값은 국선 trunkdn 노출 (ex:T236972, T231451 ) 
+	if(gfn_IsNull(conn_id)){ 
+		sCloseYnInfo = "Y"; // 열려있는 팝업(알림창) 있으면 닫기 
+		fnApiClearCall(); // 전화끊기
+		
+        gfn_Alert("KEY-IN 입력중 고객이 통화를 종료하였습니다. ");
+		return ; 
+	}
+	
+	var strValue; 
+	
+	var vExKey = "";  
+	if(txtExKey.Text == "UEI06"){			
+		switch(txtExValue.Text){	 
+			case "1" :  
+				vExKey = "UEI10"; // 고객 입력한 주민번호 
+				break;
+				 
+			case "2" : 
+				vExKey = "UEI11"; // 고객 입력한 전화번호 
+				break;  
+				
+			case "3" : 
+				vExKey = "UEI12"; // 고객 입력한 사업자번호 
+				break;  
+			default :	 
+	
+				break;
+		}
+	
+	} 	
+	
+	//AddResult("fnGetValue - extension : " + extension); 
+	//AddResult("fnGetValue - vExKey : " + vExKey); 
+	
+	var result = api.ICEXGetFieldValueForKey( extension, // Extension 핸들 값 
+											vExKey, //가져올 Key 
+											0 )  // index 
+											;
+ 
+	AddResult("[C]ICEXGetFieldValueForKey result : " + length(result)); 
+	
+	// key-in 입력 받기 시작시 알림창 닫기 
+	//alert("key-in 종료  ");
+	sCloseYnInfo = "Y"; // 열려있는 팝업(알림창) 있으면 닫기 
+	
+	txtFieldValue.Text = result;
+	
+	if(result >=0 ){
+		// 입력받은 값 테이블에 insert 
+		fn_UpdateCallKeyIn() ; 
+	}else{
+        gfn_Alert("KEY-IN 입력값이 없습니다.");
+		return ; 
+	}
+	
+}
+ 
+
+/*
+ * 기능 :  
+ * parameter : 없음
+ * Return : 없음
+ */
+function fn_UpdateCallKeyIn() {
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("cti:insertCtiCallKeyin", "", 0, "");
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,""	// outDs
+		,"CKUID=" + quote(txtGConnID.Text)	//--콜UNIQUEID
+            + " CKGUBUN=" + quote(txtExValue.Text)    // -- 입력구분(1:주민번호,2:휴대폰번호,3:사업자등록번호)
+            + " CKKEYINNO=" + quote(txtFieldValue.Text)    // --입력정보
+            + " CKUSERID=" + quote(txtDN.Text)   // --등록자 (내선번호) 
+        ,""
+		,true
+		,true
+    );
+    
+    //gfn_Alert("KEY-IN 입력값" + length(txtFieldValue.Text) + "자리가 등록되었습니다.");
+        
+}
+  
+
+/***********************************************************************************
+  [Event]  Event 에 명시된 상담사 계정, 내선번호, Ip Address 정보를 상담사에게 표출하여 중복 로그인 발생을 알림
+ 해당 상담사는 로그아웃 된 상태이므로 재 로그인이 가능하도록 로그인 Button 활성화 등 UI 변경
+***********************************************************************************/   
+function api_Banishment(obj,nHandle,other_login_ipaddr,dest_dn,dest_agent_id,date_time,result)
+{
+	
+    var str;
+    
+    if(result == 2902)
+    {
+        AddResult("[E]api_Banishment Drop Action 강제 종료.. OpenServer를 다시하세요");
+    }
+    else
+    {
+        AddResult("[E]api_Banishment 강제 로그아웃..");
+    }
+
+    //str = "IP : " + other_login_ipaddr + " | DN : " + dest_dn + " | ID : " + dest_agent_id + " | Time : " + date_time + " | Result : " + result;
+	str = "IP : " + other_login_ipaddr + " \r\nDN : " + dest_dn + " \r\nID : " + dest_agent_id + " \r\nTime : " + toString(date_time, "@@@@-@@-@@ @@:@@:@@")  ;
+  
+    gfn_Alert("중복로그인 되었습니다. 로그아웃 후 다시 로그인 해주세요. \r\n" + str);
+         
+    
+}
+ 
+/***********************************************************************************
+  [Event]  전화기(통화중) 로그인 
+고객콜 Hold 상태에서 협의통화 수행 중 협의 통화를 종료하거나 고객이 종료하는 경우에도 해당 Event 발생
+
+***********************************************************************************/   
+function api_AgentBusy(obj,nHandle,monitorid,agent_dn,agent_id,agent_state,agent_state_sub,date_time,extension,media_type,connection_count)
+{
+    var str;
+    
+    AddResult("[E]api_AgentBusy - Agent Busy");
+    
+    str = "MonitorID : " + monitorid + " | Agent Dn : " + agent_dn + " |Agent Id : " + agent_id + " | Agent State : " + agent_state + " | Agent State Sub : " + agent_state_sub +  
+	" | Extension : " + extension   + " | Media Type : " + media_type + " | Connection Count : " + connection_count  ; 
+    AddResult("[E]api_AgentBusy - str : " + str);  
+    
+    if(sCallDn2Yn == "Y" && gfn_IsNull(txtGConnID.Text) ) {
+		// 23.09 비정상 종료로 버튼 활성화된것 다시 비활성화 처리 , 끊기 활성화 
+		btnCallReady.Enable = false;
+		btnCallStop.Enable = false;
+		btnCallInTransfer.Enable = false;
+		btnCallHangup.Enable = true;
+		
+        gfn_Alert("호전환 연결 대기 중 고객이 통화를 종료하였습니다. ");
+        
+		return ; 
+    }
+}
+ 
+/***********************************************************************************
+  [Event]  업무 중 전화기 상태 이상
+***********************************************************************************/   
+function api_DeviceOutOfService(obj,nHandle,monitorid,event_dn,node_id)
+{
+    var str;
+    
+    AddResult("[E]api_DeviceOutOfService - Device Out Of Service");
+    
+    str = "Event DN : " + event_dn + ", node_id : " + node_id;
+
+    AddResult("[E]api_DeviceOutOfService - str : " + str);
+    //gfn_Alert("[DeviceOutOfService] 전화기 상태 이상이 감지 되었습니다. 정상이 아닌경우 수/발신이 불가합니다. 잠시 후 진행하세요.");
+	
+}
+
+ 
+/***********************************************************************************
+  [Event]  업무 중 전화기 상태 정상화
+***********************************************************************************/   
+function api_DeviceBackInService(obj,nHandle,monitorid,event_dn,node_id)
+{
+    var str;
+    
+    AddResult("[E]api_DeviceBackInService - Device Back In Service");
+    
+    str = "Event DN : " + event_dn + ", node_id : " + node_id;
+
+    AddResult("[E]api_DeviceBackInService - str : " + str);
+    //gfn_Alert("[DeviceBackInService] 전화기 상태 가 정상화 되었습니다.");
+	
+}
+ 
+/***********************************************************************************
+  [Event]  CTI Server 장애로 인한 절체
+***********************************************************************************/   
+function api_Activetimeout(obj)
+{ 
+    AddResult("[E]api_Activetimeout");
+    gfn_Alert("[Activetimeout] CTI Server 장애로 인하여 재 접속이 필요합니다. 다시 로그인 해주세요.");
+}
+
+function api_HeartbeatTimeout(obj)
+{  
+    AddResult("[E]api_HeartbeatTimeout");
+    gfn_Alert("[HeartbeatTimeout] CTI Server 장애로 인하여 재 접속이 필요합니다. 다시 로그인 해주세요.");	
+}
+
+
+/***********************************************************************************
+  Agent List 가져오기 
+ -- reponse : api_ResponseGetAgentList
+***********************************************************************************/     
+function fnApiGetAgentList(obj)
+{
+	ds_CtiAgentList.ClearData();
+	
+	// pre check
+	if(vTxtTenant == "" ){
+        gfn_Alert("GetAgentList 정보가 없습니다.");		
+		return ;
+	}
+	
+	var vGroupIDSet = "";
+	var vQueueDNSet = "";
+	var vPrivateData2 = "";
+	var vAgentList ;
+	/*
+    if (!gfn_IsNull(obj)) {  
+		vQueueDNSet = obj ;// 팝업에서 선택한 QueueDN		
+    }
+    
+    if (gfn_IsNull(vQueueDNSet)) {  
+		// 조회 대상이 너무 많음 
+		return ;
+    }    
+	
+    */
+    if (!gfn_IsNull(obj)) {  
+		vGroupIDSet = obj ;// 팝업에서 선택한 GroupDn		
+    }
+    
+    if (gfn_IsNull(vGroupIDSet)) {  
+		// 조회 대상이 너무 많음 
+		return ;
+    }    
+	
+    
+	var result = api.ICGetAgentList(txtHandle.Text, 
+									vTxtTenant, 
+									vGroupIDSet, 
+									vQueueDNSet, 
+									vPrivateData2, 
+									0, // 40, // 0, // GetAgentState(), 
+									vTxtMediaSet);
+ 
+	AddResult("[C]ICGetAgentList : " +  MakeResult(result));
+	// ---> api_ResponseGetAgentList 에서 callback 
+}
+
+
+function api_ResponseGetAgentList(obj,nHandle,app_id,tenant_name,groupIDSet,queueDnSet,private_data,agent_state,result,agent_count,extension,media_type)
+{
+	var str;
+
+	if(toNumber(result) == 0){
+        AddResult("[R]api_ResponseGetAgentList 응답 성공");
+    }
+    else{
+        AddResult("[R]api_ResponseGetAgentList 응답 실패 : " + MakeResult(result));
+		gfn_Alert(fnGetErrorMsg("ICGetAgentList",result));   
+        return;
+    }
+     
+    AgentList(extension);
+
+    fnExtension(extension);
+}
+
+
+function AgentList(extension) {
+	var i = 0, j = 0;
+	var nRecord = 0; nField = 0;
+	var strKey, strValue;
+	var str = "";
+	var strCol;
+
+	if (extension <= 0) {
+		AddAgentOutput("Agent List : Extension 이 없습니다");
+		return;
+	}
+
+	nRecord = api.ICEXGetRecordCount(extension);
+	
+	for (i = 0; i < nRecord; i++) {
+		nField = api.ICEXGetFieldCount(extension, i);
+
+		strKey = api.ICEXGetKey(extension, i);
+
+		str = "ID : " + strKey + "|";
+		ds_CtiAgentList.InsertRow(i);
+		ds_CtiAgentList.SetColumn(i,"ID",strKey);
+		for (j = 0; j < nField; j++) {
+			strValue = api.ICEXGetFieldValue(extension, i, j);
+			switch (j) {
+				case 0: str += "할당DN : " + strValue + "|"; break;  // 할당 DN
+				case 1: str += "Login DN : " + strValue + "|"; break;  // Login DN
+				case 2: str += "Agent Name : " + strValue + "|"; break;  // Login DN
+				case 3: str += "상태 : " + MakeAgentStateString(toNumber(strValue)) + "|"; break;  // State
+				case 4: str += "부가코드 : " + strValue; break;  // State Subcode
+				case 5: str += "상태 유지 시간 : " + strValue + "|"; break;
+				case 6: str += "IN/OUT" + GetInout(toNumber(strValue)); break;
+				case 7: str += "Skill Level" + strValue; break;
+				default: str += "|Unknown : " + strValue; break;
+			}
+			switch (j) {
+				case 0: strCol = "AGENT"; break;
+				case 1: strCol = "DN"; break;
+				case 2: strCol = "AgentName"; break;
+				case 3: strCol = "AgentState"; break;
+				case 4: strCol = "AgentStateSub"; break;
+			}
+			if(strCol <> ""){
+				ds_CtiAgentList.SetColumn(i,strCol,strValue);
+			}
+			
+		}
+		AddAgentOutput(str);
+	}
+}
+
+function AddAgentOutput(str) {
+	AddResult(str,"A");
+	//AddResult(str);
+}
+ 
+
+/***********************************************************************************
+  Agent 개인 호 통계 요청  ICAgentReport
+ -- reponse : api_ResponseAgentReport
+***********************************************************************************/    
+
+function fnApiAgentReport(obj)
+{
+	// pre check
+	if(txtAgentID.Text == "" || vTxtTenant == ""){
+        gfn_Alert("GetAgentList 정보가 없습니다.");		
+		return ;
+	}
+	
+	var result = api.ICAgentReport(txtHandle.Text, 
+									txtAgentID.Text, 
+									vTxtTenant,
+									vTxtMediaSet);
+	AddResult("[C]ICAgentReport : " + MakeResult(result));
+	/*
+	long ICAgentReport(long nHandle, LPCTSTR agent_id, LPCTSTR tenant_name, LPCTSTR meida_set)
+	가져오는 데이터는 ResponseAgentReport 로 전달 된다.
+	*/
+	// ---> api_ResponseAgentReport 
+ 
+}
+
+    
+function api_ResponseAgentReport(obj,nHandle,app_id,agent_dn,agent_id,tenant_name,media_set,result,in_total,in_success,in_talk_time,out_total,out_success,out_talk_time,transfer_calls,login_time,logout_time,in_int_suc,in_ext_suc,in_con_suc,out_int_suc,out_ext_suc,out_con_suc,ringing_time,dialing_time,ready_time,notready_time,acw_time,extension,in_int_tot,in_ext_tot)
+{
+	var str;
+    
+    if(toNumber(result) == 0){
+        AddResult("[R]api_ResponseAgentReport 응답 성공");
+    }
+    else{
+        AddResult("[R]api_ResponseAgentReport 응답 실패 : " + MakeResult(result));
+		gfn_Alert(fnGetErrorMsg("ICAgentReport",result));    
+        return;
+    }
+    
+    str = "Agent ID : " + agent_id;
+     
+            
+    var msg = "";
+		
+	msg += "Agent Report \n";
+
+	msg += "Inbound Total : " + in_total.toString() + "\n";
+
+	msg += "Inbound 성공 : " + in_success.toString() + "\n";
+
+	msg += "Inbound 통화시간 : " + in_talk_time.toString() + "\n";
+
+	msg += "Outbound Total : " + out_total.toString() + "\n";
+
+	msg += "Outbound 성공 : " + out_success.toString() + "\n";
+	
+	msg += "Outbound 통화시간 : " + out_talk_time.toString() + "\n";
+
+	msg += "전환 호 합계 : " + transfer_calls.toString() + "\n";
+
+	msg += "최근 로그인 시각 : " + login_time + "\n";
+
+	msg += "최근 로그아웃 시각 : " + logout_time + "\n";
+
+	msg += "내선 인바운드 통화수 : " + in_int_suc.toString() + "\n";
+	
+	msg += "국선 인바운드 통화수 : " + in_ext_suc.toString() + "\n";
+	
+	msg += "협의 인바운드 통화수 : " + in_con_suc.toString() + "\n";
+	
+	msg += "내선 아웃바운드 통화수 : " + out_int_suc.toString() + "\n";
+	
+	msg += "국선 아웃바운드 통화수 : " + out_ext_suc.toString() + "\n";
+	
+	msg += "협의 아웃바운드 통화수 : " + out_con_suc.toString() + "\n";
+	
+	msg += "벨울림 시간 : " + ringing_time.toString() + "\n";
+	
+	msg += "다이얼링 시간 : " + dialing_time.toString() + "\n";
+	
+	msg += "수신대기상태 시간 : " + ready_time.toString() + "\n";
+	
+	msg += "자리비움상태 시간 : " + notready_time.toString() + "\n";
+
+	msg += "후 처리상태 시간 : " + acw_time.toString() + "\n";
+
+	msg += "내선 인바운드 인입 호 수 : " + in_int_tot.toString() + "\n";
+
+	msg += "국선 인바운드 인입 호 수 : " + in_ext_tot.toString() + "\n";
+  
+    AddResult("[R]api_ResponseAgentReport msg : " + msg);
+
+	//StatecodeExtensionPrint(extension);
+
+	// 조회성 API의 Extension Data 는 반드시 삭제해야 한다.
+	api.ICEXDeleteExtension(extension);
+	
+    
+}
+
+
+
+/***********************************************************************************
+  Queue 통계 요청  ICQueueRptSubScribe
+ -- reponse : api_ResponseQueueRptSubScribe
+ -- event : api_QueueSScribePush  
+***********************************************************************************/    
+function fnApiQueueSubscribe(obj)
+{
+	// pre check
+	if(vTxtQueueID == ""){
+        gfn_Alert("ICQueueRptSubScribe 정보가 없습니다.");		
+		return ;
+	} 
+	
+	var result = api.ICQueueRptSubScribe(txtHandle.Text, 
+										vTxtTenant, 
+										vTxtQueueID,
+										toNumber("5"), // 구독 지속 시간 (초 단위 : 최소2초) 기본 : 5초 
+										"0",  //구독 방법 (0: Periodic, 1:Sensitive ) 
+										vTxtMediaSet);
+	AddResult("[C]ICQueueSubscribe : " + MakeResult(result)); 
+
+	
+}
+
+/*  Queue 통계 요청  ICQueueRptSubScribe */
+function api_ResponseQueueRptSubScribe(obj,nHandle,tenant_name,queue_dn_set,duration,subscribe_type,media_set,subscribe_id,result)
+{
+    var str;
+    
+    if(toNumber(result) == 0){
+        AddResult("[R]api_ResponseQueueRptSubScribe - Queue Report Subscribe 응답 성공"); 
+        txtQueueSubscribeID.value = subscribe_id;
+    }
+    else{
+        AddResult("[R]api_ResponseQueueRptSubScribe - Queue Report Subscribe 응답 실패 : " + MakeResult(result));
+        return;
+    }
+    
+    str = "Tenant Name : " + tenant_name + ", Queue DN Set : " + queue_dn_set + ", Duration : " + duration + ", Type : " + subscribe_type + ", Media Set : " + media_set + ", Subscribe ID : " + subscribe_id + " | result : " + MakeResult(result);
+     
+    AddResult("[R]api_ResponseQueueRptSubScribe : " + str,"A");
+	
+}
+
+function api_QueueSScribePush(obj,nHandle,app_id,queue_dn_set,tenant_name,subscribe_id,result,nQueueExtension)
+{
+    var str;
+    
+    AddResult("[E]api_QueueSScribePush - Queue Subscribe Push","A");
+    
+    str = "Queue DN Set : " + queue_dn_set + ", Tenant name : " + tenant_name  + ", Subscribe ID : " + subscribe_id;
+
+    AddResult("[E]api_QueueSScribePush " + str,"A");
+
+    fnQueueSubscribe(nHandle, queue_dn_set, tenant_name, subscribe_id, result, nQueueExtension);
+	
+}
+
+function fnQueueSubscribe(nHandle, szQueueDnSet, tenant_name, nSubscribeID, result, nQueueExtension) {
+	var msg = "";
+	var szExt = "";
+
+	AddResult("Queue Subscribe : " + result,"A");
+
+	if (result != 0) return;
+
+	/*-----*/
+	var vWait_count = api.ICEXGetFieldValueForKey(nQueueExtension, "wait_count", 0); // "대기호 : " + szExt + "\n"; 
+	var vReady_agent_count = api.ICEXGetFieldValueForKey(nQueueExtension, "ready_agent_count", 0); // "수신대기 상담원 수 : " + szExt + "\n";
+	var vTxt = "" ;
+	vTxt += " 민원인 " + vWait_count +"건";
+	vTxt += "  상담원 " + vReady_agent_count +"건";
+	edTenantSubscribe.Text = vTxt;
+	/*-----*/
+	
+	msg += "Queue Report \n";
+	
+	szExt = api.ICEXGetFieldValueForKey(nQueueExtension, "wait_count", 0);
+	msg += "대기호 : " + szExt + "\n";  
+   
+	szExt = api.ICEXGetFieldValueForKey(nQueueExtension, "ready_agent_count", 0);
+	msg += "수신대기 상담원 수 : " + szExt + "\n";
+		    
+    AddResult("fnQueueSubscribe : " + msg,"A");
+
+	// 조회성 API의 Extension Data 는 반드시 삭제해야 한다.
+	api.ICEXDeleteExtension(nQueueExtension);
+}
+
+
+/***********************************************************************************
+  Queue 통계 요청  ICAgentSubscribe 후 종료 
+***********************************************************************************/    
+function fnApiQueueCloseSubscribe(obj)
+{
+	// pre check
+	if(txtQueueSubscribeID.Text == "" ){
+        //gfn_Alert("ICCloseSubscribe 정보가 없습니다.");		
+		return ;
+	}
+	
+	var result = api.ICCloseSubScribe(txtHandle.Text, 
+										toNumber(txtQueueSubscribeID.Text));
+	AddResult("[C]ICCloseSubscribe : " + MakeResult(result));       
+}
+
+/***********************************************************************************
+  Agent 개인 호 통계 요청  ICAgentSubscribe
+ -- reponse : api_ResponseAgentRptSubScribe
+ -- event : api_AgentSScribePush
+***********************************************************************************/    
+function fnApiAgentSubscribe(obj)
+{
+	// pre check
+	if(txtAgentID.Text == "" || vTxtTenant == ""){
+        gfn_Alert("ICAgentRptSubScribe 정보가 없습니다.");		
+		return ;
+	}
+	
+	var result = api.ICAgentRptSubScribe(txtHandle.Text, 
+										  vTxtTenant, 
+										  txtAgentID.Text, 
+										  toNumber("5"), // 구독 지속 시간 (초 단위 : 최소2초) 기본 : 5초 
+										  "0",  //구독 방법 (0: Periodic, 1:Sensitive )
+										  vTxtMediaSet);
+	AddResult("[C]ICAgentSubscribe : " +  MakeResult(result));  
+	// ---> api_ResponseAgentRptSubScribe 
+	// --- push : api_AgentSScribePush 
+ 
+	
+}
+
+/* Agent 개인 호 통계 요청  ICAgentSubscribe */
+function api_ResponseAgentRptSubScribe(obj,nHandle,tenant_name,agent_id,duration,subscribe_type,media_set,subscribe_id,result)
+{
+    var str;
+    
+    if(toNumber(result) == 0){
+        AddResult("[R]api_ResponseAgentRptSubScribe - Agent Report Subscribe 응답 성공");
+        txtSubscribeID.Text = subscribe_id;
+    }
+    else{
+        AddResult("[R]api_ResponseAgentRptSubScribe - Agent Report Subscribe 응답 실패 : " + MakeResult(result));
+        return;
+    }
+    
+    str = "Tenant Name : " + tenant_name + ", Agent ID : " + agent_id + ", Duration : " + duration + ", Type : " + subscribe_type + ", Media Set : " + media_set + ", Subscribe ID : " + subscribe_id + " | result : " + MakeResult(result);
+    
+    AddResult("[R]api_ResponseAgentRptSubScribe : " + str,"A");
+	
+}
+
+
+/* Agent 개인 호 통계 요청  ICAgentSubscribe */
+function api_AgentSScribePush(obj,nHandle,app_id,agent_id,tenant_name,subscribe_id,result,nAgentExtension)
+{
+    var str;
+    
+    AddResult("[E]api_AgentSScribePush - Agent Subscribe Push","A");
+    
+    str = "Agent ID : " + agent_id + ", Tenant name : " + tenant_name  + ", Subscribe ID : " + subscribe_id;
+
+    AddResult("[E]api_AgentSScribePush : " + str,"A");
+
+    fnAgentSubscribe(nHandle, agent_id, tenant_name, subscribe_id, result, nAgentExtension);
+	
+}
+
+function fnAgentSubscribe(nHandle, szAgentID, szTenantName, nSubscribeID, result, nAgentExtension) {
+	var msg = "";
+	var szExt = "";
+
+	AddResult("Agent Subscribe : " + result,"A");
+
+	if (result != 0) return;
+	
+	/*-----*/
+	var vTalk_Time = api.ICEXGetFieldValueForKey(nAgentExtension, "in_talk_time", 0);
+	var vReady_time = api.ICEXGetFieldValueForKey(nAgentExtension, "ready_time", 0);
+	var vAcw_time = api.ICEXGetFieldValueForKey(nAgentExtension, "acw_time", 0);
+	var vNotready_time = api.ICEXGetFieldValueForKey(nAgentExtension, "notready_time", 0);
+	var vIn_ext_suc = api.ICEXGetFieldValueForKey(nAgentExtension, "in_ext_suc", 0);
+	var vIn_int_suc = api.ICEXGetFieldValueForKey(nAgentExtension, "in_int_suc", 0);
+	var vTxt = "" ;
+	vTxt += " 통화 " + lfn_calcMinute(vTalk_Time) ;
+	vTxt += "   대기 " + lfn_calcMinute(vReady_time) ;
+	vTxt += "   후처리 " + lfn_calcMinute(vAcw_time) ;
+	vTxt += "   자리비움 " + lfn_calcMinute(vNotready_time) ;
+	vTxt += "   외부수신 " + vIn_ext_suc +"건";
+	vTxt += "  내부수신 " + vIn_int_suc +"건";
+	edAgentSubscribe.Text = vTxt;
+	/*-----*/
+
+	msg += "Agent Report \n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "in_total", 0);
+	msg += "Inbound Total : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "in_success", 0);
+	msg += "Inbound 성공 : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "in_talk_time", 0);
+	msg += "Inbound 통화시간 : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "out_total", 0);
+	msg += "Outbound Total : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "out_success", 0);
+	msg += "Outbound 성공 : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "out_talk_time", 0);
+	msg += "Outbound 통화시간 : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "transfer_calls", 0);
+	msg += "전환 호 합계 : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "login_time", 0);
+	msg += "최근 로그인 시각 : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "logout_time", 0);
+	msg += "최근 로그아웃 시각 : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "in_int_suc", 0);
+	msg += "내선 인바운드 통화수 : " + szExt + "\n";
+	
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "in_ext_suc", 0);
+	msg += "국선 인바운드 통화수 : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "in_con_suc", 0);
+	msg += "협의 인바운드 통화수 : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "out_int_suc", 0);
+	msg += "내선 아웃바운드 통화수 : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "out_ext_suc", 0);
+	msg += "국선 아웃바운드 통화수 : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "out_con_suc", 0);
+	msg += "협의 아웃바운드 통화수 : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "ringing_time", 0);
+	msg += "벨울림 시간 : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "dialing_time", 0);
+	msg += "다이얼링 시간 : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "ready_time", 0);
+	msg += "수신대기상태 시간 : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "notready_time", 0);
+	msg += "자리비움상태 시간 : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "acw_time", 0);
+	msg += "후 처리상태 시간 : " + szExt + "\n";
+    
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "30-0", 0);
+	msg += "자리비움 상태  사유코드 0 시간 : " + szExt + "\n";
+	
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "in_int_tot", 0);
+	msg += "내선 인바운드 인입 호 수 : " + szExt + "\n";
+
+	szExt = api.ICEXGetFieldValueForKey(nAgentExtension, "in_ext_tot", 0);
+	msg += "국선 인바운드 인입 호 수 : " + szExt + "\n";
+ 
+	//AddResult("fnAgentSubscribe : " + msg);	
+    AddResult("fnAgentSubscribe : " + msg,"A");
+	//StatecodeExtensionPrint(nAgentExtension);
+
+	// 조회성 API의 Extension Data 는 반드시 삭제해야 한다.
+	api.ICEXDeleteExtension(nAgentExtension);
+}
+
+
+/*
+ * 시간표기 
+ */
+function lfn_calcMinute(gap) {  
+	gap = toNumber(gap);
+	var days = floor(gap / (1 * 60 * 60 * 24)); // 일
+	var hour = floor((gap/ (1 * 60 *60 )) % 24 ); // 시
+	var minutes = floor((gap  / (1 * 60 )) % 60 ); // 분
+	var second = floor((gap / 1 ) % 60); // 초
+	
+    var rtn = Lpad(hour, "0", 2);
+    rtn += ":"+Lpad(minutes, "0", 2);
+    rtn += ":"+Lpad(second, "0", 2);
+	return rtn ; 
+}
+
+
+
+/***********************************************************************************
+  Agent 개인 호 통계 요청  ICAgentSubscribe 후 종료 
+***********************************************************************************/    
+function fnApiCloseSubscribe(obj)
+{
+	// pre check
+	if(txtSubscribeID.Text == "" ){
+        //gfn_Alert("ICCloseSubscribe 정보가 없습니다.");		
+		return ;
+	}
+	
+	var result = api.ICCloseSubScribe(txtHandle.Text, 
+										toNumber(txtSubscribeID.Text));
+	AddResult("[C]ICCloseSubscribe : " + MakeResult(result));       
+}
+
+/************************************************************************************************************************************************/
+
+
+/***********************************************************************************
+function 
+***********************************************************************************/
+
+function AddResult(str,gubun) {
+
+	var strDate = getDate();
+	strDate = Mid(strDate,0,4) + "/" + Mid(strDate,4,2) + "/" + Mid(strDate,6,2) + " " + 
+	          Mid(strDate,8,2) + ":" + Mid(strDate,10,2) + ":" + Mid(strDate,12,2);
+	strDate = "[ "  + strDate + " ] " ;
+	
+    if (gfn_IsNull(gubun)) {  
+		txtResponse.Text += strDate + str + '\n';		
+		fnAddResultText(strDate + str + '\n');
+	}
+ 
+}
+
+// AddResult 후 txt로 로그 기록 
+function fnAddResultText(str)
+{
+	fileSaveFile = sFilePath + "\\" + sFileName;
+    fileSaveFile.Open("ta");  // Option ( r:read, t:text, b:binary, w:write, a:append +:read/write )        
+    fileSaveFile.Write(str); 
+	fileSaveFile.Close(); 
+	
+}
+
+// 로그기록 txt 삭제 
+function fnLogDel(obj) 
+{		
+	//로그파일 목록 가져오기 
+	var nFileCount = fileDialogFile.GetFileList( ds_FileList, sFilePath, "*.txt" );	
+	
+	if(nFileCount > 0) {
+		
+		//오늘날짜, 5일전 자료비교 후 
+		var gdate = Datetime(left(GetDate(), 8));	
+		var stdDate = gdate.AddDate("-5");
+				
+		for (i=0; i<ds_FileList.GetRowCount(); i++) {
+			
+			var sName = ds_FileList.GetColumn(i, "FILE_NAME") ;
+			var sDt = substr(ds_FileList.GetColumn(i, "FILE_NAME"),0,8) ; 
+						
+			if (sDt < stdDate) {
+				fileSaveFile.Delete(sFilePath + "\\" + sName);
+			}	
+		}
+		
+	}
+	
+}
+
+// 로그기록 txt 서버에 올리기 
+function fnTextUpload(obj) 
+{	
+	filSaveFile = sFilePath + "\\" + sFileName;
+	var ls_fileSize = NumFormat(filSaveFile.GetLength()) ;
+
+	if(ls_fileSize > 0 ){
+		
+		var ls_UploadRealName = sFileName;
+		var ls_RealFileName = "";
+	
+			tit_FileWrite(
+				hfAttachFile
+				, sFileUploadPath
+				, sFilePath
+				, sFileName
+				, ls_UploadRealName
+				, "U"
+				, ls_RealFileName
+			);
+			
+			hfAttachFile.CloseFile();
+		
+	
+	}
+	//trace("Text 파일을 생성하였습니다. : " + sFileName);
+
+}
+
+
+function fnExtension(extension)
+{
+    ExtensionOutput(extension);
+
+    if(extension > 0 && g_IsOCXAppDeleteEventExtension)
+    {
+        api.ICEXDeleteExtension(extension);
+    }   
+}
+
+// extensino data 를 출력 해주는 함수
+// CTI에서 생성하는 UserData 
+function ExtensionOutput(extension){
+	if(extension <= 0){
+		return;
+	}
+	
+	var i=0, j=0, nRecord =0, nField = 0;
+	var strKey, strValue, strTemp;
+
+	nRecord = api.ICEXGetRecordCount(extension);      
+	
+	for (i = 0; i < nRecord; i++) {
+		nField = api.ICEXGetFieldCount(extension, i);
+
+		strKey = api.ICEXGetKey(extension, i);
+
+		str = "Key : " + strKey + " + Value : ";
+
+		for (j = 0; j < nField; j++) {
+			strValue = api.ICEXGetFieldValue(extension, i, j);
+			if(j == nField+1){
+				str += strValue;
+			}
+			else{
+				str += strValue + ", ";
+			}
+		}            
+		// 출력
+		AddResult("ExtensionOutput : " + str,"A");
+	}
+}
+
+function StatecodeExtensionPrint(nExt){
+	var i = 0, j = 0;
+	var strKey, strValue;
+	var nRecord = 0, nField = 0;
+	var strTemp = "";
+
+	if (nExt <= 0) {
+		AddResult("StatecodeExtensionPrint - 잘못된 Extension 핸들 값입니다.");
+		return;
+	}
+
+	nRecord = api.ICEXGetRecordCount(nExt);
+	
+	if(nRecord <= 0){
+		AddResult("StatecodeExtensionPrint - ICEXGetRecordCount : ", nRecord);
+		return;
+	}
+	
+	
+	for(i=0; i < nRecord; i++){
+		strKey = api.ICEXGetKey(nExt, i);
+		
+		nField = api.ICEXGetFieldCount(nExt, i);
+		
+		strTemp = "Key : " + strKey + " | Value : ";
+		
+		for(j=0; j < nField; j++){
+			strValue = api.ICEXGetFieldValue(nExt, i, j);
+			
+			strTemp += strValue + "  ";
+		}
+		
+		AddResult("StatecodeExtensionPrint : " + strTemp,"A");
+	}
+	
+	
+}
+    
+function GetAgentState(){
+
+	return cbAgentState.Value ;
+/*
+(0) NULL
+(10) 로그아웃
+(20) 로그인
+(30) 자리 비움
+(40) 수신 대기
+(41) InBound 수신 대기
+(42) OutBound 수신 대기
+(50) 통화 중
+(51) Ringing 통화 중
+(52) DIALING 통화 중
+(60) 후 처리
+(99) 로그인 후 마지막 상태, ICAPI-App 에서만 사용
+*/
+}
+    
+function GetnPtype(){
+	return vPasswdType ;
+/*
+PASSWD_TYPE_160	(1) SHA-160
+PASSWD_TYPE_256	(2) SHA-256
+PASSWD_TYPE_384	(3) SHA-384
+PASSWD_TYPE_512	(4) SHA-512
+*/
+}
+
+function GetAgentSubcode() {
+	
+	return cbxStop.value ;
+	//return cbStatesubcode.Value;
+}
+
+
+
+function fnCleartxtResponse(obj)
+{
+	txtResponse.Text = "";
+}
+    
+function fnGetDateString(){
+	// var strDate = getDate();
+	var strDate = lfn_ctiSysDate(); // 서버시간 가져오기 
+	strDate = Mid(strDate,0,4) + "/" + Mid(strDate,4,2) + "/" + Mid(strDate,6,2) + " " + 
+	          Mid(strDate,8,2) + ":" + Mid(strDate,10,2) + ":" + Mid(strDate,12,2);
+	strDate = "[ "  + strDate + " ] " ;
+	
+	return strDate; 
+	
+}
+  
+function fnGetErrorMsg(title,errcode){ 
+	var vMsg = title + " 오류 입니다.\r\n(정보지원과로 문의하시기 바랍니다.)\r\n" + fnGetDateString() + "\r\n" +  MakeResult(errcode); 
+	return vMsg ;
+}
+
+
+/***********************************************************************************
+cti.js 
+***********************************************************************************/
+
+function MakeOpenServerResult(result) {	 
+	return lfnMakeOpenServerResult(result);
+}
+
+function MakeResult(result) {
+	return lfnMakeResult(result);
+}
+
+function MakeExtensionResult(result) {	
+	return lfnMakeExtensionResult(result);    }
+
+
+function MakeAgentStateString(state){	
+	return lfnMakeAgentStateString(state);
+}
+
+function MakeAddrTypeString(addrType){
+	return lfnMakeAddrTypeString(addrType);
+}
+
+function MakeRegModeString(regMode){
+	return lfnMakeRegModeString(regMode);
+}
+
+function MakePartyTypeString(regMode){
+	return lfnMakePartyTypeString(regMode);
+}
+
+function GetInout(nState) {
+	return lfnGetInout(nState);
+}
+
+function GetAniDN(ani_dn, other_dn){
+	return lfnGetAniDN(ani_dn, other_dn);
+}
+ 
+
+
+
+
+
+/************************************************************************************************************************************************/
+/***** 확인  *********************************************************/ 
+
+/* 이미지 로고 클릭 시 확인 버튼 보이게 */
+function imgKemsLogo_OnClick(obj,nX,nY)
+{	
+	
+	// fimCom0062MFrameTop에서 상단 로고 클릭시 gs_OpenGubun = 'Y' 롤 셋팅 
+    if(gs_OpenGubun = "Y"){
+		if(btnAPI.Visible){
+			btnAPI.Visible = false;
+			btnTest.Visible = false; 
+		}else{	
+			btnAPI.Visible = true;
+			btnTest.Visible = true; 
+		}
+    }
+    
+	
+}
+
+/* 확인용도 1 */
+function fnDivCtiVisible(obj)
+{
+    if(sChg == ""){
+		sChg = "Y"; 
+		divJubsu.Visible = false;
+		divApi.Visible = true;
+    }else{
+		sChg = ""; 
+		divJubsu.Visible = true;
+		divApi.Visible = false;
+    }	
+}
+/* 확인용도 2 */
+function fnDivTestVisible(obj)
+{
+    if(sChg2 == ""){
+		sChg2 = "Y"; 
+		DivTest.Visible = true;
+    }else{
+		sChg2 = ""; 
+		DivTest.Visible = false;
+    }	
+}
+
+
+/* 확인 화면에서 키인 값 가져오게 */
+function btnKeyinHP_OnClick(obj)
+{
+	// 버튼입력[KEY-IN]값 조회
+	//lfn_SearchCallKeyIn(gds_oUserInfo.GetColumn(0,"PINLINETELNO"), "2");		// Gubun 1:주민번호, 2:휴대폰번호, 3:사업자등록번호
+	lfn_SearchCallKeyIn(txtDN.Text, txtExValue.Text);		// Gubun 1:주민번호, 2:휴대폰번호, 3:사업자등록번호
+	  
+	divApi.edKeyInValue.Text = ds_oCallKeyIn.GetColumn(0, "CKKEYINNO");
+}
+
+// UID로 CALLKEYIN 테이블 조회
+function lfn_SearchCallKeyIn(sINTELNO, sGUBUN)
+{
+	ds_oCallKeyIn.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("com:searchCallKeyIninfo", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oCallKeyIn=ds_oCallKeyIn"	// outDs
+		,"INTELNO=" + quote(sINTELNO)
+		 + " GUBUN=" + quote(sGUBUN)//  UID
+		,""
+		,false
+		,false
+		,true
+	);
+}
+
+
+/***** TEST  *********************************************************/ 
+function DivTest_btnGdsSaveXml_OnClick(obj)
+{
+	
+    var objForm = parent;
+	trace("gfn_traceDs : " + Length(objForm.Components));	
+    for (var b = 0; b < Length(objForm.Components); b++) {
+        mobj_Component = objForm.components(b);
+        ms_ComponentId = mobj_Component.ID;
+        // 필수값 체크
+        if (mobj_Component.GetType() == "Dataset") {
+			trace(objForm.object(ms_ComponentId).saveXML());
+        }
+    }
+    /*
+    var objForm = this.GetForm() ;
+	trace("objForm : " + objForm);	
+    var mobj_Component = null;
+    var marr_Grid = Array();
+
+    var i = 0;
+    for (var b = 0; b < Length(objForm.Components); b++) {
+        mobj_Component = objForm.components(b);
+        if (mobj_Component.GetType() == "Grid") {
+            if (Length(mobj_Component.UserData) > 0) {
+                marr_Grid[i] = mobj_Component;
+                i++;
+            }
+        }
+    }
+    */
+    
+}
+
+function DivTest_btnGdsXml_OnClick(obj)
+{
+    var objForm = parent;
+    var vTxt = "";
+	DivTest.txtArea.Text = vTxt;
+	
+    for (var b = 0; b < Length(objForm.Components); b++) {
+        mobj_Component = objForm.components(b);
+        ms_ComponentId = mobj_Component.ID;
+        // 필수값 체크
+        if (mobj_Component.GetType() == "Dataset") {
+			//trace(objForm.object(ms_ComponentId).saveXML());
+			vTxt += objForm.object(ms_ComponentId).saveXML();
+        }
+    }
+	DivTest.txtArea.Text = vTxt;
+}
+
+function DivTest_btnDsXml_OnClick(obj)
+{
+	
+    var objForm = this;
+    var vTxt = "";
+	DivTest.txtArea.Text = vTxt;
+	
+    for (var b = 0; b < Length(objForm.Components); b++) {
+        mobj_Component = objForm.components(b);
+        ms_ComponentId = mobj_Component.ID;
+        // 필수값 체크
+        if (mobj_Component.GetType() == "Dataset") {
+			//trace(objForm.object(ms_ComponentId).saveXML());
+			vTxt += objForm.object(ms_ComponentId).saveXML();
+        }
+    }
+	DivTest.txtArea.Text = vTxt;
+}
+
+
+ 
+function DivTest_btnGsXml_OnClick(obj)
+{
+    var vTxt = "";
+	DivTest.txtArea.Text = vTxt;
+	
+	vTxt += 'gs_ApacheServer= '+gs_ApacheServer+'\r';
+	vTxt += 'gs_CallCenterDATA= '+gs_CallCenterDATA+'\r';
+	vTxt += 'gs_CallCenterDATA1= '+gs_CallCenterDATA1+'\r';
+	vTxt += 'gs_CallCenterFileName= '+gs_CallCenterFileName+'\r';
+	vTxt += 'gs_CallCenterUID= '+gs_CallCenterUID+'\r';
+	vTxt += 'gs_DataGroupGubun= '+gs_DataGroupGubun+'\r';
+	vTxt += 'gs_FileUploadServerPath= '+gs_FileUploadServerPath+'\r';
+	vTxt += 'gs_FormScanFile= '+gs_FormScanFile+'\r';
+	vTxt += 'gs_FormScanProgram= '+gs_FormScanProgram+'\r';
+	vTxt += 'gs_HttpCode= '+gs_HttpCode+'\r';
+	vTxt += 'gs_IsBSB= '+gs_IsBSB+'\r';
+	vTxt += 'gs_IsCallCenter= '+gs_IsCallCenter+'\r';
+	vTxt += 'gs_IsDeptAuth= '+gs_IsDeptAuth+'\r';
+	vTxt += 'gs_IsLocal= '+gs_IsLocal+'\r';
+	vTxt += 'gs_IsResizingForm= '+gs_IsResizingForm+'\r';
+	vTxt += 'gs_IsTlogin= '+gs_IsTlogin+'\r';
+	vTxt += 'gs_LocalDefaultPrinter= '+gs_LocalDefaultPrinter+'\r';
+	vTxt += 'gs_LoginMgno= '+gs_LoginMgno+'\r';
+	vTxt += 'gs_OpenGubun= '+gs_OpenGubun+'\r';
+	vTxt += 'gs_PrintConfigFileName= '+gs_PrintConfigFileName+'\r';
+	vTxt += 'gs_ScanFileName= '+gs_ScanFileName+'\r';
+	vTxt += 'gs_ScanProgramName= '+gs_ScanProgramName+'\r';
+	vTxt += 'gs_ShareSession= '+gs_ShareSession+'\r';
+	vTxt += 'gs_SysID= '+gs_SysID+'\r';
+	vTxt += 'gs_SystemGubun= '+gs_SystemGubun+'\r';
+	vTxt += 'gs_SystemMenuId= '+gs_SystemMenuId+'\r';
+			
+	DivTest.txtArea.Text = vTxt;
+}
+
+function DivTest_btntxtResponse_OnClick(obj)
+{	
+	DivTest.txtArea.Text = "";
+}
+ 
+ 
+/***** TEST  *********************************************************/ 
+ 
+
+function DivTest_Button0_OnClick(obj)
+{
+	/*var vTxt =  toString(getdate() ) ; 	
+	DivTest.txtArea.Text += "\r\ngetdate - " + vTxt  ; 
+	
+	var sDate = lfn_ctiSysDate(); // 서버 시간 가져오기 
+	DivTest.txtArea.Text += "\r\nlfn_sysDate - " + sDate  ; 
+	*/
+	
+	
+}
+/* 사용자변경 */
+function divApi_Button6_OnClick(obj)
+{
+		  
+	// jjh test 계정으로 
+	gds_CtiInfo.SetColumn(0,"DN",txtDN.Text);
+	gds_CtiInfo.SetColumn(0,"AgentID",txtAgentID.Text);
+	gds_CtiInfo.SetColumn(0,"AgentPW","1");
+	gds_CtiInfo.SetColumn(0,"Queue","4060");//  - 테스트 큐	 
+    edVersion.Text = "DN : " + gds_CtiInfo.GetColumn(0,"DN");
+  
+}
+
+function divApi_Button12_OnClick(obj)
+{
+	vTxtQueueID = divApi.edQueue.Text ;
+}
+]]></Script>
+</Window>

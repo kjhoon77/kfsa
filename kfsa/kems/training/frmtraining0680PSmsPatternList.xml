@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="450" Id="frmtraining0680PSmsPatternList" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="SMS유형보기팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="700" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oWorkGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>고객(실무교육)</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>강습(강습,시험)</DATA>
+					</record>
+					<record>
+						<CD>9</CD>
+						<DATA>기타</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSendGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>0</CD>
+						<DATA>단문(SMS)</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>장문(MMS)</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsPattern">
+				<Contents>
+					<colinfo id="SPMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPGTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPTYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPBIZGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPPATTERN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPREGDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPREGSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTDEPTNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPREGNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPTYPENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPBIZGUBUNNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="603" LineColor="user14" Right="694" TabOrder="61" Top="1" Type="Rectangle" Width="91"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="Button1" ImageID="BTN_MULTI_SORT" Left="619" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="2" Top="32" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="606" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_ioSmsPattern" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="445" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="390" Id="gdSmsStat" InputPanel="FALSE" Left="4" LineColor="default" OnCellDBLClick="gdSmsStat_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="694" RowHeight="40" Style="sty_Grid" TabOrder="4" TabStop="true" Top="55" UseDBuff="true" UsePopupMenu="true" UserData="문자메시지발송현황" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="690">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="44"/>
+						<col width="90"/>
+						<col width="74"/>
+						<col width="588"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="년도"/>
+						<cell align="center" col="2" display="text" text="직능"/>
+						<cell align="center" col="3" display="text" text="회차"/>
+						<cell align="center" col="4" display="text" text="접수번호"/>
+						<cell align="center" col="5" display="text" text="순번"/>
+						<cell align="center" col="6" display="text" text="업무구분"/>
+						<cell align="center" col="7" display="text" text="문자구분"/>
+						<cell align="center" col="8" display="text" text="유형내용"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="TOMGGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="1" colid="TOYEAR" display="combo"/>
+						<cell align="center" col="2" colid="TOTCCOURSECD" combocol="CD" combodataset="ds_oCourse" combotext="DATA" display="combo"/>
+						<cell align="center" col="3" colid="TOTRAININGORDER" display="combo"/>
+						<cell align="center" col="4" colid="TOHJUBSUNO" display="text"/>
+						<cell align="center" col="5" display="text" expr="row+1"/>
+						<cell align="center" col="6" colid="SPBIZGUBUNNM" display="text"/>
+						<cell align="center" col="7" colid="SPTYPENM" display="text"/>
+						<cell align="left" col="8" colid="SPPATTERN" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="lbWorkGubun" Left="5" Style="sty_Label" TabOrder="6" Text="업무구분" Top="6" VAlign="Middle" Width="88"></Static>
+		<Radio Border="Flat" CodeColumn="CD" Column="SPBIZGUBUN" ColumnCount="4" DataColumn="DATA" Height="20" Id="radWorkGubun" INDEX="0" InnerDataset="ds_oWorkGubun" Left="97" OnChanged="radWorkGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="5" Top="6" Width="396"></Radio>
+		<Static Align="Center" Height="20" Id="Static0" Left="5" Style="sty_Label" TabOrder="7" Text="문자구분" Top="31" VAlign="Middle" Width="88"></Static>
+		<Radio Border="Flat" CodeColumn="CD" Column="SPTYPE" ColumnCount="3" DataColumn="DATA" Height="20" Id="radSendGubun" INDEX="0" InnerDataset="ds_oSendGubun" Left="97" OnChanged="radSendGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="8" Top="31" Width="396"></Radio>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0680PSmsPatternList.xml
+ * 설명 : SMS유형보기팝업
+ * 작성일 : 2011.03.24
+ * 작성자 : 정현호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    //if (IsExistVar("sTjmgno")) {
+        lfn_Search();
+    //}
+
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close("0");
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_ioSmsPattern.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("com:searchSmsPattern", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioSmsPattern=ds_ioSmsPattern"	// outDs
+		,"SPGTMGNO=" + quote(gds_oUserInfo.GetColumn(0,"PDEPTCD")) //-- 지부  // args
+		
+			+" SPBIZGUBUN=" + quote(radWorkGubun.value) //-- 업무구분
+		   			+" SPTYPE=" + quote(radSendGubun.value)//  -- 발송구분		
+		,"lfn_AfterSearchSmsPatternList"
+		,false
+	);
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close("");
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchSmsPatternList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SearchMessage(gdSmsStat); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 사용자 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdSmsStat, 0); // 멀티 정렬을 실행한다.
+}
+
+/*
+* 종료시 전송 문자 전달
+*/
+function gdSmsStat_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var arrArg = Array(1);
+    arrArg[0] = ds_ioSmsPattern.GetColumn(ds_ioSmsPattern.currow, "SPPATTERN");
+    Close(arrArg);
+}
+
+function radWorkGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	lfn_Search();
+}
+
+function radSendGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	lfn_Search();
+}
+]]></Script>
+</Window>

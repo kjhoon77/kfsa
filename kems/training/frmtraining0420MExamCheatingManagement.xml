@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmtraining0420MExamCheatingManagement" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="부정행위자관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioExamCheat" OnRowPosChanged="ds_ioExamCheat_OnRowPosChanged">
+				<Contents>
+					<colinfo id="BIRTHDAY" size="11" type="STRING"/>
+					<colinfo id="ECCHEATGUBUN" size="2" type="STRING"/>
+					<colinfo id="ECCHEATREASON" size="50" type="STRING"/>
+					<colinfo id="ECMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="ECMODDATE" size="10" type="STRING"/>
+					<colinfo id="ECREGDATE" size="10" type="STRING"/>
+					<colinfo id="ECREGSABUN" size="8" type="STRING"/>
+					<colinfo id="ECREMARK" size="1000" type="STRING"/>
+					<colinfo id="ECSTOPENDDATE" size="8" type="STRING"/>
+					<colinfo id="ECSTOPSTARTDATE" size="8" type="STRING"/>
+					<colinfo id="ECTCCOURSECD" size="2" type="STRING"/>
+					<colinfo id="ECTPMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="EXMODSABUN" size="8" type="STRING"/>
+					<colinfo id="TCCOURSENM" size="30" type="STRING"/>
+					<colinfo id="TPNM" size="20" type="STRING"/>
+					<colinfo id="TPBIRTHDAY" size="13" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCheatGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPrintGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>ALL</CD>
+						<DATA>모든&#32;이력&#32;출력</DATA>
+					</record>
+					<record>
+						<CD>2YEAR</CD>
+						<DATA>현재&#32;시험응시자격&#32;정지자만&#32;출력</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oExamOrderMgno"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oExamCheatReport"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iFormSave">
+				<Contents>
+					<colinfo id="I_PROC" size="256" summ="default" type="STRING"/>
+					<colinfo id="I_FCCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="I_FAMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="I_PK1VAL" size="256" summ="default" type="STRING"/>
+					<colinfo id="I_PK2VAL" size="256" summ="default" type="STRING"/>
+					<colinfo id="I_FRDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="I_PATH" size="256" summ="default" type="STRING"/>
+					<colinfo id="I_FILENM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oFormSave"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iFormDelete">
+				<Contents>
+					<colinfo id="I_FCCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="I_FAMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="I_PK1VAL" size="256" summ="default" type="STRING"/>
+					<colinfo id="I_PK2VAL" size="256" summ="default" type="STRING"/>
+					<colinfo id="I_PATH" size="256" summ="default" type="STRING"/>
+					<colinfo id="I_FILENM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oFormDelete"></Dataset>
+		</Datasets>
+		<Shape Bottom="80" Height="31" Id="shpGubunBox2" Left="334" LineColor="user15" Right="790" TabOrder="32" Top="49" Type="Rectangle" Width="456"></Shape>
+		<Shape Bottom="129" Height="28" Id="shpGubunBox1" Left="121" LineColor="user15" Right="704" TabOrder="29" Top="101" Type="Rectangle" Width="583"></Shape>
+		<Shape Bottom="576" Height="178" Id="shpGubunBox3" Left="3" LineColor="user15" Right="795" TabOrder="28" Top="398" Type="Rectangle" Width="792"></Shape>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="357" LineColor="user14" Right="795" TabOrder="61" Top="1" Type="Rectangle" Width="438"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="20" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="312">
+			<Contents></Contents>
+		</Div>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_ioExamCheat" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="393" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="256" Id="gdExamCheat" InputPanel="FALSE" Left="5" LineColor="default" OnCellClick="gdExamCheat_OnCellClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="797" RowHeight="20" Style="sty_Grid" TabOrder="10" TabStop="true" Top="137" UseDBuff="true" UsePopupMenu="true" UserData="부정행위자목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="79"/>
+						<col width="100"/>
+						<col width="139"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="101"/>
+						<col width="428"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="성명"/>
+						<cell align="center" col="1" display="text" text="생년월일"/>
+						<cell align="center" col="2" display="text" text="직능"/>
+						<cell align="center" col="3" display="text" text="정지시작일자"/>
+						<cell align="center" col="4" display="text" text="정지종료일자"/>
+						<cell align="center" col="5" display="text" text="사유"/>
+						<cell align="center" col="6" display="text" text="비고"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="TPNM" display="text"/>
+						<cell align="center" col="1" colid="BIRTHDAY" display="text"/>
+						<cell align="center" col="2" colid="TCCOURSENM" display="text"/>
+						<cell align="center" col="3" colid="ECSTOPSTARTDATE" display="text" Mask="####.##.##"/>
+						<cell align="center" col="4" colid="ECSTOPENDDATE" display="text" Mask="####.##.##"/>
+						<cell align="center" col="5" colid="ECCHEATREASON" display="text"/>
+						<cell align="left" col="6" colid="ECREMARK" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="lbRemark" Left="7" Style="sty_Label" TabOrder="21" Text="비고" Top="506" VAlign="Middle" Width="88"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="712" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="9" Top="107" Transparent="TRUE" Width="74"></Button>
+		<Static Align="Center" Height="20" Id="lbExamCheat" Left="7" Style="sty_Label" TabOrder="22" Text="사유" Top="458" UserData="K" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edRemark" ImeMode="native" Left="99" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="19" Top="506" UserData="S" Width="692"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="529" OnClick="lfn_Search" Style="sty_Button" TabOrder="7" ToolTipText="조회" Top="104" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDelete" ImageID="BTN_COM_DEL" Left="616" OnClick="lfn_Delete" Style="sty_Button" TabOrder="8" ToolTipText="삭제&#32;저장" Top="104" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSave" ImageID="BTN_TEXT_COM" Left="592" OnClick="lfn_Save" Style="sty_Button" TabOrder="15" Text="저장(F4)" ToolTipText="저장" Top="406" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="447" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="1" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="btnToExcel_OnClick" Style="sty_Button" TabOrder="2" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="3" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="4" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbPersonNm" Left="125" Style="sty_Label" TabOrder="23" Text="성명" Top="105" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edPersonNm" ImeMode="native" Left="217" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="5" Top="105" UserData="S" Width="106"></Edit>
+		<Static Align="Center" Height="20" Id="lbBIRTHDAY" Left="327" Style="sty_Label" TabOrder="24" Text="주민번호" Top="105" UserData="S" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="medRESIDENTNO" Left="419" LeftMargin="2" Mask="######-#######" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="6" Top="105" Type="STRING" UserData="S" Width="106"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbCheatDate" Left="7" Style="sty_Label" TabOrder="25" Text="등록일자" Top="482" UserData="K" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cxbExamCheat" INDEX="3" InnerDataset="ds_oCheatGubun" Left="98" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="17" Top="457" UserData="S:사유" Width="237"></Combo>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calCheatDate" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="18" Top="482" UserData="I:등록일자" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="radPrintGubun" INDEX="0" InnerDataset="ds_oPrintGubun" Left="351" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="11" Top="55" Value="ALL" Width="360"></Radio>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="702" OnClick="lfn_Print" Style="sty_Button" TabOrder="12" ToolTipText="출력" Top="54" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="7" Style="sty_Label" TabOrder="27" Text="직능" Top="434" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse" INDEX="2" InnerDataset="ds_oCourse" Left="98" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="16" Top="433" UserData="S:직능" Width="182"></Combo>
+		<Static Align="Center" Height="20" Id="lbPersonNm2" Left="7" Style="sty_Label" TabOrder="30" Text="성명" Top="410" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edPersonNm2" ImeMode="native" Left="99" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medRESIDENTNO2_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="13" Top="410" UserData="S:성명" Width="106"></Edit>
+		<Static Align="Center" Height="20" Id="lbBIRTHDAY2" Left="209" Style="sty_Label" TabOrder="31" Text="주민번호" Top="410" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="medRESIDENTNO2" Left="301" LeftMargin="2" Mask="######-#######" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medResidentNo2_OnKeyDown" OnKillFocus="medResidentNo2_OnKillFocus" Style="sty_Maskedit" TabOrder="14" Top="410" Type="STRING" UserData="S:주민번호" Width="106"></MaskEdit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnInput" ImageID="BTN_COM_ADD" Left="360" OnClick="lfn_Input" Style="sty_Button" TabOrder="33" ToolTipText="추가&#32;저장" Top="4" Width="85"></Button>
+		<Shape Bottom="561" Height="27" Id="Shape0" Left="6" LineColor="darkgoldenrod" Right="792" TabOrder="34" Top="534" Type="Rectangle" Width="786"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Font="굴림,9,Bold" Height="22" Id="btnScanSave" ImageID="BTN_TEXT_04" Left="450" OnClick="btnScanSave_OnClick" Style="sty_Button" TabOrder="41" Text="③서류저장" ToolTipText="서류저장" Top="537" Transparent="TRUE" Width="66"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnLocalFormView" ImageID="BTN_SEARCH" Left="424" OnClick="btnLocalFormView_OnClick" Style="sty_Button" TabOrder="42" Top="537" Transparent="TRUE" Width="22"></Button>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edScanFileName" ImeMode="native" Left="349" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="40" Top="537" UserData="S" Width="74"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Font="굴림,9,Bold" Height="22" Id="btnScanSearch" ImageID="BTN_TEXT_04" Left="280" OnClick="btnScanSearch_OnClick" Style="sty_Button" TabOrder="39" Text="②불러오기" ToolTipText="불러오기" Top="537" Transparent="TRUE" Width="66"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Font="굴림,9,Bold" Height="22" Id="btnScan" ImageID="BTN_TEXT_04" Left="211" OnClick="btnScan_OnClick" Style="sty_Button" TabOrder="38" Text="①스캔실행" ToolTipText="스캔실행" Top="537" Transparent="TRUE" Width="66"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSeverFormView" ImageID="BTN_SEARCH" Left="185" OnClick="btnSeverFormView_OnClick" Style="sty_Button" TabOrder="37" Top="537" Transparent="TRUE" Width="22"></Button>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edFormResult" ImeMode="native" Left="138" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="36" Top="537" UserData="S" Width="45"></Edit>
+		<Static Align="Center" BKColor="firebrick" Font="굴림,10" Height="20" Id="Static3" Left="8" Style="sty_Label" TabOrder="35" Text="부정행위확인서&#32;등록" Top="537" VAlign="Middle" Width="128"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnFormDelete" ImageID="BTN_MINUS" Left="519" OnClick="btnFormDelete_OnClick" Style="sty_Button" TabOrder="43" ToolTipText="서류삭제" Top="540" Transparent="TRUE" Visible="FALSE" Width="16"></Button>
+		<FileDialog Bottom="502" Filter="JPG&#32;File(*.jpg)|*.jpg|GIF&#32;File(*.gif)|*.gif|BMP&#32;File(*.bmp)|*.bmp|" Height="24" Id="fdImage2" Left="410" Right="434" TabOrder="45" Top="478" Width="24"></FileDialog>
+		<HttpFile Height="24" Id="hfImage2" Left="437" Top="478" Width="24"></HttpFile>
+		<File Bottom="502" Height="24" Id="fiImageFile2" Left="464" Right="488" TabOrder="46" Top="478" Width="24"></File>
+		<Static Align="Center" Font="굴림,9" Height="20" Id="Static4" Left="422" Style="sty_Label" TabOrder="45" Text="개인식별번호" Top="410" VAlign="Middle" Width="80"></Static>
+		<MaskEdit AutoSelect="TRUE" BKColor="palegoldenrod" Border="Flat" Column="PERSONKEY" Font="굴림,9" Height="20" Id="medPersonKey" Left="503" LeftMargin="2" Mask="A####-#####" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Maskedit" TabOrder="44" Top="410" Type="STRING" Width="75"></MaskEdit>
+		<Static Align="Center" Height="28" Id="Static0" Left="6" Style="sty_LabelGruopBox" TabOrder="46" Text="부정행위자&#32;정보" Top="101" VAlign="Middle" Width="115"></Static>
+		<Static Align="Center" Height="28" Id="Static1" Left="248" Style="sty_LabelGruopBox" TabOrder="47" Text="자료&#32;출력" Top="51" VAlign="Middle" Width="83"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0420MExamCheatingManagement.xml
+ * 설명 : 부정행위자관리
+ * 작성일 : 2009.07.23
+ * 작성자 : 김동현
+ */
+#include "LIB::training.js"; // 공통업무 관련
+
+
+var ls_StopYearTerm = 2; //정지 기간 (단위:년)
+var ls_FormUploadPath = "/IMGDATA/Form/" + left(GetDate(), 4); // 서류스캔파일경로;
+var ls_UploadFormName = false; 		// 서류스캔 저장파일명
+var lb_FormFileUpload = false; 		// 서류스캔파일등록여부
+
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+        
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } 
+    else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } 
+    else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+    // 공통 코드 조회
+    //gfn_SearchJibu(cbxJibu, "Y", "선택"); // 지부 코드 조회
+    gfn_SearchTrainingCourse("T", ds_oCourse, "Y", "전체"); // 직능 코드 조회
+    
+    // 공공기관과의 동일 기능으로 인해 해당 내용 주석
+    /*
+    for (var i = ds_oCourse.RowCount()-1; i >= 0; i--) {
+		if (ds_oCourse.GetColumn(i, "CD") == "30" || ds_oCourse.GetColumn(i, "CD") == "31") {			
+			ds_oCourse.DeleteRow(i); // shjung 220603 - '30','31'제거, 건설안전 소관, 업무대행감독
+		}
+	}*/
+	              
+    gfn_SearchCommonCode(ds_oCheatGubun, "CHEATGUBUN", "Y", "전체"); // 부정행위사유코드 조회    
+    cbxCourse.Value = "";
+    cxbExamCheat.Value = "";
+    calCheatDate.Value = left(GetDate(), 8);
+	
+	// 시스템관리자만 tjmgno, tpmgno가 보이도록 설정
+	if (gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "SM") {
+		btnFormDelete.Visible = true;	// 민원서류 삭제
+	} 
+	else {
+		btnFormDelete.Visible = false;	// 민원서류 삭제
+	}
+}
+
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+
+function Form_OnSize(obj,nCx,nCy,nState) {
+    if (gs_IsResizingForm == "Y") {
+        gdExamCheat.Width = nCx - gdExamCheat.Left - 4;
+    }
+}
+
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+	if (edPersonNm.Text == "" ) {
+        gfn_Alert("성명이 입력되지 않았습니다..");
+        edPersonNm2.SetFocus();
+        return false;
+    }
+    if (length(medRESIDENTNO.Value) != 13) { // 입력 Validation Check		
+		gfn_Alert("주민번호 자리수가 맞지 않습니다.");
+        medRESIDENTNO.SetFocus();		
+        return false;
+    }
+    ds_ioExamCheat.ClearData(); // 데이타셋 초기화	
+	var personkey = gfn_SearchPERSONKEY(edPersonNm.Text, medRESIDENTNO.Value, '');
+	
+	 //trace('[01. PersonKey Check]==>'+personkey);
+	if(length(personkey) == 10) {
+	   lfn_PersonKeySearch(personkey);		
+    }     
+    else  {
+      gfn_Alert("[확인요망]입력한 이름+주민번호에 해당하는 \n\n     본인확인기관 대체키가 존재하지 않습니다!");
+  	} //if(personkey != "") { 
+}
+
+
+/*
+ * 기능 : 조회
+ */
+function lfn_PersonKeySearch(sPersonkey) {
+    
+    ds_ioExamCheat.ClearData(); // 데이타셋 초기화
+	if(length(sPersonkey) == 10) {
+	
+			tit_clearActionInfo();		
+			tit_addCsvSearchActionInfo("training:searchExamCheat", false);		
+			// 서버 호출 		
+			tit_callService(
+				""
+				,""
+				,""	// inDs
+				,"ds_ioExamCheat=ds_oExamCheat"	// outDs
+				,"PERSONKEY=" + quote(sPersonkey)
+				,"lfn_AfterSearchExamCheat"
+				,false
+			);
+		
+			var ls_HistoryArg;
+			ls_HistoryArg = "성명=" + edPersonNm.Text
+				+ ",PERSONKEY=" + sPersonkey;
+		
+			// 조회이력을 저장한다.
+			gfn_InsertSearchPrintHistory(
+				"S"
+				, this.ID
+				, global.mnuLeft.cbxOpenForm.Text
+				, ls_HistoryArg
+			);
+	}
+}
+
+
+/*
+ * 기능 : 추가
+ */
+function lfn_Input(obj) {
+
+	if (!gfn_Confirm(MSGI00070)) { // 신규 추가 하시겠습니까?\n입력완료 후 저장 버튼을 누르세요.
+        return false;
+	}
+    lfn_Cancel(); // 값 초기화    
+    // 기본값 설정
+}
+
+
+/*
+ * 기능 : 삭제
+ */
+function lfn_Delete(obj) {
+    if (ds_ioExamCheat.currow < 0) {
+        gfn_Alert(MSGI00030); // 삭제할 레코드가 없습니다.
+        return false;
+    }
+	if (!gfn_Confirm(MSGW00030)) { // 정말로 삭제 하시겠습니까?
+        return false;
+	}
+    ds_ioExamCheat.DeleteRow(ds_ioExamCheat.currow); // 선택된 ROW를 삭제한다.
+    gfn_FormInit(this); // 입력란 초기화
+    tit_clearActionInfo();
+    tit_addSaveActionInfo(
+        ""	// insert
+        , ""	// update
+        , "training:deleteExamCheat"	// delete
+        , ""	// flag column 명
+        , ""	// key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N"	// 실행타입
+	);
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iExamCheat=ds_ioExamCheat:U"	// inDs
+        ,""	// outDs
+        ,""	// args 
+        ,"lfn_AfterSaveExamCheatDEL"
+        ,false
+    );    
+    gfn_FormInit(this); // 입력란 초기화
+}
+
+
+/*
+ * 기능 : 저장
+ */
+function lfn_Save(obj) {
+
+	var nRow = 0; //추가인지 수정인지 구분
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+    if ( medPersonKey.Value == "") { // 입력 Validation Check
+		gfn_Alert("[오류]개인식별번호가 없습니다. 조회후 저장하세요..");
+        medRESIDENTNO2.SetFocus();
+        return false;
+    }
+    if (mb_IsNewData || ds_ioExamCheat.GetCount() == 0) { // 신규 저장
+        // 키 중복 체크
+        if (!gfn_Confirm(MSGW00020)) { // 정말로 추가 저장 하시겠습니까?
+            return false;
+        }
+        // 입력된 값을 그리드로 복사한다.
+        ds_ioExamCheat.InsertRow(0);
+    } 
+    else { // 수정 저장
+        if (!gfn_Confirm(MSGW00040)) { // 정말로 수정 저장 하시겠습니까?
+            return false;
+        }
+        nRow = ds_ioExamCheat.currow;
+    }    
+    var calc = split(calCheatDate.Text,"-","webstyle");
+    calc[0] = ToNumber(calc[0]) + ls_StopYearTerm;
+    // 입력된 값을 그리드로 복사한다.
+    ds_ioExamCheat.SetColumn(nRow, "ECTPMGNO", ms_TrainingPersonMgno);
+    ds_ioExamCheat.SetColumn(nRow, "ECTCCOURSECD", cbxCourse.Value);
+    ds_ioExamCheat.SetColumn(nRow, "ECSTOPSTARTDATE", calCheatDate.Value);
+    ds_ioExamCheat.SetColumn(nRow, "ECSTOPENDDATE", (calc[0] + calc[1] + calc[2]));
+    ds_ioExamCheat.SetColumn(nRow, "ECCHEATGUBUN", cxbExamCheat.Value);
+    ds_ioExamCheat.SetColumn(nRow, "ECREMARK", edRemark.Text);
+    
+    tit_clearActionInfo();
+    tit_addSaveActionInfo(
+        "training:insertExamCheat" // insert
+        , "" // update
+        , "" // delete
+        , "" // flag column 명
+        , "" // key sql id
+        , 0	// key 증가 값
+        , ""
+        , 0
+        , "N"	// 실행타입
+   );
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iExamCheat=ds_ioExamCheat:U" // inDs
+        ,""	// outDs
+        ,""	// args 
+        ,"lfn_AfterSaveExamCheat"
+        ,false
+        ,false
+        ,true  //sync(순차적으로)
+    );
+	var imsipersonkey = medPersonKey.value;	
+    gfn_FormInit(this); // 입력란 초기화
+	lfn_PersonKeySearch(imsipersonkey) ;
+}
+
+
+/*
+ * 기능 : 취소
+ */
+function lfn_Cancel(obj) {
+    gfn_FormInit(this);
+    mb_IsNewData = true;
+    medPersonKey.value = "";
+    ms_TrainingPersonMgno = "";
+    ds_ioExamCheat.ClearData();
+    ds_oExamCheatReport.ClearData();
+    ds_ioExamCheat.ClearData();
+}
+
+
+/*
+ * 기능 : 출력
+ */
+function lfn_Print(obj) {
+
+    var args = "";
+    var ls_HistoryArg;
+    
+    if (radPrintGubun.Value == "2YEAR"){
+        args = "PRINTGUBUN="+radPrintGubun.Value;
+        ls_HistoryArg = "출력구분=현재응시정지자";
+    } 
+    else {
+        args = "";
+        ls_HistoryArg = "출력구분=전체";
+    }
+    ds_oExamCheatReport.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+    tit_addCsvSearchActionInfo("training:searchExamCheat", false);
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,""	// inDs
+        ,"ds_oExamCheatReport=ds_oExamCheat"	// outDs
+        ,args	// args 
+        ,""
+        ,false
+    );
+    gfn_CallReportPopup("frmtraining0420R01ExamCheating.rex", "ds_oExamCheatReport", "");
+    // 조회이력을 저장한다.
+    gfn_InsertSearchPrintHistory(
+        "R"
+        , this.ID
+        , global.mnuLeft.cbxOpenForm.Text
+        , ls_HistoryArg
+    );
+}
+
+
+/**
+ * 엑셀 출력
+ */
+function btnToExcel_OnClick(obj) {
+
+    if (ds_ioExamCheat.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return;
+    }    
+	// 개인정보 다운로드 사유 등록
+	var parValue = "sCode=1210";	// COMMON.PERSONALDOWNLOADH
+		parValue += " sRowCnt=" + ds_ioExamCheat.GetRowCount();
+		parValue += " sTitle=" + quote(gdExamCheat.UserData);
+	ls_IsRemark = Dialog("COM::frmCOM2100PDownloadRemark.xml", parValue, "", "", "", -1, -1);	
+	if (ls_IsRemark == "" || ls_IsRemark == null || ls_IsRemark == "FAIL") {
+		return false;
+	}
+	lfn_Excel(obj);
+}
+
+
+/* 공통 필수 종료 */
+/* 사용자 함수 */
+/*
+ * 기능 : 부정행위자 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchExamCheat(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }    
+    gfn_SearchMessage(gdExamCheat); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.    
+    edScanFileName.Text = "";	// 불러오기한 민원서류 스캔파일명
+}
+
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveExamCheat(nErrorCode, strErrorMsg) {
+    
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    lfn_SaveModifyHistory("I");     
+	gfn_SaveMessage(); // 저장 메세지를 처리한다. 
+}
+
+
+function lfn_AfterSaveExamCheatDEL(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    lfn_SaveModifyHistory("D");     
+    gfn_SaveMessage(); // 저장 메세지를 처리한다. 
+}
+
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    btnDelete.Enable = bStatus; // 삭제 버튼
+    btnSave.Enable = bStatus; // 수정&저장 버튼
+}
+
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj) {
+	gfn_GridMultiSort(gdExamCheat, 0); // 멀티 정렬을 실행한다.
+}
+
+
+function ds_ioExamCheat_OnRowPosChanged(obj,nOldRow,nRow) {
+    // 그리드의 값을 입력란에 복사한다. 추가상태인 경우 복사 후 저장을 하기 위해 제외한다.
+    if (obj.GetRowType(nRow) <> "insert" && nRow <> -1) {
+        edPersonNm2.Text = obj.GetColumn(nRow, "TPNM");
+        medRESIDENTNO2.Value = obj.GetColumn(nRow, "TPBIRTHDAY");
+		ms_TrainingPersonMgno = obj.GetColumn(nRow, "ECTPMGNO");		
+		cbxCourse.Value = obj.GetColumn(nRow, "ECTCCOURSECD");		
+		calCheatDate.value = obj.GetColumn(nRow, "ECSTOPSTARTDATE");		
+		cxbExamCheat.Value = obj.GetColumn(nRow, "ECCHEATGUBUN");		
+		edRemark.Text = obj.GetColumn(nRow, "ECREMARK");
+		gfn_MakeKeyMark(this); // 키값 수정 금지 설정        
+        mb_IsNewData = false;	// 수정모드
+        
+		// 민원서류 스캔등록
+		if (ds_ioExamCheat.GetColumn(ds_ioExamCheat.currow, "ATC0024") == "0" ||
+			ds_ioExamCheat.GetColumn(ds_ioExamCheat.currow, "ATC0024") == "E") {
+			edFormResult.Text = "미등록";
+		} 
+		else {
+			edFormResult.Text = "완료";
+		}		
+		if (edFormResult.Text == "미대상" || edFormResult.Text == "") {
+		
+			btnScan.Enable = false;
+			btnScanSearch.Enable = false;
+			btnScanSave.Enable = false;
+			edFormResult.DisableBkColor = "user4";		
+		} 
+		else if (edFormResult.Text == "미등록") {
+		
+			btnScan.Enable = true;
+			btnScanSearch.Enable = true;
+			btnScanSave.Enable = true;
+			edFormResult.DisableBkColor = "user37";			
+		} 
+		else if (edFormResult.Text == "완료") {		
+			edFormResult.DisableBkColor = "user4";
+		}
+		edScanFileName.Text = "";	// 불러오기한 민원서류 스캔파일명
+	}
+}
+
+
+function gdExamCheat_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+	ds_ioExamCheat_OnRowPosChanged(lobj_Dataset,nRow,nRow);
+}
+
+
+/**
+ * 강습자 조회
+ */
+function lfn_searchPersonNm() {
+    var arrTrainingPerson = gfn_PersonInfoListPopup(edPersonNm2.Text, medRESIDENTNO2.Value); // 고객 조회 팝업
+    
+    if (length(arrTrainingPerson) > 0) {
+        edPersonNm2.text = arrTrainingPerson[0];
+        medRESIDENTNO2.Value = arrTrainingPerson[1];
+        ms_TrainingPersonMgno = arrTrainingPerson[2];
+        
+        trace('ms_TrainingPersonMgno=>'+ms_TrainingPersonMgno);
+        
+        medPersonKey.Value = arrTrainingPerson[29];
+    }
+    //... 조회...
+}
+
+
+function medRESIDENTNO2_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam) {
+    if (nChar == 13) {
+        lfn_searchPersonNm();
+    }
+	gfn_EnterNextFocus(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam);
+}
+
+
+function medRESIDENTNO2_OnKillFocus(obj) {
+    lfn_searchPersonNm();
+	gfn_ComponentOnKillFocus(obj);
+	
+}
+
+
+/**
+ * 변경이력 저장
+ */
+function lfn_SaveModifyHistory(sGubun) {
+    gds_iModifyHistory.ClearData();
+    gds_iModifyHistory.InsertRow(0);
+    gds_iModifyHistory.SetColumn(0, "MHWORKGUBUN", "부정행위자관리"); // 업무구분
+    gds_iModifyHistory.SetColumn(0, "MHGUBUN", sGubun); // 변경구분
+    gds_iModifyHistory.SetColumn(0, "MHKEY", ms_TrainingPersonMgno); // KEY값
+    gds_iModifyHistory.SetColumn(0, "MHCOLUMN", ""); // 변경 컬럼명
+    gds_iModifyHistory.SetColumn(0, "MHBEFOREDATA", ""); // 변경 전 값
+    gds_iModifyHistory.SetColumn(0, "MHAFTERDATA", ""); // 변경 후 값
+    gfn_InsertModifyHistory();
+}
+
+
+// 서류스캔 실행
+function btnScan_OnClick(obj)
+{
+	if (ds_ioExamCheat.GetRowCount() > 0) {
+	
+		ExecProc(gs_FormScanProgram);
+		
+	} else {
+	
+        gfn_Alert("등록할 대상이 없습니다. 조회하신 후 등록하세요!");
+        return false;
+			
+	}
+}
+
+
+// 서류스캔파일 불러오기
+function btnScanSearch_OnClick(obj)
+{
+	if (ds_ioExamCheat.GetRowCount() > 0) { 
+	} else { 
+        gfn_Alert("등록할 대상이 없습니다. 조회하신 후 등록하세요!");
+        return false; 
+	}
+    var ls_File = split(gs_FormScanFile,"\\");
+    fdImage2.FilePath = left(gs_FormScanFile, length(gs_FormScanFile) - length(ls_File[length(ls_file) - 1]));
+    fdImage2.FileName = ls_File[length(ls_file) - 1];
+    fiImageFile2.FileName = gs_FormScanFile;
+    if (fiImageFile2.Open()) {
+        fiImageFile2.Open("rb");
+        var ln_ImageSize = fiImageFile2.GetLength();
+        ln_ImageSize = ln_ImageSize / 1024; // KB로 변경
+        if (ln_ImageSize > 300) {
+            gfn_Alert("서류 스캔파일 사이즈가 300KB를 넘겼습니다.\n 사이즈 : " + NumFormat(ln_ImageSize) + "KB");
+            return false;
+        }
+        fiImageFile2.Close();
+    } 
+    else {
+        gfn_Alert("서류스캔 이미지가 없습니다.");
+        return;
+    }
+    edScanFileName.Text = fdImage2.FileName;
+    lb_FormFileUpload = true;	// 서류스캔파일 등록 여부
+	// 파일명 형식 : 년월일시분초+ 랜덤(3자리)
+    ls_UploadFormName = GetDate() + Random(100,999) + gfn_GetFileExtensionName(fdImage2.FileName);
+}
+
+
+// 민원서류 스캔파일 저장
+function btnScanSave_OnClick(obj)
+{
+	if (gfn_isNull(ds_ioExamCheat.GetColumn(ds_ioExamCheat.currow, "ECMGNO"))) { 
+        gfn_Alert("등록대상이 없습니다.\n\n" +
+                  "등록대상 조회 후 저장하세요!");
+        return; 
+	} 
+	if (edScanFileName.Text == "") {
+        gfn_Alert("스캔한 파일이 없습니다!");
+        return; 
+	} 
+	if (!gfn_Confirm("민원서류(부정행위확인서)를 저장하시겠습니까?")) {
+		return false;
+	} 
+	ds_iFormSave.ClearData(); 
+	ds_iFormSave.AddRow(); 
+	var vPROC = "";
+	var vFAMGNO = "";
+	var vPK1 = "";
+	var vPK2 = "";
+	
+	// 부정행위확인서
+	if (gfn_isNull(ds_ioExamCheat.GetColumn(ds_ioExamCheat.currow, "ECFAMGNO"))) {
+		vPROC = "I";	// 신규
+		vPK1 = ds_ioExamCheat.GetColumn(ds_ioExamCheat.currow, "ECMGNO");
+	} 
+	else {
+		vPROC = "A";	// 변경
+		vFAMGNO = ds_ioExamCheat.GetColumn(ds_ioExamCheat.currow, "ECFAMGNO");
+	}			
+	ds_iFormSave.SetColumn(0, "I_PROC", vPROC);					//신규(I), 화일변경(A)
+    ds_iFormSave.SetColumn(0, "I_FCCD", "0024");				//FORMCODE.FCCD 서식관리번호(신규/화일변경 공통]
+    ds_iFormSave.SetColumn(0, "I_FAMGNO", vFAMGNO);				//FormAttach.FAmgno (화일변경만)
+    ds_iFormSave.SetColumn(0, "I_PK1VAL", vPK1);				//관리PK1 값(신규만)
+    ds_iFormSave.SetColumn(0, "I_PK2VAL", vPK2);				//관리PK2 값 있는 경우만 등록(신규만)
+    ds_iFormSave.SetColumn(0, "I_FRDATE", left(getDate(),8));	//보관시작일(신규만)
+    ds_iFormSave.SetColumn(0, "I_PATH", ls_FormUploadPath);		//저장위치(신규 /화일변경)
+    ds_iFormSave.SetColumn(0, "I_FILENM", ls_UploadFormName);	//파일명(신규 /화일변경)
+    
+//    TRACE(ds_iFormSave.SaveXML());
+						
+    ds_oFormSave.ClearData(); // 결과 데이타셋 초기화
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("com:insertFormSave", "", 0, "");
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iFormSave=ds_iFormSave"    // inDs
+        ,"ds_oFormSave=ds_oFormSave"    // outDs
+        ,""    // args
+        ,"lfn_AfterFormSave"
+        ,false
+        ,false
+        ,true
+    );    
+}
+
+
+function lfn_AfterFormSave(nErrorCode, strErrorMsg)
+{
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }    
+    if (ds_oFormSave.GetColumn(0, "O_status") == "FAIL") {    
+        gfn_ErrorMsg(ds_oFormSave.GetColumn(0, "O_status"), ds_oFormSave.GetColumn(0, "O_value"));
+        return false;    
+    } 
+    else if (ds_oFormSave.GetColumn(0, "O_status") == "SUCCESS") {
+		var UploadResult = tit_FileWrite(
+						hfImage2				
+						, ls_FormUploadPath				
+						, fdImage2.FilePath				
+						, fdImage2.FileName				
+						, ls_UploadFormName				
+						, "U"				
+						, true
+					);
+		/* Array
+			0 - 성공 : S / 실패 : E / 파일크기 초과 : O
+			1 - 서버에 저장된 실제 경로
+			2 - 서버에 저장된 실제 파일명
+			3 - 서버에 저장된 파일 사이즈
+		*/
+		// 성공여부 체크 && 파일사이즈 체크
+		if (UploadResult[0] == "S" && UploadResult[3] == fiImageFile2.GetLength()) {			
+			gfn_Alert("서류스캔파일이 정상적으로 저장되었습니다.");			
+			lfn_Search();		
+		} 
+		else {		
+			gfn_Alert("서류스캔파일 저장 시 오류가 발생했습니다.");			
+			return false;
+		}							
+		hfImage2.CloseFile();		
+	}
+}
+
+
+// 서버 서식스캔파일 보기
+function btnSeverFormView_OnClick(obj)
+{
+	if (edFormResult.Text == "완료") {
+		var sFile = split(ds_ioExamCheat.GetColumn(ds_ioExamCheat.currow, "ATC0024"), "|");		
+		sArg = "sURL=" + GF_FILE_SERVER_URL + "kems"+ sFile[1];		
+		//alert(sArg);	
+		Dialog("COM::frmCOM1500PWebBrowserView.xml", sArg, 700, 500, "", -1, -1);			
+	}	
+}
+
+
+// PC 서식스캔파일 보기
+function btnLocalFormView_OnClick(obj)
+{	
+	if (!gfn_isNull(edScanFileName.Text)) {	
+		sArg = "sURL="+"C:\\KFSA\\Form.pdf";	
+		Dialog("COM::frmCOM1500PWebBrowserView.xml", sArg, 700, 500, "", -1, -1);			
+	}
+}
+
+
+// 서류 DB삭제(관리자만)
+function btnFormDelete_OnClick(obj)
+{
+	if (edFormResult.Text <> "완료") {	
+		gfn_Alert("등록된 자료가 없습니다.");
+		return false;
+	}
+	if (!gfn_Confirm("민원서류(부정행위확인서)를 삭제하시겠습니까?")) {
+		return false;
+	}	
+	var vFAMGNO = "";
+	var vPK1 = "";
+	var vPK2 = "";
+	var vPathArr = "";
+	var vPath = "";
+	var vfile = "";
+	
+	if (!gfn_isNull(ds_ioExamCheat.GetColumn(ds_ioExamCheat.currow, "ECFAMGNO"))) {
+			vPK1 = ds_ioExamCheat.GetColumn(ds_ioExamCheat.currow, "ECMGNO");
+			vFAMGNO = ds_ioExamCheat.GetColumn(ds_ioExamCheat.currow, "ECFAMGNO");
+			vPathArr = split(ds_ioExamCheat.GetColumn(ds_ioExamCheat.currow, "ATC0024"), "|");
+			vPath = substr(vPathArr[1],0,18);	// 서버경로
+			vfile = substr(vPathArr[1],19,21);	// 파일명
+	}		
+	ds_iFormDelete.ClearData();
+	ds_iFormDelete.AddRow();
+	
+    ds_iFormDelete.SetColumn(0, "I_FCCD", "0024");		//FORMCODE.FCCD 서식관리번호
+    ds_iFormDelete.SetColumn(0, "I_FAMGNO", vFAMGNO);			//FormAttach.FAmgno
+    ds_iFormDelete.SetColumn(0, "I_PK1VAL", vPK1);				//관리PK1 값
+    ds_iFormDelete.SetColumn(0, "I_PK2VAL", vPK2);				//관리PK2 값 있는 경우만 등록
+    ds_iFormDelete.SetColumn(0, "I_PATH", vPath);				//저장경로
+    ds_iFormDelete.SetColumn(0, "I_FILENM", vfile);				//파일명    
+    ds_oFormDelete.ClearData(); // 결과 데이타셋 초기화
+    
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("com:deleteForm", "", 0, "");
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iFormDelete=ds_iFormDelete"    // inDs
+        ,"ds_oFormDelete=ds_oFormDelete"    // outDs
+        ,""    // args
+        ,"lfn_AfterFormDelete"
+        ,false
+        ,false
+        ,true
+    );    
+}
+
+
+// 민원서류 서버파일삭제
+function lfn_AfterFormDelete(nErrorCode, strErrorMsg)
+{
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }    
+	var vPathArr = split(ds_ioExamCheat.GetColumn(ds_ioExamCheat.currow, "ATC0024"), "|");
+	var vPath = substr(vPathArr[1],0,18);	// 서버경로
+	var vfile = substr(vPathArr[1],19,21);	// 파일명
+	var UploadResult = tit_FileDelete(  //serverSaveDir, serverFileName, isNeedRtn
+					vPath	// 서버경로			
+					, vfile	// 파일명			
+					, true				// 처리결과			
+				);					
+	// 결과	true / false
+	// 성공여부 체크 && 파일사이즈 체크
+	if (UploadResult == true) {		
+		gfn_Alert("서류스캔파일이 정상적으로 삭제되었습니다.");		
+		lfn_Search();	
+	} 
+	else {	
+		gfn_Alert("서류스캔파일 삭제 시 오류가 발생했습니다.");		
+		return false;
+	}		
+}
+
+
+function Form_OnActivate(obj) {
+	gs_SysID = "[stm_01,bsn_4000,dsc_0012]";	// 개인정보접속기록 시스템ID 
+}
+
+
+]]></Script>
+</Window>

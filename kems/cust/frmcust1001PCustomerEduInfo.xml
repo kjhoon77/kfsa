@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmcust1001PCustomerEduInfo" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="개인교육이수이력" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oEduPassList">
+				<Contents>
+					<colinfo id="BBIZCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="3" summ="default" type="STRING"/>
+					<colinfo id="EPNM" size="100" summ="default" type="STRING"/>
+					<colinfo id="EPPASSDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EPPROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EPREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EPYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="ESGUBUN" size="4" summ="default" type="STRING"/>
+					<colinfo id="ESSTUDENT" size="5" summ="default" type="STRING"/>
+					<colinfo id="ESTIME" size="11" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oBizGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEduList" OnRowPosChanged="ds_oEduList_OnRowPosChanged">
+				<Contents>
+					<colinfo id="BBIZCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CSTATUSGUBUN" size="3" summ="default" type="STRING"/>
+					<colinfo id="EPNM" size="100" summ="default" type="STRING"/>
+					<colinfo id="EPPASSDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EPPERSONNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="EPPROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EPREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="EPBIRTHDAY" size="13" summ="default" type="STRING"/>
+					<colinfo id="EPYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="ESGUBUN" size="4" summ="default" type="STRING"/>
+					<colinfo id="ESSTUDENT" size="5" summ="default" type="STRING"/>
+					<colinfo id="ESTIME" size="13" summ="default" type="STRING"/>
+					<colinfo id="BIRTHDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="EPPERSONKEY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="292" Height="256" Id="Shape1" Left="4" LineColor="user15" Right="796" TabOrder="10" Top="36" Type="Rectangle" Width="792"></Shape>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="532" LineColor="user14" Right="796" TabOrder="4" Top="1" Type="Rectangle" Width="264"></Shape>
+		<Shape Bottom="584" Height="276" Id="Shape2" Left="4" LineColor="user15" Right="796" TabOrder="8" Top="308" Type="Rectangle" Width="792"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="2" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="lfn_Excel" Style="sty_Button" TabOrder="3" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oEduPassList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="580" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="244" Id="gdEduPassList" InputPanel="FALSE" Left="8" LineColor="default" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="792" RowHeight="20" Style="sty_Grid" TabOrder="5" TabStop="true" Top="336" UseDBuff="true" UsePopupMenu="true" UserData="개인교육이수이력" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="784">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="36"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="80"/>
+						<col width="180"/>
+						<col width="100"/>
+						<col width="46"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="120"/>
+						<col width="60"/>
+						<col width="70"/>
+						<col width="60"/>
+						<col width="90"/>
+						<col width="200"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell col="1" display="text" text="관리지부"/>
+						<cell col="2" display="text" text="교육지부"/>
+						<cell col="3" display="text" text="교육일자"/>
+						<cell col="4" display="text" text="대상물(업체)명"/>
+						<cell col="5" display="text" text="용도"/>
+						<cell align="center" col="6" display="text" text="년도"/>
+						<cell align="center" col="7" display="text" text="관리번호"/>
+						<cell col="8" display="text" text="지역"/>
+						<cell col="9" display="text" text="직능"/>
+						<cell col="10" display="text" text="회원구분"/>
+						<cell align="center" col="11" display="text" text="구분"/>
+						<cell align="center" col="12" display="text" text="교육대상"/>
+						<cell col="13" display="text" text="교육시간"/>
+						<cell col="14" display="text" text="교육장"/>
+						<cell col="15" display="text" text="처리자"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="number" expr="row+1"/>
+						<cell align="center" col="1" colid="CGTMGNO" combocol="JJIBUCD" combodataset="gds_oJibu" combotext="JJIBUNM" display="combo"/>
+						<cell align="center" col="2" colid="EPPROCGTMGNO" combocol="JJIBUCD" combodataset="gds_oJibu" combotext="JJIBUNM" display="combo"/>
+						<cell align="center" col="3" colid="EPPASSDATE" display="date"/>
+						<cell align="left" col="4" colid="BNM" display="text"/>
+						<cell align="left" col="5" colid="BBIZCD" combocol="CD" combodataset="ds_oBizGubun" combotext="DATA" display="combo"/>
+						<cell align="center" col="6" colid="EPYEAR" display="text"/>
+						<cell align="center" col="7" colid="CNO" display="text"/>
+						<cell align="center" col="8" colid="CREGCD" combocol="RCREGCD" combodataset="gds_oRegion" combotext="RCNM" display="combo"/>
+						<cell align="center" col="9" colid="CCOURSECD" combocol="COURSECD" combodataset="gds_oCustomerCourse" combotext="CNM" display="combo"/>
+						<cell align="center" col="10" colid="CSTATUSGUBUN" display="text"/>
+						<cell align="center" col="11" colid="ESGUBUN" display="text"/>
+						<cell align="center" col="12" colid="ESSTUDENT" display="text"/>
+						<cell align="center" col="13" colid="ESTIME" display="text"/>
+						<cell align="left" col="14" colid="EPNM" display="text"/>
+						<cell align="center" col="15" colid="PNM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="Static1" Left="20" Style="sty_LabelGruopBox" TabOrder="6" Text="개인교육이수이력" Top="300" VAlign="Middle" Width="130"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort2" ImageID="BTN_MULTI_SORT" Left="720" OnClick="btnMutilSort2_OnClick" Style="sty_Button" TabOrder="7" Top="312" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="720" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="9" Top="40" Transparent="TRUE" Width="74"></Button>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oEduList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="288" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="224" Id="gdEduList" InputPanel="FALSE" Left="8" LineColor="default" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="792" RowHeight="20" Style="sty_Grid" TabOrder="11" TabStop="true" Top="64" UseDBuff="true" UsePopupMenu="true" UserData="실무교육현황" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="784">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="36"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="60"/>
+						<col width="80"/>
+						<col width="180"/>
+						<col width="100"/>
+						<col width="50"/>
+						<col width="70"/>
+						<col width="60"/>
+						<col width="90"/>
+						<col width="200"/>
+						<col width="70"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell col="1" display="text" text="관리지부"/>
+						<cell col="2" display="text" text="성명"/>
+						<cell col="3" display="text" text="생년월일"/>
+						<cell col="4" display="text" text="개인식별번호"/>
+						<cell col="5" display="text" text="교육지부"/>
+						<cell col="6" display="text" text="교육일자"/>
+						<cell col="7" display="text" text="대상물(업체)명"/>
+						<cell col="8" display="text" text="용도"/>
+						<cell align="center" col="9" display="text" text="년도"/>
+						<cell align="center" col="10" display="text" text="구분"/>
+						<cell align="center" col="11" display="text" text="교육대상"/>
+						<cell col="12" display="text" text="교육시간"/>
+						<cell col="13" display="text" text="교육장"/>
+						<cell col="14" display="text" text="처리자"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="number" expr="row+1"/>
+						<cell align="center" col="1" colid="CGTMGNO" combocol="JJIBUCD" combodataset="gds_oJibu" combotext="JJIBUNM" display="combo"/>
+						<cell align="center" col="2" colid="EPPERSONNM" display="text"/>
+						<cell align="center" col="3" colid="BIRTHDAY" display="text"/>
+						<cell align="center" col="4" colid="EPPERSONKEY" display="text" Mask="A####-#####"/>
+						<cell align="center" col="5" colid="EPPROCGTMGNO" combocol="JJIBUCD" combodataset="gds_oJibu" combotext="JJIBUNM" display="combo"/>
+						<cell align="center" col="6" colid="EPPASSDATE" display="date"/>
+						<cell align="left" col="7" colid="BNM" display="text"/>
+						<cell align="left" col="8" colid="BBIZCD" combocol="CD" combodataset="ds_oBizGubun" combotext="DATA" display="combo"/>
+						<cell align="center" col="9" colid="EPYEAR" display="text"/>
+						<cell align="center" col="10" colid="ESGUBUN" display="text"/>
+						<cell align="center" col="11" colid="ESSTUDENT" display="text"/>
+						<cell align="center" col="12" colid="ESTIME" display="text"/>
+						<cell align="left" col="13" colid="EPNM" display="text"/>
+						<cell align="center" col="14" colid="PNM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="Static6" Left="20" Style="sty_LabelGruopBox" TabOrder="12" Text="실무교육현황" Top="28" VAlign="Middle" Width="130"></Static>
+		<Static Color="user10" Height="20" Id="Static7" Left="156" TabOrder="13" Top="312" Width="209"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust1001PCustomerEduInfo.xml
+ * 설명 : 개인교육이수이력 검색 팝업
+ * 작성일 : 2009.12.13
+ * 작성자 : 이규희
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+    // 콜센터 직원 사용 이면
+	if (gs_IsCallCenter == "Y") {
+		btnToExcel.Enable = bStatus; // 엑셀출력 버튼
+		btnPrintScreen.Enable = bStatus; // 화면출력 버튼
+	}
+	
+    // 공통 코드 조회
+    gfn_SearchCommonCode(ds_oBizGubun, "BIZCD", "Y", "전체");
+    if (IsExistVar("sCmgno")) {  // 고객관리번호
+        if (gfn_IsNull(sCmgno)) {
+            gfn_Alert("고객정보가 없습니다.");
+            lfn_End();        
+        } else {
+            lfn_Search();
+        } 
+    } else {
+        gfn_Alert("고객정보가 없습니다.");
+        lfn_End();
+    }
+}
+/*
+ * 기능 : 종료
+ */
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function lfn_End(obj) {
+    Close();
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_oEduList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cust:searchCust1001EduList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oEduList=ds_oEduList"	// outDs
+		,"CMGNO=" + quote(sCmgno)
+		,"lfn_AfterSearchEduList"
+		,false
+	);
+}
+
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchEduList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    //trace(ds_oEduList.SaveXML());
+
+    gfn_SearchMessage(gdEduList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdEduList, 0); // 멀티 정렬을 실행한다.
+}
+function btnMutilSort2_OnClick(obj)
+{
+	gfn_GridMultiSort(gdEduPassList, 0); // 멀티 정렬을 실행한다.
+}
+
+function ds_oEduList_OnRowPosChanged(obj,nOldRow,nRow)
+{
+    Static7.Text = ds_oEduList.GetColumn(nRow, "EPPERSONNM")
+                   + "[" + ds_oEduList.GetColumn(nRow, "BIRTHDAY") + "]";  
+    
+	ds_oEduPassList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cust:searchCust1001EduPassList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oEduPassList=ds_oEduPassList"	// outDs
+		,"FMNM=" + quote(ds_oEduList.GetColumn(ds_oEduList.currow, "EPPERSONNM"))
+		 + " FMPERSONKEY=" + quote(ds_oEduList.GetColumn(ds_oEduList.currow, "EPPERSONKEY"))
+		,"lfn_AfterSearchEduPassList"
+		,false
+	);
+}
+
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchEduPassList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    //trace(ds_oEduPassList.SaveXML());
+
+    gfn_SearchMessage(gdEduPassList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}]]></Script>
+</Window>

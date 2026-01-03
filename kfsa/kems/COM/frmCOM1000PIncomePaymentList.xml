@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="400" Id="frmCOM1000PTrainingPersonList" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="지급조서&#32;입력현황&#32;조회" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="750" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioSearchGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>순번</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>지급일자</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>지급일자[범위]</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>입력일자</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iSearchotherincome">
+				<Contents>
+					<colinfo id="I_PROC" size="256" summ="default" type="STRING"/>
+					<colinfo id="I_JIBU" size="256" summ="default" type="STRING"/>
+					<colinfo id="I_YEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="I_FR" size="256" summ="default" type="STRING"/>
+					<colinfo id="I_TO" size="256" summ="default" type="STRING"/>
+					<colinfo id="O_STATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="O_VALUE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSearchotherincome">
+				<Contents>
+					<colinfo id="OPMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="OPNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RESIDENT" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIZGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="MGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="JIBU" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAYMENTDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="REVERTMONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="STATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="NEEDYUL" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEYUL" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIBIZGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIJIBU" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIPRTNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIOPMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIPAYMENTDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CIMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIREVERTMONTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIINCOMECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIPROJECT" size="256" summ="default" type="STRING"/>
+					<colinfo id="OISTATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIPAYMENT" size="256" summ="default" type="STRING"/>
+					<colinfo id="OINEEDCOST" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIINCOME" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIOINCOME" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIOJURIDICAL" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIOJUMIN" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIONONGTUK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIOTOTAL" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIREFMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIREFKEY" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIREGISTERDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="OIUSERID" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJIBU"></Dataset>
+		</Datasets>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oSearchotherincome" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="258" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" Format="PracticeEduJubsu" HeadBorder="Flat" HeadHeight="20" Height="250" Id="gdIncomePayment" InputPanel="FALSE" Left="8" LineColor="default" OnCellDBLClick="gdIncomePayment_OnCellDblClick" Right="738" RowHeight="20" Style="sty_Grid" TabOrder="3" TabStop="true" Top="8" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="730">
+			<contents>
+				<format id="PracticeEduJubsu">
+					<columns>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="45"/>
+						<col width="85"/>
+						<col width="65"/>
+						<col width="65"/>
+						<col width="85"/>
+						<col width="85"/>
+						<col width="85"/>
+						<col width="85"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="관리번호"/>
+						<cell col="1" display="text" text="소득자"/>
+						<cell col="2" display="text" text="생년월일"/>
+						<cell col="3" display="text" text="소득구분"/>
+						<cell col="4" display="text" text="상태"/>
+						<cell align="center" col="5" display="text" text="등록지부"/>
+						<cell col="6" display="text" text="발급번호"/>
+						<cell col="7" display="text" text="소득코드"/>
+						<cell col="8" display="text" text="지급일자"/>
+						<cell col="9" display="text" text="지급총액"/>
+						<cell col="10" display="text" text="소득금액"/>
+						<cell col="11" display="text" text="원천세액"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="OPMGNO" color='expr:iif(STATUS&#32;==&#32;&quot;폐기&quot;,&quot;red&quot;,&quot;black&quot;)' display="text" font='expr:iif&#32;(STATUS&#32;==&#32;&quot;폐기&quot;,&#32;&quot;Default,10,StrikeOut&quot;,&#32;&quot;Default,10&quot;)'/>
+						<cell align="center" col="1" colid="OPNM" color='expr:iif(STATUS&#32;==&#32;&quot;폐기&quot;,&quot;red&quot;,&quot;black&quot;)' display="text" font='expr:iif&#32;(STATUS&#32;==&#32;&quot;폐기&quot;,&#32;&quot;Default,10,StrikeOut&quot;,&#32;&quot;Default,10&quot;)'/>
+						<cell align="center" col="2" colid="RESIDENT" color='expr:iif(STATUS&#32;==&#32;&quot;폐기&quot;,&quot;red&quot;,&quot;black&quot;)' display="text" font='expr:iif&#32;(STATUS&#32;==&#32;&quot;폐기&quot;,&#32;&quot;Default,10,StrikeOut&quot;,&#32;&quot;Default,10&quot;)'/>
+						<cell align="center" col="3" colid="BIZGUBUN" color='expr:iif(STATUS&#32;==&#32;&quot;폐기&quot;,&quot;red&quot;,&quot;black&quot;)' display="text" font='expr:iif&#32;(STATUS&#32;==&#32;&quot;폐기&quot;,&#32;&quot;Default,10,StrikeOut&quot;,&#32;&quot;Default,10&quot;)'/>
+						<cell align="center" col="4" colid="STATUS" color='expr:iif(STATUS&#32;==&#32;&quot;폐기&quot;,&quot;red&quot;,&quot;black&quot;)' display="text" font='expr:iif&#32;(STATUS&#32;==&#32;&quot;폐기&quot;,&#32;&quot;Default,10,StrikeOut&quot;,&#32;&quot;Default,10&quot;)'/>
+						<cell align="center" col="5" colid="JIBU" color='expr:iif(STATUS&#32;==&#32;&quot;폐기&quot;,&quot;red&quot;,&quot;black&quot;)' display="text" font='expr:iif&#32;(STATUS&#32;==&#32;&quot;폐기&quot;,&#32;&quot;Default,10,StrikeOut&quot;,&#32;&quot;Default,10&quot;)'/>
+						<cell align="center" col="6" colid="OIPRTNO" color='expr:iif(STATUS&#32;==&#32;&quot;폐기&quot;,&quot;red&quot;,&quot;black&quot;)' display="text" font='expr:iif&#32;(STATUS&#32;==&#32;&quot;폐기&quot;,&#32;&quot;Default,10,StrikeOut&quot;,&#32;&quot;Default,10&quot;)'/>
+						<cell align="center" col="7" colid="OIINCOMECD" color='expr:iif(STATUS&#32;==&#32;&quot;폐기&quot;,&quot;red&quot;,&quot;black&quot;)' display="text" font='expr:iif&#32;(STATUS&#32;==&#32;&quot;폐기&quot;,&#32;&quot;Default,10,StrikeOut&quot;,&#32;&quot;Default,10&quot;)'/>
+						<cell align="center" col="8" colid="PAYMENTDATE" color='expr:iif(STATUS&#32;==&#32;&quot;폐기&quot;,&quot;red&quot;,&quot;black&quot;)' display="text" font='expr:iif&#32;(STATUS&#32;==&#32;&quot;폐기&quot;,&#32;&quot;Default,10,StrikeOut&quot;,&#32;&quot;Default,10&quot;)'/>
+						<cell align="right" col="9" colid="OIPAYMENT" color='expr:iif(STATUS&#32;==&#32;&quot;폐기&quot;,&quot;red&quot;,&quot;black&quot;)' display="number" font='expr:iif&#32;(STATUS&#32;==&#32;&quot;폐기&quot;,&#32;&quot;Default,10,StrikeOut&quot;,&#32;&quot;Default,10&quot;)' Mask="###,###,###"/>
+						<cell align="right" col="10" colid="OIINCOME" color='expr:iif(STATUS&#32;==&#32;&quot;폐기&quot;,&quot;red&quot;,&quot;black&quot;)' display="number" font='expr:iif&#32;(STATUS&#32;==&#32;&quot;폐기&quot;,&#32;&quot;Default,10,StrikeOut&quot;,&#32;&quot;Default,10&quot;)' Mask="###,###,###"/>
+						<cell align="right" col="11" colid="OIOTOTAL" color='expr:iif(STATUS&#32;==&#32;&quot;폐기&quot;,&quot;red&quot;,&quot;black&quot;)' display="number" font='expr:iif&#32;(STATUS&#32;==&#32;&quot;폐기&quot;,&#32;&quot;Default,10,StrikeOut&quot;,&#32;&quot;Default,10&quot;)' Mask="###,###,###"/>
+					</body>
+				</format>
+				<format id="EduDataHistory">
+					<columns>
+						<col width="29"/>
+						<col width="36"/>
+						<col width="58"/>
+						<col width="115"/>
+						<col width="113"/>
+						<col width="84"/>
+						<col width="60"/>
+						<col width="107"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="checkbox" edit="checkbox"/>
+						<cell col="1" display="text" text="순번"/>
+						<cell col="2" display="text" text="교육년도"/>
+						<cell col="3" display="text" text="직능"/>
+						<cell col="4" display="text" text="관리번호"/>
+						<cell col="5" display="text" text="업체명"/>
+						<cell col="6" display="text" text="성명"/>
+						<cell col="7" display="text" text="휴대폰"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SEL" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" display="text" expr="row+1"/>
+						<cell align="center" col="2" colid="EHYEAR" display="text"/>
+						<cell align="center" col="3" colid="EHCOURSENM" display="text"/>
+						<cell align="center" col="4" colid="EHCUSTNO" display="text"/>
+						<cell align="left" col="5" colid="EHCUSTBNM" display="normal"/>
+						<cell align="center" col="6" colid="CUSTFMNM" display="text"/>
+						<cell align="left" col="7" colid="EHFMHHPTEL" display="text"/>
+					</body>
+				</format>
+				<format id="EduIssue">
+					<columns>
+						<col width="29"/>
+						<col width="36"/>
+						<col width="58"/>
+						<col width="115"/>
+						<col width="75"/>
+						<col width="119"/>
+						<col width="60"/>
+						<col width="107"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="checkbox" edit="checkbox"/>
+						<cell col="1" display="text" text="순번"/>
+						<cell col="2" display="text" text="교육년도"/>
+						<cell col="3" display="text" text="직능"/>
+						<cell col="4" display="text" text="교육일자"/>
+						<cell col="5" display="text" text="관리번호"/>
+						<cell col="6" display="text" text="성명"/>
+						<cell col="7" display="text" text="휴대폰"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SEL" display="checkbox" edit="checkbox"/>
+						<cell align="center" col="1" display="text" expr="row+1"/>
+						<cell align="center" col="2" colid="EPYEAR" display="text"/>
+						<cell align="center" col="3" colid="CGROUPNM" display="text"/>
+						<cell align="center" col="4" colid="EPPASSDATE" display="text" Mask="####-##-##"/>
+						<cell align="center" col="5" colid="CNO" display="text"/>
+						<cell align="center" col="6" colid="EPPERSONNM" display="text"/>
+						<cell align="left" col="7" colid="HPTEL" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="389" Height="110" Id="Shape0" Left="8" LineColor="user15" Right="738" TabOrder="4" Top="279" Type="Rectangle" Width="730"></Shape>
+		<Static Align="Center" Height="20" Id="Static5" Left="24" Style="sty_LabelGruopBox" TabOrder="5" Text="조회대상" Top="268" VAlign="Middle" Width="96"></Static>
+		<Static Align="Center" Height="25" Id="Static3" Left="17" Style="sty_Label" TabOrder="9" Text="조회구분" Top="297" UserData="S" VAlign="Middle" Width="75"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="25" Id="rdPaymentCondition" INDEX="0" InnerDataset="ds_ioSearchGubun" Left="95" OnChanged="rdPaymentCondition_OnChanged" Style="sty_Radio" TabOrder="1" Top="297" Width="375"></Radio>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect" ImageID="BTN_TEXT_COM" Left="484" OnClick="btnSelect_OnClick" Style="sty_Button" TabOrder="8" Text="선택" ToolTipText="선택" Top="328" Transparent="TRUE" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="484" OnClick="lfn_Search" Style="sty_Button" TabOrder="7" ToolTipText="조회" Top="297" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="484" OnClick="lfn_End" Style="sty_Button" TabOrder="6" ToolTipText="닫기" Top="360" Width="85"></Button>
+		<Shape Bottom="384" Height="45" Id="sOiyear" Left="95" LineColor="user8" Right="180" TabOrder="10" Top="339" Type="Rectangle" Width="85"></Shape>
+		<Shape Bottom="384" Height="45" Id="sRange" Left="182" LineColor="user8" Right="470" TabOrder="11" Top="339" Type="Rectangle" Width="288"></Shape>
+		<Static Align="Center" Height="20" Id="lbOiyear" Left="103" Style="sty_LabelStat" TabOrder="12" Text="적용년도" Top="327" VAlign="Middle" Width="65"></Static>
+		<Static Align="Center" Height="20" Id="lbRange" Left="190" Style="sty_LabelStat" TabOrder="13" Top="327" VAlign="Middle" Width="250"></Static>
+		<MaskEdit Align="Right" AutoSelect="TRUE" AutoSkip="TRUE" BKColor="user0" Border="Flat" Height="20" Id="medYear" Left="103" LeftMargin="2" Mask="####년" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Time" TabOrder="2" Top="355" Type="STRING" Width="65"></MaskEdit>
+		<Edit AutoSelect="TRUE" BKColor="user0" Border="Flat" Height="20" Id="edsRange1" ImeMode="native" Left="583" LeftMargin="2" MaxLength="6" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="14" Top="289" UserData="S" Visible="FALSE" Width="116"></Edit>
+		<Static Align="Center" Height="20" Id="lbs" Left="310" Style="sty_Text" TabOrder="15" Text="~" Top="355" VAlign="Middle" Width="10"></Static>
+		<Edit AutoSelect="TRUE" BKColor="user0" Border="Flat" Height="20" Id="edsRange2" ImeMode="native" Left="583" LeftMargin="2" MaxLength="7" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="16" Top="313" UserData="S" Visible="FALSE" Width="116"></Edit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BKColor="user0" Border="Flat" Height="20" Id="medsRange1" Left="583" LeftMargin="2" Mask="####-##-##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Time" TabOrder="17" Top="337" Type="STRING" Visible="FALSE" Width="116"></MaskEdit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BKColor="user0" Border="Flat" Height="20" Id="medsRange2" Left="583" LeftMargin="2" Mask="####-##-##" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Time" TabOrder="18" Top="361" Type="STRING" Visible="FALSE" Width="116"></MaskEdit>
+	</Form>
+	<Script><![CDATA[/*
+ * 고객정보명 : frmCOM1000PTrainingPersonList.xml
+ * 설명 : 고객정보검색팝업
+ * 작성일 : 2009.07.23
+ * 작성자 : 김동현
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+var ACCNTJIBU = ""; // 지부코드
+var sharchYN = "Y"; // 검색 조건 변경 여부
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (IsExistVar("sKeyword")) {
+        edKeyword.Text = sKeyword;
+        if (gfn_IsNull(sKeyword)) {
+        } else {
+            lfn_search(obj); // 고객정보 조회
+        }
+    }
+    
+    rdPaymentCondition.SetFocus();
+    lfn_LoadData();
+    
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+/*
+ * 기능 : 초기 데이터 로드
+ */
+function lfn_LoadData() {
+	// 초기 적용년도
+    medYear.Text = substr(getDate(),0,4);
+    lbRange.Text = "순번 범위(발급순번으로 조회가능)";
+    
+    // 버튼배치
+    edsRange1.Visible = true;
+    edsRange2.Visible = true;
+    edsRange1.MoveWindow(190,355,116,20);
+    edsRange2.MoveWindow(323,355,116,20);
+    
+    var serviceName = "otherincome:selectAccntjibu";
+     
+    ds_ioOtherCode.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo(serviceName, false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oJIBU=ds_oJIBU"	// outDs
+		,"PDEPTCD=" + quote(gds_oUserInfo.GetColumn(0, "PDEPTCD"))// args
+		,"lfn_AfterselectAccntjibu"
+		,false
+		,""
+		,true
+	);
+	
+}
+
+function lfn_AfterselectAccntjibu(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    if (ds_oJIBU.GetCount() > 0) {
+		ACCNTJIBU = ds_oJIBU.GetColumn(0, "ACCNTJIBU");
+    }
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+		case 13 :  // 조회(return)
+            lfn_Search();
+            
+            if("0" == rdPaymentCondition.Value) {
+				edsRange1.SetFocus();
+            } else if("1" == rdPaymentCondition.Value) {
+				medsRange1.SetFocus();
+            } else if("2" == rdPaymentCondition.Value) {
+				medsRange1.SetFocus();
+            } else if("3" == rdPaymentCondition.Value) {
+				medsRange1.SetFocus();
+            }
+            break;
+        case 27 :  // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+
+	// 지급조서 조회
+	var serviceName = "otherincome:searchOtherIncome";
+    
+    ds_iSearchotherincome.ClearData();
+    ds_oSearchotherincome.ClearData();
+
+    if ("0" == rdPaymentCondition.Value) { // 순번
+
+        if("" == medYear.Value) {
+			alert("적용년도를 입력해 주세요.");
+			return false;
+        } else if("" == edsRange1.Text || "" == edsRange2.Text) {
+			alert("순번 범위를 입력해 주세요.");
+			return false;
+        }
+        
+        ds_iSearchotherincome.InsertRow(0);	
+		ds_iSearchotherincome.SetColumn(0, "I_PROC", "1");           // 지급일자
+		ds_iSearchotherincome.SetColumn(0, "I_JIBU", ACCNTJIBU);     // 지부
+		ds_iSearchotherincome.SetColumn(0, "I_YEAR", medYear.Value); // 관리년도
+		ds_iSearchotherincome.SetColumn(0, "I_FR", edsRange1.Text);  // 조회조건 (시작)
+		ds_iSearchotherincome.SetColumn(0, "I_TO", edsRange2.Text);  // 조회조건 (종료)
+		
+    } else if ("1" == rdPaymentCondition.Value) { // 지급일자
+
+        if("" == medsRange1.Value) {
+			alert("지급일자를 입력해 주세요.");
+			return false;
+        }
+        
+        ds_iSearchotherincome.InsertRow(0);	
+		ds_iSearchotherincome.SetColumn(0, "I_PROC", "0");            // 지급일자
+		ds_iSearchotherincome.SetColumn(0, "I_JIBU", ACCNTJIBU);      // 지부
+		ds_iSearchotherincome.SetColumn(0, "I_FR", medsRange1.Value); // 조회조건 (시작)
+        
+    } else if ("2" == rdPaymentCondition.Value) { // 지급일자 [범위]
+
+        if("" == medsRange1.Value || "" == medsRange2.Value) {
+			alert("지급일자 범위를 입력해 주세요.");
+			return false;
+        }
+        
+        ds_iSearchotherincome.InsertRow(0);	
+		ds_iSearchotherincome.SetColumn(0, "I_PROC", rdPaymentCondition.Value); // 지급일자
+		ds_iSearchotherincome.SetColumn(0, "I_JIBU", ACCNTJIBU);                // 지부
+		ds_iSearchotherincome.SetColumn(0, "I_FR", medsRange1.Value);           // 조회조건 (시작)
+		ds_iSearchotherincome.SetColumn(0, "I_TO", medsRange2.Value);           // 조회조건 (종료)
+        
+    } else if ("3" == rdPaymentCondition.Value) { // 입력일자
+
+        if("" == medsRange1.Value || "" == medsRange2.Value) {
+			alert("입력일자 범위를 입력해 주세요.");
+			return false;
+        }
+        
+        ds_iSearchotherincome.InsertRow(0);	
+		ds_iSearchotherincome.SetColumn(0, "I_PROC", rdPaymentCondition.Value); // 지급일자
+		ds_iSearchotherincome.SetColumn(0, "I_JIBU", ACCNTJIBU);                // 지부
+		ds_iSearchotherincome.SetColumn(0, "I_FR", medsRange1.Value);           // 조회조건 (시작)
+		ds_iSearchotherincome.SetColumn(0, "I_TO", medsRange2.Value);           // 조회조건 (종료)
+    }
+    
+    tit_clearActionInfo();
+	tit_addSearchActionInfo(serviceName, false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,"ds_iSearchotherincome=ds_iSearchotherincome" // inDs
+		,"ds_oSearchotherincome=ds_oSearchotherincome" // outDs
+		,"" // args
+		,"lfn_AftersearchOtherincome"
+		,false
+		,""
+		,true
+	);
+	trace(ds_iSearchotherincome.SaveXML());
+}
+
+function lfn_AftersearchOtherincome(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    trace(ds_oSearchotherincome.SaveXML());
+    if (ds_oSearchotherincome.GetCount() > 0) {
+		trace(ds_oSearchotherincome.SaveXML());
+    }
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchOtherPerson(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    if (ds_oOtherKeyword.GetCount() > 0) {
+        gdOtherPerson.SetFocus();
+    } else {
+        edKeyword.SetFocus();
+    }
+    sharchYN = "Y"; // 조회 후 선택 가능하도록 플래그 변경함
+    btnSelect.Enable = true;  // 조회 후 선택 가능하게 함   
+}
+
+/* 고객 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+function btnSelect_OnClick(obj) {
+    if (ds_oSearchotherincome.GetCount() < 1) {
+        Close();
+    }
+
+    var arrArg = Array(2);
+    arrArg[0] = ds_oSearchotherincome.GetColumn(ds_oSearchotherincome.currow, "OPMGNO");
+    arrArg[1] = ds_oSearchotherincome.GetColumn(ds_oSearchotherincome.currow, "OIYEAR");
+
+    Close(arrArg);
+}
+
+function gdOtherPerson_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+    if(sharchYN == "N") {
+        alert("조회를 다시 하시고 선택 바랍니다.");
+    } else {
+        btnSelect_OnClick(obj);
+    }
+}
+
+function edKeyword_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam) {
+    if (nChar == 13) { // Enter Key
+        lfn_Search();
+    } else {
+        btnSelect.Enable = false;
+        sharchYN = "N"; // 조회 조건 변경시 선택하여 진행 하지 못하도록 함(반드시 재조회 필요)
+    }
+}
+
+function gdOtherPerson_OnEnterDown(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	btnSelect_OnClick();
+}
+
+/*
+ * 기능 : 조회구분 선택
+ */
+function rdPaymentCondition_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(0 == strCode) { // 순번
+		// 적용년도 Visible
+		lbOiyear.Visible = true;
+		sOiyear.Visible = true;
+		medYear.Visible = true;
+		
+		// 초기 적용년도
+		lbRange.Text = "순번 범위(발급순번으로 조회가능)";
+		
+		// 버튼배치
+		edsRange1.Visible = true;
+		edsRange2.Visible = true;
+		medsRange1.Visible = false;
+		medsRange2.Visible = false;
+		lbs.Visible = true;
+		
+		edsRange1.MoveWindow(190,355,116,20);
+		edsRange2.MoveWindow(323,355,116,20);
+	} else if(1 == strCode) { // 지급일자
+		// 적용년도 Invisible
+		lbOiyear.Visible = false;
+		sOiyear.Visible = false;
+		medYear.Visible = false;
+		
+		// 초기 적용년도
+		lbRange.Text = "지급일자 (지급일자 순으로 조회가능)";
+		
+		// 버튼배치
+		edsRange1.Visible = false;
+		edsRange2.Visible = false;
+		medsRange1.Visible = true;
+		medsRange2.Visible = false;
+		lbs.Visible = false;
+		
+		medsRange1.MoveWindow(190,355,116,20);
+		medsRange2.MoveWindow(323,355,116,20);
+	} else if(2 == strCode) { // 지급일자[범위]
+		// 적용년도 Invisible
+		lbOiyear.Visible = false;
+		sOiyear.Visible = false;
+		medYear.Visible = false;
+		
+		// 초기 적용년도
+		lbRange.Text = "지급일자 범위(지급일자 순으로 조회가능)";
+		
+		// 버튼배치
+		edsRange1.Visible = false;
+		edsRange2.Visible = false;
+		medsRange1.Visible = true;
+		medsRange2.Visible = true;
+		lbs.Visible = true;
+		
+		medsRange1.MoveWindow(190,355,116,20);
+		medsRange2.MoveWindow(323,355,116,20);
+	} else if(3 == strCode) { // 입력일자
+		// 적용년도 Invisible
+		lbOiyear.Visible = false;
+		sOiyear.Visible = false;
+		medYear.Visible = false;
+		
+		// 초기 적용년도
+		lbRange.Text = "입력일자 범위(입력일자 순으로 조회가능)";
+		
+		// 버튼배치
+		edsRange1.Visible = false;
+		edsRange2.Visible = false;
+		medsRange1.Visible = true;
+		medsRange2.Visible = true;
+		lbs.Visible = true;
+		
+		medsRange1.MoveWindow(190,355,116,20);
+		medsRange2.MoveWindow(323,355,116,20);
+	}
+	// 조회값 초기화
+	edsRange1.Text = "";
+	edsRange2.Text = "";
+	medsRange1.Value = "";
+	medsRange2.Value = "";
+}
+
+function gdIncomePayment_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if(sharchYN == "N") {
+        alert("조회를 다시 하시고 선택 바랍니다.");
+    } else {
+        btnSelect_OnClick(obj);
+    }
+}
+]]></Script>
+</Window>

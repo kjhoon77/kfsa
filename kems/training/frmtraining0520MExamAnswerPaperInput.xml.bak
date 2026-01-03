@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="136" Id="frmtraining0520MExamAnswerPaperInput" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="답지입력" Top="8" Ver="1.0" Width="500" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioExamAns">
+				<Contents>
+					<colinfo id="CCCD" size="30" summ="default" type="STRING"/>
+					<colinfo id="CCCDNM" size="50" summ="default" type="STRING"/>
+					<colinfo id="CCGROUPCD" size="30" summ="default" type="STRING"/>
+					<colinfo id="CCORDERSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CCREMARK" size="1000" summ="default" type="STRING"/>
+					<colinfo id="USE_YN" size="1" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>없음</DATA>
+					</record>
+					<record>
+						<CD>01</CD>
+						<DATA>공공기관</DATA>
+					</record>
+					<record>
+						<CD>02</CD>
+						<DATA>1급소관</DATA>
+					</record>
+					<record>
+						<CD>03</CD>
+						<DATA>2급소관</DATA>
+					</record>
+					<record>
+						<CD>04</CD>
+						<DATA>위과</DATA>
+					</record>
+					<record>
+						<CD>05</CD>
+						<DATA>운송자</DATA>
+					</record>
+					<record>
+						<CD>06</CD>
+						<DATA>통합자</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oInternetJubsuStatus">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>02</CD>
+						<DATA>접수완료</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSunapGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oType">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>없음</DATA>
+					</record>
+					<record>
+						<CD>A</CD>
+						<DATA>A</DATA>
+					</record>
+					<record>
+						<CD>B</CD>
+						<DATA>B</DATA>
+					</record>
+					<record>
+						<CD>C</CD>
+						<DATA>C</DATA>
+					</record>
+					<record>
+						<CD>D</CD>
+						<DATA>D</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oUseYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>Yes</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>No</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSearchGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>ANS</CD>
+						<DATA>답지기준</DATA>
+					</record>
+					<record>
+						<CD>JUBSU</CD>
+						<DATA>응시자목록기준</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oExamList">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>1일차</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>2일차</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>3일차</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>4일차</DATA>
+					</record>
+					<record>
+						<CD>5</CD>
+						<DATA>5일차</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oExamOrder" OnRowPosChanged="ds_oExamOrder_OnRowPosChanged">
+				<Contents>
+					<colinfo id="EOMGNO" size="30" summ="default" type="STRING"/>
+					<colinfo id="JJIBUNICK" size="8" summ="default" type="STRING"/>
+					<colinfo id="EOYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="EOTCCOURSENM" size="30" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EXAMNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSECD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oExamRepeat">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>1</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>2</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>3</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>4</DATA>
+					</record>
+					<record>
+						<CD>5</CD>
+						<DATA>5</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="144" LineColor="user14" Right="496" TabOrder="61" Top="1" Type="Rectangle" Width="352"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="4" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="140">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="234" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="2" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="321" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSave" ImageID="BTN_TEXT_COM" Left="146" OnClick="lfn_Save" Style="sty_Button" TabOrder="1" Text="OMR입력(F4)" ToolTipText="OMR&#32;Reading&#32;프로그램실행" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnNext" ImageID="BTN_TEXT_COM" Left="408" OnClick="btnNext_OnClick" Style="sty_Button" TabOrder="5" Text="다음&#32;▶" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" BindDataset="ds_oExamOrder" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" BorderColor="#aab6c7" Bottom="104" DisableBKColor="white" Enable="true" EndLineColor="white" Face3dColor="white" FillAreaType="All" HeadBorder="None" HeadHeight="20" Height="48" Id="gdExamList" InputPanel="FALSE" Left="100" LineColor="white" MinWidth="100" OnHeadClick="gdExamJubsu_OnHeadClick" Right="496" RowHeight="20" ShadowColor="white" Style="sty_Grid" TabOrder="8" TabStop="true" Top="56" UseDBuff="true" UsePopupMenu="true" UserData="응시자목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="396">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="308"/>
+					</columns>
+					<body>
+						<cell align="left" col="0" colid="EXAMNM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="lbExamNm" Left="8" Style="sty_Label" TabOrder="7" Text="시험명" Top="56" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" DisplayRowCnt="6" Editable="TRUE" Height="20" Id="cbxExamRepeat" INDEX="0" InnerDataset="ds_oExamRepeat" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="10" Top="107" UserData="S" Width="50"></Combo>
+		<Static Align="Center" Height="20" Id="lbExamRepeat" Left="8" Style="sty_Label" TabOrder="9" Text="평가차수" Top="108" VAlign="Middle" Width="88"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnScan" ImageID="BTN_TEXT_09" Left="145" OnClick="btnScan_OnClick" Style="sty_Button" TabOrder="11" Text="OMR입력(Scan방식)" ToolTipText="OMR&#32;Scan프로그램실행" Top="31" Width="132"></Button>
+		<File Bottom="55" Height="24" Id="OmrLocalDelete" Left="280" Right="304" TabOrder="12" Top="31" Width="24"></File>
+	</Form>
+	<Script><![CDATA[/*
+
+ * 프로그램명 : frmtraining0520MExamAnswerPaperInput.xml
+
+ * 설명 : 답지입력
+
+ * 작성일 : 2009.07.28
+
+ * 작성자 : 장성호
+
+ */
+
+
+
+#include "LIB::training.js"; // 공통업무 관련
+
+
+
+/* 공통 필수 시작 */
+
+function Form_OnLoadCompleted(obj) {
+
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+
+
+    // 폼 환경설정
+
+    ls_SystemGubun = gs_SystemGubun;
+
+    ls_SystemMenuId = gs_SystemMenuId;
+
+    var ls_FormId = split(sFormUrl, "::");
+
+    ls_FormId = split(ls_FormId[1], ".");
+
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+/*	전지부 스캔프로그램 사용으로 주석처리(20150506)
+
+	// 로컬용 프로그램 또는 서울, 부산지부이면 Scan방식 프로그램 보이기
+	if ((gs_IsBSB == "Y") || (gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "SM" ) ||
+	    (gds_oUserInfo.GetColumn(0, "PDEPTCD") == "1011" || gds_oUserInfo.GetColumn(0, "PDEPTCD") == "1021" || 
+		gds_oUserInfo.GetColumn(0, "PDEPTCD") == "1031" || gds_oUserInfo.GetColumn(0, "PDEPTCD") == "1051" ||
+		gds_oUserInfo.GetColumn(0, "PDEPTCD") == "1061" || gds_oUserInfo.GetColumn(0, "PDEPTCD") == "1141" ||
+		gds_oUserInfo.GetColumn(0, "PDEPTCD") == "1071") {
+		btnScan.Visible = true;
+		
+	} else {	// 서울,부산지부가 아니면 Scan방식 프로그램 실행버튼 안보이기
+	
+		btnScan.Visible = false;
+	
+	}
+*/    
+
+    // 로딩 시 시험명 리스트 출력
+
+    lfn_SearchExamOrderList(); 
+
+
+
+}
+
+
+
+function Form_OnKeyDown(obj,objJubsuerObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+
+    // to do
+
+
+
+    gfn_Form_OnKeyDown(obj,objJubsuerObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+
+}
+
+
+
+function Form_OnSize(obj,nCx,nCy,nState)
+
+{
+
+    if (gs_IsResizingForm == "Y") {
+
+
+
+    }
+
+}
+
+
+
+/*
+
+ *  시험명 리스트
+
+ */
+
+function lfn_SearchExamOrderList()
+
+{    
+
+    ldb.Sync = true;
+
+    ds_oExamOrder.ClearData(); // 데이타셋 초기화
+
+    ds_oExamOrder.Load("SvcLdb::searchExamOrderList.xml");
+
+    ldb.Sync = false;
+
+}
+
+
+
+/* 공통 필수 종료 */
+
+
+
+/* 사용자 함수 */
+
+/*
+
+ * 기능 : 버튼 활성/비활성시킨다.
+
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+
+ * return : 없음
+
+ */
+
+function lfn_SetFormAuth(bStatus) {
+
+    //btnSave.Enable = bStatus; // 저장
+
+}
+
+
+
+/* 사용자 이벤트 함수 */
+
+
+
+function lfn_Save(obj)
+
+{   
+
+	// OMR리더기 관련 레지스트리 등록..
+
+	if(ext_RegGetValue("HKEY_CLASSES_ROOT", "Licenses\\4250E830-6AC2-11cf-8ADB-00AA00C00905", "", "S") != 0) {
+
+		//alert("이미등록된 레지");
+
+	} else {
+
+		if(ext_RegSetValue("HKEY_CLASSES_ROOT", "Licenses\\4250E830-6AC2-11cf-8ADB-00AA00C00905", "", "kjljvjjjoquqmjjjvpqqkqmqykypoqjquoun") == 1){
+
+			//alert("레지등록 성공");
+
+		} else {
+
+			alert("레지스트리 등록 실패");
+
+			return;
+
+		}
+
+	}
+	
+	// CS 프로그램 실행하면 cs에서 우리쪽 DB에 데이터를 넣어줌
+
+	// 현재는 테스트로 notepad 만 호출함
+
+	if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "10"
+	
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+		
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+		
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "50"
+		
+		|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "51") {
+
+		//ExecProc("C:\\kems\\kfsa\\kfsa\\kems\\src\\kems\\localsvc\\KEMSOMR.exe", cbxExamRepeat.Value);
+
+		//C:\\KFSA\\kems\\training\\local\\kems\\localsvc\\KEMSOMR.exe
+
+		ExecProc("C:\\KFSA\\kems\\training\\local\\kems\\localsvc\\KEMSOMR.exe", "0");
+
+	} else {
+
+		ExecProc("C:\\KFSA\\kems\\training\\local\\kems\\localsvc\\KEMSOMR.exe", cbxExamRepeat.Value);
+
+	}
+
+}
+
+
+
+function btnNext_OnClick(obj)
+
+{
+
+
+
+    gs_SystemGubun = "training";
+
+    gs_SystemMenuId = "0000000003";
+
+    global.mnuLeft.tabMenu.tabpgMenu.Text = "강습관리";
+
+    var ls_MenuId = "0000000081";
+
+    var ls_MenuTitle = "답지편집";
+
+    var ls_MenuUrl = "training::frmtraining0530MExamAnswerPaperModify.xml";
+
+
+
+    global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+
+    gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId);
+
+
+
+}
+
+
+
+function ds_oExamOrder_OnRowPosChanged(obj,nOldRow,nRow)
+
+{
+
+	if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "50"
+        
+        || ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "51") {
+
+        //cbxExamRepeat.Enable = true;
+
+        //cbxExamRepeat.Value = "1";
+
+        lbExamRepeat.Visible = false;
+
+        cbxExamRepeat.Visible = false;
+
+	} else {
+
+        cbxExamRepeat.Visible = true;
+
+        lbExamRepeat.Visible = true;
+
+        cbxExamRepeat.Value = "1";        
+
+	}
+
+}
+
+// OMR 입력(Scan방식)
+function btnScan_OnClick(obj)
+{
+	// Image 폴더가 있으면 답안이미지파일 삭제
+	DirRtn = ext_GetFileList("C:\\KFSA\\kems\\training\\local\\kems\\localsvc","D");
+	
+	if(indexOf(DirRtn, "Image") >= 0) {
+
+		var fileRtn = ext_GetFileList("C:\\KFSA\\kems\\training\\local\\kems\\localsvc\\Image\\정상용지","F");
+		
+		var i = 0;
+		while (indexOf(fileRtn, fileRtn[i]) >= 0) {
+			OmrLocalDelete.Delete("C:\\KFSA\\kems\\training\\local\\kems\\localsvc\\Image\\정상용지\\"+fileRtn[i]);
+			i++;
+		}
+	}
+
+	// 윈도우 bit체크(32비트인지 64비트인지)
+	var sPath;
+
+	var rtn = ext_RegGetValue_win7("HKEY_LOCAL_MACHINE", "SOFTWARE\\WOW6432Node", "", "S");
+
+	// 32비트
+	if( !gfn_isNull(rtn) || rtn != "") {
+		sPath = "C:\\Program Files\\";
+	} else {
+		sPath = "C:\\Program Files (x86)\\";
+	}
+
+	if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "10") {
+		// 2017.06.28 특급도 Scan방식 사용
+		//ExecProc("C:\\KFSA\\kems\\training\\local\\kems\\localsvc\\KEMSOMR.exe", "0");
+		ExecProc(sPath+"OMRScan\\소방안전안전원\\OMRScan_KFSA.exe 1 " + gds_oUserInfo.GetColumn(0, "PSABUN"));
+
+	} else if (ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "21"
+
+			|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "22"
+			
+			|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "23"
+			
+			|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "50"
+			
+			|| ds_oExamOrder.GetColumn(ds_oExamOrder.currow, "TCCOURSECD") == "51") {
+		
+		ExecProc(sPath+"OMRScan\\소방안전안전원\\OMRScan_KFSA.exe 1 " + gds_oUserInfo.GetColumn(0, "PSABUN"));
+
+	} else {
+
+		ExecProc(sPath+"OMRScan\\소방안전안전원\\OMRScan_KFSA.exe " + cbxExamRepeat.Value+ " "+ gds_oUserInfo.GetColumn(0, "PSABUN"));
+
+	}
+}
+/*
+function Button0_OnClick(obj)
+{
+		ExecProc("C:\\Program Files\\epson\\Epson Scan 2\\Core\\es2launcher.exe");
+}
+*/]]></Script>
+</Window>

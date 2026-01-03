@@ -1,0 +1,2842 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="312" Id="frmcust2020PCustomerFeePos" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="결제(POS)시스템" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="600" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oRecieptGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>출력</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>미출력</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSunap">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>방문(직납)</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>은행납</DATA>
+					</record>
+					<record>
+						<CD>6</CD>
+						<DATA>지로</DATA>
+					</record>
+					<record>
+						<CD>9</CD>
+						<DATA>전화수납</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSunapGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>현금</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>카드</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>현금영수증</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>가상계좌(LG&#32;U+)</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPosJibu"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oInstallment">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>00</CD>
+						<DATA>일시불</DATA>
+					</record>
+					<record>
+						<CD>01</CD>
+						<DATA>1개월</DATA>
+					</record>
+					<record>
+						<CD>02</CD>
+						<DATA>2개월</DATA>
+					</record>
+					<record>
+						<CD>03</CD>
+						<DATA>3개월</DATA>
+					</record>
+					<record>
+						<CD>04</CD>
+						<DATA>4개월</DATA>
+					</record>
+					<record>
+						<CD>05</CD>
+						<DATA>5개월</DATA>
+					</record>
+					<record>
+						<CD>06</CD>
+						<DATA>6개월</DATA>
+					</record>
+					<record>
+						<CD>07</CD>
+						<DATA>7개월</DATA>
+					</record>
+					<record>
+						<CD>08</CD>
+						<DATA>8개월</DATA>
+					</record>
+					<record>
+						<CD>09</CD>
+						<DATA>9개월</DATA>
+					</record>
+					<record>
+						<CD>10</CD>
+						<DATA>10개월</DATA>
+					</record>
+					<record>
+						<CD>11</CD>
+						<DATA>11개월</DATA>
+					</record>
+					<record>
+						<CD>12</CD>
+						<DATA>12개월</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCashGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>소득공제용</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>지출증빙용</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oYear">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMonth">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>01</CD>
+						<DATA>1개월</DATA>
+					</record>
+					<record>
+						<CD>02</CD>
+						<DATA>2개월</DATA>
+					</record>
+					<record>
+						<CD>03</CD>
+						<DATA>3개월</DATA>
+					</record>
+					<record>
+						<CD>04</CD>
+						<DATA>4개월</DATA>
+					</record>
+					<record>
+						<CD>05</CD>
+						<DATA>5개월</DATA>
+					</record>
+					<record>
+						<CD>06</CD>
+						<DATA>6개월</DATA>
+					</record>
+					<record>
+						<CD>07</CD>
+						<DATA>7개월</DATA>
+					</record>
+					<record>
+						<CD>08</CD>
+						<DATA>8개월</DATA>
+					</record>
+					<record>
+						<CD>09</CD>
+						<DATA>9개월</DATA>
+					</record>
+					<record>
+						<CD>10</CD>
+						<DATA>10개월</DATA>
+					</record>
+					<record>
+						<CD>11</CD>
+						<DATA>11개월</DATA>
+					</record>
+					<record>
+						<CD>12</CD>
+						<DATA>12개월</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCashYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>예</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>아니오</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oBank">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioCustomerFee">
+				<Contents>
+					<colinfo id="CFCMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFSETLMGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFMEMBERGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUNCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPMONTH" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPHALF" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFPROCAMOUNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFPROCDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFPONYGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFPONYDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFMGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPOSGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFGROUPMGNO" size="29" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFREMARK" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFREPAYREF" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFACTIVEGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFREGDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="CFREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFMODDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="CFMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosPrintM">
+				<Contents>
+					<colinfo id="PMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="PMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMINPUT" size="1" summ="default" type="STRING"/>
+					<colinfo id="PMPCGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="PMPCORDERNO" size="20" summ="default" type="STRING"/>
+					<colinfo id="PMPROCDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="PMPIID" size="12" summ="default" type="STRING"/>
+					<colinfo id="PMPGMID" size="2" summ="default" type="STRING"/>
+					<colinfo id="PMPGMPK" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMBUYER" size="50" summ="default" type="STRING"/>
+					<colinfo id="PMCLAS" size="2" summ="default" type="STRING"/>
+					<colinfo id="PMPGMGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="PMITEM1" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMITEM2" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMITEM3" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMITEM4" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMAMT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMVAT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMPAYMENTFLAG" size="1" summ="default" type="STRING"/>
+					<colinfo id="PMRESULT" size="1" summ="default" type="STRING"/>
+					<colinfo id="PCUSERTYPE" size="1" summ="default" type="STRING"/>
+					<colinfo id="PCSOCIALBUSINESSNO" size="18" summ="default" type="STRING"/>
+					<colinfo id="PCCARDINSTALL" size="2" summ="default" type="STRING"/>
+					<colinfo id="PCCLOSEDATE" size="14" summ="default" type="STRING"/>
+					<colinfo id="PCBANKCD" size="10" summ="default" type="STRING"/>
+					<colinfo id="PCBANKNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="PMPCSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMORGGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PCFLAG" size="256" summ="default" type="STRING"/>
+					<colinfo id="PCACCOUNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosPayment">
+				<Contents>
+					<colinfo id="PPPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="PPPMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPNM" size="30" summ="default" type="STRING"/>
+					<colinfo id="PPUNITAMT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPQTY" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPTOTAMT" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iReady">
+				<Contents>
+					<colinfo id="SEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFMGGTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFMEMBERGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFPROCAMOUNT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="CFPROCDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHECKDATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFMGGTNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CCOURSENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFMEMBERNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPmMgno">
+				<Contents>
+					<colinfo id="PMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oGroupNo">
+				<Contents>
+					<colinfo id="CFGROUPMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iCustomerFeeBackup">
+				<Contents>
+					<colinfo id="CFCMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFSETLMGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFMEMBERGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUNCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPMONTH" size="2" summ="default" type="STRING"/>
+					<colinfo id="CFSUNAPHALF" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFPROCAMOUNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFPROCDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFPONYGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFPONYDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFMGGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPOSGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="CFPMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFGROUPMGNO" size="29" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFCANCELSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFREMARK" size="100" summ="default" type="STRING"/>
+					<colinfo id="CFREPAYREF" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CFACTIVEGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CFREGDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="CFREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CFMODDATE" size="7" summ="default" type="STRING"/>
+					<colinfo id="CFMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="CGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="20" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosPrintMBackup">
+				<Contents>
+					<colinfo id="PMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="PMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMINPUT" size="1" summ="default" type="STRING"/>
+					<colinfo id="PMPCGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="PMPCORDERNO" size="20" summ="default" type="STRING"/>
+					<colinfo id="PMPROCDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="PMPIID" size="12" summ="default" type="STRING"/>
+					<colinfo id="PMPGMID" size="2" summ="default" type="STRING"/>
+					<colinfo id="PMPGMPK" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMBUYER" size="50" summ="default" type="STRING"/>
+					<colinfo id="PMCLAS" size="2" summ="default" type="STRING"/>
+					<colinfo id="PMPGMGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="PMITEM1" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMITEM2" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMITEM3" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMITEM4" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMAMT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMVAT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMPAYMENTFLAG" size="1" summ="default" type="STRING"/>
+					<colinfo id="PMRESULT" size="1" summ="default" type="STRING"/>
+					<colinfo id="PCUSERTYPE" size="1" summ="default" type="STRING"/>
+					<colinfo id="PCSOCIALBUSINESSNO" size="18" summ="default" type="STRING"/>
+					<colinfo id="PCCARDINSTALL" size="2" summ="default" type="STRING"/>
+					<colinfo id="PCCLOSEDATE" size="14" summ="default" type="STRING"/>
+					<colinfo id="PCBANKCD" size="10" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosPaymentBackup">
+				<Contents>
+					<colinfo id="PPPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="PPPMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPSEQ" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPNM" size="30" summ="default" type="STRING"/>
+					<colinfo id="PPUNITAMT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPQTY" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PPTOTAMT" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iReadyBackup">
+				<Contents>
+					<colinfo id="SEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="CMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFMGGTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CREGCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CCOURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFMEMBERGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FMNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFPROCAMOUNT" size="256" summ="default" type="DECIMAL"/>
+					<colinfo id="CFPROCDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CFREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="CHECKDATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPosCas">
+				<Contents>
+					<colinfo id="PCPMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="PCPMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PCCLOSEDATE" size="14" summ="default" type="STRING"/>
+					<colinfo id="PCFLAG" size="1" summ="default" type="STRING"/>
+					<colinfo id="PCACCOUNT" size="15" summ="default" type="STRING"/>
+					<colinfo id="PCBANKCD" size="10" summ="default" type="STRING"/>
+					<colinfo id="PCBANKNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="PCAMOUNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PCBANKDATE" size="14" summ="default" type="STRING"/>
+					<colinfo id="PCTRANSACTION" size="24" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oBizDate">
+				<Contents>
+					<colinfo id="BIZDATE" size="4000" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oNewBankAccount">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANK" size="256" summ="default" type="STRING"/>
+					<colinfo id="ACCOUNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="RECVTE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioVirtualAccoutAllocation">
+				<Contents>
+					<colinfo id="SCMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SBNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SJIBU" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iEduJubsuStatus">
+				<Contents>
+					<colinfo id="CMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PCGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="AMT" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAYGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PMMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEduJubsuCheck"></Dataset>
+		</Datasets>
+		<Div Height="73" Id="divSunap" Left="4" TabOrder="7" Text="Div0" Top="188" Visible="FALSE" Width="592">
+			<Contents>
+				<Shape Bottom="168" Height="84" Id="shSunapInfo" Left="0" LineColor="user15" Right="592" TabOrder="6" Top="84" Type="Rectangle" Visible="FALSE" Width="592"></Shape>
+				<Div Height="70" Id="divBank" Left="2" TabOrder="4" Text="Div0" Top="100" Visible="FALSE" Width="586">
+					<Contents>
+						<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxBank" INDEX="0" InnerDataset="ds_oBank" Left="106" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="1" Top="1" Value="I:입금은행" Width="154"></Combo>
+						<Static Align="Center" Height="20" Id="lbBank" Left="3" Style="sty_Label" TabOrder="3" Text="입금은행" Top="2" UserData="SK" VAlign="Middle" Width="100"></Static>
+						<Calendar Border="Flat" Dateformat="yyyy-MM-dd&#32;HH:mm:ss" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" Enable="FALSE" HeaderFont="돋음,10,Bold" Height="20" Id="calEndDate" Left="107" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="4" Top="26" WeeksFont="돋음,9" Width="152"></Calendar>
+						<Static Align="Center" Height="20" Id="lbEndDate" Left="3" Style="sty_Label" TabOrder="5" Text="입금마감일" Top="26" VAlign="Middle" Width="100"></Static>
+						<Static Align="Center" Height="20" Id="lbCashYn" Left="3" Style="sty_Label" TabOrder="6" Text="현금영수증여부" Top="50" VAlign="Middle" Width="100"></Static>
+						<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radCashYn" INDEX="0" InnerDataset="ds_oCashYn" Left="107" LeftMargin="4" OnChanged="divSunap_divBank_radCashYn_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="2" Top="50" Value="N" Width="150"></Radio>
+						<Static Align="Center" Height="30" Id="lbHp" Left="291" Style="sty_Label" TabOrder="7" Text="가상계좌&#32;SMS발송&#10;휴대폰번호" Top="2" UserData="SK" VAlign="Middle" Width="119"></Static>
+						<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edHp" ImeMode="native" Left="413" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="8" Top="2" UserData="S" Width="104"></Edit>
+						<Static BKColor="user0" Border="SunkenEdge" Color="user1" Height="31" Id="Static0" Left="291" Style="sty_Label" TabOrder="9" Text="예시)&#32;국민&#32;000000-00-000000(예금주:한국소방&#10;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;한국소방안전원)에&#32;48,000원&#32;입금바랍니다" Top="33" UserData="SK" VAlign="Middle" Width="281"></Static>
+					</Contents>
+				</Div>
+				<Div Height="72" Id="divCard" Left="2" TabOrder="3" Text="Div0" Top="98" Visible="FALSE" Width="584">
+					<Contents>
+						<Static Align="Center" Height="20" Id="lbCardNo" Left="3" Style="sty_Label" TabOrder="7" Text="신용카드번호" Top="2" VAlign="Middle" Width="100"></Static>
+						<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edCardNo" ImeMode="native" Left="107" LeftMargin="2" MaxLength="40" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="1" Text="4119045215715124=15022011919676391750" Top="2" Width="300"></Edit>
+						<Static Align="Center" Height="20" Id="lbInstallment" Left="3" Style="sty_Label" TabOrder="8" Text="할부개월수" Top="50" VAlign="Middle" Width="100"></Static>
+						<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxInstallment" INDEX="0" InnerDataset="ds_oInstallment" Left="106" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="6" Top="49" Width="65"></Combo>
+						<Static Height="20" Id="lbText3" Left="178" Style="sty_Text" TabOrder="9" Text="(할부&#32;5만원&#32;이상&#32;가능)" Top="51" VAlign="Middle" Width="196"></Static>
+						<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnInit" ImageID="BTN_TEXT_COM" Left="410" OnClick="divSunap_divCard_btnInit_OnClick" Style="sty_Button" TabOrder="2" Text="초기화" Top="2" Width="85"></Button>
+						<Static Align="Center" Height="20" Id="lbCardTerm" Left="3" Style="sty_Label" TabOrder="10" Text="유효기간" Top="26" VAlign="Middle" Width="100"></Static>
+						<Combo Border="Flat" CodeColumn="CD" DataColumn="CD" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCardMonth" ImeMode="none" INDEX="0" InnerDataset="ds_oMonth" Left="106" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="4" Top="25" Width="65"></Combo>
+						<Static Height="20" Id="lbCardMonth" Left="175" Style="sty_Text" TabOrder="11" Text="월" Top="26" VAlign="Middle" Width="28"></Static>
+						<Static Height="20" Id="lbCardYear" Left="271" Style="sty_Text" TabOrder="12" Text="년" Top="26" VAlign="Middle" Width="15"></Static>
+						<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxCardYear" ImeMode="none" INDEX="0" InnerDataset="ds_oYear" Left="202" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="5" Top="25" Width="65"></Combo>
+						<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnUserInput" ImageID="BTN_TEXT_COM" Left="498" OnClick="divSunap_divCard_btnUserInput_OnClick" Style="sty_Button" TabOrder="3" Text="직접입력" Top="2" Width="85"></Button>
+					</Contents>
+				</Div>
+				<Shape Bottom="73" Height="65" Id="shpGubunBox" Left="0" LineColor="user15" Right="592" TabOrder="9" Top="8" Type="Rectangle" Width="592"></Shape>
+				<Div Height="72" Id="divCash" Left="2" TabOrder="5" Text="Div0" Top="169" Visible="FALSE" Width="584">
+					<Contents>
+						<Static Align="Center" Height="20" Id="lbCashGubun" Left="3" Style="sty_Label" TabOrder="4" Text="현금영수증용도" Top="3" VAlign="Middle" Width="100"></Static>
+						<Static Align="Center" Height="20" Id="lbCashNo" Left="3" Style="sty_Label" TabOrder="5" Text="현금영수증번호" Top="27" VAlign="Middle" Width="100"></Static>
+						<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edCashNo" ImeMode="native" Left="107" LeftMargin="2" MaxLength="40" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="3" Top="27" Width="224"></Edit>
+						<Static Height="20" Id="lbText2" Left="104" Style="sty_Text" TabOrder="6" Text="(&apos;-&apos;제외.국세청&#32;등록된&#32;주민번호나&#32;카드번호&#32;입력)" Top="51" VAlign="Middle" Width="294"></Static>
+						<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnInit" ImageID="BTN_TEXT_COM" Left="334" OnClick="divSunap_divCash_btnInit_OnClick" Style="sty_Button" TabOrder="2" Text="초기화" Top="2" Width="85"></Button>
+						<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radCashGubun" INDEX="0" InnerDataset="ds_oCashGubun" Left="107" LeftMargin="12" OnKeyDown="gfn_EnterNextFocus" RightMargin="12" Style="sty_Radio" TabOrder="1" Top="3" Value="0" Width="224"></Radio>
+					</Contents>
+				</Div>
+				<Static Align="Center" Height="20" Id="lbSunap" Left="5" Style="sty_Label" TabOrder="7" Text="수납방법" Top="24" UserData="S" VAlign="Middle" Width="100"></Static>
+				<Static Align="Center" Height="20" Id="lbSunapGubun" Left="5" Style="sty_Label" TabOrder="8" Text="납부방법" Top="48" UserData="S" VAlign="Middle" Width="100"></Static>
+				<Radio Border="Flat" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radSunap" INDEX="0" InnerDataset="ds_oSunap" Left="109" LeftMargin="12" OnChanged="divSunap_radSunap_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="12" Style="sty_Radio" TabOrder="1" Top="24" Value="0" Width="476"></Radio>
+				<Radio Border="Flat" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radSunapGubun" INDEX="0" InnerDataset="ds_oSunapGubun" Left="109" LeftMargin="12" OnChanged="divSunap_radSunapGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" RightMargin="12" Style="sty_Radio" TabOrder="2" Top="48" Value="0" Width="476"></Radio>
+				<Static Align="Center" Height="20" Id="stSunap" Left="16" Style="sty_LabelGruopBox" TabOrder="10" Text="수납&#32;방법" VAlign="Middle" Width="120"></Static>
+				<Static Align="Center" Height="20" Id="stSunapInfo" Left="16" Style="sty_LabelGruopBox" TabOrder="11" Text="수납&#32;정보" Top="76" VAlign="Middle" Visible="FALSE" Width="120"></Static>
+				<Div Height="72" Id="divNewBank" Left="2" TabOrder="12" Text="Div0" Top="100" Visible="FALSE" Width="586">
+					<Contents>
+						<Combo Border="Flat" CodeColumn="CD" DataColumn="BANK" Height="20" Id="cbxBank" INDEX="0" InnerDataset="ds_oNewBankAccount" Left="106" OnChanged="divSunap_divNewBank_cbxBank_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="1" Top="23" Value="I:입금은행" Width="154"></Combo>
+						<Static Align="Center" Height="20" Id="lbBank" Left="3" Style="sty_Label" TabOrder="2" Text="입금은행" Top="24" UserData="SK" VAlign="Middle" Width="100"></Static>
+						<Static Align="Center" Height="20" Id="lbAccount" Left="3" Style="sty_Label" TabOrder="3" Text="가상계좌" Top="48" UserData="SK" VAlign="Middle" Width="100"></Static>
+						<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edAccount" ImeMode="native" Left="107" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="4" Top="48" UserData="S" Width="173"></Edit>
+						<Static BKColor="user0" Border="SunkenEdge" Color="user1" Font="굴림,9" Height="40" Id="lbMSG" Left="288" Style="sty_Label" TabOrder="5" Text="반드시&#32;실제&#32;입금된&#32;은행을&#32;선택하시고,&#10;가상계좌가&#32;맞는지&#32;확인&#32;후&#32;수납처리하세요!" Top="24" UserData="SK" VAlign="Middle" Width="298"></Static>
+						<Static Align="Center" BKColor="user0" Border="Flat" BorderColor="user37" Color="user1" Font="굴림,10,Bold" Height="21" Id="Static0" Left="136" Style="sty_Label" TabOrder="6" Text="가상계좌&#32;입금오류&#32;등의&#32;경우&#32;수동&#32;수납처리" UserData="SK" VAlign="Middle" Width="298"></Static>
+					</Contents>
+				</Div>
+			</Contents>
+		</Div>
+		<Div Height="97" Id="divRepay" Left="4" TabOrder="20" Text="Div0" Top="188" Visible="FALSE" Width="592">
+			<Contents>
+				<Shape Bottom="97" Height="89" Id="shpGubunBox" Left="0" LineColor="user15" Right="592" TabOrder="7" Top="8" Type="Rectangle" Width="592"></Shape>
+				<Static Align="Center" Height="20" Id="lbBuyer" Left="5" Style="sty_Label" TabOrder="1" Text="구매자" Top="24" UserData="S" VAlign="Middle" Width="100"></Static>
+				<Static Align="Center" Height="20" Id="lbOrderNo" Left="249" Style="sty_Label" TabOrder="2" Text="주문번호" Top="48" UserData="S" VAlign="Middle" Width="100"></Static>
+				<Static Align="Center" Height="20" Id="lbSunapGubun" Left="5" Style="sty_Label" TabOrder="3" Text="납부방법" Top="48" UserData="S" VAlign="Middle" Width="100"></Static>
+				<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edSunapGubun" ImeMode="native" Left="109" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="6" Top="48" Width="136"></Edit>
+				<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edOrderNo" ImeMode="native" Left="353" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="5" Top="48" Width="136"></Edit>
+				<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edBuyer" ImeMode="native" Left="109" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="4" Top="24" Width="380"></Edit>
+				<Static Align="Center" Height="20" Id="lbRepay" Left="16" Style="sty_LabelGruopBox" TabOrder="8" Text="환불&#32;정보" VAlign="Middle" Width="120"></Static>
+				<Static Align="Center" Height="20" Id="lbAmount" Left="5" Style="sty_LabelStat" TabOrder="10" Text="환불금액" Top="72" VAlign="Middle" Width="100"></Static>
+				<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medAmount" Left="109" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="9" Top="72" Width="136"></MaskEdit>
+				<Static Align="Center" Height="20" Id="lbSunapAmount" Left="249" Style="sty_LabelStat" TabOrder="11" Text="부분&#32;수납금액" Top="72" VAlign="Middle" Visible="FALSE" Width="100"></Static>
+				<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medSunapAmount" Left="353" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="12" Top="72" Visible="FALSE" Width="136"></MaskEdit>
+			</Contents>
+		</Div>
+		<Shape Bottom="184" Height="88" Id="Shape0" Left="4" LineColor="user15" Right="596" TabOrder="19" Top="96" Type="Rectangle" Width="592"></Shape>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="418" LineColor="user14" Right="596" TabOrder="11" Top="1" Type="Rectangle" Width="178"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="508" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbProgramId" Left="8" Style="sty_Label" TabOrder="10" Text="단위프로그램" Top="60" UserData="S" VAlign="Middle" Width="100"></Static>
+		<Static Align="Center" Height="20" Id="lbJibuMgId" Left="276" Style="sty_Label" TabOrder="9" Text="지부관리ID" Top="60" VAlign="Middle" Width="100"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="421" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="1" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Checkbox FalseValue="0" Height="20" Id="chkPonyDate" Left="328" OnClick="chkPonyDate_OnClick" OnKeyDown="gfn_EnterNextFocus" Style="sty_Checkbox" TabOrder="4" Top="136" TrueValue="1" Value="FALSE" Width="12"></Checkbox>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" Enable="FALSE" HeaderFont="돋음,10,Bold" Height="20" Id="calPonyDate" Left="344" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="5" Top="136" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calSunapDate" Left="112" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="3" Top="136" WeeksFont="돋음,9" Width="108"></Calendar>
+		<Static Align="Center" Height="20" Id="lbSunapDate" Left="8" Style="sty_Label" TabOrder="12" Text="처리일자" Top="136" VAlign="Middle" Width="100"></Static>
+		<Static Align="Center" Height="20" Id="lbRecieptYn" Left="8" Style="sty_Label" TabOrder="13" Text="영수증출력여부" Top="160" VAlign="Middle" Width="100"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radRecieptGubun" INDEX="0" InnerDataset="ds_oRecieptGubun" Left="112" LeftMargin="12" OnKeyDown="gfn_EnterNextFocus" RightMargin="12" Style="sty_Radio" TabOrder="6" Top="160" Value="Y" Width="166"></Radio>
+		<Button BKColor="user17" ButtonStyle="TRUE" Cursor="HAND" Font="굴림,10,Bold" Height="44" Id="btnPos" Left="200" OnClick="btnPos_OnClick" Style="sty_Button" TabOrder="8" Text="수&#32;납&#32;처&#32;리" Top="264" Width="200"></Button>
+		<Combo Border="Flat" CodeColumn="PGMID" DataColumn="PGMNM" Editable="TRUE" Enable="FALSE" Height="20" Id="cbxProgramIdStart" INDEX="0" InnerDataset="gds_oPosProgramId" Left="111" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="14" Top="59" Width="161"></Combo>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edBizGubunNm" ImeMode="native" Left="528" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="15" Top="60" Width="64"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edJibuMgId" ImeMode="native" Left="380" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="16" Top="60" Width="144"></Edit>
+		<Div BKColor="user0" Height="20" Id="divPos" Left="292" Style="sty_Form" TabOrder="17" TabStop="FALSE" Text="Div0" Top="4" Url="COM::frmCOM3010SPOS.xml" Visible="FALSE" Width="124">
+		</Div>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medAmount" Left="112" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="18" Top="112" Width="108"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbPonyDate" Left="224" Style="sty_Label" TabOrder="21" Text="정산일자" Top="136" VAlign="Middle" Width="100"></Static>
+		<Static Align="Center" Height="20" Id="lbAmount" Left="8" Style="sty_LabelStat" TabOrder="22" Text="총&#32;수납금액" Top="112" VAlign="Middle" Width="100"></Static>
+		<Static Font="굴림,12,Bold" Height="20" Id="lbWorkFormTitle" Left="28" TabOrder="23" Text="결제(POS)&#32;시스템" Top="4" VAlign="Middle" Width="216"></Static>
+		<Image Height="10" Id="imgImage" ImageID="IMG_BULLET" Left="8" Style="sty_Image" TabOrder="24" Top="9" Transparent="TRUE" Width="12"></Image>
+		<Static Align="Center" Height="20" Id="Static0" Left="20" Style="sty_LabelGruopBox" TabOrder="25" Text="기본&#32;정보" Top="36" VAlign="Middle" Width="120"></Static>
+		<Static Align="Center" Height="20" Id="Static1" Left="20" Style="sty_LabelGruopBox" TabOrder="26" Text="결제&#32;정보" Top="88" VAlign="Middle" Width="120"></Static>
+		<Shape Bottom="84" Height="40" Id="shpGubunBox1" Left="4" LineColor="user15" Right="596" TabOrder="27" Top="44" Type="Rectangle" Width="592"></Shape>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust2020PCustomerFeePos.xml
+ * 설명 : 결제(POS)시스템
+ * 작성일 : 2009.12.05
+ * 작성자 : 김동현
+ */
+
+#include "LIB::cust.js"; //공통업무 관련
+#include "LIB::COMMON.js"; //공통업무 관련
+var ls_SunapCode = ""; //결제방법코드
+var lb_ReSunap = false; // 부분 수납 구분
+var lb_CardIn = false; //카드 false:자동 true:수동
+var ls_Paygubun = "";  // 결제구분  // 실무교육접수 결제시에만 사용
+var ls_OfflinePG = "N"; // 오프라인PG 결제여부
+
+/*
+4119045215715124=15022011919676391750
+    sProgramId      = 11:회비 12:교육비
+    sSunapGubun     = 0:수납 1:환불
+    sTotalAmount    = 총 결제 금액
+    sAmount         = 수납/환불 금액
+    sJibu           = 대상 지부(수납용)
+    sBuyer          = 구매자(환불용)
+    sSetlmGubun     = 결제구분(환불용)
+    sOrderNo        = 주문번호(환불용)
+    sPersonkey		= 개인식별번호
+    sCMgno          = 고객관리바코드   1건 결제일때만 가져옴
+    sFMNM           = 선임자 성명 가상계좌 문자발송시 사용
+	sHPTEL			= 휴대폰 번호
+	sBNMFMNM        = 업체명(선임자명)
+	
+    // 실무교육접수 결제시에만 사용
+    sEduJubsu		= 실무교육접수시 결제이면 Y
+    sEjmgno			= 실무교육접수관리번호
+    sEjhseq			= 실무교육접수관리순번
+*/
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+var ls_PosJibu = "";
+
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+	
+    gfn_SearchPosJibu(ds_oPosJibu, iif(sProgramId == "11", "0", "1")); // POS 지부 조회
+    if (gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "SM") {	// 관리자이면 서울지부로
+		ls_PosJibu = "15";
+	} else {
+		ls_PosJibu = substr(gds_oUserInfo.GetColumn(0, "PDEPTCD"), 1, 2); // POS 지부 코드
+	}
+	//trace(ls_PosJibu);
+    cbxProgramIdStart.Value = sProgramId; // 단위업무프로그램
+    edBizGubunNm.Text = gds_oPosProgramId.GetColumn(cbxProgramIdStart.Index, "PGMGUBUNNM"); // 사업구분
+    edJibuMgId.Text = ds_oPosJibu.GetColumn(ds_oPosJibu.FindRow("PICHPT", ls_PosJibu), "PIID"); // 지부관리ID
+    if (gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "SM") {	// 관리자이면 서울지부로
+	    edJibuMgId.Text = "POS_kfsa_151";
+	}
+    calSunapDate.Value = left(getDate(), 8);
+
+	// LG U+ 가상계좌 폐지, 세틀뱅크 가상계좌 사용
+	if (left(getDate(), 8) >= "20130820") {
+		ds_oSunapGubun.DeleteRow(3);
+		
+		ds_oSunapGubun.InsertRow(3);
+		ds_oSunapGubun.SetColumn(3, "CD", "4");
+		ds_oSunapGubun.SetColumn(3, "DATA", "가상계좌");
+	}
+
+    divRepay.edBuyer.Text = sBuyer;
+    divRepay.edSunapGubun.Text = lfn_GetSetlm(sSetlmGubun);
+    divRepay.edOrderNo.Text = sOrderNo;
+
+    if (sSunapGubun == "0") {
+    
+        btnPos.Text = "수납 처리";
+        medAmount.Value = sAmount;
+        divRepay.medSunapAmount.Value = sAmount; //비고에 넣기 위해
+        divSunap.Top = 188;
+        divSunap.Visible = true;
+        
+        lfn_SetSize("0");
+        
+    } else {
+
+        btnPos.Text = "환불 처리";
+        medAmount.Value = sTotalAmount;
+        divRepay.medAmount.Value = (-1) * toNumber(sAmount);
+        divRepay.Visible = true;
+
+        ls_SunapCode = sSetlmGubun;
+
+        divRepay.medSunapAmount.Value = toNumber(medAmount.Value) + toNumber(divRepay.medAmount.Value);
+
+        if (divRepay.medSunapAmount.Value <> 0) {
+
+            divRepay.lbSunapAmount.Visible = true;
+            divRepay.medSunapAmount.Visible = true;
+            
+
+            lb_ReSunap = true;
+            divSunap.stSunap.Text = "부분수납 방법";
+
+            divSunap.Top = 288;
+            divSunap.Visible = true;
+
+            switch (sSetlmGubun) {
+//                case "13": // 방문가상계좌[데이콤]
+//                case "15": // 방문가상계좌현금(영)[데이콤]
+
+                case "10": // 방문현금[직납]
+                case "11": // 방문카드[카드]
+                case "12": // 방문현금(영)[직납]
+                case "19": // 전화수납
+                    divSunap.radSunapGubun.Value = right(ls_SunapCode, 1);
+                    divSunap.radSunap.Value = "0";
+                    lfn_SetSize(divSunap.radSunapGubun.Value);
+                    break;
+
+                case "14": // 방문무통장[은납]
+                case "16": // 방문무통장현금(영)[은납]
+                    divSunap.radSunapGubun.Value = toNumber(right(ls_SunapCode, 1))-4;
+                    divSunap.radSunap.Value = "1";
+                    break;
+
+                case "17": // 지로현금[지로납]
+                    divSunap.radSunapGubun.Value = "0";
+                    divSunap.radSunap.Value = "6";
+                    lfn_SetSize("0");
+                    break;
+
+                case "18": // 지로현금(영)[지로납]
+                    divSunap.radSunapGubun.Value = "2";
+                    divSunap.radSunap.Value = "6";
+                    break;
+
+                default :
+                    divSunap.radSunapGubun.Value = "0";
+                    divSunap.radSunap.Value = "0";
+            }
+
+            divSunap_radSunapGubun_OnChanged(obj, divSunap.radSunapGubun.Value);
+
+        } else {
+            lfn_SetSize("5");
+        }
+
+    }
+
+    calSunapDate.SetFocus();
+    
+  
+  
+/*///////////////////////////////////////////////////////////////////////////////////    
+    var rtn = ext_RegGetValue("HKEY_LOCAL_MACHINE", "SOFTWARE\\WOW6432Node", "", "S", true);
+    trace(rtn);
+	var vOS;
+	// 32비트
+	if( !gfn_isNull(rtn) || rtn != "") {
+		vOS = "32";
+	} else {
+		vOS = "64";
+	}
+trace(vOS);
+	var BARPRT_Setup;
+
+	if( vOS == "32" ) // 32BIT windows OS
+	{
+		BARPRT_Setup = ext_RegGetValue("HKEY_LOCAL_MACHINE", "SOFTWARE\\Microsoft\\Internet Explorer\\MAIN\\FeatureControl\\FEATURE_BROWSER_EMULATION", "MiSimulator320U.exe", "I", false);
+		if(BARPRT_Setup <= "11001")   
+		{
+			var ret;
+			var strKey = "HKEY_LOCAL_MACHINE";
+			var strPath = "SOFTWARE\\Microsoft\\Internet Explorer\\MAIN\\FeatureControl\\FEATURE_BROWSER_EMULATION";
+			//var strName = "MiPlatform320U.exe"; // 배포 시
+			var strName = "MiSimulator320U.exe"; // 툴에서 테스트시
+			var strValue = 11001;       
+			ret = ext_RegSetValue(strKey, strPath, strName, strValue);	
+		}
+	} else { //64bit windows OS
+		BARPRT_Setup = ext_RegGetValue("HKEY_LOCAL_MACHINE", "SOFTWARE\\Wow6432Node\\Microsoft\\Internet Explorer\\MAIN\\FeatureControl\\FEATURE_BROWSER_EMULATION", "MiSimulator320U.exe", "I", false);
+		
+		if( BARPRT_Setup <= "11001")   
+		{
+			var ret;
+			var strKey = "HKEY_LOCAL_MACHINE";
+			var strPath = "SOFTWARE\\Wow6432Node\\Microsoft\\Internet Explorer\\MAIN\\FeatureControl\\FEATURE_BROWSER_EMULATION";
+			//var strName = "MiPlatform320U.exe"; // 배포 시
+			var strName = "MiSimulator320U.exe"; // 툴에서 테스트 시
+			var strValue = 11001;       
+			ret = ext_RegSetValue(strKey, strPath, strName, strValue);
+		}
+	}
+*/
+
+}
+
+/**
+ * 화면 설정
+ * Parameter : nType - 결제 구분
+ */
+function lfn_SetSize(nType) {
+
+    var sSunapInfo = 0;
+    var sdivSunap = 0;
+    var sWindow = 0;
+    var sRepay = 0;
+
+    switch (nType) {
+        case "0":
+            sSunapInfo = 88;
+            sdivSunap = 76;
+            sWindow = 342;
+            break;
+        case "1":
+        case "2":
+        case "3":
+            sSunapInfo = 88;
+            sdivSunap = 172;
+            sWindow = 442;
+            break;
+        case "4": //가상계좌 현금영수증
+            sSunapInfo = 160;
+            sdivSunap = 244;
+            sWindow = 514;
+            break;
+        default :
+            sSunapInfo = 88;
+            sdivSunap = 76;
+            sWindow = 266;
+    }
+
+    divSunap.shSunapInfo.Height = sSunapInfo;
+    divSunap.Height = sdivSunap;
+    window.Height = sWindow + iif(sSunapGubun == "1", 100, 0);
+    btnPos.Top = window.Height - 78;
+
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+// 이벤트 함수
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 정산일자 처리
+ */
+function chkPonyDate_OnClick(obj,strValue) {
+
+	if (strValue == "1") {
+        calPonyDate.Enable = true;
+        calPonyDate.Value = left(getDate(), 8);
+    } else {
+        calPonyDate.Enable = false;
+        calPonyDate.Value = "";
+    }
+	
+}
+
+/**
+ * 창닫기
+ */
+function lfn_End(obj) {
+    Close("FAIL");
+}
+
+/**
+ * 종료버튼
+ */
+function Form_OnUnloadCompleted(obj) {
+    Close("FAIL");
+}
+
+/**
+ * 데이터 초기화
+ */
+function lfn_Init() {
+    ds_ioPosPrintM.ClearData();
+    ds_ioPosPayment.ClearData();
+    
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// divSunap 함수
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 납부구분
+ */
+function divSunap_radSunapGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+
+	if (strCode == "1") { //카드
+		btnPos.Text = "수납 처리";	
+        divSunap.stSunapInfo.Visible = true;
+        divSunap.shSunapInfo.Visible = true;
+	    divSunap.divCard.Visible = true;
+        divSunap.divCash.Visible = false;
+        divSunap.divBank.Visible = false;
+        divSunap.divNewBank.Visible = false;
+        divSunap.radSunap.Enable = false;
+        divSunap.radSunap.Value = "0";
+        lfn_SetSize(strCode);
+        
+        lfn_Card();
+        
+	} else if (strCode == "2") { //현금영수증
+		btnPos.Text = "수납 처리";		
+        divSunap.stSunapInfo.Visible = true;
+        divSunap.shSunapInfo.Visible = true;
+	    divSunap.divCash.Top = 97;
+        divSunap.divCard.Visible = false;
+        divSunap.divCash.Visible = true;
+        divSunap.divBank.Visible = false;
+        divSunap.divNewBank.Visible = false;
+        divSunap.radSunap.Enable = true;
+        lfn_SetSize(strCode);
+
+        lfn_Cash();
+        
+	} else if (strCode == "3") { //가상계좌(LG U+)
+		btnPos.Text = "수납 처리";		
+        divSunap.divBank.radCashYn.Value = "N";
+        divSunap.stSunapInfo.Visible = true;
+        divSunap.shSunapInfo.Visible = true;
+        divSunap.divCard.Visible = false;
+        divSunap.divCash.Visible = false;
+        divSunap.divBank.Visible = true;
+        divSunap.divNewBank.Visible = false;
+        divSunap.radSunap.Enable = false;
+        divSunap.radSunap.Value = "0";
+        lfn_SetSize(strCode);
+
+        lfn_Bank();
+        
+	} else if (strCode == "4") { //가상계좌(신규) -- 세틀뱅크
+		
+		if (sCMgno == "") {
+		
+			gfn_Alert("여러건 수납일 경우 가상계좌를 발급할 수 없습니다.\n\n다른 수납방법을 선택하세요!");
+		
+			divSunap.radSunapGubun.Value = nOldIndex;
+		} else {
+			btnPos.Text = "수납 처리";
+			divSunap.stSunapInfo.Visible = true;
+			divSunap.shSunapInfo.Visible = true;
+			divSunap.divCard.Visible = false;
+			divSunap.divCash.Visible = false;
+			divSunap.divBank.Visible = false;
+			divSunap.divNewBank.Visible = true;
+			divSunap.radSunap.Enable = false;
+			divSunap.radSunap.Value = "0";
+			lfn_SetSize("3");
+	
+			lfn_NewBank();
+        }
+        
+	} else { //현금
+		btnPos.Text = "수납 처리";		
+	    divSunap.stSunapInfo.Visible = false;
+        divSunap.shSunapInfo.Visible = false;
+        divSunap.divCard.Visible = false;
+        divSunap.divCash.Visible = false;
+        divSunap.divBank.Visible = false;
+        divSunap.divNewBank.Visible = false;
+        divSunap.radSunap.Enable = true;
+        lfn_SetSize(strCode);
+
+	}
+
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+// divCard 카드 함수
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 카드 기본함수
+ */
+function lfn_Card() {
+
+    var ln_Year = toNumber(left(getDate(), 4));
+    var ln_Row = -1;
+    for (var i=0; i<10; i++) { // 10년치 유효년도
+        ln_Row = ds_oYear.AddRow();
+        ds_oYear.SetColumn(ln_Row, "CD", right(toString(ln_Year + i), 2));
+        ds_oYear.SetColumn(ln_Row, "DATA", ln_Year + i);
+    }
+
+    divSunap_divCard_btnInit_OnClick();
+    divSunap.divCard.edCardNo.SetFocus();
+}
+
+/**
+ * 카드 초기화
+ */
+function divSunap_divCard_btnInit_OnClick(obj) {
+    divSunap.divCard.edCardNo.Value = "";
+    divSunap.divCard.cbxCardMonth.Value = "";
+    divSunap.divCard.cbxCardYear.Value = "";
+    divSunap.divCard.cbxInstallment.Value = "00";
+    divSunap.divCard.cbxCardMonth.Enable = false;
+    divSunap.divCard.cbxCardYear.Enable = false;
+	divSunap.divCard.edCardNo.SetFocus();
+}
+
+/**
+ * 카드 직접입력
+ */
+function divSunap_divCard_btnUserInput_OnClick(obj) {
+
+	if (lb_CardIn) { //자동입력으로
+        divSunap.divCard.btnUserInput.Text = "자동입력";
+        divSunap.divCard.cbxCardMonth.Value = "";
+        divSunap.divCard.cbxCardYear.Value = "";
+	} else { //수동입력으로
+        divSunap.divCard.btnUserInput.Text = "직접입력";
+        divSunap.divCard.cbxCardMonth.Value = "01";
+        divSunap.divCard.cbxCardYear.Value = right(left(getDate(), 4), 2);
+	}
+    lb_CardIn = !lb_CardIn;
+    divSunap.divCard.cbxCardMonth.Enable = lb_CardIn;
+    divSunap.divCard.cbxCardYear.Enable = lb_CardIn;
+    divSunap.divCard.edCardNo.Text = "";
+	divSunap.divCard.edCardNo.SetFocus();
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// divCash 현금영수증 함수
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 현금영수증 기본함수
+ */
+function lfn_Cash() {
+    divSunap.divCash.radCashGubun.Value = "1";
+    divSunap.divCash.edCashNo.Value = "";
+    divSunap.divCash.edCashNo.SetFocus();
+}
+
+/**
+ * 현금영수증 초기화
+ */
+function divSunap_divCash_btnInit_OnClick(obj) {
+	divSunap.divCash.edCashNo.Value = "";
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// divBank 가상계좌 함수
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 가상계좌 기본함수
+ */
+function lfn_Bank() {
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("cust:searchCust2020BizDate", false);
+    tit_callService(
+        ""
+        ,""
+        ,""
+        ,"ds_oBizDate=ds_oBizDate" // outDs
+        ,"SPROCDATE=" + quote(calSunapDate.Value)// args 
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+    
+    divSunap.divBank.calEndDate.Value = ds_oBizDate.GetColumn(0, "BIZDATE");
+    gfn_SearchCommonCode(ds_oBank, "VIRTBANKCD", "Y", "선택"); // 가상계좌은행코드
+    divSunap.divBank.cbxBank.Value = "";
+}
+
+/**
+ * 가상계좌 현금영수증 구분
+ */
+function divSunap_divBank_radCashYn_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+    if (strCode == "Y") {
+        divSunap.divCash.Top = 169;
+        divSunap.divCash.Visible = true;
+        
+        lfn_SetSize("4");
+
+        lfn_Cash();
+        
+    } else {
+        divSunap.divCash.Visible = false;
+        divSunap.divCash.Top = 98;
+        
+        lfn_SetSize("3");
+
+    }
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// divNewBank 가상계좌 찾기
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 가상계좌 찾기
+ */
+function lfn_NewBank() {
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("cust:searchVirtualAccount", false);
+    tit_callService(
+        ""
+        ,""
+        ,""
+        ,"ds_oNewBankAccount=ds_oNewBankAccount" // outDs
+        ,"sGUBUN=" + quote(substr(sProgramId,1,1))
+         + " sGTMGNO=" + quote(sJibu)
+         + " sCMGNO=" + quote(sCMgno)  // args 
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+    divSunap.divNewBank.edAccount.Text = ds_oNewBankAccount.GetColumn(divSunap.divNewBank.cbxBank.Index, "ACCOUNT");
+    divSunap_divNewBank_cbxBank_OnChanged(divSunap.divNewBank.cbxBank, divSunap.divNewBank.cbxBank.Index);
+    //gfn_SearchCommonCode(ds_oBank, "VIRTBANKCD", "Y", "선택"); // 가상계좌은행코드
+    //divSunap.divNewBank.cbxBank.Value = "";
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 데이터 set 처리
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * POSPRINTM 입력
+ * Parameter : sGubun - 0:수납 1:환불
+ *           : sBuyer - 구매자명
+ *           : arrPmItem - 아이템 배열 및 추가 데이터
+ *           : sOrderNo - 주문번호(환불용)
+ */
+function lfn_SetPosPrintM(sGubun, sBuyer, arrItem, sOrderNo) {
+
+    var nRow = ds_ioPosPrintM.AddRow();
+    //ds_ioPosPrintM.SetColumn(nRow, "PMYEAR", 관리년도);
+    //ds_ioPosPrintM.SetColumn(nRow, "PMMGNO", 관리번호);
+    ds_ioPosPrintM.SetColumn(nRow, "PMINPUT", "0"); // 내방 고정
+    ds_ioPosPrintM.SetColumn(nRow, "PMPCGUBUN", sGubun);
+    ds_ioPosPrintM.SetColumn(nRow, "PMPCORDERNO", sOrderNo);
+    ds_ioPosPrintM.SetColumn(nRow, "PMPROCDATE", calSunapDate.Value);
+    ds_ioPosPrintM.SetColumn(nRow, "PMPIID", edJibuMgId.Text);
+    ds_ioPosPrintM.SetColumn(nRow, "PMPGMID", sProgramId);
+    //ds_ioPosPrintM.SetColumn(nRow, "PMPGMPK", );
+    ds_ioPosPrintM.SetColumn(nRow, "PMBUYER", sBuyer);
+    ds_ioPosPrintM.SetColumn(nRow, "PMCLAS", arrItem[4]);
+    ds_ioPosPrintM.SetColumn(nRow, "PMPGMGUBUN", arrItem[0]);
+    ds_ioPosPrintM.SetColumn(nRow, "PMITEM1", arrItem[1]);
+    ds_ioPosPrintM.SetColumn(nRow, "PMITEM2", arrItem[2]);
+    ds_ioPosPrintM.SetColumn(nRow, "PMITEM3", arrItem[3]);
+    ds_ioPosPrintM.SetColumn(nRow, "PMITEM4", iif(sGubun == "0", "수납", "환불") + "일자 : " + calSunapDate.Text);
+
+    if(sSunapGubun == "0") { //수납
+        ds_ioPosPrintM.SetColumn(nRow, "PMAMT", toNumber(medAmount.Value));
+    } else { //환불
+        if (lb_ReSunap) { //부분수납
+            ds_ioPosPrintM.SetColumn(nRow, "PMAMT", divRepay.medSunapAmount.Value);
+        } else { //전액 환불
+            ds_ioPosPrintM.SetColumn(nRow, "PMAMT", (-1) * medAmount.Value);
+        }
+    }
+    
+    ds_ioPosPrintM.SetColumn(nRow, "PMVAT", "0");
+    
+    switch(arrItem[0]) {
+
+        case "10": case "14": case "17": case "19": //현금
+            ds_ioPosPrintM.SetColumn(nRow, "PMRESULT", "1");
+            ds_ioPosPrintM.SetColumn(nRow, "PMPAYMENTFLAG", "0");
+            ds_ioPosPrintM.SetColumn(nRow, "PMORGGUBUN", "0");	// 처리기관 구분(0:현금, 1:LG U+ , 2:세틀뱅크(국민) 3:세틀뱅크(신한) 4:세틀뱅크(우리) 5:세틀뱅크(농협))
+            break;
+
+        case "11": //카드
+            ds_ioPosPrintM.SetColumn(nRow, "PMRESULT", "0");
+            ds_ioPosPrintM.SetColumn(nRow, "PMPAYMENTFLAG", "1");
+            ds_ioPosPrintM.SetColumn(nRow, "PCCARDINSTALL", divSunap.divCard.cbxInstallment.Value); //할부 개월
+            ds_ioPosPrintM.SetColumn(nRow, "PMORGGUBUN", "1");	// 처리기관 구분(0:현금, 1:LG U+ , 2:세틀뱅크(국민) 3:세틀뱅크(신한) 4:세틀뱅크(우리) 5:세틀뱅크(농협))
+            break;
+
+        case "12": case "16": case "18": //현금 영수증
+            ds_ioPosPrintM.SetColumn(nRow, "PMRESULT", "0");
+            ds_ioPosPrintM.SetColumn(nRow, "PMPAYMENTFLAG", "2");
+            ds_ioPosPrintM.SetColumn(nRow, "PCUSERTYPE", divSunap.divCash.radCashGubun.Value); //소득공제,지출증빙
+            ds_ioPosPrintM.SetColumn(nRow, "PCSOCIALBUSINESSNO", divSunap.divCash.edCashNo.Text); //현금영수증번호
+            ds_ioPosPrintM.SetColumn(nRow, "PMORGGUBUN", "0");	// 처리기관 구분(0:현금, 1:LG U+ , 2:세틀뱅크(국민) 3:세틀뱅크(신한) 4:세틀뱅크(우리) 5:세틀뱅크(농협))
+            break;
+            
+        case "15": //가상계좌현금영수증
+            ds_ioPosPrintM.SetColumn(nRow, "PMPIID", replace(edJibuMgId.Text, "POS_", ""));
+            ds_ioPosPrintM.SetColumn(nRow, "PMRESULT", "0");
+            ds_ioPosPrintM.SetColumn(nRow, "PMPAYMENTFLAG", "2");
+            ds_ioPosPrintM.SetColumn(nRow, "PCUSERTYPE", divSunap.divCash.radCashGubun.Value); //소득공제,지출증빙
+            ds_ioPosPrintM.SetColumn(nRow, "PCSOCIALBUSINESSNO", divSunap.divCash.edCashNo.Text); //현금영수증번호
+            ds_ioPosPrintM.SetColumn(nRow, "PCCLOSEDATE", divSunap.divBank.calEndDate.value); //입금마감일시
+            ds_ioPosPrintM.SetColumn(nRow, "PCBANKCD", divSunap.divBank.cbxBank.Value); //은행코드
+            ds_ioPosPrintM.SetColumn(nRow, "PCBANKNM", divSunap.divBank.cbxBank.Text); //은행명
+            break;
+            
+        case "13": //가상계좌
+            ds_ioPosPrintM.SetColumn(nRow, "PMPIID", edJibuMgId.Text);
+            ds_ioPosPrintM.SetColumn(nRow, "PMRESULT", "1");
+            ds_ioPosPrintM.SetColumn(nRow, "PMPAYMENTFLAG", "3");
+            //ds_ioPosPrintM.SetColumn(nRow, "PCCLOSEDATE", divSunap.divBank.calEndDate.value); //입금마감일시
+            ds_ioPosPrintM.SetColumn(nRow, "PCBANKCD", divSunap.divNewBank.cbxBank.Value); //은행코드
+            ds_ioPosPrintM.SetColumn(nRow, "PCBANKNM", divSunap.divNewBank.cbxBank.Text); //은행명
+            ds_ioPosPrintM.SetColumn(nRow, "PCFLAG", "I"); //입금여부(R-계좌할당,I-입금,C-취소)
+            ds_ioPosPrintM.SetColumn(nRow, "PCACCOUNT", replace(divSunap.divNewBank.edAccount.Text,"-","")); //가상계좌
+            ds_ioPosPrintM.SetColumn(nRow, "PMORGGUBUN", "0");	// 처리기관 구분(0:현금, 1:LG U+ , 2:세틀뱅크(국민) 3:세틀뱅크(신한) 4:세틀뱅크(우리) 5:세틀뱅크(농협))
+            if (sSunapGubun == "0") { //수납
+				if (divSunap.divNewBank.cbxBank.index == 1) {	// 국민은행
+					ds_ioPosPrintM.SetColumn(0, "PMORGGUBUN", "2"); // 처리기관 구분(0:현금, 1:LG U+ , 2:세틀뱅크(국민) 3:세틀뱅크(신한) 4:세틀뱅크(우리) 5:세틀뱅크(농협))
+				} else if (divSunap.divNewBank.cbxBank.index == 2) {	// 신한은행
+					ds_ioPosPrintM.SetColumn(0, "PMORGGUBUN", "3"); // 처리기관 구분(0:현금, 1:LG U+ , 2:세틀뱅크(국민) 3:세틀뱅크(신한) 4:세틀뱅크(우리) 5:세틀뱅크(농협))
+				} else if (divSunap.divNewBank.cbxBank.index == 3) {	// 우리은행
+					ds_ioPosPrintM.SetColumn(0, "PMORGGUBUN", "4"); // 처리기관 구분(0:현금, 1:LG U+ , 2:세틀뱅크(국민) 3:세틀뱅크(신한) 4:세틀뱅크(우리) 5:세틀뱅크(농협))
+				} else if (divSunap.divNewBank.cbxBank.index == 0) {	// 농협은행
+					ds_ioPosPrintM.SetColumn(0, "PMORGGUBUN", "5"); // 처리기관 구분(0:현금, 1:LG U+ , 2:세틀뱅크(국민) 3:세틀뱅크(신한) 4:세틀뱅크(우리) 5:세틀뱅크(농협))
+				} else {
+					ds_ioPosPrintM.SetColumn(0, "PMORGGUBUN", "2"); // 처리기관 구분(0:현금, 1:LG U+ , 2:세틀뱅크(국민) 3:세틀뱅크(신한) 4:세틀뱅크(우리) 5:세틀뱅크(농협))
+				}
+			} else {	// 환불
+				ds_ioPosPrintM.SetColumn(0, "PMORGGUBUN", "0"); // 처리기관 구분(0:현금, 1:LG U+ , 2:세틀뱅크(국민) 3:세틀뱅크(신한) 4:세틀뱅크(우리) 5:세틀뱅크(농협))
+			
+			}
+            break;
+    }
+
+}
+
+/**
+ * POSPAYMENT 입력
+ * Parameter : sPNm -영수증 출력 명
+ *           : sUnitAmt - 단가
+ *           : sTotAmt - 총액
+ */
+function lfn_SetPosPayment(sPNm, sUnitAmt, sQty, sTotAmt) {
+    var nRow = 0;
+    nRow = ds_ioPosPayment.AddRow();
+    //ds_ioPosPayment.SetColumn(nRow, "PPPMYEAR", );
+    //ds_ioPosPayment.SetColumn(nRow, "PPPMMGNO", );
+    //ds_ioPosPayment.SetColumn(nRow, "PPSEQ", );
+    ds_ioPosPayment.SetColumn(nRow, "PPNM", sPNm);
+    ds_ioPosPayment.SetColumn(nRow, "PPUNITAMT", sUnitAmt);
+    ds_ioPosPayment.SetColumn(nRow, "PPQTY", sQty);
+    ds_ioPosPayment.SetColumn(nRow, "PPTOTAMT", sTotAmt);
+}
+
+
+/**
+ * 가상계좌 정보 갱신
+ * Parameter : sCMGNO - 관리번호
+ *           : sBuyer - 대상물명
+ *           : sCGTMGNO - 지부
+ */
+function lfn_VirtualAccoutAllocation(sCMGNO, sBUYER, sCGTMGNO) {
+
+    var nRow = ds_ioVirtualAccoutAllocation.AddRow();
+    ds_ioVirtualAccoutAllocation.SetColumn(nRow, "SCMGNO", sCMGNO);
+    ds_ioVirtualAccoutAllocation.SetColumn(nRow, "SBNM", sBUYER);
+    ds_ioVirtualAccoutAllocation.SetColumn(nRow, "SJIBU", sCGTMGNO);
+	
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+// LG U+ 처리
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * POS 처리
+ */
+function lfn_Pos() {
+
+    switch (ls_SunapCode) { //현금, 지로, 은납, 전화수납 바로 결과창 출력
+        case "10": case "13": case "14": case "17": case "19": case "23": case "24":
+            if (!lb_ReSunap) {
+                lfn_PosResultPopup();
+            }
+            return "OK";
+/*            
+        case "13": case "23": //가상계좌
+            if (sSunapGubun == "1") {  //환불일 경우
+                lfn_PosResultPopup();
+                return "OK";
+            }
+*/          
+
+		// 환불시 LG U+ 현영 취소가 안되서 일단 현금환불처리(2015.03.27)
+        case "15": case "25": //가상계좌
+            if (sSunapGubun == "1") {  //환불일 경우
+                lfn_PosResultPopup();
+                return "OK";
+            }
+
+    }
+	
+    var ls_PosMsg = ""; // Pos 처리결과 메세지
+    var ls_LgdMsg = ""; // LG데이콤결과메세지
+    var ls_KemsMsg = ""; // 안전원결과메세지
+    var ls_ReTransYn = "N"; // 데이콤 재전송 여부
+    var ls_PosResult = "4"; //데이콤 결과
+    var ls_ResultPopup = "RETRANS"; //최종 메시지
+
+// ds_iPosData에 데이터 저장
+    divPos.ds_ioPosInput.ClearData();
+    divPos.ds_ioPosInput.InsertRow(0);
+    divPos.ds_ioPosInput.SetColumn(0, "PMYEAR", ds_oPmMgno.GetColumn(0, "PMYEAR"));
+    divPos.ds_ioPosInput.SetColumn(0, "PMMGNO", ds_oPmMgno.GetColumn(0, "PMMGNO"));
+    divPos.ds_ioPosInput.SetColumn(0, "STATUS", "4");
+
+    switch (ls_SunapCode) {
+        case "11": case "21": //카드
+            divPos.ds_ioPosInput.SetColumn(0, "LGD_PAN", divSunap.divCard.edCardNo.Text);
+            break;
+/*            
+        case "13": case "23": //가상계좌
+            if (length(divSunap.divBank.edHp.Text) >= 10) {
+				divPos.ds_ioPosInput.SetColumn(0, "PHONE", divSunap.divBank.edHp.Text);	// 휴대폰번호 추가 20120404
+			}
+            break;
+*/            
+/*      
+		// 환불시 LG U+ 현영 취소가 안되서 일단 현금환불처리(2015.03.27)
+        case "15": case "25": //가상계좌 현금영수증
+            divPos.ds_ioPosInput.SetColumn(0, "LGD_CASHRECEIPTYN", "Y");
+            if (length(divSunap.divBank.edHp.Text) >= 10) {
+				divPos.ds_ioPosInput.SetColumn(0, "PHONE", divSunap.divBank.edHp.Text);	// 휴대폰번호 추가 20120404
+			}
+            break;
+*/      
+    }
+
+    while(ls_ResultPopup == "RETRANS") {
+    
+        ls_ReTransYn = "N";
+        
+		if (ls_SunapCode == "11" || ls_SunapCode == "21") {	// 카드결제
+			if (sSunapGubun == "0") {	// 수납
+				if (lb_CardIn) { //직접입력(KeyIn)일 경우 카드번호+월+년
+					ls_OfflinePG = "N";	// 오프라인PG 결제여부 
+					ls_PosResult = lfn_PosProc();	// 온라인PG 카드결제
+				} else {
+					ls_OfflinePG = "Y";	// 오프라인PG 결제여부 
+					ls_PosResult = lfn_PosCardProc(); 	// 오프라인PG 카드결제				
+				}
+			} else {	// 환불
+				if (lb_ReSunap) { //부분수납이면
+					ls_OfflinePG = "Y";	// 오프라인PG 결제여부 
+					ls_PosResult = lfn_PosCardProc(); 	// 오프라인PG 카드결제(수납)			
+				} else {
+					ls_OfflinePG = "N";	// 오프라인PG 결제여부 
+					ls_PosResult = lfn_PosProc();	// 온라인PG 카드결제
+				}
+			}
+		} else {
+			ls_OfflinePG = "N";	// 오프라인PG 결제여부 
+			ls_PosResult = lfn_PosProc();	// 온라인PG 
+		}
+			
+
+        switch (ls_PosResult) {
+			
+            case "0" : // LG U+ 성공, 안전원 성공
+                ls_LgdMsg = "성공";
+                ls_KemsMsg = "성공";
+                break;
+
+            case "1" : // LG U+ 성공, 안전원 실패
+                // 안전원 성공으로 수정
+                divPos.ds_ioPosInput.SetColumn(0, "STATUS", "1"); // 초기저장시 4
+                
+                var ls_RetRetry = "";
+                var ln_Cnt = 0; // 시도회수
+                while (true) {
+                    ls_RetRetry = divPos.lfn_POS(); // POS 호출
+                    if (ls_RetRetry == "0") { // 성공
+                        ls_LgdMsg = "성공"; // LG데이콤결과메세지
+                        ls_KemsMsg = "성공"; // 안전원결과메세지
+                        break;
+                    }
+                    if (ln_Cnt == 10) { // 안전원 성공으로 수정하기 실패
+                        gfn_Alert("LG U+ 처리는 성공했으나, 안전원 저장 처리는 실패했습니다.\n정보지원과로 문의하시기 바랍니다.");
+                        return "KFSA-FAIL";
+                    }
+                    ln_Cnt++;
+                }
+                break;
+
+            case "3" : // LG U+ 실패, 안전원 실패
+            case "4" : // 초기 신청 상태
+                ls_LgdMsg = "실패"; // LG데이콤결과메세지
+                ls_KemsMsg = "실패"; // 안전원결과메세지
+                ls_ReTransYn = "Y";
+                break;
+
+            default : // 결과를 알 수 없는 상태
+                gfn_Alert("처리 결과를 알 수가 없습니다.\n정보지원과로 문의하시기 바랍니다.");
+                ls_ReTransYn = "Y";
+                return "FAIL";
+                break;
+        }
+
+        if (lb_ReSunap) { //부분 수납일 경우
+            switch (ls_PosResult) {
+                case "0":
+                    ls_ResultPopup = "OK";
+                    break;
+                case "1":
+                    ls_ResultPopup = "KFSA-FAIL";
+                    break;
+                case "3":
+                case "4":
+                    gfn_Alert("처리 결과를 알 수가 없습니다.\n정보지원과로 문의하시기 바랍니다.");
+                default :
+                    ls_ResultPopup = "FAIL";
+                    break;
+            }
+        
+        } else { //일반 수납/환불 일 경우
+            ls_ResultPopup = lfn_PosResultPopup(ls_PosMsg, ls_LgdMsg, ls_KemsMsg, ls_ReTransYn); // 결과출력팝업을 호출한다.
+    
+            if (ls_ResultPopup == "OK") {
+                gfn_Alert("정상적으로 처리되었습니다.");
+            } else if (ls_ResultPopup <> "RETRANS") {
+                gfn_Alert("처리가 완료되지 않았습니다.");
+            }
+        }
+    }
+    
+    return ls_ResultPopup;
+
+}
+
+/**
+ * POS 전송 처리(온라인PG)
+ */
+function lfn_PosProc() {
+
+    var sArg = "";
+    var ls_PosResultCode = ""; // POS 결과코드
+    var ls_RetPos = Dialog("COM::frmCOM3001PPOSProgressBar.xml", sArg, 300, 123, "TitleBar=false", -1, -1);
+
+    if (ls_RetPos == "OK") {
+        ls_PosMsg = divPos.ds_ioPosOutput.GetColumn(0, "MI_RSMSG"); // 결과메세지
+        ls_PosResultCode = divPos.ds_ioPosOutput.GetColumn(0, "MI_RSCODE"); // 결과코드
+
+    } else if (ls_RetPos == "FAIL"){ // 실패
+        ls_PosMsg = divPos.ds_ioPosOutput.GetColumn(0, "MI_RSMSG"); // 결과메세지
+        if ("OK" == divPos.lfn_POSSearch()) { // 실시간 POS 결과를 조회한다.
+            ls_PosResultCode = divPos.ds_ioPosOutput.GetColumn(0, "MI_RSCODE"); // 결과코드
+        } else {
+            ls_PosResultCode = "5"; // 결과코드
+        }
+
+    } else { // 10초 이후(실패)
+        ls_PosMsg = "10초 - 시간 초과입니다.";
+        if ("OK" == divPos.lfn_POSSearch()) { // 실시간 POS 결과를 조회한다.
+            ls_PosResultCode = divPos.ds_ioPosOutput.GetColumn(0, "MI_RSCODE"); // 결과코드
+        } else {
+            ls_PosResultCode = "5"; // 결과코드
+        }
+
+    }
+
+    return ls_PosResultCode;
+
+}
+
+/**
+ * POS 전송 처리(오프라인PG)
+ */
+function lfn_PosCardProc() {
+    var sArg = "";
+    
+            sArg += "sCardYN='Y'";							// 카드결제여부
+            sArg += " sCardSETTLEGUBUN=0";					// 0:수납, 1:환불
+            sArg += " sLGD_TXNAME='CardAuthOfflinePos'";	// 업무명
+            sArg += " sLGD_REQTYPE='APPR'";					// 수납만 오프라인PG 결제처리 (환불은 Cancel)
+            sArg += " sLGD_OID=" + ds_oPmMgno.GetColumn(0, "PMYEAR")+"-"+lpad(ds_oPmMgno.GetColumn(0, "PMMGNO"), "0", 8);
+            sArg += " sLGD_AMOUNT=" + iif(lb_ReSunap, divRepay.medSunapAmount.Value, sAmount);					// 결제금액(,없이 입력)
+            sArg += " sLGD_INSTALL=" + quote(divSunap.divCard.cbxInstallment.Value);	//할부개월 (2자리) ex) 00:일시불, 03:3개월
+            sArg += " sLGD_PRIVATENO=''";						// 구매자 생년월일 6자리 (YYMMDD) or 사업자번호 10자리
+            sArg += " sLGD_NOINT=''";							// 신용카드 무이자할부 여부
+            sArg += " sLGD_BUYER=" + replace(sBNMFMNM," ","");		// 구매자명 2019.08.05 주석
+            sArg += " sLGD_BUYERID=''";						// 구매자 아이디
+            sArg += " sLGD_BUYERPHONE='0'";					// 
+            sArg += " sLGD_BUYEREMAIL=''";
+            if (sProgramId == "11") {
+//				sArg += " sLGD_PRODUCTINFO='회비'";			// 구매내역 2019.08.05 주석
+				sArg += " sLGD_PRODUCTINFO='MemberFee'";			// 구매내역
+				sArg += " sLGD_DIVIDE_INFO=''";
+			} else {
+				sArg += " sLGD_PRODUCTINFO='padj'";			// 구매내역(분할정산시 padj 입력)
+				sArg += " sLGD_DIVIDE_INFO=" + 
+								"{"+"'divideinfo'"+":[{"+"'sub_merchantid'"+":"+"'"+ edJibuMgId.Text+"'"+","+
+										"'amount'"+":"+"'"+iif(lb_ReSunap, divRepay.medSunapAmount.Value, sAmount)+"'"+","+
+										"'productinfo':'EduFee'}]}";	// 분할정산
+
+			}
+
+            sArg += " sLGD_TAXFREEAMOUNT=" + iif(lb_ReSunap, divRepay.medSunapAmount.Value, sAmount);	// 면세금액
+            sArg += " sLGD_VAT='0'";							// 부가세
+            sArg += " sVAN_SFEEAMOUNT='0'";					// 봉사료 
+            sArg += " sVAN_TRANTYPE='S0'";	// 수납			// (필수)거래구분 S0 : 신용승인요청, K0 : 키인승인요청, E0 : 은련승인요청, P0 : APP카드 승인요청
+//			} else {					// 환불				// (필수)거래구분 S1 : 신용취소요청, K1 : 키인취소요청, E1 : 은련취소요청, P1 : APP카드 취소요청        
+//				sArg += " sVAN_TRANTYPE='S1'";
+//				sArg += " sLGD_TID=''";						// LG유플러스 거래번호 (신용승인응답에서 Tran_serial 값)
+//				sArg += " sVAN_CAPDATE=''";					// 원거래 승인일(YYYYMMDD)
+//				sArg += " sVAN_AUTHNO=''";					// 원거래 승인번호
+//			}
+//	    alert(sArg);
+
+    var ls_PosResultCode = ""; // POS 결과코드
+    var ls_RetPos = Dialog("COM::frmCOM3003PPOSCardProgressBar.xml", sArg, 300, 123, "", -1, -1);
+
+    if (ls_RetPos == "OK") {
+        ls_PosMsg = divPos.ds_ioOfflinePosOutput.GetColumn(0, "Msg"); // 결과메세지
+        ls_PosResultCode = "0"; // 결과코드 성공
+
+    } else if (ls_RetPos == "FAIL"){ // 실패
+        ls_PosMsg = divPos.ds_ioOfflinePosOutput.GetColumn(0, "Msg"); // 결과메세지
+        ls_PosResultCode = "3"; // 결과코드
+
+    } else {
+        ls_PosResultCode = "5"; // 결과코드
+    }
+    
+    return ls_PosResultCode;
+}
+
+/**
+ * POS결과 조회
+ */
+function lfn_PosResultPopup(sPosMsg, sLgdMsg, sKemsMsg, sTransYn) {
+
+    var ls_RetReult = ""; // 결제처리결과팝업 리턴값용
+    var sArg = "sPmYear=" + quote(ds_oPmMgno.GetColumn(0, "PMYEAR"))
+        + " sPmMgno=" + quote(ds_oPmMgno.GetColumn(0, "PMMGNO"))
+        + " sPosMsg=" + quote(sPosMsg)
+        + " sLgdMsg=" + quote(sLgdMsg)
+        + " sKemsMsg=" + quote(sKemsMsg)
+        + " sTransYn=" + quote(sTransYn)
+        
+        + " sSunapGubun=" + quote(sSunapGubun)
+        + " sSunapCode=" + quote(ls_SunapCode)
+    ;
+
+    sArg += " sAmount=" + quote(iif(sSunapGubun == "0", medAmount.Value, divRepay.medAmount.Value));
+
+    switch(ls_SunapCode) {
+    
+        case "10": case "17": case "19": case "14": case "24": //현금, 은납, 전화수납
+            ls_RetReult = Dialog("cust::frmcust2021PPosResultMoney.xml", sArg, 400, 216, "", -1, -1);
+            break;
+            
+        case "11": case "21": //카드
+            ls_RetReult = Dialog("cust::frmcust2022PPosResultCard.xml", sArg, 400, 392, "", -1, -1);
+            break;
+            
+        case "12": case "16": case "18": case "22": case "26":  //현금 영수증
+            ls_RetReult = Dialog("cust::frmcust2023PPosResultCash.xml", sArg, 400, 384, "", -1, -1);
+            break;
+            
+        case "13": case "15": case "23": case "25": //가상계좌
+            ls_RetReult = Dialog("cust::frmcust2024PPosResultCas.xml", sArg, 400, 372, "", -1, -1);
+            break;
+    }
+    
+    return ls_RetReult;
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+// 처리 버튼
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 수납/환불 처리
+ */
+function btnPos_OnClick(obj) {
+
+    if ((left(calSunapDate.Value, 4) < left(getDate(), 4)) &&
+       (substr(getDate(),4,4) >= "0104")) {	// 년초에 작년말일 은납 등 수납분 수납처리 위해
+        gfn_Alert("처리일자가 잘못되었습니다. 이전 년도로 처리할 수 없습니다.");
+        return;
+    }
+    
+    if (lb_ReSunap || sSunapGubun == "0") { //수납 / 부분 수납
+    
+    //입력값 체크
+        if (divSunap.radSunapGubun.Value == "1") { //카드
+            if (lb_CardIn) { //직접입력(KeyIn)일 경우 카드번호+월+년
+				if (gfn_isNull(divSunap.divCard.edCardNo.Value)) {
+					gfn_Alert("카드 번호를 입력해주십시오.");
+					return;
+				}
+                divSunap.divCard.edCardNo.Text = divSunap.divCard.edCardNo.Text + divSunap.divCard.cbxCardMonth.Value + divSunap.divCard.cbxCardYear.Value;
+            }
+        } else if (divSunap.radSunapGubun.Value == "2") { //현금영수증
+            if (gfn_isNull(divSunap.divCash.edCashNo.Value)) {
+                gfn_Alert("현금영수증 번호를 입력해주십시오.");
+                return;
+            }
+        } else if (divSunap.radSunapGubun.Value == "3") { //가상계좌(LG U+)
+            if (gfn_isNull(divSunap.divBank.cbxBank.Value)) {
+                gfn_Alert("은행을 선택해 주십시오.");
+                return;
+            }
+            if (divSunap.divBank.radCashYn == "Y" && gfn_isNull(divSunap.divCash.edCashNo.Value)) {
+                gfn_Alert("현금영수증 번호를 입력해주십시오.");
+                return;
+            }
+        } else if (divSunap.radSunapGubun.Value == "4") { //가상계좌(세틀뱅크)
+            if (gfn_isNull(divSunap.divNewBank.cbxBank.Value)) {
+                gfn_Alert("입금된 은행을 선택해 주십시오.");
+                return;
+            }
+        } else { //현금
+
+        }
+
+/*
+    11	방문카드[카드]
+    12	방문현금(영)[직납]
+    13	방문가상계좌[데이콤]
+    14	방문무통장[은납]
+    15	방문가상계좌현금(영)[데이콤]
+    16	방문무통장현금(영)[은납]
+    21	ⓘ카드[카드]
+    22	ⓘ현금(영)[직납]
+    23	ⓘ가상계좌[데이콤]
+    24	ⓘ무통장[직납]
+    25	ⓘ가상계좌현금(영)[데이콤]
+    26	ⓘ무통장현금(영)[은납]
+*/
+
+		// 교육비이면 실무교육 접수여부 조회해서 접수내역 없으면 수납 불가
+		if (sProgramId == "12") { // 교육비
+			if (divSunap.radSunapGubun.Value <> "4") {
+				lfn_EduJubsuCheck(sCMgno, sPersonkey);
+				// 접수내역이 없으면 수납 불가
+				if (ds_oEduJubsuCheck.GetColumn(0, "EDUCNT") == 0) {
+//					gfn_Alert("실무교육 접수내역이 없어서 수납할 수 없습니다.");
+					if (gds_oUserInfo.GetColumn(0, "ADMINGUBUN") <> "SM") {	//시스템관리자가 아니면
+//						return false;
+					}
+				}
+			}
+		}
+
+    //결제구분
+        if (divSunap.radSunap.Value == "6") { // 지로
+            ls_SunapCode = "1" + iif(divSunap.radSunapGubun.Value == "0", "7", "8");
+        } else { //방문
+        
+			var ls_SunapCode2 = "";
+			if (divSunap.radSunapGubun.Value == "3" && divSunap.divBank.radCashYn == "Y") {
+				ls_SunapCode2 = "5";
+			} else if (divSunap.radSunapGubun.Value == "4") {
+				ls_SunapCode2 = "3";
+			} else {
+                ls_SunapCode2 = toNumber(divSunap.radSunapGubun.Value) + toNumber(divSunap.radSunap.Value);
+            };
+            ls_SunapCode = "1" + ls_SunapCode2;
+        }
+        
+
+		/*
+		 * 기능 : SMS 발송
+		 * parameter : sHPTEL - 휴대폰번호
+		 *             sRECVTEL - 회신전화번호
+					   sSMMSG - 전문
+					   sETC1 - 지부코드
+					   sETC2 - 업무구분코드(강습:21, 시험:22) 고객관리 교육통지이력:25  교육통지대상자:23 인터넷실무교육접수자:24, 회비:7
+					   sETC3 - 연계테이블PK 강습:회차관리번호, 접수관리번호, 접수번호, 고객:고객관리바코드, 강습가상계좌:주문번호
+					   sETC4 - 교육통지이력 시퀀스(고객관리만 사용)
+					   sETC5 - 수신자명
+					   sKIND - -- 교육(1-접수,2-변경,3-환불), 가상계좌(4)
+		  * return : 없음
+		 */
+/*    
+        // 가상계좌(세틀뱅크)일 경우 문자 발송
+        if (divSunap.radSunapGubun.Value == "4") { //가상계좌(세틀뱅크)
+        
+			var iArgsNm = "SCMGNO=" + quote(sCMgno);
+			iArgsNm += " SBNM=" + quote(parent.ds_iReady.GetColumn(0, "BNM"));
+			iArgsNm += " TRAMTCOND='1'";
+			iArgsNm += " TRAMT=" + quote(medAmount.Value);
+
+			// 입금시 거래금액체크
+			tit_clearActionInfo();
+			tit_addSingleActionInfo("cust:executeCust0010VirtualAccoutAllocation", "", 0, "");
+			tit_callService(
+				""
+				,""
+				,""	// inDs
+				,""	// outDs
+				,iArgsNm	// args
+				,""
+				,false
+		
+			);
+        
+			// 문자메시지 발송
+			if (divSunap.divNewBank.edHp.Text <> "") {
+				gfn_InsertLGSMSSend(divSunap.divNewBank.edHp.Text, 
+								   ds_oNewBankAccount.GetColumn(divSunap.divNewBank.cbxBank.Index, "RECVTEL"),
+								   "[한국소방안전원]"+divSunap.divNewBank.cbxBank.Text+"(계좌:"+
+								   divSunap.divNewBank.edAccount.Text+")에 "+
+								   medAmount.Text+"원 입금바랍니다",
+								   sJibu,
+								   "7",
+								   sCMgno,
+								   "",
+								   sFMNM,
+								   "4");
+			
+				gfn_Alert("고객 은행가상계좌가 문자로 발송되었습니다.\n\n"
+						 +"고객이 입금시 미납금액과 입금금액이 일치하는지 체크됩니다.\n\n"
+						 +"금액 불일치시 입금이 되지 않습니다.");
+				Close("OK");
+				return;
+			}
+            gfn_Alert("고객 은행가상계좌가 할당되었습니다.\n\n"
+					 +"고객이 입금시 미납금액과 입금금액이 일치하는지 체크됩니다.\n\n"
+					 +"금액 불일치시 입금이 되지 않습니다.");
+			Close("OK");
+			return;
+			
+        }
+*/        
+        
+    }
+
+    var sPos = "";
+
+    switch (sProgramId) {
+        case "11": //회비
+        case "12": //교육비
+            sPos = lfn_Customer();
+            break;
+/*        case "21": //강습
+            sPos = lfn_Training();
+            break;
+        case "22": //시험
+            sPos = lfn_Exam();
+            break;
+        case "23": //수첩
+            sPos = lfn_License();
+            break;
+*/
+    }
+
+    
+    if (sPos[0] == "OK" && radRecieptGubun.Value == "Y") { // 영수증 출력
+        gfn_PrintReceipt(ds_oPmMgno.GetColumn(0, "PMYEAR")
+            , ds_oPmMgno.GetColumn(0, "PMMGNO")); 
+    }
+    
+
+
+	if ((sSunapGubun = "0") && (divSunap.radSunap.Value == 9)) {	// 전화수납 이면 문자발송
+		if (gfn_isNull(sHPTEL)) {
+			gfn_alert("휴대폰번호가 없습니다.\n휴대폰번호 입력 후 발송하세요!");
+		}
+		// gfn_KTSendOneSmsPopup(sMBCCD, sMPK1, sMPK2, sMPK3, sMBSMGNO, sMRECVNM, sMRECVTEL, sMTITLE, sMMSG);
+		var arrSms = gfn_KTSendOneSmsPopup("308" // 실무 -직접입력
+						, sCMgno
+						, ""
+						, ""
+						, ""
+						, sFMNM
+						, sHPTEL
+						, "한국소방안전원"
+						, "[한국소방안전원]입금확인 안내"
+						 + "\n납부자 : " + sBNMFMNM
+						 + "\n납부일 : " + substr(calSunapDate.Value,0,4)+"-"+substr(calSunapDate.Value,4,2)+"-"+substr(calSunapDate.Value,6,2)
+						 + "\n납부구분 : " + iif(sProgramId == "11", "회비", "교육비")
+						 + "\n납부금액 : " + NumFormat(sAmount) + "원"
+						 + "\n처리담당자 : " + gds_oUserInfo.GetColumn(0, "PPERSONNM")
+						 + "\n(한국소방안전원 " + gds_oUserInfo.GetColumn(0, "PDEPTNM")+")"
+						 + "\n해당 내용으로 정상처리(입금) 되었습니다." 
+						 + "\n영수증 출력은 안전원 사이트(www.kfsi.or.kr) 및 지부 사무실(" + gds_oUserInfo.GetColumn(0, "TEL")
+						 + ")로 연락하여 발급받으시기 바랍니다."						
+					); // 단일문자메시지발송 팝업
+    
+    }
+    
+    Close(sPos);
+
+}
+
+// 실무교육 접수내역 있는지 조회
+function lfn_EduJubsuCheck(vCMgno, vPersonkey) {
+
+    ds_oEduJubsuCheck.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+
+    tit_addSearchActionInfo("cust:searchCust2020EduJubsuCheck", false);
+
+    // 서버 호출
+
+    tit_callService(
+        ""
+        ,""
+        ,"" // inDs
+        ,"ds_oEduJubsuCheck=ds_oEduJubsuCheck" // outDs
+        ,"CMGNO=" + quote(vCMgno)
+            + " PERSONKEY=" + quote(vPersonkey)
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+// 회비/교육비
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 회비/교육비 공통 처리
+ */
+function lfn_Customer() {
+	ls_OfflinePG = "N";	// 오프라인PG 결제여부
+    ds_iReady.Copy(parent.ds_iReady);
+    ds_ioCustomerFee.Copy(parent.ds_iCustomerFee);
+    
+    //trace(parent.ds_iReady.savexml());
+    ds_oPmMgno.ClearData();
+
+    if (sSunapGubun == "0") {
+        var sPosSunap = lfn_CustomerSunap();
+        return sPosSunap;
+    } else {
+        var sPosRepay = lfn_CustomerRepay();
+        return sPosRepay;
+    }
+
+}
+
+/**
+ * 회비/교육비 수납
+ */
+function lfn_CustomerSunap() {
+	var arrPos = array(4);
+	
+    var nEtc = iif(ds_iReady.GetRowCount() > 1
+        , " 등 " + ds_iReady.GetRowCount() + "건"
+        , "");
+
+    var sGtMgno = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+
+    for (var i=0; i<ds_ioCustomerFee.RowCount(); i++) { //CUSTOMERFEE <= ds_ioCustomerFee
+        ds_ioCustomerFee.SetColumn(i, "CFGUBUN", "01");
+        ds_ioCustomerFee.SetColumn(i, "CFGUBUNCD", ls_SunapCode);
+        ds_ioCustomerFee.SetColumn(i, "CFPROCDATE", calSunapDate.Value);
+        ds_ioCustomerFee.SetColumn(i, "CFPONYGUBUN", chkPonyDate.Value);
+        ds_ioCustomerFee.SetColumn(i, "CFPONYDATE", calPonyDate.Value);
+
+        if (gfn_IsNull(ds_ioCustomerFee.GetColumn(i, "CFREMARK"))) { //비고가 비어 있으면
+            ds_ioCustomerFee.SetColumn(i, "CFREMARK", "[" + iif(lb_ReSunap, "부분수납 : ", "수납 : ") + NumFormat(divRepay.medSunapAmount.Value) + "원]");
+        }
+
+    }
+
+    var sItem = array(5);
+    sItem[0] = ls_SunapCode; //결제구분
+    sItem[1] = "구    분 : " + lfn_GetCourse(ds_iReady.GetColumn(0, "CCOURSECD")) + nEtc;
+
+    var sBNM = "";
+	if (ds_iReady.GetColumn(0, "CCOURSECD") == "61") {   // 개인회원이면 성명
+		sBNM = ds_iReady.GetColumn(0, "FMNM");
+	} else {  // 다른 직능이면 업체명
+		sBNM = ds_iReady.GetColumn(0, "BNM");
+	}
+
+	if (ds_iReady.GetColumn(0, "CCOURSECD") == "61") {   // 개인회원이면 성명
+		sItem[2] = "성    명 : " + sBNM + nEtc;
+	} else {  // 다른 직능이면 업체명
+		sItem[2] = "업    체 : " + sBNM + nEtc;
+	}
+   
+    if (ds_iReady.GetRowCount() == 1) {
+        sItem[3] = "관리번호 : " + ds_iReady.GetColumn(0, "CFMGGTNM") + "-" + lpad(ds_iReady.GetColumn(0, "CNO"), "0", 6);
+        sItem[4] = ds_iReady.GetColumn(0, "CCOURSECD");
+    } else {
+        sItem[3] = "";
+        sItem[4] = "";
+    }
+    
+    ds_ioPosPrintM.ClearData();
+    lfn_SetPosPrintM("0", sBNM + nEtc, sItem, ""); //POSPRINTM <= ds_ioPosPrintM
+
+    ds_ioPosPayment.ClearData();
+	ds_ioVirtualAccoutAllocation.ClearData();
+    if (ds_iReady.GetRowCount() > 1) {
+        for (var i=0; i<ds_iReady.GetRowCount(); i++) {
+			if (ds_iReady.GetColumn(i, "CCOURSECD") == "61") {   // 개인회원이면 성명
+				sBNM = ds_iReady.GetColumn(i, "FMNM");
+			} else {  // 다른 직능이면 업체명
+				sBNM = ds_iReady.GetColumn(i, "BNM");
+			}
+            lfn_SetPosPayment(sBNM + "(" + lfn_GetCoursePrint(ds_iReady.GetColumn(i, "CCOURSECD")) + ")["+ds_iReady.GetColumn(i, "CNO")+"]"
+                                , ds_iReady.GetColumn(i, "CCOURSECD")
+                                , ""
+                                , ds_iReady.GetColumn(i, "CFPROCAMOUNT")
+                            ); //POSPAYMENT <= ds_ioPosPayment 다 건
+                            
+			// 가상계좌 금액정보 갱신
+			lfn_VirtualAccoutAllocation(ds_iReady.GetColumn(i, "CMGNO"), sBNM, ds_iReady.GetColumn(i, "CFMGGTMGNO"));
+        }
+    } else {
+
+        var sYear = "0";
+        for (var i=0; i<ds_ioCustomerFee.GetRowCount(); i++) {
+        
+            if (sYear <> ds_ioCustomerFee.GetColumn(i, "CFSUNAPYEAR")) {
+                sYear = ds_ioCustomerFee.GetColumn(i, "CFSUNAPYEAR");
+                lfn_SetPosPayment(sBNM + "(" + lfn_GetCoursePrint(ds_iReady.GetColumn(0, "CCOURSECD")) + ")"
+                                    , sYear
+                                    , ""
+                                    , ds_ioCustomerFee.Sum("iif(CFSUNAPYEAR == '"+sYear+"', CFPROCAMOUNT, 0)")
+                                ); //POSPAYMENT <= ds_ioPosPayment 단건
+            }
+        }
+
+		// 가상계좌 금액정보 갱신
+		lfn_VirtualAccoutAllocation(ds_iReady.GetColumn(0, "CMGNO"), sBNM, ds_iReady.GetColumn(0, "CFMGGTMGNO"));
+    }
+
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("cust:searchCust2020CustomerFeePmMgno", false);
+/*
+//    tit_addMultiActionInfo("cust:insertCust2020CustomerFee", "", 0, "", "N");
+    tit_addSingleActionInfo("cust:insertCust2020CustomerFee", "", 0, "");
+    tit_addSingleActionInfo("cust:insertCust2020PosPrintM", "", 0, "");
+    tit_addSingleActionInfo("cust:insertCust2020PosPayment", "", 0, "", "N");
+	tit_addMultiActionInfo("cust:executeCust0010VirtualAccoutAllocation", "", 0, "");
+*/
+    if (ds_ioCustomerFee.GetCount() > 1) {
+		tit_addMultiActionInfo("cust:insertCust2020CustomerFee", "", 0, "", "N");
+	} else {
+		tit_addSingleActionInfo("cust:insertCust2020CustomerFee", "", 0, "");
+	}
+    tit_addSingleActionInfo("cust:insertCust2020PosPrintM", "", 0, "");
+    if (ds_ioPosPayment.GetCount() > 1) {
+		tit_addMultiActionInfo("cust:insertCust2020PosPayment", "", 0, "", "N");
+	} else {
+		tit_addSingleActionInfo("cust:insertCust2020PosPayment", "", 0, "");
+	}
+    if (ds_ioVirtualAccoutAllocation.GetCount() > 1) {
+		tit_addMultiActionInfo("cust:executeCust0010VirtualAccoutAllocation", "", 0, "", "N");
+	} else {
+		tit_addSingleActionInfo("cust:executeCust0010VirtualAccoutAllocation", "", 0, "");
+	}
+//    trace(ds_ioCustomerFee.savexml());
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iCustomerFee=ds_ioCustomerFee"
+            + " ds_iPosPrintM=ds_ioPosPrintM"
+            + " ds_iPosPayment=ds_ioPosPayment"
+            + " ds_iVirtualAccoutAllocation=ds_ioVirtualAccoutAllocation"
+        ,"ds_oPmMgno=ds_oCustomerFeePmMgno"
+        ,"SPMYEAR=" + quote(left(calSunapDate.Value, 4))
+            + " SPROCDATE=" + quote(left(calSunapDate.Value, 8)) // args 
+            + " SGTMGNO=" + quote(sGtMgno) // args 
+        ,"lfn_AfterCall"
+        ,false
+        ,false
+        ,true
+    );
+    
+    if (ds_oPmMgno.GetRowCount() < 1) { // 쿼리 오류시 종료
+		arrPos[0] = "FAIL";		// 결제성공여부
+		arrPos[1] = "0";		// 수납
+		arrPos[2] = sAmount;	// 수납금액
+		arrPos[3] = ls_SunapCode;	// 수납방법
+        return arrPos;
+    }
+
+/* POS실행 */
+    var sPos = lfn_Pos();
+    
+/* POS실행 후 TRANSACTION */
+    tit_clearActionInfo();
+
+    if (sPos == "OK") {
+/*    
+        if (right(ls_SunapCode, 1) == "3" || right(ls_SunapCode, 1) == "5") { //가상계좌일경우 update 안함.
+        
+            if (ds_iReady.GetColumn(0, "CFMGGTMGNO") <> gds_oUserInfo.GetColumn(0, "PDEPTCD")) { //타지부 수납
+                lfn_TaSunapCustomer();
+            }
+            
+            return sPos;
+        }
+*/        
+
+		
+		if (sProgramId == "11") {	// 회비이면
+			ls_Paygubun = "6";	// 회비납부
+			
+		} else {	// 교육비이면
+			if (ls_SunapCode == "10" || ls_SunapCode == "12" || ls_SunapCode == "19") {
+				ls_Paygubun = '1';	// 방문현금
+			} else if (ls_SunapCode == "11") {
+				ls_Paygubun = '2';	// 방문카드
+			} else if (ls_SunapCode == "13" || ls_SunapCode == "15") {
+				ls_Paygubun = '5';	// 가상계좌
+			} else if (ls_SunapCode == "14") {
+				ls_Paygubun = '3';	// 방문은납
+			}
+		}
+        
+        tit_addSingleActionInfo("cust:updateCust2020CustomerPosAfter", "", 0, "");
+
+        if (sEduJubsu == "Y") {	// 실무교육접수시 결제이면 접수완료 처리
+        
+			tit_addSingleActionInfo("cust:updateCust2020EduJubsuPosAfter", "", 0, "");
+			
+        } else {	// 일반결제시 실무교육 접수내역을 검색하여 있으면 접수완료 처리
+        
+			ds_iEduJubsuStatus.ClearData();
+
+			if (ds_iReady.GetRowCount() > 1) {	// 결제건이 다수이면
+			
+				for (var i=0; i<ds_iReady.GetRowCount(); i++) {
+		
+
+					lfn_UpdateEduJubsuStatus(ds_iReady.GetColumn(i, "CMGNO")
+										     , sSunapGubun
+										     , ds_iReady.GetColumn(i, "CFPROCAMOUNT")
+										     , ls_Paygubun
+											 , ds_oPmMgno.GetColumn(0, "PMYEAR")
+											 , ds_oPmMgno.GetColumn(0, "PMMGNO"));
+					
+				}
+				
+				tit_addMultiActionInfo("cust:executeCust2020EduJubsuPosAfter", "", 0, "");
+				
+			} else {	// 결제건이 1건이면 
+			
+				// 실무교육 접수내역이 있으면 접수완료 처리
+				lfn_UpdateEduJubsuStatus(ds_iReady.GetColumn(0, "CMGNO")
+										 , sSunapGubun
+										 , ds_iReady.GetColumn(0, "CFPROCAMOUNT")
+										 , ls_Paygubun
+										 , ds_oPmMgno.GetColumn(0, "PMYEAR")
+										 , ds_oPmMgno.GetColumn(0, "PMMGNO"));
+
+				tit_addSingleActionInfo("cust:executeCust2020EduJubsuPosAfter", "", 0, "");
+		
+			}
+        
+        }
+        
+    } else if (sPos == "FAIL") {
+        tit_addSingleActionInfo("cust:deleteCust2020CustomerPosAfter", "", 0, "");
+    } else {
+		arrPos[0] = sPos;		// 결제성공여부
+		arrPos[1] = "0";		// 수납
+		arrPos[2] = sAmount;	// 수납금액
+		arrPos[3] = ls_SunapCode;	// 수납방법
+        return arrPos;
+    }
+
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iCustomerFee=ds_ioCustomerFee ds_iEduJubsuStatus=ds_iEduJubsuStatus"
+        ,"" // outDs
+        ,"SPMYEAR=" + quote(ds_oPmMgno.GetColumn(0, "PMYEAR"))
+            + " SPMMGNO=" + quote(ds_oPmMgno.GetColumn(0, "PMMGNO"))
+            + " SPCGUBUN="  + quote(sSunapGubun)
+            + " STOTALAMT=" + quote(sAmount)	// 실무교육접수 결제시 사용
+            + " SEJMGNO=" + quote(sEjmgno)	// 실무교육접수 결제시 사용
+            + " SEJHSEQ=" + quote(sEjhseq)	// 실무교육접수 결제시 사용
+            + " SPAYGUBUN=" + quote(ls_Paygubun)	// 결제구분 // args  // 실무교육접수 결제시 사용
+            + " OFFPG=" + quote(ls_OfflinePG)	// 오프라인PG 결제 여부
+            + " SPCAUTHNO=" + quote(divPos.ds_ioOfflinePosOutput.GetColumn(0,"Authno"))				// 승인번호
+            + " SPCAUTHDATE=" + quote(divPos.ds_ioOfflinePosOutput.GetColumn(0,"Trandate"))			// 결제일시
+            + " SPCRESPONSECODE=" + quote(divPos.ds_ioOfflinePosOutput.GetColumn(0,"Respcode"))		// 응답코드
+            + " SPCRESPONSEDATE=" + quote(divPos.ds_ioOfflinePosOutput.GetColumn(0,"Trandate"))		// 결제일시
+            + " SPCCARDNO=" + quote(left(divPos.ds_ioOfflinePosOutput.GetColumn(0,"Cardno"),8))				// 카드번호
+            + " SPCCARDNM=" + quote(divPos.ds_ioOfflinePosOutput.GetColumn(0,"Financename"))		// 카드사
+            + " SPCCARDTYPE=" + quote(divPos.ds_ioOfflinePosOutput.GetColumn(0,"Financecode"))		// 카드종류
+            + " SPCTRANSACTION=" + quote(divPos.ds_ioOfflinePosOutput.GetColumn(0,"Tran_serial"))	// 거래번호
+            + " SPMPCGUBUN=" + quote(iif(lb_ReSunap, "0", sSunapGubun))								// 수납 0 환불 1
+            + " SPMPCORDERNO=" + quote(divPos.ds_ioOfflinePosOutput.GetColumn(0,"Oid"))				// 주문번호
+        ,"lfn_AfterCall"
+        ,false
+        ,false
+        ,true
+    );
+    
+    if (sPos == "OK") {
+        if (ds_iReady.GetColumn(0, "CFMGGTMGNO") <> gds_oUserInfo.GetColumn(0, "PDEPTCD")) { //타지부 수납
+            lfn_TaSunapCustomer();
+        }
+    }
+	arrPos[0] = sPos;		// 결제성공여부
+	arrPos[1] = "0";		// 수납
+	arrPos[2] = sAmount;	// 수납금액
+	arrPos[3] = ls_SunapCode;	// 수납방법
+    return arrPos;
+
+}
+
+/**
+ * 회비/교육비 환불
+ */
+function lfn_CustomerRepay() {
+	var arrPos = array(2);
+
+    var vCMgno = "CFCMGNO<>0";
+    var vCMgnoCheck = 0;
+    var vPmYear = ds_ioCustomerFee.GetColumn(0, "CFPMYEAR");
+    var vPmMgno = ds_ioCustomerFee.GetColumn(0, "CFPMMGNO");
+	var sBNM = "";
+	
+    for (var i=0; i<ds_iReady.GetRowCount(); i++) {
+        if (length(trim(ds_iReady.GetColCount(i, "CFREMARK"))) < 1) { //비고가 비어 있으면
+            ds_iReady.SetColumn(i, "CFREMARK", "[환불 : " + NumFormat(divRepay.medAmount.Value) + "원]");
+        }
+        vCMgno += " && CFCMGNO<>'" + ds_iReady.GetColumn(i, "CMGNO") + "'";
+
+		if (ds_iReady.GetColumn(i, "CCOURSECD") == "61") {   // 개인회원이면 성명
+			sBNM = ds_iReady.GetColumn(i, "FMNM");
+		} else {  // 다른 직능이면 업체명
+			sBNM = ds_iReady.GetColumn(i, "BNM");
+		}
+		// 가상계좌 금액정보 갱신
+		lfn_VirtualAccoutAllocation(ds_iReady.GetColumn(i, "CMGNO"), sBNM, ds_iReady.GetColumn(i, "CFMGGTMGNO"));
+    }
+
+    ds_ioCustomerFee.ClearData();
+
+/* 기존 수납정보 SELECT TRANSACTION */
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("cust:searchCust2012CustomerFee", false);
+    tit_addSearchActionInfo("cust:searchCust2020Pos", false);
+    tit_addSearchActionInfo("cust:searchCust2020PosPayment", false);
+    tit_addSearchActionInfo("cust:searchCust2020PosCas", false);
+    
+    tit_callService(
+        ""
+        ,""
+        ,""
+        ,"ds_ioCustomerFee=ds_oCustomerFee"
+            + " ds_ioPosPrintM=ds_oPos"
+            + " ds_ioPosPayment=ds_oPosPayment"
+            + " ds_oPosCas=ds_oPosCas"
+        ,"SPMYEAR=" + quote(vPmYear)
+            + " SPMMGNO=" + quote(vPmMgno)
+            + " LAST=" + quote("Y") // args 
+        ,"lfn_AfterCall"
+        ,false
+        ,false
+        ,true
+    );
+
+/* 가상계좌일 경우 
+    if (right(ds_ioPosPrintM.GetColumn(0, "PMPGMGUBUN"), 1) == "3"
+        || right(ds_ioPosPrintM.GetColumn(0, "PMPGMGUBUN"), 1) == "5") {
+        
+        if (ds_oPosCas.GetColumn(0, "PCCLOSEDATE") > left(getDate(), 14)) {
+            gfn_Alert("가상계좌가 아직 닫히지 않았습니다.");
+            return "FAIL";
+        }
+
+    }
+*/
+
+/* 부분 수납 */
+    if (lb_ReSunap) {
+        //환불을 위한 백업
+        ds_iCustomerFeeBackup.Copy(ds_ioCustomerFee);
+        ds_ioPosPrintMBackup.Copy(ds_ioPosPrintM);
+        ds_ioPosPaymentBackup.Copy(ds_ioPosPayment);
+        ds_iReadyBackup.Copy(ds_iReady);
+
+        //부분 수납을 위한 복사
+        ds_iCustomerFeeBackup.Filter(vCMgno);
+        ds_ioCustomerFee.CopyF(ds_iCustomerFeeBackup);
+        
+        var vFeeCMgno = "0";
+        var vFeeRow = 0;
+        ds_iReady.ClearData();
+        for(var i=0; i<ds_ioCustomerFee.GetRowCount(); i++) {
+        
+            if (vFeeCMgno <> ds_ioCustomerFee.GetColumn(i, "CFCMGNO")) {
+            
+                vFeeCMgno = ds_ioCustomerFee.GetColumn(i, "CFCMGNO");
+                
+                vFeeRow = ds_iReady.AddRow();
+                ds_iReady.SetColumn(vFeeRow, "SEL", "0");
+                ds_iReady.SetColumn(vFeeRow, "CFGUBUN", "0");
+                ds_iReady.SetColumn(vFeeRow, "CMGNO", vFeeCMgno);
+                ds_iReady.SetColumn(vFeeRow, "CFMGGTMGNO", ds_ioCustomerFee.GetColumn(i, "CFMGGTMGNO"));
+                ds_iReady.SetColumn(vFeeRow, "CNO", ds_ioCustomerFee.GetColumn(i, "CNO"));
+                ds_iReady.SetColumn(vFeeRow, "CREGCD", ds_ioCustomerFee.GetColumn(i, "CREGCD"));
+                ds_iReady.SetColumn(vFeeRow, "CCOURSECD", ds_ioCustomerFee.GetColumn(i, "CCOURSECD"));
+                ds_iReady.SetColumn(vFeeRow, "CFMEMBERGUBUN", ds_iReadyBackup.GetColumn(0, "CFMEMBERGUBUN"));
+                ds_iReady.SetColumn(vFeeRow, "BNM", ds_ioCustomerFee.GetColumn(i, "BNM"));
+                ds_iReady.SetColumn(vFeeRow, "FMNM", ds_ioCustomerFee.GetColumn(i, "FMNM"));
+                ds_iReady.SetColumn(vFeeRow, "CFPROCDATE", left(calSunapDate.Value, 8));
+                ds_iReady.SetColumn(vFeeRow, "CFREMARK", "");
+                ds_iCustomerFeeBackup.Filter("CFCMGNO='" + vFeeCMgno + "'");
+                ds_iReady.SetColumn(vFeeRow, "CFPROCAMOUNT", ds_iCustomerFeeBackup.Sum("CFPROCAMOUNT"));
+                ds_iCustomerFeeBackup.UnFilter();
+
+            }
+        }
+
+        //부분수납
+        var arrSunap = lfn_CustomerSunap();
+        
+        if (arrSunap[0] <> "OK") { //데이콤 실패시 종료
+            return;
+        }
+
+        //환불을 위한 데이터 복원
+        ds_ioCustomerFee.ClearData();
+        ds_ioPosPrintM.ClearData();
+        ds_ioPosPayment.ClearData();
+        ds_iReady.ClearData();
+        ds_ioCustomerFee.Copy(ds_iCustomerFeeBackup);
+        ds_ioPosPrintM.Copy(ds_ioPosPrintMBackup);
+        ds_ioPosPayment.Copy(ds_ioPosPaymentBackup);
+        ds_iReady.Copy(ds_iReadyBackup);
+		
+		ds_ioVirtualAccoutAllocation.ClearData();
+        
+        vPmYear = "ReSunap"; // /영수증 출력을 위한 부분수납 표시
+        vPmMgno = ds_oPmMgno.GetColumn(0, "PMMGNO"); //영수증 출력을 위한 PMMGNO 백업
+        
+    }
+
+/* 전액 환불 */
+    for (var i=0; i<ds_ioCustomerFee.RowCount(); i++) { //CUSTOMERFEE <= ds_ioCustomerFee
+        ds_ioCustomerFee.SetColumn(i, "CFGUBUN", "02");
+        ds_ioCustomerFee.SetColumn(i, "CFPROCAMOUNT", (-1) * ds_ioCustomerFee.GetColumn(i, "CFPROCAMOUNT"));
+        ds_ioCustomerFee.SetColumn(i, "CFPROCDATE", calSunapDate.Value);
+        ds_ioCustomerFee.SetColumn(i, "CFPONYGUBUN", chkPonyDate.Value);
+        ds_ioCustomerFee.SetColumn(i, "CFPONYDATE", calPonyDate.Value);
+        ds_ioCustomerFee.SetColumn(i, "CFREMARK", ds_iReady.GetColumn(0, "CFREMARK"));
+    }
+
+    for (var i=0; i<ds_ioPosPrintM.RowCount(); i++) { //POSPRINTM <= ds_ioPosPrintM
+        ds_ioPosPrintM.SetColumn(i, "PMPCGUBUN", "1");
+        ds_ioPosPrintM.SetColumn(i, "PMPROCDATE", calSunapDate.Value);
+        if (ds_ioPosPrintM.GetColumn(i, "PMPAYMENTFLAG") <> "1") {
+			ds_ioPosPrintM.SetColumn(i, "PMPIID", edJibuMgId.Text);
+        }
+        ds_ioPosPrintM.SetColumn(i, "PMITEM4", "환불일자 : " + calSunapDate.Text);
+        ds_ioPosPrintM.SetColumn(i, "PMAMT", (-1) * ds_ioPosPrintM.GetColumn(i, "PMAMT"));
+    }
+
+    for (var i=0; i<ds_ioPosPayment.RowCount(); i++) { //CUSTOMERFEE <= ds_ioCustomerFee
+        ds_ioPosPayment.SetColumn(i, "PPTOTAMT", (-1) * ds_ioPosPayment.GetColumn(i, "PPTOTAMT"));
+    }
+
+/* INSERT TRANSACTION */
+    var nEtc = iif(ds_iReady.GetRowCount() > 1
+        , " 등 " + ds_iReady.GetRowCount() + "건"
+        , "");
+
+    var sArg = "";
+    var sGtMgno = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+
+
+    tit_clearActionInfo();
+
+
+//카드로 수납한 지부와 관리 지부가 다를 경우
+    if (right(ds_ioPosPrintM.GetColumn(0, "PMPGMGUBUN"), 1) == "1") { // 카드일때
+		sGtMgno = ds_ioCustomerFee.GetColumn(0, "CFPOSGTMGNO");
+		// 타지부 환불(관리지부와 POS지부가 다를때)
+		if (ds_ioCustomerFee.GetColumn(0, "CFMGGTMGNO") <> ds_ioCustomerFee.GetColumn(0, "CFPOSGTMGNO")) {
+	
+			tit_addMultiActionInfo("cust:insertCust2020TaCustomerFee", "", 0, "", "N");
+			sArg += "ds_iTaCustomerFee=ds_ioCustomerFee ";
+		}
+
+    } else { // 카드가 아닐때
+	// 타지부 환불(관리지부와 처리지부가 다를때)
+		if (ds_iReady.GetColumn(0, "CFMGGTMGNO") <> gds_oUserInfo.GetColumn(0, "PDEPTCD")) {
+	
+			tit_addMultiActionInfo("cust:insertCust2020TaCustomerFee", "", 0, "", "N");
+			sArg += "ds_iTaCustomerFee=ds_ioCustomerFee ";
+			sGtMgno = gds_oUserInfo.GetColumn(0, "PDEPTCD");        
+		}
+    }
+
+
+    tit_addSearchActionInfo("cust:searchCust2020CustomerFeePmMgno", false);
+/*
+	tit_addMultiActionInfo("cust:insertCust2020CustomerFee", "", 0, "", "N");
+    tit_addSingleActionInfo("cust:insertCust2020PosPrintM", "", 0, "");
+    tit_addMultiActionInfo("cust:insertCust2020PosPayment", "", 0, "", "N");
+	tit_addMultiActionInfo("cust:executeCust0010VirtualAccoutAllocation", "", 0, "");
+*/
+
+    if (ds_ioCustomerFee.GetCount() > 1) {
+		tit_addMultiActionInfo("cust:insertCust2020CustomerFee", "", 0, "", "N");
+	} else {
+		tit_addSingleActionInfo("cust:insertCust2020CustomerFee", "", 0, "");
+	}
+    tit_addSingleActionInfo("cust:insertCust2020PosPrintM", "", 0, "");
+    if (ds_ioPosPayment.GetCount() > 1) {
+		tit_addMultiActionInfo("cust:insertCust2020PosPayment", "", 0, "", "N");
+	} else {
+		tit_addSingleActionInfo("cust:insertCust2020PosPayment", "", 0, "");
+	}
+    if (ds_ioVirtualAccoutAllocation.GetCount() > 1) {
+		tit_addMultiActionInfo("cust:executeCust0010VirtualAccoutAllocation", "", 0, "", "N");
+	} else {
+		tit_addSingleActionInfo("cust:executeCust0010VirtualAccoutAllocation", "", 0, "");
+	}
+    tit_callService(
+        ""
+        ,""
+        ,sArg + "ds_iCustomerFee=ds_ioCustomerFee"
+            + " ds_iPosPrintM=ds_ioPosPrintM"
+            + " ds_iPosPayment=ds_ioPosPayment"
+            + " ds_iVirtualAccoutAllocation=ds_ioVirtualAccoutAllocation"
+        ,"ds_oPmMgno=ds_oCustomerFeePmMgno"
+        ,"SPMYEAR=" + quote(left(calSunapDate.Value, 4))
+            + " SPROCDATE=" + quote(left(calSunapDate.Value, 8))
+            + " SGTMGNO=" + quote(sGtMgno) // args 
+        ,"lfn_AfterCall"
+        ,false
+        ,false
+        ,true
+    );
+
+    if (ds_oPmMgno.GetRowCount() < 1) { // 쿼리 오류시 종료
+       	arrPos[0] = "FAIL";		// 결제성공여부
+		arrPos[1] = "1";		// 환불
+
+        return arrPos;
+    }
+
+/* POS실행 */
+    lb_ReSunap = false; //부분 수납에서 환불로 전환
+    var sPos = lfn_Pos();
+
+/* POS실행 후 TRANSACTION */
+    tit_clearActionInfo();
+
+    if (sPos == "OK") {
+
+		if (sProgramId == "11") {	// 회비이면
+			ls_Paygubun = "6";	// 회비납부
+			
+		} else {	// 교육비이면
+			if (ls_SunapCode == "10" || ls_SunapCode == "12" || ls_SunapCode == "19") {
+				ls_Paygubun = '1';	// 방문현금
+			} else if (ls_SunapCode == "11") {
+				ls_Paygubun = '2';	// 방문카드
+			} else if (ls_SunapCode == "13" || ls_SunapCode == "15") {
+				ls_Paygubun = '5';	// 가상계좌
+			} else if (ls_SunapCode == "14") {
+				ls_Paygubun = '3';	// 방문은납
+			}
+		}
+		
+        tit_addSingleActionInfo("cust:updateCust2020CustomerPosAfter", "", 0, "");
+        
+        if (sEduJubsu == "Y") {	// 실무교육접수시 결제이면
+        
+			tit_addSingleActionInfo("cust:updateCust2020EduJubsuPosAfter", "", 0, "");
+			
+        } else {	// 일반결제시 실무교육 접수내역을 검색하여 있으면 접수완료 처리
+        
+			ds_iEduJubsuStatus.ClearData();
+			
+			if (ds_iReady.GetRowCount() > 1) {	// 결제건이 다수이면
+			
+				for (var i=0; i<ds_iReady.GetRowCount(); i++) {
+		
+
+					lfn_UpdateEduJubsuStatus(ds_iReady.GetColumn(i, "CMGNO")
+										     , sSunapGubun
+										     , ds_iReady.GetColumn(i, "CFPROCAMOUNT")
+										     , ls_Paygubun
+											 , ds_oPmMgno.GetColumn(0, "PMYEAR")
+											 , ds_oPmMgno.GetColumn(0, "PMMGNO"));
+					
+				}
+				
+				tit_addMultiActionInfo("cust:executeCust2020EduJubsuPosAfter", "", 0, "");
+				
+			} else {	// 결제건이 1건이면 
+			
+				// 실무교육 접수내역이 있으면 접수완료 처리
+				lfn_UpdateEduJubsuStatus(ds_iReady.GetColumn(0, "CMGNO")
+										 , sSunapGubun
+										 , ds_iReady.GetColumn(0, "CFPROCAMOUNT")
+										 , ls_Paygubun
+										 , ds_oPmMgno.GetColumn(0, "PMYEAR")
+										 , ds_oPmMgno.GetColumn(0, "PMMGNO"));
+								 
+				tit_addSingleActionInfo("cust:executeCust2020EduJubsuPosAfter", "", 0, "");
+			
+			}
+        
+        }
+        
+    } else if (sPos == "FAIL") {
+        tit_addSingleActionInfo("cust:deleteCust2020CustomerPosAfter", "", 0, "");
+    } else {
+       	arrPos[0] = sPos;		// 결제성공여부
+		arrPos[1] = "1";		// 환불
+        return sPos;
+        
+    }
+    
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iCustomerFee=ds_ioCustomerFee ds_iEduJubsuStatus=ds_iEduJubsuStatus"
+        ,"" // outDs
+        ,"SPMYEAR=" + quote(ds_oPmMgno.GetColumn(0, "PMYEAR"))
+            + " SPMMGNO=" + quote(ds_oPmMgno.GetColumn(0, "PMMGNO"))
+            + " SPCGUBUN="  + quote(sSunapGubun) 
+            + " STOTALAMT=" + quote(sAmount)	// 실무교육접수 결제시 사용
+            + " SEJMGNO=" + quote(sEjmgno)	// 실무교육접수 결제시 사용
+            + " SEJHSEQ=" + quote(sEjhseq)	// 실무교육접수 결제시 사용
+            + " SPAYGUBUN=" + quote(ls_Paygubun)	// 결제구분 // args  // 실무교육접수 결제시 사용
+        ,"lfn_AfterCall"
+        ,false
+        ,false
+        ,true
+    );
+    
+    //부분 수납 일 경우 영수증 출력을 부분수납 PMMGNO로 출력
+    if (vPmYear == "ReSunap") {
+        ds_oPmMgno.InsertRow(0);
+        ds_oPmMgno.SetColumn(0, "PMMGNO", vPmMgno);
+    }
+    
+	arrPos[0] = sPos;		// 결제성공여부
+	arrPos[1] = "1";		// 환불
+    
+    return arrPos;
+
+}
+
+/**
+ * 회비/교육비 회계 처리
+ */
+function lfn_TaSunapCustomer() {
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("cust:searchCust2012CustomerFee", false);
+    
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,""
+        ,"ds_ioCustomerFee=ds_oCustomerFee"
+        ,"SPMYEAR=" + quote(ds_oPmMgno.GetColumn(0, "PMYEAR"))
+            + " SPMMGNO=" + quote(ds_oPmMgno.GetColumn(0, "PMMGNO")) // args 
+        ,"lfn_AfterCall"
+        ,false
+        ,false
+        ,true
+    );
+    
+    tit_clearActionInfo();
+    tit_addMultiActionInfo("cust:insertCust2020TaCustomerFee", "", 0, "", "N");
+    
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iTaCustomerFee=ds_ioCustomerFee"
+        ,""
+        ,"SGTMGNO=" + quote(sJibu)
+            + " STAGUBUN=" + quote(sSunapGubun)
+        ,"lfn_AfterCall"
+        ,false
+        ,false
+        ,true
+    );
+
+}
+/////////////////////////////////////////////////////////////////////////////////
+// 강습
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 강습 공통 처리
+ */
+function lfn_Training() {
+    
+    if (sSunapGubun == "0") {
+        lfn_TrainingSunap();
+    } else {
+        lfn_TrainingRepay();
+    }
+}
+
+/**
+ * 강습 수납
+ */
+function lfn_TrainingSunap() {
+
+}
+
+/**
+ * 강습 환불
+ */
+function lfn_TrainingRepay() {
+
+}
+
+/**
+ * 강습 회계 처리
+ */
+function lfn_TrainingTaSunap() {
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 시험
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 강습 공통 처리
+ */
+function lfn_Exam() {
+    
+    if (sSunapGubun == "0") {
+        lfn_ExamSunap();
+    } else {
+        lfn_ExamRepay();
+    }
+}
+
+/**
+ * 시험 수납
+ */
+function lfn_ExamSunap() {
+
+}
+
+/**
+ * 시험 환불
+ */
+function lfn_ExamRepay() {
+
+}
+
+/**
+ * 시험 회계 처리
+ */
+function lfn_TaSunapExam() {
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 수첩
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 강습 공통 처리
+ */
+function lfn_License() {
+    
+    if (sSunapGubun == "0") {
+        lfn_LicenseSunap();
+    } else {
+        lfn_LicenseRepay();
+    }
+}
+
+/**
+ * 수첩 수납
+ */
+function lfn_LicenseSunap() {
+
+}
+
+/**
+ * 수첩 환불
+ */
+function lfn_LicenseRepay() {
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////
+// 공통
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 기타 TRANSACTION 처리 후
+ */
+function lfn_AfterCall(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        //gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        gfn_Alert("서버에 오류가 발생되었습니다. 정보지원과로 문의하시기 바랍니다.");
+        return "Transaction Error!";
+    }
+}
+
+function gfn_EnterNextFocus(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	
+}
+
+// 문자내용
+function divSunap_divNewBank_cbxBank_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	divSunap.divNewBank.edAccount.Text = ds_oNewBankAccount.GetColumn(nNewIndex, "ACCOUNT");
+	divSunap.divNewBank.lbMSG.Text = "반드시 실제 입금된 은행을 선택하시고,\n" +
+	                                 "가상계좌가 맞는지 확인 후 수납처리하세요!";
+}
+
+
+
+
+
+/**
+ * 실무교육접수상태 갱신 위해 결제내역 dataset에 넣기
+ * Parameter : sCMGNO - 관리번호
+ *           : sSunapGubun - 수납,환불구분
+ *           : sAmt - 결제금액
+ *           : sPayGubun - 결제구분
+ */
+function lfn_UpdateEduJubsuStatus(sCmgno, sSunapGubun, sAmt, sPayGubun, sPmyear, sPmmgno) {
+
+    var nRow = ds_iEduJubsuStatus.AddRow();
+    ds_iEduJubsuStatus.SetColumn(nRow, "CMGNO", sCmgno);
+    ds_iEduJubsuStatus.SetColumn(nRow, "PCGUBUN", sSunapGubun);
+    ds_iEduJubsuStatus.SetColumn(nRow, "AMT", sAmt);
+    ds_iEduJubsuStatus.SetColumn(nRow, "PAYGUBUN", sPayGubun);
+    ds_iEduJubsuStatus.SetColumn(nRow, "PMYEAR", sPmyear);
+    ds_iEduJubsuStatus.SetColumn(nRow, "PMMGNO", sPmmgno);
+	
+}
+
+
+/*
+ * 기능 : 실무교육접수내역이 있는지 조회한다.
+ * parameter : 없음
+ * Return : 있으면 true, 없으면 false
+ */
+
+function lfn_CheckEduJubsu(obj) {
+
+    ds_oEduJubsuCheck.ClearData(); // 데이타셋 초기화
+
+
+
+    tit_clearActionInfo();
+
+    tit_addSearchActionInfo("cust:searchCust2020CheckEduJubsu", false);
+
+    // 서버 호출
+
+    tit_callService(
+        ""
+        ,""
+        ,"" // inDs
+        ,"ds_oEduJubsuCheck=ds_oEduJubsuCheck" // outDs
+        ,"COUSECD=" + quote(radCourse.Value)
+            + " PERSONNM=" + quote(edPersonNm.Text)
+            + " RESIDENTNO=" + quote(medResidentNo.Value)
+        ,""
+        ,false
+        ,false
+        ,true
+    );
+
+
+    if (ds_oEduCheck.GetCount() > 0) {
+
+        return true;
+
+    } else {
+
+        return false;
+
+    }
+
+}
+// 수납방법 변경 시
+function divSunap_radSunap_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if (divSunap.radSunap.Value == 0) {	// 방문(현금)
+		divSunap.radSunapGubun.Enable = true;
+		divSunap.radSunapGubun.Value = 0;
+	} else if (divSunap.radSunap.Value == 4) {	// 은행납
+		divSunap.radSunapGubun.Enable = false;
+		divSunap.radSunapGubun.Value = 0;
+	} else if (divSunap.radSunap.Value == 6) {	// 지로
+		divSunap.radSunapGubun.Enable = false;
+		divSunap.radSunapGubun.Value = 0;
+	} else if (divSunap.radSunap.Value == 9) {	// 전화수납
+		divSunap.radSunapGubun.Enable = false;
+		divSunap.radSunapGubun.Value = 0;
+	}
+	divSunap_radSunapGubun_OnChanged(divSunap.radSunapGubun, 0);
+}
+
+/*
+// ic카드 승인 테스트
+function Button0_OnClick(obj)
+{
+	// 결제모듈 초기화 UPayInit 함수 (UPlusPGPOS_Client 모듈을 사용하기 위한 초기화 함수)
+	// 반환 0 : 정상, -9 : 내부 클래스 생성 오류
+	var vPayInit = UPlusPGPOSClientOCX.UPayInit();
+	trace("vPayInit="+vPayInit);
+	if (vPayInit <> 0) {
+		gfn_Alert("카드결제 초기화에 실패했습니다.");
+		return false;
+	}
+
+	// 파라미터 세팅 UPaySet 함수 (UPlusPGPOS로 전달할 값을 설정하는 함수)
+	// 반환 0 : 정상, -9 : 내부 클래스 없음
+	UPlusPGPOSClientOCX.UPaySet("LGD_TXNAME","CardAuthOfflinePos");	// (필수)업무명
+	UPlusPGPOSClientOCX.UPaySet("LGD_REQTYPE","APPR");					// (필수)업무요청명
+	UPlusPGPOSClientOCX.UPaySet("LGD_OID","2018-00397034");			// (필수)주문번호
+	UPlusPGPOSClientOCX.UPaySet("LGD_AMOUNT","1000");					// (필수)결제금액(,없이 입력)
+	UPlusPGPOSClientOCX.UPaySet("LGD_INSTALL","00");					// (필수)할부개월 (2자리) ex) 00:일시불, 03:3개월
+	UPlusPGPOSClientOCX.UPaySet("LGD_PRIVATENO","");					// (선택)구매자 생년월일 6자리 (YYMMDD) or 사업자번호 10자리
+	UPlusPGPOSClientOCX.UPaySet("LGD_NOINT","0");						// (선택)신용카드 무이자할부 여부(0: 일반할부, 1: 무이자할부)☞ 계약 시, “대표가맹” 상점에 한함
+	UPlusPGPOSClientOCX.UPaySet("LGD_BUYER","정현호");					// (선택)구매자명
+	UPlusPGPOSClientOCX.UPaySet("LGD_BUYERID","");						// (선택)구매자 아이디
+	UPlusPGPOSClientOCX.UPaySet("LGD_BUYERPHONE","01028622115");		// (선택)고객휴대폰번호
+	UPlusPGPOSClientOCX.UPaySet("LGD_BUYEREMAIL","");					// (선택)구매자 이메일
+	UPlusPGPOSClientOCX.UPaySet("LGD_PRODUCTINFO","결제테스트");		// (선택)구매내역
+	UPlusPGPOSClientOCX.UPaySet("LGD_TAXFREEAMOUNT","1000");			// (필수)면세금액(결제금액에 면세대상금액 포함시 사용)☞ 계약 시, “부분면세” 적용여부 확인요망
+	UPlusPGPOSClientOCX.UPaySet("LGD_VAT","0");						// (필수)부가세
+	UPlusPGPOSClientOCX.UPaySet("VAN_SFEEAMOUNT","0");					// (필수)봉사료
+	UPlusPGPOSClientOCX.UPaySet("VAN_TRANTYPE","S0");					// (필수)거래구분 S0 : 신용승인요청, K0 : 키인승인요청, E0 : 은련승인요청, P0 : APP카드 승인요청
+	
+
+	// 전송 UPayTX() 함수 (UPlusPGPOS로 UPaySet으로 설정한 값을 전송하는 함수)
+	// 반환 0 : 정상, -9 : 내부 클래스 없음 
+	//     -2 : UPlusPGPOS와 connect 실패
+	//     -3 : UPlusPGPOS에 전송 실패
+	//     -4 : UPlusPGPOS 결과 대기 타임아웃
+	//     -5 : UPlusPGPOS 결과 수신 실패
+	var vTX = UPlusPGPOSClientOCX.UPayTX();
+	trace("vTX=" + vTX);
+	if (vTX <> 0) {
+		if (vTX == -2) {
+			gfn_Alert("LG U+ POS 프로그램과 연결 실패(프로그램 실행 요청)");
+			return false;
+		} else if (vTX == -3) {
+			gfn_Alert("LG U+ POS 프로그램에 전송 실패");
+			return false;
+		} else if (vTX == -4) {
+			gfn_Alert("LG U+ POS 프로그램 결과 대기 타임아웃");
+			return false;
+		} else if (vTX == -5) {
+			gfn_Alert("LG U+ POS 프로그램 결과 수신 실패");
+			return false;
+		} else if (vTX == -9) {
+			gfn_Alert("카드결제에 실패했습니다.");
+			return false;
+		} else {
+			gfn_Alert("카드결제에 실패했습니다.");
+			return false;
+		}
+	}
+	
+	var UPayCnt = UPlusPGPOSClientOCX.UPayResNameCount(); // 응답메시지 갯수확인
+	trace("UPayCnt=" + UPayCnt);
+	
+	var vResName = "";
+	var vResponse = "";
+	for(var i=0; i<UPayCnt; i++) {
+		vResName = UPlusPGPOSClientOCX.UPayResName(i);
+		vResponse = UPlusPGPOSClientOCX.UPayResponse(i);
+		trace(i + " => " + vResName + " : " + vResponse);
+	}
+	
+	// UPlusPGPOS_Client 자원반환
+	var vPayFinal = UPlusPGPOSClientOCX.UPayFinal();
+	trace("vPayFinal="+vPayFinal);
+	if (vPayFinal <> 0) {
+		gfn_Alert("카드결제 종료에 실패했습니다.");
+		return false;
+	}
+
+}
+
+// ic카드 취소 테스트
+function Button1_OnClick(obj)
+{
+	// 결제모듈 초기화 UPayInit 함수 (UPlusPGPOS_Client 모듈을 사용하기 위한 초기화 함수)
+	// 반환 0 : 정상, -9 : 내부 클래스 생성 오류
+	var vPayInit = UPlusPGPOSClientOCX.UPayInit();
+	trace("vPayInit="+vPayInit);
+	if (vPayInit <> 0) {
+		gfn_Alert("카드결제 초기화에 실패했습니다.");
+		return false;
+	}
+	
+	// 파라미터 세팅 UPaySet 함수 (UPlusPGPOS로 전달할 값을 설정하는 함수)
+	// 반환 0 : 정상, -9 : 내부 클래스 없음
+	UPlusPGPOSClientOCX.UPaySet("LGD_TXNAME","CardAuthOfflinePos");	// (필수)업무명
+	UPlusPGPOSClientOCX.UPaySet("LGD_REQTYPE","CANCEL");				// (필수)업무요청명
+	UPlusPGPOSClientOCX.UPaySet("LGD_AMOUNT","1000");					// (필수)결제금액(,없이 입력)
+	UPlusPGPOSClientOCX.UPaySet("LGD_INSTALL","00");					// (필수)할부개월 (2자리) ex) 00:일시불, 03:3개월
+	UPlusPGPOSClientOCX.UPaySet("LGD_TID","");							// (필수)LG유플러스 거래번호 (신용승인응답에서 Tran_serial 값)
+	UPlusPGPOSClientOCX.UPaySet("LGD_TAXFREEAMOUNT","1000");			// (필수)면세금액(결제금액에 면세대상금액 포함시 사용)☞ 계약 시, “부분면세” 적용여부 확인요망
+	UPlusPGPOSClientOCX.UPaySet("LGD_VAT","0");						// (필수)부가세
+	UPlusPGPOSClientOCX.UPaySet("VAN_SFEEAMOUNT","0");					// (필수)봉사료
+	UPlusPGPOSClientOCX.UPaySet("VAN_TRANTYPE","S1");					// (필수)거래구분 S1 : 신용취소요청, K1 : 키인취소요청, E1 : 은련취소요청, P1 : APP카드 취소요청
+	UPlusPGPOSClientOCX.UPaySet("VAN_CAPDATE","20180517");				// (필수)원거래 승인일(YYYYMMDD)
+	UPlusPGPOSClientOCX.UPaySet("VAN_AUTHNO","");						// (필수)원거래 승인번호
+	
+	
+	// 전송 UPayTX() 함수 (UPlusPGPOS로 UPaySet으로 설정한 값을 전송하는 함수)
+	// 반환 0 : 정상, -9 : 내부 클래스 없음 
+	//     -2 : UPlusPGPOS와 connect 실패
+	//     -3 : UPlusPGPOS에 전송 실패
+	//     -4 : UPlusPGPOS 결과 대기 타임아웃
+	//     -5 : UPlusPGPOS 결과 수신 실패
+	var vTX = UPlusPGPOSClientOCX.UPayTX();
+	trace("vTX=" + vTX);
+	if (vTX <> 0) {
+		gfn_Alert("카드결제에 실패했습니다.");
+		return false;
+	}
+	
+	var UPayCnt = UPlusPGPOSClientOCX.UPayResNameCount(); // 응답메시지 갯수확인
+	trace("UPayCnt=" + UPayCnt);
+	
+	var vResName = "";
+	var vResponse = "";
+	for(var i=0; i<UPayCnt; i++) {
+		vResName = UPlusPGPOSClientOCX.UPayResName(i);
+		vResponse = UPlusPGPOSClientOCX.UPayResponse(i);
+		trace(i + " => " + vResName + " : " + vResponse);
+	}
+	
+	// UPlusPGPOS_Client 자원반환
+	var vPayFinal = UPlusPGPOSClientOCX.UPayFinal();
+	trace("vPayFinal="+vPayFinal);
+	if (vPayFinal <> 0) {
+		gfn_Alert("카드결제 종료에 실패했습니다.");
+		return false;
+	}
+}
+*/]]></Script>
+</Window>

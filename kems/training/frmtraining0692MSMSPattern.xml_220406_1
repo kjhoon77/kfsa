@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmtraining0692MSMSPattern" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="문자메시지&#32;유형&#32;관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioSmsPattern" OnRowPosChanged="ds_ioSmsPattern_OnRowPosChanged">
+				<Contents>
+					<colinfo id="SPMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPGTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPTYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPBIZGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPPATTERN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPREGDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPREGSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTDEPTNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPREGNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPTYPENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPBIZGUBUNNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oWorkGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>고객(실무교육)</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>강습(강습,시험)</DATA>
+					</record>
+					<record>
+						<CD>9</CD>
+						<DATA>기타</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSendGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>0</CD>
+						<DATA>단문(SMS)</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>장문(MMS)</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="54" Height="53" Id="shpBtnBox" Left="444" LineColor="user14" Right="796" TabOrder="10" Top="1" Type="Rectangle" Width="352"></Shape>
+		<Shape Bottom="248" Height="190" Id="shpGubunBox" Left="4" LineColor="user15" Right="796" TabOrder="16" Top="58" Type="Rectangle" Width="792"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="11" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="300">
+			<Contents></Contents>
+		</Div>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_ioSmsPattern" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="584" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="312" Id="gdSmsPattern" InputPanel="FALSE" Left="3" LineColor="default" OnCellClick="gdSmsPattern_OnCellClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="795" RowHeight="25" Style="sty_Grid" TabOrder="9" TabStop="true" Top="272" UseDBuff="true" UsePopupMenu="true" UserData="문자메시지발송현황" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="34"/>
+						<col width="51"/>
+						<col width="93"/>
+						<col width="69"/>
+						<col width="623"/>
+						<col width="62"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="지부"/>
+						<cell align="center" col="2" display="text" text="업무구분"/>
+						<cell col="3" display="text" text="문자구분"/>
+						<cell align="center" col="4" display="text" text="유형&#32;내용"/>
+						<cell align="center" col="5" display="text" text="등록자"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="row+1"/>
+						<cell align="center" col="1" colid="SPGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="2" colid="SPBIZGUBUNNM" display="combo"/>
+						<cell align="left" col="3" colid="SPTYPENM" display="text"/>
+						<cell align="left" col="4" colid="SPPATTERN" display="text"/>
+						<cell align="center" col="5" colid="SPREGNAME" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="722" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="8" Top="250" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="447" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="29" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="447" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="2" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="lfn_localExcel" Style="sty_Button" TabOrder="3" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="4" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="5" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbTrainingOrder" Left="8" Style="sty_Label" TabOrder="12" Text="유형" Top="137" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Radio Border="Flat" CodeColumn="CD" Column="SPBIZGUBUN" ColumnCount="4" DataColumn="DATA" Height="20" Id="radWorkGubun" INDEX="0" InnerDataset="ds_oWorkGubun" Left="100" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="6" Top="87" Width="396"></Radio>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="13" Text="지부" Top="62" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="7" Top="61" UserData="I:" Width="88"></Combo>
+		<Static Align="Center" Height="20" Id="lbWorkGubun" Left="8" Style="sty_Label" TabOrder="14" Text="업무구분" Top="87" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static0" Left="8" Style="sty_Label" TabOrder="16" Text="문자구분" Top="112" VAlign="Middle" Width="88"></Static>
+		<Radio Border="Flat" CodeColumn="CD" Column="SPTYPE" ColumnCount="3" DataColumn="DATA" Height="20" Id="radSendGubun" INDEX="0" InnerDataset="ds_oSendGubun" Left="100" OnChanged="radSendGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="17" Top="112" Width="396"></Radio>
+		<TextArea Border="SunkenEdge" Column="SPPATTERN" Font="굴림,11" Height="108" Id="taMessage" ImeMode="native" Left="100" MaxLength="4000" OnCharChanged="taMessage_OnCharChanged" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" TabOrder="18" Top="137" UserData="S:" Width="680"></TextArea>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnInput" ImageID="BTN_COM_ADD" Left="534" OnClick="lfn_Input" Style="sty_Button" TabOrder="19" ToolTipText="추가&#32;저장" Top="29" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSave" ImageID="BTN_COM_SAVE" Left="621" OnClick="lfn_Save" Style="sty_Button" TabOrder="20" ToolTipText="수정&#32;저장" Top="29" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDelete" ImageID="BTN_COM_DEL" Left="708" OnClick="lfn_Delete" Style="sty_Button" TabOrder="21" ToolTipText="삭제&#32;저장" Top="29" Width="85"></Button>
+		<Static Align="Center" BKColor="user31" Font="굴림,10,Bold" Height="20" Id="Static1" Left="531" Style="sty_Label" TabOrder="22" Text="입력모드" Top="62" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" Color="user6" Font="굴림,10,Bold" Height="21" Id="edInputMode" Left="621" Readonly="TRUE" TabOrder="23" Top="62" Width="67"></Edit>
+		<Static Align="Right" Font="Arial,9,Bold" Height="16" Id="lbLength" Left="11" TabOrder="25" Text="0" Top="159" Width="20"></Static>
+		<Static Font="Arial,9,Bold" Height="16" Id="lbTotalLength" Left="35" TabOrder="24" Text="/&#32;80&#32;Byte" Top="159" Width="60"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0692MSMSPattern.xml
+ * 설명 : 문자메시지 유형관리
+ * 작성일 : 2011.03.18
+ * 작성자 : 정현호
+ */
+
+#include "LIB::training.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    // 공통 코드 조회
+    gfn_SearchJibu(cbxJibu, "Y", "전체"); // 지부 코드 조회
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdSmsPattern.Height = nCy - gdSmsPattern.Top - 4;
+        gdSmsPattern.Width = nCx - gdSmsPattern.Left - 4;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+    ds_ioSmsPattern.ClearData(); // 데이타셋 초기화
+
+/////////////////////   
+
+	tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("training:searchTraining0692SmsPattern", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioSmsPattern=ds_ioSmsPattern"	// outDs
+		,"SPGTMGNO=" + quote(cbxJibu.value)     //-- 지부
+			+" SPBIZGUBUN=" + quote(radWorkGubun.value) //-- 업무구분
+		   			+" SPTYPE=" + quote(radSendGubun.value)//  -- 발송구분
+			
+			// args 
+		,"lfn_AfterSearchSmsPattern"
+		,false
+	);
+}
+
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 유형 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchSmsPattern(nErrorCode, strErrorMsg) {
+   if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    gfn_SearchMessage(gdSmsPattern); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+    
+    edInputMode.Text = "수 정";
+    
+    gdSmsPattern_OnCellClick();
+    
+    taMessage_OnCharChanged(taMessage,taMessage.Text, "");
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    btnInput.Enable = bStatus; // 추가 버튼
+    btnDelete.Enable = bStatus; // 삭제 버튼
+    btnSave.Enable = bStatus; // 수정&저장 버튼
+}
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdSmsPattern, 0); // 멀티 정렬을 실행한다.
+}
+
+function lfn_ComponentOnKillFocus(obj)
+{
+	gfn_ComponentOnKillFocus(obj);
+	obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3)); 
+}
+
+function lfn_ComponentOnKillFocus2(obj)
+{
+	gfn_ComponentOnKillFocus(obj);
+	obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3)); 
+}
+
+function lfn_localExcel(obj)
+{
+	if (ds_ioSmsPattern.GetRowCount() < 1) {
+		gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+		return false;
+	}
+	lfn_Excel(obj);        
+}
+// 추가
+function lfn_Input(obj)
+{
+	
+	if (!gfn_Confirm("신규 유형을 등록 하시겠습니까?\n입력완료 후 저장 버튼을 누르세요.")) {
+        return false;
+	}
+	edInputMode.Text = "신 규";
+    lfn_Cancel(); // 값 초기화
+    // 기본값 설정    
+    radWorkGubun.Value = "2";
+    radSendGubun.Value = "0";
+    taMessage.SetFocus();
+	
+	
+}
+
+
+function radSendGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if (strCode == "0") {
+	
+		lbTotalLength.Text = "/ 80 Byte";
+			
+	} else if (strCode == "1") {
+			
+		lbTotalLength.Text = "/ 4000 Byte";
+	
+	} else {
+	
+		lbTotalLength.Text = "/ 80 Byte";
+		
+	}
+}
+
+function ds_ioSmsPattern_OnRowPosChanged(obj,nOldRow,nRow)
+{
+    // 그리드의 값을 입력란에 복사한다. 추가상태인 경우 복사 후 저장을 하기 위해 제외한다.
+    if (obj.GetRowType(nRow) <> "insert" && nRow <> -1) {
+        cbxJibu.Value = obj.GetColumn(nRow, "SPGTMGNO");
+        radWorkGubun.Value = obj.GetColumn(nRow, "SPBIZGUBUN");
+        radSendGubun.Value = obj.GetColumn(nRow, "SPTYPE");
+        taMessage.Text = obj.GetColumn(nRow, "SPPATTERN");
+        gfn_MakeKeyMark(this); // 키값 수정 금지 설정
+	}	
+}
+
+
+function taMessage_OnCharChanged(obj,strPreText,strPostText)
+{
+	lbLength.Text = lfn_CheckByte(obj.value);
+	
+	if (radSendGubun.Value == "0") {
+		if (lfn_CheckLength(obj, "단문메시지는 ", 80) == false) {	
+			obj.text = strPreText;	
+		}
+		
+	} else {
+
+		if (lfn_CheckLength(obj, "장문(MMS)메시지는 ", 4000) == false) {	
+			obj.text = strPreText;	
+		}
+	
+	}
+	lbLength.Text = lfn_CheckByte(obj.value);
+}
+
+/*
+ * 기능 : 문자열 길이를 계산한다.
+ * parameter : obj - 컴포넌트 오브젝트
+ *             sMsg - 메세지 앞부분
+ *             nLength - 최대문자열수
+ * return : 없음
+ */
+function lfn_CheckLength(obj, sMsg, nLength)
+{
+    obj.value = ltrim(obj.value);
+    var ln_ObjLength = lfn_CheckByte(obj.value);
+    if (ln_ObjLength > nLength) {
+        gfn_Alert(sMsg + nLength + '자를(영문기준) 초과할 수 없습니다. 현재 ' + ln_ObjLength + '글자입니다.' + ' 80자까지만 내용이 발송됩니다.');
+        return false;
+    }
+    return true;
+}
+
+/*
+ * 기능 : 바이트수 계산한다.
+ * parameter : sString - 계산할 문자열
+ * return : 문자열 바이트수
+ */
+function lfn_CheckByte(sString)
+{
+    var ln_StringByte = 0;
+    var ln_Len = sString.length;
+    for (var i = 0; i < ln_Len; i++) {
+        if (sString.CharAt(i) >= ' ' && sString.CharAt(i) <= '~' ) {
+            ln_StringByte++;
+        } else {
+            ln_StringByte += 2;
+        }
+    }
+    return ln_StringByte;
+}
+
+function gdSmsPattern_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+
+   	ds_ioTrainingOrder_OnRowPosChanged(ds_ioSmsPattern,nRow,nRow);
+   	
+}
+
+
+/*
+ * 기능 : 저장
+ */
+function lfn_Save(obj)
+{
+        taMessage.UserData ="S:전달 메세지";             // 전달 메세지와 회신 연락처 확인 위함
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+		return false;
+	}
+	
+	if (gfn_IsNull(radWorkGubun.Value)) {
+	
+		gfn_Alert('업무구분은 전체를 선택할 수 없습니다.');
+	
+		return false;
+	}
+	
+	if (gfn_IsNull(radSendGubun.Value)) {
+	
+		gfn_Alert('문자구분은 전체를 선택할 수 없습니다.');
+	
+		return false;
+	}	
+	
+	if (edInputMode.Text == "신 규") {
+	
+        // 키 중복 체크
+        if (!gfn_Confirm(MSGW00020)) { // 정말로 추가 저장 하시겠습니까?
+            return false;
+        }
+        
+        // 입력된 값을 그리드로 복사한다.
+        ds_ioSmsPattern.InsertRow(0);
+        ds_ioSmsPattern.SetColumn(0, "SPGTMGNO", cbxJibu.Value);
+        ds_ioSmsPattern.SetColumn(0, "SPTYPE", radSendGubun.Value);
+        ds_ioSmsPattern.SetColumn(0, "SPBIZGUBUN", radWorkGubun.Value);
+        ds_ioSmsPattern.SetColumn(0, "SPPATTERN", taMessage.Text);
+        
+    } else {
+    
+        if (!gfn_Confirm(MSGW00040)) { // 정말로 수정 저장 하시겠습니까?
+            return false;
+        }
+        
+        ds_ioSmsPattern.SetColumn(ds_ioSmsPattern.currow, "SPGTMGNO", cbxJibu.Value);
+        ds_ioSmsPattern.SetColumn(ds_ioSmsPattern.currow, "SPTYPE", radSendGubun.Value);
+        ds_ioSmsPattern.SetColumn(ds_ioSmsPattern.currow, "SPBIZGUBUN", radWorkGubun.Value);
+        ds_ioSmsPattern.SetColumn(ds_ioSmsPattern.currow, "SPPATTERN", taMessage.Text);
+        
+    }
+        
+    gfn_FormInit(this); // 입력란 초기화
+    tit_clearActionInfo();
+    tit_addSaveActionInfo(
+        "training:insertTraining0692SmsPattern"	// insert
+        , "training:updateTraining0692SmsPattern"	// update
+        , ""	// delete
+        , ""	// flag column 명
+        , ""	// key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N"	// 실행타입
+    );
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iSmsPattern=ds_ioSmsPattern:U"	// inDs
+        ,""	// outDs
+        ,""	// args 
+        ,"lfn_AfterSaveSmsPattern"
+        ,false
+    );
+	taMessage.UserData ="S:"; // 메세지 유형 확인 위함(조회가능하게 초기화함)
+}
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveSmsPattern(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    lfn_Search(); // 유형 조회
+}
+
+/*
+ * 기능 : 삭제
+ */ 
+
+function lfn_Delete(obj)
+{
+    if (ds_ioSmsPattern.currow < 0) {
+        gfn_Alert(MSGI00030); // 삭제할 레코드가 없습니다.
+        return false;
+    }
+    
+	if (!gfn_Confirm(MSGW00030)) { // 정말로 삭제 하시겠습니까?
+        return false;
+	}	    ds_ioSmsPattern.DeleteRow(ds_ioSmsPattern.currow); // 선택된 ROW를 삭제한다.
+    gfn_FormInit(this); // 입력란 초기화    
+
+	tit_clearActionInfo();
+	tit_addSaveActionInfo(
+		""	// insert
+		, ""	// update
+		, "training:deleteTraining0692SmsPattern"	// delete
+		, ""	// flag column 명
+		, ""	// key sql id
+		, 0	// key 증가 값
+		, "" 
+		, 0 
+		, "N"	// 실행타입
+	);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,"ds_iSmsPattern=ds_ioSmsPattern:U"	// inDs
+		,""	// outDs
+		,""	// args 
+		,"lfn_AfterSmsPattern"
+		,false
+	);
+}
+]]></Script>
+</Window>

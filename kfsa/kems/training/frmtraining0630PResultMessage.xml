@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="368" Id="frmtraining0630PResultMessage" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="결과메세지팝업" Top="8" Ver="1.0" Width="510" WorkArea="true">
+		<Button ButtonStyle="TRUE" Cursor="HAND" Font="굴림,10,Bold" Height="22" Id="btnOK" ImageID="BTN_TEXT_08" Left="188" OnClick="btnOK_OnClick" Style="sty_Button" TabOrder="1" Text="확&#32;&#32;인" Top="340" Transparent="TRUE" Width="118"></Button>
+		<Image Height="32" Id="imgInfo" ImageID="IMG_INFO" Left="12" Style="sty_Image" TabOrder="2" Top="8" Transparent="TRUE" Width="32"></Image>
+		<Static Align="Center" Height="20" Id="lbInfo" Left="48" Style="sty_Label" TabOrder="3" Text="채점결과" Top="14" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" BKColor="azure" Border="Raised" Font="굴림,12,Bold" Height="35" Id="lsTitle" Left="6" TabOrder="4" Top="41" VAlign="Middle" Width="498"></Static>
+		<Static BKColor="floralwhite" Border="Flat" Font="굴림,12,Bold" Height="258" Id="lsMsg" Left="4" TabOrder="5" Top="78" Width="500"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM0010PInfoMessage.xml
+ * 설명 : 정보메세지팝업
+ * 작성일 : 2009.06.23
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+
+    gfn_Form_OnLoadCompleted(obj);
+
+    if (IsExistVar("sTitle")) {
+		if (sOverChk = "OK") {
+			lsTitle.BkColor = "azure";
+			lsMsg.LineSpacing = 10;
+		} else {
+			lsTitle.BkColor = "red";
+			lsMsg.LineSpacing = 0;
+		}
+		lsTitle.Text = sTitle;
+        lsMsg.Text = sMsg;
+    }
+}
+
+function Form_OnUnloadCompleted(obj) {
+    // to do
+
+    gfn_Form_OnUnloadCompleted(obj);
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam);
+}
+/* 공통 필수 종료 */
+
+function btnOK_OnClick(obj) {
+    Close();
+}
+]]></Script>
+</Window>

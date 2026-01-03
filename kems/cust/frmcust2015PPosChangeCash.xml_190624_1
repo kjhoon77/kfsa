@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="268" Id="frmcust2015PPosChangeCash" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="현금영수증&#32;처리/취소" TooltipFont=",0" Top="8" Ver="1.0" Width="424" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosPrintM">
+				<Contents>
+					<colinfo id="PMYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="PMMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMINPUT" size="1" summ="default" type="STRING"/>
+					<colinfo id="PMPCGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="PMPCORDERNO" size="20" summ="default" type="STRING"/>
+					<colinfo id="PMPROCDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="PMPIID" size="12" summ="default" type="STRING"/>
+					<colinfo id="PMPGMID" size="2" summ="default" type="STRING"/>
+					<colinfo id="PMPGMPK" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMBUYER" size="50" summ="default" type="STRING"/>
+					<colinfo id="PMCLAS" size="2" summ="default" type="STRING"/>
+					<colinfo id="PMPGMGUBUN" size="2" summ="default" type="STRING"/>
+					<colinfo id="PMITEM1" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMITEM2" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMITEM3" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMITEM4" size="100" summ="default" type="STRING"/>
+					<colinfo id="PMAMT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMVAT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PMPAYMENTFLAG" size="1" summ="default" type="STRING"/>
+					<colinfo id="PMRESULT" size="1" summ="default" type="STRING"/>
+					<colinfo id="PCUSERTYPE" size="1" summ="default" type="STRING"/>
+					<colinfo id="PCSOCIALBUSINESSNO" size="18" summ="default" type="STRING"/>
+					<colinfo id="PCCARDINSTALL" size="2" summ="default" type="STRING"/>
+					<colinfo id="PCCLOSEDATE" size="14" summ="default" type="STRING"/>
+					<colinfo id="PCBANKCD" size="10" summ="default" type="STRING"/>
+					<colinfo id="PMPCSEQ" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioPosCash">
+				<Contents>
+					<colinfo id="PCGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="PCORDERNO" size="20" summ="default" type="STRING"/>
+					<colinfo id="PCUSERTYPE" size="1" summ="default" type="STRING"/>
+					<colinfo id="PCTRANSACTIONDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="PCTRANSACTIONTIME" size="6" summ="default" type="STRING"/>
+					<colinfo id="PCSERIALNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PCAMT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PCVAT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="PCSOCIALBUSINESSNO" size="40" summ="default" type="STRING"/>
+					<colinfo id="PCAUTHNO" size="10" summ="default" type="STRING"/>
+					<colinfo id="PCRESPONSECODE" size="4" summ="default" type="STRING"/>
+					<colinfo id="PCRESPONSEDATE" size="14" summ="default" type="STRING"/>
+					<colinfo id="PCTRANSACTIONCODE" size="24" summ="default" type="STRING"/>
+					<colinfo id="PCPAYTYPE" size="6" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCashGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>소득공제용</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>지출증빙용</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="242" LineColor="user14" Right="420" TabOrder="3" Top="1" Type="Rectangle" Width="178"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="332" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="245" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="1" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Div BKColor="user0" Height="24" Id="divPos" Left="328" OnLoadCompleted="Form_OnLoadCompleted" OnTimer="frmCOM3010SPOS_OnTimer" OnUnloadCompleted="frmCOM3010SPOS_OnUnloadCompleted" Style="sty_Form" TabOrder="5" TabStop="FALSE" Text="Div0" Top="236" Url="COM::frmCOM3010SPOS.xml" Visible="FALSE" Width="92">
+			<Contents></Contents>
+		</Div>
+		<Shape Bottom="128" Height="88" Id="shpGubunBox4" Left="4" LineColor="user15" Right="420" TabOrder="6" Top="40" Type="Rectangle" Width="416"></Shape>
+		<Static Align="Center" Height="20" Id="lbRepay" Left="20" Style="sty_LabelGruopBox" TabOrder="7" Text="결제정보" Top="32" VAlign="Middle" Width="124"></Static>
+		<Div Height="97" Id="divCash" Left="4" TabOrder="8" Text="Div0" Top="132" Visible="FALSE" Width="416">
+			<Contents>
+				<Shape Bottom="97" Height="88" Id="Shape0" Left="0" LineColor="user15" Right="416" TabOrder="7" Top="9" Type="Rectangle" Width="416"></Shape>
+				<Static Align="Center" Height="20" Id="lbCashGubun" Left="5" Style="sty_Label" TabOrder="1" Text="현금영수증용도" Top="25" VAlign="Middle" Width="100"></Static>
+				<Static Align="Center" Height="20" Id="lbCashNo" Left="5" Style="sty_Label" TabOrder="3" Text="현금영수증번호" Top="49" VAlign="Middle" Width="100"></Static>
+				<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edCashNo" ImeMode="native" Left="109" LeftMargin="2" MaxLength="40" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="2" Top="49" Width="216"></Edit>
+				<Static Height="20" Id="lbText2" Left="106" Style="sty_Text" TabOrder="4" Text="(&apos;-&apos;제외.국세청&#32;등록된&#32;주민번호나&#32;카드번호&#32;입력)" Top="73" VAlign="Middle" Width="294"></Static>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnInit" ImageID="BTN_TEXT_COM" Left="328" OnClick="divSunap_divCash_btnInit_OnClick" Style="sty_Button" TabOrder="5" Text="초기화" Top="24" Width="85"></Button>
+				<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radCashGubun" INDEX="0" InnerDataset="ds_oCashGubun" Left="109" LeftMargin="12" OnKeyDown="gfn_EnterNextFocus" RightMargin="12" Style="sty_Radio" TabOrder="6" Top="25" Value="0" Width="216"></Radio>
+				<Static Align="Center" Height="20" Id="Static0" Left="16" Style="sty_LabelGruopBox" TabOrder="8" Text="현금영수증&#32;처리" Top="1" VAlign="Middle" Width="124"></Static>
+			</Contents>
+		</Div>
+		<Static Align="Center" Height="20" Id="lbBuyer" Left="8" Style="sty_Label" TabOrder="9" Text="구매자" Top="56" UserData="S" VAlign="Middle" Width="76"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edBuyer" ImeMode="native" Left="88" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="12" Top="56" Width="328"></Edit>
+		<Static Align="Center" Height="20" Id="lbSunapGubun" Left="8" Style="sty_Label" TabOrder="11" Text="납부방법" Top="80" UserData="S" VAlign="Middle" Width="76"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edSunapGubun" ImeMode="native" Left="88" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="14" Top="80" Width="328"></Edit>
+		<Static Align="Center" Height="20" Id="lbOrderNo" Left="8" Style="sty_Label" TabOrder="10" Text="주문번호" Top="104" UserData="S" VAlign="Middle" Width="76"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edOrderNo" ImeMode="native" Left="88" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="13" Top="104" Width="144"></Edit>
+		<Static Align="Center" Height="20" Id="lbAmount" Left="236" Style="sty_LabelStat" TabOrder="16" Text="결제금액" Top="104" VAlign="Middle" Width="76"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Font="굴림,10,Bold" Height="20" Id="medAmount" Left="316" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="15" Top="104" Width="100"></MaskEdit>
+		<Button BKColor="user17" ButtonStyle="TRUE" Cursor="HAND" Font="굴림,10,Bold" Height="32" Id="btnCash" Left="144" OnClick="btnCash_OnClick" Style="sty_Button" TabOrder="4" Text="현금영수증&#32;처리" Top="232" Width="136"></Button>
+		<Static Font="굴림,12,Bold" Height="20" Id="lbWorkFormTitle" Left="28" TabOrder="17" Text="현금영수증&#32;처리" Top="4" VAlign="Middle" Width="208"></Static>
+		<Image Height="10" Id="imgImage" ImageID="IMG_BULLET" Left="8" Style="sty_Image" TabOrder="18" Top="9" Transparent="TRUE" Width="12"></Image>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust2015PPosChangeCash.xml
+ * 설명 : 현금영수증 처리/취소
+ * 작성일 : 2009.12.15
+ * 작성자 : 김동현
+ */
+#include "LIB::COMMON.js"; // 공통 관련
+
+/*
+    sPmYear : POS년도
+    sPmMgno : POS관리번호
+*/
+
+var ls_CashGubun = "0"; //처리 전 상태 [0:현금 1:현금영수증]
+
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    lfn_SearchPos();
+
+    switch (ds_ioPosPrintM.GetColumn(0, "PMPAYMENTFLAG")) {
+        case "0": //현금
+        case "3": //가상계좌
+            ls_CashGubun = "0";
+            divCash.Visible = true;
+            btnCash.Text = "현금영수증 처리";
+            lbWorkFormTitle.Text = "현금영수증 처리";
+            btnCash.Top = 232;
+            Window.height = 298;
+            divCash.edCashNo.SetFocus();
+            break;
+            
+        case "2": //현금영수증
+            ls_CashGubun = "1";
+            divCash.Visible = false;
+            btnCash.Text = "현금영수증 취소";
+            lbWorkFormTitle.Text = "현금영수증 취소";
+            btnCash.Top = 132;
+            Window.height = 198;
+            btnCash.SetFocus();
+            break;
+    }
+    
+}
+
+/**
+ * 폼 키 다운
+ */
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+    }
+}
+
+/**
+ * 종료버튼
+ */
+function lfn_End(obj) {
+	close();
+}
+
+
+/**
+ * POS 기본 정보 조회
+ */
+function lfn_SearchPos() {
+
+    ds_oPosPrintM.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cust:searchCust2020Pos", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioPosPrintM=ds_oPos"	// outDs
+		,"SPMYEAR=" + quote(sPmYear)
+            + " SPMMGNO=" + quote(sPmMgno)
+		,"lfn_AfterSearch"
+		,false
+		,false
+		,true
+	);
+	
+}
+
+/**
+ * 조회 후 처리
+ */
+function lfn_AfterSearch(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        gfn_Alert("현금영수증 처리를 할 수 없습니다.\n정보지원과로 문의하시기 바랍니다.");
+        return;
+    }
+
+    edBuyer.Text = ds_ioPosPrintM.GetColumn(0, "PMBUYER");
+    edSunapGubun.Text = lfn_GetSetlm(ds_ioPosPrintM.GetColumn(0, "PMPGMGUBUN"));
+    edOrderNo.Text = ds_ioPosPrintM.GetColumn(0, "PMPCORDERNO");
+    medAmount = ds_ioPosPrintM.GetColumn(0, "PMAMT");
+
+}
+
+/**
+ * 현금영수증 초기화
+ */
+function divSunap_divCash_btnInit_OnClick(obj) {
+	divCash.edCashNo.Value = "";
+}
+
+/**
+ * 현금영수증 처리/취소
+ */
+function btnCash_OnClick(obj) {
+
+    var nRtn = "";
+
+    if (ls_CashGubun == "0") {
+        nRtn = lfn_CashProc();
+    } else {
+        nRtn = lfn_Pos();
+        if (nRtn == "0" || nRtn == "1") {
+          nRtn = "OK";  
+        }
+    }
+
+    Close(nRtn);
+}
+
+/**
+ * 현금영수증 처리
+ */
+function lfn_CashProc() {
+
+    if (ls_CashGubun == "0" && gfn_isNull(divCash.edCashNo.Value)) {
+        gfn_Alert("현금영수증 번호를 입력해주십시오.");
+        return;
+    }
+
+/*
+    10	방문현금[직납]
+    11	방문카드[카드]
+    12	방문현금(영)[직납]
+    13	방문가상계좌[데이콤]
+    14	방문무통장[은납]
+    15	방문가상계좌현금(영)[데이콤]
+    16	방문무통장현금(영)[은납]
+    17	지로현금[지로납]
+    18	지로현금(영)[지로납]
+*/
+
+    var vSunapGubun = "";
+
+    switch (ds_ioPosPrintM.GetColumn(0, "PMPGMGUBUN")) {
+        case 17: //지로
+        case 18: //지로 현금영수증
+            vSunapGubun = toNumber(ds_ioPosPrintM.GetColumn(0, "PMPGMGUBUN")) + (iif(ls_CashGubun == "0", 1, -1));
+            break;
+
+        default:
+            vSunapGubun = toNumber(ds_ioPosPrintM.GetColumn(0, "PMPGMGUBUN")) + (iif(ls_CashGubun == "0", 2, -2));
+    }
+    
+    ds_ioPosCash.ClearData();
+    ds_ioPosCash.InsertRow(0);
+    
+    ds_ioPosCash.SetColumn(0, "PCGUBUN", ls_CashGubun);
+    ds_ioPosCash.SetColumn(0, "PCORDERNO", ds_ioPosPrintM.GetColumn(0, "PMPCORDERNO"));
+    ds_ioPosCash.SetColumn(0, "PCUSERTYPE", iif(ls_CashGubun == "0", divCash.radCashGubun.Value, ds_ioPosPrintM.GetColumn(0, "PCUSERTYPE")));
+    // ds_ioPosCash.SetColumn(0, "PCTRANSACTIONDATE", );
+    // ds_ioPosCash.SetColumn(0, "PCTRANSACTIONTIME", );
+    // ds_ioPosCash.SetColumn(0, "PCSERIALNO", );
+    ds_ioPosCash.SetColumn(0, "PCAMT", ds_ioPosPrintM.GetColumn(0, "PMAMT"));
+    ds_ioPosCash.SetColumn(0, "PCVAT", ds_ioPosPrintM.GetColumn(0, "PMVAT"));
+    ds_ioPosCash.SetColumn(0, "PCSOCIALBUSINESSNO", iif(ls_CashGubun == "0", divCash.edCashNo.Text, ds_ioPosPrintM.GetColumn(0, "PCSOCIALBUSINESSNO")));
+    // ds_ioPosCash.SetColumn(0, "PCAUTHNO", );
+    // ds_ioPosCash.SetColumn(0, "PCRESPONSECODE", );
+    // ds_ioPosCash.SetColumn(0, "PCRESPONSEDATE", );
+    // ds_ioPosCash.SetColumn(0, "PCTRANSACTIONCODE", );
+    // ds_ioPosCash.SetColumn(0, "PCPAYTYPE", );
+
+
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("cust:insertCust2015PosCash", "", 0, "");
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iPosCash=ds_ioPosCash:U" // inDs
+        ,""	// outDs
+        , "SPMYEAR=" + quote(sPmYear)
+            + " SPMMGNO=" + quote(sPmMgno)
+            + " SPMPGMGUBUN=" + quote(vSunapGubun)// args 
+        ,"lfn_AfterCall"
+        ,false
+        ,false
+        ,true
+    );
+	
+	var sPos = lfn_Pos();
+	
+	if (sPos == "3" || sPos == "4") { // 실패시 Rollback
+        tit_clearActionInfo();
+        tit_addSingleActionInfo("cust:deleteCust2015PosCash", "", 0, "");
+        tit_callService(
+            ""
+            ,""
+            ,"ds_iPosCash=ds_ioPosPrintM:U" // inDs
+            ,""	// outDs
+            ,""
+            ,"lfn_AfterCall"
+            ,false
+            ,false
+            ,true
+        );
+        return "FAIL";
+	}
+	
+	return "OK";
+}
+
+/**
+ * POS 처리
+ */
+function lfn_Pos() {
+
+    divPos.ds_ioPosInput.ClearData();
+    divPos.ds_ioPosInput.InsertRow(0);
+    divPos.ds_ioPosInput.SetColumn(0, "PMYEAR", sPmYear);
+    divPos.ds_ioPosInput.SetColumn(0, "PMMGNO", sPmMgno);
+    divPos.ds_ioPosInput.SetColumn(0, "PRMGUBPMPGMIDUN", ds_ioPosPrintM.GetColumn(0, "PMPCGUBUN"));
+    divPos.ds_ioPosInput.SetColumn(0, "LGD_METHOD", ls_CashGubun); // 수납환불구분(수납0,환불1)
+    divPos.ds_ioPosInput.SetColumn(0, "STATUS", "4"); // 초기저장시 4
+    divPos.ds_ioPosInput.SetColumn(0, "CASHFLAG", iif(ls_CashGubun == "0", "Y", "N"));
+    
+    var ls_RetPos = Dialog("COM::frmCOM3001PPOSProgressBar.xml", "", 300, 123, "TitleBar=false", -1, -1);
+    
+    var ls_PosResultCode = divPos.ds_ioPosOutput.GetColumn(0, "MI_RSCODE"); // 결과코드
+    
+    switch (ls_PosResultCode) {
+    
+        case "0": //데이콤 성공, 안전원 성공
+            gfn_Alert("정상적으로 처리되었습니다.");
+            break;
+            
+        case "1": //데이콤 성공, 안전원 실패
+            gfn_Alert(btnCash.Text + "는 되었으나 데이터가 반영되지 않았습니다.\n정보지원과로 문의하시기 바랍니다.");
+            break;
+            
+        case "3": //데이콤 실패, 안전원 성공
+        case "4": //데이콤 실패, 안전원 실패
+            gfn_Alert(btnCash.Text + "를 실패 하였습니다.\n정보지원과로 문의하시기 바랍니다.");
+            break;
+            
+        default: //알 수 없음.
+            gfn_Alert("알 수 없는 전산 오류입니다.\n정보지원과로 문의하시기 바랍니다.");
+            break;
+    }
+    
+    return ls_PosResultCode;
+}
+
+/**
+ * 기타 TRANSACTION 처리 후
+ */
+function lfn_AfterCall(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+]]></Script>
+</Window>

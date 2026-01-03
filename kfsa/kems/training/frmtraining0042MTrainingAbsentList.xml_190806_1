@@ -1,0 +1,585 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmtraining0042MTrainingAbsentList" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="강습출결현황" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oTrainingAbsent">
+				<Contents>
+					<colinfo id="ABSENTDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="ABSENTDAY" size="5" summ="default" type="STRING"/>
+					<colinfo id="ADAY1" size="1" summ="default" type="STRING"/>
+					<colinfo id="ADAY2" size="1" summ="default" type="STRING"/>
+					<colinfo id="ADAY3" size="1" summ="default" type="STRING"/>
+					<colinfo id="ADAY4" size="1" summ="default" type="STRING"/>
+					<colinfo id="ADAY5" size="1" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="201" summ="default" type="STRING"/>
+					<colinfo id="BIRTHDAY" size="11" summ="default" type="STRING"/>
+					<colinfo id="JJIBUNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSENM" size="30" summ="default" type="STRING"/>
+					<colinfo id="TJADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="TJADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="TJPERSONNM" size="100" summ="default" type="STRING"/>
+					<colinfo id="PERSONKEY" size="10" summ="default" type="STRING"/>
+					<colinfo id="TOENDDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="TOHJUBSUNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TOMGJIBUCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="TOSTARTDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="TOTRAININGORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="TOYEAR" size="4" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSearchGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>ORDER</CD>
+						<DATA>회차조회</DATA>
+					</record>
+					<record>
+						<CD>DATE</CD>
+						<DATA>일자조회</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oTrainingAbsentTemp">
+				<Contents>
+					<colinfo id="ABSENTDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="ABSENTDAY" size="5" summ="default" type="STRING"/>
+					<colinfo id="ADAY1" size="1" summ="default" type="STRING"/>
+					<colinfo id="ADAY2" size="1" summ="default" type="STRING"/>
+					<colinfo id="ADAY3" size="1" summ="default" type="STRING"/>
+					<colinfo id="ADAY4" size="1" summ="default" type="STRING"/>
+					<colinfo id="ADAY5" size="1" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="201" summ="default" type="STRING"/>
+					<colinfo id="BIRTHDAY" size="11" summ="default" type="STRING"/>
+					<colinfo id="JJIBUNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSECD" size="2" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSENM" size="30" summ="default" type="STRING"/>
+					<colinfo id="TJADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="TJADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="TJPERSONNM" size="100" summ="default" type="STRING"/>
+					<colinfo id="TJPERSONKEY" size="10" summ="default" type="STRING"/>
+					<colinfo id="TOENDDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="TOHJUBSUNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TOMGJIBUCD" size="2" summ="default" type="STRING"/>
+					<colinfo id="TOSTARTDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="TOTRAININGORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="TOYEAR" size="4" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="52" Height="52" Id="shpBtnBox" Left="354" LineColor="user14" Right="796" TabOrder="1" Top="0" Type="Rectangle" Width="442"></Shape>
+		<Shape Bottom="84" Height="28" Id="shpGubunBox" Left="4" LineColor="user15" Right="796" TabOrder="29" Top="56" Type="Rectangle" Width="792"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="27" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="140">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="722" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="25" Top="88" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="358" OnClick="lfn_Search" Style="sty_Button" TabOrder="2" ToolTipText="조회" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="445" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="3" ToolTipText="입력&#32;초기화" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="533" OnClick="btnToExcel_OnClick" Style="sty_Button" TabOrder="4" ToolTipText="엑셀로&#32;저장" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="620" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="5" ToolTipText="화면&#32;출력" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="707" OnClick="lfn_End" Style="sty_Button" TabOrder="6" ToolTipText="닫기" Top="3" Width="85"></Button>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edTrainingOrderStart" ImeMode="native" Left="692" LeftMargin="2" MaxLength="3" Number="TRUE" OnChanged="lfn_SearchTrainingAbsent" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="edTrainingOrder_OnKillFocus" Style="sty_Edit" TabOrder="17" Top="60" UserData="S:회차" Width="28"></Edit>
+		<Static Align="Center" Height="20" Id="lbTrainingOrder" Left="600" Style="sty_Label" TabOrder="16" Text="회차" Top="60" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbCourse" Left="324" Style="sty_Label" TabOrder="14" Text="직능" Top="60" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_oCourse" Left="415" OnChanged="lfn_SearchTrainingAbsent" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="15" Top="59" UserData="S:직능" Width="182"></Combo>
+		<Static Align="Center" Height="20" Id="lbAbsentCnt" Left="192" Style="sty_LabelStat" TabOrder="22" Text="결강자수" Top="88" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medAbsenCnt" Left="284" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="23" Top="88" UserData="S" Width="88"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbTrainingYear" Left="191" Style="sty_Label" TabOrder="12" Text="년도" Top="60" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edTrainingYear" ImeMode="native" Left="283" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="13" Top="60" UserData="I:년도" Width="36"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_TEXT_07" Left="423" OnClick="lfn_Print" Style="sty_Button" TabOrder="7" Text="결강자목록출력" ToolTipText="결강자목록출력" Top="27" Width="104"></Button>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="10" Text="지부" Top="60" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="99" OnChanged="lfn_SearchTrainingAbsent" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="11" Top="59" UserData="I:지부" Width="88"></Combo>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oTrainingAbsent" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="584" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="472" Id="gdTrainingAbsent" InputPanel="FALSE" Left="4" LineColor="default" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="796" RowHeight="20" Style="sty_Grid" TabOrder="26" TabStop="true" Top="112" UseDBuff="true" UsePopupMenu="true" UserData="결강자목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="NORMAL">
+					<columns>
+						<col width="120"/>
+						<col width="40"/>
+						<col width="70"/>
+						<col width="50"/>
+						<col width="90"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="190"/>
+						<col width="140"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" rowspan="2" SuppressAlign="Middle" text="직능">
+							<cell col="0" display="text" rowspan="2" text="직능"/>
+						</cell>
+						<cell col="1" display="text" rowspan="2" SuppressAlign="Middle" text="회차">
+							<cell col="0" display="text" rowspan="2" text="회차"/>
+						</cell>
+						<cell col="2" display="text" rowspan="2" SuppressAlign="Middle" text="접수번호">
+							<cell col="0" display="text" rowspan="2" text="접수번호"/>
+						</cell>
+						<cell col="3" display="text" rowspan="2" SuppressAlign="Middle" text="성명">
+							<cell col="0" display="text" rowspan="2" text="성명"/>
+						</cell>
+						<cell col="4" display="text" rowspan="2" SuppressAlign="Middle" text="생년월일">
+							<cell col="0" display="text" rowspan="2" text="생년월일"/>
+						</cell>
+						<cell col="10" display="text" rowspan="2" SuppressAlign="Middle" text="주소1">
+							<cell col="0" display="text" rowspan="2" text="주소1"/>
+						</cell>
+						<cell col="11" display="text" rowspan="2" SuppressAlign="Middle" text="주소2">
+							<cell col="0" display="text" rowspan="2" text="주소2"/>
+						</cell>
+						<cell align="center" col="5" display="text" row="1" text="1"/>
+						<cell align="center" col="6" display="text" row="1" text="2"/>
+						<cell align="center" col="7" display="text" row="1" text="3"/>
+						<cell align="center" col="8" display="text" row="1" text="4"/>
+						<cell align="center" col="9" display="text" row="1" text="5"/>
+						<cell col="5" colspan="5" display="text" text="결강여부">
+							<cell col="0" colspan="5" display="text" text="결강여부"/>
+						</cell>
+					</head>
+					<body>
+						<cell align="left" col="0" colid="TCCOURSECD" combocol="CD" combodataset="ds_oCourse" combotext="DATA" display="combo"/>
+						<cell align="center" col="1" colid="TOTRAININGORDER" display="text"/>
+						<cell align="center" col="2" colid="TOHJUBSUNO" display="normal"/>
+						<cell align="center" col="3" colid="TJPERSONNM" display="text"/>
+						<cell align="center" col="4" colid="BIRTHDAY" display="text"/>
+						<cell align="center" col="5" colid="ADAY1" display="checkbox" edit="checkbox" expr="decode(ADAY1,&apos;N&apos;,1,&apos;Y&apos;,0,ADAY1)"/>
+						<cell align="center" col="6" colid="ADAY2" display="checkbox" edit="checkbox" expr="decode(ADAY2,&apos;N&apos;,1,&apos;Y&apos;,0,ADAY2)"/>
+						<cell align="center" col="7" colid="ADAY3" display="checkbox" edit="checkbox" expr="decode(ADAY3,&apos;N&apos;,1,&apos;Y&apos;,0,ADAY3)"/>
+						<cell align="center" col="8" colid="ADAY4" display="checkbox" edit="checkbox" expr="decode(ADAY4,&apos;N&apos;,1,&apos;Y&apos;,0,ADAY4)"/>
+						<cell align="center" col="9" colid="ADAY5" display="checkbox" edit="checkbox" expr="decode(ADAY5,&apos;N&apos;,1,&apos;Y&apos;,0,ADAY5)"/>
+						<cell col="10" colid="TJADDR1" display="text"/>
+						<cell align="left" col="11" colid="TJADDR2" display="text"/>
+					</body>
+				</format>
+				<format id="SPECIALGRADE">
+					<columns>
+						<col width="120"/>
+						<col width="40"/>
+						<col width="70"/>
+						<col width="50"/>
+						<col width="90"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="30"/>
+						<col width="190"/>
+						<col width="140"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" rowspan="2" SuppressAlign="Middle" text="직능">
+							<cell col="0" display="text" rowspan="2" text="직능"/>
+						</cell>
+						<cell col="1" display="text" rowspan="2" SuppressAlign="Middle" text="회차">
+							<cell col="0" display="text" rowspan="2" text="회차"/>
+						</cell>
+						<cell col="2" display="text" rowspan="2" SuppressAlign="Middle" text="접수번호">
+							<cell col="0" display="text" rowspan="2" text="접수번호"/>
+						</cell>
+						<cell col="3" display="text" rowspan="2" SuppressAlign="Middle" text="성명">
+							<cell col="0" display="text" rowspan="2" text="성명"/>
+						</cell>
+						<cell col="4" display="text" rowspan="2" SuppressAlign="Middle" text="생년월일">
+							<cell col="0" display="text" rowspan="2" text="생년월일"/>
+						</cell>
+						<cell col="5" colspan="10" display="text" text="결강여부"/>
+						<cell col="15" display="text" rowspan="2" SuppressAlign="Middle" text="주소1">
+							<cell col="0" display="text" rowspan="2" text="주소1"/>
+						</cell>
+						<cell align="center" col="5" display="text" row="1" text="1"/>
+						<cell align="center" col="6" display="text" row="1" text="2"/>
+						<cell align="center" col="7" display="text" row="1" text="3"/>
+						<cell align="center" col="8" display="text" row="1" text="4"/>
+						<cell align="center" col="9" display="text" row="1" text="5"/>
+						<cell align="center" col="10" display="text" row="1" text="6"/>
+						<cell align="center" col="11" display="text" row="1" text="7"/>
+						<cell align="center" col="12" display="text" row="1" text="8"/>
+						<cell align="center" col="13" display="text" row="1" text="9"/>
+						<cell align="center" col="14" display="text" row="1" text="10"/>
+						<cell col="16" display="text" rowspan="2" SuppressAlign="Middle" text="주소2">
+							<cell col="0" display="text" rowspan="2" text="주소2"/>
+						</cell>
+					</head>
+					<body>
+						<cell align="left" col="0" colid="TCCOURSECD" combocol="CD" combodataset="ds_oCourse" combotext="DATA" display="combo"/>
+						<cell align="center" col="1" colid="TOTRAININGORDER" display="text"/>
+						<cell align="center" col="2" colid="TOHJUBSUNO" display="normal"/>
+						<cell align="center" col="3" colid="TJPERSONNM" display="text"/>
+						<cell align="center" col="4" colid="BIRTHDAY" display="text"/>
+						<cell align="center" col="5" colid="ADAY1" display="checkbox" edit="checkbox" expr="decode(ADAY1,&apos;N&apos;,1,&apos;Y&apos;,0,ADAY1)"/>
+						<cell align="center" col="6" colid="ADAY2" display="checkbox" edit="checkbox" expr="decode(ADAY2,&apos;N&apos;,1,&apos;Y&apos;,0,ADAY2)"/>
+						<cell align="center" col="7" colid="ADAY3" display="checkbox" edit="checkbox" expr="decode(ADAY3,&apos;N&apos;,1,&apos;Y&apos;,0,ADAY3)"/>
+						<cell align="center" col="8" colid="ADAY4" display="checkbox" edit="checkbox" expr="decode(ADAY4,&apos;N&apos;,1,&apos;Y&apos;,0,ADAY4)"/>
+						<cell align="center" col="9" colid="ADAY5" display="checkbox" edit="checkbox" expr="decode(ADAY5,&apos;N&apos;,1,&apos;Y&apos;,0,ADAY5)"/>
+						<cell align="center" col="10" colid="ADAY6" display="checkbox" edit="checkbox" expr="decode(ADAY6,&apos;N&apos;,1,&apos;Y&apos;,0,ADAY6)"/>
+						<cell align="center" col="11" colid="ADAY7" display="checkbox" edit="checkbox" expr="decode(ADAY7,&apos;N&apos;,1,&apos;Y&apos;,0,ADAY7)"/>
+						<cell align="center" col="12" colid="ADAY8" display="checkbox" edit="checkbox" expr="decode(ADAY8,&apos;N&apos;,1,&apos;Y&apos;,0,ADAY8)"/>
+						<cell align="center" col="13" colid="ADAY9" display="checkbox" edit="checkbox" expr="decode(ADAY10,&apos;N&apos;,1,&apos;Y&apos;,0,ADAY10)"/>
+						<cell align="center" col="14" colid="ADAY10" display="checkbox" edit="checkbox" expr="decode(ADAY5,&apos;N&apos;,1,&apos;Y&apos;,0,ADAY5)"/>
+						<cell col="15" colid="TJADDR1" display="text"/>
+						<cell align="left" col="16" colid="TJADDR2" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintJubsuList" ImageID="BTN_TEXT_07" Left="529" OnClick="lfn_PrintJubsuList" Style="sty_Button" TabOrder="8" Text="결강자명단출력" Top="27" Width="104"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintJubsuListBoard" ImageID="BTN_TEXT_11" Left="635" OnClick="lfn_PrintJubsuListBoard" Style="sty_Button" TabOrder="9" Text="결강자명단출력(게시판용)" ToolTipText="결강자명단출력(게시판용)" Top="27" Width="157"></Button>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medTotalCnt" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="21" Top="88" UserData="S" Width="88"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbTotalCnt" Left="8" Style="sty_LabelStat" TabOrder="20" Text="전체인원수" Top="88" VAlign="Middle" Width="88"></Static>
+		<Static BKColor="user3" Color="user1" Font="굴림,10,Bold" Height="16" Id="lbCyberNotice" Left="375" Style="sty_Label" TabOrder="24" Text="[혼합과정의&#32;경우&#32;사이버교육은&#32;1일차에&#32;해당합니다]" Top="90" UserData="S" VAlign="Middle" Visible="FALSE" Width="342"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edTrainingOrderEnd" ImeMode="native" Left="740" LeftMargin="2" MaxLength="3" Number="TRUE" OnChanged="lfn_SearchTrainingAbsent" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="edTrainingOrder_OnKillFocus" Style="sty_Edit" TabOrder="19" Top="60" UserData="S:회차" Width="28"></Edit>
+		<Static Align="Center" Height="20" Id="lbNumberWave" Left="725" Style="sty_Text" TabOrder="18" Text="~" Top="61" VAlign="Middle" Width="10"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0042MTrainingAbsentList.xml
+ * 설명 : 강습출결현황
+ * 작성일 : 2009.08.27
+ * 작성자 : 이규희
+ */
+
+#include "LIB::training.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    // 공통 코드 조회
+    gfn_SearchTrainingCourse("T", ds_oCourse, "Y", "선택"); // 직능 코드 조회
+    cbxCourse.Value = "22";
+    gfn_SearchJibu(cbxJibu, "Y", "선택"); // 지부 코드 조회
+    edTrainingYear.Text = left(GetDate(), 4);
+    
+    gdTrainingAbsent.Format = "NORMAL";
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdTrainingAbsent.Height = nCy - gdTrainingAbsent.Top - 4;
+        gdTrainingAbsent.Width = nCx - gdTrainingAbsent.Left - 4;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    if (!gfn_FormValidate(this)) { // 조회 Validation Check
+        return false;
+    }
+    ds_oTrainingAbsent.ClearData(); // 데이타셋 초기화
+    
+    // 조회이력을 저장한다.  
+    ls_HistoryArg = "지부=" + quote(cbxJibu.Text)
+                + ",직능=" + quote(cbxCourse.Text)
+                + ",년도=" + quote(edTrainingYear.Text)
+                + ",회차=" + quote(edTrainingOrderStart.Text+"~"+edTrainingOrderEnd.Text);
+    gfn_InsertSearchPrintHistory(
+        "S"
+        , this.ID
+        , global.mnuLeft.cbxOpenForm.Text
+        , ls_HistoryArg
+    );
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("training:searchTrainingAbsentStat", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oTrainingAbsent=ds_oTrainingAbsent"	// outDs
+		,"TOMGJIBUCD=" + quote(cbxJibu.Value)
+            + " TCCOURSECD=" + quote(cbxCourse.Value)
+            + " TOYEAR=" + quote(edTrainingYear.Text)
+            + " TOTRAININGORDERSTART=" + quote(edTrainingOrderStart.Text)
+            
+            + " TOTRAININGORDEREND=" + quote(edTrainingOrderEnd.Text)// args 
+		,"lfn_AfterSearchTrainingAbsent"
+		,false
+	);
+}
+
+/*
+ * 기능 : 결강자목록출력
+ */
+function lfn_Print(obj)
+{    
+    if (ds_oTrainingAbsentTemp.RowCount() < 1) {
+        gfn_Alert("결강자가 존재하지 않습니다.");
+        return false;
+    }
+    
+    // 출력이력을 저장한다.  
+    ls_HistoryArg = "지부=" + quote(cbxJibu.Text)
+                + ",직능=" + quote(cbxCourse.Text)
+                + ",년도=" + quote(edTrainingYear.Text)
+                + ",회차=" + quote(edTrainingOrderStart.Text+"~"+edTrainingOrderEnd.Text);
+    gfn_InsertSearchPrintHistory(
+        "P"
+        , this.ID
+        , "결강자목록출력"
+        , ls_HistoryArg
+    );
+    
+    ds_oTrainingAbsentTemp.Sort("TOHJUBSUNO:A");
+    gfn_CallReportPopup("frmtraining0042R01TrainingAbsentList.rex", "ds_oTrainingAbsentTemp", "");
+}
+
+/*
+ * 기능 : 결강자명단출력
+ */
+function lfn_PrintJubsuList(obj)
+{    
+    if (ds_oTrainingAbsentTemp.RowCount() < 1) {
+        gfn_Alert("결강자가 존재하지 않습니다.");
+        return false;
+    }
+    
+    // 출력이력을 저장한다.  
+    ls_HistoryArg = "지부=" + quote(cbxJibu.Text)
+                + ",직능=" + quote(cbxCourse.Text)
+                + ",년도=" + quote(edTrainingYear.Text)
+                + ",회차=" + quote(edTrainingOrderStart.Text+"~"+edTrainingOrderEnd.Text);
+    gfn_InsertSearchPrintHistory(
+        "P"
+        , this.ID
+        , "결강자명단출력"
+        , ls_HistoryArg
+    );
+    
+    ds_oTrainingAbsentTemp.Sort("TJPERSONNM:A");
+    gfn_CallReportPopup("frmtraining0042R02TrainingAbsentListName.rex", "ds_oTrainingAbsentTemp", "");
+}
+
+/*
+ * 기능 : 결강자명단출력(게시판용)
+ */
+function lfn_PrintJubsuListBoard(obj)
+{    
+    if (ds_oTrainingAbsentTemp.RowCount() < 1) {
+        gfn_Alert("결강자가 존재하지 않습니다.");
+        return false;
+    }
+    
+    // 출력이력을 저장한다.  
+    ls_HistoryArg = "지부=" + quote(cbxJibu.Text)
+                + ",직능=" + quote(cbxCourse.Text)
+                + ",년도=" + quote(edTrainingYear.Text)
+                + ",회차=" + quote(edTrainingOrderStart.Text+"~"+edTrainingOrderEnd.Text);
+    gfn_InsertSearchPrintHistory(
+        "P"
+        , this.ID
+        , "결강자명단출력(게시판용)"
+        , ls_HistoryArg
+    );
+    
+    ds_oTrainingAbsentTemp.Sort("TOHJUBSUNO:A");
+    gfn_CallReportPopup("frmtraining0042R03TrainingAbsentListNameBoard.rex", "ds_oTrainingAbsentTemp", "");
+}
+
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 결강자 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchTrainingAbsent(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+	// 특급소방안전관리자의 경우 그리드 포맷 변경
+	if (cbxCourse.Value == "10") {
+		
+		gdTrainingAbsent.Format = "SPECIALGRADE";
+		
+	} else {
+	
+		gdTrainingAbsent.Format = "NORMAL";
+	
+	}
+
+    medTotalCnt.Value = ds_oTrainingAbsent.GetCount();
+    gfn_SearchMessage(gdTrainingAbsent); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+        
+    var cnt = 0; // 결강자수
+	for(i = 0; i < ds_oTrainingAbsent.RowCount(); i++) {
+        if (ds_oTrainingAbsent.GetColumn(i, "ADAY1") == 'N'
+            || ds_oTrainingAbsent.GetColumn(i, "ADAY2") == 'N'
+            || ds_oTrainingAbsent.GetColumn(i, "ADAY3") == 'N'
+            || ds_oTrainingAbsent.GetColumn(i, "ADAY4") == 'N'
+            || ds_oTrainingAbsent.GetColumn(i, "ADAY5") == 'N'
+            
+            || ds_oTrainingAbsent.GetColumn(i, "ADAY6") == 'N'
+            || ds_oTrainingAbsent.GetColumn(i, "ADAY7") == 'N'
+            || ds_oTrainingAbsent.GetColumn(i, "ADAY8") == 'N'
+            || ds_oTrainingAbsent.GetColumn(i, "ADAY9") == 'N'
+            
+            || ds_oTrainingAbsent.GetColumn(i, "ADAY10") == 'N') {
+            cnt += 1; // 결강자수 카운트
+        }
+    }
+    medAbsenCnt.Value = cnt; // 결강자수 입력
+    
+    // 결강자만 뽑아서 임시 데이터셋에 저장
+    ds_oTrainingAbsentTemp.Clear();
+    ds_oTrainingAbsentTemp.Copy(ds_oTrainingAbsent);    
+    
+    for (i=ds_oTrainingAbsent.GetRowCount();i>=0;i--) {
+        if (ds_oTrainingAbsentTemp.GetColumn(i, "ADAY1") <> "N"
+            && ds_oTrainingAbsentTemp.GetColumn(i, "ADAY2") <> "N"
+            && ds_oTrainingAbsentTemp.GetColumn(i, "ADAY3") <> "N"
+            && ds_oTrainingAbsentTemp.GetColumn(i, "ADAY4") <> "N"
+            && ds_oTrainingAbsentTemp.GetColumn(i, "ADAY5") <> "N"
+            
+            && ds_oTrainingAbsentTemp.GetColumn(i, "ADAY9") <> "N"
+            && ds_oTrainingAbsentTemp.GetColumn(i, "ADAY7") <> "N"
+            && ds_oTrainingAbsentTemp.GetColumn(i, "ADAY8") <> "N"
+            && ds_oTrainingAbsentTemp.GetColumn(i, "ADAY9") <> "N"
+            
+            && ds_oTrainingAbsentTemp.GetColumn(i, "ADAY10") <> "N") {
+            
+            ds_oTrainingAbsentTemp.DeleteRow(i);
+        }
+    }
+    
+    // 혼합과정일 경우 사이버교육이 1일차임을 안내
+    if (ds_oTrainingAbsent.GetColumn(0, "TOMUNJEGUBUN") == "C") {
+    
+		lbCyberNotice.Visible = true;
+	
+	} else {
+	
+		lbCyberNotice.Visible = false;
+	
+	}
+}
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveTrainingAbsent(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    lfn_Search(); // 결강자 조회
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+
+}
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdTrainingAbsent, 0); // 멀티 정렬을 실행한다.
+}
+
+/* 회차 포커스 아웃될때 자동 0 입력 */
+function edTrainingOrder_OnKillFocus(obj) {
+	gfn_ComponentOnKillFocus(obj);
+    
+    obj.Text = iif(gfn_IsNull(obj.Text), "", lpad(obj.Text, "0", 3));    
+}
+
+function lfn_SearchTrainingAbsent() {
+    if (gfn_IsNull(cbxJibu.Value)
+            || gfn_IsNull(cbxCourse.Value)
+            || gfn_IsNull(edTrainingYear.Text)
+            || gfn_IsNull(edTrainingOrderStart.Text)
+            
+            || gfn_IsNull(edTrainingOrderEnd.Text)) {
+        return false;
+    }
+    edTrainingOrderStart.Text = iif(gfn_IsNull(edTrainingOrderStart.Text), "", lpad(edTrainingOrderStart.Text, "0", 3));
+    
+    edTrainingOrderEnd.Text = iif(gfn_IsNull(edTrainingOrderEnd.Text), "", lpad(edTrainingOrderEnd.Text, "0", 3));
+    
+	// 특급소방안전관리자의 경우 그리드 포맷 변경
+	if (cbxCourse.Value == "10") {
+		
+		gdTrainingAbsent.Format = "SPECIALGRADE";
+		
+	} else {
+	
+		gdTrainingAbsent.Format = "NORMAL";
+	
+	}
+    lfn_Search();
+}
+
+function btnToExcel_OnClick(obj) {
+    if (ds_oTrainingAbsent.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return false;
+    }
+	lfn_Excel(obj);
+}
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_3000,dsc_0008]";	// 개인정보접속기록 시스템ID  
+}
+]]></Script>
+</Window>

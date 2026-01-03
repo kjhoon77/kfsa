@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="52" Id="frmCOM8051SSettlementPOSRepay" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="결제(환불)1건DIV" Top="8" Ver="1.0" Width="792" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oPosPrintm"></Dataset>
+		</Datasets>
+		<Shape Bottom="48" Height="40" Id="shpGubunBox4" Left="0" LineColor="user15" Right="792" TabOrder="5" Top="8" Type="Rectangle" Width="792"></Shape>
+		<Static Align="Center" Height="20" Id="lbPersonNm1" Left="4" Style="sty_Label" TabOrder="2" Text="구매자" Top="24" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbOrderNo1" Left="188" Style="sty_Label" TabOrder="3" Text="주문번호" Top="24" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" BindDataset="ds_oPosPrintm" Border="Flat" Column="PMPCORDERNO" Enable="FALSE" Height="20" Id="edOrderNo1" ImeMode="native" Left="280" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="1" Top="24" UserData="S" Width="112"></Edit>
+		<Edit Align="CENTER" AutoSelect="TRUE" BindDataset="ds_oPosPrintm" Border="Flat" Column="PMBUYER" Enable="FALSE" Height="20" Id="edPersonNm1" ImeMode="native" Left="96" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="4" Top="24" UserData="S" Width="88"></Edit>
+		<Static Align="Center" Height="20" Id="lbRepayAmount1" Left="600" Style="sty_Label" TabOrder="6" Text="환불금액" Top="24" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbRepay" Left="12" Style="sty_LabelGruopBox" TabOrder="7" Text="결제&#32;(환불)" VAlign="Middle" Width="100"></Static>
+		<Static Align="Center" Height="20" Id="lbSunapGubun1" Left="396" Style="sty_Label" TabOrder="8" Text="납부방법" Top="24" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" BindDataset="ds_oPosPrintm" Border="Flat" Column="PMPAYMENTFLAGNM" Enable="FALSE" Height="20" Id="edSunapGubun1" ImeMode="native" Left="488" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="9" Top="24" UserData="S" Width="108"></Edit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_oPosPrintm" Border="Flat" Column="PMAMT" Enable="FALSE" Height="20" Id="medRepayAmount1" Left="692" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="10" Top="24" UserData="S" Width="96"></MaskEdit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM8051SSettlementPOSRepay.xml
+ * 설명 : 결제(환불)1건DIV
+ * 작성일 : 2009.08.26
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+}
+
+/*
+ * 기능 : POS 수납내역을 조회한다.
+ * parameter : 없음
+ * return value : 없음
+ */
+function lfn_SearchPosPrintm(obj) {
+    ds_oPosPrintm.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("com:searchPosPrintm", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oPosPrintm=ds_oPosPrintm"	// outDs
+		,"POSYEAR=" + quote(parent.ms_RepayPosYear)
+            + " POSMGNO=" + quote(parent.ms_RepayPosMgno)
+		,""
+		,false
+	);
+}
+]]></Script>
+</Window>

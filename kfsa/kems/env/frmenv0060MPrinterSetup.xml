@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="452" Id="frmenv0060MPrinterSetup" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="lfn_Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="출력환경설정" Top="8" Ver="1.0" Width="600" WorkArea="true">
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="5" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="300">
+			<Contents></Contents>
+		</Div>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoScrollBar="None" AutoSelect="TRUE" BindDataset="gds_ioPrintConfig" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="277" ColSelect="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="221" Id="gdPrintConfig" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" Right="596" RowHeight="20" Style="sty_Grid" TabOrder="4" TabStop="true" Top="56" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="592">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="280"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="120"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="출력물명"/>
+						<cell align="center" col="1" display="text" text="좌측여백"/>
+						<cell align="center" col="2" display="text" text="상단여백"/>
+						<cell align="center" col="3" display="text" text="프린터번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="PCNM" display="text"/>
+						<cell align="center" col="1" colid="PCLEFTMARGIN" display="number" edit="number"/>
+						<cell align="center" col="2" colid="PCTOPMARGIN" display="number" edit="number"/>
+						<cell align="center" col="3" colid="PCPRINTERNO" combocol="NO" combodataset="gds_ioPrinter" combotext="NM" display="combo" edit="combo"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSave" ImageID="BTN_COM_SAVE" Left="338" OnClick="lfn_Save" Style="sty_Button" TabOrder="3" ToolTipText="수정&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="425" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="1" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="512" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoScrollBar="None" AutoSelect="TRUE" BindDataset="gds_ioPrinter" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="449" ColSelect="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="141" Id="gdPrinter" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" Right="596" RowHeight="20" Style="sty_Grid" TabOrder="6" TabStop="true" Top="308" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="592">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="120"/>
+						<col width="467"/>
+						<col width="0"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="프린터&#32;번호"/>
+						<cell col="1" display="text" text="프린터&#32;종류&#32;선택"/>
+						<cell align="center" col="2" display="text" text="DOT&#32;프린터&#32;포트"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="NM" display="text"/>
+						<cell col="1" colid="PATH" combocol="PATH" combodataset="gds_oLocalPrinter" combotext="NM" display="combo" edit="combo"/>
+						<cell align="center" col="2" colid="PORT" combocol="PORT" combodataset="gds_oLocalPort" combotext="NM" display="combo" edit="combo"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="lbUseYn" Left="4" Style="sty_LabelGruopBox" TabOrder="7" Text="출력환경" Top="32" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static0" Left="4" Style="sty_LabelGruopBox" TabOrder="8" Text="프린터" Top="284" VAlign="Middle" Width="88"></Static>
+		<File Bottom="308" Height="24" Id="filePrintConfigFile" Left="568" Right="592" TabOrder="23" Top="284" Width="24"></File>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="335" LineColor="user14" Right="600" TabOrder="61" Top="1" Type="Rectangle" Width="265"></Shape>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmenv0060MPrinterSetup.xml
+ * 설명 : 출력환경설정
+ * 작성일 : 2009.07.22
+ * 작성자 : 장성호
+ */
+
+#include "LIB::env.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gds_ioPrinter.UpdateControl = true;
+    gds_ioPrintConfig.UpdateControl = true;
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState) {
+    if (gs_IsResizingForm == "Y") {
+
+    }
+}
+
+function lfn_Form_OnUnloadCompleted(obj) {
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    gfn_DeleteOpenedMenu(ls_FormId[0]);
+
+    gfn_Form_OnUnloadCompleted(obj);
+}
+
+/*
+ * 기능 : 저장
+ */
+function lfn_Save(obj) {
+    if (!gfn_Confirm(MSGW00060)) { // 정말로 저장 하시겠습니까?
+        return false;
+    }
+
+    filePrintConfigFile.FileName = gs_PrintConfigFileName; // 파일 위치
+
+    if (filePrintConfigFile.Open("wt")) { // 파일을 이상없이 열었을 경우
+        var ls_Text = "";
+        // 프린터6번까지 저장
+        for (var i = 0; i < 6; i++) {	    
+            ls_Text += trim(gds_ioPrinter.GetColumn(i, "NO"));
+            ls_Text += "|" + trim(gds_ioPrinter.GetColumn(i, "PATH"));
+            ls_Text += "|" + trim(gds_ioPrinter.GetColumn(i, "PORT"));
+            ls_Text += "|" + chr(13) + chr(10);
+        }
+        // 출력환경 저장
+        for (var j = 0; j < gds_ioPrintConfig.GetCount(); j++) {	    
+            ls_Text += trim(gds_ioPrintConfig.GetColumn(j, "PCCD"));
+            ls_Text += "|" + trim(gds_ioPrintConfig.GetColumn(j, "PCLEFTMARGIN"));
+            ls_Text += "|" + trim(gds_ioPrintConfig.GetColumn(j, "PCTOPMARGIN"));
+            ls_Text += "|" + trim(gds_ioPrintConfig.GetColumn(j, "PCPRINTERNO"));
+            ls_Text += "|" + chr(13) + chr(10);
+        }
+        var len = filePrintConfigFile.write(ls_Text);
+        filePrintConfigFile.close();
+    }
+}
+/* 공통 필수 종료 */
+]]></Script>
+</Window>

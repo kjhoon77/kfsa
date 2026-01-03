@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="384" Id="frmcust3030PPersonkeyInfoList" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="안전원정보확인확인팝업" Top="8" Ver="1.0" Width="784" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_iGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>조회결과선택</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>해당없음(신규)</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPersonkeyInfoList">
+				<Contents>
+					<colinfo id="BILD_SN" size="256" summ="default" type="STRING"/>
+					<colinfo id="OBJ_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="OBJ_SE_CODE_NM" size="256" summ="default" type="STRING"/>
+					<colinfo id="APNT_RLSOFC_GUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ARSON_MANAGE_PKTBUK_NO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CRQFC_CODENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="QUALFUSER_ADRES" size="256" summ="default" type="STRING"/>
+					<colinfo id="PERSONKEY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="359" Height="296" Id="Shape0" Left="4" LineColor="user15" Right="778" TabOrder="5" Top="63" Type="Rectangle" Width="774"></Shape>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oPersonkeyInfoList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="351" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="285" Id="gdList" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" OnCellDBLClick="gdList_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" OnKeyDown="gdList_OnKeyDown" Right="774" RowHeight="20" Style="sty_Grid" TabOrder="4" TabStop="true" Top="66" UseDBuff="true" UsePopupMenu="true" UserData="대상물목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="766">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="130"/>
+						<col width="89"/>
+						<col width="71"/>
+						<col width="94"/>
+						<col width="228"/>
+						<col width="90"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="대상물"/>
+						<cell align="center" col="2" display="text" text="등급"/>
+						<cell col="3" display="text" text="선임여부"/>
+						<cell col="4" display="text" text="기존선임자격"/>
+						<cell col="5" display="text" text="개인주소"/>
+						<cell col="6" display="text" text="식별키"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="number" expr="row+1"/>
+						<cell align="left" col="1" colid="OBJ_NM" display="text"/>
+						<cell align="center" col="2" colid="OBJ_SE_CODE_NM" display="text"/>
+						<cell col="3" colid="APNT_RLSOFC_GUBUN" display="text"/>
+						<cell col="4" colid="ARSON_MANAGE_PKTBUK_NO" display="text"/>
+						<cell align="left" col="5" colid="QUALFUSER_ADRES" display="text"/>
+						<cell align="left" col="6" colid="PERSONKEY" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="513" LineColor="user14" Right="778" TabOrder="6" Top="1" Type="Rectangle" Width="265"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="690" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="516" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect" ImageID="BTN_TEXT_COM" Left="603" OnClick="btnSelect_OnClick" Style="sty_Button" TabOrder="2" Text="선택" ToolTipText="선택" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Shape Bottom="60" Height="28" Id="Shape2" Left="4" LineColor="user15" Right="778" TabOrder="7" Top="32" Type="Rectangle" Width="774"></Shape>
+		<Static Align="Center" Height="20" Id="Static0" Left="8" Style="sty_Label" TabOrder="7" Text="선임자선택" Top="36" VAlign="Middle" Width="100"></Static>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="rdGubun" INDEX="0" InnerDataset="ds_iGubun" Left="116" OnChanged="rdGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="9" Top="36" UserData="S" Width="328"></Radio>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edsPNM" ImeMode="native" Left="248" LeftMargin="2" Style="sty_Edit" TabOrder="10" Top="8" Visible="FALSE" Width="58"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edsPIHIDNUM" ImeMode="native" Left="312" LeftMargin="2" Style="sty_Edit" TabOrder="11" Top="8" Visible="FALSE" Width="66"></Edit>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust3030PPersonkeyInfoList.xml
+ * 설명 : 안전원정보확인확인팝업
+ * 작성일 : 2022.11.
+ * 작성자 : jjh 
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+var ls_sPNM = ""; // 이름 
+var ls_sPIHIDNUM = ""; // 주민번호(생년월일)
+
+// 11.27 선반영
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+	rdGubun.Value = "Y";// 자격정보 (연계(Y), 직적입력 (N))
+	rdGubun_OnChanged();
+	
+    if (IsExistVar("sPNM")) {
+        ls_sPNM = sPNM; 
+    }
+    if (IsExistVar("sPIHIDNUM")) {
+        ls_sPIHIDNUM = sPIHIDNUM; 
+    }
+    /*
+	trace("ls_sPNM : " + ls_sPNM);
+	trace("ls_sPIHIDNUM : " + ls_sPIHIDNUM);
+	trace("ls_sPersonkey : " + ls_sPersonkey);
+	*/
+	edsPNM.Text = ls_sPNM;
+	edsPIHIDNUM.Text = sPIHIDNUM;
+	
+    lfn_Search();
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_oPersonkeyInfoList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cust:searchCust3030PPersonkeyInfoList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oPersonkeyInfoList=ds_oPersonkeyInfoList"	// outDs
+			,"PNM=" + quote(ls_sPNM)
+				+ " PIHIDNUM=" + quote(ls_sPIHIDNUM) // args 
+		,"lfn_AfterSearch"
+		,false
+	);	
+}
+
+/* 공통 필수 종료 */
+
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    gfn_SearchMessage(gdList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 이벤트 함수 종료 */
+
+
+/* 사용자 함수 */
+function gdList_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+    btnSelect_OnClick(obj);
+}
+
+function btnSelect_OnClick(obj) {
+
+	var arrArg = Array(8);
+	arrArg[0] = rdGubun.Value; // 조회결과선택 -결과선택(Y), 해당없음 (N)
+		
+	if(rdGubun.Value == 'N'){
+		arrArg[1] = "";		
+	}else{
+		
+		if(ds_oPersonkeyInfoList.RowCount() < 0 || ds_oPersonkeyInfoList.currow < 0 ){
+			gfn_Alert("선택 목록이 없습니다.");
+			return false;
+		}
+		
+		arrArg[1] = ds_oPersonkeyInfoList.GetColumn(ds_oPersonkeyInfoList.currow,  "PERSONKEY"); //개인식별번호
+	}
+    Close(arrArg);    
+}
+
+function gdList_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == 13) { // Enter Key
+        btnSelect_OnClick(obj);
+    }
+}
+
+
+function rdGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if(rdGubun.Value == 'N'){
+		// 선택한 정보 해제 하고 disable 
+		for(i = 0; i < ds_oPersonkeyInfoList.RowCount(); i++) {
+			if(ds_oPersonkeyInfoList.GetColumn(i, "SEL") == '1') {
+				ds_oPersonkeyInfoList.SetColumn(i, "SEL",'0');
+			}
+		}
+		gdList.Enable = false;	
+	}else{	
+		gdList.Enable = true;
+	}
+}
+
+function gdList_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	
+}
+]]></Script>
+</Window>

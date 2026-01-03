@@ -1,0 +1,172 @@
+// @ts-nocheck
+import React, { useState } from 'react';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
+import DataGridWrapper from '../../components/DataGridWrapper';
+import PageContainer from '../../components/PageContainer';
+import { useFrmcust6301PDataConnectionTankManageSave } from './useFrmcust6301PDataConnectionTankManageSave';
+import * as Frmcust6301PDataConnectionTankManageSaveData from './Frmcust6301PDataConnectionTankManageSaveData';
+
+export const Frmcust6301PDataConnectionTankManageSave = () => {
+    const hook = useFrmcust6301PDataConnectionTankManageSave();
+    const columns_gdDanger = [
+        { field: 'SEL', headerName: 'SEL', width: 23 },
+        { field: 'DSEQ', headerName: '순번', width: 33 },
+        { field: 'DPERMISSIONNO', headerName: '차량번호', width: 113 },
+        { field: 'DPERMISSIONNO', headerName: '차량년도', width: 71 },
+        { field: 'DPERMISSIONNO', headerName: '허가번호', width: 129 },
+        { field: 'DREMARK', headerName: '기타사항', width: 110 },
+    ];
+    return (
+        <PageContainer>
+
+            <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
+                <Typography variant="h5">기본정보</Typography>
+                <Stack direction="row" spacing={1}>
+                    <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
+<Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Save}>연계처리(저장)</Button>
+<Button variant="contained"  onClick={hook.btnFPISInfo_OnClick}>청시스템 상세보기</Button>
+
+                </Stack>
+            </Stack>
+<Grid container spacing={2}>
+
+                <Grid item xs={12} md={12}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "42px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbJibu ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '90px', height: '22px' }}><Typography variant="body2">지부</Typography></Box></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '145px', height: '22px', display: 'flex', alignItems: 'center', ml: '85px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>관리번호</Typography>
+                    <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Box sx={{ display: hook.isVisible_chkRegion ? undefined : 'none' }}><Box sx={{ width: '90px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_cbxRegion ? undefined : 'none' }}><FormControl size="small" fullWidth sx={{ width: '89px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" }, bgcolor: "#fff" }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust6301PDataConnectionTankManageSaveData.ds_ds_oRegion || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '493px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 80, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>대상물명</Typography>
+                    <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.OBJ_NM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_chkCourse ? undefined : 'none' }}><Box sx={{ width: '90px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_cbxCourse ? undefined : 'none' }}><FormControl size="small" fullWidth sx={{ width: '124px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" }, bgcolor: "#fff" }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust6301PDataConnectionTankManageSaveData.ds_ds_oCourse || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl></Box><Box sx={{ display: hook.isVisible_chkDetailCourse ? undefined : 'none' }}><Box sx={{ width: '90px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_cbxDetailCourse ? undefined : 'none' }}><FormControl size="small" fullWidth sx={{ width: '193px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" }, bgcolor: "#fff" }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust6301PDataConnectionTankManageSaveData.ds_ds_oDetailCourse || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '493px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 80, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>설치장소</Typography>
+                    <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.ITLPCADDR1 || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_chkBuilding ? undefined : 'none' }}><Box sx={{ width: '110px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_medFPISZipCode ? undefined : 'none' }}><TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.ITLPC_ZIP || ''} sx={{ width: '55px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Box sx={{ display: hook.isVisible_edFPISAddr2 ? undefined : 'none' }}><TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.ITLPCADDR2 || ''} sx={{ width: '410px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_chkBNM ? undefined : 'none' }}><Box sx={{ width: '90px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_edBNM ? undefined : 'none' }}><TextField size="small" fullWidth value={hook.ds_ioBuildingInfo?.BNM || ''} sx={{ width: '328px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Box sx={{ display: hook.isVisible_btnBuildingSearch ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnBuildingSearch_OnClick} sx={{ width: '79px', height: '24px' }}>대상물검색</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '493px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 80, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>소방관서</Typography>
+                    <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.CMPFRSTT_CMPN119SC_NM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Box sx={{ display: hook.isVisible_btnApply ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnApply_OnClick} sx={{ width: '29px', height: '354px' }}>적용</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_chkAddr ? undefined : 'none' }}><Box sx={{ width: '90px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_edAddr1 ? undefined : 'none' }}><TextField size="small" fullWidth value={hook.ds_ioBuildingInfo?.BADDR1 || ''} sx={{ width: '410px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '493px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 80, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>제조소 구분</Typography>
+                    <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.MNFCTRETC_SE_CODE_NM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_medZipCode ? undefined : 'none' }}><TextField size="small" fullWidth value={hook.ds_ioBuildingInfo?.BZIPCD || ''} sx={{ width: '55px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Box sx={{ display: hook.isVisible_btnSearchZipCode1 ? undefined : 'none' }}><Button variant="outlined" onClick={hook.btnSearchZipCode1_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '22px', height: '24px' }}><Search fontSize="small" /></Button></Box><Box sx={{ display: hook.isVisible_edAddr2 ? undefined : 'none' }}><TextField size="small" fullWidth value={hook.ds_ioBuildingInfo?.BADDR2 || ''} sx={{ width: '410px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '493px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 99, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>제조소상세구분</Typography>
+                    <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.MNFCTRETC_DETAIL_SE_CODE_NM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_chkFireCenter ? undefined : 'none' }}><Box sx={{ width: '90px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_cbxBonbu ? undefined : 'none' }}><FormControl size="small" fullWidth sx={{ width: '80px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" }, bgcolor: "#fff" }}><Select value={hook.ds_ioBuildingInfo?.BFIREBONBUCD || ''} displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust6301PDataConnectionTankManageSaveData.ds_ds_oFireBonbuCd || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl></Box><Box sx={{ display: hook.isVisible_cbxStation ? undefined : 'none' }}><FormControl size="small" fullWidth sx={{ width: '120px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" }, bgcolor: "#fff" }}><Select value={hook.ds_ioBuildingInfo?.BFIREUPCD || ''} displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust6301PDataConnectionTankManageSaveData.ds_ds_oFireCd || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl></Box><Box sx={{ display: hook.isVisible_cbxCenter ? undefined : 'none' }}><FormControl size="small" fullWidth sx={{ width: '212px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" }, bgcolor: "#fff" }}><Select value={hook.ds_ioBuildingInfo?.BFIRECD || ''} displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust6301PDataConnectionTankManageSaveData.ds_ds_oFireCenterCd || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static3 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '110px', height: '22px' }}><Typography variant="body2">설치자 정보</Typography></Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_chkTel ? undefined : 'none' }}><Box sx={{ width: '90px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_edTel ? undefined : 'none' }}><TextField size="small" fullWidth value={hook.ds_ioBuildingInfo?.BTEL || ''} sx={{ width: '222px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '493px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 80, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>설치자명</Typography>
+                    <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.INSTLR_NM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_chkCustomer ? undefined : 'none' }}><Box sx={{ width: '110px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '493px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 80, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>설치자법인명</Typography>
+                    <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.INSTLR_CPR_NM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_chkRegYYMM ? undefined : 'none' }}><Box sx={{ width: '90px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_medRegYYMM ? undefined : 'none' }}><TextField size="small" fullWidth value={hook.ds_ioCustomerInfo?.CREGISTERYYMM || ''} sx={{ width: '56px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Box sx={{ display: hook.isVisible_chkFeeYYMM ? undefined : 'none' }}><Box sx={{ width: '104px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_medFeeYYMM ? undefined : 'none' }}><TextField size="small" fullWidth value={hook.ds_ioCustomerInfo?.CFEEYYMM || ''} sx={{ width: '56px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '187px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>고객상태</Typography>
+                    <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select value={hook.ds_ioCustomerInfo?.CSTATUSGUBUN || ''} displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust6301PDataConnectionTankManageSaveData.ds_ds_oCustomerStatus || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                 </Stack></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '493px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 80, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>설치자주소</Typography>
+                    <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.INSTLRADDR1 || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_medFPISINSTLRZipCode ? undefined : 'none' }}><TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.INSTLR_ZIP || ''} sx={{ width: '55px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Box sx={{ display: hook.isVisible_edFPISINSTLRAddr2 ? undefined : 'none' }}><TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.INSTLRADDR2 || ''} sx={{ width: '410px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Box sx={{ display: hook.isVisible_chkFireManager ? undefined : 'none' }}><Box sx={{ width: '110px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_chkoldBuildingEndProc ? undefined : 'none' }}><Box sx={{ width: '176px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '493px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 80, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>전화번호</Typography>
+                    <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.INSTLR_TELNO || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Box sx={{ display: hook.isVisible_chkFMNM ? undefined : 'none' }}><Box sx={{ width: '90px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_edFMNM ? undefined : 'none' }}><TextField size="small" fullWidth value={hook.ds_ioManagerInfo?.FMNM || ''} sx={{ width: '108px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Box sx={{ display: hook.isVisible_chkFMResidentno ? undefined : 'none' }}><Box sx={{ width: '90px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_medFMResidentno ? undefined : 'none' }}><TextField size="small" fullWidth value={hook.ds_ioManagerInfo?.FMRESIDENTNO || ''} sx={{ width: '108px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Box sx={{ display: hook.isVisible_btnAuthResidentNo ? undefined : 'none' }}><Button variant="contained"  onClick={hook.btnAuthResidentNo_OnClick} sx={{ width: '66px', height: '24px' }}>실명인증</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_chkFMStartDate ? undefined : 'none' }}><Box sx={{ width: '90px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_calFMStartDate ? undefined : 'none' }}><DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true } }} sx={{ width: '108px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Box sx={{ display: hook.isVisible_lbFMEndStatustitle ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '90px', height: '22px' }}><Typography variant="body2">해임여부</Typography></Box></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '128px', height: '22px', display: 'flex', alignItems: 'center', ml: '2px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 30, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>해임</Typography>
+                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                 </Stack></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static17 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '110px', height: '20px' }}><Typography variant="body2">차량정보</Typography></Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '493px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 80, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>차량번호</Typography>
+                    <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.FRST_STRWRK_DE || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Box sx={{ display: hook.isVisible_Static0 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '129px', height: '22px' }}><Typography variant="body2">이동탱크부가정보</Typography></Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '493px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 80, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>차량년도</Typography>
+                    <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.COMPET_DE || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '189px', height: '22px', display: 'flex', alignItems: 'center', ml: '38px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>차량번호</Typography>
+                    <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '127px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>차량년도</Typography>
+                    <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '183px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>허가번호</Typography>
+                    <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '493px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 80, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>차종</Typography>
+                    <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.FRST_STRWRK_DE || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '505px', height: '22px', display: 'flex', alignItems: 'center', ml: '38px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>기타정보</Typography>
+                    <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '274px', height: '22px', display: 'flex', alignItems: 'center', ml: '539px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>우편청구구분</Typography>
+                    <FormControl component="fieldset"><RadioGroup row >{ (Frmcust6301PDataConnectionTankManageSaveData.ds_ds_oGubun || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} />) }</RadioGroup></FormControl>
+                 </Stack></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '494px', height: '22px', display: 'flex', alignItems: 'center', ml: '7px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 120, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>설치(변경)허가번호</Typography>
+                    <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.ITL_NO || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '493px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 80, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>허가번호</Typography>
+                    <TextField size="small" fullWidth value={hook.ds_ioDanMnfctretcInfo?.PRMISN_NO || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '147px', height: '22px', display: 'flex', alignItems: 'center', ml: '38px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>상치장소</Typography>
+                    <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Box sx={{ display: hook.isVisible_btnSearchParkZipCode ? undefined : 'none' }}><Button variant="outlined" onClick={hook.btnSearchParkZipCode_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '22px', height: '24px' }}><Search fontSize="small" /></Button></Box><Box sx={{ display: hook.isVisible_edParkAddr1 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '324px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_edParkAddr2 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '412px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '147px', height: '22px', display: 'flex', alignItems: 'center', ml: '539px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>설치자주소</Typography>
+                    <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Box sx={{ display: hook.isVisible_btnSearchInstlrZipCode ? undefined : 'none' }}><Button variant="outlined" onClick={hook.btnSearchInstlrZipCode_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '22px', height: '24px' }}><Search fontSize="small" /></Button></Box><Box sx={{ display: hook.isVisible_edInstlrAddr1 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '324px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_edInstlrAddr2 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '412px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "87px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdDanger ? undefined : 'none' }}><Paper sx={{ width: '503px', height: '119px', width: '100%', height: 'auto', minHeight: '119px' }}><DataGridWrapper rows={hook.ds_ioDangerInfo} columns={columns_gdDanger} /></Paper></Box></Stack>
+
+                    </Paper>
+                </Grid>
+</Grid>
+
+        </PageContainer>
+    );
+};
+export default Frmcust6301PDataConnectionTankManageSave;
+
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          {children}
+        </Box>
+      )}
+    </div>
+  );
+}

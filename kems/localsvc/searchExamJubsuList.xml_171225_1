@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="SimpleSelect" template="SimpleSelect" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="input" io="INPUT" reserved="YES"></dataset>
+	<dataset id="output" io="OUTPUT" reserved="YES"></dataset>
+	<member_var>
+		<var id="Select_Sql" reserved="YES" type="Sql"><![CDATA[select    VE.EJMGNO AS EJMGNO
+          , ORH.EOHJUBSUNO AS JUBSUNO
+          , VE.EJZZIPCD AS ZZIPCD
+          , VE.EJADDR1 AS ADDR1
+          , VE.EJADDR2 AS ADDR2
+          , ORH.EOHEXAMSEATNO AS EOHEXAMSEATNO
+          , ORA.EOMGGTMGNO AS EOMGJIBUCD
+          , ORA.EOTCCOURSECD AS TCCOURSECD
+          , TC.TCCOURSENM AS TCCOURSENM
+          , ORA.EOYEAR AS EOYEAR
+          , ORA.EOEXAMORDER AS EOEXAMORDER
+          , TP.TPRESIDENTNO AS TPRESIDENTNO
+          , MID(TP.TPRESIDENTNO,1,2) + '.' + MID(TP.TPRESIDENTNO,3,2) + '.' + MID(TP.TPRESIDENTNO,5,2) + '(' +  
+              IIF( MID(TP.TPRESIDENTNO,7,1) = '1', '남','여' ) + ')' AS BIRTHDAY
+          , TP.TPNM AS TPPERSONNM
+          , TP.TPTEL AS TPTEL
+          , TP.TPHPTEL AS TPHPTEL
+from   EXAMJUBSU         VE   
+     , EXAMORDERH      ORH  
+     , EXAMORDER       ORA  
+     , TRAININGPERSON  TP
+     , TRAININGCOURSE  TC
+where VE.EJMGNO        = ORH.EOHEJMGNO
+and   VE.EJLASTEOHSEQ  = ORH.EOHSEQ
+and   ORH.EOHEOMGNO    = ORA.EOMGNO
+AND   VE.EJTPMGNO      = TP.TPMGNO
+AND   TC.TCCOURSECD    = ORA.EOTCCOURSECD
+AND   TC.TCSEARCHGUBUN = 'E'
+AND		ORA.EOMGNO			 = :EOMGNO
+ORDER BY ORH.EOHJUBSUNO]]></var>
+	</member_var>
+	<member_func>
+		<function id="OnBegin()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnExecuteQueryError()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnFetchRow()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnFetchEnd()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnFetchError()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnNoDataFound()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+		<function id="OnEnd()" needs="NO" reserved="YES" state="RES_NOT_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[]]></source>
+</class2>

@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="400" Id="frmtraining0694PSMSReserveSendStatistics" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="SMS예약발송현황팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="600" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oReserveSend">
+				<Contents></Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="506" LineColor="user14" Right="597" TabOrder="61" Top="1" Type="Rectangle" Width="91"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="Button1" ImageID="BTN_MULTI_SORT" Left="520" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="2" Top="32" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="509" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oReserveSend" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="396" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" Format="Training" HeadBorder="Flat" HeadHeight="20" Height="342" Id="gdSmsStat" InputPanel="FALSE" Left="4" LineColor="default" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="596" RowHeight="20" Style="sty_Grid" TabOrder="4" TabStop="true" Top="54" UseDBuff="true" UsePopupMenu="true" UserData="문자메시지예약발송현황" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="592">
+			<contents>
+				<format id="Training">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="33"/>
+						<col width="139"/>
+						<col width="47"/>
+						<col width="65"/>
+						<col width="118"/>
+						<col width="63"/>
+						<col width="103"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="년도"/>
+						<cell align="center" col="2" display="text" text="직능"/>
+						<cell align="center" col="3" display="text" text="회차"/>
+						<cell align="center" col="4" display="text" text="접수번호"/>
+						<cell align="center" col="5" display="text" text="순번"/>
+						<cell col="6" display="text" text="직능"/>
+						<cell col="7" display="text" text="회차"/>
+						<cell col="8" display="text" text="접수번호"/>
+						<cell col="9" display="text" text="교육일자"/>
+						<cell align="center" col="10" display="text" text="수신자"/>
+						<cell align="center" col="11" display="text" text="휴대폰번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="TOMGGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="1" colid="TOYEAR" display="combo"/>
+						<cell align="center" col="2" colid="TOTCCOURSECD" combocol="CD" combodataset="ds_oCourse" combotext="DATA" display="combo"/>
+						<cell align="center" col="3" colid="TOTRAININGORDER" display="combo"/>
+						<cell align="center" col="4" colid="TOHJUBSUNO" display="text"/>
+						<cell align="center" col="5" display="text" expr="CURROW&#32;+&#32;1"/>
+						<cell align="center" col="6" colid="TCCOURSENM" display="text"/>
+						<cell align="center" col="7" colid="TOTRAININGORDER" display="text"/>
+						<cell align="center" col="8" colid="TOHJUBSUNO" display="text"/>
+						<cell align="center" col="9" colid="TDATE" display="text"/>
+						<cell align="center" col="10" colid="MRECVNM" display="text"/>
+						<cell align="center" col="11" colid="MRECVTEL" display="text"/>
+					</body>
+				</format>
+				<format id="Exam">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="33"/>
+						<col width="139"/>
+						<col width="47"/>
+						<col width="65"/>
+						<col width="118"/>
+						<col width="63"/>
+						<col width="103"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="년도"/>
+						<cell align="center" col="2" display="text" text="직능"/>
+						<cell align="center" col="3" display="text" text="회차"/>
+						<cell align="center" col="4" display="text" text="접수번호"/>
+						<cell align="center" col="5" display="text" text="순번"/>
+						<cell col="6" display="text" text="직능"/>
+						<cell col="7" display="text" text="회차"/>
+						<cell col="8" display="text" text="접수번호"/>
+						<cell col="9" display="text" text="시험일자"/>
+						<cell align="center" col="10" display="text" text="수신자"/>
+						<cell align="center" col="11" display="text" text="휴대폰번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="TOMGGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="1" colid="TOYEAR" display="combo"/>
+						<cell align="center" col="2" colid="TOTCCOURSECD" combocol="CD" combodataset="ds_oCourse" combotext="DATA" display="combo"/>
+						<cell align="center" col="3" colid="TOTRAININGORDER" display="combo"/>
+						<cell align="center" col="4" colid="TOHJUBSUNO" display="text"/>
+						<cell align="center" col="5" display="text" expr="CURROW&#32;+&#32;1"/>
+						<cell align="center" col="6" colid="TCCOURSENM" display="text"/>
+						<cell align="center" col="7" colid="TOTRAININGORDER" display="text"/>
+						<cell align="center" col="8" colid="TOHJUBSUNO" display="text"/>
+						<cell align="center" col="9" colid="TDATE" display="text"/>
+						<cell align="center" col="10" colid="MRECVNM" display="text"/>
+						<cell align="center" col="11" colid="MRECVTEL" display="text"/>
+					</body>
+				</format>
+				<format id="EduJubsu">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="33"/>
+						<col width="113"/>
+						<col width="36"/>
+						<col width="59"/>
+						<col width="89"/>
+						<col width="107"/>
+						<col width="49"/>
+						<col width="88"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="년도"/>
+						<cell align="center" col="2" display="text" text="직능"/>
+						<cell align="center" col="3" display="text" text="회차"/>
+						<cell align="center" col="4" display="text" text="접수번호"/>
+						<cell align="center" col="5" display="text" text="순번"/>
+						<cell col="6" display="text" text="직능"/>
+						<cell col="7" display="text" text="회차"/>
+						<cell col="8" display="text" text="접수번호"/>
+						<cell col="9" display="text" text="관리번호"/>
+						<cell col="10" display="text" text="교육일시"/>
+						<cell align="center" col="11" display="text" text="수신자"/>
+						<cell align="center" col="12" display="text" text="휴대폰번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="TOMGGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="1" colid="TOYEAR" display="combo"/>
+						<cell align="center" col="2" colid="TOTCCOURSECD" combocol="CD" combodataset="ds_oCourse" combotext="DATA" display="combo"/>
+						<cell align="center" col="3" colid="TOTRAININGORDER" display="combo"/>
+						<cell align="center" col="4" colid="TOHJUBSUNO" display="text"/>
+						<cell align="center" col="5" display="text" expr="CURROW&#32;+&#32;1"/>
+						<cell align="center" col="6" colid="TCCOURSENM" display="text"/>
+						<cell align="center" col="7" colid="TOTRAININGORDER" display="text"/>
+						<cell align="center" col="8" colid="TOHJUBSUNO" display="text"/>
+						<cell align="center" col="9" display="text" expr="GTDEPTNM+&apos;-&apos;+CNO"/>
+						<cell align="center" col="10" colid="TDATE" display="text"/>
+						<cell align="center" col="11" colid="MRECVNM" display="text"/>
+						<cell align="center" col="12" colid="MRECVTEL" display="text"/>
+					</body>
+				</format>
+				<format id="EduData">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="33"/>
+						<col width="106"/>
+						<col width="134"/>
+						<col width="132"/>
+						<col width="63"/>
+						<col width="103"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="년도"/>
+						<cell align="center" col="2" display="text" text="직능"/>
+						<cell align="center" col="3" display="text" text="회차"/>
+						<cell align="center" col="4" display="text" text="접수번호"/>
+						<cell align="center" col="5" display="text" text="순번"/>
+						<cell col="6" display="text" text="관리번호"/>
+						<cell col="7" display="text" text="직능"/>
+						<cell col="8" display="text" text="안내문&#32;생성일자"/>
+						<cell align="center" col="9" display="text" text="수신자"/>
+						<cell align="center" col="10" display="text" text="휴대폰번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="TOMGGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="1" colid="TOYEAR" display="combo"/>
+						<cell align="center" col="2" colid="TOTCCOURSECD" combocol="CD" combodataset="ds_oCourse" combotext="DATA" display="combo"/>
+						<cell align="center" col="3" colid="TOTRAININGORDER" display="combo"/>
+						<cell align="center" col="4" colid="TOHJUBSUNO" display="text"/>
+						<cell align="center" col="5" display="text" expr="CURROW&#32;+&#32;1"/>
+						<cell align="center" col="6" display="text" expr="GTDEPTNM+&apos;-&apos;+CNO"/>
+						<cell align="center" col="7" colid="TCCOURSENM" display="text"/>
+						<cell align="center" col="8" colid="TDATE" display="text"/>
+						<cell align="center" col="9" colid="MRECVNM" display="text"/>
+						<cell align="center" col="10" colid="MRECVTEL" display="text"/>
+					</body>
+				</format>
+				<format id="EduIssue">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="33"/>
+						<col width="106"/>
+						<col width="134"/>
+						<col width="132"/>
+						<col width="63"/>
+						<col width="103"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="년도"/>
+						<cell align="center" col="2" display="text" text="직능"/>
+						<cell align="center" col="3" display="text" text="회차"/>
+						<cell align="center" col="4" display="text" text="접수번호"/>
+						<cell align="center" col="5" display="text" text="순번"/>
+						<cell col="6" display="text" text="관리번호"/>
+						<cell col="7" display="text" text="직능"/>
+						<cell col="8" display="text" text="교육일자"/>
+						<cell align="center" col="9" display="text" text="수신자"/>
+						<cell align="center" col="10" display="text" text="휴대폰번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="TOMGGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="1" colid="TOYEAR" display="combo"/>
+						<cell align="center" col="2" colid="TOTCCOURSECD" combocol="CD" combodataset="ds_oCourse" combotext="DATA" display="combo"/>
+						<cell align="center" col="3" colid="TOTRAININGORDER" display="combo"/>
+						<cell align="center" col="4" colid="TOHJUBSUNO" display="text"/>
+						<cell align="center" col="5" display="text" expr="CURROW&#32;+&#32;1"/>
+						<cell align="center" col="6" display="text" expr="GTDEPTNM+&apos;-&apos;+CNO"/>
+						<cell align="center" col="7" colid="TCCOURSENM" display="text"/>
+						<cell align="center" col="8" colid="TDATE" display="text"/>
+						<cell align="center" col="9" colid="MRECVNM" display="text"/>
+						<cell align="center" col="10" colid="MRECVTEL" display="text"/>
+					</body>
+				</format>
+				<format id="Speaker">
+					<columns>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="0"/>
+						<col width="33"/>
+						<col width="146"/>
+						<col width="139"/>
+						<col width="81"/>
+						<col width="103"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="년도"/>
+						<cell align="center" col="2" display="text" text="직능"/>
+						<cell align="center" col="3" display="text" text="회차"/>
+						<cell align="center" col="4" display="text" text="접수번호"/>
+						<cell align="center" col="5" display="text" text="순번"/>
+						<cell col="6" display="text" text="소속"/>
+						<cell col="7" display="text" text="직위"/>
+						<cell align="center" col="8" display="text" text="수신자"/>
+						<cell align="center" col="9" display="text" text="휴대폰번호"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="TOMGGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="1" colid="TOYEAR" display="combo"/>
+						<cell align="center" col="2" colid="TOTCCOURSECD" combocol="CD" combodataset="ds_oCourse" combotext="DATA" display="combo"/>
+						<cell align="center" col="3" colid="TOTRAININGORDER" display="combo"/>
+						<cell align="center" col="4" colid="TOHJUBSUNO" display="text"/>
+						<cell align="center" col="5" display="text" expr="CURROW&#32;+&#32;1"/>
+						<cell align="center" col="6" colid="SSOSOK" display="text"/>
+						<cell align="center" col="7" colid="SJIKWI" display="text"/>
+						<cell align="center" col="8" colid="MRECVNM" display="text"/>
+						<cell align="center" col="9" colid="MRECVTEL" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0694PSMSReserveSendStatistics.xml
+ * 설명 : SMS예약발송현황팝업
+ * 작성일 : 2016.03.29
+ * 작성자 : 정현호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (IsExistVar("sBsmgno")) {
+    
+		if (sBsbccd == "105") {	// 강습-접수(일괄방송)
+		
+			gdSmsStat.Format = "Training";
+		
+		} else if (sBsbccd == "205") {	// 시험-접수(일괄방송)
+		
+			gdSmsStat.Format = "Exam";
+		
+		} else if (sBsbccd == "305") {	// 실무-접수(일괄방송)
+		
+			gdSmsStat.Format = "EduJubsu";
+		
+		} else if (sBsbccd == "306") {	// 실무-교육안내문(일괄방송)
+		
+			gdSmsStat.Format = "EduData";
+		
+		} else if (sBsbccd == "307") {	// 실무-교육이수(일괄방송)
+		
+			gdSmsStat.Format = "EduIssue";
+
+		} else if (sBsbccd == "401") {	// 초빙강사
+		
+			gdSmsStat.Format = "Speaker";
+		
+		}
+		
+            lfn_Search();
+    }
+
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_oReserveSend.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("training:searchTraining0694ReserveSendList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oReserveSend=ds_oReserveSend"	// outDs
+		,"BSMGNO=" + quote(sBsmgno) 
+		
+		 + " BSBCCD=" + quote(sBsbccd)// args
+		,"lfn_AfterSearchReserveSendList"
+		,false
+	);
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchReserveSendList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SearchMessage(gdSmsStat); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 사용자 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdSmsStat, 0); // 멀티 정렬을 실행한다.
+}
+]]></Script>
+</Window>

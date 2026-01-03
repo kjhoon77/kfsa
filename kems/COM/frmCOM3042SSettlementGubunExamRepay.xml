@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="20" Id="frmCOM3041SSettlementGubunTrainingRepay" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="결제구분강습환불" TooltipFont=",0" Top="8" Ver="1.0" Width="680" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oProcGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>B</CD>
+						<DATA>전액환불</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radProcGubun" INDEX="0" InnerDataset="ds_oProcGubun" OnChanged="radProcGubun_OnChanged" Style="sty_Radio" TabOrder="1" Value="B" Width="200"></Radio>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM3041SSettlementGubunTrainingRepay.xml
+ * 설명 : 결제구분강습환불
+ * 작성일 : 2009.09.11
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    parent.medTotalSunapFee.Value = parent.sProcAmount;
+    parent.medSunapAmount = parent.sProcAmount;
+    
+    radProcGubun_OnChanged();
+}
+
+function radProcGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+    parent.lfn_ChangeRepayDiv(radProcGubun.Value);
+
+    switch (radProcGubun.Value) { // 단위업무프로그램
+        case "B" : // 전액환불
+            parent.divSunap.lbSunapAmount.Visible = false;
+            parent.medSunapAmount.Visible = true;
+            parent.cbxRepayFee.Value = "B";
+            break;        
+    }
+}]]></Script>
+</Window>

@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="550" Id="frmprofes0004MEduMgnt" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="교육과목관리" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_Gubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>B</CD>
+						<DATA>실무교육</DATA>
+					</record>
+					<record>
+						<CD>T</CD>
+						<DATA>강습교육</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset CanColumnChange="ds_EduSubject_CanColumnChange" DataSetType="Dataset" Id="ds_EduSubject">
+				<Contents>
+					<colinfo id="MAXSJORDER" size="2" summ="default" type="STRING"/>
+					<colinfo id="INSERT_GUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSERT_COURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSERT_MUNJE" size="256" summ="default" type="STRING"/>
+					<colinfo id="INSERT_SEARCH" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SearchEduSubject">
+				<Contents>
+					<colinfo id="TCCOURSECDYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="TCSEARCHGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TCMUNJEGUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Cours">
+				<Contents>
+					<colinfo id="TCCOURSECDYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSENM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioProfesPcmgno"></Dataset>
+		</Datasets>
+		<Shape Bottom="84" Height="28" Id="shpGubunBox1" Left="4" LineColor="user15" Right="796" TabOrder="0" Top="56" Type="Rectangle" Width="792"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="0" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="284">
+			<Contents></Contents>
+		</Div>
+		<Shape Bottom="52" Height="52" Id="Shape0" Left="356" LineColor="user14" Right="796" TabOrder="13" Top="0" Type="Rectangle" Width="440"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="360" OnClick="btnSearch_OnClick" Style="sty_Button" TabOrder="10" ToolTipText="조회" Top="27" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnInput" ImageID="BTN_COM_ADD" Left="447" OnClick="btnAdd_OnClick" Style="sty_Button" TabOrder="11" ToolTipText="추가&#32;저장" Top="27" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDelete" ImageID="BTN_COM_DEL" Left="708" OnClick="lfn_Delete" Style="sty_Button" TabOrder="13" ToolTipText="삭제&#32;저장" Top="27" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSave" ImageID="BTN_TEXT_COM" Left="534" OnClick="lfn_Save" Style="sty_Button" TabOrder="12" Text="신규변경저장" ToolTipText="수정&#32;저장" Top="27" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="447" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="6" ToolTipText="입력&#32;초기화" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="lfn_localExcel" Style="sty_Button" TabOrder="7" ToolTipText="엑셀로&#32;저장" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="8" ToolTipText="화면&#32;출력" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="9" ToolTipText="닫기" Top="3" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="Static8" Left="-144" Style="sty_LabelGruopBox" TabOrder="14" Text="안전원&#32;교수&#32;관리" Top="63" VAlign="Middle" Width="120"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="720" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="15" Top="88" Transparent="TRUE" Width="74"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_EduSubject" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="547" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="435" Id="gdEduSubject" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" Right="796" RowHeight="20" Style="sty_Grid" TabOrder="15" TabStop="true" Top="112" UseDBuff="true" UsePopupMenu="true" UserData="교육목록관리" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="39"/>
+						<col width="493"/>
+						<col width="95"/>
+						<col width="95"/>
+						<col width="65"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="과목명"/>
+						<cell col="2" display="text" text="법정교육시간"/>
+						<cell col="3" display="text" text="지부교육시간"/>
+						<cell align="center" col="4" display="text" text="정렬순서"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="DATA" display="text" expr="currow+1"/>
+						<cell align="left" col="1" colid="PSTITLE" display="text" edit="normal"/>
+						<cell align="center" col="2" colid="PSLOWTIME" display="text" edit="number" limit="2"/>
+						<cell align="center" col="3" colid="PSEDUTIME" display="text" edit="number" limit="2"/>
+						<cell align="center" col="4" colid="PSORDER" display="text" edit="expr:decode(rowtype,&#32;&apos;insert&apos;,&#32;&apos;none&apos;,&#32;&apos;number&apos;)" limit="2"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="lbEduGubun" Left="8" Style="sty_Label" TabOrder="17" Text="교육구분" Top="60" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxEduGubun" INDEX="0" InnerDataset="ds_Gubun" Left="99" OnChanged="Cbo_Cours_Init" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="1" Top="59" UserData="S:교육구분" Width="170"></Combo>
+		<Static Align="Center" Height="20" Id="lbEduCours" Left="272" Style="sty_Label" TabOrder="18" Text="교육과정" Top="60" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="TCCOURSECDYN" DataColumn="TCCOURSENM" Height="20" Id="cbxEduCours" INDEX="0" InnerDataset="ds_Cours" Left="363" OnChanged="btnSearch_OnClick" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="2" Top="59" UserData="S:교육과정" Width="170"></Combo>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="360" OnClick="lfn_Print" Style="sty_Button" TabOrder="19" ToolTipText="출력" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSave_2" ImageID="BTN_TEXT_COM" Left="621" OnClick="lfn_Save_original" Style="sty_Button" TabOrder="20" Text="기존변경저장" ToolTipText="수정&#32;저장" Top="27" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmprofes0004MEduMgnt.xml
+ * 설명 : 교육과목관리
+ * 작성일 : 2009.12.06
+ * 작성자 : 이창희
+ */
+ 
+#include "LIB::profes.js"; // 공통업무 관련
+
+var stats = "";
+
+
+function Form_OnLoadCompleted(obj)
+{
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리	
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    G_AUTH              = gds_oUserInfo.GetColumn(0, "ADMINGUBUN");  ////// 권한
+    
+    cbxEduCours.Index = 1;
+    Cbo_Cours_Init();
+
+   if (G_AUTH == "SM" || G_AUTH == "PM" ) {    //////// 권한
+        btnInput.Enable      = true;
+        btnSave.Enable = true;
+        btnSave_2.Enable = true;
+        btnDelete.Enable = true;
+        
+    } else {
+        btnInput.Enable = false;
+        btnSave.Enable = false;
+        btnSave_2.Enable = false;
+        btnDelete.Enable = false;       
+    }
+}
+
+
+/*----------------------------------------------------*
+ *     콤보박스에 지부를 넣는다. 
+ *-----------------------------------------------------*/
+function Cbo_Cours_Init()
+{
+    tit_clearActionInfo(this);
+    tit_addSearchActionInfo("profes:searchProfes0004Course", false);   
+    // 조회조건을 넘긴다.
+
+	ds_SearchEduSubject.DeleteAll();	
+	ds_SearchEduSubject.AddRow();	
+	ds_SearchEduSubject.setColumn(0, "TCSEARCHGUBUN", cbxEduGubun.Value);
+    //교육구분 변경시 그리드 내용 삭제되도록[20091111_2035_수정]
+    ds_EduSubject.ClearData();
+    
+    tit_callService( 
+                  ""
+                , ""  
+                , "ds_iCourse=ds_SearchEduSubject"//inDs 
+                , "ds_Cours=ds_oCourse" //outDs
+                , ""
+                , "afterSearch_Cours"  //callBack
+                , false
+                );    
+}
+
+function afterSearch_Cours(errCode, errMsg){
+    if(errCode != 0 ){
+        alert("오류가 발생했습니다.");
+    } else{
+        var nRow = ds_Cours.insertRow(0);
+        cbxEduCours.Index = 1;
+        btnSearch_OnClick();
+    }
+}
+
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    btnInput.Enable = bStatus; // 추가 버튼
+    btnDelete.Enable = bStatus; // 삭제 버튼
+    btnSave.Enable = bStatus; // 수정&저장 버튼
+    btnSave_2.Enable = bStatus; // 수정&저장 버튼2
+}
+
+/*
+ * 기능 : 조회기능
+ * parameter : 
+ * return : 없음
+ */
+function btnSearch_OnClick(obj)
+{
+    if (cbxEduCours.Index==0) {
+        gfn_Alert("교육과정을 선택하십시오.");
+        cbxEduCours.SetFocus();
+        cbxEduCours.Index=1;
+        return false;
+    }
+    
+    // 조회이력을 저장한다.  
+    ls_HistoryArg = "교육구분=" + quote(cbxEduGubun.Text)
+                + ",교육과정=" + quote(cbxEduCours.Text)
+                ;
+    gfn_InsertSearchPrintHistory(
+        "P"
+        , this.ID
+        , global.mnuLeft.cbxOpenForm.Text
+        , ls_HistoryArg
+    );
+
+	
+	ds_EduSubject.ClearData(); // 데이타셋 초기화
+
+	tit_clearActionInfo(this);	
+	//TAB_Training.TabIndex = 1; //조회버튼 선택시  나오게 한다.
+	
+	tit_addSearchActionInfo("profes:searchProfes0004EduSubject", false);
+	tit_callService(  
+	                 ""
+	               , ""  
+	               , ""   
+	               , "ds_EduSubject=ds_oProfesList" //outDs
+	               , "TCSEARCHGUBUN= " + quote(cbxEduGubun.Value) // 교육구분(조회구분)
+                       + " TCCOURSECDYN= " + quote(cbxEduCours.Value) // 교육과정(직능 + 면제구분)
+                       + " TCMUNJEGUBUN= " + quote(substr(cbxEduCours.Value,2)) // 면제 구분
+                       + " TCCOURSECD= " + quote(substr(cbxEduCours.Value,0,2)) // 직능 구분 //args
+	               , "afterSearch"  //callBack
+	               , false
+	               ); 
+}
+
+// 조회 후 callback
+function afterSearch(errCode, errMsg){
+
+	if(errCode != 0 ){
+		alert("오류가 발생했습니다.");
+	}
+	
+}
+
+/*
+ * 교육과정 있는지 조회 한다.
+*/
+function lfn_Pspcmgno() {
+
+/////////// 교육과정이 있는지 조회를 한다.
+	ds_ioProfesPcmgno.ClearData(); // 데이타셋 초기화
+
+	tit_clearActionInfo(this);	
+	//TAB_Training.TabIndex = 1; //조회버튼 선택시  나오게 한다.
+	
+	tit_addSearchActionInfo("profes:searchProfes0004EduPcmgno", false);
+	tit_callService(  
+	                 ""
+	               , ""  
+	               , ""   //"ds_iProfesList=ds_SearchEduSubject"//inDs 
+	               , "ds_ioProfesPcmgno=ds_oProfesPcmgno" //outDs
+	               , "TCSEARCHGUBUN= " + quote(cbxEduGubun.Value) // 교육구분(조회구분)
+                       + " TCCOURSECDYN= " + quote(cbxEduCours.Value) // 교육과정(직능 + 면제구분)
+                       + " TCMUNJEGUBUN= " + quote(substr(cbxEduCours.Value,2)) // 면제 구분
+                       + " TCCOURSECD= " + quote(substr(cbxEduCours.Value,0,2)) // 직능 구분 //args
+	               , "afterSearch"  //callBack
+	               , false
+	               ,""
+	               ,true
+	               
+	               );         
+//////////	
+}
+
+
+
+/*
+ * 기능 : 행추가
+ */
+function btnAdd_OnClick(obj) {
+
+    lfn_Pspcmgno();  // 교육과정 있는지 조회한다
+
+    if(ds_ioProfesPcmgno.count  == 0 ) {
+        alert("교육과목 등록을 위한 교육과정이 없습니다. 확인 바랍니다.");
+        return false;
+    }
+
+	if (ds_EduSubject.GetRowType(ds_EduSubject.lastrow) == "insert") { 
+	    alert("추가할 과목을 입력하십시오.");
+		return false;              // 마지막 ROW 가 추가를 한 것인지 조회를 한 것인지 비교 (ROW추가 두번 이상 못하게 하기)    
+	}	
+	if (!gfn_Confirm(MSGI00070)) { // 신규 추가 하시겠습니까?\n입력완료 후 저장 버튼을 누르세요.
+        return false;
+	}    
+    
+	ds_EduSubject.AddRow(); // Dataset에 빈 Record한줄 추가
+    ds_EduSubject.SetColumn(ds_EduSubject.lastrow, "PSORDER",ds_EduSubject.GetColumn(0,"MAXPSORDER")+1);  
+    //정렬순  마지막 ROW 번호+ 1  (추가한 그리드 행에 정렬 번호를 채번하여 넣어줌)
+     	
+}
+
+/*
+ * 기능 : 행삭제
+ */
+function lfn_Delete(obj) {
+    if (ds_EduSubject.RowCount() < 1) {
+        gfn_Alert(MSGI00030);
+        return false;
+    }
+
+    if(ds_EduSubject.GetRowType(ds_EduSubject.row)=='insert'){
+        ds_EduSubject.DeleteRow(ds_EduSubject.row); // Dataset에 한줄 삭제
+    }
+    else{
+        if(!gfn_Confirm("삭제 하시겠습니까?")) { // 수정 저장 하시겠습니까?
+            return false;
+        }
+
+        tit_clearActionInfo();
+        tit_AddSingleActionInfo("profes:deleteProfes0004Subject", "", 0, "", "N");
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,"" // inDs		
+            ,""	// outDs
+            , "PSPCMGNO=" + ds_EduSubject.GetColumn(ds_EduSubject.currow, "PSPCMGNO")              
+              +" PSSEQ=" + ds_EduSubject.GetColumn(ds_EduSubject.currow, "PSSEQ")  // 
+            ,"afterDelete"
+            ,false
+            ,false
+            ,true
+        );                       
+
+    gfn_Alert(MSGI00020);
+    btnSearch_OnClick(); //재조회 타기
+    }
+}
+
+/*
+ * 기능 : 삭제 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function afterDelete(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+
+/*
+ * 기능 : 기존 변경 저장
+ */
+function lfn_Save_original(obj) {
+
+    if(ds_ioProfesPcmgno.count  == 0 ) {       
+        lfn_Pspcmgno();  // 교육과정 있는지 조회한다
+    }
+           
+    if(ds_ioProfesPcmgno.count  < 0 ) {
+        alert("교육과목 등록을 위한 교육과정이 없습니다. 확인 바랍니다.");
+        return false;
+    } 
+    var result = true;
+    for(var i=0 ; i < ds_EduSubject.RowCount() ; i++){
+        if(!(ds_EduSubject.GetRowType(i)=="normal"))  // 행(셀) 변경을 했는지 판별
+            result = false;
+    }
+    if(result){ //변경사항이 없는 경우  (TRUE) 행(셀) 변경을 하지 않을 경우 취소됨
+        Alert("추가 및 변경사항을 입력하시기 바랍니다.");
+        return false;    
+    }    
+    if(ds_EduSubject.GetRowType(ds_EduSubject.lastrow)=='insert'){  //행 추가시 변경값 여부 체크
+        
+        // 각 추가 할 때 컬럼 자리수 체크, 하나라도 null이 있으면 저장 되지 않음        
+        if(gfn_IsNull(trim(ds_EduSubject.GetColumn(ds_EduSubject.lastrow,"PSTITLE")))
+        || gfn_IsNull(trim(ds_EduSubject.GetColumn(ds_EduSubject.lastrow,"PSLOWTIME")))
+        || gfn_IsNull(trim(ds_EduSubject.GetColumn(ds_EduSubject.lastrow,"PSEDUTIME"))) ){   // 각 추가 할 때 컬럼 자리수 체크
+            
+            Alert("추가 및 변경사항을 입력하시기 바랍니다.");
+            return false;
+        }
+    }
+ 
+    if (!gfn_Confirm("[기존변경저장]하실 경우 기존 과목이 수정 됩니다.\n"                   
+                   + "  새로운 과목 입력 및 수정을 계속하시겠습니까?")) {  
+        return false;
+	} 
+ 
+	tit_clearActionInfo();
+    tit_AddSaveActionInfo(	
+        "profes:insertProfes0004Subject_original" // insert  		
+        , "profes:updateProfes0004Subject_original" // update  
+        , "" // delete
+        , "" // flag column 명
+        , "" // key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N" // 실행타입
+    );
+   
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iProfData_original=ds_EduSubject:U" // inDs		
+        ,""	// outDs
+        ,"PCMGNO_A="  + quote(ds_ioProfesPcmgno.GetColumn(0, "PCMGNO"))
+       + " PSVERSION_A=" + quote(ds_EduSubject.GetColumn(0, "PSVERSION"))
+       + " PSSEQ=" + quote(ds_EduSubject.GetColumn(0, "PSSEQ"))
+        ,"afterSave"
+        ,false
+        ,false
+		,true
+    );
+
+}
+
+/*
+ * 기능 : 신규 변경 저장
+ */
+function lfn_Save(obj) {
+/*
+    if (ds_EduSubject.RowCount() < 1) {
+        return false;
+    }
+*/
+
+    if(ds_ioProfesPcmgno.count  == 0 ) {       
+        lfn_Pspcmgno();  // 교육과정 있는지 조회한다
+    }
+           
+    if(ds_ioProfesPcmgno.count  < 0 ) {
+        alert("교육과목 등록을 위한 교육과정이 없습니다. 확인 바랍니다.");
+        return false;
+    }
+    
+   	if (!gfn_Confirm("[신규변경저장]하실 경우 기존 과목이 모두 삭제되고 입력하신 과목으로 변경됩니다.\n"
+                   + "    기존 과목을 계속 사용하실 경우는 수정 후 [기존변경저장]하시기 바랍니다.\n"
+                   + "              새로운 과목 입력 및 수정을 계속하시겠습니까?")) {  
+        return false;
+	} 
+	    
+    var result = true;
+    for(var i=0 ; i < ds_EduSubject.RowCount() ; i++){
+        if(!(ds_EduSubject.GetRowType(i)=="normal"))  // 행(셀) 변경을 했는지 판별
+            result = false;
+    }
+    if(result){ //변경사항이 없는 경우  (TRUE) 행(셀) 변경을 하지 않을 경우 취소됨
+        Alert("추가 및 변경사항을 입력하시기 바랍니다.");
+        return false;    
+    }    
+    if(ds_EduSubject.GetRowType(ds_EduSubject.lastrow)=='insert'){  //행 추가시 변경값 여부 체크
+        
+        // 각 추가 할 때 컬럼 자리수 체크, 하나라도 null이 있으면 저장 되지 않음        
+        if(gfn_IsNull(trim(ds_EduSubject.GetColumn(ds_EduSubject.lastrow,"PSTITLE")))
+        || gfn_IsNull(trim(ds_EduSubject.GetColumn(ds_EduSubject.lastrow,"PSLOWTIME")))
+        || gfn_IsNull(trim(ds_EduSubject.GetColumn(ds_EduSubject.lastrow,"PSEDUTIME"))) ){   // 각 추가 할 때 컬럼 자리수 체크
+            
+            Alert("추가 및 변경사항을 입력하시기 바랍니다.");
+            return false;
+        }
+    }
+ 
+ /////////////// 9회 이상 저장 했는지 여부
+    if(right(ds_EduSubject.GetColumn(0, "PSVERSION"), 1) == 9) {
+        alert("변경 횟수를 초과하였습니다. 담당자에게 문의 바랍니다.");
+        return false;
+    }
+ ///////////////
+ 
+ 
+    if(!Confirm("변경 및 추가된 교육과목에 대해 저장 하시겠습니까? \n" 
+              + "    변경 횟수 제한합니다.(총9회중" + ((ds_EduSubject.GetColumn(0, "PSVERSION"), 1)+1) + "회 저장됨)")){  //변경 정보에 대해 메세지 표시함
+        return false;
+    }
+
+    for(i=0; i<=ds_EduSubject.count; i++) {
+        ds_EduSubject.SetColumn(i, "SEL", "1");        
+    } 
+
+	tit_clearActionInfo();
+    tit_AddSaveActionInfo(	
+        "profes:insertProfes0004Subject" // insert  		
+        , "profes:updateProfes0004Subject" // update  
+        , "" // delete
+        , "" // flag column 명
+        , "" // key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N" // 실행타입
+    );
+   
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iProfData=ds_EduSubject:U" // inDs		
+        ,""	// outDs
+        ,"PCMGNO_A="  + quote(ds_ioProfesPcmgno.GetColumn(0, "PCMGNO"))
+       + " PSVERSION_A=" + quote(ds_EduSubject.GetColumn(0, "PSVERSION"))
+        ,"afterSave"
+        ,false
+        ,false
+		,true
+    );
+}
+
+/*
+ * 기능 : 저장 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function afterSave(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        stats="";
+        return;
+    }
+    stats="";
+    Alert("추가 및 변경사항을 저장하였습니다.");
+    btnSearch_OnClick();    
+}
+
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdEduSubject,0); // 멀티 정렬을 실행한다.
+}
+
+
+//======================================================================================================
+//엑샐인쇄 시작----------------------------------------------------------------------------------------
+function btnExcell_OnClick(obj)
+{
+	var strText = "교육과목관리";
+	setExcelGridHeader(gdListH,strText);		
+}
+
+
+//엑셀 함수 입니다. (위에 제목을 넣기 위함)
+function setExcelGridHeader(grdObj,strText){
+	create("grid","grdExcel",'BindDataSet="' + grdObj.BindDataset +'"');
+	grdExcel.contents = grdObj.Contents;	
+	var headCnt = getHeadCount(grdExcel);
+	var totCol  = grdExcel.GetColCount();
+	var irow;
+	for(var i = 0 ; i < headCnt ; i++ )	{
+		irow = toInteger(grdExcel.GetCellProp("head",i,"row"));
+		grdExcel.SetCellProp("head",i,"row",irow+1);
+	}
+	var str_temp = grdExcel.GetCurContents();
+	var str_Head = '<cell align="left" col="0" colspan="' + totCol + '" display="text" text="' + strText + '"/>';	
+	str_temp = replace(str_temp, '</head>',str_Head +'</head>');
+	grdExcel.contents = str_temp;
+	grdExcel.ExportExcelEx("sheet1","A1",false,true,true);
+	Destroy(grdExcel);
+}
+//엑셀 함수 입니다. (위에 제목을 넣기 위함)
+function getHeadCount(grdObj){
+	var strConts = grdObj.Contents;	
+	var iPos = pos(strConts,"<head>");
+	var strHead = Mid(strConts,iPos);
+	iPos = pos(strHead,"</head>");
+	strHead = Mid(strHead,0,iPos+7);
+	var spObj = split(strHead,chr(10),"webstyle");
+	return spObj.length()-2;
+}
+//엑셀인쇄 끝-----------------------------------------------------------------------------------
+//======================================================================================================
+
+
+//보고서 출력
+function lfn_Print(obj)
+{
+    if (ds_EduSubject.RowCount() < 1) {
+        gfn_Alert("출력할 데이터가 없습니다.");
+        return false;
+    }
+
+    // 조회이력을 저장한다.  
+    ls_HistoryArg = "교육구분=" + quote(cbxEduGubun.Text)
+                + ",교육과정=" + quote(cbxEduCours.Text)
+                ;
+    gfn_InsertSearchPrintHistory(
+        "P"
+        , this.ID
+        , global.mnuLeft.cbxOpenForm.Text
+        , ls_HistoryArg
+    );
+    
+	gfn_CallReportPopup("frmProfes0004R01EduMgnt.rex"
+                      , "ds_EduSubject"
+                      , "EDUGUBUN=" + cbxEduGubun.Text + "^EDUCOURS=" + cbxEduCours.Text 
+                      , true);
+}
+
+
+//화면인쇄
+function btnPrintWarmun_OnClick(obj)
+{
+	printscreen();
+}
+
+
+//데이터 셋 수정시 중복값 체크
+function ds_EduSubject_CanColumnChange(obj,nRow,strColumnID,varOldValue,varNewValue,nPivotIndex)
+{
+    //FindRow() 같은 값이 없으면 -1이 리턴
+    //          같은 값이 있으면 그 값의 row 표시
+    var change = ds_EduSubject.FindRow(strColumnID,varNewValue);
+
+    switch (strColumnId) {
+        case "SJORDER" : // 정렬순서
+            if(change == -1){
+/*  정렬순서를 최대값 +1까지만 입력하게 함
+               var maxSjorder = ds_EduSubject.GetColumn(nRow,"MAXSJORDER")+1;
+               if(maxSjorder < varNewValue){
+                    gfn_Alert(maxSjorder+"이상을 입력할 수 없습니다.");                
+                    return false;
+               }
+*/
+            }else{
+                gfn_Alert("중복된 정렬순서 입니다.");                
+                return false;
+            }
+            break;        		
+        case "SJTITLE" :  //과목명    
+            if(change == -1){
+
+            }else{
+                gfn_Alert("중복된 과목명 입니다.");                
+                return false;
+            }
+            break;        		
+
+        case "SJLOWTIME" :  //법정교육시간    
+            var odate = varOldValue;
+            var ndate = varNewValue;            
+            var lowdate = ds_EduSubject.GetColumn(nRow,"SJEDUTIME");            
+            if(ndate >= lowdate){   //변경된 법정교육시간이 클때
+            }else if(ndate < lowdate){
+                gfn_Alert("지부교육시간이 법정교육시간보다 적습니다.");
+                return false;
+            }else if(ndate.length < 1 && lowdate.length > 1){
+                gfn_Alert("지부교육시간이 법정교육시간보다 적습니다.");
+                return false;
+            }
+            break;        		
+
+        case "SJEDUTIME" :  //지부교육시간
+            var odate = varOldValue;
+            var ndate = varNewValue;            
+            var lowdate = ds_EduSubject.GetColumn(nRow,"SJLOWTIME");            
+            if(ndate >= lowdate){   //변경된 법정교육시간이 클때
+            }else if(ndate < lowdate){
+                gfn_Alert("지부교육시간이 법정교육시간보다 적습니다.");
+                return false;
+            }else if(ndate.length < 1 && lowdate.length > 1){
+                gfn_Alert("지부교육시간이 법정교육시간보다 적습니다.");
+                return false;
+            }
+            break;        		
+            default :
+        }
+}
+
+function lfn_localExcel(obj)
+{
+	if (ds_EduSubject.GetRowCount() < 1) {
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+        return false;
+    }
+	lfn_Excel(obj);
+}
+
+]]></Script>
+</Window>

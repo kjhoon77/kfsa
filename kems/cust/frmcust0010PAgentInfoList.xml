@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="264" Id="frmcust0010PAgentInfoList" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="업무대행업체&#32;검색" Top="8" Ver="1.0" Width="700" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oAgentList">
+				<Contents>
+					<colinfo id="AGADDR" size="201" summ="default" type="STRING"/>
+					<colinfo id="AGADDR1" size="100" summ="default" type="STRING"/>
+					<colinfo id="AGADDR2" size="100" summ="default" type="STRING"/>
+					<colinfo id="AGCONO" size="13" summ="default" type="STRING"/>
+					<colinfo id="AGFAX" size="16" summ="default" type="STRING"/>
+					<colinfo id="AGMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="AGMODDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="AGMODSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="AGNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="AGOWNER" size="20" summ="default" type="STRING"/>
+					<colinfo id="AGREGDATE" size="7" summ="default" type="DATE"/>
+					<colinfo id="AGREGSABUN" size="8" summ="default" type="STRING"/>
+					<colinfo id="AGREMARK" size="100" summ="default" type="STRING"/>
+					<colinfo id="AGTEL" size="16" summ="default" type="STRING"/>
+					<colinfo id="AGZIPCD" size="6" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="Shape1" Left="4" LineColor="user15" Right="292" TabOrder="8" Top="1" Type="Rectangle" Width="288"></Shape>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oAgentList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="256" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="220" Id="gdAgentList" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnCellDBLClick="gdBuidingList_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="696" RowHeight="20" Style="sty_Grid" TabOrder="4" TabStop="true" Top="36" UseDBuff="true" UsePopupMenu="true" UserData="공통코드목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="692">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="152"/>
+						<col width="50"/>
+						<col width="120"/>
+						<col width="100"/>
+						<col width="220"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="대행업체명"/>
+						<cell align="center" col="2" display="text" text="대표자"/>
+						<cell col="3" display="text" text="사업자등록번호"/>
+						<cell col="4" display="text" text="전화번호"/>
+						<cell col="5" display="text" text="주소"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="number" expr="row+1"/>
+						<cell align="left" col="1" colid="AGNM" display="text"/>
+						<cell align="center" col="2" colid="AGOWNER" display="text"/>
+						<cell align="center" col="3" colid="AGCONO" display="text"/>
+						<cell align="center" col="4" colid="AGTEL" display="text"/>
+						<cell align="left" col="5" colid="AGADDR" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="427" LineColor="user14" Right="692" TabOrder="5" Top="1" Type="Rectangle" Width="265"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="604" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="430" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect" ImageID="BTN_TEXT_COM" Left="517" OnClick="btnSelect_OnClick" Style="sty_Button" TabOrder="2" Text="선택" ToolTipText="선택" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Edit AutoSelect="TRUE" Border="Flat" Column="ADDR1" Height="20" Id="edKeyWord" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edBuildingNm_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="6" Top="5" UserData="S" Width="188"></Edit>
+		<Static Align="Center" Height="20" Id="lbSearch" Left="8" Style="sty_Label" TabOrder="7" Text="검색어" Top="5" VAlign="Middle" Width="88"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust0010PAgentInfoList.xml
+ * 설명 : 업무대행 팝업
+ * 작성일 : 2009.12.12
+ * 작성자 : 이규희
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+    // 공통 코드 조회
+
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_oAgentList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cust:searchCust0040AgentList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oAgentList=ds_oAgentList"	// outDs
+		,"AGNM=" + quote(edKeyWord.Text)
+		,"lfn_AfterSearchagentList"
+		,false
+	);
+}
+
+/* 공통 필수 종료 */
+
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchagentList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    //trace(ds_oAgentList.SaveXML());
+
+    gfn_SearchMessage(gdAgentList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 이벤트 함수 종료 */
+
+
+/* 사용자 함수 */
+
+function btnSelect_OnClick(obj) {
+    var arrArg = Array(2);
+    arrArg[0] = ds_oAgentList.GetColumn(ds_oAgentList.currow,  "AGMGNO");
+    arrArg[1] = ds_oAgentList.GetColumn(ds_oAgentList.currow,  "AGNM");		        // 대상물관리번호 
+    
+    Close(arrArg);
+}
+
+function gdBuidingList_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+    btnSelect_OnClick(obj);
+}
+
+function edBuildingNm_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam) {
+    if (nChar == 13) { // Enter Key
+        lfn_Search();
+    }
+}
+
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+]]></Script>
+</Window>

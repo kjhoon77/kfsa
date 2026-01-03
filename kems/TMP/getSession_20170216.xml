@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="543" Id="form" Left="8" PidAttrib="7" Title="New&#32;Form" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="Dataset0">
+				<Contents>
+					<colinfo id="column0" size="256" summ="default" type="STRING"/>
+					<record>
+						<column0></column0>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Button Height="113" Id="Button0" Left="32" OnClick="Button0_OnClick" TabOrder="1" Text="Button0" Top="24" Width="242"></Button>
+	</Form>
+	<Script><![CDATA[#include "LIB::COMMON.js"; // 공통 관련
+
+function Button0_OnClick(obj)
+{
+	tit_callService(
+	"AuthAction" //java 서비스
+	,"login" //메소드
+	,"" // inDs
+	,"Dataset0=ds_list" // outDs
+	,"" // args?
+	,"fn_afterSearch"
+	,true
+	);
+}
+
+function fn_afterSearch()
+{
+	trace(this.Dataset0.SaveXML());
+}
+]]></Script>
+</Window>

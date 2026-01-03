@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmsys0090MUserLoginHistoryList" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="사용자접속이력조회" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oLoginHistory">
+				<Contents>
+					<colinfo id="LHENDDATETIME" size="7" type="DATE"/>
+					<colinfo id="LHLOGINHISTORYSEQ" size="22" type="DECIMAL"/>
+					<colinfo id="LHSTARTDATETIME" size="7" type="DATE"/>
+					<colinfo id="LHUSERIP" size="40" type="STRING"/>
+					<colinfo id="PSABUN" size="20" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="356" LineColor="user14" Right="796" TabOrder="61" Top="1" Type="Rectangle" Width="440"></Shape>
+		<Shape Bottom="60" Height="28" Id="shpGubunBox" Left="4" LineColor="user15" Right="796" TabOrder="16" Top="32" Type="Rectangle" Width="792"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="13" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="300">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="359" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="446" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="2" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="lfn_Excel" Style="sty_Button" TabOrder="3" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="4" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="5" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oLoginHistory" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="584" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="496" Id="gdLoginHistory" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="796" RowHeight="20" Style="sty_Grid" TabOrder="12" TabStop="true" Top="88" UseDBuff="true" UsePopupMenu="true" UserData="사용자정보목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="70"/>
+						<col width="120"/>
+						<col width="100"/>
+						<col width="80"/>
+						<col width="100"/>
+						<col width="140"/>
+						<col width="140"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="부서코드"/>
+						<cell align="center" col="1" display="text" text="부서명"/>
+						<cell align="center" col="2" display="text" text="직책"/>
+						<cell align="center" col="3" display="text" text="사번"/>
+						<cell align="center" col="4" display="text" text="성명"/>
+						<cell align="center" col="5" display="text" text="접속시작시간"/>
+						<cell align="center" col="6" display="text" text="접속종료시간"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="PDEPTCD" display="text"/>
+						<cell align="center" col="1" colid="PDEPTNM" display="text"/>
+						<cell align="center" col="2" colid="PPOSITNNM" display="text"/>
+						<cell align="center" col="3" colid="PSABUN" display="text"/>
+						<cell align="center" col="4" colid="PPERSONNM" display="text"/>
+						<cell align="center" col="5" colid="LHSTARTDATETIME" display="text" Mask="####-##-##&#32;##:##:##"/>
+						<cell align="center" col="6" colid="LHENDDATETIME" display="text" Mask="####-##-##&#32;##:##:##"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="Button1" ImageID="BTN_MULTI_SORT" Left="720" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="11" Top="64" Transparent="TRUE" Width="74"></Button>
+		<Static Align="Center" Height="20" Id="lbUser" Left="8" Style="sty_Label" TabOrder="14" Text="사용자" Top="36" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" BKColor="user4" Border="Flat" Height="20" Id="edDeptName" ImeMode="native" Left="100" LeftMargin="2" OnFocus="edUser_OnFocus" OnKeyDown="gfn_EnterNextFocus" Readonly="TRUE" Style="sty_EditReadOnly" TabOrder="6" Top="36" UserData="S" Width="98"></Edit>
+		<Edit AutoSelect="TRUE" BKColor="user4" Border="Flat" Height="20" Id="edPositn" ImeMode="native" Left="202" LeftMargin="2" OnFocus="edUser_OnFocus" OnKeyDown="gfn_EnterNextFocus" Readonly="TRUE" Style="sty_EditReadOnly" TabOrder="7" Top="36" UserData="S" Width="92"></Edit>
+		<Edit AutoSelect="TRUE" BKColor="user4" Border="Flat" Height="20" Id="edUserId" ImeMode="native" Left="298" LeftMargin="2" OnFocus="edUser_OnFocus" OnKeyDown="gfn_EnterNextFocus" Readonly="TRUE" Style="sty_EditReadOnly" TabOrder="8" Top="36" UserData="S:사용자" Width="80"></Edit>
+		<Edit AutoSelect="TRUE" BKColor="user4" Border="Flat" Height="20" Id="edUserName" ImeMode="native" Left="382" LeftMargin="2" OnFocus="edUser_OnFocus" OnKeyDown="gfn_EnterNextFocus" Readonly="TRUE" Style="sty_EditReadOnly" TabOrder="9" Top="36" UserData="S" Width="70"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearchUser" ImageID="BTN_SEARCH" Left="456" OnClick="btnSearchUser_OnClick" Style="sty_Button" TabOrder="10" Top="35" Transparent="TRUE" Width="22"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmsys0090MUserLoginHistoryList.xml
+ * 설명 : 사용자접속이력조회
+ * 작성일 : 2009.08.11
+ * 작성자 : 장성호
+ */
+
+#include "LIB::sys.js"; // 공통업무 관련
+
+var objTree; // Tree View
+var MMENUID_LENGTH = 10; // MMENUID 생성시 사용할 자릿수
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    // 시스템권한(SM)인지 검사한다. (SM전용 프로그램임)
+    if (gds_oUserInfo.GetColumn(0, "ADMINGUBUN") <> "SM") {
+        gfn_Alert(MSGI00080); // "사용 권한이 없습니다."
+        close();
+    }
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 사용자정보을 조회한다.
+    if (ms_FormAuth == "W") { // 사용자정보에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 사용자정보
+    } else {
+        lfn_SetFormAuth(false); // 읽기 사용자정보
+    }
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdLoginHistory.Height = nCy - gdLoginHistory.Top - 4;
+    }
+}
+
+/*
+ * 기능 : 사용자정보 조회
+ */
+function lfn_Search(obj) {
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+
+    ds_oLoginHistory.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("sys:searchLoginHistory", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oLoginHistory=ds_oLoginHistory"	// outDs
+		,"PSABUN=" + quote(edUserId.Text)// args
+		,"lfn_AfterSearchLoginHistory"
+		,false
+	);
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 사용자정보 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchLoginHistory(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SearchMessage(gdLoginHistory); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+
+}
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdLoginHistory, 0); // 멀티 정렬을 실행한다.
+}
+
+function edUser_OnFocus(obj)
+{
+    btnSearchUser.SetFocus();
+}
+
+var ls_AuthDeptCd = "";
+function btnSearchUser_OnClick(obj)
+{
+    var arrUser = gfn_UserListPopup();
+    if (length(arrUser) > 0) {
+        ls_AuthDeptCd = arrUser[0];
+        edDeptName.Text = arrUser[1];
+        edPositn.Text = arrUser[3];
+        edUserId.Text = arrUser[4];
+        edUserName.Text = arrUser[5];
+    }
+}
+]]></Script>
+</Window>

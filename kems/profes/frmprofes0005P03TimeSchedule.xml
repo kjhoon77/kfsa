@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="400" Id="frmprofes0005P03TimeSchedule" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="시간표유형등록" Top="8" Ver="1.0" Width="600" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oTimeSchedule">
+				<Contents>
+					<colinfo id="TSENDTIME" size="4" summ="default" type="STRING"/>
+					<colinfo id="TSGEMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="TSHOUR" size="22" summ="default" type="STRING"/>
+					<colinfo id="TSREMARK" size="1000" summ="default" type="STRING"/>
+					<colinfo id="TSSEQ" size="22" summ="default" type="STRING"/>
+					<colinfo id="TSSTARTTIME" size="4" summ="default" type="STRING"/>
+					<colinfo id="TSTIME" size="22" summ="default" type="STRING"/>
+					<colinfo id="TSTYPE" size="1" summ="default" type="STRING"/>
+					<colinfo id="TSTYPESEQ" size="22" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="dsTimeType">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="TSTYPESEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="TSGEMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="396" Height="336" Id="Shape1" Left="4" LineColor="user15" Right="596" TabOrder="18" Top="60" Type="Rectangle" Width="592"></Shape>
+		<Shape Bottom="56" Height="52" Id="shpGubunBox1" Left="4" LineColor="user15" Right="180" TabOrder="15" Top="4" Type="Rectangle" Width="176"></Shape>
+		<Shape Bottom="53" Height="52" Id="Shape0" Left="244" LineColor="user14" Right="597" TabOrder="17" Top="1" Type="Rectangle" Width="353"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="Button1" ImageID="BTN_MULTI_SORT" Left="519" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="1" Top="64" Transparent="TRUE" Width="74"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oTimeSchedule" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="392" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="304" Id="gdTimeSchedule" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" OnCellDBLClick="gdProfessorList_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="592" RowHeight="20" Style="sty_Grid" TabOrder="2" TabStop="true" Top="88" UseDBuff="true" UsePopupMenu="true" UserData="교수목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="584">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="80"/>
+						<col width="90"/>
+						<col width="100"/>
+						<col width="97"/>
+						<col width="97"/>
+						<col width="97"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell col="1" display="text" text="시간표유형"/>
+						<cell align="center" col="2" display="text" text="강의교시"/>
+						<cell align="center" col="3" display="text" text="강의시작시간"/>
+						<cell align="center" col="4" display="text" text="강의종료시간"/>
+						<cell align="center" col="5" display="text" text="비고"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="TSGEMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="1" colid="TSTYPE" display="text" expr='TSTYPE+&quot;유형&quot;'/>
+						<cell align="center" col="2" colid="TSTIME" display="combo" expr='TSTIME+&quot;교시&quot;'/>
+						<cell align="center" col="3" colid="TSSTARTTIME" display="text" edit="normal" Mask="##:##"/>
+						<cell align="center" col="4" colid="TSENDTIME" display="text" edit="normal" Mask="##:##"/>
+						<cell align="center" col="5" colid="TSREMARK" display="text" edit="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="lbGubun" Left="8" Style="sty_Label" TabOrder="4" Text="지부" Top="8" UserData="S" VAlign="Middle" Width="72"></Static>
+		<Static Align="Center" Height="20" Id="lbProfesName" Left="8" Style="sty_Label" TabOrder="5" Text="시간표유형" Top="32" UserData="S" VAlign="Middle" Width="72"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="83" OnChanged="cbxJibu_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="6" Top="7" UserData="I" Width="93"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxType" INDEX="0" InnerDataset="dsTimeType" Left="83" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="7" Top="30" UserData="I" Width="93"></Combo>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnAdd" ImageID="BTN_TEXT_03" Left="408" OnClick="btnAdd_OnClick" Style="sty_Button" TabOrder="8" Text="행&#32;추가" Top="63" Transparent="TRUE" Width="52"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnDel" ImageID="BTN_TEXT_03" Left="464" OnClick="btnDel_OnClick" Style="sty_Button" TabOrder="9" Text="행&#32;삭제" Top="63" Transparent="TRUE" Width="52"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="247" OnClick="lfn_Search" Style="sty_Button" TabOrder="13" ToolTipText="조회" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnInput" ImageID="BTN_COM_ADD" Left="334" OnClick="lfn_Input" Style="sty_Button" TabOrder="14" ToolTipText="추가&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDelete" ImageID="BTN_COM_DEL" Left="508" OnClick="lfn_Delete" Style="sty_Button" TabOrder="16" ToolTipText="삭제&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSave" ImageID="BTN_COM_SAVE" Left="421" OnClick="lfn_Save" Style="sty_Button" TabOrder="15" ToolTipText="수정&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="334" OnClick="lfn_Excel" Style="sty_Button" TabOrder="10" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="421" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="11" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="508" OnClick="lfn_End" Style="sty_Button" TabOrder="12" ToolTipText="닫기" Top="4" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmprofes0005P03TimeSchedule.xml
+ * 설명 : 시간표유형 등록 팝업
+ * 작성일 : 2009.11.17
+ * 작성자 : 김은규
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+    
+    // 공통 코드 조회
+    gfn_SearchJibu(cbxJibu, "Y"); // 지부 코드 조회
+    cbxJibu.Index = 0;
+    lfn_SearchTeachingTimeMaster();	//시간표 유형 조회
+    
+    //lfn_Search();
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    ds_oTimeSchedule.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("profes:searchProfes0005TimeScheduleList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oTimeSchedule=ds_oTimeSchedule"	// outDs
+		,"TSJIBU=" + quote(cbxJibu.Value) // 지부
+		 + " TSTYPE=" + quote(cbxType.Value)	// 시간표 유형
+		,"lfn_AfterSearchTimeScheduleList"
+		,false
+	);
+}
+
+/*
+ * 기능 : 조회 (시간표유형 조회)
+ */
+function lfn_SearchTeachingTimeMaster() {
+
+	tit_clearActionInfo();
+	tit_addSearchActionInfo("profes:searchProfes0005TimeType", false);
+	
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"dsTimeType=dsTimeType"	// outDs
+		,"TSGEMGNO=" + quote(cbxJibu.Value) // 지부
+		,""
+		,false
+		,true
+		,true
+	);
+}
+
+/*
+ * 기능 : 입력
+ */
+function lfn_Input(obj)
+{
+	
+}
+
+/*
+ * 기능 : 저장
+ */
+function lfn_Save(obj)
+{
+	
+}
+
+/*
+ * 기능 : 삭제
+ */
+function lfn_Delete(obj)
+{
+	
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+    btnDelete.Enable = bStatus; // 삭제 버튼
+    btnSave.Enable = bStatus; // 수정&저장 버튼
+    btnInput.Enable = bStatus; // 추가 버튼
+}
+
+/*
+ * 기능 : 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchProfessorList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SearchMessage(gdProfessorList); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 사용자 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdProfessorList, 0); // 멀티 정렬을 실행한다.
+}
+
+function btnSelect_OnClick(obj)
+{
+    var arrArg = Array(6);
+		arrArg[0] = ds_oProfessorList.GetColumn(ds_oProfessorList.currow, "GUBUN"); // 교수구분
+		arrArg[1] = ds_oProfessorList.GetColumn(ds_oProfessorList.currow, "GUBUNCD"); // 교수구분코드
+		arrArg[2] = ds_oProfessorList.GetColumn(ds_oProfessorList.currow, "SABUN"); // 교수번호
+		arrArg[3] = ds_oProfessorList.GetColumn(ds_oProfessorList.currow, "NAME"); // 교수명
+		arrArg[4] = ds_oProfessorList.GetColumn(ds_oProfessorList.currow, "JIKWI"); // 직위명
+		arrArg[5] = ds_oProfessorList.GetColumn(ds_oProfessorList.currow, "JIKWICD"); // 직위코드
+		Close(arrArg);
+}
+
+function gdProfessorList_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+    btnSelect_OnClick(obj);
+}
+
+function edProfesName_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) {
+        lfn_Search();
+	}
+}
+
+function cbxJibu_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	lfn_SearchTeachingTimeMaster();
+}
+
+function btnAdd_OnClick(obj)
+{
+	var rIdx = ds_oTimeSchedule.AddRow();
+	
+	ds_oTimeSchedule.SetColumn(rIdx, "TSGEMGNO", dsParentObj.GetColumn(dsParentObj.currow, "EDULMGNO"));		//지부코드
+	ds_oTimeSchedule.SetColumn(rIdx, "TSTYPE", dsParentObj.GetColumn(dsParentObj.currow, "EDUGUBUN"));			//시간표유형
+	ds_oTimeSchedule.SetColumn(rIdx, "TSSEQ", dsParentObj.GetColumn(dsParentObj.currow, "EDUMGNO"));			//시간표순번
+	ds_oTimeSchedule.SetColumn(rIdx, "TSTYPESEQ", dsParentObj.GetColumn(dsParentObj.currow, "EDUGTMGNO"));		//시간표유형순번
+	ds_oTimeSchedule.SetColumn(rIdx, "TSTIME", dsParentObj.GetColumn(dsParentObj.currow, "EDUGTMGNO"));			//강의교시
+	ds_oTimeSchedule.SetColumn(rIdx, "TSSTARTTIME", dsParentObj.GetColumn(dsParentObj.currow, "EDUGTMGNO"));	//강의시작시간
+	ds_oTimeSchedule.SetColumn(rIdx, "TSENDTIME", dsParentObj.GetColumn(dsParentObj.currow, "EDUGTMGNO"));		//강의종료시간
+	ds_oTimeSchedule.SetColumn(rIdx, "TSREMARK", dsParentObj.GetColumn(dsParentObj.currow, "EDUGTMGNO"));		//시간표유형설명
+	ds_oTimeSchedule.SetColumn(rIdx, "TSHOUR", rIdx+1);		//강의시간
+}
+
+function btnDel_OnClick(obj)
+{
+	if(ds_oTimeSchedule.currow+1 == ds_oTimeSchedule.GetRowCount()) {
+		ds_oTimeSchedule.DeleteRow(ds_oTimeSchedule.currow);
+	} else {
+		gfn_Alert("마지막 일차 순서대로 행삭제가 가능합니다.");
+	}
+}
+
+
+]]></Script>
+</Window>

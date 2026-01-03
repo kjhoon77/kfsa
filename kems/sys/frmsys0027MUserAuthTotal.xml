@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="590" Id="frmsys0027MUserAuthTotal" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="사용자권한부여현황" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oSearchHistory">
+				<Contents>
+					<colinfo id="SHGUBUN" size="1" type="STRING"/>
+					<colinfo id="SHMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="SHPROCDATE" size="7" type="DATE"/>
+					<colinfo id="SHPROCIP" size="20" type="STRING"/>
+					<colinfo id="SHPROCSABUN" size="8" type="STRING"/>
+					<colinfo id="SHWHERE" size="1000" type="STRING"/>
+					<colinfo id="SHWORKGUBUN" size="100" type="STRING"/>
+					<colinfo id="SHWORKGUBUNNM" size="50" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oBizGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioUserList">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioDeptList">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioDeptAuthList">
+				<Contents>
+					<colinfo id="CD" size="20" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="DAAGTMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioUserAuthTotal">
+				<Contents>
+					<colinfo id="UAGTMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTDEPTNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UAPSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="UATD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UABD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UAED" size="256" summ="default" type="STRING"/>
+					<colinfo id="UACD" size="256" summ="default" type="STRING"/>
+					<colinfo id="UACOMMON" size="256" summ="default" type="STRING"/>
+					<colinfo id="UATOTAL" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="356" LineColor="user14" Right="796" TabOrder="61" Top="1" Type="Rectangle" Width="440"></Shape>
+		<Shape Bottom="88" Height="56" Id="shpGubunBox" Left="4" LineColor="user15" Right="796" TabOrder="9" Top="32" Type="Rectangle" Width="792"></Shape>
+		<Div BKColor="user0" Font="굴림,12,Bold" Height="28" Id="lbTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="7" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="300">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="360" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="lfn_Excel" Style="sty_Button" TabOrder="2" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="3" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="4" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Grid AutoEnter="TRUE" BindDataset="ds_ioUserAuthTotal" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="584" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="467" Id="gdUserAuthTotal" InputPanel="FALSE" Left="4" LineColor="default" OnCellDBLClick="gdUserAuthTotal_OnCellDblClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="796" RowHeight="20" Style="sty_Grid" TabOrder="6" TabStop="true" Top="117" UseDBuff="true" UsePopupMenu="true" UserData="사용자정보목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="792">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="139"/>
+						<col width="91"/>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="90"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" rowspan="2" text="부서명"/>
+						<cell align="center" col="1" display="text" rowspan="2" text="사용자"/>
+						<cell align="center" col="2" colspan="6" display="text" text="업무구분"/>
+						<cell col="2" display="text" row="1" text="계"/>
+						<cell col="3" display="text" row="1" text="고객"/>
+						<cell col="4" display="text" row="1" text="교육/교수"/>
+						<cell col="5" display="text" row="1" text="시험"/>
+						<cell col="6" display="text" row="1" text="교보재"/>
+						<cell col="7" display="text" row="1" text="공통메뉴"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="GTTEAMNM" display="combo"/>
+						<cell align="center" col="1" colid="PNM" display="combo"/>
+						<cell align="center" col="2" colid="UATOTAL" display="text"/>
+						<cell align="center" col="3" colid="UACD" display="text" expr="UACD"/>
+						<cell align="center" col="4" colid="UATD" display="text"/>
+						<cell align="center" col="5" colid="UAED" display="text"/>
+						<cell align="center" col="6" colid="UABD" display="text"/>
+						<cell align="center" col="7" colid="UACOMMON" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxBizGubun" INDEX="0" InnerDataset="ds_ioDeptAuthList" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="5" Top="38" UserData="S" Width="157"></Combo>
+		<Static Align="Center" Height="20" Id="lbBizGubun" Left="8" Style="sty_Label" TabOrder="10" Text="업무구분" Top="39" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbUser" Left="8" Style="sty_Label" TabOrder="11" Text="부서" Top="63" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="DEPTCD" DataColumn="DEPTNM" Editable="TRUE" Height="20" Id="cbxDeptList" INDEX="0" InnerDataset="ds_ioDeptList" Left="99" OnChanged="cbxDeptList_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="13" Top="62" UserData="S" Width="133"></Combo>
+		<Static Align="Center" Height="20" Id="Static0" Left="241" Style="sty_Label" TabOrder="12" Text="사용자" Top="63" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="PSABUN" DataColumn="NMPOSITION" Editable="TRUE" Height="20" Id="cbxUserList" ImeMode="none" INDEX="0" InnerDataset="ds_ioUserList" Left="332" OnChanged="cbxUserList_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="14" Top="62" UserData="S" Width="157"></Combo>
+		<Static Font="굴림,10,Bold" Height="17" Id="Static1" Left="15" TabOrder="15" Text="↓&#32;더블클릭&#32;시&#32;개인별&#32;권한&#32;리스트가&#32;나옵니다." Top="96" Width="358"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="447" OnClick="lfn_Print" Style="sty_Button" TabOrder="16" ToolTipText="출력" Top="4" Width="85"></Button>
+		<Static Font="굴림,10,Bold" Height="16" Id="Static2" Left="681" TabOrder="17" Text="[단위&#32;:&#32;메뉴(건)]" Top="98" Width="120"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmsys0027MSearchUserAuthList.xml
+ * 설명 : 사용자 권한조회
+ * 작성일 : 2010.07.12
+ * 작성자 : 정현호
+ */
+
+#include "LIB::sys.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 사용자정보을 조회한다.
+    if (ms_FormAuth == "W") { // 사용자정보에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 사용자정보
+    } else {
+        lfn_SetFormAuth(false); // 읽기 사용자정보
+    }
+
+	// 업무구분 정보 조회
+	lfn_DeptAdminAuthSearch();
+    // 사용자정보 조회 
+    lfn_UserSearch(gds_oUserInfo.GetColumn(0, "PDEPTCD"));
+    // 부서정보 조회 
+    lfn_DeptSearch();
+    
+    cbxDeptList.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");    
+    //cbxUserList.Value = gds_oUserInfo.GetColumn(0, "PSABUN");
+    cbxUserList.Index = 0;
+
+		
+    for(i = 0; i < ds_ioDeptAuthList.RowCount(); i++) {
+    	if (ds_ioDeptAuthList.GetColumn(i, "DAAGTMGNO") == gds_oUserInfo.GetColumn(0, "PDEPTCD")) {
+			cbxBizGubun.Value = ds_ioDeptAuthList.GetColumn(i, "CD");
+			break;
+		}
+	}
+    
+    
+    if(gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "SM") {
+		cbxBizGubun.Enable = true;
+    } else {
+		cbxBizGubun.Enable = false;
+    }
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        gdUserAuthTotal.Height = nCy - gdUserAuthTotal.Top - 4;
+        gdUserAuthTotal.Width = nCx - gdUserAuthTotal.Left - 4;
+    }
+}
+
+/*
+ * 기능 : 업무구분(부서권한) 조회
+ */
+function lfn_DeptAdminAuthSearch(obj) {
+
+    ds_ioDeptAuthList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("sys:searchDeptAdminAuthList", false);
+	
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioDeptAuthList=ds_ioDeptAuthList"	// outDs
+		,""
+		,"lfn_AfterDeptAdminAuthSearch"
+		,false
+		,false
+		,true		
+	);
+}
+
+/*
+ * 기능 : 업무구분(부서권한) 조회
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterDeptAdminAuthSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/*
+ * 기능 : 부서정보 조회
+ */
+function lfn_DeptSearch(obj) {
+
+    ds_ioDeptList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("sys:search0093DeptList", false);
+	
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioDeptList=ds_ioDeptList"	// outDs
+		,""
+		,"lfn_AfterDeptSearch"
+		,false
+	);
+}
+
+/*
+ * 기능 : 부서정보 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterDeptSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+	// 부서정보 '전체'
+	ds_ioDeptList.InsertRow(0);
+	ds_ioDeptList.SetColumn(0,"DEPTNM","전체");
+}
+
+/*
+ * 기능 : 사용자정보 조회
+ */
+function lfn_UserSearch(DEPT) {
+
+    ds_ioUserList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("sys:search0093UserList", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioUserList=ds_ioUserList"	// outDs
+		,"DEPT=" + DEPT
+		,"lfn_AfterUserSearch"
+		,false
+		,false
+		,true
+	);
+}
+
+/*
+ * 기능 : 사용자정보 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterUserSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }  
+	// 사용자정보 '전체'
+	ds_ioUserList.InsertRow(0);
+	ds_ioUserList.SetColumn(0,"NMPOSITION","전체");
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+
+    ds_ioUserAuthTotal.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("sys:search0027UserAuthTotal", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioUserAuthTotal=ds_ioUserAuthTotal"	// outDs
+		,"UAGTMGNO=" + quote(cbxDeptList.Value)// args
+			+ " UAPSABUN=" + quote(cbxUserList.Value)
+            + " DAAGUBUN=" + quote(cbxBizGubun.Value)
+		,"lfn_AfterSearchUserAuthTotal"
+		,false
+	);
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+/*
+ * 기능 : 사용자정보 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchUserAuthTotal(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    gfn_SearchMessage(gdUserAuthTotal); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+
+}
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdUserAuthTotal, 0); // 멀티 정렬을 실행한다.
+}
+
+function edUser_OnFocus(obj)
+{
+    btnSearchUser.SetFocus();
+}
+
+var ls_AuthDeptCd = "";
+function btnSearchUser_OnClick(obj)
+{
+    var arrUser = gfn_UserListPopup();
+    if (length(arrUser) > 0) {
+        ls_AuthDeptCd = arrUser[0];
+        edDeptName.Text = arrUser[1];
+        edPositn.Text = arrUser[3];
+        edUserId.Text = arrUser[4];
+        edUserName.Text = arrUser[5];
+    }
+}
+
+/*
+ * 기능 : 부서변경시 해당 부서인원 조회
+*/
+function cbxDeptList_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	lfn_UserSearch(strCode);
+	cbxUserList.Index = 0;
+}
+
+
+function cbxUserList_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	lfn_Search();
+}
+
+
+function gdUserAuthTotal_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	var sArg = "sUAGTMGNO=" + quote(ds_ioUserAuthTotal.GetColumn(nRow, "UAGTMGNO"))		+ " sUAPSABUN=" + quote(ds_ioUserAuthTotal.GetColumn(nRow, "UAPSABUN"))		+ " sDAAGUBUN=" + quote(cbxBizGubun.Value)
+		+ " sPNM=" + quote(ds_ioUserAuthTotal.GetColumn(nRow, "PNM"));	var arrNo = Dialog("sys::frmsys0027PUserAuthList.xml", sArg, 704, 560, "", -1, -1);}	
+/***   기능 : 출력   ***/
+function lfn_Print(obj){
+
+    if (ds_ioUserAuthTotal.GetCount() < 1) {
+        gfn_Alert("출력할 데이터가 없습니다.");
+        return false;
+    }
+
+    var rpt = "frmSys0027R01UserAuthTotal.rex";
+    var params = "";
+    var params2 = "";
+    var sTopMargin = "100";
+    var sLeftMargin = "50";
+		
+   
+	/*
+	 * 기능 : 렉스퍼트 보고서를 팝업화면으로 호출한다.
+	 * parameter : sReportName - 레포트명(예:레포트.rex)
+	 *             sReportDataset - 데이터셋명(예:dsReport1||dsResport2||...)
+	 *             sReportParams - 렉스퍼트용 파라메터(예: a에 1, b에 2, c에 3의 값을 넣는 경우, a=1^b=2^c=3...)
+	 *             bLcsYn - 수첩여부
+	 *             LeftMargin = 왼쪽
+	 *             RightMargin = 오른쪽
+	 *             TopMargin = 상단
+	 *             BottomMargin = 하단
+	 * return value : 정상출력 true, 출력 안했으면 false
+	 */    
+	 
+    //gfn_CallReportPopup(rpt, "ds_oDATA", params);
+    gfn_CallReportPopup(rpt, "ds_ioUserAuthTotal", params, '', '', sTopMargin, sLeftMargin);	
+}
+]]></Script>
+</Window>

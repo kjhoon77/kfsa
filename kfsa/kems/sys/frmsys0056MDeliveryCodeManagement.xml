@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="520" Id="frmsys0056MDeliveryCodeManagement" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="도로명주소정보검색팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="704" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oPostCode">
+				<Contents>
+					<colinfo id="PMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PPOSTCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="PSIDO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PKU" size="256" summ="default" type="STRING"/>
+					<colinfo id="PDONG" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRI" size="256" summ="default" type="STRING"/>
+					<colinfo id="PDOSEO" size="256" summ="default" type="STRING"/>
+					<colinfo id="PSAN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PSTARTBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="PENDBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="PBUILDNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="PFULLADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="PADDR1" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSido">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="JIBUCD" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>11</CD>
+						<DATA>서울특별시</DATA>
+						<JIBUCD>1011</JIBUCD>
+					</record>
+					<record>
+						<CD>26</CD>
+						<DATA>부산광역시</DATA>
+						<JIBUCD>1021</JIBUCD>
+					</record>
+					<record>
+						<CD>27</CD>
+						<DATA>대구광역시</DATA>
+						<JIBUCD>1031</JIBUCD>
+					</record>
+					<record>
+						<CD>28</CD>
+						<DATA>인천광역시</DATA>
+						<JIBUCD>1041</JIBUCD>
+					</record>
+					<record>
+						<CD>29</CD>
+						<DATA>광주광역시</DATA>
+						<JIBUCD>1051</JIBUCD>
+					</record>
+					<record>
+						<CD>30</CD>
+						<DATA>대전광역시</DATA>
+						<JIBUCD>1061</JIBUCD>
+					</record>
+					<record>
+						<CD>31</CD>
+						<DATA>울산광역시</DATA>
+						<JIBUCD>1131</JIBUCD>
+					</record>
+					<record>
+						<CD>36</CD>
+						<DATA>세종특별자치시</DATA>
+						<JIBUCD>1061</JIBUCD>
+					</record>
+					<record>
+						<CD>41</CD>
+						<DATA>경기도</DATA>
+						<JIBUCD>1081</JIBUCD>
+					</record>
+					<record>
+						<CD>42</CD>
+						<DATA>강원도</DATA>
+						<JIBUCD>1091</JIBUCD>
+					</record>
+					<record>
+						<CD>43</CD>
+						<DATA>충청북도</DATA>
+						<JIBUCD>1101</JIBUCD>
+					</record>
+					<record>
+						<CD>44</CD>
+						<DATA>충청남도</DATA>
+						<JIBUCD>1061</JIBUCD>
+					</record>
+					<record>
+						<CD>45</CD>
+						<DATA>전라북도</DATA>
+						<JIBUCD>1111</JIBUCD>
+					</record>
+					<record>
+						<CD>46</CD>
+						<DATA>전라남도</DATA>
+						<JIBUCD>1051</JIBUCD>
+					</record>
+					<record>
+						<CD>47</CD>
+						<DATA>경상북도</DATA>
+						<JIBUCD>1031</JIBUCD>
+					</record>
+					<record>
+						<CD>48</CD>
+						<DATA>경상남도</DATA>
+						<JIBUCD>1071</JIBUCD>
+					</record>
+					<record>
+						<CD>50</CD>
+						<DATA>제주특별자치도</DATA>
+						<JIBUCD>1121</JIBUCD>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oDong">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oRoad">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iSearch">
+				<Contents>
+					<colinfo id="SIDO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="BUILDMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROADMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oRoadList">
+				<Contents>
+					<colinfo id="RBUILDMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RZIPCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RADDR" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROADPART1" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROADPART2" size="256" summ="default" type="STRING"/>
+					<colinfo id="ROADMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iPostAddrDivide">
+				<Contents>
+					<colinfo id="ADDR1" size="256" summ="default" type="STRING"/>
+					<colinfo id="ADDR2" size="256" summ="default" type="STRING"/>
+					<colinfo id="ZIPCD" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPostAddrDivide"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oRoadDetail">
+				<Contents>
+					<colinfo id="ROADMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RLAWCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RSIDONM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RKUNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RLAWDONGNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RLAWRINM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RSANGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="RMAINBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="RSUBBUNJI" size="256" summ="default" type="STRING"/>
+					<colinfo id="RROADNMCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RROADNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RUNDERGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="RBUILDMAINNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RBUILDSUBNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RBUILDNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RDETAILBUILDNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RBUILDMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RDONGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RDONGCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RDONGNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RZIPCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RZIPNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RLARGEDELIVERY" size="256" summ="default" type="STRING"/>
+					<colinfo id="RSAUCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="RCHANGDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="RKUBULDNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="RAPTGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="RBASICMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RDETAILADDRGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="RETC1" size="256" summ="default" type="STRING"/>
+					<colinfo id="RETC2" size="256" summ="default" type="STRING"/>
+					<colinfo id="RGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="RTABMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oAddrGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>도로명</DATA>
+					</record>
+					<record>
+						<CD>0</CD>
+						<DATA>지번</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioMemberGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>0</CD>
+						<DATA>회원</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>비회원</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="312" LineColor="user14" Right="699" TabOrder="61" Top="1" Type="Rectangle" Width="387"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="610" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSave" ImageID="BTN_TEXT_08" Left="288" OnClick="btnSave_OnClick" Style="sty_Button" TabOrder="3" Text="집배코드&#32;적용(F4)" ToolTipText="선택" Top="492" Transparent="TRUE" Width="122"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="315" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="4" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="522" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="5" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Shape Bottom="99" Height="66" Id="Shape0" Left="4" LineColor="user15" Right="698" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="6" Top="33" Type="RoundRect" Width="694"></Shape>
+		<Shape Bottom="488" Height="376" Id="Shape1" Left="4" LineColor="user15" Right="698" RoundHeight="10" RoundUnit="Pixel" RoundWidth="10" TabOrder="7" Top="112" Type="RoundRect" Width="694"></Shape>
+		<Static Align="Center" Height="20" Id="Static1" Left="12" Style="sty_LabelGruopBox" TabOrder="8" Text="엑셀&#32;자료" Top="103" VAlign="Middle" Width="96"></Static>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oRoadList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="480" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="353" Id="gdExcel" InputPanel="FALSE" Left="9" LineColor="default" OnCellDBLClick="gdRoad_OnCellDblClick" OnCellPosChanged="gdRoad_OnCellPosChanged" OnHeadClick="lfn_SortGrid_OnHeadClick" OnKeyDown="gdRoad_OnKeyDown" Right="694" RowHeight="20" Style="sty_Grid" TabOrder="9" TabStop="true" Top="127" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="685">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="119"/>
+						<col width="543"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="고객바코드"/>
+						<cell align="center" col="1" display="text" text="집배코드"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor2="bisque" col="0" colid="RZIPCD" display="text" Mask="#####"/>
+						<cell align="left" bkcolor2="bisque" col="1" colid="DeliveryCode" display="text" font="굴림,10,Bold"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="Button0" ImageID="BTN_TEXT_08" Left="402" OnClick="lfn_ExcelLoad" Style="sty_Button" TabOrder="10" Text="엑셀파일로딩" ToolTipText="집배코드&#32;파일&#32;로딩" Top="4" Width="118"></Button>
+		<Static Align="Center" Height="20" Id="Static4" Left="92" Style="sty_Label" TabOrder="12" Text="지부" Top="44" VAlign="Middle" Width="60"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="156" OnChanged="cbxJibu_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="14" Top="43" UserData="I" Width="104"></Combo>
+		<Static Align="Center" Height="20" Id="lbMemberGubun" Left="92" Style="sty_Label" TabOrder="13" Text="고객구분" Top="68" VAlign="Middle" Width="60"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="20" Id="radMemberGubun" INDEX="0" InnerDataset="ds_ioMemberGubun" Left="156" LeftMargin="4" OnKeyDown="gfn_EnterNextFocus" RightMargin="4" Style="sty_Radio" TabOrder="11" Top="68" UserData="S" Width="222"></Radio>
+		<Static Align="Center" BKColor="user37" Height="48" Id="Static0" Left="8" Style="sty_Label" TabOrder="15" Text="집배코드&#10;등록대상&#10;추출" Top="40" VAlign="Middle" Width="80"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 우편번호정보명 : frmsys0056MDeliveryCodeManagement.xml
+ * 설  명 : 집배코드 관리
+ * 작성일 : 2018.08.07
+ * 작성자 : 정현호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+//var sAddrGubun = "0"; // 임시
+var sTabPost_BuildMgno = "";
+var sTabRoad_BuildMgno = "";
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    
+    gfn_Form_OnLoadCompletedCheck(obj); //공통 폼 로딩 이벤트 처리(공통코드 조회되었는지 확인)
+    
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+
+    ds_oSido.row = 0;
+    
+    // 시도코드 로그인 시도로 세팅
+	if (sJibu == "1141") {
+		cbxSido.Index = 8;	// 경기
+	} else if (sJibu == "1031" || sJibu == "1051" || sJibu == "1061") {	// 대구경북, 광주전남, 대전충남
+		if (!gfn_IsNull(sBonbu)) {	// 소방본부코드 파라미터가 넘어왔으면 소방본부코드로 시도 세팅
+			for(var i=0; i<ds_oSido.GetRowCount(); i++) {
+				if (ds_oSido.GetColumn(i-1, "CD") == substr(sBonbu,0,2)) {
+					break;
+				}
+				cbxSido.Index = i;
+			}
+		} else {					// 소방본부코드가 없으면
+			for(var i=0; i<ds_oSido.GetRowCount(); i++) {
+				if (ds_oSido.GetColumn(i-1, "JIBUCD") == sJibu) {
+					break;
+				}
+				cbxSido.Index = i;
+			}
+		}
+		
+	} else {
+		for(var i=0; i<ds_oSido.GetRowCount(); i++) {
+			if (ds_oSido.GetColumn(i-1, "JIBUCD") == sJibu) {
+				break;
+			}
+			cbxSido.Index = i;
+		}
+	}
+    
+	ds_oRoadList.ClearData();
+	ds_oRoadList.InsertRow(0);
+
+	if (sRoadAddr21 <> "") {
+		ds_oRoadList.SetColumn(0, "RZIPCD", sPostCD2);	// 우편번호
+		medPostCode.Value = iif(length(sPostCD2)>5, "", sPostCD2);
+		edRoadApplyAddr1.Text = sRoadAddr21;
+		edRoadApplyAddr2.Text = sRoadAddr22;
+		sTabRoad_BuildMgno = sRoadBuildMGNO2;		//건물관리번호
+		edRoadDetailAddr.Text = sRoadDetailAddr2;
+		//edRoadEtcAddr2.Text = sRoadEtcAddr2;
+
+		if (sRoadBuildMGNO2 <> "") {
+			lfn_RoadSearch2(sRoadBuildMGNO2); // 건물관리번호로 도로명주소 조회
+		}	
+		
+	} else {
+		lfn_Cancel(obj);
+	}
+	
+	// 데이터일치화 프로그램에서 창이 열리면 넘어온 주소로 조회
+	if (sGubun == "DataConn") {
+		edAddr.Text = sPostAddr1 + " " + sPostAddr2;
+		lfn_RoadSearch(obj);
+	}
+	
+	
+	edAddr.SetFocus();
+
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 115 : // 저장(F4)
+			btnSave_OnClick(obj);
+            break;
+        case 121 : // 초기화(F10)
+			lfn_Cancel(obj);
+            break;
+        case 123 : // 화면출력(F12)
+			PrintScreen(true);
+            break;
+    }
+}
+
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+
+
+/* * 기능 : 초기화(F10) */
+function lfn_Cancel(obj) {	gfn_FormInit(this);
+	
+	lfn_ClearData();
+}
+
+/* * 기능 : 초기화 (모든 데이터셋) */function lfn_ClearData() {
+
+	ds_oRoadList.ClearData();	// 도로명주소 조회 : 도로명 주소 정보 초기화
+
+}
+
+
+
+
+/* 공통 필수 종료 */
+
+/* 우편번호 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+
+
+// 도로명주소 조회 : 도로명주소 조회 버튼 클릭
+function btnRoadSearch_OnClick(obj)
+{
+	lfn_RoadSearch(obj);
+}
+
+// 도로명주소 조회 : 도로명주소 조회
+function lfn_RoadSearch(obj)
+{
+    ds_iSearch.ClearData();
+    ds_iSearch.InsertRow(0);
+	ds_iSearch.SetColumn(0, "SIDO", cbxSido.Value);
+	ds_iSearch.SetColumn(0, "ADDR", edAddr.Text);
+	
+	medPostCode.Value = "";
+	edRoadApplyAddr1.Text = "";
+	edRoadApplyAddr2.Text = "";
+	edRoadDetailAddr.Text = "";
+		
+	if (edAddr.Text == "") {
+        gfn_Alert("주소를 입력해주세요!");
+        edAddr.SetFocus();
+        return false;
+	} else {
+		ds_oRoadList.ClearData();
+		
+        tit_clearActionInfo();
+        tit_addSearchActionInfo("sys:searchRoadAddrList", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,"ds_iSearch=ds_iSearch"		// inDs
+            ,"ds_oRoadList=ds_oRoadList"	// outDs
+            ,"" 	// args 
+            ,"lfn_AfterRoadSearch"
+            ,false
+            ,false
+            ,true
+        );
+	}	
+}
+
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterRoadSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+    if (ds_oRoadList.GetCount() > 0) {
+		medPostCode.Value = ds_oRoadList.GetColumn(0,"RZIPCD");
+		edRoadApplyAddr1.Text = ds_oRoadList.GetColumn(0,"ROADPART1");
+		edRoadApplyAddr2.Text = ds_oRoadList.GetColumn(0,"ROADPART2");
+
+		gdRoad_OnCellPosChanged(gdRoad, 0);
+		
+    } else {
+		medPostCode.Value = "";
+		edRoadApplyAddr1.Text = "";
+		edRoadApplyAddr2.Text = "";
+		
+		edAddr.SetFocus();
+    }
+
+    gfn_SearchMessage(gdRoad); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+// 건물관리번호로 도로명주소 조회
+function lfn_RoadSearch2(vMGNO)
+{
+	ds_iSearch.ClearData();
+	ds_iSearch.InsertRow(0);
+	ds_iSearch.SetColumn(0, "BUILDMGNO", vMGNO);
+	tit_clearActionInfo();
+	tit_addSearchActionInfo("sys:searchRoadAddrList2", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,"ds_iSearch=ds_iSearch"	// inDs
+		,"ds_oRoadList=ds_oRoadList"	// outDs
+		,"" 	// args 
+		,"lfn_AfterRoadSearch"
+		,false
+		,false
+		,true
+	);
+
+}
+
+// 건물관리번호로 상세내역 조회
+function lfn_RoadDetailSearch(vMGNO)
+{
+	ds_iSearch.ClearData();
+	ds_oRoadDetail.ClearData();
+	ds_iSearch.InsertRow(0);
+	ds_iSearch.SetColumn(0, "BUILDMGNO", vMGNO);
+	ds_iSearch.SetColumn(0, "ROADMGNO", vMGNO);
+	tit_clearActionInfo();
+	tit_addSearchActionInfo("sys:searchRoadDetail", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,"ds_iSearch=ds_iSearch"	// inDs
+		,"ds_oRoadDetail=ds_oRoadDetail"	// outDs
+		,"" 	// args 
+		,""
+		,false
+		,false
+		,true
+	);
+
+}
+
+
+function edAddr_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) { // Enter key
+        lfn_RoadSearch(obj);
+        
+//        if (edAddr.Text <> "") {
+			
+//			edAddr.SetFocus();
+		
+//		}
+	}
+	
+}
+
+
+/* 도로명주소 조회 : 도로명주소 적용주소 직접입력*/
+function chkRoadInput_OnClick(obj,strValue)
+{
+	if (chkRoadInput.Value = "1") {		// 직접입력
+		medPostCode.Readonly = false;
+		edRoadApplyAddr1.Readonly = false;
+		edRoadApplyAddr2.Readonly = false;
+		
+		medPostCode.Enable = true;
+		edRoadApplyAddr1.Enable = true;
+		edRoadApplyAddr2.Enable = true;
+		
+		lbAddrGubun.Visible = true;
+		cbxAddrGubun.Visible = true;
+		
+		edRoadDetailAddr.Text = "";
+		edRoadDetailAddr.Visible = false;
+		lbRoadDetailAddr1.Visible = false;
+		lbRoadDetailAddr2.Visible = false;
+		
+	} else {							// 직접입력X
+		medPostCode.Readonly = true;
+		edRoadApplyAddr1.Readonly = true;
+		edRoadApplyAddr2.Readonly = false;
+		
+		medPostCode.Enable = false;
+		edRoadApplyAddr1.Enable = false;
+		edRoadApplyAddr2.Enable = true;
+		
+		lbAddrGubun.Visible = false;
+		cbxAddrGubun.Visible = false;
+		
+		edRoadDetailAddr.Text = "";
+		edRoadDetailAddr.Visible = true;
+		lbRoadDetailAddr1.Visible = true;
+		lbRoadDetailAddr2.Visible = true;
+	}
+}
+
+
+/* 적용주소 반영 */
+function btnSave_OnClick(obj)
+{
+	// 도로명주소 조회 : 도로명주소
+	
+	if (edRoadApplyAddr1.Text == "") {
+
+		if(gfn_Confirm("적용주소가 입력되지 않았습니다.\n\n그래도 반영하시겠습니까?")) {
+		
+			//
+
+		} else {
+			return false;
+		}
+
+	}	
+
+	if (chkRoadInput.Value == 0) {	// 직접입력이 아니고
+		if (!gfn_isNull(ds_oRoadList.GetColumn(ds_oRoadList.currow, "ROADMGNO"))) {	// 관리번호가 있으면
+			lfn_RoadDetailSearch(ds_oRoadList.GetColumn(ds_oRoadList.currow, "ROADMGNO"));
+		}
+	}
+
+	var arrArg = Array(16);
+	
+	if (chkRoadInput.Value == 1) {	// 직접입력일 경우
+		ds_oRoadDetail.ClearData();
+		arrArg[0] = cbxAddrGubun.Value;
+	} else {
+		arrArg[0] = 1;	
+	}
+
+	if (chkRoadInput.Value == 1) {	// 직접입력일 경우
+		if (cbxAddrGubun.Value == 0) {	// 지번이면
+			arrArg[1] = medPostCode.Value;	// 지번 우편번호
+			
+			arrArg[2] = edRoadApplyAddr1.Text; // 지번 주소1
+			
+			arrArg[3] = edRoadApplyAddr2.Text; // 지번 주소2
+		
+		} else {	// 도로명이면
+		
+			arrArg[1] = "";	// 지번 우편번호
+			
+			arrArg[2] = ""; // 지번 주소1
+			
+			arrArg[3] = ""; // 지번 주소2
+
+		
+		}
+	}
+	
+	arrArg[4] = ds_oRoadDetail.GetColumn(0, "RSANGUBUN");	// 산여부
+	
+	arrArg[5] = ds_oRoadDetail.GetColumn(0, "RMAINBUNJI");	// 주번지
+	
+	arrArg[6] = ds_oRoadDetail.GetColumn(0, "RSUBBUNJI");	// 부번지
+	
+	arrArg[7] = ds_oRoadDetail.GetColumn(0, "RKUBULDNM");	// 건물명
+		
+	arrArg[8] = edRoadDetailAddr.Text;	// 상세주소
+	
+	arrArg[9] = "";	// PNU 코드
+	
+	arrArg[10] = medPostCode.Value;	// 도로명 우편번호(기초구역번호)
+
+	if (chkRoadInput.Value == 1) {	// 직접입력일 경우
+		if (cbxAddrGubun.Value == 0) {	// 지번이면
+			arrArg[11] = "";	// 
+			arrArg[12] = "";
+		} else {	// 도로명이면
+			arrArg[11] = edRoadApplyAddr1.Text;	// 도로명 적용주소1
+			arrArg[12] = edRoadApplyAddr2.Text;
+		}
+	} else {	// 직접입력이 아니면
+		arrArg[11] = edRoadApplyAddr1.Text;	// 도로명 적용주소1
+		arrArg[12] = edRoadDetailAddr.Text + iif(gfn_isNull(edRoadDetailAddr.Text),""," ") + edRoadApplyAddr2.Text;	// 도로명 적용주소2
+	}
+	
+	
+	if (chkRoadInput.Value == 1) {	// 직접입력일 경우
+		arrArg[13] = ""; // 건물관리번호
+	} else {
+		arrArg[13] = ds_oRoadDetail.GetColumn(0, "RBUILDMGNO"); // 건물관리번호
+	}
+	
+	arrArg[14] = edRoadDetailAddr.Text;		// 상세주소
+	
+	arrArg[15] = "";		// 부가주소	
+
+	Close(arrArg);
+
+}
+
+
+function ds_oRoadList_OnRowPosChanged(obj,nOldRow,nRow)
+{
+ 
+	medPostCode.Value = ds_oRoadList.GetColumn(nRow,"RZIPCD");
+	edRoadApplyAddr1.Text = ds_oRoadList.GetColumn(nRow,"ROADPART1");
+	edRoadApplyAddr2.Text = ds_oRoadList.GetColumn(nRow,"ROADPART2");
+}
+
+
+
+function gdRoad_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if (nChar == 13) {
+	
+		edRoadDetailAddr.SetFocus();
+		
+	}
+	
+}
+
+
+function gdRoad_OnCellPosChanged(obj,nRow,nCell,nOldRow,nOldCell,nPivotIndex,nOldPivotIndex)
+{
+	medPostCode.Value = ds_oRoadList.GetColumn(nRow,"RZIPCD");
+	edRoadApplyAddr1.Text = ds_oRoadList.GetColumn(nRow,"ROADPART1");
+	edRoadApplyAddr2.Text = ds_oRoadList.GetColumn(nRow,"ROADPART2");
+	
+	gdRoad.SetFocus();
+	//edRoadDetailAddr.SetFocus();
+}
+
+
+function cbxSido_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	edAddr.SetFocus();
+}
+
+function edRoadDetailAddr_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) { // Enter key
+        btnSave_OnClick(obj);
+	}
+}
+
+function gdRoad_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	btnSave_OnClick(obj);
+}
+
+function lfn_Save(obj)
+{
+
+}
+
+function lfn_ExcelLoad(obj)
+{
+    if (!gfn_FormValidate(this)) { // 입력 Validation Check
+        return false;
+    }
+    gfn_Excel2Grid("gdExcel", "", 0); // 엑셀로딩팝업 호출
+	
+}
+]]></Script>
+</Window>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" BorderColor="user4" Height="432" Id="frmprofes0011MJibuLecHistory" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="교안이력" Top="8" Ver="1.0" Width="712" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oClass">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>1급</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>2급</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>3급</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>4급</DATA>
+					</record>
+					<record>
+						<CD>5</CD>
+						<DATA>5급</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oProGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>전임</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>겸임</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>초빙</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SearchJogeon">
+				<Contents>
+					<colinfo id="EDUDATEST" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDUDATEED" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDUCLASS" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROGUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ProfesList">
+				<Contents>
+					<colinfo id="THMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="THSTATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="THPROCDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="THNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="THJIKWI" size="256" summ="default" type="STRING"/>
+					<colinfo id="THREMARK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Status">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>작성중</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>승인요청</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>승인요청취소</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>승인</DATA>
+					</record>
+					<record>
+						<CD>5</CD>
+						<DATA>승인취소</DATA>
+					</record>
+					<record>
+						<CD>6</CD>
+						<DATA>수정요청</DATA>
+					</record>
+					<record>
+						<CD>7</CD>
+						<DATA>수정요청취소</DATA>
+					</record>
+					<record>
+						<CD>8</CD>
+						<DATA>수정허가</DATA>
+					</record>
+					<record>
+						<CD>9</CD>
+						<DATA>수정허가취소</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="31" Height="28" Id="shpBtnBox" Left="432" LineColor="user14" Right="700" TabOrder="5" Top="3" Type="Rectangle" Width="268"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="438" OnClick="btnExcell_OnClick" Style="sty_Button" TabOrder="0" ToolTipText="엑셀로&#32;저장" Top="6" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="525" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="1" ToolTipText="화면&#32;출력" Top="6" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="612" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="6" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_ProfesList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="416" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="372" Id="gdList" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" Right="700" RowHeight="20" Style="sty_Grid" TabOrder="3" TabStop="true" Top="44" UseDBuff="true" UsePopupMenu="true" UserData="공통코드목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="696">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="68"/>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="65"/>
+						<col width="90"/>
+						<col width="198"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="번호"/>
+						<cell col="1" display="text" text="상태"/>
+						<cell col="2" display="text" text="처리일자"/>
+						<cell col="3" colspan="2" display="text" text="처리자"/>
+						<cell col="5" display="text" text="사유"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="THMGNO" display="text"/>
+						<cell align="center" col="1" colid="THSTATUS" combocol="CD" combodataset="ds_Status" combotext="DATA" display="combo"/>
+						<cell align="center" col="2" colid="THPROCDATE" display="date"/>
+						<cell align="center" col="3" colid="THJIKWI" display="text"/>
+						<cell align="center" col="4" colid="THNAME" display="text"/>
+						<cell align="left" col="5" colid="THREMARK" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Font="굴림,12,Bold" Height="20" Id="lbProcMsg1" Left="28" Style="sty_Text" TabOrder="6" Text="교안이력" Top="6" VAlign="Middle" Width="180"></Static>
+	</Form>
+	<Script><![CDATA[#include "LIB::profes.js"; // 공통업무 관련
+
+function Form_OnLoadCompleted(obj)
+{
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+ 
+    lfn_Search(TPMGNO);    
+   
+}
+
+
+//조회
+function lfn_Search(TPMGNO)
+{
+    
+    
+    ds_ProfesList.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("profes:searchPFM0007History", false);
+	
+	// 서버 호출
+ 	var sParm = "";
+	sParm  = " THMGNO=" + quote(TPMGNO);   
+	
+	//alert(sParm);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ProfesList=ds_oProfesList"	// outDs
+		, sParm  // args 
+		,"afterSearch"
+		,false
+	);
+}
+
+// 조회 후 callbackfunction afterSearch(errCode, errMsg){
+    if(errCode != 0 ){
+        alert("오류가 발생했습니다.");
+    }}
+
+
+function btnExcell_OnClick(obj)
+{
+	gdList.ExportExcel("교안이력");
+}
+
+function lfn_PrintScreen(obj)
+{
+	printscreen();
+}
+]]></Script>
+</Window>

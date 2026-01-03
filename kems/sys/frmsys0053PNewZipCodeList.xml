@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="400" Id="frmsys0053PNewZipCodeList" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="신주소우편번호정보검색팝업" Top="8" Ver="1.0" Width="600" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oZipCode">
+				<Contents>
+					<colinfo id="NZMGNO" size="22" summ="default" type="STRING"/>
+					<colinfo id="NZBULDNO" size="255" summ="default" type="STRING"/>
+					<colinfo id="NZLEGALCD" size="255" summ="default" type="STRING"/>
+					<colinfo id="NZZIPCDE" size="255" summ="default" type="STRING"/>
+					<colinfo id="NZSIDO" size="1535" summ="default" type="STRING"/>
+					<colinfo id="NZKU" size="255" summ="default" type="STRING"/>
+					<colinfo id="NZDONG" size="255" summ="default" type="STRING"/>
+					<colinfo id="NZRI" size="255" summ="default" type="STRING"/>
+					<colinfo id="NZSAN" size="255" summ="default" type="STRING"/>
+					<colinfo id="NZJIBUNBON" size="255" summ="default" type="STRING"/>
+					<colinfo id="NZJIBUNBU" size="255" summ="default" type="STRING"/>
+					<colinfo id="NZROADNM" size="255" summ="default" type="STRING"/>
+					<colinfo id="NZNEWBONBEN" size="255" summ="default" type="STRING"/>
+					<colinfo id="NZNEWBUBEN" size="255" summ="default" type="STRING"/>
+					<colinfo id="NZBULDNM" size="255" summ="default" type="STRING"/>
+					<colinfo id="NZSANGSEBULDNM" size="255" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oAddr">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>선택</DATA>
+					</record>
+					<record>
+						<CD>강원도</CD>
+						<DATA>강원도</DATA>
+					</record>
+					<record>
+						<CD>경기도</CD>
+						<DATA>경기도</DATA>
+					</record>
+					<record>
+						<CD>경상남도</CD>
+						<DATA>경상남도</DATA>
+					</record>
+					<record>
+						<CD>경상북도</CD>
+						<DATA>경상북도</DATA>
+					</record>
+					<record>
+						<CD>대구광역시</CD>
+						<DATA>대구광역시</DATA>
+					</record>
+					<record>
+						<CD>대전광역시</CD>
+						<DATA>대전광역시</DATA>
+					</record>
+					<record>
+						<CD>서울특별시</CD>
+						<DATA>서울특별시</DATA>
+					</record>
+					<record>
+						<CD>인천광역시</CD>
+						<DATA>인천광역시</DATA>
+					</record>
+					<record>
+						<CD>충청남도</CD>
+						<DATA>충청남도</DATA>
+					</record>
+					<record>
+						<CD>충청북도</CD>
+						<DATA>충청북도</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oKu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Align="Center" Height="20" Id="lbZipCode" Left="4" Style="sty_Label" TabOrder="3" Text="우편번호" Top="32" VAlign="Middle" Width="88"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect" ImageID="BTN_TEXT_COM" Left="422" OnClick="btnSelect_OnClick" Style="sty_Button" TabOrder="2" Text="선택" ToolTipText="선택" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_oZipCode" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="396" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="308" Id="gdZipCode" InputPanel="FALSE" Left="4" LineColor="default" OnCellDBLClick="gdZipCode_OnCellDblClick" OnEnterDown="gdZipCode_OnEnterDown" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="596" RowHeight="20" Style="sty_Grid" TabOrder="4" TabStop="true" Top="88" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="592">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="60"/>
+						<col width="70"/>
+						<col width="70"/>
+						<col width="85"/>
+						<col width="110"/>
+						<col width="240"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="우편번호"/>
+						<cell align="center" col="1" display="text" text="시도"/>
+						<cell align="center" col="2" display="text" text="시군구"/>
+						<cell align="center" col="3" display="text" text="도로명"/>
+						<cell col="4" display="text" text="건물명"/>
+						<cell col="5" display="text" text="구주소"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="NZZIPCDE" display="text" Mask="###-###"/>
+						<cell align="left" col="1" colid="NZSIDO" display="text"/>
+						<cell align="left" col="2" colid="NZKU" display="text"/>
+						<cell align="left" col="3" colid="NZROADNM" display="text"/>
+						<cell col="4" colid="NZBULDNM" display="text"/>
+						<cell col="5" colid="OLDADDR" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="Button1" ImageID="BTN_MULTI_SORT" Left="520" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="5" Top="64" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="335" OnClick="lfn_Search" Style="sty_Button" TabOrder="7" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="509" OnClick="lfn_End" Style="sty_Button" TabOrder="6" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="332" LineColor="user14" Right="597" TabOrder="61" Top="1" Type="Rectangle" Width="265"></Shape>
+		<Static Align="Center" Height="20" Id="lbSido" Left="154" Style="sty_Label" TabOrder="9" Text="시도" Top="33" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbKu" Left="362" Style="sty_Label" TabOrder="10" Text="시군구" Top="33" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbRoadNm" Left="4" Style="sty_Label" TabOrder="11" Text="도로명" Top="56" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edRoadNm" ImeMode="native" Left="96" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="1" Top="56" UserData="S" Width="172"></Edit>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxSido" INDEX="0" InnerDataset="ds_oAddr" Left="246" OnChanged="cbxSido_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="12" Top="32" UserData="I:지부" Value="B" Width="112"></Combo>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxKu" INDEX="0" InnerDataset="ds_oKu" Left="454" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="13" Top="33" UserData="I:지부" Value="B" Width="112"></Combo>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Height="20" Id="medZipCode" Left="96" LeftMargin="2" Mask="###-###" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_ZipCode" TabOrder="14" Top="32" Type="STRING" UserData="S" Width="54"></MaskEdit>
+	</Form>
+	<Script><![CDATA[/*
+ * 우편번호정보명 : frmsys0053PNewZipCodeList.xml
+ * 설명 : 신주소우편번호정보검색팝업
+ * 작성일 : 2010.02.11
+ * 작성자 : 이규희
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+    /*
+    if (IsExistVar("sDongName")) {
+        edDong.Text = sDongName;
+        if (!gfn_IsNull(sDongName)) {
+            lfn_Search();
+        }
+    }
+    */
+    ds_oKu.ClearData();
+    ds_oKu.InsertRow(0);
+    ds_oKu.SetColumn(0, "DATA", "선택");
+    cbxKu.Index = 0;
+    
+    if (IsExistVar("sZipcode")) {
+        medZipCode.Value = sZipcode;
+        if (!gfn_IsNull(sZipcode)) {
+            lfn_Search();
+        }
+    }
+    
+    cbxSido.SetFocus();
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+
+    if (!gfn_IsNull(medZipCode.Value) && length(medZipCode.Value) >= 3) {
+        ds_oZipCode.ClearData(); // 데이타셋 초기화
+        
+        // 조회이력을 저장한다.  
+        ls_HistoryArg = "우편번호=" + quote(medZipCode.Value);	// args 
+        gfn_InsertSearchPrintHistory(
+            "S"
+            , this.ID
+            , "신주소우편번호검색팝업"
+            , ls_HistoryArg
+        );
+    
+        tit_clearActionInfo();
+        tit_addCsvSearchActionInfo("sys:searchNewZipCodeList", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_oZipCode=ds_oZipCode"	// outDs
+            ,"NZZIPCDE=" + quote(Replace(iif(gfn_IsNull(medZipCode.Value), medZipCode.Value, medZipCode.Text), "_", ""))	// args 
+                + " NZSIDO=" + quote(cbxSido.Value)
+                + " NZKU=" + quote(cbxKu.Value)
+                //+ " NZDONG=" + quote(edDong.Text)
+                + " NZROADNM=" + quote(edRoadNm.Text)
+            ,"lfn_AfterSearchZipCode"
+            ,false
+        );
+    } else if (cbxSido.Text == "선택" || cbxKu.Text == "선택") {
+        gfn_Alert("'시도'와 '시군구'는 필수입력사항입니다 ."); 
+        cbxSido.SetFocus();
+        return false;
+    } else {
+        ds_oZipCode.ClearData(); // 데이타셋 초기화
+        
+        // 조회이력을 저장한다.  
+        ls_HistoryArg = "우편번호=" + quote(medZipCode.Value);	// args                 
+        gfn_InsertSearchPrintHistory(
+            "S"
+            , this.ID
+            , "신주소우편번호검색팝업"
+            , ls_HistoryArg
+        );
+    
+        tit_clearActionInfo();
+        tit_addCsvSearchActionInfo("sys:searchNewZipCodeList", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_oZipCode=ds_oZipCode"	// outDs
+            ,"NZZIPCDE=" + quote(Replace(iif(gfn_IsNull(medZipCode.Value), medZipCode.Value, medZipCode.Text), "_", ""))	// args 
+                + " NZSIDO=" + quote(cbxSido.Text)
+                + " NZKU=" + quote(cbxKu.Text)
+                //+ " NZDONG=" + quote(edDong.Text)
+                + " NZROADNM=" + quote(edRoadNm.Text)
+            ,"lfn_AfterSearchZipCode"
+            ,false
+        );
+    }
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+/* 우편번호 함수 */
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchZipCode(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    //trace(ds_oZipCode.SaveXML());
+    if (ds_oZipCode.GetCount() > 0) {
+        gdZipCode.SetFocus();
+    } else {
+        gdZipCode.SetFocus();
+    }
+
+    gfn_SearchMessage(gdZipCode); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 우편번호 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+function btnMutilSort_OnClick(obj)
+{
+	gfn_GridMultiSort(gdZipCode, 0); // 멀티 정렬을 실행한다.
+}
+
+function btnSelect_OnClick(obj)
+{
+    var sNewAddr = ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZSIDO") + 
+                   " " + ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZKU") +
+                   " " + ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZDONG") +
+                   iif(gfn_IsNull(ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZRI")), "" , " " + ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZRI")) +
+                   iif(gfn_IsNull(ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZSAN")), "" , " " + ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZSAN")) +
+                   iif(gfn_IsNull(ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZNEWBONBEN")), "" , " " + ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZNEWBONBEN")) +
+                   iif(gfn_IsNull(ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZNEWBUBEN")), "" , "-" + ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZNEWBUBEN")) +
+                   iif(gfn_IsNull(ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZROADNM")), "" , " " + ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZROADNM")) +
+                   iif(gfn_IsNull(ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZBULDNM")), "" , " " + ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZBULDNM"));                   
+                   
+    var arrArg = Array(10);
+    arrArg[0] = ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZZIPCDE");
+    arrArg[1] = sNewAddr;
+    arrArg[2] = ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZMGNO");
+    arrArg[3] = ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZROADNM");
+    arrArg[4] = ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZBULDNM");
+    
+    arrArg[5] = ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZNEWBONBEN");
+    arrArg[6] = ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZNEWBUBEN");
+    arrArg[7] = ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZSANGSEBULDNM");
+    arrArg[8] = ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZLEGALCD");
+    arrArg[9] = ds_oZipCode.GetColumn(ds_oZipCode.currow, "NZBULDNO");
+    Close(arrArg);
+}
+
+function gdZipCode_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+    btnSelect_OnClick(obj);
+}
+
+function edZipCode_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == 13) {
+        lfn_Search();
+	}
+}
+
+function gdZipCode_OnEnterDown(obj,nRow,nCell,strVal,nPivotIndex)
+{
+	btnSelect_OnClick();
+}
+
+function cbxSido_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+	if (gfn_IsNull(cbxSido.Value)) {
+        ds_oKu.ClearData();
+        ds_oKu.InsertRow(0);
+        ds_oKu.SetColumn(0, "DATA", "선택");
+        cbxKu.Index = 0;
+	} else {
+        tit_clearActionInfo();
+        tit_addCsvSearchActionInfo("sys:searchNewZipCodeKu", false);
+        // 서버 호출 
+        tit_callService(
+            ""
+            ,""
+            ,""	// inDs
+            ,"ds_oKu=ds_oZipCode"	// outDs
+            ,"NZSIDO=" + quote(cbxSido.Text)	// args 
+            ,""
+            ,false
+            ,false
+            ,true
+        );
+	}
+}
+]]></Script>
+</Window>

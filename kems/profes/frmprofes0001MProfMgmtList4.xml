@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="880" Id="frmprofes0001MProfMgmtList4" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Title="교수요원&#32;정기평가&#32;결과보고" Top="8" Ver="1.0" Width="872" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_DEPTCD">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>A</CD>
+						<DATA>총계</DATA>
+					</record>
+					<record>
+						<CD>B</CD>
+						<DATA>본부</DATA>
+					</record>
+					<record>
+						<CD>C</CD>
+						<DATA>지부</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioList"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioList2"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioList3"></Dataset>
+		</Datasets>
+		<Shape Bottom="873" Height="831" Id="shpGubunBox" Left="7" LineColor="user15" Right="861" TabOrder="7" Top="42" Type="Rectangle" Width="854"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" Left="1" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="1" TabStop="FALSE" Text="Div0" Top="1" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="396">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="768" OnClick="lfn_Search" Style="sty_Button" TabOrder="4" ToolTipText="조회" Top="50" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="690" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="2" ToolTipText="화면&#32;출력" Top="13" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="776" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="13" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_ioList" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="177" ColSelect="TRUE" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="102" Id="gdList" InputPanel="FALSE" Left="12" LineColor="default" MinWidth="100" OnHeadClick="gdProfUser_OnHeadClick" Right="854" RowHeight="20" Style="sty_Grid" TabOrder="5" TabStop="true" Top="75" UseDBuff="true" UsePopupMenu="true" UserData="안전원교수관리목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="842">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" colspan="2" display="text" rowspan="2" text="구분"/>
+						<cell col="2" colspan="4" display="text" text="전임교수"/>
+						<cell col="6" display="text" rowspan="2" text="겸임교수"/>
+						<cell col="2" display="text" row="1" text="소계"/>
+						<cell col="3" display="text" row="1" text="교수"/>
+						<cell col="4" display="text" row="1" text="부교수"/>
+						<cell col="5" display="text" row="1" text="조교수"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="GTGUBUNNM" display="text" suppress="1"/>
+						<cell align="center" bkcolor="user46" col="1" colid="TOTALTEAM" display="text" suppress="1" SuppressAlign="Middle"/>
+						<cell align="center" bkcolor="user12" col="2" colid="STOTALTEAM" display="text"/>
+						<cell align="center" col="3" colid="ATEAM" display="text"/>
+						<cell align="center" col="4" colid="BTEAM" display="text"/>
+						<cell align="center" col="5" colid="CTEAM" display="text"/>
+						<cell align="center" col="6" colid="DTEAM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Font="굴림,12,Bold" Height="20" Id="lbTrainingOrderUseYnLabel" Left="12" Style="sty_TextBlue" TabOrder="6" Text="□&#32;평가결과" Top="49" VAlign="Middle" Width="306"></Static>
+		<Static Font="굴림,12,Bold" Height="20" Id="Static0" Left="12" Style="sty_TextBlue" TabOrder="8" Text="□&#32;전년&#32;대비&#32;교수&#32;등급변동&#32;현황" Top="185" VAlign="Middle" Width="306"></Static>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_ioList2" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="318" ColSelect="TRUE" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="102" Id="Grid0" InputPanel="FALSE" Left="16" LineColor="default" MinWidth="100" OnHeadClick="gdProfUser_OnHeadClick" Right="858" RowHeight="20" Style="sty_Grid" TabOrder="9" TabStop="true" Top="216" UseDBuff="true" UsePopupMenu="true" UserData="안전원교수관리목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="842">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="100"/>
+						<col width="100"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+						<col width="120"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" rowspan="2" text="구분"/>
+						<cell align="center" col="1" display="text" rowspan="2" text="총계"/>
+						<cell col="2" colspan="4" display="text" text="전임교수"/>
+						<cell col="6" display="text" rowspan="2" text="겸임교수"/>
+						<cell col="2" display="text" row="1" text="소계"/>
+						<cell col="3" display="text" row="1" text="교수"/>
+						<cell col="4" display="text" row="1" text="부교수"/>
+						<cell col="5" display="text" row="1" text="조교수"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="PFYEAR" display="text" font="굴림,10,Bold"/>
+						<cell align="center" col="1" colid="TOTALTEAM" color="expr:iif(PFYEAR=&apos;변동&apos;&#32;and&#32;TOTALTEAM&#32;&gt;0,&apos;blue&apos;,iif(PFYEAR=&apos;변동&apos;&#32;and&#32;TOTALTEAM&#32;&lt;0,&apos;red&apos;,&apos;defalut&apos;))" display="number" font="굴림,10,Bold" Mask="expr:iif(PFYEAR=&apos;변동&apos;&#32;and&#32;TOTALQTY&#32;&gt;0,&apos;▲#,##0&apos;,iif(PFYEAR=&apos;변동&apos;&#32;and&#32;TOTALQTY&#32;&lt;0,&apos;▼#,##0&apos;,&apos;&apos;))" SuppressAlign="Middle"/>
+						<cell align="center" col="2" colid="STOTALTEAM" color="expr:iif(PFYEAR=&apos;변동&apos;&#32;and&#32;STOTALTEAM&#32;&gt;0,&apos;blue&apos;,iif(PFYEAR=&apos;변동&apos;&#32;and&#32;STOTALTEAM&#32;&lt;0,&apos;red&apos;,&apos;defalut&apos;))" display="number" font="굴림,10,Bold" Mask="expr:iif(PFYEAR=&apos;변동&apos;&#32;and&#32;STOTALTEAM&#32;&gt;0,&apos;▲#,##0&apos;,iif(PFYEAR=&apos;변동&apos;&#32;and&#32;STOTALTEAM&#32;&lt;0,&apos;▼#,##0&apos;,&apos;&apos;))"/>
+						<cell align="center" col="3" colid="ATEAM" color="expr:iif(PFYEAR=&apos;변동&apos;&#32;and&#32;ATEAM&#32;&gt;0,&apos;blue&apos;,iif(PFYEAR=&apos;변동&apos;&#32;and&#32;ATEAM&#32;&lt;0,&apos;red&apos;,&apos;defalut&apos;))" display="number" font="굴림,10,Bold" Mask="expr:iif(PFYEAR=&apos;변동&apos;&#32;and&#32;ATEAM&#32;&gt;0,&apos;▲#,##0&apos;,iif(PFYEAR=&apos;변동&apos;&#32;and&#32;ATEAM&#32;&lt;0,&apos;▼#,##0&apos;,&apos;&apos;))"/>
+						<cell align="center" col="4" colid="BTEAM" color="expr:iif(PFYEAR=&apos;변동&apos;&#32;and&#32;BTEAM&#32;&gt;0,&apos;blue&apos;,iif(PFYEAR=&apos;변동&apos;&#32;and&#32;BTEAM&#32;&lt;0,&apos;red&apos;,&apos;defalut&apos;))" display="number" font="굴림,10,Bold" Mask="expr:iif(PFYEAR=&apos;변동&apos;&#32;and&#32;BTEAM&gt;0,&apos;▲#,##0&apos;,iif(PFYEAR=&apos;변동&apos;&#32;and&#32;BTEAM&lt;0,&apos;▼#,##0&apos;,&apos;&apos;))"/>
+						<cell align="center" col="5" colid="CTEAM" color="expr:iif(PFYEAR=&apos;변동&apos;&#32;and&#32;CTEAM&#32;&gt;0,&apos;blue&apos;,iif(PFYEAR=&apos;변동&apos;&#32;and&#32;CTEAM&#32;&lt;0,&apos;red&apos;,&apos;defalut&apos;))" display="number" font="굴림,10,Bold" Mask="expr:iif(PFYEAR=&apos;변동&apos;&#32;and&#32;CTEAM&gt;0,&apos;▲#,##0&apos;,iif(PFYEAR=&apos;변동&apos;&#32;and&#32;CTEAM&lt;0,&apos;▼#,##0&apos;,&apos;&apos;))"/>
+						<cell align="center" col="6" colid="DTEAM" color="expr:iif(PFYEAR=&apos;변동&apos;&#32;and&#32;DTEAM&#32;&gt;0,&apos;blue&apos;,iif(PFYEAR=&apos;변동&apos;&#32;and&#32;DTEAM&#32;&lt;0,&apos;red&apos;,&apos;defalut&apos;))" display="number" font="굴림,10,Bold" Mask="expr:iif(PFYEAR=&apos;변동&apos;&#32;and&#32;DTEAM&gt;0,&apos;▲#,##0&apos;,iif(PFYEAR=&apos;변동&apos;&#32;and&#32;DTEAM&lt;0,&apos;▼#,##0&apos;,&apos;&apos;))"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="Static4" Left="640" Style="sty_Label" TabOrder="10" Text="조회일자" Top="51" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edYear" ImeMode="native" Left="730" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="11" Top="51" UserData="I:년도" Width="36"></Edit>
+		<Static Align="Center" Height="20" Id="Static1" Left="586" Style="sty_Label" TabOrder="12" Text="조회일자" Top="184" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edFromYear" ImeMode="native" Left="676" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="14" Top="184" UserData="I:년도" Width="36"></Edit>
+		<Static Align="Center" Height="20" Id="Static2" Left="716" Style="sty_Text" TabOrder="13" Text="~" Top="184" VAlign="Middle" Width="10"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edToYear" ImeMode="native" Left="730" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="15" Top="184" UserData="I:년도" Width="36"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button0" ImageID="BTN_COM_SEARCH" Left="768" OnClick="lfn_Search2" Style="sty_Button" TabOrder="16" ToolTipText="조회" Top="183" Width="85"></Button>
+		<Static Font="굴림,12,Bold" Height="20" Id="Static3" Left="12" Style="sty_TextBlue" TabOrder="17" Text="□&#32;등급별&#32;교수현황&#32;및&#32;강의시간" Top="317" VAlign="Middle" Width="306"></Static>
+		<Static Align="Center" Height="20" Id="Static5" Left="641" Style="sty_Label" TabOrder="18" Text="조회일자" Top="320" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Height="20" Id="edYear2" ImeMode="native" Left="731" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="19" Top="320" UserData="I:년도" Width="36"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="Button1" ImageID="BTN_COM_SEARCH" Left="768" OnClick="lfn_Search3" Style="sty_Button" TabOrder="20" ToolTipText="조회" Top="319" Width="85"></Button>
+		<Tab BKSelColor="user4" Border="Flat" Font="굴림,9,Bold" Height="525" Id="TAB_Profes" Left="13" TabButtonBorder="Flat" TabOrder="21" Top="340" Width="842">
+			<Contents>
+				<TabPage BorderColor="black" Font="굴림,9" Height="502" Id="tab1" Left="2" TabOrder="15" Text="&#32;&#32;&#32;&#32;현&#32;&#32;&#32;&#32;황&#32;&#32;&#32;&#32;" Top="21" Width="838">
+					<Edit Align="CENTER" AutoSelect="TRUE" Border="None" DisableBKColor="user7" Face3dColor="user7" Height="12" Id="StartDate" ImeMode="native" Left="470" LeftMargin="2" ShadowColor="user7" Style="sty_Edit" TabOrder="1" Top="-61" UserData="S" Width="76"></Edit>
+					<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_ioList3" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="144" ColSelect="TRUE" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="144" Id="Grid1" InputPanel="FALSE" Left="1" LineColor="default" MinWidth="100" OnHeadClick="gdProfUser_OnHeadClick" Right="834" RowHeight="20" Style="sty_Grid" TabOrder="2" TabStop="true" UseDBuff="true" UsePopupMenu="true" UserData="안전원교수관리목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="833">
+						<contents>
+							<format id="Default">
+								<columns>
+									<col width="100"/>
+									<col width="120"/>
+									<col width="120"/>
+									<col width="120"/>
+									<col width="120"/>
+									<col width="120"/>
+								</columns>
+								<head>
+									<cell align="center" col="0" display="text" rowspan="2" text="교수등급"/>
+									<cell col="1" colspan="4" display="text" text="분석내용"/>
+									<cell col="5" display="text" expr="&apos;1인당\n강의시간&apos;" rowspan="2" text="1인당&#32;강의시간"/>
+									<cell col="1" display="text" row="1" text="인원수"/>
+									<cell col="2" display="text" row="1" text="강의시간"/>
+									<cell col="3" display="text" row="1" text="강의시간점유율"/>
+									<cell col="4" display="text" row="1" text="인원분포율"/>
+								</head>
+								<body>
+									<cell align="center" col="0" colid="PFNAME" display="text"/>
+									<cell align="center" col="1" colid="PFQTY" display="number"/>
+									<cell align="center" col="2" colid="LTIME" display="number"/>
+									<cell align="center" col="3" colid="TIMESHARE" display="number"/>
+									<cell align="center" col="4" colid="INDISTRIVUTIONRATE" display="number"/>
+									<cell align="center" col="5" colid="INTIME" display="number"/>
+								</body>
+								<summary>
+									<cell align="center" bkcolor="user49" col="0" display="text" font="굴림,10,Bold" text="계"/>
+									<cell align="right" bkcolor="user49" col="1" display="number" expr='sum(&quot;PFQTY&quot;)' font="굴림,10,Bold"/>
+									<cell align="right" bkcolor="user49" col="2" display="number" expr='sum(&quot;LTIME&quot;)' font="굴림,10,Bold"/>
+									<cell align="right" bkcolor="user49" col="3" display="number" expr='round(sum(&quot;TIMESHARE&quot;),0)' font="굴림,10,Bold"/>
+									<cell align="right" bkcolor="user49" col="4" display="number" expr='round(sum(&quot;INDISTRIVUTIONRATE&quot;),0)' font="굴림,10,Bold"/>
+									<cell align="right" bkcolor="user49" col="5" display="number" expr='round(sum(&quot;INTIME&quot;),0)' font="굴림,10,Bold"/>
+								</summary>
+							</format>
+						</contents>
+					</Grid>
+					<XChart AllowEdit="false" BorderColor="#88153e" Bottom="489" Height="341" Id="XChart1" Left="1" MarkerShape="MarkerShape_Rect" NSeries="2" NValues="5" Right="832" Top="148" Width="831">
+						<_PersistData>&#13;&#10;/6wsb87i30NGWDYA8vJNQ/9oYXJ0RlgsIP9WZXJzaW9uPf82LjIuMTM0Mv8uMCwgQ3VsdP91cmU9bmV1dP9yYWwsIFB1Yv9saWNL&#13;&#10;ZXlUb/9rZW49YTE4N/84ZTIwNTJjMP84ZGNlElNvZv90d2FyZUZYLlr59B/y8wAj8vAgXgR6aw0E8vABAf7/gQUqawUBawUCawYG&#13;&#10;pQSRBdUy8vAQ8vAD8vD7/4dvf4JlAXwCvwKRBQG/BUFyaWFs8vBBpG8P8vIFjgWsBQBGD1h/Ei5IaWdobCkQ/3RTZXR0aW5nZ3MQ&#13;&#10;CZMIRR8AB3YFzwEBAAgCHRMfWAWfLkF4aXOVAX0CAPECOhDy82UWKDjgAAUKRxULRxmeB88f3BmVAcCeA4UNbQ9/A40OjwUCDASb&#13;&#10;H60QDbEfYi90L+cf+R8oCy+dL8UlDloYD44FvAH68vFS+fQuQmFzZZAADxIPJA82DRd3H/wiDf8uSUdhbGxlcl95VHlwZZUBFDIl&#13;&#10;URH6DIk/lTgSlTUTjQdHCABLvwBxM/LwFeQt/Ec/+yMJLkxpbmXvSW5mb9sCAf//j/+IFT6VOdMDlQFCpJU/lwgBuBqBARYnRRe+&#13;&#10;hScPRGVmYRgwLn9XaW5kb3dz&#13;&#10;</_PersistData>
+					</XChart>
+				</TabPage>
+			</Contents>
+		</Tab>
+	</Form>
+	<Script><![CDATA[/*
+
+ * 프로그램명 : frmprofes0001MProfMgmtList.xml
+
+ * 설명 : 강의전담 본부 교수요원 현황
+
+ * 작성일 : 2023.08.29
+
+ * 작성자 : 김동한
+
+ */
+ 
+ #include "LIB::profes.js"; // 공통업무 관련
+ 
+function Form_OnLoadCompleted(obj)
+{
+     gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+    lfn_Search();	
+}
+
+function lfn_Search(obj) {	               
+	               
+    ds_ioList.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("profes:searchProfes0001proMgmtList5", false);	
+	// 서버 호출 
+	tit_callService(
+		 ""
+		,""
+		,""	// inDs
+		,"ds_ioList=ds_ioList"	// outDs
+		,"PFEYEAR=" + quote(edYear.Text)
+		,"afterSearch"
+		,false
+	);	               
+}
+
+// 조회 후 callbackfunction afterSearch(nErrorCode, strErrorMsg)
+{
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+		gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+function lfn_Search2(obj) {
+    
+    var cal = toNumber(edToYear.Text) - toNumber(edFromYear.Text);
+    
+    if(cal > 1)
+    {
+		gfn_Alert(" 조회일자의 기간은 1년 이상일 수 없습니다. 다시 입력해주세요.");
+		return false;
+    }
+    
+    ds_ioList2.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("profes:searchProfes0001proMgmtList6", false);	
+	// 서버 호출 
+	tit_callService(
+		 ""
+		,""
+		,""	// inDs
+		,"ds_ioList2=ds_ioList2"	// outDs
+		,"FROMYEAR=" + quote(edFromYear.Text)
+		+" TOYEAR=" + quote(edToYear.Text)
+		,"afterSearch2"
+		,false
+	);
+}
+
+// 조회 후 callbackfunction afterSearch2(nErrorCode, strErrorMsg)
+{
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+		gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+
+    // to do
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+
+}
+
+function lfn_Search3(obj)
+{
+    ds_ioList3.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("profes:searchProfes0001proMgmtList7", false);	
+	// 서버 호출 
+	tit_callService(
+		 ""
+		,""
+		,""	// inDs
+		,"ds_ioList3=ds_ioList3"	// outDs
+		,"YEAR2=" + quote(edYEAR2.Text)
+		,"afterSearch3"
+		,false
+	);	
+}
+
+// 조회 후 callbackfunction afterSearch3(nErrorCode, strErrorMsg)
+{
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+		gfn_ErrorMsg(nErrorCode, strErrorMsg); 
+        return;
+    }
+    
+    Chart_Start();
+}
+
+function Chart_Start(strCode)
+{
+    //-----------소숫점 자리수 표현------------------------------------------------------- 
+    TAB_Profes.tab1.XChart1.Axis[0].LabelsFormat.Decimals = 1;	  //소수점 자리수 표현 
+    TAB_Profes.tab1.XChart1.AxisX.Font.size="6";
+    TAB_Profes.tab1.XChart1.Font.size="7";
+    //TAB_Training.tab2.XChart1.AxisY.LabelsFormat.Format = "AxisFormat_Currency"; 
+    TAB_Profes.tab1.XChart1.AxisY.LabelsFormat.Format = "AxisFormat_Number";
+    //------------------------------------------------------------------------------------
+
+	TAB_Profes.tab1.XChart1.OpenData("COD_Values", 1, 2);
+	
+	
+	TAB_Profes.tab1.XChart1.BackColor = "white";
+	TAB_Profes.tab1.XChart1.BorderColor = "white";
+
+	//축에 이름을 넣는다.
+	TAB_Profes.tab1.XChart1.NValues = 4;
+	
+	For(var j=0;j<4;j++)	{
+	trace(ds_ioList3.GetColumn(j,"PFNAME"));
+		TAB_Profes.tab1.XChart1.Legend(j) = ds_ioList3.GetColumn(j,"PFNAME");   
+	}
+	
+	For(var j=0;j<4;j++)	{
+		TAB_Profes.tab1.XChart1.Value(0, j) = round(ds_ioList3.GetColumn(j,"INDISTRIVUTIONRATE"),1);  //실무
+		TAB_Profes.tab1.XChart1.Value(1, j) = round(ds_ioList3.GetColumn(j,"TIMESHARE"),1);  //강습
+	}
+    
+	TAB_Profes.tab1.XChart1.DataEditor = True  ;
+	TAB_Profes.tab1.XChart1.DataEditorObj.Docked = "Docked_Bottom"; 
+	
+	TAB_Profes.tab1.XChart1.SerLeg(0) = "분포율";
+	TAB_Profes.tab1.XChart1.SerLeg(1) = "점유율";
+
+}
+]]></Script>
+</Window>

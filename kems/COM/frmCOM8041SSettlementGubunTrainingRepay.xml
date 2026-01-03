@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="20" Id="frmCOM8041SSettlementGubunTrainingRepay" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Style="sty_Form" Title="결제구분강습환불" Top="8" Ver="1.0" Width="680" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oProcGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>B</CD>
+						<DATA>전액환불</DATA>
+					</record>
+					<record>
+						<CD>P</CD>
+						<DATA>부분환불</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Radio Border="None" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radProcGubun" INDEX="0" InnerDataset="ds_oProcGubun" OnChanged="radProcGubun_OnChanged" Style="sty_Radio" TabOrder="1" Value="B" Width="200"></Radio>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM8041SSettlementGubunTrainingRepay.xml
+ * 설명 : 결제구분강습환불
+ * 작성일 : 2009.09.11
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    parent.medTotalSunapFee.Value = parent.ms_SunapedTotalAmount;
+    radProcGubun_OnChanged();
+
+    if (toNumber(ms_SunapingAmount) > toNumber(ms_SunapedTotalAmount) // 수납할 금액과 수납된 금액이 작은 경우 - 전액환불
+                //|| parent.ms_RepayAbsenDayGubun == "B"
+            ) {
+        divProcGubun.radProcGubun.Enable = false;
+        parent.cbxRepayFee.Enable = false;
+        parent.cbxRepayFee.Value = parent.ds_oTrainingRepayFee.GetColumn(parent.ds_oTrainingRepayFee.FindRow("REPAY", "-" + parent.ms_SunapedTotalAmount), "CD");
+    } else if (parent.ms_RepayAbsenDayGubun == "B") {
+        divProcGubun.radProcGubun.Enable = true;
+        parent.cbxRepayFee.Enable = true;
+        parent.cbxRepayFee.Value = parent.ds_oTrainingRepayFee.GetColumn(parent.ds_oTrainingRepayFee.FindRow("REPAY", "-" + parent.ms_SunapedTotalAmount), "CD");
+    } else {
+        // 부분환불일 경우 부분환불이 선택되게 하기
+        if (parent.ms_RepayAbsenDayGubun <> "B") { // 전액환불이 아니면
+            radProcGubun.Value = "P";
+            radProcGubun_OnChanged();
+        }
+    }
+}
+
+function radProcGubun_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+    parent.lfn_ChangeRepayDiv(radProcGubun.Value);
+
+    switch (radProcGubun.Value) { // 단위업무프로그램
+        case "B" : // 전액환불
+            parent.divSunap.lbSunapingAmount.Visible = false;
+            parent.cbxSunapingAmount.Visible = false;
+            parent.cbxRepayFee.Value = "B";
+            break;
+        default : // 부분환불
+            parent.divSunap.lbSunapingAmount.Visible = true;
+            parent.cbxSunapingAmount.Visible = true;
+            parent.cbxRepayFee.Value = iif(parent.ms_RepayAbsenDayGubun == "B", "1", parent.ms_RepayAbsenDayGubun);
+            cbxSunapingAmount.Value = toNumber(parent.ms_SunapedTotalAmount) + toNumber(parent.ds_oTrainingRepayFee.GetColumn(parent.cbxRepayFee.Index, "REPAY"));
+            break;
+    }
+    if ((ds_ioEarlySunapGubun.GetColumn(0, "EARLYGUBUN") == "L")) { // 선수납일경우 환불시 상세금액 표기
+        lbTrainingAndLicenseCostInfo.Visible = true;  // 선수납의한 금액 상세 정보 보기 // 수첩비
+        lbTrainingAndLicenseCostInfo.Left = "335"; //수납시 선수납 상세 위치 지정함
+        lbTrainingAndLicenseCostInfo.Top = "173";   //수납시 선수납 상세 위치 지정함   
+        lbTrainingAndLicenseCostInfo.text = "(강습수수료 : -" + NumFormat(ds_ioTrainingEarlyRepayFee.GetColumn(nNewIndex, "TRAININGREPAY")) 
+                    + "원+수첩교부수수료: " + NumFormat(ds_ioTrainingEarlyRepayFee.GetColumn(nNewIndex, "LICENSEREPAY")) + "원)";            
+   // chkCardChangeYn.Visible = false; // 카드변경처리환불 임시로 막음
+    } else if ((ds_ioEarlySunapGubun.GetColumn(0, "EARLYGUBUN") == "E")) { // 선수납일경우 환불시 상세금액 표기
+        lbTrainingAndLicenseCostInfo.Visible = true;  // 선수납의한 금액 상세 정보 보기 // 시험비
+        lbTrainingAndLicenseCostInfo.Left = "335"; //수납시 선수납 상세 위치 지정함
+        lbTrainingAndLicenseCostInfo.Top = "173";   //수납시 선수납 상세 위치 지정함   
+        lbTrainingAndLicenseCostInfo.text = "(강습수수료 : -" + NumFormat(ds_ioTrainingEarlyRepayFee.GetColumn(nNewIndex, "TRAININGREPAY")) 
+                    + "원+시험응시수수료: " + NumFormat(ds_ioTrainingEarlyRepayFee.GetColumn(nNewIndex, "LICENSEREPAY")) + "원)";            
+   // chkCardChangeYn.Visible = false; // 카드변경처리환불 임시로 막음
+    } else {
+         // 선수납 한 사람이 아닐 경우    
+        lbTrainingAndLicenseCostInfo.Visible = false;  // 선수납의한 금액 상세 정보 안보기
+    } 
+}
+
+]]></Script>
+</Window>

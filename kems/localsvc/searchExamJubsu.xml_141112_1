@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="output" io="OUTPUT" reserved="NO"></dataset>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_IMP_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[
+function Run()
+{
+	// TODO: Add your source code here
+	if (GUBUN == "JUBSU") {
+		var insertQuery = "  SELECT AP.APTCCOURSECD AS EOTCCOURSECD  "
+								 + "       , AP.TCCOURSENM AS TCCOURSENM  "
+								 + "       , EO.EJPERSONNM AS EJPERSONNM  "
+								 + "       , AP.APEXAMROOM AS EREXAMROOM  "
+								 + "       , AP.APEOMGNO AS APEOMGNO  "
+								 + "       , AP.APSEQ AS APSEQ  "
+								 + "       , EO.EOEXAMORDER + RIGHT(EO.EOHJUBSUNO,3) AS APAPLEXAMNO  "
+								 + "       , AP.APALPHATYPE AS APALPHATYPE  "
+								 + "       , AP.APNUMTYPE AS APNUMTYPE  "
+								 + "       , AP.APREPEATNO AS APREPEATNO  "
+								 + "  FROM (  "
+								 + "        SELECT EXAMORDER.EOMGNO AS EOMGNO  "
+								 + "             , EXAMORDER.EOEXAMORDER AS EOEXAMORDER  "
+								 + "             , EXAMORDERH.EOHJUBSUNO AS EOHJUBSUNO  "
+								 + "             , EXAMORDER.EOEXAMORDER + RIGHT(EXAMORDERH.EOHJUBSUNO, 3) AS APLEXAMNO  "
+								 + "             , EXAMJUBSU.EJPERSONNM AS EJPERSONNM  "
+								 + "             , EXAMROOM.EREXAMROOM AS EREXAMROOM  "
+								 + "        FROM EXAMORDER, EXAMORDERH, EXAMJUBSU, EXAMROOM  "
+								 + "        WHERE EXAMORDER.EOMGNO = EXAMORDERH.EOHEOMGNO  "
+								 + "          AND EXAMORDERH.EOHEJMGNO = EXAMJUBSU.EJMGNO  "
+								 + "          AND EXAMORDERH.EOHSEQ = EXAMJUBSU.EJLASTEOHSEQ  "
+								 + "          AND EXAMORDER.EOMGNO = EXAMROOM.EREOMGNO  "
+								 + "          AND EXAMORDER.EOMGNO = :EOMGNO  "
+								 + "          AND EXAMROOM.EREXAMROOM = :EREXAMROOM  "
+								 + "       ) EO LEFT JOIN  "
+								 + "       (  "
+								 + "        SELECT ANSWERPAPER.APSEQ AS APSEQ  "
+								 + "             , ANSWERPAPER.APEOMGNO AS APEOMGNO  "
+								 + "             , ANSWERPAPER.APTCCOURSECD AS APTCCOURSECD  "
+								 + "             , TRAININGCOURSE.TCCOURSENM AS TCCOURSENM  "
+								 + "             , ANSWERPAPER.APAPLEXAMNO AS APAPLEXAMNO  "
+								 + "             , ANSWERPAPER.APALPHATYPE AS APALPHATYPE  "
+								 + "             , ANSWERPAPER.APNUMTYPE AS APNUMTYPE  "
+								 + "             , ANSWERPAPER.APEXAMROOM AS APEXAMROOM  "
+								 + "             , ANSWERPAPER.APREPEATNO AS APREPEATNO  "
+								 + "        FROM ANSWERPAPER, TRAININGCOURSE    "
+								 + "        WHERE ANSWERPAPER.APTCCOURSECD = TRAININGCOURSE.TCCOURSECD  "
+								 + "          AND ANSWERPAPER.APEOMGNO = :EOMGNO  "
+								 + "          AND ANSWERPAPER.APREPEATNO = :EREXAMREPEAT  "
+								 + "       ) AP  "
+								 + "        ON AP.APAPLEXAMNO = EO.APLEXAMNO  "
+								 + " WHERE EO.EOMGNO = :EOMGNO  "
+								 + "   AND EO.EREXAMROOM = :EREXAMROOM  "
+								 + " ORDER BY EO.EOHJUBSUNO";
+		ExecuteQuery(insertQuery, "output");
+	}
+	if (GUBUN == "ANS") {
+		var insertQuery = "  SELECT AP.APTCCOURSECD AS EOTCCOURSECD  "
+								 + "       , TRAININGCOURSE.TCCOURSENM AS TCCOURSENM "
+								 + "       , EO.EJPERSONNM AS EJPERSONNM "
+								 + "       , AP.APEOMGNO AS APEOMGNO  "
+								 + "       , AP.APEXAMROOM AS EREXAMROOM "
+								 + "       , AP.APSEQ AS APSEQ "
+								 + "       , AP.APAPLEXAMNO AS APAPLEXAMNO "
+								 + "       , AP.APALPHATYPE AS APALPHATYPE "
+								 + "       , AP.APNUMTYPE AS APNUMTYPE "
+								 + "       , AP.APREPEATNO AS APREPEATNO  "
+								 + "  FROM (ANSWERPAPER AS AP "
+								 + "  		 INNER JOIN TRAININGCOURSE "
+								 + "  		  ON AP.APTCCOURSECD = TRAININGCOURSE.TCCOURSECD) "
+								 + "       LEFT JOIN "
+								 + "       (SELECT EXAMORDER.EOTCCOURSECD AS EOTCCOURSECD  "
+								 + "       		  , EXAMJUBSU.EJPERSONNM AS EJPERSONNM "
+								 + "       		  , EXAMORDERH.EOHJUBSUNO AS EOHJUBSUNO "
+								 + "       		  , EXAMORDER.EOEXAMORDER AS EOEXAMORDER "
+								 + "       		  , EXAMORDER.EOMGNO AS EOMGNO "
+								 + "        FROM ( "
+								 + "       		    (EXAMORDER  "
+								 + "       		     INNER JOIN EXAMORDERH  "
+								 + "       		      ON EXAMORDER.EOMGNO = EXAMORDERH.EOHEOMGNO "
+								 + "       		    ) INNER JOIN EXAMJUBSU  "
+								 + "       		       ON (EXAMORDERH.EOHSEQ = EXAMJUBSU.EJLASTEOHSEQ)  "
+								 + "       		        AND (EXAMORDERH.EOHEJMGNO = EXAMJUBSU.EJMGNO) "
+								 + "       		  ) INNER JOIN EXAMROOM  "
+								 + "       		     ON EXAMORDER.EOMGNO = EXAMROOM.EREOMGNO "
+								 + "       )  AS EO "
+								 + "       ON AP.APAPLEXAMNO = EO.EOEXAMORDER + RIGHT(EOHJUBSUNO, 3) "
+								 + "  WHERE AP.APEOMGNO = :EOMGNO   "
+								 + "    AND AP.APEXAMROOM = :EREXAMROOM   	 "
+								 + "    AND AP.APREPEATNO = :EREXAMREPEAT "
+								 + "  ORDER BY AP.APAPLEXAMNO";		
+		ExecuteQuery(insertQuery, "output");
+	}	
+}
+]]></source>
+</class2>

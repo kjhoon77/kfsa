@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="216" Id="frmCOM8300PCashPOS" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="현금영수증처리&#32;팝업" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oRecieptYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>출력</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>미출력</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPosJibu"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPosItem"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iSettlementPos">
+				<Contents>
+					<colinfo id="PROGRAMID" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUNAPGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROCAMOUNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="POSYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="POSMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="KEY1" size="256" summ="default" type="STRING"/>
+					<colinfo id="KEY2" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROCDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PONYDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="PRINTYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="BANKSUNAPGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CARDNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="CARDINSTALL" size="256" summ="default" type="STRING"/>
+					<colinfo id="CASHRECEIPTUSE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CASHCARDNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="VIRTBANKCODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="VIRTCLOSEDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="VIRTHPTEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="VIRTCASHRECEIPTYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PAYMENTGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PROCGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="PONYGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="JIBUMGID" size="256" summ="default" type="STRING"/>
+					<colinfo id="VIRTBANKNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPAYCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="PARTREPAYYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SUNAPACTIONREF" size="256" summ="default" type="STRING"/>
+					<colinfo id="REPAYTSSEQ" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSettlementPos"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPrintHistory"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPosSunap"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oDeleteSanap"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oTrainingOrderChange"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oExecuteRepay"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oRepayCancel"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oRepayOk"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oChangeDate"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oTrainingRepayFee">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oTrainingAbsentDay">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oTrainingSunapFee"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPosStartInfo"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oProcGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>B</CD>
+						<DATA>전액환불</DATA>
+					</record>
+					<record>
+						<CD>P</CD>
+						<DATA>부분환불</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oUseGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>소득공제</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>지출증빙</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oPosPrintm"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCallKeyIn"></Dataset>
+		</Datasets>
+		<Shape Bottom="28" Height="28" Id="shpBtnBox" Left="705" LineColor="user14" Right="796" TabOrder="3" Top="0" Type="Rectangle" Width="91"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="3" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="4" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="2" ToolTipText="화면&#32;출력" Top="4" Visible="FALSE" Width="85"></Button>
+		<Button BKColor="user17" ButtonStyle="TRUE" Cursor="HAND" Font="굴림,10,Bold" Height="44" Id="btnSetlmt" Left="300" OnClick="btnSetlmt_OnClick" Style="sty_Button" TabOrder="4" Text="현금영수증처리" Top="168" Width="200"></Button>
+		<Div BKColor="user0" Height="24" Id="divPos" Left="92" OnLoadCompleted="Form_OnLoadCompleted" OnTimer="frmCOM3010SPOS_OnTimer" OnUnloadCompleted="frmCOM3010SPOS_OnUnloadCompleted" Style="sty_Form" TabOrder="5" TabStop="FALSE" Text="Div0" ToolTipFont="Default,0" Top="4" Url="COM::frmCOM3010SPOS.xml" Visible="FALSE" Width="84">
+			<Contents></Contents>
+		</Div>
+		<Shape Bottom="72" Height="40" Id="shpGubunBox4" Left="4" LineColor="user15" Right="796" TabOrder="10" Top="32" Type="Rectangle" Width="792"></Shape>
+		<Static Align="Center" Height="20" Id="lbPersonNm1" Left="8" Style="sty_Label" TabOrder="7" Text="구매자" Top="48" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbOrderNo1" Left="192" Style="sty_Label" TabOrder="8" Text="주문번호" Top="48" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" BindDataset="ds_oPosPrintm" Border="Flat" Column="PMPCORDERNO" Enable="FALSE" Height="20" Id="edOrderNo1" ImeMode="native" Left="284" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="6" Top="48" UserData="S" Width="112"></Edit>
+		<Edit Align="CENTER" AutoSelect="TRUE" BindDataset="ds_oPosPrintm" Border="Flat" Column="PMBUYER" Enable="FALSE" Height="20" Id="edPersonNm1" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="9" Top="48" UserData="S" Width="88"></Edit>
+		<Static Align="Center" Height="20" Id="lbRepayAmount1" Left="604" Style="sty_Label" TabOrder="11" Text="처리금액" Top="48" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbRepay" Left="16" Style="sty_LabelGruopBox" TabOrder="12" Text="처리정보" Top="24" VAlign="Middle" Width="100"></Static>
+		<Static Align="Center" Height="20" Id="lbSunapGubun1" Left="400" Style="sty_Label" TabOrder="13" Text="납부방법" Top="48" VAlign="Middle" Width="88"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" BindDataset="ds_oPosPrintm" Border="Flat" Column="PMPAYMENTFLAGNM" Enable="FALSE" Height="20" Id="edSunapGubun1" ImeMode="native" Left="492" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="14" Top="48" UserData="S" Width="108"></Edit>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" BindDataset="ds_oPosPrintm" Border="Flat" Column="PLUSAMT" Enable="FALSE" Height="20" Id="medRepayAmount1" Left="696" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="15" Top="48" UserData="S" Width="96"></MaskEdit>
+		<Div BKColor="user0" Border="Flat" BorderColor="#aab6c7" Height="84" Id="divSunabDtl" Left="4" OnActivate="frmCOM3103SSettlementPOSSunap_OnActivate" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="16" TabStop="FALSE" Text="Div0" ToolTipFont="Default,0" Top="76" Url="frmCOM3103SSettlementPOSSunap.xml" Width="792">
+			<Contents></Contents>
+		</Div>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM8300PCashChangePOS.xml
+ * 설명 : 현금영수증처리/취소 팝업
+ * 작성일 : 2009.09.26
+ * 작성자 : 장성호
+ */
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 파라메터
+    sProgramId - POS단위업무프로그램
+    sKey1 - KEY값1 -- 현재 사용안함
+    sKey2 - KEY값2 -- 현재 사용안함
+    sKey3 - KEY값3 -- 현재 사용안함
+    sRepayPosYear - 환불용 POS년도
+    sRepayPosMgno - 환불용 POS관리번호
+    sRepayPayment - 결과출력용 납입방법(0,1,2,3)
+*/
+
+var ms_RepayPosYear = ""; // 환불용 POS년도
+var ms_RepayPosMgno = ""; // 환불용 POS관리번호
+var ms_RepayPayment = ""; // 결과출력용 납입방법(0,1,2,3)
+
+var mb_ShowProgressBar = false; // POS 진행상태
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    ms_RepayPosYear = sRepayPosYear; // POS영수증관리년도
+    ms_RepayPosMgno = sRepayPosMgno; // POS영수증관리번호
+    ms_RepayPayment = sRepayPayment; // 결과출력용 납입방법(0,1,2,3)
+
+    if (gs_IsCallCenter == "Y") { // 콜센터 직원용 이면
+		divSunabDtl.btnKeyinHP.Visible = true;			// 휴대폰번호 콜센터 KeyIn 가져오기
+		divSunabDtl.btnKeyinCompanyNo.Visible = true;	// 사업자등록번호 콜센터 KeyIn 가져오기
+    } else {
+		divSunabDtl.btnKeyinHP.Visible = false;
+		divSunabDtl.btnKeyinCompanyNo.Visible = false;
+	}
+
+    lfn_SearchPosPrintm();
+
+    if (ms_RepayPayment == "0" || ms_RepayPayment == "3") { // 현금, 가상계좌이면 현금영수증 처리
+        btnSetlmt.Text = "현금영수증처리";
+    } else { // 현금영수증이면 현금영수증취소 처리
+        btnSetlmt.Text = "현금영수증취소";
+        divSunabDtl.Visible = false;
+        // 폼 사이즈 조절
+        var ln_TitleSize = window.Height - this.Height;
+        window.Height = this.Height + ln_TitleSize - (btnSetlmt.Top - divSunabDtl.Top);
+        btnSetlmt.Top = divSunabDtl.Top;
+    }
+    
+    
+}
+
+function Form_OnUnloadCompleted(obj) {
+    var arrRet = array(2);
+    arrRet[0] = "END";
+    Close(arrRet);
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 123 : // 화면출력(F12)
+            lfn_PrintScreen();
+            break;
+    }
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    var arrRet = array(2);
+    arrRet[0] = "END";
+    Close(arrRet);
+}
+/* 공통 필수 종료 */
+
+/*
+ * 기능 : POS 수납내역을 조회한다.
+ * parameter : 없음
+ * return value : 없음
+ */
+function lfn_SearchPosPrintm(obj) {
+    ds_oPosPrintm.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("com:searchPosPrintm", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oPosPrintm=ds_oPosPrintm"	// outDs
+		,"POSYEAR=" + quote(ms_RepayPosYear)
+            + " POSMGNO=" + quote(ms_RepayPosMgno)
+		,""
+		,false
+	);
+}
+
+/*
+ * 기능 : 현금영수증정보를 저장한다.
+ * parameter : 없음
+ * return value : 없음
+ */
+function lfn_InsertPosCash(obj) {
+    var sArg = "JUMUNNO=" + quote(ds_oPosPrintm.GetColumn(0, "PMPCORDERNO")); // 주문번호
+    sArg += " CASHRECEIPTUSE=" + quote(divSunabDtl.radUseGubun.Value); // 용도[1:소득공제, 2-지출증빙]
+    sArg += " PROCAMOUNT=" + quote(medRepayAmount1.Value); // 거래금액(부가세미포함)
+    sArg += " CASHCARDNO=" + quote(divSunabDtl.edCashCardNo.Text); // 국세청 KEY 
+    sArg += " PCSEQ=" + quote(ds_oPosPrintm.GetColumn(0, "PMPCSEQ")); // 현금영수증 순번
+
+    var sService = "com:insertPosCash";
+
+    tit_clearActionInfo();
+    tit_addSingleActionInfo(sService, "", 0, "");
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,""    // inDs
+        ,""    // outDs
+        ,sArg    // args
+        ,"lfn_AfterInsertPosCash"
+        ,false
+        ,false
+        ,true
+    );
+}
+
+/*
+ * 기능 : 현금영수증정보 저장 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterInsertPosCash(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        var arrRet = array(2);
+        arrRet[0] = "FAIL";
+        Close(arrRet);
+    }
+
+    // POS DIV 호출용 데이타셋을 저장한다.
+    divPos.ds_ioPosInput.ClearData();
+    divPos.ds_ioPosInput.InsertRow(0);
+    divPos.ds_ioPosInput.SetColumn(0, "PMYEAR", ms_RepayPosYear); // 영수증 관리년도
+    divPos.ds_ioPosInput.SetColumn(0, "PMMGNO", ms_RepayPosMgno); // 영수증 관리번호
+    divPos.ds_ioPosInput.SetColumn(0, "PRMGUBUN", sProgramId); // POS단위업무프로그램 (강습21,시험22,수첩23)
+    divPos.ds_ioPosInput.SetColumn(0, "LGD_METHOD", "0"); // 수납환불구분(수납0,환불1)
+    divPos.ds_ioPosInput.SetColumn(0, "STATUS", "4"); // 초기저장시 4
+    divPos.ds_ioPosInput.SetColumn(0, "CASHFLAG", "Y"); // 현금영수증처리 Y
+
+    lfn_PosCash(); // 현금영수증처리를 호출한다.
+}
+
+function btnSetlmt_OnClick(obj)
+{
+
+    if (ms_RepayPayment == "0" || ms_RepayPayment == "3") { // 현금이면 현금영수증/가상계좌 처리
+        if (gfn_IsNull(divSunabDtl.edCashCardNo.Text)) {
+            divSunabDtl.edCashCardNo.SetFocus();
+            gfn_Alert("현금영수증번호를 입력해 주십시오.");
+            return false;
+        }
+        if (!gfn_Confirm(btnSetlmt.Text + " 하시겠습니까?")) {
+            return false;
+        }
+
+        // 현금영수증정보저장
+        lfn_InsertPosCash();
+    } else { // 현금영수증이면 현금영수증취소 처리
+        if (!gfn_Confirm(btnSetlmt.Text + " 하시겠습니까?")) {
+            return false;
+        }
+        // POS DIV 호출용 데이타셋을 저장한다.
+        divPos.ds_ioPosInput.ClearData();
+        divPos.ds_ioPosInput.InsertRow(0);
+        divPos.ds_ioPosInput.SetColumn(0, "PMYEAR", ms_RepayPosYear); // 영수증 관리년도
+        divPos.ds_ioPosInput.SetColumn(0, "PMMGNO", ms_RepayPosMgno); // 영수증 관리번호
+        divPos.ds_ioPosInput.SetColumn(0, "PRMGUBUN", sProgramId); // POS단위업무프로그램 (강습21,시험22,수첩23)
+        divPos.ds_ioPosInput.SetColumn(0, "LGD_METHOD", "1"); // 수납환불구분(수납0,환불1)
+        divPos.ds_ioPosInput.SetColumn(0, "STATUS", "4"); // 초기저장시 4
+        divPos.ds_ioPosInput.SetColumn(0, "CASHFLAG", "N"); // 현금영수증취소 N
+
+        lfn_PosCash(); // 현금영수증처리를 호출한다.
+    }
+}
+
+/*
+ * 기능 : 현금영수증처리를 호출한다.
+ * parameter : 없음
+ * return value : 없음
+ */
+function lfn_PosCash(obj) {
+    var ls_RetPos = Dialog("COM::frmCOM8001PPOSProgressBar.xml", "", 300, 123, "TitleBar=false", -1, -1);
+
+    if (ls_RetPos == "OK") {
+        var ls_PosResultCode = divPos.ds_ioPosOutput.GetColumn(0, "MI_RSCODE"); // 결과코드
+        if (ls_PosResultCode == "0") {
+            gfn_Alert("정상적으로 처리되었습니다.");
+            var arrRet = array(2);
+            arrRet[0] = "OK";
+            Close(arrRet);
+        } else {
+            gfn_Alert(btnSetlmt.Text + "를 실패했습니다.");
+            var arrRet = array(2);
+            arrRet[0] = "OK";
+            Close(arrRet);
+        }    
+    } else {
+        gfn_Alert(btnSetlmt.Text + "를 실패했습니다.");
+        var arrRet = array(2);
+        arrRet[0] = "OK";
+        Close(arrRet);
+    }
+}
+
+
+// 콜센터만 이용
+// 콜센터에서 KeyIn으로 받은 정보(휴대폰번호) 가져오기
+function btnKeyinHP_OnClick(obj)
+{
+	if (gfn_isNull(gds_oUserInfo.GetColumn(0,"PINLINETELNO"))) {
+		gfn_Alert("내선번호 정보가 없습니다.");
+		return false;
+	}
+	
+	if (!gfn_Confirm("휴대폰번호 버튼입력[KEY-IN] 정보를 가져옵니다.\n\n"+
+	                "한번만 클릭하여 정보를 가져오세요!(두번 클릭시 지워짐)")) {
+		return false;
+	}
+
+	// 버튼입력[KEY-IN]값 조회
+	lfn_SearchCallKeyIn(gds_oUserInfo.GetColumn(0,"PINLINETELNO"), "2");		// Gubun 1:주민번호, 2:휴대폰번호, 3:사업자등록번호
+	
+	divSunabDtl.edCashCardNo.Value = ds_oCallKeyIn.GetColumn(0, "CKKEYINNO");
+	
+	divSunabDtl.radUseGubun.Value = "1";	// 소득공제
+	
+	lfn_DeleteCallKeyIn(ds_oCallKeyIn.GetColumn(0,"CKUID"), ds_oCallKeyIn.GetColumn(0, "CKSEQ"));
+	
+	divSunabDtl.edCashCardNo.SetFocus();
+}
+
+// 콜센터만 이용
+// 콜센터에서 KeyIn으로 받은 정보(사업자번호) 가져오기
+function btnKeyinCompanyNo_OnClick(obj)
+{
+	if (gfn_isNull(gds_oUserInfo.GetColumn(0,"PINLINETELNO"))) {
+		gfn_Alert("내선번호 정보가 없습니다.");
+		return false;
+	}
+	
+	if (!gfn_Confirm("사업자등록번호 버튼입력[KEY-IN] 정보를 가져옵니다.\n\n"+
+	                "한번만 클릭하여 정보를 가져오세요!(두번 클릭시 지워짐)")) {
+		return false;
+	}
+	
+	// 버튼입력[KEY-IN]값 조회
+	lfn_SearchCallKeyIn(gds_oUserInfo.GetColumn(0,"PINLINETELNO"), "3");		// Gubun 1:주민번호, 2:휴대폰번호, 3:사업자등록번호
+	
+	divSunabDtl.edCashCardNo.Text = ds_oCallKeyIn.GetColumn(0, "CKKEYINNO");
+	
+	divSunabDtl.radUseGubun.Value = "2";	//지출증빙
+	
+	lfn_DeleteCallKeyIn(ds_oCallKeyIn.GetColumn(0,"CKUID"), ds_oCallKeyIn.GetColumn(0, "CKSEQ"));
+	
+	divSunabDtl.edCashCardNo.SetFocus();
+}
+
+
+// UID로 CALLKEYIN 테이블 조회
+function lfn_SearchCallKeyIn(sINTELNO, sGUBUN)
+{
+	ds_oCallKeyIn.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("com:searchCallKeyIninfo", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oCallKeyIn=ds_oCallKeyIn"	// outDs
+		,"INTELNO=" + quote(sINTELNO)
+		 + " GUBUN=" + quote(sGUBUN)//  UID
+		,""
+		,false
+		,false
+		,true
+	);
+}
+
+// UID로 CALLKEYIN 테이블 데이터 삭제
+function lfn_DeleteCallKeyIn(sUID, sSEQ)
+{
+    tit_clearActionInfo();
+	tit_AddSingleActionInfo("com:deleteCallKeyIninfo", "", 0, "");
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,""	// outDs
+		,"UID=" + quote(sUID)
+		 + " SEQ=" + quote(sSEQ)//  UID
+		,""
+		,false
+		,false
+		,true
+	);
+
+}]]></Script>
+</Window>

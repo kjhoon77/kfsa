@@ -1,0 +1,903 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="236" Id="frmtraining0540MExamMarking" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="채점" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="656" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oExamOrder">
+				<Contents>
+					<colinfo id="EOMGNO" size="30" summ="default" type="STRING"/>
+					<colinfo id="JJIBUNICK" size="50" summ="default" type="STRING"/>
+					<colinfo id="EOYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSENM" size="30" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMORDER" size="3" summ="default" type="STRING"/>
+					<colinfo id="EOEXAMDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="TCCOURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="EXAMNM" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCorrectAnswer">
+				<Contents>
+					<colinfo id="CATCCOURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CAEPNUMTYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CAEPALPHATYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CAITEMNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CACORRECTCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CAITEMSCORE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CACORRECTANSWER" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oAnswerPaper">
+				<Contents>
+					<colinfo id="APSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="APREPEATNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="APEOMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="APAPLEXAMNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="APTCCOURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="APNUMTYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="APALPHATYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="APCAITEMNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="APANSWER" size="256" summ="default" type="STRING"/>
+					<colinfo id="APANSWERYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="APITEMSCORE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="APEXAMROOM" size="256" summ="default" type="STRING"/>
+					<colinfo id="APCHASUGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="APSUBJECTGUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iAnswerPaper">
+				<Contents>
+					<colinfo id="APSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="APREPEATNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="APEOMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="APAPLEXAMNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="APTCCOURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="APNUMTYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="APALPHATYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="APCAITEMNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="APANSWER" size="256" summ="default" type="STRING"/>
+					<colinfo id="APANSWERYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="APITEMSCORE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="APEXAMROOM" size="256" summ="default" type="STRING"/>
+					<colinfo id="APCHASUGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="APSUBJECTGUBUN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iAnswerAnalysis">
+				<Contents>
+					<colinfo id="AAEOMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="AATCCOURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="AACAEPNUMTYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="AACAEPALPHATYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="AACAITEMNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="AAREPEATNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="AACORRECTCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="AAMARKINGCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="AACORRECTPERCENT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="AA1CNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="AA2CNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="AA3CNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="AA4CNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="AAEMPTYCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="AADOUBLECNT" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioExamResult">
+				<Contents>
+					<colinfo id="EREJMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERREPEATNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERAPLEXAMNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERPASSYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERPASSDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERSCORE" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="ERRANK" size="256" summ="default" type="STRING"/>
+					<colinfo id="ERCORRECTCNT" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="ERSCORE2" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="ERSORTSCORE" size="22" summ="default" type="DECIMAL"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioServerSend">
+				<Contents>
+					<colinfo id="SSHEOMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SSHREPEATNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SSHSENDYN" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oCorrectAnswerTmp">
+				<Contents>
+					<colinfo id="CATCCOURSECD" size="256" summ="default" type="STRING"/>
+					<colinfo id="CAEPNUMTYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CAEPALPHATYPE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CAITEMNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="CACORRECTCNT" size="256" summ="default" type="STRING"/>
+					<colinfo id="CAITEMSCORE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CACORRECTANSWER" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oErrorCount">
+				<Contents>
+					<colinfo id="ECERRCNT" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="232" Height="88" Id="Shape1" Left="4" LineColor="user15" Right="653" TabOrder="15" Top="144" Type="Rectangle" Width="649"></Shape>
+		<Shape Bottom="120" Height="88" Id="Shape0" Left="3" LineColor="user15" Right="652" TabOrder="11" Top="32" Type="Rectangle" Width="649"></Shape>
+		<Grid AutoFit="TRUE" BindDataset="ds_oExamOrder" BkColor2="user2" BkSelColor="user3" BoldHead="FALSE" Border="Flat" Bottom="116" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="None" HeadHeight="20" Height="80" Id="gdExam" InputPanel="FALSE" Left="100" LineColor="default" MinWidth="100" Right="648" RowHeight="20" Style="sty_Grid" TabOrder="12" TabStop="true" Top="36" UseDBuff="true" UsePopupMenu="true" UserData="응시자목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="548">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="330"/>
+						<col width="0"/>
+						<col width="0"/>
+					</columns>
+					<body>
+						<cell align="left" col="0" colid="EXAMNM" display="text"/>
+						<cell align="center" col="1" colid="EOEXAMDATE" display="text" Mask="####-##-##"/>
+						<cell align="center" col="2" colid="TCCOURSECD" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="293" LineColor="user14" Right="652" TabOrder="61" Top="1" Type="Rectangle" Width="359"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="4" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="292">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnExcuteMark" ImageID="BTN_TEXT_06" Left="296" OnClick="btnExcuteMark_OnClick" Style="sty_Button" TabOrder="1" Text="채점" ToolTipText="채점" Top="4" Width="92"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="390" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="2" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="477" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Height="13" Id="Static0" Left="13" TabOrder="9" Text="정답지" Top="1297" Visible="FALSE" Width="40"></Static>
+		<Static Height="13" Id="Static1" Left="13" TabOrder="10" Text="답안지" Top="1385" Visible="FALSE" Width="40"></Static>
+		<Static Height="13" Id="Static2" Left="13" TabOrder="11" Text="시험결과" Top="1473" Visible="FALSE" Width="60"></Static>
+		<Static Align="Center" Height="20" Id="lbExamNm" Left="8" Style="sty_Label" TabOrder="11" Text="시험명" Top="36" VAlign="Middle" Width="88"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnNext" ImageID="BTN_TEXT_COM" Left="564" OnClick="btnNext_OnClick" Style="sty_Button" TabOrder="11" Text="다음&#32;▶" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Static Height="20" Id="lbTextBlue" Left="384" Style="sty_TextBlue" TabOrder="13" Text="※&#32;선택에&#32;상관없이&#32;모든&#32;회차가&#32;채점&#32;됩니다." Top="123" VAlign="Middle" Width="267"></Static>
+		<Progressbar Height="20" Id="progMarkingCheck" Left="100" Max="10000" Origin="Horizontal" Step="1" TabOrder="14" Top="160" Width="180"></Progressbar>
+		<Static Align="Center" Height="20" Id="lbProgress" Left="16" Style="sty_LabelGruopBox" TabOrder="16" Text="진행사항" Top="136" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbMarkingCheck" Left="8" Style="sty_Label" TabOrder="17" Text="채점" Top="160" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbAnswerAnalysis" Left="8" Style="sty_Label" TabOrder="19" Text="문항분석" Top="184" VAlign="Middle" Width="88"></Static>
+		<Progressbar Height="20" Id="progAnswerAnalysis" Left="100" Max="10000" Origin="Horizontal" Step="1" TabOrder="18" Top="184" Width="180"></Progressbar>
+		<Static Align="Center" Height="20" Id="lbExamResult" Left="8" Style="sty_Label" TabOrder="21" Text="결과생성" Top="208" VAlign="Middle" Width="88"></Static>
+		<Progressbar Height="20" Id="progExamResult" Left="100" Max="10000" Origin="Horizontal" Step="1" TabOrder="20" Top="208" Width="180"></Progressbar>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmtraining0540MExamMarking.xml
+ * 설      명 : 채점
+ * 작  성  일 : 2009.10.20
+ * 작  성  자 : 김동현
+ */
+
+#include "LIB::training.js"; // 공통업무 관련
+
+var ls_PassScore = 60; //합격 점수
+
+var ls_SubjectPassScore = 40; //과목별 합격 점수
+
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+
+    gUid = gds_oUserInfo.GetColumn(0,"PSABUN");
+    cDate = Mid(GetDate(),0,8);
+
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    ms_FormAuth = "W";
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    // 로딩 시 시험명 리스트 출력
+    lfn_Search();
+	// 관리자, 평가관리과, 서울지부 는 신규 스캔방식 프로그램의 에러내역 체크(2013.11.06)
+	if (gds_oUserInfo.GetColumn(0, "ADMINGUBUN") == "SM" ||
+	    gds_oUserInfo.GetColumn(0, "PDEPTCD") == "0253" || 
+	    gds_oUserInfo.GetColumn(0, "PDEPTCD") == "1011") {
+
+		// 특급시험이 아니면
+		if (ds_oExamOrder.GetColumn(0, "TCCOURSECD") <> "10") {
+		
+			lfn_GetErrorCount();
+			
+			if (!gfn_isNull(ds_oErrorCount.GetColumn(0, "ECERRCNT")) && ds_oErrorCount.GetColumn(0, "ECERRCNT") > 0) {
+			 
+				gfn_alert("답안 리딩 후 처리하지 않은 에러내역이 " + 
+						   ds_oErrorCount.GetColumn(0, "ECERRCNT") + "건 남아있습니다. 처리 후 채점을 진행하세요!");
+			
+			}
+		}
+	}
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+
+}
+
+function Form_OnSize(obj,nCx,nCy,nState) {
+}
+
+/**
+ * 기     능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return    : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+
+    btnExcuteMark.Enable = bStatus; // 전송 버튼
+
+}
+
+/**
+ * 시험명 리스트
+ */
+function lfn_Search() {
+
+    ds_oExamOrder.ClearData(); // 데이타셋 초기화
+    ldb.Sync = true;
+    ds_oExamOrder.Load("SvcLdb::searchExamOrderList.xml");
+    ldb.Sync = false;
+}
+
+/**
+ * 채점버튼 클릭
+ */
+function btnExcuteMark_OnClick(obj) {
+
+    if (ds_oExamOrder.GetCurrow() < 0) {
+         gfn_Alert("채점할 시험이 없습니다.");
+         return;
+    }
+
+    if (!gfn_Confirm("채점을 하시겠습니까?")) {
+        return;
+    }
+    
+    
+    progMarkingCheck.Pos = 0;
+    progAnswerAnalysis.Pos = 0;
+    progExamResult.Pos = 0;
+
+    progMarkingCheck.StepIt();
+    progAnswerAnalysis.StepIt();
+    progExamResult.StepIt();
+
+    lfn_GetCorrectAnswer(); // 정답지 로딩
+    
+    if (ds_oCorrectAnswer.GetRowCount() < 1) {
+        gfn_Alert("정답지 데이터가 없습니다.");
+        return false;
+    }
+
+    lfn_GetAnswerPaper(); // 답안지 로딩
+    
+    if (ds_oAnswerPaper.GetRowCount() < 1) {
+        gfn_Alert("읽어 들인 답지가 없습니다.");
+        return false;
+    }
+
+    lfn_SplitAnswerPaper(); // 답 split
+    lfn_MarkingAnswerPaper(); // 정답 확인
+    
+    lfn_SetAnswerPaper(); // 답지 insert
+    
+    lfn_Analysis(); // 문항분석
+    
+    lfn_GetExamJubsu(); // 접수자 및 응시자 로딩
+    lfn_ExamResult(); // 시험결과
+
+    lfn_SetServerSend(); // 서버전송 여부 테이블 insert
+    
+    gfn_Alert("채점이 완료 되었습니다.");
+
+    btnNext.Enable = true;
+
+    return true;
+}
+
+/**
+ * 정답지 로딩
+ */
+function lfn_GetCorrectAnswer() {
+
+    ds_oCorrectAnswer.ClearData(); // 데이타셋 초기화
+
+    ldb.Sync = true;
+    transaction("select"
+        , "SvcLdb::searchCorrectAnswerMarking.xml"
+        , ""
+        , "ds_oCorrectAnswerTmp=output"
+        , ""
+        , "");
+    ldb.Sync = false;
+    
+    DecodeDS(ds_oCorrectAnswerTmp, "CAITEMNO", "CACORRECTANSWER", ds_oCorrectAnswer);	//정답 복호화
+}
+
+/**
+ * 답지 로딩
+ */
+function lfn_GetAnswerPaper() {
+
+    ds_oAnswerPaper.ClearData(); // 데이타셋 초기화
+
+    ldb.Sync = true;
+    transaction ("selectAnswerPaper"
+        , "SvcLdb::searchAnswerPaper.xml" // BSB Service
+        , "" // inDS
+        , "ds_oAnswerPaper=output" // outDS
+        , ""
+        , "");
+    ldb.Sync = false;
+    
+}
+
+/**
+ * 접수자 및 응시자 로딩
+ */
+function lfn_GetExamJubsu() {
+
+    ds_ioExamResult.ClearData(); // 데이타셋 초기화
+
+    ldb.Sync = true;
+    transaction ("selectExamJubsu"
+        , "SvcLdb::searchExamResultBase.xml" // BSB Service
+        , "" // inDS
+        , "ds_ioExamResult=output" // outDS
+        , ""
+        , "");
+    ldb.Sync = false;
+
+}
+
+/**
+ * 답지 쪼개기
+ */
+function lfn_SplitAnswerPaper() {
+
+    var seq = 1;
+    ds_iAnswerPaper.ClearData();
+
+    for (var i=0; i<ds_oAnswerPaper.GetRowCount(); i++) {
+
+        var userAns;
+        
+        var userSubject;
+        
+        if (ds_oAnswerPaper.GetColumn(i, "APTCCOURSECD") == "20"
+            || ds_oAnswerPaper.GetColumn(i, "APTCCOURSECD") == "21"
+            || ds_oAnswerPaper.GetColumn(i, "APTCCOURSECD") == "22"
+            
+            || ds_oAnswerPaper.GetColumn(i, "APTCCOURSECD") == "50") {	// 공공,1급,2급, 생활안전강사
+            userAns = array(50); //문항 마지막번호 고정
+            
+            userSubject = array(50); //문항 마지막번호 고정
+        } else if (ds_oAnswerPaper.GetColumn(i, "APTCCOURSECD") == "10") {	// 특급
+            userAns = array(100); //문항 마지막번호 고정
+            
+            userSubject = array(100); //문항 마지막번호 고정
+        } else if (ds_oAnswerPaper.GetColumn(i, "APTCCOURSECD") == "51") {	// 심폐소생술과정
+            userAns = array(20); //문항 마지막번호 고정
+            
+            userSubject = array(20); //문항 마지막번호 고정
+        } else {		// 위관,운송자
+            userAns = array(25);
+            
+            userSubject = array(25);
+        }
+        
+        userAns = Split(Replace(Replace(ds_oAnswerPaper.GetColumn(i, "APANSWER"), "//", "/ /"), "//", "/ /"), "/");
+
+        if (gfn_IsNull(userAns[length(userAns)-1])) {
+            userAns[length(userAns)-1] = " ";
+        }
+        
+         userSubject = Split(Replace(Replace(ds_oAnswerPaper.GetColumn(i, "APSUBJECTGUBUN"), "//", "/ /"), "//", "/ /"), "/");
+
+        if (gfn_IsNull(userSubject[length(userSubject)-1])) {
+            userSubject[length(userSubject)-1] = " ";
+        }       
+
+        for (var j=0; j<length(userAns); j++) {
+            var nCurrow = ds_iAnswerPaper.AddRow();
+            ds_iAnswerPaper.SetColumn(nCurrow, "APSEQ", seq++);
+            ds_iAnswerPaper.SetColumn(nCurrow, "APREPEATNO" , ds_oAnswerPaper.GetColumn(i, "APREPEATNO"));
+            ds_iAnswerPaper.SetColumn(nCurrow, "APEOMGNO" , ds_oAnswerPaper.GetColumn(i, "APEOMGNO"));
+            ds_iAnswerPaper.SetColumn(nCurrow, "APAPLEXAMNO" , ds_oAnswerPaper.GetColumn(i, "APAPLEXAMNO"));
+            ds_iAnswerPaper.SetColumn(nCurrow, "APTCCOURSECD" , ds_oAnswerPaper.GetColumn(i, "APTCCOURSECD"));
+            ds_iAnswerPaper.SetColumn(nCurrow, "APNUMTYPE" , ds_oAnswerPaper.GetColumn(i, "APNUMTYPE"));
+            ds_iAnswerPaper.SetColumn(nCurrow, "APALPHATYPE" , ds_oAnswerPaper.GetColumn(i, "APALPHATYPE"));
+            ds_iAnswerPaper.SetColumn(nCurrow, "APCAITEMNO" , j + 1);
+            ds_iAnswerPaper.SetColumn(nCurrow, "APANSWER" , userAns[j]);
+            ds_iAnswerPaper.SetColumn(nCurrow, "APANSWERYN" , "N");
+            ds_iAnswerPaper.SetColumn(nCurrow, "APITEMSCORE" , "0");
+            ds_iAnswerPaper.SetColumn(nCurrow, "APEXAMROOM" , ds_oAnswerPaper.GetColumn(i, "APEXAMROOM"));
+            
+            ds_iAnswerPaper.SetColumn(nCurrow, "APCHASUGUBUN" , ds_oAnswerPaper.GetColumn(i, "APCHASUGUBUN"));
+            
+            ds_iAnswerPaper.SetColumn(nCurrow, "APSUBJECTGUBUN" , userSubject[j]);
+            
+
+        }
+    }
+}
+
+/**
+ * 답지 채점
+ */
+function lfn_MarkingAnswerPaper(){
+    var ls_AnswerCheck = "N"; // 정답여부
+    var li_CorrectAnswerCnt = 0; // 정답여부
+    var li_CorrectRow = 0; // 정답지 row
+    var ls_AnswerPaperMark = "0"; // 답지 답
+    var ls_CorrectPaperMark = "0"; // 정답
+    
+    SetWaitCursor(true);
+    SetCapture();
+
+    progMarkingCheck.Pos = 0;
+    progMarkingCheck.Max = ds_iAnswerPaper.GetRowCount();
+    
+    for (var i=0; i<ds_iAnswerPaper.GetRowCount(); i++) {
+    
+        progMarkingCheck.StepIt();
+    
+        li_CorrectRow = ds_oCorrectAnswer.searchrow("CATCCOURSECD=" + quote(ds_iAnswerPaper.GetColumn(i, "APTCCOURSECD"))
+                + " && CAEPNUMTYPE=" + quote(ds_iAnswerPaper.GetColumn(i, "APNUMTYPE"))
+                + " && CAEPALPHATYPE=" + quote(ds_iAnswerPaper.GetColumn(i, "APALPHATYPE"))
+                + " && CAITEMNO=" + quote(ds_iAnswerPaper.GetColumn(i, "APCAITEMNO"))
+        );
+        ls_AnswerPaperMark = ds_iAnswerPaper.GetColumn(i, "APANSWER");
+        ls_CorrectPaperMark = ds_oCorrectAnswer.GetColumn(li_CorrectRow, "CACORRECTANSWER");
+        li_CorrectAnswerCnt = toNumber(ds_oCorrectAnswer.GetColumn(li_CorrectRow, "CACORRECTCNT"));
+
+        if (ls_AnswerPaperMark = ls_CorrectPaperMark) { // 정답 비교
+
+            ls_AnswerCheck = "Y";
+
+        } else if (length(ls_CorrectPaperMark) > 1) { // 정답이 2개 이상일 때
+        
+            li_CorrectAnswerCnt = 0;
+            
+            for (var j=0; j<length(ls_AnswerPaperMark); j++) {
+                for (var k=0; k<length(ls_CorrectPaperMark); k++) {
+                    if (substr(ls_AnswerPaperMark, j, 1) = substr(ls_CorrectPaperMark, k, 1)) {
+                        ls_AnswerCheck = "Y";
+                        li_CorrectAnswerCnt++;
+                        break;
+                    } else {
+                        ls_AnswerCheck = "N";
+                    }
+                }
+                
+                if (ls_AnswerCheck == "N") { // 틀린 답이 하나라도 있을 경우
+                    li_CorrectAnswerCnt = 0;
+                    break;
+                }
+            }
+            
+        } else {
+
+            ls_AnswerCheck = "N";
+
+        }
+        
+        if (ls_AnswerCheck == "Y" && li_CorrectAnswerCnt >= toNumber(ds_oCorrectAnswer.GetColumn(li_CorrectRow, "CACORRECTCNT"))) { // 답이 틀린게 없고, 정답 개수가 맞을 때
+            ds_iAnswerPaper.SetColumn(i, "APANSWERYN", ls_AnswerCheck);
+            ds_iAnswerPaper.SetColumn(i, "APITEMSCORE", ds_oCorrectAnswer.GetColumn(li_CorrectRow, "CAITEMSCORE"));
+        }
+    }
+    
+    SetWaitCursor(false);
+
+}
+
+/**
+ * 답지 insert
+ */
+function lfn_SetAnswerPaper() {
+    
+    ldb.Sync = true;
+    Transaction ("insert"
+        , "SvcLdb::insertAnswerPaper.xml"
+        , "in_AnswerPaper=ds_iAnswerPaper"
+        , ""
+        , ""
+        , "");
+    ldb.Sync = false;
+    
+}
+
+/**
+ * 문항분석
+ */
+function lfn_Analysis(){
+
+    var li_AnalysisRow = 0; // 문항분석 row
+    var ls_Answer = "0";
+    
+    SetWaitCursor(true);
+    SetCapture();
+
+    progAnswerAnalysis.Pos = 0;
+    progAnswerAnalysis.Max = ds_iAnswerPaper.GetRowCount();
+    
+    ds_iAnswerAnalysis.ClearData();
+
+    for (var i=0; i<ds_iAnswerPaper.GetRowCount(); i++) {
+    
+        progAnswerAnalysis.StepIt();
+        
+        li_AnalysisRow = ds_iAnswerAnalysis.searchrow("AAEOMGNO=" + quote(ds_iAnswerPaper.GetColumn(i, "APEOMGNO"))
+                + " && AATCCOURSECD=" + quote(ds_iAnswerPaper.GetColumn(i, "APTCCOURSECD"))
+                + " && AACAEPNUMTYPE=" + quote(ds_iAnswerPaper.GetColumn(i, "APNUMTYPE"))
+                + " && AACAEPALPHATYPE=" + quote(ds_iAnswerPaper.GetColumn(i, "APALPHATYPE"))
+                + " && AACAITEMNO=" + quote(ds_iAnswerPaper.GetColumn(i, "APCAITEMNO"))
+                + " && AAREPEATNO=" + quote(ds_iAnswerPaper.GetColumn(i, "APREPEATNO"))
+        );
+        
+        if (li_AnalysisRow == -1) { // 해당 문항이 없을 경우 추가
+            li_AnalysisRow = ds_iAnswerAnalysis.AddRow();
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AATCCOURSECD", ds_iAnswerPaper.GetColumn(i, "APTCCOURSECD"));
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AACAEPNUMTYPE", ds_iAnswerPaper.GetColumn(i, "APNUMTYPE"));
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AACAEPALPHATYPE", ds_iAnswerPaper.GetColumn(i, "APALPHATYPE"));
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AACAITEMNO", ds_iAnswerPaper.GetColumn(i, "APCAITEMNO"));
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AAREPEATNO", ds_iAnswerPaper.GetColumn(i, "APREPEATNO"));
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AAEOMGNO", ds_iAnswerPaper.GetColumn(i, "APEOMGNO"));
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AACORRECTCNT", 0);
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AAMARKINGCNT", 0);
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AACORRECTPERCENT", 0);
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AA1CNT", 0);
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AA2CNT", 0);
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AA3CNT", 0);
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AA4CNT", 0);
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AAEMPTYCNT", 0);
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AADOUBLECNT", 0);
+        }
+        
+        ls_Answer = ds_iAnswerPaper.GetColumn(i, "APANSWER");
+        
+        if (ds_iAnswerPaper.GetColumn(i, "APANSWERYN") == "Y") { // 맞은 개수
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AACORRECTCNT", ds_iAnswerAnalysis.GetColumn(li_AnalysisRow, "AACORRECTCNT") + 1);
+        }
+        
+        if (ls_Answer != " ") { // 마크한 개수
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AAMARKINGCNT", ds_iAnswerAnalysis.GetColumn(li_AnalysisRow, "AAMARKINGCNT") + length(ds_iAnswerPaper.GetColumn(i, "APANSWER")));
+
+            for (var j=0; j<length(ls_Answer); j++) { // 각 문항 마크 수
+                ds_iAnswerAnalysis.SetColumn(li_AnalysisRow
+                    , "AA" + substr(ls_Answer, j, 1) + "CNT"
+                    , ds_iAnswerAnalysis.GetColumn(li_AnalysisRow, "AA" + substr(ls_Answer, j, 1) + "CNT") + 1
+                );
+            }
+            
+            if (length(ls_Answer) >= 2) { // 더블 마크수
+                ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AADOUBLECNT", ds_iAnswerAnalysis.GetColumn(li_AnalysisRow, "AADOUBLECNT") + 1);
+            }
+            
+        } else { // 공란수
+            ds_iAnswerAnalysis.SetColumn(li_AnalysisRow, "AAEMPTYCNT", ds_iAnswerAnalysis.GetColumn(li_AnalysisRow, "AAEMPTYCNT") + 1);
+        }
+
+    }
+    
+    for (var i=0; i<ds_iAnswerAnalysis.GetRowCount(); i++) { // 정답률
+        ds_iAnswerAnalysis.SetColumn(i
+            , "AACORRECTPERCENT"
+            , round(ds_iAnswerAnalysis.GetColumn(i, "AACORRECTCNT")
+                    / (ds_iAnswerAnalysis.GetColumn(i, "AAMARKINGCNT") + ds_iAnswerAnalysis.GetColumn(li_AnalysisRow, "AAEMPTYCNT"))
+                    * 100
+                , 2)
+        );
+    }
+    
+    ldb.Sync = true;
+    Transaction ("insert"
+        , "SvcLdb::insertAnswerAnalysis.xml"
+        , "in_AnswerAnalysis=ds_iAnswerAnalysis"
+        , ""
+        , ""
+        , "");
+    ldb.Sync = false;
+
+    SetWaitCursor(false);
+
+}
+
+/**
+ * 시험결과
+ */
+function lfn_ExamResult() {
+
+    var li_ResultRow = 0; // 결과 row
+    var li_RepeatNo = 1;
+
+    SetWaitCursor(true);
+    SetCapture();
+    
+    progExamResult.Pos = 0;
+    progExamResult.Max = ds_iAnswerPaper.GetRowCount();
+
+    for (var i=0; i<ds_iAnswerPaper.GetRowCount(); i++) {
+    
+        progExamResult.StepIt();
+    
+        li_ResultRow = ds_ioExamResult.SearchRow("ERREPEATNO=" + quote(ds_iAnswerPaper.GetColumn(i, "APREPEATNO"))
+            + " && ERAPLEXAMNO=" + quote(ds_iAnswerPaper.GetColumn(i, "APAPLEXAMNO"))
+        );
+        
+        ds_ioExamResult.SetColumn(li_ResultRow, "ERPASSDATE"
+            , ds_oExamOrder.GetColumn(ds_oExamOrder.SearchRow("EOMGNO='" + ds_iAnswerPaper.GetColumn(i, "APEOMGNO") + "'"), "EOEXAMDATE"));
+
+		if (ds_iAnswerPaper.GetColumn(i, "APCAITEMNO") <= 50)	{	// 특급소관 제외 직능은 50문제 이하이므로 1과목에만 점수 계산
+
+			ds_ioExamResult.SetColumn(li_ResultRow, "ERSCORE"	
+				, ds_ioExamResult.GetColumn(li_ResultRow, "ERSCORE")	
+					+ ds_iAnswerPaper.GetColumn(i, "APITEMSCORE")	
+			);
+
+		} else if (ds_iAnswerPaper.GetColumn(i, "APCAITEMNO") > 50) {		// 특급소관은 51~100번까지는 2과목이므로 2과목에 점수 계산
+		
+			ds_ioExamResult.SetColumn(li_ResultRow, "ERSCORE2"	
+				, ds_ioExamResult.GetColumn(li_ResultRow, "ERSCORE2")	
+					+ ds_iAnswerPaper.GetColumn(i, "APITEMSCORE")	
+			);
+		
+		}
+		
+		// 특급소관이 아니면 1과목으로만 점수 Sort
+		if (ds_oExamOrder.GetColumn(0, "TCCOURSECD") <> "10") {
+						// Sort 용 점수
+			ds_ioExamResult.SetColumn(li_ResultRow, "ERSORTSCORE"	
+				, ds_ioExamResult.GetColumn(li_ResultRow, "ERSCORE")	
+					+ ds_iAnswerPaper.GetColumn(i, "APITEMSCORE")	
+			);
+			
+		} else {	// 특급소관이면 1과목 2과목 평균점수로 Sort
+		
+			if (ds_iAnswerPaper.GetColumn(i, "APCAITEMNO") > 50)	{
+				// Sort 용 점수
+				ds_ioExamResult.SetColumn(li_ResultRow, "ERSORTSCORE"		
+					, (toInteger(ds_ioExamResult.GetColumn(li_ResultRow, "ERSCORE")) +
+					   toInteger(ds_ioExamResult.GetColumn(li_ResultRow, "ERSCORE2"))) / 2		
+						+ ds_iAnswerPaper.GetColumn(i, "APITEMSCORE")		
+				);
+		
+			}
+		
+		}
+
+
+        if (ds_iAnswerPaper.GetColumn(i, "APANSWERYN") == "Y") {
+            ds_ioExamResult.SetColumn(li_ResultRow, "ERCORRECTCNT"
+                , ds_ioExamResult.GetColumn(li_ResultRow, "ERCORRECTCNT") + 1
+            );
+        }
+        
+        if (li_RepeatNo < ds_iAnswerPaper.GetColumn(i, "APREPEATNO")) {
+            li_RepeatNo = ds_iAnswerPaper.GetColumn(i, "APREPEATNO");
+        }
+        
+    }
+    for (var i=1; i<=li_RepeatNo; i++) {
+        ds_ioExamResult.Filter("ERREPEATNO=" + quote(i) + " && ERRANK<>'999'");
+        ds_ioExamResult.Sort("ERSORTSCORE:D");
+
+        for (var j=0; j<ds_ioExamResult.GetRowCount(); j++) {
+				//trace("ERSCORE=> " + ds_iAnswerPaper.GetColumn(0, "APTCCOURSECD") + "  "+ds_ioExamResult.GetColumn(j, "ERSCORE"));
+
+			
+			if (ds_iAnswerPaper.GetColumn(0, "APTCCOURSECD") <> "10") { 	// 특급소관이 아니면 60점 이상
+				if (ds_iAnswerPaper.GetColumn(0, "APTCCOURSECD") <> "51") { 	// 심폐소생술과정이 아니면 60점 이상
+				
+					if (ds_ioExamResult.GetColumn(j, "ERSCORE") >= ls_PassScore) {		
+						ds_ioExamResult.SetColumn(j, "ERPASSYN", "Y");		
+					} else {
+					
+						ds_ioExamResult.SetColumn(j, "ERPASSYN", "N");
+						ds_ioExamResult.SetColumn(j, "ERPASSDATE", "");
+						
+					}
+					
+				} else {	// 심폐소생술과정이면 
+				
+					if (ds_ioExamResult.GetColumn(j, "ERSCORE") < 20) {
+					
+						ds_ioExamResult.SetColumn(j, "ERPASSYN", "N");	// 불합격(과락)
+						
+					} else {
+				
+						ds_ioExamResult.SetColumn(j, "ERPASSYN", "");	// 실습점수 반영 시 합격여부 결정
+						
+					}		
+					ds_ioExamResult.SetColumn(j, "ERPASSDATE", "");	// 실습점수 반영 시 합격여부 결정
+						
+					}
+				
+				}
+			
+			} else {	// 특급소관이면 평균 60점 이상, 과목별 40점 이상
+			
+				if ((toInteger(ds_ioExamResult.GetColumn(j, "ERSCORE")) + 
+				    toInteger(ds_ioExamResult.GetColumn(j, "ERSCORE2"))) / 2 >= ls_PassScore
+				    && ds_ioExamResult.GetColumn(j, "ERSCORE") >= ls_SubjectPassScore
+				    && ds_ioExamResult.GetColumn(j, "ERSCORE2") >= ls_SubjectPassScore ) {	
+					ds_ioExamResult.SetColumn(j, "ERPASSYN", "Y");	
+				} else {
+				
+					ds_ioExamResult.SetColumn(j, "ERPASSYN", "N");
+					ds_ioExamResult.SetColumn(j, "ERPASSDATE", "");
+					
+				}
+			
+			
+			}
+        
+            if (ds_ioExamResult.GetColumn(j, "ERSORTSCORE") == ds_ioExamResult.GetColumn(j - 1, "ERSORTSCORE")) {
+                ds_ioExamResult.SetColumn(j, "ERRANK", ds_ioExamResult.GetColumn(j - 1, "ERRANK"));
+            } else {
+                ds_ioExamResult.SetColumn(j, "ERRANK", j + 1);
+            }
+        }
+        
+        ds_ioExamResult.UnFilter();
+    }
+
+    ds_ioExamResult.Sort("ERAPLEXAMNO:A,ERREPEATNO:A");
+
+    ldb.Sync = true;
+    Transaction("InsertResult"
+        , "SvcLdb::insertExamResult.xml"
+        , "in_ExamResult=ds_ioExamResult:a"
+        , ""
+        , ""
+        , "");
+    ldb.Sync = false;
+
+    SetWaitCursor(false);
+    
+}
+
+/**
+ * 서버전송 여부 테이블 insert
+ */
+function lfn_SetServerSend() {
+
+    ldb.Sync = true;
+    Transaction("InsertServerSend"
+        , "SvcLdb::insertServerSendH.xml"
+        , ""
+        , ""
+        , ""
+        , "");
+    ldb.Sync = false;
+}
+
+/**
+ * 불합격자수료증출력화면
+ */
+function btnNext_OnClick(obj) {
+	var ls_MenuId = "0000000234";
+    var ls_MenuTitle = "성적관리";
+    var ls_MenuUrl = "training::frmtraining0550MExamScoreManagement.xml";
+
+    gs_SystemGubun = "training";
+    gs_SystemMenuId = "0000000003";
+    global.mnuLeft.tabMenu.tabpgMenu.Text = "강습관리";
+
+    global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", gs_SystemGubun);
+    gfn_OpenChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId);
+}
+
+/**
+ * 기능 : 정답 데이타셋 암호화
+ * parameter : dsIn - 암호화할 데이타셋
+ *             col1 - 문항번호 컬럼
+ *             col2 - 정답 컬럼 (암호화될 컬럼)
+ *	           dsOut - 암호화된 데이타셋
+ */
+function EncodeDS(dsIn, col1, col2, dsOut) {
+	dsOut.Clear();
+	dsOut.Copy(dsIn);
+	
+	//평문 : 번호+ 정답(LPAD -> 0으로 4자리 만들기)
+	//dsOut.GetColumn(i, col1) + Lpad(dsOut.GetColumn(i, col2), "0", 4);
+	
+	for(var i=0; i<dsOut.GetRowCount(); i++) {
+		dsOut.SetColumn(i, col2, EncodeStr(Lpad(dsOut.GetColumn(i, col1), "0", 2) + Lpad(dsOut.GetColumn(i, col2), "0", 4)) );
+	}
+}
+
+/**
+ * 기능 : 정답 데이타셋 복호화
+ * parameter : dsIn - 복호화할 데이타셋
+ *             col1 - 문항번호 컬럼
+ *             col2 - 정답 컬럼 (복호화될 컬럼)
+ *	           dsOut - 복호화된 데이타셋
+ */
+function DecodeDS(dsIn, col1, col2, dsOut) {
+	dsOut.Clear();
+	dsOut.Copy(dsIn);
+	
+	//평문 : 번호+ 정답(LPAD -> 0으로 4자리 만들기)
+	//dsOut.GetColumn(i, col1) + Lpad(dsOut.GetColumn(i, col2), "0", 4);
+	
+	for(var i=0; i<dsOut.GetRowCount(); i++) {
+		if (dsOut.GetColumn(i, col1) < 100) {	// 문항번호가 100번 미만이면
+
+			dsOut.SetColumn(i, col2, lfn_ReplaceLPAD(substr(DecodeStr(dsOut.GetColumn(i, col2)), 2), 4) );
+		} else {	// 문항번호가 100번 이상이면
+		
+			dsOut.SetColumn(i, col2, lfn_ReplaceLPAD(substr(DecodeStr(dsOut.GetColumn(i, col2)), 3), 4));
+		
+		}
+	}
+}
+
+/**
+ * 기능 : Base64 Encoding
+ */
+function EncodeStr(str) {
+	return Ext_Base64Encode(str);
+}
+
+/**
+ * 기능 : Base64 Decoding
+ */
+function DecodeStr(str) {
+	return Ext_Base64Decode(str);
+}
+
+/**
+ * 기능 : Lpad 문자열 되돌리기 (예: '0004' -> '4')
+ */
+function lfn_ReplaceLPAD(str, cnt) {
+	var rtnStr = "";
+	
+	if(length(str) != cnt) {
+		gfn_Alert("Lpad 문자열 변환에 실패하였습니다.");
+		return;
+	}
+	
+	for(var i=0; i<length(str); i++) {
+		if(substr(str, i, 1) != "0") {
+			rtnStr += substr(str, i, 1);
+		}
+	}
+	return rtnStr;
+}
+
+
+
+/**
+ * 에러카운트 로딩
+ */
+function lfn_GetErrorCount() {
+
+    ds_oErrorCount.ClearData(); // 데이타셋 초기화
+
+    ldb.Sync = true;
+    transaction ("selectErrorCount"
+        , "SvcLdb::searchErrorCount.xml" // BSB Service
+        , "" // inDS
+        , "ds_oErrorCount=output" // outDS
+        , ""
+        , "");
+    ldb.Sync = false;
+    
+}]]></Script>
+</Window>

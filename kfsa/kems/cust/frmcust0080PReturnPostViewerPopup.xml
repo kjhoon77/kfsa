@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="388" Id="frmcust0080PReturnPostViewerPopup" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="반송우편&#32;이미지&#32;팝업" Top="8" Ver="1.0" Width="820" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oViewMailDetail"></Dataset>
+		</Datasets>
+		<MSIE Bottom="382" DocumentComplete="AxMsie_DocumentComplete" Height="350" Id="AxMsie" Left="4" Right="814" Top="32" Width="810"></MSIE>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="728" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust0080PReturnPostViewerPopup.xml
+ * 설명 : 반송우편 이미지 팝업
+ * 작성일 : 2009.12.27
+ * 작성자 : 김은규
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj)
+{
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+	
+	if(IsExistVar("sPRHDATE1") && IsExistVar("sPRHDATE2") && IsExistVar("sPRHIMAGE")) {
+		lfn_OpenAxMsie();
+    } else {
+		gfn_Alert("반송우편 이미지 정보가 없습니다.");
+        Close();
+    }
+}
+
+function AxMsie_DocumentComplete(obj,pDisp,URL)
+{
+	AxMsie.Document.body.Scroll = "no";    //AxMsie scrollbar 
+	AxMsie.Document.body.leftmargin = "0"; //AxMsie leftmargin
+	AxMsie.Document.body.topmargin = "0";	//AxMsie topmargin
+}
+
+function lfn_OpenAxMsie(obj)
+{
+	//http://172.19.25.111/2009/20090924/10092400118348.jpg
+	var Url  = "http://172.19.25.111/";  // 운영 서버 주소
+		Url += sPRHDATE1 + "/" + sPRHDATE2 + "/" + sPRHIMAGE;
+	var Headers = "Content-type: application/x-www-form-urlencoded";
+	AxMsie.Navigate("about:blank", ,"_self", "", "");   //IE6 버그로 인해 넣어주어야 함
+	AxMsie.Navigate(Url, "", "", "", Headers);
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close(this);
+}
+
+function Form_OnUnloadCompleted(obj)
+{
+	Close(this);
+}]]></Script>
+</Window>

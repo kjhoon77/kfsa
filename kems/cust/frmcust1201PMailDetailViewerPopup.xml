@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="700" Id="frmcust1201PMailDetailViewerPopup" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="이메일&#32;상세보기&#32;팝업" Top="8" Ver="1.0" Width="1000" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oViewMailDetail"></Dataset>
+		</Datasets>
+		<MSIE Bottom="696" DocumentComplete="AxMsie_DocumentComplete" Height="692" Id="AxMsie" Left="4" Right="996" Top="4" Width="992"></MSIE>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="892" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmcust2001PMailDetailViewerPopup.xml
+ * 설명 : 이메일 상세보기 팝업
+ * 작성일 : 2010. 01. 29
+ * 작성자 : 
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj)
+{
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+	
+	//MoveWindow(nLeft,nTop,nWidth,nHeight);
+    //this.MoveWindow(-500,-500,1000,700);
+	
+	var rtn = AxMsie.Navigate2("about:blank", ,"_self", "", "");
+	lfn_ViewMailDetail();
+}
+
+function AxMsie_DocumentComplete(obj,pDisp,URL)
+{
+	AxMsie.Document.body.Scroll = "yes";    //AxMsie scrollbar 
+	AxMsie.Document.body.leftmargin = "0"; //AxMsie leftmargin
+	AxMsie.Document.body.topmargin = "0";	//AxMsie topmargin
+}
+
+function lfn_OpenAxMsie(obj)
+{
+	var contents = replace(this.ds_oViewMailDetail.getColumn(0, "ECCONTENTS"),"http://www.kfsi.or.kr/check/emailcheck.php?mgno=", "");
+	AxMsie.Document.body.innerHTML = contents;
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam)
+{
+	switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+    }
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close(this);
+}
+
+function Form_OnUnloadCompleted(obj)
+{
+	Close(this);
+}
+
+/* 사용자 함수
+/*
+ * 기능 : 이메일 내용 상세 보기
+ * parameter : 없음
+ * return : 없음
+ */
+function lfn_ViewMailDetail(obj)
+{
+	if(length(sMailMgno) == 0) {
+		gfn_Alert("이메일 내용 상세 보기에 실패하였습니다.");
+		return;
+	}
+	
+	ds_oViewMailDetail.ClearData();
+	
+	tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("cust:searchCust2000EmailDetailViewer", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oViewMailDetail=ds_oViewMailDetail"	// outDs
+		,"ECESHMGNO=" + quote(sMailMgno)	// args 
+		,"lfn_AfterViewMailDetail"
+		,false
+	);
+}
+
+/*
+ * 기능 : 이메일 내용 상세 보기 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterViewMailDetail(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    lfn_OpenAxMsie();
+}]]></Script>
+</Window>

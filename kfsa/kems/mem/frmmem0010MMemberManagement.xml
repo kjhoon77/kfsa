@@ -1,0 +1,2733 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="592" Id="frmmem0010MMemberManagement" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="회원정보관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="1000" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEducationPassInfo">
+				<Contents>
+					<colinfo id="BNM" size="40" summ="default" type="STRING"/>
+					<colinfo id="CNO" size="6" summ="default" type="STRING"/>
+					<colinfo id="EPPASSDATE" size="8" summ="default" type="STRING"/>
+					<colinfo id="EPPERSONNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="EPPROCGTMGNO" size="4" summ="default" type="STRING"/>
+					<colinfo id="EPBIRTHDAY" size="7" summ="default" type="STRING"/>
+					<colinfo id="BIRTHDAY" size="15" summ="default" type="STRING"/>
+					<colinfo id="EPSUCCESSIONGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="EPYEAR" size="4" summ="default" type="STRING"/>
+					<colinfo id="ESGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="ESSTUDENT" size="1" summ="default" type="STRING"/>
+					<colinfo id="EPMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioOverBizInfo"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioCustomerFeeInfo"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSunapGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEduSuccessGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>선임자교육</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>교육승계</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>사이버교육</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>이수후퇴직</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>교육이관</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oOverBizProc">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iCustomerModifyHistory">
+				<Contents>
+					<colinfo id="CMHAFTERDATA" size="1000" summ="default" type="STRING"/>
+					<colinfo id="CMHBEFOREDATA" size="1000" summ="default" type="STRING"/>
+					<colinfo id="CMHCOLUMN" size="100" summ="default" type="STRING"/>
+					<colinfo id="CMHGUBUN" size="1" summ="default" type="STRING"/>
+					<colinfo id="CMHKEY" size="30" summ="default" type="STRING"/>
+					<colinfo id="CMHWORKGUBUN" size="50" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oModifyColumnList">
+				<Contents>
+					<colinfo id="TBLNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="COLNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="COLKORNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMBOGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="INNERDSNM" size="256" summ="default" type="STRING"/>
+					<record>
+						<COLKORNM>고객정보관리번호</COLKORNM>
+						<COLNM>CMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>지부</COLKORNM>
+						<COLNM>CGTMGNO</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oJibu</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>고객번호</COLKORNM>
+						<COLNM>CNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>지역</COLKORNM>
+						<COLNM>CREGCD</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oRegion</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>직능</COLKORNM>
+						<COLNM>CCOURSECD</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oCourse</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>대상물관리번호</COLKORNM>
+						<COLNM>CBMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>선임자관리번호</COLKORNM>
+						<COLNM>CFMHMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>선임자이력순번</COLKORNM>
+						<COLNM>CFMHSEQ</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>공공선임정보및인력구분</COLKORNM>
+						<COLNM>CPERSONGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oPersonGubun</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>업체구분</COLKORNM>
+						<COLNM>CCOCD</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oBusinessGubun</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>업무대행여부</COLKORNM>
+						<COLNM>CAGGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oAgencyYn</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>업무대행업체관리번호</COLKORNM>
+						<COLNM>CAGMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>고객상태</COLKORNM>
+						<COLNM>CSTATUSGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oCustomerStatus</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>고객상태변경사유코드</COLKORNM>
+						<COLNM>CSTATUSREASONCD</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oStatusReason</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>고객상태처리일자</COLKORNM>
+						<COLNM>CSTATUSDATE</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>등록년월</COLKORNM>
+						<COLNM>CREGISTERYYMM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>회비부과년월</COLKORNM>
+						<COLNM>CFEEYYMM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>겸직관리번호</COLKORNM>
+						<COLNM>COBMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>겸직회비면제여부</COLKORNM>
+						<COLNM>COVERGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_ioYn</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>관리제외구분</COLKORNM>
+						<COLNM>CEXCEPTGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_ioYn</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>관리제외처리일자</COLKORNM>
+						<COLNM>CEXCEPTDATE</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>상태구분</COLKORNM>
+						<COLNM>CDELGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_ioDelete</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>삭제일자</COLKORNM>
+						<COLNM>CDELDATE</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>시도소방본부관리번호</COLKORNM>
+						<COLNM>CFIREMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>소방민원정보시스템관리번호1</COLKORNM>
+						<COLNM>CGATEWAYPK1</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>소방민원정보시스템관리번호2</COLKORNM>
+						<COLNM>CGATEWAYPK2</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>소방민원정보시스템관리번호3</COLKORNM>
+						<COLNM>CGATEWAYPK3</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>우편물청구구분</COLKORNM>
+						<COLNM>CPOSTREQGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oAddPost</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>희망주소구분_회비</COLKORNM>
+						<COLNM>CFEEPOSTGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oAddrGubun</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>희망주소우편번호_회비</COLKORNM>
+						<COLNM>CFEEPOSTZIPCD</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>희망주소1_회비</COLKORNM>
+						<COLNM>CFEEPOSTADDR1</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>희망주소2_회비</COLKORNM>
+						<COLNM>CFEEPOSTADDR2</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>희망우편물투입장소_회비</COLKORNM>
+						<COLNM>CFEEPOSTPLACE</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>희망주소구분_교육</COLKORNM>
+						<COLNM>CEDUPOSTGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oAddrGubun</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>희망주소우편번호_교육</COLKORNM>
+						<COLNM>CEDUPOSTZIPCD</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>희망주소1_교육</COLKORNM>
+						<COLNM>CEDUPOSTADDR1</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>희망주소2_교육</COLKORNM>
+						<COLNM>CEDUPOSTADDR2</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>희망우편물투입장소_교육</COLKORNM>
+						<COLNM>CEDUPOSTPLACE</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>최종부가정보순번</COLKORNM>
+						<COLNM>CLASTADDSEQ</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>최종우편반송이력순번</COLKORNM>
+						<COLNM>CLASTPRSEQ</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>대상물관리번호</COLKORNM>
+						<COLNM>BMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>대상물명</COLKORNM>
+						<COLNM>BNM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>용도</COLKORNM>
+						<COLNM>BBIZCD</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oBizCd</INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>관할소방서</COLKORNM>
+						<COLNM>BFIREUPCD</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oFireCd</INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>안전센터관리코드</COLKORNM>
+						<COLNM>BFIRECD</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oFireCenterCd</INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>관서담당자</COLKORNM>
+						<COLNM>BFIREMAN</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>전화번호</COLKORNM>
+						<COLNM>BTEL</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>팩스</COLKORNM>
+						<COLNM>BFAX</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>제연설비설치대상여부</COLKORNM>
+						<COLNM>BSMOKEGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_ioYn</INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>연면적</COLKORNM>
+						<COLNM>BAREA</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>사업자등록번호</COLKORNM>
+						<COLNM>BCONO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>우편번호</COLKORNM>
+						<COLNM>BZIPCD</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>대표주소구분</COLKORNM>
+						<COLNM>BADDRGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oAddr</INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>구주소1</COLKORNM>
+						<COLNM>BADDR1</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>구주소2</COLKORNM>
+						<COLNM>BADDR2</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_시도</COLKORNM>
+						<COLNM>BSIDO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_시군구</COLKORNM>
+						<COLNM>BSIGUNGU</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_동</COLKORNM>
+						<COLNM>BDONG</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_리</COLKORNM>
+						<COLNM>BRI</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_산번지여부</COLKORNM>
+						<COLNM>BSANGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_ioYn</INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_본번지</COLKORNM>
+						<COLNM>BBUNJI1</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_부번지</COLKORNM>
+						<COLNM>BBUNJI2</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_기타주소</COLKORNM>
+						<COLNM>BETCADDR</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_도로명</COLKORNM>
+						<COLNM>BROADNM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_건물명</COLKORNM>
+						<COLNM>BBULDNM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_건물기타주소</COLKORNM>
+						<COLNM>BBULDADDR</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>선임자관리번호</COLKORNM>
+						<COLNM>FMMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>성명</COLKORNM>
+						<COLNM>FMNM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>생년월일</COLKORNM>
+						<COLNM>FMBIRTHDAY</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>주민번호오류여부</COLKORNM>
+						<COLNM>FMRESIDENTERR</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oResidentNoErr</INNERDSNM>
+						<TBLNM>FIREMANAGER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>실명인증여부</COLKORNM>
+						<COLNM>FMAUTHGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_AuthGubun</INNERDSNM>
+						<TBLNM>FIREMANAGER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>최종선임자이력순번</COLKORNM>
+						<COLNM>FMLASTFMHSEQ</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>선임자관리번호</COLKORNM>
+						<COLNM>FMHFMMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>순번</COLKORNM>
+						<COLNM>FMHSEQ</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>고객정보관리번호</COLKORNM>
+						<COLNM>FMCMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>직능</COLKORNM>
+						<COLNM>FMCOURSECD</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oCourse</INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>대상물명</COLKORNM>
+						<COLNM>FMBUILDINGNM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>선임일자</COLKORNM>
+						<COLNM>FMHSTARTDATE</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>해임여부</COLKORNM>
+						<COLNM>FMHENDGUBUN</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>해임일자</COLKORNM>
+						<COLNM>FMHENDDATE</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>해임처리시스템일자</COLKORNM>
+						<COLNM>FMHENDSYSDATE</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>전화번호</COLKORNM>
+						<COLNM>FMHTEL</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>핸드폰번호</COLKORNM>
+						<COLNM>FMHHPTEL</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>이메일아이디</COLKORNM>
+						<COLNM>FMHEMAILID</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>이메일도메인</COLKORNM>
+						<COLNM>FMHEMAILDOMAIN</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>대표주소구분</COLKORNM>
+						<COLNM>FMHADDRGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oAddr</INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>우편번호</COLKORNM>
+						<COLNM>FMHZIPCD</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>구주소1</COLKORNM>
+						<COLNM>FMHADDR1</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>구주소2</COLKORNM>
+						<COLNM>FMHADDR2</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_시도</COLKORNM>
+						<COLNM>FMHSIDO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_시군구</COLKORNM>
+						<COLNM>FMHSIGUNGU</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_동</COLKORNM>
+						<COLNM>FMHDONG</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_리</COLKORNM>
+						<COLNM>FMHRI</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_산번지여부</COLKORNM>
+						<COLNM>FMHSANGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_ioYn</INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_본번지</COLKORNM>
+						<COLNM>FMHBUNJI1</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_부번지</COLKORNM>
+						<COLNM>FMHBUNJI2</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_기타주소</COLKORNM>
+						<COLNM>FMHETCADDR</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_도로명</COLKORNM>
+						<COLNM>FMHROADNM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_건물명</COLKORNM>
+						<COLNM>FMHBULDNM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>신주소_건물기타주소</COLKORNM>
+						<COLNM>FMHBULDADDR</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>과거회원정보</COLKORNM>
+						<COLNM>FMHOLDINFO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>대상물관리번호</COLKORNM>
+						<COLNM>OBMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>OWNER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>순번</COLKORNM>
+						<COLNM>OSEQ</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>OWNER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>관계자구분</COLKORNM>
+						<COLNM>OGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oOwnerGubun</INNERDSNM>
+						<TBLNM>OWNER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>성명</COLKORNM>
+						<COLNM>ONM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>OWNER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>전화번호</COLKORNM>
+						<COLNM>OTEL</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>OWNER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>휴대폰</COLKORNM>
+						<COLNM>OHPTEL</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>OWNER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>기타정보</COLKORNM>
+						<COLNM>OREMARK</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>OWNER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>순번</COLKORNM>
+						<COLNM>DSEQ</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>DANGER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>허가번호</COLKORNM>
+						<COLNM>DPERMISSIONNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>DANGER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>기타정보</COLKORNM>
+						<COLNM>DREMARK</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>DANGER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>민원정보시스템제조소등PK</COLKORNM>
+						<COLNM>DGATEWAYDAN</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>DANGER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>대상물관리번호</COLKORNM>
+						<COLNM>DBMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>DANGER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>대상물관리번호</COLKORNM>
+						<COLNM>TBMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>순번</COLKORNM>
+						<COLNM>TSEQ</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>차량번호</COLKORNM>
+						<COLNM>TCARNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>차량년도</COLKORNM>
+						<COLNM>TCARYEAR</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>허가번호</COLKORNM>
+						<COLNM>TPERMISSIONNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>기타정보</COLKORNM>
+						<COLNM>TREMARK</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>우편청구구분</COLKORNM>
+						<COLNM>TPOSTREQGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oTankAddrGubun</INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>상치장소우편번호</COLKORNM>
+						<COLNM>TPARKPLACEZIPCD</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>상치장소주소1</COLKORNM>
+						<COLNM>TPARKPLACEADDR1</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>상치장소주소2</COLKORNM>
+						<COLNM>TPARKPLACEADDR2</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>설치자우편번호</COLKORNM>
+						<COLNM>TINSTLRZIPCD</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>설치자주소1</COLKORNM>
+						<COLNM>TINSTLRADDR1</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>설치자주소2</COLKORNM>
+						<COLNM>TINSTLRADDR2</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>민원정보시스템제조소등탱크PK1</COLKORNM>
+						<COLNM>TGATEWAYTANK1</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>민원정보시스템제조소등탱크PK2</COLKORNM>
+						<COLNM>TGATEWAYTANK2</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>고객정보관리번호</COLKORNM>
+						<COLNM>ADCMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>ADDITION</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>순번</COLKORNM>
+						<COLNM>ADSEQ</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>ADDITION</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>부가정보코드</COLKORNM>
+						<COLNM>ADCD</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oAddition</INNERDSNM>
+						<TBLNM>ADDITION</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>내용</COLKORNM>
+						<COLNM>ADCONTENT</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>ADDITION</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>삭제여부</COLKORNM>
+						<COLNM>ADDELGUBUN</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>ADDITION</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>선임자관리번호</COLKORNM>
+						<COLNM>OLFMMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>OTHERLICENSE</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>순번</COLKORNM>
+						<COLNM>OLSEQ</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>OTHERLICENSE</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>자격증코드</COLKORNM>
+						<COLNM>OLHCD</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oLicenseGubun</INNERDSNM>
+						<TBLNM>OTHERLICENSE</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>자격증등록번호</COLKORNM>
+						<COLNM>OLNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>OTHERLICENSE</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>자격증발급일자</COLKORNM>
+						<COLNM>OLDATE</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>OTHERLICENSE</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>소방본부</COLKORNM>
+						<COLNM>BFIREBONBUCD</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>우편청구지</COLKORNM>
+						<COLNM>POSTPLACE</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>청구지회비_구/새주소구분</COLKORNM>
+						<COLNM>CFEEADDRGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oAddr2</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>청구지회비_도로명주소1</COLKORNM>
+						<COLNM>CFEEROADADDR1</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>청구지회비_도로명주소2</COLKORNM>
+						<COLNM>CFEEROADADDR2</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>청구지교육_구/새주소구분</COLKORNM>
+						<COLNM>CEDUADDRGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oAddr2</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>청구지교육_도로명주소1</COLKORNM>
+						<COLNM>CEDUROADADDR1</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>청구지교육_도로명주소2</COLKORNM>
+						<COLNM>CEDUROADADDR2</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>회비PNU코드</COLKORNM>
+						<COLNM>CRFEEPNUCD</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>회비건물관리번호</COLKORNM>
+						<COLNM>CRFEEROADBUILDMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>회비도로명상세</COLKORNM>
+						<COLNM>CRFEEROADDETAIL</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>회비도로명부가</COLKORNM>
+						<COLNM>CRFEEROADREMAIN</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>회비산여부</COLKORNM>
+						<COLNM>CRFEESANGUBUN</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>회비주번지</COLKORNM>
+						<COLNM>CRFEEMAINBUNJI</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>회비부번지</COLKORNM>
+						<COLNM>CRFEESUBBUNJI</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>회비지번건물명</COLKORNM>
+						<COLNM>CRFEEBUILDNM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>회비지번기타</COLKORNM>
+						<COLNM>CRFEEADDRETC</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>교육PNU코드</COLKORNM>
+						<COLNM>CREDUPNUCD</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>교육건물관리번호</COLKORNM>
+						<COLNM>CREDUROADBUILDMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>교육도로명상세</COLKORNM>
+						<COLNM>CREDUROADDETAIL</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>교육도로명부가</COLKORNM>
+						<COLNM>CREDUROADREMAIN</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>교육산여부</COLKORNM>
+						<COLNM>CREDUSANGUBUN</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>교육주번지</COLKORNM>
+						<COLNM>CREDUMAINBUNJI</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>교육부번지</COLKORNM>
+						<COLNM>CREDUSUBBUNJI</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>교육지번건물명</COLKORNM>
+						<COLNM>CREDUBUILDNM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>교육지번기타</COLKORNM>
+						<COLNM>CREDUADDRETC</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>도로명주소1</COLKORNM>
+						<COLNM>BROADADDR1</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>도로명주소2</COLKORNM>
+						<COLNM>BROADADDR2</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>PNU코드</COLKORNM>
+						<COLNM>BRPNUCD</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>건물관리번호</COLKORNM>
+						<COLNM>BRROADBUILDMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>도로명상세</COLKORNM>
+						<COLNM>BRROADDETAIL</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>도로명부가</COLKORNM>
+						<COLNM>BRROADREMAIN</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>산여부</COLKORNM>
+						<COLNM>BRSANGUBUN</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>주번지</COLKORNM>
+						<COLNM>BRMAINBUNJI</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>부번지</COLKORNM>
+						<COLNM>BRSUBBUNJI</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>지번건물명</COLKORNM>
+						<COLNM>BRBUILDNM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>지번기타</COLKORNM>
+						<COLNM>BRADDRETC</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>도로명주소1</COLKORNM>
+						<COLNM>FMHROADADDR1</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>도로명주소2</COLKORNM>
+						<COLNM>FMHROADADDR2</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>PNU코드</COLKORNM>
+						<COLNM>FMHRPNUCD</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>건물관리번호</COLKORNM>
+						<COLNM>FMHRROADBUILDMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>도로명상세</COLKORNM>
+						<COLNM>FMHRROADDETAIL</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>도로명부가</COLKORNM>
+						<COLNM>FMHRROADREMAIN</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>산여부</COLKORNM>
+						<COLNM>FMHRSANGUBUN</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>주번지</COLKORNM>
+						<COLNM>FMHRMAINBUNJI</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>부번지</COLKORNM>
+						<COLNM>FMHRSUBBUNJI</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>지번건물명</COLKORNM>
+						<COLNM>FMHRBUILDNM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>지번기타</COLKORNM>
+						<COLNM>FMHRADDRETC</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>변환프로그램</COLKORNM>
+						<COLNM>BRCONVPGM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>변환상태</COLKORNM>
+						<COLNM>BRCONVSTATUS</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>BUILDING</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>변환상태_회비</COLKORNM>
+						<COLNM>CRCONVFEESTATUS</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>변환상태_교육</COLKORNM>
+						<COLNM>CRCONVEDUSTATUS</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>변환프로그램</COLKORNM>
+						<COLNM>CRCONVPGM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>변환프로그램</COLKORNM>
+						<COLNM>FMHRCONVPGM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>변환상태</COLKORNM>
+						<COLNM>FMHRCONVSTATUS</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGERH</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>변환상태_상치장소</COLKORNM>
+						<COLNM>TRCONVPARKSTATUS</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>변환상태_설치자주소</COLKORNM>
+						<COLNM>TRCONVINSTLRSTATUS</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>변환프로그램</COLKORNM>
+						<COLNM>TRCONVPGM</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>TANK</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>소방안전지&#32;수령제외구분</COLKORNM>
+						<COLNM>CRECEIVEEXCEPTGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oReceiveExcept</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>수첩번호1</COLKORNM>
+						<COLNM>FMLICENSENO1</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>소방안전지&#32;수령제외일자</COLKORNM>
+						<COLNM>CRECEIVEEXCEPTDATE</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>실무교육유효기간</COLKORNM>
+						<COLNM>CEDUEXPIREDATE</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>소방안전관리자관리번호</COLKORNM>
+						<COLNM>CMAINCMGNO</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>선임자격</COLKORNM>
+						<COLNM>CELECTQUALIFY</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>소방기술지&#32;수령제외구분</COLKORNM>
+						<COLNM>CTECHBOOKEXCEPTGUBUN</COLNM>
+						<COMBOGUBUN>Y</COMBOGUBUN>
+						<INNERDSNM>ds_oTechReceiveExcept</INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>소방기술지&#32;수령제외일자</COLKORNM>
+						<COLNM>CTECHBOOKEXCEPTDATE</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>개인식별번호</COLKORNM>
+						<COLNM>FMPERSONKEY</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>FIREMANAGER</TBLNM>
+					</record>
+					<record>
+						<COLKORNM>보조자수</COLKORNM>
+						<COLNM>CSUPPORTERCNT</COLNM>
+						<COMBOGUBUN>N</COMBOGUBUN>
+						<INNERDSNM></INNERDSNM>
+						<TBLNM>CUSTOMER</TBLNM>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMemberInfo" OnRowPosChanged="ds_oMemberInfo_OnRowPosChanged"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEduConfirmPrint">
+				<Contents>
+					<colinfo id="ECMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDUNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="COMPANY" size="256" summ="default" type="STRING"/>
+					<colinfo id="NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="CGROUPNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="EPBIRTHDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIRTHDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="EDUDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIRTH" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTTEAMNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="MGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="RULE" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oVirtualAccoutAllocation">
+				<Contents>
+					<colinfo id="Rtn_status" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oVirtualAccoutOwnerNM"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oVirtualAccoutDelete">
+				<Contents>
+					<colinfo id="RTN_STATUS" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioMEduData"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioMEduDataDetail"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioEduNoticeHistoryGetSysdate"></Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEduStudentGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>실무교육</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>제연설비등</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>사이버</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oMemJoinH"></Dataset>
+		</Datasets>
+		<Shape Bottom="158" Height="126" Id="Shape2" Left="1003" LineColor="user15" Right="1681" TabOrder="40" Top="32" Type="Rectangle" Visible="FALSE" Width="678"></Shape>
+		<Shape Bottom="396" Height="252" Id="Shape0" Left="4" LineColor="user15" Right="992" TabOrder="21" Top="144" Type="Rectangle" Width="988"></Shape>
+		<Shape Bottom="136" Height="104" Id="Shape3" Left="4" LineColor="user15" Right="448" TabOrder="7" Top="32" Type="Rectangle" Width="444"></Shape>
+		<Shape Bottom="29" Height="29" Id="shpBtnBox" Left="728" LineColor="user14" Right="996" TabOrder="8" Top="0" Type="Rectangle" Width="268"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="9" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="216">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="734" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="10" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="821" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="11" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="908" OnClick="lfn_End" Style="sty_Button" TabOrder="12" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Height="20" Id="medCustNo" Left="118" LeftMargin="2" Mask="######" MaxLength="6" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medCustNo_OnKeyDown" OnKillFocus="medCustNo_OnKillFocus" Style="sty_Maskedit" TabOrder="2" Top="62" Type="STRING" UserData="S" Width="50"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbCustNo" Left="35" Style="sty_Label" TabOrder="13" Text="관리번호" Top="62" VAlign="Middle" Width="80"></Static>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="35" Style="sty_Label" TabOrder="14" Text="지부" Top="38" VAlign="Middle" Width="80"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="117" OnChanged="cbxJibu_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="1" Top="37" UserData="S" Value="B" Width="90"></Combo>
+		<Static Align="Center" BKColor="user15" Font="굴림,11,Bold" Height="103" Id="Static0" Left="5" Style="sty_Label" TabOrder="15" Text="조&#10;&#10;&#10;회" Top="33" VAlign="Middle" Width="25"></Static>
+		<Static Align="Center" Height="20" Id="lbAppointNm" Left="35" Style="sty_Label" TabOrder="16" Text="성명" Top="86" VAlign="Middle" Width="80"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edMemberNm" ImeMode="native" Left="118" LeftMargin="2" MaxLength="20" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edMemberNm_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="3" Top="86" UserData="S" Width="100"></Edit>
+		<Static Align="Center" Height="20" Id="lbResidentNo" Left="222" Style="sty_Label" TabOrder="16" Text="생년월일" Top="86" VAlign="Middle" Width="80"></Static>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Height="20" Id="medBirthday" Left="305" LeftMargin="2" Mask="######" OnChanged="medResidentNo_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medBirthday_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="4" Top="86" Type="STRING" UserData="S" Width="50"></MaskEdit>
+		<Static Align="Center" Font="굴림,10" Height="20" Id="Static4" Left="35" Style="sty_Label" TabOrder="18" Text="회원식별번호" Top="110" VAlign="Middle" Width="80"></Static>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Font="굴림,10" Height="20" Id="medPersonKey" Left="118" LeftMargin="2" Mask="A####-#####" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medPersonKey_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="5" Top="110" Type="STRING" UserData="S" Width="85"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbBarCode" Left="116" Style="sty_Label" TabOrder="20" Text="관리바코드" Top="150" VAlign="Middle" Visible="FALSE" Width="80"></Static>
+		<MaskEdit AutoSelect="TRUE" Border="Flat" Height="20" Id="medBarCode" Left="199" LeftMargin="2" Mask="#############" MaxLength="13" OnFocus="gfn_ComponentOnFocus" OnKeyDown="medBarCode_OnKeyDown" OnKillFocus="medBarCode_OnKillFocus" Style="sty_Maskedit" TabOrder="19" TabStop="FALSE" Top="150" Type="STRING" UserData="S" Visible="FALSE" Width="98"></MaskEdit>
+		<Static Align="Center" Font="굴림,11,Bold" Height="20" Id="Static1" Left="5" Style="sty_LabelGruopBox" TabOrder="22" Text="회원정보" Top="145" VAlign="Middle" Width="108"></Static>
+		<Grid BindDataset="ds_oMemberInfo" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="392" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" HeadBorder="Flat" HeadHeight="24" Height="216" Id="gdMemberInfo" InputPanel="FALSE" Left="8" LineColor="default" Right="988" RowHeight="22" Style="sty_Grid" TabOrder="23" TabStop="true" Top="176" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="980">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="38"/>
+						<col width="58"/>
+						<col width="70"/>
+						<col width="56"/>
+						<col width="89"/>
+						<col width="138"/>
+						<col width="63"/>
+						<col width="78"/>
+						<col width="100"/>
+						<col width="79"/>
+						<col width="90"/>
+						<col width="38"/>
+						<col width="428"/>
+					</columns>
+					<head>
+						<cell col="0" combodataset="ds_ioAccount" display="text" text="순번"/>
+						<cell col="1" combodataset="ds_ioAccount" display="text" text="지부"/>
+						<cell col="2" display="text" text="관리번호"/>
+						<cell col="3" display="text" text="지역"/>
+						<cell col="4" display="text" text="직능"/>
+						<cell col="5" display="text" text="대상물명"/>
+						<cell col="6" display="text" text="성명"/>
+						<cell col="7" display="text" text="생년월일"/>
+						<cell col="8" display="text" text="회원식별번호"/>
+						<cell col="9" display="text" text="선임일자"/>
+						<cell col="10" display="text" text="회비부과년월"/>
+						<cell col="11" display="text" text="겸직"/>
+						<cell col="12" display="text" text="대상물주소"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="row+1"/>
+						<cell align="center" col="1" colid="GTDEPTNM" display="text"/>
+						<cell align="center" col="2" colid="CNO" display="text"/>
+						<cell align="center" col="3" colid="RCNM" display="text"/>
+						<cell align="center" col="4" colid="CNICKNM" display="text"/>
+						<cell align="left" col="5" colid="MBNM" display="text"/>
+						<cell align="center" col="6" colid="MNAME" display="text"/>
+						<cell align="center" col="7" colid="BIRTHDAY" display="text"/>
+						<cell align="center" col="8" colid="MPERSONKEY" display="text" Mask="A####-#####"/>
+						<cell align="center" col="9" colid="FMHSTARTDATE" display="text" Mask="####.##.##"/>
+						<cell align="center" col="10" colid="CFEEYYMM" display="text" Mask="####.##"/>
+						<cell align="center" col="11" colid="OVERGUBUN" display="text"/>
+						<cell align="left" col="12" colid="MADDR" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Shape Bottom="588" Height="186" Id="Shape5" Left="4" LineColor="user15" Right="492" TabOrder="24" Top="402" Type="Rectangle" Width="488"></Shape>
+		<Grid AutoFit="TRUE" BindDataset="ds_ioCustomerFeeInfo" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="558" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" HeadBorder="Flat" HeadHeight="20" Height="125" Id="Grid1" InputPanel="FALSE" Left="10" LineColor="default" MinWidth="100" Right="486" Style="sty_Grid" TabOrder="25" TabStop="true" Top="433" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="476">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="63"/>
+						<col width="72"/>
+						<col width="100"/>
+						<col width="100"/>
+					</columns>
+					<head>
+						<cell col="0" combodataset="ds_ioAccount" display="text" text="년도"/>
+						<cell col="1" display="text" text="회비구분"/>
+						<cell col="2" display="text" text="미납금액"/>
+						<cell col="3" display="text" text="수납금액"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="CFGYEAR" display="text"/>
+						<cell align="center" col="1" colid="CFCCGUBUN" display="text" expr="decode(CFCCGUBUN,0,&apos;회비&apos;,1,&apos;교육비&apos;)"/>
+						<cell align="right" col="2" colid="MINAPFEE" display="number"/>
+						<cell align="right" col="3" colid="SUNAPFEE" display="expr:iif(SUNAPFEE&#32;==&#32;0&#32;&amp;&amp;&#32;MINAPFEE&#32;==&#32;0&#32;&amp;&amp;&#32;REALSUNAPFEE&#32;==&#32;0,&#32;&apos;text&apos;,&#32;&apos;number&apos;)" expr="iif(SUNAPFEE&#32;==&#32;0&#32;&amp;&amp;&#32;MINAPFEE&#32;==&#32;0&#32;&amp;&amp;&#32;REALSUNAPFEE&#32;==&#32;0,&#32;&apos;면제&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&apos;,&#32;SUNAPFEE)"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnFeeDetailInfo" ImageID="BTN_TEXT_04" Left="420" OnClick="btnFeeDetailInfo_OnClick" Style="sty_Button" TabOrder="26" Text="상세정보" Top="408" Transparent="TRUE" Width="66"></Button>
+		<Static Align="Center" Font="굴림,11,Bold" Height="20" Id="Static2" Left="5" Style="sty_LabelGruopBox" TabOrder="27" Text="회비정보" Top="403" VAlign="Middle" Width="108"></Static>
+		<Static Align="Center" Height="20" Id="lbAccountNo" Left="9" Style="sty_Label" TabOrder="29" Text="고객&#32;은행&#32;가상계좌" Top="562" VAlign="Middle" Width="133"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnShowVirtualAccount" ImageID="BTN_TEXT_09" Left="145" OnClick="btnShowVirtualAccount_OnClick" Style="sty_Button" TabOrder="28" Text="은행&#32;가상계좌&#32;보기" Top="561" Transparent="TRUE" Width="134"></Button>
+		<Shape Bottom="588" Height="186" Id="Shape1" Left="495" LineColor="user15" Right="995" TabOrder="30" Top="402" Type="Rectangle" Width="500"></Shape>
+		<Grid BindDataset="ds_ioEducationPassInfo" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="586" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" HeadBorder="Flat" HeadHeight="20" Height="154" Id="gdEduInfo" InputPanel="FALSE" Left="498" LineColor="default" OnCellClick="Div3_gdEduInfo_OnCellClick" Right="994" Style="sty_Grid" TabOrder="31" TabStop="true" Top="432" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="496">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="65"/>
+						<col width="37"/>
+						<col width="60"/>
+						<col width="70"/>
+						<col width="76"/>
+						<col width="56"/>
+						<col width="83"/>
+						<col width="92"/>
+						<col width="70"/>
+						<col width="60"/>
+						<col width="200"/>
+						<col width="278"/>
+					</columns>
+					<head>
+						<cell col="0" display="text" font="굴림,8,Bold" text="이수확인증"/>
+						<cell col="1" display="text" text="년도"/>
+						<cell col="2" display="text" text="교육"/>
+						<cell col="3" display="text" text="구분"/>
+						<cell col="4" display="text" text="교육일자"/>
+						<cell col="5" display="text" text="성명"/>
+						<cell col="6" display="text" text="생년월일"/>
+						<cell col="7" display="text" text="회원식별번호"/>
+						<cell col="8" display="text" text="교육지부"/>
+						<cell col="9" display="text" text="교육구분"/>
+						<cell col="10" display="text" text="대상물(업체)명"/>
+						<cell col="11" display="text" text="중복&#32;이수처리&#32;사유"/>
+					</head>
+					<body>
+						<cell align="center" col="0" cursor="expr:iif(EPSUCCESSIONGUBUN&#32;==&#32;&apos;2&apos;,&#32;&apos;arrow&apos;,&#32;&apos;hand&apos;)" display="expr:iif(EPSUCCESSIONGUBUN&#32;==&#32;&apos;2&apos;,&#32;&apos;null&apos;,&#32;&apos;button&apos;)" text="출력"/>
+						<cell align="center" col="1" colid="EPYEAR" display="text"/>
+						<cell align="center" col="2" colid="ESSTUDENT" combocol="CD" combodataset="ds_oEduStudentGubun" combotext="DATA" display="combo"/>
+						<cell align="center" col="3" colid="EPSUCCESSIONGUBUN" combocol="CD" combodataset="ds_oEduSuccessGubun" combotext="DATA" display="combo"/>
+						<cell align="center" col="4" colid="EPPASSDATE" display="text" Mask="####-##-##"/>
+						<cell align="center" col="5" colid="EPPERSONNM" display="text"/>
+						<cell align="center" col="6" colid="BIRTHDAY" display="text"/>
+						<cell align="center" col="7" colid="EPPERSONKEY" display="text" Mask="A####-#####"/>
+						<cell align="center" col="8" colid="EPPROCGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+						<cell align="center" col="9" colid="ESGUBUN" combocol="CD" combodataset="ds_oEduGubun" combotext="DATA" display="combo"/>
+						<cell align="left" col="10" colid="BNM" display="text"/>
+						<cell align="left" col="11" colid="EPPASSREMARK" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEduDataPrint" ImageID="BTN_TEXT_07" Left="781" OnClick="lfn_EduDataPrint" Style="sty_Button" TabOrder="34" Text="교육안내문&#32;출력" Top="408" Width="105"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEduDetailInfo" ImageID="BTN_TEXT_04" Left="713" OnClick="btnEduDetailInfo_OnClick" Style="sty_Button" TabOrder="32" Text="상세정보" Top="408" Transparent="TRUE" Width="66"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEduDataHList" ImageID="BTN_TEXT_07" Left="606" OnClick="btnEduDataHList_OnClick" Style="sty_Button" TabOrder="33" Text="안내문&#32;발행이력" Top="408" Transparent="TRUE" Width="105"></Button>
+		<Static Align="Center" Font="굴림,11,Bold" Height="20" Id="Static3" Left="496" Style="sty_LabelGruopBox" TabOrder="35" Text="실무교육정보" Top="403" VAlign="Middle" Width="108"></Static>
+		<PopDiv Border="Flat" Height="174" Id="PopDiv0" Left="1003" TabOrder="36" TabStop="FALSE" Top="176" Width="496">
+			<Contents>
+				<Grid BindDataset="ds_ioOverBizInfo" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="171" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" HeadBorder="Flat" HeadHeight="20" Height="145" Id="gdOverBizInfo" InputPanel="FALSE" Left="2" LineColor="default" Right="492" Style="sty_Grid" TabOrder="1" TabStop="true" Top="26" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="490">
+					<contents>
+						<format id="Default">
+							<columns>
+								<col width="50"/>
+								<col width="60"/>
+								<col width="100"/>
+								<col width="60"/>
+								<col width="140"/>
+								<col width="61"/>
+								<col width="80"/>
+							</columns>
+							<head>
+								<cell col="0" display="text" text="지부"/>
+								<cell col="1" display="text" text="회원번호"/>
+								<cell col="2" display="text" text="직능"/>
+								<cell col="3" display="text" text="면제여부"/>
+								<cell col="4" display="text" text="업체명"/>
+								<cell col="5" display="text" text="미납금액"/>
+								<cell col="6" display="text" text="업종"/>
+							</head>
+							<body>
+								<cell align="center" col="0" colid="CGTMGNO" combocol="CD" combodataset="ds_oJibu" combotext="DATA" display="combo"/>
+								<cell align="center" col="1" colid="CNO" display="text"/>
+								<cell align="left" col="2" colid="CNICKFULLNM" display="text"/>
+								<cell align="center" col="3" colid="COVERGUBUN" combocol="CD" combodataset="ds_ioYn" combotext="DATA" display="combo"/>
+								<cell align="left" col="4" colid="BNM" display="text"/>
+								<cell align="right" col="5" colid="MINAPFEE" display="text"/>
+								<cell align="center" col="6" colid="BBIZCD" combocol="CD" combodataset="ds_oBizCd" combotext="DATA" display="combo"/>
+							</body>
+						</format>
+					</contents>
+				</Grid>
+				<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btn_EduDetailClose" ImageID="BTN_TEXT_02" Left="454" OnClick="Div3_btn_EduDetailClose_OnClick" Style="sty_Button" TabOrder="2" Text="닫기" Top="1" Transparent="TRUE" Width="38"></Button>
+			</Contents>
+		</PopDiv>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnOverbiz" ImageID="BTN_TEXT_05" Left="909" OnClick="btnConcurrentH_OnClick" Style="sty_Button" TabOrder="37" Text="겸직정보" Top="151" Transparent="TRUE" Width="80"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Font="굴림,10,Bold" Height="90" Id="btnSearch" Left="359" OnClick="lfn_Search" Style="sty_Button" TabOrder="6" Text="조회(F2)" ToolTipText="조회" Top="39" Width="85"></Button>
+		<Grid AutoFit="TRUE" BindDataset="ds_oMemJoinH" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="155" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" HeadBorder="Flat" HeadHeight="20" Height="100" Id="gdMemJoinH" InputPanel="FALSE" Left="1007" LineColor="default" MinWidth="100" Right="1678" Style="sty_Grid" TabOrder="38" TabStop="true" Top="55" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="671">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="45"/>
+						<col width="124"/>
+						<col width="150"/>
+						<col width="199"/>
+						<col width="131"/>
+					</columns>
+					<head>
+						<cell col="0" combodataset="ds_ioAccount" display="text" text="순번"/>
+						<cell col="1" display="text" text="가입/탈퇴구분"/>
+						<cell col="2" display="text" text="가입/탈퇴사유"/>
+						<cell col="3" combodataset="ds_ioAccount" display="text" text="처리일시"/>
+						<cell col="4" combodataset="ds_ioAccount" display="text" text="처리자"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text"/>
+						<cell align="center" col="1" colid="STATUSGUBUN" display="text"/>
+						<cell align="center" col="2" colid="STATUSREASON" display="text"/>
+						<cell align="center" col="3" colid="PROCDATE" display="text"/>
+						<cell align="center" col="4" colid="PROCNM" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Font="굴림,11,Bold" Height="20" Id="lbCustomerInfo" Left="1004" Style="sty_LabelGruopBox" TabOrder="39" Text="회원가입이력" Top="33" VAlign="Middle" Visible="FALSE" Width="108"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmmem0010MMemberManagement.xml
+ * 설명 : 회원관리
+ * 작성일 : 2018.09.17
+ * 작성자 : 정현호
+ */
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+var ls_curComponent = "";	//조회시점에서의 포커스된 Component
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj)
+{
+	gfn_Form_OnLoadCompletedCheck(obj);	//공통 폼 로딩 이벤트 처리(공통코드 조회되었는지 확인)
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.    ms_FormAuth = gfn_GetFormAuth(this, sFormUrl); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    // 공통 코드 조회
+    gfn_SearchAllJibu(cbxJibu, "Y"); 											// 지부 코드 조회
+/*
+    gfn_SearchCodeRegion(gds_oUserInfo.GetColumn(0, "PDEPTCD"), ds_oRegion, "0");	// 지역 코드 조회
+    gfn_SearchCustomerCourseFullName(ds_oCourse, "0");							// 대표고객직능 조회
+    gfn_SearchCustomerDetailCourseFullName("", ds_oDetailCourse, "0");			// 세부고객직능 조회
+    gfn_SearchCustomerCourseFullName(ds_oCourse, "0");							// 대표고객직능 조회
+    gfn_SearchCommonCode(ds_oSunapGubun, "SUNAPGUBUN", "Y", "미납");			// 수납구분*/
+    lfn_ClearData();							//모든데이타셋 초기화
+
+    edMemberNm.SetFocus();						//성명 포커스
+
+}
+/***************************
+ * 공통 코드 조회
+ ***************************/
+
+/*
+ * 기능 : 버튼 활성/비활성시킨다.
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+ * return : 없음
+ */
+function lfn_SetFormAuth(bStatus) {
+//
+
+}
+
+/*
+ * 조회(F2)
+ */
+function lfn_Search(obj)
+{	// 조회조건이 아무것도 입력되어 있지 않으면 조회 불가
+	if (gfn_IsNull(edMemberNm.Text) && gfn_IsNull(medBirthday.Value) &&
+	
+	    gfn_IsNull(medPersonKey.Value) && gfn_IsNull(medCustNo.Value) &&
+	     
+	    gfn_IsNull(medBarCode.Value)) {
+
+		gfn_Alert("조회조건을 입력 후 조회해 주세요!");
+		
+		return false;
+		
+	}
+
+	lfn_ClearData();
+	
+	medCustNo.Value = iif(gfn_IsNull(medCustNo.Value), "", lpad(medCustNo.Value, "0", 6));
+	var sArg = "CGTMGNO="	+ quote(cbxJibu.Value); 	// 지부코드
+    sArg += " CNO=" + quote(medCustNo.Value);		// 고객번호
+    
+    sArg += " FMNM="	+ quote(edMemberNm.Text); 	// 성명
+    
+    sArg += " FMBIRTHDAY="	+ quote(medBirthday.Value); 	// 생년월일
+    
+    sArg += " FMPERSONKEY="	+ quote(medPersonKey.Value); 	// 개인식별번호
+    
+    sArg += " CMGNO="	+ quote(medBarCode.Value); 	// 관리바코드
+        // 조회이력을 저장한다.  
+    ls_HistoryArg = "지부코드=" + cbxJibu.Value
+                + ", 관리번호=" + medCustNo.Value
+                + ", 성명=" + edMemberNm.Text
+                + ", 생년월일=" + medBirthday.Value
+                + ", 개인식별번호=" + medPersonKey.Value
+                + ", 관리바코드=" + medBarCode.Value;
+
+                
+    gfn_InsertSearchPrintHistory(
+        "S"
+        , this.ID
+        , global.mnuLeft.cbxOpenForm.Text
+        , ls_HistoryArg
+    );
+
+    ds_oMemberInfo.ClearData(); // 데이타셋 초기화
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("mem:searchMem0010AllSearch", false);
+    // 서버 호출
+    tit_callService(
+        ""
+        , ""
+        , "" // inDs
+        , "ds_oMemberInfo=ds_oMemberInfo" // outDs
+        , sArg
+        , "lfn_AfterSearchAllInfo"
+        ,false
+        ,false
+        ,true
+    );
+}
+
+/*
+ * 기능 : 고객 한방조회 후 처리해야 할 내용
+ * parameter : ErrorCode - 에러코드
+ *             ErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchAllInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+
+	if(ds_oMemberInfo.rowcount > 0) {
+
+		// ds_oMemberInfo_OnRowPosChanged 에서 처리			//lfn_SearchAllAddInfo();	//부가정보 한방조회
+	} else {
+		gfn_Alert(MSGI00010);	//검색된 레코드가 없습니다.
+		lfn_Cancel();				//초기화
+		if(length(ls_curComponent) > 0 ) {
+			object(ls_curComponent).SetFocus();
+		}
+    }
+
+}
+
+// 부가정보 한방조회
+function lfn_SearchAllAddInfo() {
+	
+	var lsOutDsListNm = "";
+	var lsArgListNm = "";
+	
+	ds_ioCustomerFeeInfo.ClearData(); 		// 회비/교육비 정보
+	ds_ioEducationPassInfo.ClearData(); 	// 실무교육 정보
+	ds_ioOverBizInfo.ClearData(); 			// 겸직정보
+	
+	//ds_oMemJoinH.ClearData(); 				// 회원가입탈퇴이력
+    tit_clearActionInfo();
+    
+    if(!gfn_IsNull(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO"))) {
+		tit_addSearchActionInfo("cust:searchCust2010Fee", false);
+		tit_addSearchActionInfo("cust:searchCust0010EducationPassInfoList", false);
+		//tit_addSearchActionInfo("mem:searchMem0011MemJoinH", false);	// 회원가입탈퇴이력
+
+		lsOutDsListNm += "ds_ioCustomerFeeInfo=ds_oFee ds_ioEducationPassInfo=ds_ioEducationPassInfo ds_oMemJoinH=ds_oMemJoinH";
+		lsArgListNm += "CMGNO=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO")); // 고객정보관리번호
+		lsArgListNm += " FEEGUBUN=" + "YEAR";	// 회비/교육비 년도
+    }
+    if(!gfn_IsNull(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "FMMGNO"))) {
+		tit_addSearchActionInfo("cust:searchCust0010OverBizInfoList", false);
+		lsOutDsListNm += " ds_ioOverBizInfo=ds_ioOverBizInfo";
+		lsArgListNm += " OLFMMGNO=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "FMMGNO")); // 선임자관리번호
+		
+		lsArgListNm += " FMNM=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "MNAME")); // 선임자명
+		lsArgListNm += " FMPERSONKEY=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "MPERSONKEY")); // 선임자 개인식별번호
+		
+		lsArgListNm += " CMGNO=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO")); // 고객정보관리번호
+    }
+    
+    // 서버 호출
+    tit_callService(
+        ""
+        , ""
+        , "" // inDs
+        , lsOutDsListNm // outDs
+        , lsArgListNm	// args
+        , "lfn_AfterSearchAllAddInfo"
+        ,false
+    );
+}
+
+
+/*
+ * 기능 : 부가정보 한방조회 후 처리해야 할 내용
+ * parameter : ErrorCode - 에러코드
+ *             ErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchAllAddInfo(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/*
+ * 기능 : 초기화(F10)
+ */
+function lfn_Cancel(obj) 
+{
+    lfn_ClearData();					//초기화 (모든 데이터셋)	
+	lfn_ClearSearchCompornent();		//조회정보 초기화
+
+}
+
+/*
+ * 기능 : 초기화 (모든 데이터셋)
+ */
+function lfn_ClearData() {
+	//Dataset Clear
+	ds_oMemberInfo.ClearData(); 		// 회원 정보(MAIN 1)
+
+
+	ds_ioCustomerFeeInfo.ClearData();	// 회비/교육비 정보
+	ds_ioEducationPassInfo.ClearData();	// 실무교육 정보
+	ds_oEduConfirmPrint.ClearData();	// 실무교육이수확인증 정보
+
+
+	ds_ioOverBizInfo.ClearData();		// 겸직 정보
+}
+
+/*
+ * 기능 : 조회 초기화
+ */
+function lfn_ClearSearchCompornent() {
+	edMemberNm.Value = "";
+	
+	medBirthday.Value = "";
+	
+	medPersonKey.Value = "";
+	cbxJibu.Value = "";
+	
+	medCustNo.Value = "";
+	medBarCode.Value = "";
+	
+}
+/***************************
+ * Event & Button
+ ***************************/
+// 조회(F2 동일)
+function medCustNo_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if(nChar == 13) {	// Enter key
+		ls_curComponent = GetCurrentComponent().id;
+		cbxRegion.SetFocus();
+		if(gfn_IsNull(medCustNo.Value) || gfn_IsNull(cbxJibu.Value)) {
+			
+		} else {
+			lfn_Search();
+		}
+	}
+}
+
+// 조회(F2 동일)
+function medBarCode_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if(nChar == 13) {	// Enter key		
+		if(gfn_IsNull(medBarCode.Value)) {
+
+		} else {
+			ls_curComponent = GetCurrentComponent().id;
+			cbxRegion.SetFocus();
+			lfn_searchCust0010CustomerInfo2(medBarCode.Value);
+		}
+	}
+}
+// 조회(F2 동일)
+function medCustNo_OnKillFocus(obj)
+{
+    obj.Value = iif(gfn_IsNull(obj.Value), "", lpad(obj.Value, "0", 6));
+}
+
+// 조회(F2 동일)
+function medBarCode_OnKillFocus(obj)
+{
+	if(!gfn_IsNull(obj.Value)) {
+		obj.Value = iif(gfn_IsNull(obj.Value), "", lpad(obj.Value, "0", 13));
+	}
+}
+
+// 겸직이력
+function btnConcurrentH_OnClick(obj)
+{
+	/*
+     * Input >> sCmgno : 고객정보관리번호
+     */
+	var sArg = "sCmgno=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO")); // 고객정보관리번호
+
+    Dialog(ls_Prefix + "::frmcust0014POverHistory.xml", sArg, 724, 238, "", -1, -1);
+}
+// 상세정보
+function btnFeeDetailInfo_OnClick(obj)
+{
+	if(ds_ioCustomerFeeInfo.Sum("SUNAPFEE") <= 0) {
+		gfn_Alert("결제정보가 없습니다.");
+		return;
+	}
+	var sArg = "sCmgno=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO"));
+	var retDlg = Dialog(ls_Prefix + "::frmcust0019PCustomerSunapInfo.xml", sArg, 700, 400, "", -1, -1);
+}
+
+// 상세정보
+function btnEduDetailInfo_OnClick(obj)
+{
+	/*
+     * Input >> sCmgno : 고객관리번호
+     */
+	var sArg  = "sCmgno=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO"));			// 고객관리번호
+		Dialog(ls_Prefix + "::frmcust1001PCustomerEduInfo.xml", sArg, 600, 398, "", -1, -1);
+}
+/* 그리드 Enter Key 이동 */
+function lfn_GridEnterMove(obj, nChar, bShift) {
+	if (nChar == 13) {
+		if(bshift=1) {
+			obj.MoveToPrevCell();
+		} else { 
+			obj.MoveToNextCell();
+		}
+	}
+}
+
+// 교육안내문 발행이력 팝업
+function btnEduDataHList_OnClick(obj)
+{
+	if( gfn_IsNull(ds_ioCustomerInfo.GetColumn(ds_ioCustomerInfo.currow, "CMGNO")) ) {
+		gfn_Alert("해당 자료를 찾을 수 없습니다.");
+		return;
+	} else {
+		var sArg = "sCmgno=" + quote(ds_ioCustomerInfo.GetColumn(ds_ioCustomerInfo.currow, "CMGNO"));
+		
+		Dialog(ls_Prefix + "::frmcust0010PEduDataHList.xml", sArg, 724, 238, sArg, -1, -1);
+	}
+}
+
+// 실무교육 이수확인증 출력
+function tabTab2_tabpgTab2Page2_gdEduInfo_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if (nCell == 0) {
+	
+		if (ds_ioEducationPassInfo.GetColumn(nRow,"EPSUCCESSIONGUBUN") <> "2") {
+		
+			ds_ioEducationPassInfo.row = nRow;   
+		
+			var sArg = "sMsg=" + quote("실무교육 이수확인증을 출력하시겠습니까?"); // 대상물관리번호		
+			var msg_result = Dialog(ls_Prefix + "::frmcust0010PEduIssuePrintMessage.xml", sArg, 500, 100, "", -1, -1);
+	
+		
+			var	isunumYear = "";
+			var	isunumSeq = "";
+		
+			if (msg_result == "0") { //미리보기
+				lfn_EduIssueConfirmSearch();	// 교육이수내역 조회
+				isunumYear = "";
+				isunumSeq = "";
+	
+			} else if (msg_result == "1") {  //출력(고객요청시)
+			
+				print_result = ext_MsgBox ("실무교육 이수확인증 출력",
+										"출력시 발급번호가 생성됩니다.\n\n고객께 발급해 드릴경우만 출력하시고, 확인용은 [미리보기]를 눌러 확인하세요!\n\n출력하시겠습니까?",
+										"MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2");
+			
+				if (print_result == "6") { // Yes
+					lfn_EduConfirmInsertProc();		// 이수확인서 발급Table insert (FIRENET.EDUCONFIRM)
+					lfn_EduIssueConfirmSearch();	// 교육이수내역 조회
+					
+					isunumYear = left(GetDate(), 4);
+					isunumSeq = ds_oEduConfirmPrint.GetColumn(0, "ECMGNO");
+				} else if (print_result == "7") { // No
+					return;
+				}
+			} else if (msg_result == "2") {  // 닫기
+				return;
+			
+			}	
+		
+			var ls_RexFile = "";
+			// 출력물보안 미적용 리포트
+			ls_RexFile = "frmCust0010R01EduPassPrint.rex";
+		
+	
+			gfn_CallReportPopup(ls_RexFile
+				, "ds_oEduConfirmPrint"
+				  , "epmgno=" + ds_ioEducationPassInfo.GetColumn(ds_ioEducationPassInfo.currow, "EPMGNO")
+				   + "^isunumYear=" + isunumYear
+				   + "^isunumSeq=" + isunumSeq
+				, true
+				, ""	// subreport
+				, 250	// 상단여백
+				, 150	// 왼쪽여백
+			);
+		}
+	}
+}
+
+// 이수확인서 발급Table insert (FIRENET.EDUCONFIRM)
+function lfn_EduConfirmInsertProc() {
+
+	tit_clearActionInfo();
+	tit_addSingleActionInfo("cust:insertCust0010EduConfirmPrint", "", 0, "");
+
+	tit_callService(
+		""
+		,""
+		,"" // inDs
+		,"" // outDs
+		,"EPYEAR=" + quote(ds_ioEducationPassInfo.GetColumn(ds_ioEducationPassInfo.currow, "EPYEAR"))
+		 + " EPCMGNO=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO"))
+		 + " EPMGNO=" + quote(ds_ioEducationPassInfo.GetColumn(ds_ioEducationPassInfo.currow, "EPMGNO"))
+		,""
+		,false
+		,false
+		,true
+	);
+		
+}
+
+// 교육이수내역 조회
+function lfn_EduIssueConfirmSearch() {
+	ds_oEduConfirmPrint.ClearData();
+	tit_clearActionInfo();
+	tit_addSearchActionInfo("cust:searchCust0010EduConfirmPrint", "", 0, "");
+	
+	tit_callService(
+		""
+		,""
+		,"" // inDs
+		,"ds_oEduConfirmPrint=ds_oEduConfirmPrint" // outDs
+		,"ECEDUMGNO=" + quote(ds_ioEducationPassInfo.GetColumn(ds_ioEducationPassInfo.currow, "EPMGNO"))
+		,""
+		,false
+		,false
+		,true
+	);
+}
+
+// 실무교육 이수확인증 출력
+function Div3_gdEduInfo_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if (nCell == 0) {
+	
+		if (ds_ioEducationPassInfo.GetColumn(nRow,"EPSUCCESSIONGUBUN") <> "2") {
+		
+			ds_ioEducationPassInfo.row = nRow;   
+		
+			var sArg = "sMsg=" + quote("실무교육 이수확인증을 출력하시겠습니까?"); // 대상물관리번호		
+			var msg_result = Dialog(ls_Prefix + "::frmcust0010PEduIssuePrintMessage.xml", sArg, 500, 100, "", -1, -1);
+	
+		
+			var	isunumYear = "";
+			var	isunumSeq = "";
+		
+			if (msg_result == "0") { //미리보기
+				lfn_EduIssueConfirmSearch();	// 교육이수내역 조회
+				isunumYear = "";
+				isunumSeq = "";
+	
+			} else if (msg_result == "1") {  //출력(고객요청시)
+			
+				print_result = ext_MsgBox ("실무교육 이수확인증 출력",
+										"출력시 발급번호가 생성됩니다.\n\n고객께 발급해 드릴경우만 출력하시고, 확인용은 [미리보기]를 눌러 확인하세요!\n\n출력하시겠습니까?",
+										"MB_ICONQUESTION|MB_YESNO|MB_DEFBUTTON2");
+			
+				if (print_result == "6") { // Yes
+					lfn_EduConfirmInsertProc();		// 이수확인서 발급Table insert (FIRENET.EDUCONFIRM)
+					lfn_EduIssueConfirmSearch();	// 교육이수내역 조회
+					
+					isunumYear = left(GetDate(), 4);
+					isunumSeq = ds_oEduConfirmPrint.GetColumn(0, "ECMGNO");
+				} else if (print_result == "7") { // No
+					return;
+				}
+			} else if (msg_result == "2") {  // 닫기
+				return;
+			
+			}	
+		
+			var ls_RexFile = "";
+		
+			ls_RexFile = "frmCust0010R01EduPassPrint.rex";
+		
+	
+			gfn_CallReportPopup(ls_RexFile
+				, "ds_oEduConfirmPrint"
+				  , "epmgno=" + ds_ioEducationPassInfo.GetColumn(ds_ioEducationPassInfo.currow, "EPMGNO")
+				   + "^isunumYear=" + isunumYear
+				   + "^isunumSeq=" + isunumSeq
+				, true
+				, ""	// subreport
+				, 250	// 상단여백
+				, 150	// 왼쪽여백
+			);
+		}
+	}	
+}
+
+
+// 은행 가상계좌 보기
+function btnShowVirtualAccount_OnClick(obj)
+{
+	// 고객자료가 조회된 상태이면
+	if(ds_oMemberInfo.rowcount > 0) {
+	
+		if (ds_oMemberInfo.GetColumn(0, "CDELGUBUN") == "0") {
+		
+			if (ds_oMemberInfo.GetColumn(0, "CSTATUSGUBUN") == "0") { // 회원이면 가상계좌 보이기
+			
+				// 세틀뱅크 가상계좌 보기
+				sArg = "sGUBUN=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CSTATUSGUBUN"));
+				sArg += " sTotalAmount=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "MINAPFEE"));
+				sArg += " sJibu=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CGTMGNO"));
+				sArg += " sCMgno=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO"));
+				sArg += " sFMNM=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "MNAME"));
+				sArg += " sHPTEL=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "MHP"));
+				sArg += " sBNM=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "MBNM"));
+				sArg += " sCOURSENM=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CNICKNM"));
+				
+				
+				vRtl = Dialog("cust::frmcust2018PFixVirtualAccount.xml", sArg, 400, 220, "", -1, -1);	
+
+			} else {	// 비회원이면 
+			
+				if (gfn_Confirm("비회원은 실무교육 접수시에만 가상계좌를 확인 및 부여할 수 있습니다.\n\n"+
+				            "       1. '확인' : [실무교육 접수관리] 바로가기 ☞\n\n"+
+				            "       2. '취소' : 닫기") == "1") {
+				       
+				       btnEduJubsu_OnClick(obj);
+				            
+				}
+			
+			}
+
+		} else {
+
+			gfn_Alert("삭제된 고객은 가상계좌가 없습니다.");			return;
+		
+		}
+	} else {
+
+		gfn_Alert("고객정보를 조회하신 후 가상계좌보기를 클릭해주세요!");		return;
+		
+	}
+}
+
+
+// 은행 가상계좌로 관리번호 검색
+function btnVAccountCno_OnClick(obj)
+{
+	var arrNo = Dialog("cust::frmcust0010PSearchVAccountCno.xml", "", 400, 220, "", -1, -1);	
+	
+	if(length(arrNo) > 0) {
+		lfn_searchCust0010CustomerInfo2(arrNo[0]);
+	}
+	
+}
+
+
+// 교육안내문 출력
+function lfn_EduDataPrint(obj)
+{
+var issuechk = "";	// 교육이수 체크
+
+	if( gfn_IsNull(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO")) ) {
+		gfn_Alert("교육안내문을 발행할 자료가 없습니다.");
+		return;
+	
+	}
+
+	for(var i=0; i<ds_ioEducationPassInfo.GetRowCount(); i++) {
+
+		// 당해년도 교육이수사항이 있는지 체크
+		if ((left(ds_ioEducationPassInfo.GetColumn(i, "EPPASSDATE"), 4) == left(GetDate(), 4)) &&
+		   (ds_ioEducationPassInfo.GetColumn(i, "EPSUCCESSIONGUBUN") == "0" ||	// 선임자교육
+		    ds_ioEducationPassInfo.GetColumn(i, "EPSUCCESSIONGUBUN") == "1" ||	// 교육승계
+		    ds_ioEducationPassInfo.GetColumn(i, "EPSUCCESSIONGUBUN") == "4")) {	// 교육이관
+		    issuechk = "Y";
+		    break;
+		} else {	// 당해년도 교육이수내역이 없거나 2:사이버교육,3:이수후퇴직인 경우
+			issuechk = "N";
+		}
+
+	}
+
+	if (issuechk == "Y") {	// 당해년도 교육이수사항이 있으면
+	
+		gfn_Alert(left(GetDate(), 4)+"년도 교육이수 내역이 있습니다. 교육안내문 자료가 생성되지 않습니다.!");
+				return false;	
+	}
+	
+    if (!gfn_Confirm("교육안내문 출력을 하면 교육안내문 발급이력이 생성됩니다.\n"
+                +"진행하시겠습니까?")) { // 
+        return false;
+    }
+
+	// 대상자 조회
+	lfn_EduNoticeSearch();
+	
+    lfn_EduNoticeHistorySysdate();  // SYSDATE를 구함
+    
+    lfn_EduNoticeHistory3();        //  교육통지서 이력 넣기  추출대상자 넣기  // 컬럼 추가 필요(sysdate)
+
+    lfn_EduNoticeHistory6();            /// 해당 그룹에 대해 발급 유무 초기화 시키기              // 컬럼 검색조건 필요(sysdate)
+
+    lfn_EduNoticeHistory2();            /// 선택한 통지서 발행 인원 이력에 발급 유 업데이트 하기  // 컬럼 검색조건 필요(sysdate)
+  
+    
+	gfn_CallReportPopup("frmCust1107R01EduDataImage.rex"
+			,"ds_ioMEduDataDetail"    // ds
+			,""                  // 매개변수
+			,""                  // 수첩여부 
+			,""                  // 서브레포트 사용여부
+			,""
+			,""
+	);
+
+}
+
+// 대상자 조회
+function lfn_EduNoticeSearch() { 
+
+    ds_ioMEduData.Clear();        
+    tit_clearActionInfo();
+	tit_addSearchActionInfo("cust:searchCust1107FireDefDMData", false);     // 교육대상자 조회
+	// 서버 호출 
+	tit_callService( 
+		""
+		,""
+		,""	// inDs
+		,"ds_ioMEduData=ds_oMEduData"  // outDs	  	  
+	    , "radMemberGubun='0'"							           	//회원구분
+        + " radCourse=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CCOURSECD"))		            //교육대상
+        + " cbxJibu=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CGTMGNO"))            	 		//지부
+        + " radGijun='1'"					             			// 지부or소방본부 구분
+        + " radRegion='0'"						          			//지역전체_선택 유무
+        + " cbxRegion1=''"         		    						//지역1 (단일지역)
+        + " cbxRegion2=''"             								//지역2 (from)
+        + " cbxRegion3=''"       		    						//지역3 (to)
+        + " radCenter=''"						            		// 센터전체_선택 유무
+        + " cbxMFCenter1=''"										//센터1 (단일센터)
+        + " cbxMFCenter2=''"										//센터2 (from)
+        + " cbxMFCenter3=''"										//센터3 (to)
+        + " cbxCourse1=''"						             		//직능(단일)
+        + " cbxCourse_1=''"						             		//직능1
+        + " cbxCourse_2=''"							             	//직능2
+        + " cbxCourse_3=''"							             	//직능3
+        + " cbxCourse_4=''"							             	//직능4
+        + " cbxCourse_5=''"							             	//직능5
+        + " cbxCourse_6=''"							             	//직능6
+        + " cbxBusinessType1=''"								   	//용도_선택 // 소방안전관리자만 적용 
+        + " cbxBusinessType2=''"								   	//용도_선택 // 소방안전관리자만 적용 
+        + " cbxBusinessType_1=''"								    //용도_다중선택 // 소방안전관리자만 적용 
+        + " cbxBusinessType_2=''"								    //용도_다중선택 // 소방안전관리자만 적용 
+        + " cbxBusinessType_3=''"								    //용도_다중선택 // 소방안전관리자만 적용 
+        + " cbxBusinessType_4=''"								    //용도_다중선택 // 소방안전관리자만 적용 
+        + " cbxBusinessType_5=''"								    //용도_다중선택 // 소방안전관리자만 적용 
+        + " cbxBusinessType_6=''"								    //용도_다중선택 // 소방안전관리자만 적용 
+        + " radReport='0'"											//선임신고일 전체_선택 유무
+        + " cbxReportData1=''"										//선임신고일1 (from)
+        + " cbxReportData2=''"										//선임신고일2 (to)
+        + " calEduExpireDate11=''"								    //교육 유효기간start
+        + " calEduExpireDate12=''"								    //교육 유효기간end
+        + " calEduExpireDate21=''"								    //교육 유효기간start
+        + " calEduExpireDate22=''"								    //교육 유효기간end
+        + " calEduExpireDate31=''"								    //교육 유효기간start
+        + " calEduExpireDate32=''"								    //교육 유효기간end
+        + " calEduExpireDate41=''"								    //교육 유효기간start
+        + " calEduExpireDate42=''"								    //교육 유효기간end
+        + " chkExceptDate='0'"							           	//이전년도 교육필자 제외 여부
+        + " calEduExceptDate1=''"									//이전교육일자1(from)
+        + " calEduExceptDate2=''"									//이전교육일자2 (to)
+        + " radMgno='1'"					             			//관리번호 전체_선택 유무
+        + " cno1=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CNO"))            				//관리번호1 (from)
+        + " cno2=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CNO"))            				//관리번호2 (to)
+        + " radNotMemberFirsSecondHalf='1'"							//비회원회비부과상하반기
+		+ " radAgency='0'"						             		//업무대행 여부
+        + " radMinap=''"											//미납여부
+        + " radName='0'"											//선임자명 자료생성여부
+        + " chkDataYN1='0'"											//공공기관 기관장
+        + " chkDataYN2='0'"											//공공기관 감독적직위
+        + " chkDataYN3='0'"											//공공기관 기타
+        + " chkDataYN4='0'"											//관리제외대상
+        + " radEduJubsu='0'"										//실무교육접수자
+        + " radOrder='0'" 											//정렬순서  
+        //+ " chkDataYN5=" + quote(chkDataYN5.Value)				//이수후퇴직자
+	      //-- (매개변수) // args 
+		,"lfn_AftersearchEdu"
+		,false
+		,""
+		,true
+	);	
+}
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AftersearchEdu(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    } 
+    
+    lfn_Search_EducationList();  // key값으로 대상리스트 상세 조회함 
+
+//    trace(ds_ioMEduData.GetColumn(0, "fkeyA"));   //키값 출력해봄
+//    trace(ds_ioMEduData.Count());   //키값 출력해봄        
+}
+
+
+/*
+ *  키값으로 교육안내대상리스트 상세 조회 
+*/
+function lfn_Search_EducationList()
+{
+    ds_ioMEduDataDetail.ClearData(); // 데이터셋 초기화        	 
+    tit_clearActionInfo();
+    tit_AddSearchActionInfo("cust:searchCust1107FireDefDMDataDetail", false);        
+
+    tit_callService(
+        ""
+        ,""
+        ,""// inDs
+		,"ds_ioMEduDataDetail=ds_oMEduDataDetail"  // outDs
+        ,"fkeyA=" + quote(ds_ioMEduData.GetColumn(0, "fkeyA"))
+         + " TEST="+"--/*test*/"
+          //args                                         
+        ,"lfn_AfterSearchEducationList"
+        ,false
+        ,""
+        ,true
+        
+    );
+}
+
+function lfn_AfterSearchEducationList(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+   
+}
+
+/*
+*  sysdate 가져오기
+*/
+function lfn_EduNoticeHistorySysdate()
+{   
+   // trace("그룹 id =>" + ds_ioEduDay4.GetColumn(0, "CREGCD"));
+    //trace (ds_ioEduDay4.SaveXML());
+	// 자료 넣기	
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("cust:selectCust1105EduNoticeHistoryGetSysdate", false);
+	// 서버 호출 
+	
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioEduNoticeHistoryGetSysdate = ds_oEduNoticeHistoryGetSysdate"	// outDs
+		, ""    // 구분 그룹 // args 
+		,"lfn_AftersearchCust"
+		,false
+		,""
+		,true
+	);	
+
+}
+
+function lfn_AftersearchCust(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+/*
+*  교육안내문 추출 총인원 이력 넣기 
+*/
+function lfn_EduNoticeHistory3()
+{
+  
+	// 자료 넣기	
+	tit_clearActionInfo();
+    tit_AddSingleActionInfo(	
+        "cust:insertCust1107EduDataHistory"	// insert  		
+        , ""	// update  
+        , ""	// delete
+        , ""	// flag column 명
+        , ""	// key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N"	// 실행타입
+    );
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iEduDataHistory=ds_ioMEduDataDetail:U"/// inDs		
+        ,""	// outDs
+        , "GET_SYSDATE=" + quote(ds_ioEduNoticeHistoryGetSysdate.GetColumn(0, "CHAR_SYSDATE")) // "JIBU_A=" + quote(cbxJibu.value)  //args            
+        ,"lfn_AftersearchCust"
+        ,false
+        ,""
+        ,true
+        
+    );  
+
+}
+
+/*
+*  교육안내문 그룹 id로 발급 유무 초기화함
+*/
+function lfn_EduNoticeHistory6()
+{   
+   // trace("그룹 id =>" + ds_ioEduDay4.GetColumn(0, "CREGCD"));
+    //trace (ds_ioEduDay4.SaveXML());
+	// 자료 넣기	
+
+    tit_clearActionInfo();
+    tit_addSearchActionInfo("cust:updateCust1107EduDataHistoryGubunDefault", false);
+	// 서버 호출 
+	
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,""	// outDs
+		, "EGROUPID='0'" 					     // 구분 그룹 // args 
+        + " rDate=" + quote(left(GetDate(), 8))  // args
+		,"lfn_AftersearchCust"
+		,false
+		,""
+		,true
+	);	
+
+}
+
+/*
+*  교육안내문 이력 넣기  2) 교육일정 날짜에 따라 안내문 발행인원만 교육일정과 발급 유무를 업데이트 하기
+*/
+function lfn_EduNoticeHistory2()
+{   
+	// trace("교육시간 출력4 =>" + ds_ioEduDay4.GetColumn(0, "TIME" )); 	
+	
+	//trace(ds_ioMEduDataDetail.savexml());
+ 	tit_clearActionInfo();
+	tit_addSingleActionInfo("cust:updateCust1107EduDataHistoryDay", "", 0, "");
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iEduDataHistoryDay=ds_ioMEduDataDetail"/// inDs		
+        ,""	// outDs
+        , "DATE=" + quote(ds_ioMEduDataDetail.GetColumn(0, "EDUDATE"))    // 일정 // args 
+        + " rDate=" + quote(left(GetDate(), 8))    // 날짜    //"JIBU_A=" + quote(cbxJibu.value)  
+        + " GET_SYSDATE=" + quote(ds_ioEduNoticeHistoryGetSysdate.GetColumn(0, "CHAR_SYSDATE"))  //args            
+        ,"lfn_AftersearchCust"
+        ,false
+        ,false
+        ,true
+        
+    ); 
+}
+
+function ds_oMemberInfo_OnRowPosChanged(obj,nOldRow,nRow)
+{
+
+	lfn_SearchAllAddInfo();
+	
+}
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_1000,dsc_0001]";	// 개인정보접속기록 시스템ID  
+}
+
+
+function medBirthday_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+	if(nChar == 13) {	// Enter key
+		ls_curComponent = GetCurrentComponent().id;
+		cbxRegion.SetFocus();
+		if(gfn_IsNull(cbxJibu.Value) || gfn_IsNull(medBirthday.Value)) {
+
+		} else {
+			lfn_Search();
+		}
+	}
+}
+
+function medPersonKey_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+{
+		if(nChar == 13) {	// Enter key
+		ls_curComponent = GetCurrentComponent().id;
+		cbxRegion.SetFocus();
+		if(gfn_IsNull(cbxJibu.Value) || gfn_IsNull(medPersonKey.Value)) {
+			
+		} else {
+			lfn_Search();
+		}
+	}
+}
+
+function edMemberNm_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if(nChar == 13) {	// Enter key
+		ls_curComponent = GetCurrentComponent().id;
+		cbxRegion.SetFocus();
+		if(gfn_IsNull(cbxJibu.Value) || gfn_IsNull(edMemberNm.Text)) {
+
+		} else {
+			lfn_Search();
+		}
+	}
+}
+]]></Script>
+</Window>

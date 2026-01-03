@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="240" Id="frmCOM3310POSStatistics" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="영수증발행현황통계팝업" Top="8" Ver="1.0" Width="596" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oProgramId">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oWorkGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>01</CD>
+						<DATA>집계(통계)</DATA>
+					</record>
+					<record>
+						<CD>02</CD>
+						<DATA>리스트(내역)&#32;&#32;&#32;&#32;&#32;&#32;&#32;</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oDateGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>01</CD>
+						<DATA>적용(수납)일자</DATA>
+					</record>
+					<record>
+						<CD>02</CD>
+						<DATA>입력(시스템)일자</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSetlementGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>현금</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>카드</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>현금영수증</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSunapGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>은납</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>타지부납(회원회비)</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>직납</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>지로납</DATA>
+					</record>
+					<record>
+						<CD>5</CD>
+						<DATA>인터넷접수(강습)</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oJibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="236" Height="204" Id="shpGubunBox" Left="4" LineColor="user15" Right="592" TabOrder="17" Top="32" Type="Rectangle" Width="588"></Shape>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="242" LineColor="user14" Right="594" TabOrder="14" Top="1" Type="Rectangle" Width="352"></Shape>
+		<Static Align="Center" Height="20" Id="lbHelp" Left="24" Style="sty_LabelGruopBox" TabOrder="15" Text="통합영수증&#32;집계관리" Top="24" VAlign="Middle" Width="160"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="506" OnClick="lfn_End" Style="sty_Button" TabOrder="4" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="8" Style="sty_Label" TabOrder="18" Text="지부" Top="72" UserData="S" VAlign="Middle" Width="100"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="111" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="7" Top="71" UserData="I" Width="88"></Combo>
+		<Static Align="Center" Height="20" Id="lbProgramId" Left="9" Style="sty_Label" TabOrder="17" Text="단위프로그램명" Top="48" UserData="S" VAlign="Middle" Width="100"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxProgramIdStart" INDEX="0" InnerDataset="ds_oProgramId" Left="111" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="5" Top="47" UserData="S:직능" Width="182"></Combo>
+		<Static Align="Center" Height="20" Id="lbWorkGubun" Left="8" Style="sty_Label" TabOrder="19" Text="통계구분" Top="96" VAlign="Middle" Width="100"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radWorkGubun" INDEX="0" InnerDataset="ds_oWorkGubun" Left="112" OnChanged="radCourseGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="8" Top="96" Value="M" Width="289"></Radio>
+		<Static Align="Center" Height="20" Id="lbDate" Left="8" Style="sty_Label" TabOrder="20" Text="조회일자범위" Top="212" VAlign="Middle" Width="100"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calDateStart" Left="112" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="12" Top="212" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Static Align="Center" Height="20" Id="lbDateWave1" Left="216" Style="sty_Text" TabOrder="21" Text="~" Top="212" VAlign="Middle" Width="10"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calDateEnd" Left="232" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="13" Top="212" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="245" OnClick="lfn_Print" Style="sty_Button" TabOrder="1" ToolTipText="출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="332" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="2" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="419" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="3" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbWave" Left="300" Style="sty_Text" TabOrder="22" Text="~" Top="48" VAlign="Middle" Width="10"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxProgramIdEnd" INDEX="0" InnerDataset="ds_oProgramId" Left="315" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="6" Top="47" UserData="S:직능" Width="182"></Combo>
+		<Static Align="Center" Height="20" Id="lbDateGubun" Left="8" Style="sty_Label" TabOrder="23" Text="일자구분" Top="120" VAlign="Middle" Width="100"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radDateGubun" INDEX="0" InnerDataset="ds_oDateGubun" Left="112" OnChanged="radCourseGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="9" Top="120" Value="M" Width="286"></Radio>
+		<Static Align="Center" Height="20" Id="lbSetlementGubun" Left="8" Style="sty_Label" TabOrder="24" Text="결재방식" Top="144" VAlign="Middle" Width="100"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="4" DataColumn="DATA" Height="20" Id="radSetlementGubun" INDEX="0" InnerDataset="ds_oSetlementGubun" Left="112" OnChanged="radCourseGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="10" Top="144" Value="M" Width="476"></Radio>
+		<Static Align="Center" Height="20" Id="lbSunapGubun" Left="8" Style="sty_Label" TabOrder="25" Text="납부구분" Top="168" VAlign="Middle" Width="100"></Static>
+		<Radio Border="Flat" CodeColumn="CD" ColumnCount="3" DataColumn="DATA" Height="40" Id="radSunapGubun" INDEX="0" InnerDataset="ds_oSunapGubun" Left="112" OnChanged="radCourseGubun_OnChanged" OnKeyDown="gfn_EnterNextFocus" Style="sty_Radio" TabOrder="11" Top="168" Value="M" Width="476"></Radio>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM3310POSStatistics.xml
+ * 설명 : 영수증발행현황통계팝업
+ * 작성일 : 2009.09.11
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 공통 코드 조회
+    gfn_SearchJibu(cbxJibu, "Y", "선택"); // 지부 코드 조회  
+
+    calDateStart.Value = GetDate();
+    calDateEnd.Value = GetDate();
+}
+
+function Form_OnUnloadCompleted(obj) {
+	Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 120 : // 출력(F9)
+            lfn_Print();
+            break;
+        case 121 : // 초기화(F10)
+                lfn_Cancel();
+            break;
+        case 123 : // 화면출력(F12)
+            lfn_PrintScreen();
+            break;
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+    }
+}
+
+function lfn_End(obj)
+{
+	Close();
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+
+/* 사용자 이벤트 함수 */
+]]></Script>
+</Window>

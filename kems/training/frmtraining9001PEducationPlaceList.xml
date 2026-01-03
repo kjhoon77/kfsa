@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="400" Id="frmtraining9001PEducationPlaceList" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="교육장검색팝업" Top="8" Ver="1.0" Width="600" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oEducationPlace" OnRowPosChanged="ds_oEducationPlace_OnRowPosChanged">
+				<Contents>
+					<colinfo id="EPDIRPATH" size="256" type="STRING"/>
+					<colinfo id="EPMGGTMGNO" size="4" type="STRING"/>
+					<colinfo id="EPMGNO" size="22" type="DECIMAL"/>
+					<colinfo id="EPMODDATE" size="7" type="DATE"/>
+					<colinfo id="EPMODSABUN" size="8" type="STRING"/>
+					<colinfo id="EPNM" size="100" type="STRING"/>
+					<colinfo id="EPPARKINGINFO" size="100" type="STRING"/>
+					<colinfo id="EPREALNM" size="256" type="STRING"/>
+					<colinfo id="EPREGDATE" size="7" type="DATE"/>
+					<colinfo id="EPREGSABUN" size="8" type="STRING"/>
+					<colinfo id="EPRREGIONCD" size="2" type="STRING"/>
+					<colinfo id="EPSAVENM" size="256" type="STRING"/>
+					<colinfo id="FILECHECK" size="0" type="STRING"/>
+					<colinfo id="GTDEPTNM" size="20" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="332" LineColor="user14" Right="599" TabOrder="61" Top="1" Type="Rectangle" Width="267"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect" ImageID="BTN_TEXT_COM" Left="422" OnClick="btnSelect_OnClick" Style="sty_Button" TabOrder="1" Text="선택" ToolTipText="선택" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="Button1" ImageID="BTN_MULTI_SORT" Left="520" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="2" Top="56" Transparent="TRUE" Width="74"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="335" OnClick="lfn_Search" Style="sty_Button" TabOrder="4" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="509" OnClick="lfn_End" Style="sty_Button" TabOrder="3" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="4" Style="sty_Label" TabOrder="9" Text="지부" Top="32" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_oJibu" Left="95" OnChanged="cbxJibu_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="5" Top="31" UserData="I" Width="88"></Combo>
+		<Static Align="Center" Height="20" Id="lbRegion" Left="186" Style="sty_Label" TabOrder="10" Text="지역" Top="32" VAlign="Middle" Visible="FALSE" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Editable="TRUE" Height="20" Id="cbxRegion" INDEX="0" InnerDataset="gds_oEduRegion" Left="277" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="6" Top="31" UserData="S" Visible="FALSE" Width="88"></Combo>
+		<Static Align="Center" Height="20" Id="lbTrainingPlace" Left="4" Style="sty_Label" TabOrder="8" Text="교육장소" Top="56" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edEducationPlaceName" ImeMode="native" Left="96" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="edEducationPlaceName_OnKeyDown" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="7" Top="56" UserData="S" Width="420"></Edit>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_oEducationPlace" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="395" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="315" Id="gdEducationPlace" InputPanel="FALSE" Left="4" LineColor="default" MinWidth="100" OnCellClick="gdEducationPlace_OnCellClick" OnCellDBLClick="btnSelect_OnClick" OnHeadClick="lfn_SortGrid_OnHeadClick" Right="596" RowHeight="20" Style="sty_Grid" TabOrder="11" TabStop="true" Top="80" UseDBuff="true" UsePopupMenu="true" UserData="교육장목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="592">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="133"/>
+						<col width="384"/>
+						<col width="72"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="지부"/>
+						<cell align="center" col="1" display="text" text="교육장소"/>
+						<cell align="center" col="2" display="text" text="약도파일"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="GTDEPTNM" display="combo"/>
+						<cell align="left" col="1" colid="EPNM" display="text"/>
+						<cell align="center" bkimageid="expr:iif(EPSAVENM&#32;&lt;&gt;&#32;null,&#32;&apos;IMG_ATTACH_FILE&apos;,&#32;&apos;&apos;)" col="2" cursor="expr:iif(EPSAVENM&#32;&lt;&gt;&#32;null,&#32;&apos;hand&apos;,&#32;&apos;arrow&apos;)" display="normal"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<HttpFile Height="24" Id="hfImageFile" Left="394" Top="32" Width="24"></HttpFile>
+		<FileDialog Bottom="56" Filter="Image(*.bmp;*.jpg;*.gif)|*.bmp;*.jpg;*.gif|BMP(*.bmp)|*.bmp|JPG(*.jpg)|*.jpg|GIF(*.gif)|*.gif|" Height="24" Id="fdImageFile" Left="366" Right="390" TabOrder="14" Top="32" Width="24"></FileDialog>
+	</Form>
+	<Script><![CDATA[/*
+ * 교육장정보명 : frmtraining9001PEducationPlaceList.xml
+ * 설명 : 교육장검색팝업
+ * 작성일 : 2009.07.20
+ * 작성자 : 김동현
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+var ls_FileUploadPath = "/MAPDATA";
+var ls_RealFileName = "";
+var ls_SaveFileName = "";
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    if (IsExistVar("sEducationPlaceName")) {
+        edEducationPlace.Text = sEducationPlaceName;
+    }
+    
+    cbxJibu.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+    lfn_Search();
+
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+
+    ds_oEducationPlace.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("training:searchEducationPlace", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_oEducationPlace=ds_oEducationPlace"	// outDs
+		,"EPMGGTMGNO=" + quote(cbxJibu.Value)
+            + " EPRREGIONCD=" + quote(cbxRegion.value)
+            + " EPNM=" + quote(edEducationPlaceName.Text)	// args 
+		,"lfn_AfterSearchEducationPlace"
+		,false
+	);
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+
+/* 공통 필수 종료 */
+
+/* 교육장 함수 */
+/*
+ * 기능 : 공통코드 조회 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSearchEducationPlace(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    gfn_SearchMessage(gdEducationPlace); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+}
+
+/* 교육장 이벤트 함수 */
+function lfn_SortGrid_OnHeadClick(obj,nCell,nX,nY,nPivotIndex) {
+    var lobj_Dataset = object(obj.BindDataset);
+    // 데이터가 있는 경우 해당 컬럼을 기준으로 정렬한다.
+    if (lobj_Dataset.GetRowCount() > 1) {
+        gfn_GridCellSort(obj, nCell); // 해당 셀정렬을 호출한다.
+    }
+}
+
+function btnMutilSort_OnClick(obj) {
+	gfn_GridMultiSort(gdEducationPlace, 0); // 멀티 정렬을 실행한다.
+}
+
+function btnSelect_OnClick(obj) {
+    var arrArg = Array(5);
+    arrArg[0] = ds_oEducationPlace.GetColumn(ds_oEducationPlace.currow, "EPMGNO");
+    arrArg[1] = ds_oEducationPlace.GetColumn(ds_oEducationPlace.currow, "EPNM");
+    arrArg[2] = ds_oEducationPlace.GetColumn(ds_oEducationPlace.currow, "EPSAVENM");
+    arrArg[3] = ds_oEducationPlace.GetColumn(ds_oEducationPlace.currow, "EPREALNM");
+    arrArg[4] = ds_oEducationPlace.GetColumn(ds_oEducationPlace.currow, "EPDIRPATH");
+    arrArg[5] = ds_oEducationPlace.GetColumn(ds_oEducationPlace.currow, "EPPARKINGINFO");
+    Close(arrArg);
+}
+
+function gdEducationPlace_OnCellDblClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+    btnSelect_OnClick(obj);
+}
+
+function edEducationPlace_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam) {
+	if (nChar == 13) {
+        lfn_Search();
+	}
+}
+
+function ds_oEducationPlace_OnRowPosChanged(obj,nOldRow,nRow) {
+
+    if (nRow <> -1) {
+        cbxJibu.Value = obj.GetColumn(nRow, "EPMGGTMGNO");
+        cbxRegion.Value = obj.GetColumn(nRow, "EPRREGIONCD");
+        edEducationPlaceName.Text = obj.GetColumn(nRow, "EPNM");
+        ls_SaveFileName = obj.GetColumn(nRow, "EPSAVENM");
+        ls_RealFileName = obj.GetColumn(nRow, "EPREALNM");
+	}
+	
+}
+
+/**
+ * 경기 북부 일 경우
+ */
+function cbxJibu_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex) {
+
+	if (cbxJibu.value == "14") {
+       lbRegion.Visible = true;
+       cbxRegion.Visible = true;
+	} else {
+       lbRegion.Visible = false;
+       cbxRegion.Visible = false;
+	}
+	
+	edEducationPlaceName.Text = "";
+
+}
+
+/**
+ * 파일 다운로드
+ */
+function lfn_DownloadFile(obj) {
+
+    if (Length(ls_RealFileName) > 0) {
+
+        fdImageFile.Type = "SAVE";
+        fdImageFile.FileName = ls_SaveFileName;
+
+        if (fdImageFile.open()) {
+            var arrRtn = tit_fileRead(
+                hfImageFile
+                , ls_FileUploadPath
+                , ls_RealFileName
+                , fdImageFile.FilePath
+                , fdImageFile.FileName
+            );
+            
+            gfn_Alert(MSGI00060); //다운로드 완료 메시지
+        }
+    }
+	
+}
+
+/**
+ * 빠른파일 다운로드
+ */
+function gdEducationPlace_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex) {
+
+    var lobj_Dataset = object(obj.BindDataset);
+ 
+    ds_oEducationPlace_OnRowPosChanged(lobj_Dataset,nRow,nRow);
+ 
+	if(nCell == 2) {
+        lfn_DownloadFile(obj);
+	}
+}
+
+function edEducationPlaceName_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam) {
+    if (nChar == 13) { // Enter Key
+        lfn_Search();
+    }
+}
+]]></Script>
+</Window>

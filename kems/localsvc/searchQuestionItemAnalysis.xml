@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="output" io="OUTPUT" reserved="NO"></dataset>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_IMP_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[
+function Run()
+{
+	// TODO: Add your source code here
+	var selectQuery = "  SELECT EXAMORDER.EOEXAMDATE AS EOEXAMDATE                                                     "   
+										+ "        ,G_TEAMCODE.GTTEAMNM AS GTTEAMNM                                                            "
+										+ "        ,TRAININGCOURSE.TCCOURSENM AS TCCOURSENM                                                  "
+										+ "        ,EXAMORDER.EOYEAR AS EOYEAR                                                             "
+										+ "        ,EXAMORDER.EOEXAMORDER AS EOEXAMORDER                                                       "
+										+ "        ,ANSWERANALYSIS.AACAEPALPHATYPE AS AACAEPALPHATYPE                                          "
+										+ "        ,ANSWERANALYSIS.AACAITEMNO AS AACAITEMNO                                                "
+										+ "        ,SUM(ANSWERANALYSIS.AA1CNT) AS AA1CNT                                                  "
+										+ "        ,SUM(ANSWERANALYSIS.AA2CNT) AS AA2CNT                                                  "
+										+ "        ,SUM(ANSWERANALYSIS.AA3CNT) AS AA3CNT                                                  "
+										+ "        ,SUM(ANSWERANALYSIS.AA4CNT) AS AA4CNT                                                  "
+										+ "        ,SUM(AAEMPTYCNT) AS AAEMPTYCNT                                                              "
+										+ "        ,SUM(AADOUBLECNT) AS AADOUBLECNT                                                            "
+										+ "        ,SUM(ANSWERANALYSIS.AACORRECTPERCENT)/COUNT(ANSWERANALYSIS.AACORRECTPERCENT) AS AACORRECTPERCENT  "                                   
+										+ "   FROM EXAMORDER                                                                                         "
+										+ "       ,TRAININGCOURSE                                                                                    "
+										+ "       ,G_TEAMCODE                                                                                        "
+										+ " 	  ,ANSWERANALYSIS                                                                          "
+										+ "       ,CORRECTANSWER                                                                                     "
+										+ " WHERE  ANSWERANALYSIS.AATCCOURSECD = CORRECTANSWER.CATCCOURSECD                                "
+										+ "   AND ANSWERANALYSIS.AACAEPNUMTYPE = CORRECTANSWER.CAEPNUMTYPE                                     "
+										+ "   AND ANSWERANALYSIS.AACAEPALPHATYPE = CORRECTANSWER.CAEPALPHATYPE                                "
+										+ "   AND ANSWERANALYSIS.AACAITEMNO = CORRECTANSWER.CAITEMNO                                       "
+										+ "   AND EXAMORDER.EOMGNO = ANSWERANALYSIS.AAEOMGNO                                       "
+										+ "   AND EXAMORDER.EOTCCOURSECD = ANSWERANALYSIS.AATCCOURSECD                                               "
+										+ "   AND EXAMORDER.EOMGNO = :EOMGNO                                                                         ";
+		if (REPEAT != '0') {
+			selectQuery	+= "   AND ANSWERANALYSIS.AAREPEATNO = :REPEAT                                                                ";
+		}			
+		selectQuery	+= "   AND EXAMORDER.EOMGGTMGNO = G_TEAMCODE.GTMGNO                                                 "
+										+ "   AND TRAININGCOURSE.TCSEARCHGUBUN = 'E'                                                   "
+										+ "   AND EXAMORDER.EOTCCOURSECD = TRAININGCOURSE.TCCOURSECD                                       "
+										+ " GROUP BY EOEXAMDATE, GTTEAMNM, TCCOURSENM, EOYEAR, EOEXAMORDER, AACAEPALPHATYPE, AACAITEMNO              ";
+	  ExecuteQuery(selectQuery, "output");
+}
+]]></source>
+</class2>

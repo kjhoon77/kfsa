@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="560" Id="frmCOM1121PSmsContentsUpdate" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="자동발송&#32;문자내용&#32;변경" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="760" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioAutoSms">
+				<Contents></Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="572" LineColor="user14" Right="754" TabOrder="61" Top="1" Type="Rectangle" Width="182"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="665" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<TextArea Font="굴림,12" Height="168" Id="taSMS" Left="32" Readonly="TRUE" TabOrder="3" Top="80" Width="720"></TextArea>
+		<Static Align="Center" Font="휴먼엑스포,16,Bold,UnderLine" Height="21" Id="Static0" Left="120" TabOrder="4" Text="자동발송&#32;문자내용&#32;변경" Top="9" VAlign="Middle" Width="236"></Static>
+		<TextArea BindDataset="ds_ioAutoSms" Column="ASJECHUL" Font="굴림,12" Height="124" Id="taJechul" Left="32" TabOrder="5" Top="276" Width="720"></TextArea>
+		<TextArea BindDataset="ds_ioAutoSms" Column="ASNOTICE" Font="굴림,12" Height="124" Id="taNotice" Left="32" TabOrder="6" Top="428" Width="720"></TextArea>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSave" ImageID="BTN_COM_SAVE" Left="576" OnClick="lfn_Save" Style="sty_Button" TabOrder="7" ToolTipText="수정&#32;저장" Top="4" Width="85"></Button>
+		<Static Align="Center" BKColor="user36" BorderColor="user36" Font="굴림,12,Bold" Height="168" Id="lbBuildingNm" Style="sty_Label" TabOrder="8" Text="변&#13;&#10;&#13;&#10;경&#13;&#10;&#13;&#10;불&#13;&#10;&#13;&#10;가" Top="80" UserData="S" VAlign="Middle" Width="32"></Static>
+		<Static Align="Center" Font="굴림,12,Bold" Height="296" Id="Static3" Style="sty_Label" TabOrder="9" Text="변&#13;&#10;&#13;&#10;경&#13;&#10;&#13;&#10;가&#13;&#10;&#13;&#10;능" Top="256" UserData="S" VAlign="Middle" Width="32"></Static>
+		<Static Color="darkred" Font="굴림,12,Bold" Height="23" Id="Static4" Left="11" TabOrder="10" Text="※&#32;자동발송&#32;문자메시지는&#32;교육과정별로&#32;메시지&#32;변경이&#32;가능합니다.(회차별&#32;변경&#32;불가)" Top="48" VAlign="Middle" Width="709"></Static>
+		<Static Align="Center" BKColor="user15" Font="굴림,12,Bold" Height="20" Id="lbJibu" Left="33" Style="sty_Label" TabOrder="11" Text="구비서류" Top="256" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" BKColor="user15" Font="굴림,12,Bold" Height="20" Id="Static1" Left="33" Style="sty_Label" TabOrder="12" Text="주의사항" Top="408" UserData="S" VAlign="Middle" Width="88"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM1121PSmsContentsUpdate.xml
+ * 설명 : 자동발송 문자내용 변경
+ * 작성일 : 2019.07.03
+ * 작성자 : 정현호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+// sWorkGubun
+// sCourse
+// sCourseNM
+// sStartdate
+// sSEnddate
+// sStarttime
+// sSEndtime
+// sGTMGNO
+// sGTDEPTNM
+// sTEL
+// sPlace
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    ms_FormAuth = gfn_GetFormAuth(this, sFormUrl); // 권한을 조회한다.
+
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+
+        lfn_SetFormAuth(true); // 저장 권한
+
+    } else if (ms_FormAuth == "R") {
+
+        lfn_SetFormAuth(false); // 읽기 권한
+
+    } else {
+
+        gfn_Alert(MSGI00080);
+
+        close();
+
+    }
+
+    if (IsExistVar("sWorkGubun")) {
+		lfn_Search();
+        lfn_SMSContentsView(sWorkGubun, sCourse);
+    }
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close("0");
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+    }
+}
+
+/*
+
+ * 기능 : 버튼 활성/비활성시킨다.
+
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+
+ * return : 없음
+
+ */
+
+function lfn_SetFormAuth(bStatus) {
+
+    btnSave.Enable = bStatus; // 수정&저장 버튼
+    
+	// 콜센터 직원용 이면
+	if (gs_IsCallCenter == "Y") {
+	
+		btnSave.Enable = false; // 수정&저장 버튼
+		
+	}
+}
+
+/*
+ * 기능 : 조회
+ */
+function lfn_Search(obj) {
+
+    ds_ioAutoSms.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+	tit_addCsvSearchActionInfo("com:searchAutoSms", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioAutoSms=ds_oAutoSms"	// outDs
+		,"GTMGNO=" + quote(sGTMGNO)
+            + " WORKGUBUN=" + quote(sWorkGubun)
+            + " COURSECD=" + quote(sCourse)// args 
+		,""
+		,false
+		
+		,false
+		
+		,true
+	);
+}
+
+
+// 문자내용 보기
+function lfn_SMSContentsView(sWorkGubun, sCourse) {
+
+	if (sWorkGubun == "T") {	// 강습
+	
+		var edudate = substr(sStartdate,0,4)+"."+substr(sStartdate,4,2)+"."+substr(sStartdate,6,2)+"~"+
+		              substr(sSEnddate,0,4)+"."+substr(sSEnddate,4,2)+"."+substr(sSEnddate,6,2)+" ("+
+		              substr(sStarttime,0,2)+":"+substr(sStarttime,2,2)+"~"+
+		              substr(sSEndtime,0,2)+":"+substr(sSEndtime,2,2)+")";
+	
+		taSMS.Text =  "\n   [한국소방안전원] 강습교육안내\n\n";
+		taSMS.Text += " ●수 강 자 : ○○○\n";
+		taSMS.Text += " ●교육과정 : " + sCourseNM + "\n";
+ 		taSMS.Text += " ●교육일자 : " + edudate + "\n";
+ 		taSMS.Text += " ●교육지부 : " + sGTDEPTNM + "지부 (" + sTEL + ")\n";
+		taSMS.Text += " ●교육장소 : " + sPlace;
+
+		taJechul.Text = replace(ds_ioAutoSms.GetColumn(0, "ASJECHUL"), "rn", "\n");
+		taNotice.Text = replace(ds_ioAutoSms.GetColumn(0, "ASNOTICE"), "rn", "\n");
+
+/*		
+		taSMS.Text += " ●구비서류\n";
+		taSMS.Text += "   - 사진(3.5 * 4.5cm) 1매 제출(미등록자에 한함)\n";
+		taSMS.Text += "   - 주민등록증 또는 운전면허증(반드시 지참)\n";
+		taSMS.Text += "   - 공공기관 소방안전관리자 과정인 경우, 재직증명서 1부 지참(교육당일 반드시 제출)\n";
+		
+		if (sGTMGNO == "1011") {
+			taSMS.Text += " ※ 주차안내\n";
+			taSMS.Text += "   - 주차장이 협소하오니 대중교통을 이용해 주시기 바랍니다.\n";
+			taSMS.Text += "    (주차시설이 협소하여 차량 5부제를 시행하고 있으니 개인차량 이용을 자제해 주시기 바랍니다.)";
+		}
+*/	
+	} else if (sWorkGubun == "E") {	// 시험
+	
+		var examdate = substr(sStartdate,0,4)+"."+substr(sStartdate,4,2)+"."+substr(sStartdate,6,2)+" "+
+		              substr(sStarttime,0,2)+":"+substr(sStarttime,2,2);
+		              
+		taSMS.Text =  "\n   [한국소방안전원] 시험안내\n\n";
+		taSMS.Text += " ●응 시 자 : ○○○\n";
+		taSMS.Text += " ●시험과정 : " + sCourseNM + "\n";
+		taSMS.Text += " ●시험일시 : " + examdate + "\n";
+		taSMS.Text += " ●시험지부 : " + sGTDEPTNM + "지부 (" + sTEL + ")\n";
+		taSMS.Text += " ●시험장소 : " + sPlace;
+
+		taJechul.Text = replace(ds_ioAutoSms.GetColumn(0, "ASJECHUL"), "rn", "\n");
+		taNotice.Text = replace(ds_ioAutoSms.GetColumn(0, "ASNOTICE"), "rn", "\n");
+
+/*
+		taSMS.Text += " ●구비서류\n"; 
+		taSMS.Text += "   - 시험응시원서 출력물\n";
+		taSMS.Text += "   - 사진(3.5*4.5cm) 1매 제출(접수시 미등록자에 한함)\n";
+		taSMS.Text += "   - 소방안전관리자 강습교육 수료증 사본 1부(해당자에 한함)\n";
+		taSMS.Text += "   - 경력 증빙서류\n";
+		taSMS.Text += "   - 주민등록증 또는 운전면허증(반드시 지참)\n";
+		if (sGTMGNO == "1011") {
+			taSMS.Text += " ※ 주의사항\n";
+			taSMS.Text += "   - 응시표, 주민등록증(운전면허증), 필기도구를 지참하셔야 합니다.\n";
+			taSMS.Text += "   - 주차장이 협소하오니 대중교통을 이용해 주시기 바랍니다.\n";
+			taSMS.Text += "    (주차시설이 협소하여 차량 5부제를 시행하고 있으니 개인차량 이용을 자제해 주시기 바랍니다.)";
+		} else {
+			taSMS.Text += " ※ 주의사항\n";
+			taSMS.Text += "   - 응시표, 주민등록증(운전면허증), 필기도구를 지참하셔야 합니다.\n";
+			taSMS.Text += "   - 주차장이 협소하오니 대중교통을 이용해 주시기 바랍니다.";
+		}
+*/	
+	} else if (sWorkGubun == "B") {	// 실무
+	
+		var edudate = substr(sStartdate,0,4)+"."+substr(sStartdate,4,2)+"."+substr(sStartdate,6,2)+" ("+
+		              substr(sStarttime,0,2)+":"+substr(sStarttime,2,2)+"~"+
+		              substr(sSEndtime,0,2)+":"+substr(sSEndtime,2,2)+")";
+	
+		taSMS.Text =  "\n   [한국소방안전원] 실무교육안내\n\n"; 
+		taSMS.Text += " ●수 강 자 : ○○○\n";
+ 		taSMS.Text += " ●교육과정 : " + sCourseNM + "\n";
+ 		taSMS.Text += " ●교육일시 : " + edudate + "\n";
+ 		taSMS.Text += " ●교육지부 : " + sGTDEPTNM + "지부 (" + sTEL + ")\n";
+ 		taSMS.Text += " ●교육장소 : " + sPlace;
+
+		taJechul.Text = replace(ds_ioAutoSms.GetColumn(0, "ASJECHUL"), "rn", "\n");
+		taNotice.Text = replace(ds_ioAutoSms.GetColumn(0, "ASNOTICE"), "rn", "\n");
+
+/* 		
+ 		if (sCourse == "10") {
+		taSMS.Text += " ●준 비 물 : 선임된 자격수첩 또는 신분증\n";
+		} else if (sCourse == "30" || sCourse == "50") {
+		taSMS.Text += " ●준 비 물 : 선임된 자격수첩, 신분증\n";
+		} else if (sCourse == "20") {
+		taSMS.Text += " ●준 비 물 : 선임된 자격수첩 또는 선임증, 신분증\n";
+		} else {
+		taSMS.Text += " ●준 비 물 : 선임된 자격수첩 또는 신분증\n";
+		}
+		taSMS.Text += " ※ 주의사항\n";
+		taSMS.Text += "   - 대리참석은 불가하오니, 반드시 선임하신 분이 교육에 참석하셔야 합니다.\n";
+  		taSMS.Text += "   - 주차장이 협소하오니 대중교통을 이용해 주시기 바랍니다.\n";
+		if (sGTMGNO == "1011") {  		
+			taSMS.Text += "    (주차시설이 협소하여 차량 5부제를 시행하고 있으니 개인차량 이용을 자제해 주시기 바랍니다.)";
+		}
+*/
+	}
+
+}
+
+
+
+
+
+function lfn_Save(obj)
+{
+	
+	if (!gfn_Confirm("자동발송 문자 내용을 저장하시겠습니까?")) { // 저장 하시겠습니까?
+		return false;
+	}
+            tit_clearActionInfo();
+    tit_addSaveActionInfo(
+        ""	// insert
+        , "com:updateAutoSms"	// update
+        , ""	// delete
+        , ""	// flag column 명
+        , ""	// key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N"	// 실행타입
+    );
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_ioAutoSms=ds_ioAutoSms:U"	// inDs
+        ,""	// outDs
+        ,""	// args 
+        ,"lfn_AfterSaveAutoSms"
+        ,false
+    );
+}
+
+
+/*
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+ * parameter : strSvcID - 서비스ID
+ *             nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_AfterSaveAutoSms(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    lfn_Search(); //  조회
+    
+    lfn_SMSContentsView(sWorkGubun, sCourse);
+}
+
+
+
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+]]></Script>
+</Window>

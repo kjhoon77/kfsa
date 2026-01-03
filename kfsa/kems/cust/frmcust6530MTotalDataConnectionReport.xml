@@ -1,0 +1,997 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="237" Id="frmcust6530MTotalDataConnectionReport" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="전지부&#32;연계&#32;현황" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="522" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioReport">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>지부별&#32;집계</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>소방본부별&#32;집계</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioCourse">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>소방안전관리자</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>위험물안전관리자</DATA>
+					</record>
+					<record>
+						<CD>5</CD>
+						<DATA>소방기술자</DATA>
+					</record>
+					<record>
+						<CD>8</CD>
+						<DATA>위험물운송자</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oDATA">
+				<Contents></Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ioStatus">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>포함</DATA>
+					</record>
+					<record>
+						<CD>0</CD>
+						<DATA>미포함</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="123" Height="55" Id="Shape2" Left="4" LineColor="user15" Right="510" TabOrder="10" Top="68" Type="Rectangle" Width="506"></Shape>
+		<Shape Bottom="232" Height="85" Id="Shape0" Left="4" LineColor="user15" Right="510" TabOrder="7" Top="147" Type="Rectangle" Width="506"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="6" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="272">
+			<Contents></Contents>
+		</Div>
+		<Static Align="Center" Height="20" Id="Static1" Left="15" Style="sty_LabelGruopBox" TabOrder="8" Text="조회&#32;조건" Top="142" VAlign="Middle" Width="112"></Static>
+		<Shape Bottom="53" Height="52" Id="shpBtnBox" Left="322" LineColor="user14" Right="500" TabOrder="9" Top="1" Type="Rectangle" Width="178"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="412" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="412" OnClick="lfn_Excel" Style="sty_Button" TabOrder="4" ToolTipText="엑셀로&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="325" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="1" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrint" ImageID="BTN_COM_PRINT" Left="325" OnClick="lfn_Print" Style="sty_Button" TabOrder="3" ToolTipText="출력" Top="28" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="Static2" Left="20" Style="sty_LabelGruopBox" TabOrder="11" Text="출력물" Top="60" VAlign="Middle" Width="112"></Static>
+		<Radio BindDataset="ds_ioReport" Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radPrtGubun" INDEX="0" InnerDataset="ds_ioReport" Left="32" LeftMargin="16" OnKeyDown="gfn_EnterNextFocus" RightMargin="16" Style="sty_Radio" TabOrder="5" Top="91" Value="N" Width="301"></Radio>
+		<Grid AutoEnter="TRUE" BindDataset="ds_oDATA" BkColor2="default" BoldHead="true" Bottom="472" Editable="TRUE" Enable="true" EndLineColor="default" Height="224" Id="gdList1" InputPanel="FALSE" LineColor="default" Right="759" TabOrder="12" TabStop="true" Top="248" TopSummary="TRUE" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="FALSE" VLineColor="default" WheelScrollRow="1" Width="759">
+			<contents>
+				<format id="list_1">
+					<columns>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="30"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="30"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="30"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="30"/>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="30"/>
+						<col width="60"/>
+					</columns>
+					<head>
+						<cell bkcolor="skyblue" col="0" colspan="18" display="text" text="소방안전관리&#32;대상&#32;안전원/청간&#32;비교&#32;현황(안전원&#32;기준)"/>
+						<cell bkcolor="skyblue" col="0" display="text" row="1" rowspan="2" text="지부"/>
+						<cell bkcolor="skyblue" col="1" display="text" row="1" rowspan="2" text="구분"/>
+						<cell bkcolor="skyblue" col="2" colspan="3" display="text" row="1" text="총&#32;계"/>
+						<cell bkcolor="skyblue" col="5" colspan="3" display="text" row="1" text="1급소관"/>
+						<cell bkcolor="skyblue" col="8" colspan="3" display="text" row="1" text="2급소관"/>
+						<cell bkcolor="skyblue" col="11" colspan="3" display="text" row="1" text="공공1급"/>
+						<cell bkcolor="skyblue" col="14" colspan="3" display="text" row="1" text="공공2급"/>
+						<cell bkcolor="skyblue" col="17" display="text" row="1" text="일반대상"/>
+						<cell bkcolor="skyblue" col="2" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="3" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="4" display="text" row="2" text="%"/>
+						<cell bkcolor="skyblue" col="5" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="6" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="7" display="text" row="2" text="%"/>
+						<cell bkcolor="skyblue" col="8" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="9" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="10" display="text" row="2" text="%"/>
+						<cell bkcolor="skyblue" col="11" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="12" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="13" display="text" row="2" text="%"/>
+						<cell bkcolor="skyblue" col="14" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="15" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="16" display="text" row="2" text="%"/>
+						<cell bkcolor="skyblue" col="17" display="text" row="2" text="청"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="JNM" display="text" rowspan="4"/>
+						<cell align="center" col="1" display="text" text="계"/>
+						<cell align="right" col="2" colid="N_TOT2" display="number"/>
+						<cell align="right" col="3" colid="K_TOT" display="number"/>
+						<cell align="right" col="4" display="number"/>
+						<cell align="right" col="5" colid="N_1" display="number"/>
+						<cell align="right" col="6" colid="K_1" display="number"/>
+						<cell align="right" col="7" display="number"/>
+						<cell align="right" col="8" colid="N_2" display="number"/>
+						<cell align="right" col="9" colid="K_2" display="number"/>
+						<cell align="right" col="10" display="number"/>
+						<cell align="right" col="11" colid="N_3" display="number"/>
+						<cell align="right" col="12" colid="K_3" display="number"/>
+						<cell align="right" col="13" display="number"/>
+						<cell align="right" col="14" colid="N_4" display="number"/>
+						<cell align="right" col="15" colid="K_4" display="number"/>
+						<cell align="right" col="16" display="number"/>
+						<cell align="right" col="17" colid="NM_5" display="number"/>
+						<cell align="center" col="1" display="text" row="1" text="일치완료"/>
+						<cell align="right" col="2" colid="NM_TOT2" display="number" row="1"/>
+						<cell align="right" col="3" colid="KM_TOT" display="number" row="1"/>
+						<cell align="right" col="4" colid="KMP_TOT" display="number" row="1"/>
+						<cell align="right" col="5" colid="NM_1" display="number" row="1"/>
+						<cell align="right" col="6" colid="KM_1" display="number" row="1"/>
+						<cell align="right" col="7" colid="KMP_1" display="number" row="1"/>
+						<cell align="right" col="8" colid="NM_2" display="number" row="1"/>
+						<cell align="right" col="9" colid="KM_2" display="number" row="1"/>
+						<cell align="right" col="10" colid="KMP_2" display="number" row="1"/>
+						<cell align="right" col="11" colid="NM_3" display="number" row="1"/>
+						<cell align="right" col="12" colid="KM_3" display="number" row="1"/>
+						<cell align="right" col="13" colid="KMP_3" display="number" row="1"/>
+						<cell align="right" col="14" colid="NM_4" display="number" row="1"/>
+						<cell align="right" col="15" colid="KM_4" display="number" row="1"/>
+						<cell align="right" col="16" colid="KMP_4" display="number" row="1"/>
+						<cell align="right" col="17" colid="NM_5" display="number" row="1"/>
+						<cell align="center" col="1" display="text" row="2" text="연계제외"/>
+						<cell align="right" col="2" colid="NE_TOT2" display="number" row="2"/>
+						<cell align="right" col="3" colid="KE_TOT" display="number" row="2"/>
+						<cell align="right" col="4" display="number" row="2"/>
+						<cell align="right" col="5" colid="NE_1" display="number" row="2"/>
+						<cell align="right" col="6" colid="KE_1" display="number" row="2"/>
+						<cell align="right" col="7" display="number" row="2"/>
+						<cell align="right" col="8" colid="NE_2" display="number" row="2"/>
+						<cell align="right" col="9" colid="KE_2" display="number" row="2"/>
+						<cell align="right" col="10" display="number" row="2"/>
+						<cell align="right" col="11" colid="NE_3" display="number" row="2"/>
+						<cell align="right" col="12" colid="KE_3" display="number" row="2"/>
+						<cell align="right" col="13" display="number" row="2"/>
+						<cell align="right" col="14" colid="NE_4" display="number" row="2"/>
+						<cell align="right" col="15" colid="KE_4" display="number" row="2"/>
+						<cell align="right" col="16" display="number" row="2"/>
+						<cell align="right" col="17" display="number" row="2" text="0"/>
+						<cell align="center" col="1" display="text" row="3" text="미처리"/>
+						<cell align="right" col="2" colid="NN_TOT2" display="number" row="3"/>
+						<cell align="right" col="3" colid="KN_TOT" display="number" row="3"/>
+						<cell align="right" col="4" display="number" row="3"/>
+						<cell align="right" col="5" colid="NN_1" display="number" row="3"/>
+						<cell align="right" col="6" colid="KN_1" display="number" row="3"/>
+						<cell align="right" col="7" display="number" row="3"/>
+						<cell align="right" col="8" colid="NN_2" display="number" row="3"/>
+						<cell align="right" col="9" colid="KN_2" display="number" row="3"/>
+						<cell align="right" col="10" display="number" row="3"/>
+						<cell align="right" col="11" colid="NN_3" display="number" row="3"/>
+						<cell align="right" col="12" colid="KN_3" display="number" row="3"/>
+						<cell align="right" col="13" display="number" row="3"/>
+						<cell align="right" col="14" colid="NN_4" display="number" row="3"/>
+						<cell align="right" col="15" colid="KN_4" display="number" row="3"/>
+						<cell align="right" col="16" display="number" row="3"/>
+						<cell align="right" col="17" display="number" row="3" text="0"/>
+					</body>
+					<summary>
+						<cell align="center" bkcolor="user4" col="0" display="text" rowspan="4" text="총계"/>
+						<cell align="center" bkcolor="user4" col="1" display="text" text="계"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;N_TOT2&apos;)"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;K_TOT&apos;)"/>
+						<cell align="right" bkcolor="user4" col="4" display="number"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;N_1&apos;)"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;K_1&apos;)"/>
+						<cell align="right" bkcolor="user4" col="7" display="number"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;N_2&apos;)"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;K_2&apos;)"/>
+						<cell align="right" bkcolor="user4" col="10" display="number"/>
+						<cell align="right" bkcolor="user4" col="11" display="number" expr="SUM(&apos;N_3&apos;)"/>
+						<cell align="right" bkcolor="user4" col="12" display="number" expr="SUM(&apos;K_3&apos;)"/>
+						<cell align="right" bkcolor="user4" col="13" display="number"/>
+						<cell align="right" bkcolor="user4" col="14" display="number" expr="SUM(&apos;N_4&apos;)"/>
+						<cell align="right" bkcolor="user4" col="15" display="number" expr="SUM(&apos;K_4&apos;)"/>
+						<cell align="right" bkcolor="user4" col="16" display="number"/>
+						<cell align="right" bkcolor="user4" col="17" display="number" expr="SUM(&apos;NM_5&apos;)"/>
+						<cell align="center" bkcolor="user4" col="1" display="text" row="1" text="일치완료"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;NM_TOT2&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;KM_TOT&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="Ceil(SUM(&apos;KM_TOT&apos;)/SUM(&apos;K_TOT&apos;)*100)" row="1"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;NM_1&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;KM_1&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="Ceil(SUM(&apos;KM_1&apos;)/SUM(&apos;K_1&apos;)*100)" row="1"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;NM_2&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;KM_2&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="10" display="number" expr="Ceil(SUM(&apos;KM_2&apos;)/SUM(&apos;K_2&apos;)*100)" row="1"/>
+						<cell align="right" bkcolor="user4" col="11" display="number" expr="SUM(&apos;NM_3&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="12" display="number" expr="SUM(&apos;KM_3&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="13" display="number" expr="Ceil(SUM(&apos;KM_3&apos;)/SUM(&apos;K_3&apos;)*100)" row="1"/>
+						<cell align="right" bkcolor="user4" col="14" display="number" expr="SUM(&apos;NM_4&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="15" display="number" expr="SUM(&apos;KM_4&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="16" display="number" expr="Ceil(SUM(&apos;KM_4&apos;)/SUM(&apos;K_4&apos;)*100)" row="1"/>
+						<cell align="right" bkcolor="user4" col="17" display="number" expr="SUM(&apos;NM_5&apos;)" row="1"/>
+						<cell align="center" bkcolor="user4" col="1" display="text" row="2" text="연계제외"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;NE_TOT2&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;KE_TOT&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" row="2"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;NE_1&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;KE_1&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" row="2"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;NE_2&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;KE_2&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="10" display="number" row="2"/>
+						<cell align="right" bkcolor="user4" col="11" display="number" expr="SUM(&apos;NE_3&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="12" display="number" expr="SUM(&apos;KE_3&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="13" display="number" row="2"/>
+						<cell align="right" bkcolor="user4" col="14" display="number" expr="SUM(&apos;NE_4&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="15" display="number" expr="SUM(&apos;KE_4&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="16" display="number" row="2"/>
+						<cell align="right" bkcolor="user4" col="17" display="number" row="2" text="0"/>
+						<cell align="center" bkcolor="user4" col="1" display="text" row="3" text="미처리"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;NN_TOT2&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;KN_TOT&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" row="3"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;NN_1&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;KN_1&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" row="3"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;NN_2&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;KN_2&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="10" display="number" row="3"/>
+						<cell align="right" bkcolor="user4" col="11" display="number" expr="SUM(&apos;NN_3&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="12" display="number" expr="SUM(&apos;KN_3&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="13" display="number" row="3"/>
+						<cell align="right" bkcolor="user4" col="14" display="number" expr="SUM(&apos;NN_4&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="15" display="number" expr="SUM(&apos;KN_4&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="16" display="number" row="3"/>
+						<cell align="right" bkcolor="user4" col="17" display="number" row="3" text="0"/>
+					</summary>
+				</format>
+				<format id="list_3">
+					<columns>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="57"/>
+						<col width="52"/>
+						<col width="30"/>
+						<col width="50"/>
+						<col width="50"/>
+						<col width="30"/>
+						<col width="63"/>
+						<col width="63"/>
+						<col width="30"/>
+						<col width="50"/>
+						<col width="50"/>
+						<col width="30"/>
+						<col width="50"/>
+						<col width="50"/>
+						<col width="30"/>
+						<col width="69"/>
+						<col width="68"/>
+						<col width="30"/>
+					</columns>
+					<head>
+						<cell bkcolor="skyblue" col="0" colspan="20" display="text" text="위험물안전관리자&#32;대상&#32;안전원/청간&#32;비교&#32;현황(안전원&#32;기준)"/>
+						<cell bkcolor="skyblue" col="0" display="text" row="1" rowspan="2" text="지부"/>
+						<cell bkcolor="skyblue" col="1" display="text" row="1" rowspan="2" text="구분"/>
+						<cell bkcolor="skyblue" col="2" colspan="3" display="text" row="1" text="총&#32;계"/>
+						<cell bkcolor="skyblue" col="5" colspan="3" display="text" row="1" text="제조소"/>
+						<cell bkcolor="skyblue" col="8" colspan="3" display="text" row="1" text="주유/판매취급소"/>
+						<cell bkcolor="skyblue" col="11" colspan="3" display="text" row="1" text="이송취급소"/>
+						<cell bkcolor="skyblue" col="14" colspan="3" display="text" row="1" text="일반취급소"/>
+						<cell bkcolor="skyblue" col="17" colspan="3" display="text" row="1" text="저장소"/>
+						<cell bkcolor="skyblue" col="2" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="3" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="4" display="text" row="2" text="%"/>
+						<cell bkcolor="skyblue" col="5" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="6" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="7" display="text" row="2" text="%"/>
+						<cell bkcolor="skyblue" col="8" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="9" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="10" display="text" row="2" text="%"/>
+						<cell bkcolor="skyblue" col="11" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="12" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="13" display="text" row="2" text="%"/>
+						<cell bkcolor="skyblue" col="14" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="15" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="16" display="text" row="2" text="%"/>
+						<cell bkcolor="skyblue" col="17" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="18" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="19" display="text" row="2" text="%"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="JNM" display="text" rowspan="4"/>
+						<cell align="center" col="1" display="text" text="계"/>
+						<cell align="right" col="2" colid="N_TOT" display="number"/>
+						<cell align="right" col="3" colid="K_TOT" display="number"/>
+						<cell align="right" col="4" display="number"/>
+						<cell align="right" col="5" colid="N_1" display="number"/>
+						<cell align="right" col="6" colid="K_1" display="number"/>
+						<cell align="right" col="7" display="number"/>
+						<cell align="right" col="8" colid="N_2" display="number"/>
+						<cell align="right" col="9" colid="K_2" display="number"/>
+						<cell align="right" col="10" display="number"/>
+						<cell align="right" col="11" colid="N_3" display="number"/>
+						<cell align="right" col="12" colid="K_3" display="number"/>
+						<cell align="right" col="13" display="number"/>
+						<cell align="right" col="14" colid="N_4" display="number"/>
+						<cell align="right" col="15" colid="K_4" display="number"/>
+						<cell align="right" col="16" display="number"/>
+						<cell align="right" col="17" colid="N_5" display="number"/>
+						<cell align="right" col="18" colid="K_5" display="number"/>
+						<cell align="right" col="19" display="number"/>
+						<cell align="center" col="1" display="text" row="1" text="일치완료"/>
+						<cell align="right" col="2" colid="NM_TOT" display="number" row="1"/>
+						<cell align="right" col="3" colid="KM_TOT" display="number" row="1"/>
+						<cell align="right" col="4" colid="KMP_TOT" display="number" row="1"/>
+						<cell align="right" col="5" colid="NM_1" display="number" row="1"/>
+						<cell align="right" col="6" colid="KM_1" display="number" row="1"/>
+						<cell align="right" col="7" colid="KMP_1" display="number" row="1"/>
+						<cell align="right" col="8" colid="NM_2" display="number" row="1"/>
+						<cell align="right" col="9" colid="KM_2" display="number" row="1"/>
+						<cell align="right" col="10" colid="KMP_2" display="number" row="1"/>
+						<cell align="right" col="11" colid="NM_3" display="number" row="1"/>
+						<cell align="right" col="12" colid="KM_3" display="number" row="1"/>
+						<cell align="right" col="13" colid="KMP_3" display="number" row="1"/>
+						<cell align="right" col="14" colid="NM_4" display="number" row="1"/>
+						<cell align="right" col="15" colid="KM_4" display="number" row="1"/>
+						<cell align="right" col="16" colid="KMP_4" display="number" row="1"/>
+						<cell align="right" col="17" colid="NM_5" display="number" row="1"/>
+						<cell align="right" col="18" colid="KM_5" display="number" row="1"/>
+						<cell align="right" col="19" colid="KP_5" display="number" row="1"/>
+						<cell col="1" display="text" row="2" text="연계제외"/>
+						<cell align="right" col="2" colid="NE_TOT" display="number" row="2"/>
+						<cell align="right" col="3" colid="KE_TOT" display="number" row="2"/>
+						<cell align="right" col="4" display="number" row="2"/>
+						<cell align="right" col="5" colid="NE_1" display="number" row="2"/>
+						<cell align="right" col="6" colid="KE_1" display="number" row="2"/>
+						<cell align="right" col="7" display="number" row="2"/>
+						<cell align="right" col="8" colid="NE_2" display="number" row="2"/>
+						<cell align="right" col="9" colid="KE_2" display="number" row="2"/>
+						<cell align="right" col="10" display="number" row="2"/>
+						<cell align="right" col="11" colid="NE_3" display="number" row="2"/>
+						<cell align="right" col="12" colid="KE_3" display="number" row="2"/>
+						<cell align="right" col="13" display="number" row="2"/>
+						<cell align="right" col="14" colid="NE_4" display="number" row="2"/>
+						<cell align="right" col="15" colid="KE_4" display="number" row="2"/>
+						<cell align="right" col="16" display="number" row="2"/>
+						<cell align="right" col="17" colid="NE_5" display="number" row="2"/>
+						<cell align="right" col="18" colid="KE_5" display="number" row="2"/>
+						<cell align="right" col="19" display="number" row="2"/>
+						<cell col="1" display="text" row="3" text="미처리"/>
+						<cell align="right" col="2" colid="NN_TOT" display="number" row="3"/>
+						<cell align="right" col="3" colid="KN_TOT" display="number" row="3"/>
+						<cell align="right" col="4" display="number" row="3"/>
+						<cell align="right" col="5" colid="NN_1" display="number" row="3"/>
+						<cell align="right" col="6" colid="KN_1" display="number" row="3"/>
+						<cell align="right" col="7" display="number" row="3"/>
+						<cell align="right" col="8" colid="NN_2" display="number" row="3"/>
+						<cell align="right" col="9" colid="KN_2" display="number" row="3"/>
+						<cell align="right" col="10" display="number" row="3"/>
+						<cell align="right" col="11" colid="NN_3" display="number" row="3"/>
+						<cell align="right" col="12" colid="KN_3" display="number" row="3"/>
+						<cell align="right" col="13" display="number" row="3"/>
+						<cell align="right" col="14" colid="NN_4" display="number" row="3"/>
+						<cell align="right" col="15" colid="KN_4" display="number" row="3"/>
+						<cell align="right" col="16" display="number" row="3"/>
+						<cell align="right" col="17" colid="NN_5" display="number" row="3"/>
+						<cell align="right" col="18" colid="KN_5" display="number" row="3"/>
+						<cell align="right" col="19" display="number" row="3"/>
+					</body>
+					<summary>
+						<cell align="center" bkcolor="user4" col="0" display="text" rowspan="4" text="총계"/>
+						<cell align="center" bkcolor="user4" col="1" display="text" text="계"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;N_TOT&apos;)"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;K_TOT&apos;)"/>
+						<cell align="right" bkcolor="user4" col="4" display="number"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;N_1&apos;)"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;K_1&apos;)"/>
+						<cell align="right" bkcolor="user4" col="7" display="number"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;N_2&apos;)"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;K_2&apos;)"/>
+						<cell align="right" bkcolor="user4" col="10" display="number"/>
+						<cell align="right" bkcolor="user4" col="11" display="number" expr="SUM(&apos;N_3&apos;)"/>
+						<cell align="right" bkcolor="user4" col="12" display="number" expr="SUM(&apos;K_3&apos;)"/>
+						<cell align="right" bkcolor="user4" col="13" display="number"/>
+						<cell align="right" bkcolor="user4" col="14" display="number" expr="SUM(&apos;N_4&apos;)"/>
+						<cell align="right" bkcolor="user4" col="15" display="number" expr="SUM(&apos;K_4&apos;)"/>
+						<cell align="right" bkcolor="user4" col="16" display="number"/>
+						<cell align="right" bkcolor="user4" col="17" display="number" expr="SUM(&apos;N_5&apos;)"/>
+						<cell align="right" bkcolor="user4" col="18" display="number" expr="SUM(&apos;K_5&apos;)"/>
+						<cell align="right" bkcolor="user4" col="19" display="number"/>
+						<cell align="center" bkcolor="user4" col="1" display="text" row="1" text="일치완료"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;NM_TOT&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;KM_TOT&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="Ceil(SUM(&apos;KM_TOT&apos;)/(SUM(&apos;K_TOT&apos;))*100)" row="1"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;NM_1&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;KM_1&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="Ceil(SUM(&apos;KM_1&apos;)/(SUM(&apos;K_1&apos;))*100)" row="1"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;NM_2&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;KM_2&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="10" display="number" expr="Ceil(SUM(&apos;KM_2&apos;)/(SUM(&apos;K_2&apos;))*100)" row="1"/>
+						<cell align="right" bkcolor="user4" col="11" display="number" expr="SUM(&apos;NM_3&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="12" display="number" expr="SUM(&apos;KM_3&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="13" display="number" expr="Ceil(SUM(&apos;KM_3&apos;)/(SUM(&apos;K_3&apos;))*100)" row="1"/>
+						<cell align="right" bkcolor="user4" col="14" display="number" expr="SUM(&apos;NM_4&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="15" display="number" expr="SUM(&apos;KM_4&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="16" display="number" expr="Ceil(SUM(&apos;KM_4&apos;)/(SUM(&apos;K_4&apos;))*100)" row="1"/>
+						<cell align="right" bkcolor="user4" col="17" display="number" expr="SUM(&apos;NM_5&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="18" display="number" expr="SUM(&apos;KM_5&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="19" display="number" expr="Ceil(SUM(&apos;KM_5&apos;)/(SUM(&apos;K_5&apos;))*100)" row="1"/>
+						<cell align="center" bkcolor="user4" col="1" display="text" row="2" text="연계제외"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;NE_TOT&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;KE_TOT&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" row="2"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;NE_1&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;KE_1&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" row="2"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;NE_2&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;KE_2&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="10" display="number" row="2"/>
+						<cell align="right" bkcolor="user4" col="11" display="number" expr="SUM(&apos;NE_3&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="12" display="number" expr="SUM(&apos;KE_3&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="13" display="number" row="2"/>
+						<cell align="right" bkcolor="user4" col="14" display="number" expr="SUM(&apos;NE_4&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="15" display="number" expr="SUM(&apos;KE_4&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="16" display="number" row="2"/>
+						<cell align="right" bkcolor="user4" col="18" display="number" expr="SUM(&apos;KE_5&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="17" display="number" expr="SUM(&apos;NE_5&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="19" display="number" row="2"/>
+						<cell align="center" bkcolor="user4" col="1" display="text" row="3" text="미처리"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;NN_TOT&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;KN_TOT&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" row="3"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;NN_1&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;KN_1&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" row="3"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;NN_2&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;KN_2&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="10" display="number" row="3"/>
+						<cell align="right" bkcolor="user4" col="11" display="number" expr="SUM(&apos;NN_3&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="12" display="number" expr="SUM(&apos;KN_3&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="13" display="number" row="3"/>
+						<cell align="right" bkcolor="user4" col="14" display="number" expr="SUM(&apos;NN_4&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="15" display="number" expr="SUM(&apos;KN_4&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="16" display="number" row="3"/>
+						<cell align="right" bkcolor="user4" col="17" display="number" expr="SUM(&apos;NN_5&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="18" display="number" expr="SUM(&apos;KN_5&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="19" display="number" row="3"/>
+					</summary>
+				</format>
+				<format id="list_5">
+					<columns>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="57"/>
+						<col width="52"/>
+						<col width="30"/>
+						<col width="50"/>
+						<col width="50"/>
+						<col width="30"/>
+						<col width="63"/>
+						<col width="63"/>
+						<col width="30"/>
+						<col width="50"/>
+						<col width="50"/>
+						<col width="30"/>
+						<col width="50"/>
+						<col width="50"/>
+						<col width="30"/>
+						<col width="69"/>
+						<col width="68"/>
+						<col width="30"/>
+						<col width="142"/>
+					</columns>
+					<head>
+						<cell bkcolor="skyblue" col="0" colspan="21" display="text" text="소방기술자&#32;대상&#32;안전원/청간&#32;비교&#32;현황(안전원&#32;기준)"/>
+						<cell bkcolor="skyblue" col="0" display="text" row="1" rowspan="2" text="지부"/>
+						<cell bkcolor="skyblue" col="1" display="text" row="1" rowspan="2" text="구분"/>
+						<cell bkcolor="skyblue" col="2" colspan="3" display="text" row="1" text="총&#32;계"/>
+						<cell bkcolor="skyblue" col="5" colspan="3" display="text" row="1" text="설계업"/>
+						<cell bkcolor="skyblue" col="8" colspan="3" display="text" row="1" text="공사업"/>
+						<cell bkcolor="skyblue" col="11" colspan="3" display="text" row="1" text="감리업"/>
+						<cell bkcolor="skyblue" col="14" colspan="3" display="text" row="1" text="관리업"/>
+						<cell bkcolor="skyblue" col="17" colspan="3" display="text" row="1" text="방염업"/>
+						<cell bkcolor="skyblue" col="20" display="text" row="1" text="안전관리대행업"/>
+						<cell bkcolor="skyblue" col="2" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="3" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="4" display="text" row="2" text="%"/>
+						<cell bkcolor="skyblue" col="5" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="6" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="7" display="text" row="2" text="%"/>
+						<cell bkcolor="skyblue" col="8" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="9" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="10" display="text" row="2" text="%"/>
+						<cell bkcolor="skyblue" col="11" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="12" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="13" display="text" row="2" text="%"/>
+						<cell bkcolor="skyblue" col="14" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="15" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="16" display="text" row="2" text="%"/>
+						<cell bkcolor="skyblue" col="17" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="18" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="19" display="text" row="2" text="%"/>
+						<cell bkcolor="skyblue" col="20" display="text" row="2" text="청"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="JNM" display="text" rowspan="4"/>
+						<cell align="center" col="1" display="text" text="계"/>
+						<cell align="right" col="2" colid="N_TOT" display="number"/>
+						<cell align="right" col="3" colid="K_TOT" display="number"/>
+						<cell align="right" col="4" display="number"/>
+						<cell align="right" col="5" colid="N_1" display="number"/>
+						<cell align="right" col="6" colid="K_1" display="number"/>
+						<cell align="right" col="7" display="number"/>
+						<cell align="right" col="8" colid="N_2" display="number"/>
+						<cell align="right" col="9" colid="K_2" display="number"/>
+						<cell align="right" col="10" display="number"/>
+						<cell align="right" col="11" colid="N_3" display="number"/>
+						<cell align="right" col="12" colid="K_3" display="number"/>
+						<cell align="right" col="13" display="number"/>
+						<cell align="right" col="14" colid="N_4" display="number"/>
+						<cell align="right" col="15" colid="K_4" display="number"/>
+						<cell align="right" col="16" display="number"/>
+						<cell align="right" col="17" colid="N_5" display="number"/>
+						<cell align="right" col="18" colid="K_5" display="number"/>
+						<cell align="right" col="19" display="number"/>
+						<cell align="right" col="20" colid="N_6" display="number"/>
+						<cell align="center" col="1" display="text" row="1" text="일치완료"/>
+						<cell align="right" col="2" colid="NM_TOT" display="number" row="1"/>
+						<cell align="right" col="3" colid="KM_TOT" display="number" row="1"/>
+						<cell align="right" col="4" colid="KMP_TOT" display="number" row="1"/>
+						<cell align="right" col="5" colid="NM_1" display="number" row="1"/>
+						<cell align="right" col="6" colid="KM_1" display="number" row="1"/>
+						<cell align="right" col="7" colid="KMP_1" display="number" row="1"/>
+						<cell align="right" col="8" colid="NM_2" display="number" row="1"/>
+						<cell align="right" col="9" colid="KM_2" display="number" row="1"/>
+						<cell align="right" col="10" colid="KMP_2" display="number" row="1"/>
+						<cell align="right" col="11" colid="NM_3" display="number" row="1"/>
+						<cell align="right" col="12" colid="KM_3" display="number" row="1"/>
+						<cell align="right" col="13" colid="KMP_3" display="number" row="1"/>
+						<cell align="right" col="14" colid="NM_4" display="number" row="1"/>
+						<cell align="right" col="15" colid="KM_4" display="number" row="1"/>
+						<cell align="right" col="16" colid="KMP_4" display="number" row="1"/>
+						<cell align="right" col="17" colid="NM_5" display="number" row="1"/>
+						<cell align="right" col="18" colid="KM_5" display="number" row="1"/>
+						<cell align="right" col="19" colid="KP_5" display="number" row="1"/>
+						<cell align="right" col="20" colid="NM_6" display="number" row="1"/>
+						<cell col="1" display="text" row="2" text="연계제외"/>
+						<cell align="right" col="2" colid="NE_TOT" display="number" row="2"/>
+						<cell align="right" col="3" colid="KE_TOT" display="number" row="2"/>
+						<cell align="right" col="4" display="number" row="2"/>
+						<cell align="right" col="5" colid="NE_1" display="number" row="2"/>
+						<cell align="right" col="6" colid="KE_1" display="number" row="2"/>
+						<cell align="right" col="7" display="number" row="2"/>
+						<cell align="right" col="8" colid="NE_2" display="number" row="2"/>
+						<cell align="right" col="9" colid="KE_2" display="number" row="2"/>
+						<cell align="right" col="10" display="number" row="2"/>
+						<cell align="right" col="11" colid="NE_3" display="number" row="2"/>
+						<cell align="right" col="12" colid="KE_3" display="number" row="2"/>
+						<cell align="right" col="13" display="number" row="2"/>
+						<cell align="right" col="14" colid="NE_4" display="number" row="2"/>
+						<cell align="right" col="15" colid="KE_4" display="number" row="2"/>
+						<cell align="right" col="16" display="number" row="2"/>
+						<cell align="right" col="17" colid="NE_5" display="number" row="2"/>
+						<cell align="right" col="18" colid="KE_5" display="number" row="2"/>
+						<cell align="right" col="19" display="number" row="2"/>
+						<cell align="right" col="20" colid="NE_6" display="number" row="2"/>
+						<cell col="1" display="text" row="3" text="미처리"/>
+						<cell align="right" col="2" colid="NN_TOT" display="number" row="3"/>
+						<cell align="right" col="3" colid="KN_TOT" display="number" row="3"/>
+						<cell align="right" col="4" display="number" row="3"/>
+						<cell align="right" col="5" colid="NN_1" display="number" row="3"/>
+						<cell align="right" col="6" colid="KN_1" display="number" row="3"/>
+						<cell align="right" col="7" display="number" row="3"/>
+						<cell align="right" col="8" colid="NN_2" display="number" row="3"/>
+						<cell align="right" col="9" colid="KN_2" display="number" row="3"/>
+						<cell align="right" col="10" display="number" row="3"/>
+						<cell align="right" col="11" colid="NN_3" display="number" row="3"/>
+						<cell align="right" col="12" colid="KN_3" display="number" row="3"/>
+						<cell align="right" col="13" display="number" row="3"/>
+						<cell align="right" col="14" colid="NN_4" display="number" row="3"/>
+						<cell align="right" col="15" colid="KN_4" display="number" row="3"/>
+						<cell align="right" col="16" display="number" row="3"/>
+						<cell align="right" col="17" colid="NN_5" display="number" row="3"/>
+						<cell align="right" col="18" colid="KN_5" display="number" row="3"/>
+						<cell align="right" col="19" display="number" row="3"/>
+						<cell align="right" col="20" colid="NN_6" display="number" row="3"/>
+					</body>
+					<summary>
+						<cell align="center" bkcolor="user4" col="0" display="text" rowspan="4" text="총계"/>
+						<cell align="center" bkcolor="user4" col="1" display="text" text="계"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;N_TOT&apos;)"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;K_TOT&apos;)"/>
+						<cell align="right" bkcolor="user4" col="4" display="number"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;N_1&apos;)"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;K_1&apos;)"/>
+						<cell align="right" bkcolor="user4" col="7" display="number"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;N_2&apos;)"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;K_2&apos;)"/>
+						<cell align="right" bkcolor="user4" col="10" display="number"/>
+						<cell align="right" bkcolor="user4" col="11" display="number" expr="SUM(&apos;N_3&apos;)"/>
+						<cell align="right" bkcolor="user4" col="12" display="number" expr="SUM(&apos;K_3&apos;)"/>
+						<cell align="right" bkcolor="user4" col="13" display="number"/>
+						<cell align="right" bkcolor="user4" col="14" display="number" expr="SUM(&apos;N_4&apos;)"/>
+						<cell align="right" bkcolor="user4" col="15" display="number" expr="SUM(&apos;K_4&apos;)"/>
+						<cell align="right" bkcolor="user4" col="16" display="number"/>
+						<cell align="right" bkcolor="user4" col="17" display="number" expr="SUM(&apos;N_5&apos;)"/>
+						<cell align="right" bkcolor="user4" col="18" display="number" expr="SUM(&apos;K_5&apos;)"/>
+						<cell align="right" bkcolor="user4" col="19" display="number"/>
+						<cell align="right" bkcolor="user4" col="20" display="number" expr="SUM(&apos;N_6&apos;)"/>
+						<cell align="center" bkcolor="user4" col="1" display="text" row="1" text="일치완료"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;NM_TOT&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;KM_TOT&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="Ceil(SUM(&apos;KM_TOT&apos;)/(SUM(&apos;K_TOT&apos;))*100)" row="1"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;NM_1&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;KM_1&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" expr="Ceil(SUM(&apos;KM_1&apos;)/(SUM(&apos;K_1&apos;))*100)" row="1"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;NM_2&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;KM_2&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="10" display="number" expr="Ceil(SUM(&apos;KM_2&apos;)/(SUM(&apos;K_2&apos;))*100)" row="1"/>
+						<cell align="right" bkcolor="user4" col="11" display="number" expr="SUM(&apos;NM_3&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="12" display="number" expr="SUM(&apos;KM_3&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="13" display="number" expr="Ceil(SUM(&apos;KM_3&apos;)/(SUM(&apos;K_3&apos;))*100)" row="1"/>
+						<cell align="right" bkcolor="user4" col="14" display="number" expr="SUM(&apos;NM_4&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="15" display="number" expr="SUM(&apos;KM_4&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="16" display="number" expr="Ceil(SUM(&apos;KM_4&apos;)/(SUM(&apos;K_4&apos;))*100)" row="1"/>
+						<cell align="right" bkcolor="user4" col="17" display="number" expr="SUM(&apos;NM_5&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="18" display="number" expr="SUM(&apos;KM_5&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="19" display="number" expr="Ceil(SUM(&apos;KM_5&apos;)/(SUM(&apos;K_5&apos;))*100)" row="1"/>
+						<cell align="center" bkcolor="user4" col="1" display="text" row="2" text="연계제외"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;NE_TOT&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;KE_TOT&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" row="2"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;NE_1&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;KE_1&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" row="2"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;NE_2&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;KE_2&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="10" display="number" row="2"/>
+						<cell align="right" bkcolor="user4" col="11" display="number" expr="SUM(&apos;NE_3&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="12" display="number" expr="SUM(&apos;KE_3&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="13" display="number" row="2"/>
+						<cell align="right" bkcolor="user4" col="14" display="number" expr="SUM(&apos;NE_4&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="15" display="number" expr="SUM(&apos;KE_4&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="16" display="number" row="2"/>
+						<cell align="right" bkcolor="user4" col="18" display="number" expr="SUM(&apos;KE_5&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="17" display="number" expr="SUM(&apos;NE_5&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="19" display="number" row="2"/>
+						<cell align="right" bkcolor="user4" col="20" display="number" expr="SUM(&apos;NM_6&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="20" display="number" expr="SUM(&apos;NE_6&apos;)" row="2"/>
+						<cell align="center" bkcolor="user4" col="1" display="text" row="3" text="미처리"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;NN_TOT&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;KN_TOT&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" row="3"/>
+						<cell align="right" bkcolor="user4" col="5" display="number" expr="SUM(&apos;NN_1&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="6" display="number" expr="SUM(&apos;KN_1&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="7" display="number" row="3"/>
+						<cell align="right" bkcolor="user4" col="8" display="number" expr="SUM(&apos;NN_2&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="9" display="number" expr="SUM(&apos;KN_2&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="10" display="number" row="3"/>
+						<cell align="right" bkcolor="user4" col="11" display="number" expr="SUM(&apos;NN_3&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="12" display="number" expr="SUM(&apos;KN_3&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="13" display="number" row="3"/>
+						<cell align="right" bkcolor="user4" col="14" display="number" expr="SUM(&apos;NN_4&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="15" display="number" expr="SUM(&apos;KN_4&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="16" display="number" row="3"/>
+						<cell align="right" bkcolor="user4" col="17" display="number" expr="SUM(&apos;NN_5&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="18" display="number" expr="SUM(&apos;KN_5&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="19" display="number" row="3"/>
+						<cell align="right" bkcolor="user4" col="20" display="number" expr="SUM(&apos;NN_6&apos;)" row="3"/>
+					</summary>
+				</format>
+				<format id="list_8">
+					<columns>
+						<col width="60"/>
+						<col width="60"/>
+						<col width="150"/>
+						<col width="150"/>
+						<col width="50"/>
+					</columns>
+					<head>
+						<cell bkcolor="skyblue" col="0" colspan="5" display="text" text="위험물운송자&#32;대상&#32;안전원/청간&#32;비교&#32;현황(안전원&#32;기준)"/>
+						<cell bkcolor="skyblue" col="0" display="text" row="1" rowspan="2" text="지부"/>
+						<cell bkcolor="skyblue" col="1" display="text" row="1" rowspan="2" text="구분"/>
+						<cell bkcolor="skyblue" col="2" colspan="3" display="text" row="1" text="총&#32;계"/>
+						<cell bkcolor="skyblue" col="2" display="text" row="2" text="청"/>
+						<cell bkcolor="skyblue" col="3" display="text" row="2" text="안전원"/>
+						<cell bkcolor="skyblue" col="4" display="text" row="2" text="%"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="JNM" display="text" rowspan="4"/>
+						<cell align="center" col="1" display="text" text="계"/>
+						<cell align="right" col="2" colid="N_TOT" display="number"/>
+						<cell align="right" col="3" colid="K_TOT" display="number"/>
+						<cell align="right" col="4" display="number"/>
+						<cell align="center" col="1" display="text" row="1" text="일치완료"/>
+						<cell align="right" col="2" colid="NM_TOT" display="number" row="1"/>
+						<cell align="right" col="3" colid="KM_TOT" display="number" row="1"/>
+						<cell align="right" col="4" colid="KMP_TOT" display="number" row="1"/>
+						<cell col="1" display="text" row="2" text="연계제외"/>
+						<cell align="right" col="2" colid="NE_TOT" display="number" row="2"/>
+						<cell align="right" col="3" colid="KE_TOT" display="number" row="2"/>
+						<cell align="right" col="4" display="number" row="2"/>
+						<cell col="1" display="text" row="3" text="미처리"/>
+						<cell align="right" col="2" colid="NN_TOT" display="number" row="3"/>
+						<cell align="right" col="3" colid="KN_TOT" display="number" row="3"/>
+						<cell align="right" col="4" display="number" row="3"/>
+					</body>
+					<summary>
+						<cell align="center" bkcolor="user4" col="0" display="text" rowspan="4" text="총계"/>
+						<cell align="center" bkcolor="user4" col="1" display="text" text="계"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;N_TOT&apos;)"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;K_TOT&apos;)"/>
+						<cell align="right" bkcolor="user4" col="4" display="number"/>
+						<cell align="center" bkcolor="user4" col="1" display="text" row="1" text="일치완료"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;NM_TOT&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;KM_TOT&apos;)" row="1"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" expr="Ceil(SUM(&apos;KM_TOT&apos;)/(SUM(&apos;K_TOT&apos;))*100)" row="1"/>
+						<cell align="center" bkcolor="user4" col="1" display="text" row="2" text="연계제외"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;NE_TOT&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;KE_TOT&apos;)" row="2"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" row="2"/>
+						<cell align="center" bkcolor="user4" col="1" display="text" row="3" text="미처리"/>
+						<cell align="right" bkcolor="user4" col="2" display="number" expr="SUM(&apos;NN_TOT&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="3" display="number" expr="SUM(&apos;KN_TOT&apos;)" row="3"/>
+						<cell align="right" bkcolor="user4" col="4" display="number" row="3"/>
+					</summary>
+				</format>
+			</contents>
+		</Grid>
+		<Combo BindDataset="ds_ioCourse" Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxCourse" INDEX="0" InnerDataset="ds_ioCourse" Left="133" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="13" Top="203" UserData="S" Width="179"></Combo>
+		<Static Align="Center" Height="20" Id="lbMemberGubun" Left="5" Style="sty_Label" TabOrder="14" Text="연계대상" Top="204" VAlign="Middle" Width="122"></Static>
+		<Static Align="Center" Height="20" Id="Static0" Left="5" Style="sty_Label" TabOrder="15" Text="미실시&#32;지부" Top="174" VAlign="Middle" Width="122"></Static>
+		<Radio BindDataset="ds_ioReport" Border="Flat" CodeColumn="CD" ColumnCount="2" DataColumn="DATA" Height="20" Id="radMatchStatus" INDEX="1" InnerDataset="ds_ioStatus" Left="133" LeftMargin="16" OnKeyDown="gfn_EnterNextFocus" RightMargin="16" Style="sty_Radio" TabOrder="16" Top="174" Width="179"></Radio>
+	</Form>
+	<Script><![CDATA[#include "LIB::cust.js"; // 공통업무 관련
+
+
+function Form_OnLoadCompleted(obj) {
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+	
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") {            // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true);           // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false);          // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+
+    radPrtGubun.Value="1";
+    cbxCourse.index=0;
+	// 24.01  직능에서 위험물운송자 완전삭제, 소방기술자는 임시로 안보이기 삭제(추후 만들것임)
+	for(var i=ds_ioCourse.GetRowCount()-1; i>0; i--) {
+		if ((ds_ioCourse.GetColumn(i, "CD") == "5") ||
+		    (ds_ioCourse.GetColumn(i, "CD") == "8"))
+		ds_ioCourse.DeleteRow(i);
+	}
+}
+
+
+function Form_OnSize(obj,nCx,nCy,nState) {
+    if (gs_IsResizingForm == "Y") { }
+}
+
+function lfn_SetFormAuth(bStatus) {}
+
+
+
+//초기화
+function lfn_Cancel(obj) {
+    radPrtGubun.Value="1";
+    cbxCourse.index=0;
+}
+
+
+/***   기능 : 출력   ***/
+function lfn_Print(obj){
+	
+    lfn_Search();    
+    
+    course = "";
+    if (ds_oDATA.GetCount() < 1) {
+        gfn_Alert("출력할 데이터가 없습니다.");
+        return false;
+    }
+
+    var rpt = "";
+    var params = "";
+    var params2 = "";
+    var sTopMargin = "";
+    var sLeftMargin = "";
+
+    rpt = "frmcust6530List_" + cbxCourse.Value + ".rex";
+    
+    if (cbxCourse.Value == "8") {
+		sTopMargin = "100";
+		sLeftMargin = "200";
+	}
+			
+	if (radPrtGubun.Value == "1") { 
+		params2 = "지부"; 
+		
+		if (cbxCourse.Value == "1") {
+			params = "소방안전관리 대상 안전원/청간 비교 현황(안전원 기준)"; 			
+		}
+		else if (cbxCourse.Value == "3") {
+			params = "위험물안전관리자 대상 안전원/청간 비교 현황(안전원 기준)"; 
+		}	
+		else if (cbxCourse.Value == "5") {
+			params = "소방기술자 대상 안전원/청간 비교 현황(안전원 기준)"; 
+		}			
+		else if (cbxCourse.Value == "8") {
+			params = "위험물운송자 대상 안전원/청간 비교 현황(안전원 기준)"; 
+		}					
+	}
+	else {
+		params2 = "본부"; 
+		
+		if (cbxCourse.Value == "1") {
+			params = "소방안전관리 대상 안전원/청간 비교 현황(소방방재청 기준)"; 			
+		}	
+		else if (cbxCourse.Value == "3") {
+			params = "위험물안전관리자 대상 안전원/청간 비교 현황(소방방재청 기준)"; 			
+		}			
+		else if (cbxCourse.Value == "5") {
+			params = "소방기술자 대상 안전원/청간 비교 현황(소방방재청 기준)"; 			
+		}
+		else if (cbxCourse.Value == "8") {
+			params = "위험물운송자 대상 안전원/청간 비교 현황(소방방재청 기준)"; 			
+		}		
+	}	
+	
+	params = "rd_TITLE=" + quote(params) + "^s_TITLE=" + quote(params2);
+    
+	/*
+	 * 기능 : 렉스퍼트 보고서를 팝업화면으로 호출한다.
+	 * parameter : sReportName - 레포트명(예:레포트.rex)
+	 *             sReportDataset - 데이터셋명(예:dsReport1||dsResport2||...)
+	 *             sReportParams - 렉스퍼트용 파라메터(예: a에 1, b에 2, c에 3의 값을 넣는 경우, a=1^b=2^c=3...)
+	 *             bLcsYn - 수첩여부
+	 *             LeftMargin = 왼쪽
+	 *             RightMargin = 오른쪽
+	 *             TopMargin = 상단
+	 *             BottomMargin = 하단
+	 * return value : 정상출력 true, 출력 안했으면 false
+	 */    
+	 
+    //gfn_CallReportPopup(rpt, "ds_oDATA", params);
+    gfn_CallReportPopup(rpt, "ds_oDATA", params, '', '', sTopMargin, sLeftMargin);
+}
+
+
+
+
+function lfn_Search(obj) {
+    
+    // 조회이력을 저장한다.  
+    ls_HistoryArg = "출력물=" + quote(radPrtGubun.Value)
+                + ",연계대상=" + quote(cbxCourse.Value);
+
+    gfn_InsertSearchPrintHistory(
+        "S"
+        , this.ID
+        , global.mnuLeft.cbxOpenForm.Text
+        , ls_HistoryArg
+    );
+	
+    ds_oDATA.ClearData(); // 데이타셋 초기화
+    
+    tit_clearActionInfo();
+    
+    
+    var qry = "";
+
+    if (radPrtGubun.Value == "1") {
+		qry = "cust:searchCust6530Jibu_" + cbxCourse.Value;
+    }
+    
+	else if (radPrtGubun.Value == "2") {
+        qry = "cust:searchCust6530Bonbu_" + cbxCourse.Value;
+    }
+    
+    tit_addCsvSearchActionInfo(qry, false);
+
+	// 서버 호출 
+	tit_callService(
+         "",""
+		,""	// inDs
+		,"ds_oDATA=ds_oDATA"	// outDs
+		, "MATCHGUBUN="  + quote(radMatchStatus.value)
+		, "lfn_AfterSearch"
+		, false
+		, false  // 처리중 창 보여주기 (null or false : 보여줌) 
+		, true);    
+}
+
+function lfn_AfterSearch(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);     
+        course = "";
+        return;
+    }   
+}
+
+
+/***  엑셀   ***/
+function lfn_Excel(obj) {	
+    lfn_ExcelL(obj);
+}
+
+function lfn_ExcelL(obj)
+{	
+    lfn_Search();
+
+	if(ds_oDATA.rowcount == 0){
+		alert("데이터가 없습니다.");
+		return;
+	}
+
+	gdList1.Format = "list_" + cbxCourse.Value;
+	
+	if (radPrtGubun.Value == "1") { 
+		gdList1.SetCellProp("head",1,"text","지부"); 
+		
+		if (cbxCourse.Value == "1") {
+			gdList1.SetCellProp("head",0,"text","소방안전관리 대상 안전원/청간 비교 현황(안전원 기준)"); 
+		}
+		else if (cbxCourse.Value == "3") {
+			gdList1.SetCellProp("head",0,"text","위험물안전관리자 대상 안전원/청간 비교 현황(안전원 기준)"); 
+		}	
+		else if (cbxCourse.Value == "5") {
+			gdList1.SetCellProp("head",0,"text","소방기술자 대상 안전원/청간 비교 현황(안전원 기준)"); 
+		}
+		else if (cbxCourse.Value == "8") {
+			gdList1.SetCellProp("head",0,"text","위험물운송자 대상 안전원/청간 비교 현황(안전원 기준)"); 
+		}
+	}
+	else {
+		gdList1.SetCellProp("head",1,"text","본부"); 
+		
+		if (cbxCourse.Value == "1") {
+			gdList1.SetCellProp("head",0,"text","소방안전관리 대상 안전원/청간 비교 현황(소방방재청 기준)"); 		
+		}	
+		else if (cbxCourse.Value == "3") {
+			gdList1.SetCellProp("head",0,"text","위험물안전관리자 대상 안전원/청간 비교 현황(소방방재청 기준)"); 		
+		}	
+		else if (cbxCourse.Value == "5") {
+			gdList1.SetCellProp("head",0,"text","소방기술자 대상 안전원/청간 비교 현황(소방방재청 기준)"); 		
+		}			
+		else if (cbxCourse.Value == "8") {
+			gdList1.SetCellProp("head",0,"text","위험물운송자 대상 안전원/청간 비교 현황(소방방재청 기준)"); 		
+		}			
+	}
+	
+	gdList1.ExportExcelEx("sheet1");
+}
+/***  엑셀 출력 끝  ***/
+
+
+]]></Script>
+</Window>

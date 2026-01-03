@@ -1,0 +1,1782 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="640" Id="frmPFM0002MInviteProfMgnt" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="초빙강사관리" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="800" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_oRadio">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>0</CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>1</CD>
+						<DATA>실무</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>강습</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oYn">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>Y</CD>
+						<DATA>예</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>아니요</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Professor" OnRowPosChanged="ds_Professor_OnRowPosChanged">
+				<Contents>
+					<colinfo id="SEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="SSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="SNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="SNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="STEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPHONE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SSOSOK" size="256" summ="default" type="STRING"/>
+					<colinfo id="SJIKWI" size="256" summ="default" type="STRING"/>
+					<colinfo id="SLICENSE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEDU" size="256" summ="default" type="STRING"/>
+					<colinfo id="SGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="SFDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="STDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SENDDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SENDYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATEFOTO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SGUBUN_CODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SENDYN_CODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="GIBU" size="256" summ="default" type="STRING"/>
+					<colinfo id="SYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="WRITER" size="256" summ="default" type="STRING"/>
+					<colinfo id="SSEQ_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SMODSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SREGSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SRESUME" size="256" summ="default" type="STRING"/>
+					<colinfo id="CAFSAVENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CAFREALNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="CAFFILESIZE" size="256" summ="default" type="STRING"/>
+					<colinfo id="CAFDIRPATH" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CAFGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="CAFSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="SJOBGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SJOBGUBUN_CODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEDU2" size="256" summ="default" type="STRING"/>
+					<colinfo id="BIRTHDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEXGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SBIRTHDAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="GTTEAMNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPOINT_DOC_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPOINT_NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPOINT_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPOINT_STATUS" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPROVAL_DOC_ID" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPROVAL_NAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPROVAL_DATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="APPROVAL_STATUS" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ProfessorDetail_Backup">
+				<Contents>
+					<colinfo id="SSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="SNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="SNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="STEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPHONE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SSOSOK" size="256" summ="default" type="STRING"/>
+					<colinfo id="SJIKWI" size="256" summ="default" type="STRING"/>
+					<colinfo id="SLICENSE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEDU" size="256" summ="default" type="STRING"/>
+					<colinfo id="SGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="SFDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="STDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SENDDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SENDYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATEFOTO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SGUBUN_CODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SENDYN_CODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="GIBU" size="256" summ="default" type="STRING"/>
+					<colinfo id="SYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="WRITER" size="256" summ="default" type="STRING"/>
+					<colinfo id="SSEQ_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SMODSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SREGSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEDU2" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Jibu">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_JibuInput">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ProfessorDetail_back">
+				<Contents>
+					<colinfo id="SSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="SNAME" size="256" summ="default" type="STRING"/>
+					<colinfo id="SNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="STEL" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPHONE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SSOSOK" size="256" summ="default" type="STRING"/>
+					<colinfo id="SJIKWI" size="256" summ="default" type="STRING"/>
+					<colinfo id="SLICENSE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEDU" size="256" summ="default" type="STRING"/>
+					<colinfo id="SGUBUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SREMARK" size="256" summ="default" type="STRING"/>
+					<colinfo id="SFDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="STDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SENDDATE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SENDYN" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATEFOTO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SGUBUN_CODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="SENDYN_CODE" size="256" summ="default" type="STRING"/>
+					<colinfo id="GIBU" size="256" summ="default" type="STRING"/>
+					<colinfo id="SYEAR" size="256" summ="default" type="STRING"/>
+					<colinfo id="WRITER" size="256" summ="default" type="STRING"/>
+					<colinfo id="SSEQ_CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="SMGNO" size="256" summ="default" type="STRING"/>
+					<colinfo id="SMODSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SREGSABUN" size="256" summ="default" type="STRING"/>
+					<colinfo id="SRESUME" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFSAVENM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFREALNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFFILESIZE" size="256" summ="default" type="STRING"/>
+					<colinfo id="AFDIRPATH" size="256" summ="default" type="STRING"/>
+					<colinfo id="SPAY" size="256" summ="default" type="STRING"/>
+					<colinfo id="CAFSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="SEDU2" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_TecProgMAX">
+				<Contents>
+					<colinfo id="SMGNOMAX" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Jumin">
+				<Contents>
+					<colinfo id="JuminCnt" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_Job">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_SendYN">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD></CD>
+						<DATA>전체</DATA>
+					</record>
+					<record>
+						<CD>Y</CD>
+						<DATA>해촉</DATA>
+					</record>
+					<record>
+						<CD>N</CD>
+						<DATA>미해촉</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oSexGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>남</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>여</DATA>
+					</record>
+					<record>
+						<CD>3</CD>
+						<DATA>남(2000년&#32;이후)</DATA>
+					</record>
+					<record>
+						<CD>4</CD>
+						<DATA>여(2000년&#32;이후)</DATA>
+					</record>
+					<record>
+						<CD>5</CD>
+						<DATA>남(외국인)</DATA>
+					</record>
+					<record>
+						<CD>6</CD>
+						<DATA>여(외국인)</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oAppointMgno">
+				<Contents>
+					<colinfo id="NEXTMGNO" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="637" Height="257" Id="Shape1" Left="3" LineColor="user15" Right="795" TabOrder="45" Top="380" Type="Rectangle" Width="792"></Shape>
+		<Shape Bottom="633" Height="32" Id="Shape2" Left="8" LineColor="user6" Right="777" TabOrder="64" Top="601" Type="Rectangle" Width="769"></Shape>
+		<Shape Bottom="84" Height="28" Id="shpGubunBox1" Left="4" LineColor="user15" Right="796" TabOrder="0" Top="56" Type="Rectangle" Width="792"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="0" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="284">
+			<Contents></Contents>
+		</Div>
+		<Shape Bottom="53" Height="52" Id="Shape0" Left="444" LineColor="user14" Right="796" TabOrder="40" Top="1" Type="Rectangle" Width="352"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="447" OnClick="lfn_Search" Style="sty_Button" TabOrder="33" ToolTipText="조회" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnInput" ImageID="BTN_COM_ADD" Left="534" OnClick="lfn_Input" Style="sty_Button" TabOrder="34" ToolTipText="추가&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnDelete" ImageID="BTN_COM_DEL" Left="708" OnClick="lfn_Delete" Style="sty_Button" TabOrder="36" ToolTipText="삭제&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Enable="FALSE" Height="22" Id="btnSave" ImageID="BTN_COM_SAVE" Left="621" OnClick="lfn_Save" Style="sty_Button" TabOrder="35" ToolTipText="수정&#32;저장" Top="28" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_COM_INIT" Left="447" OnClick="lfn_Cancel" Style="sty_Button" TabOrder="29" ToolTipText="입력&#32;초기화" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnToExcel" ImageID="BTN_COM_EXCEL" Left="534" OnClick="btnToExcel_OnClick" Style="sty_Button" TabOrder="30" ToolTipText="엑셀로&#32;저장" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnPrintScreen" ImageID="BTN_COM_SCREEN" Left="621" OnClick="lfn_PrintScreen" Style="sty_Button" TabOrder="31" ToolTipText="화면&#32;출력" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="708" OnClick="lfn_End" Style="sty_Button" TabOrder="32" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Static Align="Center" Height="20" Id="Static8" Left="-144" Style="sty_LabelGruopBox" TabOrder="40" Text="안전원&#32;교수&#32;관리" Top="63" VAlign="Middle" Width="120"></Static>
+		<Static Align="Center" Height="20" Id="lbJibu" Left="68" Style="sty_Label" TabOrder="41" Text="부서/지부" Top="60" VAlign="Middle" Width="88"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="20" Id="btnMutilSort" ImageID="BTN_MULTI_SORT" Left="720" OnClick="btnMutilSort_OnClick" Style="sty_Button" TabOrder="4" Top="88" Transparent="TRUE" Width="74"></Button>
+		<Static Align="Center" Height="20" Id="lbPersonNm" Left="256" Style="sty_Label" TabOrder="42" Text="성명" Top="60" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Height="20" Id="edPersonNm" ImeMode="native" Left="347" LeftMargin="2" OnKeyDown="edPersonNm_OnKeyDown" Style="sty_Edit" TabOrder="2" Top="60" UserData="S" Width="104"></Edit>
+		<Static Align="Center" Height="20" Id="lbTotalCnt" Left="4" Style="sty_LabelStat" TabOrder="44" Text="총건수" Top="92" VAlign="Middle" Width="88"></Static>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="medTotalCnt" Left="96" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="43" Top="92" UserData="S" Width="52"></MaskEdit>
+		<Static Align="Center" Height="20" Id="lbJibu2" Left="8" Style="sty_Label" TabOrder="46" Text="부서/지부" Top="384" VAlign="Middle" Width="88"></Static>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Enable="FALSE" Height="20" Id="cbxJibu_input" INDEX="0" InnerDataset="ds_JibuInput" Left="99" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" ResetIndex="FIRST" Search="NOTFILTERED" Style="sty_Combo" TabOrder="6" Top="383" UserData="I" Width="105"></Combo>
+		<Static Align="Center" Height="20" Id="lbBirthday" Left="388" Style="sty_Label" TabOrder="47" Text="생년월일" Top="408" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbYear" Left="388" Style="sty_Label" TabOrder="48" Text="년도" Top="384" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static9" Left="8" Style="sty_Label" TabOrder="49" Text="성명" Top="408" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Column="SNAME" Height="20" Id="edPersonNm2" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="8" Top="408" UserData="S" Width="104"></Edit>
+		<Static Align="Center" Height="20" Id="lbTel" Left="8" Style="sty_Label" TabOrder="50" Text="전화번호" Top="656" VAlign="Middle" Visible="FALSE" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="lbHpTel" Left="8" Style="sty_Label" TabOrder="50" Text="휴대폰" Top="432" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static2" Left="8" Style="sty_Label" TabOrder="51" Text="소속" Top="456" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Column="SSOSOK" Height="20" Id="edSosok" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="12" Top="456" UserData="S" Width="284"></Edit>
+		<Static Align="Center" Height="20" Id="lbPosition" Left="388" Style="sty_Label" TabOrder="52" Text="직위/계급" Top="456" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Column="SJIKWI" Height="20" Id="edPosition" ImeMode="native" Left="480" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="13" Top="456" UserData="S" Width="192"></Edit>
+		<Static Align="Center" Height="20" Id="Static4" Left="8" Style="sty_Label" TabOrder="53" Text="담당과목1" Top="504" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Column="SEDU" Enable="FALSE" Height="20" Id="edSedu" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="16" Top="504" UserData="S" Width="244"></Edit>
+		<Static Align="Center" Height="20" Id="Static5" Left="388" Style="sty_Label" TabOrder="54" Text="전공(자격)" Top="529" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Column="SLICENSE" Height="20" Id="edSlicense" ImeMode="native" Left="480" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="21" Top="529" UserData="S" Width="216"></Edit>
+		<Static Align="Center" Height="20" Id="Static6" Left="8" Style="sty_Label" TabOrder="55" Text="강의분야" Top="480" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static11" Left="12" Style="sty_Label" TabOrder="56" Text="위촉기간" Top="607" UserData="S" VAlign="Middle" Width="84"></Static>
+		<Calendar Border="Flat" Column="SFDATE" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calDateStart" Left="100" OnChanged="calDateStart_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="25" Top="607" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Radio Border="Flat" CodeColumn="CD" Column="SGUBUN_CODE" ColumnCount="3" DataColumn="DATA" Height="20" Id="radRadioH" INDEX="0" InnerDataset="ds_oRadio" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Radio" TabOrder="14" Top="480" Width="164"></Radio>
+		<Static Align="Center" Height="20" Id="Static12" Left="8" Style="sty_Label" TabOrder="57" Text="비고" Top="577" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Column="SREMARK" Height="20" Id="edRemark" ImeMode="native" Left="100" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="24" Top="578" UserData="S" Width="676"></Edit>
+		<Static Align="Center" Height="20" Id="Static0" Left="324" Style="sty_Label" TabOrder="59" Text="해촉여부" Top="607" UserData="S" VAlign="Middle" Width="84"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSubject1" ImageID="BTN_TEXT_02" Left="347" OnClick="btnSubject1_OnClick" Style="sty_Button" TabOrder="17" Text="선택" Top="503" Transparent="TRUE" Width="40"></Button>
+		<Radio Border="Flat" CodeColumn="CD" Column="SENDYN_CODE" ColumnCount="3" DataColumn="DATA" Height="20" Id="radRadioH1" INDEX="0" InnerDataset="ds_oYn" Left="412" OnChanged="radRadioH1_OnChanged" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Radio" TabOrder="27" Top="607" Width="140"></Radio>
+		<Calendar Border="Flat" Column="STDATE" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calDateEnd" Left="220" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="26" Top="607" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Static Align="Center" Height="20" Id="lbText" Left="200" Style="sty_Text" TabOrder="60" Text="~" Top="608" VAlign="Middle" Width="16"></Static>
+		<Static Align="Center" Height="20" Id="Static1" Left="556" Style="sty_Label" TabOrder="61" Text="해촉일자" Top="607" UserData="S" VAlign="Middle" Width="84"></Static>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Column="SYEAR" Height="20" Id="edTrainingYear" ImeMode="native" Left="480" LeftMargin="2" MaxLength="4" Number="TRUE" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="7" Top="384" UserData="S" Width="36"></Edit>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Column="SSEQ_CD" Enable="FALSE" Height="20" Id="edSSEQ" ImeMode="native" Left="631" LeftMargin="2" MaxLength="4" Number="TRUE" Style="sty_Edit" TabOrder="62" Top="384" UserData="S" Width="36"></Edit>
+		<Calendar Border="Flat" Column="SENDDATE" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calEndDate" Left="644" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="28" Top="607" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Edit Align="CENTER" AutoSelect="TRUE" Border="Flat" Enable="FALSE" Height="20" Id="edSMGNO" ImeMode="native" Left="713" LeftMargin="2" MaxLength="4" Number="TRUE" Style="sty_Edit" TabOrder="63" Top="432" Visible="FALSE" Width="36"></Edit>
+		<Combo Border="Flat" CodeColumn="CD" DataColumn="DATA" Height="20" Id="cbxJibu" INDEX="0" InnerDataset="ds_Jibu" Left="158" OnChanged="lfn_Search" ResetIndex="FIRST" Style="sty_Combo" TabOrder="1" Top="59" Width="90"></Combo>
+		<Static Align="Center" Height="20" Id="Static3" Left="8" Style="sty_Label" TabOrder="65" Text="강사료" Top="529" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Static Align="Center" Height="20" Id="Static7" Left="8" Style="sty_Label" TabOrder="67" Text="이력서첨부" Top="553" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" BKColor="user4" Border="Flat" Column="SRESUME" Cursor="HAND" Height="20" Id="edAttachFile" ImeMode="native" Left="100" LeftMargin="2" OnClick="lfn_DownloadFile" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_EditReadOnly" TabOrder="22" TabStop="FALSE" Top="553" UserData="S" Width="368"></Edit>
+		<File Bottom="579" Height="24" Id="fiAttachFile" Left="712" Right="736" TabOrder="65" Top="555" Width="24"></File>
+		<FileDialog Bottom="579" Height="24" Id="fdAttachFile" Left="742" Right="766" TabOrder="64" Top="555" Width="24"></FileDialog>
+		<HttpFile Height="24" Id="hfAttachFile" Left="770" Top="555" Width="24"></HttpFile>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnUploadFile" ImageID="BTN_TEXT_04" Left="472" OnClick="btnUploadFile_OnClick" Style="sty_Button" TabOrder="23" Text="업로드" ToolTipText="다운로드" Top="552" Transparent="TRUE" Width="66"></Button>
+		<MaskEdit AutoSelect="TRUE" AutoSkip="TRUE" Border="Flat" Column="SPAY" Height="20" Id="meMoney" Left="100" MaxLength="8" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Maskedit" TabOrder="20" Top="529" UserData="S" Width="104"></MaskEdit>
+		<Static Height="20" Id="lbFileSize" Left="543" Style="sty_Text" TabOrder="67" Top="554" UserData="S" VAlign="Middle" Visible="FALSE" Width="212"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Column="SSOSOK" Height="20" Id="edTel" ImeMode="native" Left="100" LeftMargin="2" MaxLength="15" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="10" Top="656" UserData="S" Visible="FALSE" Width="104"></Edit>
+		<Edit AutoSelect="TRUE" Border="Flat" Column="SJIKWI" Height="20" Id="edHpTel" ImeMode="native" Left="100" LeftMargin="2" MaxLength="15" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="11" Top="432" UserData="S" Width="104"></Edit>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_Professor" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="376" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="260" Id="gdProfessor" InputPanel="FALSE" Left="3" LineColor="default" OnCellClick="gdProfessor_OnCellClick" OnHeadClick="gdProfessor_OnHeadClick" Right="794" RowHeight="20" Style="sty_Grid" TabOrder="5" TabStop="true" Top="116" UseDBuff="true" UsePopupMenu="true" UserData="초빙강사리스트" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="791">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="58"/>
+						<col width="35"/>
+						<col width="59"/>
+						<col width="149"/>
+						<col width="101"/>
+						<col width="0"/>
+						<col width="144"/>
+						<col width="53"/>
+						<col width="22"/>
+						<col width="90"/>
+						<col width="127"/>
+						<col width="123"/>
+						<col width="179"/>
+						<col width="64"/>
+						<col width="0"/>
+						<col width="200"/>
+						<col width="200"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" edit="normal" text="위촉결재"/>
+						<cell align="center" col="0" display="checkbox" edit="checkbox" row="1"/>
+						<cell col="1" display="text" rowspan="2" text="순번"/>
+						<cell col="2" display="text" rowspan="2" text="성명"/>
+						<cell align="center" col="3" display="text" rowspan="2" text="소속"/>
+						<cell align="center" col="4" display="text" rowspan="2" text="직위/계급"/>
+						<cell align="center" col="5" display="text" rowspan="2" text="직업"/>
+						<cell align="center" col="6" display="text" rowspan="2" text="전공(자격)"/>
+						<cell bkcolor="wheat" col="7" colspan="2" display="text" text="결재상태"/>
+						<cell bkcolor="wheat" col="7" colspan="2" display="text" row="1" text="위촉"/>
+						<cell align="center" col="9" display="text" rowspan="2" text="강의분야"/>
+						<cell align="center" col="10" display="text" rowspan="2" text="연락처(휴대폰)"/>
+						<cell col="11" display="text" rowspan="2" text="연번"/>
+						<cell align="center" col="12" display="text" rowspan="2" text="위촉기간"/>
+						<cell col="13" display="text" rowspan="2" text="해촉여부"/>
+						<cell align="center" col="14" display="text" text="첨부"/>
+						<cell col="15" display="text" rowspan="2" text="담당과목1"/>
+						<cell col="16" display="text" rowspan="2" text="담당과목2"/>
+						<cell col="14" display="text" row="1"/>
+					</head>
+					<body>
+						<cell align="center" col="0" colid="SEL" display="expr:iif(APPOINT_STATUS&#32;==&#32;null&#32;,&#32;&apos;checkbox&apos;,&#32;iif(APPOINT_STATUS&#32;==&#32;&apos;회수&apos;,&#32;&apos;checkbox&apos;,&#32;iif(APPOINT_STATUS&#32;==&#32;&apos;반송&apos;,&#32;&apos;checkbox&apos;,&apos;null&apos;)))" edit="checkbox"/>
+						<cell align="center" col="1" display="text" expr="currow+1"/>
+						<cell align="center" col="2" colid="SNAME" display="text"/>
+						<cell align="left" col="3" colid="SSOSOK" display="text"/>
+						<cell align="left" col="4" colid="SJIKWI" display="text"/>
+						<cell align="left" col="5" colid="SJOBGUBUN" display="text"/>
+						<cell align="left" col="6" colid="SLICENSE" display="text"/>
+						<cell align="center" col="7" colid="APPOINT_STATUS" display="text"/>
+						<cell align="center" bkimageid="expr:iif(APPOINT_STATUS&#32;==&#32;null&#32;,&#32;&apos;&apos;,&#32;&apos;BTN_SEARCH&apos;)&#32;" col="8" cursor="expr:iif(APPOINT_STATUS&#32;==&#32;null&#32;,&#32;&apos;arrow&apos;,&#32;&apos;hand&apos;)&#32;" display="text"/>
+						<cell align="center" col="9" colid="SGUBUN" display="text"/>
+						<cell align="left" col="10" colid="SPHONE" display="text"/>
+						<cell align="left" col="11" colid="SSEQ" display="text"/>
+						<cell align="center" col="12" colid="DATEFOTO" display="text"/>
+						<cell align="center" col="13" colid="SENDYN" display="text"/>
+						<cell align="center" bkimageid="expr:iif(CAFSEQ&#32;&gt;&#32;0,&#32;&apos;IMG_ATTACH_FILE&apos;,&#32;&apos;&apos;)" col="14" cursor="expr:iif(CAFSEQ&#32;&gt;&#32;0,&#32;&apos;hand&apos;,&#32;&apos;arrow&apos;)" display="text"/>
+						<cell col="15" colid="SEDU" display="text"/>
+						<cell col="16" colid="SEDU2" display="text"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Height="20" Id="Static10" Left="388" Style="sty_Label" TabOrder="68" Text="직업" Top="480" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Combo CodeColumn="CD" Column="SJOBGUBUN_CODE" DataColumn="DATA" Enable="FALSE" Height="20" Id="cbxJobGubun" InnerDataset="ds_Job" Left="479" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Combo" TabOrder="15" Top="479" Width="216"></Combo>
+		<Radio Border="Flat" CodeColumn="CD" Column="SGUBUN_CODE" ColumnCount="3" DataColumn="DATA" Height="20" Id="radSendYN" INDEX="0" InnerDataset="ds_SendYN" Left="552" Style="sty_Radio" TabOrder="3" Top="60" Width="203"></Radio>
+		<Static Align="Center" Height="20" Id="Static13" Left="461" Style="sty_Label" TabOrder="69" Text="해촉여부" Top="60" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" Border="Flat" Column="SEDU2" Enable="FALSE" Height="20" Id="edSedu2" ImeMode="native" Left="480" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_Edit" TabOrder="18" Top="504" UserData="S" Width="244"></Edit>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSubject2" ImageID="BTN_TEXT_02" Left="727" OnClick="btnSubject2_OnClick" Style="sty_Button" TabOrder="19" Text="선택" Top="503" Transparent="TRUE" Width="40"></Button>
+		<Static Align="Center" Height="20" Id="Static14" Left="388" Style="sty_Label" TabOrder="70" Text="담당과목2" Top="504" UserData="S" VAlign="Middle" Width="88"></Static>
+		<Calendar Border="Flat" Column="SBIRTHDAY" Dateformat="yyyy-MM-dd" DayFont="돋음,9" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calBirthday" Left="480" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Edit" SundayTextColor="red" TabOrder="9" Top="408" UserData="S" WeeksFont="돋음,9" Width="98"></Calendar>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Font="굴림,10,Bold" Height="28" Id="btnApproval" ImageID="BTN_전자결재상신2_b" Left="153" OnClick="btnApproval_OnClick" Style="sty_Button" TabOrder="71" Text="&#32;&#32;초빙강사&#32;위촉&#32;전자결재&#32;상신" Top="86" Transparent="TRUE" Width="224"></Button>
+		<Shape BKColor="user15" Bottom="84" Height="28" Id="Shape3" Left="4" LineColor="user15" Right="64" TabOrder="72" Top="56" Type="Rectangle" Width="60"></Shape>
+		<Static Color="user0" Height="13" Id="Static15" Left="8" TabOrder="73" Text="조회조건" Top="64" Width="50"></Static>
+		<Static Align="Center" BKColor="coral" Border="Flat" Font="굴림,14,Bold" Height="30" Id="lbMode" Left="671" TabOrder="74" Text="신규입력모드" Top="384" VAlign="Middle" Width="120"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSendSms" ImageID="BTN_TEXT_04" Left="207" OnClick="btnSendSms_OnClick" Style="sty_Button" TabOrder="75" Text="문자발송" Top="430" Transparent="TRUE" Width="66"></Button>
+		<Static Align="Center" Height="20" Id="Static16" Left="540" Style="sty_Label" TabOrder="76" Text="연번" Top="384" VAlign="Middle" Width="88"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmPFM0002MInviteProfMgnt.xml
+ * 설명 : 초빙강사관리
+ * 작성일 : 2009.11.06 
+ * 작성자 : 임재선
+ */
+ 
+ //#include "LIB::COM.js";  // 공통업무 관련
+ #include "LIB::profes.js"; // 공통업무 관련
+ 
+ var ls_IsUpdateYN = false; 
+ var mb_IsSaveYN  = false;
+ var G_AUTH;
+ var ls_grdRowPos;
+ 
+var lb_FileUpload = false;
+var ls_FileUploadPath = "/RESUME"; //교수관리니까
+var ls_UploadFileName = "RESUME"; //서버에 저장될 파일 명(이력서)
+var ls_CAFGUBUN       = "P"; //Profes 교수관리
+var ls_BoardGubun = "N";
+var ls_RealFileName = "";
+
+var ls_FileUploadService = ""; //파일 업로드일 경우 사용되는 변수
+ 
+
+var G_SMGNOMAX = "";
+var g_GuminCnt = "";//주민번호 중복 체크
+
+ 
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj)
+{
+     gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }
+    
+    // 공통 코드 조회
+    //gfn_SearchAllJibu(cbxJibu, "Y"); // 지부 코드 조회 
+    //cbxJibu.SetFocus();
+    //PM -> 교수관리
+    //SM -> 시스템관리자
+    
+    G_AUTH = gds_oUserInfo.GetColumn(0, "ADMINGUBUN");
+
+    gfn_SearchJibu(cbxJibu,       "Y", "전체"); // 지부 코드 조회
+    gfn_SearchJibu(cbxJibu_input, "Y"); // 지부 코드 조회
+    gfn_SearchCodeSJob("SPEAKERCD",ds_Job,"Y"); // 초빙강사 직업코드 조회
+    
+    cbxJibu.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+	cbxJibu_input.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+    
+    if (Length(cbxJibu_input.Value) == 0 ) {
+        //alert("관리자입니다.");
+        cbxJibu.Index 		= 0;
+    }
+    
+    if (Length(cbxJobGubun.Value) == 0 ) {
+        //alert("관리자입니다.");
+        cbxJobGubun.Index 		= 0;
+    }  
+    
+    // 관리자이면
+    if (G_AUTH == "SM" || G_AUTH == "PM" ) {
+        meMoney.Enable      = true;
+        calDateStart.Enable = true;
+        calDateEnd.Enable = true;
+        radRadioH1.Enable = true;
+        calEndDate.Enable = true;
+        cbxJibu.Enable = true;
+        cbxJibu_input.Enable = true;
+        cbxJobGubun.Enable = true;
+        btnDelete.Enable = true;
+    } else {
+        meMoney.Enable      = false;
+        calDateStart.Enable = false;
+        calDateEnd.Enable = false;    
+        radRadioH1.Enable = false;
+        calEndDate.Enable = false;
+        cbxJibu.Enable = true;
+        cbxJibu_input.Enable = false;
+        cbxJobGubun.Enable = false;
+        btnDelete.Enable = false;
+    }
+    
+    lbMode.Visible = false;	// 신규/수정 모드
+    
+/*    
+	tit_clearActionInfo();              
+	tit_addSearchActionInfo("profes:searchPFM0002JIBU", false);  
+	// 서버 호출 
+	tit_callService( ""
+		            ,""
+		            ,""	// inDs
+		            ,"ds_Jibu=ds_oJibu ds_JibuInput=ds_oJibu" // outDs
+		            ,""
+			        ,"afterSearch_JIBU"
+		            ,false
+		            ,false
+		            ,true
+	               );	               
+	               
+*/
+}
+/*
+function afterSearch_JIBU(errCode, errMsg){
+		 var nRow = ds_Jibu.insertRow(0);
+		 ds_Jibu.SetColumn(nRow,"CD",""); 
+		 ds_Jibu.SetColumn(nRow,"DATA","전체");
+		 //cbxJibu.Index = 0;
+		 cbxJibu.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+		 cbxJibu_input.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+
+
+		 
+}*/
+    	    
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+    gfn_Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState)
+{
+    if (gs_IsResizingForm == "Y") {
+        //gdCommonCode.Height = nCy - gdCommonCode.Top - 4;
+        gdProfessor.Width = nCx - gdProfessor.Left - 4;
+    }
+}
+
+
+
+/* 사용자 이벤트 함수 */
+function btnMutilSort_OnClick(obj) {
+	gfn_GridMultiSort(gdProfessor, 1); // 멀티 정렬을 실행한다.
+}
+
+
+function gdProfessor_OnHeadClick(obj,nCell,nX,nY,nPivotIndex)
+{
+    var lobj_Dataset = object(obj.BindDataset);
+	if (nCell == 1) { // 선택
+        if (obj.GetCellProp("head", nCell, "text") == 1) { // 전체가 이미 선택된 경우
+            obj.SetCellProp("head", nCell, "text", 0);
+            for (i = 0; i < lobj_Dataset.RowCount(); i++) {
+                lobj_Dataset.SetColumn(i, "SEL", "0");
+            }
+        } else { // 전체가 이미 선택되지 않은 경우
+            obj.SetCellProp("head", nCell, "text", 1);
+            for (i = 0; i < lobj_Dataset.RowCount(); i++) {
+                lobj_Dataset.SetColumn(i, "SEL", "1");
+            }
+        }
+	} else if (nCell > 2) { // 헤드 정렬
+        
+		if (lobj_Dataset.GetRowCount() > 1) {
+			
+			SetWaitCursor(true);
+		
+			var ms_SortType = obj.GetCellProp("head", nCell, "text");
+			lobj_Dataset.row = -1;
+		
+			// Soft 구분자 분리
+			ms_SortType = right(ms_SortType, 1);
+		
+			var mn_Cnt = obj.GetCellCount("head");
+			for (var i=0; i < mn_Cnt; i++) {
+				// Head Sort 마크 제거
+				obj.SetCellProp("head", i, "text", replace(replace(obj.GetCellProp("head", i, "text"), ASC_MARK), DESC_MARK));
+			}
+			if (nCell <= 10) {
+				if (nCell <> 9) {
+					if (ms_SortType == ASC_MARK) {
+						obj.SetCellProp("head", nCell, "text", obj.GetCellProp("head", nCell, "text") + DESC_MARK);
+						lobj_Dataset.Sort(obj.GetCellProp("body", nCell-1, "colid") + ":D");
+					} else {
+						obj.SetCellProp("head", nCell, "text", obj.GetCellProp("head", nCell, "text") + ASC_MARK);
+						lobj_Dataset.Sort(obj.GetCellProp("body", nCell-1, "colid") + ":A");
+					}
+				} else {
+					if (ms_SortType == ASC_MARK) {
+						obj.SetCellProp("head", nCell, "text", obj.GetCellProp("head", nCell, "text") + DESC_MARK);
+						lobj_Dataset.Sort(obj.GetCellProp("body", nCell-2, "colid") + ":D");
+					} else {
+						obj.SetCellProp("head", nCell, "text", obj.GetCellProp("head", nCell, "text") + ASC_MARK);
+						lobj_Dataset.Sort(obj.GetCellProp("body", nCell-2, "colid") + ":A");
+					}
+				}
+			} else if (nCell > 10) {
+				if (ms_SortType == ASC_MARK) {
+					obj.SetCellProp("head", nCell, "text", obj.GetCellProp("head", nCell, "text") + DESC_MARK);
+					lobj_Dataset.Sort(obj.GetCellProp("body", nCell, "colid") + ":D");
+				} else {
+					obj.SetCellProp("head", nCell, "text", obj.GetCellProp("head", nCell, "text") + ASC_MARK);
+					lobj_Dataset.Sort(obj.GetCellProp("body", nCell, "colid") + ":A");
+				}
+			}
+			
+			
+			SetWaitCursor(false);
+			
+		}
+	}	
+}
+
+
+
+/*----------------------------------------------------------*
+ * 기능 : 조회                                              *
+ *----------------------------------------------------------*/
+function lfn_Search(obj) {
+	lfn_SearchProfCount();  
+}
+
+
+
+/*--------------------------------------------------------
+ * 기능 : 조회
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ *--------------------------------------------------------*/
+function lfn_SearchProfCount() {
+	ds_Professor.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	//addCnt = 0;       //추가버튼 연속 클릭 방지하기 위해
+	
+	
+	//alert(quote(cbxJibu.value));
+	tit_addCSVSearchActionInfo("profes:searchPFM0002MInviteProfMgnt", false);  
+	
+	// 서버 호출
+ 	var sParm = "";
+	sParm  = " JUBUCD=" + quote(cbxJibu.value);   
+	sParm += " PFNM=" + quote(edPersonNm.Text);   
+	sParm += " SENDYN=" + quote(radSendYN.Value);   
+
+	tit_callService( ""
+		            ,""
+		            ,""	// inDs
+		            ,"ds_Professor=ds_oProfessor" // outDs
+		            ,sParm
+			        ,"lfn_AfterSearchProfFirst"
+		            ,false
+		            ,false
+		            ,true
+	               );
+
+}
+
+
+function lfn_AfterSearchProfFirst(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    //cbxJibu_input.Value = ds_Professor.GetColumn(0, "GIBU");
+    //edTrainingYear.Text = ds_Professor.GetColumn(0, "SYEAR");
+    edSMGNO.Text        = ds_Professor.GetColumn(0, "SMGNO"); //관리번호
+    //alert("1");
+    // 관리자이면
+    if (G_AUTH == "SM" || G_AUTH == "PM" ) {
+		edSSeq.Enable = true;	// 연번
+	} else {
+		edSSeq.Enable = false;	// 연번
+	}
+    
+    medTotalCnt.Text = ds_Professor.rowcount;
+        
+    if (ls_IsUpdateYN){ //수정일 경우 수정된 로우에 포커스가 있게 한다. 
+        ds_Professor.rowposition = ls_grdRowPos;
+    } 
+    ls_IsUpdateYN = false;     
+    gfn_SearchMessage(gdProfessor); // 조회 메세지를 처리하고 그리드의 정렬 헤드 마크를 제거한다.
+    
+    if (ds_Professor.rowcount == 0) {
+        lfn_Cancel(); // 값 초기화
+        edTrainingYear.Text ="";
+    }
+    
+    if (gfn_isNull(ds_Professor.GetColumn(0, "APPOINT_STATUS"))) {     
+		calDateStart.Enable = true;
+		calDateEnd.Enable = true;
+	} else {
+		calDateStart.Enable = false;
+		calDateEnd.Enable = false;
+	}
+}
+
+/*--------------------------------------------------------
+ *  데이터 셋의 포지션이 바뀔경우
+ *--------------------------------------------------------*/
+function ds_Professor_OnRowPosChanged(obj,nOldRow,nRow) {
+  
+ 
+	//if (ds_Professor.GetRowType(ds_Professor.lastrow) == "insert") {
+	//	gfn_alert("추가입력 중인 자료가 있습니다.\n저장완료 후 다음 작업을 진행하세요.");
+	//	return false;
+	//}
+	/*
+	if (ds_Professor.GetUpdate()) {
+		if (!gfn_Confirm("변경된 내용이 있습니다. 그래도 작업을 진행하시겠습니까?")) {
+			return false;
+		} else {
+			//Close();
+		}
+	}	
+    */
+
+    // 그리드의 값을 입력란에 복사한다. 추가상태인 경우 복사 후 저장을 하기 위해 제외한다.
+    if (obj.GetRowType(nRow) <> "insert" && nRow <> -1) {
+        
+        cbxJibu_input.Value = ds_Professor.GetColumn(nRow, "GIBU");
+        edTrainingYear.Text = ds_Professor.GetColumn(nRow, "SYEAR");
+        edSMGNO.Text        = ds_Professor.GetColumn(nRow, "SMGNO"); //관리번호
+        edSSEQ.Text         = ds_Professor.GetColumn(nRow, "SSEQ_CD");
+        edPersonNm2.Text    = ds_Professor.GetColumn(nRow, "SNAME");
+        edTel.Text          = ds_Professor.GetColumn(nRow, "STEL");
+        edHpTel.Text        = ds_Professor.GetColumn(nRow, "SPHONE");
+        edSosok.Text        = ds_Professor.GetColumn(nRow, "SSOSOK");
+        edPosition.Text     = ds_Professor.GetColumn(nRow, "SJIKWI");
+        edSedu.Text         = ds_Professor.GetColumn(nRow, "SEDU");//담당과목1
+        edSedu2.Text        = ds_Professor.GetColumn(nRow, "SEDU2");//담당과목2
+        edSlicense.Text     = ds_Professor.GetColumn(nRow, "SLICENSE");
+        radRadioH.Value     = ds_Professor.GetColumn(nRow, "SGUBUN_CODE");
+        cbxJobGubun.Value   = ds_Professor.GetColumn(nRow, "SJOBGUBUN_CODE");
+        calDateStart.Text   = ds_Professor.GetColumn(nRow, "SFDATE");
+        calDateEnd.Text     = ds_Professor.GetColumn(nRow, "STDATE");
+        radRadioH1.Value    = ds_Professor.GetColumn(nRow, "SENDYN_CODE");
+        calEndDate.Text     = ds_Professor.GetColumn(nRow, "SENDDATE");
+        edRemark.Text       = ds_Professor.GetColumn(nRow, "SREMARK");
+        meMoney.Text        = ds_Professor.GetColumn(nRow, "SPAY");    //초빙강사료
+        edAttachFile.Text   = ds_Professor.GetColumn(nRow, "SRESUME"); //초빙강사이력서 첨부파일
+        calBirthday.Value	= ds_Professor.GetColumn(nRow, "SBIRTHDAY"); //생년월일
+        
+      //ls_RealFileName      = ds_Professor.GetColumn(nRow, "SRESUME"); //초빙강사이력서 첨부파일
+        ls_RealFileName      = ds_Professor.GetColumn(nRow, "CAFREALNM"); //초빙강사이력서 첨부파일
+        
+        
+        calDateStart.Visible = true;
+        calDateEnd.Visible   = true;
+        radRadioH1.Visible   = true;
+        calEndDate.Visible   = true;
+        lbText.Visible   = true;
+                
+                
+        //위촉일자가 있으면 일반사용자는 수정금지  20100305 모두 수정 가능하도록 하라함 정현호 대리
+        /*
+        if (Length(calDateStart.Value) == 0 && Length(calDateEnd.Value)== 0 ) {
+            lfn_SetFormAuth_Edit(true); 
+        } else {
+            if (G_AUTH == "SM" || G_AUTH == "PM" ) {
+                lfn_SetFormAuth_Edit(true);
+            } else {
+                lfn_SetFormAuth_Edit(false);
+            }  
+        }                  
+        */
+        
+        lfn_SetFormAuth_Edit(true); 
+        
+		// 2018.07.02 결재 후 이면 위촉기간 수정불가
+		if (gfn_isNull(ds_Professor.GetColumn(nRow, "APPOINT_STATUS"))) {     
+			calDateStart.Enable = true;
+			calDateEnd.Enable = true;
+		} else {
+			calDateStart.Enable = false;
+			calDateEnd.Enable = false;
+		}
+        
+        //시스템 관리자 및 교수관리자만 해촉여부, 해촉일자 수정가능  
+/*
+       if (G_AUTH == "SM" || G_AUTH == "PM" ) {
+
+            meMoney.Enable = true;
+            calDateStart.Enable = true;
+            calDateEnd.Enable = true;
+            radRadioH1.Enable = true;
+            calEndDate.Enable = true;
+            cbxJibu_input.Enable = true;
+            if (radRadioH1.Value == "Y" ) {
+               calEndDate.Enable = true;
+            } else {
+               calEndDate.Enable = false;
+            }
+        } else {
+            calDateStart.Enable = false;
+            calDateEnd.Enable   = false;
+            radRadioH1.Enable   = false;
+            calEndDate.Enable   = false;
+            cbxJibu_input.Enable   = false;
+        }     
+*/
+        gfn_MakeKeyMark(this); // 키값 수정 금지 설정
+
+        if(length(ls_RealFileName) >= 1) {
+            lbFileSize.text = NumFormat(obj.GetColumn(nRow, "AFFILESIZE")) + " Byte";
+        } else {
+            lbFileSize.text = "";
+        }
+        
+        //lb_FileUpload = false;
+
+	}
+	
+	lfn_FileDownCheck();
+
+	mb_IsNewData = false; // 저장버튼이 클릭 초기화
+	if (lbMode.Visible == false) lbMode.Visible = true;
+	lbMode.Text = "수정모드";
+	
+}
+
+
+function lfn_AfterSearchProfCount(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+
+function lfn_SetFormAuth_Edit(bStatus) {
+			cbxJibu_input.Enable = bStatus;
+			cbxJobGubun.Enable = bStatus;
+			edTrainingYear.Enable = bStatus;
+			edPersonNm2.Enable = bStatus;
+			edTel.Enable = bStatus;
+			edHpTel.Enable = bStatus;
+			edSosok.Enable = bStatus;
+			edPosition.Enable = bStatus;
+			radRadioH.Enable = bStatus;
+			edSlicense.Enable = bStatus;
+			meMoney.Enable = bStatus;
+			calDateStart.Enable = bStatus;
+			calDateEnd.Enable = bStatus;
+			radRadioH1.Enable = bStatus;
+			calEndDate.Enable = bStatus;
+			btnUploadFile.Enable = bStatus;
+			edRemark.Enable = bStatus;  
+			btnSave.Enable = bStatus;//저장버튼
+			// 관리자이면
+			if (G_AUTH == "SM" || G_AUTH == "PM" ) {
+				btnDelete.Enable = bStatus;//삭제버튼
+			}
+			calBirthday.Enable = bStatus;
+}
+
+
+function lfn_SetFormAuth(bStatus) {
+    btnInput.Enable = bStatus; // 추가 버튼
+    btnSave.Enable = bStatus; // 수정&저장 버튼
+	// 관리자이면
+	if (G_AUTH == "SM" || G_AUTH == "PM" ) {
+		btnDelete.Enable = bStatus;//삭제버튼
+	}
+
+}
+
+
+/*---------------------------------------------------
+ *   추가버튼 선택 시
+ *---------------------------------------------------*/
+function lfn_Input(obj)
+{
+
+	if (!gfn_Confirm("신규 내용을 등록 하시겠습니까?\n입력완료 후 저장 버튼을 누르세요.")) {
+        return false;
+	}
+
+    mb_IsNewData = true; // 저장버튼이 클릭 설정
+    lfn_Cancel(); // 값 초기화
+    lbMode.Text = "신규입력모드";
+    if (lbMode.Visible == false) lbMode.Visible = true;
+    
+    //alert(gds_oUserInfo.GetColumn(0, "PDEPTCD"));
+    
+    //cbxJibu_input.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+    cbxJibu.Value = gds_oUserInfo.GetColumn(0, "PDEPTCD");
+    cbxJibu_input.Value = cbxJibu.Value;
+    edTrainingYear.Text = "";
+	radRadioH.Index = 0;
+	radRadioH1.Index = 1;
+	cbxJobGubun.value = "0";
+    lfn_SetFormAuth_Edit(true);
+    edSSeq.Enable = false;	// 연번
+    
+    /*
+    if (G_AUTH == "SM" || G_AUTH == "PM" ) {
+        calDateStart.Enable = true;
+        calDateEnd.Enable   = true;
+        radRadioH1.Enable   = true;
+        calEndDate.Enable   = true;
+        lbText.Enable   = true;
+        cbxJibu_input.Enable   = true;
+    } else {
+        calDateStart.Enable = false;
+        calDateEnd.Enable   = false;
+        radRadioH1.Enable   = false;
+        calEndDate.Enable   = false;            
+        lbText.Enable   = false;
+        cbxJibu_input.Enable   = false;
+    }
+    */
+    edTrainingYear.SetFocus();
+
+}
+
+
+
+
+/*--------------------------------------------------------
+ * 기능 : 동일인 체크
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ *--------------------------------------------------------*/
+function lfn_SearchPersonCnt() {
+	ds_Jumin.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("profes:searchPFM0002JuminCnt", false);  
+	
+	// 서버 호출
+ 	var sParm = "";
+	sParm  = " JIBUCD=" + quote(cbxJibu.value);   
+	sParm += " BIRTHDAY=" + quote(left(calBirthday.Value,8));   
+
+	tit_callService( ""
+		            ,""
+		            ,""	// inDs
+		            ,"ds_Jumin=ds_oJumin" // outDs
+		            ,sParm
+			        ,"lfn_AfterSearchJumin"
+		            ,false
+		            ,false
+		            ,true
+	               );
+}
+function lfn_AfterSearchJumin(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    g_GuminCnt = ds_Jumin.GetColumn(0, "JuminCnt");
+     
+}
+
+
+
+/*---------------------------------------------------*
+ *   저장 버튼 선택 시                               * 
+ *---------------------------------------------------*/
+function lfn_Save(obj)
+{
+    var ls_UploadRealName = "";
+	
+	var RowType = ds_Professor.GetRowType(ds_Professor.currow);
+	
+    if (Length(cbxJibu_input.Value) == 0){ //지부
+        alert("지부는 필수 입니다.");
+        return false;
+    } else if (Length(edTrainingYear.Text) != "4"){
+        alert("년도 4자리를 입력하세요.");
+        edTrainingYear.SetFocus();
+        return false;
+    } else if (Length(edPersonNm2.Text) == 0) {
+        alert("성명은 필수 입니다.");
+        edPersonNm2.SetFocus();
+        return false;
+    } else if (Length(calBirthday.Value) == 0) {
+        alert("생년월일은 필수 입니다.");
+        calBirthday.SetFocus();
+        return false;
+    }
+
+    //해촉기간은 둘다 없던가 둘다 있어야 한다.
+    if (Length(calDateStart.Value) != 0 && Length(calDateEnd.Value) == 0) {
+        alert("위촉기간을 정확히 입력하세요.");
+        calDateEnd.SetFocus();
+        return false;
+    }
+    
+    //시스템 관리자 및 교수관리자만 해촉여부, 해촉일자 수정가능  
+    if (G_AUTH == "SM" || G_AUTH == "PM" ) {
+        if (radRadioH1.Value == "Y") {
+            if (Length(calEndDate.Value) == 0) {
+                alert("해촉일 경우 해촉일자를 넣어주세요.");
+                calEndDate.SetFocus();
+                return false;
+            }
+        }
+    } 
+    
+    lfn_SearchTeachMAX();//최대값 구해온다. 
+    
+    
+    //alert(cbxJibu_input.Value);
+    
+    if (mb_IsNewData) { // 신규 저장
+	   /*-----------------------------------------------------------*
+		 *  같은지부에 위촉받은 초빙강사에 대한 주민등록 중복 체크   *
+		 *-----------------------------------------------------------*/
+		lfn_SearchPersonCnt();
+		if ( !g_GuminCnt == 0 ) {
+			alert("중복(성명,생년월일)된 초빙강사가 있습니다.");
+			calBirthday.SetFocus();
+			return false;
+		}
+        
+        // 입력된 값을 그리드로 복사한다.
+        ds_Professor.InsertRow(0);     
+        ds_Professor.SetColumn(0, "GIBU"        	, cbxJibu_input.Value);  
+        ds_Professor.SetColumn(0, "SYEAR"       	, edTrainingYear.Text);
+        ds_Professor.SetColumn(0, "SMGNO"       	, G_SMGNOMAX); //lfn_SearchTeachMAX()=> 여기서 구해온 값.
+        ds_Professor.SetColumn(0, "SSEQ_CD"     	, edSSEQ.Text );
+        ds_Professor.SetColumn(0, "SNAME"       	, edPersonNm2.Text);
+        //ds_Professor.SetColumn(0, "STEL"        , edTel.Text );
+        ds_Professor.SetColumn(0, "STEL"        	, edTel.Value );//전화번호
+        ds_Professor.SetColumn(0, "SPHONE"     	 	, edHpTel.Value);
+        ds_Professor.SetColumn(0, "SSOSOK"      	, edSosok.Text);
+        ds_Professor.SetColumn(0, "SJIKWI"      	, edPosition.Text);
+        ds_Professor.SetColumn(0, "SEDU"        	, edSedu.Text );
+        ds_Professor.SetColumn(0, "SEDU2"        	, edSedu2.Text );
+        ds_Professor.SetColumn(0, "SLICENSE"    	, edSlicense.Text);
+        ds_Professor.SetColumn(0, "SGUBUN_CODE" 	, radRadioH.Value);
+        ds_Professor.SetColumn(0, "SFDATE"      	, calDateStart.Value);
+        ds_Professor.SetColumn(0, "STDATE"      	, calDateEnd.Value);
+        ds_Professor.SetColumn(0, "SENDYN_CODE" 	, radRadioH1.Value);
+        ds_Professor.SetColumn(0, "SENDDATE"    	, calEndDate.Value);
+        ds_Professor.SetColumn(0, "SREMARK"     	, edRemark.Text);
+        ds_Professor.SetColumn(0, "SPAY"        	, meMoney.Value);      //초빙강사료
+        ds_Professor.SetColumn(0, "SRESUME"    		, edAttachFile.Text );//초빙강사이력서
+        ds_Professor.SetColumn(0, "SJOBGUBUN_CODE" 	, cbxJobGubun.Value); //  초빙강사 직업         
+        ds_Professor.SetColumn(0, "SBIRTHDAY"  		, calBirthday.Value);//생년월일
+
+//        ds_Professor.SetColumn(0, "CAFREALNM", edAttachFile.Text); //초빙강사이력서 첨부파일
+
+    } else { // 수정 저장
+        if (!gfn_Confirm(MSGW00040)) { // 정말로 수정 저장 하시겠습니까?
+            return false;
+        }
+
+        ls_IsUpdateYN = true;
+        ls_grdRowPos  = ds_Professor.currow;//처리 후 해당 로우에 포커스가 가게한다.
+
+        // 입력된 값을 그리드로 복사한다.        
+        ds_Professor.SetColumn(ds_Professor.currow, "GIBU"        		, cbxJibu_input.Value);  
+        ds_Professor.SetColumn(ds_Professor.currow, "SYEAR"       		, edTrainingYear.Text);
+        ds_Professor.SetColumn(ds_Professor.currow, "SMGNO"       		, edSMGNO.Text);
+        ds_Professor.SetColumn(ds_Professor.currow, "SSEQ_CD"     		, edSSEQ.Text );
+        ds_Professor.SetColumn(ds_Professor.currow, "SNAME"       		, edPersonNm2.Text);
+        ds_Professor.SetColumn(ds_Professor.currow, "STEL"        		, edTel.Value );
+        ds_Professor.SetColumn(ds_Professor.currow, "SPHONE"      		, edHpTel.Value);
+        ds_Professor.SetColumn(ds_Professor.currow, "SSOSOK"      		, edSosok.Text);
+        ds_Professor.SetColumn(ds_Professor.currow, "SJIKWI"      		, edPosition.Text);
+        ds_Professor.SetColumn(ds_Professor.currow, "SEDU"        		, edSedu.Text );
+        ds_Professor.SetColumn(ds_Professor.currow, "SEDU2"        		, edSedu2.Text );
+        ds_Professor.SetColumn(ds_Professor.currow, "SLICENSE"    		, edSlicense.Text);
+        ds_Professor.SetColumn(ds_Professor.currow, "SGUBUN_CODE" 		, radRadioH.Value);
+        ds_Professor.SetColumn(ds_Professor.currow, "SFDATE"      		, calDateStart.Value);
+        ds_Professor.SetColumn(ds_Professor.currow, "STDATE"      		, calDateEnd.Value);
+        ds_Professor.SetColumn(ds_Professor.currow, "SENDYN_CODE" 		, radRadioH1.Value);
+        ds_Professor.SetColumn(ds_Professor.currow, "SENDDATE"    		, calEndDate.Value);
+        ds_Professor.SetColumn(ds_Professor.currow, "SREMARK"     		, edRemark.Text);
+        ds_Professor.SetColumn(ds_Professor.currow, "SPAY"        		, meMoney.Value);      //초빙강사료
+        ds_Professor.SetColumn(ds_Professor.currow, "SRESUME"     		, edAttachFile.Text );//초빙강사이력서     
+        ds_Professor.SetColumn(ds_Professor.currow, "SJOBGUBUN_CODE"    , cbxJobGubun.Value );//초빙강사 직업        
+        ds_Professor.SetColumn(ds_Professor.currow, "SBIRTHDAY"  		, calBirthday.Value );//생년월일
+        ds_Professor.SetColumn(ds_Professor.currow, "SSEQ_CD"	  		, edSSEQ.Text );//연번
+//        ds_Professor.SetColumn(0, "CAFREALNM", edAttachFile.Text); //초빙강사이력서 첨부파일
+        //alert("수정:"+ds_Professor.GetColumn(0,"SRESUME"));   
+ 
+    }
+      
+    tit_clearActionInfo();
+    
+    tit_addSaveActionInfo(
+        "profes:insert0002Speaker"	// insert
+        , "profes:update0002Speaker"	// update
+        , ""	// delete
+        , ""	// flag column 명
+        , ""	// key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N"  );
+        
+//alert("lb_FileUpload파일업로드일경우:"+lb_FileUpload); //=> 1
+
+    if(lb_FileUpload) { //파일 업로드일 경우
+        ls_UploadRealName = ls_UploadFileName + "_" + getDate() + right(timem(),3) + gfn_GetFileExtensionName(fdAttachFile.FileName);
+                
+        ds_Professor.SetColumn(ds_Professor.currow, "SRESUME"    , fdAttachFile.FileName);  
+        ds_Professor.SetColumn(ds_Professor.currow, "CAFSAVENM"  , fdAttachFile.FileName);      //차트모양.pptx
+        ds_Professor.SetColumn(ds_Professor.currow, "CAFREALNM"  , ls_UploadRealName);          //NOTIS_20091120145487.pptx
+        ds_Professor.SetColumn(ds_Professor.currow, "CAFFILESIZE", StripNum(lbFileSize.text));  //681234
+        ds_Professor.SetColumn(ds_Professor.currow, "CAFDIRPATH" , ls_FileUploadPath);          //MATERAL
+        ds_Professor.SetColumn(ds_Professor.currow, "CAFGUBUN" , ls_CAFGUBUN);                  //profes
+           
+        tit_addSaveActionInfo(
+            "profes:insertCustAttachFile" // insert
+            , "profes:updateCustAttachFile" // update
+            , "" // delete
+            , "" // flag column 명
+            , "" // key sql id
+            , 0	// key 증가 값
+            , "" 
+            , 0 
+            , "N" // 실행타입
+        );
+        ls_FileUploadService = " ds_iAttachFile=ds_Professor:U";
+    }        
+        
+    // 서버 호출 
+    tit_callService(
+        ""
+        ,""
+        ,"ds_iProfessor=ds_Professor:U" + ls_FileUploadService	// inDs
+        ,""	// outDs
+        ,""	// args 
+        ,"lfn_AfterSaveTrainingOrder"
+        ,false  );	
+
+//lb_FileUpload= true;
+//alert("lb_FileUpload:"+lb_FileUpload);
+/*
+alert("lb_FileUpload = "+lb_FileUpload                       //  
+  + " \n Length(FileName) = "+Length(fdAttachFile.FileName)  //  
+  + " \n ls_FileUploadPath = "+ls_FileUploadPath         //  /RESUME
+  + " \n fdAttachFile.FilePath = "+fdAttachFile.FilePath //  D:\노트북백업20090822
+  + " \n fdAttachFile.FileName = "+fdAttachFile.FileName //  쿼리.txt
+  + " \n ls_UploadRealName = "+ls_UploadRealName);       //  RESUME_20091208205017890.txt
+*/
+    
+    if (lb_FileUpload) { //파일 변경일 경우
+        if (Length(fdAttachFile.FileName) < 1) { //삭제 일 경우
+            tit_FileDelete(
+                ls_FileUploadPath
+                , ls_RealFileName
+                , false
+            );
+        } else { //변경일 경우
+            //alert("tit_FileWrite를 샐행한다.");
+            tit_FileWrite(
+                hfAttachFile
+                , ls_FileUploadPath
+                , fdAttachFile.FilePath
+                , fdAttachFile.FileName
+                , ls_UploadRealName
+                , "U"
+                , ls_RealFileName
+            );
+            hfAttachFile.CloseFile();
+        }
+    }
+    mb_IsNewData = false;
+    if (lbMode.Visible == false) lbMode.Visible = true;
+	lbMode.Text = "수정모드";
+
+
+}
+
+
+function lfn_AfterSaveTrainingOrder(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    //lb_FileUpload = false; //업로드 구분을 해지시킨다.
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    lfn_Search(); 
+}
+
+
+/*========================================================*
+ *  저장(입력)버튼 선택 시  MAX값을 구해온다.             *
+ *========================================================*/
+function lfn_SearchTeachMAX(obj){
+            
+	ds_TecProgMAX.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	//tit_addSearchActionInfo("profes:searchPFM0007SelMAX", false);  
+	tit_addSearchActionInfo("profes:search0002SelMAX", false);  
+		                        
+	// 서버 호출
+	tit_callService( ""
+		            ,""
+		            ,""	// inDs
+		            ,"ds_TecProgMAX=ds_oTecProgMAX" // outDs
+		            ,""
+		            ,"lfn_AfterInsertMAX"
+		            ,false
+		            ,false
+		            ,true     );	
+		                        
+	
+}
+function lfn_AfterInsertMAX(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    G_SMGNOMAX = ds_TecProgMAX.GetColumn(0, "SMGNOMAX");
+}
+
+
+
+/*---------------------------------------------------
+ *   삭제 버튼 선택 시
+ *---------------------------------------------------*/
+function lfn_Delete(obj)
+{
+    if (ds_Professor.currow < 0) {
+        gfn_Alert(MSGI00030); // 삭제할 레코드가 없습니다.
+        return false;
+    }
+   
+	if (!gfn_Confirm(MSGW00030)) { // 정말로 삭제 하시겠습니까?
+        return false;
+	}
+	
+ //   ds_Professor.DeleteRow(ds_Professor.currow); // 선택된 ROW를 삭제한다.
+    ds_Professor.SetColumn(ds_Professor.currow,"SEL","1");
+    gfn_FormInit(this); // 입력란 초기화
+
+	tit_clearActionInfo();
+	
+    if (length(ls_RealFileName) >= 1) { //첨부 파일이 존재할 경우
+        //첨부파일삭제(Delete)
+        tit_AddSingleActionInfo("profes:deleteCustAttachFile", "", 0, "", "N");
+        ls_FileUploadService = "ds_iAttachFile=ds_Professor:U ";
+    }	
+
+	//초빙강사삭제(update)
+    tit_AddSingleActionInfo("profes:delete0002Speaker", "", 0, "", "N");
+	// 서버 호출 
+	tit_callService(
+		 ""
+		,""
+		,ls_FileUploadService + "ds_iProfessor=ds_Professor:U"	 	// DELETE	 
+		,""	// outDs
+		,"" // args
+		,"lfn_AfterSaveDel"
+		,false
+     );
+
+		
+    if (length(ls_RealFileName) >= 1) { //첨부 파일이 존재할 경우
+
+        tit_FileDelete( //파일 삭제
+              ls_FileUploadPath
+            , ls_RealFileName
+            , false
+        );
+        ls_RealFileName = "";
+    }
+
+}
+
+function lfn_AfterSaveDel(nErrorCode, strErrorMsg) {
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    gfn_SaveMessage(); // 저장 메세지를 처리한다.
+    lfn_Search(); 
+}
+
+/*---------------------------------------------------
+ *   담당과목 버튼 선택 시  -> 쓰지 않아서 막아놈
+ *---------------------------------------------------*/
+function btnSubject1_OnClick(obj)
+{
+
+    var sArg = "";
+    
+    arrArg = Dialog("profes::frmprofes0002P01SubjectListPopUp.xml", sArg, 600, 400, "", -1, -1);
+    
+    edSedu.Text = arrArg[1];
+}
+
+
+function frmPFM0002MInviteProfMgnt_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam)
+{
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+        case 113 : // 조회(F2)
+            lfn_Search();
+            break;
+    }
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+
+	if (ds_Professor.GetUpdate()) {
+		if (!gfn_Confirm("변경된 내용이 있습니다. 그래도 [" + title + "] 창을 닫으시겠습니까?")) {
+			return false;
+		} else {
+			Close();
+		}
+	} else {
+	    Close();
+	}	    
+}
+/*
+ * 기능 : 초기화
+ */
+function lfn_Cancel(obj)
+{
+   ds_Professor.ClearData();
+//   ds_ProfessorDetail.Clear();
+   gfn_FormInit(this);
+   ls_RealFileName = "";
+   lbFileSize.Text = "";
+    radRadioH.Index = 0;
+    radRadioH1.Index = 0;
+   lfn_FileDownCheck();
+   lbMode.Text = "";
+   lbMode.Visible = false;
+}
+
+
+//======================================================================================================
+/*--------------------------------------------------------*
+ *  엑셀  버튼 선택 시                                    *
+ *--------------------------------------------------------*/
+function btnToExcel_OnClick(obj)
+{
+
+    if (ds_Professor.GetRowCount() < 1) {
+
+        gfn_Alert("출력할 데이터가 존재하지 않습니다.");
+
+        return false;
+
+    }
+
+	lfn_Excel(obj);
+
+}
+/*--------------------------------------------------------*
+ *  화면인쇄 버튼 선택 시                                 *
+ *--------------------------------------------------------*/
+function lfn_PrintScreen(obj)
+{
+	printscreen();
+}
+
+
+
+/*--------------------------------------------------------*
+ *  해촉여부 콤보 변환시                                  *
+ *--------------------------------------------------------*/
+ function radRadioH1_OnChanged(obj,strCode,strText,nOldIndex,nNewIndex)
+{
+
+	    //alert("aaa:"+radRadioH1.Value); 
+        if (G_AUTH == "SM" || G_AUTH == "PM" ) {
+            if (radRadioH1.Value == "Y" ) {
+              calEndDate.Enable = true;
+            } else {
+             calEndDate.Value  = "";
+             calEndDate.Enable = false;
+            }
+        }           
+	
+}
+
+
+
+
+//////////////////////////////////////////////////////////
+/* 사용자 함수 */
+/////////////////////////////////////////////////////////
+
+/**
+ * 버튼 정보 변경
+ */
+function lfn_FileDownCheck(){
+
+    if (length(ls_RealFileName) > 0 && !lb_FileUpload) {
+        btnUploadFile.Text = "삭제";
+    } else {
+        btnUploadFile.Text = "업로드";
+    }
+}
+
+
+/*--------------------------------------------------------*
+ *  업로드                                                *
+ *--------------------------------------------------------*/
+ function btnUploadFile_OnClick(obj)
+{
+    if (btnUploadFile.Text == "삭제") {
+    
+        lbFileSize.text = "";
+        edAttachFile.text = "";
+        btnUploadFile.Text = "업로드";
+        lb_FileUpload = true;
+
+    } else {
+
+        fdAttachFile.Type = "OPEN";
+        
+        if (fdAttachFile.open()) {
+            //alert(fdAttachFile.FilePath + "\\" + fdAttachFile.FileName); => (D:\한국소방\보고문서\화면.ppt)
+            fiAttachFile.FileName = fdAttachFile.FilePath + "\\" + fdAttachFile.FileName;
+            
+            edAttachFile.text = fdAttachFile.FileName;
+            lbFileSize.text = NumFormat(fiAttachFile.GetLength()) + " Byte";
+            
+            fiAttachFile.Close();
+
+            lb_FileUpload = true;
+        }
+    }
+
+	
+}
+
+/**
+ * 파일 다운로드
+ */
+function lfn_DownloadFile(obj) {
+
+    if (length(ls_RealFileName) > 0) {
+
+        fdAttachFile.Type = "SAVE";
+        fdAttachFile.FileName = edAttachFile.text;
+
+        if (fdAttachFile.open()) {
+            var arrRtn = tit_fileRead(
+                hfAttachFile
+                , ls_FileUploadPath
+                , ls_RealFileName
+                , fdAttachFile.FilePath
+                , fdAttachFile.FileName
+            );
+ 
+            gfn_Alert(MSGI00060); //다운로드 완료 메시지
+        }
+    }
+	
+}
+
+/**
+ * 그리드 클릭시
+ */
+function gdProfessor_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+    var lobj_Dataset = object(obj.BindDataset);
+ 
+    ds_Professor_OnRowPosChanged(lobj_Dataset,nRow,nRow);
+ 
+	if(nCell == 0) {
+		if (lobj_Dataset.GetColumn(nRow, "SEL") == "0") {
+			lobj_Dataset.SetColumn(nRow, "SEL", "1");
+		} else if (lobj_Dataset.GetColumn(nRow, "SEL") == "1") {
+			lobj_Dataset.SetColumn(nRow, "SEL", "0");
+		}
+	} if(nCell == 8) {
+	
+		if(!gfn_isNull(lobj_Dataset.GetColumn(nRow, "APPOINT_DOC_ID"))) {
+	
+			// 위촉결재문서 보기
+			ExecBrowser("http://172.19.1.1/ekp/mis_index.jsp?uid=" + gds_oUserInfo.GetColumn(0, "PPERSONNM") + 
+		
+												   "&employeeNumber=" + gds_oUserInfo.GetColumn(0, "PSABUN") +
+		
+												   "&GYMGNO=" + ds_Professor.GetColumn(nRow, "APPOINT_DOC_ID") + "&MTSTYPE=10");
+												   
+		}
+	
+/*	
+	} if(nCell == 10) {
+	
+		if(!gfn_isNull(lobj_Dataset.GetColumn(nRow, "APPROVAL_DOC_ID"))) {
+	
+			// 승인결재문서 보기
+			ExecBrowser("http://172.19.1.1/ekp/mis_index.jsp?uid=" + gds_oUserInfo.GetColumn(0, "PPERSONNM") + 
+		
+												   "&employeeNumber=" + gds_oUserInfo.GetColumn(0, "PSABUN") +
+		
+												   "&GYMGNO=" + ds_Professor.GetColumn(nRow, "APPROVAL_DOC_ID") + "&MTSTYPE=10");
+
+		}
+*/		
+	}
+	
+}
+
+function edPersonNm_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
+{
+	if (nChar == "13"){
+	    lfn_Search();
+	}
+}
+
+
+
+
+
+function btnSubject2_OnClick(obj)
+{
+
+    var sArg = "";
+    
+    arrArg = Dialog("profes::frmprofes0002P01SubjectListPopUp.xml", sArg, 600, 400, "", -1, -1);
+    
+    edSedu2.Text = arrArg[1];	
+}
+
+
+
+
+// 초빙강사 위촉 전자결재 상신
+function btnApproval_OnClick(obj)
+{
+
+    if (ds_Professor.RowCount() == 0) {
+    
+		gfn_Alert("위촉 전자결재 상신할 자료가 없습니다.");
+    
+        return false; 
+        
+    }
+    
+    // 결재상신할 초빙강사가 선택되었는지 체크
+    var ls_DataCnt = 0;
+    for (i = 0; i < ds_Professor.RowCount(); i++) {
+		if (ds_Professor.GetColumn(i, "SEL") == "1") {
+			if (gfn_isNull(ds_Professor.GetColumn(i, "APPOINT_STATUS")) ||
+			    ds_Professor.GetColumn(i, "APPOINT_STATUS") == "회수" ||
+			     ds_Professor.GetColumn(i, "APPOINT_STATUS") == "반송") {
+			    
+			} else {
+				gfn_Alert("결재중이거나 결재완료인 초빙강사는 중복하여 결재상신할 수 없습니다.");
+				return false; 
+			}
+			ls_DataCnt = ls_DataCnt + 1;
+		}
+    }
+    
+    if (ls_DataCnt == 0) {
+    
+		gfn_Alert("위촉 전자결재 선택된 초빙강사가 없습니다.");
+    
+        return false; 
+    
+    } else if (ls_DataCnt > 5) {
+    
+		gfn_Alert("초빙강사 위촉 전자결재 상신은 5명까지만 가능합니다.");
+    
+        return false; 
+        
+    }
+    
+
+    if(!Confirm("초빙강사 위촉 전자결재 상신을 하시겠습니까?")){  //선택한것이 있는지 체크 메세지 보임
+
+        return false;
+
+    }
+    
+    // 관리번호 채번하기
+    ds_oAppointMgno.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	
+	tit_addSearchActionInfo("profes:searchProfes0002SpeakerAppointMGNO", false);  
+	
+	// 서버 호출
+	tit_callService( ""
+		            ,""
+		            ,""	// inDs
+		            ,"ds_oAppointMgno=ds_oAppointMgno" // outDs
+		            ,""
+			        ,""
+		            ,false
+		            ,false
+		            ,true
+	               );
+    
+    
+    
+    
+	// 연동 시스템에 자료 넣기
+
+	// insert into MISSPEAKERAPPOINTM
+
+	tit_clearActionInfo();
+
+    tit_AddSingleActionInfo(	
+        "profes:insertProfes0002MisSpeakerAppointM"	// insert  		
+        , ""	// update  
+        , ""	// delete
+        , ""	// flag column 명
+        , ""	// key sql id
+        , 0	// key 증가 값
+        , "" 
+        , 0 
+        , "N"	// 실행타입
+
+    );
+
+    // 서버 호출 
+
+    tit_callService(
+        ""
+        ,""
+        ,""/// inDs		
+        ,""	// outDs
+        , "SMMGNO=" + quote(ds_oAppointMgno.GetColumn(0, "NEXTMGNO"))	// 관리번호
+            + " PSABUN=" + quote(gds_oUserInfo.GetColumn(0, "PSABUN")) // -- 사번  
+            + " JIBUNM=" + quote(cbxJibu.Text)  // 지부  // args 
+        ,"lfn_AfterInsertMisSpeakerAppoint"
+        ,true
+        ,false
+        ,true
+
+    ); 
+ 
+    
+	// insert into MISSPEAKERAPPOINTMD   
+    
+    for (i = 0; i < ds_Professor.RowCount(); i++) {
+    
+		if (ds_Professor.GetColumn(i, "SEL") == "1") {	// 결재선택된 자료만
+		
+			tit_clearActionInfo();
+		
+			tit_AddSingleActionInfo(	
+				"profes:insertProfes0002MisSpeakerAppointD"	// insert  		
+				, ""	// update  
+				, ""	// delete
+				, ""	// flag column 명
+				, ""	// key sql id
+				, 0	// key 증가 값
+				, "" 
+				, 0 
+				, "N"	// 실행타입
+			);
+		
+			// 서버 호출 
+		
+			tit_callService(
+				""
+				,""
+				,""/// inDs		
+				,""	 // outDs
+				, "SMMGNO=" + quote(ds_oAppointMgno.GetColumn(0, "NEXTMGNO"))	// 결재 관리번호 
+				  + " SMGNO=" + quote(ds_Professor.GetColumn(i, "SMGNO"))	// 초빙강사관리번호
+				  + " SYEAR=" + quote(ds_Professor.GetColumn(i, "SYEAR"))	// 위촉년도
+				  + " GIBU=" + quote(ds_Professor.GetColumn(i, "GIBU"))	// 지부
+				  + " SNAME=" + quote(ds_Professor.GetColumn(i, "SNAME"))	// 강사성명
+				  + " SSOSOK=" + quote(ds_Professor.GetColumn(i, "SSOSOK"))	// 초빙강사관리번호
+				  + " SJIKWI=" + quote(ds_Professor.GetColumn(i, "SJIKWI"))	// 초빙강사관리번호
+				  + " SLICENSE=" + quote(ds_Professor.GetColumn(i, "SLICENSE"))	// 초빙강사관리번호
+				  + " SEDU=" + quote(ds_Professor.GetColumn(i, "SEDU"))	// 초빙강사관리번호
+				  + " SEDU2=" + quote(ds_Professor.GetColumn(i, "SEDU2"))	// 초빙강사관리번호	 // args 
+				,"lfn_AfterInsertMisSpeakerAppoint"
+				,true
+				,false
+				,true
+		
+			); 
+			
+		}
+		
+	}
+	
+	// 위촉 전자결재 열기
+    lfn_SpeakerAppointApproval();
+    
+}
+
+
+
+/*
+
+ * 기능 : Transaction 서비스 호출 후 처리해야 할 내용
+
+ * parameter : strSvcID - 서비스ID
+
+ *             nErrorCode - 에러코드
+
+ *             strErrorMsg - 에러메시지
+
+ * Return : 없음
+
+ */
+
+function lfn_AfterInsertMisSpeakerAppoint(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+
+        return;
+
+    }
+
+}
+
+
+// 위촉 전자결재 열기
+function lfn_SpeakerAppointApproval() {
+
+    //btnProcElecApv.Enable = true;
+
+   ExecBrowser("http://172.19.1.1/ekp/mis_index.jsp?uid=" + gds_oUserInfo.GetColumn(0, "PPERSONNM") + 
+
+                                           "&employeeNumber=" + gds_oUserInfo.GetColumn(0, "PSABUN") +
+
+                                           "&GYMGNO=" + ds_oAppointMgno.GetColumn(0, "NEXTMGNO") + "&MTSTYPE=30");
+
+
+
+}
+
+// SMS발송 
+function btnSendSms_OnClick(obj)
+{
+    if (gfn_IsNull(ds_Professor.GetColumn(ds_Professor.currow, "SMGNO"))) {
+
+        gfn_Alert("초빙강사 정보가 없습니다. 조회 후 발송해 주십시오.");
+
+        return false;
+
+    }
+
+
+    if (gfn_IsNull(edHpTel.Text)) {
+
+        gfn_Alert("발송할 휴대폰번호가 존재하지 않습니다.");
+
+        return false;
+
+    }
+
+
+	// gfn_KTSendOneSmsPopup(sMBCCD, sMPK1, sMPK2, sMPK3, sMBSMGNO, sMRECVNM, sMRECVTEL, sMTITLE, sMMSG);
+	var arrSms = gfn_KTSendOneSmsPopup("401" // 초빙강사
+					, ds_Professor.GetColumn(ds_Professor.currow, "SMGNO")	// 관리번호
+					, ""	// pk2
+					, ""	// pk3
+					, ""	// 일괄발송관리번호
+					, edPersonNm2.Text
+					, edHpTel.Text
+					, "한국소방안전원"
+					, ""
+				); // 단일문자메시지발송 팝업
+
+}
+
+function calDateStart_OnChanged(obj,strOldText,strNewText)
+{
+	// 위촉종료일자는 2년 뒤로 설정
+	calDateEnd.Value = AddDate(left(calDateStart.Value,8), 730);
+		
+}
+
+function Form_OnActivate(obj)
+{
+	gs_SysID = "[stm_01,bsn_6000,dsc_0002]";	// 개인정보접속기록 시스템ID  
+}
+
+
+
+
+]]></Script>
+</Window>

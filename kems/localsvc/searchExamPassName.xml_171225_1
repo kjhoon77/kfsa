@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class2 classname="Free" template="Free" update="NO">
+	<header><![CDATA[]]></header>
+	<dataset id="output" io="OUTPUT" reserved="NO"></dataset>
+	<member_func>
+		<function id="Run()" needs="NO" reserved="YES" state="RES_IMP_FUNC" visible="YES"></function>
+	</member_func>
+	<source><![CDATA[
+function Run()
+{
+	// TODO: Add your source code here
+	var selectQuery = " SELECT  EOEXAMDATE                                                                               "
+									+ " 			 ,G_TEAMCODE.GTTEAMNM AS GTTEAMNM                                                           "
+									+ " 			 ,G_TEAMCODE.GTPRTSEQ AS GTPRTSEQ                                                    "
+									+ " 			 ,TRAININGCOURSE.TCCOURSENM AS TCCOURSENM                                                    "
+									+ " 			 ,EXAMORDER.EOYEAR AS EOYEAR                                                             "
+									+ " 			 ,EXAMORDER.EOEXAMORDER AS EOEXAMORDER                                                       "
+									+ " 			 ,C.ERAPLEXAMNO AS ERAPLEXAMNO                                                           "
+									+ " 			 ,EJPERSONNM                                                                                 "
+									+ " 			 ,MID(EJRESIDENTNO,1,2)+'.'+MID(EJRESIDENTNO,3,2)+'.'+MID(EJRESIDENTNO,5,2)                        "
+									+ " 			  +IIF ((MID(EJRESIDENTNO,7,1) MOD 2) = 1, '(남)' ,'(여)') AS BIRTHDAY    "
+									+ " 			 ,EOHJUBSUNO                                                                                     "
+									+ " 			 ,C.ERSCORE AS ERSCORE                                                                                  "
+									+ " 			 ,C.ERPASSYN AS ERPASSYN                                                                                 "
+									+ " 			 ,C.ERRANK AS ERRANK                 	                                                                 "									
+									+ " FROM  ";
+	  if (REPEAT == "0") {
+	  selectQuery	 += "         (SELECT A.*                                                                                      "
+									+ " 				FROM EXAMRESULT A ,(                                                                             "
+									+ " 														SELECT EREJMGNO, MAX(CINT(ERSEQ)) AS ERSEQ                             						 "
+									+ " 														FROM EXAMRESULT                                                              "
+									+ " 														GROUP BY EREJMGNO) B                                             						 "
+									+ " 				WHERE A.EREJMGNO = B.EREJMGNO                                                                    "
+									+ " 				AND CINT(A.ERSEQ) = B.ERSEQ) AS C                                                            ";
+	  } else {
+	  selectQuery	 += "         (SELECT A.*                                                                                      "
+									+ " 				FROM EXAMRESULT A ,(                                                                             "
+									+ " 														SELECT EREJMGNO, MAX(CINT(ERSEQ)) AS ERSEQ, ERREPEATNO                             "
+									+ " 														FROM EXAMRESULT                                                              "
+									+ " 														GROUP BY EREJMGNO, ERREPEATNO) B                                             "
+									+ " 				WHERE A.EREJMGNO = B.EREJMGNO                                                                    "
+									+ " 				AND CINT(A.ERSEQ) = B.ERSEQ) AS C                                                            ";
+	  }								
+		selectQuery	 += "      ,EXAMJUBSU                                                                                "
+									+ "      ,G_TEAMCODE                                                                         "
+									+ "      ,EXAMORDER                                                                                "
+									+ "      ,EXAMORDERH                                                                           "
+									+ "      ,TRAININGCOURSE         	                                                             "
+									+ " WHERE EXAMJUBSU.EJMGNO = C.EREJMGNO                                                                      "
+									+ " AND EXAMORDERH.EOHEJMGNO = EXAMJUBSU.EJMGNO                                                              "
+									+ " AND EXAMORDERH.EOHSEQ = EXAMJUBSU.EJLASTEOHSEQ                                                           "
+									+ " AND EXAMORDER.EOMGGTMGNO = G_TEAMCODE.GTMGNO                                                             "
+									+ " AND EXAMORDER.EOMGNO = EXAMORDERH.EOHEOMGNO                                                              "
+									+ " AND EXAMORDER.EOTCCOURSECD = TRAININGCOURSE.TCCOURSECD                                                   "
+									+ " AND TRAININGCOURSE.TCSEARCHGUBUN ='E'                                                                    "
+									+ " AND C.ERPASSYN='Y'                                                                    "
+									+ " AND EXAMORDER.EOMGNO = '" + EOMGNO + "'                                                                  ";
+		if (REPEAT != "0") {
+	  selectQuery	 += " AND C.ERREPEATNO = '" + REPEAT + "'                                                                      ";
+	  }
+		selectQuery	 += " ORDER BY G_TEAMCODE.GTPRTSEQ, EXAMORDER.EOEXAMORDER, C.ERSCORE DESC                                        ";
+	
+	//trace(selectQuery);
+	ExecuteQuery(selectQuery, "output");
+}
+]]></source>
+</class2>

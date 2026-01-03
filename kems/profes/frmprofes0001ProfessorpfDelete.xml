@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form Height="328" Id="frmprofes0001ProfessorpfDelete" Left="8" OnLoadCompleted="Form_OnLoadCompleted" PidAttrib="7" Title="교수&#32;전임상세&#32;및&#32;강의전담&#32;배정내역" Top="8" Ver="1.0" Width="792" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioListDelete">
+				<Contents>
+					<colinfo id="SEL" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oProfGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>1</CD>
+						<DATA>전임</DATA>
+					</record>
+					<record>
+						<CD>2</CD>
+						<DATA>겸임</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Static Height="20" Id="lbText" Left="8" Style="sty_Text" TabOrder="1" Text="■&#32;교수&#32;강의전담/전임상세&#32;내역" Top="8" VAlign="Middle" Width="244"></Static>
+		<Static Align="Center" Height="20" Id="lbInsaCode" Left="8" Style="sty_Label" TabOrder="3" Text="사번" Top="32" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioProfBasicInfo" Border="Flat" Column="INSACODE" Enable="FALSE" Height="20" Id="edInsaCode" ImeMode="native" Left="98" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="2" Top="32" UserData="I" Width="104"></Edit>
+		<Static Align="Center" Height="20" Id="Static0" Left="8" Style="sty_Label" TabOrder="4" Text="성명" Top="53" VAlign="Middle" Width="88"></Static>
+		<Edit AutoSelect="TRUE" BindDataset="ds_ioProfBasicInfo" Border="Flat" Column="PFNM" Enable="FALSE" Height="20" Id="edPfnm" ImeMode="native" Left="98" LeftMargin="2" OnFocus="gfn_ComponentOnFocus" OnKillFocus="gfn_ComponentOnKillFocus" Readonly="TRUE" Style="sty_Edit" TabOrder="5" Top="53" UserData="I" Width="104"></Edit>
+		<Grid AutoEnter="TRUE" AutoFit="TRUE" AutoSelect="TRUE" BindDataset="ds_ioListDelete" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="322" ColSizing="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="20" Height="242" Id="gdProfUser" InputPanel="FALSE" Left="8" LineColor="default" MinWidth="100" Right="786" RowHeight="20" Style="sty_Grid" TabOrder="6" TabStop="true" Top="80" UseDBuff="true" UsePopupMenu="true" UserData="안전원교수관리목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="778">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="40"/>
+						<col width="100"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="80"/>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="90"/>
+						<col width="90"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="순번"/>
+						<cell align="center" col="1" display="text" text="배정지부"/>
+						<cell align="center" col="2" display="text" text="성명"/>
+						<cell col="3" display="text" text="직위"/>
+						<cell align="center" col="4" display="text" text="구분"/>
+						<cell col="5" display="text" text="전임상세"/>
+						<cell col="6" display="text" text="강의전담"/>
+						<cell col="7" display="text" text="지정일"/>
+						<cell col="8" display="text" text="종료일"/>
+					</head>
+					<body>
+						<cell align="center" col="0" display="text" expr="currow+1"/>
+						<cell align="center" col="1" colid="PFTEAM" display="text"/>
+						<cell align="center" col="2" colid="PFNM" display="text"/>
+						<cell align="center" col="3" colid="JIKRYUL" display="text"/>
+						<cell align="center" col="4" colid="PFGUBUN" combocol="CD" combodataset="ds_oProfGubun" combotext="DATA" display="combo"/>
+						<cell align="center" col="5" colid="PFGUBUN2" display="text"/>
+						<cell align="center" col="6" colid="PFGUBUN3" display="text"/>
+						<cell align="center" col="7" colid="PFSTARTDATE" display="date"/>
+						<cell align="center" col="8" colid="PFENDDATE" display="date"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnDelete" ImageID="BTN_COM_DEL" Left="614" OnClick="lfn_Delete" Style="sty_Button" TabOrder="7" ToolTipText="삭제&#32;저장" Top="56" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="700" OnClick="lfn_End" Style="sty_Button" TabOrder="8" ToolTipText="닫기" Top="56" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="528" OnClick="lfn_Search" Style="sty_Button" TabOrder="9" ToolTipText="조회" Top="56" Width="85"></Button>
+	</Form>
+	<Script><![CDATA[#include "LIB::profes.js"; // 공통업무 관련
+
+function Form_OnLoadCompleted(obj) {
+	tit_createActionInfo(); // X-Framework용    
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this); // 권한을 조회한다.
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+        lfn_SetFormAuth(true); // 저장 권한
+    } else if (ms_FormAuth == "R") {
+        lfn_SetFormAuth(false); // 읽기 권한
+    } else {
+        gfn_Alert(MSGI00080);
+        close();
+    }    
+    
+    lfn_Search();
+}
+
+function lfn_Search(obj) {
+
+	ds_ioListDelete.ClearData(); // 데이타셋 초기화
+	tit_clearActionInfo();
+	tit_addSearchActionInfo("profes:searchprofes0001ProfessorpfDelete", false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioListDelete=ds_ioListDelete" // outDs
+		,"INSACODE=" + quote(edInsaCode.Text) //-- 사번 // args 
+		,"lfn_AfterSearchProfDeleteList"
+		,false
+		,false
+		,true
+	);
+}
+
+// 조회 후 callbackfunction lfn_AfterSearchProfDeleteList(nErrorCode, strErrorMsg)
+{
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+		gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+}
+
+
+function lfn_Delete(obj)
+{
+	if(gfn_Confirm("선택한 내역을 삭제하시겠습니까?."))
+	{
+	
+	gfn_Alert("!"+edInsaCode.Text);
+	 gfn_Alert("!"+ds_ioListDelete.GetColumn(ds_ioListDelete.GetCurrow(), "PFSTARTDATE"));
+	 
+	 
+	
+			tit_clearActionInfo();
+			tit_AddSingleActionInfo("profes:deleteProfes0001ProfBasicInfo_2", "", 0, "", "N");
+			// 서버 호출 
+			tit_callService(
+				""
+				,""
+				,"ds_ioListDelete=ds_ioListDelete" // inDs		
+				,""	// outDs
+				,"INSACODE=" + quote(edInsaCode.Text)
+				+" PFSTARTDATE=" + quote(ds_ioListDelete.GetColumn(ds_ioListDelete.GetCurrow(), "PFSTARTDATE")) 
+				,"lfn_AfterDelProfBasicInfo_3"
+				,false
+				,false
+				,true
+			);			
+	}
+}
+
+// 조회 후 callbackfunction lfn_AfterDelProfBasicInfo_3(nErrorCode, strErrorMsg)
+{
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+		gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+    gfn_Alert("삭제되었습니다.");
+    lfn_Search();
+}
+
+]]></Script>
+</Window>

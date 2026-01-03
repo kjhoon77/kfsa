@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="472" Id="frmCOM9050MPersonFormUpload" Left="8" OnActivate="Form_OnActivate" OnDeactivate="Form_OnDeactivate" OnFocus="Form_OnFocus" OnKeyDown="Form_OnKeyDown" OnKillFocus="Form_OnKillFocus" OnLoadCompleted="Form_OnLoadCompleted" OnSize="Form_OnSize" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="(개인별)개인정보&#32;민원서식&#32;등록&#32;바로가기" ToolTipFont="Default,0" Top="8" Ver="1.0" Width="570" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioBizformcode">
+				<Contents>
+					<colinfo id="FCCD" size="256" summ="default" type="STRING"/>
+					<colinfo id="FCBIZ" size="256" summ="default" type="STRING"/>
+					<colinfo id="FCSEQ" size="256" summ="default" type="STRING"/>
+					<colinfo id="FCFULLNM" size="256" summ="default" type="STRING"/>
+					<colinfo id="FCLINK" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_iBizgubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>01</CD>
+						<DATA>강습</DATA>
+					</record>
+					<record>
+						<CD>02</CD>
+						<DATA>시험</DATA>
+					</record>
+					<record>
+						<CD>03</CD>
+						<DATA>수첩</DATA>
+					</record>
+					<record>
+						<CD>06</CD>
+						<DATA>실무</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="376" LineColor="user14" Right="554" TabOrder="61" Top="1" Type="Rectangle" Width="178"></Shape>
+		<Div BKColor="user0" Height="28" Id="divWorkFormTitle" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="3" TabStop="FALSE" Text="Div0" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="360">
+			<Contents></Contents>
+		</Div>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSearch" ImageID="BTN_COM_SEARCH" Left="379" OnClick="lfn_Search" Style="sty_Button" TabOrder="1" ToolTipText="조회" Top="4" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="466" OnClick="lfn_End" Style="sty_Button" TabOrder="2" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Grid AutoEnter="TRUE" AutoSelect="TRUE" BindDataset="ds_ioBizformcode" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="464" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" FillAreaType="All" HeadBorder="Flat" HeadHeight="22" Height="399" Id="gdBizform" InputPanel="FALSE" Left="5" LineColor="default" OnCellClick="gdBizform_OnCellClick" Right="552" RowHeight="22" Style="sty_Grid" TabOrder="5" TabStop="true" Top="65" UseDBuff="true" UsePopupMenu="true" UserData="인터넷강습접수목록" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="547">
+			<contents>
+				<format id="Default">
+					<columns>
+						<col width="81"/>
+						<col width="379"/>
+						<col width="81"/>
+					</columns>
+					<head>
+						<cell align="center" col="0" display="text" text="업무"/>
+						<cell align="center" col="1" display="text" text="서식"/>
+						<cell align="center" col="2" display="text" text="화면열기"/>
+					</head>
+					<body>
+						<cell align="center" bkcolor="user4" col="0" colid="FCBIZ" combocol="CD" combodataset="ds_iBizgubun" combotext="DATA" display="combo" font="굴림,10,Bold" suppress="1" SuppressAlign="Middle"/>
+						<cell align="left" col="1" colid="FCFULLNM" display="normal"/>
+						<cell align="center" bkcolor="wheat" col="2" combodisplayrowcnt="16" display="button" edit="combo" font="굴림,10,Bold" text="바로가기"/>
+					</body>
+				</format>
+			</contents>
+		</Grid>
+		<Static Align="Center" Border="Flat" Font="굴림,10,Bold" Height="23" Id="Static1" Left="4" TabOrder="6" Text="개인정보&#32;민원서식&#32;개인별&#32;등록화면&#32;바로가기" Top="34" VAlign="Middle" Width="548"></Static>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnDataHistory" ImageID="BTN_TEXT_05" Left="472" OnClick="btnDataHistory_OnClick" Style="sty_Button" TabOrder="7" Text="사용방법" ToolTipText="조회" Top="35" Width="80" Visible="false"></Button>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM9050MPersonFormUpload.xml
+ * 설명 : (개인별)개인정보 민원서식 등록 바로가기
+ * 작성일 : 2017.10.17
+ * 작성자 : 정현호
+ */
+
+#include "LIB::training.js"; // 공통업무 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+    ls_SystemGubun = gs_SystemGubun;
+    ls_SystemMenuId = gs_SystemMenuId;
+    var ls_FormId = split(sFormUrl, "::");
+    ls_FormId = split(ls_FormId[1], ".");
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+    // 공통 코드 조회
+    lfn_Search(); // 폼코드 조회
+    
+}
+
+function Form_OnKeyDown(obj,objJubsuerObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    // to do
+    gfn_Form_OnKeyDown(obj,objJubsuerObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam); // 공통 키 이벤트 처리
+}
+
+function Form_OnSize(obj,nCx,nCy,nState) {
+    if (gs_IsResizingForm == "Y") {
+        gdBizform.Height = nCy - gdBizform.Top - 4;
+        gdBizform.Width = nCx - gdBizform.Left - 4;
+    }
+}
+ function lfn_Search(obj) {
+	
+	// 폼코드 조회
+	var serviceName = "com:searchFcbizcode";
+	
+	ds_ioBizformcode.ClearData(); // 데이타셋 초기화
+	
+	tit_clearActionInfo();
+	tit_addSearchActionInfo(serviceName, false);
+	// 서버 호출 
+	tit_callService(
+		""
+		,""
+		,""	// inDs
+		,"ds_ioBizformcode=ds_ioBizformcode" // outDs
+		,"TYPE='1'" // args
+		,"lfn_AfterFcbizcode"
+		,false
+		,""
+		,true
+	);
+	
+ }
+ 
+function lfn_AfterFcbizcode(nErrorCode, strErrorMsg) {
+    
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        return;
+    }
+    
+}
+
+// 바로가기
+function gdBizform_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
+{
+	if (nCell == 2) {
+		//alert(ds_ioBizformcode.GetColumn(nRow, "FCLINK"));
+		if(ds_ioBizformcode.GetRowCount() == 0) {	
+			gfn_Alert("바로가기 연결할 자료가 없습니다.");	
+			return;	
+		} else {	
+			var arrSystem = split(ds_ioBizformcode.GetColumn(nRow, "FCLINK"),":");
+			var ArrMenuInfo = "";
+			
+			ArrMenuInfo = gfn_SearchMenuInfo(arrSystem[0], ds_ioBizformcode.GetColumn(nRow, "FCLINK"));	//메뉴정보조회
+	
+			if(length(ArrMenuInfo) > 0 ) {	
+				ls_SystemGubun = arrMenuInfo[7];						//"cust";	
+				gs_SystemMenuId = arrMenuInfo[5];						//"메뉴아이디	
+				global.mnuLeft.tabMenu.tabpgMenu.Text = arrMenuInfo[6];	//"고객관리";	
+				var ls_MenuId = arrMenuInfo[0];							//"0000000262";	
+				var ls_MenuTitle = arrMenuInfo[1];						//"실무교육접수관리";	
+				var ls_MenuUrl = arrMenuInfo[2];						//"cust::frmcust1025MEduJubsuManagement.xml";	
+					
+				global.mnuTop.tabTopMenu.TabIndex = gds_oTopMenu.FindRow("MSYSGUBUN", ls_SystemGubun);	
+				gfn_OpenLinkChildWindow(ls_MenuUrl, ls_MenuTitle, ls_MenuId, ""); 
+	
+			} else {	
+				gfn_Alert("해당 메뉴를 찾을 수 없습니다.");	
+			}	
+		}
+	
+	} 
+	
+}
+
+function btnDataHistory_OnClick(obj)
+{
+	
+}
+]]></Script>
+</Window>

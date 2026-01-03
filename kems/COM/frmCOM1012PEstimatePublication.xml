@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="216" Id="frmCOM1012PEstimatePublication" Left="8" OnKeyDown="Form_OnKeyDown" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="작성일자별&#32;계산서&#32;발행&#32;팝업" Top="8" Ver="1.0" Width="400" WorkArea="true">
+		<Datasets>
+			<Dataset DataSetType="Dataset" Id="ds_ioTrainingPerson">
+				<Contents>
+					<colinfo id="TPMGNO" size="22" summ="default" type="DECIMAL"/>
+					<colinfo id="TPNM" size="20" summ="default" type="STRING"/>
+					<colinfo id="TPPERSONKEY" size="13" summ="default" type="STRING"/>
+					<colinfo id="KEY" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_ModifyGubun">
+				<Contents>
+					<colinfo id="CD" size="256" summ="default" type="STRING"/>
+					<colinfo id="DATA" size="256" summ="default" type="STRING"/>
+					<record>
+						<CD>01</CD>
+						<DATA>이름/주민번호&#32;변경</DATA>
+					</record>
+					<record>
+						<CD>02</CD>
+						<DATA>접수&#32;대상자&#32;변경</DATA>
+					</record>
+				</Contents>
+			</Dataset>
+			<Dataset DataSetType="Dataset" Id="ds_oEstimate">
+				<Contents>
+					<colinfo id="O_RTNSTAT" size="256" summ="default" type="STRING"/>
+					<colinfo id="O_RTNMSG" size="256" summ="default" type="STRING"/>
+				</Contents>
+			</Dataset>
+		</Datasets>
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="304" LineColor="user14" Right="395" TabOrder="4" Top="1" Type="Rectangle" Width="91"></Shape>
+		<Shape Bottom="160" Height="128" Id="Shape1" Left="2" LineColor="user15" Right="392" TabOrder="3" Top="32" Type="Rectangle" Width="390"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEnd" ImageID="BTN_COM_END" Left="307" OnClick="lfn_End" Style="sty_Button" TabOrder="1" ToolTipText="닫기" Top="4" Width="85"></Button>
+		<Div BKColor="user0" Height="24" Id="divWorkFormTitle" Left="4" OnLoadCompleted="Form_OnLoadCompleted" Style="sty_Form" TabOrder="2" TabStop="FALSE" Text="Div0" Top="4" Url="COM::frmCOM0100SWorkFormTitle.xml" Width="228">
+			<Contents></Contents>
+		</Div>
+		<Static Font="굴림,12,Bold" Height="17" Id="Static0" Left="12" TabOrder="5" Text="*&#32;작성일자별&#32;계산서&#32;발행" Top="43" Width="353"></Static>
+		<Static Font="굴림,10" Height="17" Id="Static1" Left="28" TabOrder="6" Text="수납&#32;후&#32;부분환불&#32;등으로&#32;발행된&#32;(수정)계산서가&#32;있는&#32;경우" Top="70" Width="353"></Static>
+		<Static Font="굴림,10" Height="17" Id="Static2" Left="28" TabOrder="7" Text="예)&#32;수납:138,000원,&#32;&#32;부분환불:74,000원&#32;=&gt;&#32;현재금액:64,000원" Top="121" Width="360"></Static>
+		<Static Font="굴림,10" Height="17" Id="Static3" Left="28" TabOrder="8" Text="현재&#32;잔여금액으로&#32;계산서를&#32;발행하는&#32;기능입니다." Top="94" Width="353"></Static>
+		<Static Align="Center" Height="20" Id="lbSunapDate" Left="4" Style="sty_Label" TabOrder="10" Text="작성일자" Top="180" VAlign="Middle" Width="100"></Static>
+		<Calendar Border="Flat" Dateformat="yyyy-MM-dd" DayFont="돋음,9" DaySelect="Auto" EditAlign="CENTER" HeaderFont="돋음,10,Bold" Height="20" Id="calSunapDate" Left="108" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" SaturdayTextColor="blue" SelectedDayFont="돋음,9,Bold" Style="sty_Calendar" SundayTextColor="red" TabOrder="9" Top="180" UserData="I:처리일자" WeeksFont="돋음,9" Width="96"></Calendar>
+		<Button BKColor="user17" ButtonStyle="TRUE" Cursor="HAND" Font="굴림,10,Bold" Height="31" Id="btnEstimate" Left="208" OnClick="btnEstimate_OnClick" Style="sty_Button" TabOrder="11" Text="계산서&#32;발행" Top="175" Width="184"></Button>
+		<Static Font="굴림,10" Height="17" Id="Static4" Left="28" TabOrder="12" Text="&#32;&#32;&#32;&#32;&#32;=&gt;&#32;64,000원에&#32;대한&#32;계산서&#32;발급" Top="139" Width="353"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 고객정보명 : frmCOM1012PEstimatePublication.xml
+ * 설명 : 계산서 발행 팝업
+ * 작성일 : 2015.11.18
+ * 작성자 : 정현호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+//parameter
+//1. sVGubun
+//2. sVamt
+//3. sVpvmgno
+
+var li_TpMgno = ""; // 강습자관리번호
+var ls_IsNiceCheckOk = "N"; // 실명인증 체크
+var jubsuYN = ""; // 접수대상자 유효 여부
+var arrArg = array(3);         // TRAININGPERSON 변경 후 재 조회하여 값을 담음
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+	
+	calSunapDate.Value = GetDate();
+}
+
+function Form_OnUnloadCompleted(obj) {
+    close();
+}
+
+function Form_OnKeyDown(obj,objSenderObj,nChar,bShift,bControl,bAlt,nLLParam,nHLParam) {
+    switch (nChar) {
+        case 27 : // 종료(Esc)
+            lfn_End();
+            break;
+    }
+}
+
+
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close(arrArg);
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+
+
+
+
+function btnEstimate_OnClick(obj)
+{
+
+    tit_clearActionInfo();
+    tit_addSingleActionInfo("com:executeEstimatePublication", "", 0, "");
+    // 서버 호출
+    tit_callService(
+        ""
+        ,""
+        ,""    // inDs
+        ,"ds_oEstimate=ds_oEstimate" // outDs
+        , "GUBUN=" + quote(sVGubun)
+          + " SUNAPDATE=" + quote(left(calSunapDate.Value, 8))
+	      + " AMT=" + quote(sVamt)
+	      + " PVVMMGNO=" + quote(sVpvmgno) // args
+        ,"lfn_afterSearch"
+        ,false
+        ,false
+        ,true
+    );
+               
+	               
+}
+
+// 조회 후 callback/*
+ * 기능 : POS 정상처리 후 처리 후 처리해야 할 내용
+ * parameter : nErrorCode - 에러코드
+ *             strErrorMsg - 에러메시지
+ * Return : 없음
+ */
+function lfn_afterSearch(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+        var arrRet = array(2);
+        arrRet[0] = "FAIL";
+        Close(arrRet);
+        return;
+    }
+
+    if (ds_oEstimate.GetColumn(0, "O_RTNSTAT") <> "00") {
+        gfn_ErrorMsg(ds_oEstimate.GetColumn(0, "O_RTNSTAT"), ds_oEstimate.GetColumn(0, "O_RTNMSG"));
+        var arrRet = array(2);
+        arrRet[0] = "FAIL";
+        Close(arrRet);
+        return;
+    }
+}
+
+
+]]></Script>
+</Window>

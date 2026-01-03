@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="160" Id="frmcti0010PInfoMessage" Left="8" OnLoadCompleted="Form_OnLoadCompleted" OnTimer="Form_OnTimer" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="진행상태바팝업" Top="8" Ver="1.0" Width="300" WorkArea="true">
+		<Image Height="156" Id="imgProgress" ImageID="IMAGE::IMG_PROGRESS.gif" TabOrder="1" Width="300"></Image>
+		<Static Color="user10" Font="굴림,9" Height="24" Id="lbInfomsg" Left="13" Style="sty_TextBlue" TabOrder="2" Text="주민번호(전화번호/사업자번호)를&#32;입력중입니다." Top="128" VAlign="Middle" Width="276"></Static>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmCOM0030PProgressBar.xml
+ * 설명 : Transactin 진행상태바를 보여준다.
+ * 작성일 : 2009.06.24
+ * 작성자 : 장성호
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+var start_time = Time();
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj);
+    
+    /*
+    if (IsExistVar("sMsg")) {
+        lbInfomsg.Text = sMsg; // "주민번호를 입력중입니다." 
+    }
+    */
+    //lbInfomsg.Text = "주민번호(전화번호/사업자번호)를 입력중입니다." ; 
+    parent.sCloseYnInfo = "";
+    SetTimer(5, 100); // Timer Start
+    
+}
+
+function Form_OnUnloadCompleted(obj) {
+    KillTimer(5); // TimerKill      
+
+    gfn_Form_OnUnloadCompleted(obj);
+}
+/* 공통 필수 종료 */
+
+function lfn_COM0030PProgressBar_OnTimer(obj,nEventID)
+{
+    lbPassed.text = (Time() - start_time) + " 초 경과";
+    
+    if( parent.sCloseYnInfo == "Y"){
+    
+        lbInfomsg.Text = "입력이 완료되었습니다.";
+		parent.sCloseYnInfo = "";
+		Close();    
+    }
+    
+}
+
+function Form_OnTimer(obj,nEventID)
+{
+    if( parent.sCloseYnInfo == "Y"){
+		parent.sCloseYnInfo = "";
+		Close();    
+    }
+	
+}
+]]></Script>
+</Window>

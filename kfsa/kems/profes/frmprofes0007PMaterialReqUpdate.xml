@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Form BKColor="user0" Height="160" Id="frmprofes0007PMaterialReqUpdate" Left="8" OnLoadCompleted="Form_OnLoadCompleted" OnUnloadCompleted="Form_OnUnloadCompleted" PidAttrib="7" Style="sty_Form" Title="교육과목검색팝업" Top="8" Ver="1.0" Width="600" WorkArea="true">
+		<Shape Bottom="29" Height="28" Id="shpBtnBox" Left="419" LineColor="user14" Right="597" TabOrder="61" Top="1" Type="Rectangle" Width="178"></Shape>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnSelect" ImageID="BTN_TEXT_COM" Left="422" OnClick="btnSelect_OnClick" Style="sty_Button" TabOrder="1" Text="확인" ToolTipText="선택" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnCancel" ImageID="BTN_TEXT_COM" Left="509" OnClick="btnCancel_OnClick" Style="sty_Button" TabOrder="2" Text="취소" ToolTipText="선택취소" Top="4" Transparent="TRUE" Width="85"></Button>
+		<Shape Bottom="156" Height="124" Id="Shape1" Left="4" LineColor="user15" Right="595" TabOrder="5" Top="32" Type="Rectangle" Width="591"></Shape>
+		<Static Align="Center" Height="20" Id="lblTabTitle" Left="16" Style="sty_LabelGruopBox" TabOrder="6" Text="수정요청" Top="24" VAlign="Middle" Width="90"></Static>
+		<Static Height="20" Id="lbAddLabel" Left="9" Style="sty_TextBlue" TabOrder="7" Text="※&#32;등록된&#32;교안내용에&#32;대한&#32;수정요청시에&#32;사유를&#32;입력하여야&#32;합니다." Top="131" VAlign="Middle" Width="581"></Static>
+		<Static Align="Center" Height="20" Id="Static5" Left="8" Style="sty_Label" TabOrder="8" Text="사유입력란" Top="52" VAlign="Middle" Width="88"></Static>
+		<TextArea Border="Flat" Height="76" Id="taTextArea" Left="100" OnFocus="gfn_ComponentOnFocus" OnKeyDown="gfn_EnterNextFocus" OnKillFocus="gfn_ComponentOnKillFocus" Style="sty_TextArea" TabOrder="3" Top="52" VScroll="TRUE" Width="491"></TextArea>
+	</Form>
+	<Script><![CDATA[/*
+ * 프로그램명 : frmprofes0007PMaterialReqUpdate.xml
+ * 설명 : 교안 수정요청 사유 팝업
+ * 작성일 : 2010.02.04
+ * 작성자 : 김은규
+ */
+
+#include "LIB::COMMON.js"; // 공통 관련
+
+/* 공통 필수 시작 */
+function Form_OnLoadCompleted(obj) {
+    gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+    
+    taTextArea.SetFocus();
+}
+
+function Form_OnUnloadCompleted(obj) {
+    Close();
+}
+
+/*
+ * 기능 : 종료
+ */
+function lfn_End(obj) {
+    Close();
+}
+/* 공통 필수 종료 */
+
+/* 사용자 함수 */
+
+/* 사용자 이벤트 함수 */
+function btnSelect_OnClick(obj)
+{
+	if( gfn_IsNull(trim(taTextArea.Text)) ) {
+		gfn_Alert("수정요청 사유를 입력하십시오.");
+		taTextArea.SetFocus();
+		return;
+	}
+	
+	var arrArg = Array(2);
+		arrArg[0] = "OK"; // 취소
+		arrArg[1] = trim(taTextArea.Text); // 사유
+		Close(arrArg);
+}
+
+function btnCancel_OnClick(obj)
+{
+	var arrArg = Array(2);
+		arrArg[0] = "NO"; // 취소
+		arrArg[1] = trim(taTextArea.Text); // 사유
+		Close(arrArg);
+}
+]]></Script>
+</Window>
