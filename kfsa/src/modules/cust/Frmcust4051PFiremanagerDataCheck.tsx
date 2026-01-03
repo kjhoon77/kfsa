@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
@@ -20,16 +20,6 @@ export const Frmcust4051PFiremanagerDataCheck = () => {
         { field: 'FSBNM_GUBUN', headerName: '1개 일치', width: 63 },
         { field: 'FSADDR_GUBUN', headerName: '3개 일치', width: 64 },
         { field: 'FSFMNM_GUBUN', headerName: '청에만 존재', width: 83 },
-    ];
-    const columns_grdExport_1 = [
-        { field: 'CNO_BUNHO', headerName: '고객번호', width: 81 },
-        { field: 'GTTEAMNM', headerName: '지부', width: 76 },
-        { field: 'BNM', headerName: '대상물', width: 192 },
-        { field: 'ADDR12', headerName: '주소', width: 177 },
-        { field: 'FMNM', headerName: '성명', width: 63 },
-        { field: 'FSBNM_GUBUN', headerName: '대상물', width: 52 },
-        { field: 'FSADDR_GUBUN', headerName: '주소비교', width: 53 },
-        { field: 'FSFMNM_GUBUN', headerName: '성명비교', width: 59 },
     ];
     const columns_grdExport_2 = [
         { field: 'CNO_BUNHO', headerName: '고객번호', width: 81 },
@@ -92,6 +82,16 @@ export const Frmcust4051PFiremanagerDataCheck = () => {
         { field: 'FSFMNM_GUBUN', headerName: '성명비교', width: 59 },
     ];
     const columns_grdExport_8 = [
+        { field: 'CNO_BUNHO', headerName: '고객번호', width: 81 },
+        { field: 'GTTEAMNM', headerName: '지부', width: 76 },
+        { field: 'BNM', headerName: '대상물', width: 192 },
+        { field: 'ADDR12', headerName: '주소', width: 177 },
+        { field: 'FMNM', headerName: '성명', width: 63 },
+        { field: 'FSBNM_GUBUN', headerName: '대상물', width: 52 },
+        { field: 'FSADDR_GUBUN', headerName: '주소비교', width: 53 },
+        { field: 'FSFMNM_GUBUN', headerName: '성명비교', width: 59 },
+    ];
+    const columns_grdExport_9 = [
         { field: 'FSBNM', headerName: '대상물', width: 192 },
         { field: 'FSADDR', headerName: '주소', width: 177 },
         { field: 'FSFMNM', headerName: '성명', width: 63 },
@@ -99,7 +99,7 @@ export const Frmcust4051PFiremanagerDataCheck = () => {
         { field: 'ADDR12_GUBUN', headerName: '주소비교', width: 53 },
         { field: 'FMNM_GUBUN', headerName: '성명비교', width: 59 },
     ];
-    const columns_grdExport_9 = [
+    const columns_grdExport_10 = [
         { field: 'CNO_BUNHO', headerName: '고객번호', width: 81 },
         { field: 'GTTEAMNM', headerName: '지부', width: 76 },
         { field: 'BNM', headerName: '대상물', width: 192 },
@@ -145,7 +145,21 @@ export const Frmcust4051PFiremanagerDataCheck = () => {
                     <Typography variant="body2" sx={{ minWidth: 17, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "15px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_tabTab1 ? undefined : 'none' }}><Box sx={{ width: '767px', height: '443px', width: "100%", height: "auto", minHeight: "443px" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab1} onChange={(e, v) => setTabValue_tabTab1(v)} aria-label="tabTab1"><Tab label="통계(집계)" /><Tab label="전체" /><Tab label="3개일치" /><Tab label="2개 일치:1대상물+주소" /><Tab label="2개 일치:2대상물+성명" /><Tab label="2개 일치:3주소+성명" /><Tab label="1개 일치" /><Tab label="3개 불일치" /><Tab label="청에만 존재" /><Tab label="대상물 주소 성명 합쳐서 비교" /></Tabs></Box><CustomTabPanel value={tabValue_tabTab1} index={0}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "59px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '187px', height: '22px', display: 'flex', alignItems: 'center', ml: '5px' }}>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "15px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_tabTab1 ? undefined : 'none' }}><Box sx={{ width: '767px', height: '443px', width: "100%", height: "auto", minHeight: "443px" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab1} onChange={(e, v) => setTabValue_tabTab1(v)} aria-label="tabTab1"><Tab label="통계(집계)" /><Tab label="전체" /><Tab label="3개일치" /><Tab label="2개 일치:1대상물+주소" /><Tab label="2개 일치:2대상물+성명" /><Tab label="2개 일치:3주소+성명" /><Tab label="1개 일치" /><Tab label="3개 불일치" /><Tab label="청에만 존재" /><Tab label="대상물 주소 성명 합쳐서 비교" /></Tabs></Box><CustomTabPanel value={tabValue_tabTab1} index={0}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "10px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static14 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '97px', height: '24px' }}><Typography variant="body2">조회별 각 건수</Typography></Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '187px', height: '22px', display: 'flex', alignItems: 'center', ml: '5px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 96, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>안전원 전체</Typography>
+                    <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '186px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 96, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>3개 일치</Typography>
+                    <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '186px', height: '22px', display: 'flex', alignItems: 'center', ml: '2px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 96, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>1)대상물+주소</Typography>
+                    <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '186px', height: '22px', display: 'flex', alignItems: 'center', ml: '2px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 96, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>2)대상물+성명</Typography>
+                    <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '187px', height: '22px', display: 'flex', alignItems: 'center', ml: '5px' }}>
                     <Typography variant="body2" sx={{ minWidth: 96, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>3)주소+성명</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '186px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
@@ -162,15 +176,16 @@ export const Frmcust4051PFiremanagerDataCheck = () => {
                     <Typography variant="body2" sx={{ minWidth: 140, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>대상물 주소 성명 비교</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack></Stack>
-</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={1}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioAssociationFireStation2_All} columns={columns_grdExport_1} /></Paper></Box></Stack>
-</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={2}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioAssociationFireStation2_3yes} columns={columns_grdExport_2} /></Paper></Box></Stack>
-</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={3}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioAssociationFireStation2_2yes1} columns={columns_grdExport_3} /></Paper></Box></Stack>
-</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={4}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioAssociationFireStation2_2yes2} columns={columns_grdExport_4} /></Paper></Box></Stack>
-</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={5}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioAssociationFireStation2_2yes3} columns={columns_grdExport_5} /></Paper></Box></Stack>
-</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={6}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioAssociationFireStation2_1onlyyes} columns={columns_grdExport_6} /></Paper></Box></Stack>
-</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={7}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioAssociationFireStation2_3no} columns={columns_grdExport_7} /></Paper></Box></Stack>
-</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={8}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioFireStationAssociation_second_1onlyno} columns={columns_grdExport_8} /></Paper></Box></Stack>
-</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={9}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioAssociationFireStationBnmaAddrFmnm_no} columns={columns_grdExport_9} /></Paper></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "272px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport ? undefined : 'none' }}><Paper sx={{ width: '24px', height: '132px', width: '100%', height: 'auto', minHeight: '132px' }}><DataGridWrapper rows={hook.ds_ioStatistics} columns={columns_grdExport} /></Paper></Box></Stack>
+</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={1}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport_2 ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioAssociationFireStation2_All} columns={columns_grdExport_2} /></Paper></Box></Stack>
+</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={2}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport_3 ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioAssociationFireStation2_3yes} columns={columns_grdExport_3} /></Paper></Box></Stack>
+</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={3}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport_4 ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioAssociationFireStation2_2yes1} columns={columns_grdExport_4} /></Paper></Box></Stack>
+</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={4}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport_5 ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioAssociationFireStation2_2yes2} columns={columns_grdExport_5} /></Paper></Box></Stack>
+</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={5}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport_6 ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioAssociationFireStation2_2yes3} columns={columns_grdExport_6} /></Paper></Box></Stack>
+</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={6}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport_7 ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioAssociationFireStation2_1onlyyes} columns={columns_grdExport_7} /></Paper></Box></Stack>
+</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={7}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport_8 ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioAssociationFireStation2_3no} columns={columns_grdExport_8} /></Paper></Box></Stack>
+</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={8}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport_9 ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioFireStationAssociation_second_1onlyno} columns={columns_grdExport_9} /></Paper></Box></Stack>
+</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={9}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport_10 ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioAssociationFireStationBnmaAddrFmnm_no} columns={columns_grdExport_10} /></Paper></Box></Stack>
 </CustomTabPanel></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static5 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '120px', height: '22px' }}><Typography variant="body2">교육일정 생성</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_fdImport ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>fdImport</Button></Box><Box sx={{ display: hook.isVisible_fdExport ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>fdExport</Button></Box></Stack>

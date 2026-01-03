@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
@@ -10,6 +10,7 @@ import * as Frmsys0055PAddrSearchData from './Frmsys0055PAddrSearchData';
 
 export const Frmsys0055PAddrSearch = () => {
     const hook = useFrmsys0055PAddrSearch();
+    const [chk_chkRoadInput, setChk_chkRoadInput] = useState('0');
     const columns_gdRoad = [
         { field: 'RZIPCD', headerName: '우편번호', width: 62 },
         { field: 'JADDR', headerName: '주소', width: 543 },
@@ -52,7 +53,7 @@ export const Frmsys0055PAddrSearch = () => {
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '440px', height: '22px', display: 'flex', alignItems: 'center', ml: '82px' }}>
                     <Typography variant="body2" sx={{ minWidth: 80, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>나머지 주소</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_chkRoadInput ? undefined : 'none' }}><Box sx={{ width: '76px', height: '22px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box></Stack>
+                 </Stack><FormControlLabel control={<Checkbox checked={chk_chkRoadInput === '1'} onChange={(e) => setChk_chkRoadInput(e.target.checked ? '1' : '0')} />} label="직접입력" /></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbRoadDetailAddr2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '170px', height: '19px' }}><Typography variant="body2">[동/호수, 층 등 입력]</Typography></Box></Box><Box sx={{ display: hook.isVisible_Static4 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '130px', height: '22px' }}><Typography variant="body2">[검색된 주소가 없는 경우]</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnSave ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnSave_OnClick} sx={{ width: '122px', height: '24px', whiteSpace: "nowrap" }}>적용주소 반영(F4)</Button></Box></Stack>
 

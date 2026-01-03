@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
@@ -10,6 +10,7 @@ import * as Frmcust0034PSearchMainbuildingData from './Frmcust0034PSearchMainbui
 
 export const Frmcust0034PSearchMainbuilding = () => {
     const hook = useFrmcust0034PSearchMainbuilding();
+    const [chk_chkCust, setChk_chkCust] = useState('0');
     const columns_gdSubCustList = [
         { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
         { field: 'CGTMGNO', headerName: '지부', width: 70 },
@@ -82,7 +83,7 @@ export const Frmcust0034PSearchMainbuilding = () => {
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '388px', height: '22px', display: 'flex', alignItems: 'center', ml: '12px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>대상물명</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_btnSubsearch ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_SubSearch} sx={{ width: '79px', height: '24px', whiteSpace: "nowrap" }}>조  회</Button></Box><Box sx={{ display: hook.isVisible_btnSubSelect ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnSubSelect_OnClick} sx={{ width: '85px', height: '24px', whiteSpace: "nowrap" }}>선택</Button></Box><Box sx={{ display: hook.isVisible_btnNewAdd ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnNewAdd_OnClick} sx={{ width: '85px', height: '24px', whiteSpace: "nowrap" }}>신규추가</Button></Box><Box sx={{ display: hook.isVisible_chkCust ? undefined : 'none' }}><Box sx={{ width: '100px', height: '16px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box></Stack>
+                 </Stack><Box sx={{ display: hook.isVisible_btnSubsearch ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_SubSearch} sx={{ width: '79px', height: '24px', whiteSpace: "nowrap" }}>조  회</Button></Box><Box sx={{ display: hook.isVisible_btnSubSelect ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnSubSelect_OnClick} sx={{ width: '85px', height: '24px', whiteSpace: "nowrap" }}>선택</Button></Box><Box sx={{ display: hook.isVisible_btnNewAdd ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnNewAdd_OnClick} sx={{ width: '85px', height: '24px', whiteSpace: "nowrap" }}>신규추가</Button></Box><FormControlLabel control={<Checkbox checked={chk_chkCust === '1'} onChange={(e) => setChk_chkCust(e.target.checked ? '1' : '0')} />} label="삭제자료포함" /></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "9px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdSubCustList ? undefined : 'none' }}><Paper sx={{ width: '766px', height: '212px', width: '100%', height: 'auto', minHeight: '212px' }}><DataGridWrapper rows={hook.ds_oSubCustList} columns={columns_gdSubCustList} /></Paper></Box></Stack>
 
                     </Paper>

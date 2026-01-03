@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
@@ -11,6 +11,13 @@ import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 
 export const Frmtraining0405MExamJubsuList = () => {
     const hook = useFrmtraining0405MExamJubsuList();
+    const [chk_chk1, setChk_chk1] = useState('0');
+    const [chk_chk3, setChk_chk3] = useState('0');
+    const [chk_chk4, setChk_chk4] = useState('0');
+    const [chk_chk5, setChk_chk5] = useState('0');
+    const [chk_chk6, setChk_chk6] = useState('0');
+    const [chk_chk2, setChk_chk2] = useState('0');
+    const [chk_ChkAll, setChk_ChkAll] = useState('0');
     const columns_gdExamJubsu = [
         { field: 'EOMGGTMGNO', headerName: '지부', width: 60 },
         { field: 'EOYEAR', headerName: '년도', width: 40 },
@@ -73,10 +80,10 @@ export const Frmtraining0405MExamJubsuList = () => {
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '190px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>시험일자</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '117px', height: '22px', display: 'flex', alignItems: 'center', ml: '0px' }}>
                     <Typography variant="body2" sx={{ minWidth: 20, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '369px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>환불여부</Typography>
@@ -86,7 +93,7 @@ export const Frmtraining0405MExamJubsuList = () => {
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>합격여부</Typography>
                     <FormControl component="fieldset" sx={{ width: "max-content", whiteSpace: "nowrap" }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmtraining0405MExamJubsuListData.ds_ds_oPassYn || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl>
                  </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static0 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '88px', height: '24px' }}><Typography variant="body2">응시자격</Typography></Box></Box><Box sx={{ display: hook.isVisible_ChkAll ? undefined : 'none' }}><Box sx={{ width: '75px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_chk1 ? undefined : 'none' }}><Box sx={{ width: '80px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_chk2 ? undefined : 'none' }}><Box sx={{ width: '80px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_chk3 ? undefined : 'none' }}><Box sx={{ width: '80px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_chk4 ? undefined : 'none' }}><Box sx={{ width: '80px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_chk5 ? undefined : 'none' }}><Box sx={{ width: '80px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box><Box sx={{ display: hook.isVisible_chk6 ? undefined : 'none' }}><Box sx={{ width: '80px', height: '23px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static0 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '88px', height: '24px' }}><Typography variant="body2">응시자격</Typography></Box></Box><FormControlLabel control={<Checkbox checked={chk_ChkAll === '1'} onChange={(e) => setChk_ChkAll(e.target.checked ? '1' : '0')} />} label="전체" /><FormControlLabel control={<Checkbox checked={chk_chk1 === '1'} onChange={(e) => setChk_chk1(e.target.checked ? '1' : '0')} />} label="강습수료" /><FormControlLabel control={<Checkbox checked={chk_chk2 === '1'} onChange={(e) => setChk_chk2(e.target.checked ? '1' : '0')} />} label="경력" /><FormControlLabel control={<Checkbox checked={chk_chk3 === '1'} onChange={(e) => setChk_chk3(e.target.checked ? '1' : '0')} />} label="학력" /><FormControlLabel control={<Checkbox checked={chk_chk4 === '1'} onChange={(e) => setChk_chk4(e.target.checked ? '1' : '0')} />} label="학·경력" /><FormControlLabel control={<Checkbox checked={chk_chk5 === '1'} onChange={(e) => setChk_chk5(e.target.checked ? '1' : '0')} />} label="자격·경력" /><FormControlLabel control={<Checkbox checked={chk_chk6 === '1'} onChange={(e) => setChk_chk6(e.target.checked ? '1' : '0')} />} label="자격" /></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '633px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>가접수여부</Typography>
                     <FormControl component="fieldset" sx={{ width: "max-content", whiteSpace: "nowrap" }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmtraining0405MExamJubsuListData.ds_ds_ioJubsuGubun2 || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl>

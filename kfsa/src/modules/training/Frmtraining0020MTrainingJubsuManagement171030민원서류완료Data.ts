@@ -1,5 +1,5 @@
 // @ts-nocheck
-export const Frmtraining0020MTrainingJubsuManagement171030민원서류완료Data = {};
+export const Frmtraining0020MTrainingJubsuManagement171030민원서류완료Data = {};
 
 export interface Ids_ioTrainingJubsu {
     ABSENTDAY?: string;

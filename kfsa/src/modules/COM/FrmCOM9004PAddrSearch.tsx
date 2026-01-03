@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
@@ -10,6 +10,7 @@ import * as FrmCOM9004PAddrSearchData from './FrmCOM9004PAddrSearchData';
 
 export const FrmCOM9004PAddrSearch = () => {
     const hook = useFrmCOM9004PAddrSearch();
+    const [chk_chkRoadInput, setChk_chkRoadInput] = useState('0');
     const columns_grdRoadAddr = [
         { field: 'ZIPNO', headerName: '우편번호', width: 80 },
         { field: 'JIBUNADDR', headerName: '주소', width: 625 },
@@ -79,7 +80,7 @@ export const FrmCOM9004PAddrSearch = () => {
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '103px', height: '22px', display: 'flex', alignItems: 'center', ml: '16px' }}>
                     <Typography variant="body2" sx={{ minWidth: 61, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>우편번호</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_edRoadAddrPart1 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '208px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Box sx={{ display: hook.isVisible_edRoadAddrPart2 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '376px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Box sx={{ display: hook.isVisible_chkRoadInput ? undefined : 'none' }}><Box sx={{ width: '76px', height: '22px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box></Stack>
+                 </Stack><Box sx={{ display: hook.isVisible_edRoadAddrPart1 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '208px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Box sx={{ display: hook.isVisible_edRoadAddrPart2 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '376px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><FormControlLabel control={<Checkbox checked={chk_chkRoadInput === '1'} onChange={(e) => setChk_chkRoadInput(e.target.checked ? '1' : '0')} />} label="직접입력" /></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '425px', height: '22px', display: 'flex', alignItems: 'center', ml: '16px' }}>
                     <Typography variant="body2" sx={{ minWidth: 103, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>나머지 주소</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
@@ -15,6 +15,8 @@ import { Frmprofes0005S03LecHistory } from './Frmprofes0005S03LecHistory';
 export const Frmprofes0005MLecHistory = () => {
     const hook = useFrmprofes0005MLecHistory();
     const [tabValue_tabTab, setTabValue_tabTab] = useState(0);
+    const [chk_chkStudy, setChk_chkStudy] = useState('0');
+    const [chk_chkEduUnion, setChk_chkEduUnion] = useState('0');
     const columns_gdStudyCourse = [
         { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
         { field: 'EDUTEAMNM', headerName: '지부', width: 50 },
@@ -61,17 +63,17 @@ export const Frmprofes0005MLecHistory = () => {
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '84px', height: '22px', display: 'flex', alignItems: 'center', ml: '6px' }}>
                     <Typography variant="body2" sx={{ minWidth: 52, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>회차</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_chkEduUnion ? undefined : 'none' }}><Box sx={{ width: '72px', height: '22px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box></Stack>
+                 </Stack><FormControlLabel control={<Checkbox checked={chk_chkEduUnion === '1'} onChange={(e) => setChk_chkEduUnion(e.target.checked ? '1' : '0')} />} label="통합강의" /></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '132px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 52, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>상태</Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmprofes0005MLecHistoryData.ds_ds_Status || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '170px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 68, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>교육일</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '116px', height: '22px', display: 'flex', alignItems: 'center', ml: '2px' }}>
                     <Typography variant="body2" sx={{ minWidth: 16, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_chkStudy ? undefined : 'none' }}><Box sx={{ width: '175px', height: '22px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box></Stack>
+                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                 </Stack><FormControlLabel control={<Checkbox checked={chk_chkStudy === '1'} onChange={(e) => setChk_chkStudy(e.target.checked ? '1' : '0')} />} label="교육시간이 틀린 강의실적" /></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnMutilSort ? undefined : 'none' }}><Button variant="outlined"  onClick={hook.btnMutilSort_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '22px', whiteSpace: "nowrap" }}><Sort fontSize="small" /></Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdStudyCourse ? undefined : 'none' }}><Paper sx={{ width: '792px', height: '223px', width: '100%', height: 'auto', minHeight: '223px' }}><DataGridWrapper rows={hook.ds_ioStudyCourse} columns={columns_gdStudyCourse} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btn_apprReq ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_apprReq_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>승인요청</Button></Box><Box sx={{ display: hook.isVisible_btn_modAppr ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_modAppr_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>수정허가</Button></Box><Box sx={{ display: hook.isVisible_btn_appr ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_appr_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>승인</Button></Box><Box sx={{ display: hook.isVisible_btnEduUnion ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnEduUnion_OnClick} sx={{ width: '105px', height: '24px', whiteSpace: "nowrap" }}>통합강의적용</Button></Box><Box sx={{ display: hook.isVisible_btnOldLecture ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnOldLecture_OnClick} sx={{ width: '105px', height: '24px', whiteSpace: "nowrap" }}>기존자료적용</Button></Box></Stack>

@@ -7,7 +7,7 @@ export const menuData = [
       { title: 'KEMSOuterBizCiMainWin32', path: '/KEMSOuterBizCiMainWin32' },
       { title: 'KEMSPOSETCCiMainWin32', path: '/KEMSPOSETCCiMainWin32' },
       { title: 'KEMSCiMainWin32', path: '/KEMSCiMainWin32' },
-      { title: '교육종합관리시스템Description', path: '/교육종합관리시스템Description' },
+      { title: '교육종합관리시스템Description', path: '/교육종합관리시스템Description' },
     ]
   },
   {
@@ -287,7 +287,7 @@ export const menuData = [
       { title: 'Frmtraining0015MTrainingOrderList', path: '/training/Frmtraining0015MTrainingOrderList' },
       { title: 'Frmtraining0016MEduHealthQuestionList', path: '/training/Frmtraining0016MEduHealthQuestionList' },
       { title: 'Frmtraining0020MTrainingJubsuManagement', path: '/training/Frmtraining0020MTrainingJubsuManagement' },
-      { title: 'Frmtraining0020MTrainingJubsuManagement171030민원서류완료', path: '/training/Frmtraining0020MTrainingJubsuManagement171030민원서류완료' },
+      { title: 'Frmtraining0020MTrainingJubsuManagement171030민원서류완료', path: '/training/Frmtraining0020MTrainingJubsuManagement171030민원서류완료' },
       { title: 'Frmtraining0020MTrainingJubsuManagementSCI', path: '/training/Frmtraining0020MTrainingJubsuManagementSCI' },
       { title: 'Frmtraining0020PBookPrint', path: '/training/Frmtraining0020PBookPrint' },
       { title: 'Frmtraining0020PTrainingCyberInfo', path: '/training/Frmtraining0020PTrainingCyberInfo' },
@@ -397,7 +397,7 @@ export const menuData = [
       { title: 'Frmtraining0385MInternetLicenseReIssueStatistics', path: '/training/Frmtraining0385MInternetLicenseReIssueStatistics' },
       { title: 'Frmtraining0386MLicenseSiGunGuList', path: '/training/Frmtraining0386MLicenseSiGunGuList' },
       { title: 'Frmtraining0390MExamScheduleManagement', path: '/training/Frmtraining0390MExamScheduleManagement' },
-      { title: 'Frmtraining0390MExamScheduleManagementSpecialSepComplete', path: '/training/Frmtraining0390MExamScheduleManagementSpecialSepComplete' },
+      { title: 'Frmtraining0390MExamScheduleManagement특급분리완료접수기간공고기간', path: '/training/Frmtraining0390MExamScheduleManagement특급분리완료접수기간공고기간' },
       { title: 'Frmtraining0391PExamOrderList', path: '/training/Frmtraining0391PExamOrderList' },
       { title: 'Frmtraining0395MExamScheduleList', path: '/training/Frmtraining0395MExamScheduleList' },
       { title: 'Frmtraining0400MExamJubsuManagement', path: '/training/Frmtraining0400MExamJubsuManagement' },
@@ -568,8 +568,8 @@ export const menuData = [
       { title: 'Frmsys0098PIpPersonInput', path: '/sys/Frmsys0098PIpPersonInput' },
       { title: 'Frmsys0100MMobileAppManager', path: '/sys/Frmsys0100MMobileAppManager' },
       { title: 'Frmsys9990MTemp', path: '/sys/Frmsys9990MTemp' },
-      { title: 'CopyFrmsys0051PZipCodeList', path: '/sys/CopyFrmsys0051PZipCodeList' },
-      { title: 'CopyFrmsys0054PAddrSearch', path: '/sys/CopyFrmsys0054PAddrSearch' },
+      { title: '사본Frmsys0051PZipCodeList', path: '/sys/사본Frmsys0051PZipCodeList' },
+      { title: '사본Frmsys0054PAddrSearch', path: '/sys/사본Frmsys0054PAddrSearch' },
     ]
   },
   {
@@ -1010,8 +1010,8 @@ export const menuData = [
       { title: 'Frmitem0005PEduScheduleList', path: '/cust/Frmitem0005PEduScheduleList' },
       { title: 'Frmprofes0003MEduMgnt', path: '/cust/Frmprofes0003MEduMgnt' },
       { title: 'SearchCust6400ChangeMList', path: '/cust/SearchCust6400ChangeMList' },
-      { title: 'CopyFrmcust2060MMonthMatching', path: '/cust/CopyFrmcust2060MMonthMatching' },
-      { title: 'ModLinkFrmcust6301PDataConnectionTankManageSave', path: '/cust/ModLinkFrmcust6301PDataConnectionTankManageSave' },
+      { title: '사본Frmcust2060MMonthMatching', path: '/cust/사본Frmcust2060MMonthMatching' },
+      { title: '수정연계Frmcust6301PDataConnectionTankManageSave', path: '/cust/수정연계Frmcust6301PDataConnectionTankManageSave' },
     ]
   },
 ];

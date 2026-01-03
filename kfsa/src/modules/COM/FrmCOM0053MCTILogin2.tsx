@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
@@ -10,6 +10,8 @@ import * as FrmCOM0053MCTILogin2Data from './FrmCOM0053MCTILogin2Data';
 
 export const FrmCOM0053MCTILogin2 = () => {
     const hook = useFrmCOM0053MCTILogin2();
+    const [chk_chkSaveUser, setChk_chkSaveUser] = useState('0');
+    const [chk_cbxGubun, setChk_cbxGubun] = useState('0');
     return (
         <PageContainer>
 
@@ -29,8 +31,8 @@ export const FrmCOM0053MCTILogin2 = () => {
                     <Typography variant="body2" sx={{ minWidth: 58, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>선택</Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (FrmCOM0053MCTILogin2Data.ds_gds_oSameUserInfo || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
                  </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "20px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_edUserId ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '120px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Box sx={{ display: hook.isVisible_chkSaveUser ? undefined : 'none' }}><Box sx={{ width: '88px', height: '22px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_edPassword ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '120px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Box sx={{ display: hook.isVisible_cbxGubun ? undefined : 'none' }}><Box sx={{ width: '88px', height: '22px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "20px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_edUserId ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '120px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><FormControlLabel control={<Checkbox checked={chk_chkSaveUser === '1'} onChange={(e) => setChk_chkSaveUser(e.target.checked ? '1' : '0')} />} label="사용자 저장" /></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_edPassword ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '120px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><FormControlLabel control={<Checkbox checked={chk_cbxGubun === '1'} onChange={(e) => setChk_cbxGubun(e.target.checked ? '1' : '0')} />} label="사이즈작게" /></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "12px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_imgLogin ? undefined : 'none' }}><Box sx={{ width: '72px', height: '30px', border: "1px solid #ddd", display: "flex", alignItems: "center", justifyContent: "center" }}>Image: imgLogin</Box></Box><Box sx={{ display: hook.isVisible_imgCancel ? undefined : 'none' }}><Box sx={{ width: '72px', height: '30px', border: "1px solid #ddd", display: "flex", alignItems: "center", justifyContent: "center" }}>Image: imgCancel</Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "38px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnReg ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnReg_OnClick} sx={{ width: '104px', height: '23px', whiteSpace: "nowrap" }}>Button0</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "13px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_radServiceGubun ? undefined : 'none' }}><FormControl component="fieldset" sx={{ width: '120px', height: '22px', width: "max-content", whiteSpace: "nowrap", pr: 2 }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (FrmCOM0053MCTILogin2Data.ds_ds_oServiceGubun || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl></Box></Stack>

@@ -1,15 +1,15 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../components/DataGridWrapper';
 import PageContainer from '../components/PageContainer';
-import { use교육종합관리시스템Description } from './use교육종합관리시스템Description';
-import * as 교육종합관리시스템DescriptionData from './교육종합관리시스템DescriptionData';
+import { use교육종합관리시스템Description } from './use교육종합관리시스템Description';
+import * as 교육종합관리시스템DescriptionData from './교육종합관리시스템DescriptionData';
 
-export const 교육종합관리시스템Description = () => {
-    const hook = use교육종합관리시스템Description();
+export const 교육종합관리시스템Description = () => {
+    const hook = use교육종합관리시스템Description();
     return (
         <PageContainer>
 
@@ -32,7 +32,7 @@ export const 교육종합관리시스테�
         </PageContainer>
     );
 };
-export default 교육종합관리시스템Description;
+export default 교육종합관리시스템Description;
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;

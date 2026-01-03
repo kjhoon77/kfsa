@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
@@ -10,6 +10,8 @@ import * as Frmcust0010PbuildingChangeData from './Frmcust0010PbuildingChangeDat
 
 export const Frmcust0010PbuildingChange = () => {
     const hook = useFrmcust0010PbuildingChange();
+    const [chk_chkCust, setChk_chkCust] = useState('0');
+    const [chk_chkAddr, setChk_chkAddr] = useState('0');
     const columns_gdManagerList = [
         { field: 'SEL', headerName: 'SEL', width: 30 },
         { field: 'CNO', headerName: '관리번호', width: 60 },
@@ -47,11 +49,11 @@ export const Frmcust0010PbuildingChange = () => {
 경
 
 전</Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ ml: "648px", minWidth: "141px" }}><Box sx={{ display: hook.isVisible_Static2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '141px', height: '14px' }}><Typography variant="body2">(                      ,        )</Typography></Box></Box><Box sx={{ display: hook.isVisible_chkCust ? undefined : 'none' }}><Box sx={{ width: '119px', height: '16px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ ml: "648px", minWidth: "141px" }}><Box sx={{ display: hook.isVisible_Static2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '141px', height: '14px' }}><Typography variant="body2">(                      ,        )</Typography></Box></Box><FormControlLabel control={<Checkbox checked={chk_chkCust === '1'} onChange={(e) => setChk_chkCust(e.target.checked ? '1' : '0')} />} label="해당 문자열 포함" /></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "6px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '604px', height: '22px', display: 'flex', alignItems: 'center', ml: '40px' }}>
                     <Typography variant="body2" sx={{ minWidth: 100, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>주소</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Box sx={{ ml: "4px", minWidth: "141px" }}><Box sx={{ display: hook.isVisible_Static4 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '141px', height: '14px' }}><Typography variant="body2">(                      ,        )</Typography></Box></Box><Box sx={{ display: hook.isVisible_chkAddr ? undefined : 'none' }}><Box sx={{ width: '119px', height: '16px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box></Box></Stack>
+                 </Stack><Box sx={{ ml: "4px", minWidth: "141px" }}><Box sx={{ display: hook.isVisible_Static4 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '141px', height: '14px' }}><Typography variant="body2">(                      ,        )</Typography></Box></Box><FormControlLabel control={<Checkbox checked={chk_chkAddr === '1'} onChange={(e) => setChk_chkAddr(e.target.checked ? '1' : '0')} />} label="해당 문자열 포함" /></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static0 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '112px', height: '22px' }}><Typography variant="body2">변경할 고객정보</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdManagerList ? undefined : 'none' }}><Paper sx={{ width: '852px', height: '254px', width: '100%', height: 'auto', minHeight: '254px' }}><DataGridWrapper rows={hook.ds_oCustomerList} columns={columns_gdManagerList} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static8 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '28px', height: '158px' }}><Typography variant="body2">변

@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React, { useState } from 'react';
-import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
@@ -10,6 +10,7 @@ import * as Frmenv0022PLatestBoardData from './Frmenv0022PLatestBoardData';
 
 export const Frmenv0022PLatestBoard = () => {
     const hook = useFrmenv0022PLatestBoard();
+    const [chk_chkDispYn, setChk_chkDispYn] = useState('0');
     const columns_gdBoard = [
         { field: 'BREGDATE', headerName: 'BREGDATE', width: 100 },
         { field: 'BTITLE', headerName: 'BTITLE', width: 386 },
@@ -32,7 +33,7 @@ export const Frmenv0022PLatestBoard = () => {
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_imgMenuSearch ? undefined : 'none' }}><Box sx={{ width: '600px', height: '402px', border: "1px solid #ddd", display: "flex", alignItems: "center", justifyContent: "center" }}>Image: imgMenuSearch</Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_imgUpdateMore ? undefined : 'none' }}><Box sx={{ width: '31px', height: '9px', border: "1px solid #ddd", display: "flex", alignItems: "center", justifyContent: "center" }}>Image: imgUpdateMore</Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "17px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdBoard ? undefined : 'none' }}><Paper sx={{ width: '530px', height: '326px', width: '100%', height: 'auto', minHeight: '326px' }}><DataGridWrapper rows={hook.ds_oBoard} columns={columns_gdBoard} /></Paper></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_chkDispYn ? undefined : 'none' }}><Box sx={{ width: '249px', height: '22px', border: '1px dashed grey' }}>Unknown: Checkbox</Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><FormControlLabel control={<Checkbox checked={chk_chkDispYn === '1'} onChange={(e) => setChk_chkDispYn(e.target.checked ? '1' : '0')} />} label="오늘 하루동안 최근 공지사항을 열지 않음." /></Stack>
 
                     </Paper>
                 </Grid>
