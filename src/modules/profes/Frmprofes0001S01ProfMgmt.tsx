@@ -1,0 +1,164 @@
+// @ts-nocheck
+import React, { useState } from 'react';
+import { Box, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, Grid, IconButton, MenuItem, Paper, Radio, RadioGroup, Select, Stack, Tab, Tabs, TextField, Tooltip, Typography } from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
+import DataGridWrapper from '../../components/DataGridWrapper';
+import PageContainer from '../../components/PageContainer';
+import { useFrmprofes0001S01ProfMgmt } from './useFrmprofes0001S01ProfMgmt';
+import * as Frmprofes0001S01ProfMgmtData from './Frmprofes0001S01ProfMgmtData';
+
+export const Frmprofes0001S01ProfMgmt = () => {
+    const hook = useFrmprofes0001S01ProfMgmt();
+    const columns_gdProfUser = [
+        { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'JIBUNM', headerName: '배정지부', width: 100 },
+        { field: 'PFGUBUN2', headerName: '전임상세', width: 90 },
+        { field: 'PFGUBUN3', headerName: '강의전담', width: 90 },
+        { field: 'PFSTARTDATE', headerName: '지정일', width: 90 },
+        { field: 'PFENDDATE', headerName: '종료일', width: 90 },
+    ];
+    return (
+        <PageContainer>
+
+            <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
+                <Typography variant="h5">기본정보</Typography>
+                <Stack direction="row" spacing={1}>
+                    <Button variant="contained" startIcon={<Search />} onClick={hook.btnReport_OnClick}>이력조회</Button>
+<Button variant="contained" startIcon={<Delete />} onClick={hook.btn_Delete_OnClick}>데이터삭제</Button>
+
+                </Stack>
+            </Stack>
+<Grid container spacing={2}>
+
+                <Grid item xs={12} md={8}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Detailed Info</Typography>
+                        <Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>성명</Typography>
+                        <TextField size="small" fullWidth value={hook.ds_ioProfBasicInfo?.PFNM || ''} />
+                    </Stack>
+                </Grid>{ hook.isVisible_btnSearchUser && (
+                <Grid item xs={12} md={2}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        
+                        <Grid container spacing={2}>
+                            
+                        </Grid>
+                    </Paper>
+                </Grid>
+                ) }
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>직위</Typography>
+                        <TextField size="small" fullWidth value={hook.ds_ioProfBasicInfo?.JIKRYUL || ''} />
+                    </Stack>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>교수구분</Typography>
+                        <FormControl size="small" sx={{ width: 150 }}><Select value={hook.ds_ioProfBasicInfo?.PFGUBUN || ''} displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmprofes0001S01ProfMgmtData.ds_ds_oProfGubun || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                    </Stack>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>부서/지부</Typography>
+                        <TextField size="small" fullWidth value={hook.ds_ioProfBasicInfo?.PFTEAM || ''} />
+                    </Stack>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>교수임명일</Typography>
+                        <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
+                    </Stack>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>배정지부</Typography>
+                        <FormControl size="small" sx={{ width: 150 }}><Select value={hook.ds_ioProfBasicInfo?.PFJIBU || ''} displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmprofes0001S01ProfMgmtData.ds_ds_PFJIBU || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                    </Stack>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={8}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>학력</Typography>
+                        <TextField size="small" fullWidth value={hook.ds_ioProfPersonSchool?.PSNAME || ''} />
+                    </Stack>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>전임상세</Typography>
+                        <FormControl size="small" sx={{ width: 150 }}><Select value={hook.ds_ioProfBasicInfo?.PFGUBUN2 || ''} displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmprofes0001S01ProfMgmtData.ds_ds_oProfGubun2 || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                    </Stack>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={8}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>비고</Typography>
+                        <TextField size="small" fullWidth value={hook.ds_ioProfBasicInfo?.PFREMARK || ''} />
+                    </Stack>
+                </Grid>
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>강의전담</Typography>
+                        <FormControl size="small" sx={{ width: 150 }}><Select value={hook.ds_ioProfBasicInfo?.PFGUBUN3 || ''} displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmprofes0001S01ProfMgmtData.ds_ds_oProfGubun3 || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
+                    </Stack>
+                </Grid></Grid>
+<Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12} md={4}>
+                    <Stack direction="row" alignItems="center" spacing={1} sx={{  }}>
+                        <Typography variant="body2" sx={{ minWidth: 80, display: 'flex', alignItems: 'center', bgcolor: '#f5f5f5', p: 0.5, borderRadius: 1 }}>지정일</Typography>
+                        <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: 'small', fullWidth: true } }} />
+                    </Stack>
+                </Grid></Grid>
+
+                    </Paper>
+                </Grid>
+
+                <Grid item xs={12} md={4}>
+                    <Paper sx={{ p: 2, height: '100%' }}>
+                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>List</Typography>
+                        <Grid container spacing={2} alignItems="center">
+
+                <Grid item xs={12}>
+                    <Paper sx={{ height: 400, width: '100%' }}>
+                        <DataGridWrapper rows={hook.ds_ioListDelete} columns={columns_gdProfUser} />
+                    </Paper>
+                </Grid></Grid>
+
+                    </Paper>
+                </Grid>
+</Grid>
+
+        </PageContainer>
+    );
+};
+export default Frmprofes0001S01ProfMgmt;
+
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          {children}
+        </Box>
+      )}
+    </div>
+  );
+}

@@ -1,0 +1,36 @@
+// @ts-nocheck
+import { useState, useEffect } from 'react';
+import type { Ids_oJibu, Ids_oCourse, Ids_oTrainingAbsentCancel } from './Frmtraining0041PTrainingAbsentCancelData';
+
+export const useFrmtraining0041PTrainingAbsentCancel = () => {
+    const [ds_oJibu, setds_oJibu] = useState<Ids_oJibu[]>([]);
+    const [ds_oCourse, setds_oCourse] = useState<Ids_oCourse[]>([]);
+    const [ds_oTrainingAbsentCancel, setds_oTrainingAbsentCancel] = useState<Ids_oTrainingAbsentCancel[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
+
+    useEffect(() => {
+        setIsLoading(true);
+        setTimeout(() => {
+            setds_oJibu([]);
+            setds_oCourse([]);
+            setds_oTrainingAbsentCancel([]);
+            setIsLoading(false);
+        }, 500);
+    }, []);
+
+    const lfn_End = () => {
+        console.log('lfn_End clicked');
+    };
+    const lfn_Save = () => {
+        console.log('lfn_Save clicked');
+    };
+
+    return {
+        isLoading,
+        ds_oJibu,
+        ds_oCourse,
+        ds_oTrainingAbsentCancel,
+        lfn_End,
+        lfn_Save,
+    };
+};
