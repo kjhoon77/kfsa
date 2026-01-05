@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmspcledu0022PTrainingOrderChange } from './useFrmspcledu0022PTrainingOrderChange';
 import * as Frmspcledu0022PTrainingOrderChangeData from './Frmspcledu0022PTrainingOrderChangeData';
@@ -26,7 +28,7 @@ export const Frmspcledu0022PTrainingOrderChange = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">강습회차변경팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>변경가능회차조회(F2)</Button>
 <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
@@ -39,7 +41,7 @@ export const Frmspcledu0022PTrainingOrderChange = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "34px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdTrainingOrder ? undefined : 'none' }}><Paper sx={{ width: '556px', height: '402px', width: '100%', height: 'auto', minHeight: '402px' }}><DataGridWrapper rows={hook.ds_oTrainingOrder} columns={columns_gdTrainingOrder} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbBefore ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '230px', height: '114px' }}><Typography variant="body2"> 변경 전 </Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '222px', height: '22px', display: 'flex', alignItems: 'center', ml: '570px' }}>

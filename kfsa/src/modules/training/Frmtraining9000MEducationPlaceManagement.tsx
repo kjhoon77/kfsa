@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmtraining9000MEducationPlaceManagement } from './useFrmtraining9000MEducationPlaceManagement';
 import * as Frmtraining9000MEducationPlaceManagementData from './Frmtraining9000MEducationPlaceManagementData';
@@ -16,6 +18,7 @@ export const Frmtraining9000MEducationPlaceManagement = () => {
         { field: 'EPNM', headerName: '교육장소', width: 490 },
         { field: 'FILECHECK', headerName: '약도파일', width: 63 },
         { field: 'EPFLAXYN', headerName: '좌석배치도 생성', width: 111 },
+        { field: 'col_4', headerName: '부대시설', width: 227 },
         { field: 'EPPRSONNM', headerName: '담당자성명', width: 75 },
         { field: 'EPJIKWI', headerName: '담당자 직위', width: 86 },
         { field: 'EPPHONE', headerName: '담당자 연락처', width: 101 },
@@ -25,7 +28,7 @@ export const Frmtraining9000MEducationPlaceManagement = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">교육장관리</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 <Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Input}>추가 저장</Button>
@@ -42,7 +45,7 @@ export const Frmtraining9000MEducationPlaceManagement = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "62px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '179px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>지부</Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmtraining9000MEducationPlaceManagementData.ds_ds_oJibu || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
@@ -57,7 +60,7 @@ export const Frmtraining9000MEducationPlaceManagement = () => {
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '500px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>약도파일</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_btnUploadFile ? undefined : 'none' }}><Button variant="contained" color="success"  onClick={hook.btnUploadFile_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>약도보기</Button></Box><Box sx={{ display: hook.isVisible_btnViewSeat ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnViewSeat_OnClick} sx={{ width: '93px', height: '24px', whiteSpace: "nowrap" }}>좌석배치보기</Button></Box></Stack>
+                 </Stack><Box sx={{ display: hook.isVisible_btnUploadFile ? undefined : 'none' }}><Button variant="contained" color="success"  onClick={hook.btnUploadFile_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>약도보기</Button></Box><Box sx={{ display: hook.isVisible_btnViewSeat ? undefined : 'none' }}><Button variant="contained" color="secondary"  onClick={hook.btnViewSeat_OnClick} sx={{ width: '93px', height: '24px', whiteSpace: "nowrap" }}>좌석배치보기</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '784px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>주차안내</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />

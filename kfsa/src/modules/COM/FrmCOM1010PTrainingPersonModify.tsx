@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmCOM1010PTrainingPersonModify } from './useFrmCOM1010PTrainingPersonModify';
 import * as FrmCOM1010PTrainingPersonModifyData from './FrmCOM1010PTrainingPersonModifyData';
@@ -15,7 +17,7 @@ export const FrmCOM1010PTrainingPersonModify = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">접수자정보변경팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 
@@ -25,12 +27,11 @@ export const FrmCOM1010PTrainingPersonModify = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "38px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static1 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '36px', height: '66px' }}><Typography variant="body2">변경
 정보</Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbText01 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '432px', height: '42px' }}><Typography variant="body2">동일인에 대한 이름 또는 주민번호를 변경합니다.
-기존 정보가 변경되오니 신중히 변경하시기 바랍니다.</Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ ml: "48px", minWidth: "465px" }}><Box sx={{ display: hook.isVisible_lbText02 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '432px', height: '26px' }}><Typography variant="body2">접수자를 잘못 접수한 경우 접수대상자를 변경합니다.
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ ml: "48px", minWidth: "465px" }}><Box sx={{ display: hook.isVisible_lbText01 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '432px', height: '42px' }}><Typography variant="body2">동일인에 대한 이름 또는 주민번호를 변경합니다.
+기존 정보가 변경되오니 신중히 변경하시기 바랍니다.</Typography></Box></Box><Box sx={{ display: hook.isVisible_lbText02 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '432px', height: '26px' }}><Typography variant="body2">접수자를 잘못 접수한 경우 접수대상자를 변경합니다.
 접수자가 타인으로 변경되오니 신중히 변경하시기 바랍니다.</Typography></Box></Box><Box sx={{ display: hook.isVisible_lbText03 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '465px', height: '30px' }}><Typography variant="body2">실명인증 처리된 접수자의 이름 또는 주민번호를 변경합니다
 기존 정보가 변경되오니 신중히 변경하시기 바랍니다.</Typography></Box></Box><Box sx={{ display: hook.isVisible_lbText04 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '438px', height: '42px' }}><Typography variant="body2">실명인증 처리가 되지 않은 접수자 또는 접수자를 잘 못 접수
 한 경우 접수대장사를 변경합니다.

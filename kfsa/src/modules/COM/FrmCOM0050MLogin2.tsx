@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmCOM0050MLogin2 } from './useFrmCOM0050MLogin2';
 import * as FrmCOM0050MLogin2Data from './FrmCOM0050MLogin2Data';
@@ -14,7 +16,7 @@ export const FrmCOM0050MLogin2 = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">로그인</Typography>
                 <Stack direction="row" spacing={1}>
                     
                 </Stack>
@@ -23,7 +25,7 @@ export const FrmCOM0050MLogin2 = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Image0 ? undefined : 'none' }}><Box sx={{ width: '600px', height: '226px', border: "1px solid #ddd", display: "flex", alignItems: "center", justifyContent: "center" }}>Image: Image0</Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_radServiceGubun ? undefined : 'none' }}><FormControl component="fieldset" sx={{ width: '120px', height: '22px', width: "max-content", whiteSpace: "nowrap", pr: 2 }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (FrmCOM0050MLogin2Data.ds_ds_oServiceGubun || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "116px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_edSabun ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '120px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>

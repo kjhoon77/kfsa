@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust6200MDataConnectionSokiManage } from './useFrmcust6200MDataConnectionSokiManage';
 import * as Frmcust6200MDataConnectionSokiManageData from './Frmcust6200MDataConnectionSokiManageData';
@@ -19,7 +21,8 @@ export const Frmcust6200MDataConnectionSokiManage = () => {
     const [chk_chkKFPerson_2, setChk_chkKFPerson_2] = useState('0');
     const [chk_chkKFDelUser_2, setChk_chkKFDelUser_2] = useState('0');
     const columns_gdMFOBJList = [
-        { field: 'id', headerName: '순번', width: 33, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 33, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
+        { field: 'col_1', headerName: '연계', width: 56 },
         { field: 'STTUS_NM', headerName: '상태', width: 36 },
         { field: 'ENTRPS_NM', headerName: '업체명', width: 145 },
         { field: 'ENTRPSSE_NM', headerName: '업체구분', width: 80 },
@@ -30,8 +33,9 @@ export const Frmcust6200MDataConnectionSokiManage = () => {
         { field: 'ADDR', headerName: '주소', width: 151 },
     ];
     const columns_gdKFOBJList = [
-        { field: 'id', headerName: '순번', width: 33, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 33, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'TOTSUM', headerName: '매칭율', width: 50 },
+        { field: 'col_2', headerName: '연계', width: 36 },
         { field: 'BNM', headerName: '업체명', width: 80 },
         { field: 'CNICKNM', headerName: '직능', width: 60 },
         { field: 'FMNM', headerName: '선임자', width: 67 },
@@ -46,8 +50,9 @@ export const Frmcust6200MDataConnectionSokiManage = () => {
         { field: 'DELGUBUN', headerName: '삭제여부', width: 62 },
     ];
     const columns_gdMFOBJList_2 = [
-        { field: 'id', headerName: '순번', width: 33, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 33, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'TOTSUM', headerName: '매칭율', width: 56 },
+        { field: 'col_2', headerName: '연계', width: 56 },
         { field: 'ENTRPS_NM', headerName: '업체명', width: 145 },
         { field: 'ENTRPSSE_NM', headerName: '업체구분', width: 80 },
         { field: 'NM', headerName: '기술자', width: 80 },
@@ -57,7 +62,8 @@ export const Frmcust6200MDataConnectionSokiManage = () => {
         { field: 'ADDR', headerName: '주소', width: 151 },
     ];
     const columns_gdKFOBJList_2 = [
-        { field: 'id', headerName: '순번', width: 33, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 33, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
+        { field: 'col_1', headerName: '연계', width: 36 },
         { field: 'DELGUBUN', headerName: '상태', width: 35 },
         { field: 'BNM', headerName: '업체명', width: 80 },
         { field: 'CNICKNM', headerName: '직능', width: 69 },
@@ -75,7 +81,7 @@ export const Frmcust6200MDataConnectionSokiManage = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">소방기술자 일치화관리</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
 <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
@@ -87,7 +93,7 @@ export const Frmcust6200MDataConnectionSokiManage = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "33px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_tab ? undefined : 'none' }}><Box sx={{ width: '1056px', height: '738px', width: "100%", height: "auto", minHeight: "738px" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tab} onChange={(e, v) => setTabValue_tab(v)} aria-label="tab"><Tab label=" 청기준 " /><Tab label="안전원기준" /></Tabs></Box><CustomTabPanel value={tabValue_tab} index={0}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbJubsu ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '284px', height: '24px' }}><Typography variant="body2">소방청(소방민원정보시스템) 정보</Typography></Box></Box><Box sx={{ display: hook.isVisible_Static5 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '284px', height: '24px' }}><Typography variant="body2">안전원(교육종합관리시스템) 정보</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "11px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '242px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>처리구분</Typography>
@@ -115,10 +121,10 @@ export const Frmcust6200MDataConnectionSokiManage = () => {
                  </Stack><Box sx={{ display: hook.isVisible_Static11 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '56px', height: '24px' }}><Typography variant="body2">조회건수</Typography></Box></Box><Box sx={{ display: hook.isVisible_spKFRowNum ? undefined : 'none' }}><Box sx={{ width: '89px', height: '24px', border: '1px dashed grey' }}>Unknown: Spin</Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '214px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>안전원수신일자</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '144px', height: '22px', display: 'flex', alignItems: 'center', ml: '0px' }}>
                     <Typography variant="body2" sx={{ minWidth: 20, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><Box sx={{ display: hook.isVisible_Static10 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '56px', height: '24px' }}><Typography variant="body2">조회건수</Typography></Box></Box><Box sx={{ display: hook.isVisible_spMFRowNum ? undefined : 'none' }}><Box sx={{ width: '89px', height: '24px', border: '1px dashed grey' }}>Unknown: Spin</Box></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '511px', height: '22px', display: 'flex', alignItems: 'center', ml: '12px' }}>
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>검색조건</Typography>
                     <FormControl component="fieldset" sx={{ width: "max-content", whiteSpace: "nowrap" }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmcust6200MDataConnectionSokiManageData.ds_ds_ioSelectGubun || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl>
@@ -143,7 +149,7 @@ export const Frmcust6200MDataConnectionSokiManage = () => {
                  </Stack><Box sx={{ ml: "248px", minWidth: "98px" }}><Box sx={{ display: hook.isVisible_btnKFMatchCancel ? undefined : 'none' }}><Button variant="outlined"  onClick={hook.lfn_KFMatchExceptCancel} size="small" sx={{ minWidth: 26, p: 0.2, width: '98px', height: '24px', whiteSpace: "nowrap" }}><TouchApp fontSize="small" /></Button></Box><Box sx={{ display: hook.isVisible_btnKFMatchExcept ? undefined : 'none' }}><Button variant="outlined"  onClick={hook.lfn_KFMatchExcept} size="small" sx={{ minWidth: 26, p: 0.2, width: '98px', height: '24px', whiteSpace: "nowrap" }}><TouchApp fontSize="small" /></Button></Box></Box><Box sx={{ display: hook.isVisible_btnKFExcel ? undefined : 'none' }}><Button variant="outlined" color="success" onClick={hook.tab_page1_btnKFExcel_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '24px', whiteSpace: "nowrap" }}><TouchApp fontSize="small" /></Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdMFOBJList ? undefined : 'none' }}><Paper sx={{ width: '519px', height: '225px', width: '100%', height: 'auto', minHeight: '225px' }}><DataGridWrapper rows={hook.ds_ioMFFireObj} columns={columns_gdMFOBJList} /></Paper></Box><Box sx={{ display: hook.isVisible_gdKFOBJList ? undefined : 'none' }}><Paper sx={{ width: '519px', height: '225px', width: '100%', height: 'auto', minHeight: '225px' }}><DataGridWrapper rows={hook.ds_ioKFFireObj} columns={columns_gdKFOBJList} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static60 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '514px', height: '24px' }}><Typography variant="body2">※ 대상물 또는 선임자 정보를 더블클릭 시 우측 안전원자료 자동조회</Typography></Box></Box><Box sx={{ display: hook.isVisible_btnMatchCancel ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_CancelMatch} sx={{ width: '119px', height: '26px', whiteSpace: "nowrap" }}>연계해지처리</Button></Box><Box sx={{ display: hook.isVisible_btnMatch ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_NowMatch} sx={{ width: '119px', height: '26px', whiteSpace: "nowrap" }}>수정없이연계처리</Button></Box><Box sx={{ display: hook.isVisible_btnNewMatch ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnNewMatch_OnClick} sx={{ width: '119px', height: '26px', whiteSpace: "nowrap" }}>신규연계등록</Button></Box><Box sx={{ display: hook.isVisible_btnModMatch ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnModMatch_OnClick} sx={{ width: '119px', height: '26px', whiteSpace: "nowrap" }}>수정연계처리</Button></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static15 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '125px', height: '24px' }}><Typography variant="body2">소방업체 정보</Typography></Box></Box><Box sx={{ display: hook.isVisible_btnFPISInfo ? undefined : 'none' }}><Button variant="contained"   onClick={hook.tab_page1_btnFPISInfo_OnClick} sx={{ width: '132px', height: '26px', whiteSpace: "nowrap" }}>청시스템상세보기</Button></Box><Box sx={{ display: hook.isVisible_Static16 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '125px', height: '24px' }}><Typography variant="body2">고객 정보</Typography></Box></Box><Box sx={{ display: hook.isVisible_btnKFSunapEduInfo ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_SunapEduInfo} sx={{ width: '132px', height: '26px', whiteSpace: "nowrap" }}>회비/교육정보</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static15 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '125px', height: '24px' }}><Typography variant="body2">소방업체 정보</Typography></Box></Box><Box sx={{ display: hook.isVisible_btnFPISInfo ? undefined : 'none' }}><Button variant="contained" color="secondary"  onClick={hook.tab_page1_btnFPISInfo_OnClick} sx={{ width: '132px', height: '26px', whiteSpace: "nowrap" }}>청시스템상세보기</Button></Box><Box sx={{ display: hook.isVisible_Static16 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '125px', height: '24px' }}><Typography variant="body2">고객 정보</Typography></Box></Box><Box sx={{ display: hook.isVisible_btnKFSunapEduInfo ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_SunapEduInfo} sx={{ width: '132px', height: '26px', whiteSpace: "nowrap" }}>회비/교육정보</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '513px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>업체명</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioMFFireObjD?.ENTRPS_NM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
@@ -255,8 +261,7 @@ export const Frmcust6200MDataConnectionSokiManage = () => {
                     <Typography variant="body2" sx={{ minWidth: 92, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>회비부과월</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioKFFireObj?.CFEEYYMM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static24 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '125px', height: '24px' }}><Typography variant="body2">기술자 정보</Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '255px', height: '22px', display: 'flex', alignItems: 'center', ml: '527px' }}>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static24 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '125px', height: '24px' }}><Typography variant="body2">기술자 정보</Typography></Box></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '255px', height: '22px', display: 'flex', alignItems: 'center', ml: '398px' }}>
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>최초등록일</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioKFFireObj?.CREGDATE || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '255px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
@@ -273,15 +278,20 @@ export const Frmcust6200MDataConnectionSokiManage = () => {
                     <Typography variant="body2" sx={{ minWidth: 68, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>연계구분</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static40 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '125px', height: '24px' }}><Typography variant="body2">선임자정보</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '254px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>인력구분</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioMFFireObjD?.HNFSE_NM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '256px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>선임일자</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioMFFireObjD?.APNT_DE_8 || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '158px', height: '22px', display: 'flex', alignItems: 'center', ml: '527px' }}>
+                 </Stack><Box sx={{ display: hook.isVisible_Static40 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '125px', height: '24px' }}><Typography variant="body2">선임자정보</Typography></Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '254px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>최초등록일</Typography>
+                    <TextField size="small" fullWidth value={hook.ds_ioMFFireObjD?.REGIST_DE_14 || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '256px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
+                    <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>최종수정일</Typography>
+                    <TextField size="small" fullWidth value={hook.ds_ioMFFireObjD?.UPDT_DE_14 || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
+                 </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '158px', height: '22px', display: 'flex', alignItems: 'center', ml: '10px' }}>
                     <Typography variant="body2" sx={{ minWidth: 60, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>선임자명</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioKFFireObj?.FMNM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '178px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
@@ -290,13 +300,6 @@ export const Frmcust6200MDataConnectionSokiManage = () => {
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '167px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 80, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>개인식별번호</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioKFFireObj?.FMPERSONKEY || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '254px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
-                    <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>최초등록일</Typography>
-                    <TextField size="small" fullWidth value={hook.ds_ioMFFireObjD?.REGIST_DE_14 || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '256px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
-                    <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>최종수정일</Typography>
-                    <TextField size="small" fullWidth value={hook.ds_ioMFFireObjD?.UPDT_DE_14 || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '189px', height: '22px', display: 'flex', alignItems: 'center', ml: '527px' }}>
                     <Typography variant="body2" sx={{ minWidth: 81, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>인력구분</Typography>
@@ -445,10 +448,10 @@ export const Frmcust6200MDataConnectionSokiManage = () => {
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '214px', height: '22px', display: 'flex', alignItems: 'center', ml: '529px' }}>
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>안전원수신일자</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '144px', height: '22px', display: 'flex', alignItems: 'center', ml: '0px' }}>
                     <Typography variant="body2" sx={{ minWidth: 20, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><Box sx={{ display: hook.isVisible_Static10_2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '56px', height: '24px' }}><Typography variant="body2">조회건수</Typography></Box></Box><Box sx={{ display: hook.isVisible_spMFRowNum_2 ? undefined : 'none' }}><Box sx={{ width: '89px', height: '24px', border: '1px dashed grey' }}>Unknown: Spin</Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '511px', height: '22px', display: 'flex', alignItems: 'center', ml: '529px' }}>
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>검색조건</Typography>
@@ -465,7 +468,7 @@ export const Frmcust6200MDataConnectionSokiManage = () => {
                  </Stack><Box sx={{ ml: "249px", minWidth: "98px" }}><Box sx={{ display: hook.isVisible_btnMFMatchCancel_2 ? undefined : 'none' }}><Button variant="outlined"  onClick={hook.lfn_MFMatchExceptCancel2} size="small" sx={{ minWidth: 26, p: 0.2, width: '98px', height: '24px', whiteSpace: "nowrap" }}><TouchApp fontSize="small" /></Button></Box><Box sx={{ display: hook.isVisible_btnMFMatchExcept_2 ? undefined : 'none' }}><Button variant="outlined"  onClick={hook.lfn_MFMatchExcept2} size="small" sx={{ minWidth: 26, p: 0.2, width: '98px', height: '24px', whiteSpace: "nowrap" }}><TouchApp fontSize="small" /></Button></Box></Box><Box sx={{ display: hook.isVisible_btnMFExcel_2 ? undefined : 'none' }}><Button variant="outlined" color="success" onClick={hook.tab_page2_btnMFExcel_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '24px', whiteSpace: "nowrap" }}><TouchApp fontSize="small" /></Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdMFOBJList_2 ? undefined : 'none' }}><Paper sx={{ width: '519px', height: '225px', width: '100%', height: 'auto', minHeight: '225px' }}><DataGridWrapper rows={hook.ds_ioMFFireObj2} columns={columns_gdMFOBJList_2} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnMatchCancel_2 ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_CancelMatch2} sx={{ width: '119px', height: '26px', whiteSpace: "nowrap" }}>연계해지처리</Button></Box><Box sx={{ display: hook.isVisible_btnMatch_2 ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_NowMatch2} sx={{ width: '119px', height: '26px', whiteSpace: "nowrap" }}>수정없이연계처리</Button></Box><Box sx={{ display: hook.isVisible_btnModMatch_2 ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnModMatch_OnClick2} sx={{ width: '119px', height: '26px', whiteSpace: "nowrap" }}>수정연계처리</Button></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static15_2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '125px', height: '24px' }}><Typography variant="body2">소방업체 정보</Typography></Box></Box><Box sx={{ display: hook.isVisible_btnFPISInfo_2 ? undefined : 'none' }}><Button variant="contained"   onClick={hook.tab_page2_btnFPISInfo_OnClick} sx={{ width: '132px', height: '26px', whiteSpace: "nowrap" }}>청시스템상세보기</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static15_2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '125px', height: '24px' }}><Typography variant="body2">소방업체 정보</Typography></Box></Box><Box sx={{ display: hook.isVisible_btnFPISInfo_2 ? undefined : 'none' }}><Button variant="contained" color="secondary"  onClick={hook.tab_page2_btnFPISInfo_OnClick} sx={{ width: '132px', height: '26px', whiteSpace: "nowrap" }}>청시스템상세보기</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '513px', height: '22px', display: 'flex', alignItems: 'center', ml: '529px' }}>
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>업체명</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioMFFireObjD2?.ENTRPS_NM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />

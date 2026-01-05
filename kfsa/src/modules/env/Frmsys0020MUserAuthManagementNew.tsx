@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmsys0020MUserAuthManagementNew } from './useFrmsys0020MUserAuthManagementNew';
 import * as Frmsys0020MUserAuthManagementNewData from './Frmsys0020MUserAuthManagementNewData';
@@ -24,7 +26,7 @@ export const Frmsys0020MUserAuthManagementNew = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">사용자권한관리</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 <Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Cancel}>입력 초기화</Button>
@@ -39,10 +41,10 @@ export const Frmsys0020MUserAuthManagementNew = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "34px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_tvMenu ? undefined : 'none' }}><Box sx={{ width: '312px', height: '554px', border: '1px dashed grey' }}>Unknown: TreeView</Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbDeleteUserAuthYn ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '88px', height: '22px' }}><Typography variant="body2">권한삭제여부</Typography></Box></Box><FormControlLabel control={<Checkbox checked={chk_chkDeleteUserAuthYn === '1'} onChange={(e) => setChk_chkDeleteUserAuthYn(e.target.checked ? '1' : '0')} />} label="교육종합관리시스템 사용권한 삭제여부" /></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdUserAuth ? undefined : 'none' }}><Paper sx={{ width: '476px', height: '538px', width: '100%', height: 'auto', minHeight: '538px' }}><DataGridWrapper rows={hook.ds_ioUserAuth} columns={columns_gdUserAuth} /></Paper></Box><Box sx={{ display: hook.isVisible_btnSave ? undefined : 'none' }}><Button variant="contained"  startIcon={<Save />} onClick={hook.lfn_Save} sx={{ width: '85px', height: '24px', whiteSpace: "nowrap" }}>수정 저장</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdUserAuth ? undefined : 'none' }}><Paper sx={{ width: '476px', height: '538px', width: '100%', height: 'auto', minHeight: '538px' }}><MultiDataGridWrapper rows={hook.ds_ioUserAuth} columns={columns_gdUserAuth} rowHeight={20} headerHeight={40} hideFooter={true} /></Paper></Box><Box sx={{ display: hook.isVisible_btnSave ? undefined : 'none' }}><Button variant="contained"  startIcon={<Save />} onClick={hook.lfn_Save} sx={{ width: '85px', height: '24px', whiteSpace: "nowrap" }}>수정 저장</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnDeleteKemsAuth ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnDeleteKemsAuth_OnClick} sx={{ width: '85px', height: '24px', whiteSpace: "nowrap" }}>권한삭제</Button></Box></Stack>
 
                     </Paper>

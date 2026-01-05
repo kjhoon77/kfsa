@@ -77,9 +77,14 @@ class XMLToReactConverter:
             # Create case-insensitive map of dataset names
             ds_name_map = {ds['name'].lower(): ds['name'] for ds in datasets}
             
+            form_title = ""
+            form_node = root.find('Form')
+            if form_node is not None:
+                form_title = form_node.get('Title', '')
+            
             self._generate_hook(component_name, target_dir, datasets, ui_elements)
             self._generate_data_file(component_name, target_dir, datasets)
-            self._generate_view(component_name, target_dir, datasets, ui_elements, ds_name_map, xml_source_path=xml_file)
+            self._generate_view(component_name, target_dir, datasets, ui_elements, ds_name_map, xml_source_path=xml_file, page_title=form_title)
 
             rel_path_from_output = target_dir.relative_to(self.output_dir)
             self.menu_items.append({
@@ -209,55 +214,112 @@ class XMLToReactConverter:
                             w_str = get_attr_nocase(col, 'width') or '80'
                             col_widths.append(int(w_str))
                     
-                    head_texts = []
+                    headers_by_col = {}
                     head_node = find_child_nocase(target_node, 'head')
                     if head_node is not None:
                         for cell in find_children_nocase(head_node, 'cell'):
-                            c_idx_str = get_attr_nocase(cell, 'col') or '0'
-                            c_idx = int(c_idx_str)
-                            text = get_attr_nocase(cell, 'text')
-                            while len(head_texts) <= c_idx:
-                                head_texts.append('')
-                            if not head_texts[c_idx]:
-                                head_texts[c_idx] = text
+                            c_idx = int(get_attr_nocase(cell, 'col') or '0')
+                            r_idx = int(get_attr_nocase(cell, 'row') or '0')
+                            txt = get_attr_nocase(cell, 'text')
+                            if c_idx not in headers_by_col: headers_by_col[c_idx] = []
+                            headers_by_col[c_idx].append({'row': r_idx, 'text': txt})
                     
-                    body_colids = []
+                    body_by_col = {}
+                    row_count_in_body = 1
                     body_node = find_child_nocase(target_node, 'body')
                     if body_node is not None:
                         for cell in find_children_nocase(body_node, 'cell'):
-                            c_idx_str = get_attr_nocase(cell, 'col') or '0'
-                            c_idx = int(c_idx_str)
+                            c_idx = int(get_attr_nocase(cell, 'col') or '0')
+                            r_idx = int(get_attr_nocase(cell, 'row') or '0')
                             colid = get_attr_nocase(cell, 'colid')
-                            while len(body_colids) <= c_idx:
-                                body_colids.append('')
-                            body_colids[c_idx] = colid
+                            if c_idx not in body_by_col: body_by_col[c_idx] = []
+                            body_by_col[c_idx].append({'row': r_idx, 'colid': colid, 'cell': cell})
+                            row_count_in_body = max(row_count_in_body, r_idx + 1)
                     
-                    max_idx = max(len(col_widths), len(head_texts), len(body_colids))
+                    base_rh = int(get_attr_nocase(node, 'RowHeight') or '20')
+                    elem['total_row_height'] = base_rh * row_count_in_body
+                    
+                    base_hh = int(get_attr_nocase(node, 'HeadHeight') or '20')
+                    
+                    # Logic to separate Header vs Footer/Summary rows in Head
+                    # We assume rows >= 2 are summary rows if Total Header Rows > 2? 
+                    # Or check definition. User says: "head의 row 번호가 바뀌어져 있는 것도 있는 것 같은데... 아래에 합을보여주는 형태 같은데"
+                    # Let's count header rows. If > 2, we assume bottom ones are Footer.
+                    # Or better: check if row index >= row_count_in_body? No, unrelated.
+                    # Let's use a heuristic: 
+                    # If total header rows > 2, treat top 2 as header, rest as footer (User hint: "rowspan, row, col... body의 row").
+                    # In this specific XML, Header Rows are 0 and 1. Summary Rows are 2 and 3.
+                    
+                    max_head_row = max(headers_by_col.keys() and [max(h['row'] for list_h in headers_by_col.values() for h in list_h)] or [0])
+                    total_head_rows = max_head_row + 1
+                    
+                    real_header_rows = 2 if total_head_rows > 2 else total_head_rows
+                    elem['total_header_height'] = base_hh * real_header_rows
+                    
+                    # Determine if Multi-Row
+                    elem['is_multirow'] = row_count_in_body > 1 or total_head_rows > 1
+                    
+                    # If we have summary rows (total > real), we should hide default footer and maybe someday render custom footer
+                    elem['has_summary'] = total_head_rows > real_header_rows
+
+                    max_idx = max(len(col_widths), max(headers_by_col.keys() or [-1]) + 1, max(body_by_col.keys() or [-1]) + 1)
+                    
                     for i in range(max_idx):
                         width = col_widths[i] if i < len(col_widths) else 80
-                        header = head_texts[i] if i < len(head_texts) else ''
-                        field = body_colids[i] if i < len(body_colids) else ''
-                        if not header and field: header = field
                         
-                        # Handle Index column (typically col=0 with currow expression)
-                        is_index = False
-                        if i == 0 and not field: 
-                             # Check body cell for expression
-                             if i < len(body_colids):
-                                 # We need to look up if the body cell had an expression actually.
-                                 # This simple parser just saw 'body_colids'.
-                                 # Let's improve body parsing above slightly or assume first col empty field is index.
-                                 is_index = True
-                                 field = 'id' # Virtual field name
-                                 header = header or 'No'
+                        # Resolve Header (Only use real header rows for text)
+                        h_cells = sorted(headers_by_col.get(i, []), key=lambda x: x['row'])
+                        header_texts = [h['text'] for h in h_cells if h['text'] and h['row'] < real_header_rows]
+                        header = " ".join(header_texts).strip()
+                        
+                        # Resolve Body
+                        b_cells = sorted(body_by_col.get(i, []), key=lambda x: x['row'])
+                        
+                        col_def = {
+                             'field': '', 
+                             'headerName': header, 
+                             'width': width,
+                             'renderCell': None 
+                        }
 
-                        if field or is_index:
-                             elem['grid_columns'].append({
-                                'field': field,
-                                'headerName': header,
-                                'width': width,
-                                'type': 'index' if is_index else 'string'
-                            })
+                        if not b_cells:
+                             col_def['field'] = f'col_{i}' # Fallback for completely empty columns
+                        elif len(b_cells) == 1:
+                             col_def['field'] = b_cells[0]['colid'] or f'col_{i}'
+                             if i == 0 and b_cells[0]['colid'] is None: # Special case for Row Index? No, just use 'id' if explicitly first
+                                  # Original logic check:
+                                  # if i == 0 and not col_def['field']: ...
+                                  pass
+                             
+                             if i == 0 and not b_cells[0]['colid']:
+                                  col_def['renderCell'] = "(params) => params.api.getAllRowIds().indexOf(params.id) + 1"
+                                  col_def['field'] = 'id_seq' # Unique ID 
+                                  if not header: col_def['headerName'] = '순번'
+                             elif not b_cells[0]['colid']:
+                                   # Static Text Column (e.g. "일반")
+                                   text_val = get_attr_nocase(b_cells[0]['cell'], 'text')
+                                   if text_val:
+                                       col_def['renderCell'] = f'() => "{text_val}"'
+                        else:
+                             # Multi-row body! 
+                             col_def['field'] = b_cells[0]['colid'] or f'col_{i}'
+                             stack_items = []
+                             for cell_info in b_cells:
+                                 cid = cell_info['colid']
+                                 if cid:
+                                     stack_items.append(f'<Box sx={{{{ height: "{base_rh}px", display: "flex", alignItems: "center" }}}}>{{params.row.{cid}}}</Box>')
+                                 else:
+                                     text_val = get_attr_nocase(cell_info['cell'], 'text')
+                                     if text_val:
+                                         stack_items.append(f'<Box sx={{{{ height: "{base_rh}px", display: "flex", alignItems: "center" }}}}>{text_val}</Box>')
+                                     else:
+                                          stack_items.append(f'<Box sx={{{{ height: "{base_rh}px" }}}} />')
+                             
+                             stack_jsx = "".join(stack_items)
+                             col_def['renderCell'] = f'(params) => <Stack spacing={{0}} sx={{{{ height: "100%", justifyContent: "center" }}}}>{stack_jsx}</Stack>'
+                        
+                        elem['grid_columns'].append(col_def)
+                    
             
             if tag == 'Tab':
                 tabs = []
@@ -364,7 +426,7 @@ class XMLToReactConverter:
                     'tag': 'Paper',
                     'size': 8, 
                     'layout': left_rows,
-                    'title': 'Detailed Info'
+                    'title': ''
                 }
                 
                 right_rows = self._cluster_rows(right_items, self.BASE_WIDTH - split_x)
@@ -372,7 +434,7 @@ class XMLToReactConverter:
                     'tag': 'Paper',
                      'size': 4,
                     'layout': right_rows,
-                    'title': 'List'
+                    'title': ''
                 }
                 
                 layout_structure.append([left_panel, right_panel])
@@ -382,7 +444,7 @@ class XMLToReactConverter:
                     'tag': 'Paper',
                     'size': 12,
                     'layout': rows,
-                    'title': 'Main Config'
+                    'title': ''
                 }
                 layout_structure.append([paper])
                 
@@ -400,7 +462,7 @@ class XMLToReactConverter:
             if items:
                 current_top_ref = items[0]['top']
             
-            ROW_TOLERANCE = 5 
+            ROW_TOLERANCE = 12 
             
             for item in items:
                 if abs(item['top'] - current_top_ref) <= ROW_TOLERANCE:
@@ -488,7 +550,7 @@ class XMLToReactConverter:
         if 'reset' in mid: return "<Refresh />"
         return None
 
-    def _generate_view(self, name, target_dir, datasets, ui_elements, ds_name_map, xml_source_path=None):
+    def _generate_view(self, name, target_dir, datasets, ui_elements, ds_name_map, xml_source_path=None, page_title=""):
         used_mui = {'Box', 'Grid', 'Button', 'Stack', 'Typography', 'Paper', 'TextField', 'FormControl', 'Select', 'MenuItem', 'IconButton', 'Tooltip', 'Dialog', 'DialogTitle', 'DialogContent', 'DialogActions', 'Tabs', 'Tab', 'Radio', 'RadioGroup', 'FormControlLabel', 'Checkbox'}
         used_icons = {'Search', 'Delete', 'Save', 'ContentCopy', 'Description', 'Add', 'Print', 'Close', 'Refresh', 'Check', 'Visibility', 'ZoomIn', 'Help', 'Sort', 'FilterList', 'TouchApp'} 
         
@@ -627,6 +689,8 @@ class XMLToReactConverter:
             comp_path = "../components"
         
         lines.append(f"import DataGridWrapper from '{comp_path}/DataGridWrapper';")
+        lines.append(f"import MultiDataGridWrapper from '{comp_path}/MultiDataGridWrapper';")
+        lines.append(f"import DoubleClickDatePicker from '{comp_path}/DoubleClickDatePicker';")
         lines.append(f"import PageContainer from '{comp_path}/PageContainer';")
         lines.append(f"import {{ use{name} }} from './use{name}';")
         lines.append(f"import * as {name}Data from './{name}Data';")
@@ -758,10 +822,14 @@ class XMLToReactConverter:
             lines.append(f"    const {col_var} = [")
             for col in g.get('grid_columns', []):
                 safe_header = self._sanitize_js_string(col['headerName'])
+                rc_prop = ""
+                if col.get('renderCell'):
+                     rc_prop = f", renderCell: {col['renderCell']}, sortable: false"
+                
                 if col.get('type') == 'index':
-                     lines.append(f"        {{ field: 'id', headerName: '{safe_header}', width: {col['width']}, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 }},")
+                     lines.append(f"        {{ field: 'id', headerName: '{safe_header}', width: {col['width']}, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false }},")
                 else:
-                     lines.append(f"        {{ field: '{col['field']}', headerName: '{safe_header}', width: {col['width']} }},")
+                     lines.append(f"        {{ field: '{col['field']}', headerName: '{safe_header}', width: {col['width']}{rc_prop} }},")
             lines.append("    ];")
         
         lines.append("    return (")
@@ -770,7 +838,7 @@ class XMLToReactConverter:
         layout_data = self._generate_layout(ui_elements)
         
         def render_header(items):
-            title = "기본정보"
+            title = page_title if page_title else "기본정보"
             for i in items:
                  if i['tag'] == 'Static' and '■' in i.get('text', ''):
                      title = i['text'].replace('■', '').strip()
@@ -909,10 +977,16 @@ class XMLToReactConverter:
             elif tag == 'Grid':
                 ds = item.get('bind_dataset') or 'ds_grid'
                 col_var = item.get('_col_var') or f"columns_{ds}"
-                content_jsx = f"""
-                <Paper sx={{{{ {content_sx}, width: '100%' }}}}>
-                    <DataGridWrapper rows={{hook.{ds}}} columns={{{col_var}}} />
-                </Paper>"""
+                if item.get('is_multirow'):
+                     content_jsx = f"""
+                     <Paper sx={{{{ {content_sx}, width: '100%' }}}}>
+                         <MultiDataGridWrapper rows={{hook.{ds}}} columns={{{col_var}}} rowHeight={{{item.get('total_row_height', 40)}}} headerHeight={{{item.get('total_header_height', 40)}}} hideFooter={{true}} />
+                     </Paper>"""
+                else:
+                     content_jsx = f"""
+                     <Paper sx={{{{ {content_sx}, width: '100%' }}}}>
+                         <DataGridWrapper rows={{hook.{ds}}} columns={{{col_var}}} />
+                     </Paper>"""
             
 
 
@@ -961,7 +1035,8 @@ class XMLToReactConverter:
                          menu_items = f"{{ ({name}Data.ds_{inner_ds} || []).map(opt => <MenuItem key={{opt.CD}} value={{opt.CD}}>{{opt.DATA}}</MenuItem>) }}"
                      field_jsx = f'<FormControl size="small" fullWidth sx={{{{ "& .MuiOutlinedInput-notchedOutline": {{ borderColor: "rgba(0,0,0,0.4)" }}, "& .MuiSelect-select": {{ padding: "4px 6px !important" }} }}}}><Select {val_prop} displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{menu_items}</Select></FormControl>'
                  elif field_tag == 'Calendar':
-                     field_jsx = '<DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />'
+                    # DatePicker with DoubleClick
+                    field_jsx = '<DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />'
                  elif field_tag == 'Radio':
                      val_prop = ""
                      if field.get('bind_dataset') and field.get('column'):
@@ -1036,7 +1111,6 @@ class XMLToReactConverter:
                      # onChange for bound: explicit logic not fully supported for writing back to hook yet, 
                      # but we can try basic or leave empty to be read-only visually (but user wants interaction)
                      # For now, we omit onChange or provide a comment if strict binding is needed.
-                     # But realistically, Checkbox without onChange is strict readonly.
                      # We'll assume read-only for bound data for now unless we add a setter to the hook.
                      pass 
                  else:
@@ -1085,12 +1159,21 @@ class XMLToReactConverter:
                  
                  
                  is_green = False
+                 is_purple = False
                  lower_text = text.lower()
                  lower_id = item.get('id', '').lower()
+                 
                  if any(k in lower_text or k in lower_id for k in ['file', 'excel', 'down', 'up', 'load', '엑셀', '파일', '업로드', '다운로드']):
                      is_green = True
+                 elif any(k in lower_text or k in lower_id for k in ['pop', 'popup', 'detail', 'view', 'list', 'history', '상세', '팝업', '이력', '보기', '주소']):
+                     is_purple = True
                      
-                 color_prop = 'color="success"' if is_green else ''
+                 if is_green:
+                     color_prop = 'color="success"'
+                 elif is_purple:
+                     color_prop = 'color="secondary"'
+                 else:
+                     color_prop = ''
                  
                  click = item.get('onclick')
                  evt = f"onClick={{hook.{click.split('(')[0]}}}" if click else ""
@@ -1111,7 +1194,7 @@ class XMLToReactConverter:
                  content_jsx = f'<Box sx={{{{ {content_sx}, border: "1px solid #ddd", display: "flex", alignItems: "center", justifyContent: "center" }}}}>Image: {img_id}</Box>'
 
             elif tag == 'Calendar':
-                 content_jsx = f'<DatePicker format="yyyy/MM/dd" slotProps={{{{ textField: {{ size: "small", fullWidth: true }} }}}} sx={{{{ minWidth: "120px", {content_sx}, "& .MuiOutlinedInput-notchedOutline": {{ borderColor: "rgba(0,0,0,0.4)" }}, "& .MuiInputBase-input": {{ padding: "4px 6px" }}, bgcolor: "#fff" }}}} />'
+                 content_jsx = f'<DoubleClickDatePicker sx={{{{ width: "102px", "& .MuiOutlinedInput-notchedOutline": {{ borderColor: "rgba(0,0,0,0.4)" }}, "& .MuiInputBase-input": {{ padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" }} }}}} />'
             
             elif tag in ['Edit', 'MaskEdit', 'TextArea']:
                  val_prop = ""
@@ -1190,7 +1273,11 @@ class XMLToReactConverter:
             elif tag == 'Grid':
                 ds = item.get('bind_dataset') or 'ds_grid'
                 col_var = item.get('_col_var') or f"columns_{ds}"
-                content_jsx = f"""<Paper sx={{{{ {content_sx}, width: '100%', height: 'auto', minHeight: '{item.get('height', 200)}px' }}}}><DataGridWrapper rows={{hook.{ds}}} columns={{{col_var}}} /></Paper>"""
+                
+                if item.get('is_multirow'):
+                     content_jsx = f"""<Paper sx={{{{ {content_sx}, width: '100%', height: 'auto', minHeight: '{item.get('height', 200)}px' }}}}><MultiDataGridWrapper rows={{hook.{ds}}} columns={{{col_var}}} rowHeight={{{item.get('total_row_height', 40)}}} headerHeight={{{item.get('total_header_height', 40)}}} hideFooter={{true}} /></Paper>"""
+                else:
+                     content_jsx = f"""<Paper sx={{{{ {content_sx}, width: '100%', height: 'auto', minHeight: '{item.get('height', 200)}px' }}}}><DataGridWrapper rows={{hook.{ds}}} columns={{{col_var}}} /></Paper>"""
 
             elif tag in ['FileDialog', 'HttpFile', 'File']:
                  label = item.get('text') or item.get('id') or tag
@@ -1284,12 +1371,17 @@ class XMLToReactConverter:
                         # We apply 'ml' to the container.
                          row_jsx += f'<Box sx={{{{ ml: "{ml}px", minWidth: "{group_width}px" }}}}>{group_content}</Box>'
                     else:
-                         # Single Item - Inject ML directly
-                         group[0]['ml'] = ml
-                         # Re-render to capture the injected ml (a bit inefficient but safe)
-                         row_jsx += render_item(group[0])
+                         # Single Item - Wrap in Box if ML > 0 to ensure spacing is applied
+                         # This avoids modifying render_item globally which breaks other layouts
+                         if ml > 0:
+                             row_jsx += f'<Box sx={{{{ ml: "{ml}px" }}}}>{group_content}</Box>'
+                         else:
+                             row_jsx += group_content
                     
-                    prev_group_right = group_left + group_width
+                    # Correctly check boolean visibility (parser stores bool, not string)
+                    is_effectively_invisible = all(sub.get('visible') is False for sub in group)
+                    if not is_effectively_invisible:
+                        prev_group_right = group_left + group_width
 
                 out += f'<Stack direction="row" alignItems="center" spacing={{0}} sx={{{{ mt: "{mt}px", py: 0.5, width: "100%" }}}}>{row_jsx}</Stack>\n'
                 
@@ -1333,10 +1425,12 @@ class XMLToReactConverter:
                 if 'layout' in panel:
                     content = render_rows(panel['layout'])
                 
+                title_jsx = f'<Typography variant="subtitle2" sx={{{{ mb: 2, fontWeight: "bold" }}}}>{title}</Typography>' if title else ''
+                
                 lines.append(f"""
                 <Grid item xs={{12}} md={{{size}}}>
                     <Paper sx={{{{ p: 2, height: '100%' }}}}>
-                        <Typography variant="subtitle2" sx={{{{ mb: 2, fontWeight: 'bold' }}}}>{title}</Typography>
+                        {title_jsx}
                         {content}
                     </Paper>
                 </Grid>""")
@@ -1548,6 +1642,22 @@ function CustomTabPanel(props) {
         for h in sorted(list(handlers)):
             lines.append(f"    const {h} = () => {{")
             lines.append(f"        console.log('{h} clicked');")
+            
+            # Auto-wire Popups
+            # Heuristic: If handler name or associated button implies popup/detail -> open first PopDiv
+            # We don't have the button text here easily unless we stored it in handlers set.
+            # Let's rely on handler name for now.
+            h_lower = h.lower()
+            if any(k in h_lower for k in ['detail', 'popup', 'view', 'list', 'history', '상세', '팝업', '이력', '보기', 'overbiz']):
+                 if all_pop_divs:
+                     pop_id = all_pop_divs[0].get('id', 'PopDiv0')
+                     lines.append(f"        open{pop_id}();")
+            
+            if 'close' in h_lower or '닫기' in h_lower:
+                 if all_pop_divs:
+                     pop_id = all_pop_divs[0].get('id', 'PopDiv0')
+                     lines.append(f"        close{pop_id}();")
+
             lines.append("    };")
             return_vars.append(h)
             

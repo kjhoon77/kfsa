@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmtraining0630PResultMessage } from './useFrmtraining0630PResultMessage';
 import * as Frmtraining0630PResultMessageData from './Frmtraining0630PResultMessageData';
@@ -14,7 +16,7 @@ export const Frmtraining0630PResultMessage = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">결과메세지팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     
                 </Stack>
@@ -23,7 +25,7 @@ export const Frmtraining0630PResultMessage = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "43px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lsTitle ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '498px', height: '37px' }}><Typography variant="body2"></Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lsMsg ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '500px', height: '260px' }}><Typography variant="body2"></Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnOK ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnOK_OnClick} sx={{ width: '118px', height: '24px', whiteSpace: "nowrap" }}>확  인</Button></Box></Stack>

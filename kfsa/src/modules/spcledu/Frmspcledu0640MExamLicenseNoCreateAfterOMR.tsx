@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmspcledu0640MExamLicenseNoCreateAfterOMR } from './useFrmspcledu0640MExamLicenseNoCreateAfterOMR';
 import * as Frmspcledu0640MExamLicenseNoCreateAfterOMRData from './Frmspcledu0640MExamLicenseNoCreateAfterOMRData';
@@ -12,7 +14,7 @@ import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 export const Frmspcledu0640MExamLicenseNoCreateAfterOMR = () => {
     const hook = useFrmspcledu0640MExamLicenseNoCreateAfterOMR();
     const columns_gdExamPass = [
-        { field: 'EJPASSYN', headerName: 'EJPASSYN', width: 30 },
+        { field: 'EJPASSYN', headerName: '', width: 30 },
         { field: 'EJMGNO', headerName: '접수번호', width: 80 },
         { field: 'EJPERSONNM', headerName: '성명', width: 100 },
         { field: 'EJRESIDENTNO', headerName: '생년월일', width: 84 },
@@ -24,7 +26,7 @@ export const Frmspcledu0640MExamLicenseNoCreateAfterOMR = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">수첩번호생성(OMR처리후)</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained"  onClick={hook.lfn_Save}>생성(F4)</Button>
 <Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Cancel}>입력 초기화</Button>
@@ -39,7 +41,7 @@ export const Frmspcledu0640MExamLicenseNoCreateAfterOMR = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "62px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbMsg ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '716px', height: '22px' }}><Typography variant="body2">※ OMR 리딩작업 처리전에 이미 합격처리 하신 경우에는 이 프로그램을 사용 안하셔도 됩니다.</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '180px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>합격인원</Typography>

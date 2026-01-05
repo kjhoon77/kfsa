@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust6510MKFSADataConnectionReport } from './useFrmcust6510MKFSADataConnectionReport';
 import * as Frmcust6510MKFSADataConnectionReportData from './Frmcust6510MKFSADataConnectionReportData';
@@ -12,33 +14,33 @@ import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 export const Frmcust6510MKFSADataConnectionReport = () => {
     const hook = useFrmcust6510MKFSADataConnectionReport();
     const columns_gdList1 = [
-        { field: 'RCCDNM', headerName: '(소방안전관리자) 안전원데이터연계 지역별 집계현황', width: 45 },
+        { field: 'RCCDNM', headerName: '(소방안전관리자) 안전원데이터연계 지역별 집계현황 지 역', width: 45 },
         { field: 'TOT', headerName: '총 계', width: 50 },
-        { field: 'TOT_MATCH', headerName: '일치완료', width: 74 },
-        { field: 'TOT_NEMA', headerName: '대상물수', width: 63 },
-        { field: 'TOT_NOT', headerName: '미일치', width: 50 },
+        { field: 'TOT_MATCH', headerName: '', width: 74 },
+        { field: 'TOT_NEMA', headerName: '', width: 63 },
+        { field: 'TOT_NOT', headerName: '', width: 50 },
         { field: 'TOT_1', headerName: '1급소관', width: 50 },
-        { field: 'MATCH_1', headerName: '일치완료', width: 75 },
-        { field: 'NEMA_1', headerName: '대상물수', width: 61 },
-        { field: 'NOT_1', headerName: '미일치', width: 50 },
+        { field: 'MATCH_1', headerName: '', width: 75 },
+        { field: 'NEMA_1', headerName: '', width: 61 },
+        { field: 'NOT_1', headerName: '', width: 50 },
         { field: 'TOT_2', headerName: '2급소관', width: 50 },
-        { field: 'MATCH_2', headerName: '일치완료', width: 80 },
-        { field: 'NEMA_2', headerName: '대상물수', width: 69 },
-        { field: 'NOT_2', headerName: '미일치', width: 50 },
+        { field: 'MATCH_2', headerName: '', width: 80 },
+        { field: 'NEMA_2', headerName: '', width: 69 },
+        { field: 'NOT_2', headerName: '', width: 50 },
         { field: 'TOT_3', headerName: '공공1급', width: 50 },
-        { field: 'MATCH_3', headerName: '일치완료', width: 79 },
-        { field: 'NEMA_3', headerName: '대상물수', width: 67 },
-        { field: 'NOT_3', headerName: '미일치', width: 50 },
+        { field: 'MATCH_3', headerName: '', width: 79 },
+        { field: 'NEMA_3', headerName: '', width: 67 },
+        { field: 'NOT_3', headerName: '', width: 50 },
         { field: 'TOT_4', headerName: '공공2급', width: 50 },
-        { field: 'MATCH_4', headerName: '일치완료', width: 76 },
-        { field: 'NEMA_4', headerName: '대상물수', width: 67 },
-        { field: 'NOT_4', headerName: '미일치', width: 50 },
+        { field: 'MATCH_4', headerName: '', width: 76 },
+        { field: 'NEMA_4', headerName: '', width: 67 },
+        { field: 'NOT_4', headerName: '', width: 50 },
     ];
     return (
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">안전원 데이터 연계현황</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Excel}>엑셀로 저장</Button>
@@ -51,7 +53,7 @@ export const Frmcust6510MKFSADataConnectionReport = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "50px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '112px', height: '22px' }}><Typography variant="body2">출력물</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_radPrtGubun ? undefined : 'none' }}><FormControl component="fieldset" sx={{ width: '301px', height: '22px', width: "max-content", whiteSpace: "nowrap", pr: 2 }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmcust6510MKFSADataConnectionReportData.ds_ds_ioReport || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "18px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static1 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '112px', height: '22px' }}><Typography variant="body2">조회 조건</Typography></Box></Box></Stack>
@@ -80,7 +82,7 @@ export const Frmcust6510MKFSADataConnectionReport = () => {
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "20px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static13 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '112px', height: '22px' }}><Typography variant="body2">정렬순서</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "12px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_radOrder ? undefined : 'none' }}><FormControl component="fieldset" sx={{ width: '487px', height: '86px', width: "max-content", whiteSpace: "nowrap", pr: 2 }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmcust6510MKFSADataConnectionReportData.ds_ds_ioOrder || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "101px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList1 ? undefined : 'none' }}><Paper sx={{ width: '759px', height: '204px', width: '100%', height: 'auto', minHeight: '204px' }}><DataGridWrapper rows={hook.ds_oDATA} columns={columns_gdList1} /></Paper></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "101px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList1 ? undefined : 'none' }}><Paper sx={{ width: '759px', height: '204px', width: '100%', height: 'auto', minHeight: '204px' }}><MultiDataGridWrapper rows={hook.ds_oDATA} columns={columns_gdList1} rowHeight={20} headerHeight={40} hideFooter={true} /></Paper></Box></Stack>
 
                     </Paper>
                 </Grid>

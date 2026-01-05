@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmspcledu0480MExamOrderSetting } from './useFrmspcledu0480MExamOrderSetting';
 import * as Frmspcledu0480MExamOrderSettingData from './Frmspcledu0480MExamOrderSettingData';
@@ -31,7 +33,7 @@ export const Frmspcledu0480MExamOrderSetting = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">시험회차선택</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
 <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
@@ -44,7 +46,7 @@ export const Frmspcledu0480MExamOrderSetting = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "66px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdExamOrder ? undefined : 'none' }}><Paper sx={{ width: '792px', height: '294px', width: '100%', height: 'auto', minHeight: '294px' }}><DataGridWrapper rows={hook.ds_ioLocalExamOrder} columns={columns_gdExamOrder} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbExamDate ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '120px', height: '22px' }}><Typography variant="body2">선택할 시험목록</Typography></Box></Box><Box sx={{ display: hook.isVisible_lbTextBlue ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '408px', height: '22px' }}><Typography variant="body2">※ 추가 후 선택저장 버튼을 클릭하시기 바랍니다.</Typography></Box></Box><Box sx={{ display: hook.isVisible_btnDel ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnDel_OnClick} sx={{ width: '85px', height: '24px', whiteSpace: "nowrap" }}>▲ 삭제</Button></Box><Box sx={{ display: hook.isVisible_btnAdd ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnAdd_OnClick} sx={{ width: '85px', height: '24px', whiteSpace: "nowrap" }}>추가 ▼</Button></Box><Box sx={{ display: hook.isVisible_btnSave ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_Save} sx={{ width: '85px', height: '24px', whiteSpace: "nowrap" }}>선택저장(F4)</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdLocalExamOrder ? undefined : 'none' }}><Paper sx={{ width: '792px', height: '274px', width: '100%', height: 'auto', minHeight: '274px' }}><DataGridWrapper rows={hook.ds_LocalExamOrder} columns={columns_gdLocalExamOrder} /></Paper></Box></Stack>

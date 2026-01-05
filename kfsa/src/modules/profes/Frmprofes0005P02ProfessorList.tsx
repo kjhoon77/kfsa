@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmprofes0005P02ProfessorList } from './useFrmprofes0005P02ProfessorList';
 import * as Frmprofes0005P02ProfessorListData from './Frmprofes0005P02ProfessorListData';
@@ -25,7 +27,7 @@ export const Frmprofes0005P02ProfessorList = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">교육교수목록팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained"  onClick={hook.btnSelect_OnClick}>선택</Button>
 <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
@@ -38,7 +40,7 @@ export const Frmprofes0005P02ProfessorList = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdProfessorList ? undefined : 'none' }}><Paper sx={{ width: '640px', height: '382px', width: '100%', height: 'auto', minHeight: '382px' }}><DataGridWrapper rows={hook.ds_oProfessorList} columns={columns_gdProfessorList} /></Paper></Box></Stack>
 
                     </Paper>

@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust6400MDataConnectionChangeManage } from './useFrmcust6400MDataConnectionChangeManage';
 import * as Frmcust6400MDataConnectionChangeManageData from './Frmcust6400MDataConnectionChangeManageData';
@@ -21,9 +23,10 @@ export const Frmcust6400MDataConnectionChangeManage = () => {
         { field: 'MHBEFORE', headerName: '변경 전', width: 150 },
         { field: 'MHAFTER', headerName: '변경 후', width: 180 },
         { field: 'PROCVALUE', headerName: '적용 값', width: 181 },
+        { field: 'col_9', headerName: '', width: 25 },
     ];
     const columns_gdTankChangeMList = [
-        { field: 'id', headerName: '순번', width: 34, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 34, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'MMDBPROCDATE', headerName: '최종전송일자', width: 94 },
         { field: 'MMAPPLYGUBUNNM', headerName: '반영여부', width: 61 },
         { field: 'OBJ_NM', headerName: '대상물명', width: 118 },
@@ -43,9 +46,10 @@ export const Frmcust6400MDataConnectionChangeManage = () => {
         { field: 'MHBEFORE', headerName: '변경 전', width: 150 },
         { field: 'MHAFTER', headerName: '변경 후', width: 180 },
         { field: 'PROCVALUE', headerName: '적용 값', width: 181 },
+        { field: 'col_9', headerName: '', width: 25 },
     ];
     const columns_gdChangeMList = [
-        { field: 'id', headerName: '순번', width: 34, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 34, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'MMDBPROCDATE', headerName: '최종전송일자', width: 83 },
         { field: 'MHPROCGUBUN', headerName: '변경항목', width: 57 },
         { field: 'MMAPPLYGUBUNNM', headerName: '반영여부', width: 56 },
@@ -54,6 +58,7 @@ export const Frmcust6400MDataConnectionChangeManage = () => {
         { field: 'NM', headerName: '선임자', width: 0 },
         { field: 'MANAGE_ENTRPS_VRSC_AT', headerName: '대행', width: 0 },
         { field: 'ADDR', headerName: '주소', width: 122 },
+        { field: 'col_9', headerName: '연계여부', width: 60 },
         { field: 'DYTM_TLPHON', headerName: '전화번호', width: 93 },
     ];
     const columns_gdFPISLicense = [
@@ -62,7 +67,7 @@ export const Frmcust6400MDataConnectionChangeManage = () => {
         { field: 'DELVRY_DE', headerName: '발급일자', width: 116 },
     ];
     const columns_gdManager = [
-        { field: 'id', headerName: '순번', width: 36, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 36, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'MANAGE_ENTRPS_VRSC_AT', headerName: '대행', width: 36 },
         { field: 'NM', headerName: '선임자명', width: 90 },
         { field: 'BIRTHDAY', headerName: '생년월일', width: 90 },
@@ -81,6 +86,7 @@ export const Frmcust6400MDataConnectionChangeManage = () => {
         { field: 'MHBEFORE', headerName: '변경 전', width: 150 },
         { field: 'MHAFTER', headerName: '변경 후', width: 180 },
         { field: 'PROCVALUE', headerName: '적용 값', width: 181 },
+        { field: 'col_9', headerName: '', width: 25 },
     ];
     const columns_gdBangChangeHList = [
         { field: 'RNUM', headerName: '순번', width: 30 },
@@ -90,13 +96,15 @@ export const Frmcust6400MDataConnectionChangeManage = () => {
         { field: 'MCPROCNM', headerName: '변경항목', width: 100 },
         { field: 'MHAPPLYGUBUN', headerName: '반영여부', width: 60 },
         { field: 'MHBEFORE', headerName: '변경 전', width: 150 },
+        { field: 'col_7', headerName: '변경 후', width: 190 },
         { field: 'PROCVALUE', headerName: '적용 값', width: 181 },
+        { field: 'col_9', headerName: '', width: 25 },
     ];
     return (
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">데이터연계분 변경내역 관리</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Save />} onClick={hook.fn_Excel}>엑셀로 저장</Button>
 <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
@@ -109,7 +117,7 @@ export const Frmcust6400MDataConnectionChangeManage = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "44px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbFPISLicense1 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '27px', height: '46px' }}><Typography variant="body2">조</Typography></Box></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '231px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>지부명</Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust6400MDataConnectionChangeManageData.ds_ds_ioJibu || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
@@ -120,17 +128,16 @@ export const Frmcust6400MDataConnectionChangeManage = () => {
                     <Typography variant="body2" sx={{ minWidth: 20, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust6400MDataConnectionChangeManageData.ds_ds_oRegion || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
                  </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '231px', height: '22px', display: 'flex', alignItems: 'center', ml: '35px' }}>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbFPISLicense2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '27px', height: '41px' }}><Typography variant="body2">회</Typography></Box></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '231px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>직능</Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust6400MDataConnectionChangeManageData.ds_ds_ioCourse || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '213px', height: '22px', display: 'flex', alignItems: 'center', ml: '7px' }}>
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>변경일자</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '142px', height: '22px', display: 'flex', alignItems: 'center', ml: '1px' }}>
                     <Typography variant="body2" sx={{ minWidth: 20, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><Box sx={{ display: hook.isVisible_Static11 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '56px', height: '22px' }}><Typography variant="body2">조회건수</Typography></Box></Box><Box sx={{ display: hook.isVisible_spSearchNum ? undefined : 'none' }}><Box sx={{ width: '89px', height: '22px', border: '1px dashed grey' }}>Unknown: Spin</Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbFPISLicense2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '27px', height: '41px' }}><Typography variant="body2">회</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '358px', height: '22px', display: 'flex', alignItems: 'center', ml: '35px' }}>
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>DB적용여부</Typography>
                     <FormControl component="fieldset" sx={{ width: "max-content", whiteSpace: "nowrap" }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmcust6400MDataConnectionChangeManageData.ds_ds_ioChangeApplyGubun || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl>
@@ -206,19 +213,18 @@ export const Frmcust6400MDataConnectionChangeManage = () => {
                     <Typography variant="body2" sx={{ minWidth: 70, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>용도</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioKFSAInfo?.CDNM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '336px', height: '22px', display: 'flex', alignItems: 'center', ml: '648px' }}>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static2_3 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '52px', height: '59px' }}><Typography variant="body2">선임자
+
+정보</Typography></Box></Box><Box sx={{ display: hook.isVisible_gdManager ? undefined : 'none' }}><Paper sx={{ width: '587px', height: '186px', width: '100%', height: 'auto', minHeight: '186px' }}><DataGridWrapper rows={hook.ds_oFireManagerInfo} columns={columns_gdManager} /></Paper></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '336px', height: '22px', display: 'flex', alignItems: 'center', ml: '5px' }}>
                     <Typography variant="body2" sx={{ minWidth: 70, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>전화번호</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioKFSAInfo?.BTEL || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static2_3 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '52px', height: '59px' }}><Typography variant="body2">선임자
-
-정보</Typography></Box></Box><Box sx={{ display: hook.isVisible_gdManager ? undefined : 'none' }}><Paper sx={{ width: '587px', height: '186px', width: '100%', height: 'auto', minHeight: '186px' }}><DataGridWrapper rows={hook.ds_oFireManagerInfo} columns={columns_gdManager} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '162px', height: '22px', display: 'flex', alignItems: 'center', ml: '648px' }}>
                     <Typography variant="body2" sx={{ minWidth: 70, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>선임자명</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioKFSAInfo?.FMNM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '172px', height: '22px', display: 'flex', alignItems: 'center', ml: '2px' }}>
                     <Typography variant="body2" sx={{ minWidth: 70, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>선임일자</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '167px', height: '22px', display: 'flex', alignItems: 'center', ml: '648px' }}>
                     <Typography variant="body2" sx={{ minWidth: 70, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>생년월일</Typography>
@@ -227,13 +233,12 @@ export const Frmcust6400MDataConnectionChangeManage = () => {
                     <Typography variant="body2" sx={{ minWidth: 83, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>개인식별번호</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioKFSAInfo?.FMPERSONKEY || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_StFireManagerTitle ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '52px', height: '52px' }}><Typography variant="body2"></Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '178px', height: '22px', display: 'flex', alignItems: 'center', ml: '648px' }}>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_StFireManagerTitle ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '52px', height: '52px' }}><Typography variant="body2"></Typography></Box></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '178px', height: '22px', display: 'flex', alignItems: 'center', ml: '593px' }}>
                     <Typography variant="body2" sx={{ minWidth: 70, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>휴대폰</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioKFSAInfo?.FMHHPTEL || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Box sx={{ display: hook.isVisible_Static6_2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '30px', height: '24px' }}><Typography variant="body2">해임</Typography></Box></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '125px', height: '22px', display: 'flex', alignItems: 'center', ml: '1px' }}>
                     <Typography variant="body2" sx={{ minWidth: 25, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}></Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '149px', height: '23px', display: 'flex', alignItems: 'center', ml: '648px' }}>
                     <Typography variant="body2" sx={{ minWidth: 70, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>업무대행</Typography>
@@ -253,7 +258,7 @@ export const Frmcust6400MDataConnectionChangeManage = () => {
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>처리대상</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioKFSAInfo?.BNM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Box sx={{ display: hook.isVisible_btnSave ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_Save} sx={{ width: '120px', height: '24px', whiteSpace: "nowrap" }}>변경내역 저장(F4)</Button></Box><Box sx={{ display: hook.isVisible_Button0 ? undefined : 'none' }}><Button variant="outlined"  onClick={hook.tab_page1_btnMFExcel_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '22px', whiteSpace: "nowrap" }}><TouchApp fontSize="small" /></Button></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ ml: "8px", minWidth: "978px" }}><Box sx={{ display: hook.isVisible_gdTankChangeHList ? undefined : 'none' }}><Paper sx={{ width: '978px', height: '231px', width: '100%', height: 'auto', minHeight: '231px' }}><DataGridWrapper rows={hook.ds_ioTankChangeHList} columns={columns_gdTankChangeHList} /></Paper></Box><Box sx={{ display: hook.isVisible_gdSokiChangeHList ? undefined : 'none' }}><Paper sx={{ width: '978px', height: '231px', width: '100%', height: 'auto', minHeight: '231px' }}><DataGridWrapper rows={hook.ds_ioSokiChangeHList} columns={columns_gdSokiChangeHList} /></Paper></Box><Box sx={{ display: hook.isVisible_gdDangerChangeHList ? undefined : 'none' }}><Paper sx={{ width: '978px', height: '231px', width: '100%', height: 'auto', minHeight: '231px' }}><DataGridWrapper rows={hook.ds_ioDangerChangeHList} columns={columns_gdDangerChangeHList} /></Paper></Box><Box sx={{ display: hook.isVisible_gdBangChangeHList ? undefined : 'none' }}><Paper sx={{ width: '978px', height: '231px', width: '100%', height: 'auto', minHeight: '231px' }}><DataGridWrapper rows={hook.ds_ioBangChangeHList} columns={columns_gdBangChangeHList} /></Paper></Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ ml: "8px", minWidth: "978px" }}><Box sx={{ display: hook.isVisible_gdTankChangeHList ? undefined : 'none' }}><Paper sx={{ width: '978px', height: '231px', width: '100%', height: 'auto', minHeight: '231px' }}><MultiDataGridWrapper rows={hook.ds_ioTankChangeHList} columns={columns_gdTankChangeHList} rowHeight={20} headerHeight={40} hideFooter={true} /></Paper></Box><Box sx={{ display: hook.isVisible_gdSokiChangeHList ? undefined : 'none' }}><Paper sx={{ width: '978px', height: '231px', width: '100%', height: 'auto', minHeight: '231px' }}><MultiDataGridWrapper rows={hook.ds_ioSokiChangeHList} columns={columns_gdSokiChangeHList} rowHeight={20} headerHeight={40} hideFooter={true} /></Paper></Box><Box sx={{ display: hook.isVisible_gdDangerChangeHList ? undefined : 'none' }}><Paper sx={{ width: '978px', height: '231px', width: '100%', height: 'auto', minHeight: '231px' }}><MultiDataGridWrapper rows={hook.ds_ioDangerChangeHList} columns={columns_gdDangerChangeHList} rowHeight={20} headerHeight={40} hideFooter={true} /></Paper></Box><Box sx={{ display: hook.isVisible_gdBangChangeHList ? undefined : 'none' }}><Paper sx={{ width: '978px', height: '231px', width: '100%', height: 'auto', minHeight: '231px' }}><MultiDataGridWrapper rows={hook.ds_ioBangChangeHList} columns={columns_gdBangChangeHList} rowHeight={20} headerHeight={40} hideFooter={true} /></Paper></Box></Box></Stack>
 
                     </Paper>
                 </Grid>

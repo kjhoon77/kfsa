@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust0010PEduDataHList } from './useFrmcust0010PEduDataHList';
 import * as Frmcust0010PEduDataHListData from './Frmcust0010PEduDataHListData';
@@ -11,7 +13,7 @@ import * as Frmcust0010PEduDataHListData from './Frmcust0010PEduDataHListData';
 export const Frmcust0010PEduDataHList = () => {
     const hook = useFrmcust0010PEduDataHList();
     const columns_gdEduDataHList = [
-        { field: 'id', headerName: '순번', width: 41, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 41, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'EHPROCDATE', headerName: '발행일', width: 93 },
         { field: 'CTOTALFEE', headerName: '미납회비', width: 100 },
         { field: 'EHCUSTADDR1', headerName: '주소1', width: 239 },
@@ -21,7 +23,7 @@ export const Frmcust0010PEduDataHList = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">교육안내문 발행이력</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 
@@ -31,7 +33,7 @@ export const Frmcust0010PEduDataHList = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "34px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdEduDataHList ? undefined : 'none' }}><Paper sx={{ width: '716px', height: '242px', width: '100%', height: 'auto', minHeight: '242px' }}><DataGridWrapper rows={hook.ds_oEduDataHList} columns={columns_gdEduDataHList} /></Paper></Box></Stack>
 
                     </Paper>

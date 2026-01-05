@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmprofes0001S04ProfMgmt } from './useFrmprofes0001S04ProfMgmt';
 import * as Frmprofes0001S04ProfMgmtData from './Frmprofes0001S04ProfMgmtData';
@@ -11,7 +13,7 @@ import * as Frmprofes0001S04ProfMgmtData from './Frmprofes0001S04ProfMgmtData';
 export const Frmprofes0001S04ProfMgmt = () => {
     const hook = useFrmprofes0001S04ProfMgmt();
     const columns_gdProfPaper = [
-        { field: 'id', headerName: '순번', width: 30, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 30, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'PPFIELD', headerName: '연구분야', width: 80 },
         { field: 'PPPUBDATE', headerName: '논문개재일', width: 80 },
         { field: 'PPTITLE', headerName: '논문명', width: 200 },
@@ -36,7 +38,7 @@ export const Frmprofes0001S04ProfMgmt = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "38px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdProfPaper ? undefined : 'none' }}><Paper sx={{ width: '764px', height: '184px', width: '100%', height: 'auto', minHeight: '184px' }}><DataGridWrapper rows={hook.ds_ioProfPaper} columns={columns_gdProfPaper} /></Paper></Box></Stack>
 
                     </Paper>

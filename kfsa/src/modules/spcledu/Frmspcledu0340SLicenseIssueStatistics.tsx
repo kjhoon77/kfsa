@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmspcledu0340SLicenseIssueStatistics } from './useFrmspcledu0340SLicenseIssueStatistics';
 import * as Frmspcledu0340SLicenseIssueStatisticsData from './Frmspcledu0340SLicenseIssueStatisticsData';
@@ -14,7 +16,7 @@ export const Frmspcledu0340SLicenseIssueStatistics = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">전자교부대장/전자재교부대장</Typography>
                 <Stack direction="row" spacing={1}>
                     
                 </Stack>
@@ -23,7 +25,7 @@ export const Frmspcledu0340SLicenseIssueStatistics = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         
                     </Paper>
                 </Grid>

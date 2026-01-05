@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmprofesPopup0001PersonLecturing } from './useFrmprofesPopup0001PersonLecturing';
 import * as FrmprofesPopup0001PersonLecturingData from './FrmprofesPopup0001PersonLecturingData';
@@ -11,7 +13,7 @@ import * as FrmprofesPopup0001PersonLecturingData from './FrmprofesPopup0001Pers
 export const FrmprofesPopup0001PersonLecturing = () => {
     const hook = useFrmprofesPopup0001PersonLecturing();
     const columns_gdList = [
-        { field: 'id', headerName: '순번', width: 35, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 35, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'LTEDUDATE', headerName: '강의일자', width: 93 },
         { field: 'GTDEPTNM', headerName: '지부', width: 55 },
         { field: 'LGUBUN', headerName: '과정', width: 39 },
@@ -26,7 +28,7 @@ export const FrmprofesPopup0001PersonLecturing = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">개인별 강의관리대장</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Save />} onClick={hook.btnExcell_OnClick}>엑셀로 저장</Button>
 <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
@@ -40,7 +42,7 @@ export const FrmprofesPopup0001PersonLecturing = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "66px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList ? undefined : 'none' }}><Paper sx={{ width: '840px', height: '562px', width: '100%', height: 'auto', minHeight: '562px' }}><DataGridWrapper rows={hook.ds_ProfesList} columns={columns_gdList} /></Paper></Box></Stack>
 
                     </Paper>

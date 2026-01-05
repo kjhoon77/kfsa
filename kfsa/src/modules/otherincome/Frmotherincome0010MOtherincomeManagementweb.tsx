@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmotherincome0010MOtherincomeManagementweb } from './useFrmotherincome0010MOtherincomeManagementweb';
 import * as Frmotherincome0010MOtherincomeManagementwebData from './Frmotherincome0010MOtherincomeManagementwebData';
@@ -67,10 +69,12 @@ export const Frmotherincome0010MOtherincomeManagementweb = () => {
         { field: 'OPNM', headerName: '성명', width: 75 },
         { field: 'JUMIN', headerName: '생년월일', width: 100 },
         { field: 'TOTPAYMENT', headerName: '지급총액', width: 90 },
-        { field: 'OTHERINCOME', headerName: 'OTHERINCOME', width: 95 },
-        { field: 'OTHERJUMIN', headerName: 'OTHERJUMIN', width: 120 },
-        { field: 'BIZINCOME', headerName: 'BIZINCOME', width: 95 },
-        { field: 'BIZJUMIN', headerName: 'BIZJUMIN', width: 120 },
+        { field: 'OTHERINCOME', headerName: '', width: 95 },
+        { field: 'OTHERJUMIN', headerName: '', width: 120 },
+        { field: 'BIZINCOME', headerName: '', width: 95 },
+        { field: 'BIZJUMIN', headerName: '', width: 120 },
+        { field: 'col_7', headerName: '', width: 95 },
+        { field: 'col_8', headerName: '', width: 120 },
     ];
     return (
         <PageContainer>
@@ -87,7 +91,7 @@ export const Frmotherincome0010MOtherincomeManagementweb = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "32px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_tabTab1 ? undefined : 'none' }}><Box sx={{ width: '718px', height: '631px', width: "100%", height: "auto", minHeight: "631px" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab1} onChange={(e, v) => setTabValue_tabTab1(v)} aria-label="tabTab1"><Tab label="   지급조서 관리   " /><Tab label="   지급조서 발급현황   " /><Tab label="   사업소득자 관리   " /></Tabs></Box><CustomTabPanel value={tabValue_tabTab1} index={0}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "7px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbPerson ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '96px', height: '24px' }}><Typography variant="body2">소득자 검색</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '148px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 75, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>적용년도</Typography>
@@ -137,7 +141,7 @@ export const Frmotherincome0010MOtherincomeManagementweb = () => {
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '178px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 75, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>지급일자</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_btnOipaymentdate ? undefined : 'none' }}><Button variant="contained"   onClick={hook.tabTab1_tab1_btnOipaymentdate_OnClick} sx={{ width: '66px', height: '28px', whiteSpace: "nowrap" }}>일자조회</Button></Box><Box sx={{ display: hook.isVisible_edOijibu ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '70px', height: '24px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '143px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
+                 </Stack><Box sx={{ display: hook.isVisible_btnOipaymentdate ? undefined : 'none' }}><Button variant="contained"   onClick={hook.tabTab1_tab1_btnOipaymentdate_OnClick} sx={{ width: '66px', height: '28px', whiteSpace: "nowrap" }}>일자조회</Button></Box><Box sx={{ display: hook.isVisible_edOijibu ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '70px', height: '24px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '143px', height: '22px', display: 'flex', alignItems: 'center', ml: '106px' }}>
                     <Typography variant="body2" sx={{ minWidth: 70, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>귀속년월</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '198px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
@@ -176,13 +180,11 @@ export const Frmotherincome0010MOtherincomeManagementweb = () => {
                     <Typography variant="body2" sx={{ minWidth: 75, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>출력구분</Typography>
                     <FormControl component="fieldset" sx={{ width: "max-content", whiteSpace: "nowrap" }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmotherincome0010MOtherincomeManagementwebData.ds_ds_inPrtGubun || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl>
                  </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "20px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static2_2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '96px', height: '24px' }}><Typography variant="body2">출력기준</Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_edsRange1 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '116px', height: '24px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "20px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static2_2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '96px', height: '24px' }}><Typography variant="body2">출력기준</Typography></Box></Box><Box sx={{ display: hook.isVisible_edsRange1 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '116px', height: '24px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '479px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 75, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>출력기준</Typography>
                     <FormControl component="fieldset" sx={{ width: "max-content", whiteSpace: "nowrap" }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmotherincome0010MOtherincomeManagementwebData.ds_ds_inPrtStandard || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl>
-                 </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_edsRange2 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '116px', height: '24px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
+                 </Stack><Box sx={{ display: hook.isVisible_edsRange2 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '116px', height: '24px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbOiyear ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '65px', height: '24px' }}><Typography variant="body2">적용년도</Typography></Box></Box><Box sx={{ display: hook.isVisible_lbRange ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '250px', height: '24px' }}><Typography variant="body2"></Typography></Box></Box><Box sx={{ display: hook.isVisible_medsRange1 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '116px', height: '24px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_medYear ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '65px', height: '24px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Box sx={{ display: hook.isVisible_lbs ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '10px', height: '24px' }}><Typography variant="body2">~</Typography></Box></Box><Box sx={{ display: hook.isVisible_medsRange2 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '116px', height: '24px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "26px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static4 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '96px', height: '24px' }}><Typography variant="body2">지부선택</Typography></Box></Box></Stack>

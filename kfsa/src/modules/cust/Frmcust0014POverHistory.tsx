@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust0014POverHistory } from './useFrmcust0014POverHistory';
 import * as Frmcust0014POverHistoryData from './Frmcust0014POverHistoryData';
@@ -11,7 +13,7 @@ import * as Frmcust0014POverHistoryData from './Frmcust0014POverHistoryData';
 export const Frmcust0014POverHistory = () => {
     const hook = useFrmcust0014POverHistory();
     const columns_gdOverBiz = [
-        { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'CNO', headerName: '겸직그룹', width: 80 },
         { field: 'GUBUN', headerName: '겸직상태', width: 80 },
         { field: 'OBSTARTDATE', headerName: '겸직시작일', width: 100 },
@@ -29,7 +31,7 @@ export const Frmcust0014POverHistory = () => {
         { field: 'CREGISTERYYMM', headerName: '등록일자', width: 73 },
     ];
     const columns_Grid0 = [
-        { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'CNO', headerName: '겸직그룹', width: 80 },
         { field: 'GUBUN', headerName: '겸직상태', width: 80 },
         { field: 'OBSTARTDATE', headerName: '겸직시작일', width: 100 },
@@ -50,7 +52,7 @@ export const Frmcust0014POverHistory = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">겸직이력</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 
@@ -60,7 +62,7 @@ export const Frmcust0014POverHistory = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "34px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdOverBiz ? undefined : 'none' }}><Paper sx={{ width: '716px', height: '242px', width: '100%', height: 'auto', minHeight: '242px' }}><DataGridWrapper rows={hook.ds_oOverBizList} columns={columns_gdOverBiz} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Grid0 ? undefined : 'none' }}><Paper sx={{ width: '716px', height: '242px', width: '100%', height: 'auto', minHeight: '242px' }}><DataGridWrapper rows={hook.ds_oOverBizList} columns={columns_Grid0} /></Paper></Box></Stack>
 

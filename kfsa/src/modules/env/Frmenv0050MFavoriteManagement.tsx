@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmenv0050MFavoriteManagement } from './useFrmenv0050MFavoriteManagement';
 import * as Frmenv0050MFavoriteManagementData from './Frmenv0050MFavoriteManagementData';
@@ -19,7 +21,7 @@ export const Frmenv0050MFavoriteManagement = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">즐겨찾기관리</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Save}>수정 저장</Button>
 <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
@@ -33,7 +35,7 @@ export const Frmenv0050MFavoriteManagement = () => {
 
                 <Grid item xs={12} md={8}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Detailed Info</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "34px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_tvMenu ? undefined : 'none' }}><Box sx={{ width: '350px', height: '554px', border: '1px dashed grey' }}>Unknown: TreeView</Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnAdd ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnAdd_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>추가 ▶</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "22px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnDel ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnDel_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>◀ 삭제</Button></Box></Stack>
@@ -43,7 +45,7 @@ export const Frmenv0050MFavoriteManagement = () => {
 
                 <Grid item xs={12} md={4}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>List</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdFavorites ? undefined : 'none' }}><Paper sx={{ width: '350px', height: '570px', width: '100%', height: 'auto', minHeight: '570px' }}><DataGridWrapper rows={hook.ds_ioFavorites} columns={columns_gdFavorites} /></Paper></Box></Stack>
 
                     </Paper>

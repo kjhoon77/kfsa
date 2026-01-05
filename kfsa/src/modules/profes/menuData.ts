@@ -2,7 +2,7 @@ export const menuData = [
   {
     title: 'Root',
     children: [
-      { title: 'Frmprofes0002MInviteProfMgnt', path: '/Frmprofes0002MInviteProfMgnt' },
+      { title: 'Frmprofes0001S01ProfMgmt', path: '/Frmprofes0001S01ProfMgmt' },
     ]
   },
 ];

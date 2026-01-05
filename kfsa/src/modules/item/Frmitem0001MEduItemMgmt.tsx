@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmitem0001MEduItemMgmt } from './useFrmitem0001MEduItemMgmt';
 import * as Frmitem0001MEduItemMgmtData from './Frmitem0001MEduItemMgmtData';
@@ -13,26 +15,26 @@ export const Frmitem0001MEduItemMgmt = () => {
     const hook = useFrmitem0001MEduItemMgmt();
     const [tabValue_tabTab, setTabValue_tabTab] = useState(0);
     const columns_gdEduItemR = [
-        { field: 'id', headerName: '순번', width: 80, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 80, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'EIKINDGUBUN', headerName: '교보재분류코드', width: 120 },
         { field: 'EIKINDGUBUNNM', headerName: '교보재분류명', width: 300 },
         { field: 'EIKINDUSELEVEL', headerName: '사용레벨', width: 80 },
     ];
     const columns_gdEduItemB = [
-        { field: 'id', headerName: '순번', width: 80, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 80, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'EIKINDGUBUNNM', headerName: '교보재분류명', width: 250 },
         { field: 'EIBCD', headerName: '대분류코드', width: 120 },
         { field: 'EIBNM', headerName: '대분류명', width: 300 },
     ];
     const columns_gdEduItemM = [
-        { field: 'id', headerName: '순번', width: 80, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 80, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'EIKINDGUBUNNM', headerName: '교보재분류명', width: 120 },
         { field: 'EIBNM', headerName: '대분류명', width: 120 },
         { field: 'EIMCD', headerName: '중분류코드', width: 120 },
         { field: 'EIMNM', headerName: '중분류명', width: 300 },
     ];
     const columns_gdEduItemS = [
-        { field: 'id', headerName: '순번', width: 80, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 80, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'EIKINDGUBUNNM', headerName: '교보재분류명', width: 120 },
         { field: 'EIBNM', headerName: '대분류명', width: 120 },
         { field: 'EIMNM', headerName: '중분류명', width: 120 },
@@ -43,7 +45,7 @@ export const Frmitem0001MEduItemMgmt = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">코드관리</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 <Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Input}>추가 저장</Button>
@@ -60,7 +62,7 @@ export const Frmitem0001MEduItemMgmt = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "45px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_tabTab ? undefined : 'none' }}><Box sx={{ width: '791px', height: '538px', width: "100%", height: "auto", minHeight: "538px" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab} onChange={(e, v) => setTabValue_tabTab(v)} aria-label="tabTab"><Tab label="교보재분류" /><Tab label="대분류코드" /><Tab label="중분류코드" /><Tab label="소분류코드" /></Tabs></Box><CustomTabPanel value={tabValue_tabTab} index={0}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "6px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdEduItemR ? undefined : 'none' }}><Paper sx={{ width: '780px', height: '418px', width: '100%', height: 'auto', minHeight: '418px' }}><DataGridWrapper rows={hook.ds_ioEduItemR} columns={columns_gdEduItemR} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '199px', height: '22px', display: 'flex', alignItems: 'center', ml: '10px' }}>
                     <Typography variant="body2" sx={{ minWidth: 124, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>교보재분류코드</Typography>

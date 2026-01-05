@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmprofes0007MaterialPopUpInsert } from './useFrmprofes0007MaterialPopUpInsert';
 import * as Frmprofes0007MaterialPopUpInsertData from './Frmprofes0007MaterialPopUpInsertData';
@@ -11,14 +13,14 @@ import * as Frmprofes0007MaterialPopUpInsertData from './Frmprofes0007MaterialPo
 export const Frmprofes0007MaterialPopUpInsert = () => {
     const hook = useFrmprofes0007MaterialPopUpInsert();
     const columns_gdProfSeminar = [
-        { field: 'id', headerName: '순번', width: 30, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 30, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'TMMOVIE', headerName: '경로', width: 607 },
     ];
     return (
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">교안등록 수정</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Cancel}>입력 초기화</Button>
 <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
@@ -31,7 +33,7 @@ export const Frmprofes0007MaterialPopUpInsert = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "61px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '168px', height: '22px', display: 'flex', alignItems: 'center', ml: '10px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>년도</Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmprofes0007MaterialPopUpInsertData.ds_ds_oYear || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
@@ -80,8 +82,7 @@ export const Frmprofes0007MaterialPopUpInsert = () => {
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>교안 첨부파일</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Box sx={{ display: hook.isVisible_btnUploadFile ? undefined : 'none' }}><Button variant="contained" color="success"  onClick={hook.btnUploadFile_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>업로드</Button></Box><Box sx={{ display: hook.isVisible_lbFileSize ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '116px', height: '22px' }}><Typography variant="body2"></Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_fiAttachFile ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>fiAttachFile</Button></Box><Box sx={{ display: hook.isVisible_fdAttachFile ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>fdAttachFile</Button></Box><Box sx={{ display: hook.isVisible_hfAttachFile ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>hfAttachFile</Button></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static12 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '88px', height: '22px' }}><Typography variant="body2">교안 동영상1</Typography></Box></Box><Box sx={{ display: hook.isVisible_btnButton ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnButton_OnClick} sx={{ width: '209px', height: '24px', whiteSpace: "nowrap" }}>교안 동영상 작성 도움말</Button></Box><Box sx={{ display: hook.isVisible_btnAdd ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnAdd_OnClick} sx={{ width: '52px', height: '24px', whiteSpace: "nowrap" }}>행 추가</Button></Box><Box sx={{ display: hook.isVisible_btnDel ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnDel_OnClick} sx={{ width: '52px', height: '24px', whiteSpace: "nowrap" }}>행 삭제</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static12 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '88px', height: '22px' }}><Typography variant="body2">교안 동영상1</Typography></Box></Box><Box sx={{ ml: "4px", minWidth: "209px" }}><Box sx={{ display: hook.isVisible_btnButton ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnButton_OnClick} sx={{ width: '209px', height: '24px', whiteSpace: "nowrap" }}>교안 동영상 작성 도움말</Button></Box><Box sx={{ display: hook.isVisible_fiAttachFile ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>fiAttachFile</Button></Box><Box sx={{ display: hook.isVisible_fdAttachFile ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>fdAttachFile</Button></Box><Box sx={{ display: hook.isVisible_hfAttachFile ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>hfAttachFile</Button></Box></Box><Box sx={{ display: hook.isVisible_btnAdd ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnAdd_OnClick} sx={{ width: '52px', height: '24px', whiteSpace: "nowrap" }}>행 추가</Button></Box><Box sx={{ display: hook.isVisible_btnDel ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnDel_OnClick} sx={{ width: '52px', height: '24px', whiteSpace: "nowrap" }}>행 삭제</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdProfSeminar ? undefined : 'none' }}><Paper sx={{ width: '650px', height: '184px', width: '100%', height: 'auto', minHeight: '184px' }}><DataGridWrapper rows={hook.ds_Movie} columns={columns_gdProfSeminar} /></Paper></Box></Stack>
 
                     </Paper>

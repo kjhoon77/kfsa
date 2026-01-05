@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust1091PEduScheduleList } from './useFrmcust1091PEduScheduleList';
 import * as Frmcust1091PEduScheduleListData from './Frmcust1091PEduScheduleListData';
@@ -20,9 +22,9 @@ export const Frmcust1091PEduScheduleList = () => {
         { field: 'edutime', headerName: '교육시간', width: 84 },
         { field: 'ESEDUTYPE', headerName: '교육유형', width: 76 },
         { field: 'ESSEATCNT', headerName: '좌석수', width: 50 },
-        { field: 'ESINETJUBSUCNT', headerName: 'ESINETJUBSUCNT', width: 76 },
+        { field: 'ESINETJUBSUCNT', headerName: '', width: 76 },
         { field: 'ESACCESSCNT', headerName: '접수자수', width: 60 },
-        { field: 'ESINETOPENGUBUN', headerName: 'ESINETOPENGUBUN', width: 65 },
+        { field: 'ESINETOPENGUBUN', headerName: '', width: 65 },
         { field: 'ESEDUREGION', headerName: '지역', width: 50 },
         { field: 'EPNM', headerName: '교육장소', width: 373 },
         { field: 'ESGUBUN', headerName: '교육구분', width: 65 },
@@ -33,7 +35,7 @@ export const Frmcust1091PEduScheduleList = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">실무교육일정검색팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained"  onClick={hook.btnSelect_OnClick}>선택</Button>
 <Button variant="contained" startIcon={<Sort />} onClick={hook.btnMutilSort_OnClick}></Button>
@@ -46,7 +48,7 @@ export const Frmcust1091PEduScheduleList = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdEduSchedule ? undefined : 'none' }}><Paper sx={{ width: '972px', height: '482px', width: '100%', height: 'auto', minHeight: '482px' }}><DataGridWrapper rows={hook.ds_oEduSchedule} columns={columns_gdEduSchedule} /></Paper></Box></Stack>
 
                     </Paper>

@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust5010 } from './useFrmcust5010';
 import * as Frmcust5010Data from './Frmcust5010Data';
@@ -18,7 +20,7 @@ export const Frmcust5010 = () => {
     const [tabValue_tabTab2_2, setTabValue_tabTab2_2] = useState(0);
     const [tabValue_tabTab1_5, setTabValue_tabTab1_5] = useState(0);
     const columns_gdAdminList = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'NM', headerName: '성명', width: 80 },
         { field: 'OFCPS', headerName: '직위', width: 91 },
         { field: 'IHIDNUM', headerName: '생년월일', width: 87 },
@@ -29,7 +31,7 @@ export const Frmcust5010 = () => {
         { field: 'MANAGE_ENTRPS_VRSC_AT', headerName: '업무대행여부', width: 99 },
     ];
     const columns_gdLicense = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'CODE_NM', headerName: '자격증명', width: 200 },
         { field: 'CRQFC_NO', headerName: '자격증번호', width: 136 },
         { field: 'DELVRY_DE', headerName: '교부일자', width: 100 },
@@ -37,7 +39,7 @@ export const Frmcust5010 = () => {
         { field: 'QUALF_FRFTR_ENNC', headerName: '자격상실유무', width: 99 },
     ];
     const columns_gdAdminList_2 = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'NM', headerName: '성명', width: 88 },
         { field: 'OFCPS', headerName: '직위', width: 82 },
         { field: 'IHIDNUM', headerName: '생년월일', width: 89 },
@@ -47,7 +49,7 @@ export const Frmcust5010 = () => {
         { field: 'TLPHON_NO', headerName: '전화번호', width: 100 },
     ];
     const columns_gdLicense_2 = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'CODE_NM', headerName: '자격증명', width: 200 },
         { field: 'CRQFC_NO', headerName: '자격증번호', width: 136 },
         { field: 'DELVRY_DE', headerName: '교부일자', width: 100 },
@@ -61,7 +63,7 @@ export const Frmcust5010 = () => {
         { field: 'TLPHON_NO', headerName: '전화번호', width: 197 },
     ];
     const columns_gdDongStatus = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'BULDDONG_NM', headerName: '동명칭', width: 138 },
         { field: 'BULDDONG_MAIN_PRPOS_CODE', headerName: '주용도', width: 120 },
         { field: 'BULDDONG_SEC_PRPOS_CODE', headerName: '부용도', width: 187 },
@@ -74,7 +76,7 @@ export const Frmcust5010 = () => {
         { field: 'ADDR', headerName: '주소', width: 362 },
     ];
     const columns_gdFloorStatus = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'FLOOR', headerName: '층', width: 51 },
         { field: 'MAIN_PROPS', headerName: '용도', width: 77 },
         { field: 'AR', headerName: '면적', width: 48 },
@@ -86,7 +88,7 @@ export const Frmcust5010 = () => {
         { field: 'moddate', headerName: '최종수정일', width: 90 },
     ];
     const columns_gdSFloorStatus = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'FLOOR', headerName: '층', width: 76 },
         { field: 'SPCL_PRPOS_SE_CODE', headerName: '특수용도', width: 139 },
         { field: 'AR', headerName: '면적', width: 101 },
@@ -96,59 +98,59 @@ export const Frmcust5010 = () => {
         { field: 'moddate', headerName: '최종수정일', width: 100 },
     ];
     const columns_gdFloorE = [
-        { field: 'FLOOR_SE', headerName: '시설별', width: 80 },
+        { field: 'FLOOR_SE', headerName: '시설별 층구분', width: 80 },
         { field: 'FLOOR', headerName: '층', width: 80 },
         { field: 'GUBUN', headerName: '구분', width: 108 },
         { field: 'EXTSHR_STDR', headerName: '소화설비', width: 30 },
-        { field: 'SIMPLCTY_FREXT_EQPMT_STDR', headerName: 'SIMPLCTY_FREXT_EQPMT_STDR', width: 30 },
-        { field: 'INSDHOUS_FRPLG_STDR', headerName: 'INSDHOUS_FRPLG_STDR', width: 30 },
-        { field: 'OUTHOUS_FRPLG_STDR', headerName: 'OUTHOUS_FRPLG_STDR', width: 30 },
-        { field: 'POWER_FGT_PUMP_STDR', headerName: 'POWER_FGT_PUMP_STDR', width: 30 },
-        { field: 'SPRINKLER_H_STDR', headerName: 'H', width: 30 },
-        { field: 'SPRINKLER_AV_STDR', headerName: 'AV', width: 30 },
-        { field: 'WATER_SPRAY_FREXT_H_STDR', headerName: 'H', width: 30 },
-        { field: 'WATER_SPRAY_FREXT_AV_STDR', headerName: 'AV', width: 30 },
-        { field: 'CANNON_FREXT_H_STDR', headerName: 'H', width: 30 },
-        { field: 'CANNON_FREXT_AV_STDR', headerName: 'AV', width: 30 },
-        { field: 'CARBON_DIOX_H_STDR', headerName: 'H', width: 30 },
-        { field: 'CARBON_DIOX_AV_STDR', headerName: 'AV', width: 30 },
-        { field: 'HALOGEN_COMP_H_STDR', headerName: 'H', width: 30 },
-        { field: 'HALOGEN_COMP_AV_STDR', headerName: 'AV', width: 30 },
-        { field: 'POWDER_FREXT_H_STDR', headerName: 'H', width: 30 },
-        { field: 'POWDER_FREXT_AV_STDR', headerName: 'AV', width: 30 },
+        { field: 'SIMPLCTY_FREXT_EQPMT_STDR', headerName: '', width: 30 },
+        { field: 'INSDHOUS_FRPLG_STDR', headerName: '', width: 30 },
+        { field: 'OUTHOUS_FRPLG_STDR', headerName: '', width: 30 },
+        { field: 'POWER_FGT_PUMP_STDR', headerName: '', width: 30 },
+        { field: 'SPRINKLER_H_STDR', headerName: '', width: 30 },
+        { field: 'SPRINKLER_AV_STDR', headerName: '', width: 30 },
+        { field: 'WATER_SPRAY_FREXT_H_STDR', headerName: '', width: 30 },
+        { field: 'WATER_SPRAY_FREXT_AV_STDR', headerName: '', width: 30 },
+        { field: 'CANNON_FREXT_H_STDR', headerName: '', width: 30 },
+        { field: 'CANNON_FREXT_AV_STDR', headerName: '', width: 30 },
+        { field: 'CARBON_DIOX_H_STDR', headerName: '', width: 30 },
+        { field: 'CARBON_DIOX_AV_STDR', headerName: '', width: 30 },
+        { field: 'HALOGEN_COMP_H_STDR', headerName: '', width: 30 },
+        { field: 'HALOGEN_COMP_AV_STDR', headerName: '', width: 30 },
+        { field: 'POWDER_FREXT_H_STDR', headerName: '', width: 30 },
+        { field: 'POWDER_FREXT_AV_STDR', headerName: '', width: 30 },
         { field: 'EMGNC_ALARM_STDR', headerName: '경보설비', width: 30 },
-        { field: 'EMGNC_BRDCST_STDR', headerName: 'EMGNC_BRDCST_STDR', width: 30 },
-        { field: 'SHCI_ALARM_STDR', headerName: 'SHCI_ALARM_STDR', width: 30 },
-        { field: 'ATMC_FIRE_DETCT_SENSOR_STDR', headerName: '감', width: 30 },
-        { field: 'ATMC_FIRE_DETCT_CRCT_STDR', headerName: '회', width: 30 },
-        { field: 'ATMC_FIRE_FNEWS_STDR', headerName: 'ATMC_FIRE_FNEWS_STDR', width: 30 },
-        { field: 'GAS_LKGE_ALARM_STDR', headerName: 'GAS_LKGE_ALARM_STDR', width: 30 },
+        { field: 'EMGNC_BRDCST_STDR', headerName: '', width: 30 },
+        { field: 'SHCI_ALARM_STDR', headerName: '', width: 30 },
+        { field: 'ATMC_FIRE_DETCT_SENSOR_STDR', headerName: '', width: 30 },
+        { field: 'ATMC_FIRE_DETCT_CRCT_STDR', headerName: '', width: 30 },
+        { field: 'ATMC_FIRE_FNEWS_STDR', headerName: '', width: 30 },
+        { field: 'GAS_LKGE_ALARM_STDR', headerName: '', width: 30 },
         { field: 'SLIDE_STDR', headerName: '피난설비', width: 30 },
-        { field: 'REFGE_LADDER_STDR', headerName: 'REFGE_LADDER_STDR', width: 30 },
-        { field: 'RSCUNT_STDR', headerName: 'RSCUNT_STDR', width: 30 },
-        { field: 'SLOW_DES_MCHN_STDR', headerName: 'SLOW_DES_MCHN_STDR', width: 30 },
-        { field: 'REFGE_BRIDGE_STDR', headerName: 'REFGE_BRIDGE_STDR', width: 30 },
-        { field: 'REFGE_ROPE_STDR', headerName: 'REFGE_ROPE_STDR', width: 30 },
-        { field: 'AIR_SAFE_MAT_STDR', headerName: 'AIR_SAFE_MAT_STDR', width: 30 },
-        { field: 'HNL_RESCUE_UTNSIL_STDR', headerName: 'HNL_RESCUE_UTNSIL_STDR', width: 30 },
-        { field: 'DLAMP_STDR', headerName: 'DLAMP_STDR', width: 30 },
-        { field: 'DERIVE_SGNAL_STDR', headerName: 'DERIVE_SGNAL_STDR', width: 30 },
-        { field: 'EMGNC_LLAMP_STDR', headerName: 'EMGNC_LLAMP_STDR', width: 30 },
+        { field: 'REFGE_LADDER_STDR', headerName: '', width: 30 },
+        { field: 'RSCUNT_STDR', headerName: '', width: 30 },
+        { field: 'SLOW_DES_MCHN_STDR', headerName: '', width: 30 },
+        { field: 'REFGE_BRIDGE_STDR', headerName: '', width: 30 },
+        { field: 'REFGE_ROPE_STDR', headerName: '', width: 30 },
+        { field: 'AIR_SAFE_MAT_STDR', headerName: '', width: 30 },
+        { field: 'HNL_RESCUE_UTNSIL_STDR', headerName: '', width: 30 },
+        { field: 'DLAMP_STDR', headerName: '', width: 30 },
+        { field: 'DERIVE_SGNAL_STDR', headerName: '', width: 30 },
+        { field: 'EMGNC_LLAMP_STDR', headerName: '', width: 30 },
         { field: 'WRPP_FREXT_USWTR_STDR', headerName: '소방용수설비', width: 30 },
-        { field: 'FREXT_WTR_STDR', headerName: 'FREXT_WTR_STDR', width: 30 },
-        { field: 'WTRTNK_STDR', headerName: 'WTRTNK_STDR', width: 30 },
-        { field: 'FGT_USWTR_EQP_ETC_STDR', headerName: 'FGT_USWTR_EQP_ETC_STDR', width: 30 },
+        { field: 'FREXT_WTR_STDR', headerName: '', width: 30 },
+        { field: 'WTRTNK_STDR', headerName: '', width: 30 },
+        { field: 'FGT_USWTR_EQP_ETC_STDR', headerName: '', width: 30 },
         { field: 'RESMOKE_STDR', headerName: '소화활동상필요한설비', width: 30 },
-        { field: 'CNNC_WTRPIPE_STDR', headerName: 'CNNC_WTRPIPE_STDR', width: 30 },
-        { field: 'CNNC_SPRK_STDR', headerName: 'CNNC_SPRK_STDR', width: 30 },
-        { field: 'EMGNC_CNCNT_STDR', headerName: 'EMGNC_CNCNT_STDR', width: 30 },
-        { field: 'WLMC_ASSTN_STDR', headerName: 'WLMC_ASSTN_STDR', width: 30 },
+        { field: 'CNNC_WTRPIPE_STDR', headerName: '', width: 30 },
+        { field: 'CNNC_SPRK_STDR', headerName: '', width: 30 },
+        { field: 'EMGNC_CNCNT_STDR', headerName: '', width: 30 },
+        { field: 'WLMC_ASSTN_STDR', headerName: '', width: 30 },
         { field: 'CURTAIN_STDR', headerName: '방염', width: 30 },
-        { field: 'CASSETTE_STDR', headerName: 'CASSETTE_STDR', width: 30 },
-        { field: 'RSTPRT_ETC_STDR', headerName: 'RSTPRT_ETC_STDR', width: 30 },
+        { field: 'CASSETTE_STDR', headerName: '', width: 30 },
+        { field: 'RSTPRT_ETC_STDR', headerName: '', width: 30 },
     ];
     const columns_gdAdminList_3 = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'NM', headerName: '성명', width: 80 },
         { field: 'OFCPS', headerName: '직위', width: 91 },
         { field: 'IHIDNUM', headerName: '생년월일', width: 87 },
@@ -159,7 +161,7 @@ export const Frmcust5010 = () => {
         { field: 'MANAGE_ENTRPS_VRSC_AT', headerName: '업무대행여부', width: 99 },
     ];
     const columns_gdLicense_3 = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'CODE_NM', headerName: '자격증명', width: 200 },
         { field: 'CRQFC_NO', headerName: '자격증번호', width: 136 },
         { field: 'DELVRY_DE', headerName: '교부일자', width: 100 },
@@ -167,7 +169,7 @@ export const Frmcust5010 = () => {
         { field: 'QUALF_FRFTR_ENNC', headerName: '자격상실유무', width: 99 },
     ];
     const columns_gdAdminList_4 = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'NM', headerName: '성명', width: 88 },
         { field: 'OFCPS', headerName: '직위', width: 82 },
         { field: 'IHIDNUM', headerName: '생년월일', width: 89 },
@@ -177,7 +179,7 @@ export const Frmcust5010 = () => {
         { field: 'TLPHON_NO', headerName: '전화번호', width: 100 },
     ];
     const columns_gdLicense_4 = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'CODE_NM', headerName: '자격증명', width: 200 },
         { field: 'CRQFC_NO', headerName: '자격증번호', width: 136 },
         { field: 'DELVRY_DE', headerName: '교부일자', width: 100 },
@@ -191,7 +193,7 @@ export const Frmcust5010 = () => {
         { field: 'TLPHON_NO', headerName: '전화번호', width: 197 },
     ];
     const columns_gdDongStatus_2 = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'BULDDONG_NM', headerName: '동명칭', width: 138 },
         { field: 'BULDDONG_MAIN_PRPOS_CODE', headerName: '주용도', width: 120 },
         { field: 'BULDDONG_SEC_PRPOS_CODE', headerName: '부용도', width: 187 },
@@ -255,7 +257,7 @@ export const Frmcust5010 = () => {
         { field: 'UPDT_DE_14', headerName: '최종수정일', width: 100 },
     ];
     const columns_gdPHuman = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'NM', headerName: '성명', width: 83 },
         { field: 'HNF_SE_NM', headerName: '인력구분', width: 107 },
         { field: 'BIRTHDATE', headerName: '생년월일', width: 80 },
@@ -267,7 +269,7 @@ export const Frmcust5010 = () => {
         { field: 'MODDATE', headerName: '최근수정일', width: 80 },
     ];
     const columns_gdLicenscInfo = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'CRQFC_NM', headerName: '자격증명', width: 129 },
         { field: 'CRQFC_DETAIL_SE_NM', headerName: '상세자격증명', width: 122 },
         { field: 'CRQFC_NO', headerName: '자격증번호', width: 101 },
@@ -281,7 +283,7 @@ export const Frmcust5010 = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">소방민원정보시스템 연계정보 조회(frmcust5010)</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 <Button variant="contained"  onClick={hook.btnMatchCancel_OnClick}>연계 해지</Button>
@@ -293,7 +295,7 @@ export const Frmcust5010 = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "42px", py: 0.5, width: "100%" }}><Box sx={{ ml: "0px", minWidth: "872px" }}><Box sx={{ display: hook.isVisible_tabTab1 ? undefined : 'none' }}><Box sx={{ width: '872px', height: '583px', width: "100%", height: "auto", minHeight: "583px" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab1} onChange={(e, v) => setTabValue_tabTab1(v)} aria-label="tabTab1"><Tab label="" /><Tab label="" /><Tab label="" /></Tabs></Box><CustomTabPanel value={tabValue_tabTab1} index={0}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "6px", py: 0.5, width: "100%" }}><Box sx={{ ml: "79px", minWidth: "786px" }}><Box sx={{ display: hook.isVisible_tabTab1_2 ? undefined : 'none' }}><Box sx={{ width: '786px', height: '555px', width: "100%", height: "auto", minHeight: "555px" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab1_2} onChange={(e, v) => setTabValue_tabTab1_2(v)} aria-label="tabTab1_2"><Tab label="          개황          " /><Tab label="        동 현황        " /><Tab label="        층 현황        " /></Tabs></Box><CustomTabPanel value={tabValue_tabTab1_2} index={0}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static8 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '120px', height: '22px' }}><Typography variant="body2">건축개황정보</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '238px', height: '22px', display: 'flex', alignItems: 'center', ml: '10px' }}>
                     <Typography variant="body2" sx={{ minWidth: 96, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>대상물관리번호</Typography>
@@ -375,9 +377,8 @@ export const Frmcust5010 = () => {
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdLicense_2 ? undefined : 'none' }}><Paper sx={{ width: '764px', height: '174px', width: '100%', height: 'auto', minHeight: '174px' }}><DataGridWrapper rows={hook.ds_ioFireSurveyLicenseInfo2} columns={columns_gdLicense_2} /></Paper></Box></Stack>
 </CustomTabPanel><CustomTabPanel value={tabValue_tabTab1_3} index={2}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdRelation ? undefined : 'none' }}><Paper sx={{ width: '764px', height: '339px', width: '100%', height: 'auto', minHeight: '339px' }}><DataGridWrapper rows={hook.ds_ioFireSurveyRelationInfo} columns={columns_gdRelation} /></Paper></Box></Stack>
 </CustomTabPanel></Box></Box></Stack>
-</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1_2} index={1}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdDongStatus ? undefined : 'none' }}><Paper sx={{ width: '776px', height: '154px', width: '100%', height: 'auto', minHeight: '154px' }}><DataGridWrapper rows={hook.ds_ioFireSurveyDong} columns={columns_gdDongStatus} /></Paper></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbEmailCnt ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '48px', height: '22px' }}><Typography variant="body2">건수</Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "89px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static8_2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '120px', height: '22px' }}><Typography variant="body2">기본정보</Typography></Box></Box></Stack>
+</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1_2} index={1}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ ml: "3px", minWidth: "776px" }}><Box sx={{ display: hook.isVisible_gdDongStatus ? undefined : 'none' }}><Paper sx={{ width: '776px', height: '154px', width: '100%', height: 'auto', minHeight: '154px' }}><DataGridWrapper rows={hook.ds_ioFireSurveyDong} columns={columns_gdDongStatus} /></Paper></Box><Box sx={{ display: hook.isVisible_lbEmailCnt ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '48px', height: '22px' }}><Typography variant="body2">건수</Typography></Box></Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static8_2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '120px', height: '22px' }}><Typography variant="body2">기본정보</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '237px', height: '22px', display: 'flex', alignItems: 'center', ml: '10px' }}>
                     <Typography variant="body2" sx={{ minWidth: 85, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>동명</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioFireSurveyDong?.BULDDONG_NM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
@@ -495,7 +496,7 @@ export const Frmcust5010 = () => {
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdSFloorStatus ? undefined : 'none' }}><Paper sx={{ width: '766px', height: '105px', width: '100%', height: 'auto', minHeight: '105px' }}><DataGridWrapper rows={hook.ds_ioFireSurveySFloorStatus} columns={columns_gdSFloorStatus} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static1_3 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '120px', height: '22px' }}><Typography variant="body2">층설비내역</Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdFloorE ? undefined : 'none' }}><Paper sx={{ width: '766px', height: '289px', width: '100%', height: 'auto', minHeight: '289px' }}><DataGridWrapper rows={hook.ds_ioFireSurveyFloorE} columns={columns_gdFloorE} /></Paper></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdFloorE ? undefined : 'none' }}><Paper sx={{ width: '766px', height: '289px', width: '100%', height: 'auto', minHeight: '289px' }}><MultiDataGridWrapper rows={hook.ds_ioFireSurveyFloorE} columns={columns_gdFloorE} rowHeight={20} headerHeight={40} hideFooter={true} /></Paper></Box></Stack>
 </CustomTabPanel></Box></Box><Box sx={{ display: hook.isVisible_tabTab2 ? undefined : 'none' }}><Box sx={{ width: '786px', height: '552px', width: "100%", height: "auto", minHeight: "552px" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab2} onChange={(e, v) => setTabValue_tabTab2(v)} aria-label="tabTab2"><Tab label="          개황          " /><Tab label="        동 현황        " /></Tabs></Box><CustomTabPanel value={tabValue_tabTab2} index={0}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static8_4 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '120px', height: '22px' }}><Typography variant="body2">건축개황정보</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '238px', height: '22px', display: 'flex', alignItems: 'center', ml: '10px' }}>
                     <Typography variant="body2" sx={{ minWidth: 96, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>대상물관리번호</Typography>
@@ -577,9 +578,8 @@ export const Frmcust5010 = () => {
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdLicense_4 ? undefined : 'none' }}><Paper sx={{ width: '764px', height: '174px', width: '100%', height: 'auto', minHeight: '174px' }}><DataGridWrapper rows={hook.ds_ioFireSurveyLicenseInfo2} columns={columns_gdLicense_4} /></Paper></Box></Stack>
 </CustomTabPanel><CustomTabPanel value={tabValue_tabTab1_4} index={2}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "6px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdRelation_2 ? undefined : 'none' }}><Paper sx={{ width: '764px', height: '339px', width: '100%', height: 'auto', minHeight: '339px' }}><DataGridWrapper rows={hook.ds_ioFireSurveyRelationInfo} columns={columns_gdRelation_2} /></Paper></Box></Stack>
 </CustomTabPanel></Box></Box></Stack>
-</CustomTabPanel><CustomTabPanel value={tabValue_tabTab2} index={1}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdDongStatus_2 ? undefined : 'none' }}><Paper sx={{ width: '776px', height: '154px', width: '100%', height: 'auto', minHeight: '154px' }}><DataGridWrapper rows={hook.ds_ioFireSurveyDong} columns={columns_gdDongStatus_2} /></Paper></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbEmailCnt_2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '48px', height: '22px' }}><Typography variant="body2">건수</Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "89px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static8_5 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '120px', height: '22px' }}><Typography variant="body2">기본정보</Typography></Box></Box></Stack>
+</CustomTabPanel><CustomTabPanel value={tabValue_tabTab2} index={1}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ ml: "3px", minWidth: "776px" }}><Box sx={{ display: hook.isVisible_gdDongStatus_2 ? undefined : 'none' }}><Paper sx={{ width: '776px', height: '154px', width: '100%', height: 'auto', minHeight: '154px' }}><DataGridWrapper rows={hook.ds_ioFireSurveyDong} columns={columns_gdDongStatus_2} /></Paper></Box><Box sx={{ display: hook.isVisible_lbEmailCnt_2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '48px', height: '22px' }}><Typography variant="body2">건수</Typography></Box></Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static8_5 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '120px', height: '22px' }}><Typography variant="body2">기본정보</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '237px', height: '22px', display: 'flex', alignItems: 'center', ml: '10px' }}>
                     <Typography variant="body2" sx={{ minWidth: 85, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>동명</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioFireSurveyDong?.BULDDONG_NM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />

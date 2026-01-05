@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust4051PFiremanagerDataCheck } from './useFrmcust4051PFiremanagerDataCheck';
 import * as Frmcust4051PFiremanagerDataCheckData from './Frmcust4051PFiremanagerDataCheckData';
@@ -30,6 +32,10 @@ export const Frmcust4051PFiremanagerDataCheck = () => {
         { field: 'FSBNM_GUBUN', headerName: '대상물', width: 52 },
         { field: 'FSADDR_GUBUN', headerName: '주소비교', width: 53 },
         { field: 'FSFMNM_GUBUN', headerName: '성명비교', width: 59 },
+        { field: 'col_8', headerName: '기타1', width: 114 },
+        { field: 'col_9', headerName: '기타2', width: 97 },
+        { field: 'col_10', headerName: '기타3', width: 100 },
+        { field: 'col_11', headerName: '기타4', width: 80 },
     ];
     const columns_grdExport_3 = [
         { field: 'CNO_BUNHO', headerName: '고객번호', width: 81 },
@@ -40,6 +46,10 @@ export const Frmcust4051PFiremanagerDataCheck = () => {
         { field: 'FSBNM_GUBUN', headerName: '대상물', width: 52 },
         { field: 'FSADDR_GUBUN', headerName: '주소비교', width: 53 },
         { field: 'FSFMNM_GUBUN', headerName: '성명비교', width: 59 },
+        { field: 'col_8', headerName: '기타1', width: 114 },
+        { field: 'col_9', headerName: '기타2', width: 97 },
+        { field: 'col_10', headerName: '기타3', width: 100 },
+        { field: 'col_11', headerName: '기타4', width: 80 },
     ];
     const columns_grdExport_4 = [
         { field: 'CNO_BUNHO', headerName: '고객번호', width: 81 },
@@ -50,6 +60,10 @@ export const Frmcust4051PFiremanagerDataCheck = () => {
         { field: 'FSBNM_GUBUN', headerName: '대상물', width: 52 },
         { field: 'FSADDR_GUBUN', headerName: '주소비교', width: 53 },
         { field: 'FSFMNM_GUBUN', headerName: '성명비교', width: 59 },
+        { field: 'col_8', headerName: '기타1', width: 114 },
+        { field: 'col_9', headerName: '기타2', width: 97 },
+        { field: 'col_10', headerName: '기타3', width: 100 },
+        { field: 'col_11', headerName: '기타4', width: 80 },
     ];
     const columns_grdExport_5 = [
         { field: 'CNO_BUNHO', headerName: '고객번호', width: 81 },
@@ -60,6 +74,10 @@ export const Frmcust4051PFiremanagerDataCheck = () => {
         { field: 'FSBNM_GUBUN', headerName: '대상물', width: 52 },
         { field: 'FSADDR_GUBUN', headerName: '주소비교', width: 53 },
         { field: 'FSFMNM_GUBUN', headerName: '성명비교', width: 59 },
+        { field: 'col_8', headerName: '기타1', width: 114 },
+        { field: 'col_9', headerName: '기타2', width: 97 },
+        { field: 'col_10', headerName: '기타3', width: 100 },
+        { field: 'col_11', headerName: '기타4', width: 80 },
     ];
     const columns_grdExport_6 = [
         { field: 'CNO_BUNHO', headerName: '고객번호', width: 81 },
@@ -70,6 +88,10 @@ export const Frmcust4051PFiremanagerDataCheck = () => {
         { field: 'FSBNM_GUBUN', headerName: '대상물', width: 52 },
         { field: 'FSADDR_GUBUN', headerName: '주소비교', width: 53 },
         { field: 'FSFMNM_GUBUN', headerName: '성명비교', width: 59 },
+        { field: 'col_8', headerName: '기타1', width: 114 },
+        { field: 'col_9', headerName: '기타2', width: 97 },
+        { field: 'col_10', headerName: '기타3', width: 100 },
+        { field: 'col_11', headerName: '기타4', width: 80 },
     ];
     const columns_grdExport_7 = [
         { field: 'CNO_BUNHO', headerName: '고객번호', width: 81 },
@@ -80,6 +102,10 @@ export const Frmcust4051PFiremanagerDataCheck = () => {
         { field: 'FSBNM_GUBUN', headerName: '대상물', width: 52 },
         { field: 'FSADDR_GUBUN', headerName: '주소비교', width: 53 },
         { field: 'FSFMNM_GUBUN', headerName: '성명비교', width: 59 },
+        { field: 'col_8', headerName: '기타1', width: 114 },
+        { field: 'col_9', headerName: '기타2', width: 97 },
+        { field: 'col_10', headerName: '기타3', width: 100 },
+        { field: 'col_11', headerName: '기타4', width: 80 },
     ];
     const columns_grdExport_8 = [
         { field: 'CNO_BUNHO', headerName: '고객번호', width: 81 },
@@ -90,6 +116,10 @@ export const Frmcust4051PFiremanagerDataCheck = () => {
         { field: 'FSBNM_GUBUN', headerName: '대상물', width: 52 },
         { field: 'FSADDR_GUBUN', headerName: '주소비교', width: 53 },
         { field: 'FSFMNM_GUBUN', headerName: '성명비교', width: 59 },
+        { field: 'col_8', headerName: '기타1', width: 114 },
+        { field: 'col_9', headerName: '기타2', width: 97 },
+        { field: 'col_10', headerName: '기타3', width: 100 },
+        { field: 'col_11', headerName: '기타4', width: 80 },
     ];
     const columns_grdExport_9 = [
         { field: 'FSBNM', headerName: '대상물', width: 192 },
@@ -98,6 +128,10 @@ export const Frmcust4051PFiremanagerDataCheck = () => {
         { field: 'BNM_GUBUN', headerName: '대상물', width: 52 },
         { field: 'ADDR12_GUBUN', headerName: '주소비교', width: 53 },
         { field: 'FMNM_GUBUN', headerName: '성명비교', width: 59 },
+        { field: 'col_6', headerName: '기타1', width: 114 },
+        { field: 'col_7', headerName: '기타2', width: 97 },
+        { field: 'col_8', headerName: '기타3', width: 100 },
+        { field: 'col_9', headerName: '기타4', width: 80 },
     ];
     const columns_grdExport_10 = [
         { field: 'CNO_BUNHO', headerName: '고객번호', width: 81 },
@@ -106,12 +140,16 @@ export const Frmcust4051PFiremanagerDataCheck = () => {
         { field: 'ADDR12', headerName: '주소', width: 177 },
         { field: 'FMNM', headerName: '성명', width: 63 },
         { field: 'FSBNM_GUBUN', headerName: '대상물 주소 성명 비교', width: 161 },
+        { field: 'col_6', headerName: '기타1', width: 114 },
+        { field: 'col_7', headerName: '기타2', width: 97 },
+        { field: 'col_8', headerName: '기타3', width: 100 },
+        { field: 'col_9', headerName: '기타4', width: 80 },
     ];
     return (
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">소방관서 선임대장 비교리스트 팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_ViewExcel}>엑셀보기</Button>
 <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
@@ -124,7 +162,7 @@ export const Frmcust4051PFiremanagerDataCheck = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '164px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 84, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>지부</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
@@ -187,8 +225,7 @@ export const Frmcust4051PFiremanagerDataCheck = () => {
 </CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={8}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport_9 ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioFireStationAssociation_second_1onlyno} columns={columns_grdExport_9} /></Paper></Box></Stack>
 </CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={9}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport_10 ? undefined : 'none' }}><Paper sx={{ width: '765px', height: '459px', width: '100%', height: 'auto', minHeight: '459px' }}><DataGridWrapper rows={hook.ds_ioAssociationFireStationBnmaAddrFmnm_no} columns={columns_grdExport_10} /></Paper></Box></Stack>
 </CustomTabPanel></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static5 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '120px', height: '22px' }}><Typography variant="body2">교육일정 생성</Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_fdImport ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>fdImport</Button></Box><Box sx={{ display: hook.isVisible_fdExport ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>fdExport</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_fdImport ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>fdImport</Button></Box><Box sx={{ display: hook.isVisible_fdExport ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>fdExport</Button></Box><Box sx={{ display: hook.isVisible_Static5 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '120px', height: '22px' }}><Typography variant="body2">교육일정 생성</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "9px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static4 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '120px', height: '22px' }}><Typography variant="body2">교육대상자 리스트</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '111px', height: '22px', display: 'flex', alignItems: 'center', ml: '516px' }}>
                     <Typography variant="body2" sx={{ minWidth: 40, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>건수</Typography>

@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmtraining0444MTrainingEvaluationAnswerInput } from './useFrmtraining0444MTrainingEvaluationAnswerInput';
 import * as Frmtraining0444MTrainingEvaluationAnswerInputData from './Frmtraining0444MTrainingEvaluationAnswerInputData';
@@ -12,8 +14,10 @@ import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 export const Frmtraining0444MTrainingEvaluationAnswerInput = () => {
     const hook = useFrmtraining0444MTrainingEvaluationAnswerInput();
     const columns_gdExcel = [
-        { field: 'id', headerName: '순번', width: 53, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 53, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'EEAPJUBSUNONAME', headerName: '수강번호-성명', width: 113 },
+        { field: 'col_2', headerName: '이메일', width: 98 },
+        { field: 'col_3', headerName: '제출일시', width: 108 },
         { field: 'EEAPITEMNO1', headerName: '문항1', width: 80 },
         { field: 'EEAPANSWER1', headerName: '답안1', width: 80 },
         { field: 'EEAPITEMNO2', headerName: '문항2', width: 80 },
@@ -122,87 +126,138 @@ export const Frmtraining0444MTrainingEvaluationAnswerInput = () => {
         { field: 'EJPERSONNM', headerName: '성명', width: 70 },
         { field: 'BIRTHDAY', headerName: '생년월일', width: 92 },
         { field: 'RESULT', headerName: '결과', width: 55 },
-        { field: 'SUBJECT11', headerName: '소화기', width: 40 },
+        { field: 'SUBJECT11', headerName: '소화기 평가', width: 40 },
         { field: 'SUBJECT12', headerName: '재평1', width: 40 },
         { field: 'SUBJECT13', headerName: '재평2', width: 40 },
-        { field: 'SUBJECT21', headerName: '옥내', width: 40 },
+        { field: 'SUBJECT21', headerName: '옥내 평가', width: 40 },
         { field: 'SUBJECT22', headerName: '재평1', width: 40 },
         { field: 'SUBJECT23', headerName: '재평2', width: 40 },
-        { field: 'SUBJECT31', headerName: 'SP', width: 40 },
+        { field: 'SUBJECT31', headerName: 'SP 평가', width: 40 },
         { field: 'SUBJECT32', headerName: '재평1', width: 40 },
         { field: 'SUBJECT33', headerName: '재평2', width: 40 },
-        { field: 'SUBJECT41', headerName: '가스계', width: 40 },
+        { field: 'SUBJECT41', headerName: '가스계 평가', width: 40 },
         { field: 'SUBJECT42', headerName: '재평1', width: 40 },
         { field: 'SUBJECT43', headerName: '재평2', width: 40 },
-        { field: 'SUBJECT51', headerName: '경보', width: 40 },
+        { field: 'SUBJECT51', headerName: '경보 평가', width: 40 },
         { field: 'SUBJECT52', headerName: '재평1', width: 40 },
         { field: 'SUBJECT53', headerName: '재평2', width: 40 },
-        { field: 'SUBJECT61', headerName: '응급', width: 40 },
+        { field: 'SUBJECT61', headerName: '응급 평가', width: 40 },
         { field: 'SUBJECT62', headerName: '재평1', width: 40 },
         { field: 'SUBJECT63', headerName: '재평2', width: 40 },
-        { field: 'SUBJECT71', headerName: '제연', width: 40 },
+        { field: 'SUBJECT71', headerName: '제연 평가', width: 40 },
         { field: 'SUBJECT72', headerName: '재평1', width: 40 },
         { field: 'SUBJECT73', headerName: '재평2', width: 40 },
+        { field: 'col_27', headerName: '답 안', width: 22 },
     ];
     const columns_gdNewExcel = [
-        { field: 'id', headerName: '순번', width: 53, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 53, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'EEAPJUBSUNONAME', headerName: '수강번호-성명', width: 113 },
+        { field: 'col_2', headerName: '이메일', width: 98 },
+        { field: 'col_3', headerName: '제출일시', width: 108 },
         { field: 'EEAPANSWER1', headerName: '답안1', width: 80 },
         { field: 'EEAPANSWER2', headerName: '답안2', width: 80 },
+        { field: 'col_6', headerName: '', width: 80 },
         { field: 'EEAPANSWER3', headerName: '답안3', width: 80 },
+        { field: 'col_8', headerName: '', width: 80 },
         { field: 'EEAPANSWER4', headerName: '답안4', width: 80 },
+        { field: 'col_10', headerName: '', width: 80 },
         { field: 'EEAPANSWER5', headerName: '답안5', width: 80 },
+        { field: 'col_12', headerName: '', width: 80 },
         { field: 'EEAPANSWER6', headerName: '답안6', width: 80 },
+        { field: 'col_14', headerName: '', width: 80 },
         { field: 'EEAPANSWER7', headerName: '답안7', width: 80 },
+        { field: 'col_16', headerName: '', width: 80 },
         { field: 'EEAPANSWER8', headerName: '답안8', width: 80 },
+        { field: 'col_18', headerName: '', width: 80 },
         { field: 'EEAPANSWER9', headerName: '답안9', width: 80 },
+        { field: 'col_20', headerName: '', width: 80 },
         { field: 'EEAPANSWER10', headerName: '답안10', width: 80 },
+        { field: 'col_22', headerName: '', width: 80 },
         { field: 'EEAPANSWER11', headerName: '답안11', width: 80 },
+        { field: 'col_24', headerName: '', width: 80 },
         { field: 'EEAPANSWER12', headerName: '답안12', width: 80 },
+        { field: 'col_26', headerName: '', width: 80 },
         { field: 'EEAPANSWER13', headerName: '답안13', width: 80 },
+        { field: 'col_28', headerName: '', width: 80 },
         { field: 'EEAPANSWER14', headerName: '답안14', width: 80 },
+        { field: 'col_30', headerName: '', width: 80 },
         { field: 'EEAPANSWER15', headerName: '답안15', width: 80 },
+        { field: 'col_32', headerName: '', width: 80 },
         { field: 'EEAPANSWER16', headerName: '답안16', width: 80 },
+        { field: 'col_34', headerName: '', width: 80 },
         { field: 'EEAPANSWER17', headerName: '답안17', width: 80 },
+        { field: 'col_36', headerName: '', width: 80 },
         { field: 'EEAPANSWER18', headerName: '답안18', width: 80 },
+        { field: 'col_38', headerName: '', width: 80 },
         { field: 'EEAPANSWER19', headerName: '답안19', width: 80 },
+        { field: 'col_40', headerName: '', width: 80 },
         { field: 'EEAPANSWER20', headerName: '답안20', width: 80 },
+        { field: 'col_42', headerName: '', width: 80 },
         { field: 'EEAPANSWER21', headerName: '답안21', width: 80 },
+        { field: 'col_44', headerName: '', width: 80 },
         { field: 'EEAPANSWER22', headerName: '답안22', width: 80 },
+        { field: 'col_46', headerName: '', width: 80 },
         { field: 'EEAPANSWER23', headerName: '답안23', width: 80 },
+        { field: 'col_48', headerName: '', width: 80 },
         { field: 'EEAPANSWER24', headerName: '답안24', width: 80 },
+        { field: 'col_50', headerName: '', width: 80 },
         { field: 'EEAPANSWER25', headerName: '답안25', width: 80 },
+        { field: 'col_52', headerName: '', width: 80 },
         { field: 'EEAPANSWER26', headerName: '답안26', width: 80 },
+        { field: 'col_54', headerName: '', width: 80 },
         { field: 'EEAPANSWER27', headerName: '답안27', width: 80 },
+        { field: 'col_56', headerName: '', width: 80 },
         { field: 'EEAPANSWER28', headerName: '답안28', width: 80 },
+        { field: 'col_58', headerName: '', width: 80 },
         { field: 'EEAPANSWER29', headerName: '답안29', width: 80 },
+        { field: 'col_60', headerName: '', width: 80 },
         { field: 'EEAPANSWER30', headerName: '답안30', width: 80 },
+        { field: 'col_62', headerName: '', width: 80 },
         { field: 'EEAPANSWER31', headerName: '답안31', width: 80 },
+        { field: 'col_64', headerName: '', width: 80 },
         { field: 'EEAPANSWER32', headerName: '답안32', width: 80 },
+        { field: 'col_66', headerName: '', width: 80 },
         { field: 'EEAPANSWER33', headerName: '답안33', width: 80 },
+        { field: 'col_68', headerName: '', width: 80 },
         { field: 'EEAPANSWER34', headerName: '답안34', width: 80 },
+        { field: 'col_70', headerName: '', width: 80 },
         { field: 'EEAPANSWER35', headerName: '답안35', width: 80 },
+        { field: 'col_72', headerName: '', width: 80 },
         { field: 'EEAPANSWER36', headerName: '답안36', width: 80 },
+        { field: 'col_74', headerName: '', width: 80 },
         { field: 'EEAPANSWER37', headerName: '답안37', width: 80 },
+        { field: 'col_76', headerName: '', width: 80 },
         { field: 'EEAPANSWER38', headerName: '답안38', width: 80 },
+        { field: 'col_78', headerName: '', width: 80 },
         { field: 'EEAPANSWER39', headerName: '답안39', width: 80 },
+        { field: 'col_80', headerName: '', width: 80 },
         { field: 'EEAPANSWER40', headerName: '답안40', width: 80 },
+        { field: 'col_82', headerName: '', width: 80 },
         { field: 'EEAPANSWER41', headerName: '답안41', width: 80 },
+        { field: 'col_84', headerName: '', width: 80 },
         { field: 'EEAPANSWER42', headerName: '답안42', width: 80 },
+        { field: 'col_86', headerName: '', width: 80 },
         { field: 'EEAPANSWER43', headerName: '답안43', width: 80 },
+        { field: 'col_88', headerName: '', width: 80 },
         { field: 'EEAPANSWER44', headerName: '답안44', width: 80 },
+        { field: 'col_90', headerName: '', width: 80 },
         { field: 'EEAPANSWER45', headerName: '답안45', width: 80 },
+        { field: 'col_92', headerName: '', width: 80 },
         { field: 'EEAPANSWER46', headerName: '답안46', width: 80 },
+        { field: 'col_94', headerName: '', width: 80 },
         { field: 'EEAPANSWER47', headerName: '답안47', width: 80 },
+        { field: 'col_96', headerName: '', width: 80 },
         { field: 'EEAPANSWER48', headerName: '답안48', width: 80 },
+        { field: 'col_98', headerName: '', width: 80 },
         { field: 'EEAPANSWER49', headerName: '답안49', width: 80 },
+        { field: 'col_100', headerName: '', width: 80 },
         { field: 'EEAPANSWER50', headerName: '답안50', width: 80 },
     ];
     return (
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">시험 실무능력평가 답안 입력</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 <Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Init}>입력 초기화</Button>
@@ -217,7 +272,7 @@ export const Frmtraining0444MTrainingEvaluationAnswerInput = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdExcel ? undefined : 'none' }}><Paper sx={{ width: '16px', height: '50px', width: '100%', height: 'auto', minHeight: '50px' }}><DataGridWrapper rows={hook.ds_ioExcel} columns={columns_gdExcel} /></Paper></Box><Box sx={{ display: hook.isVisible_gdNewExcel ? undefined : 'none' }}><Paper sx={{ width: '16px', height: '50px', width: '100%', height: 'auto', minHeight: '50px' }}><DataGridWrapper rows={hook.ds_ioNewExcel} columns={columns_gdNewExcel} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '184px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 80, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>지부</Typography>
@@ -240,7 +295,7 @@ export const Frmtraining0444MTrainingEvaluationAnswerInput = () => {
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>평가응시건수</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Box sx={{ display: hook.isVisible_Static1 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '382px', height: '22px' }}><Typography variant="body2">※ 회차를 먼저 조회하신 후 엑셀답안을 등록하세요!</Typography></Box></Box><Box sx={{ display: hook.isVisible_btnMutilSort ? undefined : 'none' }}><Button variant="outlined"  onClick={hook.btnMutilSort_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '22px', whiteSpace: "nowrap" }}><Sort fontSize="small" /></Button></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdEvalList ? undefined : 'none' }}><Paper sx={{ width: '941px', height: '506px', width: '100%', height: 'auto', minHeight: '506px' }}><DataGridWrapper rows={hook.ds_ioEvaluationAnswerInput} columns={columns_gdEvalList} /></Paper></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdEvalList ? undefined : 'none' }}><Paper sx={{ width: '941px', height: '506px', width: '100%', height: 'auto', minHeight: '506px' }}><MultiDataGridWrapper rows={hook.ds_ioEvaluationAnswerInput} columns={columns_gdEvalList} rowHeight={20} headerHeight={40} hideFooter={true} /></Paper></Box></Stack>
 
                     </Paper>
                 </Grid>

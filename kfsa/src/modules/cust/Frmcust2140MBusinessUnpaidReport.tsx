@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust2140MBusinessUnpaidReport } from './useFrmcust2140MBusinessUnpaidReport';
 import * as Frmcust2140MBusinessUnpaidReportData from './Frmcust2140MBusinessUnpaidReportData';
@@ -12,7 +14,7 @@ import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 export const Frmcust2140MBusinessUnpaidReport = () => {
     const hook = useFrmcust2140MBusinessUnpaidReport();
     const columns_gdList = [
-        { field: 'id', headerName: '순번', width: 45, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 45, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'CNO', headerName: '관리번호', width: 151 },
         { field: 'BNM', headerName: '업체명', width: 208 },
         { field: 'BADDR', headerName: '업체주소', width: 247 },
@@ -21,17 +23,17 @@ export const Frmcust2140MBusinessUnpaidReport = () => {
         { field: 'BIRTHDAY', headerName: '생년월일', width: 89 },
         { field: 'FMHHPTEL', headerName: '휴대폰번호', width: 100 },
         { field: 'BTEL', headerName: '업체전화번호', width: 100 },
-        { field: 'AMT3', headerName: 'AMT3', width: 60 },
-        { field: 'AMT2', headerName: 'AMT2', width: 60 },
-        { field: 'AMT1', headerName: 'AMT1', width: 60 },
-        { field: 'AMT0', headerName: 'AMT0', width: 60 },
+        { field: 'AMT3', headerName: '', width: 60 },
+        { field: 'AMT2', headerName: '', width: 60 },
+        { field: 'AMT1', headerName: '', width: 60 },
+        { field: 'AMT0', headerName: '', width: 60 },
         { field: 'AMT', headerName: '합계', width: 100 },
     ];
     return (
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">장기 미납 대장</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_Print}>출력</Button>
@@ -44,7 +46,7 @@ export const Frmcust2140MBusinessUnpaidReport = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "50px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static1 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '112px', height: '22px' }}><Typography variant="body2">조회 조건</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '166px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 60, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>지부</Typography>

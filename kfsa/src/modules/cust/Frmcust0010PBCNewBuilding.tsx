@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust0010PBCNewBuilding } from './useFrmcust0010PBCNewBuilding';
 import * as Frmcust0010PBCNewBuildingData from './Frmcust0010PBCNewBuildingData';
@@ -12,8 +14,8 @@ export const Frmcust0010PBCNewBuilding = () => {
     const hook = useFrmcust0010PBCNewBuilding();
     const [tabValue_tabTab1, setTabValue_tabTab1] = useState(0);
     const columns_gdConnections = [
-        { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
-        { field: 'OREMARK', headerName: '구분', width: 96 },
+        { field: 'col_0', headerName: '순번', width: 40, renderCell: (params) => <Stack spacing={0} sx={{ height: "100%", justifyContent: "center" }}><Box sx={{ height: "20px" }} /><Box sx={{ height: "20px", display: "flex", alignItems: "center" }}>비고</Box></Stack>, sortable: false },
+        { field: 'OGUBUN', headerName: '구분', width: 96, renderCell: (params) => <Stack spacing={0} sx={{ height: "100%", justifyContent: "center" }}><Box sx={{ height: "20px", display: "flex", alignItems: "center" }}>{params.row.OGUBUN}</Box><Box sx={{ height: "20px", display: "flex", alignItems: "center" }}>{params.row.OREMARK}</Box></Stack>, sortable: false },
         { field: 'ONM', headerName: '성명', width: 111 },
         { field: 'OTEL', headerName: '전화번호', width: 109 },
         { field: 'OHPTEL', headerName: '핸드폰번호', width: 103 },
@@ -27,12 +29,13 @@ export const Frmcust0010PBCNewBuilding = () => {
         { field: 'TCARYEAR', headerName: '차량년도', width: 60 },
         { field: 'TPERMISSIONNO', headerName: '허가번호', width: 108 },
         { field: 'TREMARK', headerName: '기타사항', width: 170 },
+        { field: 'col_4', headerName: '', width: 28 },
     ];
     return (
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">(대상물변경)신규대상물추가</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Save}>수정 저장</Button>
@@ -43,7 +46,7 @@ export const Frmcust0010PBCNewBuilding = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "50px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '284px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 60, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>대상물명</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
@@ -83,7 +86,7 @@ export const Frmcust0010PBCNewBuilding = () => {
                     <Typography variant="body2" sx={{ minWidth: 94, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>사업자등록번호</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Div6 ? undefined : 'none' }}><Paper sx={{ p: 2, width: '484px', height: '185px', width: '100%', height: 'auto', minHeight: '185px', overflow: 'auto' }}><Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>Div0</Typography><Stack direction="column" spacing={0}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_tabTab1 ? undefined : 'none' }}><Box sx={{ width: '480px', height: '306px', width: "100%", height: "auto", minHeight: "306px" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab1} onChange={(e, v) => setTabValue_tabTab1(v)} aria-label="tabTab1"><Tab label="관계자정보" /><Tab label="위험물부가정보" /><Tab label="이동탱크부가정보" /></Tabs></Box><CustomTabPanel value={tabValue_tabTab1} index={0}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdConnections ? undefined : 'none' }}><Paper sx={{ width: '472px', height: '450px', width: '100%', height: 'auto', minHeight: '450px' }}><DataGridWrapper rows={hook.ds_ioOwnerInfo} columns={columns_gdConnections} /></Paper></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Div6 ? undefined : 'none' }}><Paper sx={{ p: 2, width: '484px', height: '185px', width: '100%', height: 'auto', minHeight: '185px', overflow: 'auto' }}><Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>Div0</Typography><Stack direction="column" spacing={0}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_tabTab1 ? undefined : 'none' }}><Box sx={{ width: '480px', height: '306px', width: "100%", height: "auto", minHeight: "306px" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab1} onChange={(e, v) => setTabValue_tabTab1(v)} aria-label="tabTab1"><Tab label="관계자정보" /><Tab label="위험물부가정보" /><Tab label="이동탱크부가정보" /></Tabs></Box><CustomTabPanel value={tabValue_tabTab1} index={0}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdConnections ? undefined : 'none' }}><Paper sx={{ width: '472px', height: '450px', width: '100%', height: 'auto', minHeight: '450px' }}><MultiDataGridWrapper rows={hook.ds_ioOwnerInfo} columns={columns_gdConnections} rowHeight={40} headerHeight={20} hideFooter={true} /></Paper></Box></Stack>
 </CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={1}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdDangerInfo ? undefined : 'none' }}><Paper sx={{ width: '472px', height: '450px', width: '100%', height: 'auto', minHeight: '450px' }}><DataGridWrapper rows={hook.ds_ioDangerInfo} columns={columns_gdDangerInfo} /></Paper></Box></Stack>
 </CustomTabPanel><CustomTabPanel value={tabValue_tabTab1} index={2}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdTankInfo ? undefined : 'none' }}><Paper sx={{ width: '472px', height: '446px', width: '100%', height: 'auto', minHeight: '446px' }}><DataGridWrapper rows={hook.ds_ioTankInfo} columns={columns_gdTankInfo} /></Paper></Box></Stack>
 </CustomTabPanel></Box></Box></Stack>

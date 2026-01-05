@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmCOM6110MPersonalPrivacyInfo } from './useFrmCOM6110MPersonalPrivacyInfo';
 import * as FrmCOM6110MPersonalPrivacyInfoData from './FrmCOM6110MPersonalPrivacyInfoData';
@@ -12,27 +14,29 @@ import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 export const FrmCOM6110MPersonalPrivacyInfo = () => {
     const hook = useFrmCOM6110MPersonalPrivacyInfo();
     const columns_gdPrivacyAgreeH = [
-        { field: 'id', headerName: '순번', width: 45, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 45, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'PHPROCSTATUS', headerName: '동의여부', width: 76 },
         { field: 'PHPROCMETHOD', headerName: '처리방법', width: 82 },
         { field: 'PHPROCDATE', headerName: '처리일자', width: 79 },
         { field: 'PHREGSABUN', headerName: '등록자', width: 66 },
         { field: 'PHREGDATE', headerName: '등록일시', width: 135 },
         { field: 'RUMGNO', headerName: '동의서', width: 81 },
+        { field: 'col_7', headerName: '', width: 20 },
     ];
     const columns_gdPrivacyAgree = [
-        { field: 'id', headerName: '순번', width: 45, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 45, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'BIZCD', headerName: '업무구분', width: 85 },
         { field: 'COURSECD', headerName: '직능', width: 202 },
         { field: 'PHPROCSTATUS', headerName: '동의여부', width: 85 },
         { field: 'PHPROCDATE', headerName: '처리일자', width: 86 },
         { field: 'RUMGNO', headerName: '동의서', width: 63 },
+        { field: 'col_6', headerName: '', width: 22 },
     ];
     return (
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">개인별 개인정보동의서 등록현황</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
@@ -44,7 +48,7 @@ export const FrmCOM6110MPersonalPrivacyInfo = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "43px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '198px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>성명</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />

@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmprofes0005MLecHistory } from './useFrmprofes0005MLecHistory';
 import * as Frmprofes0005MLecHistoryData from './Frmprofes0005MLecHistoryData';
@@ -18,7 +20,7 @@ export const Frmprofes0005MLecHistory = () => {
     const [chk_chkStudy, setChk_chkStudy] = useState('0');
     const [chk_chkEduUnion, setChk_chkEduUnion] = useState('0');
     const columns_gdStudyCourse = [
-        { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'EDUTEAMNM', headerName: '지부', width: 50 },
         { field: 'EDUYEAR', headerName: '년도', width: 44 },
         { field: 'EDUGUBUN', headerName: '구분', width: 70 },
@@ -33,7 +35,7 @@ export const Frmprofes0005MLecHistory = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">강의실적</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Delete}>삭제 저장</Button>
@@ -50,7 +52,7 @@ export const Frmprofes0005MLecHistory = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "62px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '132px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 52, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>지부</Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmprofes0005MLecHistoryData.ds_ds_oJibu || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
@@ -69,15 +71,14 @@ export const Frmprofes0005MLecHistory = () => {
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmprofes0005MLecHistoryData.ds_ds_Status || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '170px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 68, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>교육일</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '116px', height: '22px', display: 'flex', alignItems: 'center', ml: '2px' }}>
                     <Typography variant="body2" sx={{ minWidth: 16, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><FormControlLabel control={<Checkbox checked={chk_chkStudy === '1'} onChange={(e) => setChk_chkStudy(e.target.checked ? '1' : '0')} />} label="교육시간이 틀린 강의실적" /></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnMutilSort ? undefined : 'none' }}><Button variant="outlined"  onClick={hook.btnMutilSort_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '22px', whiteSpace: "nowrap" }}><Sort fontSize="small" /></Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdStudyCourse ? undefined : 'none' }}><Paper sx={{ width: '792px', height: '223px', width: '100%', height: 'auto', minHeight: '223px' }}><DataGridWrapper rows={hook.ds_ioStudyCourse} columns={columns_gdStudyCourse} /></Paper></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btn_apprReq ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_apprReq_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>승인요청</Button></Box><Box sx={{ display: hook.isVisible_btn_modAppr ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_modAppr_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>수정허가</Button></Box><Box sx={{ display: hook.isVisible_btn_appr ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_appr_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>승인</Button></Box><Box sx={{ display: hook.isVisible_btnEduUnion ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnEduUnion_OnClick} sx={{ width: '105px', height: '24px', whiteSpace: "nowrap" }}>통합강의적용</Button></Box><Box sx={{ display: hook.isVisible_btnOldLecture ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnOldLecture_OnClick} sx={{ width: '105px', height: '24px', whiteSpace: "nowrap" }}>기존자료적용</Button></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_tabTab ? undefined : 'none' }}><Box sx={{ width: '792px', height: '297px', width: "100%", height: "auto", minHeight: "297px" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab} onChange={(e, v) => setTabValue_tabTab(v)} aria-label="tabTab"><Tab label="시간표배정" /><Tab label="교수배정" /></Tabs></Box><CustomTabPanel value={tabValue_tabTab} index={0}><Frmprofes0005S01LecHistory /></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={1}><Frmprofes0005S03LecHistory /></CustomTabPanel></Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ ml: "4px", minWidth: "792px" }}><Box sx={{ display: hook.isVisible_tabTab ? undefined : 'none' }}><Box sx={{ width: '792px', height: '297px', width: "100%", height: "auto", minHeight: "297px" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab} onChange={(e, v) => setTabValue_tabTab(v)} aria-label="tabTab"><Tab label="시간표배정" /><Tab label="교수배정" /></Tabs></Box><CustomTabPanel value={tabValue_tabTab} index={0}><Frmprofes0005S01LecHistory /></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={1}><Frmprofes0005S03LecHistory /></CustomTabPanel></Box></Box><Box sx={{ display: hook.isVisible_btn_apprReq ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_apprReq_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>승인요청</Button></Box><Box sx={{ display: hook.isVisible_btn_modAppr ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_modAppr_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>수정허가</Button></Box><Box sx={{ display: hook.isVisible_btn_appr ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_appr_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>승인</Button></Box><Box sx={{ display: hook.isVisible_btnEduUnion ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnEduUnion_OnClick} sx={{ width: '105px', height: '24px', whiteSpace: "nowrap" }}>통합강의적용</Button></Box><Box sx={{ display: hook.isVisible_btnOldLecture ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnOldLecture_OnClick} sx={{ width: '105px', height: '24px', whiteSpace: "nowrap" }}>기존자료적용</Button></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_div1 ? undefined : 'none' }}><Paper sx={{ p: 2, width: '792px', height: '278px', width: '100%', height: 'auto', minHeight: '278px', overflow: 'auto' }}><Typography variant="subtitle2" sx={{ mb: 1, fontWeight: "bold" }}>Div0</Typography><Stack direction="column" spacing={0}><Frmprofes0005S02LecHistory /></Stack></Paper></Box></Stack>
 
                     </Paper>

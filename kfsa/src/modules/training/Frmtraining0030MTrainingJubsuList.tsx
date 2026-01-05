@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmtraining0030MTrainingJubsuList } from './useFrmtraining0030MTrainingJubsuList';
 import * as Frmtraining0030MTrainingJubsuListData from './Frmtraining0030MTrainingJubsuListData';
@@ -12,7 +14,7 @@ import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 export const Frmtraining0030MTrainingJubsuList = () => {
     const hook = useFrmtraining0030MTrainingJubsuList();
     const columns_Grid0 = [
-        { field: 'id', headerName: '순번', width: 50, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 50, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'TOMGGTMGNO', headerName: '지부', width: 60 },
         { field: 'TOYEAR', headerName: '년도', width: 35 },
         { field: 'TOTRAININGORDER', headerName: '회차', width: 34 },
@@ -35,8 +37,8 @@ export const Frmtraining0030MTrainingJubsuList = () => {
         { field: 'TJCOMPNM', headerName: '근무처', width: 150 },
     ];
     const columns_gdTrainingJubsu = [
-        { field: 'id', headerName: '순번', width: 50, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
-        { field: 'SEL', headerName: 'SEL', width: 60 },
+        { field: 'id_seq', headerName: '순번', width: 50, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
+        { field: 'SEL', headerName: '', width: 60 },
         { field: 'TOMGGTMGNO', headerName: '지부', width: 60 },
         { field: 'TOYEAR', headerName: '년도', width: 35 },
         { field: 'TOTRAININGORDER', headerName: '회차', width: 34 },
@@ -59,7 +61,7 @@ export const Frmtraining0030MTrainingJubsuList = () => {
         { field: 'TJCOMPNM', headerName: '근무처', width: 150 },
     ];
     const columns_gdBookSend = [
-        { field: 'id', headerName: '순번', width: 35, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 35, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'GTTEAMNM', headerName: '지부', width: 100 },
         { field: 'TCCOURSENM', headerName: '교육과정', width: 152 },
         { field: 'STARTDATE', headerName: '교육시작일', width: 90 },
@@ -82,7 +84,7 @@ export const Frmtraining0030MTrainingJubsuList = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">강습접수현황</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 <Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Cancel}>입력 초기화</Button>
@@ -102,8 +104,8 @@ export const Frmtraining0030MTrainingJubsuList = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
-                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "57px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnPrintEmail ? undefined : 'none' }}><Button variant="contained" color="success"  onClick={hook.btnPrintEmail_OnClick} sx={{ width: '157px', height: '24px', whiteSpace: "nowrap" }}>이메일출력(TXT파일)</Button></Box><Box sx={{ display: hook.isVisible_btnPrintBookAddr ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_PrintBookAddr} sx={{ width: '106px', height: '24px', whiteSpace: "nowrap" }}>교재수령지출력</Button></Box><Box sx={{ display: hook.isVisible_btnPrintBookAddrAll ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_PrintBookAddr} sx={{ width: '132px', height: '24px', whiteSpace: "nowrap" }}>교재수령지출력(전체)</Button></Box><Box sx={{ display: hook.isVisible_btnFortec ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnFortec_OnClick} sx={{ width: '157px', height: '24px', whiteSpace: "nowrap" }}>Formtec(3107) 주소 출력</Button></Box><Box sx={{ display: hook.isVisible_btnPrintReRctPDF ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnPrintReRct_OnClick} sx={{ width: '133px', height: '24px', whiteSpace: "nowrap" }}>영수증재발행(PDF용)</Button></Box><Box sx={{ display: hook.isVisible_fdOpenFile ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>fdOpenFile</Button></Box><Box sx={{ display: hook.isVisible_filSaveFile ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>filSaveFile</Button></Box></Stack>
+                        
+                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "57px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnPrintEmail ? undefined : 'none' }}><Button variant="contained" color="success"  onClick={hook.btnPrintEmail_OnClick} sx={{ width: '157px', height: '24px', whiteSpace: "nowrap" }}>이메일출력(TXT파일)</Button></Box><Box sx={{ display: hook.isVisible_btnPrintBookAddr ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_PrintBookAddr} sx={{ width: '106px', height: '24px', whiteSpace: "nowrap" }}>교재수령지출력</Button></Box><Box sx={{ display: hook.isVisible_btnPrintBookAddrAll ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_PrintBookAddr} sx={{ width: '132px', height: '24px', whiteSpace: "nowrap" }}>교재수령지출력(전체)</Button></Box><Box sx={{ display: hook.isVisible_btnFortec ? undefined : 'none' }}><Button variant="contained" color="secondary"  onClick={hook.btnFortec_OnClick} sx={{ width: '157px', height: '24px', whiteSpace: "nowrap" }}>Formtec(3107) 주소 출력</Button></Box><Box sx={{ display: hook.isVisible_btnPrintReRctPDF ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnPrintReRct_OnClick} sx={{ width: '133px', height: '24px', whiteSpace: "nowrap" }}>영수증재발행(PDF용)</Button></Box><Box sx={{ display: hook.isVisible_fdOpenFile ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>fdOpenFile</Button></Box><Box sx={{ display: hook.isVisible_filSaveFile ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>filSaveFile</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '179px', height: '22px', display: 'flex', alignItems: 'center', ml: '11px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>지부</Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmtraining0030MTrainingJubsuListData.ds_ds_oJibu || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
@@ -125,10 +127,10 @@ export const Frmtraining0030MTrainingJubsuList = () => {
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '192px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>교육종료일자</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '116px', height: '22px', display: 'flex', alignItems: 'center', ml: '0px' }}>
                     <Typography variant="body2" sx={{ minWidth: 20, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '445px', height: '22px', display: 'flex', alignItems: 'center', ml: '11px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>수납여부</Typography>

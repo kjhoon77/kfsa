@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust1025PEduJubsuList } from './useFrmcust1025PEduJubsuList';
 import * as Frmcust1025PEduJubsuListData from './Frmcust1025PEduJubsuListData';
@@ -11,7 +13,7 @@ import * as Frmcust1025PEduJubsuListData from './Frmcust1025PEduJubsuListData';
 export const Frmcust1025PEduJubsuList = () => {
     const hook = useFrmcust1025PEduJubsuList();
     const columns_gdEduJubsu = [
-        { field: 'id', headerName: '순번', width: 38, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 38, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'GTDEPTNM', headerName: '지부', width: 60 },
         { field: 'ESYEAR', headerName: '년도', width: 40 },
         { field: 'CGROUPNM', headerName: '직능', width: 120 },
@@ -26,7 +28,7 @@ export const Frmcust1025PEduJubsuList = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">실무교육접수검색팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained"  onClick={hook.btnSelect_OnClick}>선택</Button>
 <Button variant="contained" startIcon={<Sort />} onClick={hook.btnMutilSort_OnClick}></Button>
@@ -39,7 +41,7 @@ export const Frmcust1025PEduJubsuList = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdEduJubsu ? undefined : 'none' }}><Paper sx={{ width: '742px', height: '382px', width: '100%', height: 'auto', minHeight: '382px' }}><DataGridWrapper rows={hook.Ds_oEduJubsu} columns={columns_gdEduJubsu} /></Paper></Box></Stack>
 
                     </Paper>

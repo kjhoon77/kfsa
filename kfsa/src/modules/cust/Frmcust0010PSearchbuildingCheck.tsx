@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust0010PSearchbuildingCheck } from './useFrmcust0010PSearchbuildingCheck';
 import * as Frmcust0010PSearchbuildingCheckData from './Frmcust0010PSearchbuildingCheckData';
@@ -11,7 +13,7 @@ import * as Frmcust0010PSearchbuildingCheckData from './Frmcust0010PSearchbuildi
 export const Frmcust0010PSearchbuildingCheck = () => {
     const hook = useFrmcust0010PSearchbuildingCheck();
     const columns_gdBuidingList = [
-        { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'BNM', headerName: '대상물(업체)명', width: 152 },
         { field: 'BBIZCD', headerName: '용도', width: 120 },
         { field: 'ADDR', headerName: '주소', width: 240 },
@@ -21,7 +23,7 @@ export const Frmcust0010PSearchbuildingCheck = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">대상물 선택팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 <Button variant="contained"  onClick={hook.btnSelect_OnClick}>선택</Button>
@@ -32,7 +34,7 @@ export const Frmcust0010PSearchbuildingCheck = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "38px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdBuidingList ? undefined : 'none' }}><Paper sx={{ width: '688px', height: '278px', width: '100%', height: 'auto', minHeight: '278px' }}><DataGridWrapper rows={hook.ds_oCustList} columns={columns_gdBuidingList} /></Paper></Box></Stack>
 
                     </Paper>

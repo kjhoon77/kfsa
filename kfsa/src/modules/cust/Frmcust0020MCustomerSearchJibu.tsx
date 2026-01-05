@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust0020MCustomerSearchJibu } from './useFrmcust0020MCustomerSearchJibu';
 import * as Frmcust0020MCustomerSearchJibuData from './Frmcust0020MCustomerSearchJibuData';
@@ -50,7 +52,7 @@ export const Frmcust0020MCustomerSearchJibu = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">고객 전지부 조회</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.btnExcell_OnClick}>엑셀로 저장</Button>
@@ -63,12 +65,11 @@ export const Frmcust0020MCustomerSearchJibu = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
-                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "48px", py: 0.5, width: "100%" }}><Box sx={{ ml: "659px", minWidth: "141px" }}><Box sx={{ display: hook.isVisible_Static3 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '141px', height: '14px' }}><Typography variant="body2">(                      ,        )</Typography></Box></Box><FormControlLabel control={<Checkbox checked={chk_chkCust === '1'} onChange={(e) => setChk_chkCust(e.target.checked ? '1' : '0')} />} label="해당 문자열 포함" /></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '167px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
+                        
+                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "48px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '167px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 60, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>지부</Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust0020MCustomerSearchJibuData.ds_ds_oJibu || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
-                 </Stack></Stack>
+                 </Stack><Box sx={{ ml: "484px", minWidth: "141px" }}><Box sx={{ display: hook.isVisible_Static3 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '141px', height: '14px' }}><Typography variant="body2">(                      ,        )</Typography></Box></Box><FormControlLabel control={<Checkbox checked={chk_chkCust === '1'} onChange={(e) => setChk_chkCust(e.target.checked ? '1' : '0')} />} label="해당 문자열 포함" /></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '369px', height: '22px', display: 'flex', alignItems: 'center', ml: '423px' }}>
                     <Typography variant="body2" sx={{ minWidth: 101, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>대상물(업체)명</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
@@ -76,12 +77,11 @@ export const Frmcust0020MCustomerSearchJibu = () => {
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '412px', height: '54px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 60, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>직능</Typography>
                     <FormControl component="fieldset" sx={{ width: "max-content", whiteSpace: "nowrap" }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmcust0020MCustomerSearchJibuData.ds_ds_oCourse || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl>
-                 </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '173px', height: '22px', display: 'flex', alignItems: 'center', ml: '423px' }}>
+                 </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '173px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
                     <Typography variant="body2" sx={{ minWidth: 101, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>성명</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Box sx={{ ml: "64px", minWidth: "136px" }}><Box sx={{ display: hook.isVisible_Static4 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '136px', height: '18px' }}><Typography variant="body2">(                      ,        )</Typography></Box></Box><FormControlLabel control={<Checkbox checked={chk_chkPerson === '1'} onChange={(e) => setChk_chkPerson(e.target.checked ? '1' : '0')} />} label="해당 문자열 포함" /></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '213px', height: '22px', display: 'flex', alignItems: 'center', ml: '423px' }}>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '213px', height: '22px', display: 'flex', alignItems: 'center', ml: '423px' }}>
                     <Typography variant="body2" sx={{ minWidth: 101, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>주민번호</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack></Stack>
@@ -90,8 +90,7 @@ export const Frmcust0020MCustomerSearchJibu = () => {
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Box sx={{ display: hook.isVisible_btnMutilSort ? undefined : 'none' }}><Button variant="outlined"  onClick={hook.btnMutilSort_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '22px', whiteSpace: "nowrap" }}><Sort fontSize="small" /></Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdCustomerList ? undefined : 'none' }}><Paper sx={{ width: '782px', height: '274px', width: '100%', height: 'auto', minHeight: '274px' }}><DataGridWrapper rows={hook.ds_CustomerList} columns={columns_grdCustomerList} /></Paper></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static14 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '112px', height: '22px' }}><Typography variant="body2">회비/교육비 정보</Typography></Box></Box><Box sx={{ display: hook.isVisible_Static18 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '104px', height: '22px' }}><Typography variant="body2">실무 교육 정보</Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnFeeDetailInfo1 ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnFeeDetailInfo1_OnClick} sx={{ width: '92px', height: '24px', whiteSpace: "nowrap" }}>상세정보</Button></Box><Box sx={{ display: hook.isVisible_Button3 ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnBarCodeSearch_OnClick} sx={{ width: '92px', height: '24px', whiteSpace: "nowrap" }}>상세정보</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static14 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '112px', height: '22px' }}><Typography variant="body2">회비/교육비 정보</Typography></Box></Box><Box sx={{ display: hook.isVisible_btnFeeDetailInfo1 ? undefined : 'none' }}><Button variant="contained" color="secondary"  onClick={hook.btnFeeDetailInfo1_OnClick} sx={{ width: '92px', height: '24px', whiteSpace: "nowrap" }}>상세정보</Button></Box><Box sx={{ display: hook.isVisible_Static18 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '104px', height: '22px' }}><Typography variant="body2">실무 교육 정보</Typography></Box></Box><Box sx={{ display: hook.isVisible_Button3 ? undefined : 'none' }}><Button variant="contained" color="secondary"  onClick={hook.btnBarCodeSearch_OnClick} sx={{ width: '92px', height: '24px', whiteSpace: "nowrap" }}>상세정보</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdMemFee ? undefined : 'none' }}><Paper sx={{ width: '388px', height: '178px', width: '100%', height: 'auto', minHeight: '178px' }}><DataGridWrapper rows={hook.ds_ioCustomerFeeInfo} columns={columns_gdMemFee} /></Paper></Box><Box sx={{ display: hook.isVisible_Grid0 ? undefined : 'none' }}><Paper sx={{ width: '384px', height: '178px', width: '100%', height: 'auto', minHeight: '178px' }}><DataGridWrapper rows={hook.ds_ioEducationPassInfo} columns={columns_Grid0} /></Paper></Box></Stack>
 
                     </Paper>

@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmspcledu0105MTrainingRegisterPrint } from './useFrmspcledu0105MTrainingRegisterPrint';
 import * as Frmspcledu0105MTrainingRegisterPrintData from './Frmspcledu0105MTrainingRegisterPrintData';
@@ -17,7 +19,7 @@ export const Frmspcledu0105MTrainingRegisterPrint = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">강습접수부/좌석번호표출력</Typography>
                 <Stack direction="row" spacing={1}>
                     
                 </Stack>
@@ -26,7 +28,7 @@ export const Frmspcledu0105MTrainingRegisterPrint = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "6px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_tabTab ? undefined : 'none' }}><Box sx={{ width: '500px', height: '242px', width: "100%", height: "auto", minHeight: "242px" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTab} onChange={(e, v) => setTabValue_tabTab(v)} aria-label="tabTab"><Tab label="접수부" /><Tab label="좌석번호표" /></Tabs></Box><CustomTabPanel value={tabValue_tabTab} index={0}><Frmspcledu0110STrainingJubsurRegisterPrint /></CustomTabPanel><CustomTabPanel value={tabValue_tabTab} index={1}><Frmspcledu0130STrainingSeatNoPrint /></CustomTabPanel></Box></Box></Stack>
 
                     </Paper>

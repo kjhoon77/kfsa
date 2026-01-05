@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust2120MUnpaidReport } from './useFrmcust2120MUnpaidReport';
 import * as Frmcust2120MUnpaidReportData from './Frmcust2120MUnpaidReportData';
@@ -31,17 +33,17 @@ export const Frmcust2120MUnpaidReport = () => {
         { field: 'CFEEYYMM', headerName: '회비부과년월', width: 94 },
         { field: 'FMHHPTEL', headerName: '휴대폰', width: 100 },
         { field: 'EMAIL', headerName: '이메일', width: 215 },
-        { field: 'CNT3', headerName: 'CNT3', width: 80 },
-        { field: 'CNT2', headerName: 'CNT2', width: 80 },
-        { field: 'CNT1', headerName: 'CNT1', width: 80 },
-        { field: 'CNT0', headerName: 'CNT0', width: 80 },
+        { field: 'CNT3', headerName: '', width: 80 },
+        { field: 'CNT2', headerName: '', width: 80 },
+        { field: 'CNT1', headerName: '', width: 80 },
+        { field: 'CNT0', headerName: '', width: 80 },
         { field: 'AMT', headerName: '미납금액', width: 80 },
     ];
     return (
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">회비 미납 현황</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_Print}>출력</Button>
@@ -54,7 +56,7 @@ export const Frmcust2120MUnpaidReport = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "50px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static1 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '112px', height: '22px' }}><Typography variant="body2">조회 조건</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '205px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 100, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>지부</Typography>

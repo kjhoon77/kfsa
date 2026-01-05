@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust1025PEduOrderChange } from './useFrmcust1025PEduOrderChange';
 import * as Frmcust1025PEduOrderChangeData from './Frmcust1025PEduOrderChangeData';
@@ -14,12 +16,13 @@ export const Frmcust1025PEduOrderChange = () => {
         { field: 'ESGTMGNO', headerName: '지부', width: 58 },
         { field: 'ESYEAR', headerName: '년도', width: 33 },
         { field: 'ESEDUORDER', headerName: '회차', width: 33 },
+        { field: 'col_3', headerName: '사이버', width: 54 },
         { field: 'ESDATE', headerName: '교육일자', width: 114 },
         { field: 'EDUTIME', headerName: '교육시간', width: 81 },
         { field: 'ESGUBUN', headerName: '과정구분', width: 62 },
         { field: 'ESEDUTYPE', headerName: '교육과정', width: 76 },
         { field: 'ESSEATCNT', headerName: '좌석수', width: 47 },
-        { field: 'ESINETJUBSUCNT', headerName: 'ESINETJUBSUCNT', width: 78 },
+        { field: 'ESINETJUBSUCNT', headerName: '', width: 78 },
         { field: 'ESACCESSCNT', headerName: '접수자수', width: 58 },
         { field: 'ESINETOPENGUBUN', headerName: '지역', width: 79 },
         { field: 'ESEDUREGION', headerName: '지역', width: 52 },
@@ -29,7 +32,7 @@ export const Frmcust1025PEduOrderChange = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">실무교육회차변경팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>변경가능회차조회(F2)</Button>
 <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
@@ -42,7 +45,7 @@ export const Frmcust1025PEduOrderChange = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbBefore ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '868px', height: '46px' }}><Typography variant="body2"> 변경 전 </Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '202px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 76, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>지부</Typography>

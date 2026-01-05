@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmspcledu0410MExamBatchJubsuManagement } from './useFrmspcledu0410MExamBatchJubsuManagement';
 import * as Frmspcledu0410MExamBatchJubsuManagementData from './Frmspcledu0410MExamBatchJubsuManagementData';
@@ -12,7 +14,7 @@ import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 export const Frmspcledu0410MExamBatchJubsuManagement = () => {
     const hook = useFrmspcledu0410MExamBatchJubsuManagement();
     const columns_gdTrainingExam = [
-        { field: 'SEL', headerName: 'SEL', width: 29 },
+        { field: 'SEL', headerName: '', width: 29 },
         { field: 'TOTCCOURSECD', headerName: '수료한직능명', width: 148 },
         { field: 'TOHJUBSUNO', headerName: '교육접수번호', width: 117 },
         { field: 'TPNM', headerName: '성명', width: 73 },
@@ -24,7 +26,7 @@ export const Frmspcledu0410MExamBatchJubsuManagement = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">강습시험일괄접수</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>수료자 조회(F2)</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Save}>일괄 접수 저장</Button>
@@ -39,7 +41,7 @@ export const Frmspcledu0410MExamBatchJubsuManagement = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "61px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbPassOrder ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '150px', height: '22px' }}><Typography variant="body2">수료한 회차</Typography></Box></Box><Box sx={{ display: hook.isVisible_lbPassCourse ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '110px', height: '22px' }}><Typography variant="body2">직능</Typography></Box></Box><Box sx={{ display: hook.isVisible_cbxCourse ? undefined : 'none' }}><FormControl size="small" fullWidth sx={{ width: '210px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" }, bgcolor: "#fff" }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmspcledu0410MExamBatchJubsuManagementData.ds_ds_oCourse || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '161px', height: '22px', display: 'flex', alignItems: 'center', ml: '16px' }}>
                     <Typography variant="body2" sx={{ minWidth: 110, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>회차</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />

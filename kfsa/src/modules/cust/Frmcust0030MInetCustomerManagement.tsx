@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust0030MInetCustomerManagement } from './useFrmcust0030MInetCustomerManagement';
 import * as Frmcust0030MInetCustomerManagementData from './Frmcust0030MInetCustomerManagementData';
@@ -12,12 +14,12 @@ import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 export const Frmcust0030MInetCustomerManagement = () => {
     const hook = useFrmcust0030MInetCustomerManagement();
     const columns_gdCustomerList = [
-        { field: 'id', headerName: '순번', width: 31, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
-        { field: 'CGTMGNO', headerName: '기존 정보', width: 45 },
+        { field: 'id_seq', headerName: '순번', width: 31, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
+        { field: 'CGTMGNO', headerName: '기존 정보 지부', width: 45 },
         { field: 'CNO', headerName: '관리번호', width: 62 },
         { field: 'OLDNICKNM', headerName: '직능', width: 55 },
         { field: 'BNM', headerName: '대상물명', width: 85 },
-        { field: 'FCGTMGNO', headerName: '신규 및 변경 정보', width: 45 },
+        { field: 'FCGTMGNO', headerName: '신규 및 변경 정보 지부', width: 45 },
         { field: 'NEWNICKNM', headerName: '직능', width: 55 },
         { field: 'FCBULDNAME', headerName: '대상물(업체)명', width: 118 },
         { field: 'FCGUBUN', headerName: '신청구분', width: 85 },
@@ -25,6 +27,7 @@ export const Frmcust0030MInetCustomerManagement = () => {
         { field: 'MBIRTHDAY', headerName: '생년월일', width: 88 },
         { field: 'FCREGDATE2', headerName: '처리일자', width: 126 },
         { field: 'FCSTATUS', headerName: '신청상태', width: 56 },
+        { field: 'col_13', headerName: '내역보기', width: 67, renderCell: () => "내역보기", sortable: false },
         { field: 'FCADDR1', headerName: '주소1', width: 256 },
         { field: 'FCADDR2', headerName: '주소2', width: 226 },
     ];
@@ -32,7 +35,7 @@ export const Frmcust0030MInetCustomerManagement = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">[인터넷]선임신규변경관리</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.btnToExcel_OnClick}>엑셀로 저장</Button>
@@ -46,7 +49,7 @@ export const Frmcust0030MInetCustomerManagement = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "57px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '280px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>지부</Typography>
                     <FormControl component="fieldset" sx={{ width: "max-content", whiteSpace: "nowrap" }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmcust0030MInetCustomerManagementData.ds_ds_ioJibuGubun || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl>
@@ -62,16 +65,16 @@ export const Frmcust0030MInetCustomerManagement = () => {
                     <FormControl component="fieldset" sx={{ width: "max-content", whiteSpace: "nowrap" }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmcust0030MInetCustomerManagementData.ds_ds_ioGubun || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl>
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '190px', height: '22px', display: 'flex', alignItems: 'center', ml: '5px' }}>
                     <Typography variant="body2" sx={{ minWidth: 90, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>신청일자</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '116px', height: '22px', display: 'flex', alignItems: 'center', ml: '0px' }}>
                     <Typography variant="body2" sx={{ minWidth: 20, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "12px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '156px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>총건수</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Box sx={{ display: hook.isVisible_btnMutilSort ? undefined : 'none' }}><Button variant="outlined"  onClick={hook.btnMutilSort_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '22px', whiteSpace: "nowrap" }}><Sort fontSize="small" /></Button></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdCustomerList ? undefined : 'none' }}><Paper sx={{ width: '984px', height: '486px', width: '100%', height: 'auto', minHeight: '486px' }}><DataGridWrapper rows={hook.ds_oChangeList} columns={columns_gdCustomerList} /></Paper></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdCustomerList ? undefined : 'none' }}><Paper sx={{ width: '984px', height: '486px', width: '100%', height: 'auto', minHeight: '486px' }}><MultiDataGridWrapper rows={hook.ds_oChangeList} columns={columns_gdCustomerList} rowHeight={20} headerHeight={40} hideFooter={true} /></Paper></Box></Stack>
 
                     </Paper>
                 </Grid>

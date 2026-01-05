@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmprofes0007MaterialPopUp } from './useFrmprofes0007MaterialPopUp';
 import * as Frmprofes0007MaterialPopUpData from './Frmprofes0007MaterialPopUpData';
@@ -11,14 +13,14 @@ import * as Frmprofes0007MaterialPopUpData from './Frmprofes0007MaterialPopUpDat
 export const Frmprofes0007MaterialPopUp = () => {
     const hook = useFrmprofes0007MaterialPopUp();
     const columns_gdMovie = [
-        { field: 'id', headerName: '순번', width: 60, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 60, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'TMMOVIE', headerName: '교안동영상', width: 498 },
     ];
     return (
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">교안등록 확인 및 처리</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Cancel}>입력 초기화</Button>
 <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
@@ -31,7 +33,7 @@ export const Frmprofes0007MaterialPopUp = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "46px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '308px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>등록번호</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
@@ -101,12 +103,12 @@ export const Frmprofes0007MaterialPopUp = () => {
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '194px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>유효기간</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '194px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>승인일자</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
-                 </Stack><Box sx={{ display: hook.isVisible_btnCreate ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnCreate_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>교안이력</Button></Box><Box sx={{ display: hook.isVisible_btn_appr ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_appr_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>승인</Button></Box><Box sx={{ display: hook.isVisible_btn_Approval ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_Approval_OnClick} sx={{ width: '93px', height: '24px', whiteSpace: "nowrap" }}>◀결재올림</Button></Box><Box sx={{ display: hook.isVisible_btn_Cancel ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_Cancel_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>승인취소</Button></Box></Stack>
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
+                 </Stack><Box sx={{ display: hook.isVisible_btnCreate ? undefined : 'none' }}><Button variant="contained" color="secondary"  onClick={hook.btnCreate_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>교안이력</Button></Box><Box sx={{ display: hook.isVisible_btn_appr ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_appr_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>승인</Button></Box><Box sx={{ display: hook.isVisible_btn_Approval ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_Approval_OnClick} sx={{ width: '93px', height: '24px', whiteSpace: "nowrap" }}>◀결재올림</Button></Box><Box sx={{ display: hook.isVisible_btn_Cancel ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_Cancel_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>승인취소</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "10px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btn_Modify ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_Modify_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>수정</Button></Box><Box sx={{ display: hook.isVisible_btn_delete ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_delete_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>삭제</Button></Box><Box sx={{ display: hook.isVisible_btn_apprReq ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_apprReq_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>승인요청</Button></Box><Box sx={{ display: hook.isVisible_btn_apprReqCancel ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_apprReqCancel_OnClick} sx={{ width: '93px', height: '24px', whiteSpace: "nowrap" }}>승인요청취소</Button></Box><Box sx={{ display: hook.isVisible_btn_modReq ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_modReq_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>수정요청</Button></Box><Box sx={{ display: hook.isVisible_btn_modReqCancel ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_modReqCancel_OnClick} sx={{ width: '93px', height: '24px', whiteSpace: "nowrap" }}>수정요청취소</Button></Box><Box sx={{ display: hook.isVisible_btn_modAppr ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_modAppr_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>수정허가</Button></Box><Box sx={{ display: hook.isVisible_btn_modCancel ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btn_modCancel_OnClick} sx={{ width: '93px', height: '24px', whiteSpace: "nowrap" }}>수정(허가)취소</Button></Box></Stack>
 
                     </Paper>

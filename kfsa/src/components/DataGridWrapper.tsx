@@ -9,14 +9,16 @@ interface DataGridWrapperProps {
     loading?: boolean;
     height?: number | string;
     pageSize?: number;
+    rowHeight?: number;
 }
 
-export default function DataGridWrapper({ rows, columns, onRowDoubleClick, loading, height = 400, pageSize = 100 }: DataGridWrapperProps) {
+export default function DataGridWrapper({ rows, columns, onRowDoubleClick, loading, height = 400, pageSize = 100, rowHeight }: DataGridWrapperProps) {
     return (
         <Box sx={{ height: height, width: '100%' }}>
             <DataGrid
                 rows={rows}
                 columns={columns}
+                rowHeight={rowHeight}
                 getRowId={(row) => row.id || Math.random().toString(36).substr(2, 9)}
                 onRowDoubleClick={onRowDoubleClick}
                 loading={loading}

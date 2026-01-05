@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmsys0022MUserAuthCopy } from './useFrmsys0022MUserAuthCopy';
 import * as Frmsys0022MUserAuthCopyData from './Frmsys0022MUserAuthCopyData';
@@ -20,7 +22,7 @@ export const Frmsys0022MUserAuthCopy = () => {
         { field: 'MORDERSEQ', headerName: '정렬순서', width: 75 },
     ];
     const columns_gdUser = [
-        { field: 'SEL', headerName: 'SEL', width: 29 },
+        { field: 'SEL', headerName: '', width: 29 },
         { field: 'PDEPTCD', headerName: '부서코드', width: 70 },
         { field: 'PDEPTNM', headerName: '부서명', width: 112 },
         { field: 'PPOSITNNM', headerName: '직책', width: 70 },
@@ -31,7 +33,7 @@ export const Frmsys0022MUserAuthCopy = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">사용자권한복사</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 <Button variant="contained"  onClick={hook.lfn_Save}>복사</Button>
@@ -46,7 +48,7 @@ export const Frmsys0022MUserAuthCopy = () => {
 
                 <Grid item xs={12} md={8}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Detailed Info</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "61px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '190px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>사용자</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
@@ -58,7 +60,7 @@ export const Frmsys0022MUserAuthCopy = () => {
 
                 <Grid item xs={12} md={4}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>List</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "62px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '324px', height: '22px', display: 'flex', alignItems: 'center', ml: '468px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>사번/사용자</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />

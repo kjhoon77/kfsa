@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmtraining0291PBookPrintDetail } from './useFrmtraining0291PBookPrintDetail';
 import * as Frmtraining0291PBookPrintDetailData from './Frmtraining0291PBookPrintDetailData';
@@ -11,7 +13,7 @@ import * as Frmtraining0291PBookPrintDetailData from './Frmtraining0291PBookPrin
 export const Frmtraining0291PBookPrintDetail = () => {
     const hook = useFrmtraining0291PBookPrintDetail();
     const columns_gdList = [
-        { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'TBPREGDATE', headerName: '등록일', width: 134 },
         { field: 'REGCNT', headerName: '엑셀업로드 건수', width: 114 },
         { field: 'TBPMGNO', headerName: '관리번호', width: 0 },
@@ -35,7 +37,7 @@ export const Frmtraining0291PBookPrintDetail = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">교재발송등기등록조회팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
@@ -46,7 +48,7 @@ export const Frmtraining0291PBookPrintDetail = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList ? undefined : 'none' }}><Paper sx={{ width: '826px', height: '202px', width: '100%', height: 'auto', minHeight: '202px' }}><DataGridWrapper rows={hook.ds_olist} columns={columns_gdList} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdDetail ? undefined : 'none' }}><Paper sx={{ width: '824px', height: '330px', width: '100%', height: 'auto', minHeight: '330px' }}><DataGridWrapper rows={hook.ds_olistDetail} columns={columns_gdDetail} /></Paper></Box></Stack>
 

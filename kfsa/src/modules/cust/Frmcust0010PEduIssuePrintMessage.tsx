@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust0010PEduIssuePrintMessage } from './useFrmcust0010PEduIssuePrintMessage';
 import * as Frmcust0010PEduIssuePrintMessageData from './Frmcust0010PEduIssuePrintMessageData';
@@ -14,7 +16,7 @@ export const Frmcust0010PEduIssuePrintMessage = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">확인메세지팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     
                 </Stack>
@@ -23,9 +25,9 @@ export const Frmcust0010PEduIssuePrintMessage = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "50px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_TextArea0 ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '448px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnOK ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnOK_OnClick} sx={{ width: '119px', height: '24px', whiteSpace: "nowrap" }}>미리보기</Button></Box><Box sx={{ display: hook.isVisible_btnNO ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnNO_OnClick} sx={{ width: '119px', height: '24px', whiteSpace: "nowrap" }}>출 력(고객요청시)</Button></Box><Box sx={{ display: hook.isVisible_btnCancel ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnCancel_OnClick} sx={{ width: '119px', height: '24px', whiteSpace: "nowrap" }}>닫  기</Button></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnOK ? undefined : 'none' }}><Button variant="contained" color="secondary"  onClick={hook.btnOK_OnClick} sx={{ width: '119px', height: '24px', whiteSpace: "nowrap" }}>미리보기</Button></Box><Box sx={{ display: hook.isVisible_btnNO ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnNO_OnClick} sx={{ width: '119px', height: '24px', whiteSpace: "nowrap" }}>출 력(고객요청시)</Button></Box><Box sx={{ display: hook.isVisible_btnCancel ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnCancel_OnClick} sx={{ width: '119px', height: '24px', whiteSpace: "nowrap" }}>닫  기</Button></Box></Stack>
 
                     </Paper>
                 </Grid>

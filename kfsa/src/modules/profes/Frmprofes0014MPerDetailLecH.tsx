@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmprofes0014MPerDetailLecH } from './useFrmprofes0014MPerDetailLecH';
 import * as Frmprofes0014MPerDetailLecHData from './Frmprofes0014MPerDetailLecHData';
@@ -16,35 +18,35 @@ export const Frmprofes0014MPerDetailLecH = () => {
         { field: 'NM_GUBUN', headerName: '교수', width: 77 },
         { field: 'TP', headerName: '직책', width: 50 },
         { field: 'TOT', headerName: '합계', width: 32 },
-        { field: 'SUMCNT', headerName: 'SUMCNT', width: 32 },
+        { field: 'SUMCNT', headerName: '', width: 32 },
         { field: 'CNT120', headerName: '실무', width: 75 },
-        { field: 'CNT121', headerName: 'CNT121', width: 75 },
-        { field: 'CNT124', headerName: 'CNT124', width: 75 },
+        { field: 'CNT121', headerName: '', width: 75 },
+        { field: 'CNT124', headerName: '', width: 75 },
         { field: 'CNT126', headerName: '소방기술자', width: 75 },
-        { field: 'CNT128', headerName: 'CNT128', width: 75 },
-        { field: 'CNT129', headerName: 'CNT129', width: 75 },
+        { field: 'CNT128', headerName: '', width: 75 },
+        { field: 'CNT129', headerName: '', width: 75 },
         { field: 'CNT220', headerName: '강습', width: 75 },
         { field: 'CNT210', headerName: '특급소관', width: 75 },
         { field: 'CNT221', headerName: '1급소관', width: 75 },
-        { field: 'CNT222N', headerName: 'CNT222N', width: 75 },
-        { field: 'CNT222Y', headerName: 'CNT222Y', width: 75 },
+        { field: 'CNT222N', headerName: '', width: 75 },
+        { field: 'CNT222Y', headerName: '', width: 75 },
         { field: 'CNT223', headerName: '3급소관', width: 75 },
-        { field: 'CNT224', headerName: 'CNT224', width: 75 },
-        { field: 'CNT228', headerName: 'CNT228', width: 75 },
-        { field: 'CNT229', headerName: 'CNT229', width: 75 },
-        { field: 'CNT227', headerName: 'CNT227', width: 75 },
-        { field: 'CNT253', headerName: 'CNT253', width: 75 },
-        { field: 'CNT254', headerName: 'CNT254', width: 75 },
+        { field: 'CNT224', headerName: '', width: 75 },
+        { field: 'CNT228', headerName: '', width: 75 },
+        { field: 'CNT229', headerName: '', width: 75 },
+        { field: 'CNT227', headerName: '', width: 75 },
+        { field: 'CNT253', headerName: '', width: 75 },
+        { field: 'CNT254', headerName: '', width: 75 },
         { field: 'CNT250', headerName: '전문교육', width: 75 },
-        { field: 'CNT251', headerName: 'CNT251', width: 75 },
-        { field: 'CNT252', headerName: 'CNT252', width: 75 },
-        { field: 'CNT255', headerName: 'CNT255', width: 75 },
+        { field: 'CNT251', headerName: '', width: 75 },
+        { field: 'CNT252', headerName: '', width: 75 },
+        { field: 'CNT255', headerName: '', width: 75 },
     ];
     return (
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">개인별 교육현황(상세)</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Save />} onClick={hook.btnToExcel}>엑셀로 저장</Button>
 <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
@@ -58,8 +60,8 @@ export const Frmprofes0014MPerDetailLecH = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
-                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "66px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList ? undefined : 'none' }}><Paper sx={{ width: '785px', height: '562px', width: '100%', height: 'auto', minHeight: '562px' }}><DataGridWrapper rows={hook.ds_ProfesList} columns={columns_gdList} /></Paper></Box></Stack>
+                        
+                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "66px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList ? undefined : 'none' }}><Paper sx={{ width: '785px', height: '562px', width: '100%', height: 'auto', minHeight: '562px' }}><MultiDataGridWrapper rows={hook.ds_ProfesList} columns={columns_gdList} rowHeight={20} headerHeight={40} hideFooter={true} /></Paper></Box></Stack>
 
                     </Paper>
                 </Grid>

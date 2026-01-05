@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmprofes0006MLecHistoryApproval } from './useFrmprofes0006MLecHistoryApproval';
 import * as Frmprofes0006MLecHistoryApprovalData from './Frmprofes0006MLecHistoryApprovalData';
@@ -14,15 +16,36 @@ export const Frmprofes0006MLecHistoryApproval = () => {
     const [chk_chkCheckbox, setChk_chkCheckbox] = useState('0');
     const columns_gdCommonCode = [
         { field: 'DATA', headerName: '순번', width: 50 },
+        { field: 'col_1', headerName: '', width: 63 },
+        { field: 'col_2', headerName: '', width: 25 },
+        { field: 'col_3', headerName: '지부', width: 53 },
+        { field: 'col_4', headerName: '년도', width: 62 },
+        { field: 'col_5', headerName: '구분', width: 69 },
+        { field: 'col_6', headerName: '교과과정', width: 122 },
+        { field: 'col_7', headerName: '교육회차', width: 70 },
+        { field: 'col_8', headerName: '교육일자', width: 79 },
+        { field: 'col_9', headerName: '상태', width: 53 },
+        { field: 'col_10', headerName: '법정교육시간', width: 89 },
+        { field: 'col_11', headerName: '입력시간', width: 70 },
     ];
     const columns_Grid0 = [
         { field: 'DATA', headerName: '순번', width: 50 },
+        { field: 'col_1', headerName: '과목명', width: 134 },
+        { field: 'col_2', headerName: '교수명', width: 65 },
+        { field: 'col_3', headerName: '구분', width: 62 },
+        { field: 'col_4', headerName: '일차', width: 47 },
+        { field: 'col_5', headerName: '법정교육시간', width: 93 },
+        { field: 'col_6', headerName: '교육시간', width: 70 },
+        { field: 'col_7', headerName: '교시', width: 40 },
+        { field: 'col_8', headerName: '교육시간', width: 106 },
+        { field: 'col_9', headerName: '타지부', width: 55 },
+        { field: 'col_10', headerName: '강사료', width: 70 },
     ];
     return (
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">강의실적 결재</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 <Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Input}>추가 저장</Button>
@@ -39,7 +62,7 @@ export const Frmprofes0006MLecHistoryApproval = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "62px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '168px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>지부</Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select value={hook.ds_gubun?.DATA || ''} displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmprofes0006MLecHistoryApprovalData.ds_ds_oJibu || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
@@ -58,10 +81,10 @@ export const Frmprofes0006MLecHistoryApproval = () => {
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '190px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>교육일</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '116px', height: '22px', display: 'flex', alignItems: 'center', ml: '2px' }}>
                     <Typography variant="body2" sx={{ minWidth: 16, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><FormControlLabel control={<Checkbox checked={chk_chkCheckbox === '1'} onChange={(e) => setChk_chkCheckbox(e.target.checked ? '1' : '0')} />} label="교육시간이 틀린 강의실적" /><Box sx={{ display: hook.isVisible_btnSelect ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnSelect_OnClick} sx={{ width: '85px', height: '24px', whiteSpace: "nowrap" }}>일괄승인</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnMutilSort ? undefined : 'none' }}><Button variant="outlined"  onClick={hook.btnMutilSort_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '22px', whiteSpace: "nowrap" }}><Sort fontSize="small" /></Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdCommonCode ? undefined : 'none' }}><Paper sx={{ width: '792px', height: '218px', width: '100%', height: 'auto', minHeight: '218px' }}><DataGridWrapper rows={hook.ds_test} columns={columns_gdCommonCode} /></Paper></Box></Stack>

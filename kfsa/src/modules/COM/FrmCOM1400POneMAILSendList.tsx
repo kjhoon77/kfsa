@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmCOM1400POneMAILSendList } from './useFrmCOM1400POneMAILSendList';
 import * as FrmCOM1400POneMAILSendListData from './FrmCOM1400POneMAILSendListData';
@@ -28,7 +30,7 @@ export const FrmCOM1400POneMAILSendList = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">MAIL발송현황팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Sort />} onClick={hook.btnMutilSort_OnClick}></Button>
 <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
@@ -39,7 +41,7 @@ export const FrmCOM1400POneMAILSendList = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "56px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdEmailStat ? undefined : 'none' }}><Paper sx={{ width: '592px', height: '384px', width: '100%', height: 'auto', minHeight: '384px' }}><DataGridWrapper rows={hook.ds_oEmailStat} columns={columns_gdEmailStat} /></Paper></Box></Stack>
 
                     </Paper>

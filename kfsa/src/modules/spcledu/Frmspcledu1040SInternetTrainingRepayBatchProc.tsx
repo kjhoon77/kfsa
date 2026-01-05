@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmspcledu1040SInternetTrainingRepayBatchProc } from './useFrmspcledu1040SInternetTrainingRepayBatchProc';
 import * as Frmspcledu1040SInternetTrainingRepayBatchProcData from './Frmspcledu1040SInternetTrainingRepayBatchProcData';
@@ -12,7 +14,7 @@ import { FrmCOM3010SPOS } from '../COM/FrmCOM3010SPOS';
 export const Frmspcledu1040SInternetTrainingRepayBatchProc = () => {
     const hook = useFrmspcledu1040SInternetTrainingRepayBatchProc();
     const columns_gdRepay = [
-        { field: 'SEL', headerName: 'SEL', width: 30 },
+        { field: 'SEL', headerName: '', width: 30 },
         { field: 'TOMGGTMGNO', headerName: '지부', width: 80 },
         { field: 'TOYEAR', headerName: '년도', width: 60 },
         { field: 'TOTCCOURSECD', headerName: '직능', width: 130 },
@@ -28,16 +30,19 @@ export const Frmspcledu1040SInternetTrainingRepayBatchProc = () => {
     const columns_grdExport = [
         { field: 'PPABANKCD', headerName: '입금은행', width: 88 },
         { field: 'PPACCOUNT', headerName: '입금계좌', width: 176 },
+        { field: 'col_2', headerName: '입금인성명', width: 106 },
         { field: 'REPAYAMT', headerName: '입금액', width: 109 },
         { field: 'PPAOWNER_A', headerName: '출금통장표시', width: 142 },
         { field: 'COMPANYNAME', headerName: '입금통장표시', width: 165 },
+        { field: 'col_6', headerName: '입금인코드', width: 118 },
+        { field: 'col_7', headerName: '비고', width: 100 },
         { field: 'ONLYKEY', headerName: '업체사용key', width: 177 },
     ];
     return (
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">인터넷강습환불일괄처리</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Cancel}>입력 초기화</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Excel}>엑셀로 저장</Button>
@@ -54,16 +59,16 @@ export const Frmspcledu1040SInternetTrainingRepayBatchProc = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "61px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '243px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>접수상태</Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmspcledu1040SInternetTrainingRepayBatchProcData.ds_ds_oIProcStatus || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '190px', height: '22px', display: 'flex', alignItems: 'center', ml: '5px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>접수일자</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '116px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 10, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><Box sx={{ display: hook.isVisible_btnPatchRepay ? undefined : 'none' }}><Button variant="contained" color="success"  onClick={hook.lfn_Check} sx={{ width: '209px', height: '24px', whiteSpace: "nowrap" }}>송금후 일괄환불처리 (엑셀로딩)</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "7px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '180px', height: '22px', display: 'flex', alignItems: 'center', ml: '4px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>전체건수</Typography>

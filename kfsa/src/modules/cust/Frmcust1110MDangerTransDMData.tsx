@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust1110MDangerTransDMData } from './useFrmcust1110MDangerTransDMData';
 import * as Frmcust1110MDangerTransDMDataData from './Frmcust1110MDangerTransDMDataData';
@@ -12,7 +14,7 @@ import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 export const Frmcust1110MDangerTransDMData = () => {
     const hook = useFrmcust1110MDangerTransDMData();
     const columns_gdList = [
-        { field: 'id', headerName: '순번', width: 44, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 44, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'BNM', headerName: '업체명', width: 195 },
         { field: 'ZIPCD', headerName: '우편번호', width: 79 },
         { field: 'ADDR1', headerName: '주소1', width: 284 },
@@ -22,7 +24,7 @@ export const Frmcust1110MDangerTransDMData = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">위험물운송자 교육안내문 DM자료 생성</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.btnToExcel_OnClick}>엑셀로 저장</Button>
@@ -34,7 +36,7 @@ export const Frmcust1110MDangerTransDMData = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "38px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbTextBlue ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '572px', height: '66px' }}><Typography variant="body2">위험물운송자의 실무교육 안내문 발송을 위한 DM자료를 생성하는 프로그램 입니다.
 
 여러명의 운송자가 동일 상호명에 등록되어 있는 경우 상호명과 주소가 일치하면 하나의

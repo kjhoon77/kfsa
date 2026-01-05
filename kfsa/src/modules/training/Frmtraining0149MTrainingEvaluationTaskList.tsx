@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmtraining0149MTrainingEvaluationTaskList } from './useFrmtraining0149MTrainingEvaluationTaskList';
 import * as Frmtraining0149MTrainingEvaluationTaskListData from './Frmtraining0149MTrainingEvaluationTaskListData';
@@ -18,10 +20,10 @@ export const Frmtraining0149MTrainingEvaluationTaskList = () => {
         { field: 'TJPERSONNM', headerName: '성명', width: 72 },
         { field: 'BIRTHDAY', headerName: '생년월일', width: 95 },
         { field: 'ABSENT', headerName: '결강여부', width: 81 },
-        { field: 'FILE1', headerName: '1차제출', width: 65 },
+        { field: 'FILE1', headerName: '1차제출 제출여부', width: 65 },
         { field: 'DOWNLOAD1', headerName: '다운로드', width: 65 },
         { field: 'PASS1', headerName: '합격여부', width: 65 },
-        { field: 'FILE2', headerName: '2차제출', width: 65 },
+        { field: 'FILE2', headerName: '2차제출 제출여부', width: 65 },
         { field: 'DOWNLOAD2', headerName: '다운로드', width: 65 },
         { field: 'PASS2', headerName: '합격여부', width: 65 },
     ];
@@ -29,7 +31,7 @@ export const Frmtraining0149MTrainingEvaluationTaskList = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">실무능력평가 과제제출현황</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 <Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Cancel}>입력 초기화</Button>
@@ -44,7 +46,7 @@ export const Frmtraining0149MTrainingEvaluationTaskList = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "42px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbJibu ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '88px', height: '22px' }}><Typography variant="body2">지부</Typography></Box></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '128px', height: '22px', display: 'flex', alignItems: 'center', ml: '95px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>년도</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
@@ -63,7 +65,7 @@ export const Frmtraining0149MTrainingEvaluationTaskList = () => {
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>선택인원수</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Box sx={{ display: hook.isVisible_btnMutilSort ? undefined : 'none' }}><Button variant="outlined"  onClick={hook.btnMutilSort_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '22px', whiteSpace: "nowrap" }}><Sort fontSize="small" /></Button></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdTrainingEvaluation ? undefined : 'none' }}><Paper sx={{ width: '792px', height: '509px', width: '100%', height: 'auto', minHeight: '509px' }}><DataGridWrapper rows={hook.ds_oTrainingEvaluation} columns={columns_gdTrainingEvaluation} /></Paper></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdTrainingEvaluation ? undefined : 'none' }}><Paper sx={{ width: '792px', height: '509px', width: '100%', height: 'auto', minHeight: '509px' }}><MultiDataGridWrapper rows={hook.ds_oTrainingEvaluation} columns={columns_gdTrainingEvaluation} rowHeight={20} headerHeight={40} hideFooter={true} /></Paper></Box></Stack>
 
                     </Paper>
                 </Grid>

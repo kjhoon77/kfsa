@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust11052MEduNotice } from './useFrmcust11052MEduNotice';
 import * as Frmcust11052MEduNoticeData from './Frmcust11052MEduNoticeData';
@@ -12,14 +14,14 @@ import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 export const Frmcust11052MEduNotice = () => {
     const hook = useFrmcust11052MEduNotice();
     const columns_gdConnections = [
-        { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'ESCHEULE', headerName: '교육일자', width: 134 },
         { field: 'ESCHEULETIME', headerName: '교육시간', width: 167 },
         { field: 'ESEATCOUNT', headerName: '좌석수', width: 117 },
         { field: 'EDUCOUNT', headerName: '예정인원수', width: 112 },
     ];
     const columns_gdCommonCode = [
-        { field: 'EPRINTGUBUN', headerName: 'EPRINTGUBUN', width: 44 },
+        { field: 'EPRINTGUBUN', headerName: '', width: 44 },
         { field: 'sel', headerName: '순번', width: 44 },
         { field: 'EYEAR', headerName: '년도', width: 44 },
         { field: 'CUSTFMNM', headerName: '성명', width: 59 },
@@ -38,7 +40,7 @@ export const Frmcust11052MEduNotice = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">교육 통지서 발행 팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_EduPrint}>교육통지서 출력</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Excel}>엑셀자료생성</Button>
@@ -51,7 +53,7 @@ export const Frmcust11052MEduNotice = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '140px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 84, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>고객구분</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />

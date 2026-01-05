@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmprofes0001ProfessorpfDelete } from './useFrmprofes0001ProfessorpfDelete';
 import * as Frmprofes0001ProfessorpfDeleteData from './Frmprofes0001ProfessorpfDeleteData';
@@ -11,7 +13,7 @@ import * as Frmprofes0001ProfessorpfDeleteData from './Frmprofes0001ProfessorpfD
 export const Frmprofes0001ProfessorpfDelete = () => {
     const hook = useFrmprofes0001ProfessorpfDelete();
     const columns_gdProfUser = [
-        { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'PFTEAM', headerName: '배정지부', width: 100 },
         { field: 'PFNM', headerName: '성명', width: 80 },
         { field: 'JIKRYUL', headerName: '직위', width: 80 },
@@ -34,7 +36,7 @@ export const Frmprofes0001ProfessorpfDelete = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "55px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '194px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>성명</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioProfBasicInfo?.PFNM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />

@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmtraining0290MTrainingJubsuBookPrint } from './useFrmtraining0290MTrainingJubsuBookPrint';
 import * as Frmtraining0290MTrainingJubsuBookPrintData from './Frmtraining0290MTrainingJubsuBookPrintData';
@@ -12,7 +14,7 @@ import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 export const Frmtraining0290MTrainingJubsuBookPrint = () => {
     const hook = useFrmtraining0290MTrainingJubsuBookPrint();
     const columns_grdBook = [
-        { field: 'SEL', headerName: 'SEL', width: 29 },
+        { field: 'SEL', headerName: '', width: 29 },
         { field: 'TBPSEQ', headerName: '순번', width: 32 },
         { field: 'TBPCOL1', headerName: '등기번호', width: 102 },
         { field: 'TBPCOL2', headerName: '상태', width: 33 },
@@ -31,7 +33,8 @@ export const Frmtraining0290MTrainingJubsuBookPrint = () => {
         { field: 'TJBOOKREGNO', headerName: '등록된등기번호', width: 114 },
     ];
     const columns_Grid0 = [
-        { field: 'id', headerName: 'No', width: 0, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 0, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
+        { field: 'col_1', headerName: '순번', width: 34 },
         { field: 'COL01', headerName: '등기번호', width: 104 },
         { field: 'COL02', headerName: '상태', width: 37 },
         { field: 'COL03', headerName: '배달우체국', width: 84 },
@@ -47,7 +50,7 @@ export const Frmtraining0290MTrainingJubsuBookPrint = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">강습접수교재수령등기등록</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
 <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
@@ -59,21 +62,18 @@ export const Frmtraining0290MTrainingJubsuBookPrint = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
-                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "45px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnHistory ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnHistory_OnClick} sx={{ width: '145px', height: '24px', whiteSpace: "nowrap" }}>이력 확인</Button></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static14 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '240px', height: '22px' }}><Typography variant="body2">교재발송명단 등기정보 엑셀 업로드</Typography></Box></Box></Stack>
+                        
+                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "45px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static14 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '240px', height: '22px' }}><Typography variant="body2">교재발송명단 등기정보 엑셀 업로드</Typography></Box></Box><Box sx={{ display: hook.isVisible_btnHistory ? undefined : 'none' }}><Button variant="contained" color="secondary"  onClick={hook.btnHistory_OnClick} sx={{ width: '145px', height: '24px', whiteSpace: "nowrap" }}>이력 확인</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '228px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 135, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>엑셀 업로드 건수 :</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Box sx={{ display: hook.isVisible_btnExcelUpload ? undefined : 'none' }}><Button variant="contained" color="success"  onClick={hook.btnExcelUpload_OnClick} sx={{ width: '145px', height: '24px', whiteSpace: "nowrap" }}>①엑셀 자료 불러오기</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "6px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Grid0 ? undefined : 'none' }}><Paper sx={{ width: '984px', height: '242px', width: '100%', height: 'auto', minHeight: '242px' }}><DataGridWrapper rows={hook.ds_iExcelLoad} columns={columns_Grid0} /></Paper></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnDataCheck ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnDataCheck_OnClick} sx={{ width: '124px', height: '24px', whiteSpace: "nowrap" }}>②자료 확인 하기</Button></Box><Box sx={{ display: hook.isVisible_btnResult ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnResult_OnClick} sx={{ width: '124px', height: '24px', whiteSpace: "nowrap" }}>③등기정보 반영</Button></Box><Box sx={{ display: hook.isVisible_btnSmsSend ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnSmsSend_OnClick} sx={{ width: '121px', height: '24px', whiteSpace: "nowrap" }}>문자메시지발송</Button></Box><Box sx={{ display: hook.isVisible_lbTBPMGNO ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '87px', height: '22px' }}><Typography variant="body2">TBPMGNO</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '228px', height: '22px', display: 'flex', alignItems: 'center', ml: '12px' }}>
                     <Typography variant="body2" sx={{ minWidth: 135, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>자료 확인 건수 :</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_edTBPMGNO ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '86px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdBook ? undefined : 'none' }}><Paper sx={{ width: '984px', height: '402px', width: '100%', height: 'auto', minHeight: '402px' }}><DataGridWrapper rows={hook.ds_ioBook} columns={columns_grdBook} /></Paper></Box></Stack>
+                 </Stack><Box sx={{ display: hook.isVisible_btnDataCheck ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnDataCheck_OnClick} sx={{ width: '124px', height: '24px', whiteSpace: "nowrap" }}>②자료 확인 하기</Button></Box><Box sx={{ display: hook.isVisible_btnResult ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnResult_OnClick} sx={{ width: '124px', height: '24px', whiteSpace: "nowrap" }}>③등기정보 반영</Button></Box><Box sx={{ display: hook.isVisible_btnSmsSend ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnSmsSend_OnClick} sx={{ width: '121px', height: '24px', whiteSpace: "nowrap" }}>문자메시지발송</Button></Box><Box sx={{ display: hook.isVisible_lbTBPMGNO ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '87px', height: '22px' }}><Typography variant="body2">TBPMGNO</Typography></Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdBook ? undefined : 'none' }}><Paper sx={{ width: '984px', height: '402px', width: '100%', height: 'auto', minHeight: '402px' }}><DataGridWrapper rows={hook.ds_ioBook} columns={columns_grdBook} /></Paper></Box><Box sx={{ display: hook.isVisible_edTBPMGNO ? undefined : 'none' }}><TextField size="small" fullWidth  sx={{ width: '86px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnSearchMgno ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnSearchMgno_OnClick} sx={{ width: '104px', height: '23px', whiteSpace: "nowrap" }}>btnSearchMgno</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "348px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_fdImport ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>fdImport</Button></Box></Stack>
 

@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmtraining0680PSmsPatternList } from './useFrmtraining0680PSmsPatternList';
 import * as Frmtraining0680PSmsPatternListData from './Frmtraining0680PSmsPatternListData';
@@ -16,6 +18,7 @@ export const Frmtraining0680PSmsPatternList = () => {
         { field: 'TOTCCOURSECD', headerName: '직능', width: 0 },
         { field: 'TOTRAININGORDER', headerName: '회차', width: 0 },
         { field: 'TOHJUBSUNO', headerName: '접수번호', width: 0 },
+        { field: 'col_5', headerName: '순번', width: 44 },
         { field: 'SPBIZGUBUNNM', headerName: '업무구분', width: 90 },
         { field: 'SPTYPENM', headerName: '문자구분', width: 74 },
         { field: 'SPPATTERN', headerName: '유형내용', width: 588 },
@@ -24,7 +27,7 @@ export const Frmtraining0680PSmsPatternList = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">SMS유형보기팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Sort />} onClick={hook.btnMutilSort_OnClick}></Button>
 <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
@@ -35,7 +38,7 @@ export const Frmtraining0680PSmsPatternList = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "57px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdSmsStat ? undefined : 'none' }}><Paper sx={{ width: '690px', height: '432px', width: '100%', height: 'auto', minHeight: '432px' }}><DataGridWrapper rows={hook.ds_ioSmsPattern} columns={columns_gdSmsStat} /></Paper></Box></Stack>
 
                     </Paper>

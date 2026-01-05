@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmCOM1011PEstimate } from './useFrmCOM1011PEstimate';
 import * as FrmCOM1011PEstimateData from './FrmCOM1011PEstimateData';
@@ -15,7 +17,7 @@ export const FrmCOM1011PEstimate = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">계산서 확인 팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 
@@ -25,7 +27,7 @@ export const FrmCOM1011PEstimate = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "37px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_WebBrowserEstimate ? undefined : 'none' }}><Box sx={{ width: '875px', height: '711px', border: '1px dashed grey' }}>Unknown: WebBrowser</Box></Box></Stack>
 
                     </Paper>

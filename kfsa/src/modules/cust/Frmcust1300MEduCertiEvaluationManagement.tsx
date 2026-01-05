@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust1300MEduCertiEvaluationManagement } from './useFrmcust1300MEduCertiEvaluationManagement';
 import * as Frmcust1300MEduCertiEvaluationManagementData from './Frmcust1300MEduCertiEvaluationManagementData';
@@ -12,7 +14,7 @@ import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 export const Frmcust1300MEduCertiEvaluationManagement = () => {
     const hook = useFrmcust1300MEduCertiEvaluationManagement();
     const columns_gdEduJubsu = [
-        { field: 'SEL', headerName: 'SEL', width: 29 },
+        { field: 'SEL', headerName: '', width: 29 },
         { field: 'ESGTMGNO', headerName: '지부', width: 60 },
         { field: 'ESYEAR', headerName: '년도', width: 40 },
         { field: 'ESEDUORDER', headerName: '회차', width: 40 },
@@ -31,7 +33,7 @@ export const Frmcust1300MEduCertiEvaluationManagement = () => {
         { field: 'EJPHONE', headerName: '휴대폰', width: 100 },
     ];
     const columns_gdBookSend = [
-        { field: 'id', headerName: '순번', width: 35, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 35, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'GTTEAMNM', headerName: '지부', width: 100 },
         { field: 'CGROUPNM', headerName: '교육과정', width: 152 },
         { field: 'ESCYBERSTARTDATE', headerName: '교육시작일자', width: 90 },
@@ -49,7 +51,7 @@ export const Frmcust1300MEduCertiEvaluationManagement = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">실무능력평가관리</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 <Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Cancel}>입력 초기화</Button>
@@ -63,8 +65,8 @@ export const Frmcust1300MEduCertiEvaluationManagement = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
-                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "42px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnSave ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_Save} sx={{ width: '64px', height: '24px', whiteSpace: "nowrap" }}>합격</Button></Box><Box sx={{ display: hook.isVisible_btnCancle ? undefined : 'none' }}><Button variant="contained"   onClick={hook.ifn_cancle} sx={{ width: '65px', height: '24px', whiteSpace: "nowrap" }}>취소</Button></Box><Box sx={{ ml: "357px", minWidth: "237px" }}><Box sx={{ display: hook.isVisible_btnPrint ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_Print} sx={{ width: '126px', height: '24px', whiteSpace: "nowrap" }}>접수자목록출력</Button></Box><Box sx={{ display: hook.isVisible_btnPrintList1 ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_PrintName} sx={{ width: '118px', height: '24px', whiteSpace: "nowrap" }}>접수자명단</Button></Box></Box><Box sx={{ display: hook.isVisible_btnPrintList2 ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_PrintNameBoard} sx={{ width: '170px', height: '24px', whiteSpace: "nowrap" }}>접수자명단(게시판용)</Button></Box></Stack>
+                        
+                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "42px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_btnSave ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_Save} sx={{ width: '64px', height: '24px', whiteSpace: "nowrap" }}>합격</Button></Box><Box sx={{ display: hook.isVisible_btnCancle ? undefined : 'none' }}><Button variant="contained"   onClick={hook.ifn_cancle} sx={{ width: '65px', height: '24px', whiteSpace: "nowrap" }}>취소</Button></Box><Box sx={{ ml: "357px", minWidth: "237px" }}><Box sx={{ display: hook.isVisible_btnPrint ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_Print} sx={{ width: '126px', height: '24px', whiteSpace: "nowrap" }}>접수자목록출력</Button></Box><Box sx={{ display: hook.isVisible_btnPrintList1 ? undefined : 'none' }}><Button variant="contained" color="secondary"  onClick={hook.lfn_PrintName} sx={{ width: '118px', height: '24px', whiteSpace: "nowrap" }}>접수자명단</Button></Box></Box><Box sx={{ display: hook.isVisible_btnPrintList2 ? undefined : 'none' }}><Button variant="contained" color="secondary"  onClick={hook.lfn_PrintNameBoard} sx={{ width: '170px', height: '24px', whiteSpace: "nowrap" }}>접수자명단(게시판용)</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '179px', height: '22px', display: 'flex', alignItems: 'center', ml: '19px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>지부</Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust1300MEduCertiEvaluationManagementData.ds_ds_oJibu || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
@@ -86,10 +88,10 @@ export const Frmcust1300MEduCertiEvaluationManagement = () => {
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '192px', height: '22px', display: 'flex', alignItems: 'center', ml: '16px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>평가일자</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '116px', height: '22px', display: 'flex', alignItems: 'center', ml: '0px' }}>
                     <Typography variant="body2" sx={{ minWidth: 20, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '149px', height: '22px', display: 'flex', alignItems: 'center', ml: '6px' }}>
                     <Typography variant="body2" sx={{ minWidth: 80, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>평가합격여부</Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust1300MEduCertiEvaluationManagementData.ds_ds_oCertiYN || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>

@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmtraining0364MInternetLicenseApproval } from './useFrmtraining0364MInternetLicenseApproval';
 import * as Frmtraining0364MInternetLicenseApprovalData from './Frmtraining0364MInternetLicenseApprovalData';
@@ -20,12 +22,13 @@ export const Frmtraining0364MInternetLicenseApproval = () => {
         { field: 'AJTCCOURSENM', headerName: '등급', width: 152 },
         { field: 'AJGUBUNNM', headerName: '발급구분', width: 222 },
         { field: 'AJSTATUS', headerName: '신청상태', width: 63 },
+        { field: 'col_8', headerName: '승인/반려/보완 사유', width: 182 },
     ];
     return (
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">[인터넷]자격발급 심사의뢰관리</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Excel}>엑셀로 저장</Button>
@@ -39,7 +42,7 @@ export const Frmtraining0364MInternetLicenseApproval = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "74px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList ? undefined : 'none' }}><Paper sx={{ width: '908px', height: '258px', width: '100%', height: 'auto', minHeight: '258px' }}><DataGridWrapper rows={hook.ds_ioApproveList} columns={columns_gdList} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_fiAttachFile ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>fiAttachFile</Button></Box><Box sx={{ display: hook.isVisible_fdAttachFile ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>fdAttachFile</Button></Box><Box sx={{ display: hook.isVisible_hfAttachFile ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>hfAttachFile</Button></Box><Box sx={{ display: hook.isVisible_btnPrint ? undefined : 'none' }}><Button variant="contained"   onClick={hook.lfn_Print} sx={{ width: '81px', height: '24px', whiteSpace: "nowrap" }}>신청서출력</Button></Box><Box sx={{ display: hook.isVisible_btnImsiSave ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnImsiSave_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>임시저장</Button></Box><Box sx={{ display: hook.isVisible_btnCancel ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnCancel_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>접수취소</Button></Box><Box sx={{ display: hook.isVisible_btnJubsu ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnJubsu_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>접수시작</Button></Box><Box sx={{ display: hook.isVisible_btnMod ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnMod_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>보완</Button></Box><Box sx={{ display: hook.isVisible_btnApprove ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnApprove_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>승인</Button></Box><Box sx={{ display: hook.isVisible_btnReject ? undefined : 'none' }}><Button variant="contained"   onClick={hook.btnReject_OnClick} sx={{ width: '66px', height: '24px', whiteSpace: "nowrap" }}>반려</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "17px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbSearch ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '24px', height: '142px' }}><Typography variant="body2">개인정보</Typography></Box></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '219px', height: '22px', display: 'flex', alignItems: 'center', ml: '5px' }}>

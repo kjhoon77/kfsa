@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmtraining0660MExamScoreStatistics } from './useFrmtraining0660MExamScoreStatistics';
 import * as Frmtraining0660MExamScoreStatisticsData from './Frmtraining0660MExamScoreStatisticsData';
@@ -33,7 +35,7 @@ export const Frmtraining0660MExamScoreStatistics = () => {
         { field: 'PASSPER', headerName: '합격률', width: 70 },
     ];
     const columns_grdScoreExport = [
-        { field: 'id', headerName: '연번', width: 46, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '연번', width: 46, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'GTDEPTNM', headerName: '지부', width: 67 },
         { field: 'TCCOURSENICK', headerName: '과정', width: 103 },
         { field: 'EOEXAMDATE', headerName: '시험일자', width: 99 },
@@ -54,22 +56,22 @@ export const Frmtraining0660MExamScoreStatistics = () => {
         { field: 'EOEXAMORDER', headerName: '회차', width: 63 },
         { field: 'EOEXAMDATE', headerName: '시험일자', width: 99 },
         { field: 'NUMTYPE', headerName: '종별', width: 99 },
-        { field: 'JUBSUNUM_TOTAL', headerName: '접수자수', width: 70 },
+        { field: 'JUBSUNUM_TOTAL', headerName: '접수자수 계', width: 70 },
         { field: 'JUBSUNUM', headerName: '강습수료', width: 70 },
         { field: 'JUBSUNUM_K', headerName: '경력 등', width: 70 },
-        { field: 'APPLYING_TOTAL', headerName: '응시자수', width: 70 },
+        { field: 'APPLYING_TOTAL', headerName: '응시자수 계', width: 70 },
         { field: 'APPLYING', headerName: '강습수료', width: 70 },
         { field: 'APPLYING_K', headerName: '경력 등', width: 70 },
-        { field: 'PASSNUM_TOTAL', headerName: '합격자수', width: 70 },
+        { field: 'PASSNUM_TOTAL', headerName: '합격자수 계', width: 70 },
         { field: 'PASSNUM', headerName: '강습수료', width: 70 },
         { field: 'PASSNUM_K', headerName: '경력 등', width: 70 },
-        { field: 'FAILNUM_TOTAL', headerName: '불합격자수', width: 80 },
+        { field: 'FAILNUM_TOTAL', headerName: '불합격자수 계', width: 80 },
         { field: 'FAILNUM', headerName: '강습수료', width: 80 },
         { field: 'FAILNUM_K', headerName: '경력 등', width: 80 },
-        { field: 'NOAPPLYING_TOTAL', headerName: '미응시자수', width: 80 },
+        { field: 'NOAPPLYING_TOTAL', headerName: '미응시자수 계', width: 80 },
         { field: 'NOAPPLYING', headerName: '강습수료', width: 80 },
         { field: 'NOAPPLYING_K', headerName: '경력 등', width: 80 },
-        { field: 'PASSPER_TOTAL', headerName: '합격률', width: 70 },
+        { field: 'PASSPER_TOTAL', headerName: '합격률 계', width: 70 },
         { field: 'PASSPER', headerName: '강습수료', width: 70 },
         { field: 'PASSPER_K', headerName: '경력 등', width: 70 },
         { field: 'ALLAVG', headerName: '전체평균', width: 70 },
@@ -79,7 +81,7 @@ export const Frmtraining0660MExamScoreStatistics = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">시험성적통계자료출력</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
 <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
@@ -92,7 +94,7 @@ export const Frmtraining0660MExamScoreStatistics = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "62px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_radSearchGubun ? undefined : 'none' }}><FormControl component="fieldset" sx={{ width: '76px', height: '42px', width: "max-content", whiteSpace: "nowrap", pr: 2 }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmtraining0660MExamScoreStatisticsData.ds_ds_oSearchGubun || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '120px', height: '22px', display: 'flex', alignItems: 'center', ml: '0px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>회차</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
@@ -105,10 +107,10 @@ export const Frmtraining0660MExamScoreStatistics = () => {
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '190px', height: '22px', display: 'flex', alignItems: 'center', ml: '84px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>시험일자</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '114px', height: '22px', display: 'flex', alignItems: 'center', ml: '10px' }}>
                     <Typography variant="body2" sx={{ minWidth: 10, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '181px', height: '22px', display: 'flex', alignItems: 'center', ml: '2px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>평가차수</Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmtraining0660MExamScoreStatisticsData.ds_ds_oExamRepeat || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
@@ -118,7 +120,7 @@ export const Frmtraining0660MExamScoreStatistics = () => {
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "28px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdScoreExport ? undefined : 'none' }}><Paper sx={{ width: '716px', height: '98px', width: '100%', height: 'auto', minHeight: '98px' }}><DataGridWrapper rows={hook.ds_oExamScoreOrderNo} columns={columns_grdScoreExport} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdOrderExport ? undefined : 'none' }}><Paper sx={{ width: '716px', height: '98px', width: '100%', height: 'auto', minHeight: '98px' }}><DataGridWrapper rows={hook.ds_oExamOrderScoreStat} columns={columns_grdOrderExport} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_grdExport ? undefined : 'none' }}><Paper sx={{ width: '716px', height: '98px', width: '100%', height: 'auto', minHeight: '98px' }}><DataGridWrapper rows={hook.ds_oExamQuestionItemCorrectAnswer} columns={columns_grdExport} /></Paper></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Grid0 ? undefined : 'none' }}><Paper sx={{ width: '1408px', height: '226px', width: '100%', height: 'auto', minHeight: '226px' }}><DataGridWrapper rows={hook.ds_oExamOrderScoreStat} columns={columns_Grid0} /></Paper></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Grid0 ? undefined : 'none' }}><Paper sx={{ width: '1408px', height: '226px', width: '100%', height: 'auto', minHeight: '226px' }}><MultiDataGridWrapper rows={hook.ds_oExamOrderScoreStat} columns={columns_Grid0} rowHeight={20} headerHeight={40} hideFooter={true} /></Paper></Box></Stack>
 
                     </Paper>
                 </Grid>

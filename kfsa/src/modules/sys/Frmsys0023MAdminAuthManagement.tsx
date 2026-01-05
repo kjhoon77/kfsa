@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmsys0023MAdminAuthManagement } from './useFrmsys0023MAdminAuthManagement';
 import * as Frmsys0023MAdminAuthManagementData from './Frmsys0023MAdminAuthManagementData';
@@ -13,7 +15,7 @@ export const Frmsys0023MAdminAuthManagement = () => {
     const hook = useFrmsys0023MAdminAuthManagement();
     const [chk_chkUseYn, setChk_chkUseYn] = useState('0');
     const columns_gdAdminAuth = [
-        { field: 'id', headerName: '사용유무', width: 70, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '사용유무', width: 70, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'AAGUBUN', headerName: '권한구분', width: 120 },
         { field: 'PDEPTNM', headerName: '부서', width: 196 },
         { field: 'PPOSITNNM', headerName: '직위', width: 115 },
@@ -24,7 +26,7 @@ export const Frmsys0023MAdminAuthManagement = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">관리자권한관리</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 <Button variant="contained" startIcon={<Add />} onClick={hook.lfn_Input}>추가 저장</Button>
@@ -41,7 +43,7 @@ export const Frmsys0023MAdminAuthManagement = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "62px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbUseYn ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '88px', height: '22px' }}><Typography variant="body2">사용유무</Typography></Box></Box><FormControlLabel control={<Checkbox checked={chk_chkUseYn === '1'} onChange={(e) => setChk_chkUseYn(e.target.checked ? '1' : '0')} />} label="사용유무" /></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '203px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>권한구분</Typography>

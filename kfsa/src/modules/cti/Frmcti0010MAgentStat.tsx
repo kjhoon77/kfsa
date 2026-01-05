@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcti0010MAgentStat } from './useFrmcti0010MAgentStat';
 import * as Frmcti0010MAgentStatData from './Frmcti0010MAgentStatData';
@@ -35,7 +37,7 @@ export const Frmcti0010MAgentStat = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">Agent상태조회</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 
@@ -45,9 +47,8 @@ export const Frmcti0010MAgentStat = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
-                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "90px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList ? undefined : 'none' }}><Paper sx={{ width: '1181px', height: '650px', width: '100%', height: 'auto', minHeight: '650px' }}><DataGridWrapper rows={hook.ds_oAgentStatList} columns={columns_gdList} /></Paper></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdListSub ? undefined : 'none' }}><Paper sx={{ width: '1181px', height: '650px', width: '100%', height: 'auto', minHeight: '650px' }}><DataGridWrapper rows={hook.ds_oAgentStatSubList} columns={columns_gdListSub} /></Paper></Box></Stack>
+                        
+                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "90px", py: 0.5, width: "100%" }}><Box sx={{ ml: "3px", minWidth: "1181px" }}><Box sx={{ display: hook.isVisible_gdList ? undefined : 'none' }}><Paper sx={{ width: '1181px', height: '650px', width: '100%', height: 'auto', minHeight: '650px' }}><DataGridWrapper rows={hook.ds_oAgentStatList} columns={columns_gdList} /></Paper></Box><Box sx={{ display: hook.isVisible_gdListSub ? undefined : 'none' }}><Paper sx={{ width: '1181px', height: '650px', width: '100%', height: 'auto', minHeight: '650px' }}><DataGridWrapper rows={hook.ds_oAgentStatSubList} columns={columns_gdListSub} /></Paper></Box></Box></Stack>
 
                     </Paper>
                 </Grid>

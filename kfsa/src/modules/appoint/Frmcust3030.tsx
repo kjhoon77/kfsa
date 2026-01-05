@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust3030 } from './useFrmcust3030';
 import * as Frmcust3030Data from './Frmcust3030Data';
@@ -18,7 +20,7 @@ export const Frmcust3030 = () => {
     const [tabValue_tabTab1_5, setTabValue_tabTab1_5] = useState(0);
     const [chk_chkPerson, setChk_chkPerson] = useState('0');
     const columns_gdAdminList = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'NM', headerName: '성명', width: 100 },
         { field: 'OFCPS', headerName: '직위', width: 100 },
         { field: 'IHIDNUM', headerName: '생년월일', width: 100 },
@@ -29,7 +31,7 @@ export const Frmcust3030 = () => {
         { field: 'RLSOFC_DE_8', headerName: '해임일자', width: 100 },
     ];
     const columns_gdLicense = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'CODE_NM', headerName: '자격증명', width: 200 },
         { field: 'CRQFC_NO', headerName: '자격증번호', width: 136 },
         { field: 'DELVRY_DE', headerName: '교부일자', width: 100 },
@@ -43,7 +45,7 @@ export const Frmcust3030 = () => {
         { field: 'TLPHON_NO', headerName: '전화번호', width: 197 },
     ];
     const columns_gdDongStatus = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'BULDDONG_NM', headerName: '동명칭', width: 138 },
         { field: 'BULDDONG_MAIN_PRPOS_CODE', headerName: '주용도', width: 120 },
         { field: 'BULDDONG_SEC_PRPOS_CODE', headerName: '부용도', width: 187 },
@@ -56,7 +58,7 @@ export const Frmcust3030 = () => {
         { field: 'ADDR', headerName: '주소', width: 362 },
     ];
     const columns_gdSFloorStatus = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'FLOOR', headerName: '층', width: 109 },
         { field: 'SPCL_PRPOS_SE_CODE', headerName: '특수용도', width: 258 },
         { field: 'AR', headerName: '면적', width: 115 },
@@ -66,7 +68,7 @@ export const Frmcust3030 = () => {
         { field: 'moddate', headerName: '최종수정일', width: 100 },
     ];
     const columns_gdFloorStatus = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'FLOOR', headerName: '층', width: 51 },
         { field: 'MAIN_PROPS', headerName: '용도', width: 134 },
         { field: 'AR', headerName: '면적', width: 68 },
@@ -78,56 +80,56 @@ export const Frmcust3030 = () => {
         { field: 'moddate', headerName: '최종수정일', width: 107 },
     ];
     const columns_gdFloorE = [
-        { field: 'FLOOR_SE', headerName: '시설별', width: 80 },
+        { field: 'FLOOR_SE', headerName: '시설별 층구분', width: 80 },
         { field: 'FLOOR', headerName: '층', width: 80 },
         { field: 'GUBUN', headerName: '구분', width: 108 },
         { field: 'EXTSHR_STDR', headerName: '소화설비', width: 30 },
-        { field: 'SIMPLCTY_FREXT_EQPMT_STDR', headerName: 'SIMPLCTY_FREXT_EQPMT_STDR', width: 30 },
-        { field: 'INSDHOUS_FRPLG_STDR', headerName: 'INSDHOUS_FRPLG_STDR', width: 30 },
-        { field: 'OUTHOUS_FRPLG_STDR', headerName: 'OUTHOUS_FRPLG_STDR', width: 30 },
-        { field: 'POWER_FGT_PUMP_STDR', headerName: 'POWER_FGT_PUMP_STDR', width: 30 },
-        { field: 'SPRINKLER_H_STDR', headerName: 'H', width: 30 },
-        { field: 'SPRINKLER_AV_STDR', headerName: 'AV', width: 30 },
-        { field: 'WATER_SPRAY_FREXT_H_STDR', headerName: 'H', width: 30 },
-        { field: 'WATER_SPRAY_FREXT_AV_STDR', headerName: 'AV', width: 30 },
-        { field: 'CANNON_FREXT_H_STDR', headerName: 'H', width: 30 },
-        { field: 'CANNON_FREXT_AV_STDR', headerName: 'AV', width: 30 },
-        { field: 'CARBON_DIOX_H_STDR', headerName: 'H', width: 30 },
-        { field: 'CARBON_DIOX_AV_STDR', headerName: 'AV', width: 30 },
-        { field: 'HALOGEN_COMP_H_STDR', headerName: 'H', width: 30 },
-        { field: 'HALOGEN_COMP_AV_STDR', headerName: 'AV', width: 30 },
-        { field: 'POWDER_FREXT_H_STDR', headerName: 'H', width: 30 },
-        { field: 'POWDER_FREXT_AV_STDR', headerName: 'AV', width: 30 },
+        { field: 'SIMPLCTY_FREXT_EQPMT_STDR', headerName: '', width: 30 },
+        { field: 'INSDHOUS_FRPLG_STDR', headerName: '', width: 30 },
+        { field: 'OUTHOUS_FRPLG_STDR', headerName: '', width: 30 },
+        { field: 'POWER_FGT_PUMP_STDR', headerName: '', width: 30 },
+        { field: 'SPRINKLER_H_STDR', headerName: '', width: 30 },
+        { field: 'SPRINKLER_AV_STDR', headerName: '', width: 30 },
+        { field: 'WATER_SPRAY_FREXT_H_STDR', headerName: '', width: 30 },
+        { field: 'WATER_SPRAY_FREXT_AV_STDR', headerName: '', width: 30 },
+        { field: 'CANNON_FREXT_H_STDR', headerName: '', width: 30 },
+        { field: 'CANNON_FREXT_AV_STDR', headerName: '', width: 30 },
+        { field: 'CARBON_DIOX_H_STDR', headerName: '', width: 30 },
+        { field: 'CARBON_DIOX_AV_STDR', headerName: '', width: 30 },
+        { field: 'HALOGEN_COMP_H_STDR', headerName: '', width: 30 },
+        { field: 'HALOGEN_COMP_AV_STDR', headerName: '', width: 30 },
+        { field: 'POWDER_FREXT_H_STDR', headerName: '', width: 30 },
+        { field: 'POWDER_FREXT_AV_STDR', headerName: '', width: 30 },
         { field: 'EMGNC_ALARM_STDR', headerName: '경보설비', width: 30 },
-        { field: 'EMGNC_BRDCST_STDR', headerName: 'EMGNC_BRDCST_STDR', width: 30 },
-        { field: 'SHCI_ALARM_STDR', headerName: 'SHCI_ALARM_STDR', width: 30 },
-        { field: 'ATMC_FIRE_DETCT_SENSOR_STDR', headerName: '감', width: 30 },
-        { field: 'ATMC_FIRE_DETCT_CRCT_STDR', headerName: '회', width: 30 },
-        { field: 'ATMC_FIRE_FNEWS_STDR', headerName: 'ATMC_FIRE_FNEWS_STDR', width: 30 },
-        { field: 'GAS_LKGE_ALARM_STDR', headerName: 'GAS_LKGE_ALARM_STDR', width: 30 },
+        { field: 'EMGNC_BRDCST_STDR', headerName: '', width: 30 },
+        { field: 'SHCI_ALARM_STDR', headerName: '', width: 30 },
+        { field: 'ATMC_FIRE_DETCT_SENSOR_STDR', headerName: '', width: 30 },
+        { field: 'ATMC_FIRE_DETCT_CRCT_STDR', headerName: '', width: 30 },
+        { field: 'ATMC_FIRE_FNEWS_STDR', headerName: '', width: 30 },
+        { field: 'GAS_LKGE_ALARM_STDR', headerName: '', width: 30 },
         { field: 'SLIDE_STDR', headerName: '피난설비', width: 30 },
-        { field: 'REFGE_LADDER_STDR', headerName: 'REFGE_LADDER_STDR', width: 30 },
-        { field: 'RSCUNT_STDR', headerName: 'RSCUNT_STDR', width: 30 },
-        { field: 'SLOW_DES_MCHN_STDR', headerName: 'SLOW_DES_MCHN_STDR', width: 30 },
-        { field: 'REFGE_BRIDGE_STDR', headerName: 'REFGE_BRIDGE_STDR', width: 30 },
-        { field: 'REFGE_ROPE_STDR', headerName: 'REFGE_ROPE_STDR', width: 30 },
-        { field: 'AIR_SAFE_MAT_STDR', headerName: 'AIR_SAFE_MAT_STDR', width: 30 },
-        { field: 'HNL_RESCUE_UTNSIL_STDR', headerName: 'HNL_RESCUE_UTNSIL_STDR', width: 30 },
-        { field: 'DLAMP_STDR', headerName: 'DLAMP_STDR', width: 30 },
-        { field: 'DERIVE_SGNAL_STDR', headerName: 'DERIVE_SGNAL_STDR', width: 30 },
-        { field: 'EMGNC_LLAMP_STDR', headerName: 'EMGNC_LLAMP_STDR', width: 30 },
+        { field: 'REFGE_LADDER_STDR', headerName: '', width: 30 },
+        { field: 'RSCUNT_STDR', headerName: '', width: 30 },
+        { field: 'SLOW_DES_MCHN_STDR', headerName: '', width: 30 },
+        { field: 'REFGE_BRIDGE_STDR', headerName: '', width: 30 },
+        { field: 'REFGE_ROPE_STDR', headerName: '', width: 30 },
+        { field: 'AIR_SAFE_MAT_STDR', headerName: '', width: 30 },
+        { field: 'HNL_RESCUE_UTNSIL_STDR', headerName: '', width: 30 },
+        { field: 'DLAMP_STDR', headerName: '', width: 30 },
+        { field: 'DERIVE_SGNAL_STDR', headerName: '', width: 30 },
+        { field: 'EMGNC_LLAMP_STDR', headerName: '', width: 30 },
         { field: 'WRPP_FREXT_USWTR_STDR', headerName: '소방용수설비', width: 30 },
-        { field: 'FREXT_WTR_STDR', headerName: 'FREXT_WTR_STDR', width: 30 },
-        { field: 'WTRTNK_STDR', headerName: 'WTRTNK_STDR', width: 30 },
-        { field: 'FGT_USWTR_EQP_ETC_STDR', headerName: 'FGT_USWTR_EQP_ETC_STDR', width: 30 },
+        { field: 'FREXT_WTR_STDR', headerName: '', width: 30 },
+        { field: 'WTRTNK_STDR', headerName: '', width: 30 },
+        { field: 'FGT_USWTR_EQP_ETC_STDR', headerName: '', width: 30 },
         { field: 'RESMOKE_STDR', headerName: '소화활동상필요한설비', width: 30 },
-        { field: 'CNNC_WTRPIPE_STDR', headerName: 'CNNC_WTRPIPE_STDR', width: 30 },
-        { field: 'CNNC_SPRK_STDR', headerName: 'CNNC_SPRK_STDR', width: 30 },
-        { field: 'EMGNC_CNCNT_STDR', headerName: 'EMGNC_CNCNT_STDR', width: 30 },
-        { field: 'WLMC_ASSTN_STDR', headerName: 'WLMC_ASSTN_STDR', width: 30 },
+        { field: 'CNNC_WTRPIPE_STDR', headerName: '', width: 30 },
+        { field: 'CNNC_SPRK_STDR', headerName: '', width: 30 },
+        { field: 'EMGNC_CNCNT_STDR', headerName: '', width: 30 },
+        { field: 'WLMC_ASSTN_STDR', headerName: '', width: 30 },
         { field: 'CURTAIN_STDR', headerName: '방염', width: 30 },
-        { field: 'CASSETTE_STDR', headerName: 'CASSETTE_STDR', width: 30 },
-        { field: 'RSTPRT_ETC_STDR', headerName: 'RSTPRT_ETC_STDR', width: 30 },
+        { field: 'CASSETTE_STDR', headerName: '', width: 30 },
+        { field: 'RSTPRT_ETC_STDR', headerName: '', width: 30 },
     ];
     const columns_gdStatusSucces = [
         { field: 'FC_NM', headerName: '관할서/센터', width: 122 },
@@ -180,7 +182,7 @@ export const Frmcust3030 = () => {
         { field: 'UPDT_DE_14', headerName: '최종수정일', width: 100 },
     ];
     const columns_gdPHuman = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'NM', headerName: '성명', width: 83 },
         { field: 'HNF_SE_NM', headerName: '인력구분', width: 107 },
         { field: 'BIRTHDATE', headerName: '생년월일', width: 101 },
@@ -192,7 +194,7 @@ export const Frmcust3030 = () => {
         { field: 'MODDATE', headerName: '최근수정일', width: 80 },
     ];
     const columns_gdLicenscInfo = [
-        { field: 'id', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 39, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'CRQFC_NM', headerName: '자격증명', width: 83 },
         { field: 'CRQFC_DETAIL_SE_NM', headerName: '상세자격증명', width: 122 },
         { field: 'CRQFC_NO', headerName: '자격증번호', width: 101 },
@@ -203,7 +205,7 @@ export const Frmcust3030 = () => {
         { field: 'MODDATE', headerName: '최근수정일', width: 80 },
     ];
     const columns_gdList50 = [
-        { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'CNT', headerName: '연계건수', width: 70 },
         { field: 'ENTRPS_NM', headerName: '업체명', width: 144 },
         { field: 'ENTRPS_STTUS_CODE', headerName: '업체상태', width: 66 },
@@ -215,7 +217,7 @@ export const Frmcust3030 = () => {
         { field: 'TLPHON_NO', headerName: '연락처', width: 100 },
     ];
     const columns_gdList80 = [
-        { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'CNT', headerName: '연계건수', width: 70 },
         { field: 'ONM', headerName: '대상명', width: 227 },
         { field: 'MNFCTRETC_SE_CODE_NM', headerName: '구분', width: 77 },
@@ -228,7 +230,7 @@ export const Frmcust3030 = () => {
         { field: 'COMPET', headerName: '완공검사일', width: 80 },
     ];
     const columns_gdList10 = [
-        { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'CNT', headerName: '연계건수', width: 59 },
         { field: 'OBJ_NM', headerName: '대상물명', width: 242 },
         { field: 'OBJ_SE_CODE', headerName: '대상물구분', width: 112 },
@@ -241,7 +243,7 @@ export const Frmcust3030 = () => {
         { field: 'USE_CONFM_DE', headerName: '사용승인일자', width: 100 },
     ];
     const columns_gdList30 = [
-        { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'CNT', headerName: '연계건수', width: 70 },
         { field: 'ONM', headerName: '대상명', width: 144 },
         { field: 'MNFCTRETC_SE_CODE_NM', headerName: '구분', width: 82 },
@@ -256,7 +258,7 @@ export const Frmcust3030 = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">소방대상물</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.btnToExcel_OnClick}>엑셀로 저장</Button>
@@ -269,7 +271,7 @@ export const Frmcust3030 = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '420px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>검색조건</Typography>
                     <FormControl component="fieldset" sx={{ width: "max-content", whiteSpace: "nowrap" }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmcust3030Data.ds_ds_ioSearch || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl>
@@ -280,11 +282,10 @@ export const Frmcust3030 = () => {
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '344px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>검색어</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
-                 </Stack><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '175px', height: '22px', display: 'flex', alignItems: 'center', ml: '131px' }}>
+                 </Stack><FormControlLabel control={<Checkbox checked={chk_chkPerson === '1'} onChange={(e) => setChk_chkPerson(e.target.checked ? '1' : '0')} />} label="해당 문자열 포함" /><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '175px', height: '22px', display: 'flex', alignItems: 'center', ml: '9px' }}>
                     <Typography variant="body2" sx={{ minWidth: 101, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>조회수</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><FormControlLabel control={<Checkbox checked={chk_chkPerson === '1'} onChange={(e) => setChk_chkPerson(e.target.checked ? '1' : '0')} />} label="해당 문자열 포함" /></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '154px', height: '22px', display: 'flex', alignItems: 'center', ml: '3px' }}>
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>총건수</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
@@ -370,9 +371,8 @@ export const Frmcust3030 = () => {
 보</Typography></Box></Box><Box sx={{ display: hook.isVisible_gdLicense ? undefined : 'none' }}><Paper sx={{ width: '936px', height: '410px', width: '100%', height: 'auto', minHeight: '410px' }}><DataGridWrapper rows={hook.ds_ioFireSurveyLicenseInfo} columns={columns_gdLicense} /></Paper></Box></Stack>
 </CustomTabPanel><CustomTabPanel value={tabValue_tabTab1_3} index={1}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdRelation ? undefined : 'none' }}><Paper sx={{ width: '965px', height: '513px', width: '100%', height: 'auto', minHeight: '513px' }}><DataGridWrapper rows={hook.ds_ioFireSurveyRelationInfo} columns={columns_gdRelation} /></Paper></Box></Stack>
 </CustomTabPanel></Box></Box></Stack>
-</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1_2} index={1}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdDongStatus ? undefined : 'none' }}><Paper sx={{ width: '968px', height: '280px', width: '100%', height: 'auto', minHeight: '280px' }}><DataGridWrapper rows={hook.ds_ioFireSurveyDong} columns={columns_gdDongStatus} /></Paper></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbEmailCnt ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '48px', height: '28px' }}><Typography variant="body2">건수</Typography></Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "79px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static8_2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '120px', height: '28px' }}><Typography variant="body2">기본정보</Typography></Box></Box></Stack>
+</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1_2} index={1}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ ml: "3px", minWidth: "968px" }}><Box sx={{ display: hook.isVisible_gdDongStatus ? undefined : 'none' }}><Paper sx={{ width: '968px', height: '280px', width: '100%', height: 'auto', minHeight: '280px' }}><DataGridWrapper rows={hook.ds_ioFireSurveyDong} columns={columns_gdDongStatus} /></Paper></Box><Box sx={{ display: hook.isVisible_lbEmailCnt ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '48px', height: '28px' }}><Typography variant="body2">건수</Typography></Box></Box></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static8_2 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '120px', height: '28px' }}><Typography variant="body2">기본정보</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '237px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 85, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>동명</Typography>
                     <TextField size="small" fullWidth value={hook.ds_ioFireSurveyDong?.BULDDONG_NM || ''} sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
@@ -481,7 +481,7 @@ export const Frmcust3030 = () => {
                     <FormControl component="fieldset" sx={{ width: "max-content", whiteSpace: "nowrap" }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmcust3030Data.ds_ds_oSGubun || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl>
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdSFloorStatus ? undefined : 'none' }}><Paper sx={{ width: '963px', height: '277px', width: '100%', height: 'auto', minHeight: '277px' }}><DataGridWrapper rows={hook.ds_ioFireSurveySFloorStatus} columns={columns_gdSFloorStatus} /></Paper></Box></Stack>
-</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1_4} index={1}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdFloorE ? undefined : 'none' }}><Paper sx={{ width: '963px', height: '475px', width: '100%', height: 'auto', minHeight: '475px' }}><DataGridWrapper rows={hook.ds_ioFireSurveyFloorE} columns={columns_gdFloorE} /></Paper></Box></Stack>
+</CustomTabPanel><CustomTabPanel value={tabValue_tabTab1_4} index={1}><Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdFloorE ? undefined : 'none' }}><Paper sx={{ width: '963px', height: '475px', width: '100%', height: 'auto', minHeight: '475px' }}><MultiDataGridWrapper rows={hook.ds_ioFireSurveyFloorE} columns={columns_gdFloorE} rowHeight={20} headerHeight={40} hideFooter={true} /></Paper></Box></Stack>
 </CustomTabPanel></Box></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '246px', height: '22px', display: 'flex', alignItems: 'center', ml: '0px' }}>
                     <Typography variant="body2" sx={{ minWidth: 96, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>동명</Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust3030Data.ds_ds_ioFireSurveyDong || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>

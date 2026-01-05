@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust0010PAgentInfoList } from './useFrmcust0010PAgentInfoList';
 import * as Frmcust0010PAgentInfoListData from './Frmcust0010PAgentInfoListData';
@@ -11,7 +13,7 @@ import * as Frmcust0010PAgentInfoListData from './Frmcust0010PAgentInfoListData'
 export const Frmcust0010PAgentInfoList = () => {
     const hook = useFrmcust0010PAgentInfoList();
     const columns_gdAgentList = [
-        { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'AGNM', headerName: '대행업체명', width: 152 },
         { field: 'AGOWNER', headerName: '대표자', width: 50 },
         { field: 'AGCONO', headerName: '사업자등록번호', width: 120 },
@@ -22,7 +24,7 @@ export const Frmcust0010PAgentInfoList = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">업무대행업체 검색</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
@@ -34,7 +36,7 @@ export const Frmcust0010PAgentInfoList = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "38px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdAgentList ? undefined : 'none' }}><Paper sx={{ width: '692px', height: '262px', width: '100%', height: 'auto', minHeight: '262px' }}><DataGridWrapper rows={hook.ds_oAgentList} columns={columns_gdAgentList} /></Paper></Box></Stack>
 
                     </Paper>

@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmenv0060MPrinterSetup } from './useFrmenv0060MPrinterSetup';
 import * as Frmenv0060MPrinterSetupData from './Frmenv0060MPrinterSetupData';
@@ -26,7 +28,7 @@ export const Frmenv0060MPrinterSetup = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">출력환경설정</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Save}>수정 저장</Button>
 <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_PrintScreen}>화면 출력</Button>
@@ -38,7 +40,7 @@ export const Frmenv0060MPrinterSetup = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdPrintConfig ? undefined : 'none' }}><Paper sx={{ width: '592px', height: '263px', width: '100%', height: 'auto', minHeight: '263px' }}><DataGridWrapper rows={hook.gds_ioPrintConfig} columns={columns_gdPrintConfig} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static0 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '88px', height: '22px' }}><Typography variant="body2">프린터</Typography></Box></Box><Box sx={{ display: hook.isVisible_filePrintConfigFile ? undefined : 'none' }}><Button variant="contained" color="success" startIcon={<Description />} sx={{ width: '24px', height: '26px', whiteSpace: "nowrap" }}>filePrintConfigFile</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdPrinter ? undefined : 'none' }}><Paper sx={{ width: '592px', height: '183px', width: '100%', height: 'auto', minHeight: '183px' }}><DataGridWrapper rows={hook.gds_ioPrinter} columns={columns_gdPrinter} /></Paper></Box></Stack>

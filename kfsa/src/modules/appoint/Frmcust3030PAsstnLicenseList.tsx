@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust3030PAsstnLicenseList } from './useFrmcust3030PAsstnLicenseList';
 import * as Frmcust3030PAsstnLicenseListData from './Frmcust3030PAsstnLicenseListData';
@@ -11,21 +13,23 @@ import * as Frmcust3030PAsstnLicenseListData from './Frmcust3030PAsstnLicenseLis
 export const Frmcust3030PAsstnLicenseList = () => {
     const hook = useFrmcust3030PAsstnLicenseList();
     const columns_gdFireManager = [
-        { field: 'id', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 40, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'OBJ_NM', headerName: '대상물명', width: 152 },
         { field: 'CRQFC_NM', headerName: '등급', width: 120 },
         { field: 'APNT_DE', headerName: '선임일자', width: 87 },
         { field: 'BUILDADRES', headerName: '소재지', width: 242 },
     ];
     const columns_gdLicense = [
-        { field: 'SEL', headerName: 'SEL', width: 28 },
+        { field: 'SEL', headerName: '', width: 28 },
+        { field: 'col_1', headerName: '순번', width: 40 },
         { field: 'LTCCOURSENM', headerName: '자격등급', width: 151 },
         { field: 'LLCSNO', headerName: '자격번호', width: 143 },
         { field: 'LISSUEDATE', headerName: '취득일자', width: 79 },
         { field: 'LORGGUBUNNMM', headerName: '발급기관', width: 96 },
     ];
     const columns_gdEdupass = [
-        { field: 'SEL', headerName: 'SEL', width: 28 },
+        { field: 'SEL', headerName: '', width: 28 },
+        { field: 'col_1', headerName: '순번', width: 40 },
         { field: 'GUBUN', headerName: '구분', width: 45 },
         { field: 'TCCOURSENM', headerName: '등급', width: 189 },
         { field: 'TOENDDATE', headerName: '교육일자', width: 90 },
@@ -35,7 +39,7 @@ export const Frmcust3030PAsstnLicenseList = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">소방안전관리보조자 선임유형</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 <Button variant="contained"  onClick={hook.btnSelect_OnClick}>확인</Button>
@@ -46,7 +50,7 @@ export const Frmcust3030PAsstnLicenseList = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdFireManager ? undefined : 'none' }}><Paper sx={{ width: '664px', height: '150px', width: '100%', height: 'auto', minHeight: '150px' }}><DataGridWrapper rows={hook.ds_oFireManagerList} columns={columns_gdFireManager} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_rdGubun ? undefined : 'none' }}><FormControl component="fieldset" sx={{ width: '88px', height: '294px', width: "max-content", whiteSpace: "nowrap", pr: 2 }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmcust3030PAsstnLicenseListData.ds_ds_iGubun || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl></Box><Box sx={{ display: hook.isVisible_gdLicense ? undefined : 'none' }}><Paper sx={{ width: '560px', height: '142px', width: '100%', height: 'auto', minHeight: '142px' }}><DataGridWrapper rows={hook.ds_oLicenseList} columns={columns_gdLicense} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdEdupass ? undefined : 'none' }}><Paper sx={{ width: '560px', height: '150px', width: '100%', height: 'auto', minHeight: '150px' }}><DataGridWrapper rows={hook.ds_oEdupassList} columns={columns_gdEdupass} /></Paper></Box></Stack>

@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmCOM9060PPersonalDownloadList } from './useFrmCOM9060PPersonalDownloadList';
 import * as FrmCOM9060PPersonalDownloadListData from './FrmCOM9060PPersonalDownloadListData';
@@ -11,7 +13,7 @@ import * as FrmCOM9060PPersonalDownloadListData from './FrmCOM9060PPersonalDownl
 export const FrmCOM9060PPersonalDownloadList = () => {
     const hook = useFrmCOM9060PPersonalDownloadList();
     const columns_cbxYear = [
-        { field: 'id', headerName: '순번', width: 48, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 48, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'PCMENU', headerName: '메뉴', width: 173 },
         { field: 'PCTITLE', headerName: '제목', width: 147 },
         { field: 'PDHREASON', headerName: '사유', width: 217 },
@@ -23,7 +25,7 @@ export const FrmCOM9060PPersonalDownloadList = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">개인정보 다운로드 리스트 보기 팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 
@@ -33,7 +35,7 @@ export const FrmCOM9060PPersonalDownloadList = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "49px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_cbxYear ? undefined : 'none' }}><Paper sx={{ width: '741px', height: '387px', width: '100%', height: 'auto', minHeight: '387px' }}><DataGridWrapper rows={hook.ds_oDownloadPopup} columns={columns_cbxYear} /></Paper></Box></Stack>
 
                     </Paper>

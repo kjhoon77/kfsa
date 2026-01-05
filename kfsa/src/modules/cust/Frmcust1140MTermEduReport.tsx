@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust1140MTermEduReport } from './useFrmcust1140MTermEduReport';
 import * as Frmcust1140MTermEduReportData from './Frmcust1140MTermEduReportData';
@@ -33,47 +35,47 @@ export const Frmcust1140MTermEduReport = () => {
         { field: 'CGROUPNM', headerName: '직능', width: 120 },
         { field: 'PASSDATE', headerName: '일자 / 지역', width: 120 },
         { field: 'CNTSUM', headerName: '합계', width: 80 },
-        { field: 'CNT1', headerName: 'CNT1', width: 80 },
-        { field: 'CNT2', headerName: 'CNT2', width: 80 },
-        { field: 'CNT3', headerName: 'CNT3', width: 80 },
-        { field: 'CNT4', headerName: 'CNT4', width: 80 },
+        { field: 'CNT1', headerName: '', width: 80 },
+        { field: 'CNT2', headerName: '', width: 80 },
+        { field: 'CNT3', headerName: '', width: 80 },
+        { field: 'CNT4', headerName: '', width: 80 },
         { field: 'CNT5', headerName: '5', width: 80 },
-        { field: 'CNT6', headerName: 'CNT6', width: 80 },
-        { field: 'CNT7', headerName: 'CNT7', width: 80 },
-        { field: 'CNT8', headerName: 'CNT8', width: 80 },
-        { field: 'CNT9', headerName: 'CNT9', width: 80 },
-        { field: 'CNT10', headerName: 'CNT10', width: 80 },
-        { field: 'CNT11', headerName: 'CNT11', width: 80 },
-        { field: 'CNT12', headerName: 'CNT12', width: 80 },
-        { field: 'CNT13', headerName: 'CNT13', width: 80 },
-        { field: 'CNT14', headerName: 'CNT14', width: 80 },
-        { field: 'CNT15', headerName: 'CNT15', width: 80 },
-        { field: 'CNT16', headerName: 'CNT16', width: 80 },
-        { field: 'CNT17', headerName: 'CNT17', width: 80 },
-        { field: 'CNT18', headerName: 'CNT18', width: 80 },
-        { field: 'CNT19', headerName: 'CNT19', width: 80 },
-        { field: 'CNT20', headerName: 'CNT20', width: 80 },
-        { field: 'CNT21', headerName: 'CNT21', width: 80 },
-        { field: 'CNT22', headerName: 'CNT22', width: 80 },
-        { field: 'CNT23', headerName: 'CNT23', width: 80 },
-        { field: 'CNT24', headerName: 'CNT24', width: 80 },
-        { field: 'CNT25', headerName: 'CNT25', width: 80 },
-        { field: 'CNT26', headerName: 'CNT26', width: 80 },
-        { field: 'CNT27', headerName: 'CNT27', width: 80 },
-        { field: 'CNT28', headerName: 'CNT28', width: 80 },
-        { field: 'CNT29', headerName: 'CNT29', width: 80 },
-        { field: 'CNT30', headerName: 'CNT30', width: 80 },
-        { field: 'CNT31', headerName: 'CNT31', width: 80 },
-        { field: 'CNT32', headerName: 'CNT32', width: 80 },
-        { field: 'CNT33', headerName: 'CNT33', width: 80 },
-        { field: 'CNT34', headerName: 'CNT34', width: 80 },
-        { field: 'CNT35', headerName: 'CNT35', width: 80 },
+        { field: 'CNT6', headerName: '', width: 80 },
+        { field: 'CNT7', headerName: '', width: 80 },
+        { field: 'CNT8', headerName: '', width: 80 },
+        { field: 'CNT9', headerName: '', width: 80 },
+        { field: 'CNT10', headerName: '', width: 80 },
+        { field: 'CNT11', headerName: '', width: 80 },
+        { field: 'CNT12', headerName: '', width: 80 },
+        { field: 'CNT13', headerName: '', width: 80 },
+        { field: 'CNT14', headerName: '', width: 80 },
+        { field: 'CNT15', headerName: '', width: 80 },
+        { field: 'CNT16', headerName: '', width: 80 },
+        { field: 'CNT17', headerName: '', width: 80 },
+        { field: 'CNT18', headerName: '', width: 80 },
+        { field: 'CNT19', headerName: '', width: 80 },
+        { field: 'CNT20', headerName: '', width: 80 },
+        { field: 'CNT21', headerName: '', width: 80 },
+        { field: 'CNT22', headerName: '', width: 80 },
+        { field: 'CNT23', headerName: '', width: 80 },
+        { field: 'CNT24', headerName: '', width: 80 },
+        { field: 'CNT25', headerName: '', width: 80 },
+        { field: 'CNT26', headerName: '', width: 80 },
+        { field: 'CNT27', headerName: '', width: 80 },
+        { field: 'CNT28', headerName: '', width: 80 },
+        { field: 'CNT29', headerName: '', width: 80 },
+        { field: 'CNT30', headerName: '', width: 80 },
+        { field: 'CNT31', headerName: '', width: 80 },
+        { field: 'CNT32', headerName: '', width: 80 },
+        { field: 'CNT33', headerName: '', width: 80 },
+        { field: 'CNT34', headerName: '', width: 80 },
+        { field: 'CNT35', headerName: '', width: 80 },
     ];
     return (
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">교육 집계 현황</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_Print}>출력</Button>
@@ -86,7 +88,7 @@ export const Frmcust1140MTermEduReport = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "50px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static0 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '112px', height: '22px' }}><Typography variant="body2">출력물</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_radReport ? undefined : 'none' }}><FormControl component="fieldset" sx={{ width: '484px', height: '94px', width: "max-content", whiteSpace: "nowrap", pr: 2 }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmcust1140MTermEduReportData.ds_ds_ioReport || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "16px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Static1 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '112px', height: '22px' }}><Typography variant="body2">조회 조건</Typography></Box></Box></Stack>
@@ -114,9 +116,9 @@ export const Frmcust1140MTermEduReport = () => {
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '172px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 60, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>교육일자</Typography>
                     <FormControl component="fieldset" sx={{ width: "max-content", whiteSpace: "nowrap" }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmcust1140MTermEduReportData.ds_ds_ioChoiceYn || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl>
-                 </Stack><Box sx={{ display: hook.isVisible_calEduYmdFr ? undefined : 'none' }}><DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true } }} sx={{ minWidth: "120px", width: '100px', height: '22px', "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" }, bgcolor: "#fff" }} /></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '116px', height: '22px', display: 'flex', alignItems: 'center', ml: '0px' }}>
+                 </Stack><Box sx={{ display: hook.isVisible_calEduYmdFr ? undefined : 'none' }}><DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} /></Box><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '116px', height: '22px', display: 'flex', alignItems: 'center', ml: '0px' }}>
                     <Typography variant="body2" sx={{ minWidth: 20, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>~</Typography>
-                    <DatePicker format="yyyy/MM/dd" slotProps={{ textField: { size: "small", fullWidth: true, sx: { minWidth: "120px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } } } }} />
+                    <DoubleClickDatePicker sx={{ width: "102px", "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 0px", fontSize: "12px", marginLeft: "-2px" } }} />
                  </Stack></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '172px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 60, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>회차</Typography>

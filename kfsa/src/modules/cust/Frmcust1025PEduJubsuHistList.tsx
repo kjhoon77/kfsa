@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust1025PEduJubsuHistList } from './useFrmcust1025PEduJubsuHistList';
 import * as Frmcust1025PEduJubsuHistListData from './Frmcust1025PEduJubsuHistListData';
@@ -11,7 +13,7 @@ import * as Frmcust1025PEduJubsuHistListData from './Frmcust1025PEduJubsuHistLis
 export const Frmcust1025PEduJubsuHistList = () => {
     const hook = useFrmcust1025PEduJubsuHistList();
     const columns_gdJubsuInfo = [
-        { field: 'id', headerName: '순번', width: 35, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 35, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'CGTMGNO', headerName: '지부', width: 68 },
         { field: 'ESYEAR', headerName: '년도', width: 36 },
         { field: 'ESCOUSECD', headerName: '직능', width: 134 },
@@ -27,7 +29,7 @@ export const Frmcust1025PEduJubsuHistList = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">실무교육 기존접수자 조회</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Sort />} onClick={hook.btnMutilSort_OnClick}></Button>
 <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
@@ -39,7 +41,7 @@ export const Frmcust1025PEduJubsuHistList = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdJubsuInfo ? undefined : 'none' }}><Paper sx={{ width: '790px', height: '382px', width: '100%', height: 'auto', minHeight: '382px' }}><DataGridWrapper rows={hook.ds_oJubsuAllInfo} columns={columns_gdJubsuInfo} /></Paper></Box></Stack>
 
                     </Paper>

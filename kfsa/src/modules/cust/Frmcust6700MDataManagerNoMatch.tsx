@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust6700MDataManagerNoMatch } from './useFrmcust6700MDataManagerNoMatch';
 import * as Frmcust6700MDataManagerNoMatchData from './Frmcust6700MDataManagerNoMatchData';
@@ -12,16 +14,16 @@ import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 export const Frmcust6700MDataManagerNoMatch = () => {
     const hook = useFrmcust6700MDataManagerNoMatch();
     const columns_gdDataManagerNoMatch = [
-        { field: 'id', headerName: '순번', width: 35, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 35, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'CGTMGNO', headerName: '지부', width: 60 },
         { field: 'CNO', headerName: '관리번호', width: 62 },
         { field: 'BNM', headerName: '대상물명', width: 152 },
         { field: 'CNICKNM', headerName: '직능', width: 69 },
         { field: 'STATUSGUBUN', headerName: '회원구분', width: 57 },
-        { field: 'FMNM', headerName: '안전원', width: 63 },
+        { field: 'FMNM', headerName: '안전원 성명', width: 63 },
         { field: 'BIRTHDAY', headerName: '생년월일', width: 93 },
         { field: 'FMHSTARTDATE', headerName: '선임일자', width: 75 },
-        { field: 'NM', headerName: '소방청', width: 63 },
+        { field: 'NM', headerName: '소방청 성명', width: 63 },
         { field: 'IHIDNUM', headerName: '생년월일', width: 93 },
         { field: 'APNT_DE_8', headerName: '선임일자', width: 75 },
         { field: 'ADDR1', headerName: '주소1', width: 251 },
@@ -31,7 +33,7 @@ export const Frmcust6700MDataManagerNoMatch = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">데이터연계 선임자 불일치리스트</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.btnToExcel_OnClick}>엑셀로 저장</Button>
@@ -45,7 +47,7 @@ export const Frmcust6700MDataManagerNoMatch = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '156px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
                     <Typography variant="body2" sx={{ minWidth: 60, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>지부</Typography>
                     <FormControl size="small" fullWidth sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiSelect-select": { padding: "4px 6px !important" } }}><Select  displayEmpty><MenuItem value=""><em>선택</em></MenuItem>{ (Frmcust6700MDataManagerNoMatchData.ds_ds_oJibu || []).map(opt => <MenuItem key={opt.CD} value={opt.CD}>{opt.DATA}</MenuItem>) }</Select></FormControl>
@@ -60,7 +62,7 @@ export const Frmcust6700MDataManagerNoMatch = () => {
                     <Typography variant="body2" sx={{ minWidth: 88, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>총건수</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack><Box sx={{ display: hook.isVisible_btnMutilSort ? undefined : 'none' }}><Button variant="outlined"  onClick={hook.btnMutilSort_OnClick} size="small" sx={{ minWidth: 26, p: 0.2, width: '74px', height: '22px', whiteSpace: "nowrap" }}><Sort fontSize="small" /></Button></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdDataManagerNoMatch ? undefined : 'none' }}><Paper sx={{ width: '984px', height: '530px', width: '100%', height: 'auto', minHeight: '530px' }}><DataGridWrapper rows={hook.ds_oDataManagerNoMatch} columns={columns_gdDataManagerNoMatch} /></Paper></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "4px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdDataManagerNoMatch ? undefined : 'none' }}><Paper sx={{ width: '984px', height: '530px', width: '100%', height: 'auto', minHeight: '530px' }}><MultiDataGridWrapper rows={hook.ds_oDataManagerNoMatch} columns={columns_gdDataManagerNoMatch} rowHeight={20} headerHeight={40} hideFooter={true} /></Paper></Box></Stack>
 
                     </Paper>
                 </Grid>

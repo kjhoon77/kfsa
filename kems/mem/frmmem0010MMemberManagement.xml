@@ -1729,7 +1729,7 @@
 		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEduDataPrint" ImageID="BTN_TEXT_07" Left="781" OnClick="lfn_EduDataPrint" Style="sty_Button" TabOrder="34" Text="교육안내문&#32;출력" Top="408" Width="105"></Button>
 		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEduDetailInfo" ImageID="BTN_TEXT_04" Left="713" OnClick="btnEduDetailInfo_OnClick" Style="sty_Button" TabOrder="32" Text="상세정보" Top="408" Transparent="TRUE" Width="66"></Button>
 		<Button ButtonStyle="TRUE" Cursor="HAND" Height="22" Id="btnEduDataHList" ImageID="BTN_TEXT_07" Left="606" OnClick="btnEduDataHList_OnClick" Style="sty_Button" TabOrder="33" Text="안내문&#32;발행이력" Top="408" Transparent="TRUE" Width="105"></Button>
-		<Static Align="Center" Font="굴림,11,Bold" Height="20" Id="Static3" Left="496" Style="sty_LabelGruopBox" TabOrder="35" Text="실무교육정보" Top="403" VAlign="Middle" Width="108"></Static>
+		<Static Align="Center" Font="굴림,11,Bold" Height="20" Id="Static3" Left="496" Style="sty_LabelGruopBox" TabOrder="35" Text="실무교육정보" Top="408" VAlign="Middle" Width="108"></Static>
 		<PopDiv Border="Flat" Height="174" Id="PopDiv0" Left="1003" TabOrder="36" TabStop="FALSE" Top="176" Width="496">
 			<Contents>
 				<Grid BindDataset="ds_ioOverBizInfo" BkColor2="user2" BkSelColor="user3" BoldHead="true" Border="Flat" Bottom="171" ColSizing="TRUE" Editable="TRUE" Enable="true" EndLineColor="default" HeadBorder="Flat" HeadHeight="20" Height="145" Id="gdOverBizInfo" InputPanel="FALSE" Left="2" LineColor="default" Right="492" Style="sty_Grid" TabOrder="1" TabStop="true" Top="26" UseDBuff="true" UsePopupMenu="true" UseSelColor="true" Visible="true" VLineColor="default" WheelScrollRow="1" Width="490">
@@ -1799,70 +1799,130 @@
 		</Grid>
 		<Static Align="Center" Font="굴림,11,Bold" Height="20" Id="lbCustomerInfo" Left="1004" Style="sty_LabelGruopBox" TabOrder="39" Text="회원가입이력" Top="33" VAlign="Middle" Visible="FALSE" Width="108"></Static>
 	</Form>
-	<Script><![CDATA[/*
- * 프로그램명 : frmmem0010MMemberManagement.xml
- * 설명 : 회원관리
- * 작성일 : 2018.09.17
- * 작성자 : 정현호
- */
-
-#include "LIB::cust.js"; // 공통업무 관련
+	<Script><![CDATA[/*
 
-var ls_curComponent = "";	//조회시점에서의 포커스된 Component
+ * 프로그램명 : frmmem0010MMemberManagement.xml
 
-/* 공통 필수 시작 */
-function Form_OnLoadCompleted(obj)
+ * 설명 : 회원관리
+
+ * 작성일 : 2018.09.17
+
+ * 작성자 : 정현호
+
+ */
+
+
+
+#include "LIB::cust.js"; // 공통업무 관련
+
+
+var ls_curComponent = "";	//조회시점에서의 포커스된 Component
+
+
+/* 공통 필수 시작 */
+
+function Form_OnLoadCompleted(obj)
+
 {
-	gfn_Form_OnLoadCompletedCheck(obj);	//공통 폼 로딩 이벤트 처리(공통코드 조회되었는지 확인)
-	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
-    // 폼 환경설정
-    ls_SystemGubun = gs_SystemGubun;
-    ls_SystemMenuId = gs_SystemMenuId;
-    var ls_FormId = split(sFormUrl, "::");
-    ls_FormId = split(ls_FormId[1], ".");
-    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
-    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.    ms_FormAuth = gfn_GetFormAuth(this, sFormUrl); // 권한을 조회한다.
-    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
-        lfn_SetFormAuth(true); // 저장 권한
-    } else if (ms_FormAuth == "R") {
-        lfn_SetFormAuth(false); // 읽기 권한
-    } else {
-        gfn_Alert(MSGI00080);
-        close();
-    }
-
-    // 공통 코드 조회
-    gfn_SearchAllJibu(cbxJibu, "Y"); 											// 지부 코드 조회
+	gfn_Form_OnLoadCompletedCheck(obj);	//공통 폼 로딩 이벤트 처리(공통코드 조회되었는지 확인)
+
+	gfn_Form_OnLoadCompleted(obj); // 공통 폼 로딩 이벤트 처리
+
+    // 폼 환경설정
+
+    ls_SystemGubun = gs_SystemGubun;
+
+    ls_SystemMenuId = gs_SystemMenuId;
+
+    var ls_FormId = split(sFormUrl, "::");
+
+    ls_FormId = split(ls_FormId[1], ".");
+
+    obj.Title = sFormTitle + "(" + ls_FormId[0] + ")";
+
+
+    gfn_MakeRequiredInputMark(this); // 필수 입력란을 설정한다.
+
+    ms_FormAuth = gfn_GetFormAuth(this, sFormUrl); // 권한을 조회한다.
+
+    if (ms_FormAuth == "W") { // 권한에 따른 버튼 설정
+
+        lfn_SetFormAuth(true); // 저장 권한
+
+    } else if (ms_FormAuth == "R") {
+
+        lfn_SetFormAuth(false); // 읽기 권한
+
+    } else {
+
+        gfn_Alert(MSGI00080);
+
+        close();
+
+    }
+
+
+
+    // 공통 코드 조회
+
+    gfn_SearchAllJibu(cbxJibu, "Y"); 											// 지부 코드 조회
+
 /*
-    gfn_SearchCodeRegion(gds_oUserInfo.GetColumn(0, "PDEPTCD"), ds_oRegion, "0");	// 지역 코드 조회
-    gfn_SearchCustomerCourseFullName(ds_oCourse, "0");							// 대표고객직능 조회
-    gfn_SearchCustomerDetailCourseFullName("", ds_oDetailCourse, "0");			// 세부고객직능 조회
-    gfn_SearchCustomerCourseFullName(ds_oCourse, "0");							// 대표고객직능 조회
-    gfn_SearchCommonCode(ds_oSunapGubun, "SUNAPGUBUN", "Y", "미납");			// 수납구분*/
-    lfn_ClearData();							//모든데이타셋 초기화
+    gfn_SearchCodeRegion(gds_oUserInfo.GetColumn(0, "PDEPTCD"), ds_oRegion, "0");	// 지역 코드 조회
 
-    edMemberNm.SetFocus();						//성명 포커스
+    gfn_SearchCustomerCourseFullName(ds_oCourse, "0");							// 대표고객직능 조회
 
-}
-/***************************
- * 공통 코드 조회
- ***************************/
-
-/*
- * 기능 : 버튼 활성/비활성시킨다.
- * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
- * return : 없음
- */
-function lfn_SetFormAuth(bStatus) {
+    gfn_SearchCustomerDetailCourseFullName("", ds_oDetailCourse, "0");			// 세부고객직능 조회
+
+    gfn_SearchCustomerCourseFullName(ds_oCourse, "0");							// 대표고객직능 조회
+
+    gfn_SearchCommonCode(ds_oSunapGubun, "SUNAPGUBUN", "Y", "미납");			// 수납구분
+*/
+    lfn_ClearData();							//모든데이타셋 초기화
+
+
+    edMemberNm.SetFocus();						//성명 포커스
+
+
+}
+
+
+/***************************
+
+ * 공통 코드 조회
+
+ ***************************/
+
+
+
+/*
+
+ * 기능 : 버튼 활성/비활성시킨다.
+
+ * parameter : bStatus - 활성/비활성여부(true:활성, false:비활성)
+
+ * return : 없음
+
+ */
+
+function lfn_SetFormAuth(bStatus) {
+
 //
 
-}
-
-/*
- * 조회(F2)
- */
-function lfn_Search(obj)
-{	// 조회조건이 아무것도 입력되어 있지 않으면 조회 불가
+}
+
+
+
+/*
+
+ * 조회(F2)
+
+ */
+
+function lfn_Search(obj)
+
+{
+	// 조회조건이 아무것도 입력되어 있지 않으면 조회 불가
 	if (gfn_IsNull(edMemberNm.Text) && gfn_IsNull(medBirthday.Value) &&
 	
 	    gfn_IsNull(medPersonKey.Value) && gfn_IsNull(medCustNo.Value) &&
@@ -1877,8 +1937,10 @@ function lfn_Search(obj)
 
 	lfn_ClearData();
 	
-	medCustNo.Value = iif(gfn_IsNull(medCustNo.Value), "", lpad(medCustNo.Value, "0", 6));
-	var sArg = "CGTMGNO="	+ quote(cbxJibu.Value); 	// 지부코드
+	medCustNo.Value = iif(gfn_IsNull(medCustNo.Value), "", lpad(medCustNo.Value, "0", 6));
+
+	var sArg = "CGTMGNO="	+ quote(cbxJibu.Value); 	// 지부코드
+
     sArg += " CNO=" + quote(medCustNo.Value);		// 고객번호
     
     sArg += " FMNM="	+ quote(edMemberNm.Text); 	// 성명
@@ -1888,7 +1950,8 @@ function lfn_Search(obj)
     sArg += " FMPERSONKEY="	+ quote(medPersonKey.Value); 	// 개인식별번호
     
     sArg += " CMGNO="	+ quote(medBarCode.Value); 	// 관리바코드
-        // 조회이력을 저장한다.  
+    
+    // 조회이력을 저장한다.  
     ls_HistoryArg = "지부코드=" + cbxJibu.Value
                 + ", 관리번호=" + medCustNo.Value
                 + ", 성명=" + edMemberNm.Text
@@ -1904,245 +1967,461 @@ function lfn_Search(obj)
         , ls_HistoryArg
     );
 
-    ds_oMemberInfo.ClearData(); // 데이타셋 초기화
-    tit_clearActionInfo();
-    tit_addSearchActionInfo("mem:searchMem0010AllSearch", false);
-    // 서버 호출
-    tit_callService(
-        ""
-        , ""
-        , "" // inDs
-        , "ds_oMemberInfo=ds_oMemberInfo" // outDs
-        , sArg
-        , "lfn_AfterSearchAllInfo"
-        ,false
-        ,false
-        ,true
-    );
-}
-
-/*
- * 기능 : 고객 한방조회 후 처리해야 할 내용
- * parameter : ErrorCode - 에러코드
- *             ErrorMsg - 에러메시지
- * Return : 없음
- */
-function lfn_AfterSearchAllInfo(nErrorCode, strErrorMsg) {
-    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
-        gfn_ErrorMsg(nErrorCode, strErrorMsg);
-        return;
-    }
+
+    ds_oMemberInfo.ClearData(); // 데이타셋 초기화
+
+    tit_clearActionInfo();
+
+    tit_addSearchActionInfo("mem:searchMem0010AllSearch", false);
+
+    // 서버 호출
+
+    tit_callService(
+
+        ""
+
+        , ""
+
+        , "" // inDs
+
+        , "ds_oMemberInfo=ds_oMemberInfo" // outDs
+
+        , sArg
+
+        , "lfn_AfterSearchAllInfo"
+
+        ,false
+
+        ,false
+
+        ,true
+
+    );
+
+}
+
+
+
+/*
+
+ * 기능 : 고객 한방조회 후 처리해야 할 내용
+
+ * parameter : ErrorCode - 에러코드
+
+ *             ErrorMsg - 에러메시지
+
+ * Return : 없음
+
+ */
+
+function lfn_AfterSearchAllInfo(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+
+        return;
+
+    }
+
 
 	if(ds_oMemberInfo.rowcount > 0) {
 
-		// ds_oMemberInfo_OnRowPosChanged 에서 처리			//lfn_SearchAllAddInfo();	//부가정보 한방조회
-	} else {
-		gfn_Alert(MSGI00010);	//검색된 레코드가 없습니다.
-		lfn_Cancel();				//초기화
-		if(length(ls_curComponent) > 0 ) {
-			object(ls_curComponent).SetFocus();
-		}
+		// ds_oMemberInfo_OnRowPosChanged 에서 처리			//lfn_SearchAllAddInfo();	//부가정보 한방조회
+
+	} else {
+
+		gfn_Alert(MSGI00010);	//검색된 레코드가 없습니다.
+
+		lfn_Cancel();				//초기화
+
+		if(length(ls_curComponent) > 0 ) {
+
+			object(ls_curComponent).SetFocus();
+
+		}
+
     }
 
-}
-
-// 부가정보 한방조회
-function lfn_SearchAllAddInfo() {
-	
-	var lsOutDsListNm = "";
-	var lsArgListNm = "";
-	
-	ds_ioCustomerFeeInfo.ClearData(); 		// 회비/교육비 정보
-	ds_ioEducationPassInfo.ClearData(); 	// 실무교육 정보
+}
+
+
+
+// 부가정보 한방조회
+
+function lfn_SearchAllAddInfo() {
+
+	
+
+	var lsOutDsListNm = "";
+
+	var lsArgListNm = "";
+
+	
+
+	ds_ioCustomerFeeInfo.ClearData(); 		// 회비/교육비 정보
+
+	ds_ioEducationPassInfo.ClearData(); 	// 실무교육 정보
+
 	ds_ioOverBizInfo.ClearData(); 			// 겸직정보
 	
-	//ds_oMemJoinH.ClearData(); 				// 회원가입탈퇴이력
-    tit_clearActionInfo();
-    
-    if(!gfn_IsNull(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO"))) {
-		tit_addSearchActionInfo("cust:searchCust2010Fee", false);
-		tit_addSearchActionInfo("cust:searchCust0010EducationPassInfoList", false);
+	//ds_oMemJoinH.ClearData(); 				// 회원가입탈퇴이력
+
+    tit_clearActionInfo();
+
+    
+
+    if(!gfn_IsNull(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO"))) {
+
+		tit_addSearchActionInfo("cust:searchCust2010Fee", false);
+
+		tit_addSearchActionInfo("cust:searchCust0010EducationPassInfoList", false);
+
 		//tit_addSearchActionInfo("mem:searchMem0011MemJoinH", false);	// 회원가입탈퇴이력
 
-		lsOutDsListNm += "ds_ioCustomerFeeInfo=ds_oFee ds_ioEducationPassInfo=ds_ioEducationPassInfo ds_oMemJoinH=ds_oMemJoinH";
-		lsArgListNm += "CMGNO=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO")); // 고객정보관리번호
-		lsArgListNm += " FEEGUBUN=" + "YEAR";	// 회비/교육비 년도
-    }
-    if(!gfn_IsNull(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "FMMGNO"))) {
-		tit_addSearchActionInfo("cust:searchCust0010OverBizInfoList", false);
-		lsOutDsListNm += " ds_ioOverBizInfo=ds_ioOverBizInfo";
+		lsOutDsListNm += "ds_ioCustomerFeeInfo=ds_oFee ds_ioEducationPassInfo=ds_ioEducationPassInfo ds_oMemJoinH=ds_oMemJoinH";
+
+		lsArgListNm += "CMGNO=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO")); // 고객정보관리번호
+
+		lsArgListNm += " FEEGUBUN=" + "YEAR";	// 회비/교육비 년도
+
+    }
+
+    if(!gfn_IsNull(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "FMMGNO"))) {
+
+		tit_addSearchActionInfo("cust:searchCust0010OverBizInfoList", false);
+
+		lsOutDsListNm += " ds_ioOverBizInfo=ds_ioOverBizInfo";
+
 		lsArgListNm += " OLFMMGNO=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "FMMGNO")); // 선임자관리번호
 		
-		lsArgListNm += " FMNM=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "MNAME")); // 선임자명
+		lsArgListNm += " FMNM=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "MNAME")); // 선임자명
+
 		lsArgListNm += " FMPERSONKEY=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "MPERSONKEY")); // 선임자 개인식별번호
 		
-		lsArgListNm += " CMGNO=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO")); // 고객정보관리번호
-    }
-    
-    // 서버 호출
-    tit_callService(
-        ""
-        , ""
-        , "" // inDs
-        , lsOutDsListNm // outDs
-        , lsArgListNm	// args
-        , "lfn_AfterSearchAllAddInfo"
-        ,false
-    );
-}
-
-
-/*
- * 기능 : 부가정보 한방조회 후 처리해야 할 내용
- * parameter : ErrorCode - 에러코드
- *             ErrorMsg - 에러메시지
- * Return : 없음
- */
-function lfn_AfterSearchAllAddInfo(nErrorCode, strErrorMsg) {
-    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
-        gfn_ErrorMsg(nErrorCode, strErrorMsg);
-        return;
-    }
-}
+		lsArgListNm += " CMGNO=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO")); // 고객정보관리번호
 
-/*
- * 기능 : 초기화(F10)
- */
-function lfn_Cancel(obj) 
-{
-    lfn_ClearData();					//초기화 (모든 데이터셋)	
-	lfn_ClearSearchCompornent();		//조회정보 초기화
+    }
 
-}
-
-/*
- * 기능 : 초기화 (모든 데이터셋)
- */
-function lfn_ClearData() {
-	//Dataset Clear
+    
+
+    // 서버 호출
+
+    tit_callService(
+
+        ""
+
+        , ""
+
+        , "" // inDs
+
+        , lsOutDsListNm // outDs
+
+        , lsArgListNm	// args
+
+        , "lfn_AfterSearchAllAddInfo"
+
+        ,false
+
+    );
+
+}
+
+
+
+
+
+/*
+
+ * 기능 : 부가정보 한방조회 후 처리해야 할 내용
+
+ * parameter : ErrorCode - 에러코드
+
+ *             ErrorMsg - 에러메시지
+
+ * Return : 없음
+
+ */
+
+function lfn_AfterSearchAllAddInfo(nErrorCode, strErrorMsg) {
+
+    if (nErrorCode != 0) { // 트랜잭션 에러를 처리한다.
+
+        gfn_ErrorMsg(nErrorCode, strErrorMsg);
+
+        return;
+
+    }
+
+}
+
+
+/*
+
+ * 기능 : 초기화(F10)
+
+ */
+
+function lfn_Cancel(obj) 
+
+{
+
+    lfn_ClearData();					//초기화 (모든 데이터셋)	
+
+	lfn_ClearSearchCompornent();		//조회정보 초기화
+
+
+}
+
+
+
+/*
+
+ * 기능 : 초기화 (모든 데이터셋)
+
+ */
+
+function lfn_ClearData() {
+
+	//Dataset Clear
+
 	ds_oMemberInfo.ClearData(); 		// 회원 정보(MAIN 1)
 
 
-	ds_ioCustomerFeeInfo.ClearData();	// 회비/교육비 정보
-	ds_ioEducationPassInfo.ClearData();	// 실무교육 정보
+	ds_ioCustomerFeeInfo.ClearData();	// 회비/교육비 정보
+
+	ds_ioEducationPassInfo.ClearData();	// 실무교육 정보
+
 	ds_oEduConfirmPrint.ClearData();	// 실무교육이수확인증 정보
 
 
-	ds_ioOverBizInfo.ClearData();		// 겸직 정보
-}
-
-/*
- * 기능 : 조회 초기화
- */
-function lfn_ClearSearchCompornent() {
+	ds_ioOverBizInfo.ClearData();		// 겸직 정보
+
+}
+
+
+
+
+/*
+
+ * 기능 : 조회 초기화
+
+ */
+
+function lfn_ClearSearchCompornent() {
+
 	edMemberNm.Value = "";
 	
 	medBirthday.Value = "";
 	
-	medPersonKey.Value = "";
+	medPersonKey.Value = "";
+
 	cbxJibu.Value = "";
 	
-	medCustNo.Value = "";
+	medCustNo.Value = "";
+
 	medBarCode.Value = "";
 	
-}
-/***************************
- * Event & Button
- ***************************/
-// 조회(F2 동일)
-function medCustNo_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
-{
-	if(nChar == 13) {	// Enter key
-		ls_curComponent = GetCurrentComponent().id;
-		cbxRegion.SetFocus();
-		if(gfn_IsNull(medCustNo.Value) || gfn_IsNull(cbxJibu.Value)) {
-			
-		} else {
-			lfn_Search();
-		}
-	}
-}
-
-// 조회(F2 동일)
-function medBarCode_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
-{
-	if(nChar == 13) {	// Enter key		
-		if(gfn_IsNull(medBarCode.Value)) {
-
-		} else {
-			ls_curComponent = GetCurrentComponent().id;
-			cbxRegion.SetFocus();
-			lfn_searchCust0010CustomerInfo2(medBarCode.Value);
-		}
-	}
-}
-// 조회(F2 동일)
-function medCustNo_OnKillFocus(obj)
-{
-    obj.Value = iif(gfn_IsNull(obj.Value), "", lpad(obj.Value, "0", 6));
-}
-
-// 조회(F2 동일)
-function medBarCode_OnKillFocus(obj)
-{
-	if(!gfn_IsNull(obj.Value)) {
-		obj.Value = iif(gfn_IsNull(obj.Value), "", lpad(obj.Value, "0", 13));
-	}
-}
+}
 
-// 겸직이력
-function btnConcurrentH_OnClick(obj)
-{
-	/*
-     * Input >> sCmgno : 고객정보관리번호
-     */
-	var sArg = "sCmgno=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO")); // 고객정보관리번호
-
-    Dialog(ls_Prefix + "::frmcust0014POverHistory.xml", sArg, 724, 238, "", -1, -1);
-}
-// 상세정보
-function btnFeeDetailInfo_OnClick(obj)
-{
-	if(ds_ioCustomerFeeInfo.Sum("SUNAPFEE") <= 0) {
-		gfn_Alert("결제정보가 없습니다.");
-		return;
-	}
-	var sArg = "sCmgno=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO"));
-	var retDlg = Dialog(ls_Prefix + "::frmcust0019PCustomerSunapInfo.xml", sArg, 700, 400, "", -1, -1);
-}
-
-// 상세정보
-function btnEduDetailInfo_OnClick(obj)
-{
-	/*
-     * Input >> sCmgno : 고객관리번호
-     */
-	var sArg  = "sCmgno=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO"));			// 고객관리번호
-		Dialog(ls_Prefix + "::frmcust1001PCustomerEduInfo.xml", sArg, 600, 398, "", -1, -1);
-}
-/* 그리드 Enter Key 이동 */
-function lfn_GridEnterMove(obj, nChar, bShift) {
-	if (nChar == 13) {
-		if(bshift=1) {
-			obj.MoveToPrevCell();
-		} else { 
-			obj.MoveToNextCell();
-		}
-	}
-}
 
-// 교육안내문 발행이력 팝업
-function btnEduDataHList_OnClick(obj)
-{
-	if( gfn_IsNull(ds_ioCustomerInfo.GetColumn(ds_ioCustomerInfo.currow, "CMGNO")) ) {
-		gfn_Alert("해당 자료를 찾을 수 없습니다.");
-		return;
-	} else {
-		var sArg = "sCmgno=" + quote(ds_ioCustomerInfo.GetColumn(ds_ioCustomerInfo.currow, "CMGNO"));
-		
-		Dialog(ls_Prefix + "::frmcust0010PEduDataHList.xml", sArg, 724, 238, sArg, -1, -1);
-	}
-}
+
+/***************************
+
+ * Event & Button
+
+ ***************************/
+
+// 조회(F2 동일)
+
+function medCustNo_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+
+{
+
+	if(nChar == 13) {	// Enter key
+
+		ls_curComponent = GetCurrentComponent().id;
+
+		cbxRegion.SetFocus();
+
+		if(gfn_IsNull(medCustNo.Value) || gfn_IsNull(cbxJibu.Value)) {
+
+			
+
+		} else {
+
+			lfn_Search();
+
+		}
+
+	}
+
+}
+
+
+
+// 조회(F2 동일)
+
+function medBarCode_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
+
+{
+
+	if(nChar == 13) {	// Enter key		
+
+		if(gfn_IsNull(medBarCode.Value)) {
+
+
+
+		} else {
+
+			ls_curComponent = GetCurrentComponent().id;
+
+			cbxRegion.SetFocus();
+
+			lfn_searchCust0010CustomerInfo2(medBarCode.Value);
+
+		}
+
+	}
+
+}
+
+
+// 조회(F2 동일)
+
+function medCustNo_OnKillFocus(obj)
+
+{
+
+    obj.Value = iif(gfn_IsNull(obj.Value), "", lpad(obj.Value, "0", 6));
+
+}
+
+
+
+// 조회(F2 동일)
+
+function medBarCode_OnKillFocus(obj)
+
+{
+
+	if(!gfn_IsNull(obj.Value)) {
+
+		obj.Value = iif(gfn_IsNull(obj.Value), "", lpad(obj.Value, "0", 13));
+
+	}
+
+}
+
+
+// 겸직이력
+
+function btnConcurrentH_OnClick(obj)
+
+{
+
+	/*
+
+     * Input >> sCmgno : 고객정보관리번호
+
+     */
+
+	var sArg = "sCmgno=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO")); // 고객정보관리번호
+
+
+
+    Dialog(ls_Prefix + "::frmcust0014POverHistory.xml", sArg, 724, 238, "", -1, -1);
+
+}
+
+
+// 상세정보
+
+function btnFeeDetailInfo_OnClick(obj)
+
+{
+
+	if(ds_ioCustomerFeeInfo.Sum("SUNAPFEE") <= 0) {
+
+		gfn_Alert("결제정보가 없습니다.");
+
+		return;
+
+	}
+
+
+	var sArg = "sCmgno=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO"));
+
+	var retDlg = Dialog(ls_Prefix + "::frmcust0019PCustomerSunapInfo.xml", sArg, 700, 400, "", -1, -1);
+
+}
+
+
+
+// 상세정보
+
+function btnEduDetailInfo_OnClick(obj)
+
+{
+
+	/*
+
+     * Input >> sCmgno : 고객관리번호
+
+     */
+
+	var sArg  = "sCmgno=" + quote(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO"));			// 고객관리번호
+
+		Dialog(ls_Prefix + "::frmcust1001PCustomerEduInfo.xml", sArg, 600, 398, "", -1, -1);
+
+}
+
+
+/* 그리드 Enter Key 이동 */
+
+function lfn_GridEnterMove(obj, nChar, bShift) {
+
+	if (nChar == 13) {
+
+		if(bshift=1) {
+
+			obj.MoveToPrevCell();
+
+		} else { 
+
+			obj.MoveToNextCell();
+
+		}
+
+	}
+
+}
+
+
+// 교육안내문 발행이력 팝업
+
+function btnEduDataHList_OnClick(obj)
+
+{
+
+	if( gfn_IsNull(ds_ioCustomerInfo.GetColumn(ds_ioCustomerInfo.currow, "CMGNO")) ) {
+
+		gfn_Alert("해당 자료를 찾을 수 없습니다.");
+
+		return;
+
+	} else {
+
+		var sArg = "sCmgno=" + quote(ds_ioCustomerInfo.GetColumn(ds_ioCustomerInfo.currow, "CMGNO"));
+
+		
+
+		Dialog(ls_Prefix + "::frmcust0010PEduDataHList.xml", sArg, 724, 238, sArg, -1, -1);
+
+	}
+
+}
+
 
 // 실무교육 이수확인증 출력
 function tabTab2_tabpgTab2Page2_gdEduInfo_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
@@ -2153,7 +2432,8 @@ function tabTab2_tabpgTab2Page2_gdEduInfo_OnCellClick(obj,nRow,nCell,nX,nY,nPivo
 		
 			ds_ioEducationPassInfo.row = nRow;   
 		
-			var sArg = "sMsg=" + quote("실무교육 이수확인증을 출력하시겠습니까?"); // 대상물관리번호		
+			var sArg = "sMsg=" + quote("실무교육 이수확인증을 출력하시겠습니까?"); // 대상물관리번호
+		
 			var msg_result = Dialog(ls_Prefix + "::frmcust0010PEduIssuePrintMessage.xml", sArg, 500, 100, "", -1, -1);
 	
 		
@@ -2227,8 +2507,10 @@ function lfn_EduConfirmInsertProc() {
 }
 
 // 교육이수내역 조회
-function lfn_EduIssueConfirmSearch() {
-	ds_oEduConfirmPrint.ClearData();
+function lfn_EduIssueConfirmSearch() {
+
+	ds_oEduConfirmPrint.ClearData();
+
 	tit_clearActionInfo();
 	tit_addSearchActionInfo("cust:searchCust0010EduConfirmPrint", "", 0, "");
 	
@@ -2242,7 +2524,8 @@ function lfn_EduIssueConfirmSearch() {
 		,false
 		,false
 		,true
-	);
+	);
+
 }
 
 // 실무교육 이수확인증 출력
@@ -2254,7 +2537,8 @@ function Div3_gdEduInfo_OnCellClick(obj,nRow,nCell,nX,nY,nPivotIndex)
 		
 			ds_ioEducationPassInfo.row = nRow;   
 		
-			var sArg = "sMsg=" + quote("실무교육 이수확인증을 출력하시겠습니까?"); // 대상물관리번호		
+			var sArg = "sMsg=" + quote("실무교육 이수확인증을 출력하시겠습니까?"); // 대상물관리번호
+		
 			var msg_result = Dialog(ls_Prefix + "::frmcust0010PEduIssuePrintMessage.xml", sArg, 500, 100, "", -1, -1);
 	
 		
@@ -2343,12 +2627,14 @@ function btnShowVirtualAccount_OnClick(obj)
 
 		} else {
 
-			gfn_Alert("삭제된 고객은 가상계좌가 없습니다.");			return;
+			gfn_Alert("삭제된 고객은 가상계좌가 없습니다.");
+			return;
 		
 		}
 	} else {
 
-		gfn_Alert("고객정보를 조회하신 후 가상계좌보기를 클릭해주세요!");		return;
+		gfn_Alert("고객정보를 조회하신 후 가상계좌보기를 클릭해주세요!");
+		return;
 		
 	}
 }
@@ -2359,7 +2645,8 @@ function btnVAccountCno_OnClick(obj)
 {
 	var arrNo = Dialog("cust::frmcust0010PSearchVAccountCno.xml", "", 400, 220, "", -1, -1);	
 	
-	if(length(arrNo) > 0) {
+	if(length(arrNo) > 0) {
+
 		lfn_searchCust0010CustomerInfo2(arrNo[0]);
 	}
 	
@@ -2371,8 +2658,10 @@ function lfn_EduDataPrint(obj)
 {
 var issuechk = "";	// 교육이수 체크
 
-	if( gfn_IsNull(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO")) ) {
-		gfn_Alert("교육안내문을 발행할 자료가 없습니다.");
+	if( gfn_IsNull(ds_oMemberInfo.GetColumn(ds_oMemberInfo.currow, "CMGNO")) ) {
+
+		gfn_Alert("교육안내문을 발행할 자료가 없습니다.");
+
 		return;
 	
 	}
@@ -2395,7 +2684,8 @@ var issuechk = "";	// 교육이수 체크
 	if (issuechk == "Y") {	// 당해년도 교육이수사항이 있으면
 	
 		gfn_Alert(left(GetDate(), 4)+"년도 교육이수 내역이 있습니다. 교육안내문 자료가 생성되지 않습니다.!");
-				return false;	
+		
+		return false;	
 	}
 	
     if (!gfn_Confirm("교육안내문 출력을 하면 교육안내문 발급이력이 생성됩니다.\n"
@@ -2660,7 +2950,8 @@ function lfn_EduNoticeHistory2()
 	
 	//trace(ds_ioMEduDataDetail.savexml());
  	tit_clearActionInfo();
-	tit_addSingleActionInfo("cust:updateCust1107EduDataHistoryDay", "", 0, "");
+	tit_addSingleActionInfo("cust:updateCust1107EduDataHistoryDay", "", 0, "");
+
     // 서버 호출 
     tit_callService(
         ""
@@ -2693,40 +2984,62 @@ function Form_OnActivate(obj)
 
 function medBirthday_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
 {
-	if(nChar == 13) {	// Enter key
-		ls_curComponent = GetCurrentComponent().id;
-		cbxRegion.SetFocus();
-		if(gfn_IsNull(cbxJibu.Value) || gfn_IsNull(medBirthday.Value)) {
+	if(nChar == 13) {	// Enter key
 
-		} else {
-			lfn_Search();
-		}
+		ls_curComponent = GetCurrentComponent().id;
+
+		cbxRegion.SetFocus();
+
+		if(gfn_IsNull(cbxJibu.Value) || gfn_IsNull(medBirthday.Value)) {
+
+
+		} else {
+
+			lfn_Search();
+
+		}
+
 	}
 }
 
 function medPersonKey_OnKeyDown(obj,nChar,bShift,bCtrl,bAlt,nLLParam,nHLParam)
 {
-		if(nChar == 13) {	// Enter key
-		ls_curComponent = GetCurrentComponent().id;
-		cbxRegion.SetFocus();
-		if(gfn_IsNull(cbxJibu.Value) || gfn_IsNull(medPersonKey.Value)) {
-			
-		} else {
-			lfn_Search();
-		}
+		if(nChar == 13) {	// Enter key
+
+		ls_curComponent = GetCurrentComponent().id;
+
+		cbxRegion.SetFocus();
+
+		if(gfn_IsNull(cbxJibu.Value) || gfn_IsNull(medPersonKey.Value)) {
+
+			
+
+		} else {
+
+			lfn_Search();
+
+		}
+
 	}
 }
 
 function edMemberNm_OnKeyDown(obj,nChar,bShift,bCtrl, bAlt,LLParam,HLParam)
 {
-	if(nChar == 13) {	// Enter key
-		ls_curComponent = GetCurrentComponent().id;
-		cbxRegion.SetFocus();
-		if(gfn_IsNull(cbxJibu.Value) || gfn_IsNull(edMemberNm.Text)) {
+	if(nChar == 13) {	// Enter key
 
-		} else {
-			lfn_Search();
-		}
+		ls_curComponent = GetCurrentComponent().id;
+
+		cbxRegion.SetFocus();
+
+		if(gfn_IsNull(cbxJibu.Value) || gfn_IsNull(edMemberNm.Text)) {
+
+
+		} else {
+
+			lfn_Search();
+
+		}
+
 	}
 }
 ]]></Script>

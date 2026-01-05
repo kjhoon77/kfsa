@@ -181,12 +181,15 @@ export const useFrmmem0010MMemberManagement = () => {
     };
     const btnEduDataHList_OnClick = () => {
         console.log('btnEduDataHList_OnClick clicked');
+        openPopDiv0();
     };
     const btnEduDetailInfo_OnClick = () => {
         console.log('btnEduDetailInfo_OnClick clicked');
+        openPopDiv0();
     };
     const btnFeeDetailInfo_OnClick = () => {
         console.log('btnFeeDetailInfo_OnClick clicked');
+        openPopDiv0();
     };
     const btnShowVirtualAccount_OnClick = () => {
         console.log('btnShowVirtualAccount_OnClick clicked');

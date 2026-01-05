@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmprofes0001S02ProfMgmt } from './useFrmprofes0001S02ProfMgmt';
 import * as Frmprofes0001S02ProfMgmtData from './Frmprofes0001S02ProfMgmtData';
@@ -11,7 +13,7 @@ import * as Frmprofes0001S02ProfMgmtData from './Frmprofes0001S02ProfMgmtData';
 export const Frmprofes0001S02ProfMgmt = () => {
     const hook = useFrmprofes0001S02ProfMgmt();
     const columns_gdProfPersonLisence = [
-        { field: 'id', headerName: '순번', width: 30, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 30, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'PLDATE', headerName: '취득일자', width: 100 },
         { field: 'PLNAME', headerName: '자격증명', width: 300 },
         { field: 'PLOFFICE', headerName: '발행처', width: 250 },
@@ -30,7 +32,7 @@ export const Frmprofes0001S02ProfMgmt = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "38px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdProfPersonLisence ? undefined : 'none' }}><Paper sx={{ width: '764px', height: '184px', width: '100%', height: 'auto', minHeight: '184px' }}><DataGridWrapper rows={hook.ds_ioProfPersonLisence} columns={columns_gdProfPersonLisence} /></Paper></Box></Stack>
 
                     </Paper>

@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust0150MManagerReport } from './useFrmcust0150MManagerReport';
 import * as Frmcust0150MManagerReportData from './Frmcust0150MManagerReportData';
@@ -14,31 +16,31 @@ export const Frmcust0150MManagerReport = () => {
     const columns_gdList2 = [
         { field: 'GTDEPTNM', headerName: '지부', width: 61 },
         { field: 'BANG0_CNT', headerName: '소방안전관리자', width: 55 },
-        { field: 'BANG1_CNT', headerName: 'BANG1_CNT', width: 55 },
-        { field: 'BANG2_CNT', headerName: 'BANG2_CNT', width: 55 },
-        { field: 'BANG3_CNT', headerName: 'BANG3_CNT', width: 55 },
-        { field: 'GONG1_CNT', headerName: 'GONG1_CNT', width: 55 },
-        { field: 'GONG2_CNT', headerName: 'GONG2_CNT', width: 55 },
-        { field: 'GONG3_CNT', headerName: 'GONG3_CNT', width: 55 },
+        { field: 'BANG1_CNT', headerName: '', width: 55 },
+        { field: 'BANG2_CNT', headerName: '', width: 55 },
+        { field: 'BANG3_CNT', headerName: '', width: 55 },
+        { field: 'GONG1_CNT', headerName: '', width: 55 },
+        { field: 'GONG2_CNT', headerName: '', width: 55 },
+        { field: 'GONG3_CNT', headerName: '', width: 55 },
         { field: 'BOJO_CNT', headerName: '위험물안전관리자', width: 55 },
-        { field: 'DANGER1_CNT', headerName: '위험물안전관리자', width: 55 },
-        { field: 'DANGER2_CNT', headerName: 'DANGER2_CNT', width: 55 },
-        { field: 'DANGER3_CNT', headerName: 'DANGER3_CNT', width: 55 },
-        { field: 'DANGER4_CNT', headerName: 'DANGER4_CNT', width: 55 },
+        { field: 'DANGER1_CNT', headerName: '위험물안전관리자 제조소', width: 55 },
+        { field: 'DANGER2_CNT', headerName: '', width: 55 },
+        { field: 'DANGER3_CNT', headerName: '', width: 55 },
+        { field: 'DANGER4_CNT', headerName: '', width: 55 },
         { field: 'DANGER5_CNT', headerName: '저장소', width: 55 },
-        { field: 'DANGER6_CNT', headerName: 'DANGER6_CNT', width: 55 },
-        { field: 'SOBANG1_CNT', headerName: '소방기술자', width: 55 },
+        { field: 'DANGER6_CNT', headerName: '', width: 55 },
+        { field: 'SOBANG1_CNT', headerName: '소방기술자 설계업', width: 55 },
         { field: 'SOBANG2_CNT', headerName: '공사업', width: 55 },
         { field: 'SOBANG3_CNT', headerName: '감리업', width: 55 },
         { field: 'SOBANG4_CNT', headerName: '관리업', width: 55 },
         { field: 'SOBANG5_CNT', headerName: '방염업', width: 55 },
-        { field: 'PERSON_CNT', headerName: 'PERSON_CNT', width: 55 },
-        { field: 'DANCHE_CNT', headerName: 'DANCHE_CNT', width: 55 },
-        { field: 'OONSONG_CNT', headerName: 'OONSONG_CNT', width: 55 },
-        { field: 'WOONBAN_CNT', headerName: 'WOONBAN_CNT', width: 55 },
-        { field: 'EDU90_CNT', headerName: 'EDU90_CNT', width: 55 },
-        { field: 'COVER_CNT', headerName: 'COVER_CNT', width: 55 },
-        { field: 'MEMBER_CNT', headerName: 'MEMBER_CNT', width: 55 },
+        { field: 'PERSON_CNT', headerName: '', width: 55 },
+        { field: 'DANCHE_CNT', headerName: '', width: 55 },
+        { field: 'OONSONG_CNT', headerName: '', width: 55 },
+        { field: 'WOONBAN_CNT', headerName: '', width: 55 },
+        { field: 'EDU90_CNT', headerName: '', width: 55 },
+        { field: 'COVER_CNT', headerName: '', width: 55 },
+        { field: 'MEMBER_CNT', headerName: '', width: 55 },
     ];
     const columns_gdList3 = [
         { field: 'GTDEPTNM', headerName: '지부', width: 58 },
@@ -130,37 +132,37 @@ export const Frmcust0150MManagerReport = () => {
         { field: 'GTDEPTNM', headerName: '지부', width: 61 },
         { field: 'RCNM', headerName: '지역', width: 61 },
         { field: 'BANG0_CNT', headerName: '소방안전관리자', width: 55 },
-        { field: 'BANG1_CNT', headerName: 'BANG1_CNT', width: 55 },
-        { field: 'BANG2_CNT', headerName: 'BANG2_CNT', width: 55 },
-        { field: 'BANG3_CNT', headerName: 'BANG3_CNT', width: 55 },
-        { field: 'GONG1_CNT', headerName: 'GONG1_CNT', width: 55 },
-        { field: 'GONG2_CNT', headerName: 'GONG2_CNT', width: 55 },
-        { field: 'GONG3_CNT', headerName: 'GONG3_CNT', width: 55 },
-        { field: 'BOJO_CNT', headerName: 'BOJO_CNT', width: 55 },
-        { field: 'DANGER1_CNT', headerName: '위험물안전관리자', width: 55 },
-        { field: 'DANGER2_CNT', headerName: 'DANGER2_CNT', width: 55 },
-        { field: 'DANGER3_CNT', headerName: 'DANGER3_CNT', width: 55 },
-        { field: 'DANGER4_CNT', headerName: 'DANGER4_CNT', width: 55 },
+        { field: 'BANG1_CNT', headerName: '', width: 55 },
+        { field: 'BANG2_CNT', headerName: '', width: 55 },
+        { field: 'BANG3_CNT', headerName: '', width: 55 },
+        { field: 'GONG1_CNT', headerName: '', width: 55 },
+        { field: 'GONG2_CNT', headerName: '', width: 55 },
+        { field: 'GONG3_CNT', headerName: '', width: 55 },
+        { field: 'BOJO_CNT', headerName: '', width: 55 },
+        { field: 'DANGER1_CNT', headerName: '위험물안전관리자 제조소', width: 55 },
+        { field: 'DANGER2_CNT', headerName: '', width: 55 },
+        { field: 'DANGER3_CNT', headerName: '', width: 55 },
+        { field: 'DANGER4_CNT', headerName: '', width: 55 },
         { field: 'DANGER5_CNT', headerName: '저장소', width: 55 },
-        { field: 'DANGER6_CNT', headerName: 'DANGER6_CNT', width: 55 },
-        { field: 'SOBANG1_CNT', headerName: '소방기술자', width: 55 },
+        { field: 'DANGER6_CNT', headerName: '', width: 55 },
+        { field: 'SOBANG1_CNT', headerName: '소방기술자 설계업', width: 55 },
         { field: 'SOBANG2_CNT', headerName: '공사업', width: 55 },
         { field: 'SOBANG3_CNT', headerName: '감리업', width: 55 },
         { field: 'SOBANG4_CNT', headerName: '관리업', width: 55 },
         { field: 'SOBANG5_CNT', headerName: '방염업', width: 55 },
-        { field: 'PERSON_CNT', headerName: 'PERSON_CNT', width: 55 },
-        { field: 'DANCHE_CNT', headerName: 'DANCHE_CNT', width: 55 },
-        { field: 'OONSONG_CNT', headerName: 'OONSONG_CNT', width: 55 },
-        { field: 'WOONBAN_CNT', headerName: 'WOONBAN_CNT', width: 55 },
-        { field: 'EDU90_CNT', headerName: 'EDU90_CNT', width: 55 },
-        { field: 'COVER_CNT', headerName: 'COVER_CNT', width: 55 },
-        { field: 'MEMBER_CNT', headerName: 'MEMBER_CNT', width: 55 },
+        { field: 'PERSON_CNT', headerName: '', width: 55 },
+        { field: 'DANCHE_CNT', headerName: '', width: 55 },
+        { field: 'OONSONG_CNT', headerName: '', width: 55 },
+        { field: 'WOONBAN_CNT', headerName: '', width: 55 },
+        { field: 'EDU90_CNT', headerName: '', width: 55 },
+        { field: 'COVER_CNT', headerName: '', width: 55 },
+        { field: 'MEMBER_CNT', headerName: '', width: 55 },
     ];
     return (
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">고객 집계 현황</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_Print}>출력</Button>
@@ -174,7 +176,7 @@ export const Frmcust0150MManagerReport = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_radReport ? undefined : 'none' }}><FormControl component="fieldset" sx={{ width: '692px', height: '22px', width: "max-content", whiteSpace: "nowrap", pr: 2 }}><RadioGroup row sx={{ flexWrap: "nowrap" }} >{ (Frmcust0150MManagerReportData.ds_ds_ioReport || []).map(opt => <FormControlLabel key={opt.CD} value={opt.CD} control={<Radio />} label={opt.DATA} sx={{ whiteSpace: 'nowrap', flexShrink: 0, mr: 2 }} />) }</RadioGroup></FormControl></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "5px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_lbJubsu ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '100px', height: '22px' }}><Typography variant="body2">조회조건</Typography></Box></Box><Box sx={{ display: hook.isVisible_Static5 ? undefined : 'none' }}><Box sx={{ display: "flex", alignItems: "center", width: '100px', height: '22px' }}><Typography variant="body2">조회조건</Typography></Box></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Stack direction="row" alignItems="center" spacing={0.5} sx={{ width: '165px', height: '22px', display: 'flex', alignItems: 'center', ml: '8px' }}>
@@ -220,12 +222,12 @@ export const Frmcust0150MManagerReport = () => {
                     <Typography variant="body2" sx={{ minWidth: 60, bgcolor: '#f5f5f5', p: 0.3, borderRadius: 1 }}>겸직</Typography>
                     <TextField size="small" fullWidth  sx={{ "& .MuiOutlinedInput-notchedOutline": { borderColor: "rgba(0,0,0,0.4)" }, "& .MuiInputBase-input": { padding: "4px 6px" } }} />
                  </Stack></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList2 ? undefined : 'none' }}><Paper sx={{ width: '816px', height: '358px', width: '100%', height: 'auto', minHeight: '358px' }}><DataGridWrapper rows={hook.ds_CourseStatisticsTotal} columns={columns_gdList2} /></Paper></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "8px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList2 ? undefined : 'none' }}><Paper sx={{ width: '816px', height: '358px', width: '100%', height: 'auto', minHeight: '358px' }}><MultiDataGridWrapper rows={hook.ds_CourseStatisticsTotal} columns={columns_gdList2} rowHeight={20} headerHeight={40} hideFooter={true} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList3 ? undefined : 'none' }}><Paper sx={{ width: '784px', height: '346px', width: '100%', height: 'auto', minHeight: '346px' }}><DataGridWrapper rows={hook.ds_BizStatistics} columns={columns_gdList3} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList4 ? undefined : 'none' }}><Paper sx={{ width: '816px', height: '343px', width: '100%', height: 'auto', minHeight: '343px' }}><DataGridWrapper rows={hook.ds_BizStatistics} columns={columns_gdList4} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList5 ? undefined : 'none' }}><Paper sx={{ width: '816px', height: '350px', width: '100%', height: 'auto', minHeight: '350px' }}><DataGridWrapper rows={hook.ds_ManagerStatistics} columns={columns_gdList5} /></Paper></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList6 ? undefined : 'none' }}><Paper sx={{ width: '816px', height: '343px', width: '100%', height: 'auto', minHeight: '343px' }}><DataGridWrapper rows={hook.ds_ManagerStatistics} columns={columns_gdList6} /></Paper></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList1 ? undefined : 'none' }}><Paper sx={{ width: '815px', height: '347px', width: '100%', height: 'auto', minHeight: '347px' }}><DataGridWrapper rows={hook.ds_CourseStatisticsTotal} columns={columns_gdList1} /></Paper></Box></Stack>
+<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdList1 ? undefined : 'none' }}><Paper sx={{ width: '815px', height: '347px', width: '100%', height: 'auto', minHeight: '347px' }}><MultiDataGridWrapper rows={hook.ds_CourseStatisticsTotal} columns={columns_gdList1} rowHeight={20} headerHeight={40} hideFooter={true} /></Paper></Box></Stack>
 
                     </Paper>
                 </Grid>

@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useLastInput20170215 } from './useLastInput20170215';
 import * as LastInput20170215Data from './LastInput20170215Data';
@@ -14,7 +16,7 @@ export const LastInput20170215 = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">ScreenSaver</Typography>
                 <Stack direction="row" spacing={1}>
                     
                 </Stack>
@@ -23,7 +25,7 @@ export const LastInput20170215 = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "82px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Button0 ? undefined : 'none' }}><Button variant="contained"   onClick={hook.Button0_OnClick} sx={{ width: '104px', height: '23px', whiteSpace: "nowrap" }}>스크린세이버</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "59px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Button3 ? undefined : 'none' }}><Button variant="contained"   onClick={hook.Button3_OnClick} sx={{ width: '104px', height: '23px', whiteSpace: "nowrap" }}>지연시간 10</Button></Box><Box sx={{ display: hook.isVisible_Button1 ? undefined : 'none' }}><Button variant="contained"   onClick={hook.Button1_OnClick} sx={{ width: '104px', height: '23px', whiteSpace: "nowrap" }}>지연시간 5</Button></Box></Stack>
 <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "3px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_Button2 ? undefined : 'none' }}><Button variant="contained"   onClick={hook.Button2_OnClick} sx={{ width: '104px', height: '23px', whiteSpace: "nowrap" }}>이벤트발생 TRUE</Button></Box><Box sx={{ display: hook.isVisible_Button4 ? undefined : 'none' }}><Button variant="contained"   onClick={hook.Button4_OnClick} sx={{ width: '104px', height: '23px', whiteSpace: "nowrap" }}>이벤트발생 FALSE</Button></Box></Stack>

@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmCOM0062MFrameTop } from './useFrmCOM0062MFrameTop';
 import * as FrmCOM0062MFrameTopData from './FrmCOM0062MFrameTopData';
@@ -15,7 +17,7 @@ export const FrmCOM0062MFrameTop = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">상단프레임</Typography>
                 <Stack direction="row" spacing={1}>
                     
                 </Stack>
@@ -24,9 +26,8 @@ export const FrmCOM0062MFrameTop = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
-                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "44px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_imgLeftFrameClose ? undefined : 'none' }}><Box sx={{ width: '16px', height: '36px', border: "1px solid #ddd", display: "flex", alignItems: "center", justifyContent: "center" }}>Image: imgLeftFrameClose</Box></Box></Stack>
-<Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "2px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_tabTopMenu ? undefined : 'none' }}><Box sx={{ width: '820px', height: '67px', width: "100%", height: "auto", minHeight: "67px" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTopMenu} onChange={(e, v) => setTabValue_tabTopMenu(v)} aria-label="tabTopMenu"><Tab label="tab1" /></Tabs></Box><CustomTabPanel value={tabValue_tabTopMenu} index={0}></CustomTabPanel></Box></Box></Stack>
+                        
+                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "44px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_imgLeftFrameClose ? undefined : 'none' }}><Box sx={{ width: '16px', height: '36px', border: "1px solid #ddd", display: "flex", alignItems: "center", justifyContent: "center" }}>Image: imgLeftFrameClose</Box></Box><Box sx={{ display: hook.isVisible_tabTopMenu ? undefined : 'none' }}><Box sx={{ width: '820px', height: '67px', width: "100%", height: "auto", minHeight: "67px" }}><Box sx={{ borderBottom: 1, borderColor: "divider" }}><Tabs value={tabValue_tabTopMenu} onChange={(e, v) => setTabValue_tabTopMenu(v)} aria-label="tabTopMenu"><Tab label="tab1" /></Tabs></Box><CustomTabPanel value={tabValue_tabTopMenu} index={0}></CustomTabPanel></Box></Box></Stack>
 
                     </Paper>
                 </Grid>

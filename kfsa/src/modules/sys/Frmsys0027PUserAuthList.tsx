@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmsys0027PUserAuthList } from './useFrmsys0027PUserAuthList';
 import * as Frmsys0027PUserAuthListData from './Frmsys0027PUserAuthListData';
@@ -12,7 +14,7 @@ import { FrmCOM0100SWorkFormTitle } from '../COM/FrmCOM0100SWorkFormTitle';
 export const Frmsys0027PUserAuthList = () => {
     const hook = useFrmsys0027PUserAuthList();
     const columns_gdUserAuth = [
-        { field: 'MENULEVEL1', headerName: '메뉴명', width: 95 },
+        { field: 'MENULEVEL1', headerName: '메뉴명 1단계', width: 95 },
         { field: 'MENULEVEL2', headerName: '2단계', width: 101 },
         { field: 'MENULEVEL3', headerName: '프로그램명', width: 212 },
         { field: 'USE_YN', headerName: '사용유무', width: 84 },
@@ -23,7 +25,7 @@ export const Frmsys0027PUserAuthList = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">개인별사용자권한리스트</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Print />} onClick={hook.lfn_Print}>출력</Button>
 <Button variant="contained" startIcon={<Save />} onClick={hook.lfn_Excel}>엑셀로 저장</Button>
@@ -36,8 +38,8 @@ export const Frmsys0027PUserAuthList = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
-                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "37px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdUserAuth ? undefined : 'none' }}><Paper sx={{ width: '693px', height: '559px', width: '100%', height: 'auto', minHeight: '559px' }}><DataGridWrapper rows={hook.ds_ioUserAuthList} columns={columns_gdUserAuth} /></Paper></Box></Stack>
+                        
+                        <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "37px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdUserAuth ? undefined : 'none' }}><Paper sx={{ width: '693px', height: '559px', width: '100%', height: 'auto', minHeight: '559px' }}><MultiDataGridWrapper rows={hook.ds_ioUserAuthList} columns={columns_gdUserAuth} rowHeight={20} headerHeight={40} hideFooter={true} /></Paper></Box></Stack>
 
                     </Paper>
                 </Grid>

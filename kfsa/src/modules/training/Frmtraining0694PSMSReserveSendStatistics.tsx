@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmtraining0694PSMSReserveSendStatistics } from './useFrmtraining0694PSMSReserveSendStatistics';
 import * as Frmtraining0694PSMSReserveSendStatisticsData from './Frmtraining0694PSMSReserveSendStatisticsData';
@@ -16,6 +18,7 @@ export const Frmtraining0694PSMSReserveSendStatistics = () => {
         { field: 'TOTCCOURSECD', headerName: '직능', width: 0 },
         { field: 'TOTRAININGORDER', headerName: '회차', width: 0 },
         { field: 'TOHJUBSUNO', headerName: '접수번호', width: 0 },
+        { field: 'col_5', headerName: '순번', width: 33 },
         { field: 'TCCOURSENM', headerName: '직능', width: 139 },
         { field: 'TOTRAININGORDER', headerName: '회차', width: 47 },
         { field: 'TOHJUBSUNO', headerName: '접수번호', width: 65 },
@@ -27,7 +30,7 @@ export const Frmtraining0694PSMSReserveSendStatistics = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">SMS예약발송현황팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Sort />} onClick={hook.btnMutilSort_OnClick}></Button>
 <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
@@ -38,7 +41,7 @@ export const Frmtraining0694PSMSReserveSendStatistics = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "56px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdSmsStat ? undefined : 'none' }}><Paper sx={{ width: '592px', height: '384px', width: '100%', height: 'auto', minHeight: '384px' }}><DataGridWrapper rows={hook.ds_oReserveSend} columns={columns_gdSmsStat} /></Paper></Box></Stack>
 
                     </Paper>

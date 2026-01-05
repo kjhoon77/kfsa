@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmtraining0029PTrainingAwaiterList } from './useFrmtraining0029PTrainingAwaiterList';
 import * as Frmtraining0029PTrainingAwaiterListData from './Frmtraining0029PTrainingAwaiterListData';
@@ -11,7 +13,7 @@ import * as Frmtraining0029PTrainingAwaiterListData from './Frmtraining0029PTrai
 export const Frmtraining0029PTrainingAwaiterList = () => {
     const hook = useFrmtraining0029PTrainingAwaiterList();
     const columns_gdAwaiterJubsu = [
-        { field: 'id', headerName: '순번', width: 38, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 38, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'GTDEPTNM', headerName: '지부', width: 57 },
         { field: 'TOYEAR', headerName: '년도', width: 40 },
         { field: 'TOTRAININGORDER', headerName: '회차', width: 36 },
@@ -27,7 +29,7 @@ export const Frmtraining0029PTrainingAwaiterList = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">강습접수대기자리스트팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Sort />} onClick={hook.btnMutilSort_OnClick}></Button>
 <Button variant="contained" startIcon={<Search />} onClick={hook.lfn_Search}>조회</Button>
@@ -39,7 +41,7 @@ export const Frmtraining0029PTrainingAwaiterList = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "58px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdAwaiterJubsu ? undefined : 'none' }}><Paper sx={{ width: '792px', height: '382px', width: '100%', height: 'auto', minHeight: '382px' }}><DataGridWrapper rows={hook.ds_oAwaiterJubsu} columns={columns_gdAwaiterJubsu} /></Paper></Box></Stack>
 
                     </Paper>

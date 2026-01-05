@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmcust6400P04ManagerList } from './useFrmcust6400P04ManagerList';
 import * as Frmcust6400P04ManagerListData from './Frmcust6400P04ManagerListData';
@@ -11,7 +13,7 @@ import * as Frmcust6400P04ManagerListData from './Frmcust6400P04ManagerListData'
 export const Frmcust6400P04ManagerList = () => {
     const hook = useFrmcust6400P04ManagerList();
     const columns_gdManager = [
-        { field: 'id', headerName: '순번', width: 36, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1 },
+        { field: 'id_seq', headerName: '순번', width: 36, renderCell: (params) => params.api.getAllRowIds().indexOf(params.id) + 1, sortable: false },
         { field: 'MANAGE_ENTRPS_VRSC_AT', headerName: '대행', width: 36 },
         { field: 'NM', headerName: '선임자명', width: 90 },
         { field: 'BIRTHDAY', headerName: '생년월일', width: 90 },
@@ -24,7 +26,7 @@ export const Frmcust6400P04ManagerList = () => {
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">선임자정보팝업</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 
@@ -34,7 +36,7 @@ export const Frmcust6400P04ManagerList = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "34px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdManager ? undefined : 'none' }}><Paper sx={{ width: '644px', height: '394px', width: '100%', height: 'auto', minHeight: '394px' }}><DataGridWrapper rows={hook.ds_oFireManagerInfo} columns={columns_gdManager} /></Paper></Box></Stack>
 
                     </Paper>

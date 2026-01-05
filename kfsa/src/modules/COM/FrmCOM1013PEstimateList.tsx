@@ -4,6 +4,8 @@ import { Box, Button, Checkbox, Dialog, DialogActions, DialogContent, DialogTitl
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { Add, Check, Close, ContentCopy, Delete, Description, FilterList, Help, Print, Refresh, Save, Search, Sort, TouchApp, Visibility, ZoomIn } from '@mui/icons-material';
 import DataGridWrapper from '../../components/DataGridWrapper';
+import MultiDataGridWrapper from '../../components/MultiDataGridWrapper';
+import DoubleClickDatePicker from '../../components/DoubleClickDatePicker';
 import PageContainer from '../../components/PageContainer';
 import { useFrmCOM1013PEstimateList } from './useFrmCOM1013PEstimateList';
 import * as FrmCOM1013PEstimateListData from './FrmCOM1013PEstimateListData';
@@ -18,12 +20,13 @@ export const FrmCOM1013PEstimateList = () => {
         { field: 'PPMNY', headerName: '금액(원)', width: 70 },
         { field: 'VMBILLTYPE', headerName: '계산서구분', width: 73 },
         { field: 'sendstatus', headerName: '국세청전송여부', width: 106 },
+        { field: 'col_7', headerName: '출력', width: 55, renderCell: () => "출력", sortable: false },
     ];
     return (
         <PageContainer>
 
             <Stack direction="row" alignItems="center" justifyContent="space-between" mb={2}>
-                <Typography variant="h5">기본정보</Typography>
+                <Typography variant="h5">계산서 발행 리스트</Typography>
                 <Stack direction="row" spacing={1}>
                     <Button variant="contained" startIcon={<Close />} onClick={hook.lfn_End}>닫기</Button>
 
@@ -33,7 +36,7 @@ export const FrmCOM1013PEstimateList = () => {
 
                 <Grid item xs={12} md={12}>
                     <Paper sx={{ p: 2, height: '100%' }}>
-                        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 'bold' }}>Main Config</Typography>
+                        
                         <Stack direction="row" alignItems="center" spacing={0} sx={{ mt: "42px", py: 0.5, width: "100%" }}><Box sx={{ display: hook.isVisible_gdEstimateList ? undefined : 'none' }}><Paper sx={{ width: '590px', height: '227px', width: '100%', height: 'auto', minHeight: '227px' }}><DataGridWrapper rows={hook.ds_ioEstimateList} columns={columns_gdEstimateList} /></Paper></Box></Stack>
 
                     </Paper>
